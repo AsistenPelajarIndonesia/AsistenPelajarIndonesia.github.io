@@ -1,0 +1,293 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hambatan Ohmik dan Non-Ohmik - Listrik Arus Searah</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .formula {
+            background-color: #e3f2fd;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .formula code {
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+
+        .definition {
+            background-color: #f3e5f5;
+            border-left: 5px solid #ab47bc;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            border-radius: 4px;
+        }
+
+        .concept-box {
+            background-color: #fff9c4;
+            border: 1px dashed var(--secondary-accent-amber);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .concept-box h4 {
+            color: #f57f17;
+            margin-top: 0;
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .compare-table th {
+            background-color: #f5f5f5;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        .compare-table tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .interactivity-placeholder {
+            background-color: #e8f5e9;
+            border: 1px dashed var(--accent-green);
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .explanation {
+            background-color: #fce4ec;
+            border-left: 5px solid #e91e63;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .formula, .definition, .concept-box, .explanation, .interactivity-placeholder {
+                font-size: 0.95em;
+            }
+            .compare-table th,
+            .compare-table td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .formula, .definition, .concept-box, .explanation, .interactivity-placeholder {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Listrik Arus Searah - Hambatan Ohmik dan Non-Ohmik</h1>
+
+        <div class="section">
+            <p>Setelah memahami konsep dasar arus listrik, mari kita selami lebih dalam tentang bagaimana arus listrik berinteraksi dengan berbagai komponen dalam rangkaian. Salah satu konsep fundamental yang akan kita bahas adalah hambatan, yang membedakan antara komponen yang berperilaku sesuai Hukum Ohm (Ohmik) dan yang tidak (Non-Ohmik).</p>
+        </div>
+
+        <div class="section">
+            <h2>Konsep Dasar Arus Listrik dan Definisi</h2>
+            <p>Arus listrik (<span class="highlight">I</span>) adalah ukuran seberapa banyak muatan listrik (<span class="highlight">Q</span>) yang mengalir melalui suatu penampang dalam satuan waktu (<span class="highlight">t</span>).</p>
+            <div class="formula">
+                <code>I = Q / t</code>
+            </div>
+            <p>Satuan standar internasional untuk arus listrik adalah <span class="highlight">Ampere (A)</span>, yang dinamai dari ilmuwan Prancis, André-Marie Ampère. Satu Ampere sama dengan satu Coulomb per detik.</p>
+            <p>Muatan listrik selalu ada dalam kelipatan bilangan bulat dari muatan elementer (<span class="highlight">e</span>), yaitu muatan satu elektron atau proton. Nilai muatan elementer adalah sekitar 1,6 x 10<sup>-19</sup> Coulomb. Oleh karena itu, persamaan arus listrik juga dapat ditulis sebagai:</p>
+            <div class="formula">
+                <code>I = ne / t</code>
+                <p><small>dengan <span class="highlight">n</span> adalah jumlah muatan elementer.</small></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Hambatan Listrik: Hukum Ohm</h2>
+            <p>Dalam rangkaian listrik, komponen yang berperan mengatur aliran arus adalah <span class="highlight">resistor</span>. Resistor memiliki sifat yang disebut <span class="highlight">resistansi</span> atau <span class="highlight">hambatan</span>, yang diukur dalam satuan <span class="highlight">Ohm (Ω)</span>. Tidak hanya resistor, kawat penghantar dan komponen lain seperti filamen bola lampu juga memiliki hambatan.</p>
+            <p>Georg Simon Ohm, melalui percobaannya, menemukan hubungan fundamental antara tegangan (<span class="highlight">V</span>), arus (<span class="highlight">I</span>), dan hambatan (<span class="highlight">R</span>). Hubungan ini dikenal sebagai <span class="highlight">Hukum Ohm</span>:</p>
+            <div class="formula">
+                <code>V = I * R</code>
+            </div>
+            <p>Dalam persamaan ini, <span class="highlight">R</span> adalah gradien dari grafik hubungan tegangan-arus, yang merepresentasikan besar hambatan.</p>
+        </div>
+
+        <div class="section">
+            <h2>Hambatan Ohmik vs. Hambatan Non-Ohmik</h2>
+            <p>Berdasarkan Hukum Ohm, kita dapat mengklasifikasikan komponen berdasarkan perilakunya:</p>
+
+            <div class="compare-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Karakteristik</th>
+                            <th>Komponen Ohmik</th>
+                            <th>Komponen Non-Ohmik</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Hubungan V-I</strong></td>
+                            <td>Proporsional (Grafik V-I adalah garis lurus melalui titik nol)</td>
+                            <td>Tidak proporsional (Grafik V-I bukan garis lurus)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hambatan (R)</strong></td>
+                            <td>Konstan (tetap), tidak bergantung pada tegangan atau arus</td>
+                            <td>Berubah-ubah, bergantung pada tegangan, arus, atau faktor lain (misalnya suhu)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contoh</strong></td>
+                            <td>Resistor (ideal), kawat penghantar pada suhu konstan</td>
+                            <td>Lampu filamen, dioda, termistor, transistor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="explanation">
+                <p><span class="highlight"><strong>Komponen Ohmik:</strong></span> Komponen yang nilai hambatannya tetap dan mematuhi Hukum Ohm. Artinya, jika tegangan diperbesar, arus akan bertambah secara proporsional, dan sebaliknya.</p>
+            </div>
+
+            <div class="explanation">
+                <p><span class="highlight"><strong>Komponen Non-Ohmik:</strong></span> Komponen yang nilai hambatannya tidak konstan, melainkan dipengaruhi oleh faktor-faktor lain. Perilaku ini tidak sesuai dengan Hukum Ohm secara linier.</p>
+                <ul>
+                    <li><strong>Lampu Filamen:</strong> Saat arus mengalir, filamen lampu menjadi panas. Peningkatan suhu ini menyebabkan hambatan filamen meningkat. Akibatnya, grafik V-I lampu filamen akan melengkung, menunjukkan hambatan yang tidak konstan.</li>
+                    <li><strong>Dioda Semikonduktor:</strong> Dioda hanya mengalirkan arus listrik secara signifikan jika tegangan diberikan pada arah tertentu (kondisi maju). Pada arah sebaliknya (kondisi balik), dioda hampir tidak mengalirkan arus, menunjukkan hambatan yang sangat besar.</li>
+                    <li><strong>Termistor:</strong> Komponen ini sangat sensitif terhadap suhu. Hambatan termistor bisa menurun ketika suhu meningkat (NTC - Negative Temperature Coefficient) atau meningkat ketika suhu meningkat (PTC - Positive Temperature Coefficient). Termistor sering digunakan dalam sensor suhu atau rangkaian pengatur suhu.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Alat Ukur Listrik: Amperemeter dan Voltmeter</h2>
+            <p>Untuk memahami perilaku komponen listrik, kita perlu alat ukur yang tepat:</p>
+            <div class="concept-box">
+                <h4>Amperemeter</h4>
+                <p>Digunakan untuk mengukur besarnya <span class="highlight">arus listrik</span> yang mengalir dalam rangkaian. Amperemeter harus dipasang secara <span class="highlight">seri</span> dengan komponen yang arusnya ingin diukur agar arus yang mengalir melaluinya sama dengan arus rangkaian.</p>
+            </div>
+            <div class="concept-box">
+                <h4>Voltmeter</h4>
+                <p>Digunakan untuk mengukur <span class="highlight">beda potensial (tegangan)</span> di antara dua titik dalam rangkaian. Voltmeter harus dipasang secara <span class="highlight">paralel</span> dengan komponen yang tegangan melintasinya ingin diukur.</p>
+            </div>
+
+            <p>Alat ukur analog (yang menggunakan jarum penunjuk) memerlukan perhatian khusus saat membaca hasilnya, berbeda dengan alat ukur digital yang langsung menampilkan angka.</p>
+            <p>Rumus umum untuk membaca alat ukur analog adalah:</p>
+            <div class="formula">
+                <code>Hasil Ukur = (Skala yang Ditunjuk / Skala Maksimum) x Batas Ukur</code>
+            </div>
+            <p>Memahami cara kerja dan pemasangan alat ukur ini sangat penting untuk melakukan eksperimen dan analisis rangkaian.</p>
+        </div>
+
+        <div class="section">
+            <h2>Analisis Perilaku Komponen</h2>
+            <p>Eksperimen sederhana yang melibatkan perakitan rangkaian dengan resistor dan LED (yang merupakan komponen non-Ohmik) memungkinkan kita untuk membandingkan karakteristik hubungan tegangan-arus mereka. Dengan mengubah tegangan sumber dan mencatat nilai arus serta tegangan pada masing-masing komponen, kita dapat membuat grafik.</p>
+            <p>Grafik tegangan-arus (V-I) untuk komponen Ohmik akan berbentuk garis lurus, menunjukkan hambatan yang konstan. Sebaliknya, grafik untuk komponen non-Ohmik seperti lampu filamen, dioda, atau termistor akan menunjukkan kelengkungan atau perubahan bentuk, mencerminkan hambatan yang bervariasi.</p>
+            <div class="interactivity-placeholder">
+                <p>(Visualisasi interaktif: Bayangkan membuat grafik tegangan (sumbu X) terhadap arus (sumbu Y) untuk resistor dan kemudian untuk LED. Perhatikan bagaimana kemiringan atau bentuk garisnya berbeda, menunjukkan hambatan yang berbeda pula.)</p>
+            </div>
+            <p>Perbedaan karakteristik ini sangat penting untuk dipahami dalam perancangan rangkaian elektronik yang efisien dan berfungsi dengan baik.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

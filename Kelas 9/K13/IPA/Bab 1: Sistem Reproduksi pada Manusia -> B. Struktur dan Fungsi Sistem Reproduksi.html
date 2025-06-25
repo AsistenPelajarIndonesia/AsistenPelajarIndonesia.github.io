@@ -1,0 +1,468 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Sistem Reproduksi Manusia - Struktur dan Fungsi</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.8em;
+        }
+        h3 {
+            font-size: 1.5em;
+            border-color: var(--secondary-accent-amber);
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f8f9fa; /* Light gray background for sections */
+            border-radius: 5px;
+            border: 1px solid var(--border-divider);
+        }
+        .subsection {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--secondary-accent-amber);
+        }
+        .content-block {
+            margin-bottom: 20px;
+        }
+        .content-block p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        .content-block ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        .content-block li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+        .sub-highlight {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+        .term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        .explanation {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+        .male-reproductive-system, .female-reproductive-system {
+            background-color: #eef7ff; /* Light blue for male */
+            border-color: #b3d4ff;
+        }
+        .female-reproductive-system {
+            background-color: #fff2e6; /* Light orange for female */
+            border-color: #ffccb3;
+        }
+        .organ-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .organ-item {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid var(--border-divider);
+            transition: transform 0.2s ease-in-out;
+        }
+        .organ-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .organ-item .organ-name {
+            font-weight: bold;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .organ-item .organ-function {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+        .process-diagram {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px dashed var(--primary-blue);
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden; /* To contain elements within */
+        }
+        .process-diagram .stage {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted var(--border-divider);
+        }
+        .process-diagram .stage:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .process-diagram .stage-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--accent-green);
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .process-diagram .stage-description {
+            flex-grow: 1;
+            color: var(--text-secondary);
+        }
+        .process-diagram .stage-description .term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        .process-diagram .stage-description .details {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 5px;
+        }
+        .process-diagram .arrow {
+            font-size: 2em;
+            color: var(--primary-blue);
+            margin: 0 20px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .organ-list {
+                grid-template-columns: 1fr;
+            }
+            .process-diagram .stage {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .process-diagram .arrow {
+                margin: 10px 0;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1: Sistem Reproduksi Manusia</h1>
+        <h2>B. Struktur dan Fungsi Sistem Reproduksi</h2>
+
+        <div class="section">
+            <h3>Sistem Reproduksi Laki-Laki</h3>
+            <p>Sistem reproduksi laki-laki terdiri dari organ reproduksi luar dan organ reproduksi dalam. Organ-organ ini bekerja sama untuk menghasilkan sel sperma (gamet jantan) dan hormon testosteron yang berperan dalam perkembangan ciri seksual sekunder.</p>
+
+            <div class="subsection">
+                <h4>Alat Reproduksi Luar</h4>
+                <div class="content-block">
+                    <p><span class="term">Penis</span>:</p>
+                    <div class="explanation">
+                        <p>Organ reproduksi luar utama yang berfungsi sebagai saluran untuk mengeluarkan urine dan sperma dari tubuh. Penis tersusun dari jaringan otot dan memiliki struktur ujung yang dilindungi kulup (prepuce).</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <p><span class="term">Skrotum</span>:</p>
+                    <div class="explanation">
+                        <p>Kantong kulit yang terletak di luar tubuh. Skrotum berfungsi untuk melindungi testis dan menjaga suhunya agar tetap optimal untuk produksi sperma, yaitu sedikit lebih rendah dari suhu tubuh normal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h4>Alat Reproduksi Dalam</h4>
+                <div class="organ-list">
+                    <div class="organ-item">
+                        <span class="organ-name">Testis (Sepasang)</span>
+                        <span class="organ-function">Berfungsi memproduksi sel sperma (spermatogenesis) dan hormon testosteron.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Epididimis</span>
+                        <span class="organ-function">Saluran berkelok-kelok tempat penyimpanan sementara sel sperma dan pematangan akhir sperma.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Vas Deferens</span>
+                        <span class="organ-function">Saluran yang menghubungkan epididimis dengan uretra, berfungsi mengangkut sperma.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Uretra</span>
+                        <span class="organ-function">Saluran yang terdapat di dalam penis, berfungsi sebagai saluran pengeluaran urine dan sperma.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Vesikula Seminalis</span>
+                        <span class="organ-function">Menghasilkan cairan basa yang kaya akan fruktosa (sumber energi sperma), prostaglandin, dan protein pembekuan.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Kelenjar Prostat</span>
+                        <span class="organ-function">Menghasilkan cairan yang sedikit asam, mengandung asam sitrat (energi), enzim, dan seminal plasmin (antibiotik).</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Kelenjar Cowper (Bulbouretra)</span>
+                        <span class="organ-function">Menghasilkan cairan basa yang berfungsi menetralkan sisa urine asam di uretra dan melumasi uretra.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Proses Spermatogenesis</h3>
+                <p>Spermatogenesis adalah proses pembentukan sel sperma yang terjadi di dalam <span class="term">tubulus seminiferus</span> di dalam testis. Proses ini melibatkan serangkaian pembelahan sel:</p>
+                <div class="process-diagram">
+                    <div class="stage">
+                        <div class="stage-number">1.</div>
+                        <div class="stage-description">
+                            <span class="term">Spermatogonium</span> (sel induk diploid, 2n) <br>
+                            <span class="details">Melalui pembelahan mitosis, berkembang menjadi <span class="term">spermatosit primer</span> (diploid, 2n).</span>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">2.</div>
+                        <div class="stage-description">
+                            <span class="term">Spermatosit primer</span> <br>
+                            <span class="details">Mengalami <span class="term">Meiosis I</span> menghasilkan dua <span class="term">spermatosit sekunder</span> (haploid, n).</span>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">3.</div>
+                        <div class="stage-description">
+                            <span class="term">Spermatosit sekunder</span> <br>
+                            <span class="details">Mengalami <span class="term">Meiosis II</span> menghasilkan empat <span class="term">spermatid</span> (haploid, n).</span>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">4.</div>
+                        <div class="stage-description">
+                            <span class="term">Spermatid</span> <br>
+                            <span class="details">Mengalami diferensiasi dan perkembangan menjadi <span class="term">spermatozoa</span> (sel sperma matang).</span>
+                        </div>
+                    </div>
+                </div>
+                <p>Cairan sperma atau semen adalah campuran dari sel-sel sperma dan cairan dari kelenjar reproduksi.</p>
+            </div>
+        </div>
+
+        <div class="section female-reproductive-system">
+            <h3>Sistem Reproduksi Perempuan</h3>
+            <p>Sistem reproduksi perempuan juga terdiri dari organ reproduksi luar dan dalam. Organ-organ ini berperan dalam menghasilkan sel telur (ovum) dan hormon reproduksi wanita seperti estrogen dan progesteron, serta mendukung kehamilan.</p>
+
+            <div class="subsection">
+                <h4>Alat Reproduksi Luar</h4>
+                <div class="content-block">
+                    <p><span class="term">Vulva</span>:</p>
+                    <div class="explanation">
+                        <p>Merupakan celah terluar alat reproduksi wanita, dibatasi oleh sepasang bibir yang disebut <span class="term">labium</span>. Di dalam vulva bermuara saluran urine dan saluran reproduksi (vagina).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h4>Alat Reproduksi Dalam</h4>
+                <div class="organ-list">
+                    <div class="organ-item">
+                        <span class="organ-name">Ovarium (Sepasang)</span>
+                        <span class="organ-function">Menghasilkan sel telur (ovum) dan hormon estrogen serta progesteron.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Saluran Telur (Tuba Fallopii/Oviduk)</span>
+                        <span class="organ-function">Saluran sepanjang ±10 cm yang menghubungkan ovarium dengan uterus. Tempat terjadinya fertilisasi.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Infundibulum</span>
+                        <span class="organ-function">Ujung saluran telur berbentuk corong yang dilengkapi <span class="term">fimbriae</span> untuk menangkap sel telur.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Rahim (Uterus)</span>
+                        <span class="organ-function">Organ berbentuk seperti buah pir, tempat berkembangnya janin selama kehamilan.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Endometrium</span>
+                        <span class="organ-function">Lapisan dinding rahim yang menebal dan meluruh saat menstruasi.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Serviks (Leher Rahim)</span>
+                        <span class="organ-function">Bagian bawah uterus yang menyempit dan membuka ke arah vagina.</span>
+                    </div>
+                    <div class="organ-item">
+                        <span class="organ-name">Vagina</span>
+                        <span class="organ-function">Saluran yang menghubungkan rahim dengan lingkungan luar, tempat keluarnya darah menstruasi dan bayi saat dilahirkan.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Proses Oogenesis</h3>
+                <p>Oogenesis adalah proses pembentukan sel telur (ovum) yang terjadi di dalam ovarium. Proses ini dimulai sebelum perempuan lahir, namun pematangan sel telur terjadi setelah pubertas.</p>
+                <div class="process-diagram">
+                    <div class="stage">
+                        <div class="stage-number">1.</div>
+                        <div class="stage-description">
+                            <span class="term">Oogonium</span> (sel induk diploid, 2n) <br>
+                            <span class="details">Pada masa dalam kandungan, oogonium mengalami mitosis menjadi <span class="term">oosit primer</span> (diploid, 2n).</span>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">2.</div>
+                        <div class="stage-description">
+                            <span class="term">Oosit primer</span> <br>
+                            <span class="details">Mengalami <span class="term">Meiosis I</span> menghasilkan satu <span class="term">oosit sekunder</span> (haploid, n) dan satu <span class="term">polosit</span> (haploid, n).</span>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">3.</div>
+                        <div class="stage-description">
+                            <span class="term">Oosit sekunder</span> <br>
+                            <span class="details">Mengalami <span class="term">Meiosis II</span> menghasilkan satu <span class="term">ootid</span> (haploid, n) dan satu <span class="term">polosit</span> (haploid, n).</span>
+                        </div>
+                    </div>
+                     <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">4.</div>
+                        <div class="stage-description">
+                            <span class="term">Ootid</span> <br>
+                            <span class="details">Mengalami diferensiasi menjadi <span class="term">Ovum</span> (sel telur matang).</span>
+                        </div>
+                    </div>
+                </div>
+                <p>Dari satu oogonium, dihasilkan satu ovum yang fungsional dan tiga polosit.</p>
+            </div>
+
+            <div class="subsection">
+                <h3>Siklus Menstruasi</h3>
+                <p>Siklus menstruasi adalah serangkaian perubahan pada sistem reproduksi perempuan yang terjadi setiap bulan jika tidak terjadi pembuahan. Siklus ini melibatkan perubahan pada dinding rahim dan ovulasi.</p>
+                <p>Siklus menstruasi umumnya berlangsung selama 28 hari dan dibagi menjadi beberapa fase:</p>
+                <div class="content-block">
+                    <p><span class="term">Fase Menstruasi (Hari 0-5)</span>:</p>
+                    <div class="explanation">
+                        <p>Dinding rahim meluruh dan keluar sebagai darah menstruasi. Hormon FSH merangsang perkembangan folikel di ovarium.</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <p><span class="term">Fase Proliferasi (Hari 5-14)</span>:</p>
+                    <div class="explanation">
+                        <p>Folikel di ovarium terus berkembang, menghasilkan estrogen yang menyebabkan dinding rahim menebal kembali. Peningkatan hormon LH memicu <span class="term">ovulasi</span> (pelepasan sel telur matang).</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <p><span class="term">Fase Sekretori (Hari 14-28)</span>:</p>
+                    <div class="explanation">
+                        <p>Sisa folikel membentuk <span class="term">korpus luteum</span> yang menghasilkan progesteron. Jika sel telur tidak dibuahi, korpus luteum akan rusak, kadar estrogen dan progesteron menurun, menyebabkan dinding rahim kembali meluruh.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Fertilisasi dan Kehamilan</h3>
+                <p>Fertilisasi adalah peleburan inti sel sperma dengan inti sel telur yang terjadi di <span class="term">tuba fallopii</span>, menghasilkan <span class="term">zigot</span>.</p>
+                <div class="process-diagram">
+                    <div class="stage">
+                        <div class="stage-number">1.</div>
+                        <div class="stage-description">
+                            <span class="term">Ovulasi</span>: Pelepasan sel telur dari ovarium.
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">2.</div>
+                        <div class="stage-description">
+                            <span class="term">Fertilisasi</span>: Peleburan sperma dan sel telur di tuba fallopii membentuk zigot.
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">3.</div>
+                        <div class="stage-description">
+                            <span class="term">Pembelahan Zigot</span>: Zigot membelah berkali-kali membentuk embrio.
+                        </div>
+                    </div>
+                     <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">4.</div>
+                        <div class="stage-description">
+                            <span class="term">Morula dan Blastosit</span>: Embrio terus berkembang hingga membentuk blastosit.
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="stage">
+                        <div class="stage-number">5.</div>
+                        <div class="stage-description">
+                            <span class="term">Implantasi</span>: Blastosit menempel pada dinding rahim (endometrium), menandakan awal kehamilan.
+                        </div>
+                    </div>
+                </div>
+                <p>Kehamilan berlangsung selama ± 9 bulan 10 hari (sekitar 37 minggu), yang dibagi dalam tiga trimester, di mana janin mengalami perkembangan organ dan pertumbuhan.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```

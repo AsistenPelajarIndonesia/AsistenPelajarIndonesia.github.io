@@ -1,0 +1,394 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masa Orde Baru (1966-1998)</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 5px solid var(--primary-blue);
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        .content-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 3px solid var(--secondary-accent-amber);
+            background-color: #fff9e7;
+            border-radius: 4px;
+        }
+
+        .content-block strong {
+            color: var(--primary-blue);
+        }
+
+        ul {
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0 20px 30px;
+            border-left: 2px solid var(--primary-blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            border: 2px solid var(--background-canvas);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .timeline-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+        }
+
+        .key-concept {
+            display: inline-block;
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .impact {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .challenge {
+            display: inline-block;
+            background-color: var(--semantic-warning);
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .event {
+            display: inline-block;
+            background-color: var(--secondary-accent-amber);
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1); /* Light blue highlight */
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .definition {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .timeline::before {
+                left: -5px;
+            }
+
+            .timeline-item::before {
+                left: -5px;
+                width: 12px;
+                height: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Masa Orde Baru (1966-1998)</h1>
+
+        <div class="section">
+            <h2>Pengantar</h2>
+            <p>Masa Orde Baru merujuk pada periode pemerintahan Presiden Soeharto di Indonesia, yang dimulai setelah era Demokrasi Terpimpin. Periode ini diawali dengan dikeluarkannya <span class="event">Surat Perintah Sebelas Maret (Supersemar)</span> pada tahun 1966 dan berakhir pada tahun 1998. Masa ini ditandai dengan upaya pemulihan stabilitas politik dan ekonomi setelah gejolak Gerakan 30 September 1965 (G30S/PKI), serta pembangunan nasional yang pesat.</p>
+            <p>Lahirnya Orde Baru dipicu oleh tuntutan rakyat yang dikenal sebagai <span class="event">Tritura (Tiga Tuntutan Rakyat)</span>, yang meliputi:</p>
+            <ul>
+                <li>Pembubaran Partai Komunis Indonesia (PKI)</li>
+                <li>Pembersihan Kabinet Dwikora dari unsur-unsur G30S/PKI</li>
+                <li>Penurunan harga-harga barang kebutuhan pokok</li>
+            </ul>
+            <p>Masa ini merupakan babak penting dalam sejarah Indonesia, membentuk fondasi pembangunan bangsa dalam berbagai aspek.</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Perkembangan Politik</h2>
+
+            <div class="content-block">
+                <h3>a. Supersemar dan Konsolidasi Kekuasaan</h3>
+                <p>Pasca G30S/PKI, situasi politik Indonesia masih belum stabil. Kepercayaan publik terhadap Presiden Soekarno menurun, sementara kondisi ekonomi memburuk. Dalam situasi ini, mahasiswa dan pemuda melakukan demonstrasi menuntut keadilan dan perbaikan ekonomi.</p>
+                <p><span class="event">Surat Perintah Sebelas Maret (Supersemar)</span>, yang dikeluarkan pada 11 Maret 1966 oleh Presiden Soekarno kepada Letjen Soeharto, menjadi tonggak penting. Supersemar memberikan mandat kepada Soeharto untuk mengambil tindakan yang dianggap perlu demi memulihkan keamanan dan kewibawaan pemerintah. Tindakan cepat diambil, termasuk pembubaran PKI dan organisasi terkaitnya, serta penangkapan sejumlah menteri yang dianggap terlibat G30S/PKI.</p>
+                <p>Pada 12 Maret 1967, MPRS menetapkan Letjen Soeharto sebagai Pejabat Presiden, dan pada 27 Maret 1968, Soeharto dikukuhkan sebagai Presiden penuh. Ini menandai dimulainya era kepemimpinan baru dan penataan stabilitas politik.</p>
+                <p><strong>Pentingnya Supersemar:</strong></p>
+                <ul>
+                    <li>Memberikan dasar hukum bagi pengambilalihan kekuasaan oleh Soeharto.</li>
+                    <li>Membuka jalan bagi Orde Baru untuk mengkonsolidasikan kekuasaan.</li>
+                    <li>Menjadi simbol transisi kekuasaan dari Soekarno ke Soeharto.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>b. Penataan Stabilitas Politik</h3>
+                <p>Setelah Soeharto memegang kekuasaan, pemerintah Orde Baru melakukan berbagai langkah untuk menata stabilitas politik, yang meliputi:</p>
+                <ol>
+                    <li>
+                        <strong>Pemulihan Politik Luar Negeri Bebas Aktif:</strong>
+                        <p>Indonesia kembali mengaktifkan politik luar negeri bebas aktif, yang landasannya diperkuat melalui Ketetapan MPRS No. XII/MPRS/1966.</p>
+                    </li>
+                    <li>
+                        <strong>Pemulihan Hubungan dengan Malaysia:</strong>
+                        <p>Hubungan diplomatik Indonesia-Malaysia dipulihkan melalui perundingan Bangkok (1966) dan ditandatangani persetujuan damai di Jakarta.</p>
+                    </li>
+                    <li>
+                        <strong>Kembali Menjadi Anggota PBB:</strong>
+                        <p>Indonesia memutuskan untuk kembali menjadi anggota Perserikatan Bangsa-Bangsa (PBB) pada 28 September 1966, menyadari manfaat keanggotaan tersebut.</p>
+                    </li>
+                    <li>
+                        <strong>Memprakarsai Pembentukan ASEAN:</strong>
+                        <p>Indonesia turut serta dalam pembentukan Association of Southeast Asian Nations (ASEAN) pada 8 Agustus 1967 melalui Deklarasi Bangkok, dengan tujuan meningkatkan kerjasama regional.</p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="content-block">
+                <h3>c. Penyederhanaan Partai Politik</h3>
+                <p>Pemerintah Orde Baru melakukan penyederhanaan dan penggabungan (fusi) partai-partai politik menjadi tiga kekuatan sosial politik, yaitu:</p>
+                <ul>
+                    <li><span class="highlight">Partai Persatuan Pembangunan (PPP):</span> Gabungan dari NU, Parmusi, PSII, dan Perti.</li>
+                    <li><span class="highlight">Partai Demokrasi Indonesia (PDI):</span> Gabungan dari PNI, Partai Katolik, Partai Murba, IPKI, dan Parkindo.</li>
+                    <li><span class="highlight">Golongan Karya (Golkar):</span> Meskipun bukan partai, Golkar menjadi kekuatan politik dominan yang didukung oleh pemerintah.</li>
+                </ul>
+                <p>Penyederhanaan ini bertujuan untuk menciptakan stabilitas politik dan mencegah fragmentasi kekuasaan seperti yang terjadi pada masa Demokrasi Parlementer.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>d. Pemilihan Umum (Pemilu)</h3>
+                <p>Selama masa Orde Baru, pemerintah berhasil menyelenggarakan enam kali pemilihan umum pada tahun 1971, 1977, 1982, 1987, 1992, dan 1997. Dalam setiap pemilu, Golkar selalu memenangkan mayoritas suara, didukung oleh aparatur pemerintah (PNS) dan Angkatan Bersenjata Republik Indonesia (ABRI).</p>
+                <p>Keberhasilan Golkar dalam pemilu tersebut menunjukkan penguasaan infrastruktur politik oleh pemerintah Orde Baru.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>e. Pedoman Penghayatan dan Pengamalan Pancasila (P4)</h3>
+                <p>Pada tahun 1976, Presiden Soeharto mencetuskan gagasan <span class="key-concept">Eka Prasetia Pancakarsa</span>, yang kemudian dikenal sebagai Pedoman Penghayatan dan Pengamalan Pancasila (P4). Sejak 1978, pemerintah menyelenggarakan penataran P4 untuk menyamakan pemahaman masyarakat terhadap Pancasila dan UUD 1945.</p>
+                <p>Tujuan P4 antara lain adalah untuk menanamkan kesadaran akan pentingnya persatuan nasional dan mencegah konflik yang berbasis SARA (Suku, Agama, Ras, dan Antargolongan).</p>
+            </div>
+
+            <div class="content-block">
+                <h3>f. Dwi Fungsi ABRI</h3>
+                <p>Konsep <span class="key-concept">Dwi Fungsi ABRI</span> mengamanatkan bahwa Tentara Nasional Indonesia (TNI) memiliki dua peran: sebagai kekuatan militer pertahanan negara dan sebagai kekuatan sosial yang aktif berpartisipasi dalam pembangunan nasional. Peran ganda ini memungkinkan ABRI memegang jabatan di pemerintahan, baik di tingkat pusat maupun daerah.</p>
+                <p>Konsep Dwi Fungsi ABRI mulai dihapuskan setelah berakhirnya masa kepemimpinan Orde Baru.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Perkembangan Ekonomi</h2>
+
+            <div class="content-block">
+                <h3>a. Program Jangka Pendek: Stabilisasi dan Rehabilitasi Ekonomi</h3>
+                <p>Pada awal Orde Baru, fokus utama pemerintah adalah menyelamatkan ekonomi nasional dari inflasi tinggi dan kekurangan kebutuhan pokok. Tingkat inflasi pada awal 1966 mencapai 650%. Pemerintah memprioritaskan stabilisasi (mengendalikan inflasi) dan rehabilitasi (memperbaiki sarana fisik) sebelum melakukan pembangunan.</p>
+                <p>Upaya stabilisasi berhasil menekan inflasi menjadi 120% pada 1967 dan 80% pada 1968. Keberhasilan ini membuka jalan bagi pemerintah untuk meluncurkan program jangka panjang.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>b. Program Jangka Panjang: Pembangunan Lima Tahun (Pelita)</h3>
+                <p>Pemerintah Orde Baru melaksanakan rencana pembangunan jangka panjang 25 tahun, yang diwujudkan dalam serangkaian program pembangunan lima tahun yang dikenal sebagai <span class="key-concept">Pelita (Pembangunan Lima Tahun)</span>.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">1969 - 1974</div>
+                        <div class="timeline-title">Pelita I</div>
+                        <div class="timeline-description">Fokus pada pangan, sandang, perbaikan prasarana, perumahan, perluasan lapangan kerja, dan kesejahteraan rohani, dengan penekanan pada sektor pertanian. Hasilnya, produksi beras meningkat, pertumbuhan ekonomi naik, dan pendapatan per kapita meningkat.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1974 - 1979</div>
+                        <div class="timeline-title">Pelita II</div>
+                        <div class="timeline-description">Melanjutkan fokus pada pangan, sandang, perumahan, sarana-prasarana, kesejahteraan rakyat, dan perluasan lapangan kerja. Pertumbuhan ekonomi rata-rata 7% per tahun, inflasi berhasil ditekan hingga 9,5%.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1979 - 1984</div>
+                        <div class="timeline-title">Pelita III</div>
+                        <div class="timeline-description">Menekankan pada Trilogi Pembangunan (pertumbuhan ekonomi, stabilitas nasional, dan pemerataan hasil pembangunan). Fokus pada swasembada pangan dan industri pengolahan. Produksi beras mencapai 20,6 juta ton.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1984 - 1989</div>
+                        <div class="timeline-title">Pelita IV</div>
+                        <div class="timeline-description">Melanjutkan upaya swasembada pangan dan meningkatkan industri manufaktur. Swasembada pangan tercapai dengan produksi beras 25,8 juta ton pada 1984, mendapat penghargaan FAO.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1989 - 1994</div>
+                        <div class="timeline-title">Pelita V</div>
+                        <div class="timeline-description">Fokus pada sektor pertanian dan industri untuk menetapkan swasembada pangan, meningkatkan produksi pertanian, serta mengembangkan industri ekspor dan padat karya.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1994 - 1999</div>
+                        <div class="timeline-title">Pelita VI</div>
+                        <div class="timeline-description">Merupakan awal pembangunan jangka panjang tahap kedua, dengan penekanan pada ekonomi, industri, pertanian, pembangunan, dan peningkatan kualitas SDM. Namun, pelaksanaannya terganggu oleh krisis ekonomi pada 1997-1998.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. Kehidupan Masyarakat Indonesia pada Masa Orde Baru</h2>
+
+            <div class="content-block">
+                <h3>a. Kehidupan Sosial</h3>
+                <p>Pemerintah Orde Baru berhasil menciptakan stabilitas politik dan ekonomi, yang berdampak positif pada peningkatan kesejahteraan rakyat. Hal ini terlihat dari penurunan angka kemiskinan, angka kematian bayi, dan peningkatan partisipasi pendidikan.</p>
+                <p>Program-program perbaikan kesejahteraan rakyat yang dilaksanakan antara lain:</p>
+                <ul>
+                    <li>
+                        <span class="impact">Transmigrasi:</span> Program pemindahan penduduk dari daerah padat ke daerah yang jarang penduduknya, guna meratakan persebaran penduduk Indonesia.
+                    </li>
+                    <li>
+                        <span class="impact">Keluarga Berencana (KB):</span> Program pengendalian pertumbuhan penduduk yang berhasil menurunkan angka kelahiran, dipuji oleh UNICEF karena berhasil menekan angka kematian bayi.
+                    </li>
+                    <li>
+                        <span class="impact">Puskesmas dan Posyandu:</span> Peningkatan layanan kesehatan masyarakat melalui pembangunan Pusat Kesehatan Masyarakat (Puskesmas) dan Pos Pelayanan Terpadu (Posyandu).
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>b. Pendidikan</h3>
+                <p>Kebijakan pendidikan diarahkan untuk menciptakan kesempatan belajar yang lebih luas dan meningkatkan mutu pendidikan. Muncul konsepsi <span class="key-concept">sekolah pembangunan</span> yang memperkenalkan siswa pada jenis-jenis pekerjaan. Pemerintah juga melaksanakan program seperti Instruksi Presiden (Inpres) Pendidikan Dasar, Program Pemberantasan Buta Huruf, dan Program Wajib Belajar.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>c. Kebudayaan</h3>
+                <p>Usaha pengembangan seni dan budaya difokuskan untuk memperkuat kepribadian, kebanggaan, dan kesatuan nasional. Dilakukan pembinaan seni melalui sekolah seni, kursus, dan organisasi. Selain itu, dilakukan pula upaya penyelamatan, pemeliharaan, dan penelitian warisan sejarah budaya nasional melalui inventarisasi situs purbakala dan rehabilitasi museum.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tantangan dan Akhir Orde Baru</h2>
+            <p>Meskipun Orde Baru berhasil dalam pembangunan ekonomi dan stabilitas politik, di akhir periode muncul berbagai kritik terkait isu korupsi, kolusi, nepotisme (KKN), pembatasan kebebasan berpendapat, dan masalah hak asasi manusia. Krisis ekonomi yang melanda Asia pada tahun 1997-1998 memicu ketidakpuasan masyarakat yang meluas, yang akhirnya berujung pada demonstrasi besar-besaran dan tuntutan reformasi. Pada Mei 1998, Presiden Soeharto mengundurkan diri, menandai berakhirnya masa Orde Baru dan dimulainya era Reformasi.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

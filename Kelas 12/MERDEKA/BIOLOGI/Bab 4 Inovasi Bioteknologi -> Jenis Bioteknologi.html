@@ -1,0 +1,835 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenis Bioteknologi</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; border-bottom: 2px solid var(--border-divider); padding-bottom: 5px;}
+        h3 { font-size: 1.5em; color: var(--accent-green); }
+        h4 { font-size: 1.2em; color: var(--text-secondary); }
+
+        p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        b {
+            color: var(--text-primary);
+        }
+
+        .section-header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 15px 20px;
+            margin: 20px -20px;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .subsection-header {
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        /* Diagrams */
+        .diagram-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .diagram-step {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            flex: 1 1 calc(33% - 40px); /* 3 items per row, with gap */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            min-width: 180px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .diagram-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagram-step-title {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .diagram-arrow {
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--text-tertiary);
+            transform: translateY(-50%);
+        }
+
+        .diagram-arrow::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -4px;
+            border: solid var(--text-tertiary);
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(-45deg);
+        }
+
+        /* Adjust arrow for last item in row */
+        .diagram-container .diagram-step:nth-child(3n):not(:last-child) .diagram-arrow {
+            display: none; /* Hide horizontal arrow for last item in a row */
+        }
+        .diagram-container .diagram-step:not(:nth-child(3n)):not(:last-child)::after {
+             content: '';
+             position: absolute;
+             top: 50%;
+             right: -25px; /* Position right of the box */
+             width: 25px;
+             height: 2px;
+             background-color: var(--primary-blue);
+             transform: translateY(-50%);
+        }
+        .diagram-container .diagram-step:not(:nth-child(3n)):not(:last-child)::before {
+            content: '';
+            position: absolute;
+            top: calc(50% - 4px); /* Adjust for arrow head */
+            right: -25px;
+            border: solid var(--primary-blue);
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(-45deg) translateY(-50%);
+        }
+
+        /* For vertical flow in multi-row diagrams */
+        .diagram-step.connect-down::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background-color: var(--primary-blue);
+            transform: translateX(-50%);
+        }
+        .diagram-step.connect-down::before {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            border: solid var(--primary-blue);
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(45deg) translateX(-50%);
+        }
+
+
+        /* Specific styles for tempe/transgenic diagrams */
+        .process-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .process-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .process-item {
+            flex: 1;
+            min-width: 150px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+        }
+        .process-item.wide {
+            flex-basis: calc(66% - 20px);
+        }
+        .process-item.narrow {
+            flex-basis: calc(33% - 20px);
+        }
+
+        .process-arrow-h::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-green);
+            font-size: 1.5em;
+        }
+        .process-item:last-child .process-arrow-h::after {
+            content: none;
+        }
+        .process-arrow-v::after {
+            content: '↓';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-green);
+            font-size: 1.5em;
+        }
+        .process-item.no-arrow::after {
+            content: none !important;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f8f8; /* Slightly off-white for alternate rows */
+        }
+
+        .comparison-table td strong {
+            color: var(--text-primary);
+        }
+
+        /* Specific styles for Bioinformatics visual */
+        .bioinformatics-visual {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1 / 1;
+            margin: 40px auto;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-blue), 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .bioinformatics-center {
+            width: 150px;
+            height: 150px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--background-canvas);
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .bioinformatics-segment {
+            position: absolute;
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            text-align: center;
+            width: 120px;
+            line-height: 1.3;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+        .bioinformatics-segment:hover {
+            transform: scale(1.05);
+        }
+
+        /* Positioning for Bioinformatics segments */
+        .segment-1 { top: 0; left: 50%; transform: translate(-50%, -50%); background-color: var(--primary-blue);} /* Pengolahan big data */
+        .segment-2 { top: 15%; right: 0; transform: translate(50%, -50%); background-color: var(--accent-green);} /* Penyusunan statistik dan algoritma baru */
+        .segment-3 { bottom: 15%; right: 0; transform: translate(50%, 50%); background-color: var(--secondary-accent-amber);} /* Interpretasi dan analisis data */
+        .segment-4 { bottom: 0; left: 50%; transform: translate(-50%, 50%); background-color: var(--semantic-info);} /* Pengembangan dan implementasi alat */
+        .segment-5 { bottom: 15%; left: 0; transform: translate(-50%, 50%); background-color: var(--semantic-success);} /* Prediksi struktur protein */
+        .segment-6 { top: 15%; left: 0; transform: translate(-50%, -50%); background-color: var(--semantic-error);} /* Inovasi minuman dan kesehatan */
+
+        /* Biotechnology Tree */
+        .biotech-tree {
+            margin: 40px auto;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 50px; /* Space for roots */
+            position: relative;
+        }
+
+        .tree-part {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            padding: 10px 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .tree-trunk {
+            background-color: #8B4513; /* Brown for trunk */
+            color: var(--background-canvas);
+            padding: 20px 30px;
+            font-weight: bold;
+            font-size: 1.8em;
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .tree-roots, .tree-branches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+        .tree-roots { margin-top: 20px; }
+        .tree-branches { margin-bottom: 20px; }
+
+
+        .root-item, .branch-item, .twig-item, .leaf-item {
+            border: 1px solid var(--border-divider);
+            padding: 8px 12px;
+            border-radius: 6px;
+            background-color: var(--background-canvas);
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            flex: 0 1 auto;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: background-color 0.2s ease;
+        }
+
+        .root-item:hover, .branch-item:hover, .twig-item:hover, .leaf-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .root-main {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .root-lateral {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+
+        .tree-level {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .tree-level.roots {
+            flex-direction: column;
+            align-items: center;
+        }
+        .tree-level.trunk {
+            z-index: 2;
+        }
+        .tree-level.branches {
+            margin-top: 15px;
+        }
+        .tree-level.twigs, .tree-level.leaves {
+            margin-top: 10px;
+            width: fit-content;
+        }
+
+        .tree-connection {
+            width: 2px;
+            height: 20px;
+            background-color: var(--primary-blue);
+        }
+
+        .tree-section-label {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            width: 100%;
+        }
+
+        .leaves-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .leaf-item {
+            background-color: var(--semantic-success);
+            color: var(--background-canvas);
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .twig-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .twig-label {
+            font-weight: bold;
+            color: var(--accent-green);
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .diagram-step {
+                flex: 1 1 calc(50% - 20px); /* 2 items per row */
+            }
+            .diagram-container .diagram-step:nth-child(2n):not(:last-child)::after {
+                 content: none;
+            }
+            .diagram-container .diagram-step:nth-child(2n):not(:last-child)::before {
+                 content: none;
+            }
+            .process-item.wide, .process-item.narrow {
+                flex-basis: 100%;
+            }
+            .process-arrow-h::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -25px;
+                transform: translateX(50%);
+            }
+            .bioinformatics-visual {
+                width: 90%;
+                height: auto;
+            }
+            .bioinformatics-segment {
+                width: 100px;
+                font-size: 0.8em;
+            }
+            .segment-1 { top: -10%; left: 50%; transform: translate(-50%, -50%); }
+            .segment-2 { top: 10%; right: -10%; transform: translate(50%, -50%); }
+            .segment-3 { bottom: 10%; right: -10%; transform: translate(50%, 50%); }
+            .segment-4 { bottom: -10%; left: 50%; transform: translate(-50%, 50%); }
+            .segment-5 { bottom: 10%; left: -10%; transform: translate(-50%, 50%); }
+            .segment-6 { top: 10%; left: -10%; transform: translate(-50%, -50%); }
+
+            .tree-roots, .tree-branches {
+                flex-direction: column;
+                align-items: center;
+            }
+            .root-item, .branch-item, .twig-item, .leaf-item {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .diagram-step {
+                flex: 1 1 100%; /* 1 item per row */
+            }
+            .diagram-container .diagram-step:not(:last-child)::after {
+                 content: none; /* Hide horizontal arrows for single column */
+            }
+            .diagram-container .diagram-step:not(:last-child)::before {
+                 content: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C. Jenis Bioteknologi</h1>
+        <p>Setelah memahami definisi dan manfaat bioteknologi dalam kehidupan manusia, kini saatnya kita mendalami berbagai jenis bioteknologi yang ada. Bioteknologi adalah bidang yang terus berkembang, mengintegrasikan ilmu biologi dengan teknologi untuk menghasilkan produk atau layanan yang bermanfaat.</p>
+
+        <h2 class="section-header">Perbandingan Bioteknologi Konvensional dan Modern</h2>
+        <p>Untuk memahami jenis bioteknologi, mari kita bandingkan dua kategori utamanya: bioteknologi konvensional (tradisional) dan bioteknologi modern. Perbandingan ini akan memberikan gambaran jelas mengenai perkembangan dan kompleksitas teknologi yang digunakan.</p>
+
+        <h3>Contoh Penerapan: Produksi Tempe vs. Tanaman Transgenik</h3>
+
+        <h4>Proses Pembuatan Tempe (Bioteknologi Konvensional)</h4>
+        <p>Pembuatan tempe adalah contoh klasik bioteknologi konvensional yang memanfaatkan mikroorganisme alami (kapang <i>Rhizopus oligosporus</i>) untuk fermentasi kedelai.</p>
+        <div class="process-diagram">
+            <div class="process-row">
+                <div class="process-item process-arrow-h">
+                    <b>1. Kedelai</b><br>Bahan baku utama.
+                </div>
+                <div class="process-item process-arrow-h">
+                    <b>2. Pembersihan & Perendaman</b><br>Kulit dibuang, dicuci, direndam 1 malam.
+                </div>
+                <div class="process-item process-arrow-h">
+                    <b>3. Pengukusan</b><br>Dikukus selama 1 jam.
+                </div>
+                <div class="process-item process-arrow-h">
+                    <b>4. Pendinginan</b><br>Didinginkan setelah dikukus.
+                </div>
+                <div class="process-item process-arrow-h">
+                    <b>5. Inokulasi Ragi</b><br>Diberi ragi tempe.
+                </div>
+                <div class="process-item process-arrow-h no-arrow">
+                    <b>6. Pembungkusan</b><br>Dibungkus (misal daun pisang atau plastik).
+                </div>
+            </div>
+            <div class="process-row">
+                <div class="process-item process-arrow-h">
+                    <b>7. Fermentasi Semalam</b><br>Difermentasi semalam.
+                </div>
+                <div class="process-item process-arrow-h">
+                    <b>8. Penganginan</b><br>Dianginkan dan diletakkan di rak.
+                </div>
+                <div class="process-item no-arrow">
+                    <b>9. Tempe Siap</b><br>Dibiarkan semalam lagi hingga matang.
+                </div>
+            </div>
+        </div>
+
+        <h4>Proses Rekayasa Genetika pada Tanaman Transgenik (Bioteknologi Modern)</h4>
+        <p>Rekayasa genetika melibatkan manipulasi genetik pada tingkat molekuler untuk menghasilkan organisme dengan sifat yang diinginkan, seperti pada tanaman transgenik.</p>
+        <div class="process-diagram">
+            <div class="process-row">
+                <div class="process-item narrow process-arrow-h">
+                    <b>1. Gen Target</b><br>Gen yang akan disisipkan ke dalam plasmid.
+                </div>
+                <div class="process-item narrow process-arrow-h">
+                    <b>2. Plasmid Vektor</b><br>Plasmid (DNA sirkular bakteri) yang akan membawa gen baru.
+                </div>
+                <div class="process-item wide process-arrow-h">
+                    <b>3. Rekombinasi DNA</b><br>Gen target disisipkan ke dalam plasmid membentuk plasmid rekombinan.
+                </div>
+            </div>
+            <div class="process-row">
+                <div class="process-item narrow process-arrow-h">
+                    <b>4. Introduksi ke Bakteri</b><br>Plasmid rekombinan dimasukkan ke dalam bakteri (misal <i>Agrobacterium tumefaciens</i>).
+                </div>
+                <div class="process-item wide process-arrow-h">
+                    <b>5. Infeksi Sel Tumbuhan</b><br>Bakteri menginfeksi sel tumbuhan, mentransfer plasmid ke kromosom sel tumbuhan.
+                </div>
+                <div class="process-item narrow no-arrow">
+                    <b>6. Regenerasi Tanaman</b><br>Sel tumbuhan dengan gen baru tumbuh menjadi jaringan, lalu tanaman dewasa yang transgenik.
+                </div>
+            </div>
+        </div>
+
+        <h3>Tabel Perbedaan Bioteknologi Konvensional dan Modern</h3>
+        <p>Perbedaan antara bioteknologi konvensional dan modern mencakup banyak aspek, dari waktu kemunculan hingga kondisi proses dan produk yang dihasilkan.</p>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Variabel Pembeda</th>
+                    <th>Bioteknologi Konvensional</th>
+                    <th>Bioteknologi Modern</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1.</td>
+                    <td><b>Waktu Kemunculan</b></td>
+                    <td>Mulai 6000 SM (sangat kuno)</td>
+                    <td>1953 (Penemuan struktur DNA), lalu berkembang pesat.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td><b>Dasar Penemuan/Teknologi Penanda</b></td>
+                    <td>Observasi dan eksperimen empiris (misal fermentasi minuman anggur).</td>
+                    <td>Penemuan struktur DNA oleh Watson & Crick, serta pengembangan biologi molekuler.</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td><b>Kondisi Proses</b></td>
+                    <td>Nonsteril (mengandalkan mikroorganisme alami di lingkungan).</td>
+                    <td>Steril (membutuhkan kondisi terkontrol untuk mencegah kontaminasi).</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td><b>Teknologi Utama</b></td>
+                    <td>Bioproses (misal fermentasi, seleksi tradisional).</td>
+                    <td>Rekayasa genetika (transgenik, kloning), kultur jaringan, DNA rekombinan, dll.</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td><b>Sifat Organisme/Agen Biologi</b></td>
+                    <td>Asli atau alami (misal ragi, bakteri fermentasi).</td>
+                    <td>Berubah atau termodifikasi (misal bakteri dengan plasmid rekayasa, sel punca).</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td><b>Contoh Produk</b></td>
+                    <td>Tempe, tape, yoghurt, nata de coco, anggur, bir, keju.</td>
+                    <td>Tanaman/hewan transgenik, interferon, antibodi monoklonal, hormon insulin sintetis, vaksin DNA.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-header">Klasifikasi Bioteknologi Berdasarkan Warna</h2>
+        <p>Selain dibagi berdasarkan teknologi yang diterapkan (konvensional vs. modern), bioteknologi juga sering dikelompokkan berdasarkan bidang aplikasinya, yang sering diasosiasikan dengan warna tertentu:</p>
+        <ul>
+            <li><b>Bioteknologi Merah (Red Biotechnology):</b> Berkaitan dengan bidang <span style="color: var(--semantic-error); font-weight: bold;">kesehatan</span>, seperti produksi obat-obatan, diagnostik, terapi gen, vaksin, dan sel punca.</li>
+            <li><b>Bioteknologi Hijau (Green Biotechnology):</b> Fokus pada bidang <span style="color: var(--accent-green); font-weight: bold;">pertanian dan peternakan</span>, termasuk pengembangan tanaman transgenik, pupuk hayati, dan pakan ternak.</li>
+            <li><b>Bioteknologi Putih (White Biotechnology):</b> Diterapkan dalam bidang <span style="color: var(--background-canvas); background-color: var(--text-tertiary); padding: 2px 5px; border-radius: 3px;">industri</span>, seperti produksi biofuel, enzim industri, bioplastik, dan bioremediasi.</li>
+            <li><b>Bioteknologi Biru (Blue Biotechnology):</b> Berfokus pada bidang <span style="color: var(--semantic-info); font-weight: bold;">akuatik (perairan dan kelautan)</span>, termasuk pengembangan produk dari organisme laut, bioremediasi laut, dan akuakultur.</li>
+        </ul>
+
+        <h2 class="section-header">Bioinformatika: Jembatan Biologi dan Komputasi</h2>
+        <p>Perkembangan teknologi informasi, khususnya kecerdasan buatan (AI) sejak 1970-an, telah melahirkan bidang baru yang krusial dalam bioteknologi modern: <span style="color: var(--primary-blue); font-weight: bold;">Bioinformatika</span>.</p>
+
+        <h3>Apa itu Bioinformatika?</h3>
+        <p>Bioinformatika adalah bidang multidisiplin yang mengkaji masalah biologi menggunakan pendekatan komputasi (komputer). Ini menjadi sangat penting karena data biologis, terutama data genetik dan protein, sangat besar dan kompleks sehingga membutuhkan alat komputasi untuk analisis dan interpretasinya.</p>
+
+        <h3>Peran Kunci Bioinformatika:</h3>
+        <ul>
+            <li><b>Genomik Struktural:</b> Studi tentang penyusunan dan urutan gen, serta struktur kromosom.</li>
+            <li><b>Genomik Fungsional:</b> Studi tentang peranan gen dan protein dalam biokimia sel.</li>
+            <li><b>Proteomik:</b> Studi molekuler pada keseluruhan protein yang dihasilkan dari ekspresi gen dalam sel, termasuk struktur dan fungsinya.</li>
+        </ul>
+        <p>Melalui peran-peran ini, bioinformatika mampu memproduksi kebutuhan penting yang bermanfaat bagi manusia, mulai dari pengembangan obat hingga peningkatan hasil pertanian.</p>
+
+        <div class="bioinformatics-visual">
+            <div class="bioinformatics-center">
+                BIOINFORMATIKA
+            </div>
+            <div class="bioinformatics-segment segment-1">Pengolahan Big Data</div>
+            <div class="bioinformatics-segment segment-2">Penyusunan Statistik & Algoritma Baru</div>
+            <div class="bioinformatics-segment segment-3">Interpretasi & Analisis Data</div>
+            <div class="bioinformatics-segment segment-4">Pengembangan & Implementasi Alat</div>
+            <div class="bioinformatics-segment segment-5">Prediksi Struktur Protein</div>
+            <div class="bioinformatics-segment segment-6">Inovasi Minuman & Kesehatan</div>
+        </div>
+
+        <h3>Aplikasi Bioinformatika dalam Kehidupan</h3>
+        <p>Bioinformatika memiliki aplikasi yang luas dan memberikan harapan baru dalam berbagai permasalahan vital manusia:</p>
+        <h4>1. Bank Data Keanekaragaman Hayati Indonesia</h4>
+        <p>Indonesia adalah salah satu dari tiga negara terkaya dalam keanekaragaman hayati di dunia. Namun, hingga tahun 2022, belum semua spesies makhluk hidup di Indonesia teridentifikasi ciri-cirinya menjadi peta bank data yang lengkap.</p>
+        <ul>
+            <li><b>Manfaat Bank Data Gen:</b> Data genetik keanekaragaman hayati dapat menjadi pedoman dalam mengelola dan melestarikan sumber daya hayati, serta mendukung penelitian dan pengembangan produk bioteknologi baru.</li>
+            <li><b>Peran Bioinformatika:</b> Bioinformatika sangat krusial dalam merekam urutan gen, melakukan penyejajaran sekuens (sequence alignment), dan menganalisis ekspresi gen dari berbagai spesies, sehingga memungkinkan pembangunan bank data gen yang komprehensif.</li>
+        </ul>
+
+        <h4>2. Penemuan Obat dan Terapi Penyakit Mematikan</h4>
+        <p>Banyak penyakit mematikan seperti flu burung (H5N1), HIV/AIDS, COVID-19, dan kanker, belum ditemukan obat yang tepat. Obat-obatan yang ada saat ini hanya meredakan gejala atau memperlambat infeksi, karena penyakit ini merusak struktur dan fungsi gen.</p>
+        <ul>
+            <li><b>Terapi Gen:</b> Penemuan teknologi terapi gen memberikan harapan baru. Terapi gen bertujuan untuk memperbaiki, mengganti, atau menonaktifkan gen yang rusak atau bermasalah dalam tubuh pasien.</li>
+            <li><b>Teknologi Sel Punca (Stem Cell):</b> Teknologi sel punca juga menawarkan solusi dengan kemampuan meregenerasi jaringan yang rusak atau hilang, terbukti efektif dalam penyembuhan penderita stroke dan penyakit degeneratif lainnya.</li>
+            <li><b>Peran Bioinformatika:</b> Dalam konteks ini, bioinformatika berperan vital dalam:
+                <ul>
+                    <li>Menganalisis data genetik untuk mengidentifikasi gen penyebab penyakit.</li>
+                    <li>Merancang gen sisipan atau strategi terapi gen yang efektif.</li>
+                    <li>Memprediksi struktur protein yang terlibat dalam penyakit dan respons terhadap obat.</li>
+                    <li>Membantu pengembangan teknologi seperti DNA rekombinan, kultur jaringan, dan kloning yang merupakan dasar dari banyak terapi modern.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Dengan demikian, bioinformatika adalah instrumen esensial yang memungkinkan kemajuan dalam teknologi rekayasa genetika, kultur jaringan, DNA rekombinan, pengembangbiakan stem cell, dan kloning, yang semuanya berkontribusi pada penyembuhan penyakit genetik dan kronis.</p>
+
+        <h2 class="section-header">Pohon Bioteknologi: Gambaran Utuh Ilmu Bioteknologi</h2>
+        <p>Untuk memvisualisasikan seluruh struktur bioteknologi sebagai ilmu, kita dapat membayangkannya sebagai sebuah pohon, di mana setiap bagian merepresentasikan komponen penting:</p>
+
+        <div class="biotech-tree">
+            <div class="tree-section-label">Daun (Produk Hasil Bioteknologi)</div>
+            <div class="leaves-container">
+                <div class="leaf-item">Tempe</div>
+                <div class="leaf-item">Tape</div>
+                <div class="leaf-item">Yoghurt</div>
+                <div class="leaf-item">Mentega</div>
+                <div class="leaf-item">Kecap</div>
+                <div class="leaf-item">Nata de Coco</div>
+                <div class="leaf-item">Biogas</div>
+                <div class="leaf-item">Bioetanol</div>
+                <div class="leaf-item">Insulin</div>
+                <div class="leaf-item">Interferon</div>
+                <div class="leaf-item">Antibodi Monoklonal</div>
+                <div class="leaf-item">Golden Rice</div>
+                <div class="leaf-item">Tanaman Transgenik</div>
+                <div class="leaf-item">Vaksin</div>
+                <div class="leaf-item">Bioplastik</div>
+                <div class="leaf-item">Enzim Industri</div>
+                <div class="leaf-item">Terapi Gen</div>
+                <div class="leaf-item">Regenerasi Sel Dewasa</div>
+            </div>
+
+            <div class="tree-connection"></div>
+
+            <div class="tree-section-label">Ranting (Macam Teknologi yang Digunakan)</div>
+            <div class="tree-branches">
+                <div class="twig-container">
+                    <div class="twig-label">Konvensional</div>
+                    <div class="twig-item">Fermentasi Pangan</div>
+                    <div class="twig-item">Fermentasi Energi</div>
+                    <div class="twig-item">Bioremediasi</div>
+                    <div class="twig-item">Seleksi & Pemuliaan Tradisional</div>
+                </div>
+                <div class="twig-container">
+                    <div class="twig-label">Modern</div>
+                    <div class="twig-item">Rekayasa Genetika</div>
+                    <div class="twig-item">Kultur Jaringan</div>
+                    <div class="twig-item">Kloning</div>
+                    <div class="twig-item">Hibridoma</div>
+                    <div class="twig-item">Teknologi Sel Punca</div>
+                    <div class="twig-item">Bioinformatika</div>
+                </div>
+            </div>
+
+            <div class="tree-connection"></div>
+
+            <div class="tree-section-label">Batang (Bioteknologi itu Sendiri)</div>
+            <div class="tree-trunk">Bioteknologi</div>
+            <div class="tree-trunk" style="font-size: 1.2em; background-color: var(--accent-green);">Jenis Bioteknologi</div>
+            <div class="tree-trunk" style="font-size: 1.2em; background-color: var(--secondary-accent-amber);">Bioetika</div>
+
+
+            <div class="tree-connection" style="height: 30px;"></div>
+
+            <div class="tree-section-label">Akar Utama (Struktur Dasar Pembangun Bioteknologi)</div>
+            <div class="tree-roots">
+                <div class="root-main">Bahan Biologi</div>
+                <div class="root-main">Agen Biologi</div>
+            </div>
+
+            <div class="tree-connection"></div>
+
+            <div class="tree-section-label">Akar Lateral (Contoh Bahan & Agen Biologi)</div>
+            <div class="tree-roots">
+                <div class="root-lateral"><b>Bahan:</b> Kedelai, Susu, Limbah Cair, Minyak, Tumbuhan, Hewan, Biji & Ubi</div>
+                <div class="root-lateral"><b>Agen Biologi:</b> Mikroorganisme (Bakteri, Jamur, Virus), Hormon, Enzim, Tumbuhan, Hewan</div>
+            </div>
+        </div>
+
+        <h2 class="section-header">Cabang Ilmu yang Berperan dalam Bioteknologi</h2>
+        <p>Bioteknologi adalah ilmu interdisipliner yang tidak dapat berdiri sendiri. Keberhasilannya sangat bergantung pada kontribusi dari berbagai cabang ilmu pengetahuan, baik biologi maupun non-biologi.</p>
+
+        <h3>Cabang Ilmu Biologi:</h3>
+        <ul>
+            <li><b>Biokimia:</b> Mempelajari proses-proses kimia dalam organisme hidup, penting untuk memahami reaksi biokimia dalam fermentasi atau metabolisme sel.</li>
+            <li><b>Genetika:</b> Ilmu tentang pewarisan sifat, krusial dalam rekayasa genetika untuk memanipulasi gen.</li>
+            <li><b>Biologi Molekuler:</b> Mempelajari struktur dan fungsi molekul biologis (DNA, RNA, protein), menjadi dasar rekayasa genetika dan teknologi DNA rekombinan.</li>
+            <li><b>Mikrobiologi:</b> Ilmu tentang mikroorganisme, sangat penting karena banyak proses bioteknologi menggunakan bakteri, jamur, atau virus sebagai agen.</li>
+            <li><b>Enzimologi:</b> Studi tentang enzim, protein yang mempercepat reaksi biokimia, vital dalam produksi enzim industri.</li>
+            <li><b>Ilmu Pangan:</b> Menerapkan prinsip ilmiah untuk produksi, pengolahan, pengawetan, dan distribusi makanan, relevan untuk bioteknologi pangan.</li>
+            <li><b>Rekayasa Teknologi Pangan:</b> Menggabungkan ilmu pangan dengan prinsip rekayasa untuk mengembangkan proses dan produk pangan baru.</li>
+            <li><b>Rekayasa Biokimia:</b> Mendesain dan mengembangkan proses biologi untuk produksi skala industri.</li>
+        </ul>
+
+        <h3>Cabang Ilmu Non-Biologi:</h3>
+        <ul>
+            <li><b>Kimia:</b> Memberikan pemahaman tentang struktur molekul, reaksi kimia, dan sintesis senyawa yang relevan dengan produk bioteknologi.</li>
+            <li><b>Fisika:</b> Berkontribusi pada pengembangan instrumen dan teknik analisis (misalnya mikroskopi, sentrifugasi, spektroskopi) yang digunakan dalam penelitian bioteknologi.</li>
+            <li><b>Ilmu Komputer:</b> Fondasi bagi bioinformatika, menyediakan alat untuk analisis data besar, simulasi, pemodelan molekuler, dan manajemen informasi biologis.</li>
+        </ul>
+        <p>Integrasi dari berbagai disiplin ilmu inilah yang memungkinkan bioteknologi untuk terus berinovasi dan memberikan solusi bagi berbagai tantangan global di bidang kesehatan, pangan, energi, dan lingkungan.</p>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,443 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sosiologi Kelas XII: Memahami Perubahan Sosial</title>
+    <style>
+        /* Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        section {
+            background-color: var(--background-canvas);
+            border-bottom: 1px solid var(--border-divider);
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            border-bottom: 1px solid var(--border-divider);
+            color: var(--text-primary);
+            font-size: 1.3em;
+            padding-bottom: 3px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 1em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue, derived from primary_blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .concept-definition {
+            background-color: #f1f8e9; /* Light green, derived from accent_green */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .timeline-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '•';
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--background-canvas);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        table caption {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-size: 1.1em;
+            text-align: left;
+            padding-left: 5px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfcfc; /* Slightly off-white for alternate rows */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-size: 0.9em;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px auto;
+                padding: 0 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            /* Make table responsive */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td:last-child {
+                border-bottom: none;
+            }
+
+            td:before {
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--text-secondary);
+            }
+
+            /* Labels for table cells */
+            td:nth-of-type(1):before { content: "No."; }
+            td:nth-of-type(2):before { content: "Faktor Pendorong"; }
+            td:nth-of-type(3):before { content: "Faktor Penghambat"; }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            .timeline-item {
+                padding-left: 15px;
+            }
+            .timeline-item::before {
+                font-size: 1em;
+            }
+            td {
+                padding-left: 40%;
+            }
+            td:before {
+                width: 35%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>A. Memahami Perubahan Sosial</h1>
+            <p>Sosiologi untuk SMA/MA Kelas XII</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <p>
+                Dalam pembelajaran sebelumnya, kalian telah mendalami materi mengenai gejala sosial dalam masyarakat. Gejala sosial merujuk pada setiap peristiwa atau fenomena yang terjadi di dalam masyarakat, baik yang membawa dampak positif maupun negatif. Perubahan sosial merupakan salah satu bentuk esensial dari gejala sosial ini. Namun, apakah setiap peristiwa yang terjadi di tengah masyarakat secara otomatis dapat dikategorikan sebagai perubahan sosial? Mari kita selami lebih jauh untuk menemukan jawabannya.
+            </p>
+        </section>
+
+        <section>
+            <h2>1. Konsep Perubahan Sosial</h2>
+            <p>
+                Untuk memahami konsep perubahan sosial secara lebih mendalam, penting bagi kita untuk mengamati dan menganalisis dinamika yang telah terjadi sepanjang sejarah. Salah satu contoh paling revolusioner adalah <strong>Revolusi Industri</strong>, sebuah periode transformatif yang telah mengubah fundamental sistem produksi dan interaksi sosial manusia.
+            </p>
+
+            <div class="highlight-box">
+                <p><strong>Revolusi Industri: Evolusi Sistem Produksi</strong></p>
+                <div class="timeline-item">
+                    <strong>Revolusi Industri 1.0 (Sekitar abad ke-17):</strong> Ditandai dengan penemuan mesin mekanik, pemanfaatan tenaga uap, dan alat tenun. Ini menandai awal mekanisasi produksi.
+                </div>
+                <div class="timeline-item">
+                    <strong>Revolusi Industri 2.0 (Sekitar abad ke-18):</strong> Mengalami perkembangan sistem produksi massal, pengenalan baris perakitan, dan penggunaan listrik sebagai sumber energi utama. Efisiensi produksi meningkat drastis.
+                </div>
+                <div class="timeline-item">
+                    <strong>Revolusi Industri 3.0 (Sekitar abad ke-19):</strong> Ditandai dengan munculnya sistem otomatisasi, komputer, dan mesin-mesin elektronik. Era digitalisasi awal yang mengubah cara kerja dan interaksi.
+                </div>
+                <div class="timeline-item">
+                    <strong>Revolusi Industri 4.0 (Saat ini):</strong> Mengintegrasikan sistem siber, internet of things (IoT), dan sistem jaringan yang menghubungkan mesin dan data secara real-time. Ini mengarah pada pabrik pintar (smart factories) dan pengambilan keputusan berbasis data.
+                </div>
+                <p>
+                    Perkembangan ini menunjukkan bagaimana modernisasi yang didorong oleh kemajuan teknologi telah mengubah secara fundamental sistem produksi dalam industri.
+                </p>
+            </div>
+
+            <p>
+                Menurut sosiolog terkemuka, <strong>William F. Ogburn</strong>, terdapat tiga mekanisme utama perubahan sosial yang dipicu oleh pengaruh teknologi:
+            </p>
+            <ul>
+                <li><strong>Invention (Penemuan Baru):</strong> Proses mengombinasikan elemen dan material yang sudah ada menjadi bentuk atau perangkat baru yang belum pernah ada sebelumnya. Contohnya adalah penemuan mesin uap yang menggabungkan prinsip-prinsip fisika yang sudah dikenal menjadi alat yang berfungsi baru.</li>
+                <li><strong>Discovery (Penemuan Budaya):</strong> Penemuan kebudayaan atau cara baru dalam melihat realitas sosial yang sudah ada namun belum dikenali atau dimanfaatkan secara luas. Ini seringkali bukan tentang menciptakan sesuatu yang baru secara fisik, melainkan memahami atau memanfaatkan yang sudah ada dengan cara yang berbeda.</li>
+                <li><strong>Diffusion (Penyebaran):</strong> Proses penyebaran hasil <em>invention</em> dan <em>discovery</em> dari satu wilayah atau kelompok masyarakat ke wilayah atau kelompok lainnya. Ini adalah bagaimana inovasi menyebar dan diadopsi secara luas.</li>
+            </ul>
+            <p>
+                Revolusi Industri, sebagai manifestasi dari ketiga mekanisme ini, secara signifikan menyebabkan perubahan pola perilaku (interaksi) dan sistem sosial masyarakat dari waktu ke waktu. Transformasi ini sangat terlihat dari perbedaan kondisi sosial masyarakat sebelum dan sesudah terjadinya Revolusi Industri. Sebagai ilustrasi, adopsi sistem otomatisasi dalam produksi telah menyebabkan berkurangnya secara drastis penggunaan tenaga manusia. Konsekuensinya, jumlah tenaga kerja yang dibutuhkan menjadi makin sedikit karena peran mereka banyak yang tergantikan oleh mesin-mesin.
+            </p>
+
+            <div class="concept-definition">
+                <p><strong>Apa itu Perubahan Sosial?</strong></p>
+                <p>
+                    Setelah menyimak penjelasan di atas, kita dapat merumuskan pengertian perubahan sosial. Menurut <strong>W. Moore (1976)</strong>, perubahan sosial didefinisikan sebagai perubahan pola perilaku dan budaya yang signifikan yang terjadi dari waktu ke waktu (Schaefer, 2012). Senada dengan itu, <strong>Kendall (2012)</strong> menyatakan bahwa perubahan sosial terjadi karena adanya pergantian, modifikasi, atau transformasi dalam kebijakan publik, budaya, dan institusi sosial.
+                </p>
+                <p>
+                    Secara umum, perubahan sosial dapat diartikan sebagai modifikasi dalam sistem masyarakat yang berlangsung lama, baik secara bertahap maupun relatif cepat. Perubahan sosial seringkali menimbulkan respons yang beragam dari masyarakat, ada yang menolak dan ada pula yang mendukung. Kondisi ini dapat memengaruhi stabilitas sosial suatu masyarakat. Oleh karena itu, masyarakat dituntut untuk melakukan penyesuaian atau adaptasi terhadap berbagai perubahan sosial yang tengah berlangsung demi menjaga keseimbangan dan keberlangsungan hidup.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Faktor Penyebab Perubahan Sosial</h2>
+            <p>
+                Setelah memahami apa itu perubahan sosial, kita akan membahas mengapa perubahan sosial dapat terjadi dalam masyarakat. Perubahan sosial tidak muncul begitu saja, melainkan didorong oleh berbagai faktor yang saling terkait. Berikut adalah beberapa faktor utama penyebab terjadinya perubahan sosial:
+            </p>
+
+            <h3>a. Perubahan Kondisi Lingkungan</h3>
+            <p>
+                Masyarakat memiliki ketergantungan yang kuat terhadap kondisi lingkungan tempat tinggalnya. Lingkungan tidak hanya menyediakan sumber daya, tetapi juga membentuk pola interaksi dan mata pencarian masyarakat. Oleh karena itu, perubahan pada kondisi lingkungan dapat menjadi pemicu utama perubahan sosial.
+            </p>
+            <p>
+                <strong>Bencana alam</strong>, seperti banjir, gempa bumi, tanah longsor, dan erupsi gunung berapi, adalah contoh nyata bagaimana kondisi lingkungan dapat memengaruhi sistem sosial. Ketika bencana alam terjadi, masyarakat menjadi korban langsung yang merasakan dampaknya. Dampak-dampak tersebut meliputi hilangnya tempat tinggal, rusaknya fasilitas umum (seperti sekolah, rumah sakit, jalan), dan hilangnya mata pencarian (misalnya, lahan pertanian rusak, tempat usaha hancur). Akibatnya, masyarakat terpaksa beradaptasi, membangun kembali lingkungan, dan menata ulang kehidupan sosial mereka dari awal. Ini seringkali melibatkan perubahan signifikan dalam struktur komunitas dan ekonomi.
+            </p>
+            <p>
+                Selain bencana alam, <strong>kerusakan lingkungan yang disebabkan oleh aktivitas manusia</strong> juga dapat mendorong perubahan sosial. Contohnya adalah kebiasaan membuang sampah sembarangan, penambangan liar, atau penumpukan limbah industri. Meskipun kerusakan ini terkadang tidak menimbulkan dampak langsung yang instan bagi seluruh masyarakat, namun jika dibiarkan, akan memunculkan berbagai masalah lingkungan hidup yang merugikan dalam jangka panjang, seperti pencemaran air, udara, dan tanah, serta hilangnya keanekaragaman hayati. Ketika masalah ini mencapai titik kritis, masyarakat dipaksa untuk melakukan perubahan pola perilaku dan bahkan sistem sosial mereka untuk menyelesaikan permasalahan tersebut. Fenomena ini menunjukkan bahwa kondisi lingkungan, baik yang disebabkan oleh alam maupun oleh ulah manusia, memiliki peran besar dalam mendorong terjadinya perubahan sosial.
+            </p>
+
+            <h3>b. Perubahan Jumlah Penduduk</h3>
+            <p>
+                Perubahan dalam jumlah atau populasi penduduk juga merupakan salah satu faktor krusial penyebab perubahan sosial. Dinamika jumlah penduduk dipengaruhi oleh tiga komponen utama: tingkat kelahiran (natalitas), tingkat kematian (mortalitas), dan perpindahan penduduk (migrasi). Keadaan kependudukan suatu wilayah bersifat dinamis, selalu berubah seiring waktu.
+            </p>
+            <p>
+                Perubahan kependudukan memiliki dampak yang meluas terhadap sendi-sendi kehidupan masyarakat. <strong>Pertumbuhan penduduk yang terlalu tinggi</strong>, atau sering disebut ledakan penduduk, dapat menimbulkan berbagai risiko sosial yang serius. Di antaranya adalah peningkatan kemiskinan karena sumber daya dan pekerjaan tidak sebanding dengan jumlah penduduk, tingginya tingkat pengangguran, peningkatan angka kekerasan, dan kriminalitas akibat tekanan ekonomi dan sosial (Putri dan Nurwati, 2021). Sebaliknya, <strong>pertumbuhan penduduk yang rendah</strong> juga berisiko, seperti penurunan penerimaan pajak negara (karena basis pembayar pajak produktif berkurang), tingginya tingkat ketergantungan terhadap usia produktif (rasio ketergantungan meningkat), serta potensi memicu konflik sosial yang disebabkan oleh tingginya imigrasi untuk mengisi kekosongan tenaga kerja (Nasir dan Turner, 2014). Padahal, kualitas penduduk atau sumber daya manusia yang baik dan produktif adalah kunci utama keberhasilan pembangunan suatu negara.
+            </p>
+            <p>
+                Indonesia, sebagai negara dengan kepadatan penduduk terbesar keempat di dunia, menghadapi tantangan dan peluang besar terkait bonus demografi. Pada tahun 2045, Indonesia diprediksi akan mengalami <strong>bonus demografi</strong>, yaitu suatu kondisi di mana jumlah penduduk usia produktif (15-64 tahun) jauh lebih tinggi dibandingkan dengan jumlah penduduk nonproduktif (anak-anak dan lansia). Diperkirakan pada periode 2020–2045, sekitar 70% penduduk Indonesia akan berada dalam usia produktif (Rosi Oktari, 2021).
+            </p>
+            <p>
+                Jika bonus demografi ini tidak dimanfaatkan dengan baik, justru dapat menimbulkan berbagai masalah sosial seperti kemiskinan yang merajalela, rendahnya kualitas kesehatan, tingginya angka pengangguran, dan peningkatan tingkat kriminalitas. Namun, jika bonus demografi ini dikelola secara optimal, ia dapat menjadi motor penggerak pembangunan negara yang luar biasa. Upaya yang dapat dilakukan untuk memaksimalkan bonus demografi antara lain adalah peningkatan kualitas pendidikan, pengembangan lapangan pekerjaan yang memadai, dan pendampingan untuk pengembangan usaha-usaha produktif.
+            </p>
+            <p>
+                Sebagai bagian dari generasi muda, peran kalian sangat penting dalam menyukseskan bonus demografi ini. Kalian dapat mempersiapkan diri sebaik mungkin untuk menghadapi masa depan yang kompetitif dengan belajar tekun, mengikuti program pengembangan karakter, mengembangkan minat dan bakat yang dimiliki, serta terus berinovasi untuk menghasilkan karya-karya bernilai guna tinggi yang dapat berkontribusi bagi kemajuan bangsa.
+            </p>
+
+            <h3>c. Kemajuan Teknologi</h3>
+            <p>
+                Seperti yang telah dibahas pada bagian awal mengenai Revolusi Industri, kemajuan teknologi adalah pendorong perubahan sosial yang sangat kuat. Teknologi memiliki kemampuan untuk mengubah pola perilaku individu dan sistem sosial masyarakat secara keseluruhan. Salah satu dampak paling nyata adalah kemudahan dan efisiensi yang ditawarkan teknologi dalam berbagai aspek pemenuhan kebutuhan.
+            </p>
+            <p>
+                Sebagai contoh, dengan adanya teknologi digital, pelayanan administrasi publik yang sebelumnya memerlukan kehadiran fisik dan proses yang panjang, kini dapat dilakukan secara lebih efisien dan mudah. Petugas tidak harus selalu bertatap muka dengan masyarakat secara langsung, dan berbagai urusan bisa diselesaikan secara daring (online). Hal ini tidak hanya menghemat waktu dan biaya, tetapi juga meningkatkan aksesibilitas pelayanan bagi masyarakat.
+            </p>
+            <p>
+                Namun, di sisi lain, kemajuan teknologi juga memiliki dampak negatif jika tidak dimanfaatkan secara bijak. Teknologi dapat merusak sistem sosial dan mendorong perubahan pola perilaku masyarakat ke arah yang merugikan. Misalnya, perkembangan teknologi di bidang hiburan seperti gim daring (online game) yang berlebihan atau media sosial yang tidak terkontrol. Kurangnya sikap bijak dalam memanfaatkan teknologi dapat menyebabkan sebagian orang menjadi cenderung individualis, mudah terpapar dan terpengaruh berita bohong (hoaks), bahkan mengalami gangguan kepribadian atau kesehatan mental akibat ketergantungan. Lebih jauh lagi, beberapa oknum tidak bertanggung jawab memanfaatkan kemajuan teknologi untuk melakukan kejahatan siber yang merugikan, seperti <em>phishing</em> (upaya mendapatkan informasi pribadi melalui penipuan), <em>cracking</em> (pembobolan sistem komputer), atau berbagai bentuk penipuan daring lainnya. Ini menunjukkan bahwa kemajuan teknologi adalah pedang bermata dua yang membutuhkan kebijaksanaan dalam penggunaannya.
+            </p>
+
+            <h3>d. Terjadinya Konflik Sosial dan Peperangan</h3>
+            <p>
+                Masih ingatkah kalian materi konflik sosial yang telah dipelajari di kelas XI? Konflik sosial yang muncul akibat perbedaan suku, agama, ras, ideologi, dan kepentingan adalah salah satu pemicu perubahan sosial yang signifikan dalam masyarakat. Konflik dapat mengikis tatanan sosial yang ada dan memaksa masyarakat untuk beradaptasi dengan kondisi baru.
+            </p>
+            <p>
+                Ambil contoh sistem politik Apartheid di Afrika Selatan yang mengedepankan rasisme dan diskriminasi berdasarkan warna kulit. Meskipun telah usai, sistem tersebut meninggalkan jejak perubahan sosial yang mendalam. Di Indonesia, pada masa Hindia Belanda, juga diterapkan sistem stratifikasi sosial yang membagi masyarakat berdasarkan warna kulit atau asal-usul, yaitu kelompok Eropa, Timur Asing (Arab dan Tionghoa), dan Inlander (pribumi) (Mukhaer, 2021). Konflik sosial yang timbul dari perbedaan dan ketidakadilan ini dapat menyebabkan perubahan sosial yang drastis karena seringkali merusak infrastruktur fisik, menimbulkan jatuhnya korban jiwa, dan yang paling parah, menyebabkan disintegrasi sosial yang mengganggu stabilitas masyarakat secara fundamental.
+            </p>
+            <p>
+                Selain konflik internal, <strong>peperangan</strong> juga merupakan faktor eksternal yang kuat dalam mendorong perubahan sosial. Akibat peperangan, pihak yang memenangkan konflik terkadang memaksakan kehendaknya kepada pihak yang kalah. Ini bisa berupa pemaksaan ideologi, nilai, atau norma sosial baru yang harus diadopsi oleh masyarakat yang kalah. Lebih dari itu, peperangan secara langsung menghambat masyarakat untuk melakukan aktivitas sehari-hari secara normal; kehidupan ekonomi, pendidikan, dan sosial terhenti atau sangat terganggu. Kondisi darurat dan tekanan yang timbul selama dan setelah perang mendorong terjadinya perubahan struktur sosial yang mendalam dan seringkali tidak terduga dalam masyarakat yang terlibat.
+            </p>
+        </section>
+
+        <section>
+            <h2>3. Faktor Pendorong dan Penghambat Perubahan Sosial</h2>
+            <p>
+                Proses perubahan sosial dalam masyarakat tidak selalu berjalan mulus. Tidak setiap perubahan dapat diterima dengan mudah, dan laju perubahannya bisa sangat bervariasi – ada yang berlangsung cepat, ada pula yang sangat lambat. Kondisi ini dipengaruhi oleh adanya berbagai faktor pendorong (fasilitator) dan faktor penghambat (barrier). Sebagai contoh nyata, perubahan sosial di daerah terpencil memiliki karakteristik yang berbeda secara signifikan dengan perubahan sosial di daerah perkotaan.
+            </p>
+            <p>
+                Di <strong>daerah terpencil</strong>, perubahan sosial cenderung lebih sulit dan lambat terjadi. Hal ini disebabkan oleh beberapa faktor. Pertama, faktor geografis yang sulit dijangkau membatasi akses informasi dan kontak dengan budaya luar, sehingga masyarakat kurang terpapar ide-ide baru. Kedua, homogenitas penduduk yang tinggi, ditambah dengan kuatnya adat istiadat dan pengetahuan yang cenderung stagnan, menyebabkan budaya baru atau inovasi sulit diterima. Akibatnya, masyarakat di daerah terpencil cenderung mempertahankan tradisi dan nilai-nilai lama, membuat perubahan sosial menjadi sangat sulit.
+            </p>
+            <p>
+                Kondisi ini sangat berbeda dengan <strong>daerah perkotaan</strong> yang cenderung memiliki posisi strategis dan lebih dinamis. Kemudahan interaksi dan akses dengan budaya lain mendorong keterbukaan masyarakatnya. Selain itu, sikap mudah menerima hal baru, majunya sistem pendidikan, dan adanya orientasi pada masa depan yang lebih kuat, semua ini secara kolektif mendorong perubahan sosial berlangsung lebih cepat dan adaptif.
+            </p>
+            <p>
+                Secara umum, faktor-faktor pendorong dan penghambat perubahan sosial dapat dirangkum dalam tabel berikut:
+            </p>
+
+            <table>
+                <caption>Tabel 1.1 Faktor Pendorong dan Penghambat Perubahan Sosial</caption>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Faktor Pendorong</th>
+                        <th>Faktor Penghambat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td>Interaksi dengan kebudayaan lain dan mudahnya akses informasi.</td>
+                        <td>Kurangnya interaksi dengan masyarakat lain dan keterbatasan akses dengan dunia luar.</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Heterogenitas penduduk.</td>
+                        <td>Homogenitas penduduk.</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Keterbukaan, orientasi masa depan, dan sikap menghargai masyarakat terhadap budaya baru.</td>
+                        <td>Pemahaman/ideologi yang tertanam kuat, sikap tradisional, prasangka, dan adat istiadat yang mengikat.</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Pemerataan pendidikan, ekonomi, serta akses informasi dan teknologi.</td>
+                        <td>Ketimpangan sosial dan kemiskinan.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Materi Sosiologi Kelas XII. Dibuat untuk tujuan edukasi.</p>
+        </div>
+    </footer>
+</body>
+</html>
+```

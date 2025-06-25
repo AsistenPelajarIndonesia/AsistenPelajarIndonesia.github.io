@@ -1,0 +1,342 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Listrik Statis - Medan Listrik</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .concept-box {
+            background-color: var(--primary-blue);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .concept-box strong {
+            color: #fff;
+        }
+
+        .definition {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: var(--text-primary);
+        }
+
+        .definition p {
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        .formula-box {
+            background-color: #f0f4f8; /* Lighter gray-blue */
+            border: 1px dashed var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--primary-blue);
+        }
+
+        .formula-box code {
+            background-color: transparent;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .interactive-hint {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .interactive-hint a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .interactive-hint a:hover {
+            text-decoration: underline;
+        }
+
+        .explanation {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .nested-concept {
+            margin-left: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .nested-concept h3 {
+            font-size: 1.25em;
+            border-bottom: none;
+        }
+
+        .nested-concept p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .formula-box {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1: Listrik Statis - Medan Listrik</h1>
+
+        <p>
+            Dalam kehidupan sehari-hari, kita sering berinteraksi dengan berbagai jenis gaya. Beberapa gaya, seperti mendorong meja atau menarik kursi, memerlukan kontak langsung antara objek yang berinteraksi. Gaya-gaya ini dikenal sebagai <strong>gaya sentuh</strong>. Namun, ada pula gaya yang bekerja tanpa adanya kontak fisik langsung. Contoh klasik dari gaya tak sentuh adalah <strong>gaya gravitasi</strong>. Ketika Anda menjatuhkan sebuah benda, benda tersebut akan selalu tertarik ke arah pusat Bumi. Fenomena ini terjadi karena Bumi menciptakan sebuah area pengaruh yang disebut <strong>medan gravitasi</strong>. Setiap benda yang memasuki medan gravitasi Bumi akan mengalami gaya tarik gravitasi.
+        </p>
+
+        <p>
+            Konsep medan ini tidak hanya berlaku untuk gravitasi, tetapi juga untuk fenomena kelistrikan. Konsep medan listrik pertama kali diperkenalkan oleh fisikawan brilian Inggris, <strong>Michael Faraday</strong> (1791–1867). Ia mengusulkan bahwa ruang di sekitar muatan listrik memiliki sifat khusus yang dapat memengaruhi muatan lain yang berada di dalamnya.
+        </p>
+
+        <div class="explanation">
+            <h2>Apa itu Medan Listrik?</h2>
+            <p>
+                <strong>Medan listrik</strong> adalah daerah di sekitar muatan listrik yang masih dipengaruhi oleh gaya listrik. Jika ada muatan uji yang ditempatkan di dalam daerah ini, muatan uji tersebut akan mengalami gaya listrik. Medan listrik ini merupakan sifat dari ruang itu sendiri, yang diciptakan oleh muatan sumber.
+            </p>
+
+            <div class="definition">
+                <p>
+                    Secara formal, medan listrik di suatu titik didefinisikan sebagai gaya listrik yang dialami oleh <strong>muatan uji positif yang sangat kecil</strong> yang ditempatkan di titik tersebut, dibagi dengan besar muatan uji itu sendiri.
+                </p>
+                <div class="formula-box">
+                    <code>E = F / q₀</code>
+                </div>
+                <p>
+                    Di sini:
+                </p>
+                <ul>
+                    <li><code>E</code> adalah vektor kuat medan listrik (satuannya Newton per Coulomb, N/C).</li>
+                    <li><code>F</code> adalah vektor gaya listrik yang dialami muatan uji (satuannya Newton, N).</li>
+                    <li><code>q₀</code> adalah besar muatan uji (satuannya Coulomb, C).</li>
+                </ul>
+                <p>
+                    Karena medan listrik adalah besaran vektor, ia memiliki <strong>besaran (magnitudo)</strong> dan <strong>arah</strong>. Arah medan listrik di suatu titik adalah arah gaya yang akan dialami oleh muatan uji positif yang ditempatkan di titik tersebut.
+                </p>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h2>Arah Medan Listrik</h2>
+            <p>
+                Arah medan listrik ditentukan oleh jenis muatan sumber:
+            </p>
+            <ul>
+                <li><strong>Muatan Positif (+)</strong>: Medan listrik menjauh dari muatan positif. Bayangkan sebuah muatan positif sebagai sumber yang "mendorong" medan ke segala arah.</li>
+                <li><strong>Muatan Negatif (-)</strong>: Medan listrik menuju ke muatan negatif. Muatan negatif bertindak sebagai "penyerap" medan.</li>
+            </ul>
+
+            <p>
+                Untuk memvisualisasikan medan listrik, kita menggunakan <strong>garis gaya listrik</strong>. Garis-garis ini memberikan gambaran tentang arah dan kekuatan medan listrik:
+            </p>
+            <ul>
+                <li>Arah garis gaya listrik menunjukkan arah medan listrik di setiap titik.</li>
+                <li>Garis-garis ini keluar dari muatan positif dan masuk ke muatan negatif.</li>
+                <li>Kerapatan garis gaya listrik (seberapa dekat garis-garis tersebut satu sama lain) menunjukkan kekuatan medan listrik. Semakin rapat garisnya, semakin kuat medan listriknya.</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h2>Medan Listrik Akibat Muatan Titik</h2>
+            <p>
+                Untuk muatan titik tunggal <code>Q</code>, kuat medan listrik <code>E</code> pada jarak <code>r</code> dari muatan tersebut dapat dihitung menggunakan hukum Coulomb. Jika kita menempatkan muatan uji <code>q₀</code> pada jarak <code>r</code> dari muatan sumber <code>Q</code>, gaya listrik yang dialami adalah:
+            </p>
+            <div class="formula-box">
+                <code>F = k * |Q * q₀| / r²</code>
+            </div>
+            <p>
+                Kemudian, menggunakan definisi medan listrik <code>E = F / q₀</code>, kita dapatkan:
+            </p>
+            <div class="formula-box">
+                <code>E = k * |Q| / r²</code>
+            </div>
+            <p>
+                Di sini:
+            </p>
+            <ul>
+                <li><code>k</code> adalah konstanta Coulomb (sekitar 8.99 x 10⁹ N m²/C²).</li>
+                <li><code>Q</code> adalah muatan sumber (Coulomb, C).</li>
+                <li><code>r</code> adalah jarak dari muatan sumber ke titik di mana medan listrik dihitung (meter, m).</li>
+            </ul>
+            <p>
+                Ingat, <code>E</code> adalah vektor. Arahnya ditentukan oleh tanda muatan <code>Q</code> (menjauh jika <code>Q</code> positif, mendekat jika <code>Q</code> negatif).
+            </p>
+        </div>
+
+        <div class="explanation">
+            <h2>Medan Listrik pada Pelat Paralel</h2>
+            <p>
+                Konfigurasi penting lainnya adalah <strong>pelat paralel</strong>, yaitu dua pelat konduktor sejajar yang diberi muatan berlawanan. Di antara kedua pelat ini, tercipta <strong>medan listrik yang homogen</strong>, artinya kuat dan arah medan listrik sama di setiap titik di dalam ruang di antara pelat tersebut (kecuali di dekat tepi).
+            </p>
+            <p>
+                Medan listrik homogen ini sangat berguna dalam berbagai aplikasi teknologi. Kuat medan listrik <code>E</code> di dalam pelat paralel dapat dihitung jika kita mengetahui beda potensial <code>ΔV</code> antara kedua pelat dan jarak <code>d</code> di antara keduanya:
+            </p>
+            <div class="formula-box">
+                <code>E = ΔV / d</code>
+            </div>
+            <p>
+                Di sini:
+            </p>
+            <ul>
+                <li><code>E</code> adalah kuat medan listrik (N/C).</li>
+                <li><code>ΔV</code> adalah beda potensial listrik antara pelat (Volt, V).</li>
+                <li><code>d</code> adalah jarak antara kedua pelat (meter, m).</li>
+            </ul>
+            <p>
+                Medan listrik pada pelat paralel adalah konsep fundamental di balik cara kerja banyak perangkat elektronik, termasuk kapasitor.
+            </p>
+        </div>
+
+        <div class="explanation">
+            <h2>Potensial Listrik dan Energi Potensial Listrik</h2>
+            <p>
+                Sejalan dengan medan listrik, ada konsep terkait yaitu <strong>energi potensial listrik</strong> dan <strong>potensial listrik</strong>.
+            </p>
+            <ul>
+                <li>
+                    <strong>Energi Potensial Listrik (Ep)</strong>: Mirip dengan energi potensial gravitasi, energi potensial listrik adalah energi yang dimiliki suatu muatan karena posisinya dalam medan listrik. Usaha yang diperlukan untuk memindahkan muatan dari satu titik ke titik lain dalam medan listrik berhubungan langsung dengan perubahan energi potensial listrik. Untuk muatan titik <code>Q</code> dan muatan uji <code>q</code> yang terpisah sejauh <code>r</code>, energi potensial listriknya adalah:
+                    <div class="formula-box">
+                        <code>Ep = k * Q * q / r</code>
+                    </div>
+                </li>
+                <li>
+                    <strong>Potensial Listrik (V)</strong>: Potensial listrik di suatu titik adalah energi potensial listrik per satuan muatan uji di titik tersebut. Ini adalah ukuran "potensi" medan listrik untuk melakukan usaha pada muatan. Potensial listrik sering disebut juga sebagai <strong>tegangan</strong>.
+                    <div class="formula-box">
+                        <code>V = Ep / q</code>
+                    </div>
+                    Atau jika substitusi dari rumus Ep:
+                    <div class="formula-box">
+                        <code>V = k * Q / r</code>
+                    </div>
+                    Satuan potensial listrik adalah Volt (V), di mana 1 Volt = 1 Joule/Coulomb.
+                </li>
+            </ul>
+            <p>
+                Penting untuk diingat bahwa baik energi potensial listrik maupun potensial listrik adalah besaran <strong>skalar</strong>, yang berarti hanya memiliki besaran dan tidak memiliki arah. Ini memudahkan perhitungan jika ada beberapa muatan sumber yang berkontribusi pada energi potensial atau potensial listrik di suatu titik; cukup dijumlahkan secara aljabar.
+            </p>
+            <p>
+                Satuan energi potensial listrik lain yang sering ditemui adalah <strong>elektron volt (eV)</strong>. Satu elektron volt adalah energi yang diperoleh atau hilang oleh satu elektron ketika bergerak melalui beda potensial listrik 1 volt.
+                <div class="formula-box">
+                    <code>1 eV = 1.6 x 10⁻¹⁹ Joule</code>
+                </div>
+            </p>
+        </div>
+
+        <div class="interactive-hint">
+            <p>
+                Konsep medan listrik dan potensial listrik sangat penting dalam memahami cara kerja berbagai teknologi modern. Jelajahi simulasi interaktif untuk mendapatkan pemahaman yang lebih mendalam! Kunjungi <a href="https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html" target="_blank">PhET Simulations: Charges and Fields</a> atau cari aplikasi fisika lainnya yang memungkinkan Anda memvisualisasikan medan listrik dan gaya yang dialami muatan.
+            </p>
+        </div>
+
+        <p class="explanation">
+            Medan listrik adalah konsep fundamental yang menjelaskan bagaimana muatan listrik berinteraksi satu sama lain tanpa kontak langsung. Ini adalah kekuatan tak terlihat yang membentuk alam semesta elektromagnetik di sekitar kita.
+        </p>
+
+    </div>
+</body>
+</html>
+```

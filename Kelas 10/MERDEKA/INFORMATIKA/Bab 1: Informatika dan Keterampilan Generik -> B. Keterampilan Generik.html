@@ -1,0 +1,644 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Informatika dan Keterampilan Generik - Keterampilan Generik</title>
+    <style>
+        /* Basic Reset */
+        body, h1, h2, h3, p, ul, li, table, th, td {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            padding: 20px;
+        }
+
+        /* Container for Responsiveness */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header Styling */
+        .main-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        .main-header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .main-header h2 {
+            color: var(--text-secondary);
+            font-size: 1.8em;
+            font-weight: 400;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .section h3 {
+            color: var(--primary-blue);
+            font-size: 1.7em;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-accent-amber);
+        }
+
+        /* Paragraph and Text Styling */
+        p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* List Styling */
+        ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        ul ul {
+            list-style: circle;
+            margin-top: 5px;
+        }
+
+        li {
+            color: var(--text-tertiary);
+            font-size: 1.05em;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Specific Element Styling */
+        .highlight {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 5px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .activity-box {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .activity-box h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .activity-box p {
+            color: var(--text-secondary);
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+
+        .tip-box {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border-left: 5px solid #f57f17; /* Darker amber */
+        }
+
+        .tip-box h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .tip-box p {
+            color: var(--text-primary);
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .main-header h1 {
+                font-size: 2em;
+            }
+
+            .main-header h2 {
+                font-size: 1.5em;
+            }
+
+            .section h3 {
+                font-size: 1.5em;
+            }
+
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.95em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            .activity-box, .tip-box {
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .main-header h1 {
+                font-size: 1.8em;
+            }
+
+            .main-header h2 {
+                font-size: 1.3em;
+            }
+
+            .section h3 {
+                font-size: 1.3em;
+            }
+
+            th, td {
+                font-size: 0.9em;
+                padding: 6px 8px;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            .activity-box h4, .tip-box h4 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>Bab 1: Informatika dan Keterampilan Generik</h1>
+            <h2>B. Keterampilan Generik Informatika</h2>
+        </header>
+
+        <section class="section">
+            <h3>Memahami Keterampilan Generik dalam Informatika</h3>
+            <p>
+                Dalam kurikulum informatika, terdapat <strong>7 aspek praktik lintas bidang</strong> yang penting untuk dikuasai. Dua di antaranya bersifat <strong>umum</strong> dan dapat diterapkan di berbagai situasi. Penting untuk dipahami bahwa tidak semua aspek ini perlu dipraktikkan secara bersamaan dalam satu aktivitas. Keterampilan generik ini dirancang untuk membentuk dasar yang kuat dalam menghadapi berbagai tantangan di era digital.
+            </p>
+            <p>
+                Tujuh aspek praktik informatika tersebut meliputi:
+            </p>
+            <ul>
+                <li>
+                    <strong>Membina dan menumbuhkan budaya kerja masyarakat digital dalam tim yang inklusif.</strong> Ini berarti menciptakan lingkungan kerja yang kolaboratif, menghargai keberagaman, dan memanfaatkan teknologi digital secara positif.
+                </li>
+                <li>
+                    <strong>Berkolaborasi untuk melaksanakan tugas dengan tema komputasi.</strong> Kemampuan bekerja sama dalam tim untuk menyelesaikan proyek-proyek yang berhubungan dengan komputasi.
+                </li>
+                <li>
+                    <strong>Mengenali dan mendefinisikan persoalan yang pemecahannya dapat didukung dengan sistem komputasi.</strong> Mampu mengidentifikasi masalah dan merumuskan bagaimana solusi berbasis komputasi dapat membantu.
+                </li>
+                <li>
+                    <strong>Mengembangkan dan menggunakan abstraksi.</strong> Kemampuan untuk menyederhanakan kerumitan dengan fokus pada detail penting dan mengabaikan detail yang tidak relevan.
+                </li>
+                <li>
+                    <strong>Mengembangkan artefak komputasi.</strong> Contohnya adalah membuat program sederhana atau model komputasi yang mendukung pembelajaran di mata pelajaran lain.
+                </li>
+                <li>
+                    <strong>Mengembangkan rencana pengujian, menguji, dan mendokumentasikan hasil uji artefak komputasi.</strong> Proses sistematis untuk memastikan kualitas dan fungsionalitas hasil kerja.
+                </li>
+                <li>
+                    <strong>Mengkomunikasikan suatu proses, fenomena, solusi TIK dengan mempresentasikan, memvisualisasikan serta memperhatikan hak kekayaan intelektual.</strong> Menyampaikan informasi secara efektif melalui presentasi, visualisasi, dan menghargai karya orang lain.
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h3>Pentingnya Kolaborasi dan Komunikasi dalam Proyek Informatika</h3>
+            <p>
+                Bekerja dalam kelompok untuk mengerjakan proyek informatika secara otomatis mencakup hampir semua aspek keterampilan generik di atas. Hasil kerja kelompok ini seringkali perlu dipresentasikan, baik secara lisan, dalam bentuk bahan presentasi, poster, atau karya kreatif lainnya.
+            </p>
+            <p>
+                Di era digital saat ini, <strong>komunikasi visual</strong> menjadi kunci untuk menyampaikan informasi secara efektif. Oleh karena itu, sangat penting bagi siswa untuk berlatih komunikasi, baik secara lisan, tertulis, maupun dalam bentuk visual atau grafis.
+            </p>
+            <p>
+                Kemampuan berkomunikasi dalam bahasa lisan maupun tulisan adalah fondasi yang dipelajari di mata pelajaran bahasa. Ini menunjukkan betapa pentingnya mata pelajaran bahasa sebagai penunjang pemahaman dan praktik informatika. Anda harus mampu mengaplikasikan apa yang telah dipelajari di pelajaran bahasa untuk mengkomunikasikan hasil kegiatan informatika.
+            </p>
+            <p>
+                Bagian ini akan fokus pada aspek <strong>kolaborasi</strong> dan <strong>komunikasi</strong> dalam kerja kelompok. Kita akan membahas bagaimana bekerja sama secara efektif dan menyampaikan hasil kerja dengan baik.
+            </p>
+        </section>
+
+        <section class="section">
+            <h3>1. Kolaborasi: Esensi Bekerja Sama</h3>
+            <p>
+                <strong>Kolaborasi</strong> adalah proses di mana dua orang atau lebih bekerja sama untuk mencapai tujuan bersama. Agar kolaborasi berjalan sukses, diperlukan beberapa elemen kunci:
+            </p>
+            <ul>
+                <li><strong>Kepemimpinan:</strong> Mampu memimpin dan mengarahkan tim.</li>
+                <li><strong>Pembagian Tugas dan Peran yang Adil:</strong> Setiap anggota memiliki tanggung jawab yang jelas dan seimbang.</li>
+                <li><strong>Komunikasi yang Baik:</strong> Komunikasi yang terbuka dan efektif antar anggota tim adalah kunci utama.</li>
+            </ul>
+            <p>
+                Dalam konteks belajar, tugas yang diberikan secara kolaboratif bertujuan agar Anda dapat berdiskusi dan mengerjakan tugas yang lebih besar dibandingkan mengerjakannya sendiri. Jumlah anggota kelompok akan disesuaikan dengan kebutuhan tugas oleh guru. Semakin besar tugasnya, biasanya semakin banyak anggota yang dibutuhkan.
+            </p>
+            <p>
+                Tujuan utama dari kerja kelompok antara lain:
+            </p>
+            <ul>
+                <li>Menghasilkan beragam alternatif solusi dari berbagai sudut pandang.</li>
+                <li>Menentukan solusi yang akan diimplementasikan melalui proses demokratis.</li>
+                <li>Menyelesaikan tugas dengan lebih cepat.</li>
+                <li>Memupuk semangat gotong royong.</li>
+            </ul>
+            <div class="tip-box">
+                <h4>Tahukah Kalian?</h4>
+                <p>
+                    Mengerjakan tugas oleh banyak orang tidak selalu lebih cepat. Kecepatan sangat bergantung pada pembagian kerja yang efektif dan efisien. Jika ada hambatan dalam berbagi sumber daya (misalnya selotip, gunting) atau jika tugas memerlukan urutan tertentu, kecepatan bisa terpengaruh.
+                </p>
+            </div>
+
+            <h4>a. Pemanasan: Berbagi Tugas dan Peran</h4>
+            <div class="activity-box">
+                <h4>Aktivitas Kelompok</h4>
+                <p>
+                    <strong>Aktivitas GS-K10-01-U: Berbagi Tugas dan Peran dalam Kelompok</strong>
+                    <br>
+                    Aktivitas ini dirancang sebagai pemanasan untuk membiasakan diri bekerja dalam kelompok.
+                </p>
+                <p>
+                    <strong>Deskripsi Tugas:</strong>
+                    <br>
+                    Bayangkan Anda adalah anggota OSIS lama yang bertugas menyiapkan upacara pelantikan ketua OSIS/MPK baru dan acara ramah tamahnya.
+                </p>
+            </div>
+            <p>
+                Untuk tugas seperti ini, Anda perlu berbagi peran karena setiap orang dapat mengerjakan bagian yang berbeda. Misalnya, dua acara terpisah (upacara dan ramah tamah) dapat dikelola oleh dua sub-tim yang dikoordinasikan oleh ketua panitia.
+            </p>
+            <p>
+                Ada pekerjaan yang justru memakan waktu lebih lama jika dikerjakan oleh terlalu banyak orang. Oleh karena itu, strategi membagi pekerjaan dalam kelompok harus dipikirkan matang sebelum mulai. Tugas juga harus dibagi secara adil, meskipun tidak semua orang mengerjakan hal yang sama.
+            </p>
+            <p>
+                Sebelum memulai, semua anggota kelompok harus menentukan strategi yang tepat agar tujuan tugas tercapai secara efisien dan optimal. Dalam beberapa kasus, perlu ditunjuk Koordinator Tim untuk mengatur kelancaran pekerjaan dan memastikan hasil sesuai harapan. Setiap acara memerlukan program kerja yang terperinci beserta jadwalnya.
+            </p>
+            <p>
+                Agar kerja kelompok efisien, efektif, dan menghasilkan solusi yang baik, ikuti langkah-langkah berikut:
+            </p>
+            <ol>
+                <li><strong>Pahami Persoalan dan Tujuan Bersama:</strong> Pastikan semua anggota memiliki pemahaman yang sama tentang apa yang ingin dicapai.</li>
+                <li><strong>Lakukan Pembagian Peran:</strong> Setiap anggota harus memiliki peran dan tugas yang jelas. Jika semua mengerjakan hal yang sama, tugas tidak akan efektif. Pertimbangkan menunjuk ketua kelompok jika anggotanya banyak atau hasil kerja perlu diintegrasikan.</li>
+                <li><strong>Kerjakan Tugas Sesuai Peran:</strong> Jangan ragu jika peran Anda berbeda. Anda bisa berganti peran pada tugas berikutnya.</li>
+                <li><strong>Integrasikan Hasil Kerja:</strong> Setelah setiap anggota menyelesaikan bagiannya, tim harus berkumpul untuk menyatukan hasil kerja masing-masing.</li>
+                <li><strong>Koordinasi Antar Subtim:</strong> Jika ada sub-tim, koordinasi cukup diwakili oleh ketua sub-tim.</li>
+                <li><strong>Rumuskan Kesimpulan:</strong> Kelompok dipimpin oleh ketua atau melalui diskusi antar anggota untuk merumuskan kesimpulan bersama.</li>
+            </ol>
+
+            <div class="activity-box">
+                <h4>Apa yang kalian lakukan?</h4>
+                <p>
+                    Buatlah pembagian tugas dan peran untuk setiap anggota tim dalam Lembar Kerja Siswa.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Anggota</th>
+                            <th>Tugas</th>
+                            <th>Peran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>b. Perencanaan Kerja Kelompok</h4>
+            <p>
+                Perencanaan kerja sebelum pelaksanaan adalah kunci untuk mendapatkan hasil yang baik, efektif, dan efisien. Strategi kerja harus dibuat dengan mempertimbangkan sumber daya yang tersedia, seperti jumlah anggota tim, waktu pengerjaan, dan peralatan.
+            </p>
+            <p>
+                Meskipun perencanaan memakan waktu, manfaatnya sangat besar untuk memastikan pekerjaan berjalan lancar dan selesai tepat waktu.
+            </p>
+            <div class="tip-box">
+                <h4>Tahukah Kalian?</h4>
+                <p>
+                    <strong>Tugas:</strong> Hal yang wajib dikerjakan atau menjadi tanggung jawab seseorang.
+                    <br>
+                    <strong>Peran:</strong> Perilaku yang diharapkan dari individu dalam posisi atau status sosial tertentu (misalnya ketua, bendahara, sekretaris).
+                </p>
+            </div>
+
+            <div class="activity-box">
+                <h4>Merencanakan Kerja Kelompok</h4>
+                <p>
+                    <strong>Aktivitas GS-K10-02-U: Perencanaan Kegiatan</strong>
+                    <br>
+                    Latihan ini adalah langkah awal sebelum melakukan aktivitas kelompok lainnya.
+                </p>
+                <p>
+                    <strong>Deskripsi Tugas:</strong>
+                    <br>
+                    Setiap kelompok akan mendapatkan 2-3 tugas yang harus dikerjakan bersama. Anda harus menentukan strategi yang paling efisien untuk menyelesaikan semua tugas yang diberikan.
+                </p>
+            </div>
+            <p>
+                Contoh rangkaian tugas untuk satu semester bagi kelompok yang beranggotakan 6 orang:
+            </p>
+            <ol>
+                <li>Membuat maket komputer dari kardus (4 orang).</li>
+                <li>Membuat maket ponsel dari kardus (2 orang).</li>
+                <li>Membuat infografis tentang keamanan internet (3 orang).</li>
+                <li>Menulis poster tentang peran teknologi dalam kehidupan sehari-hari (3 orang).</li>
+                <li>Membuat laporan keuangan kegiatan siswa (3 orang).</li>
+            </ol>
+            <p>
+                Sebagai anggota kelompok, Anda bisa memilih tugas mana yang akan diambil. Penting untuk memastikan beban tugas terbagi secara merata dan adil untuk kelima tugas tersebut.
+            </p>
+
+            <div class="activity-box">
+                <h4>Apa yang harus kalian lakukan?</h4>
+                <p>
+                    Untuk setiap tugas, tentukan tujuan tugas, pembagian peran, langkah penyelesaian, serta perkiraan waktu kerja. Gunakan format berikut:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>Uraian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Deskripsi Umum Proyek</td>
+                            <td>Tuliskan judul dan ringkasan proyek yang dikerjakan.</td>
+                        </tr>
+                        <tr>
+                            <td>Tujuan Tugas</td>
+                            <td>Tuliskan dengan ringkas.</td>
+                        </tr>
+                        <tr>
+                            <td>Hasil Tugas (Deliverable)</td>
+                            <td>Jelaskan hasil tugas dengan spesifikasi yang jelas dan terukur.</td>
+                        </tr>
+                        <tr>
+                            <td>Waktu dan Tempat Penyelesaian</td>
+                            <td>Perkirakan lama pengerjaan dan lokasi (rumah, sekolah).</td>
+                        </tr>
+                        <tr>
+                            <td>Pembagian Peran</td>
+                            <td>Tuliskan peran setiap anggota kelompok.</td>
+                        </tr>
+                        <tr>
+                            <td>Tahapan/Langkah Penyelesaian</td>
+                            <td>Jelaskan langkah-langkah penyelesaian secara umum dan runtut.</td>
+                        </tr>
+                        <tr>
+                            <td>Kesimpulan Capaian</td>
+                            <td>Tercapai sepenuhnya / sebagian / sebagian kecil / tidak tercapai.</td>
+                        </tr>
+                        <tr>
+                            <td>Apa yang dinikmati dan disenangi dalam mengerjakan proyek ini?</td>
+                            <td>Tuliskan perasaan Anda secara singkat dan alasannya.</td>
+                        </tr>
+                        <tr>
+                            <td>Kesulitan dalam mengerjakan proyek ini</td>
+                            <td>Tuliskan kesulitan yang dihadapi dan mengapa itu terjadi. Jika diberi kesempatan ulang, bagaimana Anda mengatasinya?</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Setiap anggota kelompok juga harus membuat laporan ringkas yang berisi:
+                </p>
+                <ul>
+                    <li>Peran dalam kelompok</li>
+                    <li>Apa yang sudah dikerjakan</li>
+                    <li>Kontribusi terhadap hasil</li>
+                    <li>Refleksi</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>2. Komunikasi: Menyampaikan Hasil Kerja</h3>
+            <p>
+                Hasil kerja yang telah Anda kembangkan atau buat perlu dikomunikasikan dengan baik kepada pihak yang berkepentingan. Komunikasi ini bisa dilakukan melalui presentasi, demo produk, atau bentuk tampilan produk seperti infografis.
+            </p>
+
+            <h4>a. Infografis: Visualisasi Informasi Efektif</h4>
+            <p>
+                <strong>Infografis</strong> adalah penyajian informasi yang menggabungkan teks, gambar, dan grafik untuk mempermudah pembaca menangkap pesan. Ilustrasi visual seringkali lebih mudah dipahami dan diinterpretasikan daripada teks saja. Sebuah infografis yang ringkas dapat menyampaikan hal-hal penting (abstraksi) dari pekerjaan Anda, karena "sebuah gambar bernilai seribu kata".
+            </p>
+            <p>
+                Infografis yang baik memperhatikan aspek konten dan tampilan agar penyampaian informasi lebih efektif.
+            </p>
+            <p>
+                <strong>Perancangan Konten Infografis:</strong>
+            </p>
+            <ol>
+                <li><strong>Tujuan Infografis:</strong> Apakah untuk mengedukasi, memberi himbauan, ajakan, atau lainnya.</li>
+                <li><strong>Target Audiens:</strong> Siapa yang akan melihat infografis Anda? Infografis untuk anak TK tentu berbeda dengan infografis untuk presentasi proyek sains. Infografis ilmiah harus memiliki konten yang saintifik dan sesuai kaidah sains.</li>
+                <li><strong>Keakuratan dan Sumber:</strong> Konten harus benar, masuk akal, dan jelas sumbernya. Konten bergantung pada tujuan pembuatan infografis.</li>
+            </ol>
+            <p>
+                <strong>Dari Segi Tampilan Infografis:</strong>
+            </p>
+            <ol>
+                <li><strong>Pemilihan Kata Kunci:</strong> Gunakan kata-kata dan kalimat yang singkat, bermakna, dan mudah dipahami dalam ruang yang terbatas.</li>
+                <li><strong>Pemilihan Huruf:</strong> Gunakan jenis dan ukuran huruf yang sesuai, mudah dibaca.</li>
+                <li><strong>Pemilihan Ilustrasi:</strong> Gunakan grafik dan gambar yang relevan dan mendukung pesan.</li>
+                <li><strong>Tata Warna:</strong> Gunakan kombinasi warna yang serasi dan sesuai konteks. Perhatikan arti warna dan komposisi agar mudah diinterpretasi, terutama bagi teman yang buta warna.</li>
+                <li><strong>Tata Letak:</strong> Susun elemen-elemen infografis dengan rapi dan terstruktur.</li>
+            </ol>
+
+            <h4>b. Presentasi: Menyampaikan Gagasan Secara Lisan</h4>
+            <p>
+                Laporan tertulis atau artefak komputasional perlu dijelaskan secara lisan agar lebih mudah dipahami. Sebelum presentasi, siapkan garis besar (outline) informasi lisan yang akan disampaikan.
+            </p>
+            <p>
+                Bahan presentasi yang baik merupakan gabungan antara penjelasan tekstual dan visual (gambar/grafik). Tujuannya adalah menyampaikan ringkasan poin-poin penting dari paparan.
+            </p>
+            <p>
+                <strong>Kriteria Bahan Presentasi yang Baik:</strong>
+            </p>
+            <div style="padding-left: 20px;">
+                <h5>Dari Segi Konten:</h5>
+                <ol>
+                    <li><strong>Mengandung Bagian Penting:</strong> Alur logika yang runtut, meliputi:
+                        <ul>
+                            <li>Ringkasan (untuk pemahaman cepat)</li>
+                            <li>Latar belakang</li>
+                            <li>Paparan utama</li>
+                            <li>Penutup/kesimpulan</li>
+                        </ul>
+                    </li>
+                    <li><strong>Bahasa yang Sesuai:</strong> Gunakan bahasa yang jelas, dalam bentuk poin-poin atau ringkasan teks, tidak harus kalimat lengkap.</li>
+                </ol>
+
+                <h5>Dari Segi Tampilan:</h5>
+                <ol>
+                    <li><strong>Ukuran Huruf:</strong> Cukup besar agar mudah dilihat oleh pendengar.</li>
+                    <li><strong>Keseimbangan Teks dan Gambar:</strong> Terlalu banyak ilustrasi memerlukan narasi panjang, terlalu banyak teks sulit ditangkap dalam waktu singkat.</li>
+                    <li><strong>Jumlah Lembar:</strong> Sesuaikan dengan alokasi waktu yang diberikan. Presentasi yang padat dan singkat lebih efektif.</li>
+                </ol>
+            </div>
+            <p>
+                Dengan bahan presentasi yang baik, Anda akan lebih percaya diri. Perhatikan hal-hal berikut saat mempersiapkan presentasi:
+            </p>
+            <ol>
+                <li><strong>Siapkan Materi Menarik:</strong> Buat materi presentasi yang menarik, sesuai waktu yang ada, dan sertakan catatan penekanan poin.</li>
+                <li><strong>Siapkan Alat Bantu:</strong> Gunakan alat bantu seperti pointer.</li>
+                <li><strong>Perhatikan Audiens dan Konteks:</strong> Gaya bahasa lisan dan bahasa tubuh harus disesuaikan dengan siapa Anda berbicara.</li>
+                <li><strong>Paparkan dengan Baik:</strong> Gunakan bahasa lisan yang jelas, ucapkan dengan benar, dan hindari gumaman. Gunakan bahasa tubuh yang positif dan tidak mengganggu.</li>
+                <li><strong>Jelaskan Produk:</strong> Sampaikan alur logika penjelasan, mulai dari masalah, solusi, cara kerja, hingga kesimpulan.</li>
+                <li><strong>Saat Tanya Jawab:</strong> Jawab dengan ringkas dan tegas. Jika tidak yakin, ulangi pertanyaan untuk klarifikasi sebelum menjawab.</li>
+            </ol>
+            <div class="tip-box">
+                <h4>Tahukah Kalian?</h4>
+                <p>
+                    <strong>Bahasa Tubuh:</strong> Gerakan tubuh yang membantu memperjelas apa yang dipaparkan. Ini meliputi gerakan mata, tangan, kepala, dan sebagainya.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>Ayo Kita Renungkan</h3>
+            <p>
+                Setelah mempelajari keterampilan generik, coba renungkan pertanyaan-pertanyaan berikut:
+            </p>
+            <ol>
+                <li>Apakah Anda kini memahami perbedaan antara berbagi tugas dan berbagi peran? Diskusikan jika masih ada keraguan.</li>
+                <li>Pernahkah Anda mendapatkan peran yang sama untuk tugas yang berbeda?</li>
+                <li>Apa pelajaran penting yang Anda petik dari perencanaan tugas dan perencanaan keseluruhan untuk beberapa tugas?</li>
+                <li>Seberapa siap Anda untuk bekerja dalam kelompok sepanjang semester ini?</li>
+                <li>Menurut Anda, lebih baik jika anggota kelompok ditentukan oleh guru atau memilih sendiri?</li>
+            </ol>
+            <p>
+                <strong>Ingat:</strong> Selalu buat perencanaan sebelum mengerjakan tugas kelompok! Catat pengalaman kerja kelompok Anda dalam jurnal agar saat berbagi tugas, Anda dapat melakukannya secara bergilir dan adil.
+            </p>
+        </section>
+
+    </div>
+</body>
+</html>
+```

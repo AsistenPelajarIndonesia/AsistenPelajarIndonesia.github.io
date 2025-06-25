@@ -1,0 +1,473 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Dampak Perubahan Sosial</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-divider);
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        h2.positive-impact {
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        h2.negative-impact {
+            color: var(--semantic-error);
+            border-color: var(--semantic-error);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            text-align: justify;
+            margin-bottom: 30px;
+            color: var(--text-tertiary);
+        }
+
+        .section-content {
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--border-divider);
+        }
+
+        .accordion {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #1565C0; /* Darker primary blue */
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active::after {
+            content: '-';
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            background-color: #F8F8F8; /* Lighter background for content */
+            color: var(--text-secondary);
+        }
+
+        .accordion-content.open {
+            max-height: 500px; /* Adjust based on expected content length */
+            padding: 15px 20px;
+        }
+
+        .enrichment-box {
+            background-color: #E3F2FD; /* Light blue from primary-blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+        
+        .enrichment-box h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .enrichment-box a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .enrichment-box a:hover {
+            text-decoration: underline;
+        }
+
+        .refleksi-box {
+            background-color: #F3E5F5; /* Light purple */
+            border-left: 5px solid #9C27B0; /* Deeper purple */
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .refleksi-box h4 {
+            color: #9C27B0;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .section-content {
+                margin-left: 0;
+                padding-left: 10px;
+                border-left: 2px solid var(--border-divider);
+            }
+
+            .accordion-header {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+
+            .accordion-content {
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 15px;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+            
+            .accordion-header {
+                font-size: 0.9em;
+                padding: 10px 12px;
+            }
+
+            .accordion-content {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C. Dampak Perubahan Sosial</h1>
+
+        <p class="intro-text">
+            Perubahan sosial senantiasa menjadi bagian integral dari kehidupan masyarakat. Fenomena ini tidak hanya sekadar pergantian waktu, melainkan sebuah dinamika kompleks yang secara langsung maupun tidak langsung memengaruhi setiap aspek kehidupan. Penting untuk disadari bahwa setiap perubahan sosial membawa konsekuensi, baik berupa dampak positif yang mendorong kemajuan maupun dampak negatif yang dapat menghambat atau bahkan menimbulkan masalah baru. Oleh karena itu, kemampuan kita untuk menyikapi perubahan ini secara bijak, adaptif, dan proaktif adalah kunci untuk memastikan bahwa masyarakat dapat terus berkembang menuju arah yang lebih baik. Memahami berbagai dimensi dampak perubahan sosial merupakan langkah awal yang krusial.
+        </p>
+
+        <h2 class="positive-impact">1. Dampak Positif Perubahan Sosial</h2>
+        <p>
+            Perubahan sosial, dalam banyak kasus, merupakan katalisator yang signifikan untuk kemajuan dan peningkatan kualitas hidup masyarakat. Transformasi ini sering kali mendorong inovasi, efisiensi, dan pembaharuan yang pada akhirnya menciptakan lingkungan sosial yang lebih adaptif dan responsif terhadap tantangan zaman. Berikut adalah beberapa dampak positif utama yang dapat timbul dari perubahan sosial:
+        </p>
+
+        <div class="accordion">
+            <div class="accordion-header">
+                a. Efisiensi di Berbagai Bidang Kehidupan
+            </div>
+            <div class="accordion-content">
+                <div class="section-content">
+                    <p>
+                        Ilmu pengetahuan dan kemajuan teknologi adalah motor penggerak utama modernisasi, yang secara langsung mempercepat laju perubahan sosial. Dengan adopsi teknologi mutakhir, masyarakat kini dapat menyelesaikan berbagai aktivitas dan tugas dengan jauh lebih mudah dan cepat. Kemudahan ini secara konkret menunjukkan peningkatan efisiensi kerja, yang berdampak pada penghematan waktu, tenaga, dan biaya yang signifikan.
+                    </p>
+                    <p>
+                        Sebagai contoh yang konkret dari efisiensi sebagai dampak positif perubahan sosial, kita dapat melihat transformasi di bidang transportasi. Teknologi transportasi yang berkembang pesat telah mempermudah mobilitas penduduk, memungkinkan pertukaran barang antarwilayah menjadi lebih cepat dan efisien, serta memfasilitasi pemenuhan kebutuhan masyarakat secara lebih optimal. Implikasi dari ini adalah percepatan laju perekonomian yang berjalan optimal. Batasan jarak dan waktu yang sebelumnya menjadi kendala besar kini hampir tidak lagi menjadi halangan. Kondisi ini secara langsung berkontribusi pada peningkatan produktivitas masyarakat secara keseluruhan, sebagaimana ditegaskan oleh Martono (2014).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">
+                b. Pola Pikir Masyarakat Makin Berkembang
+            </div>
+            <div class="accordion-content">
+                <div class="section-content">
+                    <p>
+                        Perubahan sosial dapat diinisiasi oleh faktor internal dalam masyarakat itu sendiri, seperti inovasi atau kebutuhan yang mendesak, maupun oleh pengaruh eksternal yang timbul dari interaksi dengan dunia luar. Ketika perubahan sosial terjadi, masyarakat secara inheren dituntut untuk mengembangkan kapasitas adaptasi terhadap berbagai situasi baru, termasuk penyesuaian terhadap budaya-budaya baru yang masuk. Lebih dari sekadar adaptasi, kunci keberhasilan dalam menghadapi perubahan adalah adanya pola pikir yang terbuka terhadap hal-hal baru dan perspektif yang berbeda.
+                    </p>
+                    <p>
+                        Keterbukaan pola pikir ini memiliki peran krusial karena memungkinkan masyarakat untuk membangun dan memperkuat integrasi sosial, serta memfasilitasi reorganisasi sistem sosial agar dapat berfungsi lebih baik. Sebagaimana dijelaskan oleh Martono (2014), perubahan pola pikir sangat dipengaruhi oleh interaksi masyarakat dengan kelompok atau budaya yang berbeda, serta oleh kemudahan akses terhadap teknologi informasi. Ambil contoh, diversifikasi platform pendidikan, sumber berita, dan media sosial yang kini sangat beragam. Ini semua memudahkan masyarakat dalam memperoleh pengetahuan dari berbagai sumber, sehingga pada gilirannya membuat mereka makin terbuka dan menerima terhadap budaya-budaya baru dan ide-ide progresif.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">
+                c. Kualitas Hidup Masyarakat Meningkat
+            </div>
+            <div class="accordion-content">
+                <div class="section-content">
+                    <p>
+                        Kemajuan teknologi yang pesat, dikombinasikan dengan perkembangan pola pikir masyarakat yang semakin terbuka dan adaptif, secara kolektif mendorong terciptanya peluang-peluang baru serta tatanan sosial yang lebih progresif dan kondusif. Sebagai konsekuensi langsung dari dinamika ini, kualitas hidup masyarakat secara keseluruhan cenderung mengalami peningkatan yang signifikan. Kondisi ini merupakan salah satu konsekuensi positif yang paling nyata dari perubahan sosial yang terjadi.
+                    </p>
+                    <p>
+                        Salah satu contoh konkret peningkatan kualitas hidup masyarakat akibat perubahan sosial dapat dicermati pada inisiatif digital seperti aplikasi konsultasi kesehatan gratis. Internet, sebagai tulang punggung kemajuan teknologi, telah mempermudah komunikasi dan penyebaran informasi di berbagai sektor kehidupan, termasuk sektor kesehatan. Aplikasi seperti "Sehatpedia", yang dikembangkan oleh Kemenkes, adalah contoh bagaimana teknologi digunakan untuk mempermudah akses masyarakat terhadap informasi kesehatan yang jelas dan konsultasi medis secara gratis. Ini menunjukkan bagaimana kemudahan akses internet tidak hanya berdampak pada kesehatan, tetapi juga meluas ke berbagai bidang lain seperti transaksi ekonomi, akses pendidikan, hingga sarana hiburan, semuanya berkontribusi pada peningkatan kualitas hidup. Meskipun demikian, penting untuk senantiasa mewaspadai potensi dampak negatif yang mungkin timbul dari kemajuan teknologi dan internet.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="enrichment-box">
+            <h4>Pengayaan: Menuju Indonesia Digital</h4>
+            <p>
+                Pembangunan dan perubahan di era digital menghadirkan serangkaian tantangan sekaligus peluang yang harus disikapi dengan bijak oleh setiap elemen masyarakat. Untuk mendapatkan pemahaman yang lebih mendalam mengenai langkah-langkah strategis yang telah dan sedang diambil oleh Indonesia dalam menghadapi era industri digital ini, Anda dapat merujuk pada buku berjudul <strong>“Menuju Indonesia Digital”</strong>. Buku ini merupakan publikasi resmi dari Direktorat Jenderal Informasi dan Komunikasi Publik, Kementerian Komunikasi dan Informatika.
+            </p>
+            <p>
+                Buku ini dapat diakses secara daring untuk memperkaya wawasan Anda tentang bagaimana negara ini beradaptasi dan merumuskan kebijakan di tengah gelombang transformasi digital yang masif.
+            </p>
+            <p>
+                Akses buku di: <a href="https://indonesiabaik.id/ebook/menuju-indonesia-digital" target="_blank">https://indonesiabaik.id/ebook/menuju-indonesia-digital</a>
+            </p>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">
+                d. Mobilitas Sosial Makin Cepat
+            </div>
+            <div class="accordion-content">
+                <div class="section-content">
+                    <p>
+                        Perubahan sosial juga memiliki kapasitas untuk secara signifikan mempercepat laju mobilitas sosial dalam masyarakat. Mobilitas sosial, yang merujuk pada pergerakan individu atau kelompok antar posisi sosial dalam stratifikasi masyarakat, dapat terjadi melalui berbagai saluran dan mekanisme. Martono (2014) mengidentifikasi beberapa di antaranya, termasuk pendidikan, jenis pekerjaan, status pernikahan, pengaruh budaya, serta saluran-saluran lain yang memungkinkan perubahan kedudukan.
+                    </p>
+                    <p>
+                        Konsep mobilitas sosial (<em>social mobility</em>) secara fundamental berkaitan erat dengan kemampuan seorang individu untuk mengubah posisi dirinya dalam hierarki sistem stratifikasi sosial. Dengan adanya dinamika perubahan sosial yang intens, individu cenderung memiliki peluang yang lebih besar untuk mengalami mobilitas sosial, baik itu ke atas (<em>upward mobility</em>) maupun ke bawah (<em>downward mobility</em>).
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Mobilitas ke atas (<em>upward mobility</em>)</strong> secara spesifik menunjukkan peningkatan atau pergeseran posisi individu ke tingkat yang lebih tinggi dalam suatu kelas sosial. Ini bisa berupa peningkatan status ekonomi, profesi, atau prestise.
+                        </li>
+                        <li>
+                            <strong>Mobilitas ke bawah (<em>downward mobility</em>)</strong>, di sisi lain, menunjukkan kondisi sebaliknya, di mana individu mengalami penurunan posisi dalam hierarki sosial.
+                        </li>
+                    </ul>
+                    <p>
+                        Ketika mobilitas sosial dapat terjadi dengan lebih cepat dan dinamis, hal ini dapat menjadi motivator kuat bagi individu untuk terus mengembangkan diri dan potensi yang dimilikinya. Motivasi ini muncul dari adanya kesempatan yang lebih luas untuk diakui dan dihargai sesuai dengan kapasitas serta kontribusi mereka dalam masyarakat, sehingga mendorong peningkatan kualitas sumber daya manusia secara keseluruhan.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="negative-impact">2. Dampak Negatif Perubahan Sosial</h2>
+        <p>
+            Meskipun perubahan sosial sering kali diasosiasikan dengan kemajuan dan peningkatan, tidak jarang pula fenomena ini dapat membawa konsekuensi yang merugikan, bahkan mendorong kehidupan masyarakat ke arah kemunduran atau ketidakstabilan. Dampak-dampak negatif ini muncul ketika masyarakat belum sepenuhnya siap atau tidak mampu beradaptasi dengan laju dan kompleksitas perubahan yang terjadi. Berikut adalah beberapa dampak negatif signifikan dari perubahan sosial yang perlu diwaspadai:
+        </p>
+
+        <div class="accordion">
+            <div class="accordion-header">
+                a. Culture Shock dan Culture Lag
+            </div>
+            <div class="accordion-content">
+                <div class="section-content">
+                    <p>
+                        Tidak semua lapisan masyarakat memiliki kapasitas yang sama untuk menghadapi dan mengintegrasikan perubahan sosial yang terjadi dengan cepat dan masif. Kondisi ini sangat dipengaruhi oleh berbagai faktor fundamental seperti kondisi psikologis individu, tingkat pengetahuan dan pendidikan, status ekonomi, nilai-nilai budaya yang dianut, serta lingkungan sosial tempat mereka berada. Ketidaksiapan dan ketidakmampuan beradaptasi ini dapat memicu serangkaian respons negatif, mulai dari rasa kebingungan yang mendalam, kecemasan, timbulnya prasangka negatif terhadap hal baru, hilangnya rasa percaya diri, hingga pada akhirnya mengakibatkan tingkat stres yang tinggi dalam masyarakat.
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Gegar Budaya (<em>Culture Shock</em>)</strong>: Ketidaksiapan dan kebingungan yang dialami oleh masyarakat ketika berhadapan dengan perubahan yang terlalu cepat atau drastis, sehingga menyebabkan sebagian anggota masyarakat melakukan tindakan-tindakan yang tidak terkendali, bahkan irasional. Ini terjadi ketika individu atau kelompok merasa sangat teralienasi dari norma-norma dan nilai-nilai baru yang muncul.
+                        </li>
+                        <li>
+                            <strong>Ketertinggalan Budaya (<em>Culture Lag</em>)</strong>: Merupakan kondisi di mana salah satu aspek budaya (misalnya, aspek material seperti teknologi) tumbuh dan berkembang lebih cepat (dianggap lebih maju) dibandingkan aspek budaya lainnya (misalnya, aspek non-material seperti nilai-nilai, norma, atau institusi sosial). Ketimpangan ini menciptakan "celah" dalam perkembangan budaya. Ciri utamanya adalah ketika masyarakat mulai meninggalkan budaya lama dan memberikan penghargaan yang lebih besar pada budaya baru yang datang, tanpa diimbangi dengan adaptasi struktur sosial atau norma yang memadai.
+                        </li>
+                    </ul>
+                    <p>
+                        Kedua fenomena ini menunjukkan adanya ketidakselarasan antara laju perubahan dan kapasitas adaptasi masyarakat, yang dapat menimbulkan berbagai disfungsi sosial.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">
+                b. Disorganisasi
+            </div>
+            <div class="accordion-content">
+                <div class="section-content">
+                    <p>
+                        Disorganisasi dalam konteks perubahan sosial dapat diartikan sebagai proses pudar atau melemahnya relevansi serta daya ikat norma dan nilai sosial dalam masyarakat. Fenomena ini terjadi akibat tekanan dari perubahan sosial yang sedang berlangsung. Konsekuensi langsung dari disorganisasi adalah ketidakmampuan lembaga-lembaga sosial untuk menjalankan peran dan fungsinya secara optimal dan efektif. Manifestasi nyata dari disorganisasi ini sering kali terlihat dalam bentuk masalah sosial, terutama penyimpangan sosial yang semakin merajalela.
+                    </p>
+                    <p>
+                        Lebih lanjut, disorganisasi juga dapat menjadi pemicu atau sumber dari perubahan sosial itu sendiri. Sebagai ilustrasi, ketika muncul kasus-kasus atau perilaku baru yang dianggap menyimpang oleh masyarakat dan menjadi perhatian publik luas (seringkali menjadi "viral"), namun belum ada norma hukum atau aturan sosial yang jelas untuk mengaturnya, maka disorganisasi terjadi. Lembaga sosial yang seharusnya bertanggung jawab dalam penegakan ketertiban, seperti aparat hukum atau lembaga adat, tidak dapat memberikan sanksi yang memadai kepada pelaku. Akibatnya, masyarakat dapat terpecah menjadi dua kubu: satu pihak yang menilai kondisi tersebut sebagai penyimpangan yang harus ditindak, dan pihak lain (termasuk kelompok yang menyimpang itu sendiri) yang tetap melanjutkan aksinya karena absennya regulasi atau sanksi yang tegas. Dalam situasi semacam ini, dibutuhkan upaya reorganisasi yang komprehensif untuk menata kembali struktur sosial dan menciptakan norma-norma baru yang relevan agar masalah-masalah sosial tersebut dapat ditangani secara efektif dan stabilitas masyarakat dapat dipulihkan.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">
+                c. Permasalahan Sosial
+            </div>
+            <div class="accordion-content">
+                <div class="section-content">
+                    <p>
+                        Selain memicu disorganisasi, perubahan sosial yang tidak dikelola dengan baik dan tidak direspon secara adaptif oleh masyarakat dapat menjadi akar penyebab timbulnya berbagai permasalahan sosial yang kompleks. Ketidakmampuan masyarakat dalam menyikapi perubahan ini berpotensi besar mengganggu stabilitas sosial, memicu konflik internal, menyebabkan disintegrasi sosial, dan menimbulkan serangkaian masalah sosial lainnya yang merugikan.
+                    </p>
+                    <p>
+                        Ambil contoh, fenomena peningkatan pertumbuhan penduduk yang terjadi secara cepat. Meskipun dalam beberapa konteks hal ini bisa menjadi indikator perkembangan, namun jika tidak diimbangi dengan kapasitas infrastruktur dan sumber daya, ia dapat memicu tingginya angka ketergantungan (dependency ratio), melonjaknya tingkat pengangguran, dan memperparah masalah kemiskinan. Kondisi-kondisi negatif ini secara akumulatif dapat mendorong munculnya kekecewaan dan ketidakpuasan yang meluas di kalangan masyarakat terhadap kinerja pemerintah atau sistem yang ada. Kekecewaan ini pada gilirannya dapat bermanifestasi dalam bentuk aksi protes massa, demonstrasi, atau bahkan konflik sosial di berbagai daerah. Apabila permasalahan sosial yang timbul ini tidak segera ditangani dengan serius dan komprehensif, dikhawatirkan akan terus berkembang dan pada akhirnya menyebabkan disintegrasi sosial, yaitu pecahnya persatuan dan kohesi dalam masyarakat.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">
+                d. Kerusakan Lingkungan
+            </div>
+            <div class="accordion-content">
+                <div class="section-content">
+                    <p>
+                        Dinamika perubahan sosial yang didorong oleh berbagai faktor seringkali berdampak langsung dan signifikan terhadap kondisi lingkungan fisik. Aktivitas-aktivitas yang dilakukan oleh masyarakat dalam rangka memenuhi kebutuhan hidup dan mencapai kemajuan, kerap kali meninggalkan jejak ekologis yang serius. Sebagai ilustrasi, peningkatan tajam dalam jumlah penduduk secara alamiah akan meningkatkan permintaan terhadap berbagai kebutuhan dasar seperti tempat tinggal, pangan, air bersih, energi, dan kebutuhan hidup lainnya.
+                    </p>
+                    <p>
+                        Di satu sisi, peningkatan kebutuhan ini dapat dilihat sebagai peluang ekonomi yang memicu pertumbuhan sektor usaha dan pembangunan. Ini bisa menjadi stimulan positif bagi perekonomian karena mendorong produksi dan konsumsi. Namun, di sisi lain, dorongan yang kuat untuk memenuhi kebutuhan yang terus meningkat ini juga memicu eksploitasi sumber daya alam secara masif dan tidak berkelanjutan. Hutan ditebang untuk lahan permukiman dan pertanian, sumber air dikuras, mineral ditambang secara berlebihan, dan limbah produksi mencemari lingkungan. Akibat dari eksploitasi yang tidak terkontrol ini adalah terjadinya kerusakan lingkungan yang parah, seperti deforestasi, pencemaran air dan udara, hilangnya keanekaragaman hayati, dan degradasi lahan. Kerusakan lingkungan ini pada akhirnya akan kembali berdampak negatif pada kehidupan sosial masyarakat itu sendiri, mengancam kesehatan, kesejahteraan, dan keberlanjutan hidup di masa mendatang.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="refleksi-box">
+            <h4>Refleksi: Menyikapi Perubahan Sosial</h4>
+            <p>
+                Perubahan sosial merupakan keniscayaan yang membawa implikasi ganda, yaitu dampak positif dan negatif, bagi masyarakat. Setiap masyarakat menunjukkan respons yang bervariasi dalam menghadapi gelombang perubahan ini. Masyarakat cenderung akan menerima perubahan sosial apabila mereka mampu dan merasa bahwa perubahan tersebut selaras dengan kebutuhan serta nilai-nilai yang mereka anut. Kemampuan untuk menyesuaikan diri menjadi faktor kunci dalam penerimaan ini.
+            </p>
+            <p>
+                Sebaliknya, masyarakat mungkin akan menunjukkan resistensi atau bahkan menolak perubahan apabila kebudayaan atau inovasi baru yang datang tidak sesuai atau bertentangan dengan norma-norma sosial yang berlaku, atau jika perubahan tersebut dirasa mengancam tatanan hidup yang sudah mapan. Oleh karena itu, dalam menghadapi perubahan sosial, sangatlah krusial bagi masyarakat untuk bersikap kritis, selektif, dan bijaksana. Pendekatan yang demikian memungkinkan kita untuk memilah elemen-elemen perubahan yang konstruktif dan mengintegrasikannya, sambil menolak atau memodifikasi aspek-aspek yang berpotensi merugikan, demi mewujudkan kehidupan yang lebih baik dan berkelanjutan.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionContent = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+
+                    // Close all other open accordions
+                    document.querySelectorAll('.accordion-header.active').forEach(openHeader => {
+                        if (openHeader !== this) {
+                            openHeader.classList.remove('active');
+                            openHeader.nextElementSibling.classList.remove('open');
+                        }
+                    });
+
+                    // Toggle current accordion
+                    if (!isActive) {
+                        this.classList.add('active');
+                        accordionContent.classList.add('open');
+                    } else {
+                        this.classList.remove('active');
+                        accordionContent.classList.remove('open');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```

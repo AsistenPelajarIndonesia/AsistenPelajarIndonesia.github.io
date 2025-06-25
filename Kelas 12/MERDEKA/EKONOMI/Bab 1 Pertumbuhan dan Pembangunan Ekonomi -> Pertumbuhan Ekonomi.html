@@ -1,0 +1,435 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertumbuhan Ekonomi - Ekonomi Kelas XII</title>
+    <style>
+        /* Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.4em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            color: var(--text-primary); /* Main title color */
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--primary-blue);
+            text-align: left;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            margin-bottom: 0.5em;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-box {
+            background-color: #e3f2fd; /* Lighter blue background */
+            border: 1px solid var(--primary-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1.1em;
+            text-align: center;
+            color: var(--text-primary);
+            overflow-x: auto; /* Allow horizontal scrolling for wide formulas */
+        }
+
+        .formula-box .label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .formula-box .formula {
+            display: inline-block; /* Allows vertical alignment for fractions */
+            font-size: 1.2em;
+            line-height: 1.8;
+            white-space: nowrap; /* Prevent line breaks for formula */
+            color: var(--text-primary);
+        }
+
+        .formula-box .formula sub, .formula-box .formula sup {
+            vertical-align: sub;
+            font-size: 0.7em;
+        }
+        .formula-box .formula .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .formula-box .formula .fraction > span {
+            display: block;
+        }
+        .formula-box .formula .fraction .numerator {
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 0.1em;
+            margin-bottom: 0.1em;
+        }
+        .formula-box .formula .fraction .denominator {
+            padding-top: 0.1em;
+        }
+
+
+        .key-points {
+            background-color: #f1f8e9; /* Lighter green background */
+            border: 1px solid var(--accent-green);
+            border-left: 5px solid var(--accent-green);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .key-points h4 {
+            color: var(--accent-green);
+            margin-top: 0;
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        .key-points ul {
+            list-style-type: disc;
+            padding-left: 30px;
+            color: var(--text-secondary);
+        }
+
+        .key-points ul li {
+            margin-bottom: 5px;
+        }
+
+        details {
+            background-color: #f5f5f5; /* Light grey background for details */
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        details:hover {
+            background-color: #ededed;
+        }
+
+        summary {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-blue);
+            outline: none; /* Remove outline on click */
+            display: block; /* Ensures the whole area is clickable */
+            position: relative;
+        }
+
+        summary::-webkit-details-marker {
+            display: none; /* Hide default marker */
+        }
+        summary::before {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 1.2em;
+            color: var(--primary-blue);
+            transition: transform 0.2s ease;
+        }
+        details[open] summary::before {
+            content: '-';
+            transform: rotate(0deg);
+        }
+
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+            background-color: #e0e0e0; /* Slightly darker when open */
+        }
+
+        .details-content {
+            padding: 15px 20px 20px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            .formula-box {
+                padding: 15px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+
+            .key-points ul, ul {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1: Pertumbuhan dan Pembangunan Ekonomi</h1>
+        <h2>A. Pertumbuhan Ekonomi</h2>
+
+        <div class="section">
+            <h3>Pengantar Pertumbuhan Ekonomi</h3>
+            <p>Kegiatan produksi tidak hanya bertujuan untuk mencari keuntungan semata, tetapi juga berperan penting dalam memenuhi berbagai kebutuhan hidup manusia. Semakin tinggi tingkat produksi barang dan jasa di suatu negara, semakin pesat pula laju pertumbuhan ekonominya. Oleh karena itu, kegiatan produksi barang dan jasa memegang peranan vital dalam mendorong kemajuan sebuah negara.</p>
+
+            <p><strong>Apa yang dimaksud dengan Pertumbuhan Ekonomi?</strong></p>
+            <p>Pertumbuhan ekonomi didefinisikan sebagai <strong>peningkatan berkelanjutan dalam kapasitas suatu negara untuk memproduksi barang dan jasa dari waktu ke waktu</strong>. Ini merupakan indikator kunci yang menunjukkan ekspansi dan kesehatan ekonomi suatu bangsa.</p>
+
+            <p>Secara umum, pertumbuhan ekonomi diukur melalui peningkatan total <strong>output</strong> suatu negara. Indikator utama yang digunakan untuk mengukur output ini adalah:</p>
+            <ul>
+                <li><strong>Produk Domestik Bruto (PDB) Riil:</strong> Merupakan nilai total dari semua barang dan jasa akhir yang diproduksi di dalam batas wilayah suatu negara selama periode waktu tertentu (umumnya satu tahun), disesuaikan dengan inflasi. Peningkatan PDB riil secara konsisten mengindikasikan adanya pertumbuhan ekonomi.</li>
+                <li><strong>Produk Nasional Bruto (PNB) Riil:</strong> Mirip dengan PDB, tetapi PNB mengukur nilai total barang dan jasa yang diproduksi oleh warga negara suatu negara, baik di dalam maupun di luar negeri, dikurangi produksi oleh warga negara asing di dalam negeri, juga disesuaikan dengan inflasi.</li>
+            </ul>
+            <p>Dengan demikian, peningkatan PDB atau PNB riil suatu negara adalah cerminan langsung dari terjadinya pertumbuhan ekonomi.</p>
+        </div>
+
+        <div class="section">
+            <h3>1. Laju Pertumbuhan Ekonomi</h3>
+            <p>Laju pertumbuhan ekonomi adalah ukuran persentase perubahan PDB riil dari satu periode ke periode berikutnya, biasanya dari tahun ke tahun. Ini adalah alat penting bagi pemerintah dan analis ekonomi untuk mengevaluasi kinerja ekonomi dan mengidentifikasi tren.</p>
+
+            <div class="formula-box">
+                <span class="label">Formula Laju Pertumbuhan Ekonomi:</span>
+                <span class="formula">
+                    Laju Pertumbuhan Ekonomi = <span class="fraction"><span class="numerator">(PDB<sub>t</sub> - PDB<sub>t-1</sub>)</span><span class="denominator">PDB<sub>t-1</sub></span></span> × 100%
+                </span>
+            </div>
+
+            <div class="key-points">
+                <h4>Keterangan:</h4>
+                <ul>
+                    <li><strong>PDB<sub>t</sub>:</strong> Pendapatan nasional riil (Produk Domestik Bruto riil) pada tahun tertentu (tahun yang sedang dihitung).</li>
+                    <li><strong>PDB<sub>t-1</sub>:</strong> Pendapatan nasional riil (Produk Domestik Bruto riil) pada tahun sebelumnya.</li>
+                </ul>
+            </div>
+
+            <p><strong>Contoh Perhitungan:</strong></p>
+            <p>Mari kita hitung laju pertumbuhan ekonomi Indonesia tahun 2018 berdasarkan data berikut:</p>
+            <ul>
+                <li>Pada tahun 2017, Produk Domestik Bruto (PDB) riil Indonesia (PDB<sub>t-1</sub>) adalah <strong>Rp13.588,8 triliun</strong>.</li>
+                <li>Pada tahun 2018, nilai PDB riil Indonesia (PDB<sub>t</sub>) meningkat menjadi <strong>Rp14.837,4 triliun</strong>.</li>
+            </ul>
+            <p>Dengan menggunakan formula di atas, laju pertumbuhan ekonomi Indonesia tahun 2018 adalah:</p>
+            <div class="formula-box">
+                <span class="formula">
+                    Laju Pertumbuhan Ekonomi = <span class="fraction"><span class="numerator">(14.837,4 - 13.588,8)</span><span class="denominator">13.588,8</span></span> × 100%
+                </span>
+                <span class="formula">
+                    = <span class="fraction"><span class="numerator">1.248,6</span><span class="denominator">13.588,8</span></span> × 100%
+                </span>
+                <span class="formula">
+                    ≈ 0,09189 × 100%
+                </span>
+                <span class="formula">
+                    = 9,18%
+                </span>
+            </div>
+            <p>Jadi, laju pertumbuhan ekonomi Indonesia pada tahun 2018 adalah sebesar <strong>9,18%</strong>.</p>
+        </div>
+
+        <div class="section">
+            <h3>2. Teori Pertumbuhan Ekonomi</h3>
+            <p>Teori pertumbuhan ekonomi adalah kerangka konseptual yang berupaya menjelaskan faktor-faktor kunci yang mendorong atau menghambat peningkatan output ekonomi suatu negara dalam jangka panjang. Seiring dengan perkembangan zaman dan pemahaman ekonomi, berbagai mazhab pemikiran telah mengembangkan teori-teori ini. Berikut adalah beberapa teori pertumbuhan ekonomi yang signifikan:</p>
+
+            <details>
+                <summary>a. Teori Klasik</summary>
+                <div class="details-content">
+                    <p>Mazhab Klasik, yang berkembang antara abad ke-18 dan ke-19, dipelopori oleh tokoh-tokoh besar seperti <strong>Adam Smith</strong> dan <strong>David Ricardo</strong>. Teori ini berpusat pada analisis proses pertumbuhan ekonomi sebagai hasil dari mekanisme pasar bebas.</p>
+                    <div class="key-points">
+                        <h4>Faktor-faktor Utama Pendorong Pertumbuhan menurut Teori Klasik:</h4>
+                        <ul>
+                            <li><strong>Pembagian Kerja:</strong> Spesialisasi dalam produksi akan meningkatkan efisiensi dan output total.</li>
+                            <li><strong>Akumulasi Modal:</strong> Investasi dalam alat-alat produksi dan infrastruktur adalah kunci peningkatan kapasitas produksi.</li>
+                            <li><strong>Keuntungan dari Perdagangan Internasional:</strong> Perdagangan bebas antarnegara memungkinkan spesialisasi dan efisiensi global, yang menguntungkan semua pihak.</li>
+                        </ul>
+                        <p><strong>Inti Gagasan:</strong> Teori Klasik sangat mendukung prinsip <em>laissez-faire</em> (campur tangan pemerintah minimal), pentingnya perdagangan bebas antarnegara, inisiatif bebas dari tiap individu, dan akumulasi kepemilikan pribadi. Mereka percaya bahwa kekuatan pasar yang tidak terintervensi akan secara alami mengarahkan perekonomian menuju pertumbuhan optimal.</p>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>b. Teori Harrod-Domar</summary>
+                <div class="details-content">
+                    <p>Dikembangkan oleh <strong>Roy F. Harrod</strong> dan <strong>Evsey Domar</strong> pada tahun 1939, model Harrod-Domar menyoroti peran krusial dari <strong>tabungan</strong> dan <strong>investasi</strong> dalam proses pembangunan dan pertumbuhan ekonomi. Teori ini sangat berpengaruh dalam pemikiran ekonomi pembangunan awal.</p>
+                    <div class="key-points">
+                        <h4>Hubungan Kunci dalam Teori Harrod-Domar:</h4>
+                        <ul>
+                            <li><strong>Hubungan Positif antara Pertumbuhan Ekonomi dengan Rasio Tabungan:</strong> Semakin tinggi proporsi pendapatan yang ditabung oleh suatu negara, semakin besar pula sumber daya yang tersedia untuk investasi, yang pada gilirannya akan memicu pertumbuhan ekonomi.</li>
+                            <li><strong>Hubungan Negatif antara Pertumbuhan Ekonomi dengan Rasio Capital-Output (ICOR):</strong> Rasio ini mengukur seberapa banyak tambahan modal (investasi) yang dibutuhkan untuk menghasilkan satu unit tambahan output. Semakin rendah rasio capital-output, berarti investasi yang dilakukan semakin efisien, yang akan berdampak pada laju pertumbuhan ekonomi yang lebih tinggi.</li>
+                        </ul>
+                        <p>Teori ini menyimpulkan bahwa untuk mencapai pertumbuhan ekonomi yang stabil, suatu negara harus mampu menabung dan menginvestasikan tabungannya secara efisien untuk menciptakan kapasitas produksi yang baru.</p>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>c. Teori Schumpeter</summary>
+                <div class="details-content">
+                    <p>Dikembangkan oleh <strong>Joseph Schumpeter</strong> pada tahun 1942, teori ini menekankan peran sentral <strong>inovasi</strong> dan <strong>wirausahawan (entrepreneur)</strong> sebagai pendorong utama pertumbuhan ekonomi. Schumpeter melihat pertumbuhan sebagai proses dinamis yang didorong oleh "destruksi kreatif."</p>
+                    <div class="key-points">
+                        <h4>Peran Inovasi dan Wirausahawan:</h4>
+                        <ul>
+                            <li><strong>Fungsi Utama Wirausahawan:</strong> Memperkenalkan inovasi, yaitu cara baru dalam melakukan sesuatu atau menciptakan sesuatu yang baru.</li>
+                            <li><strong>Definisi Inovasi:</strong> Meliputi pengenalan produk baru, metode produksi baru, pembukaan pasar baru, penemuan sumber bahan baku baru, atau reorganisasi industri.</li>
+                            <li><strong>Dampak Inovasi:</strong> Inovasi meningkatkan efisiensi proses produksi, menciptakan permintaan baru, dan pada akhirnya meningkatkan keuntungan dalam perekonomian. Inovasi juga dapat menyebabkan "destruksi kreatif," di mana teknologi atau metode lama digantikan oleh yang baru dan lebih efisien, mendorong pertumbuhan jangka panjang.</li>
+                        </ul>
+                        <p>Menurut Schumpeter, tanpa inovasi yang terus-menerus, perekonomian akan cenderung stagnan. Wirausahawan adalah agen perubahan yang mengganggu keseimbangan pasar dan mendorong kemajuan.</p>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>d. Teori Pertumbuhan Endogen</summary>
+                <div class="details-content">
+                    <p>Teori pertumbuhan endogen, yang dikembangkan oleh ekonom seperti <strong>Paul Romer</strong> sejak tahun 1990-an, merupakan respons terhadap keterbatasan teori-teori pertumbuhan sebelumnya. Teori ini berpendapat bahwa pertumbuhan ekonomi jangka panjang tidak hanya bergantung pada faktor eksternal (seperti tingkat tabungan atau teknologi yang diberikan), tetapi juga didorong oleh <strong>proses internal</strong> dalam perekonomian itu sendiri.</p>
+                    <div class="key-points">
+                        <h4>Faktor Internal Pendorong Pertumbuhan Endogen:</h4>
+                        <ul>
+                            <li><strong>Sumber Daya Manusia (SDM):</strong> Investasi dalam pendidikan, pelatihan, dan kesehatan masyarakat akan meningkatkan kualitas modal manusia dan produktivitas secara keseluruhan.</li>
+                            <li><strong>Inovasi dan Pengetahuan:</strong> Penelitian dan pengembangan (R&D) yang terus-menerus menciptakan pengetahuan baru dan teknologi yang tidak tunduk pada hukum hasil yang semakin berkurang (decreasing returns to scale). Pengetahuan ini dapat menyebar dan menguntungkan seluruh perekonomian.</li>
+                            <li><strong>Modal Investasi:</strong> Investasi dalam modal fisik dan manusia dapat menghasilkan pengembalian yang meningkat, bukan hanya pengembalian yang menurun, karena adanya efek spillover pengetahuan dan teknologi.</li>
+                        </ul>
+                        <p>Teori pertumbuhan endogen menekankan bahwa kebijakan pemerintah yang mendorong investasi dalam modal manusia, R&D, dan infrastruktur dapat secara langsung memengaruhi tingkat pertumbuhan jangka panjang suatu negara, karena faktor-faktor ini adalah hasil dari keputusan ekonomi, bukan hanya anugerah eksternal.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+    </div>
+</body>
+</html>
+```

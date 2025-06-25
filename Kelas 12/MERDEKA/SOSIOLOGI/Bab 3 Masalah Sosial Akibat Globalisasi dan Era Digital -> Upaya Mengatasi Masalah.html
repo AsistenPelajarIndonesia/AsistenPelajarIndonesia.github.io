@@ -1,0 +1,449 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upaya Mengatasi Masalah Sosial Akibat Globalisasi dan Era Digital - Sosiologi Kelas XII</title>
+    <style>
+        /* Global Styles & Theme Variables */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-canvas);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: var(--bg-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            background-color: var(--accent-green); /* Background color for highlight */
+            color: var(--bg-canvas); /* White text on accent background */
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: inline-block; /* To fit content */
+            margin-bottom: 1rem;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .sub-highlight-box {
+            background-color: #fffde7; /* Light amber */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .callout-box {
+            background-color: #e8f5e9; /* Light green */
+            border-left: 5px solid var(--semantic-success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            font-style: italic;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .exercise-box {
+            background-color: #fbe9e7; /* Very light orange/red for "Latihan" */
+            border-left: 5px solid var(--semantic-error);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+
+        .exercise-box h4 {
+            color: var(--semantic-error);
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            background-color: var(--bg-canvas); /* White background for the title inside the box */
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .infographic-placeholder {
+            background-color: #f5f5f5; /* Lighter border divider */
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-tertiary);
+            position: relative;
+            min-height: 150px; /* To give it some height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed var(--border-divider);
+        }
+        .infographic-placeholder::before {
+            content: "Area Ilustrasi / Infografis";
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+        .infographic-placeholder p {
+            margin: 0;
+            padding: 0;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .infographic-placeholder p:first-of-type {
+            font-weight: bold;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+        .infographic-placeholder p:last-of-type {
+             margin-top: 0.5rem;
+             font-style: normal;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .exercise-box h4 {
+                font-size: 1.1rem;
+            }
+            .highlight-box, .sub-highlight-box, .callout-box, .exercise-box {
+                padding: 1rem;
+            }
+            ul {
+                margin-left: 15px;
+            }
+            li {
+                margin-bottom: 0.4rem;
+            }
+            .infographic-placeholder {
+                min-height: 120px;
+            }
+            .infographic-placeholder::before {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.15rem;
+                padding: 0.3rem 0.7rem;
+            }
+            .exercise-box h4 {
+                font-size: 1rem;
+            }
+            .container {
+                margin: 0.5rem;
+                padding: 0.8rem;
+                border-radius: 4px;
+            }
+            .infographic-placeholder {
+                min-height: 100px;
+            }
+            .infographic-placeholder::before {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C. Upaya Mengatasi Masalah Akibat Globalisasi dan Era Digital</h1>
+
+        <p>Globalisasi dan era digital telah membawa perubahan signifikan dalam berbagai aspek kehidupan masyarakat, seringkali menciptakan masalah sosial baru atau memperparah yang sudah ada. Penting bagi kita untuk memahami dan menerapkan upaya-upaya konkret untuk mengatasi dampak negatif ini, agar masyarakat dapat beradaptasi dan berkembang secara positif. Berikut adalah beberapa strategi utama yang dapat diimplementasikan:</p>
+
+        <section id="nasionalisme">
+            <h3>1. Memperkuat Nasionalisme</h3>
+            <p>Memperkuat nasionalisme adalah pondasi utama dalam menghadapi gelombang globalisasi. Nasionalisme yang kuat akan menjaga identitas dan integritas bangsa, mencegah disrupsi budaya, dan memperkuat persatuan di tengah keberagaman.</p>
+
+            <div class="infographic-placeholder">
+                <p>Gambar 3.13 Tugu Proklamasi</p>
+                <p style="font-size: 0.8em; color: var(--text-tertiary);">Sumber: Kemendikbudristek/Arief Firdaus, 2022</p>
+                <p>Ilustrasi Tugu Proklamasi sebagai simbol kebangkitan dan kemandirian bangsa Indonesia, mengingatkan akan pentingnya nilai-nilai perjuangan dan kemerdekaan dari penjajahan asing. Ini adalah representasi fisik dari semangat nasionalisme.</p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Indonesia diberkahi dengan keragaman bahasa, budaya, suku, dan agama.</strong> Keragaman ini, jika disikapi dengan bijak, dapat menjadi kekuatan dahsyat dalam menghadapi tantangan global. Namun, tanpa penanaman nasionalisme yang kuat, keragaman justru berpotensi menimbulkan perpecahan.</p>
+                <p>Beberapa cara praktis untuk memperkuat rasa nasionalisme, terutama bagi generasi muda, antara lain:</p>
+                <ul>
+                    <li><strong>Melakukan refleksi sejarah:</strong> Mengunjungi tempat bersejarah, mengadakan diskusi kebangsaan, dan memperkaya wawasan melalui buku-buku tentang perjuangan pahlawan bangsa.</li>
+                    <li><strong>Mengikuti upacara bendera:</strong> Berpartisipasi secara khidmat dalam upacara bendera sebagai bentuk penghormatan dan kecintaan pada tanah air.</li>
+                    <li><strong>Mengenal budaya bangsa:</strong> Menggali dan mengapresiasi kekayaan budaya Indonesia melalui kunjungan ke museum, festival budaya, atau eksplorasi tempat-tempat bersejarah.</li>
+                    <li><strong>Mengerjakan Proyek Penguatan Profil Pelajar Pancasila:</strong> Melibatkan diri secara serius dalam proyek yang mengedepankan implementasi nilai-nilai Pancasila dalam kehidupan sehari-hari.</li>
+                    <li><strong>Menggunakan produk asli buatan Indonesia:</strong> Memprioritaskan dan bangga menggunakan produk dalam negeri. Penting untuk selalu memeriksa label produk untuk memastikan keasliannya.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="kecakapan-sosial">
+            <h3>2. Mengembangkan Kecakapan Sosial</h3>
+            <p>Era globalisasi dan digital menuntut lebih dari sekadar kecerdasan kognitif; masyarakat juga harus adaptif, kreatif, dan inovatif. Selain itu, kemampuan bersikap terbuka, menjalin kerja sama, dan memiliki kepedulian sosial merupakan kecakapan penting. Generasi muda diharapkan mampu menguasai kecakapan-kecakapan sosial ini.</p>
+            <p>Berikut adalah beberapa cara untuk mengembangkan kecakapan sosial:</p>
+            <ul>
+                <li><strong>Gemar membaca dan mengakses informasi:</strong> Meningkatkan literasi adalah kunci untuk memahami dunia dan berinteraksi secara efektif.</li>
+                <li><strong>Mengikuti kursus atau pelatihan:</strong> Mengembangkan bakat dan minat melalui pendidikan non-formal akan memperkaya keterampilan sosial dan personal.</li>
+                <li><strong>Mengikuti organisasi atau ekstrakurikuler positif:</strong> Keterlibatan dalam aktivitas kelompok melatih jiwa kepemimpinan, kerja sama, dan kemampuan berinteraksi.</li>
+            </ul>
+
+            <div class="exercise-box">
+                <h4>Latihan 3.5: Berlatih Public Speaking</h4>
+                <p>Dalam kelompok kecil (3–4 peserta didik), identifikasikan pengalaman atau praktik pribadi kalian terkait penguatan nasionalisme atau pengembangan kecakapan sosial. Tuangkan ide-ide utama dalam bentuk poin-poin pokok pikiran. Kemudian, kembangkan poin-poin tersebut menjadi uraian lengkap untuk dipresentasikan di kelas. Latihan ini bertujuan untuk menginspirasi teman-teman sekelas dan mengasah kemampuan berbicara di depan umum.</p>
+            </div>
+        </section>
+
+        <section id="kearifan-lokal">
+            <h3>3. Memelihara Kearifan Lokal</h3>
+            <p>Dampak globalisasi dan digitalisasi seringkali menggeser gaya hidup tradisional masyarakat ke arah modern, mengikis nilai-nilai kearifan lokal. Penting untuk menjaga dan melestarikan kearifan lokal agar tidak tergerus zaman.</p>
+            <p><strong>Apa itu kearifan lokal?</strong> Kearifan lokal (<em>local wisdom</em>) adalah bentuk kebijaksanaan yang dimiliki masyarakat untuk memenuhi kebutuhan dan mengatasi persoalan hidup berdasarkan nilai-nilai yang mereka anut. Contohnya, masyarakat Indonesia secara turun-temurun memiliki pengetahuan lokal dalam membangun rumah tahan gempa.</p>
+
+            <div class="infographic-placeholder">
+                <p>Gambar 3.14 Rumah adat tahan gempa</p>
+                <p style="font-size: 0.8em; color: var(--text-tertiary);">Sumber: Indonesiabaik.id/Chyntia Devina, 2022</p>
+                <p>Infografis ini menampilkan contoh kearifan lokal Indonesia dalam bentuk desain rumah adat yang terbukti tahan terhadap gempa. Ini menunjukkan bagaimana masyarakat kita sejak lama telah memiliki solusi adaptif terhadap tantangan alam.</p>
+            </div>
+
+            <p>Kearifan lokal tidak hanya berbentuk fisik seperti rumah adat, tetapi juga nonfisik atau tak benda, seperti ritual adat, norma, atau sistem nilai yang dipegang teguh masyarakat. Kebanyakan kearifan lokal ini menuntun masyarakat untuk menjaga kelestarian alam dan lingkungan. Melestarikan kearifan lokal adalah upaya menjaga warisan budaya bangsa.</p>
+        </section>
+
+        <section id="kelestarian-lingkungan">
+            <h3>4. Memelihara Kelestarian Lingkungan</h3>
+            <p>Menjaga kelestarian lingkungan adalah tanggung jawab setiap individu, terutama di tengah isu-isu lingkungan global. Ini adalah upaya nyata dalam menghadapi dampak negatif globalisasi.</p>
+
+            <div class="infographic-placeholder">
+                <p>Gambar 3.15 Berbagai tanaman hias</p>
+                <p style="font-size: 0.8em; color: var(--text-tertiary);">Sumber: Kemdikbudristek/Joan Hesti Gita P., 2019</p>
+                <p>Ilustrasi tanaman hias yang menunjukkan bahwa memelihara tanaman tidak hanya mempercantik lingkungan tetapi juga berkontribusi pada produksi oksigen, esensial bagi kehidupan. Kecintaan pada lingkungan dimulai dari hal kecil.</p>
+            </div>
+
+            <p>Selain penghijauan, upaya pelestarian lingkungan dapat dilakukan melalui berbagai kebiasaan sehari-hari: menghemat energi, mengurangi penggunaan air, menggunakan transportasi umum, mengelola sampah dengan baik, dan tidak membuang-buang makanan.</p>
+            <p>Indonesia adalah salah satu negara penghasil sampah yang cukup tinggi. Oleh karena itu, pengelolaan sampah menjadi sangat krusial. Masyarakat didorong untuk menerapkan <strong>Prinsip 5R</strong>:</p>
+
+            <div class="infographic-placeholder">
+                <p>Gambar 3.16 Prinsip 5R</p>
+                <p style="font-size: 0.8em; color: var(--text-tertiary);">Sumber: Indonesiabaik.id/Yuli Nurhanisah, 2019</p>
+                <p><strong>Prinsip 5R untuk Menciptakan Indonesia Bersih (sejalan dengan konsep Circular Economy dan Making Indonesia 4.0):</strong></p>
+                <ul>
+                    <li><strong>Reduce:</strong> Mengurangi penggunaan material mentah dari alam.</li>
+                    <li><strong>Reuse:</strong> Mengoptimalkan penggunaan kembali material atau barang yang masih bisa dipakai.</li>
+                    <li><strong>Recycle:</strong> Mendaur ulang material untuk menghasilkan produk baru.</li>
+                    <li><strong>Recovery:</strong> Proses pengambilan kembali energi atau material dari sampah.</li>
+                    <li><strong>Repair:</strong> Melakukan perbaikan barang rusak agar dapat digunakan kembali, mengurangi limbah.</li>
+                </ul>
+            </div>
+
+            <div class="callout-box">
+                <h4>Pengayaan: Pentingnya Menjaga Hutan</h4>
+                <p>Menjaga kelestarian hutan adalah salah satu upaya vital dalam pelestarian lingkungan. Hutan adalah "paru-paru dunia" yang berperan besar dalam menjaga iklim dan keanekaragaman hayati. Isu-isu seperti pemanasan global, cuaca ekstrem, dan kemarau berkepanjangan menjadikan pelestarian hutan sebagai prioritas. Contoh nyata peran masyarakat dalam menjaga hutan dapat dilihat dari konsep Hutan Adat Kajang, yang menunjukkan bagaimana nilai-nilai tradisional dapat selaras dengan upaya konservasi.</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Latihan 3.6: Kampanye Peduli Lingkungan</h4>
+                <p>Identifikasi contoh-contoh praktik pelestarian lingkungan dalam kehidupan sehari-hari kalian. Bentuklah kelompok (4-5 peserta didik) dan rancang kampanye peduli lingkungan. Kampanye ini dapat berupa poster digital atau video singkat. Presentasikan hasil kampanye kelompok kalian di kelas, serta jelaskan manfaat yang didapat dari kebiasaan baik tersebut.</p>
+            </div>
+        </section>
+
+        <section id="kewirausahaan-sosial">
+            <h3>5. Membangun Kewirausahaan Sosial</h3>
+            <p>Kewirausahaan adalah kemampuan kreatif untuk mengembangkan potensi menjadi peluang bisnis. Namun, <strong>kewirausahaan sosial</strong> memiliki dimensi tambahan: tidak hanya berorientasi pada keuntungan finansial, tetapi juga pada penciptaan dampak positif bagi masyarakat dan lingkungan.</p>
+
+            <div class="infographic-placeholder">
+                <p>Gambar 3.17 Ilustrasi pengembangan start-up</p>
+                <p style="font-size: 0.8em; color: var(--text-tertiary);">Sumber: Kemendikbudristek/Arief Firdaus, 2022</p>
+                <p>Ilustrasi yang menggambarkan tahapan dan semangat "Start Up" dengan elemen ide, rencana, dan aksi, merefleksikan proses kreatif dalam berwirausaha.</p>
+            </div>
+
+            <div class="sub-highlight-box">
+                <p>Era digital mempermudah siapa saja untuk menjadi wirausaha muda. Model bisnis tidak lagi terpaku pada kepemilikan toko fisik; keberadaan <strong>marketplace online</strong> memungkinkan penghubungan langsung antara penjual dan pembeli. Bahkan, memulai usaha tidak selalu memerlukan produksi barang sendiri. Konsep <strong>reseller</strong> dan <strong>dropshipper</strong> menjadi pilihan menarik.</p>
+                <ul>
+                    <li><strong>Reseller:</strong> Membeli produk dalam jumlah tertentu dari produsen atau distributor, kemudian menjualnya kembali kepada konsumen.</li>
+                    <li><strong>Dropshipper:</strong> Menjual produk tanpa perlu menyimpan stok atau memiliki modal besar. Dropshipper hanya menjadi perantara, mengandalkan pemasaran online.</li>
+                </ul>
+                <p>Kecakapan di bidang fotografi, <em>video editing</em>, desain grafis, dan pemanfaatan teknologi informasi sangat krusial dalam pemasaran produk secara online.</p>
+                <p>Untuk mengembangkan jiwa wirausaha, mulailah dengan memikirkan <strong>ide (idea)</strong>, membuat <strong>perencanaan (plan)</strong>, dan melakukan <strong>pelaksanaan (action)</strong> dalam skala kecil. Identifikasi kebutuhan masyarakat yang belum terpenuhi di lingkungan sekitar, pertimbangkan modal, potensi keuntungan, dan risiko kerugian. Rencanakan seluruh proses dari pengadaan hingga pemasaran. Lakukan evaluasi berkala dan jangan mudah menyerah, teruslah berinovasi.</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Latihan 3.7: Berbagi Ide Bisnis</h4>
+                <p>Dalam kelompok kecil (3–4 orang), identifikasi peluang bisnis sederhana yang relevan bagi pelajar. Lakukan riset melalui internet atau wawancara dengan pelaku usaha di lingkungan sekitar. Presentasikan ide bisnis yang kalian pilih beserta alasannya secara santun di depan kelas.</p>
+            </div>
+        </section>
+
+        <section id="kesehatan-fisik-mental">
+            <h3>6. Memelihara Kesehatan Fisik dan Mental</h3>
+            <p>Gaya hidup serba instan di masyarakat modern membawa risiko gangguan kesehatan fisik dan mental. Aktivitas berlebihan di dunia digital khususnya dapat memperparah kondisi ini.</p>
+
+            <div class="infographic-placeholder">
+                <p>Gambar 3.18 Ilustrasi aktivitas masyarakat di dunia maya</p>
+                <p style="font-size: 0.8em; color: var(--text-tertiary);">Sumber: Kemendikbudristek/Arief Firdaus, 2022</p>
+                <p>Ilustrasi ini menunjukkan seorang individu yang tenggelam dalam berbagai aktivitas digital seperti bermain game, menonton film, berbelanja online, dan paparan konten negatif, mencerminkan risiko kelelahan digital (digital fatigue).</p>
+            </div>
+
+            <div class="highlight-box">
+                <p>Kemudahan akses digital dapat berdampak negatif jika digunakan secara berlebihan, memicu <strong>digital fatigue</strong>—kelelahan fisik dan mental akibat intensitas tinggi penggunaan media digital. Ini dapat menyebabkan berbagai masalah kesehatan fisik dan mental (Munawaroh, 2021).</p>
+                <p>Dampak fisik meliputi: gangguan mata akibat menatap gawai terlalu lama, penurunan fungsi otot dan ginjal akibat duduk berlebihan, serta peningkatan risiko obesitas, jantung, gula, dan kolesterol karena konsumsi <em>junk food</em> yang berlebihan.</p>
+            </div>
+
+            <div class="infographic-placeholder">
+                <p>Gambar 3.19 Tips mengatasi stres</p>
+                <p style="font-size: 0.8em; color: var(--text-tertiary);">Sumber: Kemenkes RI, 2018</p>
+                <p><strong>Infografis Tips Mengatasi Stres & Mencapai Jiwa yang Sehat (Program GERMAS):</strong></p>
+                <ul>
+                    <li><strong>Bicarakan keluhan:</strong> Berbagi masalah dengan orang terpercaya.</li>
+                    <li><strong>Lakukan kegiatan positif:</strong> Terlibat dalam aktivitas sesuai minat dan kemampuan.</li>
+                    <li><strong>Kembangkan hobi:</strong> Salurkan energi pada kegiatan yang bermanfaat dan menyenangkan.</li>
+                    <li><strong>Dekatkan diri pada Tuhan:</strong> Meningkatkan ibadah dan spiritualitas.</li>
+                    <li><strong>Berpikir positif:</strong> Mengelola pikiran agar tetap optimis dan resilient.</li>
+                    <li><strong>Relaksasi:</strong> Melakukan teknik menenangkan pikiran.</li>
+                    <li><strong>Jaga kesehatan fisik:</strong> Olahraga teratur, tidur cukup, konsumsi makanan bergizi seimbang, dan terapkan perilaku bersih dan sehat.</li>
+                </ul>
+            </div>
+
+            <div class="sub-highlight-box">
+                <p>Aktivitas digital yang berlebihan juga memengaruhi kesehatan mental, seperti:</p>
+                <ul>
+                    <li><strong>Nomophobia:</strong> Rasa cemas atau takut berlebihan ketika tidak memegang telepon seluler.</li>
+                    <li><strong>Gaming disorder:</strong> Kecanduan bermain gim yang mengganggu fungsi kehidupan sehari-hari.</li>
+                    <li><strong>Perilaku schizoid atau antisosial.</strong></li>
+                </ul>
+                <p>Selain itu, paparan konten negatif seperti ujaran kebencian, pencemaran nama baik, atau pornografi di media sosial dapat menyebabkan stres berat hingga depresi, serta berpotensi melanggar hukum.</p>
+                <p>Penting untuk memelihara kesehatan fisik dan mental sejak dini. Terapkan gaya hidup sehat: konsumsi makanan bergizi, olahraga teratur, dan batasi waktu penggunaan gawai (selingi dengan aktivitas lain setiap 45 menit). Manfaatkan waktu berkualitas bersama keluarga dan jangan ragu berbagi keluh kesah dengan orang tua sebagai sahabat sejati. Pilih teman dengan bijak untuk menghindari pergaulan bebas.</p>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Tugas 3.3: Menulis Jurnal Ilmiah</h4>
+                <p>Dengan bekal pengetahuan tentang metode penelitian sosial, lakukan penelitian mengenai salah satu masalah sosial akibat globalisasi dan era digital di lingkungan sekitar kalian. Tugas ini dikerjakan secara berkelompok (4–5 peserta didik).</p>
+                <p>Penelitian dapat menggunakan metode kualitatif (wawancara, observasi) atau kuantitatif (survei, angket). Hasil penelitian kemudian disusun dalam bentuk jurnal ilmiah dengan komponen:</p>
+                <ol>
+                    <li>Judul.</li>
+                    <li>Identitas penulis.</li>
+                    <li>Abstrak (sekitar 150 kata).</li>
+                    <li>Pendahuluan (sekitar 1000 kata).</li>
+                    <li>Metode (150–200 kata).</li>
+                    <li>Hasil dan pembahasan (sekitar 1000 kata).</li>
+                    <li>Kesimpulan dan saran (sekitar 500 kata).</li>
+                </ol>
+                <p>Mintalah bimbingan dari guru pada setiap tahapan, mulai dari ide/topik, pengumpulan data, pengolahan data, hingga penulisan akhir.</p>
+            </div>
+        </section>
+
+        <section id="rangkuman">
+            <h2>Rangkuman</h2>
+            <div class="callout-box">
+                <p>Dampak negatif globalisasi dan perkembangan dunia digital yang tidak tertangani dapat memicu masalah sosial, baik di skala lokal maupun internasional. Fenomena ini seringkali disebabkan oleh perubahan dan transformasi sosial yang radikal, menyebabkan dominasi, ketidakmampuan adaptasi, dan krisis identitas.</p>
+                <p>Berbagai masalah sosial yang muncul di era ini meliputi neokolonialisme (dominasi gaya baru), ketimpangan budaya, konsumerisme, hedonisme, kerusakan lingkungan, dan kejahatan siber. Untuk mengatasi masalah-masalah ini, diperlukan pendekatan multidimensional yang mencakup:</p>
+                <ul>
+                    <li><strong>Memperkuat nasionalisme:</strong> Menjaga identitas dan persatuan bangsa.</li>
+                    <li><strong>Mengembangkan kecakapan sosial:</strong> Meningkatkan kemampuan adaptasi, kreativitas, dan kerja sama.</li>
+                    <li><strong>Memelihara kearifan lokal:</strong> Melestarikan nilai-nilai tradisional yang relevan dan bijaksana.</li>
+                    <li><strong>Menjaga lingkungan:</strong> Menerapkan praktik berkelanjutan dan bertanggung jawab.</li>
+                    <li><strong>Membangun kewirausahaan sosial:</strong> Menciptakan peluang bisnis yang berdampak positif bagi masyarakat.</li>
+                    <li><strong>Memelihara kesehatan fisik dan mental:</strong> Mengelola gaya hidup di tengah tekanan digital untuk kesejahteraan individu.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+```

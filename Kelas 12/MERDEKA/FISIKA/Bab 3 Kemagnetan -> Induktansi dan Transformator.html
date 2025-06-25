@@ -1,0 +1,409 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Induktansi dan Transformator - Bab 3 Kemagnetan</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 25px;
+            color: var(--primary-blue);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        .concept-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .formula-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: inline-block;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: 2px dashed white;
+        }
+
+        .formula-box code {
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 5px 8px;
+            border-radius: 4px;
+        }
+
+        .interactive-element {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .interactive-element:hover {
+            background-color: var(--accent-green);
+            color: white;
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .explanation {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: var(--text-tertiary);
+        }
+
+        .code-snippet {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid var(--primary-blue);
+            margin: 15px 0;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .code-snippet code {
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            display: block;
+            white-space: pre;
+        }
+
+        .visual-aid-placeholder {
+            background-color: var(--border-divider);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .sub-section {
+            margin-top: 20px;
+            margin-left: 20px;
+            border-left: 3px solid var(--primary-blue);
+            padding-left: 15px;
+        }
+
+        .important-note {
+            background-color: var(--semantic-warning);
+            color: var(--text-primary);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid var(--semantic-error);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .formula-box {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .section, .sub-section {
+                padding: 15px;
+            }
+
+            .formula-box {
+                display: block;
+                width: fit-content;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Kemagnetan - Induktansi dan Transformator</h1>
+
+        <div class="section">
+            <h2>Pengantar: Transformator (Trafo) - Jantung Sistem Kelistrikan</h2>
+            <p>Di era modern ini, energi listrik adalah urat nadi kehidupan. Namun, bagaimana listrik dari pembangkit yang jauh dapat sampai ke rumah kita dengan aman dan efisien? Di sinilah peran krusial <strong>Transformator (Trafo)</strong> hadir sebagai pahlawan tak terlihat dalam sistem transmisi energi listrik. Trafo adalah alat yang sangat penting, menjembatani celah antara tegangan tinggi di jalur transmisi jarak jauh dengan tegangan yang aman dan dapat digunakan di rumah-rumah kita.</p>
+            
+            <div class="concept-box">
+                Transformator (Trafo) adalah perangkat yang mengatur tegangan listrik, menaikkannya atau menurunkannya, untuk efisiensi transmisi dan penggunaan.
+            </div>
+
+            <p>Bayangkan ini: Pembangkit listrik menghasilkan daya dalam jumlah besar, seringkali pada tegangan yang sangat tinggi (misalnya, 6-25 kV). Untuk mengirimkan daya ini melalui jarak yang sangat jauh tanpa kehilangan banyak energi akibat hambatan kawat, tegangan perlu dinaikkan secara drastis (menjadi 70-150 kV untuk tegangan tinggi, bahkan hingga 500 kV untuk Tegangan Ekstra Tinggi/TET).</p>
+            <p>Di sinilah <strong>Trafo Step-Up</strong> bekerja. Trafo ini menaikkan tegangan, memungkinkan listrik bergerak lebih cepat dan lebih efisien melintasi kabel-kabel raksasa. Setelah listrik mencapai daerah distribusi yang lebih dekat dengan konsumen, diperlukan langkah sebaliknya. <strong>Trafo Step-Down</strong> bertugas menurunkan tegangan secara bertahap. Mulai dari tegangan tinggi, diturunkan menjadi tegangan yang sesuai untuk industri (misalnya, 20 kV), dan akhirnya diturunkan ke tegangan yang aman untuk peralatan rumah tangga kita (biasanya 230 V).</p>
+
+            <div class="visual-aid-placeholder">
+                *(Ilustrasi skema sistem transmisi listrik dari pembangkit, melalui trafo step-up, jalur transmisi, lalu trafo step-down di area distribusi untuk industri dan rumah tangga.)*
+            </div>
+
+            <h3>Prinsip Kerja Trafo: Induksi Elektromagnetik</h3>
+            <p>Inti dari cara kerja trafo adalah fenomena menakjubkan yang dikenal sebagai <strong>Induksi Elektromagnetik</strong>. Ketika arus listrik mengalir melalui sebuah kumparan kawat, ia menciptakan medan magnet di sekitarnya. Jika medan magnet ini berubah, ia dapat menginduksi (menciptakan) arus listrik di kumparan lain yang berdekatan, bahkan tanpa sentuhan fisik!</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Induktansi: Kekuatan Medan Magnet yang Berubah</h2>
+
+            <p>Mari kita selami lebih dalam bagaimana induksi elektromagnetik ini bekerja dalam konteks trafo. Trafo memiliki dua kumparan utama: kumparan primer (tempat listrik masuk) dan kumparan sekunder (tempat listrik keluar). Kedua kumparan ini biasanya dililitkan pada inti besi untuk memperkuat medan magnet.</p>
+
+            <div class="sub-section">
+                <h3>Induksi Bersama (Mutual Induction)</h3>
+                <p>Ketika sakelar dihubungkan pada kumparan primer, arus listrik mulai mengalir. Arus yang berubah ini menciptakan medan magnet yang juga berubah di dalam kumparan primer. Medan magnet yang berubah ini kemudian menembus kumparan sekunder. Sesuai dengan prinsip induksi Faraday, perubahan medan magnet yang menembus kumparan sekunder akan menginduksi GGL (Gaya Gerak Listrik) atau tegangan pada kumparan sekunder tersebut.</p>
+
+                <div class="visual-aid-placeholder">
+                    *(Ilustrasi sederhana: kumparan primer terhubung ke sumber listrik dan sakelar, kumparan sekunder terhubung ke galvanometer. Ketika sakelar ditutup/dibuka, jarum galvanometer bergerak.)*
+                </div>
+
+                <p>Penting untuk dicatat bahwa GGL induksi ini hanya terjadi sesaat ketika arus dalam kumparan primer berubah (saat sakelar dihidupkan atau dimatikan). Jika arus sudah konstan, tidak ada lagi perubahan medan magnet, sehingga GGL induksi akan nol.</p>
+
+                <p>Hubungan antara perubahan arus pada kumparan primer dengan GGL yang terinduksi pada kumparan sekunder dijelaskan oleh <strong>Induktansi Bersama (M)</strong>. Semakin besar nilai M, semakin efektif perubahan arus di satu kumparan menginduksi GGL di kumparan lain.</p>
+
+                <div class="formula-box">
+                    <code>M = (N₂ * Φ₂₁) / I₁</code>
+                    <div class="explanation">
+                        Di mana: M = Induktansi Bersama (Henry), N₂ = jumlah lilitan kumparan sekunder, Φ₂₁ = fluks magnet total yang menembus kumparan sekunder akibat arus primer (Weber), I₁ = arus listrik pada kumparan primer (Ampere).
+                    </div>
+                </div>
+
+                <p>Besar GGL induksi pada kumparan kedua (ε₂) akibat perubahan arus (ΔI₁) pada kumparan pertama dapat dinyatakan dengan:</p>
+
+                <div class="formula-box">
+                    <code>ε₂ = -M * (ΔI₁ / Δt)</code>
+                    <div class="explanation">
+                        Di mana: ε₂ = GGL induksi pada kumparan sekunder (Volt), M = Induktansi Bersama (Henry), ΔI₁/Δt = laju perubahan arus pada kumparan primer (Ampere/detik). Tanda negatif menunjukkan arah GGL induksi berlawanan dengan perubahan arus penyebabnya (Hukum Lenz).
+                    </div>
+                </div>
+                <p>Perubahan arus ini tidak hanya terjadi saat rangkaian dihidupkan/dimatikan, tetapi juga terjadi secara alami pada <strong>Arus Bolak-Balik (AC)</strong>, yang akan kita bahas lebih lanjut di bab berikutnya.</p>
+            </div>
+
+            <div class="sub-section">
+                <h3>Induktansi Diri (Self-Induction)</h3>
+                <p>Konsep induktansi tidak hanya berlaku antara dua kumparan, tetapi juga pada satu kumparan itu sendiri. Ketika arus listrik mengalir melalui sebuah kumparan, ia tidak hanya menciptakan medan magnet di luar kumparan, tetapi juga menciptakan medan magnet di dalam kumparan itu sendiri yang menghasilkan fluks magnet. Perubahan arus dalam kumparan ini juga akan mengubah fluks magnet yang melaluinya sendiri, sehingga menginduksi GGL pada kumparan itu sendiri. Fenomena ini disebut <strong>Induktansi Diri</strong>.</p>
+                <p>Besar fluks magnet yang dihasilkan oleh kumparan berbanding lurus dengan arus yang mengalir melaluinya. Hubungan ini didefinisikan oleh besaran <strong>Induktansi Diri (L)</strong>.</p>
+
+                <div class="formula-box">
+                    <code>L = (N * Φ) / I</code>
+                    <div class="explanation">
+                        Di mana: L = Induktansi Diri (Henry), N = jumlah lilitan kumparan, Φ = fluks magnet total yang menembus kumparan (Weber), I = arus listrik yang mengalir dalam kumparan (Ampere).
+                    </div>
+                </div>
+
+                <p>Perubahan arus listrik dalam kumparan (baik karena dihidupkan/dimatikan atau karena sifat AC) menyebabkan perubahan fluks magnet di dalam kumparan itu sendiri. Perubahan fluks magnet ini kemudian menghasilkan GGL induksi diri.</p>
+
+                <div class="formula-box">
+                    <code>ε = -N * (ΔΦ / Δt) = -L * (ΔI / Δt)</code>
+                    <div class="explanation">
+                        Di mana: ε = GGL induksi diri (Volt), N = jumlah lilitan, ΔΦ/Δt = laju perubahan fluks magnet, L = Induktansi Diri (Henry), ΔI/Δt = laju perubahan arus listrik (Ampere/detik).
+                    </div>
+                </div>
+                <p>Induktansi diri ini berperan dalam "menahan" perubahan arus dalam kumparan, sebuah konsep yang penting dalam analisis rangkaian AC.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Transformator: Mengatur Tegangan untuk Efisiensi</h2>
+
+            <p>Sekarang kita kembali ke jantung sistem transmisi: Transformator (Trafo). Seperti yang telah disinggung, trafo ada dua jenis utama:</p>
+            <ul>
+                <li><strong>Trafo Step-Up:</strong> Menaikkan tegangan.</li>
+                <li><strong>Trafo Step-Down:</strong> Menurunkan tegangan.</li>
+            </ul>
+
+            <div class="visual-aid-placeholder">
+                *(Ilustrasi perbandingan skema trafo step down dan step up, menunjukkan jumlah lilitan kumparan primer dan sekunder. Step-down: N_primer > N_sekunder. Step-up: N_primer < N_sekunder.)*
+            </div>
+
+            <p>Perbedaan utama antara kedua jenis trafo ini terletak pada jumlah lilitan pada kumparan primer (Nₚ) dan kumparan sekunder (Nₛ).</p>
+            <ul>
+                <li>Pada <strong>Trafo Step-Down</strong>, jumlah lilitan kumparan primer (Nₚ) lebih besar daripada jumlah lilitan kumparan sekunder (Nₛ).</li>
+                <li>Pada <strong>Trafo Step-Up</strong>, jumlah lilitan kumparan primer (Nₚ) lebih kecil daripada jumlah lilitan kumparan sekunder (Nₛ).</li>
+            </ul>
+
+            <p>Perbandingan GGL induksi pada kumparan primer (εₚ) dan sekunder (εₛ) berbanding lurus dengan perbandingan jumlah lilitan kedua kumparan tersebut:</p>
+
+            <div class="formula-box">
+                <code>εₚ / εₛ = Nₚ / Nₛ</code>
+            </div>
+
+            <p>Dan karena GGL yang terinduksi ini sebanding dengan tegangan yang diberikan (dalam kondisi ideal), kita dapat menulis persamaan umum untuk transformator:</p>
+
+            <div class="formula-box">
+                <code>Vₚ / Vₛ = Nₚ / Nₛ</code>
+                <div class="explanation">
+                    Di mana: Vₚ = Tegangan primer (input) (Volt), Vₛ = Tegangan sekunder (output) (Volt), Nₚ = Jumlah lilitan kumparan primer, Nₛ = Jumlah lilitan kumparan sekunder.
+                </div>
+            </div>
+
+            <h3>Efisiensi Trafo</h3>
+            <p>Di dunia nyata, tidak ada mesin yang sempurna 100% efisien. Saat arus listrik mengalir melalui kumparan trafo, sebagian energi selalu diubah menjadi panas akibat hambatan kawat. Energi yang terbuang dalam bentuk panas ini disebut <strong>Daya Disipasi</strong>.</p>
+            <p>Efisiensi trafo (η) adalah perbandingan antara daya keluaran (daya pada kumparan sekunder, Pₛ) dengan daya masukan (daya pada kumparan primer, Pₚ). Karena P = V * I, maka efisiensi dapat dihitung sebagai:</p>
+
+            <div class="formula-box">
+                <code>η = (Pₛ / Pₚ) * 100% = (Vₛ * Iₛ) / (Vₚ * Iₚ) * 100%</code>
+                <div class="explanation">
+                    Di mana: η = Efisiensi trafo, Vₛ = Tegangan sekunder, Iₛ = Arus sekunder, Vₚ = Tegangan primer, Iₚ = Arus primer.
+                </div>
+            </div>
+
+            <p>Trafo yang baik memiliki efisiensi yang sangat tinggi, seringkali di atas 95%, karena desainnya yang meminimalkan kehilangan daya.</p>
+
+            <div class="interactive-element">
+                Coba Pikirkan: Mengapa menaikkan tegangan untuk transmisi jarak jauh sangat penting untuk efisiensi?
+            </div>
+
+            <div class="important-note">
+                <strong>Ingat!</strong> Pada trafo ideal (tanpa kerugian energi), daya input sama dengan daya output (Pₚ = Pₛ). Dalam kasus ini, berlaku hubungan terbalik antara tegangan dan arus: <code>Vₚ / Vₛ = Iₛ / Iₚ</code>.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Aplikasi dan Eksperimen</h2>
+            <p>Konsep induktansi dan transformator dapat diamati dan dipelajari melalui eksperimen sederhana:</p>
+
+            <div class="visual-aid-placeholder">
+                *(Deskripsi aktivitas eksperimen: Merangkai trafo step-down dengan catu daya AC dan multimeter untuk mengukur tegangan input dan output. Mengubah tegangan catu daya dan mencatat data untuk menghitung efisiensi.)*
+            </div>
+
+            <p>Dengan melakukan eksperimen seperti Aktivitas 3.7, kalian dapat secara langsung mengamati bagaimana tegangan diubah oleh trafo dan menghitung seberapa efisien proses perubahan tegangan tersebut.</p>
+        </div>
+
+        <div class="section">
+            <h2>Proyek: Merancang Solusi Berbasis Induksi Magnetik</h2>
+            <p>Bab ini membekali kalian dengan pemahaman dasar tentang induksi magnetik dan penerapannya. Gunakan pengetahuan ini untuk proyek kreatif:</p>
+            <ul>
+                <li><strong>Prototipe Pembangkit Listrik Energi Terbarukan:</strong> Rancang pembangkit listrik mini yang memanfaatkan prinsip induksi (misalnya, kincir air mini yang memutar kumparan dalam medan magnet).</li>
+                <li><strong>Perangkat Berbasis Motor Listrik:</strong> Buat alat sederhana yang memanfaatkan prinsip kerja motor listrik atau dinamo.</li>
+                <li><strong>Mobil Listrik Mainan:</strong> Rancang dan buat mobil mainan yang digerakkan oleh motor listrik yang ditenagai oleh induksi (solenoida).</li>
+            </ul>
+            <p>Pilihlah tema yang menarik dan buatlah produk inovatif yang dapat mengatasi masalah di lingkungan sekitar, serta laporkan dalam bentuk karya tulis ilmiah.</p>
+        </div>
+
+        <div class="section">
+            <h2>Rangkuman Kunci</h2>
+            <ol>
+                <li><strong>Medan Magnet:</strong> Daerah pengaruh magnet atau muatan bergerak yang menghasilkan gaya.</li>
+                <li><strong>Gaya Magnetik pada Muatan Bergerak (Lorentz):</strong> <code>F = qvB</code> (ketika tegak lurus).</li>
+                <li><strong>Gaya Magnetik pada Kawat Berarus:</strong> Timbul pada kawat dalam medan magnet.</li>
+                <li><strong>Gaya Magnetik pada Kawat Lurus (Ampere):</strong> <code>F = iLB</code> (ketika tegak lurus).</li>
+                <li><strong>Medan Magnet Kawat Lurus Panjang:</strong> <code>B = (μ₀I) / (2πr)</code>.</li>
+                <li><strong>Medan Magnet Pusat Lingkaran Berarus:</strong> <code>B = (μ₀NI) / (2πr)</code>.</li>
+                <li><strong>Medan Magnet Pusat Solenoida:</strong> <code>B = μ₀NI / L</code>.</li>
+                <li><strong>Gerak Muatan dalam Medan Magnet Tegak Lurus:</strong> Lintasan lingkaran.</li>
+                <li><strong>Induksi Elektromagnetik:</strong> Perubahan fluks magnet menghasilkan GGL induksi.</li>
+                <li><strong>Hukum Lenz:</strong> Arah GGL induksi selalu melawan perubahan fluks penyebabnya.</li>
+                <li><strong>Besar GGL Induksi:</strong> <code>ε = -N * (ΔΦ / Δt)</code>.</li>
+                <li><strong>Induktansi Bersama (M) dan Diri (L):</strong> Ukuran kemampuan kumparan menginduksi GGL.</li>
+                <li><strong>Transformator:</strong> Alat pengatur tegangan listrik berdasarkan perbandingan lilitan kumparan (<code>Vₚ/Vₛ = Nₚ/Nₛ</code>).</li>
+                <li><strong>Efisiensi Trafo:</strong> Perbandingan daya output dan input (<code>η = (Pₛ/Pₚ) * 100%</code>).</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
+```

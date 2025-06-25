@@ -1,0 +1,328 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faktor Pendorong dan Penghambat Perdagangan Internasional - Ekonomi Kelas XII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles for Body and General Elements */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: var(--primary-blue);
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-divider);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            border-left: 5px solid var(--primary-blue); /* Left border as an accent */
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-primary);
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+            font-size: 1.1em;
+        }
+
+        /* Custom List Styling for Pendorong and Penghambat */
+        ol {
+            list-style: none; /* Remove default browser numbering */
+            padding: 0;
+            margin: 0;
+            counter-reset: list-item; /* Initialize counter for custom numbering */
+        }
+
+        ol li {
+            background-color: #f9f9f9; /* Light background for each list item */
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            margin-bottom: 15px;
+            padding: 20px;
+            position: relative; /* Needed for positioning the ::before pseudo-element */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        ol li:hover {
+            transform: translateY(-3px); /* Slightly lift the item on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Enhance shadow on hover */
+        }
+
+        /* Custom Numbering for List Items */
+        ol li::before {
+            content: counter(list-item) "."; /* Display the counter value */
+            counter-increment: list-item; /* Increment counter for each li */
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 1.8em;
+            font-weight: 700;
+            background-color: var(--primary-blue); /* Blue background for the number circle */
+            color: var(--background-canvas); /* White text for the number */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%; /* Make it a circle */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        ol li .content {
+            margin-left: 60px; /* Push content to the right to make space for the number */
+        }
+
+        ol li h3 {
+            margin-top: 0; /* Remove top margin for consistency */
+            font-size: 1.2em;
+            color: var(--text-primary);
+        }
+
+        ol li p {
+            font-size: 1em;
+            color: var(--text-secondary);
+        }
+
+        /* Visual Separator */
+        .section-divider {
+            height: 1px;
+            background-color: var(--border-divider);
+            margin: 40px 0;
+        }
+
+        /* Responsive Adjustments using Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 1.6em;
+                padding-left: 10px;
+            }
+            p {
+                font-size: 1em;
+            }
+            ol li {
+                padding: 15px;
+            }
+            ol li::before {
+                left: 15px;
+                top: 15px;
+                font-size: 1.5em;
+                width: 35px;
+                height: 35px;
+            }
+            ol li .content {
+                margin-left: 55px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+                padding-bottom: 15px;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 1.4em;
+                border-left-width: 3px;
+            }
+            ol li {
+                padding: 10px;
+                text-align: center; /* Center content when number is stacked */
+            }
+            ol li::before {
+                position: static; /* Stack number above content on small screens */
+                margin-bottom: 10px;
+                display: block;
+                width: auto; /* Remove fixed width */
+                height: auto; /* Remove fixed height */
+                border-radius: 0; /* Remove circular shape */
+                background-color: transparent; /* No background */
+                color: var(--primary-blue); /* Keep text color */
+                box-shadow: none; /* No shadow */
+                font-size: 2em; /* Make number larger when stacked */
+            }
+            ol li .content {
+                margin-left: 0; /* Remove left margin when number is stacked */
+            }
+            ol li h3 {
+                font-size: 1.1em;
+            }
+            ol li p {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Faktor Pendorong dan Penghambat dalam Perdagangan Internasional</h1>
+
+        <p>Dewasa ini, semakin banyak negara yang terlibat dalam perdagangan internasional. Perdagangan internasional, sebagai pertukaran barang dan jasa antarnegara, merupakan pilar penting dalam ekonomi global. Kegiatan ini tidak hanya didorong oleh kebutuhan dasar, tetapi juga oleh berbagai faktor ekonomi, sosial, dan teknologi yang kompleks. Namun, di samping pendorongnya, terdapat pula berbagai hambatan yang dapat memengaruhi kelancaran dan volume perdagangan global.</p>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h2>Faktor Pendorong Perdagangan Internasional</h2>
+            <p>Beberapa faktor utama yang mendorong suatu negara untuk terlibat dalam kegiatan perdagangan internasional adalah sebagai berikut:</p>
+            <ol>
+                <li>
+                    <div class="content">
+                        <h3>Perbedaan Sumber Daya Alam dan Manusia</h3>
+                        <p>Setiap negara diberkahi dengan kekayaan sumber daya alam (SDA) dan kualitas sumber daya manusia (SDM) yang berbeda-beda. Perbedaan ini secara alami menyebabkan hasil produksi setiap negara menjadi beragam, baik dari jenis maupun kuantitasnya. Misalnya, negara tropis kaya akan hasil pertanian tertentu, sementara negara dengan cadangan mineral melimpah dapat memproduksi bahan mentah tertentu. Adanya kelebihan dan kekurangan ini mendorong negara untuk saling bertukar sumber daya atau hasil produksinya.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Perbedaan Kemampuan Penguasaan Teknologi</h3>
+                        <p>Tingkat kemajuan dan kemampuan penguasaan teknologi dalam mengolah sumber daya alam bervariasi antarnegara. Negara-negara dengan teknologi yang lebih maju seringkali mampu memproduksi barang dengan lebih efisien, dalam jumlah yang lebih besar, dan dengan kualitas yang lebih tinggi. Keunggulan teknologi ini menciptakan keunggulan komparatif, mendorong negara yang kurang maju teknologinya untuk mengimpor produk jadi atau komponen dari negara lain, daripada mencoba memproduksinya sendiri dengan biaya yang lebih tinggi.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Perbedaan Biaya Produksi</h3>
+                        <p>Biaya produksi suatu barang, yang meliputi biaya bahan baku, tenaga kerja, dan modal, tidak selalu sama di setiap negara. Perbedaan dalam struktur biaya ini akan memengaruhi harga jual akhir suatu barang. Apabila suatu negara dapat menekan biaya produksi untuk barang tertentu sehingga harganya lebih murah, maka negara tersebut akan memiliki daya saing yang lebih tinggi di pasar internasional. Sebaliknya, jika biaya produksi domestik terlalu tinggi, akan lebih ekonomis bagi negara tersebut untuk membeli (impor) barang dari negara lain yang dapat memproduksinya dengan biaya lebih rendah.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Perbedaan Selera Masyarakat</h3>
+                        <p>Selera atau preferensi konsumen tidak selalu terbatas pada produk domestik. Sebagian masyarakat mungkin memiliki selera atau ketertarikan khusus terhadap barang-barang impor. Hal ini bisa disebabkan oleh keunikan desain, reputasi merek global, persepsi kualitas yang lebih baik, atau sekadar keinginan untuk mencoba produk dari budaya lain. Permintaan yang didorong oleh selera ini secara langsung memicu kegiatan impor dan perdagangan internasional.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Keinginan Memenuhi Kebutuhan Dalam Negeri</h3>
+                        <p>Tidak semua barang yang dibutuhkan oleh masyarakat suatu negara dapat diproduksi di dalam negeri, baik karena keterbatasan sumber daya, teknologi, maupun skala ekonomi. Selain itu, bahkan jika bisa diproduksi, jumlahnya mungkin tidak mencukupi untuk memenuhi seluruh kebutuhan domestik. Untuk mengatasi kesenjangan pasokan dan permintaan ini, negara terpaksa mengandalkan impor dari negara lain.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Keinginan Memperoleh Pendapatan dan Meningkatkan Keuntungan</h3>
+                        <p>Bagi perusahaan dan negara, perdagangan internasional menawarkan peluang besar untuk meningkatkan pendapatan dan meraih keuntungan yang lebih tinggi. Dengan memperluas pasar ke luar negeri (ekspor), perusahaan dapat mencapai skala ekonomi yang lebih besar, mengurangi biaya per unit, dan menjangkau lebih banyak konsumen. Devisa yang diperoleh dari ekspor juga sangat penting bagi perekonomian nasional.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Adanya Kelebihan Produk (Surplus) di Dalam Negeri</h3>
+                        <p>Jika suatu negara memproduksi barang atau jasa melebihi kapasitas konsumsi atau permintaan domestik, maka akan terjadi surplus produk. Untuk menghindari penumpukan stok, kerugian, atau penurunan harga drastis di pasar domestik, negara akan berusaha menjual kelebihan produk tersebut ke negara lain melalui ekspor. Ini membantu menjaga stabilitas pasar dalam negeri dan mendatangkan pendapatan tambahan.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Pengaruh Era Globalisasi dan Saling Ketergantungan</h3>
+                        <p>Di era globalisasi modern, batas-batas ekonomi antarnegara semakin menipis. Tidak ada satu pun negara yang dapat sepenuhnya mengisolasi diri dan hidup mandiri tanpa berinteraksi dengan negara lain. Setiap negara memiliki tingkat ketergantungan tertentu, baik untuk pasokan bahan baku, komponen, teknologi, maupun sebagai pasar bagi produknya. Kondisi saling ketergantungan ini menjadikan perdagangan internasional sebagai suatu keniscayaan dan bagian integral dari sistem ekonomi global.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h2>Faktor Penghambat Perdagangan Internasional</h2>
+            <p>Meskipun memiliki banyak manfaat, perdagangan internasional juga dihadapkan pada beberapa hambatan yang dapat mengurangi efisiensi atau volume perdagangannya. Faktor-faktor penghambat tersebut meliputi:</p>
+            <ol>
+                <li>
+                    <div class="content">
+                        <h3>Kebijakan Proteksi</h3>
+                        <p>Kebijakan proteksi adalah serangkaian langkah yang diambil pemerintah suatu negara untuk melindungi industri domestiknya dari persaingan produk impor. Bentuk-bentuk proteksi bisa berupa pemberlakuan tarif (bea masuk yang tinggi), kuota (pembatasan jumlah impor), subsidi untuk produsen lokal, atau standar kualitas yang ketat. Meskipun bertujuan baik untuk industri dalam negeri, kebijakan ini secara langsung menghambat aliran bebas barang dan jasa antarnegara.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Ketidakstabilan Kurs Mata Uang Asing</h3>
+                        <p>Kurs mata uang asing yang berfluktuasi secara tidak terduga menciptakan ketidakpastian dan risiko bagi pelaku perdagangan internasional. Perubahan nilai tukar yang tajam dapat membuat harga barang impor menjadi jauh lebih mahal atau harga barang ekspor menjadi tidak kompetitif. Ketidakstabilan ini mempersulit perencanaan bisnis, meningkatkan risiko kerugian, dan pada akhirnya dapat mengurangi volume perdagangan.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Kondisi Geopolitik Suatu Negara</h3>
+                        <p>Kondisi geopolitik yang tidak stabil, seperti adanya konflik bersenjata, perang dagang, sanksi ekonomi antarnegara, atau ketegangan politik yang tinggi, dapat menjadi penghambat serius bagi perdagangan internasional. Ketidakamanan dan ketidakpastian politik dapat mengganggu jalur pelayaran dan transportasi, membuat investor ragu untuk berinvestasi, dan bahkan menyebabkan terputusnya hubungan dagang antarnegara.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Perbedaan Kebijakan dalam Sistem Pembayaran</h3>
+                        <p>Setiap negara memiliki sistem pembayaran, regulasi perbankan, dan persyaratan bea cukai yang berbeda. Perbedaan dalam kebijakan ini dapat menimbulkan kerumitan dalam proses transaksi lintas negara. Misalnya, perbedaan dalam prosedur transfer dana, persyaratan dokumen impor/ekspor, atau regulasi valuta asing dapat memperlambat dan mempersulit proses perdagangan, bahkan menimbulkan biaya tambahan.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <h3>Rendahnya Kualitas Sumber Daya Alam dan Sumber Daya Manusia</h3>
+                        <p>Kualitas sumber daya suatu negara sangat memengaruhi daya saing produknya di pasar global. Jika suatu negara memiliki sumber daya alam yang terbatas atau sulit diolah, serta sumber daya manusia yang kurang terlatih atau memiliki tingkat pendidikan rendah, maka negara tersebut akan kesulitan memproduksi barang dengan kualitas tinggi dan biaya yang kompetitif. Hal ini menghambat kemampuan ekspornya dan meningkatkan ketergantungan pada impor, menciptakan ketidakseimbangan dalam neraca perdagangan.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+    </div>
+</body>
+</html>
+```

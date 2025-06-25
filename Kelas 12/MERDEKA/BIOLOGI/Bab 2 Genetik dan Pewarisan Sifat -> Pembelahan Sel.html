@@ -1,0 +1,436 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelahan Sel - Biologi Kelas 12 SMA</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h1 { 
+            font-size: 2.8em; 
+            text-align: center; 
+            color: var(--background-canvas); /* Changed for header */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        h2 { 
+            font-size: 2.2em; 
+            border-bottom: 2px solid var(--border-divider); 
+            padding-bottom: 10px; 
+            color: var(--accent-green); /* Primary section titles */
+        }
+        h3 { 
+            font-size: 1.8em; 
+            color: var(--primary-blue); 
+        }
+        h4 { 
+            font-size: 1.4em; 
+            color: var(--text-secondary); 
+        }
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+        li {
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header p {
+            color: var(--background-canvas);
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background-canvas);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-divider);
+        }
+
+        .subsection {
+            background-color: #FDFDFD; /* Slightly lighter for subsections */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            border: 1px solid var(--border-divider);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .subsection:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background-color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-divider);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        .phase-step {
+            background-color: #f5f5f5; /* Distinct background for phase steps */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 6px solid var(--primary-blue);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .phase-step h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .highlight {
+            background-color: rgba(var(--secondary-accent-amber), 0.15);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-primary);
+            color: var(--background-canvas);
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 50px;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            h4 { font-size: 1.3em; }
+            .container {
+                padding: 15px;
+            }
+            .card-grid {
+                grid-template-columns: 1fr; /* Stack cards on small screens */
+            }
+            section {
+                padding: 20px;
+            }
+            .subsection {
+                padding: 15px;
+            }
+            .card {
+                padding: 20px;
+            }
+            .phase-step {
+                padding: 15px;
+            }
+            ul {
+                margin-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.6em; }
+            header {
+                padding: 20px 0;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            section {
+                padding: 15px;
+            }
+            .subsection {
+                padding: 10px;
+            }
+            .card {
+                padding: 15px;
+            }
+            .phase-step {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pembelahan Sel</h1>
+        <p>Mekanisme Kehidupan: Dari Sel ke Organisme</p>
+    </header>
+
+    <main class="container">
+        <section id="introduction">
+            <h2>Pengantar Pembelahan Sel: Fondasi Kehidupan</h2>
+            <p>Sel adalah unit fundamental dari semua makhluk hidup. Pembelahan sel merupakan proses biologis esensial yang memungkinkan organisme untuk tumbuh, memperbaiki jaringan yang rusak, mengganti sel-sel yang tua atau mati, dan bereproduksi. Melalui proses ini, informasi genetik yang terkandung dalam DNA diwariskan secara akurat dari satu sel induk ke sel-sel anakan.</p>
+            <p>Pada dasarnya, ada dua jenis pembelahan sel utama yang terjadi pada organisme eukariotik: <span class="highlight">mitosis</span> dan <span class="highlight">meiosis</span>. Masing-masing memiliki tujuan dan mekanisme yang berbeda, tetapi keduanya krusial untuk kelangsungan hidup spesies.</p>
+
+            <div class="subsection">
+                <h3>Fungsi Krusial Pembelahan Sel</h3>
+                <ul>
+                    <li><strong>Pertumbuhan dan Perkembangan:</strong> Dari satu sel zigot, organisme multiseluler yang kompleks terbentuk melalui pembelahan sel yang berulang. Pembelahan ini meningkatkan jumlah sel dalam tubuh.</li>
+                    <li><strong>Perbaikan Jaringan dan Regenerasi:</strong> Sel-sel yang rusak akibat cedera atau sel-sel yang telah mencapai akhir masa hidupnya digantikan oleh sel-sel baru yang diproduksi melalui pembelahan sel, menjaga integritas dan fungsi jaringan.</li>
+                    <li><strong>Reproduksi:</strong> Pada organisme uniseluler, pembelahan sel adalah metode utama reproduksi aseksual. Pada organisme multiseluler, meiosis berperan vital dalam pembentukan gamet (sel kelamin) untuk reproduksi seksual.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="mitosis">
+            <h2>Mitosis: Duplikasi Sel Somatik yang Akurat</h2>
+            <p>Mitosis adalah jenis pembelahan sel yang menghasilkan <span class="highlight">dua sel anakan</span> yang secara genetik <span class="highlight">identik</span> dengan sel induknya. Setiap sel anakan menerima set kromosom yang lengkap dan sama dengan sel induknya, yaitu bersifat <span class="highlight">diploid (2n)</span>. Proses ini umumnya terjadi pada <span class="highlight">sel-sel somatik</span> (sel tubuh) dan sangat penting untuk pertumbuhan, perbaikan, dan penggantian sel.</p>
+            <p>Contoh klasik pengamatan mitosis adalah pada sel-sel ujung akar bawang bombai yang sedang aktif membelah, serta pada sel kulit dan sel darah dalam tubuh kita.</p>
+
+            <div class="subsection">
+                <h3>Siklus Sel: Urutan Peristiwa Hidup Sel</h3>
+                <p>Pembelahan sel (fase M) adalah bagian dari sebuah siklus yang lebih besar yang disebut <span class="highlight">siklus sel</span>. Siklus ini terdiri dari serangkaian peristiwa terorganisir yang dialami sel dari satu pembelahan ke pembelahan berikutnya. Siklus sel terbagi menjadi dua fase utama:</p>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>1. Interfase: Masa Persiapan Sel</h3>
+                        <p>Interfase adalah periode terpanjang dalam siklus sel, di mana sel tumbuh dan mempersiapkan diri untuk pembelahan. Meskipun disebut "fase istirahat", sel sangat aktif secara metabolik. Interfase terbagi menjadi tiga sub-fase:</p>
+                        <ul>
+                            <li><strong>Fase G1 (Gap pertama):</strong> Sel tumbuh secara signifikan, mensintesis protein dan organel baru. Ini adalah periode cek dan keseimbangan, di mana sel menentukan apakah kondisi lingkungan dan internal mendukung pembelahan.</li>
+                            <li><strong>Fase S (Sintesis DNA):</strong> Merupakan fase kunci di mana <span class="highlight">replikasi DNA</span> terjadi. Setiap kromosom menduplikasi diri, menghasilkan dua kromatid saudara yang identik, yang terikat erat pada satu titik yang disebut <span class="highlight">sentromer</span>.</li>
+                            <li><strong>Fase G2 (Gap kedua):</strong> Sel terus tumbuh dan mensintesis protein serta enzim yang diperlukan untuk mitosis. Persiapan akhir untuk pembelahan dilakukan, termasuk pemeriksaan replikasi DNA. Pada sel hewan, <span class="highlight">sentriol</span> (yang akan membentuk sentrosom) mulai membelah.</li>
+                        </ul>
+                        <p>Pada interfase, materi genetik masih dalam bentuk <span class="highlight">kromatin</span>, yaitu benang-benang DNA yang longgar dan belum terkondensasi menjadi kromosom yang terlihat jelas.</p>
+                    </div>
+                    <div class="card">
+                        <h3>2. Fase M (Mitosis): Proses Pembelahan Sesungguhnya</h3>
+                        <p>Fase M adalah periode di mana pembelahan inti (kariokinesis) dan pembelahan sitoplasma (sitokinesis) terjadi, menghasilkan dua sel anakan. Proses ini memastikan distribusi kromosom yang tepat dan merata ke sel-sel anakan.</p>
+                        <p>Kariokinesis pada mitosis dibagi menjadi beberapa tahapan yang berurutan, masing-masing dengan karakteristik posisi dan perilaku kromosom yang spesifik.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Tahapan Kariokinesis (Pembelahan Inti) pada Mitosis</h3>
+                <div class="phase-step">
+                    <h4>Profase</h4>
+                    <p>Merupakan tahapan awal dari mitosis. Benang-benang <span class="highlight">kromatin</span> yang telah berduplikasi pada interfase mulai <span class="highlight">mengkondensasi</span> dan memendek, membentuk struktur yang lebih padat dan terlihat jelas di bawah mikroskop, yaitu <span class="highlight">kromosom</span>. Setiap kromosom kini terdiri dari dua <span class="highlight">kromatid saudara</span> yang identik, disatukan oleh sebuah <span class="highlight">sentromer</span>. <span class="highlight">Nukleolus menghilang</span>, dan <span class="highlight">membran inti mulai terfragmentasi</span> atau pecah. Pada saat yang sama, benang-benang <span class="highlight">spindel</span> (struktur mikrotubulus yang akan mengarahkan pergerakan kromosom) mulai terbentuk dari sentrosom yang bergerak menjauhi satu sama lain menuju kutub sel.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Metafase</h4>
+                    <p>Pada tahapan ini, kromosom-kromosom mencapai kondensasi maksimal dan bergerak ke bagian tengah sel. Mereka <span class="highlight">berbaris rapi pada satu bidang imajiner</span> yang disebut <span class="highlight">lempeng metafase</span> atau bidang ekuator sel. Sentromer setiap kromosom tertaut pada benang-benang spindel yang memanjang dari kutub yang berlawanan. Posisi ini memastikan bahwa saat pembelahan terjadi, setiap sel anakan akan menerima satu set kromosom yang seimbang.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Anafase</h4>
+                    <p>Ini adalah tahapan yang sangat cepat dan penting. <span class="highlight">Sentromer</span> yang menyatukan kromatid saudara <span class="highlight">membelah</span>, sehingga <span class="highlight">kromatid saudara terpisah</span> satu sama lain. Setelah terpisah, setiap kromatid kini dianggap sebagai <span class="highlight">kromosom anakan</span> individu. Benang-benang spindel memendek, menarik kromosom-kromosom anakan ini menuju kutub sel yang berlawanan. Pada akhir anafase, setiap kutub sel memiliki satu set lengkap kromosom tunggal.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Telofase</h4>
+                    <p>Kromosom-kromosom anakan telah tiba di masing-masing kutub sel. Pada tahapan ini, proses-proses yang terjadi pada profase mulai berbalik. <span class="highlight">Benang-benang spindel terurai</span> dan menghilang. <span class="highlight">Membran inti baru</span> mulai terbentuk di sekitar setiap kelompok kromosom di kedua kutub, membentuk dua inti sel yang terpisah. Kromosom mulai <span class="highlight">mendekondensasi</span> (kembali menjadi bentuk kromatin yang longgar), dan <span class="highlight">nukleolus muncul kembali</span> di setiap inti baru.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Sitokinesis: Pembelahan Sitoplasma</h3>
+                <p>Sitokinesis adalah pembelahan sitoplasma yang biasanya terjadi bersamaan dengan telofase. Proses ini secara fisik membagi satu sel induk menjadi dua sel anakan. Mekanismenya sedikit berbeda antara sel hewan dan sel tumbuhan:</p>
+                <ul>
+                    <li><strong>Pada Sel Hewan:</strong> Terjadi pembentukan <span class="highlight">alur pembelahan (cleavage furrow)</span>. Sebuah cincin kontraktil yang terbuat dari filamen aktin dan miosin terbentuk di bagian tengah sel. Cincin ini berkontraksi, "mencekik" sel dari luar ke dalam, hingga akhirnya membagi sitoplasma menjadi dua.</li>
+                    <li><strong>Pada Sel Tumbuhan:</strong> Karena adanya dinding sel yang kaku, alur pembelahan tidak dapat terbentuk. Sebaliknya, <span class="highlight">lempeng sel (cell plate)</span> terbentuk di bagian tengah sel dari vesikel-vesikel Golgi. Lempeng sel ini tumbuh ke arah luar hingga menyatu dengan dinding sel yang ada, membentuk dinding sel baru yang memisahkan kedua sel anakan.</li>
+                </ul>
+            </div>
+            <p>Pada akhirnya, mitosis menghasilkan dua sel anakan yang identik secara genetik dan memiliki jumlah kromosom yang sama (diploid, 2n) dengan sel induknya.</p>
+        </section>
+
+        <section id="cell-cycle-control">
+            <h2>Kontrol Siklus Sel dan Konsekuensinya</h2>
+            <p>Siklus sel adalah proses yang sangat teratur. Sel memiliki sistem kontrol yang kompleks untuk memastikan setiap fase berjalan dengan benar sebelum sel melanjutkan ke fase berikutnya. Sistem ini mencakup "titik kontrol" (checkpoints) yang memverifikasi integritas DNA dan kondisi sel.</p>
+            <div class="subsection">
+                <h3>"Quality Control" Sel dan Apoptosis</h3>
+                <p>Tubuh kita secara otomatis menjalankan mekanisme "quality control" pada sel. Jika ada sel yang mengalami kesalahan dalam pembelahan atau kerusakan DNA yang tidak dapat diperbaiki, mekanisme ini akan mengarahkan sel untuk melakukan <span class="highlight">apoptosis</span>, yaitu program bunuh diri sel. Proses ini penting untuk membuang sel-sel yang berpotensi berbahaya atau tidak berfungsi.</p>
+                <ul>
+                    <li><strong>Pentingnya Apoptosis:</strong> Apoptosis tidak hanya untuk eliminasi sel rusak, tetapi juga berperan dalam perkembangan embrio (misalnya, pembentukan jari tangan dan kaki), serta menjaga keseimbangan jumlah sel dalam jaringan (homeostasis).</li>
+                    <li><strong>Kegagalan Kontrol:</strong> Jika sistem "quality control" dan apoptosis gagal, sel-sel dengan kerusakan genetik atau mutasi dapat terus membelah secara tidak terkendali. Kondisi ini sering kali menjadi pemicu <span class="highlight">kanker</span>, di mana sel-sel abnormal membentuk massa (tumor) dan dapat menyebar ke bagian tubuh lain.</li>
+                </ul>
+                <p>Memahami kontrol siklus sel dan apoptosis sangat penting dalam penelitian dan pengembangan terapi untuk berbagai penyakit, terutama kanker.</p>
+            </div>
+        </section>
+
+        <section id="meiosis">
+            <h2>Meiosis: Pembentukan Gamet dan Variasi Genetik</h2>
+            <p>Meiosis adalah jenis pembelahan sel yang spesifik untuk organisme yang bereproduksi secara seksual. Tujuannya adalah untuk menghasilkan <span class="highlight">sel gamet (sel kelamin)</span> yang bersifat <span class="highlight">haploid (n)</span>, artinya memiliki <span class="highlight">setengah jumlah kromosom</span> dari sel induk diploid (2n). Hal ini krusial agar saat fertilisasi (peleburan gamet jantan dan betina), zigot yang terbentuk akan kembali bersifat diploid dengan jumlah kromosom yang normal untuk spesies tersebut.</p>
+            <p>Selain mereduksi jumlah kromosom, meiosis juga berperan penting dalam menciptakan <span class="highlight">variasi genetik</span> dalam populasi melalui dua mekanisme utama: pindah silang dan penyusunan independen kromosom homolog.</p>
+            <p>Meiosis terjadi dalam dua pembelahan berturut-turut: <span class="highlight">Meiosis I</span> dan <span class="highlight">Meiosis II</span>.</p>
+
+            <div class="subsection">
+                <h3>Tahapan Meiosis I (Pembelahan Reduktif)</h3>
+                <p>Meiosis I adalah pembelahan reduktif, di mana jumlah kromosom direduksi dari diploid menjadi haploid. Kromosom homolog terpisah.</p>
+                <div class="phase-step">
+                    <h4>Interfase (Sebelum Meiosis I)</h4>
+                    <p>Mirip dengan interfase pada mitosis, sel mengalami pertumbuhan dan replikasi DNA pada fase S. Setiap kromosom terdiri dari dua kromatid saudara yang identik.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Profase I</h4>
+                    <p>Ini adalah fase terpanjang dan paling kompleks dalam meiosis. <span class="highlight">Kromatin mengkondensasi</span> menjadi kromosom. Peristiwa kunci adalah <span class="highlight">sinapsis</span>, di mana <span class="highlight">kromosom homolog berpasangan</span> erat membentuk struktur yang disebut <span class="highlight">tetrad</span> (terdiri dari empat kromatid). Selama sinapsis, dapat terjadi <span class="highlight">pindah silang (crossing over)</span>, yaitu pertukaran segmen DNA antara kromatid non-saudara dari kromosom homolog. Ini menghasilkan kombinasi alel baru pada kromosom. Nukleolus dan membran inti menghilang, dan benang spindel mulai terbentuk.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Metafase I</h4>
+                    <p><span class="highlight">Pasangan kromosom homolog</span> (tetrad) bergerak dan <span class="highlight">berbaris di lempeng metafase</span>. Orientasi acak setiap pasangan homolog pada lempeng metafase berkontribusi pada variasi genetik (prinsip <span class="highlight">penyusunan independen</span>).</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Anafase I</h4>
+                    <p><span class="highlight">Kromosom homolog terpisah</span> dan ditarik oleh benang spindel menuju kutub sel yang berlawanan. Penting untuk dicatat bahwa <span class="highlight">kromatid saudara tetap melekat pada sentromernya</span>. Jadi, setiap kutub menerima set haploid kromosom yang masih terdiri dari dua kromatid.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Telofase I dan Sitokinesis</h4>
+                    <p>Kromosom mencapai kutub. Membran inti mungkin terbentuk kembali di sekitar setiap set haploid kromosom, dan kromosom mungkin sedikit mendekondensasi. <span class="highlight">Sitokinesis terjadi</span>, membagi sitoplasma dan menghasilkan <span class="highlight">dua sel anakan haploid (n)</span>. Setiap sel anakan ini memiliki jumlah kromosom setengah dari sel induk, tetapi setiap kromosom masih terdiri dari dua kromatid.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Interkinesis</h3>
+                <p>Setelah Meiosis I, terdapat periode istirahat singkat yang disebut interkinesis. Selama fase ini, sel tidak mengalami replikasi DNA. Ini adalah jeda singkat sebelum Meiosis II dimulai.</p>
+            </div>
+
+            <div class="subsection">
+                <h3>Tahapan Meiosis II (Pembelahan Ekuasional)</h3>
+                <p>Meiosis II sangat mirip dengan mitosis dalam mekanismenya, tetapi terjadi pada sel-sel haploid yang dihasilkan dari Meiosis I. Tujuannya adalah untuk memisahkan kromatid saudara.</p>
+                <div class="phase-step">
+                    <h4>Profase II</h4>
+                    <p>Jika membran inti terbentuk di telofase I, ia kembali menghilang. Kromosom (yang masih terdiri dari dua kromatid) mulai memadat kembali. Benang spindel terbentuk lagi.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Metafase II</h4>
+                    <p>Kromosom-kromosom (yang masih terdiri dari dua kromatid) bergerak dan <span class="highlight">berbaris di lempeng metafase II</span> (bidang ekuator) dengan sentromernya sejajar. Benang spindel menempel pada sentromer.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Anafase II</h4>
+                    <p><span class="highlight">Sentromer membelah</span>, dan <span class="highlight">kromatid saudara terpisah</span> satu sama lain. Masing-masing kromatid yang kini menjadi <span class="highlight">kromosom tunggal</span> ditarik menuju kutub sel yang berlawanan.</p>
+                </div>
+                <div class="phase-step">
+                    <h4>Telofase II dan Sitokinesis</h4>
+                    <p>Kromosom tunggal telah mencapai kutub sel. <span class="highlight">Membran inti terbentuk kembali</span> di sekitar setiap set kromosom. Kromosom mulai mendekondensasi. <span class="highlight">Sitokinesis terjadi</span>, membagi setiap sel menjadi dua. Hasil akhirnya adalah <span class="highlight">empat sel anakan haploid (n)</span>, masing-masing dengan kromosom tunggal. Keempat sel ini secara genetik berbeda satu sama lain dan dari sel induk karena adanya pindah silang dan penyusunan independen pada Meiosis I.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gametogenesis">
+            <h2>Gametogenesis: Produksi Sel Kelamin</h2>
+            <p>Gametogenesis adalah proses biologis pembentukan gamet (sel kelamin) melalui pembelahan meiosis dari sel-sel germinal. Proses ini vital untuk reproduksi seksual dan memastikan terbentuknya zigot dengan jumlah kromosom yang tepat.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Spermatogenesis: Pembentukan Sperma</h3>
+                    <p>Spermatogenesis adalah proses pembentukan spermatozoa (sel sperma) matang pada individu jantan. Proses ini berlangsung di dalam <span class="highlight">tubulus seminiferus testis</span>.</p>
+                    <ul>
+                        <li><strong>Spermatogonium (2n):</strong> Sel germinal primordial diploid yang terletak di dinding tubulus seminiferus. Sel ini dapat memperbanyak diri melalui mitosis.</li>
+                        <li><strong>Spermatosit Primer (2n):</strong> Spermatogonium yang berdiferensiasi dan membesar, siap untuk memasuki meiosis.</li>
+                        <li><strong>Meiosis I:</strong> Satu spermatosit primer (2n) menjalani meiosis I dan membelah menjadi <span class="highlight">dua spermatosit sekunder (n)</span> yang bersifat haploid, tetapi kromosomnya masih terdiri dari dua kromatid.</li>
+                        <li><strong>Meiosis II:</strong> Setiap spermatosit sekunder (n) segera menjalani meiosis II, membelah menjadi <span class="highlight">dua spermatid (n)</span>. Setiap spermatid bersifat haploid dan memiliki kromosom tunggal.</li>
+                        <li><strong>Spermiogenesis:</strong> Spermatid (n) mengalami proses pematangan dan diferensiasi morfologi menjadi <span class="highlight">spermatozoa (n)</span> matang. Proses ini melibatkan pembentukan kepala (mengandung inti), bagian tengah (kaya mitokondria), dan ekor (flagela untuk motilitas).</li>
+                    </ul>
+                    <p>Hasil akhir spermatogenesis dari satu spermatosit primer adalah <span class="highlight">empat spermatozoa fungsional</span>.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Oogenesis: Pembentukan Ovum</h3>
+                    <p>Oogenesis adalah proses pembentukan ovum (sel telur) matang pada individu betina. Proses ini berlangsung di dalam <span class="highlight">ovarium</span> dan ditandai oleh pembelahan sitoplasma yang tidak simetris.</p>
+                    <ul>
+                        <li><strong>Oogonium (2n):</strong> Sel germinal primordial diploid di ovarium embrio. Melalui mitosis, oogonium dapat memperbanyak diri.</li>
+                        <li><strong>Oosit Primer (2n):</strong> Oogonium membesar dan memulai meiosis I, tetapi proses ini terhenti pada profase I sebelum lahir. Oosit primer ini tersimpan di dalam folikel ovarium.</li>
+                        <li><strong>Meiosis I:</strong> Saat pubertas, satu oosit primer setiap siklus menstruasi melanjutkan meiosis I. Pembelahan ini <span class="highlight">tidak simetris</span>, menghasilkan <span class="highlight">satu oosit sekunder (n)</span> yang besar (menerima hampir seluruh sitoplasma) dan <span class="highlight">satu badan polar pertama (n)</span> yang kecil. Badan polar pertama mungkin membelah lagi atau segera berdegenerasi.</li>
+                        <li><strong>Meiosis II:</strong> Oosit sekunder (n) memulai meiosis II dan terhenti pada metafase II. Pembelahan ini hanya akan selesai jika terjadi <span class="highlight">fertilisasi</span> oleh sperma. Jika terfertilisasi, oosit sekunder akan membelah secara tidak simetris menjadi <span class="highlight">satu ovum (n)</span> matang yang besar dan <span class="highlight">satu badan polar kedua (n)</span> yang kecil. Badan polar kedua ini juga akan berdegenerasi.</li>
+                    </ul>
+                    <p>Hasil akhir oogenesis dari satu oosit primer adalah <span class="highlight">satu ovum fungsional</span> dan dua atau tiga badan polar non-fungsional yang akhirnya berdegenerasi.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Materi Biologi untuk SMA/MA Kelas XII. Dibuat dengan semangat belajar.</p>
+    </footer>
+</body>
+</html>
+```

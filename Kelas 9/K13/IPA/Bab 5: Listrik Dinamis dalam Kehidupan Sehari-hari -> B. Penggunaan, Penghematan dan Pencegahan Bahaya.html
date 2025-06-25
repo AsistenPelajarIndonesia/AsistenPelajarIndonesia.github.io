@@ -1,0 +1,448 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 5: Listrik Dinamis dalam Kehidupan Sehari-hari</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .key-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .concept-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .sub-section {
+            margin-top: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .sub-section h3 {
+            color: var(--accent-green);
+            margin-top: 0;
+        }
+
+        .info-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .safety-tip {
+            background-color: var(--semantic-warning);
+            color: var(--text-primary);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .calculation-example {
+            background-color: var(--background-canvas);
+            border: 1px dashed var(--border-divider);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .formula {
+            font-weight: bold;
+            color: var(--semantic-success);
+        }
+
+        .collapsible {
+            background-color: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .collapsible:hover {
+            background-color: #1565C0; /* Darker blue */
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f1f1f1;
+            border-radius: 0 0 5px 5px;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            padding: 15px 10px;
+            margin-bottom: 0;
+        }
+
+        .content ul {
+            padding-left: 25px;
+            padding-bottom: 15px;
+        }
+
+        .content ul li {
+            margin-bottom: 8px;
+        }
+
+        .ethical-note {
+            background-color: var(--text-tertiary);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .collapsible, .content {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .section, .info-box, .safety-tip, .ethical-note {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 5: Listrik Dinamis dalam Kehidupan Sehari-hari</h1>
+
+        <div class="section">
+            <div class="section-title">Pendahuluan</div>
+            <p>
+                Listrik adalah energi yang sangat vital dalam kehidupan modern kita. Dari menerangi rumah kita di malam hari hingga menjalankan teknologi canggih, listrik memainkan peran yang tak tergantikan. Bab ini akan membawa kita menyelami lebih dalam tentang <span class="key-term">listrik dinamis</span>, bagaimana penggunaannya dalam kehidupan sehari-hari, pentingnya <span class="key-term">penghematan energi listrik</span>, serta cara <span class="key-term">mencegah bahaya</span> yang mungkin timbul dari penggunaannya.
+            </p>
+            <p>
+                Pernahkah Anda berpikir bagaimana listrik dari <span class="key-term">PLN</span> (Perusahaan Listrik Negara) bisa sampai ke rumah Anda? Proses ini melibatkan transformasi tegangan menggunakan <span class="key-term">transformator step-up</span> dan <span class="key-term">transformator step-down</span> untuk memastikan listrik aman dan efisien saat disalurkan. Meskipun efisien, tetap ada energi yang terbuang menjadi <span class="key-term">kalor</span> selama transmisi.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 id="penggunaan-energi-listrik">B. Penggunaan, Penghematan, dan Pencegahan Bahaya Penggunaan Energi Listrik</h2>
+
+            <div class="sub-section">
+                <h3>1. Penggunaan Energi Listrik di Lingkungan Sekitar</h3>
+                <p>
+                    Malam hari identik dengan kegelapan karena Bumi membelakangi Matahari. Cahaya bulan dan bintang memang ada, namun seringkali tidak cukup untuk menerangi secara optimal. Penemuan bola lampu oleh <span class="key-term">Thomas Alva Edison</span> merevolusi cara manusia menjalani malam, mengubahnya menjadi waktu yang dinanti karena keindahan lampu-lampu yang menyala.
+                </p>
+                <p>
+                    Selain sebagai penerangan, energi listrik dimanfaatkan untuk mengoperasikan berbagai peralatan teknologi yang menunjang kehidupan manusia. Bayangkan rumah Anda tanpa listrik; banyak aktivitas sehari-hari akan terhenti. Mulai dari kulkas yang menjaga makanan tetap segar, televisi yang menghibur, komputer untuk bekerja dan belajar, hingga kipas angin atau AC yang menjaga kenyamanan.
+                </p>
+
+                <div class="concept-box">
+                    "Saya tidak patah semangat karena setiap usaha yang salah adalah satu langkah maju." - Thomas Alva Edison
+                </div>
+
+                <p>
+                    Pertanyaannya, apakah energi listrik bisa habis? Ini adalah pertanyaan penting yang akan kita eksplorasi. Energi listrik yang kita gunakan setiap bulan diukur menggunakan <span class="key-term">kWh meter</span> dan dihitung berdasarkan tarif dasar listrik per kWh.
+                </p>
+
+                <div class="calculation-example">
+                    <p><strong>Contoh Perhitungan Biaya Listrik Sederhana:</strong></p>
+                    <p>Sebuah lampu dengan daya (<span class="key-term">P</span>) 10 watt dinyalakan selama 8 jam per hari, selama 30 hari.</p>
+                    <p>Energi yang digunakan (<span class="formula">W</span>) dihitung dengan rumus: <span class="formula">W = P × t</span></p>
+                    <p>W = 10 Watt × (8 jam/hari × 30 hari)</p>
+                    <p>W = 10 Watt × 240 jam</p>
+                    <p>W = 2400 Wh = 2.4 kWh</p>
+                    <p>Jika tarif dasar listrik adalah Rp385,00/kWh, maka biaya yang harus dibayarkan adalah:</p>
+                    <p>Biaya = Energi (kWh) × Tarif Dasar (Rp/kWh)</p>
+                    <p>Biaya = 2.4 kWh × Rp385,00/kWh = Rp924,00</p>
+                    <p>Ini menunjukkan bagaimana penggunaan energi listrik dapat dihitung dan berdampak pada biaya bulanan.</p>
+                </div>
+
+                <p>
+                    Memahami cara kerja dan biaya pemakaian listrik sangat penting untuk bisa mengelola energi dengan bijak. Anda dapat melihat langsung pada <span class="key-term">rekening listrik</span> rumah Anda untuk memahami besaran energi yang telah digunakan dan biaya yang perlu dibayarkan.
+                </p>
+            </div>
+
+            <div class="sub-section">
+                <h3>2. Upaya Penghematan Energi Listrik</h3>
+                <p>
+                    Mengapa kita perlu menghemat energi listrik? Seringkali kita berpikir listrik itu tidak akan habis. Namun, kenyataannya, sebagian besar energi listrik yang kita gunakan saat ini berasal dari <span class="key-term">sumber daya alam</span>, seperti batu bara dan gas bumi, yang jumlahnya terbatas dan produksinya menimbulkan <span class="key-term">emisi karbon</span> yang berkontribusi pada <span class="key-term">global warming</span> atau pemanasan global.
+                </p>
+                <p>
+                    Hemat energi listrik bukan hanya soal mengurangi biaya, tetapi juga tentang menjaga kelestarian lingkungan. Salah satu upaya paling efektif adalah menggunakan listrik seperlunya.
+                </p>
+
+                <div class="info-box">
+                    Penggunaan lampu <span class="key-term">LED (Light Emitting Diode)</span> adalah contoh nyata upaya penghematan energi. Lampu LED menggunakan daya yang jauh lebih kecil dibandingkan lampu bohlam tradisional, namun tetap memberikan penerangan yang memadai.
+                </div>
+
+                <p>
+                    Selain mengganti peralatan yang boros energi, ada banyak cara lain yang bisa kita lakukan:
+                </p>
+                <ul>
+                    <li>Mematikan lampu dan peralatan elektronik saat tidak digunakan.</li>
+                    <li>Mengoptimalkan penggunaan alat elektronik (misalnya, gunakan AC hanya saat benar-benar diperlukan).</li>
+                    <li>Memanfaatkan cahaya alami di siang hari dengan membuka jendela dan tirai.</li>
+                    <li>Memilih peralatan elektronik yang memiliki label hemat energi.</li>
+                </ul>
+
+                <p>
+                    Kegiatan seperti <span class="key-term">Earth Hour</span>, yang diselenggarakan oleh WWF, mengajak kita untuk mematikan lampu dan peralatan listrik selama satu jam sebagai bentuk kepedulian terhadap lingkungan dan penghematan energi.
+                </p>
+            </div>
+
+            <div class="sub-section">
+                <h3>3. Pencegahan Bahaya Penggunaan Listrik</h3>
+                <p>
+                    Listrik, meskipun sangat bermanfaat, juga menyimpan potensi bahaya jika tidak ditangani dengan benar. Peristiwa kebakaran akibat <span class="key-term">korsleting</span> (hubungan pendek arus listrik) adalah contoh nyata betapa berbahayanya kelalaian dalam menggunakan listrik. Korsleting terjadi ketika konduktor positif dan negatif bersentuhan, menimbulkan lonjakan arus yang sangat besar dan panas hebat yang bisa memicu kebakaran.
+                </p>
+                <p>
+                    Berikut adalah beberapa prosedur penting untuk memastikan keamanan saat menggunakan listrik:
+                </p>
+                <ul>
+                    <li><strong>Cabut Peralatan:</strong> Selalu cabut kabel dari stop kontak jika peralatan tidak digunakan.</li>
+                    <li><strong>Hindari Basah:</strong> Jangan menyambung atau melepas kabel saat tangan basah atau berada di lingkungan lembap. Darah dan cairan tubuh lain adalah konduktor listrik yang baik.</li>
+                    <li><strong>Jaga Jarak Aman:</strong> Hindari menyentuh lubang stop kontak atau sambungan kabel yang terbuka.</li>
+                    <li><strong>Perhatikan Peringatan:</strong> Selalu baca dan patuhi peringatan keamanan pada setiap peralatan listrik.</li>
+                    <li><strong>Pasang Sekering:</strong> Gunakan sekering yang tepat untuk memutus arus secara otomatis jika terjadi korsleting, mencegah kebakaran.</li>
+                </ul>
+
+                <div class="safety-tip">
+                    <strong>Tahukah Kamu?</strong> Kulit yang kering berfungsi sebagai <span class="key-term">isolator</span> yang baik. Inilah mengapa kulit yang kering dapat melindungi tubuh dari sengatan listrik. Namun, jika kulit basah, kemampuan isolasinya berkurang drastis, meningkatkan risiko sengatan listrik yang serius.
+                </div>
+
+                <p>
+                    Efek sengatan listrik pada tubuh sangat bergantung pada besar arus listrik yang mengalir. Arus yang sangat kecil mungkin hanya terasa geli, namun arus yang lebih besar dapat menyebabkan nyeri, kesulitan bergerak, gangguan pernapasan, bahkan serangan jantung.
+                </p>
+
+                <div class="ethical-note">
+                    Listrik adalah anugerah sekaligus tanggung jawab. Menggunakannya dengan bijak, hemat, dan aman adalah kontribusi kita untuk diri sendiri, masyarakat, dan kelestarian alam.
+                </div>
+            </div>
+        </div>
+
+        <!-- Konsep Penting -->
+        <div class="section">
+            <div class="section-title">Rangkuman Konsep Kunci</div>
+            <p>Mari kita rangkum poin-poin penting dari Bab ini:</p>
+
+            <button class="collapsible">Sumber Arus Listrik</button>
+            <div class="content">
+                <p>Arus listrik dapat dihasilkan dari berbagai sumber, termasuk:</p>
+                <ul>
+                    <li>Pembangkit listrik (misalnya generator).</li>
+                    <li>Baterai dan aki (accu).</li>
+                    <li>Buah-buahan yang mengandung asam.</li>
+                </ul>
+            </div>
+
+            <button class="collapsible">Aliran Arus Listrik</button>
+            <div class="content">
+                <p>Arus listrik mengalir karena adanya <span class="key-term">beda potensial listrik</span> antara dua titik. Elektron bergerak dari potensial rendah ke tinggi. Besar arus listrik sebanding dengan jumlah muatan yang mengalir per satuan waktu, dan satuannya adalah <span class="key-term">Ampere (A)</span>.</p>
+            </div>
+
+            <button class="collapsible">Bahan Terkait Listrik</button>
+            <div class="content">
+                <p>Bahan diklasifikasikan berdasarkan kemampuannya menghantarkan listrik:</p>
+                <ul>
+                    <li><span class="key-term">Konduktor:</span> Bahan yang mudah menghantarkan listrik (contoh: tembaga, perak, emas).</li>
+                    <li><span class="key-term">Isolator:</span> Bahan yang sangat buruk menghantarkan listrik (contoh: plastik, karet).</li>
+                    <li><span class="key-term">Semikonduktor:</span> Bahan yang sifat penghantarannya berada di antara konduktor dan isolator, tergantung kondisi (contoh: karbon, silikon).</li>
+                </ul>
+            </div>
+
+            <button class="collapsible">Hambatan Listrik</button>
+            <div class="content">
+                <p><span class="key-term">Hambatan listrik</span> adalah kemampuan suatu bahan untuk menghambat aliran arus listrik. Hambatan dipengaruhi oleh <span class="key-term">hambatan jenis</span>, panjang kawat, dan luas penampang kawat. Hubungan antara tegangan, arus, dan hambatan dijelaskan oleh <span class="key-term">Hukum Ohm</span> (<span class="formula">V = I × R</span>).</p>
+            </div>
+
+            <button class="collapsible">Rangkaian Listrik</button>
+            <div class="content">
+                <p>Ada dua jenis rangkaian listrik utama:</p>
+                <ul>
+                    <li><span class="key-term">Rangkaian Seri:</span> Tanpa percabangan kabel, arus mengalir melalui setiap komponen secara berurutan.</li>
+                    <li><span class="key-term">Rangkaian Paralel:</span> Memiliki percabangan kabel, memungkinkan arus terbagi ke beberapa jalur.</li>
+                </ul>
+                <p><span class="key-term">Hukum Kirchhoff</span> menjelaskan perilaku arus pada titik percabangan dalam rangkaian.</p>
+            </div>
+
+            <button class="collapsible">Sumber Energi Listrik Alternatif</button>
+            <div class="content">
+                <p>Selain sumber energi fosil, ada sumber energi terbarukan yang ramah lingkungan, seperti:</p>
+                <ul>
+                    <li>Energi Matahari</li>
+                    <li>Energi Angin</li>
+                    <li>Energi Air</li>
+                    <li>Bioenergi</li>
+                </ul>
+            </div>
+
+            <button class="collapsible">Upaya Penghematan & Keamanan</button>
+            <div class="content">
+                <p>Menghemat energi listrik berarti mengurangi biaya dan dampak lingkungan (emisi karbon). Pencegahan bahaya listrik meliputi tindakan hati-hati, penggunaan isolator yang tepat, dan pemasangan alat pengaman seperti sekering.</p>
+            </div>
+        </div>
+
+        <div class="ethical-note">
+            Pemahaman mendalam tentang listrik dinamis memberdayakan kita untuk memanfaatkannya secara optimal sambil meminimalkan risiko dan dampak negatifnya bagi lingkungan. Mari bersama-sama menjadi pengguna energi yang cerdas dan bertanggung jawab!
+        </div>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
+```

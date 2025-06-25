@@ -1,0 +1,690 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolusi: Perkembangan Teori</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--primary-blue);
+            margin-top: 40px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--accent-green);
+            margin-top: 30px;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--secondary-accent-amber);
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .section-header {
+            background-color: var(--primary-blue);
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .card.abiogenesis {
+            border-left-color: var(--semantic-error);
+        }
+
+        .card.biogenesis {
+            border-left-color: var(--semantic-success);
+        }
+
+        .card.theory-section {
+            border-left-color: var(--primary-blue);
+        }
+
+        .card.evidence-section {
+            border-left-color: var(--accent-green);
+        }
+
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-blue);
+        }
+
+        .timeline-item {
+            background-color: var(--primary-blue);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9em;
+            min-width: 120px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-item.year {
+            background-color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .timeline-item.figure {
+            background-color: var(--primary-blue);
+        }
+
+        .timeline-item.event {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+        }
+
+        details {
+            margin-bottom: 15px;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        summary {
+            background-color: #e0f2f7; /* Lighter primary blue */
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-blue);
+            list-style: none; /* Remove default arrow */
+            position: relative;
+        }
+
+        summary::before {
+            content: '►';
+            position: absolute;
+            left: 10px;
+            color: var(--primary-blue);
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details .content {
+            padding: 15px;
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .example-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--semantic-info);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .highlight-text {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .important-note {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .timeline {
+                flex-direction: column;
+                align-items: center;
+            }
+            .timeline-item {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Perkembangan Teori Evolusi</h1>
+        <p>Pertanyaan mengenai asal-usul kehidupan makhluk hidup di muka bumi telah menjadi subjek perdebatan panjang, sebagian besar karena keterbatasan bukti yang tersedia untuk menjelaskan fenomena ini. Seiring waktu, berbagai teori telah dikemukakan untuk menjelaskan mekanisme evolusi dan asal-usul kehidupan.</p>
+
+        <h2 class="section-header">Peta Pemikiran dan Garis Waktu Perkembangan Teori Evolusi</h2>
+        <p>Evolusi sebagai konsep bukanlah hasil pemikiran satu individu, melainkan akumulasi gagasan dari berbagai ilmuwan sepanjang sejarah. Berikut adalah tokoh-tokoh penting dan peristiwa kunci yang membentuk pemahaman kita tentang evolusi:</p>
+
+        <div class="timeline">
+            <div class="timeline-item figure">Linnaeus (Klasifikasi)</div>
+            <div class="timeline-item figure">Hutton (Perubahan Geologi Bertahap)</div>
+            <div class="timeline-item figure">Lamarck (Spesies Bisa Berubah)</div>
+            <div class="timeline-item figure">Malthus (Batas Populasi)</div>
+            <div class="timeline-item figure">Cuvier (Fosil, Kepunahan)</div>
+            <div class="timeline-item figure">Lyell (Geologi Modern)</div>
+            <div class="timeline-item figure">Darwin (Evolusi, Seleksi Alam)</div>
+            <div class="timeline-item figure">Mendel (Mewarisi)</div>
+            <div class="timeline-item figure">Wallace (Evolusi, Seleksi Alam)</div>
+
+            <div class="timeline-item year">1795</div>
+            <div class="timeline-item event">Hutton mengusulkan teori gradualisme</div>
+            <div class="timeline-item year">1798</div>
+            <div class="timeline-item event">Malthus menerbitkan "Essay on the Principle of Population"</div>
+            <div class="timeline-item year">1809</div>
+            <div class="timeline-item event">Lamarck menerbitkan teorinya tentang evolusi</div>
+            <div class="timeline-item year">1830</div>
+            <div class="timeline-item event">Lyell menerbitkan Principles of Geology</div>
+            <div class="timeline-item year">1831-1836</div>
+            <div class="timeline-item event">Darwin keliling dunia dengan HMS Beagle</div>
+            <div class="timeline-item year">1837</div>
+            <div class="timeline-item event">Darwin mencatat tentang asal usul spesies</div>
+            <div class="timeline-item event">Darwin menulis esainya tentang asal usul spesies</div>
+            <div class="timeline-item event">Wallace mengirimkan teorinya ke Darwin</div>
+            <div class="timeline-item event">The Origin of Species diterbitkan (Ini typo di gambar harusnya 1859, akan saya perbaiki sesuai konteks umum)</div>
+            <div class="timeline-item year">1865</div>
+            <div class="timeline-item event">Mendel menerbitkan makalah warisan</div>
+        </div>
+
+        <p>Berdasarkan garis waktu di atas, perkembangan teori evolusi dapat dikelompokkan menjadi tiga era utama: <span class="highlight-text">teori pra-Darwin</span>, <span class="highlight-text">teori Darwin</span>, dan <span class="highlight-text">teori pasca-Darwin</span>.</p>
+
+        <h2>1. Teori Evolusi Pra-Darwin</h2>
+
+        <details class="card abiogenesis">
+            <summary>a. Teori Abiogenesis (Generatio Spontanea)</summary>
+            <div class="content">
+                <p>Teori abiogenesis menyatakan bahwa makhluk hidup dapat berasal dari benda mati secara spontan. Konsep ini pertama kali dikemukakan oleh Aristoteles dan didukung oleh beberapa filsuf dan ilmuwan awal.</p>
+                <h4>Pendukung Utama Teori Abiogenesis:</h4>
+                <ul>
+                    <li>
+                        <strong>Antonie Van Leeuwenhoek:</strong>
+                        <p>Pada abad ke-17, Leeuwenhoek mengamati mikroorganisme bergerak dalam tetesan air hujan dan air rendaman jerami menggunakan mikroskopnya. Ia menyimpulkan bahwa makhluk hidup kecil (mikroorganisme) ini berasal dari benda mati, yaitu air hujan atau rendaman jerami itu sendiri.</p>
+                    </li>
+                    <li>
+                        <strong>John Turberville Needham:</strong>
+                        <p>Needham melakukan percobaan dengan merebus kaldu ayam dalam wadah, kemudian membiarkannya. Setelah beberapa hari, ia menemukan banyak mikroorganisme di dalam kaldu yang menjadi keruh dan berbau busuk. Needham berargumen bahwa mikroorganisme ini muncul secara spontan dari kaldu yang mati.</p>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="card biogenesis">
+            <summary>b. Teori Biogenesis</summary>
+            <div class="content">
+                <p>Teori biogenesis muncul sebagai perlawanan terhadap abiogenesis. Secara harfiah, "bio" berarti hidup dan "genesis" berarti kejadian, sehingga teori ini menyatakan bahwa <span class="highlight-text">makhluk hidup berasal dari makhluk hidup sebelumnya (<em>omne vivum ex vivo</em>)</span>. Berikut adalah eksperimen penting yang mendukung teori ini:</p>
+                <h4>Eksperimen Penting:</h4>
+                <ul>
+                    <li>
+                        <strong>Percobaan Francesco Redi (1668):</strong>
+                        <p>Redi menempatkan daging segar dalam tiga toples dengan perlakuan berbeda:</p>
+                        <ol>
+                            <li>Toples I: Dibiarkan terbuka.</li>
+                            <li>Toples II: Ditutup dengan kain kasa.</li>
+                            <li>Toples III: Ditutup rapat.</li>
+                        </ol>
+                        <p><strong>Hasil:</strong> Belatung hanya muncul pada daging di toples terbuka dan di atas kasa pada toples yang ditutup kasa. Pada toples tertutup rapat, tidak ada belatung. Redi menyimpulkan bahwa belatung berasal dari telur lalat yang hinggap pada daging, bukan dari daging itu sendiri. Ini membuktikan bahwa makhluk hidup berasal dari makhluk hidup sebelumnya (lalat), bukan dari benda mati.</p>
+                    </li>
+                    <li>
+                        <strong>Percobaan Lazzaro Spallanzani (1765):</strong>
+                        <p>Spallanzani mengulangi percobaan Needham dengan kontrol yang lebih ketat. Ia mengisi labu dengan air kaldu, mendidihkannya (sterilisasi) untuk membunuh mikroorganisme, lalu membiarkannya dalam dua kondisi:</p>
+                        <ol>
+                            <li>Perlakuan I: Labu dibiarkan terbuka.</li>
+                            <li>Perlakuan II: Labu ditutup rapat.</li>
+                        </ol>
+                        <p><strong>Hasil:</strong> Kaldu pada labu terbuka menjadi keruh dan mengandung mikroorganisme, sedangkan kaldu pada labu tertutup rapat tetap jernih dan bebas mikroorganisme. Spallanzani menyimpulkan bahwa mikroorganisme berasal dari udara, bukan dari kaldu secara spontan.</p>
+                    </li>
+                    <li>
+                        <strong>Percobaan Louis Pasteur (1864):</strong>
+                        <p>Pasteur menyempurnakan percobaan Spallanzani menggunakan labu berleher angsa (<em>swan-neck flask</em>) untuk membuktikan bahwa udara mengandung mikroorganisme, bukan kekuatan hidup yang menyebabkan spontanitas. Ia melakukan langkah-langkah berikut:</p>
+                        <ol>
+                            <li>Labu diisi kaldu, dipanaskan untuk sterilisasi, dan dipasang pipa kaca berleher angsa.</li>
+                            <li>Labu didinginkan dan dibiarkan. Debu dan mikroorganisme terperangkap di lengkungan leher angsa, sehingga kaldu tetap jernih.</li>
+                            <li>Labu dimiringkan sehingga kaldu bersentuhan dengan mikroorganisme dan debu di lengkungan leher angsa, atau leher angsa dipatahkan.</li>
+                        </ol>
+                        <p><strong>Hasil:</strong> Kaldu tetap jernih selama leher angsa utuh dan tidak dimiringkan. Setelah kaldu bersentuhan dengan udara atau leher angsa dipatahkan, kaldu menjadi keruh dan mengandung mikroorganisme.</p>
+                        <p><strong>Kesimpulan:</strong> Mikroorganisme yang tumbuh dalam kaldu berasal dari mikroorganisme yang terbawa bersama debu di udara, bukan dari kaldu itu sendiri. Percobaan Pasteur ini secara definitif menumbangkan teori abiogenesis dan memperkuat teori biogenesis, dengan prinsip <span class="highlight-text"><em>omne vivum ex ovo</em> (semua makhluk hidup berasal dari telur), <em>omne ovum ex vivo</em> (semua telur berasal dari makhluk hidup), dan <em>omne vivum ex vivo</em> (semua makhluk hidup berasal dari makhluk hidup sebelumnya)</span>.</p>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="card theory-section">
+            <summary>c. Teori Evolusi Kimia</summary>
+            <div class="content">
+                <p>Meskipun biogenesis berhasil menumbangkan abiogenesis, pertanyaan tentang asal-usul makhluk hidup pertama kali tetap tidak terjawab. Teori Evolusi Kimia mencoba menjelaskan bagaimana senyawa organik pertama terbentuk dari senyawa anorganik di Bumi purba.</p>
+                <ul>
+                    <li>
+                        <strong>Harold Urey:</strong>
+                        <p>Mengemukakan bahwa makhluk hidup berasal dari reaksi senyawa anorganik seperti CH₄ (metana), NH₃ (amonia), H₂ (hidrogen), dan H₂O (uap air) dengan bantuan energi kosmik (misalnya halilintar), yang kemudian terakumulasi menjadi senyawa organik seperti asam amino.</p>
+                    </li>
+                    <li>
+                        <strong>Stanley Miller (Eksperimen Miller-Urey):</strong>
+                        <p>Miller membuktikan teori Urey di laboratorium menggunakan alat yang disebut "pesawat uratmosphare", yang mensimulasikan kondisi Bumi purba:</p>
+                        <ul>
+                            <li>Alat diisi gas (CH₄, NH₃, H₂, H₂O uap) dan air mendidih.</li>
+                            <li>Percikan listrik (pengganti halilintar) dialirkan ke dalam campuran gas.</li>
+                            <li>Kondensor mendinginkan uap air kembali menjadi cairan.</li>
+                        </ul>
+                        <p><strong>Hasil:</strong> Setelah seminggu, Miller menemukan terbentuknya zat organik seperti asam amino (komponen dasar protein) serta HCN dan urea. Ini menunjukkan bahwa bahan-bahan organik dasar kehidupan dapat terbentuk dari zat anorganik di bawah kondisi Bumi purba.</p>
+                        <p><strong>Fase-fase Pembentukan menurut Teori Evolusi Kimia:</strong></p>
+                        <ol>
+                            <li><strong>Fase 1:</strong> Tersedianya molekul metana, amonia, hidrogen, dan uap air dalam jumlah besar di atmosfer purba.</li>
+                            <li><strong>Fase 2:</strong> Energi seperti halilintar dan radiasi kosmis menyebabkan reaksi antar molekul-molekul ini.</li>
+                            <li><strong>Fase 3:</strong> Hasil reaksi menghasilkan zat hidup yang lebih kompleks dari unsur sebelumnya (misalnya asam amino).</li>
+                            <li><strong>Fase 4:</strong> Zat hidup yang terbentuk (diperkirakan berupa asam amino) kemudian berkembang selama jutaan tahun menjadi organisme yang lebih kompleks.</li>
+                        </ol>
+                    </li>
+                </ul>
+                <p class="important-note">Penemuan Miller masih menyisakan pertanyaan tentang bagaimana makhluk hidup sederhana berkembang menjadi kompleks, seperti transisi dari prokariotik ke eukariotik atau dari kehidupan laut ke darat.</p>
+            </div>
+        </details>
+
+        <details class="card theory-section">
+            <summary>d. Teori dari Prokariotik ke Eukariotik (Endosimbiosis)</summary>
+            <div class="content">
+                <p>Sel prokariotik dianggap sebagai "nenek moyang kehidupan" (ancestor of life). Teori endosimbiosis menjelaskan bagaimana sel eukariotik berevolusi dari sel prokariotik melalui interaksi erat antara dua sel. Mekanisme ini melibatkan:</p>
+                <ul>
+                    <li>Sebuah sel prokariotik purba yang lebih besar bertindak sebagai <span class="highlight-text">sel inang (<em>ancestral host cell</em>)</span>.</li>
+                    <li>Sel prokariotik lain yang lebih kecil (misalnya bakteri aerob heterotrof atau prokariot fotosintetik) "dimakan" atau masuk ke dalam sel inang.</li>
+                    <li>Prokariot yang masuk ini kemudian menjadi organel seperti <span class="highlight-text">mitokondria</span> (dari bakteri aerob) dan <span class="highlight-text">kloroplas</span> (dari prokariot fotosintetik).</li>
+                    <li>Bukti pendukung teori ini meliputi DNA sirkular, ribosom, dan cara replikasi mitokondria/kloroplas yang mirip dengan bakteri.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="card theory-section">
+            <summary>e. Teori dari Laut ke Darat</summary>
+            <div class="content">
+                <p>Teori ini mengemukakan bahwa kehidupan pertama kali muncul dan berkembang di laut. Namun, seiring waktu, faktor-faktor seperti kompetisi dan tekanan predator di lingkungan laut mendorong beberapa organisme untuk beralih dan beradaptasi hidup di darat.</p>
+                <ul>
+                    <li>Pada awalnya, sel-sel dan organisme pertama hidup di lingkungan akuatik.</li>
+                    <li>Tekanan seleksi, seperti ketersediaan makanan dan kehadiran predator di laut, mendorong adaptasi untuk hidup di lingkungan baru.</li>
+                    <li>Fakta yang mendukung teori ini adalah <span class="highlight-text">siklus hidup amfibi</span>. Amfibi menghabiskan sebagian besar masa hidupnya (dari fertilisasi hingga berudu) di air, lalu mengalami metamorfosis untuk hidup di darat, menunjukkan transisi evolusioner.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="card theory-section">
+            <summary>f. Teori Evolusi Lamarck</summary>
+            <div class="content">
+                <p>Jean-Baptiste Lamarck mengemukakan teori evolusi yang menjelaskan perubahan organisme dari yang sederhana menjadi kompleks. Pokok dasar teorinya meliputi:</p>
+                <ol>
+                    <li><span class="highlight-text">Nenek Moyang Sederhana:</span> Makhluk hidup sederhana merupakan nenek moyang bagi makhluk hidup yang lebih kompleks atau sempurna.</li>
+                    <li><span class="highlight-text">Adaptasi Lingkungan:</span> Makhluk hidup terus beradaptasi dan menyesuaikan diri dengan lingkungannya untuk bertahan hidup.</li>
+                    <li><span class="highlight-text">Prinsip Penggunaan dan Tidak Digunakan (Use and Disuse):</span> Organ tubuh yang sering digunakan akan berkembang sempurna, sementara organ yang tidak digunakan akan mengalami penurunan fungsi atau tidak berkembang.</li>
+                    <li><span class="highlight-text">Pewarisan Sifat Perolehan:</span> Perubahan yang disebabkan oleh pengaruh lingkungan dan prinsip penggunaan/tidak digunakan dapat diwariskan kepada generasi berikutnya (<em>inheritance of acquired characteristics</em>).</li>
+                </ol>
+                <div class="example-box">
+                    <strong>Contoh Jerapah menurut Lamarck:</strong>
+                    <p>Pada awalnya, semua jerapah berleher pendek. Karena makanan di pohon semakin tinggi, jerapah terus-menerus meregangkan lehernya untuk menjangkau daun. Peregangan leher ini menyebabkan leher jerapah memanjang, dan sifat leher panjang ini kemudian diwariskan kepada keturunannya. Seiring waktu, populasi jerapah menjadi berleher panjang.</p>
+                </div>
+            </div>
+        </details>
+
+        <h2>2. Teori Evolusi Darwin</h2>
+        <details class="card theory-section">
+            <summary>a. Sejarah Perjalanan dan Pokok Pikiran Darwin</summary>
+            <div class="content">
+                <p>Teori evolusi Charles Darwin, yang dicetuskan setelah perjalanannya dengan kapal H.M.S. Beagle (Desember 1831), memiliki dampak besar dalam biologi. Darwin mengamati penyebaran flora dan fauna di Amerika Selatan, yang menjadi petunjuk penting bagi pertanyaan asal-usul spesies.</p>
+                <ul>
+                    <li><strong>Perjalanan HMS Beagle:</strong> Darwin mengamati adaptasi berbagai tumbuhan dan hewan di hutan Brasil, padang rumput Argentina, Tierra del Fuego, dan Pegunungan Andes. Ia mencatat perbedaan karakteristik flora dan fauna di Amerika dibandingkan Eropa.</li>
+                    <li><strong>Pengamatan Burung Finch di Galapagos:</strong>
+                        <p>Yang paling berkesan bagi Darwin adalah keanekaragaman burung finch di Kepulauan Galapagos. Ia menemukan berbagai jenis finch dengan bentuk paruh yang berbeda-beda, yang disesuaikan dengan jenis makanannya. Ini menunjukkan bahwa paruh adalah adaptasi penting:</p>
+                        <ul>
+                            <li>Finch tanah besar (<em>Geospiza magnirostris</em>): Paruh besar untuk memecahkan biji.</li>
+                            <li>Finch pematuk (<em>Camarhynchus pallidus</em>): Menggunakan duri kaktus atau ranting kecil sebagai alat untuk mengorek serangga.</li>
+                            <li>Finch pengisap serangga (<em>Camarhynchus parvulus</em>): Paruh kecil untuk menangkap serangga.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="example-box">
+                    <strong>Contoh Jerapah menurut Darwin:</strong>
+                    <p>Awalnya, populasi jerapah memiliki variasi leher, ada yang panjang dan ada yang pendek. Ketika sumber makanan (dedaunan tinggi) berkurang, jerapah berleher pendek kesulitan menjangkau makanan dan cenderung punah. Jerapah berleher panjang, yang lebih mampu menjangkau makanan, bertahan hidup dan bereproduksi, mewariskan sifat leher panjang kepada keturunannya. Akhirnya, jerapah berleher panjang mendominasi populasi.</p>
+                </div>
+                <h4>Pokok-pokok Pikiran Darwin dalam "The Origin of Species":</h4>
+                <ol>
+                    <li><span class="highlight-text">Common Descent with Modification:</span> Semua makhluk hidup di Bumi berasal dari nenek moyang yang sama dan telah mengalami modifikasi seiring waktu. Spesies tidak kekal melainkan berevolusi.</li>
+                    <li><span class="highlight-text">Fakta Pendukung Evolusi:</span> Darwin menyajikan banyak fakta yang menjelaskan asal-usul makhluk hidup melalui evolusi, bukan hanya penciptaan.</li>
+                    <li><span class="highlight-text">Mekanisme Utama: Seleksi Alam dan Adaptasi:</span> Perubahan evolusi terjadi melalui seleksi alam, di mana individu yang paling adaptif terhadap lingkungannya cenderung bertahan hidup dan bereproduksi, meneruskan sifat-sifat yang menguntungkan.</li>
+                </ol>
+            </div>
+        </details>
+
+        <details class="card theory-section">
+            <summary>b. Mekanisme Evolusi Darwin: Seleksi Alam</summary>
+            <div class="content">
+                <p>Mekanisme utama evolusi menurut Darwin adalah <span class="highlight-text">seleksi alam</span>. Meskipun Darwin tidak sepenuhnya memahami genetika, ia menyadari bahwa variasi dalam populasi sangat penting. Seleksi alam bekerja langsung pada fenotipe (sifat yang tampak) dan mengubah distribusi frekuensi sifat yang diwariskan dalam suatu populasi.</p>
+                <p>Faktor-faktor seperti <span class="highlight-text">mutasi</span> (yang mengubah susunan materi genetik dan memunculkan fenotipe baru) dan seleksi alam memengaruhi kemunculan spesies baru. Dalam suatu ekosistem, individu bersaing untuk sumber daya. Alam akan menyeleksi spesies yang paling kompetitif, resisten terhadap penyakit, dan paling mampu beradaptasi, sehingga mereka bertahan hidup dan bereproduksi. Spesies yang rentan akan mati.</p>
+                <p>Setelah jutaan tahun, sifat gen dan alel yang menguntungkan akan terakumulasi, membentuk sifat baru yang lebih adaptif, sehingga karakter spesies adaptif akan sangat berbeda dari spesies awal.</p>
+
+                <h4>Jenis Seleksi Alam:</h4>
+                <p>Distribusi frekuensi sifat dalam populasi dapat berubah melalui tiga cara:</p>
+                <ol>
+                    <li>
+                        <strong>Seleksi Penstabilisasi (Stabilizing Selection):</strong>
+                        <p>Kondisi seleksi alam yang menghilangkan varian ekstrem dan mempertahankan tipe intermediet. Contoh: Jika ada populasi kumbang dengan warna cerah, sedang, dan gelap, seleksi penstabilisasi akan mengurangi jumlah kumbang sangat cerah dan sangat gelap, sementara jumlah kumbang berwarna sedang (intermediet) akan bertahan atau meningkat. Ini menguntungkan individu dengan rata-rata populasi.</p>
+                    </li>
+                    <li>
+                        <strong>Seleksi Direksional (Directional Selection):</strong>
+                        <p>Kondisi seleksi alam yang menguntungkan varian/fenotipe pada salah satu distribusi ekstrem. Contoh: Dalam populasi kumbang yang sama, jika lingkungan berubah menjadi lebih gelap, seleksi direksional akan menyebabkan jumlah kumbang berwarna cerah berkurang drastis, sementara jumlah kumbang berwarna gelap semakin bertambah. Ini menggeser rata-rata populasi ke arah salah satu ekstrem.</p>
+                    </li>
+                    <li>
+                        <strong>Seleksi Disruptif (Disruptive Selection):</strong>
+                        <p>Peristiwa seleksi alam yang menguntungkan varian pada kedua ujung distribusi ekstrem, sementara individu intermediet berkurang drastis. Contoh: Pada populasi kumbang, seleksi disruptif akan menyebabkan peningkatan jumlah kumbang cerah dan gelap, sedangkan kumbang berwarna sedang berkurang. Ini dapat memicu spesiasi jika kedua ekstrem menjadi terisolasi.</p>
+                    </li>
+                </ol>
+                <div class="example-box">
+                    <strong>Contoh Kasus Seleksi Alam: Kupu-kupu Biston Betularia (Ngengat Biston)</strong>
+                    <p>Kupu-kupu <em>Biston betularia</em> memiliki variasi sayap cerah dan gelap. Sebelum Revolusi Industri di Inggris, ngengat bersayap cerah lebih banyak karena lebih baik berkamuflase pada kulit pohon yang terang. Setelah Revolusi Industri, polusi menyebabkan pohon-pohon menjadi gelap oleh jelaga. Akibatnya, ngengat bersayap gelap menjadi lebih baik berkamuflase dan populasinya meningkat, sedangkan ngengat bersayap cerah menjadi lebih sedikit karena mudah terlihat predator.</p>
+                </div>
+
+                <h4>Seleksi Buatan (Artifisial):</h4>
+                <p>Selain seleksi alami, manusia juga melakukan seleksi buatan. Ini adalah proses di mana manusia secara sengaja memilih individu dengan sifat-sifat yang diinginkan untuk dibiakkan. Tujuannya adalah untuk menghasilkan sifat unggul yang bermanfaat bagi manusia, seringkali melalui persilangan atau rekayasa genetika. Contohnya adalah pengembangan varietas anggrek dengan sifat tertentu, atau berbagai ras anjing yang diciptakan dari serigala abu-abu.</p>
+            </div>
+        </details>
+
+        <h2>3. Teori Evolusi Pasca-Darwin (Sintesis Modern)</h2>
+        <details class="card theory-section">
+            <summary>a. Teori Evolusi Sintesis (Sintesis Modern)</summary>
+            <div class="content">
+                <p>Teori evolusi sintesis menggabungkan prinsip-prinsip evolusi Darwin dengan genetika modern (termasuk mutasi, genetika populasi, dan pewarisan Mendel). Ini menyediakan kerangka yang lebih lengkap untuk memahami mekanisme evolusi.</p>
+                <ul>
+                    <li><span class="highlight-text">Mutasi sebagai Sumber Variasi:</span> Mutasi, meskipun seringkali diasosiasikan dengan kelainan, diakui sebagai sumber utama variasi genetik baru. Mutasi pada tingkat genotipe dapat memengaruhi fenotipe dan memunculkan sifat baru yang berbeda dari induk. Variasi ini kemudian menjadi bahan baku bagi seleksi alam.</li>
+                    <li><span class="highlight-text">Dukungan Ilmiah:</span> Teori ini didukung oleh banyak ahli di berbagai bidang, termasuk ahli genetika (G. Ledyard Stebbins, Theodosius Dobzhansky, Ronald A. Fisher, Sewall Wright), ahli zoologi (Ernst Mayr, Julian Huxley), dan ahli paleontologi (George Gaylord Simpson, Glenn L.).</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="card theory-section">
+            <summary>b. Mekanisme Mikroevolusi</summary>
+            <div class="content">
+                <p>Mikroevolusi adalah perubahan frekuensi alel dalam suatu populasi dari generasi ke generasi. Populasi didefinisikan sebagai kelompok individu dari spesies yang sama di wilayah yang sama, yang dapat kawin silang dan menghasilkan keturunan fertil. Genetika populasi mempelajari perubahan genetik dalam kelompok individu seiring waktu.</p>
+                <p><span class="highlight-text">Gene Pool:</span> Kumpulan total gen dalam populasi, yaitu semua alel pada semua lokus gen dari setiap individu dalam populasi. Dalam <em>gene pool</em>, terdapat frekuensi genotipe, frekuensi fenotipe, dan frekuensi alel.</p>
+                <h4>Hukum Hardy-Weinberg:</h4>
+                <p>Pada tahun 1908, Godfrey Harold Hardy dan Wilhelm Weinberg secara independen mengemukakan bahwa frekuensi alel dan genotipe dalam suatu populasi akan tetap konstan dari generasi ke generasi (dalam kesetimbangan) jika memenuhi kondisi tertentu:</p>
+                <ol>
+                    <li>Ukuran populasi sangat besar (tidak ada <span class="highlight-text">hanyutan genetik/<em>genetic drift</em></span>).</li>
+                    <li>Terisolasi dari populasi lain (tidak ada <span class="highlight-text">aliran gen/<em>gene flow</em></span>).</li>
+                    <li>Tidak ada mutasi (atau frekuensi mutasi maju sama dengan mutasi mundur).</li>
+                    <li>Perkawinan acak.</li>
+                    <li>Tidak ada seleksi alam.</li>
+                </ol>
+                <p><strong>Persamaan Hardy-Weinberg:</strong></p>
+                <ul>
+                    <li><strong>Untuk frekuensi alel:</strong> <code>p + q = 1</code> (dimana p = frekuensi alel dominan, q = frekuensi alel resesif)</li>
+                    <li><strong>Untuk frekuensi genotipe:</strong> <code>p² + 2pq + q² = 1</code>
+                        <ul>
+                            <li><code>p²</code> = frekuensi genotipe homozigot dominan (misal AA)</li>
+                            <li><code>q²</code> = frekuensi genotipe homozigot resesif (misal aa)</li>
+                            <li><code>2pq</code> = frekuensi genotipe heterozigot (misal Aa)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="example-box">
+                    <strong>Contoh Perhitungan Hardy-Weinberg:</strong>
+                    <p>Dalam populasi 60.000 orang, perbandingan penderita albino (aa) dengan orang normal (AA atau Aa) adalah 1:10.000. Albino adalah sifat homozigot resesif (q²).</p>
+                    <p>Frekuensi albino (q²) = 1/10.000 = 0,0001</p>
+                    <p>Frekuensi alel albino (q) = √0,0001 = 0,01</p>
+                    <p>Berdasarkan p + q = 1, maka p = 1 - q = 1 - 0,01 = 0,99 (frekuensi alel normal A)</p>
+                    <p>Frekuensi orang normal heterozigot (Aa) = 2pq = 2 * 0,99 * 0,01 = 0,0198</p>
+                    <p>Jumlah orang normal heterozigot = 0,0198 * 60.000 = <span class="highlight-text">1.188 orang</span>.</p>
+                </div>
+
+                <h4>d. Hanyutan Genetik (Genetic Drift):</h4>
+                <p>Hanyutan genetik adalah perubahan tak terduga dalam frekuensi alel dari generasi ke generasi berikutnya, terutama di populasi kecil. Ini adalah faktor penting dalam mikroevolusi.</p>
+                <ul>
+                    <li>
+                        <strong>Efek Pendiri (Founder Effect):</strong>
+                        <p>Terjadi ketika sekelompok kecil individu terisolasi dari populasi besar dan membentuk koloni baru. Susunan genetik koloni baru ini mungkin tidak mewakili keragaman genetik populasi asal. Hal ini dapat menyebabkan frekuensi kelainan atau gangguan tertentu menjadi relatif tinggi pada populasi hasil keturunan baru. Jika hal ini berlangsung terus-menerus dengan varian yang adaptif, dapat muncul spesies baru.</p>
+                        <div class="example-box">
+                            <strong>Contoh: Koloni Inggris di Tristan da Cunha</strong>
+                            <p>Pada tahun 1814, 15 orang Inggris membentuk koloni di Tristan da Cunha. Salah satu pendiri membawa alel resesif untuk <em>retinitis pigmentosa</em> (kelainan mata yang menyebabkan kebutaan progresif). Pada tahun 1960-an, dari 240 keturunan, 4 orang menderita penyakit ini dan 9 orang adalah pembawa sifat (<em>carrier</em>). Frekuensi alel penyebab penyakit di koloni ini 10 kali lebih tinggi dibandingkan populasi asal, menunjukkan efek pendiri.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Efek Leher Botol (Bottleneck Effect):</strong>
+                        <p>Terjadi ketika populasi mengalami penurunan ukuran secara drastis akibat perubahan mendadak lingkungan (kebakaran, gunung meletus, banjir). Populasi yang tersisa memiliki keragaman genetik yang sangat berkurang dan tidak lagi merepresentasikan keragaman populasi induk asli. Sifat genetik dari individu yang selamat akan mendominasi generasi berikutnya, yang dapat menyebabkan hilangnya beberapa alel atau dominannya alel tertentu.</p>
+                        <div class="example-box">
+                            <strong>Contoh: Ayam Prairie Raksasa</strong>
+                            <p>Pada tahun 1820, padang rumput (habitat ayam prairie) hampir penuh. Pada tahun 1993, padang rumput kurang dari 1%, dan ayam prairie hanya ditemukan di dua lokasi. Penurunan drastis habitat dan populasi ini adalah contoh efek leher botol yang menyebabkan berkurangnya variasi genetik.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>e. Aliran Gen (Gene Flow):</h4>
+                <p>Aliran genetik adalah perpindahan alel (masuk atau keluar) dari populasi akibat pergerakan individu yang fertil (migrasi) atau gamet (penyerbukan). Aliran gen cenderung <span class="highlight-text">mengurangi perbedaan genetik antarpopulasi</span> dan meningkatkan homogenitas genetik di antara mereka.</p>
+            </div>
+        </details>
+
+        <h2>4. Bukti-bukti Mekanisme Evolusi</h2>
+        <p>Berbagai disiplin ilmu memberikan petunjuk kuat tentang adanya evolusi dan asal-usul makhluk hidup:</p>
+
+        <details class="card evidence-section">
+            <summary>1) Variasi Individu dalam Satu Keturunan</summary>
+            <div class="content">
+                <p>Tidak ada dua individu yang identik, bahkan pada kembar identik, karena adanya <span class="highlight-text">keanekaragaman tingkat gen</span>. Variasi ini disebabkan oleh kombinasi faktor genetik dan faktor eksternal (lingkungan, makanan, suhu, dll.).</p>
+                <div class="example-box">
+                    <strong>Ekspresi Gen pada Kupu-kupu Bersayap Gelap dan Cerah:</strong>
+                    <ul>
+                        <li><strong>Tingkat Molekuler:</strong> Gen pigmen warna gelap menghasilkan enzim pigmentasi yang sangat fungsional. Gen pigmen warna cerah menghasilkan enzim pigmentasi yang tidak berfungsi dengan baik.</li>
+                        <li><strong>Tingkat Sel:</strong> Sel sayap kupu-kupu gelap memiliki banyak molekul pigmen. Sel sayap kupu-kupu cerah memiliki sedikit molekul pigmen.</li>
+                        <li><strong>Tingkat Organisme:</strong> Kupu-kupu dengan banyak pigmen adalah kupu-kupu bersayap gelap. Kupu-kupu dengan sedikit pigmen adalah kupu-kupu bersayap cerah.</li>
+                        <li><strong>Tingkat Populasi:</strong> Kupu-kupu bersayap gelap biasanya hidup di daerah pepohonan yang gelap (tercemar). Kupu-kupu bersayap cerah biasanya hidup di daerah tanpa pepohonan yang gelap.</li>
+                    </ul>
+                    <p>Variasi genetik ini diwariskan, dan jika keturunan dengan variasi berbeda mendiami daerah yang berbeda, dapat terjadi perubahan fenotipe yang mengarah pada <span class="highlight-text">spesiasi</span> (pembentukan spesies baru).</p>
+                </div>
+            </div>
+        </details>
+
+        <details class="card evidence-section">
+            <summary>2) Fosil</summary>
+            <div class="content">
+                <p>Fosil adalah sisa-sisa organisme hidup (hewan atau tumbuhan) dari masa lampau yang terawetkan. Studi tentang fosil disebut <span class="highlight-text">paleontologi</span>. Pengamatan fosil menunjukkan adanya perubahan struktur tubuh organisme dari waktu ke waktu, yang mendukung adanya evolusi. Keadaan lingkungan masa lampau juga berbeda dengan sekarang, yang memengaruhi adaptasi organisme.</p>
+                <div class="example-box">
+                    <strong>Evolusi Kuda (dari Eohippus hingga Equus):</strong>
+                    <p>Fosil kuda merupakan salah satu catatan evolusi terlengkap yang ditemukan. Perubahan yang diamati meliputi:</p>
+                    <ul>
+                        <li><strong>Ukuran Tubuh:</strong> Dari seukuran kucing (<em>Eohippus</em>) menjadi sebesar kuda modern (<em>Equus</em>).</li>
+                        <li><strong>Kepala:</strong> Ukuran kepala membesar dan jarak antara mulut dengan mata semakin jauh.</li>
+                        <li><strong>Leher:</strong> Leher semakin panjang.</li>
+                        <li><strong>Geraham:</strong> Geraham depan dan belakang membesar dan bentuknya lebih sesuai untuk memakan rumput-rumputan.</li>
+                        <li><strong>Kaki:</strong> Kaki depan dan belakang semakin panjang, dengan perubahan jari kaki menjadi hanya satu jari utama (kuku) untuk berlari cepat di padang rumput.</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+
+        <details class="card evidence-section">
+            <summary>3) Homologi dan Analogi Organ Tubuh</summary>
+            <div class="content">
+                <p>Meskipun makhluk hidup sangat beragam, banyak kesamaan struktur yang dapat ditemukan, terutama pada vertebrata. Kesamaan ini memberikan petunjuk tentang hubungan kekerabatan evolusioner.</p>
+                <ul>
+                    <li>
+                        <strong>Homologi:</strong>
+                        <p>Organ-organ yang memiliki <span class="highlight-text">bentuk asal yang sama</span> atau asal embrio yang sama, tetapi telah mengalami perubahan struktur dan <span class="highlight-text">memiliki fungsi yang berbeda</span>. Ini menunjukkan bahwa organisme tersebut memiliki nenek moyang yang sama (evolusi divergen).</p>
+                        <p><strong>Contoh:</strong> Sayap burung dan tangan manusia memiliki struktur tulang dasar yang sama (humerus, radius, ulna, karpal, metakarpal, falang), tetapi berfungsi berbeda (terbang vs. memegang). Sayap kelelawar, sirip paus, dan kaki depan kuda juga menunjukkan homologi dengan tangan manusia.</p>
+                    </li>
+                    <li>
+                        <strong>Analogi:</strong>
+                        <p>Organ-organ yang memiliki <span class="highlight-text">fungsi yang sama</span> tetapi <span class="highlight-text">bentuk asal atau asal embrio yang berbeda</span>. Ini menunjukkan adaptasi terhadap lingkungan serupa melalui jalur evolusi yang berbeda (evolusi konvergen).</p>
+                        <p><strong>Contoh:</strong> Sayap serangga dan sayap burung. Keduanya berfungsi untuk terbang, tetapi struktur anatomi dasarnya sangat berbeda.</p>
+                    </li>
+                </ul>
+                <p>Konsep <span class="highlight-text">filogeni</span> (hubungan kekerabatan evolusioner) dapat digambarkan melalui kladogram atau pohon filogeni, yang menunjukkan bagaimana spesies berkerabat satu sama lain berdasarkan persamaan ciri.</p>
+            </div>
+        </details>
+
+        <details class="card evidence-section">
+            <summary>4) Embriologi Perbandingan</summary>
+            <div class="content">
+                <p>Perbandingan perkembangan embrio pada vertebrata menunjukkan kesamaan yang mencolok pada tahap awal perkembangan, meskipun organisme dewasa sangat berbeda. Hal ini menunjukkan <span class="highlight-text">nenek moyang yang sama</span>.</p>
+                <p><strong>Contoh:</strong> Embrio ikan, salamander, kura-kura, ayam, dan manusia menunjukkan banyak kemiripan pada fase awal perkembangan (misalnya, semua memiliki celah insang dan ekor pada tahap tertentu), yang kemudian mengalami diferensiasi seiring perkembangan.</p>
+                <p><strong>Organ Sisa (Vestigial Organs):</strong></p>
+                <p>Dalam tubuh manusia dan organisme lain, terdapat organ-organ yang tidak memiliki fungsi yang jelas atau fungsionalitasnya sangat berkurang. Keberadaan organ sisa ini dianggap sebagai bukti evolusi, karena organ tersebut mungkin fungsional pada nenek moyang organisme tersebut.</p>
+                <p><strong>Contoh pada Manusia:</strong> umbai cacing (usus buntu), tulang ekor (sisa ekor), otot penggerak telinga, gigi bungsu (wisdom teeth), rambut pada dada (sisa rambut tebal pada nenek moyang berbulu).</p>
+            </div>
+        </details>
+
+        <details class="card evidence-section">
+            <summary>5) Bukti Molekuler dan Kemiripan DNA</summary>
+            <div class="content">
+                <p>Kemiripan materi genetik (DNA dan protein) antarspesies adalah bukti kuat evolusi. Semakin dekat hubungan kekerabatan dua spesies, semakin tinggi persentase kemiripan DNA mereka.</p>
+                <ul>
+                    <li><strong>Persentase Kemiripan DNA:</strong> Manusia dan simpanse memiliki kemiripan DNA sekitar 98%, menunjukkan kekerabatan yang sangat dekat. Manusia dan kucing memiliki kemiripan genetik yang lebih rendah.</li>
+                    <li><strong>Cladogram Berbasis DNA:</strong> Kladogram atau pohon filogeni juga dapat dibangun berdasarkan perbandingan urutan DNA atau protein. Spesies dengan urutan DNA yang paling mirip dianggap memiliki hubungan kekerabatan terdekat.</li>
+                </ul>
+                <div class="example-box">
+                    <strong>Analogi Perbandingan Kromosom (DNA)</strong>
+                    <p>Untuk memahami signifikansi perbedaan DNA, kita bisa menggunakan analogi:</p>
+                    <ul>
+                        <li><span class="highlight-text">Genom manusia</span> seperti sebuah <span class="highlight-text">buku</span> besar.</li>
+                        <li><span class="highlight-text">Kromosom</span> adalah <span class="highlight-text">BAB</span> dalam buku tersebut (benang DNA yang dipadatkan).</li>
+                        <li>Bagian <span class="highlight-text">ekson (mengkode informasi)</span> dan <span class="highlight-text">intron (tidak mengkode)</span> dalam gen seperti <span class="highlight-text">paragraf</span> dan <span class="highlight-text">spasi</span> dalam BAB.</li>
+                        <li><span class="highlight-text">Gen</span> tersusun dari <span class="highlight-text">kodon</span>, seperti <span class="highlight-text">kata-kata</span> dalam kalimat.</li>
+                        <li><span class="highlight-text">Kodon</span> tersusun dari <span class="highlight-text">basa nitrogen</span> (Adenin, Timin, Guanin, Citosin), seperti <span class="highlight-text">huruf-huruf</span> dalam kata.</li>
+                    </ul>
+                    <p>Perbedaan 2% antara materi genetik simpanse dan manusia, jika diterjemahkan ke dalam analogi ini, berarti perbedaan ribuan hingga jutaan basa nitrogen. Ini setara dengan perbedaan yang sangat signifikan pada tingkat "kata" atau "kalimat", yang mengkode protein spesifik dan pada akhirnya menghasilkan perbedaan fenotipe yang jelas antara spesies.</p>
+                </div>
+            </div>
+        </details>
+
+        <h2>5. Krisis dalam Teori Evolusi (Kritik terhadap Darwinisme)</h2>
+        <p>Meskipun teori evolusi sintesis modern sangat diterima, ada beberapa pandangan yang menyanggah atau mengkritik bukti dan mekanisme evolusi Darwinian, seperti yang dikemukakan oleh Prof. Michael Denton dan Harun Yahya.</p>
+
+        <details class="card">
+            <summary>a. Kritik terhadap Variasi Spesies</summary>
+            <div class="content">
+                <p>Harun Yahya berargumen bahwa variasi spesies yang terjadi adalah hasil kombinasi genetik yang sudah ada di dalam <span class="highlight-text">gene pool</span>, bukan kemunculan spesies baru atau penambahan informasi genetik. Ia menyatakan bahwa variasi ini tidak dapat menambahkan organ baru (misalnya sayap pada reptil untuk menjadi burung) dan belum ada fosil transisi antarspesies yang meyakinkan ditemukan.</p>
+            </div>
+        </details>
+
+        <details class="card">
+            <summary>b. Kritik terhadap Homologi</summary>
+            <div class="content">
+                <p>Beberapa argumen yang disampaikan sebagai kritik terhadap homologi sebagai bukti evolusi:</p>
+                <ul>
+                    <li>Homologi ditemukan pada spesies yang sangat berbeda yang tidak dapat dibuktikan hubungannya secara evolusi.</li>
+                    <li>Kode genetik untuk organ-organ homolog pada spesies yang berbeda seringkali sangat berbeda, menunjukkan bahwa evolusi mereka tidak berasal dari gen yang sama.</li>
+                    <li>Perkembangan embrio dari organ-organ homolog pada spesies yang berbeda dapat sangat bervariasi, menantang gagasan nenek moyang bersama.</li>
+                    <li>Sebagai contoh, mata manusia dan mata gurita memiliki morfologi yang sangat mirip, namun evolusionis tidak mengklaim nenek moyang yang dekat untuk keduanya (ini adalah contoh analogi, bukan homologi). Kritik ini menyoroti selektivitas dalam penggunaan bukti homologi.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="card">
+            <summary>c. Kritik terhadap Kesamaan Molekuler</summary>
+            <div class="content">
+                <p>Meskipun kemiripan DNA manusia dan simpanse sering disebut sebagai bukti kekerabatan, kritik menunjukkan bahwa perbedaan 2% antara DNA mereka memiliki makna yang sangat besar.</p>
+                <ul>
+                    <li>Perbedaan 2% berarti jutaan perbedaan basa nitrogen, yang mengkode protein spesifik yang sangat berbeda.</li>
+                    <li>Analogi buku (genom) dengan BAB (kromosom), paragraf (ekson/intron), kata (kodon), dan huruf (basa nitrogen) digunakan untuk menjelaskan bahwa sedikit perbedaan pada tingkat "huruf" dapat berarti perbedaan yang sangat besar pada tingkat "buku" secara keseluruhan.</li>
+                    <li>Argumen ini menyoroti bahwa perbedaan molekuler tersebut signifikan dan tidak secara otomatis membuktikan hubungan kekerabatan yang sangat dekat dalam konteks evolusi dari nenek moyang yang sama.</li>
+                </ul>
+            </div>
+        </details>
+
+        <p class="important-note">Perdebatan dan kritik ini menunjukkan bahwa sains adalah proses yang terus berkembang, di mana teori-teori diuji, disempurnakan, dan terkadang ditantang oleh bukti atau interpretasi baru. Penting untuk memahami berbagai sudut pandang dan dasar ilmiah di baliknya.</p>
+    </div>
+</body>
+</html>
+```

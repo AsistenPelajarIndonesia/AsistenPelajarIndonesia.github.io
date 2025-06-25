@@ -1,0 +1,810 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengembangan Wilayah | Geografi Kelas XII</title>
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background-color: #E3F2FD; /* Lighter primary blue */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-secondary);
+        }
+
+        .concept-box {
+            background-color: #FFF3E0; /* Lighter secondary accent amber */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+            background-color: #FFFFFF;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F8F8F8; /* Slight grey for alternating rows */
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Accordion Styling */
+        .accordion {
+            background-color: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2em;
+            transition: 0.4s;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .active, .accordion:hover {
+            background-color: var(--accent-green);
+        }
+
+        .accordion:after {
+            content: '\002B'; /* Plus sign */
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+            font-size: 1.5em;
+        }
+
+        .active:after {
+            content: "\2212"; /* Minus sign */
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: #f9f9f9;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 10px;
+            border-radius: 0 0 5px 5px;
+            border: 1px solid var(--border-divider);
+            border-top: none;
+        }
+
+        .panel p, .panel ul, .panel ol, .panel table {
+            padding-top: 15px;
+        }
+
+        .theory-diagram {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            gap: 20px;
+        }
+
+        .diagram-item {
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .diagram-shape {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .diagram-shape.A { background-color: var(--semantic-info); }
+        .diagram-shape.B { background-color: var(--semantic-warning); }
+        .diagram-shape.C { background-color: var(--semantic-success); }
+        
+        .diagram-legend {
+            margin-top: 15px;
+            text-align: left;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+        .diagram-legend div {
+            margin-bottom: 5px;
+        }
+        .diagram-legend span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid var(--border-divider);
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .diagram-legend .market { background-color: var(--primary-blue); }
+        .diagram-legend .raw-material { background-color: var(--accent-green); }
+        .diagram-legend .industry { background-color: var(--secondary-accent-amber); }
+        
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+                padding-left: 10px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .accordion {
+                font-size: 1em;
+                padding: 15px;
+            }
+
+            th, td {
+                padding: 8px 10px;
+            }
+            .theory-diagram {
+                flex-direction: column;
+                align-items: center;
+            }
+            .diagram-item {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            ul, ol {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pengembangan Wilayah</h1>
+            <p>Mempelajari Konsep, Jenis, dan Teori Pengembangan Wilayah dalam Geografi</p>
+        </header>
+
+        <section id="pengertian-wilayah">
+            <button class="accordion">1. Pengertian Wilayah</button>
+            <div class="panel">
+                <p>Istilah "wilayah" sering kita jumpai dalam berbagai konteks, terutama dalam ilmu geografi dan IPS. Contohnya, kita mengenal wilayah pertanian, industri, pesisir, perdesaan, perkotaan, dan lain-lain. Setiap sebutan wilayah tersebut mencerminkan karakteristik spesifik dari area yang dimaksud.</p>
+                <p>Beberapa ahli mendefinisikan wilayah sebagai berikut:</p>
+                <ul>
+                    <li>Menurut <strong>Kant (1991)</strong>, istilah wilayah dalam bahasa Inggris disebut <em>region</em>.</li>
+                    <li><strong>Hadjisarosa (1981)</strong> mendefinisikan wilayah sebagai lingkungan permukaan bumi yang memiliki batas yang jelas.</li>
+                    <li>Sementara <strong>Hartshorn (1982)</strong> mengartikan wilayah sebagai suatu area spesifik yang memiliki aspek pembeda dari area lain.</li>
+                </ul>
+                <p>Dengan demikian, dapat disimpulkan bahwa wilayah adalah dimensi ruang/spasial berupa area di permukaan bumi yang memiliki karakteristik spesifik yang berbeda dari area lainnya. Wilayah juga dapat digunakan untuk menunjukkan suatu tempat dengan karakteristik khusus yang membedakannya dari tempat lain.</p>
+                <p>Aspek pembeda ini bisa berupa kenampakan fisik, sosial, ekonomi, dan budaya yang terkandung secara inheren di dalamnya. Perbedaan karakteristik antarwilayah terbentuk akibat dinamika dan interaksi komponen fisik, manusia, dan teknologi yang berbeda. Misalnya, lahan berkapur dengan curah hujan rendah dan teknologi penduduk sederhana mungkin mengembangkan hutan jati yang berbeda dari jenis hutan lain.</p>
+            </div>
+        </section>
+
+        <section id="jenis-jenis-wilayah">
+            <button class="accordion">2. Jenis-Jenis Wilayah</button>
+            <div class="panel">
+                <p>Wilayah di permukaan bumi memiliki beragam jenis. Secara umum, ada tiga jenis wilayah yang dapat diidentifikasi:</p>
+                
+                <h3>a. Wilayah Formal (Wilayah Homogen)</h3>
+                <p>Wilayah formal (wilayah homogen) adalah unit geografis yang dikelompokkan berdasarkan kesamaan karakteristik. Kriteria penggolongan dapat berupa aspek fisik, sosial, politik, maupun ekonomi (Adisasmita, 2016; Rustiadi, 2017).</p>
+                <ul>
+                    <li><strong>Contoh:</strong> Wilayah pertanian di perdesaan ditandai dengan kesamaan mata pencaharian penduduk sebagai petani dan lingkungan fisik berupa lahan budi daya pertanian.</li>
+                    <li><strong>Contoh lain:</strong> Wilayah industri yang ditandai dengan bangunan pabrik-pabrik yang luas.</li>
+                </ul>
+
+                <h3>b. Wilayah Nodal (Wilayah Fungsional)</h3>
+                <p>Wilayah nodal (wilayah fungsional) terdiri dari satuan wilayah yang heterogen, namun memiliki hubungan saling ketergantungan dengan wilayah lain. Pembentukan wilayah fungsional umumnya bersifat dinamis dan berawal dari titik pusat (wilayah sentral) yang mendorong perkembangan wilayah di sekitarnya (Adisasmita, 2016; Karlsson & Olsson, 2006; Langenhove, 2012).</p>
+                <ul>
+                    <li><strong>Contoh:</strong> Wilayah Jabodetabek (Jakarta, Bogor, Depok, Tangerang, Bekasi) di mana Jakarta menjadi pusat yang mempengaruhi daerah sekitarnya.</li>
+                    <li><strong>Contoh lain:</strong> Gerbangkertosusila (Gresik, Bangkalan, Mojokerto, Surabaya, Sidoarjo, Lamongan) dengan Surabaya sebagai pusat.</li>
+                    <li><strong>Contoh lain:</strong> Pusat Bisnis Semarang.</li>
+                </ul>
+
+                <h3>c. Wilayah Perencanaan (Wilayah Program)</h3>
+                <p>Wilayah perencanaan (wilayah program) merupakan satu kesatuan wilayah pengembangan yang menjadi objek dari program-program pembangunan. Wilayah ini berfungsi sebagai objek atau alat untuk mencapai tujuan pembangunan dan sangat erat kaitannya dengan perencanaan tata ruang wilayah.</p>
+                <p>Wilayah perencanaan merupakan bagian penting dari kebijakan regional, karena keberhasilan pembangunan di wilayah ini akan berdampak positif pada kesejahteraan masyarakat dalam lingkup regional.</p>
+                <ul>
+                    <li><strong>Contoh:</strong> Rencana Tata Ruang Kawasan Strategis Nasional Ibu Kota Nusantara Tahun 2022-2042 yang ditetapkan dengan Peraturan Presiden Republik Indonesia Nomor 64 Tahun 2022.</li>
+                    <li><strong>Contoh lain:</strong> Pembangunan <em>food estate</em> di Kalimantan Tengah dan Sumatra Utara yang mengembangkan tanaman hortikultura.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="perwilayahan">
+            <button class="accordion">3. Perwilayahan (Regionalisasi)</button>
+            <div class="panel">
+                <p>Setelah memahami konsep dan jenis wilayah, penting untuk memahami perwilayahan. Seringkali, fenomena alam, sosial, dan buatan belum jelas tergolong wilayah apa. Oleh karena itu, diperlukan identifikasi dan pengelompokan agar jenis wilayahnya menjadi jelas. Proses identifikasi dan pengelompokan menjadi wilayah tertentu ini disebut <strong>perwilayahan</strong>.</p>
+                <p>Istilah perwilayahan juga dapat diartikan sebagai proses identifikasi dan pengelompokan wilayah berdasarkan persamaan dan perbedaan karakteristiknya dengan wilayah lain. Praktiknya memperhatikan kriteria dan tujuan pengelompokan. Kriteria dapat berupa aspek fisik, sosial, budaya, dan ekonomi. Dalam materi ini, perwilayahan secara spesifik difokuskan untuk mengidentifikasi tiga jenis wilayah: wilayah formal, wilayah nodal, dan wilayah perencanaan.</p>
+
+                <h3>a. Perwilayahan Formal (Perwilayahan Homogen)</h3>
+                <p>Implementasi perwilayahan formal dilakukan dengan mengelompokkan wilayah-wilayah yang memiliki karakteristik serupa (homogen). Karakteristik homogen ini diidentifikasi melalui data spasial dan statistik yang memuat kondisi wilayah. Hasil identifikasi ini menjadi acuan dalam pengelompokan (Adisasmita, 2016; Symanski & Newman, 1973).</p>
+                <ul>
+                    <li><strong>Contoh:</strong> Identifikasi dan pengelompokan provinsi dengan penduduk terbanyak. Melalui analisis data kependudukan, diperoleh wilayah-wilayah berpenduduk terbanyak seperti Provinsi DKI Jakarta, Jawa Barat, Jawa Tengah, Jawa Timur, Sumatra Utara, Banten, dan Sulawesi Selatan. Wilayah-wilayah ini tidak harus berdekatan lokasinya, namun memiliki kesamaan sebagai wilayah dengan penduduk terbanyak.</li>
+                </ul>
+
+                <h3>b. Perwilayahan Nodal (Perwilayahan Heterogen)</h3>
+                <p>Perwilayahan nodal atau polarisasi mempertimbangkan hubungan antara titik pusat dengan unit-unit lain di sekitarnya. Hubungan ini diidentifikasi melalui analisis pola keruangan pada peta dan pola interaksi antarwilayah (Farmer & Fotheringham, 2011; Symanski & Newman, 1973). Pola keruangan wilayah sentral biasanya sangat mempengaruhi dinamika di sekitarnya.</p>
+                <ul>
+                    <li><strong>Contoh:</strong> Perwilayahan fungsional kawasan Gerbangkertosusila dilakukan berdasarkan keterkaitan keruangan antara Surabaya sebagai titik pusat dengan wilayah Gresik, Bangkalan, Mojokerto, Sidoarjo, dan Lamongan.</li>
+                </ul>
+
+                <h3>c. Perwilayahan Perencanaan (Perwilayahan Program)</h3>
+                <p>Praktik perwilayahan perencanaan dilakukan dengan mengelompokkan wilayah-wilayah berdasarkan posisinya dalam suatu program pembangunan. Identifikasi wilayah perencanaan mengacu pada dokumen perencanaan tata ruang wilayah dan program terkait kebijakan pembangunan. Batasan perwilayahan ini didasarkan pada analisis pembangunan dan lingkungan geografis tempat program pembangunan berlangsung (Adisasmita, 2016; Mahi, 2016; Rustiadi et al., 2017).</p>
+                <ul>
+                    <li><strong>Contoh:</strong> Pengembangan industri hijau (<em>green industry</em>) di Kalimantan Utara, di mana wilayah hutan dikembangkan menjadi wilayah industri hijau.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tujuan-prinsip-teori-pengembangan-wilayah">
+            <button class="accordion">4. Tujuan, Prinsip, dan Teori Pengembangan Wilayah</button>
+            <div class="panel">
+                <p>Untuk memahami permasalahan wilayah dan perwilayahan, diperlukan pengetahuan tentang tujuan, prinsip, dan teori pengembangan wilayah. Tujuan menjadi arahan, prinsip sebagai landasan berpikir, dan teori untuk menjelaskan fenomena yang terjadi.</p>
+
+                <h3>a. Tujuan Pengembangan Wilayah</h3>
+                <p>Beberapa tujuan pengembangan wilayah yang perlu diperhatikan:</p>
+                <ol>
+                    <li>
+                        <h4>Mewujudkan pemerataan pertumbuhan wilayah</h4>
+                        <p>Bertujuan mengurangi kesenjangan dan menekan jumlah wilayah tertinggal akibat ketidakmerataan pembangunan. Ini adalah sasaran utama untuk mendorong pertumbuhan menyeluruh demi kesejahteraan masyarakat utuh.</p>
+                    </li>
+                    <li>
+                        <h4>Menjaga stabilitas ekonomi nasional</h4>
+                        <p>Menciptakan perekonomian negara yang kondusif dan berkelanjutan, ditandai dengan stabilnya harga, daya beli meningkat, dan pendapatan nasional. Stabilitas ekonomi adalah fokus utama karena terkait kesejahteraan dan kemakmuran.</p>
+                    </li>
+                    <li>
+                        <h4>Mendorong efisiensi pertumbuhan wilayah</h4>
+                        <p>Efisiensi pertumbuhan dipengaruhi oleh ketersediaan infrastruktur dan sarana memadai, yang meningkatkan konektivitas antarwilayah dan aktivitas ekonomi. Pertumbuhan tidak hanya di satu wilayah, tetapi memicu pertumbuhan wilayah lain di sekitarnya (Mahi, 2016; Hadjisarosa, 1982).</p>
+                    </li>
+                </ol>
+
+                <h3>b. Prinsip dan Teori-Teori Pengembangan Wilayah</h3>
+                <p>Implementasi pengembangan wilayah dilandasi oleh beberapa prinsip dasar (Mulyanto, 2008):</p>
+                <ul>
+                    <li>Pengembangan wilayah tidak hanya fokus pada internal wilayah, tetapi juga mendorong perkembangan wilayah di sekitarnya.</li>
+                    <li>Keberhasilan pengembangan memerlukan kerja sama multisektoral dan antarwilayah.</li>
+                    <li>Pola pengembangan bersifat integral, yaitu integrasi dari daerah-daerah dalam wilayah pembangunan.</li>
+                    <li>Mekanisme pasar dan kondisi ekonomi juga menjadi prasyarat dalam perencanaan pembangunan.</li>
+                </ul>
+                <p>Pilar utama pengembangan wilayah adalah sumber daya alam, sumber daya manusia, dan teknologi, yang mendorong pelaksanaan optimal dengan memperhatikan keberlanjutan lingkungan (Mahi, 2016; Adisasmita, 2016).</p>
+                <p>Ada tiga teori pengembangan wilayah yang perlu dipahami:</p>
+
+                <h4>1) Teori Kutub Pertumbuhan (The Growth Pole Theory)</h4>
+                <p>Diperkenalkan oleh <strong>Francois Perroux (1955)</strong>. Teori ini menyatakan bahwa pembangunan tidak dilakukan di seluruh ruang wilayah, tetapi terbatas pada beberapa lokasi yang disebut kutub pertumbuhan. Lokasi ini memiliki konsentrasi aktivitas tinggi yang diharapkan memberikan pengaruh positif (penjalaran/<em>spread</em>) ke wilayah sekitarnya (Gulo, 2015; Rustiadi et al., 2017).</p>
+                <p>Aktivitas ekonomi pesat di kutub pertumbuhan mendorong investasi ke wilayah di bawahnya (pengaruh tetesan ke bawah/<em>trickling down effect</em>). Namun, ada juga efek penarikan (<em>backwash effect</em>) di mana kemajuan kutub pertumbuhan menyerap tenaga kerja produktif dan modal dari wilayah sekitar, menghambat pertumbuhan mereka dan menciptakan daerah <em>peri peri</em> (Mahi, 2016).</p>
+                <p>Kutub pertumbuhan adalah daerah dengan industri kunci dan pusat kegiatan ekonomi yang berpotensi mendorong industri lain di sekitarnya (Adisasmita, 2016). Karakteristik wilayah yang dapat menjadi kutub pertumbuhan:</p>
+                <ol type="a">
+                    <li><strong>Memiliki berbagai sektor kegiatan ekonomi yang saling berhubungan:</strong> Kegiatan ekonomi yang heterogen dan saling terkait mendorong perekonomian dan kemajuan wilayah.</li>
+                    <li><strong>Terdapat sektor yang saling terkait sehingga menciptakan efek pengganda (<em>multiplier effect</em>):</strong> Hasil interaksi ekonomi yang memberikan pengaruh luas.</li>
+                    <li><strong>Adanya konsentrasi geografis dalam suatu wilayah:</strong> Keberagaman sumber daya alam dan manusia terpusat menjadi modal awal aktivitas ekonomi.</li>
+                    <li><strong>Bersifat mendorong daerah penyangga (<em>hinterland</em>) di sekitarnya:</strong> Lokasi strategis pusat pertumbuhan harus mampu mendorong kemajuan wilayah penyangga yang menyediakan bahan baku.</li>
+                </ol>
+                <p>Implementasi teori ini di Indonesia terlihat dalam pembagian empat region pusat pertumbuhan: Medan, Jakarta, Surabaya, dan Makassar, yang kemudian dibagi lagi ke dalam beberapa wilayah pembangunan.</p>
+                <div class="highlight-box">
+                    <p class="note">Tabel 1.1 Wilayah Pusat Pertumbuhan dan Wilayah Pembangunan di Indonesia</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Regional</th>
+                                <th>Pusat Pertumbuhan</th>
+                                <th>Wilayah Pembangunan</th>
+                                <th>Cakupan Wilayah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>Medan</td>
+                                <td>I</td>
+                                <td>Aceh dan Sumatra Utara (Berpusat di Medan)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>II</td>
+                                <td>Sumatra Barat, Riau, Kepulauan Riau (Berpusat di Pekanbaru)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>III</td>
+                                <td>Jambi, Sumatra Selatan, Bengkulu, dan Bangka Belitung (Berpusat di Palembang)</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>Jakarta</td>
+                                <td>IV</td>
+                                <td>Lampung, Jakarta, Jawa Barat, Banten, Jawa Tengah, dan Daerah Istimewa Yogyakarta (Berpusat di Jakarta)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>V</td>
+                                <td>Kalimantan Barat (Berpusat di Pontianak)</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>Surabaya</td>
+                                <td>VI</td>
+                                <td>Jawa Timur dan Bali (Berpusat di Surabaya)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>VII</td>
+                                <td>Kalimantan Tengah, Kalimantan Timur, dan Kalimantan Selatan (Berpusat di Balikpapan dan Samarinda)</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>Makassar</td>
+                                <td>VIII</td>
+                                <td>Nusa Tenggara Barat, Nusa Tenggara Timur, Sulawesi Selatan, dan Sulawesi Utara (Berpusat di Makassar)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>IX</td>
+                                <td>Sulawesi Tengah, Sulawesi Utara, dan Gorontalo (Berpusat di Manado)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>X</td>
+                                <td>Maluku, Maluku Utara, dan Papua (Berpusat di Sorong)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="note">Sumber: Adisasmita (2016)</p>
+                </div>
+
+                <h4>2) Teori Lokasi (Location Theory)</h4>
+                <p>Teori ini mendasari pembangunan berbasis wilayah, fokus pada pengelolaan lokasi kegiatan ekonomi agar ruang wilayah memberikan manfaat dan nilai tambah optimal. Teori ini terus berkembang seiring perubahan mekanisme pasar dan pelaku ekonomi.</p>
+                <p>Beberapa teori dasar dalam teori lokasi:</p>
+                <ol type="a">
+                    <li>
+                        <strong>Teori Klasik (Teori Sewa Tanah)</strong>
+                        <p>Diperkenalkan oleh <strong>J.H. von Thunen (1982)</strong>. Teori ini mengasumsikan nilai sewa lahan pertanian ditentukan oleh jaraknya terhadap pusat kota atau pasar. Harga lahan akan menurun seiring meningkatnya jarak dari pusat kota.</p>
+                        <p>Asumsi ini diukur berdasarkan perbedaan manfaat biaya transportasi. Semakin jauh lahan dari pasar, biaya jual untuk menutupi biaya transportasi akan tinggi. Sebaliknya, semakin dekat lahan, biaya transportasi dan harga jual produk akan lebih rendah (Adisasmita, 2008).</p>
+                        <p>Gagasan utama: (1) Lahan pertanian jauh dari pasar memerlukan jarak tempuh panjang untuk menjual hasil panen. (2) Nilai sewa lahan pertanian berbeda berdasarkan jarak ke pusat kota. (3) Produsen tersebar luas, konsumen/pembeli terkonsentrasi di pusat kota/pasar. Gagasan ini penting untuk menentukan lokasi kegiatan ekonomi (Setyanto & Irawan, 2016).</p>
+                        <div class="concept-box">
+                            <strong>Konsep Zona Von Thunen (tanpa gambar):</strong>
+                            <p>Bayangkan sebuah kota pusat (pasar) dikelilingi oleh cincin-cincin penggunaan lahan pertanian. Zona-zona ini terbentuk berdasarkan biaya transportasi dan keuntungan:</p>
+                            <ul>
+                                <li><strong>Zona Terdalam (Pusat Kota/Pasar):</strong> Lokasi paling dekat, biaya transportasi paling rendah, harga sewa lahan paling tinggi.</li>
+                                <li><strong>Cincin Pertama: Produk Berharga Tinggi/Cepat Rusak (Misal: Sayuran, Susu):</strong> Produk ini membutuhkan pengiriman cepat ke pasar, sehingga ditempatkan di dekat kota untuk meminimalkan biaya transportasi dan kerugian.</li>
+                                <li><strong>Cincin Kedua: Hasil Hutan (Kayu Bakar):</strong> Kayu berat dan sulit diangkut. Mendekati kota meminimalkan biaya transportasi.</li>
+                                <li><strong>Cincin Ketiga: Pertanian Lahan Basah (Gandum/Biji-bijian):</strong> Hasil yang lebih tahan lama dan lebih mudah diangkut daripada sayuran, sehingga bisa ditanam sedikit lebih jauh.</li>
+                                <li><strong>Cincin Keempat: Padang Rumput/Peternakan:</strong> Hewan dapat berjalan sendiri ke pasar atau produknya (daging, wol) memiliki nilai per unit yang tinggi dan lebih mudah diangkut dalam jarak jauh.</li>
+                                <li><strong>Cincin Terluar: Hutan Liar/Lahan Tak Berpenghuni:</strong> Lahan paling jauh dari pasar, biaya transportasi sangat tinggi, sehingga tidak ekonomis untuk budidaya intensif.</li>
+                            </ul>
+                            <p>Model ini mengasumsikan tanah homogen, satu pasar sentral, biaya transportasi proporsional jarak, dan petani rasional.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Teori Lokasi Optimum</strong>
+                        <p>Diperkenalkan oleh <strong>Alfred Weber (1909)</strong>. Landasan teori ini adalah penentuan lokasi industri berdasarkan prinsip biaya minimum. Lokasi industri yang menguntungkan adalah di wilayah dengan biaya transportasi dan biaya tenaga kerja paling rendah. Transportasi, upah tenaga kerja, dan kekuatan aglomerasi adalah tiga variabel penting.</p>
+                        <p>Weber memberikan tiga skema analisis penentuan lokasi industri berdasarkan indeks material (perbandingan berat bahan baku dengan berat produk akhir) dan berat lokasional (berat total yang harus diangkut).</p>
+                        <div class="theory-diagram">
+                            <div class="diagram-item">
+                                <div class="diagram-shape A">A</div>
+                                <h4>Skema A: Indeks Material &lt; 1</h4>
+                                <p>Berat bahan baku lebih kecil dari berat produk akhir. Lokasi optimum cenderung dekat <strong>pasar</strong> (M) untuk meminimalkan biaya transportasi produk.</p>
+                            </div>
+                            <div class="diagram-item">
+                                <div class="diagram-shape B">B</div>
+                                <h4>Skema B: Indeks Material &gt; 1</h4>
+                                <p>Berat bahan baku lebih besar dari berat produk akhir. Lokasi industri cenderung dekat <strong>bahan baku</strong> (R1/R2) untuk meminimalkan ongkos transportasi.</p>
+                            </div>
+                            <div class="diagram-item">
+                                <div class="diagram-shape C">C</div>
+                                <h4 style="color: var(--semantic-success);">Skema C: Netral</h4>
+                                <p>Berat bahan baku dan produk akhir tidak mengalami perubahan signifikan. Lokasi industri dapat ditempatkan di <strong>tengah</strong> antara lokasi bahan baku dan pasar.</p>
+                            </div>
+                            <div class="diagram-legend">
+                                <div><span class="market"></span>M = Market/Pasar</div>
+                                <div><span class="raw-material"></span>R1, R2 = Raw material/Lokasi bahan baku</div>
+                                <div><span style="background-color: var(--secondary-accent-amber);"></span>P = Place/Lokasi industri</div>
+                            </div>
+                        </div>
+                        <p class="note">Skema ini bertujuan meminimalisasi biaya, meningkatkan efisiensi distribusi, dan mencegah ketidaknyamanan akibat material berat (Adisasmita, 2008; Setyanto & Irawan, 2016).</p>
+                    </li>
+                    <li>
+                        <strong>Teori Lokasi Sentral</strong>
+                        <p>Dipopulerkan oleh <strong>Walter Christaller (1933)</strong>. Teori ini membahas model hierarki perkotaan yang digambarkan dalam sistem geometrik heksagonal sebagai acuan lokasi ideal pusat pelayanan.</p>
+                        <p>Unit geografis dengan orde perkembangan lebih tinggi akan memiliki wilayah perdagangan dan pelayanan yang lebih luas.</p>
+                        <div class="concept-box">
+                            <strong>Konsep Utama Teori Lokasi Sentral (tanpa gambar):</strong>
+                            <p>Penentuan pusat pelayanan dipengaruhi oleh:</p>
+                            <ul>
+                                <li><strong>Threshold (Treshold):</strong> Nilai minimum (pendapatan/usaha) yang diperlukan agar pelaku ekonomi dapat menjaga stabilitas produksinya.</li>
+                                <li><strong>Range (Jangkauan):</strong> Jarak maksimum yang harus ditempuh penduduk untuk mendapatkan barang/jasa di lokasi sentral (Adisasmita, 2008; Berry & Garrison, 1958).</li>
+                            </ul>
+                            <p>Lokasi sentral terbentuk dari interaksi wilayah perdagangan (pasar) yang semula berbentuk lingkaran saling berhimpitan. Interaksi ini kemudian menciptakan bidang heksagon (segi enam) yang lebih luas tanpa tumpang tindih. Heksagon ini menunjukkan unit geografis bervariasi dari permukiman, pasar, hingga perkotaan.</p>
+                            <p>Teori ini menjelaskan pola geografis dan struktur hierarki pusat kota yang terhubung dalam sistem fungsional. Lokasi sentral atau wilayah pusat akan mempengaruhi wilayah penyangga (positif atau negatif).</p>
+                            <p>Asumsi dasar teori ini:</p>
+                            <ul>
+                                <li>Topografi wilayah datar.</li>
+                                <li>Mobilitas atau perpindahan dapat dilakukan ke segala arah.</li>
+                                <li>Penduduk dan daya beli tersebar merata ke seluruh penjuru wilayah.</li>
+                                <li>Pembeli mengutamakan jarak minimum untuk mencapai tujuan (Berry & Garrison, 1958; Setyanto & Irawan, 2016).</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Teori Agropolitan</strong>
+                        <p>Teori ini adalah pendekatan pengembangan wilayah untuk mencapai kesejahteraan dan pemerataan pembangunan. Berasal dari kata "agro" (pertanian) dan "polis" (kota), agropolitan diartikan sebagai pengembangan wilayah yang memadukan pembangunan pertanian pedesaan dengan sektor industri (Mahi, 2016; Nugroho & Widyagama, 2017).</p>
+                        <p>Pertama kali diperkenalkan oleh <strong>Friedman dan Douglass (1978)</strong>, bermula dari pemikiran Myrdal tentang perlunya penyebaran fasilitas merata untuk mengurangi ketimpangan regional antar desa dan kota. Konsep dasarnya adalah penyediaan fasilitas setara kota untuk kesejahteraan masyarakat desa, mencakup pelayanan ekonomi, sosial budaya, dan kehidupan sehari-hari. Pusat pelayanan ini menguntungkan petani dengan meminimalkan biaya produksi dan pemasaran (Mahi, 2016; Adisasmita, 2008).</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="pendekatan-arah-pengembangan">
+            <button class="accordion">5. Pendekatan dan Arah Pengembangan Wilayah Nasional, Regional, dan Lokal</button>
+            <div class="panel">
+                <p>Indonesia memiliki wilayah luas dengan 38 provinsi, 416 kabupaten, 98 kota, 7.288 kecamatan, 7.4961 desa, dan 8.506 kelurahan yang tersebar dari Sabang hingga Merauke. Dengan 273,5 juta jiwa penduduk (2020) yang terus bertambah, diperlukan ruang baru untuk permukiman, industri, pertanian, dan keperluan lainnya.</p>
+
+                <h3>a. Pendekatan Pengembangan Wilayah</h3>
+                <p>Pengembangan wilayah adalah proses penting dalam mendukung pembangunan nasional, ditinjau dari dua pendekatan:</p>
+                <ol>
+                    <li>
+                        <h4>Pendekatan Spasial</h4>
+                        <p>Berorientasi pada lokasi atau letak pengembangan suatu wilayah, memperhatikan unsur:</p>
+                        <ol type="a">
+                            <li><strong>Struktur keruangan:</strong> Menggambarkan sistem pelayanan kegiatan dan jaringan infrastruktur untuk mengintegrasikan wilayah dan melayani fungsi kegiatan. Contoh: Kota Malang dengan layanan pendidikan, kesehatan, ekonomi, sosial rekreatif, dan jaringan jalan yang menghubungkan antarwilayah.</li>
+                            <li><strong>Pemanfaatan lahan:</strong> Upaya memanfaatkan lahan untuk memperoleh hasil. Contoh: Lahan pertanian diubah menjadi perumahan, pertokoan, dan perhotelan di perkotaan.</li>
+                            <li><strong>Keterkaitan suatu wilayah dengan wilayah lain di sekitarnya:</strong> Jalinan jalan yang menghubungkan wilayah-wilayah. Contoh: Kota Malang terintegrasi dengan Kota Batu dan Kabupaten Malang melalui jalan besar dan kecil, baik wilayah formal maupun nodal.</li>
+                        </ol>
+                    </li>
+                    <li>
+                        <h4>Pendekatan Sektoral</h4>
+                        <p>Cara pandang bahwa seluruh kegiatan ekonomi dalam wilayah perencanaan dikelompokkan berdasarkan aktivitas manusia (Mirza et al., 2017). Analisis sektoral dilakukan dengan pertanyaan:</p>
+                        <ul>
+                            <li>Sektor apa yang memiliki nilai keunggulan kompetitif di pasar global?</li>
+                            <li>Sektor apa yang bersifat basis dan nonbasis?</li>
+                            <li>Sektor apa yang memiliki nilai tambah yang tinggi?</li>
+                            <li>Sektor apa yang banyak menyerap tenaga kerja?</li>
+                        </ul>
+                        <p>Pertanyaan ini menjadi panduan pengembangan sektor yang akan dipilih, misalnya sektor primer (pertanian, perkebunan, perikanan), sekunder (berbagai industri), dan tersier (jasa, perdagangan, pendidikan, kesehatan). Setiap sektor dianalisis potensi dan peluangnya untuk peningkatan lokasi kegiatan. Implementasi pendekatan sektoral merujuk pada Rencana Pembangunan Jangka Menengah Nasional (RPJMN) dan Rencana Pembangunan Jangka Panjang Nasional (RPJPN) (Nur & Puspasari, 2015; Setneg RI, 2020).</p>
+                    </li>
+                </ol>
+
+                <h3>b. Arah Kebijakan Pengembangan Wilayah Nasional, Regional, dan Lokal</h3>
+                <p>Arah kebijakan pengembangan wilayah nasional (Setneg RI, 2020):</p>
+                <ol>
+                    <li>
+                        <h4>Pengembangan potensi ekonomi</h4>
+                        <p>Pemberdayaan pusat-pusat pertumbuhan sesuai potensi unggulan wilayah.</p>
+                    </li>
+                    <li>
+                        <h4>Pembangunan konektivitas antarwilayah</h4>
+                        <p>Memperluas pertumbuhan ekonomi dari pusat-pusat pertumbuhan ke wilayah penyangga (<em>hinterland</em>).</p>
+                    </li>
+                    <li>
+                        <h4>Optimalisasi sumber daya manusia dan iptek</h4>
+                        <p>Pemberdayaan tenaga kerja untuk meningkatkan kompetensi sesuai kebutuhan industri.</p>
+                    </li>
+                    <li>
+                        <h4>Peninjauan regulasi dan kebijakan</h4>
+                        <p>Mempercepat pertumbuhan wilayah melalui evaluasi dan perubahan regulasi yang menghambat.</p>
+                    </li>
+                    <li>
+                        <h4>Peningkatan iklim usaha dan investasi</h4>
+                        <p>Penyelenggaraan Pelayanan Terpadu Satu Pintu (PTSP) di kawasan strategis dengan pelimpahan kewenangan perizinan.</p>
+                    </li>
+                </ol>
+                <p>Pelaksanaan pengembangan wilayah di tingkat regional mengacu pada dokumen Rencana Tata Ruang Wilayah (RTRW), Rencana Pembangunan Jangka Panjang Daerah (RPJPD), dan Rencana Pembangunan Jangka Menengah Daerah (RPJMD), yang membahas kondisi spasial, ekonomi, potensi alam, demografis, dan SDM (Ariadi, 2019).</p>
+                <p>Pengembangan wilayah lokal mengacu pada dokumen perencanaan wilayah administratif yang lebih besar. Contohnya, RPJMD desa harus sesuai visi-misi kabupaten/kota. Pengembangan sistematis mencegah tumpang tindih kebijakan dan mendorong hubungan fungsional yang harmonis antarwilayah, yang pada akhirnya mendorong pertumbuhan ekonomi hingga wilayah perdesaan (Ariadi, 2019; Setyanto & Irawan, 2016).</p>
+            </div>
+        </section>
+
+        <section id="elemen-permasalahan-pengembangan">
+            <button class="accordion">6. Elemen dan Permasalahan Pengembangan Wilayah</button>
+            <div class="panel">
+                <h3>a. Elemen Pengembangan Wilayah</h3>
+                <p>Pengembangan wilayah melibatkan beberapa elemen utama:</p>
+                <ol>
+                    <li>
+                        <h4>Sumber daya alam</h4>
+                        <p>Upaya pendayagunaan SDA untuk memperoleh nilai tambah. Keberadaan SDA adalah modal penting yang menentukan arah pengembangan wilayah.</p>
+                    </li>
+                    <li>
+                        <h4>Sumber daya manusia</h4>
+                        <p>Modal utama pembangunan, berperan sebagai <em>stakeholder</em> atau penggerak. SDM yang memadai sangat mempengaruhi keberhasilan pengembangan wilayah.</p>
+                    </li>
+                    <li>
+                        <h4>Teknologi</h4>
+                        <p>Alat bantu untuk memudahkan proses pembangunan. Penggunaan teknologi yang tepat mendorong optimalisasi dan efisiensi, meminimalkan waktu, biaya, dan tenaga.</p>
+                    </li>
+                </ol>
+
+                <h3>b. Permasalahan Pengembangan Wilayah</h3>
+                <p>Dalam pembangunan nasional, fokusnya adalah mendorong pertumbuhan ekonomi stabil dan merata. Namun, Indonesia masih menghadapi masalah kesenjangan antarwilayah dan pembangunan, seperti infrastruktur jalan yang kurang memadai dan teknologi yang perlu ditingkatkan.</p>
+                <p>Kesenjangan antarwilayah terlihat antara wilayah barat dan timur, Jawa dan luar Jawa, serta kota dan desa. Wilayah Indonesia Barat dan Jawa umumnya memiliki infrastruktur lebih memadai dibandingkan timur dan luar Jawa. Perkotaan juga memiliki infrastruktur lebih lengkap daripada perdesaan.</p>
+                <p>Dengan banyaknya masalah, diperlukan langkah terfokus untuk pemecahan. Masalah strategis dalam pengembangan wilayah Indonesia antara lain:</p>
+                <ol>
+                    <li>
+                        <h4>Persebaran sumber daya yang tidak merata</h4>
+                        <p>Banyak produk unggulan dan lokasi strategis belum dikembangkan optimal karena letaknya jauh dari pusat pertumbuhan ekonomi, menyulitkan akses informasi pasar dan teknologi (Dewi et al., 2011).</p>
+                    </li>
+                    <li>
+                        <h4>Pembangunan wilayah yang tidak seimbang</h4>
+                        <p>Pertumbuhan masif di kota besar (Jawa dan Bali) berbanding terbalik dengan lambatnya pertumbuhan kota menengah-kecil di luar Jawa, diperparah urbanisasi tak terkendali.</p>
+                    </li>
+                    <li>
+                        <h4>Akses fasilitas antarwilayah yang kurang merata</h4>
+                        <p>Pembangunan nasional timpang pada aspek pelayanan, dengan infrastruktur dan lembaga pelayanan publik terkonsentrasi di perkotaan (Sukwika, 2018).</p>
+                    </li>
+                    <li>
+                        <h4>Keterbatasan di wilayah-wilayah tertinggal</h4>
+                        <p>Wilayah tertinggal perlu perhatian dalam pemerataan pembangunan. Masyarakat di sana umumnya sulit mengakses informasi, pelayanan sosial, ekonomi, dan politik (Syahza & Suarman, 2018).</p>
+                    </li>
+                    <li>
+                        <h4>Kerusakan lingkungan dan krisis sumber daya alam</h4>
+                        <p>Timbul akibat praktik pembangunan yang kurang memperhatikan aspek keberlanjutan (<em>sustainability</em>), daya dukung lingkungan, dan kerentanan bencana. Ini memberikan keuntungan ekonomi jangka pendek, namun berpotensi kerugian lingkungan jangka panjang (Samli, 2012).</p>
+                </ol>
+                <p>Untuk mengurangi dampak permasalahan tersebut, beberapa solusi/strategi yang dapat diterapkan:</p>
+                <ol>
+                    <li>
+                        <h4>Melakukan percepatan pembangunan wilayah strategis</h4>
+                        <p>Mendorong pertumbuhan wilayah tertinggal melalui pengembangan produk unggulan daerah, koordinasi, sinkronisasi, dan keterpaduan antarsektor pemerintahan, dunia usaha, dan masyarakat (Firdaus, 2013).</p>
+                    </li>
+                    <li>
+                        <h4>Memprioritaskan pengembangan wilayah terpencil dan tertinggal</h4>
+                        <p>Perhatian pada pertumbuhan ekonomi di wilayah terpencil dan tertinggal untuk stimulasi pertumbuhan dan pengurangan ketertinggalan (Syahza & Suarman, 2018).</p>
+                    </li>
+                    <li>
+                        <h4>Pengembangan jaringan prasarana dan sarana antarwilayah</h4>
+                        <p>Meningkatkan aksesibilitas, konektivitas, dan peluang investasi, menciptakan keterkaitan positif antarwilayah maju, berkembang, dan terbelakang (Sukwika, 2018).</p>
+                    </li>
+                    <li>
+                        <h4>Menekan kesenjangan antarwilayah</h4>
+                        <p>Menyetarakan kualitas hidup dan kesejahteraan masyarakat, baik lokal maupun nasional, dengan memperhatikan potensi SDA yang belum optimal (Sumirat, 2019).</p>
+                    </li>
+                    <li>
+                        <h4>Meningkatkan peluang interaksi ekonomi desa dan kota</h4>
+                        <p>Menciptakan sinergi antarwilayah untuk pertumbuhan ekonomi merata, dengan perluasan dan diversifikasi aktivitas ekonomi nonagraris di perdesaan.</p>
+                    </li>
+                    <li>
+                        <h4>Mengembangkan sektor agroindustri padat pekerja untuk kawasan perdesaan</h4>
+                        <p>Mendorong pembangunan perdesaan melalui agroindustri, didukung peningkatan kapasitas SDM, jaringan infrastruktur, akses informasi, pemasaran, lembaga kesempatan kerja, teknologi, serta kebijakan perdagangan yang berpihak pada produk pertanian (Hariayanto, 2017).</p>
+                    </li>
+                    <li>
+                        <h4>Mengoptimalkan kebijakan tata ruang wilayah</h4>
+                        <p>Memperhatikan penataan ruang untuk kesinambungan perencanaan, pemanfaatan, dan pengendalian. Kebijakan harus memuat arahan lokasi, batasan kemampuan lahan, daya dukung lingkungan, kerentanan bencana, efisiensi, dan sinkronisasi pemanfaatan ruang (Samli, 2012).</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="pengembangan-desa-kota">
+            <button class="accordion">B. Pengembangan Desa dan Kota</button>
+            <div class="panel">
+                <p>Wilayah perdesaan dan perkotaan memiliki corak yang berbeda. Di perdesaan, pemanfaatan lahan didominasi oleh petani untuk menanam padi, jagung, cabai, dan lainnya. Sebaliknya, di perkotaan, lahan padat hunian penduduk dimanfaatkan sebagai pusat bisnis dan retail, lahan terbuka, pergudangan, pendidikan, kesehatan, dan sebagainya.</p>
+                <p>Secara umum, persentase penduduk yang tinggal di perdesaan mengalami penurunan, sedangkan di perkotaan mengalami peningkatan. Peningkatan penduduk di perkotaan diprediksi terus berlanjut.</p>
+                <div class="highlight-box">
+                    <p class="note">Tabel 1.2 Peningkatan Jumlah Penduduk yang Tinggal di Perkotaan</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tahun</th>
+                                <th>Kota (%)</th>
+                                <th>Desa (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2010</td><td>49,8</td><td>50,2</td></tr>
+                            <tr><td>2015</td><td>53,3</td><td>46,7</td></tr>
+                            <tr><td>2020</td><td>56,7</td><td>43,3</td></tr>
+                            <tr><td>2025</td><td>60,0</td><td>40,0</td></tr>
+                            <tr><td>2030</td><td>63,4</td><td>36,6</td></tr>
+                            <tr><td>2035</td><td>66,6</td><td>33,4</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
+                this.classList.toggle("active");
+
+                /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+```

@@ -1,0 +1,327 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Evolusi - Definisi Evolusi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-blue);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        header h1::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent-green);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 5px solid var(--primary-blue);
+            background-color: #f9f9f9; /* Slightly off-white for sections */
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--accent-green);
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .highlight-term {
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: underline dotted var(--primary-blue);
+            cursor: help;
+        }
+
+        .key-concept {
+            background-color: #e3f2fd; /* Light blue background */
+            padding: 15px;
+            border-left: 5px solid var(--semantic-info);
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .key-concept strong {
+            color: var(--semantic-info);
+        }
+
+        blockquote {
+            background-color: #f0f4f7; /* Slightly darker than section background */
+            border-left: 6px solid var(--accent-green);
+            margin: 20px 0;
+            padding: 15px 20px;
+            font-style: italic;
+            color: var(--text-secondary);
+            border-radius: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            section {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.9em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            section {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Definisi Evolusi</h1>
+            <p>Mengeksplorasi Perubahan Kehidupan Seiring Waktu</p>
+        </header>
+
+        <section id="variasi-spesies">
+            <h2>Variasi dalam Satu Spesies</h2>
+            <p>Pernahkah Anda mengamati bagaimana kucing atau anjing peliharaan Anda, meskipun dari spesies yang sama, memiliki beragam bentuk, ukuran, warna bulu, dan sifat yang berbeda? Fenomena ini bukan kebetulan, melainkan hasil dari <span class="highlight-term">variasi</span> yang terjadi dalam satu spesies.</p>
+            <p>Variasi adalah perbedaan karakteristik yang ditemukan di antara individu-individu dalam satu populasi atau spesies yang sama. Misalnya, pada anjing, kita dapat menemukan anjing Golden Retriever yang besar dan berbulu panjang, Chihuahua yang mungil, atau Poodle dengan bulu keriting. Semua ini adalah anjing, spesies yang sama, namun dengan penampakan yang sangat beragam.</p>
+            <h3>Penyebab Variasi</h3>
+            <ul>
+                <li><strong class="highlight-term">Perbedaan Genetik:</strong> Sumber utama variasi adalah perbedaan pada tingkat gen. Setiap individu memiliki susunan genetik yang unik, meskipun mereka berasal dari spesies yang sama. Gen-gen ini membawa instruksi untuk membangun dan menjalankan organisme.</li>
+                <li><strong class="highlight-term">Hubungan Genotipe dan Fenotipe:</strong>
+                    <p>Fenomena variasi ini menjelaskan hubungan erat antara <span class="highlight-term">genotipe</span> dan <span class="highlight-term">fenotipe</span>:</p>
+                    <ul>
+                        <li><strong>Genotipe:</strong> Mengacu pada susunan genetik atau konstitusi genetik suatu organisme (apa yang ada dalam DNA-nya).</li>
+                        <li><strong>Fenotipe:</strong> Mengacu pada karakteristik yang dapat diamati dari suatu organisme, yang merupakan hasil interaksi antara genotipe dan lingkungannya (apa yang terlihat, seperti warna bulu, ukuran, bentuk tubuh).</li>
+                    </ul>
+                    <p>Variasi gen pada anjing, misalnya, menyebabkan perbedaan pada ciri-ciri fisik (fenotipe) mereka. Perbedaan-perbedaan kecil inilah yang menjadi bahan dasar bagi proses evolusi di masa mendatang.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="definisi-evolusi">
+            <h2>Memahami Definisi Evolusi</h2>
+            <p>Setelah memahami konsep variasi, kita bisa melangkah lebih jauh untuk mendefinisikan <span class="highlight-term">evolusi</span>. Kata "evolusi" berasal dari bahasa Inggris, <strong class="highlight-term">"evolution"</strong>, yang secara harfiah berarti <strong class="highlight-term">"perkembangan"</strong> atau <strong class="highlight-term">"perubahan bertahap"</strong>.</p>
+            <div class="key-concept">
+                <p>Dalam ilmu biologi, <strong class="highlight-term">evolusi</strong> didefinisikan sebagai <span class="highlight-term">perubahan pada makhluk hidup yang terjadi secara perlahan dalam rentang waktu yang sangat panjang dari generasi ke generasi</span>. Perubahan ini akumulatif dan menghasilkan keberagaman kehidupan yang kita lihat saat ini.</p>
+            </div>
+            <p>Evolusi bukan sekadar perubahan acak, melainkan sebuah proses berkelanjutan yang membentuk adaptasi organisme terhadap lingkungannya, atau bahkan menghasilkan spesies baru dari spesies yang sudah ada.</p>
+        </section>
+
+        <section id="studi-kasus-kuda">
+            <h2>Studi Kasus: Evolusi Kuda</h2>
+            <p>Salah satu contoh klasik yang sering digunakan untuk menggambarkan proses evolusi adalah evolusi kuda. Kisah evolusi kuda adalah perjalanan waktu yang menakjubkan, menunjukkan perubahan dramatis dalam ukuran dan struktur tubuh selama jutaan tahun.</p>
+            <h3>Perjalanan Evolusi Kuda: Dari Kecil ke Besar</h3>
+            <ul>
+                <li><strong>Eohippus (Hyracotherium):</strong> Nenek moyang kuda modern yang hidup sekitar 56 juta tahun yang lalu ini berukuran sangat kecil, sebanding dengan seekor kucing peliharaan. Mereka memiliki beberapa jari kaki yang beradaptasi untuk berjalan di hutan lembut.</li>
+                <li><strong>Miohippus, Mesohippus, dst.:</strong> Seiring waktu, kondisi lingkungan berubah dari hutan lebat menjadi padang rumput terbuka. Kuda-kuda ini mulai berevolusi:
+                    <ul>
+                        <li>Ukuran tubuh mereka secara bertahap <span class="highlight-term">membesar</span>.</li>
+                        <li>Jumlah jari kaki mereka <span class="highlight-term">berkurang</span>, berevolusi menjadi satu jari kaki yang kuat (kuku) yang ideal untuk berlari cepat di medan keras padang rumput.</li>
+                        <li>Gigi mereka berevolusi menjadi lebih kuat dan bergerigi, cocok untuk mengunyah rumput yang keras.</li>
+                    </ul>
+                </li>
+                <li><strong>Equus (Kuda Modern):</strong> Kuda modern yang kita kenal saat ini (termasuk kuda Przewalski) adalah hasil dari jutaan tahun perubahan bertahap ini. Mereka memiliki satu jari kaki yang kokoh dan ukuran tubuh yang jauh lebih besar dibandingkan nenek moyangnya.</li>
+            </ul>
+            <p>Perkembangan ini menunjukkan bagaimana seleksi alam bekerja, memilih sifat-sifat yang paling menguntungkan untuk bertahan hidup dan bereproduksi di lingkungan yang berubah.</p>
+        </section>
+
+        <section id="jenis-evolusi">
+            <h2>Jenis-jenis Evolusi</h2>
+            <p>Perubahan evolusioner dapat dikategorikan menjadi dua jenis utama berdasarkan arah kompleksitasnya:</p>
+            <h3>1. Evolusi Progresif</h3>
+            <p>Evolusi progresif adalah proses evolusi di mana organisme <span class="highlight-term">berkembang dari bentuk yang sederhana menjadi bentuk yang lebih kompleks dan lebih baik dalam adaptasinya</span> terhadap lingkungan. Evolusi kuda adalah contoh sempurna dari evolusi progresif.</p>
+            <p>Ciri-ciri utama:</p>
+            <ul>
+                <li>Peningkatan ukuran dan kompleksitas tubuh.</li>
+                <li>Peningkatan spesialisasi organ atau bagian tubuh.</li>
+                <li>Peningkatan kemampuan beradaptasi.</li>
+            </ul>
+            <h3>2. Evolusi Regresif</h3>
+            <p>Evolusi regresif adalah kebalikan dari evolusi progresif, di mana organisme mengalami <span class="highlight-term">perubahan dari bentuk yang kompleks menjadi bentuk yang lebih sederhana</span>, atau bahkan menuju kepunahan jika adaptasi tersebut tidak memadai.</p>
+            <p>Contoh Evolusi Regresif:</p>
+            <ul>
+                <li><strong>Burung Kasuari:</strong> Diperkirakan burung kasuari diturunkan dari nenek moyang burung bersayap yang mampu terbang. Namun, seiring waktu dan perubahan lingkungan, mereka berevolusi menjadi tidak bersayap dan tidak dapat terbang. Ini adalah penyederhanaan sifat karena adaptasi terhadap gaya hidup di darat atau di lingkungan tanpa predator udara yang signifikan.</li>
+                <li><strong>Kepunahan Dinosaurus:</strong> Meskipun bukan penyederhanaan individu, kepunahan dinosaurus secara massal dapat dilihat sebagai contoh evolusi regresif pada tingkat ekosistem atau taksonomi. Mereka gagal beradaptasi dengan perubahan lingkungan yang drastis, menyebabkan lenyapnya bentuk kehidupan yang sebelumnya sangat kompleks dan dominan.</li>
+            </ul>
+        </section>
+
+        <section id="pohon-filogeni">
+            <h2>Memahami Pohon Filogeni: Jaringan Kehidupan</h2>
+            <p>Untuk memahami hubungan evolusioner antar makhluk hidup, para ilmuwan menggunakan alat visual yang disebut <span class="highlight-term">pohon filogeni</span>. Pohon ini menggambarkan bagaimana berbagai bentuk kehidupan saling terkait melalui garis keturunan evolusioner dari nenek moyang bersama.</p>
+            <h3>Prinsip-prinsip Penting dari Pohon Filogeni:</h3>
+            <ol>
+                <li><strong>Asal Mula dari Leluhur Bersama (Common Ancestor):</strong> Pohon filogeni (seperti Gambar 3.4 yang Anda amati) menunjukkan bahwa semua bentuk kehidupan, dari bakteri hingga manusia, diperkirakan berasal dari <span class="highlight-term">satu sel tunggal awal</span> atau <span class="highlight-term">"common ancestor"</span> yang selalu dilestarikan dalam garis keturunan kehidupan. Ini adalah titik awal dari semua diversitas yang ada.</li>
+                <li><strong>Perkembangan dari Sederhana ke Kompleks:</strong> Seiring berjalannya waktu (ditunjukkan oleh sumbu waktu pada pohon), organisme cenderung berkembang dari spesies yang lebih sederhana menjadi semakin kompleks. Ini adalah pola umum evolusi progresif yang terlihat di berbagai cabang kehidupan.</li>
+                <li><strong>Pengelompokan dalam Domain:</strong> Makhluk hidup dikelompokkan ke dalam tiga domain besar: <span class="highlight-term">Archaea (Archaebacteria)</span>, <span class="highlight-term">Bacteria (Eubacteria)</span>, dan <span class="highlight-term">Eucaryotes</span>. Ketiga domain ini berkembang dari nenek moyang bersama yang sama, menunjukkan percabangan awal dalam sejarah kehidupan.</li>
+                <li><strong>Kedekatan Berdasarkan Ciri Bersama:</strong> Dalam pohon filogeni, spesies yang memiliki kesamaan ciri genetik maupun fisik yang lebih banyak cenderung ditempatkan <span class="highlight-term">saling berdekatan</span>. Ini mencerminkan bahwa mereka memiliki nenek moyang yang lebih baru dan hubungan kekerabatan yang lebih erat. Semakin jauh dua spesies terpisah di pohon, semakin jauh pula hubungan evolusioner mereka.</li>
+            </ol>
+            <blockquote>
+                <p><strong>Penting:</strong> Proses evolusi adalah fenomena yang <span class="highlight-term">berkelanjutan</span>. Jika diperlukan jutaan tahun untuk membentuk organisme kompleks dari sel awal kehidupan, maka garis waktu evolusi masih terus berjalan hingga saat ini. Manusia, seperti makhluk hidup lainnya, juga terus mengalami evolusi, meskipun perubahannya mungkin sangat lambat dan tidak langsung terlihat dalam rentang satu generasi. Faktor-faktor seperti perubahan lingkungan, mutasi genetik, dan seleksi alam akan terus membentuk spesies di masa depan.</p>
+            </blockquote>
+        </section>
+
+    </div>
+</body>
+</html>
+```

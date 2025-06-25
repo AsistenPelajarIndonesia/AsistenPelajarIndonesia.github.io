@@ -1,0 +1,337 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Pengantar Sistem Elektronika</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: #424242;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+            font-size: 1.1em;
+        }
+        .highlight {
+            background-color: #E3F2FD;
+            padding: 10px 15px;
+            border-left: 4px solid #1976D2;
+            margin: 20px 0;
+            font-size: 1.05em;
+            color: #212121;
+        }
+        .concept-box {
+            background-color: #FCE4EC;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 5px solid #D81B60;
+        }
+        .concept-box h3 {
+            margin-top: 0;
+            color: #D81B60;
+        }
+        .example {
+            background-color: #FFF9C4;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 5px solid #FBC02D;
+            font-style: italic;
+            color: #37474F;
+        }
+        .example h3 {
+            color: #FBC02D;
+            margin-top: 0;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 12px 18px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.95em;
+            border: 1px solid #E0E0E0;
+        }
+        .component-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #E0E0E0;
+        }
+        .component-section h3 {
+            margin-top: 0;
+        }
+        .component-box {
+            background-color: #E8F5E9;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 5px solid #388E3C;
+        }
+        .component-box h3 {
+            color: #388E3C;
+        }
+        .sub-component {
+            margin-left: 20px;
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 3px solid #A5D6A7;
+        }
+        .question-prompt {
+            background-color: #FFE0B2;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 25px 0;
+            border-left: 5px solid #EF6C00;
+            font-weight: bold;
+            color: #37474F;
+        }
+        .question-prompt h3 {
+            margin-top: 0;
+            color: #EF6C00;
+        }
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+            border: 1px solid #E0E0E0;
+        }
+        .interactive-element {
+            display: inline-block;
+            background-color: #FFCDD2;
+            color: #C62828;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .interactive-element:hover {
+            background-color: #EF5350;
+            color: #FFFFFF;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 6: Pengantar Sistem Elektronika</h1>
+
+        <div class="question-prompt">
+            <h3>Ayo, Bernalar Kritis!</h3>
+            <p>Bagaimana suatu sistem elektronika bekerja? Apa yang menentukan suatu sistem elektronika dapat bekerja dengan baik? Apa saja contoh-contoh komponen yang terdapat dalam sistem elektronika?</p>
+        </div>
+
+        <h2>A. Sistem Elektronika</h2>
+        <p>Di era modern ini, penggunaan perangkat elektronik semakin meluas di berbagai aspek kehidupan, mulai dari kenyamanan di rumah, efisiensi di pabrik dan perkantoran, hingga layanan penting di sekolah, bank, toko, dan rumah sakit. Kemajuan pesat dalam teknologi semikonduktor, khususnya pengembangan <strong>transistor</strong> dan <strong>integrated circuit (IC)</strong> atau yang biasa kita kenal sebagai <strong>'chip'</strong>, telah memungkinkan terciptanya berbagai inovasi. Contohnya adalah mesin perbankan otomatis yang memudahkan transaksi, komputer laptop yang menjadi alat kerja utama, perangkat kontrol yang dapat diprogram untuk otomatisasi, robot yang membantu tugas-tugas kompleks, permainan komputer yang menghibur, kamera digital untuk mengabadikan momen, hingga alat pacu jantung yang menyelamatkan nyawa.</p>
+        <p>Pada dasarnya, semua alat elektronik tersebut tersusun dalam sebuah <strong>sistem elektronika</strong>. Sistem ini dapat digambarkan secara garis besar melalui model <strong>Input – Proses – Output</strong>. Ini adalah kerangka kerja fundamental yang menjelaskan bagaimana sebuah sistem elektronik menerima informasi, mengolahnya, dan menghasilkan keluaran.</p>
+
+        <div class="highlight">
+            <p><strong>Model Dasar Sistem Elektronika: Input → Proses → Output</strong></p>
+            <p>Bayangkan sebuah sistem elektronik sebagai sebuah rantai kerja: menerima sesuatu (Input), mengolahnya (Proses), dan memberikan hasil (Output).</p>
+        </div>
+
+        <h3>Komponen Utama Sistem Elektronika</h3>
+        <p>Setiap sistem elektronika terdiri dari tiga bagian utama yang saling terkait:</p>
+
+        <div class="component-box">
+            <h3>1. Bagian Input (Masukan)</h3>
+            <p>Bagian input ini biasanya terdiri dari <strong>sensor</strong> atau <strong>transduser</strong>. Tugas utamanya adalah mengubah informasi dari dunia nyata (yang bersifat <strong>non-listrik</strong>) menjadi sinyal listrik yang dapat dipahami oleh sistem. Sebaliknya, beberapa transduser juga bisa mengubah sinyal listrik menjadi bentuk energi lain. Sensor sangat krusial karena ia bertugas mendeteksi perubahan-perubahan yang terjadi di lingkungan sekitar kita.</p>
+            <p>Contoh dari sensor input atau transduser antara lain:</p>
+            <ul>
+                <li><strong>Light Dependent Resistor (LDR):</strong> Resistor yang nilainya berubah tergantung pada intensitas cahaya yang mengenainya.</li>
+                <li><strong>Termistor:</strong> Komponen yang resistansinya berubah seiring dengan perubahan suhu.</li>
+                <li><strong>Mikrofon:</strong> Mengubah gelombang suara menjadi sinyal listrik.</li>
+                <li><strong>Sakelar:</strong> Bekerja sebagai input, merespons perubahan fisik seperti tekanan.</li>
+            </ul>
+        </div>
+
+        <div class="component-box">
+            <h3>2. Bagian Proses (Pengolahan)</h3>
+            <p>Bagian proses adalah 'otak' dari sistem elektronik. Di sinilah <strong>prosesor</strong> (seperti CPU pada komputer atau mikrokontroler) bekerja. Prosesor bertugas menerima sinyal listrik dari bagian input, kemudian mengambil keputusan mengenai tindakan apa yang harus dilakukan berdasarkan sinyal tersebut. Proses ini bisa meliputi berbagai operasi, seperti:</p>
+            <ul>
+                <li><strong>Menghitung:</strong> Melakukan operasi matematika.</li>
+                <li><strong>Memperkuat:</strong> Meningkatkan kekuatan sinyal.</li>
+                <li><strong>Mengatur Waktu:</strong> Sinkronisasi operasi berdasarkan waktu.</li>
+                <li><strong>Menyimpan:</strong> Menyimpan data atau instruksi.</li>
+            </ul>
+        </div>
+
+        <div class="component-box">
+            <h3>3. Bagian Output (Keluaran)</h3>
+            <p>Bagian output bertugas untuk mengubah kembali sinyal listrik yang telah diproses menjadi bentuk lain yang dapat kita lihat, dengar, atau rasakan. Di sini, <strong>transduser (keluaran)</strong> berperan untuk menerjemahkan sinyal listrik dari prosesor menjadi bentuk energi yang diinginkan.</p>
+            <p>Contoh dari transduser output meliputi:</p>
+            <ul>
+                <li><strong>Lampu LED (Light-Emitting Diode):</strong> Mengubah listrik menjadi cahaya.</li>
+                <li><strong>Pengeras Suara (Speaker):</strong> Mengubah sinyal listrik menjadi gelombang suara.</li>
+                <li><strong>Motor:</strong> Mengubah energi listrik menjadi energi gerak.</li>
+                <li><strong>Pemanas:</strong> Mengubah listrik menjadi energi panas.</li>
+                <li><strong>Relai:</strong> Sakelar elektromagnetik yang dapat mengontrol sirkuit lain dengan daya lebih besar.</li>
+                <li><strong>Tabung Sinar Katoda (CRT):</strong> Digunakan pada televisi dan monitor lama untuk menampilkan gambar.</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h3>Contoh Aplikasi: Pesawat Radio</h3>
+            <p>Mari kita lihat bagaimana sistem ini bekerja pada sebuah pesawat radio. <strong>Antena</strong> berfungsi sebagai <strong>sensor input</strong> yang menangkap gelombang radio dan mengubahnya menjadi sinyal listrik. Sinyal listrik ini kemudian dikirim ke <strong>prosesor</strong> di dalam radio. Prosesor akan memperkuat sinyal tersebut agar cukup kuat untuk menggerakkan <strong>transduser output</strong>, yaitu <strong>pengeras suara</strong>, yang kemudian mengubah sinyal listrik menjadi suara yang dapat kita dengar.</p>
+        </div>
+
+        <hr style="border-top: 1px solid #E0E0E0; margin: 30px 0;">
+
+        <div class="question-prompt">
+            <h3>Aktivitas 6.1</h3>
+            <p>Amati penjelasan mengenai komponen-komponen elektronika di bawah ini. Berikan pendapat Anda, termasuk ke dalam kelompok apakah komponen tersebut: <em>transduser (input)</em>, <em>proses (processor)</em>, atau <em>transduser (output)</em>. Jelaskan juga alasannya!</p>
+        </div>
+
+        <div class="component-section">
+            <h3>Komponen Elektronika: Light-Dependent Resistor (LDR)</h3>
+            <p>Cara kerja LDR didasarkan pada sifat semikonduktor kadmium sulfida (CdS). Nilai resistansinya akan menurun tajam seiring dengan meningkatnya intensitas cahaya yang mengenainya. Ketika cahaya dari lampu atau sumber cahaya lain jatuh pada 'jendela' LDR, resistansinya berkurang. Hal ini menyebabkan arus listrik yang mengalir menjadi lebih besar (sesuai dengan konsep hukum Ohm: semakin kecil hambatan, semakin besar arus jika tegangan konstan). Peningkatan arus ini dapat digunakan untuk mengontrol rangkaian lain, misalnya untuk menyalakan lampu secara otomatis saat kondisi gelap.</p>
+            <div class="concept-box">
+                <h3>Pendapatmu tentang LDR</h3>
+                <p>Pilih salah satu:</p>
+                <label>
+                    <input type="radio" name="ldr" value="input"> Transduser (input)
+                </label><br>
+                <label>
+                    <input type="radio" name="ldr" value="proses"> Prosesor
+                </label><br>
+                <label>
+                    <input type="radio" name="ldr" value="output"> Transduser (output)
+                </label>
+                <h4>Alasan:</h4>
+                <div class="code-block" style="min-height: 60px;">
+                    <!-- Area untuk jawaban alasan -->
+                </div>
+            </div>
+        </div>
+
+        <div class="component-section">
+            <h3>Komponen Elektronika: Termistor</h3>
+            <p>Termistor adalah komponen elektronik yang mengandung oksida logam semikonduktor, di mana nilai resistansinya sangat sensitif terhadap perubahan suhu. Resistansi termistor akan menurun drastis ketika suhu di sekitarnya naik. Kenaikan suhu ini bisa terjadi karena dipanaskan secara eksternal atau karena adanya arus listrik yang mengalir melaluinya. Jika sebuah termistor dirangkai secara seri dengan resistor variabel (R) dalam suatu rangkaian, ia dapat menghasilkan sinyal tegangan yang dapat dikontrol oleh transistor atau rangkaian switching lainnya. Hal ini memungkinkan termistor berfungsi sebagai sensor suhu yang dapat mengendalikan perangkat elektronik lain, bahkan sebagai pengganti relai dalam beberapa aplikasi.</p>
+            <div class="concept-box">
+                <h3>Pendapatmu tentang Termistor</h3>
+                <p>Pilih salah satu:</p>
+                <label>
+                    <input type="radio" name="termistor" value="input"> Transduser (input)
+                </label><br>
+                <label>
+                    <input type="radio" name="termistor" value="proses"> Prosesor
+                </label><br>
+                <label>
+                    <input type="radio" name="termistor" value="output"> Transduser (output)
+                </label>
+                <h4>Alasan:</h4>
+                <div class="code-block" style="min-height: 60px;">
+                    <!-- Area untuk jawaban alasan -->
+                </div>
+            </div>
+        </div>
+
+        <div class="component-section">
+            <h3>Komponen Elektronika: Relay</h3>
+            <p>Rangkaian sakelar biasa (seperti sakelar pada lampu) mungkin tidak mampu mengalirkan arus listrik yang besar untuk mengoperasikan perangkat lain. Di sinilah <strong>relay</strong> memiliki peran penting. Relay adalah sebuah sakelar elektromekanik yang menggunakan medan magnet dari kumparan untuk menggerakkan kontak sakelar. Penggunaan relay memungkinkan arus listrik yang kecil dari sebuah rangkaian kontrol (misalnya dari sensor atau mikrokontroler) untuk mengendalikan arus listrik yang jauh lebih besar yang diperlukan untuk mengoperasikan beban yang lebih berat, seperti motor, lampu besar, atau peralatan rumah tangga lainnya. Dalam gambar 6.6, ketika sinyal output dari rangkaian pensaklaran bernilai 'tinggi' (misalnya 5 Volt), arus kecil akan mengalir melalui kumparan relay. Arus ini menghasilkan medan magnet yang menarik sebuah jangkar, sehingga menutup kontak sakelar utama. Relay juga berfungsi untuk mengisolasi rangkaian bertegangan rendah (misalnya rangkaian kontrol) dari rangkaian bertegangan tinggi (rangkaian daya), sehingga meningkatkan keamanan sistem.</p>
+            <div class="concept-box">
+                <h3>Pendapatmu tentang Relay</h3>
+                <p>Pilih salah satu:</p>
+                <label>
+                    <input type="radio" name="relay" value="input"> Transduser (input)
+                </label><br>
+                <label>
+                    <input type="radio" name="relay" value="proses"> Prosesor
+                </label><br>
+                <label>
+                    <input type="radio" name="relay" value="output"> Transduser (output)
+                </label>
+                <h4>Alasan:</h4>
+                <div class="code-block" style="min-height: 60px;">
+                    <!-- Area untuk jawaban alasan -->
+                </div>
+            </div>
+        </div>
+
+        <hr style="border-top: 1px solid #E0E0E0; margin: 30px 0;">
+
+        <h2>B. Semikonduktor</h2>
+
+        <div class="question-prompt">
+            <h3>Ayo, Bernalar Kritis!</h3>
+            <p>Apa fungsi semikonduktor? Ada berapa jenis semikonduktor? Bagaimana karakteristik setiap jenis semikonduktor tersebut?</p>
+        </div>
+
+        <h3>1. Pengertian Semikonduktor</h3>
+        <p>Sebelum membahas lebih dalam tentang semikonduktor, mari kita ingat kembali konsep dasar konduktivitas listrik bahan. Bahan-bahan penghantar arus listrik secara umum dapat diklasifikasikan menjadi tiga kategori utama:</p>
+        <ul>
+            <li><strong>Konduktor:</strong> Bahan yang sangat baik dalam menghantarkan arus listrik (misalnya logam seperti tembaga, aluminium).</li>
+            <li><strong>Isolator:</strong> Bahan yang sangat buruk dalam menghantarkan arus listrik (misalnya karet, plastik, kaca).</li>
+            <li><strong>Semikonduktor:</strong> Bahan yang memiliki sifat konduktivitas di antara konduktor dan isolator. Karakteristik mereka dapat berubah-ubah tergantung pada kondisi lingkungan atau penambahan zat lain.</li>
+        </ul>
+        <p>Beberapa unsur yang umum dikenal sebagai bahan semikonduktor adalah <strong>Germanium (Ge)</strong> dan <strong>Silikon (Si)</strong>. Dalam bentuk kristal murninya, bahan-bahan ini pada dasarnya lebih bersifat isolator karena memiliki nilai hambatan jenis yang relatif tinggi. Namun, ketika struktur kristalnya diberi sedikit ketidakmurnian (proses yang disebut <strong>doping</strong>), sifat konduktivitasnya dapat diubah secara drastis. Bahan yang telah dimodifikasi inilah yang mampu berperilaku seperti konduktor dalam kondisi tertentu, dan seperti isolator dalam kondisi lain, sehingga disebut sebagai semikonduktor.</p>
+
+        <h3>Klasifikasi Semikonduktor</h3>
+        <p>Berdasarkan pada mekanisme pembentukan gejala semikonduktivitasnya, semikonduktor dapat diklasifikasikan menjadi dua jenis utama:</p>
+        <ul>
+            <li><strong>Semikonduktor Intrinsik:</strong> Ini adalah semikonduktor murni, yang belum mengalami proses doping. Konduktivitasnya sangat rendah dan sangat bergantung pada suhu.</li>
+            <li><strong>Semikonduktor Ekstrinsik:</strong> Ini adalah semikonduktor yang telah mengalami proses doping, yaitu penambahan sejumlah kecil atom pengotor (impurities) ke dalam kisi kristal semikonduktor murni. Penambahan impuritas ini bertujuan untuk meningkatkan jumlah pembawa muatan bebas (elektron atau hole), sehingga meningkatkan konduktivitasnya secara signifikan.</li>
+        </ul>
+
+    </div>
+
+</body>
+</html>
+```

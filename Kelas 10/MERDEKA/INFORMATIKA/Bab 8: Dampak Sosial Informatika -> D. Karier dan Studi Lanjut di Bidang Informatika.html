@@ -1,0 +1,589 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelajah Karier dan Studi Lanjut di Bidang Informatika</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 25px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .career-overview {
+            background-color: #f4f8fd; /* A light blue background */
+            padding: 15px 20px;
+            border-left: 5px solid var(--primary-blue);
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .career-overview h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .career-list {
+            list-style: disc;
+            padding-left: 25px;
+        }
+
+        .career-list li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .career-list li strong {
+            color: var(--text-primary);
+        }
+
+        .sub-section {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .sub-section h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .profession-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            overflow-x: auto; /* For responsiveness */
+        }
+
+        .profession-table th,
+        .profession-table td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .profession-table th {
+            background-color: #e3f2fd; /* Lighter blue for headers */
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .profession-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .profession-table td:first-child {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        /* Responsive Table */
+        @media screen and (max-width: 768px) {
+            .profession-table {
+                display: block;
+                width: 100%;
+            }
+            .profession-table thead, .profession-table tbody, .profession-table th, .profession-table td, .profession-table tr {
+                display: block;
+                width: 100% !important;
+            }
+            .profession-table thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            .profession-table tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 5px;
+            }
+            .profession-table td {
+                border-bottom: 1px solid var(--border-divider);
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            .profession-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: calc(50% - 10px);
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--text-primary);
+            }
+            .profession-table th {
+                background-color: transparent; /* Remove header background for mobile */
+            }
+        }
+
+        .callout {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .study-fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .study-field-card {
+            background-color: #e3f2fd;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--primary-blue);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .study-field-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .study-field-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .study-field-card p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .certification-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .certification-list {
+            list-style: square;
+            padding-left: 25px;
+        }
+
+        .certification-list li {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .certification-list li strong {
+            color: var(--text-primary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        .interactive-element {
+            background-color: #fff9e6; /* Light amber */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            background-color: #fff1d1; /* Slightly darker amber */
+        }
+
+        .interactive-element h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+            font-size: 1.2em;
+        }
+
+        .interactive-element p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Jelajahi Dunia Karier dan Studi Lanjut di Bidang Informatika</h1>
+        <p>Selamat datang di bagian yang akan membuka wawasanmu tentang betapa luas dan dinamisnya dunia informatika dalam kaitannya dengan karier dan studi lanjut. Di era digital yang terus berkembang pesat, pemahaman tentang informatika bukan lagi sekadar pilihan, melainkan sebuah keniscayaan untuk menghadapi tantangan masa depan.</p>
+
+        <div class="section">
+            <h2>D. Karier dan Studi Lanjut di Bidang Informatika</h2>
+            <p>Penerapan informatika saat ini telah merasuki hampir seluruh aspek kehidupan dan profesi. Mulai dari pemasaran yang menguasai analisis data untuk intelegensi bisnis, hingga ahli biologi yang mengolah data genetika menggunakan program komputer. Konsep <strong>Masyarakat 5.0</strong> bahkan menegaskan bahwa di masa depan, setiap profesi akan erat kaitannya dengan dunia siber.</p>
+            <p>Oleh karena itu, penguasaan aspek <strong>berpikir komputasional</strong> menjadi kunci utama, terlepas dari profesi apa pun yang akan kamu tekuni. Meskipun pelajaran informatika ini berfokus pada studi kasus di bidangnya, pemahaman konsepnya sangatlah universal.</p>
+            <p>Seringkali, istilah informatika disamakan dengan TIK (Teknologi Informasi dan Komunikasi) atau Teknologi Informasi (TI). Padahal, ada perbedaan mendasar:</p>
+            <ul>
+                <li><strong>TIK</strong> lebih berfokus pada pemakaian aplikasi dan komputer.</li>
+                <li><strong>TI</strong> cakupannya lebih luas.</li>
+                <li><strong>Informatika</strong> adalah disiplin ilmu, setara dengan ilmu komputasi atau <em>computing</em>.</li>
+            </ul>
+            <p>Dalam satu dekade terakhir, telah lahir banyak profesi dan keahlian baru yang sangat dibutuhkan oleh industri. Perkembangan ini akan semakin masif dengan meleburnya berbagai teknologi seperti kecerdasan buatan (<em>artificial intelligence</em>), pembelajaran mesin (<em>machine learning</em>), realitas virtual (<em>virtual reality</em>), dan <em>internet of things</em>. Semua ini didorong oleh kebutuhan industri untuk bersaing dan unggul, sebuah keharusan di masa kini.</p>
+
+            <div class="career-overview">
+                <h3>Memahami Profesi di Bidang Informatika</h3>
+                <p>Mereka yang bekerja di bidang informatika seringkali lebih dikenal dengan sebutan <strong>profesional IT</strong> (Teknologi Informasi). Posisi pekerjaan di bidang ini sangat beragam dan terus berkembang, seperti:</p>
+                <ul class="career-list">
+                    <li>System Analyst</li>
+                    <li>Back-end Engineer</li>
+                    <li>Front-end Engineer</li>
+                    <li>Dev-Ops Engineer</li>
+                    <li>User Experience Designer</li>
+                    <li>Data Scientist</li>
+                    <li>Product Manager</li>
+                    <li>Chief Technology Officer</li>
+                </ul>
+                <p>Posisi-posisi ini terus berevolusi seiring dengan pesatnya perkembangan teknologi dan kebutuhan industri.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>1. Karier di Bidang Informatika</h2>
+            <p>Informatika adalah disiplin ilmu yang mempelajari fenomena seputar komputer, meliputi desain komputer, proses komputasi, representasi dan transformasi informasi, perangkat keras, perangkat lunak, efisiensi, hingga kecerdasan mesin. Di Eropa, ini disebut "informatika", sementara di Amerika Serikat disebut "computing".</p>
+
+            <p>Menurut Prof. Peter J Denning, suatu profesi harus memiliki empat ciri khas:</p>
+            <ol class="numbered-list">
+                <li><strong>Mendalami bidang yang menjadi perhatian manusia dalam waktu lama:</strong> Profesi informatika berperan memenuhi kebutuhan manusia akan komputasi dan komunikasi yang efektif, seiring dengan perkembangan teknologi yang semakin merasuk ke dalam kehidupan.</li >
+                <li><strong>Mengodifikasikan kumpulan prinsip atau pengetahuan konseptual:</strong> Diwujudkan dalam bentuk kurikulum, program studi, dan materi pelatihan.</li >
+                <li><strong>Mengodifikasikan kumpulan praktik, termasuk kompetensi:</strong> Diakui melalui sertifikasi kompetensi profesional.</li >
+                <li><strong>Menetapkan standar kompetensi, etika, dan praktik:</strong> Menjadi panduan bagi profesional agar memiliki integritas dan dapat dipercaya.</li >
+            </ol>
+            <p>Menjadi profesional di bidang informatika bukan sekadar mencari nafkah, tetapi juga memberikan manfaat bagi masyarakat. Penguasaan prinsip dan praktik, serta partisipasi aktif dalam merumuskan dan menyebarkan pengetahuan baru adalah kunci. Ini bisa dilakukan melalui tulisan, ceramah, atau pelatihan.</p>
+
+            <h3>Kategori Profesi di Bidang Informatika</h3>
+            <p>Berdasarkan peran dan fokusnya, profesi di bidang informatika dapat dikategorikan menjadi:</p>
+            <div class="profession-table-container">
+                <table class="profession-table">
+                    <thead>
+                        <tr>
+                            <th>Profesi yang Sangat Spesifik di Bidang Informatika</th>
+                            <th>Profesi yang Sarat dengan Informatika</th>
+                            <th>Profesi yang Memberikan Dukungan Teknologi Informasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Profesi Spesifik">Kecerdasan Buatan<br>Ilmu Komputer<br>Rekayasa Komputer<br>Ilmu Komputasional<br>Rekayasa Basis Data<br>Grafika Komputer</td>
+                            <td data-label="Sarat Informatika">Dirgantara<br>Bioinformatika<br>Sains Kognitif<br>Sains Perpustakaan<br>Digital<br>E-Commerce<br>Layanan Finansial</td>
+                            <td data-label="Dukungan TI">Teknisi Komputer<br>Teknisi Helpdesk<br>Teknisi Jaringan<br>Pelatih IT Professional<br>Spesialis Keamanan Siber<br>Administrator Sistem</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Profesi Spesifik">Interaksi Manusia-Komputer<br>Rekayasa Jaringan<br>Sistem Operasi<br>Rekayasa Kinerja<br>Robotika<br>Komputasi Saintifik<br>Arsitektur Perangkat Lunak<br>Rekayasa Perangkat Lunak<br>Keamanan Sistem</td>
+                            <td data-label="Sarat Informatika">Rekayasa Genetika<br>Ilmu Informasi<br>Kebijakan Publik<br>Privasi</td>
+                            <td data-label="Dukungan TI">Desainer Layanan Web<br>Desainer Identitas Web<br>Administrator Basis Data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Lulusan informatika dapat memilih jalur menjadi <strong>ilmuwan (<em>scientist</em>)</strong> yang mengamati dan menjelaskan fenomena, atau <strong>insinyur (<em>engineer</em>)</strong> yang fokus pada penciptaan produk. Ilmuwan melakukan observasi dan eksperimen, sementara insinyur melalui tahapan analisis, perancangan, implementasi, pengujian, pemasangan, dan pengoperasian.</p>
+
+            <h3>Contoh Posisi Pekerjaan dan Deskripsinya</h3>
+            <div class="profession-table-container">
+                <table class="profession-table">
+                    <thead>
+                        <tr>
+                            <th>Posisi Pekerjaan</th>
+                            <th>Deskripsi dan Tanggung Jawab</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Chief Information Officer (CIO)/ Chief Technology Officer (CTO)</td>
+                            <td data-label="Deskripsi">Bertanggung jawab pada seluruh aspek terkait teknologi informasi di suatu perusahaan.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Computer Programmer</td>
+                            <td data-label="Deskripsi">Menulis program komputer yang telah didesain.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Computer Scientist</td>
+                            <td data-label="Deskripsi">Menciptakan suatu prinsip, metode, atau praktik baru di bidang ilmu komputer.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Hardware Engineer</td>
+                            <td data-label="Deskripsi">Menciptakan, mengimplementasikan, dan menguji komponen fisik dari komputer.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Software Engineer</td>
+                            <td data-label="Deskripsi">Mengembangkan, merawat, menguji, mengevaluasi, dan meningkatkan kualitas suatu perangkat lunak berdasarkan kebutuhan yang telah diberikan oleh analis sistem atau arsitek.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Software Developer</td>
+                            <td data-label="Deskripsi">Menganalisis kebutuhan pengguna dan <em>software requirements</em> untuk menentukan kelayakan desain dalam batasan waktu, risiko, kualitas, dan biaya. Mengembangkan desain sistem, <em>software</em>, prosedur, dan dokumentasi pengujian.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Web Developer</td>
+                            <td data-label="Deskripsi">Bertanggung jawab untuk membuat web.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Database Administrator</td>
+                            <td data-label="Deskripsi">Mengembangkan dan menerapkan pemantauan, kinerja, kapasitas, dan strategi perluasan <em>database</em>. Menginstal, mengonfigurasi, meng-<em>upgrade</em>, memantau, dan melakukan pemeliharaan pada <em>database</em>.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">IT Architect</td>
+                            <td data-label="Deskripsi">Mendesain arsitektur teknologi informasi untuk mendukung proses suatu perusahaan.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Network Administrator</td>
+                            <td data-label="Deskripsi">Memelihara, mengoperasikan, mengelola, dan mendukung infrastruktur jaringan.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Systems Analyst</td>
+                            <td data-label="Deskripsi">Menganalisis dan menerjemahkan tujuan bisnis menjadi produk-produk (<em>computational artefact</em>), berupa proses bisnis dan spesifikasi kebutuhan sistem informasinya.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Security Analyst</td>
+                            <td data-label="Deskripsi">Menganalisis dan menerjemahkan aspek keamanan dari sistem yang akan dikembangkan untuk mendukung tujuan bisnis.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Information Researcher</td>
+                            <td data-label="Deskripsi">Menciptakan suatu prinsip, metode, atau praktik baru untuk mengolah data dan informasi.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Video Game Developer</td>
+                            <td data-label="Deskripsi">Mengembangkan perangkat lunak permainan dan bekerja sama dengan tim profesional kreatif untuk meningkatkan kualitas permainan.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Health Information Technician</td>
+                            <td data-label="Deskripsi">Mengolah data terkait kesehatan menggunakan prinsip dan praktik informatika.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Data Scientist</td>
+                            <td data-label="Deskripsi">Merancang, mengembangkan, dan menerapkan model statistik prediktif (biasanya pada <em>big data sets</em>).</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Data Engineer</td>
+                            <td data-label="Deskripsi">Mengolah data yang dimiliki perusahaan untuk mendapatkan wawasan baru yang berguna bagi perusahaan.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Web Designer</td>
+                            <td data-label="Deskripsi">Merancang antarmuka pengguna web untuk memberikan grafik, konten, markup, dan skrip.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Posisi Pekerjaan">Mobile Apps Developer</td>
+                            <td data-label="Deskripsi">Bertanggung jawab mengembangkan aplikasi dalam bentuk mobile.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Tren terkini menunjukkan permintaan tinggi pada posisi yang berkaitan dengan:</p>
+            <ul class="career-list">
+                <li><strong>Rekayasa Perangkat Lunak</strong> (analis sistem, pemrogram, perekayasa basis data).</li>
+                <li><strong>Keamanan Siber (<em>Cyber Security</em>)</strong> seiring meningkatnya isu keamanan.</li>
+                <li><strong>Pengalaman Pengguna (<em>User Experience</em>)</strong> dan <strong>Kebergunaan (<em>Usability</em>)</strong> agar perangkat lunak mudah digunakan dan elegan.</li>
+                <li><strong>Pengembangan dan Operasional IT (<em>DevOps</em>)</strong> serta arsitek perangkat lunak untuk menangani aplikasi yang digunakan banyak pengguna.</li>
+                <li><strong>Analisis Data dan Kecerdasan Buatan (<em>AI</em>)</strong> untuk otomatisasi proses bisnis.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. Studi Lanjut di Bidang Informatika</h2>
+            <p>Informatika lahir dari disiplin ilmu sains formal, berakar pada matematika (konsep formal) dan teknik elektro (perangkat keras). Kini, informatika telah berkembang menjadi bidang ilmu tersendiri dengan berbagai cabang yang saling berkolaborasi dengan ilmu lain, seperti:</p>
+            <div class="study-fields">
+                <div class="study-field-card">
+                    <h3>Agri-Informatika</h3>
+                    <p>Informatika Pertanian, mendukung bidang pertanian.</p>
+                </div>
+                <div class="study-field-card">
+                    <h3>Informatika Kesehatan (<em>Health-Informatics</em>)</h3>
+                    <p>Meningkatkan kualitas layanan kesehatan.</p>
+                </div>
+                <div class="study-field-card">
+                    <h3>Bioinformatika</h3>
+                    <p>Pengolahan data genetika menggunakan informatika.</p>
+                </div>
+                <div class="study-field-card">
+                    <h3>Urban Informatics</h3>
+                    <p>Aplikasi informatika dalam konteks perkotaan.</p>
+                </div>
+                <div class="study-field-card">
+                    <h3>Travel Informatics</h3>
+                    <p>Aplikasi informatika dalam industri pariwisata.</p>
+                </div>
+                <div class="study-field-card">
+                    <h3>Geoinformatika</h3>
+                    <p>Aplikasi informatika dalam bidang geografi dan spasial.</p>
+                </div>
+            </div>
+
+            <p>Lima pilar utama dalam studi informatika, menurut <em>Computing Curricula</em> tahun 2005, meliputi:</p>
+            <div class="profession-table-container">
+                <table class="profession-table">
+                    <thead>
+                        <tr>
+                            <th>Disiplin Ilmu Komputasi</th>
+                            <th>Fokus Pembelajaran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Disiplin Ilmu"><strong>Computer Engineering / Teknik Komputer</strong></td>
+                            <td data-label="Fokus">Perancangan dan pembuatan komputer dan sistem berbasis komputer, mencakup perangkat keras, perangkat lunak, serta komunikasi antar keduanya.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Disiplin Ilmu"><strong>Computer Science / Ilmu Komputer</strong></td>
+                            <td data-label="Fokus">Teori dan algoritma untuk pengembangan robotika, <em>computer vision</em>, sistem cerdas, bioinformatika, perancangan & implementasi perangkat lunak, pembuatan teknologi komputer (Web, robot, analisis DNA), dan metode penyelesaian masalah komputasi yang efektif dan efisien.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Disiplin Ilmu"><strong>Information System / Sistem Informasi</strong></td>
+                            <td data-label="Fokus">Integrasi solusi teknologi informasi dengan tujuan bisnis dan organisasi untuk efektivitas dan efisiensi proses.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Disiplin Ilmu"><strong>Information Technology / Teknologi Informasi</strong></td>
+                            <td data-label="Fokus">Solusi teknologi komputer bagi organisasi bisnis, pemerintah, kesehatan, sekolah, dan organisasi lainnya.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Disiplin Ilmu"><strong>Software Engineering / Rekayasa Perangkat Lunak</strong></td>
+                            <td data-label="Fokus">Pengembangan dan perawatan sistem perangkat lunak agar reliabel, efisien, skalabel, terjangkau, dan memenuhi kebutuhan pengguna.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Diagram studi komputing (Gambar 8.11 dalam materi Anda) menunjukkan bahwa:</p>
+            <ul>
+                <li>Sumbu horizontal mewakili tingkat <strong>teoretis ke aplikatif</strong>.</li>
+                <li>Sumbu vertikal menggambarkan bidang-bidang yang meliputi perangkat keras, infrastruktur sistem, metode & teknologi perangkat lunak, teknologi aplikasi, serta permasalahan organisasi.</li>
+            </ul>
+            <p>Misalnya, Teknik Komputer mencakup aspek teoretis hingga aplikatif yang terfokus pada perangkat keras dan arsitektur. Sementara, Teknologi Informasi lebih menekankan pada aspek aplikatif, mulai dari infrastruktur sistem hingga masalah organisasi.</p>
+        </div>
+
+        <div class="section">
+            <h2>3. Sertifikasi di Bidang Informatika</h2>
+            <p>Kompetensi di bidang informatika tidak hanya diakui melalui ijazah. Belajar informatika bisa dari berbagai sumber, bahkan banyak pengembang perangkat lunak yang belajar secara otodidak. Pelatihan, seminar, dan <em>workshop</em> terbuka untuk umum, termasuk siswa SMA.</p>
+            <p>Pembelajaran dapat dilakukan melalui komunitas-komunitas informatika yang tersebar di berbagai daerah. Di internet pun banyak sumber belajar gratis maupun berbayar yang menawarkan sertifikat.</p>
+
+            <div class="interactive-element">
+                <h3>Mengapa Sertifikasi Penting?</h3>
+                <p>Sertifikasi adalah pengakuan resmi atas pemenuhan standar kompetensi yang ditetapkan oleh badan, organisasi, atau perusahaan. Sertifikat dapat meningkatkan kepercayaan perusahaan terhadap keahlianmu, yang berpotensi berujung pada upah yang lebih tinggi.</p>
+            </div>
+
+            <p>Sertifikasi dapat diperoleh dari produsen perangkat keras/lunak, Lembaga Profesional, Asosiasi Profesi, atau Pemerintah. Ada sertifikasi yang terikat pada produk (misal: sertifikasi penggunaan <em>Microsoft Office</em>) dan ada yang terikat pada kemampuan (misal: sertifikasi <em>data scientist</em>).</p>
+
+            <h3>Penyedia Sertifikasi Internasional Terkemuka</h3>
+            <ul class="certification-list">
+                <li><strong>Microsoft:</strong> Menawarkan sertifikasi untuk produk seperti <em>Office</em>, .<em>Net</em>, <em>SQL Server</em>, <em>Azure</em>, serta sertifikasi keprofesian (<em>data scientist</em>, <em>data engineer</em>).</li>
+                <li><strong>Google:</strong> Menawarkan sertifikasi penggunaan <em>Google Suite</em>, Android, dan Google Cloud Platform.</li>
+                <li><strong>Oracle:</strong> Menawarkan sertifikasi produk seperti Java, OCJP, dan SCJP.</li>
+                <li><strong>CISCO:</strong> Menawarkan pelatihan terkait jaringan seperti CCNA.</li>
+            </ul>
+            <p>Kementerian Komunikasi dan Informatika Republik Indonesia juga menyediakan program pelatihan dan sertifikasi talenta digital bekerja sama dengan perusahaan dan perguruan tinggi.</p>
+
+            <p>Ujian sertifikasi bisa berupa teori atau praktik. Beberapa sertifikasi dapat diambil secara daring (online) dengan pengawasan, sementara yang lain membutuhkan kehadiran fisik. Perlu diingat bahwa biaya sertifikasi (jika berbayar) biasanya tidak dapat dikembalikan, jadi penting untuk benar-benar menguasai materi sebelum mengikuti ujian.</p>
+            <p>Di Indonesia, banyak akses pelatihan sertifikasi yang gratis atau berbiaya murah. Perusahaan juga terkadang memberikan beasiswa pelatihan atau sertifikasi. Kuncinya adalah sikap proaktif dan inisiatif dalam mencari informasi, salah satunya dengan mengikuti akun berita, perusahaan, komunitas, atau lembaga terkait di media sosial.</p>
+        </div>
+
+        <div class="section">
+            <h2>Ayo Berdiskusi: Sertifikasi Apa yang Kalian Minati?</h2>
+            <p>Di waktu luang, belajar dan ambil sertifikasi yang sesuai minatmu. Ini akan sangat berguna di dunia kerja kelak, apapun bidang pilihanmu, karena kemampuan menggunakan komputer adalah kompetensi umum.</p>
+            <p>Sekarang, cari dan pelajari informasi mengenai sertifikasi-sertifikasi di atas, ikuti pelatihan persiapannya, dan mulailah menabung untuk masa depan!</p>
+        </div>
+
+        <div class="section">
+            <h2>Ayo Kita Renungkan</h2>
+            <p>Setelah mempelajari materi ini, kamu akan diajak untuk merefleksikan pemahamanmu tentang peran informatika di berbagai bidang, cara memperoleh pengakuan kompetensi, serta aspek ekonomi dan hukumnya.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Pelajaran Informatika Kelas X. Semua Hak Dilindungi.</p>
+    </footer>
+
+</body>
+</html>
+```

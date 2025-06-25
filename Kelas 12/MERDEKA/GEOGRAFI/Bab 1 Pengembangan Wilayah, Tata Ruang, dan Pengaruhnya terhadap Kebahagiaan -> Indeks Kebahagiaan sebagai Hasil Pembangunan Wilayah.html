@@ -1,0 +1,524 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indeks Kebahagiaan sebagai Hasil Pembangunan Wilayah</title>
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-divider);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fcfcfc;
+            border-radius: 6px;
+            border: 1px solid var(--border-divider);
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 5px;
+        }
+
+        section h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        section p {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .highlight-box strong {
+            color: var(--secondary-accent-amber);
+        }
+
+        .indicator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .indicator-card {
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .indicator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .indicator-card h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        .indicator-card p {
+            font-size: 0.95em;
+            color: var(--text-tertiary);
+        }
+
+        .dimension-header {
+            background-color: var(--accent-green);
+            color: #FFFFFF;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .data-comparison {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .year-column {
+            flex: 1;
+            min-width: 300px;
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .year-column h3 {
+            text-align: center;
+            color: var(--accent-green);
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .province-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 500px; /* Limit height for scrollability */
+            overflow-y: auto;
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+        }
+
+        .province-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-bottom: 1px dashed var(--border-divider);
+            font-size: 0.9em;
+        }
+
+        .province-item:last-child {
+            border-bottom: none;
+        }
+
+        .province-item:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .province-item strong {
+            color: var(--primary-blue);
+        }
+
+        .province-item .score {
+            font-weight: bold;
+            color: var(--semantic-info);
+        }
+
+        .national-index {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            padding: 10px;
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            border-radius: 6px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
+
+            section h3 {
+                font-size: 1.3em;
+            }
+
+            .indicator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-comparison {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Indeks Kebahagiaan sebagai Hasil Pembangunan Wilayah</h1>
+            <p>Memahami Kesejahteraan Melalui Perspektif yang Lebih Luas</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>D. Indeks Kebahagiaan sebagai Hasil Pembangunan Wilayah</h2>
+                <p>
+                    Seringkali kita mendengar bahwa esensi pembangunan bukan hanya pada pencapaian fisiknya, melainkan pada dampaknya terhadap masyarakat. Pembangunan, seperti infrastruktur jalan atau taman kota, seharusnya tidak hanya dinilai dari kualitas fisik permukaannya (halus, mulus, indah), tetapi dari bagaimana pembangunan tersebut <strong>meningkatkan kualitas hidup dan kebahagiaan masyarakat</strong>. Jalan yang baik mempermudah perjalanan, meningkatkan keamanan, dan menghemat waktu, yang pada akhirnya membawa kebahagiaan. Taman yang indah menjadi ruang interaksi dan rekreasi keluarga, menciptakan kebahagiaan. Paradigma inilah yang ingin ditumbuhkan.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        Pembangunan wilayah pada mulanya sangat menitikberatkan pada kesejahteraan ekonomi (<strong>monetary based</strong>), dengan indikator utama seperti Produk Domestik Bruto (PDB) dan pertumbuhan ekonomi. Namun, pendekatan ini ternyata <strong>belum cukup mewakili kesejahteraan masyarakat secara utuh</strong>.
+                    </p>
+                    <p>
+                        Keterbatasan inilah yang mendorong Perserikatan Bangsa-Bangsa (PBB) pada tahun 2011 untuk merumuskan pengukuran kesejahteraan masyarakat yang lebih subjektif melalui <strong>Indeks Kebahagiaan</strong>.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>1. Pengertian Indeks Kebahagiaan</h2>
+                <p>
+                    Secara etimologis, kebahagiaan berarti kondisi hidup yang baik dan bermakna. Dalam konteks pembangunan wilayah, kebahagiaan adalah cerminan dari standar kesejahteraan dan perkembangan sosial masyarakat. Indeks Kebahagiaan (IK) adalah sebuah ukuran subjektif untuk menilai tingkat kesejahteraan penduduk.
+                </p>
+                <p>Terdapat tiga faktor utama yang memengaruhi kebahagiaan seseorang:</p>
+                <div class="indicator-grid">
+                    <div class="indicator-card">
+                        <h4>Kepuasan Hidup</h4>
+                        <p>Tingkat kepuasan individu terhadap berbagai aspek hidup yang diinginkan, seperti pendidikan, pekerjaan, pendapatan, kesehatan, kondisi rumah, dan fasilitas.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>Perasaan</h4>
+                        <p>Kondisi emosional individu, mencakup perasaan senang, tidak khawatir/cemas, dan tidak tertekan.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>Makna Hidup (Eudaimonia)</h4>
+                        <p>Kualitas kehidupan yang mendalam, meliputi kemandirian, penguasaan lingkungan, pengembangan diri, hubungan positif dengan orang lain, tujuan hidup, dan penerimaan diri.</p>
+                    </div>
+                </div>
+                <p>Ketiga faktor ini menjadi indikator kunci dalam penentuan Indeks Kebahagiaan suatu wilayah.</p>
+            </section>
+
+            <section>
+                <h2>2. Indikator Indeks Kebahagiaan</h2>
+                <p>
+                    Indeks Kebahagiaan diukur dalam rentang angka 0 hingga 100. Angka 100 menandakan tingkat kebahagiaan tertinggi. Indeks ini terdiri dari tiga dimensi utama yang kemudian dipecah menjadi berbagai indikator detail:
+                </p>
+
+                <h3>a. Dimensi Kepuasan Hidup</h3>
+                <p>Dimensi ini mengukur seberapa puas individu terhadap berbagai aspek fundamental kehidupannya. Terdapat sepuluh indikator di dalamnya:</p>
+                <div class="indicator-grid">
+                    <div class="indicator-card">
+                        <h4>1) Kesehatan Fisik dan Mental</h4>
+                        <p>Kondisi fisik dan mental yang stabil memungkinkan individu beraktivitas optimal dan meningkatkan kepuasan hidup.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>2) Pendidikan dan Keterampilan</h4>
+                        <p>Kualitas sumber daya manusia yang memadai melalui pendidikan dan keterampilan adalah penunjang kepuasan hidup.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>3) Pekerjaan</h4>
+                        <p>Kualitas pekerjaan memengaruhi kepuasan hidup dan kesejahteraan material, serta meningkatkan kepercayaan diri.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>4) Pendapatan Rumah Tangga</h4>
+                        <p>Pendapatan yang memadai untuk mencukupi kebutuhan hidup dan konsumsi.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>5) Kondisi dan Fasilitas Rumah</h4>
+                        <p>Rumah yang nyaman dan fasilitas yang lengkap mendukung kenyamanan hidup.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>6) Keharmonisan Keluarga</h4>
+                        <p>Dukungan dan dorongan positif dari keluarga yang harmonis sangat berpengaruh terhadap kepuasan.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>7) Ketersediaan Waktu Luang</h4>
+                        <p>Keseimbangan antara waktu produktif dan waktu bersantai mencegah kejenuhan serta tekanan psikis.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>8) Hubungan Sosial</h4>
+                        <p>Interaksi positif dan saling membantu dalam masyarakat meningkatkan kepuasan hidup.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>9) Kualitas Lingkungan</h4>
+                        <p>Lingkungan tempat tinggal yang aman, nyaman, dan tenang memengaruhi psikologis dan kesehatan.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>10) Kondisi Keamanan</h4>
+                        <p>Lingkungan yang aman menciptakan ketenteraman dan menghindarkan rasa khawatir atau takut.</p>
+                    </div>
+                </div>
+
+                <h3>b. Dimensi Perasaan</h3>
+                <p>Dimensi ini mencerminkan kondisi emosional individu. Terbagi menjadi tiga indikator:</p>
+                <div class="indicator-grid">
+                    <div class="indicator-card">
+                        <h4>Perasaan Senang</h4>
+                        <p>Menggambarkan emosi positif yang sering diasosiasikan dengan kebahagiaan.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>Perasaan Tidak Khawatir/Cemas</h4>
+                        <p>Hasil dari perasaan aman dan nyaman, terhindar dari kecemasan.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>Perasaan Tidak Tertekan</h4>
+                        <p>Bebas dari stres dan tekanan psikologis yang berdampak pada ketidakbahagiaan.</p>
+                    </div>
+                </div>
+
+                <h3>c. Dimensi Makna Hidup (Eudaimonia)</h3>
+                <p>Dimensi ini berfokus pada kualitas kehidupan yang lebih mendalam dan bermakna. Terdapat enam indikator utama:</p>
+                <div class="indicator-grid">
+                    <div class="indicator-card">
+                        <h4>1) Penerimaan Diri</h4>
+                        <p>Kemampuan individu menerima segala aspek dirinya secara positif, baik di masa lalu maupun sekarang.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>2) Tujuan Hidup</h4>
+                        <p>Cita-cita dan harapan yang memotivasi seseorang menjalani hidup dengan lebih bermakna.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>3) Pengembangan Diri</h4>
+                        <p>Keinginan untuk terus meningkatkan potensi diri, berbanding lurus dengan kepercayaan diri dan kebahagiaan.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>4) Kemandirian</h4>
+                        <p>Kemampuan individu menentukan diri, mengatasi tekanan sosial, mengontrol perilaku, dan mengevaluasi diri.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>5) Penguasaan Lingkungan</h4>
+                        <p>Kemampuan individu memilih dan menciptakan lingkungan yang sesuai dengan keinginan dan kebutuhan.</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h4>6) Hubungan Positif dengan Orang Lain</h4>
+                        <p>Hubungan yang positif menumbuhkan kepedulian, empati, kasih sayang, dan saling percaya, menjadikan hidup lebih bermakna.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. Sebaran Indeks Kebahagiaan Penduduk Indonesia</h2>
+                <p>
+                    Indeks Kebahagiaan (IK) telah menjadi alat ukur kesejahteraan subjektif di Indonesia sejak tahun 2014, diukur melalui Survei Pengukuran Tingkat Kebahagiaan (SPTK) oleh Badan Pusat Statistik (BPS).
+                </p>
+
+                <div class="data-comparison">
+                    <div class="year-column">
+                        <h3>Indeks Kebahagiaan Nasional 2017</h3>
+                        <div class="national-index">
+                            Indonesia: 70,69
+                        </div>
+                        <h3>Per Provinsi (2017)</h3>
+                        <ul class="province-list">
+                            <li class="province-item"><span>Maluku Utara</span><span class="score">75,68</span></li>
+                            <li class="province-item"><span>Maluku</span><span class="score">73,77</span></li>
+                            <li class="province-item"><span>Sulawesi Utara</span><span class="score">73,69</span></li>
+                            <li class="province-item"><span>Kalimantan Utara</span><span class="score">73,33</span></li>
+                            <li class="province-item"><span>Gorontalo</span><span class="score">73,19</span></li>
+                            <li class="province-item"><span>Kepulauan Riau</span><span class="score">73,11</span></li>
+                            <li class="province-item"><span>DI Yogyakarta</span><span class="score">72,93</span></li>
+                            <li class="province-item"><span>Bali</span><span class="score">72,48</span></li>
+                            <li class="province-item"><span>Sumatera Barat</span><span class="score">72,43</span></li>
+                            <li class="province-item"><span>Sumatera Selatan</span><span class="score">71,98</span></li>
+                            <li class="province-item"><span>Kalimantan Selatan</span><span class="score">71,99</span></li>
+                            <li class="province-item"><span>Sulawesi Selatan</span><span class="score">71,91</span></li>
+                            <li class="province-item"><span>Papua Barat</span><span class="score">71,73</span></li>
+                            <li class="province-item"><span>Kep. Bangka Belitung</span><span class="score">71,75</span></li>
+                            <li class="province-item"><span>Aceh</span><span class="score">71,96</span></li>
+                            <li class="province-item"><span>Jawa Tengah</span><span class="score">70,92</span></li>
+                            <li class="province-item"><span>Kalimantan Tengah</span><span class="score">70,85</span></li>
+                            <li class="province-item"><span>Jawa Timur</span><span class="score">70,77</span></li>
+                            <li class="province-item"><span>Nusa Tenggara Barat</span><span class="score">70,70</span></li>
+                            <li class="province-item"><span>Bengkulu</span><span class="score">70,61</span></li>
+                            <li class="province-item"><span>Jambi</span><span class="score">70,45</span></li>
+                            <li class="province-item"><span>Sulawesi Barat</span><span class="score">70,02</span></li>
+                            <li class="province-item"><span>Kalimantan Barat</span><span class="score">70,08</span></li>
+                            <li class="province-item"><span>Banten</span><span class="score">69,83</span></li>
+                            <li class="province-item"><span>Jawa Barat</span><span class="score">69,58</span></li>
+                            <li class="province-item"><span>Lampung</span><span class="score">69,51</span></li>
+                            <li class="province-item"><span>Nusa Tenggara Timur</span><span class="score">68,98</span></li>
+                            <li class="province-item"><span>Sumatera Utara</span><span class="score">68,41</span></li>
+                            <li class="province-item"><span>Papua</span><span class="score">67,52</span></li>
+                            <!-- Data for Sulawesi Tenggara and Kalimantan Timur is missing in 2017 list, but present in 2021. Assuming it's ordered by score. -->
+                            <li class="province-item"><span>Sulawesi Tengah</span><span class="score">71,92</span></li>
+                            <li class="province-item"><span>Sulawesi Tenggara</span><span class="score">71,22</span></li>
+                            <li class="province-item"><span>Kalimantan Timur</span><span class="score">73,57</span></li>
+                            <li class="province-item"><span>Riau</span><span class="score">71,89</span></li>
+                            <li class="province-item"><span>DKI Jakarta</span><span class="score">71,33</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="year-column">
+                        <h3>Indeks Kebahagiaan Nasional 2021</h3>
+                        <div class="national-index">
+                            Indonesia: 71,49
+                        </div>
+                        <h3>Per Provinsi (2021)</h3>
+                        <ul class="province-list">
+                            <li class="province-item"><span>Maluku Utara</span><span class="score">76,34</span></li>
+                            <li class="province-item"><span>Kalimantan Utara</span><span class="score">76,33</span></li>
+                            <li class="province-item"><span>Maluku</span><span class="score">76,28</span></li>
+                            <li class="province-item"><span>Jambi</span><span class="score">75,17</span></li>
+                            <li class="province-item"><span>Sulawesi Utara</span><span class="score">74,96</span></li>
+                            <li class="province-item"><span>Kepulauan Riau</span><span class="score">74,78</span></li>
+                            <li class="province-item"><span>Gorontalo</span><span class="score">74,77</span></li>
+                            <li class="province-item"><span>Papua Barat</span><span class="score">74,52</span></li>
+                            <li class="province-item"><span>Sulawesi Tengah</span><span class="score">74,46</span></li>
+                            <li class="province-item"><span>Sulawesi Tenggara</span><span class="score">73,98</span></li>
+                            <li class="province-item"><span>Kalimantan Timur</span><span class="score">73,49</span></li>
+                            <li class="province-item"><span>Kalimantan Selatan</span><span class="score">73,48</span></li>
+                            <li class="province-item"><span>Sulawesi Barat</span><span class="score">73,46</span></li>
+                            <li class="province-item"><span>Kep. Bangka Belitung</span><span class="score">73,25</span></li>
+                            <li class="province-item"><span>Kalimantan Tengah</span><span class="score">73,13</span></li>
+                            <li class="province-item"><span>Sulawesi Selatan</span><span class="score">73,07</span></li>
+                            <li class="province-item"><span>Kalimantan Barat</span><span class="score">72,49</span></li>
+                            <li class="province-item"><span>Sumatera Selatan</span><span class="score">72,37</span></li>
+                            <li class="province-item"><span>Jawa Timur</span><span class="score">72,08</span></li>
+                            <li class="province-item"><span>Riau</span><span class="score">71,80</span></li>
+                            <li class="province-item"><span>Jawa Tengah</span><span class="score">71,73</span></li>
+                            <li class="province-item"><span>DI Yogyakarta</span><span class="score">71,70</span></li>
+                            <li class="province-item"><span>Lampung</span><span class="score">71,64</span></li>
+                            <li class="province-item"><span>Bali</span><span class="score">71,44</span></li>
+                            <li class="province-item"><span>Sumatera Barat</span><span class="score">71,34</span></li>
+                            <li class="province-item"><span>Aceh</span><span class="score">71,24</span></li>
+                            <li class="province-item"><span>DKI Jakarta</span><span class="score">70,68</span></li>
+                            <li class="province-item"><span>Sumatera Utara</span><span class="score">70,57</span></li>
+                            <li class="province-item"><span>Nusa Tenggara Timur</span><span class="score">70,31</span></li>
+                            <li class="province-item"><span>Jawa Barat</span><span class="score">70,23</span></li>
+                            <li class="province-item"><span>Nusa Tenggara Barat</span><span class="score">69,98</span></li>
+                            <li class="province-item"><span>Papua</span><span class="score">69,87</span></li>
+                            <li class="province-item"><span>Bengkulu</span><span class="score">69,74</span></li>
+                            <li class="province-item"><span>Banten</span><span class="score">68,08</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="background-color: var(--semantic-info);">
+                    <p>
+                        Data BPS tahun 2021 menunjukkan Indeks Kebahagiaan penduduk Indonesia rata-rata sebesar <strong>71,49</strong>, meningkat <strong>0,80 poin</strong> dibandingkan tahun 2017 (70,69).
+                    </p>
+                    <p>
+                        Provinsi dengan peningkatan IK terbesar (2017-2021) adalah:
+                        <ul>
+                            <li><strong>Jambi</strong>: Meningkat 4,72 poin (dari 70,45 menjadi 75,17)</li>
+                            <li><strong>Sulawesi Barat</strong>: Meningkat 3,44 poin (dari 70,02 menjadi 73,46)</li>
+                            <li><strong>Kalimantan Utara</strong>: Meningkat 3,00 poin (dari 73,33 menjadi 76,33)</li>
+                        </ul>
+                        Beberapa provinsi juga mengalami penurunan tingkat kebahagiaan, antara lain Aceh, Riau, Sumatera Barat, Banten, dan Yogyakarta.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>E. Pengaruh Pengembangan Wilayah dan Tata Ruang terhadap Kebahagiaan Penduduk</h2>
+                <h3>1. Pengaruh Pengembangan Wilayah terhadap Indeks Kebahagiaan</h3>
+                <p>
+                    Pengembangan wilayah merupakan upaya strategis untuk memberdayakan potensi lokal dan meningkatkan kesejahteraan masyarakat. Tujuan utamanya adalah peningkatan kesejahteraan, yang pada akhirnya berkorelasi langsung dengan peningkatan taraf kebahagiaan hidup.
+                </p>
+                <p>
+                    Paradigma pembangunan yang berorientasi pada pemerataan, seperti konsep agropolitan, memiliki dampak besar pada Indeks Kebahagiaan penduduk. Ini dapat membantu mengurangi kesenjangan ekonomi dan fasilitas publik antara daerah pedesaan dan perkotaan.
+                </p>
+                <p>
+                    Melalui pengembangan wilayah yang tepat, masyarakat dapat memperoleh fasilitas yang memadai, peningkatan pendapatan rumah tangga, serta jaminan kesehatan mental dan fisik, yang semuanya berkontribusi pada peningkatan Indeks Kebahagiaan.
+                </p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

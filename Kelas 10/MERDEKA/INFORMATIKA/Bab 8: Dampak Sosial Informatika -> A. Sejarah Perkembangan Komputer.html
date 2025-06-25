@@ -1,0 +1,316 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejarah Perkembangan Komputer - Informatika Kelas X</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 25px;
+            border-bottom: 1px solid #E0E0E0;
+            padding-bottom: 8px;
+        }
+        h3 {
+            font-size: 1.3em;
+            color: #424242;
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+            text-align: justify;
+        }
+        .highlight {
+            color: #1976D2;
+            font-weight: bold;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #1976D2;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -15px; /* Adjusted for border */
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: #1976D2;
+            border-radius: 50%;
+            border: 4px solid white;
+            z-index: 1;
+        }
+        .timeline-content {
+            background-color: #F5F5F5;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: #757575;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .key-figure {
+            font-style: italic;
+            color: #388E3C;
+        }
+        .concept {
+            font-weight: bold;
+            color: #FFB300;
+        }
+        .figure-caption {
+            text-align: center;
+            font-size: 0.85em;
+            color: #757575;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .card {
+            flex: 1 1 300px; /* flex-grow, flex-shrink, flex-basis */
+            background-color: #F5F5F5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-left: 5px solid #1976D2;
+        }
+        .card h4 {
+            margin-top: 0;
+            color: #1976D2;
+            font-size: 1.2em;
+        }
+        .card p {
+            font-size: 0.95em;
+            color: #424242;
+        }
+        .code-snippet {
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            background-color: #E0E0E0;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #212121;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .container {
+                padding: 20px;
+            }
+            .timeline {
+                padding-left: 20px;
+            }
+            .timeline::before {
+                left: 0;
+            }
+            .timeline-item::before {
+                left: -10px;
+                width: 10px;
+                height: 10px;
+                border-width: 3px;
+            }
+            .flex-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 90%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sejarah Perkembangan Komputer: Dari Abacus hingga Era Digital</h1>
+
+        <p>Selamat datang, para pembelajar informatika! Komputer telah menjadi bagian tak terpisahkan dari kehidupan kita modern. Bentuknya pun semakin beragam, mulai dari perangkat yang kita gunakan sehari-hari seperti <span class="highlight">laptop</span>, <span class="highlight">ponsel pintar</span>, hingga benda-benda yang terintegrasi dalam konsep <span class="highlight">Internet of Things</span> (IoT). Namun, tahukah kamu bahwa di balik kemudahan yang kita rasakan ini, terbentang sejarah panjang perkembangan komputer yang penuh inovasi?</p>
+
+        <p>Perjalanan ini bukan hanya tentang evolusi perangkat keras, tetapi juga tentang lahirnya konsep-konsep fundamental yang menjadi tulang punggung teknologi komputasi. Mari kita selami lebih dalam perjalanan menakjubkan ini.</p>
+
+        <h2>Asal-Usul Komputasi: Jauh Sebelum Era Elektronik</h2>
+
+        <p>Perkembangan mesin komputasi tidak dimulai di era elektronik. Jauh sebelum itu, manusia telah menciptakan alat bantu perhitungan. Jejaknya dapat ditelusuri hingga sekitar <span class="highlight">2400 SM</span> dengan penemuan <span class="concept">Abacus</span>.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">Sekitar 2400 SM</span>
+                    <p>Penemuan <span class="concept">Abacus</span>, alat bantu hitung mekanis paling awal yang digunakan di berbagai peradaban kuno seperti Mesopotamia, Tiongkok, dan Romawi. Abacus bekerja dengan menggerakkan manik-manik pada batang untuk melakukan operasi aritmatika.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Era Komputer yang Dapat Diprogram: Fondasi Komputasi Modern</h2>
+
+        <p>Langkah monumental berikutnya adalah lahirnya konsep komputer yang dapat diprogram. Inovasi penting ini banyak dikaitkan dengan tokoh-tokoh visioner yang merancang mesin serta mengembangkan dasar-dasar pemrograman.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">Abad ke-19</span>
+                    <p>Charles Babbage, seorang matematikawan Inggris, merancang mesin mekanis yang revolusioner: <span class="concept">Analytical Engine</span>. Mesin ini memiliki konsep dasar yang mirip dengan komputer modern, yaitu memiliki unit aritmatika (mill), memori (store), pembaca input, dan pencetak output. Mesin ini dirancang untuk dapat diprogram menggunakan kartu berlubang.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">Abad ke-19</span>
+                    <p>Sebagai programmer pertama di dunia, <span class="key-figure">Ada Lovelace</span>, seorang matematikawan dan penulis Inggris, mengembangkan algoritma yang dirancang untuk digunakan pada Analytical Engine milik Babbage. Karyanya ini dianggap sebagai dasar dari konsep pemrograman komputer modern.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Mesin Turing: Konsep Abstrak yang Mengubah Segalanya</h2>
+
+        <p>Konsep abstrak dari komputasi yang menjadi dasar komputer elektronik modern kita saat ini adalah <span class="concept">Mesin Turing</span>.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">1936</span>
+                    <p>Alan Turing, seorang matematikawan Inggris, mempublikasikan makalahnya yang memperkenalkan konsep <span class="concept">Mesin Turing</span>. Ini adalah model matematis dari komputasi yang terdiri dari pita tak terbatas, kepala baca/tulis, dan seperangkat aturan (state). Mesin Turing dapat mensimulasikan logika dari algoritma apa pun, membuktikan bahwa mesin ini bersifat universal dalam kemampuan komputasinya. Konsep ini menjadi fondasi bagi pengembangan bahasa pemrograman dan teori otomata yang mendasari otomatisasi.</p>
+                </div>
+            </div>
+        </div>
+
+        <p>Perkembangan perangkat keras dan perangkat lunak selalu berakar pada model-model abstrak seperti Mesin Turing. Ini menegaskan bahwa pemikiran komputasional selalu mendahului dan mendorong lahirnya inovasi teknologi.</p>
+
+        <h2>Evolusi Komputer: Dari Mekanis ke Elektronik dan Miniaturisasi</h2>
+
+        <p>Sejak konsep-konsep dasar ini muncul, evolusi komputer terus berjalan pesat, dipacu oleh kemajuan ilmu pengetahuan dan rekayasa. Komputer terus ditemukan dengan kompleksitas dan kinerja yang semakin tinggi, sekaligus ukurannya yang semakin mengecil.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">1940-an</span>
+                    <p>Lahirnya komputer elektronik pertama yang dapat diprogram, seperti <span class="highlight">ENIAC (Electronic Numerical Integrator and Computer)</span>. Komputer generasi awal ini berukuran sangat besar, mengonsumsi banyak daya, dan menggunakan tabung vakum.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">1950-an - 1960-an</span>
+                    <p>Munculnya transistor menggantikan tabung vakum, menghasilkan komputer generasi kedua yang lebih kecil, lebih cepat, dan lebih andal. Kemudian, penemuan sirkuit terpadu (integrated circuit/IC) pada akhir 1950-an memungkinkan ribuan transistor dipasang pada satu chip silikon, memulai era komputer generasi ketiga yang jauh lebih ringkas dan efisien.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">1970-an - Sekarang</span>
+                    <p>Era mikroprosesor (satu chip yang berisi CPU) melahirkan komputer pribadi (PC). Sejak saat itu, perkembangan terus berlanjut dengan miniaturisasi komponen, peningkatan kecepatan pemrosesan, kapasitas penyimpanan, serta kemampuan jaringan yang semakin canggih. Lahirlah era <span class="highlight">minikomputer</span>, <span class="highlight">komputer personal</span>, <span class="highlight">laptop</span>, <span class="highlight">server</span>, hingga perangkat mobile.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Perkembangan Perangkat Lunak dan Konsep Pemrograman</h2>
+
+        <p>Seiring dengan perkembangan perangkat keras, perangkat lunak pun mengalami evolusi yang luar biasa. Konsep-konsep seperti algoritma, yang ditemukan oleh <span class="key-figure">Al-Khawarizmi</span> pada abad ke-9, menjadi dasar bagi bahasa pemrograman.</p>
+
+        <div class="flex-container">
+            <div class="card">
+                <h4>Bahasa Pemrograman</h4>
+                <p>Perkembangan bahasa pemrograman dari bahasa tingkat rendah (assembly) hingga bahasa tingkat tinggi (seperti C++, Java, Python) telah mempermudah manusia untuk memberikan instruksi kepada komputer.</p>
+                <div class="code-snippet">
+                    // Contoh sederhana algoritma<br>
+                    if (suhu &gt; 30) {<br>
+                        print("Panas!");<br>
+                    }<br>
+                </div>
+            </div>
+            <div class="card">
+                <h4>Aplikasi dan Perangkat Lunak</h4>
+                <p>Beragam aplikasi telah dikembangkan untuk berbagai keperluan, mulai dari <span class="highlight">email</span>, pengolah kata, lembar kerja, presentasi, hingga alat bantu seperti <span class="highlight">compiler</span> dan <span class="highlight">IDE (Integrated Development Environment)</span> yang digunakan untuk menulis dan menguji kode program.</p>
+            </div>
+            <div class="card">
+                <h4>Sistem Operasi</h4>
+                <p>Sistem operasi (seperti Windows, macOS, Linux, Android, iOS) bertindak sebagai jembatan antara pengguna dan perangkat keras, mengelola sumber daya komputer, dan menjalankan aplikasi.</p>
+            </div>
+        </div>
+
+        <h2>Komputer dalam Kehidupan Sehari-hari</h2>
+
+        <p>Saat ini, komputer hadir dalam berbagai bentuk dan ukuran, terintegrasi dalam aktivitas sehari-hari kita.</p>
+
+        <div class="flex-container">
+            <div class="card">
+                <h4>Perangkat Wearable</h4>
+                <p>Seperti <span class="highlight">Smart Watch</span> yang memantau aktivitas fisik dan notifikasi.</p>
+            </div>
+            <div class="card">
+                <h4>Perangkat Interaktif</h4>
+                <p>Seperti <span class="highlight">Surface Table</span> yang memungkinkan interaksi multi-sentuh untuk kolaborasi dan hiburan.</p>
+            </div>
+            <div class="card">
+                <h4>Realitas Virtual</h4>
+                <p><span class="highlight">Virtual Reality (VR)</span> yang menciptakan pengalaman imersif untuk berbagai aplikasi, mulai dari gaming hingga pelatihan.</p>
+            </div>
+        </div>
+
+        <p>Mempelajari sejarah perkembangan komputer sangat penting. Kita dapat belajar dari keberhasilan dan kegagalan para inovator masa lalu, memahami bagaimana konsep-konsep dasar melahirkan teknologi yang luar biasa, serta mengapresiasi perjalanan panjang menuju komputer yang kita kenal saat ini.</p>
+
+        <p>Setiap penemuan baru, setiap peningkatan kinerja, dan setiap miniaturisasi komponen adalah buah dari riset panjang, pemikiran mendalam, dan tentu saja, kerja keras para ilmuwan dan insinyur yang tak kenal lelah. Pemahaman tentang sejarah ini memberikan kita perspektif yang lebih luas tentang peran teknologi dalam membentuk masyarakat kita.</p>
+
+    </div>
+</body>
+</html>
+```

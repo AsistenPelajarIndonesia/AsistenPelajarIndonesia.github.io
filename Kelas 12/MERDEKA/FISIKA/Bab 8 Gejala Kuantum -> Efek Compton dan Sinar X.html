@@ -1,0 +1,270 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 8: Gejala Kuantum - Efek Compton & Sinar-X</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1);
+            padding: 15px;
+            border-left: 5px solid var(--primary-blue);
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .formula-container {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
+        }
+
+        .formula-container code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .concept-box {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .concept-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .concept-box h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+        }
+
+        .concept-box h4::before {
+            content: '💡';
+            margin-right: 10px;
+            font-size: 1.5em;
+            color: var(--secondary-accent-amber);
+        }
+
+        .concept-box p {
+            margin-bottom: 0;
+            color: var(--text-secondary);
+        }
+
+        .interactivity-hint {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .formula-container {
+                font-size: 1em;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bab 8: Gejala Kuantum</h1>
+
+        <div class="section">
+            <h2>Efek Compton</h2>
+            <p>Efek Compton adalah sebuah fenomena fisika kuantum yang menjelaskan bagaimana foton (partikel cahaya) berinteraksi dengan materi, khususnya elektron. Fenomena ini menunjukkan sifat partikel cahaya dan memberikan bukti kuat tentang teori kuantum.</p>
+
+            <div class="highlight">
+                <p>Saat foton dari sinar-X bertabrakan dengan elektron, foton tersebut akan kehilangan sebagian energinya. Akibatnya, panjang gelombang foton yang dihamburkan akan meningkat, sementara frekuensinya menurun. Fenomena ini merupakan manifestasi dari pertukaran energi dan momentum antara foton dan elektron.</p>
+            </div>
+
+            <h3>Penjelasan Lebih Lanjut</h3>
+            <p>Arthur H. Compton pada tahun 1923 menggunakan model kuantum untuk menjelaskan hasil eksperimennya. Ia mengamati bahwa ketika sinar-X dihamburkan oleh elektron, panjang gelombang sinar-X yang terhambur menjadi lebih panjang dibandingkan dengan sinar-X datang. Perubahan ini bergantung pada sudut hamburan foton.</p>
+
+            <div class="formula-container">
+                <code>λ' - λ = h / (m_e * c) * (1 - cos θ)</code>
+                <p>Di mana:</p>
+                <p><code>λ'</code> = panjang gelombang foton setelah hamburan</p>
+                <p><code>λ</code> = panjang gelombang foton sebelum hamburan</p>
+                <p><code>h</code> = konstanta Planck (sekitar 6.626 x 10<sup>-34</sup> J·s)</p>
+                <p><code>m_e</code> = massa diam elektron (sekitar 9.109 x 10<sup>-31</sup> kg)</p>
+                <p><code>c</code> = kecepatan cahaya dalam vakum (sekitar 3.00 x 10<sup>8</sup> m/s)</p>
+                <p><code>θ</code> = sudut hamburan foton terhadap arah datangnya</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>Inti dari Efek Compton</h4>
+                <p>Persamaan Compton menunjukkan bahwa perbedaan panjang gelombang (Δλ) berbanding lurus dengan faktor <code>(1 - cos θ)</code>. Semakin besar sudut hamburan (θ), semakin besar pula perubahan panjang gelombang foton. Ini berarti foton kehilangan lebih banyak energi pada sudut hamburan yang lebih besar.</p>
+            </div>
+
+            <p>Pengukuran perubahan panjang gelombang ini secara akurat mendukung teori kuantum cahaya, yang menyatakan bahwa cahaya memiliki sifat partikel (foton) yang membawa energi dan momentum. Efek Compton menjadi salah satu pilar penting dalam pengembangan mekanika kuantum.</p>
+        </div>
+
+        <div class="section">
+            <h2>Sinar-X</h2>
+            <p>Sinar-X adalah salah satu bentuk radiasi elektromagnetik yang memiliki energi sangat tinggi dan panjang gelombang yang sangat pendek, biasanya berkisar antara 10<sup>-8</sup> hingga 10<sup>-12</sup> meter. Sinar-X ditemukan oleh Wilhelm Conrad Roentgen pada tahun 1895.</p>
+
+            <div class="highlight">
+                <p>Sinar-X dihasilkan ketika elektron berenergi tinggi menumbuk target logam (biasanya tungsten). Energi kinetik elektron yang mendadak berhenti diubah menjadi energi radiasi elektromagnetik berfrekuensi tinggi, yaitu sinar-X. Proses ini juga dikenal sebagai radiasi rem atau <em>Bremsstrahlung</em>.</p>
+            </div>
+
+            <h3>Bagaimana Sinar-X Dihasilkan?</h3>
+            <p>Proses dasar produksi sinar-X melibatkan:</p>
+            <ol>
+                <li><strong>Pemanasan Katoda:</strong> Sebuah filamen dalam tabung sinar-X dipanaskan, melepaskan elektron melalui emisi termionik.</li>
+                <li><strong>Percepatan Elektron:</strong> Elektron-elektron ini kemudian dipercepat menuju anoda (target) dengan menggunakan beda potensial yang sangat tinggi (misalnya, 100.000 Volt).</li>
+                <li><strong>Tumbukan dengan Anoda:</strong> Elektron berenergi tinggi ini menumbuk anoda logam. Ketika elektron bertumbukan, energi kinetiknya sebagian besar diubah menjadi panas, namun sebagian kecil diubah menjadi foton sinar-X.</li>
+                <li><strong>Emisi Sinar-X:</strong> Foton sinar-X yang dihasilkan kemudian keluar dari tabung melalui jendela yang transparan terhadap sinar-X.</li>
+            </ol>
+
+            <div class="formula-container">
+                <code>E_foton = h * f</code>
+                <p>Atau terkait panjang gelombang:</p>
+                <code>E_foton = h * c / λ</code>
+                <p>Di mana:</p>
+                <p><code>E_foton</code> = energi foton sinar-X</p>
+                <p><code>h</code> = konstanta Planck</p>
+                <p><code>f</code> = frekuensi sinar-X</p>
+                <p><code>c</code> = kecepatan cahaya</p>
+                <p><code>λ</code> = panjang gelombang sinar-X</p>
+            </div>
+
+            <h3>Sifat-sifat Utama Sinar-X</h3>
+            <ul>
+                <li><strong>Daya Tembus Tinggi:</strong> Mampu menembus materi yang tidak tembus oleh cahaya tampak, seperti jaringan lunak tubuh manusia, namun diserap oleh materi yang lebih padat seperti tulang.</li>
+                <li><strong>Sifat Ionisasi:</strong> Mampu mengionisasi atom atau molekul yang dilaluinya.</li>
+                <li><strong>Tidak Dibelokkan oleh Medan Magnet/Listrik:</strong> Karena merupakan gelombang elektromagnetik netral.</li>
+                <li><strong>Menyebabkan Fluoresensi:</strong> Dapat membuat beberapa bahan berpendar.</li>
+            </ul>
+
+            <h3>Aplikasi Sinar-X</h3>
+            <p>Sinar-X memiliki berbagai aplikasi penting, terutama dalam bidang:</p>
+            <ul>
+                <li><strong>Medis:</strong> Pencitraan diagnostik (rontgen), terapi radiasi untuk kanker.</li>
+                <li><strong>Industri:</strong> Pengujian material, analisis struktur kristal.</li>
+                <li><strong>Keamanan:</strong> Pemeriksaan bagasi di bandara.</li>
+            </ul>
+
+            <div class="concept-box">
+                <h4>Dampak Sinar-X</h4>
+                <p>Meskipun sangat bermanfaat, paparan sinar-X yang berlebihan dapat berbahaya bagi kesehatan karena kemampuannya mengionisasi sel-sel tubuh, yang berpotensi menyebabkan kerusakan genetik atau kanker. Oleh karena itu, penggunaannya harus selalu diawasi dan dilakukan oleh profesional terlatih dengan perlindungan yang memadai.</p>
+            </div>
+
+            <p class="interactivity-hint">Bayangkan bagaimana panjang gelombang pendek sinar-X memungkinkannya menembus objek, sementara panjang gelombang cahaya tampak tidak bisa. Perbedaan ini adalah kunci dari banyak aplikasinya!</p>
+        </div>
+    </div>
+</body>
+
+</html>
+```

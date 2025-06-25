@@ -1,0 +1,387 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: APBN dan APBD - Anggaran Pendapatan dan Belanja Daerah (APBD)</title>
+    <style>
+        /* Define CSS Variables for Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 3em;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 15px;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-top: 30px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        h4 {
+            font-size: 1.4em;
+            margin-top: 20px;
+            color: var(--text-tertiary);
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: none; /* Remove default bullets */
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            padding-left: 25px;
+            position: relative;
+        }
+
+        li::before {
+            content: '•'; /* Custom bullet */
+            color: var(--accent-green);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Section Cards for Accordion (using <details> and <summary>) */
+        .section-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        details > summary {
+            list-style: none; /* Hide default arrow */
+        }
+
+        details > summary::-webkit-details-marker {
+            display: none; /* Hide default arrow for Webkit browsers */
+        }
+
+        .section-header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.6em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .section-header:hover {
+            background-color: #1565C0; /* Darker primary blue on hover */
+        }
+
+        .section-header::after {
+            content: '\25B6'; /* Right-pointing triangle for collapsed state */
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+            color: var(--background-canvas);
+            margin-left: 10px;
+        }
+
+        details[open] > summary.section-header::after {
+            content: '\25BC'; /* Down-pointing triangle for expanded state */
+            transform: rotate(0deg);
+        }
+
+        .section-content {
+            padding: 25px;
+            background-color: #FAFAFA; /* Slightly off-white for content */
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .section-content h4 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .definition-box {
+            background-color: #E3F2FD; /* Light blue */
+            border-left: 6px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .highlight-point {
+            background-color: #F0F4C3; /* Light green/yellow */
+            border-left: 4px solid var(--accent-green);
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 0.95em;
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                padding: 30px;
+            }
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.9em; }
+            h3 { font-size: 1.5em; }
+            .section-header { font-size: 1.4em; padding: 15px 20px; }
+            .section-content { padding: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 { font-size: 2em; margin-bottom: 30px; }
+            h2 { font-size: 1.6em; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.1em; }
+            .section-header { font-size: 1.2em; padding: 12px 18px; }
+            .section-content { padding: 15px; }
+            li { padding-left: 20px; }
+            li::before { font-size: 0.9em; }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 { font-size: 1.8em; margin-bottom: 20px; }
+            h2 { font-size: 1.4em; }
+            h3 { font-size: 1.1em; }
+            h4 { font-size: 1em; }
+            .section-header { font-size: 1em; padding: 10px 15px; }
+            .section-content { padding: 10px; }
+            li { padding-left: 15px; font-size: 0.95em; }
+            li::before { font-size: 0.8em; }
+            .definition-box, .highlight-point { padding: 10px 15px; margin: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Anggaran Pendapatan dan Belanja Daerah (APBD)</h1>
+
+        <p>Pembangunan suatu negara yang komprehensif tidak terlepas dari peran vital setiap daerah di Indonesia. Pembangunan daerah yang optimal merupakan fondasi penting bagi pembangunan nasional secara keseluruhan. Anggaran Pendapatan dan Belanja Daerah (APBD) memainkan peran krusial sebagai instrumen utama dalam mewujudkan pembangunan daerah, mengelola sumber daya, memajukan perekonomian, dan meningkatkan kesejahteraan masyarakat di tingkat lokal.</p>
+
+        <div class="section-card">
+            <details open>
+                <summary class="section-header">Pengertian dan Peran APBD</summary>
+                <div class="section-content">
+                    <div class="definition-box">
+                        APBD adalah singkatan dari **Anggaran Pendapatan dan Belanja Daerah**. Ini merupakan rencana keuangan tahunan pemerintah daerah yang dibahas dan disetujui bersama oleh pemerintah daerah dan Dewan Perwakilan Rakyat Daerah (DPRD). Kemudian, APBD ditetapkan dengan peraturan daerah, sesuai dengan peraturan perundang-undangan yang berlaku (misalnya, Permendagri Nomor 13 Tahun 2006).
+                    </div>
+                    <p>APBD berfungsi sebagai alat atau wadah untuk menampung berbagai kepentingan publik yang diwujudkan melalui kegiatan dan program pembangunan di daerah. Tahun anggaran APBD meliputi masa satu tahun fiskal, dimulai dari tanggal 1 Januari hingga 31 Desember.</p>
+                    <p>Secara umum, APBD disusun sebagai pedoman bagi pemerintah daerah dalam penerimaan dan pengeluaran keuangan dalam rangka pelaksanaan otonomi daerah. Tujuannya adalah untuk:</p>
+                    <ul>
+                        <li>Meningkatkan kegiatan ekonomi di daerah.</li>
+                        <li>Mendorong produksi lokal.</li>
+                        <li>Menambah kesempatan kerja.</li>
+                        <li>Meningkatkan pertumbuhan ekonomi dan kesejahteraan masyarakat daerah.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary class="section-header">Tujuan Khusus Penyusunan APBD</summary>
+                <div class="section-content">
+                    <p>Secara khusus, APBD memiliki tujuan-tujuan spesifik sebagai berikut:</p>
+                    <ul>
+                        <li><strong>Meningkatkan Pembangunan Sarana dan Prasarana Daerah:</strong> Memastikan infrastruktur daerah yang efisien, efektif, kompetitif, dan terjangkau untuk mendukung aktivitas masyarakat dan ekonomi.</li>
+                        <li><strong>Mewujudkan Pembangunan Daerah yang Adil dan Ramah Lingkungan:</strong> Mengarahkan pembangunan agar merata, berkelanjutan, dan melibatkan partisipasi aktif masyarakat.</li>
+                        <li><strong>Menciptakan Rasa Aman dan Adanya Penegakkan Keadilan:</strong> Mendukung stabilitas sosial dan hukum di daerah melalui alokasi anggaran yang tepat.</li>
+                        <li><strong>Meningkatkan Pelayanan kepada Masyarakat:</strong> Memastikan ketersediaan dan kualitas layanan publik dasar yang dibutuhkan masyarakat, seperti kesehatan, pendidikan, dan layanan publik lainnya.</li>
+                        <li><strong>Memperluas Lapangan Pekerjaan dan Kesejahteraan Masyarakat:</strong> Mendorong pertumbuhan ekonomi yang inklusif untuk menciptakan lebih banyak peluang kerja dan meningkatkan taraf hidup masyarakat.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary class="section-header">Sumber-Sumber Penerimaan Daerah</summary>
+                <div class="section-content">
+                    <p>Dalam menyusun APBD, pemerintah daerah memiliki beragam sumber pendapatan. Sumber-sumber ini dapat berasal dari pemberian pemerintah pusat maupun pendapatan yang dihasilkan oleh daerah itu sendiri. Sumber-sumber pendapatan daerah utama meliputi:</p>
+                    
+                    <h4>1. Pendapatan Asli Daerah (PAD)</h4>
+                    <p>Pendapatan Asli Daerah (PAD) adalah pendapatan yang diperoleh daerah dan dipungut sesuai dengan peraturan perundang-undangan yang berlaku. PAD bertujuan untuk memberikan dana yang mandiri bagi pelaksanaan otonomi suatu daerah, sesuai dengan potensi yang dimiliki. Komponen utama PAD meliputi:</p>
+                    <ul>
+                        <li><strong>Pajak Daerah:</strong> Pungutan wajib yang dikenakan pemerintah daerah kepada wajib pajak di wilayahnya, tanpa imbalan langsung. Contoh: Pajak hotel, pajak restoran, pajak hiburan, pajak parkir, pajak bumi dan bangunan perdesaan dan perkotaan (PBB-P2), bea perolehan hak atas tanah dan bangunan (BPHTB).</li>
+                        <li><strong>Retribusi Daerah:</strong> Pungutan yang dilakukan oleh pemerintah daerah berdasarkan undang-undang, di mana manfaatnya dapat dirasakan langsung oleh pembayar retribusi. Contoh: Retribusi pelayanan kebersihan (pengangkutan sampah), retribusi pelayanan parkir di tepi jalan umum, retribusi izin mendirikan bangunan (IMB).</li>
+                        <li><strong>Hasil Pengelolaan Kekayaan Daerah yang Dipisahkan:</strong> Keuntungan atau laba yang diperoleh dari pengelolaan Badan Usaha Milik Daerah (BUMD). Pendapatan ini penting untuk mewujudkan kesejahteraan masyarakat melalui kegiatan BUMD di berbagai sektor (perhubungan, sumber daya mineral, pariwisasta, dll.).</li>
+                        <li><strong>Lain-lain Pendapatan Asli Daerah yang Sah:</strong> Sumber-sumber pendapatan lain yang sah sesuai peraturan perundang-undangan, seperti hasil penjualan aset daerah yang tidak dipisahkan, jasa giro, dan lain-lain.</li>
+                    </ul>
+
+                    <h4>2. Dana Perimbangan</h4>
+                    <p>Dana Perimbangan adalah dana yang dialokasikan dari Anggaran Pendapatan dan Belanja Negara (APBN) kepada daerah sebagai bagian dari belanja pemerintah pusat untuk mendukung belanja daerah. Dana ini bertujuan untuk mengurangi kesenjangan fiskal antara pusat dan daerah serta antar daerah. Dana Perimbangan meliputi:</p>
+                    <ul>
+                        <li><strong>Dana Bagi Hasil (DBH):</strong> Bagian dari penerimaan negara yang dialokasikan kepada daerah berdasarkan proporsi tertentu untuk hasil sumber daya alam (misalnya minyak bumi, gas alam, kehutanan, pertambangan umum) dan/atau pajak tertentu.</li>
+                        <li><strong>Dana Alokasi Umum (DAU):</strong> Dana yang dialokasikan dengan tujuan pemerataan kemampuan keuangan antar daerah untuk mendanai kebutuhan pengeluaran daerah dalam rangka pelaksanaan desentralisasi.</li>
+                        <li><strong>Dana Alokasi Khusus (DAK):</strong> Dana yang dialokasikan kepada daerah tertentu dengan tujuan untuk mendanai kegiatan spesifik yang merupakan prioritas nasional atau memiliki dampak luas bagi masyarakat, sesuai dengan ketentuan yang ditetapkan pemerintah pusat.</li>
+                    </ul>
+
+                    <h4>3. Lain-lain Pendapatan Daerah yang Sah</h4>
+                    <p>Kategori ini mencakup pendapatan daerah selain dari PAD dan Dana Perimbangan. Sumber-sumber ini bersifat tidak terikat atau insidentil namun sah secara hukum. Contohnya adalah:</p>
+                    <ul>
+                        <li><strong>Dana Darurat:</strong> Bantuan keuangan dari pemerintah pusat atau provinsi untuk daerah yang mengalami keadaan darurat atau bencana alam.</li>
+                        <li><strong>Hibah:</strong> Pemberian uang atau barang dari pihak ketiga (pemerintah lain, lembaga internasional, atau perseorangan) yang tidak memiliki ikatan pengembalian dan tidak wajib dipertanggungjawabkan secara finansial oleh penerima.</li>
+                        <li>Sumber pendapatan lain yang sesuai dengan peraturan perundang-undangan.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary class="section-header">Belanja Pemerintah Daerah</summary>
+                <div class="section-content">
+                    <p>Berdasarkan Peraturan Pemerintah Nomor 58 Tahun 2005 tentang Pengelolaan Keuangan Daerah, belanja daerah didefinisikan sebagai semua pengeluaran dari rekening kas umum daerah yang mengurangi ekuitas dana lancar dan tidak akan diperoleh pembayarannya kembali oleh daerah. Menurut Undang-Undang Nomor 33 Tahun 2004, belanja daerah adalah semua kewajiban daerah yang diakui sebagai pengurang nilai kekayaan bersih dalam periode tahun anggaran yang bersangkutan.</p>
+                    <p>Belanja daerah dikategorikan menjadi beberapa jenis utama:</p>
+                    <ul>
+                        <li><strong>Belanja Operasional:</strong> Pengeluaran sehari-hari yang rutin dikeluarkan oleh pemerintah daerah untuk menjalankan fungsinya.
+                            <div class="highlight-point">Contoh: Belanja pegawai (gaji dan tunjangan), belanja bunga, belanja subsidi, belanja hibah (untuk pihak ketiga non-pemerintah), dan belanja bantuan sosial.</div>
+                        </li>
+                        <li><strong>Belanja Modal:</strong> Pengeluaran yang bertujuan untuk menambah aset tetap atau investasi yang memberikan manfaat lebih dari satu tahun anggaran dan/atau meningkatkan kapasitas pelayanan pemerintah daerah.
+                            <div class="highlight-point">Contoh: Pembangunan jalan, jembatan, gedung kantor, pengadaan peralatan dan mesin, tanah.</div>
+                        </li>
+                        <li><strong>Belanja Tidak Terduga:</strong> Pengeluaran yang sifatnya tidak terencana dan tidak dapat diperkirakan sebelumnya, serta untuk keadaan darurat atau musibah.
+                            <div class="highlight-point">Contoh: Penanganan bencana alam, penanggulangan wabah penyakit yang mendadak.</div>
+                        </li>
+                        <li><strong>Belanja Transfer:</strong> Pengeluaran pemerintah daerah provinsi kepada pemerintah daerah kabupaten/kota di wilayahnya, atau dari pemerintah kabupaten/kota kepada pemerintah desa. Ini adalah dana yang ditransfer dari satu tingkat pemerintahan ke tingkat pemerintahan yang lebih rendah.
+                            <div class="highlight-point">Contoh: Bantuan keuangan provinsi ke kabupaten/kota, Alokasi Dana Desa (ADD) dari pemerintah kabupaten/kota ke desa.</div>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary class="section-header">Mekanisme Penyusunan APBD</summary>
+                <div class="section-content">
+                    <p>Mekanisme penyusunan APBD memiliki kesamaan dan perbedaan dengan penyusunan APBN. Secara umum, tahapan penyusunan APBD adalah sebagai berikut:</p>
+                    <ol>
+                        <li><strong>Perencanaan dan Penyusunan Rancangan APBD (RAPBD):</strong> Pemerintah daerah (eksekutif) menyusun rancangan APBD berdasarkan rencana pembangunan jangka menengah daerah (RPJMD) dan rencana kerja pemerintah daerah (RKPD).</li>
+                        <li><strong>Pembahasan dan Persetujuan DPRD:</strong> Rancangan APBD (RAPBD) yang telah disusun oleh pemerintah daerah kemudian diusulkan kepada Dewan Perwakilan Rakyat Daerah (DPRD) untuk dibahas bersama.
+                            <ul>
+                                <li>Apabila DPRD setuju dengan RAPBD, maka RAPBD akan disahkan menjadi APBD melalui peraturan daerah.</li>
+                                <li>Apabila DPRD tidak setuju atau tidak dapat menyetujui RAPBD, pemerintah daerah dapat melaksanakan pengeluaran sebesar APBD tahun sebelumnya untuk membiayai pengeluaran rutin dan prioritas yang disepakati.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Penetapan dan Pelaksanaan APBD:</strong> APBD yang telah disetujui dan ditetapkan oleh DPRD melalui peraturan daerah akan ditindaklanjuti dan dituangkan melalui keputusan kepala daerah (gubernur/walikota/bupati) untuk pelaksanaannya.</li>
+                    </ol>
+                    <p>Proses ini memastikan adanya checks and balances antara eksekutif dan legislatif daerah dalam pengelolaan keuangan publik.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary class="section-header">Pengaruh APBD terhadap Perekonomian Daerah</summary>
+                <div class="section-content">
+                    <p>APBD, sebagai instrumen kebijakan fiskal di tingkat daerah, memiliki pengaruh yang signifikan terhadap perekonomian lokal melalui mekanisme alokasi dan distribusi anggaran pemerintah daerah. Distribusi anggaran yang tepat dan sesuai dengan kebutuhan daerah diharapkan dapat memicu berbagai dampak positif:</p>
+                    <ul>
+                        <li><strong>Peningkatan Kesejahteraan Masyarakat:</strong> Alokasi anggaran untuk sektor-sektor esensial seperti pendidikan, kesehatan, dan infrastruktur dasar secara langsung berkontribusi pada peningkatan kualitas hidup dan kesejahteraan masyarakat.</li>
+                        <li><strong>Peningkatan Pembangunan Ekonomi:</strong> Investasi melalui belanja modal (misalnya pembangunan jalan, jembatan, pasar) akan menciptakan fasilitas yang mendukung aktivitas ekonomi, menarik investasi, dan mempermudah distribusi barang dan jasa.</li>
+                        <li><strong>Stabilisasi Perekonomian Daerah:</strong> APBD dapat digunakan untuk meredam gejolak ekonomi lokal, misalnya melalui pengeluaran yang kontra-siklus saat terjadi kelesuan ekonomi atau bantuan sosial saat krisis.</li>
+                        <li><strong>Meningkatkan Pertumbuhan Ekonomi Lokal:</strong> Belanja pemerintah daerah yang efektif dan efisien dapat merangsang kegiatan ekonomi, menciptakan permintaan, dan mendorong investasi swasta.</li>
+                        <li><strong>Pemerataan Pendapatan Masyarakat:</strong> Kebijakan belanja daerah, terutama yang bersifat transfer atau subsidi kepada kelompok rentan, dapat membantu mengurangi kesenjangan pendapatan dan mempromosikan keadilan sosial.</li>
+                    </ul>
+                    <p>Selain perannya dalam pembangunan sektoral, keberadaan dan struktur APBD juga menjadi salah satu pertimbangan penting bagi investor dari pihak swasta dalam menanamkan modalnya di suatu daerah. APBD yang transparan, akuntabel, dan berorientasi pada pembangunan yang berkelanjutan cenderung menciptakan iklim investasi yang lebih kondusif.</p>
+                </div>
+            </details>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; color: var(--text-tertiary);">Penjelasan ini diharapkan dapat memberikan pemahaman yang komprehensif mengenai Anggaran Pendapatan dan Belanja Daerah (APBD) serta perannya dalam pembangunan dan perekonomian di tingkat lokal.</p>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,323 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaringan Komputer & Internet: Jaringan Lokal dan Internet</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: var(--background-canvas);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+        }
+
+        .sub-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 3px solid var(--secondary-accent-amber);
+            border-radius: 5px;
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .ip-address-example {
+            background-color: #e3f2fd;
+            color: var(--primary-blue);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .bold-text {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .definition-box {
+            background-color: var(--background-canvas);
+            border: 1px dashed var(--primary-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .definition-box strong {
+            color: var(--primary-blue);
+        }
+
+        .analogy-box {
+            background-color: #fff8e1;
+            border-left: 4px solid var(--secondary-accent-amber);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .analogy-box p {
+            margin-bottom: 5px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f0f0f0;
+            color: var(--text-primary);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .interactive-explanation {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-explanation:hover {
+            background-color: #1565C0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 5: Jaringan Komputer dan Internet</h1>
+        <h2>A. Jaringan Lokal dan Internet</h2>
+
+        <div class="section">
+            <p>Jaringan komputer adalah sebuah sistem komunikasi yang memungkinkan dua atau lebih perangkat untuk saling terhubung dan bertukar informasi. Sistem ini beroperasi berdasarkan standar global, yang paling umum digunakan adalah <span class="highlight">Transmission Control Protocol/Internet Protocol Suite (TCP/IP)</span>.</p>
+            <p>Secara garis besar, jaringan komputer terbagi menjadi dua jenis utama berdasarkan jangkauannya:</p>
+            <ul>
+                <li><strong>Jaringan Lokal (Local Area Network - LAN)</strong>: Memiliki jangkauan yang terbatas.</li>
+                <li><strong>Jaringan Internet (Wide Area Network - WAN)</strong>: Memiliki jangkauan yang sangat luas, mencakup seluruh dunia.</li>
+            </ul>
+            <p>Perbedaan utama antara keduanya terletak pada area geografis yang dapat dijangkau oleh koneksi.</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Jaringan Lokal (Local Area Network - LAN)</h2>
+            <p>Jaringan lokal menghubungkan komputer dan perangkat lain dalam area yang terbatas. Area ini bisa sangat beragam, mulai dari:</p>
+            <ul>
+                <li>Rumah tinggal</li>
+                <li>Gedung sekolah atau laboratorium</li>
+                <li>Kampus universitas</li>
+                <li>Gedung perkantoran</li>
+            </ul>
+            <p>Setiap perangkat yang tergabung dalam jaringan lokal hanya dapat diakses oleh perangkat lain yang berada dalam jaringan yang sama. Untuk mengidentifikasi setiap perangkat dalam jaringan lokal, digunakan sebuah <span class="highlight">Alamat IP (IP Address)</span> yang bersifat unik untuk setiap perangkat.</p>
+
+            <div class="sub-section">
+                <p>Contoh Alamat IP dalam jaringan lokal: <span class="ip-address-example">192.168.0.1</span></p>
+                <p>Dalam implementasi jaringan lokal, seringkali satu perangkat bertindak sebagai <span class="bold-text">server</span>, yang menyediakan layanan atau sumber daya, sementara perangkat lainnya berperan sebagai <span class="bold-text">client</span> yang mengakses layanan tersebut.</p>
+            </div>
+
+            <div class="definition-box">
+                <p><strong>Apa itu Alamat IP?</strong></p>
+                <p>Alamat IP merupakan identitas unik dari sebuah komputer dalam sebuah jaringan komputer. Fungsinya mirip seperti alamat rumah pada dunia nyata, yaitu sebagai penunjuk tujuan pengiriman data. Tanpa Alamat IP, data tidak akan tahu harus dikirim ke perangkat yang mana.</p>
+            </div>
+
+            <div class="analogy-box">
+                <p><strong>Analogi Alamat IP:</strong></p>
+                <p>Bayangkan Anda ingin mengirim surat. Anda perlu menuliskan alamat lengkap penerima agar surat tersebut sampai ke tujuan yang benar. Demikian pula dalam jaringan komputer, Alamat IP adalah "alamat" yang memastikan data terkirim ke perangkat yang tepat.</p>
+            </div>
+
+            <p>Alamat IP biasanya terdiri dari empat bagian angka yang dipisahkan oleh titik. Setiap bagian angka tersebut mewakili 8 bit dalam representasi biner, yang kemudian diterjemahkan ke dalam format desimal.</p>
+            <div class="sub-section">
+                <p>Contoh representasi Alamat IP:</p>
+                <p><span class="ip-address-example">10101100.11011001.00001010.00001110</span> (dalam biner) adalah <span class="ip-address-example">172.217.10.14</span> (dalam desimal).</p>
+                <p>Karena Alamat IP ini hanya berlaku dalam lingkup jaringan lokal, ia juga sering disebut sebagai <span class="highlight">IP Private</span>.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Internet</h2>
+            <p>Berbeda dengan jaringan lokal yang terbatas, <span class="bold-text">Internet</span> adalah jaringan global yang sangat luas, yang menghubungkan miliaran perangkat di seluruh dunia. Melalui internet, Anda bisa mengakses informasi dan perangkat di lokasi yang sangat jauh, bahkan di negara lain.</p>
+
+            <div class="definition-box">
+                <p><strong>Internet</strong> adalah singkatan dari <span class="highlight">interconnection-networking</span>, yang secara harfiah berarti "saling menghubungkan jaringan". Ini adalah jaringan komputer masif yang mendunia, memungkinkan pertukaran data menggunakan protokol <span class="highlight">packet switching</span>.</p>
+            </div>
+
+            <p>Secara konsep, internet juga dikenal sebagai <span class="highlight">Jaringan Area Luas (Wide Area Network - WAN)</span>.</p>
+
+            <p>Sejarah internet dimulai dari sebuah proyek penelitian pada tahun 1960-an yang didanai oleh Departemen Pertahanan Amerika Serikat. Proyek ini bernama <span class="highlight">ARPANET (Advanced Research Project Agency Network)</span> yang kemudian berkembang menjadi infrastruktur publik pada tahun 1980-an dengan dukungan dari berbagai universitas dan perusahaan swasta.</p>
+
+            <div class="analogy-box">
+                <p><strong>Bagaimana Jaringan Lokal Terhubung ke Internet?</strong></p>
+                <p>Sebuah jaringan lokal dapat terhubung ke internet melalui penyedia layanan internet (ISP). Koneksi ini bisa menggunakan kabel (misalnya kabel telepon atau fiber optik) atau nirkabel. Setelah terhubung ke ISP, perangkat dalam jaringan lokal dapat mengakses sumber daya di internet.</p>
+            </div>
+
+            <p>Sama seperti jaringan lokal, setiap perangkat yang terhubung ke internet juga memerlukan Alamat IP. Namun, Alamat IP yang digunakan di internet bersifat global dan dikenal sebagai <span class="highlight">IP Public</span>. Biasanya, hanya perangkat utama yang langsung terhubung ke ISP (seperti modem) yang memiliki IP Public, sementara perangkat lain dalam jaringan lokal mungkin menggunakan IP Private yang diterjemahkan menjadi IP Public oleh modem.</p>
+        </div>
+
+        <div class="section">
+            <h2>3. Konektivitas Internet</h2>
+            <p>Koneksi ke internet dapat dilakukan melalui berbagai media, baik yang menggunakan kabel maupun yang tanpa kabel (nirkabel).</p>
+
+            <h3>a. Konektivitas Internet pada Jaringan Berkabel</h3>
+            <p>Konektivitas ini umumnya memanfaatkan infrastruktur jaringan yang sudah ada, seperti jaringan telepon atau televisi kabel.</p>
+
+            <h4>1. Dial-Up PSTN (Public Switched Telephone Network)</h4>
+            <p>Merupakan salah satu teknologi koneksi internet paling awal yang umum digunakan di Indonesia. Koneksi ini memanfaatkan jaringan telepon rumah.</p>
+            <ul>
+                <li><strong>Perangkat yang Dibutuhkan:</strong> Komputer, Modem, Sambungan Telepon Rumah.</li>
+                <li><strong>Cara Kerja:</strong> Menggunakan jalur PSTN untuk terhubung ke ISP.</li>
+                <li><strong>Kecepatan:</strong> Cukup lambat, berkisar antara 12-20 Kbps, dengan maksimal 56 Kbps.</li>
+            </ul>
+
+            <h4>2. ADSL (Asymmetric Digital Subscriber Line)</h4>
+            <p>Teknologi ini juga menggunakan modem dan jaringan telepon kabel, mirip dengan Dial-Up, namun bekerja pada rentang frekuensi yang berbeda. ADSL memungkinkan komunikasi suara dan data berjalan bersamaan.</p>
+            <ul>
+                <li><strong>Keunggulan:</strong> Dapat digunakan untuk mengirim data (seperti suara atau fax) pada frekuensi yang berbeda dari penggunaan telepon biasa.</li>
+                <li><strong>Prinsip Kerja:</strong> Mirip Dial-Up, namun menggunakan modem yang lebih canggih.</li>
+            </ul>
+
+            <h4>3. LAN (Local Area Network)</h4>
+            <p>Koneksi internet melalui LAN adalah yang paling umum dikenal saat ini, terutama di lingkungan perkantoran atau sekolah.</p>
+            <ul>
+                <li><strong>Cara Kerja:</strong> Satu komputer bertindak sebagai server yang terhubung ke internet (melalui telepon atau antena). Komputer lain dalam jaringan LAN terhubung ke server ini menggunakan kartu LAN dan kabel jaringan (misalnya kabel UTP atau koaksial).</li>
+                <li><strong>Jangkauan:</strong> Terbatas pada wilayah yang sangat kecil.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>b. Konektivitas Internet pada Jaringan Nirkabel (Wireless)</h3>
+            <p>Konektivitas nirkabel memungkinkan perangkat terhubung ke internet tanpa memerlukan kabel fisik. Media transmisi yang digunakan bisa berupa gelombang radio, gelombang mikro, atau cahaya inframerah.</p>
+
+            <h4>1. GPRS (General Packet Radio Service)</h4>
+            <p>Menggunakan gelombang radio untuk komunikasi data dan suara, GPRS memungkinkan pengiriman data paket (seperti email) dan akses internet pada perangkat bergerak (ponsel).</p>
+
+            <h4>2. Wifi</h4>
+            <p>Wifi (Wireless Fidelity) adalah standar untuk koneksi nirkabel yang populer. Teknologi ini menggunakan frekuensi tinggi (umumnya 2.4 GHz) untuk menghubungkan perangkat ke internet tanpa kabel.</p>
+            <ul>
+                <li><strong>Keunggulan:</strong> Praktis karena tidak perlu kabel.</li>
+                <li><strong>Keterbatasan:</strong> Jangkauan terbatas.</li>
+            </ul>
+
+            <h4>3. Akses Satelit</h4>
+            <p>Layanan internet ini menggunakan antena parabola untuk menerima sinyal dari satelit.</p>
+            <ul>
+                <li><strong>Keunggulan:</strong> Kecepatan akses cukup tinggi.</li>
+                <li><strong>Keterbatasan:</strong> Biasanya lebih mahal, terutama di daerah yang tidak terjangkau infrastruktur darat.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="interactive-explanation">
+                Konsep IP Address sangat fundamental! Pahami perbedaan IP Private di jaringan lokal dan IP Public di internet.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+```

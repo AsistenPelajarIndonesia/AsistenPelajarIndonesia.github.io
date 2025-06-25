@@ -1,0 +1,319 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pangkat Nol, Pangkat Negatif, dan Bentuk Akar - Matematika Kelas 9</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6f8;
+            color: #212121;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        h2 {
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 8px;
+            font-size: 1.8em;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: #1976D2;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        .concept-box {
+            background-color: #e3f2fd;
+            border-left: 5px solid #1976D2;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .concept-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .concept-box h3 {
+            margin-top: 0;
+            color: #1976D2;
+        }
+        .formula {
+            font-family: 'Consolas', Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            background-color: #f1f3f4;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+            font-size: 1.1em;
+            margin: 15px 0;
+            border: 1px dashed #757575;
+        }
+        .example {
+            background-color: #fff9c4;
+            border-left: 5px solid #FFB300;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .example h3 {
+            margin-top: 0;
+            color: #F57F17;
+        }
+        .highlight {
+            color: #D32F2F;
+            font-weight: bold;
+        }
+        .note {
+            background-color: #fce4ec;
+            border-left: 5px solid #D32F2F;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #757575;
+        }
+        .definition {
+            background-color: #e8f5e9;
+            border-left: 5px solid #388E3C;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .definition h3 {
+            margin-top: 0;
+            color: #388E3C;
+        }
+        .math-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .math-expression {
+            font-family: 'Consolas', Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1.1em;
+            padding: 8px 12px;
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            border: 1px solid #bdbdbd;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .math-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab I: Perpangkatan dan Bentuk Akar</h1>
+        <h2>1.4 Pangkat Nol, Pangkat Negatif, dan Bentuk Akar</h2>
+
+        <div class="concept-box">
+            <h3>Pangkat Nol</h3>
+            <p>Setiap bilangan real tak nol yang dipangkatkan nol akan bernilai 1.</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>0</sup> = 1</span>
+            </div>
+            <p>dengan syarat <span class="math-expression">a</span> adalah bilangan real dan <span class="math-expression">a ≠ 0</span>.</p>
+            <p>Secara aljabar, ini dapat ditulis sebagai:</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>0</sup> = 1, untuk a bilangan real dan a ≠ 0</span>
+            </div>
+        </div>
+
+        <div class="definition">
+            <h3>Mengapa a<sup>0</sup> = 1?</h3>
+            <p>Konsep ini dapat dipahami melalui sifat pembagian pada perpangkatan. Perhatikan:</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>m</sup> / a<sup>n</sup> = a<sup>m-n</sup></span>
+            </div>
+            <p>Jika kita mengambil kasus di mana <span class="math-expression">m = n</span>, maka:</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>m</sup> / a<sup>m</sup> = a<sup>m-m</sup> = a<sup>0</sup></span>
+            </div>
+            <p>Namun, kita juga tahu bahwa setiap bilangan (kecuali nol) dibagi dengan dirinya sendiri adalah 1:</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>m</sup> / a<sup>m</sup> = 1</span>
+            </div>
+            <p>Dengan menyamakan kedua hasil tersebut, kita mendapatkan:</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>0</sup> = 1</span>
+            </div>
+            <p>Ini berlaku asalkan basisnya, <span class="math-expression">a</span>, tidak nol, karena pembagian dengan nol tidak terdefinisi.</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>Pangkat Negatif</h3>
+            <p>Untuk setiap bilangan real tak nol <span class="math-expression">a</span> dan bilangan bulat <span class="math-expression">n</span>, berlaku:</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>-n</sup> = 1 / a<sup>n</sup></span>
+            </div>
+            <p>atau secara ekuivalen:</p>
+            <div class="math-container">
+                <span class="math-expression">1 / a<sup>n</sup> = a<sup>-n</sup></span>
+            </div>
+            <p>dengan syarat <span class="math-expression">a ≠ 0</span>, <span class="math-expression">a</span> adalah bilangan real, dan <span class="math-expression">n</span> adalah bilangan bulat.</p>
+        </div>
+
+        <div class="definition">
+            <h3>Mengapa a<sup>-n</sup> = 1 / a<sup>n</sup>?</h3>
+            <p>Konsep ini juga berasal dari sifat pembagian pada perpangkatan:</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>m</sup> / a<sup>n</sup> = a<sup>m-n</sup></span>
+            </div>
+            <p>Jika kita memilih <span class="math-expression">m = 0</span> (dan <span class="math-expression">a ≠ 0</span>), maka:</p>
+            <div class="math-container">
+                <span class="math-expression">a<sup>0</sup> / a<sup>n</sup> = a<sup>0-n</sup> = a<sup>-n</sup></span>
+            </div>
+            <p>Kita sudah tahu bahwa <span class="math-expression">a<sup>0</sup> = 1</span>. Menggantikannya:</p>
+            <div class="math-container">
+                <span class="math-expression">1 / a<sup>n</sup> = a<sup>-n</sup></span>
+            </div>
+            <p>Ini menunjukkan bahwa memangkatkan sebuah bilangan dengan eksponen negatif sama dengan kebalikan dari bilangan tersebut dipangkatkan eksponen positifnya.</p>
+        </div>
+
+        <div class="example">
+            <h3>Contoh Penerapan Pangkat Nol dan Negatif:</h3>
+            <p><strong>a. Menghitung 2<sup>-3</sup></strong></p>
+            <div class="math-container">
+                <span class="math-expression">2<sup>-3</sup> = 1 / 2<sup>3</sup> = 1 / (2 × 2 × 2) = 1 / 8</span>
+            </div>
+            <p><strong>b. Menyederhanakan (0.5)<sup>-3</sup> × (0.5)<sup>0</sup></strong></p>
+            <p>Pertama, gunakan sifat perkalian perpangkatan dengan basis yang sama:</p>
+            <div class="math-container">
+                <span class="math-expression">(0.5)<sup>-3</sup> × (0.5)<sup>0</sup> = (0.5)<sup>-3 + 0</sup> = (0.5)<sup>-3</sup></span>
+            </div>
+            <p>Kemudian, gunakan definisi pangkat negatif:</p>
+            <div class="math-container">
+                <span class="math-expression">(0.5)<sup>-3</sup> = 1 / (0.5)<sup>3</sup> = 1 / (0.5 × 0.5 × 0.5) = 1 / 0.125</span>
+            </div>
+            <p>Untuk menghitung 1 / 0.125, kita bisa mengubah 0.125 menjadi pecahan:</p>
+            <div class="math-container">
+                <span class="math-expression">0.125 = 125 / 1000 = 1 / 8</span>
+            </div>
+            <p>Jadi,</p>
+            <div class="math-container">
+                <span class="math-expression">1 / (1 / 8) = 8</span>
+            </div>
+            <p><strong>c. Menyederhanakan 4x<sup>-2</sup> / x<sup>-3</sup></strong></p>
+            <p>Gunakan sifat pembagian perpangkatan:</p>
+            <div class="math-container">
+                <span class="math-expression">4x<sup>-2</sup> / x<sup>-3</sup> = 4 × x<sup>-2 - (-3)</sup> = 4 × x<sup>-2 + 3</sup> = 4 × x<sup>1</sup> = 4x</span>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <h3>Bentuk Akar</h3>
+            <p><span class="math-expression">√a</span> dibaca "akar kuadrat dari <span class="math-expression">a</span>".</p>
+            <p>Jika <span class="math-expression">a</span> adalah bilangan tidak negatif, maka <span class="math-expression">√a</span> adalah bilangan tidak negatif <span class="math-expression">b</span> sedemikian sehingga <span class="math-expression">b<sup>2</sup> = a</span>.</p>
+            <p><span class="math-expression"><sup>n</sup>√a</span> dibaca "akar pangkat <span class="math-expression">n</span> dari <span class="math-expression">a</span>".</p>
+            <p>Secara umum, <span class="math-expression"><sup>n</sup>√a = b</span> jika dan hanya jika <span class="math-expression">b<sup>n</sup> = a</span>.</p>
+            <ul>
+                <li>Jika <span class="math-expression">a</span> tidak negatif, maka <span class="math-expression"><sup>n</sup>√a = b</span> jika dan hanya jika <span class="math-expression">b<sup>n</sup> = a</span> dan <span class="math-expression">b</span> tidak negatif.</li>
+                <li>Jika <span class="math-expression">a</span> negatif dan <span class="math-expression">n</span> ganjil, maka <span class="math-expression"><sup>n</sup>√a = b</span> jika dan hanya jika <span class="math-expression">b<sup>n</sup> = a</span>.</li>
+            </ul>
+        </div>
+
+        <div class="definition">
+            <h3>Menyederhanakan Bentuk Akar</h3>
+            <p>Dalam menyederhanakan bentuk akar, kita menggunakan sifat-sifat berikut:</p>
+            <p>Jika <span class="math-expression">a</span> dan <span class="math-expression">b</span> bilangan positif, maka:</p>
+            <div class="math-container">
+                <span class="math-expression">√ab = √a × √b</span>
+            </div>
+            <p>Jika <span class="math-expression">a</span> dan <span class="math-expression">b</span> bilangan positif, dan <span class="math-expression">b ≠ 0</span>, maka:</p>
+            <div class="math-container">
+                <span class="math-expression">√(a/b) = √a / √b</span>
+            </div>
+            <p>Untuk menjumlahkan atau mengurangkan bentuk akar, kita perlu menjumlahkan/mengurangkan suku-suku sejenis (akar dengan radikan yang sama):</p>
+            <div class="math-container">
+                <span class="math-expression">b√a + c√a = (b + c)√a</span>
+            </div>
+            <div class="math-container">
+                <span class="math-expression">b√a - c√a = (b - c)√a</span>
+            </div>
+        </div>
+
+        <div class="example">
+            <h3>Contoh Penerapan Bentuk Akar:</h3>
+            <p><strong>a. Menyederhanakan √8</strong></p>
+            <p>Cari faktor kuadrat terbesar dari 8, yaitu 4.</p>
+            <div class="math-container">
+                <span class="math-expression">√8 = √(4 × 2) = √4 × √2 = 2√2</span>
+            </div>
+            <p><strong>b. Menyederhanakan √45</strong></p>
+            <p>Cari faktor kuadrat terbesar dari 45, yaitu 9.</p>
+            <div class="math-container">
+                <span class="math-expression">√45 = √(9 × 5) = √9 × √5 = 3√5</span>
+            </div>
+            <p><strong>c. Menyederhanakan √0,25</strong></p>
+            <p>Ubah desimal menjadi pecahan, lalu sederhanakan.</p>
+            <div class="math-container">
+                <span class="math-expression">√0,25 = √(25/100) = √25 / √100 = 5 / 10 = 0,5</span>
+            </div>
+            <p><strong>d. Menyederhanakan 7√3 + √48 - √192</strong></p>
+            <p>Pertama, sederhanakan setiap akar:</p>
+            <div class="math-container">
+                <span class="math-expression">√48 = √(16 × 3) = √16 × √3 = 4√3</span>
+            </div>
+            <div class="math-container">
+                <span class="math-expression">√192 = √(64 × 3) = √64 × √3 = 8√3</span>
+            </div>
+            <p>Kemudian, substitusikan kembali ke dalam ekspresi awal:</p>
+            <div class="math-container">
+                <span class="math-expression">7√3 + 4√3 - 8√3</span>
+            </div>
+            <p>Jumlahkan/kurangkan koefisien karena akarnya sama:</p>
+            <div class="math-container">
+                <span class="math-expression">= (7 + 4 - 8)√3 = 3√3</span>
+            </div>
+        </div>
+
+        <div class="note">
+            <h3>Penting Diingat:</h3>
+            <p>Akar kuadrat dari suatu bilangan positif selalu menghasilkan nilai positif. Misalnya, meskipun <span class="math-expression">(-6) × (-6) = 36</span>, namun <span class="math-expression">√36</span> adalah <span class="math-expression">6</span>, bukan <span class="math-expression">-6</span>.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

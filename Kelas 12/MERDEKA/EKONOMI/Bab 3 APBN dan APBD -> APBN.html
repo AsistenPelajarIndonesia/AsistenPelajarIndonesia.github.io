@@ -1,0 +1,577 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: APBN - Anggaran Pendapatan dan Belanja Negara</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        nav {
+            margin-bottom: 30px;
+            text-align: center;
+            background-color: var(--primary-blue);
+            padding: 10px 0;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 5px 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 0.95em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 25px;
+            margin-bottom: 25px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-divider);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: 500;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style: decimal;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        ul li, ol li {
+            margin-bottom: 8px;
+        }
+
+        /* Interactive Details/Summary */
+        details {
+            background-color: #F8F8F8;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        details summary {
+            font-weight: 600;
+            padding: 15px 20px;
+            cursor: pointer;
+            outline: none;
+            color: var(--primary-blue);
+            list-style: none; /* Remove default marker */
+            position: relative;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none; /* Hide for WebKit */
+        }
+
+        details summary::before {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            color: var(--text-tertiary);
+        }
+
+        details[open] summary::before {
+            content: '-';
+            transform: rotate(0deg);
+        }
+
+        details[open] summary {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            border-bottom: 1px solid var(--border-divider);
+            border-radius: 6px 6px 0 0;
+        }
+
+        details[open] summary::before {
+            color: #FFFFFF;
+        }
+
+        details .content {
+            padding: 15px 20px 20px;
+            border-top: 1px dashed var(--border-divider);
+            color: var(--text-secondary);
+        }
+
+        .highlight-box {
+            background-color: rgba(25, 118, 210, 0.05); /* primary_blue with transparency */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .key-term {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .note {
+            background-color: rgba(56, 142, 60, 0.05); /* accent_green with transparency */
+            border-left: 5px solid var(--accent-green);
+            padding: 12px 18px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            border-radius: 0 0 8px 8px;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            section {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            details summary {
+                padding: 12px 15px;
+            }
+
+            details summary::before {
+                right: 15px;
+            }
+
+            details .content {
+                padding: 12px 15px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 15px;
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.9em;
+            }
+
+            nav {
+                padding: 8px 0;
+            }
+
+            nav ul li a {
+                padding: 6px 10px;
+                font-size: 0.85em;
+            }
+
+            section {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding-bottom: 8px;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            ul, ol {
+                padding-left: 20px;
+            }
+
+            details summary {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+
+            details summary::before {
+                font-size: 1em;
+                right: 12px;
+            }
+
+            details .content {
+                padding: 10px 12px 12px;
+            }
+
+            .highlight-box, .note {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Bab 3: APBN & APBD</h1>
+            <p>Memahami Anggaran Pendapatan dan Belanja Negara (APBN) sebagai Fondasi Ekonomi Nasional</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#pengertian">Pengertian APBN</a></li>
+                <li><a href="#fungsi">Fungsi APBN</a></li>
+                <li><a href="#tujuan">Tujuan APBN</a></li>
+                <li><a href="#sumber">Sumber Penerimaan</a></li>
+                <li><a href="#pengeluaran">Jenis Pengeluaran</a></li>
+                <li><a href="#mekanisme">Mekanisme Penyusunan</a></li>
+                <li><a href="#pengaruh">Pengaruh terhadap Ekonomi</a></li>
+            </ul>
+        </nav>
+
+        <section id="pengertian">
+            <h2>1. Pengertian APBN</h2>
+            <p>Anggaran Pendapatan dan Belanja Negara (APBN) adalah <span class="key-term">rencana keuangan tahunan pemerintah</span> Indonesia yang disetujui oleh Dewan Perwakilan Rakyat (DPR). APBN merupakan dokumen sistematis dan terperinci yang memuat estimasi penerimaan dan pengeluaran negara untuk satu tahun anggaran.</p>
+            <p><strong>Periode Anggaran:</strong> APBN ditetapkan untuk satu tahun anggaran, yaitu mulai dari <span class="key-term">1 Januari hingga 31 Desember</span>. Perubahan ini telah berlaku sejak tahun 2000, yang sebelumnya dimulai dari 1 April hingga 31 Maret tahun berikutnya. Ketentuan ini diperkuat oleh Undang-Undang Keuangan Negara (UU Nomor 17 Tahun 2003 Pasal 4) dan Undang-Undang Perbendaharaan Negara (UU Nomor 1 Tahun 2004 Pasal 11).</p>
+            <div class="highlight-box">
+                <p>Menurut Pasal 12 Undang-Undang Nomor 1 Tahun 2004 tentang Perbendaharaan Negara, APBN dalam satu tahun anggaran mencakup:</p>
+                <ol>
+                    <li>Hak pemerintah pusat yang diakui sebagai penambah nilai kekayaan.</li>
+                    <li>Kewajiban pemerintah pusat yang diakui sebagai pengurang nilai kekayaan.</li>
+                    <li>Penerimaan yang perlu dibayar kembali dan/atau pengeluaran yang akan diterima kembali, baik pada tahun anggaran yang bersangkutan maupun pada tahun-tahun anggaran berikutnya.</li>
+                </ol>
+                <p>Penting untuk dicatat bahwa <span class="key-term">semua penerimaan dan pengeluaran negara dilakukan melalui rekening kas umum negara</span>.</p>
+            </div>
+        </section>
+
+        <section id="fungsi">
+            <h2>2. Fungsi APBN</h2>
+            <p>APBN berperan sebagai instrumen vital bagi pemerintah dalam mengelola keuangan negara. Tujuan utamanya adalah untuk membiayai pelaksanaan kegiatan pemerintahan dan pembangunan, mendorong pertumbuhan ekonomi, meningkatkan pendapatan nasional, mencapai stabilitas perekonomian, serta menentukan arah dan prioritas pembangunan secara umum.</p>
+            <p>Penyusunan APBN bertujuan untuk menjadi pedoman pengeluaran dan penerimaan negara agar tercipta keseimbangan yang dinamis. Keseimbangan ini penting untuk meningkatkan produksi dan kesempatan kerja, yang pada akhirnya akan mendorong pertumbuhan ekonomi. Oleh karena itu, anggaran pendapatan dan belanja negara dirumuskan secara komprehensif, mencakup perkiraan periodik dari seluruh pengeluaran dan sumber penerimaan.</p>
+
+            <div class="note">
+                <p>Berdasarkan Undang-Undang Nomor 17 Tahun 2003 Pasal 3, fungsi APBN meliputi:</p>
+            </div>
+
+            <details>
+                <summary>a. Fungsi Otorisasi</summary>
+                <div class="content">
+                    <p>Fungsi otorisasi berarti anggaran negara menjadi <span class="key-term">dasar hukum</span> untuk melaksanakan pendapatan dan belanja pada tahun yang bersangkutan. Setiap kegiatan yang didasarkan pada APBN harus dapat dipertanggungjawabkan karena memiliki landasan hukum yang jelas.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>b. Fungsi Perencanaan</summary>
+                <div class="content">
+                    <p>Fungsi perencanaan menjadikan anggaran negara sebagai <span class="key-term">pedoman bagi pemerintah</span> dalam merencanakan berbagai kegiatan pada tahun yang bersangkutan, memastikan alokasi sumber daya yang efisien dan efektif.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>c. Fungsi Pengawasan</summary>
+                <div class="content">
+                    <p>Fungsi pengawasan berarti anggaran negara berfungsi sebagai <span class="key-term">pedoman untuk menilai</span> apakah kegiatan penyelenggaraan pemerintahan negara telah sesuai dengan ketentuan dan rencana yang ditetapkan. Ini memastikan akuntabilitas dan transparansi dalam penggunaan dana publik.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>d. Fungsi Alokasi</summary>
+                <div class="content">
+                    <p>Fungsi alokasi mengharuskan anggaran negara diarahkan untuk <span class="key-term">mengurangi pengangguran</span> dan pemborosan sumber daya. Selain itu, APBN juga bertujuan untuk meningkatkan efisiensi dan efektivitas perekonomian secara keseluruhan melalui penggunaan sumber daya yang optimal.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>e. Fungsi Distribusi</summary>
+                <div class="content">
+                    <p>Fungsi distribusi mengindikasikan bahwa kebijakan anggaran negara harus senantiasa <span class="key-term">memperhatikan rasa keadilan dan kepatutan</span>. Ini berarti APBN harus dirancang untuk mendukung pemerataan pendapatan dan kesejahteraan di masyarakat.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>f. Fungsi Stabilisasi</summary>
+                <div class="content">
+                    <p>Fungsi stabilisasi menjadikan anggaran pemerintah sebagai <span class="key-term">alat untuk memelihara dan mengupayakan keseimbangan fundamental perekonomian</span>. Ini mencakup upaya untuk mengendalikan inflasi, menjaga nilai tukar, dan menciptakan lingkungan ekonomi yang kondusif untuk pertumbuhan.</p>
+                </div>
+            </details>
+        </section>
+
+        <section id="tujuan">
+            <h2>3. Tujuan APBN</h2>
+            <p>Setiap tahun, pemerintah menyusun anggaran penerimaan dan belanja negara dengan tujuan yang jelas dan strategis. Secara umum, tujuan penyusunan APBN adalah:</p>
+            <ul>
+                <li><strong>Memelihara stabilitas ekonomi:</strong> APBN bertujuan untuk menjaga keseimbangan ekonomi makro dan <span class="key-term">mencegah terjadinya defisit anggaran</span> yang berlebihan atau ketidakseimbangan ekonomi lainnya yang dapat merugikan.</li>
+                <li><strong>Sebagai pedoman penerimaan dan pengeluaran negara:</strong> APBN berfungsi sebagai peta jalan bagi pemerintah dalam melaksanakan kegiatan kenegaraan, serta dalam upaya <span class="key-term">peningkatan kesempatan kerja</span> yang diarahkan pada peningkatan pertumbuhan ekonomi dan kemakmuran masyarakat secara berkelanjutan.</li>
+            </ul>
+        </section>
+
+        <section id="sumber">
+            <h2>4. Sumber-Sumber Penerimaan Negara</h2>
+            <p>Penerimaan pendapatan negara berasal dari berbagai sumber, baik dari dalam negeri maupun dari hibah. Berikut adalah beberapa sumber utama penerimaan negara di Indonesia:</p>
+
+            <details>
+                <summary>a. Pajak</summary>
+                <div class="content">
+                    <p>Pajak adalah <span class="key-term">pungutan yang dilakukan oleh pemerintah</span> (pusat/daerah) terhadap wajib pajak tertentu berdasarkan undang-undang. Proses pungutan ini bersifat memaksa dan <span class="key-term">tidak ada imbalan langsung</span> bagi pembayar pajak. Sumber pajak di Indonesia dapat dikelompokkan menjadi:</p>
+                    <ul>
+                        <li><strong>Pajak Dalam Negeri:</strong> Contohnya Pajak Pertambahan Nilai (PPN), Pajak Bumi dan Bangunan (PBB), serta Pajak Penghasilan (PPh).</li>
+                        <li><strong>Pajak Perdagangan Internasional:</strong> Pajak yang berasal dari kegiatan ekonomi internasional seperti Bea Masuk (pungutan atas barang impor) dan Bea Keluar (pungutan atas barang ekspor).</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>b. Penerimaan Negara Bukan Pajak (PNBP)</summary>
+                <div class="content">
+                    <p>PNBP adalah seluruh <span class="key-term">penerimaan pemerintah pusat yang bukan berasal dari pajak</span>. Sumber PNBP sangat beragam dan mencerminkan kegiatan ekonomi pemerintah serta pemanfaatan aset negara. Contoh PNBP meliputi:</p>
+                    <ul>
+                        <li>Penerimaan dari pengelolaan Badan Usaha Milik Negara (BUMN).</li>
+                        <li>Penerimaan dari pemanfaatan sumber daya alam (misalnya royalti dari pertambangan atau kehutanan).</li>
+                        <li>Penerimaan dari jasa pelayanan yang diberikan pemerintah (misalnya biaya paspor, SIM, atau sertifikat).</li>
+                        <li>Penerimaan yang bersumber dari utang luar negeri (meskipun ini lebih ke pembiayaan, namun dalam konteks tertentu bisa diklasifikasikan sebagai penerimaan).</li>
+                        <li>Penerimaan lainnya yang diatur oleh undang-undang.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>c. Penerimaan Hibah</summary>
+                <div class="content">
+                    <p>Penerimaan hibah adalah dana atau aset yang diperoleh pemerintah dari individu, institusi, atau pemerintah lain (baik dari dalam maupun luar negeri) yang <span class="key-term">tidak memiliki kewajiban untuk dikembalikan</span>. Hibah tidak dapat dipastikan perolehannya setiap tahun karena sangat bergantung pada kerelaan pihak pemberi hibah. Meskipun demikian, hibah merupakan sumber penting untuk mendukung program-program tertentu atau sebagai bantuan darurat.</p>
+                </div>
+            </details>
+        </section>
+
+        <section id="pengeluaran">
+            <h2>5. Jenis-Jenis Pengeluaran Negara</h2>
+            <p>Dalam anggaran pendapatan dan belanja negara (APBN) Indonesia, pengeluaran negara atau <span class="key-term"><em>government expenditure</em></span> secara umum dibedakan menjadi dua kategori utama, yaitu belanja negara dan pengeluaran pembiayaan.</p>
+
+            <details>
+                <summary>a. Belanja Negara</summary>
+                <div class="content">
+                    <p>Belanja negara adalah pengeluaran pemerintah yang digunakan untuk mendanai kegiatan operasional dan pembangunan. Belanja negara dibagi lagi menjadi:</p>
+                    <ul>
+                        <li><strong>Belanja Pemerintah Pusat:</strong> Ini mencakup pengeluaran untuk kementerian/lembaga (K/L), subsidi energi (BBM, listrik, LPG), subsidi non-energi (pangan, pupuk, dll.), pembayaran bunga utang, serta transfer ke daerah dan dana desa (TKDD) untuk mendukung pembangunan di daerah.</li>
+                        <li><strong>Belanja Pemerintah Daerah:</strong> Anggaran yang dialokasikan dari pemerintah pusat kepada pemerintah daerah untuk membiayai kegiatan dan pembangunan di tingkat lokal.</li>
+                    </ul>
+                    <p>Fokus belanja pemerintah diarahkan untuk mencapai tujuan pembangunan nasional, termasuk:</p>
+                    <ul>
+                        <li><strong>Pembangunan Sumber Daya Manusia (SDM):</strong> Melalui anggaran pendidikan, kesehatan, dan program pelatihan. Misalnya, program beasiswa, peningkatan fasilitas kesehatan, atau program Prakerja.</li>
+                        <li><strong>Penguatan Infrastruktur:</strong> Pembangunan jalan, jembatan, pelabuhan, bandara, irigasi, dan fasilitas umum lainnya yang mendukung konektivitas dan pertumbuhan ekonomi.</li>
+                        <li><strong>Program Perlindungan Sosial:</strong> Upaya untuk melindungi masyarakat dari guncangan ekonomi atau sosial, seperti program Kartu Sembako, Bantuan Langsung Tunai (BLT), Program Keluarga Harapan (PKH), serta subsidi bunga Kredit Usaha Rakyat (KUR) untuk mendukung UMKM.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>b. Pengeluaran Pembiayaan</summary>
+                <div class="content">
+                    <p>Pengeluaran pembiayaan adalah pengeluaran negara yang digunakan untuk menutup defisit anggaran atau untuk investasi jangka panjang. Ini bukan pengeluaran rutin, melainkan berkaitan dengan pengelolaan kas dan aset pemerintah.</p>
+                    <p>Contoh pengeluaran pembiayaan meliputi:</p>
+                    <ul>
+                        <li>Pembayaran pokok utang (baik domestik maupun luar negeri).</li>
+                        <li>Penyertaan Modal Negara (PMN) kepada BUMN atau lembaga lainnya.</li>
+                        <li>Pemberian pinjaman kepada daerah atau entitas lain.</li>
+                        <li>Pembentukan dana abadi atau dana investasi pemerintah.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="mekanisme">
+            <h2>6. Mekanisme Penyusunan APBN</h2>
+            <p>Penyusunan APBN merupakan proses kompleks dan terstruktur yang melibatkan berbagai pihak, mengacu pada Undang-Undang Nomor 17 Tahun 2003 tentang Keuangan Negara. APBN disusun berdasarkan kebutuhan penyelenggaraan pemerintahan negara dan kemampuan dalam menghimpun pendapatan negara.</p>
+            <p>Proses penyusunan APBN setiap tahun disesuaikan dengan <span class="key-term">Rencana Kerja Pemerintah Tahunan (RKP)</span>. Penyesuaian ini dilakukan untuk memastikan bahwa APBN dapat mendukung tercapainya tujuan-tujuan pembangunan negara yang telah ditetapkan dalam RKP.</p>
+
+            <div class="highlight-box">
+                <p>Secara umum, mekanisme penyusunan APBN melibatkan beberapa tahapan kunci:</p>
+                <ol>
+                    <li><strong>Penyusunan Rencana Kerja Pemerintah (RKP):</strong> Pemerintah menyusun RKP sebagai acuan pembangunan tahunan, yang memuat prioritas, sasaran, dan program pembangunan.</li>
+                    <li><strong>Penyusunan Kerangka Ekonomi Makro dan Pokok-Pokok Kebijakan Fiskal (KEM PPKF):</strong> Kementerian Keuangan menyusun kerangka ini sebagai landasan penyusunan anggaran, termasuk asumsi makroekonomi dan arah kebijakan fiskal.</li>
+                    <li><strong>Pembahasan dengan DPR:</strong> Pemerintah (melalui Kementerian Keuangan) mengajukan rancangan APBN kepada DPR. Terjadi pembahasan intensif antara pemerintah dan DPR, khususnya Badan Anggaran DPR.</li>
+                    <li><strong>Penyusunan Rancangan Undang-Undang APBN:</strong> Hasil pembahasan dan kesepakatan antara pemerintah dan DPR dirumuskan menjadi Rancangan Undang-Undang (RUU) APBN.</li>
+                    <li><strong>Pengesahan Undang-Undang APBN:</strong> RUU APBN disahkan oleh DPR menjadi Undang-Undang APBN, yang kemudian menjadi dasar hukum pelaksanaan anggaran untuk tahun berikutnya.</li>
+                    <li><strong>Pelaksanaan APBN:</strong> Setelah disahkan, APBN dilaksanakan oleh seluruh kementerian/lembaga dan pemerintah daerah.</li>
+                    <li><strong>Pengawasan dan Pertanggungjawaban:</strong> Pelaksanaan APBN diawasi oleh DPR dan Badan Pemeriksa Keuangan (BPK). Pemerintah wajib menyampaikan laporan pertanggungjawaban pelaksanaan APBN kepada DPR.</li>
+                </ol>
+                <p>Mekanisme ini memastikan bahwa APBN tidak hanya menjadi dokumen finansial, tetapi juga alat strategis untuk mewujudkan visi dan misi pembangunan nasional.</p>
+            </div>
+        </section>
+
+        <section id="pengaruh">
+            <h2>7. Pengaruh APBN terhadap Perekonomian</h2>
+            <p>APBN adalah salah satu instrumen kebijakan fiskal yang paling kuat dan efektif dalam mengarahkan serta mempermudah pencapaian tujuan pembangunan negara. Keberadaan APBN memungkinkan setiap tindakan negara dikendalikan dan diselaraskan dengan tujuan pembangunan nasional.</p>
+            <p>Melalui APBN, masyarakat dapat mengetahui <span class="key-term">prioritas pembangunan</span> yang sedang mendapat perhatian pemerintah. Hal ini mendorong seluruh elemen masyarakat untuk menyatukan pandangan dan langkah bersama pemerintah dalam mewujudkan pembangunan yang telah digariskan.</p>
+
+            <div class="note">
+                <p>Pengaruh APBN terhadap perekonomian sejalan dengan fungsi-fungsinya sebagai instrumen kebijakan fiskal:</p>
+            </div>
+            <ul>
+                <li><strong>Menjaga Stabilitas Ekonomi:</strong> APBN digunakan untuk mengendalikan inflasi, deflasi, dan fluktuasi ekonomi lainnya. Melalui penyesuaian belanja dan penerimaan, pemerintah dapat menstabilkan harga dan menjaga keseimbangan ekonomi makro.</li>
+                <li><strong>Mengembangkan Perekonomian Negara:</strong> Alokasi anggaran untuk investasi pada infrastruktur, pendidikan, dan penelitian dapat merangsang pertumbuhan ekonomi jangka panjang. Subsidi dan insentif juga dapat mendorong sektor-sektor tertentu.</li>
+                <li><strong>Mendorong Investasi:</strong> Kebijakan fiskal yang tercermin dalam APBN, seperti pemberian insentif pajak atau alokasi dana untuk pembangunan proyek strategis, dapat menarik investasi domestik maupun asing.</li>
+                <li><strong>Mengatur Tingkat Harga:</strong> Melalui kebijakan pengeluaran dan perpajakan, APBN dapat memengaruhi agregat permintaan dan penawaran di pasar, sehingga dapat membantu mengendalikan tingkat inflasi atau deflasi. Contohnya, peningkatan subsidi dapat menekan harga barang tertentu.</li>
+                <li><strong>Pemerataan Pendapatan:</strong> APBN berperan dalam distribusi pendapatan melalui program-program perlindungan sosial, subsidi, dan alokasi dana untuk daerah-daerah yang membutuhkan, sehingga mengurangi kesenjangan ekonomi.</li>
+                <li><strong>Meningkatkan Kesempatan Kerja:</strong> Investasi pemerintah dalam proyek-proyek pembangunan dan sektor produktif dapat menciptakan lapangan kerja baru, baik secara langsung maupun tidak langsung.</li>
+            </ul>
+            <p>Singkatnya, APBN bukan hanya sekadar daftar angka, melainkan cerminan dari komitmen dan strategi pemerintah untuk mencapai kesejahteraan masyarakat dan pertumbuhan ekonomi yang berkelanjutan.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Ekonomi untuk SMA/MA Kelas XII. Hak Cipta Dilindungi.</p>
+        <p>Desain Interaktif untuk Pembelajaran APBN.</p>
+    </footer>
+
+</body>
+</html>
+```

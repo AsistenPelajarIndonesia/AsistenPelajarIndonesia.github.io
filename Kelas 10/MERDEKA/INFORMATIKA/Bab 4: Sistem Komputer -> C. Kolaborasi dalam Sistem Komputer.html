@@ -1,0 +1,294 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Sistem Komputer - Kolaborasi dalam Sistem Komputer</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        .sub-section {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .sub-section h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .explanation-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            background-color: #fefefe;
+        }
+
+        .explanation-block h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .example {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-left: 20px;
+        }
+
+        .interaction-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #eef7ff; /* Light blue background for visual separation */
+            border: 1px dashed var(--semantic-info);
+            border-radius: 8px;
+        }
+
+        .interaction-element {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid var(--primary-blue);
+            border-radius: 5px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            min-width: 120px;
+        }
+
+        .interaction-element strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
+        }
+
+        .interaction-element p {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-bottom: 0;
+        }
+
+        .arrow {
+            font-size: 1.5em;
+            color: var(--primary-blue);
+            align-self: center;
+            margin: 0 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .interaction-diagram {
+                flex-direction: column;
+                align-items: center;
+            }
+            .arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .section-title {
+                font-size: 1.3em;
+            }
+            .interaction-element {
+                min-width: unset;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">Bab 4: Sistem Komputer - Kolaborasi dalam Sistem Komputer</h1>
+
+        <p>Setelah memahami berbagai jenis antarmuka yang memungkinkan manusia berinteraksi dengan komputer, kita akan menyelami bagaimana komponen-komponen dalam sebuah sistem komputer saling bekerja sama. Bagian ini akan menguraikan <span class="highlight">kolaborasi</span> antara perangkat keras (hardware), perangkat lunak (software), dan sistem operasi untuk menciptakan sebuah sistem komputasi yang fungsional dan bermanfaat.</p>
+
+        <div class="section-title">C. Kolaborasi dalam Sistem Komputer</div>
+
+        <p>Di dalam sebuah sistem komputer, berbagai elemen tidak bekerja secara independen. Sebaliknya, mereka membentuk sebuah ekosistem yang kompleks di mana <span class="highlight">perangkat keras</span> dan <span class="highlight">perangkat lunak</span> berkolaborasi erat, dengan <span class="highlight">sistem operasi</span> sebagai jembatan utamanya. Kolaborasi ini menciptakan pengalaman komputasi yang mulus bagi pengguna.</p>
+
+        <p>Analogi yang menarik adalah membandingkan sistem komputer dengan tubuh manusia. Sama seperti organ-organ tubuh yang bekerja sama untuk menjaga kehidupan, komponen-komponen komputer juga menjalankan fungsi spesifiknya masing-masing namun saling bergantung. Pikiran manusia, yang diibaratkan sebagai sistem operasi atau pusat kendali, menggerakkan anggota tubuh (perangkat keras) melalui sistem saraf (jalur komunikasi data). Indra-indra kita (input devices seperti keyboard, mouse) mengirimkan sinyal ke otak, yang kemudian memprosesnya dan menghasilkan respons atau tindakan (output seperti tampilan di monitor, suara dari speaker).</p>
+
+        <p>Prinsip yang sama inilah yang mendasari penciptaan robot-robot modern. Robot dirancang untuk bertindak dan berperilaku sesuai dengan program yang disimpan di dalamnya, yang pada dasarnya adalah bentuk kolaborasi antara perangkat keras (motor, sensor) dan perangkat lunak (algoritma kontrol) yang terorganisir.</p>
+
+        <div class="sub-section">
+            <h3>Konsep Dasar Kolaborasi dalam Sistem Komputer</h3>
+            <p>Kolaborasi dalam sistem komputer mencakup interaksi antara:</p>
+            <ul>
+                <li><strong>Hardware dengan Hardware:</strong> Perangkat keras saling terhubung dan berkomunikasi.</li>
+                <li><strong>Hardware dengan Software:</strong> Perangkat keras membutuhkan perangkat lunak untuk berfungsi, dan sebaliknya, perangkat lunak membutuhkan perangkat keras untuk dieksekusi.</li>
+                <li><strong>Software dengan Software:</strong> Aplikasi yang berbeda seringkali perlu berbagi data atau fungsionalitas.</li>
+                <li><strong>Semua Komponen dengan Sistem Operasi:</strong> Sistem operasi adalah orkestrator utama yang mengelola semua interaksi ini.</li>
+            </ul>
+        </div>
+
+        <div class="explanation-block">
+            <h4>Interaksi Hardware dengan Hardware</h4>
+            <p>Ini adalah bentuk kolaborasi yang paling mendasar, di mana perangkat keras saling terhubung dan bertukar data. Contohnya:</p>
+            <div class="example">
+                - Mencolokkan <span class="highlight">flashdisk</span> ke <span class="highlight">port USB</span> komputer.
+                - Menghubungkan <span class="highlight">mouse</span> atau <span class="highlight">keyboard</span> ke <span class="highlight">motherboard</span> melalui konektor yang sesuai.
+                - Kartu grafis (GPU) berkomunikasi dengan RAM untuk memproses data visual.
+            </div>
+            <p>Meskipun terlihat langsung, di balik layar, interaksi ini seringkali difasilitasi oleh sistem operasi dan driver perangkat keras yang memastikan komunikasi berjalan lancar.</p>
+        </div>
+
+        <div class="explanation-block">
+            <h4>Interaksi Hardware dengan Software</h4>
+            <p>Ini adalah inti dari bagaimana kita menggunakan komputer. Perangkat lunak memerintahkan perangkat keras untuk melakukan tugas. Agar ini terjadi, software harus dirancang untuk bisa dikenali dan dikontrol oleh hardware.</p>
+            <div class="example">
+                - Mengambil foto menggunakan <span class="highlight">webcam</span>: Webcam (hardware) menangkap gambar, data gambar dikirim ke komputer.
+                - Mencetak foto tersebut: Data gambar dari komputer (mungkin disimpan di memori) dikirim ke <span class="highlight">printer</span> (hardware) melalui aplikasi pengolah gambar.
+            </div>
+            <p>Di sini, terlihat bahwa <span class="highlight">webcam</span> mengirimkan data ke komputer, dan data tersebut diolah oleh aplikasi lain sebelum dikirim ke <span class="highlight">printer</span>. Interaksi antara <span class="highlight">webcam</span> dan <span class="highlight">memori komputer</span> dilakukan melalui sistem operasi. Penting dicatat bahwa interaksi antara perangkat keras ini seringkali memerlukan <span class="highlight">perangkat lunak perantara (driver)</span>.</p>
+            <p>Interaksi antara hardware dan software memiliki tingkat kerumitan tersendiri karena software harus dirancang agar dapat dikenali oleh hardware. Misalnya, untuk menggunakan printer, pengguna biasanya perlu menginstal driver printer terlebih dahulu. Driver ini bertindak sebagai penerjemah antara sistem operasi dan printer, memungkinkan keduanya untuk berkomunikasi.</p>
+        </div>
+
+        <div class="explanation-block">
+            <h4>Interaksi Software dengan Software</h4>
+            <p>Dalam kehidupan sehari-hari, kita sering menjumpai software yang bekerja sama untuk menyelesaikan tugas.</p>
+            <div class="example">
+                - Instalasi <span class="highlight">program aplikasi penggajian (payroll)</span> di kantor: Data dari program penggajian mungkin perlu diolah lebih lanjut menggunakan <span class="highlight">pengolah lembar kerja (spreadsheet)</span> seperti Microsoft Excel.
+                - Membeli <span class="highlight">laptop baru</span>: Sebelum dapat menginstal aplikasi pengolah kata, pengguna harus terlebih dahulu menginstal <span class="highlight">sistem operasi</span>. Ini menunjukkan bahwa satu software (aplikasi pengolah kata) bergantung pada software lain (sistem operasi) agar dapat berjalan.
+            </div>
+            <p>Ini membuktikan bahwa software tidak selalu berdiri sendiri; mereka seringkali bekerja dalam rantai atau saling membutuhkan fungsionalitas satu sama lain.</p>
+        </div>
+
+        <div class="interaction-diagram">
+            <div class="interaction-element">
+                <strong>Perangkat Keras</strong><br>(Contoh: Webcam, Mouse, Printer)
+                <p>Perangkat fisik yang menjalankan fungsi.</p>
+            </div>
+            <div class="arrow">➡️</div>
+            <div class="interaction-element">
+                <strong>Sistem Operasi</strong><br>(Contoh: Windows, macOS, Linux)
+                <p>Manajer sumber daya, jembatan utama.</p>
+            </div>
+            <div class="arrow">➡️</div>
+            <div class="interaction-element">
+                <strong>Aplikasi Software</strong><br>(Contoh: Word, Browser, Game)
+                <p>Program yang menjalankan tugas spesifik untuk pengguna.</p>
+            </div>
+            <div class="arrow">⬇️</div>
+            <div class="interaction-element">
+                <strong>Pengguna</strong><br>(Manusia)
+                <p>Pihak yang berinteraksi dan mendapatkan manfaat.</p>
+            </div>
+        </div>
+
+        <h3>Sistem Komputer sebagai Organisme yang Bekerja Sama</h3>
+        <p>Dari uraian di atas, jelas terlihat bahwa sebuah sistem komputer adalah sebuah <span class="highlight">orkestrasi kompleks</span>. Perangkat keras dan perangkat lunak aplikasi saling berkolaborasi melalui sistem operasi. Sistem operasi itu sendiri berkolaborasi dengan aplikasi untuk memfasilitasi interaksi pengguna. Semua ini menghasilkan sebuah sistem komputasi yang efektif dan memberikan nilai tambah bagi penggunanya.</p>
+
+        <p>Bayangkan komputer tunggal sebagai sebuah <span class="highlight">manusia</span>. Di dalam tubuh manusia, berbagai sistem organ beroperasi secara harmonis untuk menjaga kelangsungan hidup. Sistem saraf bertindak seperti jalur komunikasi data, menerjemahkan impuls dari pikiran (sistem operasi) untuk menggerakkan anggota tubuh (perangkat keras). Indra penglihat, peraba, dan pendengaran (input devices) mengirimkan informasi ke otak (CPU), yang kemudian memprosesnya dan memerintahkan tubuh untuk bereaksi atau bergerak (output devices dan tindakan).</p>
+
+        <p>Ketergantungan dan kolaborasi ini bahkan menjadi dasar inspirasi bagi manusia untuk menciptakan <span class="highlight">robot-robot</span>. Robot dirancang untuk meniru kemampuan manusia, bertindak dan berperilaku sesuai dengan program yang telah ditanamkan di dalamnya. Program ini adalah hasil dari desain yang memadukan pemahaman mendalam tentang bagaimana perangkat keras dan perangkat lunak dapat bekerja bersama untuk mencapai tujuan tertentu.</p>
+
+        <p>Dalam konteks yang lebih luas, konsep kolaborasi ini juga menjadi dasar dari perkembangan <span class="highlight">Internet of Things (IoT)</span>. Perangkat-perangkat pintar yang tersebar di sekitar kita—mulai dari pemantau kesehatan, termostat pintar, hingga mobil otonom—semuanya mengandalkan kolaborasi antara sensor (hardware), algoritma pemrosesan (software), jaringan komunikasi, dan sistem pusat untuk mengumpulkan, mengirim, dan mengolah data, serta memberikan respons yang cerdas.</p>
+
+        <p>Memahami bagaimana komponen-komponen ini saling berkolaborasi adalah kunci untuk menghargai kompleksitas dan kecanggihan teknologi yang kita gunakan setiap hari. Ini juga merupakan fondasi penting untuk pengembangan sistem komputasi di masa depan yang semakin terintegrasi dan cerdas.</p>
+
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,423 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Berpikir Komputasional - Tumpukan (Stack) & Antrean (Queue)</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--accent-green);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .concept-intro {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .concept-definition {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: var(--background-canvas);
+        }
+
+        .concept-item {
+            flex: 1;
+            min-width: 280px;
+            padding: 15px;
+            border-radius: 6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .concept-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .concept-item.stack {
+            border-left: 5px solid var(--secondary-accent-amber);
+            background-color: #fff8e1; /* Light amber */
+        }
+
+        .concept-item.queue {
+            border-left: 5px solid var(--primary-blue);
+            background-color: #e3f2fd; /* Light blue */
+        }
+
+        .concept-item h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .concept-item p {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .concept-item ul {
+            padding-left: 25px;
+            color: var(--text-tertiary);
+        }
+
+        .concept-item li {
+            margin-bottom: 8px;
+        }
+
+        .principle {
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .example {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 3px solid var(--text-tertiary);
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        .example code {
+            background-color: #e0e0e0;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+
+        .analogy {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+            display: block;
+        }
+
+        .interactivity-placeholder {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 30px;
+            border: 2px dashed var(--border-divider);
+            border-radius: 8px;
+            background-color: #fdfdfd;
+        }
+
+        .interactivity-placeholder p {
+            font-size: 1.1em;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .interactivity-placeholder button {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactivity-placeholder button:hover {
+            background-color: #1565C0; /* Darker blue */
+        }
+
+        .summary {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-divider);
+        }
+
+        .summary h3 {
+            border-bottom: none;
+            color: var(--accent-green);
+        }
+
+        .summary p {
+            color: var(--text-secondary);
+        }
+
+        .resources {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        .resources h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .resources ul {
+            list-style: disc;
+            padding-left: 25px;
+        }
+
+        .resources li {
+            margin-bottom: 10px;
+        }
+
+        .resources a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .resources a:hover {
+            color: #1565C0;
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .concept-definition {
+                flex-direction: column;
+            }
+
+            .concept-item {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Berpikir Komputasional</h1>
+
+        <section class="section">
+            <h2>C. Tumpukan (Stack) dan Antrean (Queue)</h2>
+            <p class="concept-intro">
+                Dalam dunia komputasi dan kehidupan sehari-hari, kita sering kali perlu mengatur urutan data atau objek untuk diproses. Dua struktur data fundamental yang digunakan untuk tujuan ini adalah Tumpukan (Stack) dan Antrean (Queue). Memahami cara kerja dan kapan menggunakannya sangat penting dalam berpikir komputasional.
+            </p>
+
+            <div class="concept-definition">
+                <div class="concept-item stack">
+                    <h4><span style="color: var(--secondary-accent-amber);">📦</span> Tumpukan (Stack)</h4>
+                    <p>Bayangkan setumpuk piring. Piring yang Anda letakkan terakhir adalah piring yang akan Anda ambil pertama kali. Struktur data Tumpukan bekerja dengan prinsip yang sama.</p>
+                    <ul>
+                        <li>Data dimasukkan (disebut <strong>Push</strong>) di bagian atas tumpukan.</li>
+                        <li>Data dikeluarkan (disebut <strong>Pop</strong>) dari bagian atas tumpukan.</li>
+                    </ul>
+                    <p class="principle">Prinsip Operasi: <strong>Last In, First Out (LIFO)</strong></p>
+                    <div class="example">
+                        Contoh Operasi:<br>
+                        <code>Push(5)</code> -> Tumpukan: [5]<br>
+                        <code>Push(3)</code> -> Tumpukan: [5, 3]<br>
+                        <code>Pop()</code> -> Mengeluarkan 3, Tumpukan: [5]<br>
+                        <code>Push(7)</code> -> Tumpukan: [5, 7]<br>
+                        <code>Pop()</code> -> Mengeluarkan 7, Tumpukan: [5]
+                    </div>
+                    <span class="analogy">Analogi: Tumpukan piring, tumpukan buku, tombol 'Undo' pada aplikasi.</span>
+                </div>
+
+                <div class="concept-item queue">
+                    <h4><span style="color: var(--primary-blue);">🚶‍♂️</span> Antrean (Queue)</h4>
+                    <p>Bayangkan antrean orang di loket bank atau loket tiket. Orang yang datang lebih dulu adalah orang yang akan dilayani lebih dulu. Struktur data Antrean bekerja dengan prinsip ini.</p>
+                    <ul>
+                        <li>Data dimasukkan (disebut <strong>Enqueue</strong>) di bagian belakang (akhir) antrean.</li>
+                        <li>Data dikeluarkan (disebut <strong>Dequeue</strong>) dari bagian depan (awal) antrean.</li>
+                    </ul>
+                    <p class="principle">Prinsip Operasi: <strong>First In, First Out (FIFO)</strong></p>
+                    <div class="example">
+                        Contoh Operasi:<br>
+                        <code>Enqueue(5)</code> -> Antrean: [5]<br>
+                        <code>Enqueue(3)</code> -> Antrean: [5, 3]<br>
+                        <code>Dequeue()</code> -> Mengeluarkan 5, Antrean: [3]<br>
+                        <code>Enqueue(7)</code> -> Antrean: [3, 7]<br>
+                        <code>Dequeue()</code> -> Mengeluarkan 3, Antrean: [7]
+                    </div>
+                    <span class="analogy">Analogi: Antrean orang, printer yang mencetak dokumen secara berurutan, sistem pemesanan makanan.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>Perbandingan Tumpukan dan Antrean</h3>
+            <p class="concept-intro">
+                Meskipun keduanya mengatur urutan, perbedaan prinsip LIFO dan FIFO membuat keduanya cocok untuk skenario yang berbeda.
+            </p>
+            <div class="concept-definition">
+                <div class="concept-item stack">
+                    <h4><span style="color: var(--secondary-accent-amber);">🆚</span> Tumpukan (Stack)</h4>
+                    <p><strong>Kapan Digunakan?</strong></p>
+                    <ul>
+                        <li><strong>Manajemen Panggilan Fungsi (Call Stack):</strong> Saat sebuah program memanggil fungsi lain, informasi tentang fungsi saat ini disimpan di tumpukan.</li>
+                        <li><strong>Fitur Undo/Redo:</strong> Setiap tindakan pembatalan (undo) menumpuk, dan setiap tindakan pengulangan (redo) mengambil dari tumpukan.</li>
+                        <li><strong>Pengecekan Struktur Bersarang:</strong> Seperti kurung buka dan tutup dalam ekspresi matematika atau kode.</li>
+                    </ul>
+                </div>
+
+                <div class="concept-item queue">
+                    <h4><span style="color: var(--primary-blue);">🆚</span> Antrean (Queue)</h4>
+                    <p><strong>Kapan Digunakan?</strong></p>
+                    <ul>
+                        <li><strong>Manajemen Sumber Daya:</strong> Antrean permintaan cetak ke printer, antrean tugas di sistem operasi.</li>
+                        <li><strong>Penjadwalan:</strong> Seperti penentuan giliran pelayanan pasien di rumah sakit atau antrean di kasir.</li>
+                        <li><strong>Algoritma Pencarian Luas (Breadth-First Search - BFS):</strong> Menjelajahi node dalam graf secara bertahap.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3>Mari Lakukan Simulasi!</h3>
+            <p class="concept-intro">
+                Untuk memperdalam pemahaman, mari kita coba visualisasikan bagaimana data bergerak dalam tumpukan dan antrean.
+            </p>
+
+            <div class="interactivity-placeholder">
+                <p>Bayangkan Anda adalah seorang petugas yang mengelola kartu.</p>
+                <p><strong>Simulasi Tumpukan (Stack):</strong></p>
+                <p>Ambil 5 kartu, beri nomor 1 sampai 5. Susun kartu tersebut dari nomor 1 di bawah hingga nomor 5 di atas. Sekarang, ambil kartu satu per satu dari atas. Kartu mana yang Anda ambil terakhir? Kartu nomor berapa?</p>
+                <p><strong>Simulasi Antrean (Queue):</strong></p>
+                <p>Ambil 5 kartu, beri nomor 1 sampai 5. Buatlah antrean kartu dari nomor 1 di depan hingga nomor 5 di belakang. Sekarang, ambil kartu satu per satu dari depan antrean. Kartu mana yang Anda ambil pertama? Kartu nomor berapa?</p>
+                <button onclick="alert('Aktivitas simulasi manual ini mendorong pemahaman konsep LIFO dan FIFO. Lakukan ini dengan kartu sungguhan untuk pengalaman terbaik!')">Pahami Konsepnya!</button>
+            </div>
+        </section>
+
+        <section class="section summary">
+            <h3>Ringkasan Kunci</h3>
+            <p><strong>Tumpukan (Stack)</strong> beroperasi berdasarkan prinsip <strong>LIFO (Last In, First Out)</strong>, di mana elemen terakhir yang dimasukkan adalah elemen pertama yang dikeluarkan. Cocok untuk situasi seperti riwayat peramban (tombol kembali) atau fitur undo/redo.</p>
+            <p><strong>Antrean (Queue)</strong> beroperasi berdasarkan prinsip <strong>FIFO (First In, First Out)</strong>, di mana elemen pertama yang dimasukkan adalah elemen pertama yang dikeluarkan. Cocok untuk situasi seperti antrean printer atau penanganan tugas secara berurutan.</p>
+            <p>Memilih struktur data yang tepat sangat bergantung pada bagaimana data perlu diakses dan diproses dalam suatu skenario.</p>
+        </section>
+
+        <section class="section resources">
+            <h3>Ingin Belajar Lebih Lanjut?</h3>
+            <p>Sumber daya tambahan untuk memperdalam pemahaman Anda tentang konsep-konsep ini dan topik terkait:</p>
+            <ul>
+                <li>
+                    <strong>Pencarian (Searching):</strong>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Search_algorithm" target="_blank">Search Algorithm (Wikipedia)</a></li>
+                        <li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search" target="_blank">Binary Search (Khan Academy)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Pengurutan (Sorting):</strong>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Sorting_algorithm" target="_blank">Sorting Algorithm (Wikipedia)</a></li>
+                        <li>Video Bubble Sort: <a href="https://youtu.be/nmhjrl-aW5o" target="_blank">Link</a></li>
+                        <li>Video Insertion Sort: <a href="https://youtu.be/OGzPmgsI-pQ" target="_blank">Link</a></li>
+                        <li>Video Selection Sort: <a href="https://youtu.be/xWBP4lzkoyM" target="_blank">Link</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Rekursi:</strong>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Recursion" target="_blank">Recursion (Wikipedia)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Graf:</strong>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)" target="_blank">Graph (Wikipedia)</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Graph_traversal" target="_blank">Graph Traversal (Wikipedia)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Simple script for button interactivity, could be expanded for more complex simulations
+        document.querySelector('.interactivity-placeholder button').addEventListener('click', function() {
+            // For this example, we just show an alert. A real interactive element
+            // would involve manipulating DOM elements to simulate the process.
+            console.log("Simulasi manual dipicu!");
+        });
+    </script>
+</body>
+</html>
+```

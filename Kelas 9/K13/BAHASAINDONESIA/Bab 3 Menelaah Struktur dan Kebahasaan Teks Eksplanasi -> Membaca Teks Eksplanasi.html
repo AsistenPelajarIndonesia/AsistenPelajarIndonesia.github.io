@@ -1,0 +1,530 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menelaah Struktur dan Kebahasaan Teks Pidato Persuasif</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .text-content {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .text-content p {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1); /* Light blue highlight */
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .sub-section {
+            margin-top: 15px;
+            margin-left: 20px;
+            border-left: 3px solid var(--primary-blue);
+            padding-left: 15px;
+        }
+
+        .sub-section h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .box {
+            background-color: #f4f4f4;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .box-header {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            display: block; /* Ensure it's a block element for spacing */
+        }
+
+        .box ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        .box li {
+            margin-bottom: 5px;
+        }
+
+        .example {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 5px;
+            display: block;
+        }
+
+        code {
+            background-color: #e0e0e0;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+
+        .key-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin: 15px 0;
+            padding-left: 15px;
+            border-left: 3px solid var(--secondary-accent-amber);
+        }
+
+        .responsive-table {
+            width: 100%;
+            overflow-x: auto; /* Enable horizontal scrolling for tables on small screens */
+            display: block; /* Necessary for overflow-x */
+        }
+
+        .responsive-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .responsive-table th,
+        .responsive-table td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .responsive-table th {
+            background-color: #e0e0e0;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        .responsive-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Specific styling for the provided content */
+        .page-number {
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 20px;
+        }
+
+        .content-block {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+        .content-block:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .argument-type {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            display: inline-block; /* Prevents it from taking full width */
+            padding: 3px 8px;
+            background-color: rgba(25, 118, 210, 0.1);
+            border-radius: 4px;
+        }
+
+        .explanation-point {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .explanation-point::before {
+            content: '\2022'; /* Bullet point */
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.3em; /* Adjust spacing */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .structure-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .structure-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .structure-number {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .structure-description {
+            flex-grow: 1; /* Allow description to take remaining space */
+        }
+
+        .structure-description h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-size: 1.2em;
+        }
+
+        .structure-description p {
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        .keywords {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .structure-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .structure-number {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .structure-description {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Menelaah Struktur dan Kebahasaan Teks Pidato Persuasif</h1>
+
+        <div class="section">
+            <h2>Mengapa Pidato Persuasif Begitu Penting?</h2>
+            <div class="text-content">
+                <p>Pidato persuasif adalah seni berbicara di depan umum yang bertujuan untuk <span class="highlight">meyakinkan audiens</span> agar menerima pandangan, sikap, atau tindakan tertentu dari pembicara. Di kelas IX SMP/MTs, kita belajar untuk memahami bagaimana pidato persuasif bekerja, tidak hanya sebagai pendengar, tetapi juga sebagai calon pembicara yang efektif.</p>
+                <p>Teks pidato persuasif memiliki karakteristik khusus yang membedakannya dari jenis teks lain. Memahami struktur dan kebahasaannya adalah kunci untuk bisa menyampaikan pesan dengan kuat dan mengena.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Struktur Isi Pidato Persuasif: Membangun Pesan yang Kokoh</h2>
+            <div class="text-content">
+                <p>Sebuah pidato persuasif yang baik tidak lahir begitu saja. Ia memiliki kerangka yang jelas dan logis agar pesannya mudah diterima audiens. Struktur utamanya terdiri dari tiga bagian penting:</p>
+
+                <div class="structure-item">
+                    <div class="structure-number">1</div>
+                    <div class="structure-description">
+                        <h3>Pernyataan Posisi (Pembukaan)</h3>
+                        <p>Ini adalah bagian awal pidato yang berfungsi untuk memberikan pendahuluan dan menyatakan <span class="key-term">pendapat atau sudut pandang pengarang (pembicara)</span> tentang suatu isu. Pembukaan yang baik harus mampu menarik perhatian audiens sejak awal.</p>
+                        <div class="box">
+                            <span class="box-header">Pertanyaan Kunci untuk Pernyataan Posisi Kuat:</span>
+                            <ul>
+                                <li>Siapa audiens yang ingin saya yakinkan?</li>
+                                <li>Apa yang ingin saya ubah dari pandangan atau perilaku mereka?</li>
+                                <li>Argumen jenis apa yang paling relevan dan menarik bagi mereka?</li>
+                                <li>Apakah posisi saya sudah disampaikan dengan jelas dan ringkas?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-number">2</div>
+                    <div class="structure-description">
+                        <h3>Tahap Argumen (Isi)</h3>
+                        <p>Bagian ini adalah inti dari pidato persuasif. Di sini, pembicara menyajikan <span class="key-term">serangkaian argumen logis</span> yang mendukung pernyataan posisinya. Argumen-argumen ini harus didukung oleh bukti yang kuat untuk meyakinkan audiens.</p>
+                        <div class="box">
+                            <span class="box-header">Cara Mengembangkan Argumen yang Efektif:</span>
+                            <ul>
+                                <li>Gunakan <span class="keywords">alasan</span> yang masuk akal.</li>
+                                <li>Sertakan <span class="keywords">contoh-contoh konkret</span> yang relevan.</li>
+                                <li>Kutip <span class="keywords">bukti pakar</span> atau data statistik yang kredibel.</li>
+                                <li>Sajikan <span class="keywords">informasi statistik</span> atau fakta pendukung lainnya.</li>
+                                <li>Gunakan <span class="keywords">tabel, diagram, foto, atau gambar</span> untuk visualisasi jika memungkinkan (terutama dalam presentasi visual).</li>
+                                <li>Hindari penggunaan <span class="keywords">istilah yang ambigu</span> atau sulit dipahami.</li>
+                            </ul>
+                        </div>
+                        <div class="text-content">
+                            <p>Urutan argumen bisa bervariasi. Pembicara bisa memulai dari argumen terkuat atau paling lemah. Setiap pengembangan argumen biasanya terdiri dari beberapa kalimat yang membentuk sebuah paragraf, dengan kalimat topik yang mengaitkan dengan gagasan sebelumnya.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-number">3</div>
+                    <div class="structure-description">
+                        <h3>Penguatan Pernyataan Posisi (Penutup)</h3>
+                        <p>Bagian penutup adalah kesempatan terakhir pembicara untuk meninggalkan kesan mendalam pada audiens. Di sini, <span class="key-term">simpulan posisi</span> ditekankan kembali berdasarkan argumen yang telah disajikan.</p>
+                        <div class="box">
+                            <span class="box-header">Tips Memperkuat Pernyataan Posisi di Akhir Pidato:</span>
+                            <ul>
+                                <li><span class="keywords">Perkuat pernyataan posisi</span> dan tekankan kembali pikiran utama.</li>
+                                <li>Gunakan <span class="keywords">variasi suara</span> (nada, tinggi-rendah), <span class="keywords">mimik</span>, dan <span class="keywords">bahasa tubuh</span> untuk menambah daya persuasif.</li>
+                                <li>Pastikan argumen bersifat <span class="keywords">logis dan didukung bukti</span>, bukan hanya emosi atau intuisi.</li>
+                                <li>Sertakan elemen visual (tabel, diagram, foto) jika mendukung dan gunakan alat bantu presentasi seperti <span class="keywords">powerpoint</span>.</li>
+                                <li>Ucapkan kata-kata penutup yang membekas dan menginspirasi.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Analisis Pidato Severn Suzuki: Kekuatan Ethos, Pathos, dan Logos</h2>
+            <div class="text-content">
+                <p>Pidato Severn Suzuki, yang dibahas dalam materi sebelumnya, adalah contoh klasik bagaimana struktur dan kebahasaan persuasif diterapkan secara efektif. Mari kita telaah elemen-elemennya:</p>
+
+                <div class="content-block">
+                    <div class="argument-type">Ethos (Kredibilitas)</div>
+                    <div class="text-content">
+                        <p>Ethos berkaitan dengan bagaimana pembicara membangun <span class="key-term">kredibilitas</span> di mata audiens. Dalam pidato Severn Suzuki:</p>
+                        <ul>
+                            <li>Identitasnya sebagai seorang anak yang peduli terhadap lingkungan langsung memperkenalkan dirinya.</li>
+                            <li>Nada bicaranya yang tenang namun tegas memberikan kesan kedewasaan dan keseriusan.</li>
+                            <li>Ia berbicara mewakili generasi muda dan suara alam, memberikan bobot moral pada pesannya.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="argument-type">Pathos (Emosi)</div>
+                    <div class="text-content">
+                        <p>Pathos adalah penggunaan emosi untuk terhubung dengan audiens. Suzuki sangat piawai dalam hal ini:</p>
+                        <ul>
+                            <li>Menggambarkan penderitaan anak-anak jalanan di Brazil dan perbandingan dengan kenyamanan hidup di Kanada membangkitkan <span class="key-term">rasa empati</span> dan mungkin rasa bersalah pada audiens.</li>
+                            <li>Pertanyaan retoris seperti, "Jika seorang anak yang berada di jalanan yang tidak memiliki apa pun, bersedia untuk berbagi, mengapa kita yang memiliki segalanya masih begitu serakah?" langsung menyentuh <span class="key-term">nurani</span> audiens.</li>
+                            <li>Ucapan seperti "Apa yang Anda lakukan membuat saya menangis pada malam hari" adalah ekspresi emosi yang kuat.</li>
+                            <li>Kata-kata emotif seperti "marah", "takut", "menyakiti", "serakah", "nyaman", "terkejut", "berharap", "kaya", "kasih sayang", "menyayangi" semuanya berkontribusi pada resonansi emosional.</li>
+                            <li>Penggunaan analogi bahwa ia bisa saja menjadi anak yang kelaparan di Somalia atau korban perang Timur Tengah secara efektif membangkitkan <span class="key-term">rasa kemanusiaan</span>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="argument-type">Logos (Logika)</div>
+                    <div class="text-content">
+                        <p>Logos berkaitan dengan penggunaan <span class="key-term">logika, fakta, dan alasan</span> untuk mendukung argumen. Meskipun pidato ini sangat emosional, ia juga memiliki dasar logis:</p>
+                        <ul>
+                            <li>Pernyataan bahwa semua orang berbagi udara, air, dan tanah adalah fakta alam yang tidak terbantahkan.</li>
+                            <li>Logika bahwa jika uang perang dialihkan untuk mengatasi kemiskinan dan masalah alam, dunia akan lebih indah adalah argumen yang masuk akal.</li>
+                            <li>Perbandingan antara perilaku membuang-buang di negara maju dan kebutuhan negara berkembang menunjukkan adanya <span class="key-term">ketidakadilan logis</span>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote">
+                    "Argumennya kuat, manakah kata emotif yang diungkapkan Suzuki? Manakah dari kata-kata Severn Suzuki yang sangat mengesankan bagimu? Bagaimana Severn Suzuki mengakhiri pidatonya?" - Pertanyaan dalam Materi
+                </div>
+                <div class="text-content">
+                    <p>Pidato ini mengakhiri dengan sebuah <span class="highlight">tantangan</span> kepada para pemimpin dunia untuk mewujudkan kata-kata mereka, memberikan penutup yang kuat dan berorientasi pada tindakan.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ciri-Ciri Kebahasaan Teks Eksposisi dalam Pidato Persuasif</h2>
+            <div class="text-content">
+                <p>Teks pidato persuasif, seperti teks eksposisi pada umumnya, memiliki kekhasan dalam penggunaan bahasa untuk mencapai tujuan persuasinya.</p>
+
+                <div class="sub-section">
+                    <h3>1. Nominalisasi (Pembendaan)</h3>
+                    <div class="text-content">
+                        <p><span class="key-term">Nominalisasi</span> adalah proses mengubah kata kerja atau kata sifat menjadi kata benda. Dalam pidato, ini membantu memberikan penekanan dan membuat gagasan terasa lebih konkret atau penting.</p>
+                        <p>Contoh:</p>
+                        <ul>
+                            <li>Mengubah kata kerja "<span class="keywords">membangun</span>" menjadi kata benda "<span class="keywords">pembangunan</span>".</li>
+                            <li>Mengubah kata kerja "<span class="keywords">mendaur ulang</span>" menjadi kata benda "<span class="keywords">pendaurulangan</span>".</li>
+                            <li>Mengubah kata sifat "<span class="keywords">berhasil</span>" menjadi kata benda "<span class="keywords">keberhasilan</span>".</li>
+                        </ul>
+                        <p>Penggunaan nominalisasi membantu menjaga <span class="key-term">kohesi dan koherensi</span> antar kalimat, membuat alur pidato lebih runtut.</p>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <h3>2. Bentuk Pasif dan Kata Ganti Orang</h3>
+                    <div class="text-content">
+                        <p>Teks eksposisi, termasuk pidato persuasif, seringkali menggunakan <span class="key-term">bentuk pasif</span> untuk memberikan kesan yang lebih formal, objektif, dan kuat.</p>
+                        <p>Contoh penggunaan bentuk pasif: "Ini harus dihentikan." atau "Sumber daya alam harus dijaga."</p>
+                        <p>Dalam pidato, <span class="key-term">kata ganti orang</span> seperti "saya" mungkin digunakan untuk membangun kedekatan (ethos), namun seringkali digantikan dengan istilah yang lebih umum atau impersonal untuk menjaga objektivitas argumen, seperti "kita", "generasi mendatang", "warga negara", atau merujuk pada "dia", "mereka", "bangsa Indonesia".</p>
+                        <p>Penggunaan <span class="key-term">bahasa evaluatif</span> (bahasa yang memberikan penilaian) juga penting, misalnya "Hal yang paling penting adalah..." atau "Ini merupakan masalah krusial...".</p>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <h3>3. Kosakata</h3>
+                    <div class="text-content">
+                        <p>Pemilihan kosakata sangat memengaruhi daya persuasif pidato.</p>
+                        <ul>
+                            <li><span class="key-term">Istilah Teknis dan Abstrak</span>: Penggunaan istilah teknis (misalnya, "spesies", "genus") atau kata benda abstrak (misalnya, "kemakmuran", "keadilan", "kemiskinan") dapat membuat pidato terdengar lebih ilmiah dan mendalam.</li>
+                            <li><span class="key-term">Sinonim dan Rantai Kata</span>: Penggunaan sinonim membantu menghindari pengulangan dan menjaga alur bacaan tetap menarik. Rantai kata (sinonim, antonim, atau kata-kata yang saling terkait makna seperti "tanah", "regenerasi", "sumber daya alam") memperkaya diksi dan memperkuat tema.</li>
+                            <li><span class="key-term">Kata Emotif</span>: Penggunaan kata-kata yang membangkitkan emosi audiens sangat krusial. Contohnya dalam pidato Suzuki: "menyakiti", "serakah", "kasih sayang", "menyayangi". Kata-kata ini dirancang untuk menciptakan resonansi emosional dan mendorong audiens untuk bertindak.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Menerapkan dalam Berbicara: Dari Gagasan ke Pidato</h2>
+            <div class="text-content">
+                <p>Ketika Anda diminta untuk berbicara di depan umum atau menyampaikan pidato, ingatlah langkah-langkah ini:</p>
+
+                <h3>Membuat Kerangka Pikiran Utama</h3>
+                <p>Sebelum mulai menulis, tentukan poin-poin utama yang ingin Anda sampaikan. Tiga hingga empat poin utama biasanya cukup untuk pidato yang efektif, tidak terlalu singkat dan tidak terlalu panjang.</p>
+                <div class="box">
+                    <span class="box-header">Contoh Kerangka Pidato tentang Daur Ulang:</span>
+                    <ol>
+                        <li>Daur ulang menghemat sumber daya alam yang terbatas.</li>
+                        <li>Daur ulang mengurangi volume sampah yang mencemari lingkungan.</li>
+                        <li>Daur ulang berpotensi memberikan nilai ekonomi atau bahkan murah dalam penerapannya.</li>
+                    </ol>
+                </div>
+
+                <h3>Membangun Argumen yang Meyakinkan</h3>
+                <p>Setiap poin utama harus dikembangkan dengan argumen yang didukung bukti. Gunakan fakta, data, contoh, atau analogi untuk memperkuat pesan Anda. Ingatlah untuk menggabungkan kekuatan ethos, pathos, dan logos.</p>
+
+                <h3>Menyusun Pidato yang Persuasif</h3>
+                <p>Mulailah dengan pembukaan yang menarik perhatian, sajikan argumen Anda secara logis dan emosional, lalu akhiri dengan penutup yang kuat dan menginspirasi tindakan.</p>
+
+                <p>Setiap elemen dalam pidato Anda, mulai dari pemilihan kata hingga bahasa tubuh, semuanya berkontribusi pada seberapa efektif Anda dapat memengaruhi audiens.</p>
+            </div>
+        </div>
+
+        <div class="page-number">Halaman 42-47</div>
+
+    </div>
+</body>
+</html>
+```

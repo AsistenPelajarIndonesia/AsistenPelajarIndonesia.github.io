@@ -1,0 +1,385 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab II: Persamaan Kuadrat</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fdfdfd;
+            border-left: 5px solid #1976D2;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .section-title {
+            font-weight: bold;
+            color: #1976D2;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .content-block {
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 3px solid #E0E0E0;
+        }
+        .formula {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.1em;
+            background-color: #e3f2fd;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px dashed #1976D2;
+        }
+        .explanation {
+            color: #424242;
+            margin-bottom: 10px;
+        }
+        .definition {
+            font-style: italic;
+            color: #757575;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .example {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #FFB300;
+            margin-top: 15px;
+        }
+        .example-title {
+            font-weight: bold;
+            color: #FF8F00;
+            margin-bottom: 10px;
+        }
+        .keywords {
+            background-color: #e8f5e9;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-right: 5px;
+            display: inline-block;
+            font-size: 0.9em;
+            color: #388E3C;
+        }
+        ul {
+            list-style: disc;
+            margin-left: 25px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .method-box {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #B0BEC5;
+            margin-top: 15px;
+        }
+        .method-title {
+            font-weight: bold;
+            color: #37474F;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            background-color: #ffff8d;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        code {
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .formula {
+                font-size: 1em;
+                padding: 8px 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .section {
+                padding: 15px;
+            }
+            .formula {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab II: Persamaan Kuadrat</h1>
+        <h2>2.1 Persamaan Kuadrat</h2>
+
+        <div class="section">
+            <div class="section-title">Pengantar</div>
+            <div class="content-block">
+                <p class="explanation">Persamaan kuadrat adalah tulang punggung dalam banyak masalah matematika, baik dalam konteks teoritis maupun aplikasi praktis di kehidupan sehari-hari. Memahami bagaimana persamaan kuadrat dibentuk dan bagaimana menemukan solusinya adalah kunci untuk memecahkan berbagai tantangan.</p>
+                <p class="explanation">Secara umum, persamaan kuadrat satu variabel dapat dituliskan dalam bentuk:</p>
+                <div class="formula">
+                    ax² + bx + c = 0
+                </div>
+                <p class="definition">dengan <span class="keywords">a, b,</span> dan <span class="keywords">c</span> adalah konstanta real, dan yang terpenting, <span class="keywords">a ≠ 0</span>. Jika <span class="keywords">a = 0</span>, maka persamaan tersebut bukan lagi persamaan kuadrat, melainkan menjadi persamaan linear.</p>
+                <p class="explanation">Bilangan <span class="keywords">a</span>, <span class="keywords">b</span>, dan <span class="keywords">c</span> dikenal sebagai <strong style="color:#1976D2;">koefisien</strong> dari persamaan kuadrat.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Menemukan Akar Persamaan Kuadrat</div>
+            <div class="content-block">
+                <p class="explanation">Akar-akar atau solusi dari sebuah persamaan kuadrat adalah nilai-nilai variabel (biasanya <span class="keywords">x</span>) yang membuat persamaan tersebut bernilai benar (sama dengan nol). Ada tiga metode utama yang sering digunakan untuk menemukan akar-akar persamaan kuadrat:</p>
+
+                <div class="method-box">
+                    <div class="method-title">1. Memfaktorkan</div>
+                    <p class="explanation">Metode ini melibatkan penulisan ulang persamaan kuadrat sebagai hasil kali dua faktor linear. Jika kita memiliki persamaan dalam bentuk <span class="formula">ax² + bx + c = 0</span>, kita mencoba mencari dua bilangan, katakanlah <span class="keywords">p</span> dan <span class="keywords">q</span>, sedemikian rupa sehingga persamaan dapat difaktorkan menjadi <span class="formula">(ax + p)(bx + q) = 0</span> atau bentuk yang setara.</p>
+                    <p class="explanation">Prinsip dasarnya adalah jika hasil kali dua bilangan adalah nol, maka salah satu atau kedua bilangan tersebut harus nol. Jadi, jika <span class="formula">(x - r₁)(x - r₂) = 0</span>, maka <span class="formula">x - r₁ = 0</span> atau <span class="formula">x - r₂ = 0</span>, yang memberikan solusi <span class="formula">x = r₁</span> dan <span class="formula">x = r₂</span>.</p>
+                    <div class="example">
+                        <div class="example-title">Contoh Sederhana: Faktorisasi</div>
+                        <p class="explanation">Misalkan kita punya persamaan <span class="formula">x² + 5x + 6 = 0</span>.</p>
+                        <p class="explanation">Kita perlu mencari dua bilangan yang jika dikalikan menghasilkan 6 dan jika dijumlahkan menghasilkan 5. Bilangan tersebut adalah 2 dan 3.</p>
+                        <p class="explanation">Maka, persamaan dapat difaktorkan menjadi:</p>
+                        <div class="formula">
+                            (x + 2)(x + 3) = 0
+                        </div>
+                        <p class="explanation">Ini berarti <span class="formula">x + 2 = 0</span> atau <span class="formula">x + 3 = 0</span>.</p>
+                        <p class="explanation">Sehingga, akar-akarnya adalah <span class="highlight">x = -2</span> dan <span class="highlight">x = -3</span>.</p>
+                    </div>
+                </div>
+
+                <div class="method-box">
+                    <div class="method-title">2. Melengkapi Kuadrat Sempurna</div>
+                    <p class="explanation">Metode ini mengubah persamaan kuadrat yang diberikan menjadi bentuk kuadrat sempurna, yaitu <span class="formula">(x + p)² = q</span>. Ini sangat berguna ketika pemfaktoran tidak mudah dilakukan.</p>
+                    <p class="explanation">Langkah-langkah umumnya adalah:</p>
+                    <ol>
+                        <li>Pastikan koefisien <span class="keywords">x²</span> adalah 1. Jika tidak, bagi seluruh persamaan dengan koefisien <span class="keywords">x²</span> tersebut.</li>
+                        <li>Pindahkan konstanta (suku <span class="keywords">c</span>) ke sisi kanan persamaan.</li>
+                        <li>Tambahkan kuadrat dari setengah koefisien <span class="keywords">x</span> (yaitu, <span class="formula">(b/2)²</span>) ke kedua sisi persamaan. Ini akan membuat sisi kiri menjadi kuadrat sempurna.</li>
+                        <li>Ambil akar kuadrat dari kedua sisi. Ingat untuk menyertakan tanda positif dan negatif.</li>
+                        <li>Selesaikan untuk <span class="keywords">x</span>.</li>
+                    </ol>
+                    <div class="example">
+                        <div class="example-title">Contoh Sederhana: Melengkapi Kuadrat Sempurna</div>
+                        <p class="explanation">Misalkan kita punya persamaan <span class="formula">x² + 6x + 5 = 0</span>.</p>
+                        <p class="explanation">1. Koefisien <span class="keywords">x²</span> sudah 1.</p>
+                        <p class="explanation">2. Pindahkan konstanta: <span class="formula">x² + 6x = -5</span>.</p>
+                        <p class="explanation">3. Setengah koefisien <span class="keywords">x</span> adalah <span class="formula">6/2 = 3</span>. Kuadratnya adalah <span class="formula">3² = 9</span>. Tambahkan 9 ke kedua sisi:</p>
+                        <div class="formula">
+                            x² + 6x + 9 = -5 + 9
+                        </div>
+                        <div class="formula">
+                            (x + 3)² = 4
+                        </div>
+                        <p class="explanation">4. Ambil akar kuadrat: <span class="formula">x + 3 = ±√4</span>, sehingga <span class="formula">x + 3 = ±2</span>.</p>
+                        <p class="explanation">5. Selesaikan untuk <span class="keywords">x</span>:</p>
+                        <p class="explanation"><span class="formula">x + 3 = 2</span>  →  <span class="highlight">x = -1</span></p>
+                        <p class="explanation"><span class="formula">x + 3 = -2</span> →  <span class="highlight">x = -5</span></p>
+                    </div>
+                </div>
+
+                <div class="method-box">
+                    <div class="method-title">3. Rumus Kuadratik (Rumus ABC)</div>
+                    <p class="explanation">Rumus kuadratik adalah metode yang paling umum dan dapat digunakan untuk menyelesaikan <strong>semua</strong> jenis persamaan kuadrat. Rumus ini diturunkan dari metode melengkapi kuadrat sempurna dengan menerapkan pada bentuk umum <span class="formula">ax² + bx + c = 0</span>.</p>
+                    <p class="explanation">Rumusnya adalah:</p>
+                    <div class="formula">
+                        x₁,₂ = <span class="formula">\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</span>
+                    </div>
+                    <p class="explanation">Di sini, <span class="formula">±</span> menunjukkan bahwa ada dua kemungkinan solusi: satu menggunakan tanda tambah dan satu lagi menggunakan tanda kurang.</p>
+                    <div class="example">
+                        <div class="example-title">Contoh Sederhana: Rumus Kuadratik</div>
+                        <p class="explanation">Misalkan kita punya persamaan <span class="formula">2x² + 7x + 3 = 0</span>.</p>
+                        <p class="explanation">Di sini, <span class="keywords">a = 2</span>, <span class="keywords">b = 7</span>, dan <span class="keywords">c = 3</span>.</p>
+                        <p class="explanation">Masukkan nilai-nilai ini ke dalam rumus:</p>
+                        <div class="formula">
+                            x₁,₂ = <span class="formula">\frac{-7 \pm \sqrt{7^2 - 4(2)(3)}}{2(2)}</span>
+                        </div>
+                        <div class="formula">
+                            x₁,₂ = <span class="formula">\frac{-7 \pm \sqrt{49 - 24}}{4}</span>
+                        </div>
+                        <div class="formula">
+                            x₁,₂ = <span class="formula">\frac{-7 \pm \sqrt{25}}{4}</span>
+                        </div>
+                        <div class="formula">
+                            x₁,₂ = <span class="formula">\frac{-7 \pm 5}{4}</span>
+                        </div>
+                        <p class="explanation">Sekarang, kita pisahkan untuk kedua solusi:</p>
+                        <p class="explanation">Solusi 1 (menggunakan +): <span class="formula">x₁ = \frac{-7 + 5}{4} = \frac{-2}{4} = -\frac{1}{2}</span></p>
+                        <p class="explanation">Solusi 2 (menggunakan -): <span class="formula">x₂ = \frac{-7 - 5}{4} = \frac{-12}{4} = -3</span></p>
+                        <p class="explanation">Jadi, akar-akarnya adalah <span class="highlight">x = -1/2</span> dan <span class="highlight">x = -3</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Diskriminan dan Sifat Akar</div>
+            <div class="content-block">
+                <p class="explanation">Dalam rumus kuadratik, bagian di bawah akar kuadrat, yaitu <span class="formula">b² - 4ac</span>, memiliki peran krusial. Bagian ini disebut <strong style="color:#FFB300;">Diskriminan</strong> dan dilambangkan dengan <span class="formula">D</span>.</p>
+                <div class="formula">
+                    D = b² - 4ac
+                </div>
+                <p class="explanation">Nilai diskriminan (<span class="keywords">D</span>) menentukan sifat dari akar-akar persamaan kuadrat:</p>
+                <ul>
+                    <li>Jika <span class="formula">D > 0</span>, maka persamaan kuadrat memiliki <strong style="color:#388E3C;">dua akar real yang berbeda</strong>.</li>
+                    <li>Jika <span class="formula">D = 0</span>, maka persamaan kuadrat memiliki <strong style="color:#1976D2;">satu akar real (akar kembar)</strong>.</li>
+                    <li>Jika <span class="formula">D < 0</span>, maka persamaan kuadrat tidak memiliki akar real (akarnya adalah bilangan imajiner/kompleks).</li>
+                </ul>
+                <div class="example">
+                    <div class="example-title">Analisis Diskriminan</div>
+                    <p class="explanation">Mari kita lihat beberapa contoh:</p>
+                    <ol>
+                        <li>Persamaan: <span class="formula">x² + 5x + 6 = 0</span></li>
+                        <p class="explanation">   <span class="keywords">a=1, b=5, c=6</span></p>
+                        <p class="explanation">   <span class="formula">D = 5² - 4(1)(6) = 25 - 24 = 1</span></p>
+                        <p class="explanation">   Karena <span class="formula">D = 1 > 0</span>, maka memiliki dua akar real yang berbeda (-2 dan -3).</p>
+
+                        <li>Persamaan: <span class="formula">x² + 6x + 9 = 0</span></li>
+                        <p class="explanation">   <span class="keywords">a=1, b=6, c=9</span></p>
+                        <p class="explanation">   <span class="formula">D = 6² - 4(1)(9) = 36 - 36 = 0</span></p>
+                        <p class="explanation">   Karena <span class="formula">D = 0</span>, maka memiliki satu akar real kembar (-3).</p>
+
+                        <li>Persamaan: <span class="formula">x² + 2x + 5 = 0</span></li>
+                        <p class="explanation">   <span class="keywords">a=1, b=2, c=5</span></p>
+                        <p class="explanation">   <span class="formula">D = 2² - 4(1)(5) = 4 - 20 = -16</span></p>
+                        <p class="explanation">   Karena <span class="formula">D = -16 < 0</span>, maka tidak memiliki akar real.</p>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Hubungan Akar dan Koefisien</div>
+            <div class="content-block">
+                <p class="explanation">Untuk persamaan kuadrat dalam bentuk <span class="formula">ax² + bx + c = 0</span>, jika <span class="keywords">x₁</span> dan <span class="keywords">x₂</span> adalah akar-akarnya, maka berlaku hubungan menarik antara akar-akar tersebut dengan koefisien-koefisiennya:</p>
+                <ul>
+                    <li><strong>Jumlah Akar-akar:</strong></li>
+                    <div class="formula">
+                        x₁ + x₂ = <span class="formula">\frac{-b}{a}</span>
+                    </div>
+                    <li><strong>Hasil Kali Akar-akar:</strong></li>
+                    <div class="formula">
+                        x₁ * x₂ = <span class="formula">\frac{c}{a}</span>
+                    </div>
+                </ul>
+                <p class="explanation">Hubungan ini sangat berguna untuk mengecek kebenaran solusi atau untuk membentuk persamaan kuadrat baru jika akar-akarnya diketahui.</p>
+                <div class="example">
+                    <div class="example-title">Penerapan Hubungan Akar</div>
+                    <p class="explanation">Untuk persamaan <span class="formula">2x² + 7x + 3 = 0</span>, kita tahu akarnya adalah <span class="formula">x₁ = -1/2</span> dan <span class="formula">x₂ = -3</span>. Mari kita cek:</p>
+                    <p class="explanation">Jumlah Akar: <span class="formula">x₁ + x₂ = -\frac{1}{2} + (-3) = -\frac{1}{2} - \frac{6}{2} = -\frac{7}{2}</span>. Sesuai dengan <span class="formula">\frac{-b}{a} = \frac{-7}{2}</span>.</p>
+                    <p class="explanation">Hasil Kali Akar: <span class="formula">x₁ * x₂ = (-\frac{1}{2}) * (-3) = \frac{3}{2}</span>. Sesuai dengan <span class="formula">\frac{c}{a} = \frac{3}{2}</span>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Aplikasi Persamaan Kuadrat dalam Kehidupan Nyata</div>
+            <div class="content-block">
+                <p class="explanation">Persamaan kuadrat sering muncul dalam masalah-masalah dunia nyata, seperti:</p>
+                <ul>
+                    <li>Menghitung lintasan proyektil (misalnya bola yang dilempar).</li>
+                    <li>Menentukan luas atau dimensi suatu objek jika diketahui hubungan antar sisinya.</li>
+                    <li>Optimasi dalam berbagai bidang seperti bisnis dan teknik.</li>
+                    <li>Analisis sirkuit listrik.</li>
+                </ul>
+                <div class="example">
+                    <div class="example-title">Contoh Soal Cerita</div>
+                    <p class="explanation">Sebuah taman kota berbentuk persegi panjang memiliki keliling 90 m dan luas 450 m². Berapa panjang dan lebar taman tersebut?</p>
+                    <p class="explanation">Misalkan panjang = <span class="keywords">p</span> meter, dan lebar = <span class="keywords">l</span> meter.</p>
+                    <p class="explanation">Dari keliling: <span class="formula">2(p + l) = 90</span> → <span class="formula">p + l = 45</span> → <span class="formula">l = 45 - p</span>.</p>
+                    <p class="explanation">Dari luas: <span class="formula">p * l = 450</span>.</p>
+                    <p class="explanation">Substitusikan <span class="formula">l</span> ke dalam persamaan luas:</p>
+                    <div class="formula">
+                        p(45 - p) = 450
+                    </div>
+                    <p class="explanation">Bentuk ini menjadi persamaan kuadrat:</p>
+                    <div class="formula">
+                        45p - p² = 450
+                    </div>
+                    <div class="formula">
+                        p² - 45p + 450 = 0
+                    </div>
+                    <p class="explanation">Dengan memfaktorkan (mencari dua bilangan yang dikalikan 450 dan dijumlah -45, yaitu -15 dan -30), kita dapatkan:</p>
+                    <div class="formula">
+                        (p - 15)(p - 30) = 0
+                    </div>
+                    <p class="explanation">Sehingga, <span class="formula">p = 15</span> atau <span class="formula">p = 30</span>.</p>
+                    <p class="explanation">Jika panjang <span class="formula">p = 15</span> m, maka lebar <span class="formula">l = 45 - 15 = 30</span> m.</p>
+                    <p class="explanation">Jika panjang <span class="formula">p = 30</span> m, maka lebar <span class="formula">l = 45 - 30 = 15</span> m.</p>
+                    <p class="explanation">Jadi, dimensi taman tersebut adalah 30 meter dan 15 meter.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

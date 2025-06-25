@@ -1,0 +1,353 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 5: Gelombang Elektromagnetik - Pemanfaatan</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        .section {
+            background-color: #F9F9F9;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-blue);
+        }
+        .section h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            color: var(--text-secondary);
+            font-size: 1.6em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .section p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        .subsection {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--text-tertiary);
+        }
+        .subsection h4 {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+        .benefit {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+        .danger {
+            color: var(--semantic-error);
+            font-weight: bold;
+        }
+        .spectrum-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .spectrum-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .spectrum-item .icon {
+            font-size: 1.8em;
+            margin-right: 15px;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+        .spectrum-item .content {
+            flex-grow: 1;
+        }
+        .spectrum-item .content h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+        }
+        .spectrum-item .content p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--text-tertiary);
+        }
+        .wave-animation {
+            position: relative;
+            display: inline-block;
+            animation: wave 2s infinite ease-in-out;
+        }
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 0.9em;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            .section {
+                padding: 20px;
+            }
+            .section h2 {
+                font-size: 1.8em;
+            }
+            .section h3 {
+                font-size: 1.4em;
+            }
+            .spectrum-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .spectrum-item .icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bab 5: Gelombang Elektromagnetik</h1>
+        <p>Menjelajahi Spektrum dan Pemanfaatannya dalam Kehidupan</p>
+    </header>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>D. Pemanfaatan Gelombang Elektromagnetik</h2>
+            <p>Gelombang Elektromagnetik (GEM) adalah gelombang yang dapat merambat meskipun tidak ada medium. GEM terbentuk dari getaran medan listrik dan medan magnet yang saling tegak lurus dan merambat tegak lurus terhadap keduanya. Kemampuan ini menjadikan GEM sangat serbaguna dan memiliki banyak aplikasi dalam kehidupan sehari-hari, mulai dari komunikasi hingga medis dan industri.</p>
+
+            <div class="subsection">
+                <h3>1. Sinar Gamma dan Sinar X</h3>
+                <p>Kedua jenis sinar ini memiliki energi yang sangat tinggi dalam spektrum elektromagnetik. Sifat energi tinggi ini membawa manfaat sekaligus potensi bahaya.</p>
+                
+                <div class="subsection">
+                    <h4>Sinar Gamma</h4>
+                    <p><strong>Manfaat Utama:</strong></p>
+                    <ul>
+                        <li><span class="benefit">Sterilisasi:</span> Tingkat energinya yang tinggi memungkinkannya membunuh mikroorganisme, sehingga digunakan untuk sterilisasi alat medis, peralatan bedah, dan bahkan beberapa produk makanan.</li>
+                        <li><span class="benefit">Pengobatan Kanker (Radioterapi):</span> Sinar gamma mampu mengionisasi sel, yang berarti dapat merusak DNA sel. Dalam dosis terkontrol, ini dimanfaatkan untuk membunuh sel-sel kanker yang membelah dengan cepat, sementara sel sehat memiliki mekanisme perbaikan yang lebih baik.</li>
+                        <li><span class="benefit">Kedokteran Nuklir:</span> Digunakan dalam pencitraan medis untuk mendiagnosis berbagai penyakit.</li>
+                    </ul>
+                    <p><strong>Potensi Bahaya:</strong> Paparan berlebihan tanpa perlindungan dapat merusak sel sehat dan jaringan tubuh.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>Sinar X</h4>
+                    <p><strong>Manfaat Utama:</strong></p>
+                    <ul>
+                        <li><span class="benefit">Pencitraan Medis (Rontgen):</span> Kemampuan sinar X untuk menembus jaringan tubuh, namun diserap berbeda oleh material dengan kepadatan berbeda (misalnya tulang menyerap lebih banyak daripada jaringan lunak), memungkinkan visualisasi struktur internal tubuh. Ini sangat krusial untuk mendiagnosis patah tulang, infeksi, dan kelainan lainnya.</li>
+                        <li><span class="benefit">Kedokteran Gigi:</span> Digunakan untuk mendeteksi karies dan masalah gigi lainnya.</li>
+                        <li><span class="benefit">Industri:</span> Digunakan untuk memeriksa cacat pada material, seperti retakan pada las atau komponen mesin.</li>
+                    </ul>
+                    <p><strong>Potensi Bahaya:</strong> Sinar X juga bersifat mengionisasi. Paparan yang berlebihan dapat menyebabkan kerusakan sel dan meningkatkan risiko kanker.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>2. Sinar Ultraviolet (UV)</h3>
+                <p>Sinar ultraviolet memiliki panjang gelombang antara 40-400 nm. Sumber utamanya adalah matahari, namun juga dihasilkan oleh lampu khusus.</p>
+                
+                <div class="subsection">
+                    <h4>Manfaat Sinar UV</h4>
+                    <ul>
+                        <li><span class="benefit">Pembentukan Vitamin D:</span> Sinar UV-A (320-400 nm) yang diserap kulit membantu tubuh memproduksi Vitamin D, yang penting untuk kesehatan tulang dan sistem kekebalan tubuh.</li>
+                        <li><span class="benefit">Terapi Medis:</span> Digunakan untuk mengobati penyakit kulit seperti psoriasis dan eksim.</li>
+                        <li><span class="benefit">Sterilisasi:</span> Sinar UV memiliki kemampuan membunuh mikroorganisme, sehingga digunakan untuk mensterilkan air minum, udara, dan permukaan medis.</li>
+                        <li><span class="benefit">Industri:</span> Digunakan dalam curing tinta dan perekat, analisis forensik, dan pengujian material.</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h4>Bahaya Sinar UV</h4>
+                    <ul>
+                        <li><span class="danger">Kerusakan Kulit:</span> Paparan berlebihan dapat menyebabkan kulit terbakar (sunburn), penuaan dini, dan meningkatkan risiko kanker kulit.</li>
+                        <li><span class="danger">Kerusakan Mata:</span> Dapat menyebabkan katarak dan masalah mata lainnya.</li>
+                        <li><span class="danger">Kerusakan Molekuler:</span> Sinar UV-B (280-320 nm) dapat merusak DNA sel pada tingkat molekuler.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>3. Cahaya Tampak</h3>
+                <p>Spektrum cahaya tampak adalah bagian dari gelombang elektromagnetik yang dapat dilihat oleh mata manusia. Selain fungsi utamanya untuk penglihatan, cahaya tampak memiliki aplikasi khusus.</p>
+                
+                <div class="subsection">
+                    <h4>Sinar Laser</h4>
+                    <p>Laser (Light Amplification by Stimulated Emission of Radiation) menghasilkan cahaya yang sangat terfokus, koheren, dan monokromatik.</p>
+                    <ul>
+                        <li><span class="benefit">Kedokteran:</span> Digunakan untuk operasi mata (LASIK) guna mengoreksi kelainan refraksi, menghilangkan tato dan bekas jerawat, serta menghancurkan batu ginjal, empedu, atau tumor.</li>
+                        <li><span class="benefit">Industri:</span> Digunakan untuk pemotongan dan pengelasan presisi, pengukuran jarak, dan komunikasi data.</li>
+                        <li><span class="benefit">Kecantikan:</span> Meratakan kulit dan menghilangkan bulu yang tidak diinginkan.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>4. Inframerah</h3>
+                <p>Inframerah memiliki panjang gelombang lebih panjang dari cahaya tampak. Dikenal sebagai panas.</p>
+                
+                <div class="subsection">
+                    <h4>Pemanfaatan</h4>
+                    <ul>
+                        <li><span class="benefit">Remote Control:</span> Digunakan pada perangkat elektronik seperti TV, AC, untuk mengirimkan sinyal kontrol.</li>
+                        <li><span class="benefit">Termometer Inframerah:</span> Mengukur suhu tanpa kontak fisik dengan mendeteksi radiasi panas yang dipancarkan oleh objek atau tubuh. Sangat berguna di masa pandemi untuk pemeriksaan suhu.</li>
+                        <li><span class="benefit">Pencitraan Termal:</span> Digunakan dalam bidang keamanan, pemadam kebakaran, dan survei bangunan untuk mendeteksi perbedaan suhu.</li>
+                        <li><span class="benefit">Komunikasi:</span> Digunakan dalam serat optik untuk transmisi data berkecepatan tinggi.</li>
+                        <li><span class="benefit">Pemanasan:</span> Pemanas inframerah digunakan dalam industri dan rumah tangga.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>5. Gelombang Mikro</h3>
+                <p>Gelombang mikro memiliki frekuensi lebih rendah dari inframerah dan digunakan secara luas dalam telekomunikasi dan teknologi.</p>
+                
+                <div class="subsection">
+                    <h4>a. Telepon Seluler</h4>
+                    <p>Ponsel menggunakan gelombang mikro untuk berkomunikasi dengan menara Base Station (BTS). BTS kemudian meneruskan sinyal melalui jaringan yang dikelola oleh Mobile Switching Centre (MSC) hingga mencapai penerima. Sistem seluler membagi area layanan menjadi sel-sel kecil, masing-masing dengan BTS.</p>
+                </div>
+                
+                <div class="subsection">
+                    <h4>b. Radar (Radio Detection and Ranging)</h4>
+                    <p>Radar menggunakan pulsa gelombang mikro untuk mendeteksi objek dan mengukur jarak, kecepatan, serta arahnya. Aplikasi meliputi:</p>
+                    <ul>
+                        <li><span class="benefit">Penerbangan dan Kelautan:</span> Navigasi, deteksi pesawat dan kapal.</li>
+                        <li><span class="benefit">Meteorologi:</span> Memantau pola cuaca dan badai.</li>
+                        <li><span class="benefit">Militer:</span> Deteksi musuh dan pengintaian.</li>
+                        <li><span class="benefit">Otomotif:</span> Sistem bantuan pengemudi seperti cruise control adaptif.</li>
+                    </ul>
+                    <p><strong>Prinsip Kerja Radar:</strong> Sinyal gelombang mikro dipancarkan, memantul dari objek, dan diterima kembali. Dengan mengukur waktu tempuh sinyal dan kecepatan rambat gelombang mikro (sekitar $3 \times 10^8$ m/s), jarak objek dapat dihitung menggunakan rumus $S = \frac{1}{2} v \times t$, di mana $t$ adalah total waktu pulsa dikirim dan diterima.</p>
+                </div>
+
+                <div class="subsection">
+                    <h4>c. Microwave Oven</h4>
+                    <p>Gelombang mikro pada frekuensi tertentu (sekitar 2.45 GHz) berinteraksi dengan molekul air dalam makanan, menyebabkannya bergetar sangat cepat dan menghasilkan panas, sehingga memasak makanan.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>6. Gelombang Radio</h3>
+                <p>Gelombang radio memiliki frekuensi terendah dan panjang gelombang terpanjang dalam spektrum elektromagnetik. Digunakan terutama untuk komunikasi.</p>
+                
+                <div class="subsection">
+                    <h4>Aplikasi</h4>
+                    <ul>
+                        <li><span class="benefit">Komunikasi:</span> Penyiaran radio AM/FM, televisi, komunikasi seluler (bersama gelombang mikro), Wi-Fi, Bluetooth.</li>
+                        <li><span class="benefit">Teleskop Radio:</span> Mengamati objek-objek astronomi yang memancarkan gelombang radio, seperti bintang dan galaksi. Teleskop radio dapat "melihat" melalui awan gas dan debu kosmik yang menghalangi cahaya tampak, memberikan informasi tentang struktur dan dinamika alam semesta.</li>
+                        <li><span class="benefit">Peralatan Medis:</span> Digunakan dalam MRI (Magnetic Resonance Imaging) untuk menghasilkan citra detail organ dalam tubuh.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Peran Atmosfer Bumi</h3>
+                <p>Penting untuk dicatat bahwa sebagian besar gelombang elektromagnetik dari luar angkasa (terutama UV, X-ray, dan Gamma) diserap oleh atmosfer Bumi. Teleskop luar angkasa seperti Teleskop Hubble dapat mengamati spektrum yang lebih luas dari gelombang elektromagnetik (UV, cahaya tampak, dan inframerah) karena mereka beroperasi di luar lapisan atmosfer.</p>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>Aktivitas 5.5: Literasi - Pemanasan Global</h2>
+            <p>Radiasi elektromagnetik dari Matahari adalah sumber energi utama bagi Bumi. Sekitar 7-8% adalah ultraviolet, 43% cahaya tampak, dan 49-50% inframerah.</p>
+            
+            <p><strong>Efek Rumah Kaca:</strong></p>
+            <p>1. Radiasi matahari sebagian besar diteruskan oleh atmosfer dan memanaskan permukaan Bumi.</p>
+            <p>2. Bumi kemudian memancarkan kembali energi dalam bentuk radiasi inframerah.</p>
+            <p>3. Gas-gas rumah kaca di atmosfer (seperti CO2, H2O, CH4) menyerap sebagian radiasi inframerah ini dan memantulkannya kembali ke permukaan Bumi.</p>
+            <p>4. Proses ini menjaga Bumi tetap hangat. Namun, jika konsentrasi gas rumah kaca meningkat, lebih banyak panas terperangkap, menyebabkan peningkatan suhu global (pemanasan global).</p>
+
+            <p><strong>Dampak Pemanasan Global:</strong></p>
+            <ul>
+                <li>Perubahan pola hujan dan peningkatan frekuensi badai.</li>
+                <li>Kenaikan permukaan air laut akibat pencairan es kutub.</li>
+                <li>Kebakaran hutan yang lebih sering terjadi.</li>
+                <li>Kekeringan dan berbagai penyakit akibat cuaca panas.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Materi ini disajikan untuk membantu pemahaman mendalam tentang berbagai pemanfaatan gelombang elektromagnetik dalam sains dan kehidupan sehari-hari.</p>
+    </footer>
+
+</body>
+</html>
+```

@@ -1,0 +1,749 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Bilangan Berpangkat | Matematika Kelas 9</title>
+    <style>
+        /* Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .concept-explanation {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+        }
+
+        .definition {
+            background-color: var(--background-canvas);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 15px;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        .definition strong {
+            color: var(--primary-blue);
+        }
+
+        .example {
+            background-color: #e3f2fd; /* Light blue background */
+            border: 1px dashed var(--primary-blue);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 25px;
+        }
+
+        .example h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .example code {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            background-color: #f1f8e9; /* Very light green */
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+
+        .example p {
+            color: var(--text-secondary);
+        }
+
+        .example .math-expression {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--text-primary);
+            display: block; /* Ensure it's on a new line */
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .key-term {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .notation {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+
+        .general-form {
+            background-color: #fff9c4; /* Light yellow */
+            border: 1px solid var(--secondary-accent-amber);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .general-form h3 {
+            color: var(--secondary-accent-amber);
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .general-form .math-expression {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--text-primary);
+            display: block;
+            margin-top: 10px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Interactive Elements */
+        .accordion {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .accordion-header:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5em;
+        }
+
+        .active .accordion-header::after {
+            content: '-';
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--background-canvas);
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease-out;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .accordion-content p {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .accordion-content.open {
+            max-height: 500px; /* Adjust as needed */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .example .math-expression,
+            .general-form .math-expression {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            .concept-explanation {
+                font-size: 1em;
+                padding: 15px;
+            }
+
+            .accordion-header {
+                padding: 10px;
+            }
+        }
+
+        /* Specific Content Styling */
+        .content-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .content-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .math-highlight {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .operator-highlight {
+            font-weight: bold;
+            color: var(--semantic-error);
+        }
+
+        .index-highlight {
+            font-style: italic;
+            color: var(--accent-green);
+        }
+
+        .subscript {
+            vertical-align: sub;
+            font-size: 0.7em;
+        }
+
+        .superscript {
+            vertical-align: super;
+            font-size: 0.7em;
+        }
+
+        .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .fraction span {
+            display: block;
+            padding: 0 0.3em;
+        }
+
+        .fraction .numerator {
+            border-bottom: 1px solid var(--text-primary);
+        }
+
+        .fraction .denominator {
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab I: Perpangkatan dan Bentuk Akar</h1>
+        <h2>1.1 Bilangan Berpangkat</h2>
+
+        <div class="concept-explanation">
+            Memahami dan menyederhanakan penulisan bilangan yang berulang.
+        </div>
+
+        <div class="content-section">
+            <h3>Pertanyaan Penting</h3>
+            <p>Bagaimana kamu dapat menggunakan bentuk pangkat untuk menyederhanakan penulisan sebuah bilangan?</p>
+        </div>
+
+        <div class="content-section">
+            <h3>Kegiatan 1: Memahami Konsep Bilangan Berpangkat</h3>
+            <p>Konsep bilangan berpangkat dapat diperkenalkan melalui aktivitas sederhana seperti melipat dan menggunting kertas. Bayangkan sebuah kertas yang dilipat menjadi dua, lalu digunting. Hasilnya adalah dua bagian. Jika dilipat lagi dan digunting, jumlahnya akan berlipat ganda.</p>
+
+            <div class="example">
+                <h3>Contoh Aktivitas Kertas</h3>
+                <p>Misalkan kita mulai dengan 1 lembar kertas.</p>
+                <ul>
+                    <li>Setelah dilipat dan digunting pertama kali (pengguntingan ke-1), kita mendapatkan <span class="math-highlight">2</span> lembar kertas.</li>
+                    <li>Jika kita tumpuk lagi kedua lembar tersebut, lipat, dan gunting (pengguntingan ke-2), kita akan mendapatkan <span class="math-highlight">2 x 2 = 4</span> lembar kertas.</li>
+                    <li>Jika proses ini diulang (pengguntingan ke-3), kita akan memiliki <span class="math-highlight">2 x 2 x 2 = 8</span> lembar kertas.</li>
+                </ul>
+                <p class="math-expression">2 <span class="superscript">3</span> = 8</p>
+            </div>
+
+            <p>Perkalian berulang dari suatu bilangan dapat dituliskan secara ringkas menggunakan notasi pangkat.</p>
+
+            <div class="definition">
+                <strong>Perpangkatan</strong> adalah perkalian berulang dari suatu bilangan yang sama.
+                Bilangan yang dikalikan berulang disebut <strong>bilangan pokok</strong> atau <strong>basis</strong>.
+                Banyaknya bilangan pokok yang dikalikan secara berulang disebut <strong>pangkat</strong> atau <strong>eksponen</strong>.
+            </div>
+
+            <div class="general-form">
+                <h3>Bentuk Umum Perpangkatan</h3>
+                <p>Secara umum, perpangkatan dapat dituliskan sebagai:</p>
+                <p class="math-expression">
+                    <span class="notation">a<sup>n</sup></span> = <span class="math-highlight">a</span> × <span class="math-highlight">a</span> × <span class="math-highlight">a</span> × ... × <span class="math-highlight">a</span>
+                    <span style="font-size: 0.8em;">sebanyak n kali</span>
+                </p>
+                <p>Di sini:</p>
+                <ul>
+                    <li><span class="notation">a</span> disebut <strong>basis</strong> atau bilangan pokok.</li>
+                    <li><span class="notation">n</span> disebut <strong>eksponen</strong> atau pangkat, di mana <span class="math-highlight">n</span> adalah bilangan bulat positif.</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <h3>Contoh Lain</h3>
+                <ul>
+                    <li><span class="notation">3</span><span class="superscript">5</span> = <span class="math-highlight">3</span> × <span class="math-highlight">3</span> × <span class="math-highlight">3</span> × <span class="math-highlight">3</span> × <span class="math-highlight">3</span>. Di sini, basisnya adalah 3 dan pangkatnya adalah 5.</li>
+                    <li><span class="notation">(−2)</span><span class="superscript">4</span> = <span class="math-highlight">(−2)</span> × <span class="math-highlight">(−2)</span> × <span class="math-highlight">(−2)</span> × <span class="math-highlight">(−2)</span>. Di sini, basisnya adalah -2 dan pangkatnya adalah 4.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>Kegiatan 2: Menggunakan Notasi Pangkat</h3>
+            <p>Setelah memahami konsep dasar perpangkatan, kita akan belajar menyatakan perpangkatan dalam bentuk perkalian berulang dan sebaliknya, serta menghitung nilainya.</p>
+
+            <div class="example">
+                <h3>Mengamati Tabel Perpangkatan</h3>
+                <p>Perhatikan tabel berikut:</p>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid var(--border-divider); padding: 8px; background-color: var(--background-canvas);">Perpangkatan</th>
+                            <th style="border: 1px solid var(--border-divider); padding: 8px; background-color: var(--background-canvas);">Bentuk Perkalian</th>
+                            <th style="border: 1px solid var(--border-divider); padding: 8px; background-color: var(--background-canvas);">Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">5<sup>2</sup></td>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">5 × 5</td>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">25</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">5<sup>3</sup></td>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">5 × 5 × 5</td>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">125</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">5<sup>4</sup></td>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">5 × 5 × 5 × 5</td>
+                            <td style="border: 1px solid var(--border-divider); padding: 8px;">625</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 15px;">Dalam notasi <span class="notation">5</span><span class="superscript">3</span>, angka 5 adalah <span class="key-term">basis</span> (bilangan pokok) dan angka 3 adalah <span class="key-term">eksponen</span> (pangkat).</p>
+            </div>
+
+            <div class="example">
+                <h3>Menuliskan Perpangkatan</h3>
+                <p>Nyatakan perkalian berulang berikut dalam bentuk perpangkatan:</p>
+                <ol>
+                    <li>
+                        <p><code>(-2) × (-2) × (-2)</code></p>
+                        <p>Bilangan <span class="math-highlight">-2</span> dikalikan berulang sebanyak 3 kali. Ini dapat ditulis sebagai perpangkatan dengan basis <span class="math-highlight">-2</span> dan pangkat <span class="math-highlight">3</span>.</p>
+                        <p class="math-expression"><span class="notation">(-2)</span><span class="superscript">3</span></p>
+                    </li>
+                    <li>
+                        <p><code>y × y × y × y × y × y</code></p>
+                        <p>Bilangan <span class="math-highlight">y</span> dikalikan berulang sebanyak 6 kali. Ini dapat ditulis sebagai perpangkatan dengan basis <span class="math-highlight">y</span> dan pangkat <span class="math-highlight">6</span>.</p>
+                        <p class="math-expression"><span class="notation">y</span><span class="superscript">6</span></p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="example">
+                <h3>Menghitung Nilai Perpangkatan</h3>
+                <p>Menghitung nilai perpangkatan berarti melakukan perkalian berulang sesuai dengan basis dan pangkatnya.</p>
+                <ol>
+                    <li>
+                        <p><code>(-0,3)²</code></p>
+                        <p>Bentuk perkalian berulang: <span class="math-expression">(-0,3) × (-0,3)</span></p>
+                        <p>Nilai: <span class="math-expression">0,09</span></p>
+                        <p><code>(0,3)²</code></p>
+                        <p>Bentuk perkalian berulang: <span class="math-expression">(0,3) × (0,3)</span></p>
+                        <p>Nilai: <span class="math-expression">0,09</span></p>
+                        <p><em>Perhatikan: Bilangan negatif berpangkat genap hasilnya positif.</em></p>
+                    </li>
+                    <li>
+                        <p><code>(-0,3)³</code></p>
+                        <p>Bentuk perkalian berulang: <span class="math-expression">(-0,3) × (-0,3) × (-0,3)</span></p>
+                        <p>Nilai: <span class="math-expression">-0,027</span></p>
+                        <p><code>(0,3)³</code></p>
+                        <p>Bentuk perkalian berulang: <span class="math-expression">(0,3) × (0,3) × (0,3)</span></p>
+                        <p>Nilai: <span class="math-expression">0,027</span></p>
+                        <p><em>Perhatikan: Bilangan negatif berpangkat ganjil hasilnya negatif.</em></p>
+                    </li>
+                    <li>
+                        <p><code>(-2)³</code></p>
+                        <p>Bentuk perkalian berulang: <span class="math-expression">(-2) × (-2) × (-2)</span></p>
+                        <p>Nilai: <span class="math-expression">-8</span></p>
+                        <p><code>(-2)⁴</code></p>
+                        <p>Bentuk perkalian berulang: <span class="math-expression">(-2) × (-2) × (-2) × (-2)</span></p>
+                        <p>Nilai: <span class="math-expression">16</span></p>
+                    </li>
+                </ol>
+                <p><strong>Poin Penting:</strong></p>
+                <ul>
+                    <li>Basis positif dengan pangkat berapapun akan selalu menghasilkan nilai positif.</li>
+                    <li>Basis negatif:
+                        <ul>
+                            <li>Jika pangkatnya <span class="key-term">genap</span>, hasilnya <span class="key-term">positif</span>.</li>
+                            <li>Jika pangkatnya <span class="key-term">ganjil</span>, hasilnya <span class="key-term">negatif</span>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>Materi Esensi 1.1: Bilangan Berpangkat</h3>
+            <p>Perpangkatan adalah cara ringkas untuk menuliskan perkalian berulang dari bilangan yang sama. Jika sebuah bilangan <span class="math-highlight">a</span> dikalikan dengan dirinya sendiri sebanyak <span class="math-highlight">n</span> kali, ini dapat ditulis sebagai <span class="notation">a</span><span class="superscript">n</span>.</p>
+
+            <div class="general-form">
+                <h3>Bentuk Umum Perpangkatan</h3>
+                <p class="math-expression">
+                    <span class="notation">a<sup>n</sup></span> = <span class="math-highlight">a</span> × <span class="math-highlight">a</span> × <span class="math-highlight">a</span> × ... × <span class="math-highlight">a</span> <span style="font-size: 0.8em;">(sebanyak n kali)</span>
+                </p>
+                <p>Di mana:</p>
+                <ul>
+                    <li><span class="notation">a</span> adalah <span class="key-term">basis</span> (bilangan pokok).</li>
+                    <li><span class="notation">n</span> adalah <span class="key-term">eksponen</span> (pangkat), yang merupakan bilangan bulat positif.</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <h3>Contoh Perpangkatan</h3>
+                <p>Perpangkatan <span class="notation">3</span><span class="superscript">5</span> berarti:</p>
+                <p class="math-expression">3 × 3 × 3 × 3 × 3 = 3<span class="superscript">5</span></p>
+                <p>Di sini, 3 adalah <span class="key-term">basis</span> dan 5 adalah <span class="key-term">eksponen</span>.</p>
+            </div>
+
+            <div class="example">
+                <h3>Contoh 1: Menuliskan Perpangkatan</h3>
+                <p>Nyatakan perkalian berikut dalam bentuk perpangkatan:</p>
+                <p><code>(-2) × (-2) × (-2)</code></p>
+                <p>Karena <span class="math-highlight">-2</span> dikalikan berulang sebanyak tiga kali, maka ini adalah perpangkatan dengan basis <span class="math-highlight">-2</span> dan pangkat <span class="math-highlight">3</span>.</p>
+                <p class="math-expression">Jadi, <span class="notation">(-2) × (-2) × (-2) = (-2)³</span></p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>Contoh 2: Menghitung Nilai Perpangkatan</h3>
+            <p>Menentukan nilai dari perpangkatan berarti melakukan perkalian berulang.</p>
+            <ol>
+                <li>
+                    <p>Menyatakan <span class="notation">(-0,3)²</span> dan <span class="notation">(0,3)²</span> dalam bentuk bilangan biasa:</p>
+                    <ul>
+                        <li><span class="notation">(-0,3)²</span> = <span class="notation">(-0,3) × (-0,3)</span> = <span class="math-expression">0,09</span></li>
+                        <li><span class="notation">(0,3)²</span> = <span class="notation">(0,3) × (0,3)</span> = <span class="math-expression">0,09</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Menyatakan <span class="notation">(-0,3)³</span> dan <span class="notation">(0,3)³</span> dalam bentuk bilangan biasa:</p>
+                    <ul>
+                        <li><span class="notation">(-0,3)³</span> = <span class="notation">(-0,3) × (-0,3) × (-0,3)</span> = <span class="math-expression">-0,027</span></li>
+                        <li><span class="notation">(0,3)³</span> = <span class="notation">(0,3) × (0,3) × (0,3)</span> = <span class="math-expression">0,027</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Menyatakan <span class="notation">(-2)³</span> dan <span class="notation">(-2)⁴</span> dalam bentuk bilangan biasa:</p>
+                    <ul>
+                        <li><span class="notation">(-2)³</span> = <span class="notation">(-2) × (-2) × (-2)</span> = <span class="math-expression">-8</span></li>
+                        <li><span class="notation">(-2)⁴</span> = <span class="notation">(-2) × (-2) × (-2) × (-2)</span> = <span class="math-expression">16</span></li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Observasi Penting:</strong></p>
+            <ol>
+                <li><strong>Basis Positif vs Negatif:</strong> Perpangkatan dengan basis positif selalu positif. Perpangkatan dengan basis negatif bergantung pada pangkatnya.</li>
+                <li><strong>Pangkat Ganjil vs Genap:</strong>
+                    <ul>
+                        <li>Basis negatif dengan pangkat <span class="key-term">ganjil</span> menghasilkan nilai <span class="key-term">negatif</span>.</li>
+                        <li>Basis negatif dengan pangkat <span class="key-term">genap</span> menghasilkan nilai <span class="key-term">positif</span>.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="content-section">
+            <h3>Contoh 3: Operasi yang Melibatkan Perpangkatan</h3>
+            <p>Dalam menyelesaikan operasi hitung yang melibatkan perpangkatan, kita perlu mengikuti urutan operasi (aturan BODMAS/PEMDAS): kurung, pangkat, perkalian/pembagian (dari kiri ke kanan), penjumlahan/pengurangan (dari kiri ke kanan).</p>
+            <ol>
+                <li>
+                    <p><code>3 + 2 × 5²</code></p>
+                    <ul>
+                        <li>Hitung perpangkatan terlebih dahulu: <span class="math-expression">5² = 25</span></li>
+                        <li>Persamaan menjadi: <span class="math-expression">3 + 2 × 25</span></li>
+                        <li>Lakukan perkalian: <span class="math-expression">2 × 25 = 50</span></li>
+                        <li>Persamaan menjadi: <span class="math-expression">3 + 50</span></li>
+                        <li>Lakukan penjumlahan: <span class="math-expression">3 + 50 = 53</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <p><code>4³ : 8 + 3²</code></p>
+                    <ul>
+                        <li>Hitung perpangkatan: <span class="math-expression">4³ = 64</span> dan <span class="math-expression">3² = 9</span></li>
+                        <li>Persamaan menjadi: <span class="math-expression">64 : 8 + 9</span></li>
+                        <li>Lakukan pembagian terlebih dahulu: <span class="math-expression">64 : 8 = 8</span></li>
+                        <li>Persamaan menjadi: <span class="math-expression">8 + 9</span></li>
+                        <li>Lakukan penjumlahan: <span class="math-expression">8 + 9 = 17</span></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="content-section">
+            <h3>Ayo Kita Tinjau Ulang</h3>
+            <p>Mari kita praktikkan pemahaman kita:</p>
+            <div class="accordion">
+                <div class="accordion-header">Tuliskan ke dalam bentuk perpangkatan</div>
+                <div class="accordion-content">
+                    <p>a. <span class="notation">( - 2/3 )</span><span class="superscript">1</span> × <span class="notation">( - 2/3 )</span><span class="superscript">2</span> × <span class="notation">( - 2/3 )</span><span class="superscript">3</span> × <span class="notation">( - 2/3 )</span><span class="superscript">4</span></p>
+                    <p>b. <span class="notation">t × t × t × t × t</span></p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">Tentukan hasil dari</div>
+                <div class="accordion-content">
+                    <p>a. <span class="notation">9 : 3 × 4³</span></p>
+                    <p>b. <span class="fraction"><span class="numerator"><span class="math-highlight">1</span></span><span class="denominator"><span class="math-highlight">8</span></span></span> × <span class="notation">4² + 1/2</span></p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">Tentukan nilai dari</div>
+                <div class="accordion-content">
+                    <p>a. <span class="notation">pⁿ + (-p)ⁿ</span> untuk <span class="math-highlight">p</span> bilangan bulat dan <span class="math-highlight">n</span> bilangan asli genap.</p>
+                    <p>b. <span class="notation">pⁿ + (-p)ⁿ</span> untuk <span class="math-highlight">p</span> bilangan bulat dan <span class="math-highlight">n</span> bilangan asli ganjil.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>Latihan 1.1</h3>
+            <p>Latihan ini dirancang untuk menguji pemahaman Anda tentang konsep dasar bilangan berpangkat, penulisan ulang, dan perhitungan.</p>
+
+            <div class="accordion">
+                <div class="accordion-header">1. Nyatakan perkalian berulang berikut dalam perpangkatan.</div>
+                <div class="accordion-content">
+                    <p>a. <span class="notation">(-2) × (-2) × (-2)</span></p>
+                    <p>b. <span class="notation">( - 1/5 )</span><span class="superscript">1</span> × <span class="notation">( - 1/5 )</span><span class="superscript">2</span> × <span class="notation">( - 1/5 )</span><span class="superscript">3</span> × <span class="notation">( - 1/5 )</span><span class="superscript">4</span> × <span class="notation">( - 1/5 )</span><span class="superscript">5</span></p>
+                    <p>c. <span class="notation">( - 2/3 )</span><span class="superscript">1</span> × <span class="notation">( - 2/3 )</span><span class="superscript">2</span> × <span class="notation">( - 2/3 )</span><span class="superscript">3</span> × <span class="notation">( - 2/3 )</span><span class="superscript">4</span> × <span class="notation">( - 2/3 )</span><span class="superscript">5</span></p>
+                    <p>d. <span class="notation">t × t × t × t × t × t</span></p>
+                    <p>e. <span class="notation">y × y × y × y × y × y × y × y × y × y × y</span></p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">2. Nyatakan perpangkatan berikut dalam bentuk perkalian berulang.</div>
+                <div class="accordion-content">
+                    <p>a. <span class="notation">3⁸</span></p>
+                    <p>b. <span class="notation">(0,83)⁴</span></p>
+                    <p>c. <span class="notation">t⁴</span></p>
+                    <p>d. <span class="notation">( - 1/4 )³</span></p>
+                    <p>e. <span class="notation">-(1/4)⁴</span></p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">3. Tentukan hasil dari perpangkatan berikut.</div>
+                <div class="accordion-content">
+                    <p>a. <span class="notation">2⁸</span></p>
+                    <p>b. <span class="notation">5⁴</span></p>
+                    <p>c. <span class="notation">(0,02)²</span></p>
+                    <p>d. <span class="notation">(1/3)³</span></p>
+                    <p>e. <span class="notation">-(1/4)⁴</span></p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">4. Nyatakan bilangan berikut dalam perpangkatan dengan basis 10.</div>
+                <div class="accordion-content">
+                    <p>a. 1.000</p>
+                    <p>b. 100.000</p>
+                    <p>c. 1.000.000</p>
+                    <p>d. 10.000.000</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">5. Nyatakan bilangan berikut dalam perpangkatan dengan basis 2.</div>
+                <div class="accordion-content">
+                    <p>a. 256</p>
+                    <p>b. 64</p>
+                    <p>c. 512</p>
+                    <p>d. 1.048.576</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">6. Tuliskan sebagai bentuk perpangkatan dengan basis 5.</div>
+                <div class="accordion-content">
+                    <p>a. 5</p>
+                    <p>b. 625</p>
+                    <p>c. 15.625</p>
+                    <p>d. 125</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">7. Tentukan hasil dari operasi berikut ini.</div>
+                <div class="accordion-content">
+                    <p>a. <span class="notation">5 + 3 × 2⁴</span></p>
+                    <p>b. <span class="notation">(1/2) × (6³ - 4²)</span></p>
+                    <p>c. <span class="notation">8 + 3 × (-3)⁴</span></p>
+                    <p>d. <span class="notation">(6⁴ - 4⁴) : 2</span></p>
+                    <p>e. <span class="notation">(1/4)² × (1/3)²</span></p>
+                    <p>f. <span class="notation">(1/4)⁴ : (3/5)³</span></p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">8. Temukan nilai x pada persamaan matematika di bawah ini.</div>
+                <div class="accordion-content">
+                    <p>a. <span class="notation">7ˣ = 343</span></p>
+                    <p>b. <span class="notation">2ˣ = 64</span></p>
+                    <p>c. <span class="notation">10ˣ = 10.000</span></p>
+                    <p>d. <span class="notation">5ˣ = 625</span></p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">9. Studi Kasus Virus</div>
+                <div class="accordion-content">
+                    <p>Seorang peneliti mengamati wabah virus yang berkembang dengan cara membelah diri menjadi 3 virus setiap setengah jam. Jika virus ini mulai menyebar, berapa jumlah virus dalam tubuh manusia setelah 6 jam?</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">10. Tantangan Amoeba S</div>
+                <div class="accordion-content">
+                    <p>Seekor amoeba S berkembang biak dengan membelah diri menjadi 2 setiap 15 menit.</p>
+                    <p>a. Jika dalam pengamatan awal terdapat 4 ekor amoeba S, berapa jumlah amoeba S setelah satu hari?</p>
+                    <p>b. Berapa jumlah amoeba S mula-mula agar dalam 1 jam terdapat minimal 1.000 amoeba S?</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionContent = header.nextElementSibling;
+                header.classList.toggle('active');
+                accordionContent.classList.toggle('open');
+
+                // Close other accordions if needed, or manage the max-height manually
+                if (accordionContent.classList.contains('open')) {
+                    // To ensure only one opens at a time, you might need to find siblings and close them
+                    // For now, just opening/closing the clicked one
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+```

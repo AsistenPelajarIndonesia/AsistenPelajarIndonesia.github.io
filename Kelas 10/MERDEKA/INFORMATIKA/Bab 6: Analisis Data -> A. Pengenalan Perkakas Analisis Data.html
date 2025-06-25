@@ -1,0 +1,576 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Analisis Data - Pengenalan Perkakas</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        .section-title {
+            font-size: 1.6em;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--primary-blue);
+            display: inline-block;
+        }
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-left: 5px solid var(--primary-blue);
+            overflow-x: auto;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+        .code-block span {
+            display: block;
+        }
+        .code-block .keyword {
+            color: #0000FF;
+            font-weight: bold;
+        }
+        .code-block .string {
+            color: #A31515;
+        }
+        .code-block .comment {
+            color: #008000;
+            font-style: italic;
+        }
+        .interactive-example {
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .interactive-example h4 {
+            margin-top: 0;
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .interactive-button {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .interactive-button:hover {
+            background-color: #1565C0; /* Darker blue */
+        }
+        .info-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .info-box strong {
+            color: white;
+        }
+        .example-image-placeholder {
+            background-color: #e0e0e0;
+            border: 1px dashed var(--text-tertiary);
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            color: var(--text-tertiary);
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .sub-section {
+            margin-left: 20px;
+            border-left: 3px solid var(--primary-blue);
+            padding-left: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .sub-section h3 {
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .code-block {
+                font-size: 0.8em;
+            }
+            .interactive-button {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .code-block {
+                font-size: 0.7em;
+                padding: 10px;
+            }
+            .interactive-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        <h1>Bab 6: Analisis Data</h1>
+        <h2>A. Pengenalan Perkakas Analisis Data</h2>
+
+        <p>
+            Dalam era digital saat ini, kemampuan untuk mengolah dan memahami data menjadi sangat krusial. Salah satu teknik yang sangat berguna untuk mengumpulkan data dari sumber online adalah <strong>web scraping</strong>. Bayangkan Anda sedang mencari lowongan pekerjaan, dan biasanya Anda melihat puluhan hingga ratusan lowongan yang tersebar di berbagai halaman. Dengan web scraping, Anda dapat meringkas informasi penting dari semua lowongan tersebut ke dalam satu tampilan yang mudah dipahami.
+        </p>
+        <p>
+            Untuk membangun sebuah program <em>scraper</em>, kita perlu memilih bahasa pemrograman yang tepat. Setiap bahasa pemrograman memiliki lingkungan pengembangan terintegrasi (IDE) yang mendukung. Dalam unit pembelajaran ini, kita akan fokus menggunakan <strong>bahasa pemrograman Python</strong>. Python dipilih karena popularitasnya dalam analisis data, didukung oleh banyaknya fungsi dan <em>library</em> (pustaka) yang mempermudah berbagai tahapan analisis data, termasuk web scraping.
+        </p>
+        <p>
+            Untuk menulis dan menjalankan program Python, kita memerlukan alat bantu berupa IDE. Salah satu pilihan yang sangat direkomendasikan dan mudah diakses adalah <strong>Google Collaboratory</strong> atau yang lebih dikenal sebagai <strong>Google Colab</strong>. Keunggulan Google Colab adalah kemampuannya diakses secara online, sehingga pengguna tidak perlu melakukan instalasi perangkat lunak tambahan. Selain itu, Google Colab sudah dilengkapi dengan berbagai fungsi dan pustaka Python yang siap pakai, sangat memudahkan kita untuk langsung belajar dan praktik.
+        </p>
+        <p>
+            Dalam bab ini, kita akan memulai dengan pengenalan <strong>Google Colab</strong> dan dasar-dasar <strong>Python</strong>. Setelah memahami kedua alat bantu ini, kita akan melanjutkan ke proyek praktis untuk melakukan <em>scraping</em> dari halaman <em>website</em> yang kita pilih. Hasil data yang diperoleh kemudian akan divisualisasikan dalam berbagai bentuk diagram dan <em>chart</em> untuk mempermudah interpretasi.
+        </p>
+
+        <div class="interactive-example">
+            <h3>Ayo Mulai: Mengenal Google Colab</h3>
+            <p>
+                Aktivitas ini dirancang untuk memperkenalkan Anda pada lingkungan analisis data, khususnya Google Colab.
+            </p>
+            <p>
+                <strong>Google Colab (Google Collaboratory)</strong> adalah sebuah lingkungan pengembangan aplikasi terintegrasi (IDE) yang disediakan oleh Google secara online. Karena sifatnya yang online, Anda tidak perlu repot melakukan instalasi pada komputer Anda. Cukup buka <em>browser</em> Anda, dan Anda siap untuk menulis serta menjalankan program Python. Google Colab juga dilengkapi dengan banyak fungsi dan pustaka yang sangat membantu dalam pengolahan data, termasuk untuk melakukan <em>web scraping</em>.
+            </p>
+
+            <h4>Langkah Awal Menggunakan Google Colab:</h4>
+            <ol>
+                <li>
+                    Buka Google Colaboratory melalui tautan: <a href="https://colab.research.google.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">https://colab.research.google.com/</a>.
+                    Jika diminta masuk (Sign-In), gunakan akun Google (Gmail) Anda.
+                </li>
+                <li>
+                    Buat sebuah <em>notebook</em> baru dengan memilih opsi <span class="highlight">NEW NOTEBOOK</span>.
+                    <div class="example-image-placeholder">
+                        Tampilan antarmuka Google Colab saat pertama kali dibuka.
+                        (Bayangkan di sini ada ilustrasi antarmuka Google Colab yang menunjukkan tombol "New Notebook")
+                    </div>
+                    <p>
+                        <strong>Notebook</strong> adalah sebutan untuk file kerja di Google Colab. Di sini Anda bisa membuat berbagai macam dokumen, mulai dari catatan teks hingga kode program Python.
+                    </p>
+                </li>
+            </ol>
+
+            <h4>Memahami Area Kerja Google Colab:</h4>
+            <p>
+                Google Colab memiliki beberapa bagian area kerja yang mirip dengan IDE lainnya. Mari kita kenali beberapa objek utamanya:
+            </p>
+            <ul>
+                <li><span class="highlight">Nama Notebook:</span> Ini adalah nama file kerja Anda, biasanya berekstensi `.ipynb`. Anda bisa menggantinya dengan mengklik nama tersebut.</li>
+                <li><span class="highlight">Star:</span> Tombol untuk menandai seberapa penting file notebook Anda.</li>
+                <li><span class="highlight">Header Kanan:</span> Berisi pilihan untuk memberikan komentar, opsi berbagi (<em>share</em>), pengaturan file (<em>setting</em>), dan pengaturan akun.</li>
+                <li><span class="highlight">Menubar:</span> Terdapat menu seperti File, Edit, View, dan lainnya untuk mengelola notebook Anda.</li>
+                <li><span class="highlight">Panel Kiri:</span> Berisi ikon-ikon menu navigasi seperti Daftar Isi, Pencarian, Penyisipan Kode, Pengelolaan File, dan Pemilihan Perintah.</li>
+                <li><span class="highlight">Toolbar Atas:</span> Berisi ikon-ikon penting untuk menambah kode atau teks, memilih koneksi, dan menutup menu.</li>
+                <li><span class="highlight">Konten Notebook:</span> Area utama tempat Anda menulis kode program Python atau teks penjelasan.</li>
+                <li><span class="highlight">Cell Toolbar:</span> Sekumpulan ikon yang muncul saat Anda mengarahkan kursor ke sebuah sel (area kode/teks). Berguna untuk mengatur posisi sel, menambahkan komentar, menggandakan, atau menghapus sel.</li>
+            </ul>
+
+            <div class="example-image-placeholder">
+                Tampilan area kerja Google Colab dengan elemen-elemennya.
+                (Bayangkan di sini ada ilustrasi area kerja Google Colab yang lebih detail, menunjukkan panel kiri, menubar, dan area konten.)
+            </div>
+
+            <h3>Memulai dengan Kode Python Sederhana:</h3>
+            <p>
+                Sekarang, mari kita coba menulis kode Python pertama kita di area Konten Notebook. Ketikkan baris kode berikut:
+            </p>
+            <div class="code-block">
+                <span class="keyword">print</span><span class="string">("Hello World")</span>
+            </div>
+            <p>
+                Untuk melihat hasil dari kode tersebut, tekan tombol "Run cell" (ikon bulat dengan segitiga di dalamnya) yang terletak di pojok kiri area Konten Notebook. Jika berhasil, teks "Hello World" akan muncul di bawah sel kode Anda. Ini menandakan bahwa Anda siap untuk mulai membuat program Python di Google Colab!
+            </p>
+            <div class="example-image-placeholder">
+                Tampilan hasil eksekusi kode "Hello World".
+                (Bayangkan di sini ada ilustrasi yang menunjukkan sel kode `print("Hello World")` dan di bawahnya muncul output `Hello World`.)
+            </div>
+        </div>
+
+        <div class="interactive-example">
+            <h2>2. Python: Bahasa Pemrograman untuk Analisis Data</h2>
+            <h3>Aktivitas AD-K10-02-P: Mengenal Python</h3>
+            <p>
+                Python adalah bahasa pemrograman yang sangat populer, terutama di bidang analisis data. Bahasa ini menyediakan banyak <em>library</em> yang mempermudah berbagai tahapan analisis.
+            </p>
+            <p>
+                Bahasa pemrograman pada dasarnya adalah cara kita berkomunikasi dengan komputer untuk memberikan perintah. Ada berbagai macam bahasa pemrograman, namun Python unggul karena kemudahan sintaksisnya dan ekosistem <em>library</em>-nya yang kaya, menjadikannya pilihan utama untuk analisis data.
+            </p>
+            <p>
+                Dalam bagian ini, kita akan mempelajari dasar-dasar Python yang relevan untuk analisis data. Ingatlah bahwa Python di sini berfungsi sebagai <strong>alat bantu</strong>. Konsep algoritma dan pemrograman akan sedikit disinggung sebagai latihan, namun fokus utamanya adalah bagaimana Python dapat membantu kita memproses data.
+            </p>
+
+            <h3>a. Mencetak Data (print)</h3>
+            <p>
+                Perintah paling dasar dalam bahasa pemrograman adalah menampilkan data atau <strong>output</strong>. Dalam Python, kita menggunakan perintah <span class="keyword">print()</span>.
+            </p>
+            <p>
+                Anda bisa mengubah parameter di dalam tanda kurung <span class="keyword">print()</span>. Misalnya, mengganti teks "Hello World" menjadi "Selamat Datang". Setelah kode dieksekusi (dengan menekan tombol Run), program akan menampilkan data sesuai yang Anda masukkan.
+            </p>
+
+            <h4>Latihan 1: Eksplorasi Perintah Print</h4>
+            <ol>
+                <li>
+                    Coba ubah kode menjadi <span class="code-block"><span class="keyword">print</span><span class="string">("2 + 3")</span></span>. Jalankan (Run). Amati hasilnya.
+                </li>
+                <li>
+                    Selanjutnya, coba ubah menjadi <span class="code-block"><span class="keyword">print</span><span class="string">(2 + 3)</span></span>. Apa yang Anda lihat sebagai outputnya?
+                </li>
+                <li>
+                    Sekarang, coba dengan <span class="code-block"><span class="keyword">print</span><span class="string">("2" + "3")</span></span>. Perhatikan perbedaannya.
+                </li>
+                <li>
+                    Apa makna penggunaan tanda petik (<span class="string">"</span><span class="string">"</span>) di sekitar angka pada contoh nomor 1 dan 3?
+                </li>
+            </ol>
+            <p>
+                Tanda petik (<span class="string">"</span><span class="string">"</span>) digunakan untuk mendefinisikan <strong>string</strong>, yaitu data berupa teks atau alfanumerik yang tidak dihitung secara aritmatika. Ketika Anda menggunakan <span class="code-block"><span class="string">"2" + "3"</span></span>, Python akan menggabungkan kedua string tersebut menjadi <span class="string">"23"</span>. Namun, jika Anda melakukan operasi aritmatika langsung pada angka (misalnya <span class="code-block">2 + 3</span>), hasilnya adalah nilai numerik <span class="code-block">5</span>.
+            </p>
+            <p>
+                Pemrograman Python di sini memiliki kesamaan dengan pemrograman C yang mungkin pernah Anda pelajari di unit Algoritma dan Pemrograman. Pendekatan prosedural juga akan diterapkan pada program-program selanjutnya.
+            </p>
+
+            <h3>b. Pemberian Nilai Data (Assignment)</h3>
+            <p>
+                Selain mencetak data secara langsung, kita juga bisa menyimpan data ke dalam sebuah wadah bernama <strong>variabel</strong>, lalu mencetaknya. Proses ini disebut <strong>assignment</strong>.
+            </p>
+            <p>
+                Assignment dilakukan dengan cara mendefinisikan sebuah nama variabel, kemudian mengisinya dengan suatu nilai menggunakan tanda sama dengan (<span class="string">=</span>).
+            </p>
+            <div class="example-image-placeholder">
+                Contoh assignment dan operasi penjumlahan sederhana.
+                (Bayangkan di sini ada ilustrasi kode Python yang menunjukkan `bil1 = 10`, `bil2 = 5`, `jumlah = bil1 + bil2`, dan `print(jumlah)` atau hanya `jumlah` di baris terakhir.)
+            </div>
+            <p>
+                Dalam contoh di atas:
+            </p>
+            <ul>
+                <li>Variabel <span class="highlight">bil1</span> diisi dengan nilai <span class="code-block">10</span>.</li>
+                <li>Variabel <span class="highlight">bil2</span> diisi dengan nilai <span class="code-block">5</span>.</li>
+                <li>Variabel <span class="highlight">jumlah</span> diisi dengan hasil penjumlahan <span class="highlight">bil1</span> dan <span class="highlight">bil2</span>.</li>
+            </ul>
+            <p>
+                Untuk menampilkan nilai dari sebuah variabel, Anda cukup menuliskan nama variabel tersebut (terutama jika berada di baris terakhir), atau menggunakan perintah <span class="keyword">print()</span>.
+            </p>
+
+            <h4>Latihan 2: Mengenal Variabel</h4>
+            <ol>
+                <li>
+                    Berdasarkan contoh sebelumnya, ada berapa nama variabel yang digunakan?
+                </li>
+                <li>
+                    Apa makna dari setiap baris pada kode assignment tersebut?
+                </li>
+            </ol>
+            <p>
+                Setelah penjumlahan, hasil disimpan dalam variabel <span class="highlight">jumlah</span>. Untuk melihat hasilnya, kita bisa mencetaknya. Perhatikan bahwa Anda bisa mencetak isi variabel hanya dengan menuliskan nama variabelnya, terutama jika itu adalah baris terakhir dalam kode yang akan dieksekusi.
+            </p>
+
+            <h4>Latihan 3: Variabel Tanpa Perintah Print</h4>
+            <ol>
+                <li>
+                    Sebelum baris penjumlahan, tambahkan baris untuk mencetak <span class="highlight">bil2</span> tanpa menggunakan perintah <span class="keyword">print()</span>.
+                    <div class="code-block">
+                        <span class="keyword">bil1</span> = 10<br>
+                        <span class="keyword">bil2</span> = 5<br>
+                        <span class="keyword">bil2</span><br>
+                        <span class="keyword">jumlah</span> = <span class="keyword">bil1</span> + <span class="keyword">bil2</span><br>
+                        <span class="keyword">jumlah</span>
+                    </div>
+                    Apakah <span class="highlight">bil2</span> akan tercetak?
+                </li>
+                <li>
+                    Sekarang, tambahkan perintah <span class="keyword">print()</span> untuk mencetak <span class="highlight">bil2</span> dan <span class="highlight">jumlah</span>.
+                    <div class="code-block">
+                        <span class="keyword">bil1</span> = 10<br>
+                        <span class="keyword">bil2</span> = 5<br>
+                        <span class="keyword">print</span>(<span class="keyword">bil2</span>)<br>
+                        <span class="keyword">jumlah</span> = <span class="keyword">bil1</span> + <span class="keyword">bil2</span><br>
+                        <span class="keyword">print</span>(<span class="keyword">jumlah</span>)
+                    </div>
+                    Apakah kedua variabel tersebut kini tercetak?
+                </li>
+            </ol>
+        </div>
+
+        <div class="interactive-example">
+            <h3>c. Banyak Nilai untuk Satu Variabel (Array)</h3>
+            <p>
+                Selama ini, variabel seperti <span class="highlight">bil1</span>, <span class="highlight">bil2</span>, dan <span class="highlight">jumlah</span> hanya dapat menyimpan satu nilai saja. Jika kita memberikan nilai baru ke variabel yang sama, nilai lama akan tertimpa. Namun, kita juga bisa menyimpan banyak nilai dalam satu variabel menggunakan struktur data yang disebut <strong>array</strong> (atau <em>list</em> di Python).
+            </p>
+            <p>
+                Dalam kehidupan sehari-hari, kita sering berhadapan dengan data yang memiliki banyak nilai, misalnya daftar nilai siswa dalam satu mata pelajaran. Di Python, kita bisa membuat array menggunakan tanda kurung siku (<span class="code-block">[ ]</span>).
+            </p>
+
+            <h4>Latihan 4: Mengganti Nilai Variabel</h4>
+            <ol>
+                <li>
+                    Ketikkan kode program berikut dan lihat hasil eksekusinya:
+                    <div class="code-block">
+                        <span class="keyword">bill</span> = 10<br>
+                        <span class="keyword">print</span>(<span class="keyword">bill</span>)<br>
+                        <span class="keyword">bill</span> = 5<br>
+                        <span class="keyword">print</span>(<span class="keyword">bill</span>)
+                    </div>
+                </li>
+                <li>
+                    Apa output dari variabel <span class="highlight">bill</span> pada baris keempat? Apakah hanya <span class="code-block">5</span>? Ke mana nilai <span class="code-block">10</span> yang sebelumnya?
+                </li>
+            </ol>
+            <p>
+                Ketika sebuah variabel diisi ulang dengan nilai lain, nilai lama akan hilang atau tertimpa.
+            </p>
+
+            <h4>Memahami Array di Python</h4>
+            <p>
+                Array memungkinkan kita menyimpan kumpulan nilai. Setiap nilai dalam array memiliki posisi yang disebut <strong>indeks</strong>, yang dimulai dari <span class="code-block">0</span>.
+            </p>
+            <div class="example-image-placeholder">
+                Contoh penggunaan array dan mengakses elemennya.
+                (Bayangkan di sini ada ilustrasi kode Python yang menunjukkan `data = [10, 9, 7, 8, 10, 8]`, `print(data[1])`, `data[2] = 10`, `print(data)`, `data.append(9)`, `print(data)` beserta outputnya.)
+            </div>
+            <p>
+                Misalnya, pada array <span class="code-block">data = [10, 9, 7, 8, 10, 8]</span>:
+            </p>
+            <ul>
+                <li>Nilai <span class="code-block">10</span> berada di indeks <span class="code-block">0</span>.</li>
+                <li>Nilai <span class="code-block">9</span> berada di indeks <span class="code-block">1</span>.</li>
+                <li>Nilai <span class="code-block">7</span> berada di indeks <span class="code-block">2</span>, dan seterusnya.</li>
+            </ul>
+            <p>
+                Untuk mengakses elemen tertentu dalam array, kita menggunakan kurung siku <span class="code-block">[ ]</span> setelah nama variabel array, diikuti dengan nomor indeksnya. Contoh: <span class="code-block">data[1]</span> akan menghasilkan nilai <span class="code-block">9</span>. Kita juga bisa mengubah nilai elemen di indeks tertentu (misal <span class="code-block">data[2] = 10</span>) atau menambahkan elemen baru di akhir array menggunakan metode <span class="code-block">.append()</span>.
+            </p>
+
+            <h4>Latihan 5: Eksplorasi Array</h4>
+            <ol>
+                <li>
+                    Coba ketik baris perintah pertama dan kedua dari contoh kode array di atas (tanpa kode baris ketiga dan seterusnya), lalu jalankan programnya. Apakah outputnya adalah nilai di indeks ke-1 (yaitu <span class="code-block">9</span>)?
+                </li>
+                <li>
+                    Sekarang, perhatikan instruksi untuk mengubah nilai di indeks ke-2 menjadi <span class="code-block">10</span>. Jika Anda hanya mencetak <span class="code-block">data[1]</span> setelah perubahan tersebut, mengapa tidak muncul nilai <span class="code-block">10</span> yang kita inginkan pada indeks tersebut (melainkan tetap <span class="code-block">9</span>)? (Petunjuk: perhatikan di indeks mana nilai <span class="code-block">10</span> tersebut berada).
+                </li>
+            </ol>
+            <p>
+                Perlu diingat bahwa indeks array di Python dimulai dari <span class="code-block">0</span>. Jadi, elemen pertama adalah di indeks <span class="code-block">0</span>, elemen kedua di indeks <span class="code-block">1</span>, dan seterusnya.
+            </p>
+
+            <h3>d. Penelusuran Data/Pengulangan (Loop: for)</h3>
+            <p>
+                Terkadang, kita perlu memproses setiap elemen dalam sebuah array satu per satu. Di sinilah perintah perulangan atau <strong>loop</strong> berperan. Salah satu jenis loop yang umum digunakan di Python adalah loop <span class="keyword">for</span>.
+            </p>
+            <p>
+                Loop <span class="keyword">for</span> sangat berguna untuk mengulang suatu blok kode untuk setiap item dalam sebuah urutan (seperti array).
+            </p>
+            <div class="example-image-placeholder">
+                Contoh penggunaan loop `for` untuk menelusuri elemen array.
+                (Bayangkan di sini ada ilustrasi kode Python yang menggunakan loop `for` untuk mencetak setiap elemen array beserta indeksnya.)
+            </div>
+            <p>
+                Dalam contoh di atas:
+            </p>
+            <ul>
+                <li>Kita memiliki array <span class="code-block">data</span> yang berisi beberapa angka.</li>
+                <li>Kita juga mendefinisikan variabel <span class="code-block">indeks</span> yang dimulai dari <span class="code-block">0</span>.</li>
+                <li>Perintah <span class="keyword">for elemen in data:</span> akan mengulang blok kode di bawahnya untuk setiap nilai (<span class="highlight">elemen</span>) yang ada di dalam array <span class="highlight">data</span>.</li>
+                <li>Di dalam loop, kita mencetak keterangan "Elemen ke", diikuti dengan nilai <span class="code-block">indeks</span> saat ini dan nilai <span class="highlight">elemen</span> itu sendiri.</li>
+                <li>Setelah mencetak, nilai <span class="code-block">indeks</span> dinaikkan sebesar 1 (<span class="code-block">indeks = indeks + 1</span>) agar pada iterasi berikutnya, indeks yang dicetak sesuai.</li>
+            </ul>
+            <p>
+                Perintah <span class="keyword">for</span> diawali dengan tanda titik dua (<span class="code-block">:</span>), dan blok kode yang akan diulang (di dalam loop) ditulis dengan menjorok ke kanan (indentasi) untuk menandai bahwa perintah tersebut merupakan bagian dari loop.
+            </p>
+
+            <h4>Latihan 6: Memahami Loop</h4>
+            <ol>
+                <li>
+                    Perhatikan baris kelima dalam contoh loop <span class="keyword">for</span>. Mengapa nomor indeks perlu ditambah <span class="code-block">1</span> setiap perulangan?
+                </li>
+                <li>
+                    Bagaimana jika kita mengganti penambahan indeks menjadi <span class="code-block">indeks = indeks + 2</span>? Apa yang akan Anda lihat sebagai outputnya?
+                </li>
+                <li>
+                    Jika penambahan indeks dipindahkan ke baris keempat (sebelum perintah <span class="keyword">print</span>), apa output yang akan dihasilkan?
+                </li>
+            </ol>
+            <p>
+                Selain <span class="keyword">for</span>, Python juga menyediakan perintah perulangan lain seperti <span class="keyword">while</span>. Anda bisa mencoba mencari tahu lebih lanjut tentang penggunaannya.
+            </p>
+
+            <h4>Latihan 7: Perintah `while`</h4>
+            <p>
+                Coba cari tahu bagaimana penggunaan perintah <span class="keyword">while</span> dalam bahasa Python!
+            </p>
+
+            <h3>e. Uji Kondisi (Branch: try-except)</h3>
+            <p>
+                Kadang-kadang, sebuah array bisa berisi data yang beragam, tidak hanya bilangan, tetapi juga teks (string). Bagaimana cara kita mengolah data seperti ini?
+            </p>
+            <p>
+                Misalnya, kita ingin membagi setiap elemen dalam array dengan angka <span class="code-block">2</span>. Jika elemen tersebut adalah bilangan, pembagian akan berjalan lancar. Namun, jika elemen tersebut adalah teks, Python akan menghasilkan pesan kesalahan (<em>error</em>).
+            </p>
+            <div class="example-image-placeholder">
+                Contoh pengolahan data bervariasi yang menghasilkan error.
+                (Bayangkan di sini ada ilustrasi kode Python yang mencoba membagi elemen array `[10, 9, "Cindi", 4, "8"]` dengan 2, dan menghasilkan `TypeError`.)
+            </div>
+            <p>
+                Kesalahan seperti <span class="highlight">TypeError: unsupported operand type(s) for /: 'str' and 'int'</span> muncul karena kita mencoba melakukan operasi aritmatika (pembagian) antara tipe data yang tidak kompatibel (string dengan integer).
+            </p>
+            <p>
+                Untuk mengatasi situasi di mana data bisa bervariasi dan mungkin tidak selalu sesuai dengan operasi yang kita inginkan, Python menyediakan mekanisme penanganan kesalahan yang disebut <strong>percabangan (branch)</strong>. Salah satu cara paling umum untuk menangani ini adalah dengan menggunakan blok perintah <span class="keyword">try</span> dan <span class="keyword">except</span>.
+            </p>
+            <p>
+                Cara kerja <span class="keyword">try-except</span> adalah sebagai berikut:
+            </p>
+            <ul>
+                <li>Di dalam blok <span class="keyword">try</span>, kita mencoba untuk mengeksekusi serangkaian perintah.</li>
+                <li>Jika terjadi kesalahan selama eksekusi di blok <span class="keyword">try</span>, program akan "melompat" ke blok <span class="keyword">except</span> dan menjalankan perintah di dalamnya.</li>
+                <li>Jika tidak ada kesalahan yang terjadi di blok <span class="keyword">try</span>, blok <span class="keyword">except</span> akan dilewati.</li>
+            </ul>
+            <p>
+                Dengan menggunakan <span class="keyword">try-except</span>, kita bisa memastikan bahwa program tidak berhenti mendadak ketika menemukan data yang tidak dapat diproses. Sebaliknya, kita bisa memberikan pesan yang informatif kepada pengguna.
+            </p>
+
+            <div class="example-image-placeholder">
+                Contoh penggunaan `try-except` untuk menangani data bervariasi.
+                (Bayangkan di sini ada ilustrasi kode Python yang menggunakan `try-except` untuk mencoba membagi elemen array dengan 2. Jika berhasil, cetak hasilnya. Jika gagal, cetak "Bukan bilangan".)
+            </div>
+            <p>
+                Dalam contoh ini, ketika program bertemu dengan "Cindi" atau "8" (yang diperlakukan sebagai string), blok <span class="keyword">except</span> akan dijalankan, mencetak "Bukan bilangan".
+            </p>
+
+            <h4>Latihan 9: Hasil `try-except`</h4>
+            <p>
+                Ketik kode program pada Gambar 6.11. Berapa banyak bilangan yang tercetak sebagai hasil pembagian?
+            </p>
+            <p>
+                Selain <span class="keyword">try-except</span>, Python juga memiliki perintah lain untuk percabangan, seperti <span class="keyword">if</span> dan <span class="keyword">if-else</span>.
+            </p>
+
+            <h4>Latihan 10: Perintah `if` dan `if-else`</h4>
+            <p>
+                Cari tahu bagaimana penggunaan perintah percabangan <span class="keyword">if</span> atau <span class="keyword">if-else</span> dalam bahasa Python!
+            </p>
+
+            <h3>f. Pustaka Kode (Library Import)</h3>
+            <p>
+                Saat kita membutuhkan informasi atau fungsi yang belum pernah kita pelajari atau tidak tersedia dalam materi kita, kita akan mencarinya di perpustakaan. Dalam pemrograman, konsep serupa diwakili oleh <strong>pustaka kode</strong> atau <strong><em>library</em></strong>.
+            </p>
+            <p>
+                <em>Library</em> adalah kumpulan kode program atau paket yang menyediakan fungsionalitas tambahan untuk program kita. <em>Library</em> ini dikembangkan oleh penyedia bahasa pemrograman atau komunitas penggunanya. Dengan menggunakan <em>library</em>, kita bisa mendapatkan kemampuan baru tanpa harus menulis semua kode dari awal.
+            </p>
+            <p>
+                Misalnya, di Python, ada <em>library</em> seperti <strong>NumPy</strong> untuk operasi numerik yang efisien, <strong>Pandas</strong> untuk manipulasi dan analisis data tabular, atau <strong>Matplotlib</strong> untuk visualisasi data. Kita akan mempelajari cara menggunakan <em>library</em> ini di bab-bab selanjutnya.
+            </p>
+
+        </div>
+
+    </div>
+</body>
+</html>
+```

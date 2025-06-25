@@ -1,0 +1,579 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitur Lanjut Aplikasi Perkantoran: Word & PowerPoint</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            margin-top: 1.2em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        ul {
+            margin-bottom: 1em;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+            margin-bottom: 1em;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+
+        .module-intro {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-bottom: 30px;
+        }
+
+        .feature-box {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .feature-box p {
+            margin-bottom: 0;
+        }
+
+        .example-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-blue);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-content strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .sub-step {
+            margin-top: 10px;
+            padding-left: 25px;
+            border-left: 2px dashed var(--border-divider);
+            margin-bottom: 10px;
+        }
+
+        .sub-step-number {
+            background-color: var(--accent-green);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .tip-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tip-box-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .tip-box p {
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        .interactive-placeholder {
+            background-color: #e3f2fd; /* Light blue */
+            border: 2px dashed var(--semantic-info);
+            padding: 30px;
+            text-align: center;
+            font-style: italic;
+            color: var(--semantic-info);
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            .example-step {
+                flex-direction: column;
+                align-items: center;
+            }
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            body {
+                padding: 10px;
+            }
+            .tip-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            .tip-box-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 3: Fitur Lanjut Aplikasi Perkantoran</h1>
+        <p class="module-intro">Menjelajahi kemampuan canggih Microsoft Word dan PowerPoint untuk meningkatkan efisiensi dan kreativitas dalam pekerjaan perkantoran.</p>
+
+        <section>
+            <h2>B. Fitur Lanjut Aplikasi Perkantoran</h2>
+            <p>Aplikasi perkantoran modern seperti Microsoft Word dan PowerPoint tidak hanya menawarkan fungsi dasar, tetapi juga fitur-fitur canggih yang dapat sangat membantu kita dalam membuat laporan, menyajikan data, dan berkomunikasi secara efektif. Pada bagian ini, kita akan mendalami dua fitur penting yang dapat mengubah cara kita bekerja: <strong>Mail Merge</strong> di Microsoft Word dan pembuatan <strong>Video Presentasi</strong> di Microsoft PowerPoint.</p>
+
+            <div class="feature-box">
+                <h3>Memahami Kebutuhan</h3>
+                <p>Bayangkan Anda perlu mengirimkan surat undangan yang sama kepada banyak orang, namun setiap surat harus mencantumkan nama dan alamat penerima yang berbeda. Atau Anda ingin membuat presentasi yang tidak hanya menampilkan slide, tetapi juga narasi suara Anda sendiri atau bahkan rekaman video Anda saat menjelaskan materi. Fitur-fitur lanjutan inilah yang akan membantu Anda mewujudkan hal tersebut.</p>
+            </div>
+
+            <div class="section-title">Ayo, Kita Praktik!</div>
+
+            <section>
+                <h3>Aktivitas Individu: Mail Merge di Microsoft Word</h3>
+                <p>Fitur <strong>Mail Merge</strong> (Surat Massal) adalah salah satu fitur paling kuat di Microsoft Word. Fungsinya adalah untuk menghasilkan dokumen-dokumen personalisasi seperti surat, amplop, label, email, atau undangan secara massal dan efisien. Keunggulannya adalah Anda tidak perlu membuat dokumen yang sama berulang kali. Cukup buat satu dokumen utama, lalu hubungkan dengan sumber data (seperti daftar nama dan alamat dari Excel) untuk menghasilkan dokumen yang dipersonalisasi untuk setiap penerima.</p>
+
+                <h4>Langkah-langkah Melakukan Mail Merge:</h4>
+
+                <div class="example-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <strong>Persiapan Data Sumber:</strong>
+                        <p>Pertama, siapkan data yang akan digunakan. Data ini biasanya berupa daftar nama, alamat, kota, atau informasi personal lainnya yang akan dimasukkan ke dalam surat. Cara terbaik adalah menggunakan <strong>Microsoft Excel</strong>.</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">1.1</span>
+                            <p>Buka <strong>Microsoft Excel</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">1.2</span>
+                            <p>Buatlah tabel dengan kolom-kolom yang jelas, misalnya:</p>
+                            <ul>
+                                <li>Nama</li>
+                                <li>Alamat</li>
+                                <li>Kota</li>
+                                <li>Nama Orang Tua</li>
+                                <li>Dll.</li>
+                            </ul>
+                            <p>Isi tabel ini dengan data penerima surat Anda. Pastikan setiap baris mewakili satu penerima dan setiap kolom mewakili satu jenis informasi.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">1.3</span>
+                            <p><strong>Simpan</strong> file Excel tersebut dengan nama yang mudah diingat (misalnya: <code>Daftar_Penerima.xlsx</code>).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <strong>Membuat Dokumen Utama di Word:</strong>
+                        <p>Selanjutnya, siapkan dokumen utama di Microsoft Word yang akan menjadi template surat Anda.</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">2.1</span>
+                            <p>Buka <strong>Microsoft Word</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">2.2</span>
+                            <p>Buatlah draf surat Anda. Di bagian-bagian yang ingin Anda isi dengan data dari Excel, Anda akan menyisipkan <strong>Merge Fields</strong>.</p>
+                            <p>Contoh draf surat:</p>
+                            <div class="code-block">
+Kepada Yth.
+[Nama Penerima]
+[Alamat Penerima]
+[Kota Penerima]
+
+Dengan hormat,
+
+Bersama ini kami mengundang Bapak/Ibu [Nama Orang Tua Penerima] untuk menghadiri acara [...] pada tanggal [...]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>Menghubungkan Dokumen Word dengan Data Excel:</strong>
+                        <p>Ini adalah langkah krusial untuk menghubungkan kedua aplikasi.</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.1</span>
+                            <p>Buka tab <strong>Mailings</strong> di Word.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.2</span>
+                            <p>Klik <strong>Select Recipients</strong>, lalu pilih <strong>Use an Existing List...</strong></p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.3</span>
+                            <p>Cari dan pilih file Excel (<code>Daftar_Penerima.xlsx</code>) yang telah Anda simpan sebelumnya.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.4</span>
+                            <p>Pilih <strong>Sheet</strong> yang berisi data Anda, lalu klik <strong>OK</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <strong>Menyisipkan Merge Fields ke Dokumen:</strong>
+                        <p>Sekarang, sisipkan kolom data dari Excel ke dalam draf surat Anda.</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">4.1</span>
+                            <p>Posisikan kursor di tempat yang Anda inginkan (misalnya, setelah "Kepada Yth.").</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">4.2</span>
+                            <p>Di tab <strong>Mailings</strong>, klik <strong>Insert Merge Field</strong>. Pilih nama kolom yang sesuai dari daftar (misalnya: <strong>Nama</strong>).</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">4.3</span>
+                            <p>Ulangi proses ini untuk semua informasi lain yang ingin Anda masukkan (Alamat, Kota, Nama Orang Tua, dll.). Dokumen Anda sekarang akan terlihat seperti ini:</p>
+                            <div class="code-block">
+Kepada Yth.
+<<Nama>>
+<<Alamat>>
+<<Kota>>
+
+Dengan hormat,
+
+Bersama ini kami mengundang Bapak/Ibu <<Nama Orang Tua>> untuk menghadiri acara [...] pada tanggal [...]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <strong>Melihat Hasil dan Menyelesaikan:</strong>
+                        <p>Untuk melihat bagaimana surat-surat yang dipersonalisasi akan terlihat:</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">5.1</span>
+                            <p>Di tab <strong>Mailings</strong>, klik <strong>Preview Results</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">5.2</span>
+                            <p>Gunakan tombol panah (|< atau >|) untuk melihat setiap surat yang dihasilkan secara otomatis.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">5.3</span>
+                            <p>Jika sudah sesuai, klik <strong>Finish & Merge</strong>. Anda bisa memilih untuk:</p>
+                            <ul>
+                                <li><strong>Edit Individual Documents...</strong>: Membuat file Word baru berisi semua surat yang sudah jadi.</li>
+                                <li><strong>Send Email Messages...</strong>: Mengirim surat langsung melalui email (jika data email tersedia).</li>
+                                <li><strong>Print Documents...</strong>: Mencetak semua surat.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <span class="tip-box-icon">💡</span>
+                    <p><strong>Tips:</strong> Pastikan format tanggal, angka, dan data lainnya di Excel sesuai agar tidak terjadi kesalahan saat Mail Merge.</p>
+                </div>
+            </section>
+
+            <hr style="border: none; height: 1px; background-color: var(--border-divider); margin: 30px 0;">
+
+            <section>
+                <h3>Aktivitas Individu: Membuat Video Presentasi dengan Microsoft PowerPoint</h3>
+                <p>Microsoft PowerPoint telah berkembang jauh dari sekadar pembuat slide. Versi terbaru memungkinkan Anda untuk merekam presentasi Anda, lengkap dengan narasi suara, anotasi layar, bahkan rekaman webcam. Ini adalah cara yang sangat efektif untuk membuat konten pembelajaran, tutorial, atau berbagi informasi secara visual dan audio.</p>
+
+                <h4>Apa yang Anda Perlukan?</h4>
+                <ul>
+                    <li>Komputer dengan <strong>Microsoft PowerPoint</strong> versi terbaru terpasang.</li>
+                    <li>Mikrofon (bawaan laptop atau eksternal) untuk merekam suara.</li>
+                    <li>Webcam (opsional, jika ingin merekam diri Anda saat presentasi).</li>
+                </ul>
+
+                <h4>Langkah-langkah Membuat Video Presentasi:</h4>
+
+                <div class="example-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <strong>Buat Presentasi Anda:</strong>
+                        <p>Selesaikan desain slide presentasi Anda seperti biasa. Pastikan kontennya sudah siap.</p>
+                    </div>
+                </div>
+
+                <div class="example-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <strong>Aktifkan Tab Recording:</strong>
+                        <p>Jika tab <strong>Recording</strong> belum terlihat, Anda perlu mengaktifkannya melalui pengaturan PowerPoint:</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">2.1</span>
+                            <p>Klik <strong>File</strong> &gt; <strong>Options</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">2.2</span>
+                            <p>Di jendela PowerPoint Options, pilih <strong>Customize Ribbon</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">2.3</span>
+                            <p>Di panel sebelah kanan (Main Tabs), centang kotak <strong>Recording</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">2.4</span>
+                            <p>Klik <strong>OK</strong>. Tab Recording kini akan muncul di ribbon.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>Mulai Rekaman:</strong>
+                        <p>Masuk ke tab <strong>Recording</strong>.</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.1</span>
+                            <p>Klik <strong>Record Slide Show</strong>. Anda akan melihat dua pilihan:</p>
+                            <ul>
+                                <li><strong>Record from Beginning</strong>: Untuk memulai rekaman dari slide pertama.</li>
+                                <li><strong>Record from Current Slide</strong>: Untuk memulai rekaman dari slide yang sedang aktif.</li>
+                            </ul>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.2</span>
+                            <p>Jika Anda memiliki webcam, Anda akan melihat ikon kamera kecil di bawah kanan layar. Anda bisa mengaktifkannya untuk merekam diri Anda. Pastikan mikrofon Anda juga aktif.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.3</span>
+                            <p>Klik tombol <strong>Record</strong> di bagian kiri atas layar.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.4</span>
+                            <p>Akan muncul hitungan mundur (countdown timer). Mulailah berbicara dan menjelaskan materi Anda per slide.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.5</span>
+                            <p>Gunakan tombol panah pada keyboard atau klik pada slide untuk berpindah ke slide berikutnya.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.6</span>
+                            <p>Anda bisa menjeda rekaman sementara dengan mengklik tombol <strong>Pause</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">3.7</span>
+                            <p>Untuk menghentikan rekaman pada slide terakhir, klik tombol <strong>Stop</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <strong>Mengelola Rekaman:</strong>
+                        <p>Jika ada kesalahan pada rekaman:</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">4.1</span>
+                            <p>Untuk memperbaiki rekaman pada slide tertentu, buka slide tersebut, lalu klik tombol <strong>Clear</strong> di bagian kanan atas dan pilih <strong>Clear Recording on Current Slide</strong>. Ini akan menghapus narasi dan rekaman visual pada slide itu saja.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">4.2</span>
+                            <p>Untuk menghapus semua rekaman yang sudah dibuat di seluruh presentasi, pilih <strong>Clear Recording on All Slides</strong>. Tindakan ini bersifat permanen.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <strong>Menyimpan sebagai Video:</strong>
+                        <p>Setelah selesai merekam dan mengedit, Anda bisa mengekspor presentasi menjadi file video.</p>
+                        <div class="sub-step">
+                            <span class="sub-step-number">5.1</span>
+                            <p>Klik <strong>File</strong> &gt; <strong>Export</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">5.2</span>
+                            <p>Pilih <strong>Create a Video</strong>.</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">5.3</span>
+                            <p>Pilih kualitas video yang diinginkan (misalnya, Full HD 1080p).</p>
+                        </div>
+                        <div class="sub-step">
+                            <span class="sub-step-number">5.4</span>
+                            <p>Klik <strong>Create Video</strong>, lalu pilih lokasi penyimpanan dan nama file video Anda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <span class="tip-box-icon">💡</span>
+                    <p><strong>Penting:</strong> Gunakan aplikasi PowerPoint yang legal agar fitur-fiturnya berfungsi dengan baik.</p>
+                </div>
+
+                <div class="interactive-placeholder">
+                    <span>Bayangkan Anda membuat video tutorial penggunaan Mail Merge.</span>
+                    <p>Bagaimana Anda akan menjelaskan langkah demi langkahnya dengan suara Anda sendiri, sambil menunjukkan prosesnya di layar PowerPoint?</p>
+                </div>
+            </section>
+
+            <hr style="border: none; height: 1px; background-color: var(--border-divider); margin: 30px 0;">
+
+            <div class="feature-box">
+                <h3>Integrasi Konten Antar Aplikasi</h3>
+                <p>Di luar Mail Merge dan Video Presentasi, integrasi konten antar aplikasi perkantoran adalah kunci efisiensi. Contohnya:</p>
+                <ul>
+                    <li>Menyisipkan grafik dari Excel ke dalam laporan Word.</li>
+                    <li>Menghubungkan data sel atau tabel Excel agar otomatis terupdate di PowerPoint saat data sumber berubah (menggunakan OLE - Object Linking and Embedding).</li>
+                    <li>Membuat daftar isi otomatis di Word berdasarkan penandaan <em>Styles</em> (seperti Heading 1, Heading 2) yang bisa diterapkan pada dokumen panjang.</li>
+                </ul>
+                <p>Memahami bagaimana aplikasi-aplikasi ini dapat bekerja sama akan membuka banyak kemungkinan baru dalam pengelolaan informasi dan presentasi data.</p>
+            </div>
+
+        </section>
+    </div>
+
+</body>
+</html>
+```

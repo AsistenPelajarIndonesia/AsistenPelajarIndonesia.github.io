@@ -1,0 +1,251 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perambatan Gelombang Elektromagnetik</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+        }
+        h3 {
+            font-size: 1.3em;
+            margin-top: 30px;
+            color: #424242;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #424242;
+        }
+        .highlight {
+            color: #1976D2;
+            font-weight: bold;
+        }
+        .concept {
+            background-color: #E3F2FD;
+            border-left: 5px solid #1976D2;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .equation-box {
+            background-color: #F1F8E9;
+            border: 1px dashed #388E3C;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-family: 'Courier New', Courier, monospace;
+            color: #388E3C;
+            overflow-x: auto; /* For responsiveness */
+        }
+        .equation-box p {
+            margin: 5px 0;
+        }
+        .formula {
+            font-weight: bold;
+            color: #1976D2;
+        }
+        .explanation {
+            font-style: italic;
+            color: #757575;
+            margin-top: 5px;
+        }
+        .interactive-element {
+            background-color: #FFF9C4;
+            border: 1px solid #FFB300;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.05em;
+            color: #424242;
+        }
+        .interactive-element a {
+            color: #1976D2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .interactive-element a:hover {
+            text-decoration: underline;
+        }
+        .keyword {
+            font-weight: bold;
+            color: #424242;
+        }
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .responsive-iframe {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin-bottom: 20px;
+        }
+        .responsive-iframe iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .equation-box, .interactive-element {
+                font-size: 0.95em;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .equation-box, .interactive-element {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Perambatan Gelombang Elektromagnetik</h1>
+
+        <p>Selamat datang di bab tentang <span class="highlight">Perambatan Gelombang Elektromagnetik</span>! Mari kita selami bagaimana gelombang yang tak terlihat ini bergerak melalui ruang dan medium.</p>
+
+        <p>Berdasarkan arah perambatannya, gelombang dapat dikategorikan menjadi dua jenis utama:</p>
+        <ul>
+            <li><span class="keyword">Gelombang Longitudinal</span>: Dalam gelombang ini, arah getaran partikel medium sejajar dengan arah perambatan gelombang. Contoh klasik dari gelombang ini adalah gelombang suara.</li>
+            <li><span class="keyword">Gelombang Transversal</span>: Berbeda dengan gelombang longitudinal, pada gelombang transversal, arah getaran partikel medium tegak lurus terhadap arah perambatan gelombang. Gelombang cahaya dan gelombang pada tali yang digerakkan naik-turun adalah contohnya.</li>
+        </ul>
+
+        <p>Selanjutnya, berdasarkan medium yang dibutuhkan untuk perambatannya, gelombang dibagi menjadi:</p>
+        <ul>
+            <li><span class="keyword">Gelombang Mekanik</span>: Gelombang ini mutlak membutuhkan medium untuk merambat. Tanpa medium, gelombang mekanik tidak dapat bergerak. Contohnya adalah gelombang suara yang membutuhkan udara, air, atau benda padat untuk merambat.</li>
+            <li><span class="keyword">Gelombang Elektromagnetik</span>: Keistimewaan gelombang ini adalah ia <span class="highlight">tidak memerlukan medium</span> untuk perambatannya. Gelombang elektromagnetik dapat merambat melalui ruang hampa seperti luar angkasa.</li>
+        </ul>
+
+        <div class="concept">
+            <h3>Konsep Kunci: Maxwell dan Hipotesis Revolusioner</h3>
+            <p>Teori mengenai gelombang elektromagnetik pertama kali dikemukakan oleh ilmuwan jenius bernama <span class="keyword">James Clerk Maxwell</span> (1831-1879) pada tahun 1865. Beliau mengajukan hipotesis yang sangat mendasar:</p>
+            <p>"<span class="highlight">Perubahan medan magnet dapat menimbulkan medan listrik, sebaliknya perubahan medan listrik dapat menimbulkan perubahan medan magnet</span>."</p>
+            <p>Hipotesis ini merupakan sintesis dari berbagai teori kelistrikan dan kemagnetan yang sebelumnya telah dikembangkan oleh para ilmuwan besar lainnya, seperti <span class="keyword">Hans Christian Ørsted</span>, <span class="keyword">Michael Faraday</span>, dan <span class="keyword">André-Marie Ampère</span>.</p>
+        </div>
+
+        <p>Jadi, bagaimana gelombang elektromagnetik ini sebenarnya dihasilkan? Inti dari prosesnya adalah interaksi dinamis antara medan listrik dan medan magnet yang saling tegak lurus satu sama lain, yang kemudian merambat bersamaan melalui ruang.</p>
+
+        <div class="concept">
+            <h3>Pembentukan Gelombang Elektromagnetik</h3>
+            <p>Bayangkan sebuah <span class="keyword">muatan listrik</span>. Ketika muatan ini bergerak atau mengalami perubahan (osilasi), ia akan menghasilkan medan listrik di sekitarnya. Nah, perubahan medan listrik inilah yang kemudian memicu timbulnya medan magnet di sekitarnya. Sebaliknya, jika ada medan magnet yang berubah, ia akan menghasilkan medan listrik.</p>
+            <p>Proses ini bersifat siklis dan berkelanjutan: medan listrik yang berubah menghasilkan medan magnet, dan medan magnet yang berubah menghasilkan medan listrik lagi. Jika proses saling membangkitkan ini terjadi secara terus-menerus dan berulang, maka terbentuklah sebuah gelombang di mana medan listrik dan medan magnetnya berosilasi secara tegak lurus satu sama lain dan merambat.</p>
+        </div>
+
+        <div class="equation-box">
+            <p>Bentuk sederhana dari medan listrik (<span class="formula">E</span>) dan medan magnet (<span class="formula">B</span>) dalam gelombang elektromagnetik dapat dinyatakan menggunakan fungsi sinusoidal, seperti:</p>
+            <p><span class="formula">E = E<sub>max</sub> sin(ωt + kx)</span></p>
+            <p><span class="formula">B = B<sub>max</sub> sin(ωt + kx)</span></p>
+            <p class="explanation">Di sini:</p>
+            <p><span class="formula">E<sub>max</sub></span> adalah nilai maksimum medan listrik.</p>
+            <p><span class="formula">B<sub>max</sub></span> adalah nilai maksimum medan magnet.</p>
+            <p><span class="formula">ω</span> (omega) adalah frekuensi sudut osilasi (berkaitan dengan seberapa cepat osilasi terjadi).</p>
+            <p><span class="formula">k</span> adalah bilangan gelombang (berkaitan dengan panjang gelombang).</p>
+            <p><span class="formula">t</span> adalah waktu.</p>
+            <p><span class="formula">x</span> adalah posisi perambatan.</p>
+        </div>
+
+        <div class="concept">
+            <h3>Kecepatan Gelombang Elektromagnetik</h3>
+            <p>Kecepatan perambatan gelombang elektromagnetik, terutama di ruang hampa, telah dihitung oleh Maxwell berdasarkan konstanta fundamental fisika:</p>
+            <div class="equation-box">
+                <p><span class="formula">v = &frac{1}{\sqrt{\epsilon_0 \mu_0}}</span></p>
+                <p class="explanation">Di mana:</p>
+                <p><span class="formula">\epsilon<sub>0</sub></span> (epsilon nol) adalah permitivitas listrik di ruang hampa (sekitar <span class="formula">8.85 x 10<sup>-12</sup> C<sup>2</sup>/(N m<sup>2</sup>)</span>).</p>
+                <p><span class="formula">\mu<sub>0</sub></span> (mu nol) adalah permeabilitas magnetik di ruang hampa (sekitar <span class="formula">4π x 10<sup>-7</sup> Tm/A</span>).</p>
+            </div>
+            <p>Nilai hasil perhitungan ini ternyata sama persis dengan kecepatan cahaya di ruang hampa, yang menunjukkan bahwa cahaya itu sendiri adalah bentuk dari gelombang elektromagnetik!</p>
+
+            <p>Ketika gelombang elektromagnetik merambat melalui suatu medium (selain ruang hampa), kecepatannya akan bergantung pada sifat medium tersebut, yaitu permitivitas listrik (<span class="formula">\epsilon</span>) dan permeabilitas magnetik (<span class="formula">\mu</span>) medium tersebut:</p>
+            <div class="equation-box">
+                <p><span class="formula">v = &frac{1}{\sqrt{\epsilon \mu}}</span></p>
+            </div>
+            <p>Secara umum, kecepatan gelombang elektromagnetik dalam medium akan lebih kecil dibandingkan di ruang hampa.</p>
+        </div>
+
+        <div class="concept">
+            <h3>Hubungan Kecepatan, Panjang Gelombang, dan Frekuensi</h3>
+            <p>Sama seperti gelombang pada umumnya, kecepatan perambatan gelombang elektromagnetik (<span class="formula">v</span>) juga dapat dinyatakan sebagai hasil kali antara panjang gelombangnya (<span class="formula">\lambda</span>) dan frekuensinya (<span class="formula">f</span>):</p>
+            <div class="equation-box">
+                <p><span class="formula">v = \lambda f</span></p>
+            </div>
+            <p>Nilai kecepatan cahaya, <span class="formula">c</span>, yang umum digunakan adalah sekitar <span class="formula">3 x 10<sup>8</sup> m/s</span>. Frekuensi gelombang elektromagnetik ditentukan oleh frekuensi osilasi muatan listrik yang menjadi sumbernya.</p>
+            <p>Contohnya, gelombang radio FM memiliki frekuensi dalam rentang 88 MHz hingga 108 MHz (MegaHertz). Ini berarti frekuensinya sangat tinggi, namun panjang gelombangnya relatif lebih besar dibandingkan gelombang elektromagnetik lainnya seperti cahaya tampak.</p>
+        </div>
+
+        <div class="interactive-element">
+            <h3>Ingin Melihat Simulasi Perambatan?</h3>
+            <p>Untuk pemahaman yang lebih visual, Anda bisa menjelajahi simulasi interaktif tentang gelombang elektromagnetik. Jika koneksi internet Anda tersedia, silakan kunjungi tautan berikut atau pindai kode QR yang tersedia di materi Anda:</p>
+            <p><a href="https://javalab.org/en/electromagnetic_wave_en/" target="_blank">Simulasi Gelombang Elektromagnetik</a></p>
+            <p>Ini akan membantu Anda memahami bagaimana medan listrik dan magnet saling membangkitkan dan merambat bersama.</p>
+        </div>
+
+        <p>Memahami perambatan gelombang elektromagnetik adalah kunci untuk mengerti berbagai fenomena teknologi modern, mulai dari komunikasi nirkabel hingga pencitraan medis. Mari kita lanjutkan eksplorasi kita ke spektrum gelombang elektromagnetik!</p>
+
+    </div>
+</body>
+</html>
+```

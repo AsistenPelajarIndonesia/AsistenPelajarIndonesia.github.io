@@ -1,0 +1,563 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 7: Algoritma dan Pemrograman</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 25px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            background-color: rgba(255, 235, 59, 0.3);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid var(--border-divider);
+            overflow-x: auto;
+            margin-bottom: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95em;
+            color: var(--text-primary);
+        }
+
+        .key-concept {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .sub-section {
+            margin-top: 20px;
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .interactive-element {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .interactive-element:hover {
+            background-color: #307032;
+        }
+
+        .definition {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .process-step {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+
+        .concept-explanation {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 7: Algoritma dan Pemrograman</h1>
+
+        <div class="section">
+            <h2>A. Algoritma: Fondasi dari Solusi Komputasi</h2>
+
+            <p>Bayangkan sebuah resep masakan. Resep tersebut berisi langkah-langkah terstruktur yang, jika diikuti dengan benar, akan menghasilkan hidangan lezat. Dalam dunia komputasi, konsep serupa ada dan kita sebut sebagai <strong>Algoritma</strong>.</p>
+
+            <p>Secara formal, algoritma adalah <strong>kumpulan instruksi yang terstruktur dan terbatas yang dapat diimplementasikan dalam bentuk program komputer untuk menyelesaikan suatu permasalahan komputasi tertentu.</strong> Ini adalah cetak biru atau strategi yang kita gunakan untuk menaklukkan sebuah masalah.</p>
+
+            <p>Algoritma lahir dari proses yang mendalam yang dikenal sebagai <strong>berpikir komputasional</strong>. Keahlian ini sangat krusial karena memungkinkan kita untuk merancang algoritma, program, dan karya informatika lainnya yang tidak hanya berfungsi, tetapi juga <span class="highlight">efektif dan efisien</span>.</p>
+
+            <div class="sub-section">
+                <h3>Karakteristik Utama Algoritma:</h3>
+                <ul>
+                    <li><span class="key-concept">Terstruktur</span>: Instruksi harus disusun secara logis dan berurutan.</li>
+                    <li><span class="key-concept">Terbatas</span>: Algoritma harus memiliki titik akhir; ia tidak boleh berjalan selamanya.</li>
+                    <li><span class="key-concept">Tepat & Jelas</span>: Setiap instruksi harus didefinisikan dengan baik agar tidak ada ambiguitas.</li>
+                    <li><span class="key-concept">Masukan (Input)</span>: Algoritma dapat menerima nol atau lebih nilai masukan.</li>
+                    <li><span class="key-concept">Keluaran (Output)</span>: Algoritma harus menghasilkan satu atau lebih nilai keluaran yang merupakan solusi dari masalah.</li>
+                </ul>
+            </div>
+
+            <p>Setelah menganalisis masalah menggunakan teknik seperti <strong>abstraksi</strong> (menyaring detail yang tidak perlu) dan <strong>dekomposisi</strong> (memecah masalah besar menjadi bagian-bagian kecil), kita menyusun algoritma. Pentingnya, algoritma harus dapat dipahami oleh orang lain dan, yang terpenting, harus <strong>terdefinisi dengan baik (well-defined)</strong> agar dapat diterjemahkan ke dalam kode program.</p>
+
+            <p>Memahami dan menulis algoritma dengan baik adalah fondasi untuk membangun program yang andal dan benar. Algoritma pada dasarnya adalah abstraksi dari sebuah program. Saat persoalan sederhana, algoritma dan program mungkin terlihat mirip, bahkan identik. Namun, untuk masalah yang lebih kompleks, algoritma menyediakan pandangan tingkat tinggi yang mempermudah implementasi.</p>
+
+            <div class="sub-section">
+                <h3>Dua Cara Utama Merepresentasikan Algoritma:</h3>
+                <p>Di bab ini, kita akan menjelajahi dua metode utama untuk merepresentasikan algoritma:</p>
+                <ol>
+                    <li><span class="concept-explanation">Diagram Alir (Flowchart)</span>: Representasi visual dari langkah-langkah algoritma menggunakan simbol-simbol standar.</li>
+                    <li><span class="concept-explanation">Pseudocode</span>: Deskripsi algoritma dalam bahasa manusia yang lebih terstruktur, menjembatani kesenjangan antara pemikiran manusia dan bahasa pemrograman.</li>
+                </ol>
+                <p>Kita juga akan mempelajari teknik <span class="highlight">penelusuran (tracing)</span> untuk memahami bagaimana algoritma bekerja langkah demi langkah dan cara menulis algoritma yang efektif.</p>
+            </div>
+
+            <p>Ingat, <strong>program ditulis agar dapat dipahami oleh mesin</strong>, sedangkan <strong>algoritma ditulis agar dapat dipahami oleh manusia</strong>. Perbedaan mendasar ini menjadikan algoritma sebagai alat komunikasi dan perencanaan yang sangat kuat dalam pengembangan perangkat lunak.</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Diagram Alir: Visualisasi Langkah demi Langkah</h2>
+
+            <p>Diagram alir adalah alat visual yang sangat efektif untuk menggambarkan alur kerja sebuah algoritma. Ia menggunakan serangkaian simbol standar yang terhubung oleh garis panah untuk menunjukkan urutan eksekusi.</p>
+
+            <h3>Simbol-simbol Dasar Diagram Alir (Standar ANSI/ISO):</h3>
+            <p>Memahami simbol-simbol ini adalah kunci untuk membaca dan membuat diagram alir:</p>
+
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <thead>
+                    <tr style="background-color: var(--primary-blue); color: white;">
+                        <th style="padding: 10px; border: 1px solid var(--border-divider);">Simbol</th>
+                        <th style="padding: 10px; border: 1px solid var(--border-divider);">Nama</th>
+                        <th style="padding: 10px; border: 1px solid var(--border-divider);">Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider); text-align: center;"><div style="width: 50px; height: 20px; background-color: var(--text-primary); margin: auto;"></div></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Garis Alir (Flowline)</td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Menunjukkan arah aliran program dari awal hingga akhir.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider); text-align: center;"><div style="width: 70px; height: 30px; background-color: var(--text-primary); border-radius: 15px; margin: auto;"></div></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Terminator</td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Menandai titik awal (<span class="definition">START</span>) atau titik akhir (<span class="definition">END</span>) dari suatu program.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider); text-align: center;"><div style="width: 70px; height: 40px; background-color: var(--text-primary); margin: auto;"></div></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Proses</td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Melambangkan suatu kegiatan komputasi, seperti operasi aritmatika, penugasan variabel, atau manipulasi data. Contoh: <span class="code-block">Luas = sisi * sisi</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider); text-align: center;"><div style="width: 80px; height: 40px; background-color: var(--text-primary); transform: rotate(45deg); margin: auto;"></div></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Keputusan</td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Titik percabangan di mana aliran program bergantung pada suatu kondisi (biasanya bernilai Benar/Salah atau Ya/Tidak).</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider); text-align: center;"><div style="width: 90px; height: 40px; background-color: var(--text-primary); margin: auto; clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%);"></div></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Masukan (Input) / Keluaran (Output)</td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Menunjukkan titik di mana program menerima data dari pengguna atau menghasilkan informasi. Contoh: <span class="code-block">READ sisi</span>, <span class="code-block">PRINT luas</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider); text-align: center;"><div style="width: 70px; height: 40px; background-color: var(--primary-blue); margin: auto;"></div></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Subprogram</td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Melambangkan pemanggilan ke bagian lain dari algoritma atau ke algoritma terpisah yang telah didefinisikan sebelumnya. Berguna untuk <span class="highlight">dekomposisi</span>.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider); text-align: center;"><div style="width: 30px; height: 30px; background-color: var(--text-primary); border-radius: 50%; margin: auto;"></div></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Penghubung (dalam Halaman)</td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Menghubungkan dua bagian dalam diagram alir yang sama pada halaman yang sama, biasanya untuk menyederhanakan alur.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider); text-align: center;"><div style="width: 50px; height: 50px; background-color: var(--text-primary); transform: rotate(-45deg); margin: auto; position: relative;"> <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); width: 20px; height: 20px; background-color: var(--background-canvas); border: 5px solid var(--text-primary);"></div> </div></td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Penghubung (antarhalaman)</td>
+                        <td style="padding: 10px; border: 1px solid var(--border-divider);">Menghubungkan diagram alir yang tersebar di beberapa halaman, digunakan ketika diagram menjadi sangat kompleks.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Contoh Diagram Alir:</h3>
+
+            <div class="sub-section">
+                <h4>a. Diagram Alir 1: Menghitung Luas Persegi</h4>
+                <p>Menjelaskan proses dasar untuk menghitung luas persegi:</p>
+                <div class="code-block">
+                    START <br>
+                    READ sisi <br>
+                    Luas = sisi * sisi <br>
+                    PRINT luas <br>
+                    END
+                </div>
+                <p>Proses ini dimulai dengan <span class="definition">START</span>, membaca nilai <span class="definition">sisi</span>, menghitung <span class="definition">Luas</span>, mencetak hasilnya, dan berakhir dengan <span class="definition">END</span>.</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>b. Diagram Alir 2: Menghitung Luas Permukaan Kubus</h4>
+                <p>Demonstrasi penggunaan <strong>subprogram</strong> untuk memecah masalah menjadi bagian yang lebih kecil dan dapat digunakan kembali:</p>
+                <div class="code-block">
+                    START <br>
+                    READ sisi <br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;START <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Luas = sisi * sisi <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;END <br>
+                    <br>
+                    Luas_permukaan = Luas * 6 <br>
+                    PRINT Luas_permukaan <br>
+                    END
+                </div>
+                <p>Diagram ini menunjukkan bagaimana subprogram (menghitung luas persegi) dipanggil untuk menyelesaikan bagian dari masalah yang lebih besar (luas permukaan kubus). Ini adalah contoh nyata dari <strong>abstraksi dan dekomposisi</strong>.</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>c. Diagram Alir 3: Membagi Bilangan (dengan Penanganan Kesalahan)</h4>
+                <p>Menunjukkan bagaimana <strong>simbol keputusan</strong> digunakan untuk menangani kondisi khusus, seperti pembagian dengan nol:</p>
+                <div class="code-block">
+                    START <br>
+                    READ pembilang, penyebut <br>
+                    IF penyebut == 0 THEN <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;PRINT "Penyebut tidak boleh nol" <br>
+                    ELSE <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Hasil = pembilang / penyebut <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;PRINT Hasil <br>
+                    END IF <br>
+                    END
+                </div>
+                <p>Di sini, program memeriksa apakah <span class="definition">penyebut</span> bernilai nol sebelum melakukan pembagian. Jika ya, pesan kesalahan ditampilkan; jika tidak, pembagian dilakukan.</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>d. Diagram Alir 4: Menghitung Mundur dari N hingga 1 (dengan Perulangan)</h4>
+                <p>Mengilustrasikan bagaimana <strong>perulangan</strong> dapat digunakan untuk mengulang serangkaian instruksi:</p>
+                <div class="code-block">
+                    START <br>
+                    READ N <br>
+                    WHILE N > 0 DO <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;PRINT N <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;N = N - 1 <br>
+                    END WHILE <br>
+                    END
+                </div>
+                <p>Diagram ini akan mencetak angka dari <span class="definition">N</span> hingga 1. Simbol keputusan <span class="definition">N > 0</span> mengontrol kapan perulangan harus berhenti.</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>e. Diagram Alir 5: Mencari Bilangan Terbesar dari Suatu Himpunan</h4>
+                <p>Menunjukkan algoritma yang lebih kompleks dengan kombinasi perulangan dan keputusan:</p>
+                <div class="code-block">
+                    START <br>
+                    READ N <br>
+                    Terbesar = 0 <br>
+                    WHILE N > 0 DO <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;READ Bilangan <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;IF Bilangan > Terbesar THEN <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terbesar = Bilangan <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;END IF <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;N = N - 1 <br>
+                    END WHILE <br>
+                    PRINT Terbesar <br>
+                    END
+                </div>
+                <p>Algoritma ini membaca sejumlah <span class="definition">N</span> bilangan dan secara bertahap menemukan bilangan terbesar di antara mereka.</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>f. Menelusuri Diagram Alir (Tracing)</h4>
+                <p>Penelusuran adalah proses penting untuk memahami cara kerja algoritma. Kita melakukannya dengan membuat tabel yang mencatat:</p>
+                <ul>
+                    <li><strong>Masukan</strong>: Data yang diberikan ke algoritma.</li>
+                    <li><strong>Nilai Variabel</strong>: Perubahan nilai variabel di setiap langkah.</li>
+                    <li><strong>Keluaran</strong>: Hasil akhir yang dihasilkan oleh algoritma.</li>
+                </ul>
+                <p>Dengan menelusuri, kita dapat memprediksi output algoritma dan memastikan kebenarannya. Ini sangat berguna untuk:</p>
+                <ol>
+                    <li>Memahami alur eksekusi algoritma secara detail.</li>
+                    <li>Mengidentifikasi potensi kesalahan atau bug dalam logika.</li>
+                    <li>Memastikan bahwa algoritma menghasilkan keluaran yang diharapkan.</li>
+                </ol>
+                <p>Contoh tabel penelusuran yang dijelaskan dalam buku kerja Anda membantu memvisualisasikan perubahan nilai variabel saat algoritma berjalan.</p>
+            </div>
+
+            <div class="interactive-element">
+                Ayo Lakukan: Latihan Menelusuri Diagram Alir!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Pseudocode: Bahasa Jembatan Menuju Pemrograman</h2>
+
+            <p>Pseudocode (kode semu) adalah cara lain yang sangat berguna untuk merepresentasikan algoritma. Berbeda dengan diagram alir yang visual, pseudocode menggunakan bahasa manusia yang lebih terstruktur dan formal, tetapi tetap informal dibandingkan bahasa pemrograman sebenarnya.</p>
+
+            <p><strong>Mengapa Pseudocode Penting?</strong></p>
+            <ul>
+                <li>Menutupi kekurangan diagram alir dalam merepresentasikan konsep pemrograman terstruktur yang kompleks.</li>
+                <li>Memungkinkan representasi langkah-langkah yang lebih detail dan lebih dekat dengan bahasa pemrograman.</li>
+                <li>Fleksibel karena tidak ada standar notasi yang kaku, memungkinkan penyesuaian.</li>
+            </ul>
+
+            <h3>Prinsip Dasar Pseudocode:</h3>
+            <ul>
+                <li><span class="definition">Satu Pernyataan per Baris</span>: Setiap baris kode mewakili satu instruksi atau pernyataan.</li>
+                <li><span class="definition">Indentasi untuk Hierarki</span>: Penggunaan indentasi (menjorok ke dalam) sangat penting untuk menunjukkan struktur kontrol seperti keputusan (<span class="code-block">IF-THEN-ELSE</span>) atau perulangan (<span class="code-block">WHILE</span>, <span class="code-block">FOR</span>).</li>
+            </ul>
+
+            <p>Mari kita lihat bagaimana contoh diagram alir sebelumnya dapat diubah menjadi pseudocode:</p>
+
+            <div class="sub-section">
+                <h4>a. Pseudocode 1: Menghitung Luas Persegi</h4>
+                <div class="code-block">
+                    <strong>Algoritma Menghitung Luas Persegi</strong><br>
+                    <em>Deskripsi tingkat tinggi:</em><br>
+                    1. Baca nilai sisi persegi.<br>
+                    2. Hitung luas dengan menguadratkan nilai sisinya.<br>
+                    3. Cetak luas.<br>
+                    <br>
+                    <em>Pseudocode:</em><br>
+                    Input: Nilai Panjang Sisi Persegi.<br>
+                    Output: Luas Persegi tercetak.<br>
+                    <br>
+                    input sisi<br>
+                    luas = sisi * sisi<br>
+                    print luas
+                </div>
+            </div>
+
+            <div class="sub-section">
+                <h4>b. Pseudocode 2: Menghitung Luas Permukaan Kubus</h4>
+                <div class="code-block">
+                    <strong>Algoritma Menghitung Luas Permukaan Kubus</strong><br>
+                    <em>Deskripsi tingkat tinggi:</em><br>
+                    1. Baca nilai sisi kubus.<br>
+                    2. Hitung luas persegi dari sisi kubus, lalu kalikan dengan 6.<br>
+                    3. Cetak luas_permukaan.<br>
+                    <br>
+                    <em>Pseudocode:</em><br>
+                    Input: Nilai Panjang Sisi Kubus.<br>
+                    Output: Luas Permukaan Kubus tercetak.<br>
+                    <br>
+                    input sisi<br>
+                    luas_permukaan = luas(sisi) * 6<br>
+                    print luas_permukaan
+                </div>
+            </div>
+
+            <div class="sub-section">
+                <h4>c. Pseudocode 3: Membagi Bilangan</h4>
+                <div class="code-block">
+                    <strong>Algoritma Membagi Bilangan</strong><br>
+                    <em>Deskripsi tingkat tinggi:</em><br>
+                    1. Baca nilai pembilang dan penyebut.<br>
+                    2. Jika penyebut bernilai 0, cetak pesan kesalahan.<br>
+                    3. Jika penyebut tidak nol, lakukan pembagian.<br>
+                    4. Cetak hasil.<br>
+                    <br>
+                    <em>Pseudocode:</em><br>
+                    Input: Pembilang dan Penyebut.<br>
+                    Output: Hasil Pembagian tercetak.<br>
+                    <br>
+                    input pembilang, penyebut<br>
+                    if penyebut == 0 then<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print "Penyebut tidak boleh nol"<br>
+                    else<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;hasil = pembilang / penyebut<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print hasil<br>
+                    end if
+                </div>
+            </div>
+
+            <div class="sub-section">
+                <h4>d. Pseudocode 4: Menghitung Mundur dari N hingga 1</h4>
+                <div class="code-block">
+                    <strong>Algoritma Menghitung Mundur dari N hingga 1</strong><br>
+                    <em>Deskripsi tingkat tinggi:</em><br>
+                    1. Baca nilai N.<br>
+                    2. Ulangi selama N > 0.<br>
+                    3. Cetak N.<br>
+                    4. Kurangi N dengan 1.<br>
+                    <br>
+                    <em>Pseudocode:</em><br>
+                    Input: Nilai N.<br>
+                    Output: Angka hasil hitung mundur dari N sampai 1 tercetak.<br>
+                    <br>
+                    input N<br>
+                    while N > 0 do<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print N<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;N = N - 1<br>
+                    end while
+                </div>
+            </div>
+
+            <div class="sub-section">
+                <h4>e. Pseudocode 5: Mencari Bilangan Terbesar dari Suatu Himpunan</h4>
+                <div class="code-block">
+                    <strong>Algoritma Mencari Bilangan Terbesar</strong><br>
+                    <em>Deskripsi tingkat tinggi:</em><br>
+                    1. Jika himpunan kosong, tidak ada bilangan terbesar.<br>
+                    2. Jika tidak kosong, asumsikan elemen pertama sebagai yang terbesar.<br>
+                    3. Bandingkan setiap elemen dengan yang terbesar saat ini; perbarui jika lebih besar.<br>
+                    4. Setelah memeriksa semua elemen, temukan bilangan terbesar.<br>
+                    <br>
+                    <em>Pseudocode:</em><br>
+                    Input: Himpunan bilangan L.<br>
+                    Output: Bilangan terbesar pada himpunan.<br>
+                    <br>
+                    if size of (L) == 0 then<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return null<br>
+                    end if<br>
+                    <br>
+                    largest = L[0]  // Asumsikan elemen pertama adalah yang terbesar<br>
+                    for each item in L do<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if item > largest then<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;largest = item<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+                    end for<br>
+                    return largest
+                </div>
+            </div>
+
+            <p>Pseudocode adalah alat yang fantastis untuk merencanakan logika program sebelum beralih ke bahasa pemrograman seperti C atau Python. Ini memungkinkan kita untuk fokus pada <strong>apa</strong> yang harus dilakukan algoritma tanpa terpaku pada sintaks spesifik bahasa pemrograman.</p>
+
+            <div class="interactive-element">
+                Ayo Lakukan: Menulis Algoritma!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Mengintegrasikan Konsep: Menulis Algoritma dan Pseudocode</h2>
+            <p>Setelah memahami cara kerja diagram alir dan pseudocode, langkah selanjutnya adalah mengaplikasikannya. Anda akan diminta untuk merancang algoritma berdasarkan deskripsi masalah, baik dalam bentuk diagram alir maupun pseudocode.</p>
+
+            <div class="sub-section">
+                <h3>Contoh Soal: Membayar Bakso</h3>
+                <p>Sebuah mesin pembayaran otomatis untuk bakso:</p>
+                <ul>
+                    <li>Menerima dua masukan: <span class="process-step">Total Bayar</span> dan <span class="process-step">Jumlah Uang</span>.</li>
+                    <li>Jika <span class="process-step">Jumlah Uang</span> ≥ <span class="process-step">Total Bayar</span>, hitung dan berikan kembalian.</li>
+                    <li>Jika <span class="process-step">Jumlah Uang</span> &lt; <span class="process-step">Total Bayar</span>, tampilkan "Uang yang dibayarkan kurang".</li>
+                </ul>
+                <p>Anda perlu membuat diagram alir atau pseudocode untuk proses ini, lalu menelusurinya dengan kasus yang diberikan.</p>
+            </div>
+
+            <div class="sub-section">
+                <h3>Contoh Soal: Hadiah Bakso Gratis</h3>
+                <p>Sistem poin untuk diskon:</p>
+                <ul>
+                    <li>Pelanggan mendapatkan poin senilai harga bakso yang dibeli.</li>
+                    <li>Jika total poin mencapai 100.000, pelanggan mendapat bakso gratis.</li>
+                    <li>Mesin akan menambahkan total pembayaran ke total poin pelanggan.</li>
+                    <li>Jika total poin > 100.000, tampilkan "Anda mendapatkan kupon bakso gratis", kurangi poin sebesar 100.000, dan tampilkan sisa poin.</li>
+                </ul>
+                <p>Lagi-lagi, buatlah diagram alir atau pseudocode, lalu lakukan penelusuran dengan studi kasus.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ayo Kita Renungkan</h2>
+            <p>Membuat algoritma adalah keterampilan fundamental dalam informatika. Ia memungkinkan kita memecah masalah kompleks menjadi langkah-langkah yang dapat dikelola dan dieksekusi oleh komputer.</p>
+            <p>Dengan memahami diagram alir dan pseudocode, Anda memiliki alat yang ampuh untuk merencanakan dan mengkomunikasikan solusi komputasi Anda.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

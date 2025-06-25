@@ -1,0 +1,445 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Pemberdayaan Komunitas Berbasis Kearifan Lokal</title>
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            color: var(--primary-blue);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            border-left: 6px solid var(--accent-green);
+            padding-left: 10px;
+            margin-top: 40px; /* More space before main sections */
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-left: 10px;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+            margin-bottom: 10px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            padding-left: 0;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        /* Special Content Boxes */
+        .section-intro {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .section-intro h2 {
+            color: white;
+            border-left: none;
+            padding-left: 0;
+            margin-top: 0;
+            font-size: 2em;
+        }
+        .section-intro p {
+            color: white;
+            margin-bottom: 0;
+        }
+        .section-intro strong {
+            color: var(--secondary-accent-amber); /* Highlight key terms in intro */
+        }
+
+        .concept-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .concept-box p {
+            color: white;
+            margin: 0;
+        }
+        .concept-box strong {
+            color: var(--secondary-accent-amber);
+        }
+        .concept-box ul, .concept-box li {
+            color: white;
+        }
+
+        .example-box {
+            background-color: #e0f2f7; /* Lighter shade of primary blue for examples */
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-secondary);
+        }
+        .example-box h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .key-point {
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .warning-box {
+            background-color: var(--semantic-warning);
+            color: var(--text-primary);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .error-box {
+            background-color: var(--semantic-error);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .error-box p, .error-box h4 {
+            color: white;
+        }
+
+        .citation {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            text-align: right;
+            display: block;
+            margin-top: 10px;
+            border-top: 1px dotted var(--border-divider);
+            padding-top: 5px;
+        }
+
+        /* Interactive details/summary for content toggling */
+        details {
+            background-color: #fcfcfc;
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            margin: 20px 0;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--primary-blue);
+            padding: 5px 0;
+            outline: none; /* Remove default focus outline */
+            transition: color 0.3s ease;
+        }
+
+        summary:hover {
+            color: var(--accent-green);
+        }
+
+        details[open] summary {
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        details p, details ul, details ol {
+            margin-top: 0;
+            padding-left: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px auto;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+                padding-left: 8px;
+                border-left-width: 5px;
+                margin-top: 30px;
+            }
+            h3 {
+                font-size: 1.2em;
+                margin-left: 8px;
+            }
+            .section-intro {
+                padding: 20px;
+            }
+            .section-intro h2 {
+                font-size: 1.7em;
+            }
+            .concept-box, .example-box, .warning-box, .error-box, details {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            ul, ol {
+                margin-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 0; /* Full width on very small screens */
+                padding: 10px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            h1 {
+                font-size: 1.5em;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.3em;
+                padding-left: 6px;
+                border-left-width: 4px;
+                margin-top: 25px;
+            }
+            h3 {
+                font-size: 1.1em;
+                margin-left: 5px;
+                margin-bottom: 10px;
+            }
+            .section-intro {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            .section-intro h2 {
+                font-size: 1.5em;
+            }
+            .concept-box, .example-box, .warning-box, .error-box, details {
+                padding: 10px;
+                margin: 10px 0;
+            }
+            ul, ol {
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 4: Pemberdayaan Komunitas Berbasis Kearifan Lokal</h1>
+
+        <div class="section-intro">
+            <h2>Pemberdayaan dan Potensi Kearifan Lokal</h2>
+            <p>Masyarakat modern senantiasa dihadapkan pada arus perubahan sosial yang cepat, gelombang globalisasi, dan pesatnya perkembangan dunia digital. Realitas ini membawa serta konsekuensi dan tantangan yang tidak selalu mudah dihadapi oleh setiap komunitas. Salah satu pendekatan strategis untuk merespons dinamika ini, terutama di era globalisasi dan digitalisasi, adalah melalui <strong>pemberdayaan</strong> yang mengoptimalkan potensi <strong>kearifan lokal</strong>. Mari kita selami lebih dalam konsep-konsep penting ini untuk memahami bagaimana keduanya bersinergi dalam membangun masyarakat yang adaptif dan berdaya.</p>
+        </div>
+
+        <section id="komunitas-lokal">
+            <h2>1. Komunitas Lokal</h2>
+            <p>Sebelum kita membahas pemberdayaan secara mendalam, penting untuk memahami apa yang dimaksud dengan <span class="key-point">komunitas</span>. Komunitas membentuk fondasi sosial di mana individu-individu berinteraksi dan berbagi kehidupan.</p>
+
+            <div class="concept-box">
+                <h4>Definisi Komunitas</h4>
+                <p>Secara sederhana, <strong>komunitas</strong> dapat diartikan sebagai <strong>kelompok sosial yang tinggal di suatu lokasi tertentu</strong>. Ikatan antaranggota dalam komunitas ini cenderung kuat, di mana mereka memiliki <span class="key-point">rasa seperasaan, sepenanggungan, dan saling membutuhkan</span>.</p>
+                <span class="citation">(Pratama, 2012; Soekanto, 2012)</span>
+            </div>
+
+            <p>Seiring perkembangannya, konsep komunitas tidak lagi terbatas pada aspek kedaerahan semata. Kini, komunitas juga dapat dipahami sebagai <strong>kelompok yang terbentuk dari kesamaan kepentingan bersama</strong>. Setiap individu dalam komunitas ini memiliki:</p>
+            <ul>
+                <li><span class="key-point">Sense of belonging</span> (rasa memiliki satu sama lain).</li>
+                <li><span class="key-point">Komitmen</span> untuk mencapai tujuan bersama.</li>
+            </ul>
+            <span class="citation">(Ulum dan Anggaini, 2020)</span>
+
+            <details>
+                <summary>Klik untuk melihat Contoh Komunitas di Lingkungan Sekitar</summary>
+                <p>Dalam kehidupan sehari-hari, kita dapat menemukan berbagai contoh komunitas yang hidup berdampingan. Beberapa di antaranya adalah:</p>
+                <ul>
+                    <li><strong>Kelompok Perajin:</strong> Sekumpulan individu yang berprofesi sama, berbagi pengetahuan dan keterampilan, seperti perajin gerabah yang dapat ditemui di desa wisata. Desa wisata tidak hanya menawarkan destinasi rekreasi, tetapi juga berperan dalam peningkatan ekonomi lokal, edukasi, dan pelestarian budaya.</li>
+                    <li><strong>Karang Taruna:</strong> Organisasi kepemudaan di tingkat desa/kelurahan yang aktif dalam kegiatan sosial kemasyarakatan.</li>
+                    <li><strong>PKK (Pemberdayaan Kesejahteraan Keluarga):</strong> Gerakan nasional untuk memberdayakan keluarga demi kesejahteraan masyarakat.</li>
+                    <li><strong>Kelompok Tani:</strong> Para petani yang bersatu untuk mencapai tujuan bersama dalam sektor pertanian, seringkali untuk saling membantu dan berbagi inovasi.</li>
+                    <li><strong>Kelompok Seniman:</strong> Wadah bagi para seniman untuk berkreasi dan berekspresi, serta berkolaborasi dalam berbagai proyek seni.</li>
+                </ul>
+                <p>Di era digital, kita juga melihat banyak komunitas yang terbentuk secara daring, seperti komunitas pecinta lingkungan, penggemar budaya tertentu, kelompok hobi, atau <em>fans club</em>. Namun, dalam konteks pembahasan ini, <span class="key-point">komunitas lokal</span> secara khusus merujuk pada kelompok sosial yang memiliki kesamaan tujuan, nilai, dan norma di suatu wilayah atau lingkungan setempat, menekankan aspek geografis dan kedekatan sosial.</p>
+            </details>
+        </section>
+
+        <section id="kearifan-lokal">
+            <h2>2. Kearifan Lokal</h2>
+            <p>Setelah memahami komunitas, mari kita telaah konsep <span class="key-point">kearifan lokal</span>. Kearifan lokal adalah inti dari identitas dan ketahanan suatu masyarakat, mencerminkan kebijaksanaan yang telah teruji waktu.</p>
+
+            <div class="example-box">
+                <h4>Subak di Bali: Sebuah Kearifan Lokal dalam Pengelolaan Air</h4>
+                <p><strong>Subak</strong> adalah salah satu bentuk kearifan lokal yang sangat terkenal di Bali, berupa organisasi petani yang mengelola sistem irigasi secara tradisional. Subak didasarkan pada filosofi <strong><span class="key-point">Tri Hita Karana</span></strong>, yang bermakna tiga penyebab terciptanya kebahagiaan dan kesejahteraan. Filosofi ini mencakup tiga hubungan harmonis yang fundamental:</p>
+                <ol>
+                    <li><strong>Parahyangan:</strong> Harmonisasi hubungan antara manusia dengan Tuhan atau alam spiritual.</li>
+                    <li><strong>Pawongan:</strong> Harmonisasi hubungan antara manusia dengan sesama manusia, menekankan gotong royong dan kebersamaan.</li>
+                    <li><strong>Palemahan:</strong> Harmonisasi hubungan antara manusia dengan alam dan lingkungan, menunjukkan sikap peduli dan menjaga keseimbangan ekosistem.</li>
+                </ol>
+                <p>Prinsip-prinsip Tri Hita Karana ini termuat dalam <strong><span class="key-point">awig-awig</span></strong>, yaitu aturan adat yang mengatur tata krama pergaulan hidup masyarakat, termasuk tata cara pengelolaan subak, serta perlindungan properti budaya dan alam di wilayah Subak. Subak bahkan telah diakui oleh UNESCO sebagai warisan budaya dunia dan menjadi destinasi wisata global, membuktikan nilai universal kearifan lokal ini.</p>
+                <span class="citation">(Biro Perencanaan, 2019)</span>
+            </div>
+
+            <p>Kearifan lokal tidak hanya terbatas pada lingkungan pedesaan. Di masyarakat perkotaan pun, kearifan lokal dapat ditemukan, seringkali dengan adaptasi gaya hidup modern untuk memenuhi tantangan dan kebutuhan lingkungan perkotaan.</p>
+
+            <details>
+                <summary>Klik untuk melihat Kearifan Lokal di Perkotaan</summary>
+                <div class="example-box">
+                    <h4>Inovasi Kearifan Lokal: Hidroponik dan Pengelolaan Sampah</h4>
+                    <p>Contoh kearifan lokal yang berkembang di perkotaan antara lain praktik <strong>berkebun dengan metode hidroponik</strong> di lahan sempit. Gerakan "hijau" ini memanfaatkan ruang terbatas untuk menjadi sumber pangan alternatif dan bahkan sumber ekonomi masyarakat. Ini adalah adaptasi cerdas terhadap keterbatasan lahan perkotaan.</p>
+                    <p>Selain itu, perilaku <span class="key-point">memilah sampah untuk didaur ulang</span> juga merupakan bentuk kearifan lokal yang bertujuan mengurangi kerusakan lingkungan dan menciptakan ekonomi sirkular. Pengelolaan sampah yang baik mencerminkan kesadaran kolektif untuk menjaga kelestarian bumi.</p>
+                    <p>Contoh-contoh ini menunjukkan bahwa kearifan lokal tidak statis; ia mampu beradaptasi, tumbuh, dan relevan seiring perkembangan zaman dan tantangan baru.</p>
+                </div>
+            </details>
+
+            <div class="concept-box">
+                <h4>Definisi dan Fungsi Kearifan Lokal</h4>
+                <p>Pada intinya, kearifan lokal mencakup <strong>pengetahuan, kepercayaan, dan kebijaksanaan yang diwariskan, dipercayai, dan digunakan masyarakat sebagai pegangan hidup</strong>. Kearifan lokal dikenal mampu memperkuat kohesi sosial masyarakat dan mendorong mereka hidup berdampingan secara harmonis, selaras dengan alam, serta menyelesaikan berbagai konflik yang mungkin timbul.</p>
+                <span class="citation">(Abdullah, 2006; Abdullah et al., 2008; Banda, 2016)</span>
+                <p>Adapun fungsi kearifan lokal dalam masyarakat adalah sebagai berikut:</p>
+                <ul>
+                    <li><strong>Perekat atau Pemersatu:</strong> Berfungsi sebagai lem sosial yang menyatukan hubungan antaranggota masyarakat.</li>
+                    <li><strong>Pegangan Hidup:</strong> Memberikan pedoman moral dan etika dalam menjalani kehidupan sehari-hari.</li>
+                    <li><strong>Kontrol Sosial:</strong> Mengatur perilaku masyarakat agar sesuai dengan nilai dan norma yang berlaku, menjaga ketertiban.</li>
+                    <li><strong>Sarana Pelestarian Lingkungan dan Budaya:</strong> Menjaga keberlanjutan sumber daya alam dan warisan budaya yang tak ternilai.</li>
+                </ul>
+            </div>
+            <p>Kearifan lokal adalah potensi yang sangat berharga yang harus dilestarikan dan dikembangkan sebagai kekuatan untuk membangun kesejahteraan masyarakat. Lebih jauh, kearifan lokal dapat menjadi <span class="key-point">benteng</span> yang efektif untuk mencegah terjadinya dampak negatif dari perubahan sosial yang cepat, gelombang globalisasi, dan pesatnya perkembangan dunia digital. Oleh karena itu, mengenali dan melestarikan kearifan lokal yang ada di sekitar kita adalah langkah penting menuju masa depan yang berkelanjutan.</p>
+        </section>
+
+        <section id="pemberdayaan-komunitas-lokal">
+            <h2>3. Pemberdayaan Komunitas Lokal</h2>
+            <p>Setelah memahami konsep komunitas dan kearifan lokal, kini kita akan mendalami konsep <strong>pemberdayaan komunitas</strong>. Pemberdayaan adalah kunci untuk membangun kapasitas masyarakat agar mampu mengatasi tantangan dan memanfaatkan peluang.</p>
+
+            <div class="error-box">
+                <h4>Masalah Buta Aksara: Sebuah Tantangan Pembangunan</h4>
+                <p>Salah satu masalah sosial yang masih dapat kita temui di Indonesia adalah <strong>buta aksara</strong>. Kemampuan dasar seperti membaca, menulis, dan berhitung sangat esensial untuk belajar, berpartisipasi, dan menjalani kehidupan yang layak di masyarakat. Kelompok masyarakat yang buta aksara umumnya memiliki pendidikan rendah, cenderung miskin, dan termarginalkan, sehingga sulit berpartisipasi penuh dalam kehidupan sosial dan ekonomi.</p>
+                <p>Pada tahun 2021, diperkirakan masih ada sekitar 1,78% atau 2,9 juta penduduk yang mengalami buta aksara. Jika tidak segera ditangani, masalah ini dapat menghambat pembangunan negara secara keseluruhan.</p>
+            </div>
+
+            <p>Dapatkah pemberantasan buta aksara diatasi melalui pemberdayaan komunitas lokal? Jawabannya adalah ya. Pemberantasan buta aksara tidak hanya menjadi tanggung jawab pemerintah, tetapi juga membutuhkan partisipasi aktif dari masyarakat luas, akademisi, serta Lembaga Swadaya Masyarakat (LSM) atau Non-Governmental Organizations (NGO). <span class="key-point">LSM adalah lembaga nonpemerintah yang bersifat independen dan nirlaba, berfokus pada isu-isu sosial tertentu.</span></p>
+
+            <p>Penanganan kasus buta aksara melalui pemberdayaan dapat dilakukan melalui <span class="key-point">pelatihan serta pendampingan langsung</span> yang melibatkan komunitas lokal. Keterlibatan komunitas lokal diharapkan mampu membantu kelangsungan program sehingga masyarakat secara perlahan memiliki keterampilan membaca dan menulis, yang pada gilirannya akan meningkatkan kualitas hidup mereka.</p>
+
+            <details>
+                <summary>Klik untuk melihat Siapa Sasaran Pemberdayaan Masyarakat?</summary>
+                <p>Pemberdayaan umumnya berkaitan erat dengan upaya pembangunan yang inklusif. Oleh karena itu, masyarakat yang menjadi sasaran pemberdayaan antara lain meliputi:</p>
+                <ul>
+                    <li><strong>Kelompok miskin atau rentan:</strong> Individu atau keluarga yang hidup di bawah garis kemiskinan atau berisiko tinggi jatuh miskin.</li>
+                    <li><strong>Pemuda:</strong> Generasi muda yang perlu dibekali keterampilan dan peluang untuk masa depan.</li>
+                    <li><strong>Lanjut usia:</strong> Kelompok lansia yang mungkin memerlukan dukungan sosial dan ekonomi.</li>
+                    <li><strong>Penyandang disabilitas:</strong> Individu dengan keterbatasan fisik atau mental yang membutuhkan akses dan kesempatan yang sama.</li>
+                    <li><strong>Komunitas adat:</strong> Kelompok masyarakat yang menjaga tradisi dan budaya leluhur, seringkali rentan terhadap dampak modernisasi.</li>
+                    <li><strong>Masyarakat marginal:</strong> Kelompok yang terpinggirkan dari arus utama pembangunan dan sumber daya.</li>
+                </ul>
+                <p>Melalui pemberdayaan, kelompok-kelompok ini diharapkan mampu <span class="key-point">meningkatkan kontrol dan partisipasi atas keputusan-keputusan dalam hidup mereka</span>, menuju kemandirian dan kesejahteraan.</p>
+            </details>
+
+            <div class="concept-box">
+                <h4>Tujuan dan Karakteristik Pemberdayaan</h4>
+                <p><strong>Pemberdayaan (Empowerment)</strong> bertujuan untuk <span class="key-point">meningkatkan sumber daya, kualitas hidup, serta kapasitas masyarakat</span> secara holistik. Pemberdayaan dapat dilaksanakan dengan memberikan:</p>
+                <ul>
+                    <li><strong>Akses:</strong> Kesempatan untuk menjangkau sumber daya dan layanan.</li>
+                    <li><strong>Mitra:</strong> Dukungan dari pihak-pihak yang dapat berkolaborasi.</li>
+                    <li><strong>Jaringan:</strong> Koneksi dengan individu atau organisasi lain.</li>
+                    <li><strong>Hak bersuara:</strong> Kesempatan untuk menyampaikan pendapat dan mengambil keputusan.</li>
+                </ul>
+                <p>Sehingga mereka memiliki kemampuan untuk membangun kehidupannya sendiri. Pemberdayaan juga dapat diartikan sebagai <strong>proses memberikan kesempatan, kemampuan, dan keberanian bersuara</strong> untuk melakukan upaya yang terbaik bagi pribadi, keluarga, atau lingkungannya.</p>
+                <span class="citation">(United Nations, 2012; Mardikanto, 2013)</span>
+            </div>
+
+            <p>Penting untuk diingat bahwa pemberdayaan bukanlah proses instan. Ia memerlukan <strong>waktu yang panjang dan bersifat keberlanjutan (sustainable)</strong> agar dampaknya terasa nyata dan lestari. Kunci keberhasilan pemberdayaan terletak pada <span class="key-point">lingkungan yang mendukung</span> serta <span class="key-point">partisipasi aktif masyarakat</span>. Masyarakat seharusnya tidak diposisikan hanya sebagai penerima bantuan, melainkan sebagai <span class="key-point">agen penggerak perubahan</span> yang aktif dan mandiri.</p>
+
+            <p>Keterlibatan aktif masyarakat dalam pemberdayaan membawa banyak manfaat, seperti:</p>
+            <ul>
+                <li>Pengambilan keputusan yang lebih inklusif dan relevan dengan kebutuhan lokal.</li>
+                <li>Pengentasan kemiskinan melalui peningkatan kapasitas ekonomi.</li>
+                <li>Peningkatan integrasi sosial dan mengurangi kesenjangan.</li>
+                <li>Pembukaan peluang pekerjaan yang layak dan berkelanjutan.</li>
+            </ul>
+            <p>Dengan demikian, pembangunan berkelanjutan yang inklusif dan merata dapat tercapai melalui partisipasi masyarakat yang kuat dalam setiap upaya pemberdayaan.</p>
+            <span class="citation">(United Nations, 2012)</span>
+            <p>Keberhasilan pemberdayaan pada akhirnya ditandai dengan <strong>kemandirian masyarakat</strong> dalam menyelesaikan masalah dan menjalani kehidupannya tanpa ketergantungan terus-menerus pada pihak luar.</p>
+        </section>
+
+    </div>
+</body>
+</html>
+```

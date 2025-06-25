@@ -1,0 +1,487 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partikel dalam Benda dan Makhluk Hidup</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fff; /* Assuming the content area is white */
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--text-secondary);
+            margin-top: 0;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+             color: var(--text-tertiary);
+             margin-top: 20px;
+             margin-bottom: 10px;
+        }
+
+        .important-terms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9; /* Light background for terms */
+            border-left: 4px solid var(--secondary-accent-amber);
+        }
+
+        .term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .why-important {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 4px solid var(--semantic-info);
+        }
+
+        .activity-steps ol, .activity-materials ul {
+            padding-left: 20px;
+        }
+
+        .activity-steps li, .activity-materials li {
+            margin-bottom: 10px;
+        }
+
+        .safety-warning {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: var(--semantic-warning);
+            color: var(--text-primary); /* Or a darker color for contrast if needed */
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: var(--text-secondary);
+        }
+
+        caption {
+            caption-side: top;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .discussion-points ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .discussion-points li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .discussion-points li::before {
+            content: "•";
+            color: var(--accent-green);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .takeaway {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9; /* Light green background */
+            border-left: 4px solid var(--semantic-success);
+            font-style: italic;
+        }
+        
+        .figure-description {
+            font-style: italic;
+            text-align: center;
+            margin-top: 10px;
+            color: var(--text-tertiary);
+        }
+
+        .tahukah-kamu {
+            padding: 20px;
+            background-color: #fff9c4; /* Light amber background */
+            border-left: 4px solid var(--secondary-accent-amber);
+            margin-top: 30px;
+        }
+
+        .tahukah-kamu h2 {
+            border-bottom-color: var(--secondary-accent-amber);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .important-terms {
+                flex-direction: column;
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr { border: 1px solid var(--border-divider); margin-bottom: 10px; }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td::before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label); /* Use data-label for column headers */
+                font-weight: bold;
+                color: var(--text-secondary);
+                text-align: left;
+            }
+
+            /* Specific data-labels for each column */
+            td:nth-of-type(1)::before { content: "No"; }
+            td:nth-of-type(2)::before { content: "Nama Bahan"; }
+            td:nth-of-type(3)::before { content: "Deskripsi Bau Sebelum Dibakar"; }
+            td:nth-of-type(4)::before { content: "Deskripsi Bau Setelah Dibakar"; }
+            td:nth-of-type(5)::before { content: "Dugaan Zat yang Terkandung"; }
+            td:nth-of-type(6)::before { content: "Lambang"; }
+            td:nth-of-type(7)::before { content: "Nomor Atom"; }
+            td:nth-of-type(8)::before { content: "Persentase dalam Tubuh Manusia (%)"; }
+
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Bab 8: Partikel Penyusun Benda dan Makhluk Hidup</h1>
+            <h2>A. Partikel dalam Benda dan Makhluk Hidup</h2>
+        </header>
+
+        <section>
+            <h2>Ayo, Kita Pelajari</h2>
+            <div class="important-terms">
+                <span class="term">Molekul dalam benda dan tubuh makhluk hidup</span>
+                <span class="term">Atom dan partikel penyusunnya</span>
+            </div>
+            <h3>Istilah Penting</h3>
+             <p><span class="term">Molekul</span></p>
+             <p><span class="term">Atom</span></p>
+             <p><span class="term">Ikatan kimia</span></p>
+
+            <div class="why-important">
+                <h3>Mengapa Penting?</h3>
+                <p>Mempelajari materi ini akan membantumu memahami partikel penyusun benda dan makhluk hidup sehingga kamu dapat lebih mengerti rahasia alam dan dapat mengembangkan teknologi atau menemukan teknologi atau alat baru yang bermanfaat bagi bangsa Indonesia.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Apa Itu Partikel?</h2>
+            <p>Partikel adalah bagian terkecil dari suatu materi yang masih mempunyai sifat materi itu. Partikel dapat berbentuk <span class="term">atom</span>, <span class="term">molekul</span>, dan <span class="term">ion</span>.</p>
+            <p><span class="term">Atom</span> adalah bagian terkecil dari suatu unsur yang masih memiliki sifat unsur tersebut. Tahukah kamu bahwa tubuh makhluk hidup tersusun dari milyaran atom-atom?</p>
+            <p>Atom-atom dapat berikatan satu sama lain membentuk <span class="term">molekul</span>. Molekul merupakan gabungan antara dua atau lebih atom-atom melalui <span class="term">ikatan kimia</span> tertentu.</p>
+            <p>Molekul dapat tersusun sedemikian rupa sehingga menjadi suatu struktur tertentu, misalnya:</p>
+            <ul>
+                <li><strong>Rambut:</strong> tersusun dari molekul-molekul yang mengandung unsur karbon (C), hidrogen (H), nitrogen (N), dan sulfur (S).</li>
+                <li><strong>Tulang:</strong> mengandung kalsium (Ca), fosfor (P), dan oksigen (O).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Partikel pada Benda Tak Hidup</h2>
+            <p>Selain pada makhluk hidup, benda seperti kayu, plastik, air, udara, kain, dan benda-benda lain, juga merupakan zat kimia yang tersusun atas senyawa-senyawa tertentu.</p>
+            <p>Dalam senyawa, molekul-molekul tertata sedemikian rupa sehingga memberikan sifat-sifat tertentu.</p>
+            <p><strong>Contoh:</strong> Plastik mempunyai sifat lentur karena memiliki molekul yang struktur rantainya panjang dan terdapat rongga antar rantai molekulnya.</p>
+        </section>
+
+        <section>
+            <h2>Ukuran Partikel</h2>
+            <p>Ukuran molekul sangat kecil sehingga tidak dapat diamati dengan mata telanjang dan bahkan tidak dapat diamati dengan mikroskop biasa.</p>
+            <p>Bagaimana kamu dapat mengetahui bahwa materi yang ada di sekitarmu mengandung zat yang berbeda? Secara sederhana untuk mengetahui kandungan zat dalam suatu benda atau makhluk hidup dapat kita praktikkan melalui Aktivitas 8.1.</p>
+        </section>
+
+         <section>
+            <h2>Ayo, Kita Lakukan</h2>
+            <h3>Aktivitas 8.1 Mengidentifikasi Perbedaan Zat dalam Benda dan Makhluk Hidup secara Sederhana</h3>
+
+            <h4>Apa yang kamu perlukan?</h4>
+            <div class="activity-materials">
+                <ul>
+                    <li>Bulu unggas</li>
+                    <li>Beberapa helai rambut</li>
+                    <li>Sepotong daging</li>
+                    <li>Plastik</li>
+                    <li>Kayu</li>
+                    <li>Kertas</li>
+                    <li>Daun</li>
+                    <li>Kain perca jenis katun</li>
+                    <li>Karet ban atau bahan lain yang ada di sekitarmu</li>
+                    <li>Pinset atau penjepit kayu</li>
+                    <li>Gunting atau pisau</li>
+                    <li>Pembakar spiritus</li>
+                </ul>
+            </div>
+
+            <h4>Apa yang harus kamu lakukan?</h4>
+            <div class="activity-steps">
+                <ol>
+                    <li>Buatlah kelompok yang beranggotakan 4-5 orang.</li>
+                    <li>Potonglah kain perca yang bersih dan kering dengan ukuran 4×4 cm.</li>
+                    <li>Jepit salah satu ujung kain tersebut dengan pinset.</li>
+                    <li>Ciumlah bau atau aroma kain tersebut.</li>
+                    <li>Nyalakan pembakar spiritus.</li>
+                    <li>Bakarlah ujung kain dengan hati-hati.</li>
+                </ol>
+            </div>
+
+            <div class="safety-warning">
+                <p><strong>Ingat!</strong> Berhati-hatilah dalam menggunakan pembakar spiritus! Jangan sampai pakaian atau badanmu terbakar!</p>
+            </div>
+
+             <div class="activity-steps">
+                <ol start="7">
+                    <li>Setelah ujung kain terbakar, segera matikan api pada ujung kain yang terbakar.</li>
+                    <li>Ciumlah kembali bau kain sudah terbakar.</li>
+                </ol>
+             </div>
+
+             <div class="safety-warning">
+                 <p><strong>Hati-hati!</strong> Jangan membau baunya terlalu lama dan jangan terlalu dekat dengan hidung! Identifikasilah bau secara tidak langsung yaitu dengan mengibaskan tangan di atas bahan ke arah hidung!</p>
+             </div>
+
+            <div class="activity-steps">
+                 <ol start="9">
+                    <li>Lakukan hal yang sama dengan hati-hati pada bahan-bahan lain yang kamu sediakan. Gunakan bahan dalam potongan kecil, ciumlah bau bahan sebelum dan sesudah terbakar.</li>
+                    <li>Carilah unsur-unsur penyusun bahan yang sudah kamu siapkan di buku-buku yang terdapat di perpustakaan sekolah atau melalui internet.</li>
+                </ol>
+            </div>
+
+            <h4>Tabel 8.1 Hasil Pengamatan Identifikasi Zat dalam Benda</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Bahan</th>
+                        <th>Deskripsi Bau Sebelum Dibakar</th>
+                        <th>Deskripsi Bau Setelah Dibakar</th>
+                        <th>Dugaan Zat yang Terkandung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows would be filled during the activity -->
+                    <tr>
+                        <td data-label="No">1</td>
+                        <td data-label="Nama Bahan">Bulu unggas</td>
+                        <td data-label="Deskripsi Bau Sebelum Dibakar"></td>
+                        <td data-label="Deskripsi Bau Setelah Dibakar"></td>
+                        <td data-label="Dugaan Zat yang Terkandung"></td>
+                    </tr>
+                     <tr>
+                        <td data-label="No">2</td>
+                        <td data-label="Nama Bahan">Rambut</td>
+                        <td data-label="Deskripsi Bau Sebelum Dibakar"></td>
+                        <td data-label="Deskripsi Bau Setelah Dibakar"></td>
+                        <td data-label="Dugaan Zat yang Terkandung"></td>
+                    </tr>
+                     <tr>
+                        <td data-label="No">3</td>
+                        <td data-label="Nama Bahan">Daging</td>
+                        <td data-label="Deskripsi Bau Sebelum Dibakar"></td>
+                        <td data-label="Deskripsi Bau Setelah Dibakar"></td>
+                        <td data-label="Dugaan Zat yang Terkandung"></td>
+                    </tr>
+                    <!-- ... and so on for other materials -->
+                </tbody>
+            </table>
+
+            <h4>Apa yang perlu kamu diskusikan?</h4>
+            <div class="discussion-points">
+                <ul>
+                    <li>Apakah tiap-tiap benda jika dibakar menghasilkan bau yang berbeda-beda? Jika ya, jelaskan mengapa hal tersebut dapat terjadi?</li>
+                    <li>Apakah bau rambut dan bau bulu unggas yang telah dibakar sama? Mengapa demikian?</li>
+                    <li>Apakah bau kertas dan bau kayu yang telah dibakar sama? Apa unsur yang terkandung dalam bahan tersebut?</li>
+                    <li>Apakah bau plastik dan bau daun yang telah dibakar sama? Apakah zat yang terkandung pada kedua bahan tersebut?</li>
+                </ul>
+            </div>
+
+            <h4>Apa yang dapat kamu simpulkan?</h4>
+            <div class="discussion-points">
+                <ul>
+                    <li>Apa yang dapat kamu simpulkan dari aktivitas ini?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Mengapa Bau Berbeda Saat Dibakar?</h2>
+            <p>Setelah kamu melakukan Aktivitas 8.1, coba kamu pikirkan, mengapa benda-benda jika dibakar dapat menghasilkan bau yang berbeda-beda?</p>
+            <p>Tahukah kamu bahwa ketika benda dibakar akan menyebabkan zat-zat yang terkandung di dalamnya berubah menjadi zat lain? Terbentuknya zat baru tersebut ditandai antara lain oleh warna dan bau yang berbeda.</p>
+            <p>Dengan kata lain, bila bau yang kamu cium berbeda berarti kandungan zat yang ada dalam benda tersebut juga berbeda. Bahan-bahan yang berbeda terdiri atas senyawa-senyawa dan unsur yang juga berbeda.</p>
+        </section>
+
+        <section>
+            <h2>Perbedaan Sifat Akibat Struktur Molekul</h2>
+            <p>Selain disusun oleh molekul yang berbeda, sifat-sifat suatu materi yang berbeda juga dapat disebabkan oleh perbedaan susunan molekul-molekul dalam materi itu.</p>
+            <p><strong>Contoh:</strong> Kayu yang dibuat pensil dan pati dalam umbi kentang.</p>
+            <ul>
+                <li>Umbi kentang mengandung pati atau amilum yang dapat dimakan dan merupakan sumber energi. Pati disusun oleh molekul-molekul yang berantai panjang. Rantai panjang tersebut disusun oleh unit-unit molekul yang lebih sederhana yang disebut <span class="term">glukosa</span>. Antara molekul glukosa yang satu dengan yang lainnya dihubungkan oleh <span class="term">ikatan glikosida</span>. Ikatan glikosida adalah ikatan kimia yang terjadi antar molekul monosakarida atau gula sederhana.</li>
+                <li>Kayu yang digunakan untuk membuat pensil tersusun atas molekul <span class="term">selulosa</span> yang juga mempunyai rantai panjang. Molekul panjang tersebut terdiri atas molekul-molekul glukosa yang sama seperti pada pati.</li>
+            </ul>
+
+            <p>Apakah perbedaan antara molekul selulosa dengan pati (amilum)? Perhatikan ikatan antara dua molekul glukosanya! Selulosa dan amilum mempunyai molekul penyusun sama yaitu glukosa, tetapi jenis ikatan yang menghubungkan antar molekul glukosanya berbeda.</p>
+            <ul>
+                <li>Pada amilum, unit-unit glukosa dihubungkan melalui ikatan α-1,4 glikosida.</li>
+                <li>Pada selulosa, unit-unit glukosa dihubungkan melalui ikatan β-1,4 glikosida.</li>
+            </ul>
+            <p>Jenis ikatan ini, akan kamu pelajari pada jenjang pendidikan yang lebih tinggi.</p>
+             <p class="figure-description">Gambar 8.4 menunjukkan konsep perbedaan struktur Amilum dan Selulosa, berfokus pada jenis ikatan glikosida yang berbeda meskipun unit penyusunnya sama (glukosa).</p>
+
+            <p>Selulosa merupakan zat yang keras dan jika dimakan oleh manusia tidak dapat dicerna oleh tubuh. Sementara itu, amilum dapat dicerna dan digunakan sebagai bahan makanan. Perbedaan sifat ini menunjukkan bahwa tidak hanya jumlah dan jenis atom-atom penyusun molekul yang menyebabkan sifat zat berbeda, tetapi pola susunan dan jenis ikatan antarmolekul penyusun zat juga dapat menyebabkan zat itu mempunyai sifat-sifat kimia dan sifat-sifat fisika yang berbeda. Masih ingatkah kamu apa perbedaan sifat kimia dan sifat fisika?</p>
+        </section>
+
+         <section>
+            <h2>Perbedaan Sifat Akibat Jenis dan Jumlah Atom</h2>
+            <p>Pada contoh-contoh senyawa yang telah kamu pelajari, tiap-tiap senyawa mempunyai rumus molekul tertentu. Rumus molekul menunjukkan jenis atom yang menyusun suatu molekul dan perbandingannya.</p>
+            <p><strong>Contoh:</strong></p>
+            <ul>
+                <li>Molekul air (H₂O) terdiri atas satu atom O dan dua atom H.</li>
+                <li>Bila dua atom O mengikat dua atom H, maka akan terbentuk senyawa yang berbeda yaitu hidrogen peroksida (H₂O₂).</li>
+            </ul>
+             <p class="figure-description">Gambar 8.5 menunjukkan visualisasi molekul (a) H₂O dan (b) H₂O₂.</p>
+            <p>Fenomena itu menunjukkan bahwa perbandingan jumlah dan jenis atom dalam suatu molekul akan menghasilkan senyawa yang sifat dan jenisnya sangat berbeda.</p>
+        </section>
+
+        <section>
+            <h2>Kesimpulan Bagian A</h2>
+            <p>Berdasarkan uraian tersebut, dapat kamu pelajari bahwa bahan yang berbeda, tersusun oleh zat-zat yang berbeda. Zat-zat yang berbeda mempunyai perbedaan jumlah dan jenis atom penyusun. Sifat-sifat bahan yang berbeda, dapat disebabkan oleh perbedaan ikatan atau perbedaan struktur (susunan) molekul-molekul penyusunnya.</p>
+            <p>Bagaimana atom-atom dapat membentuk ikatan kimia dalam suatu molekul? Agar dapat menjawab pertanyaan tersebut kamu harus memahami dulu tentang atom dan partikel-partikel penyusunnya.</p>
+        </section>
+
+        <section class="tahukah-kamu">
+            <h2>Tahukah Kamu?</h2>
+            <p>Ada sekitar 25 unsur yang penting untuk keberlangsungan kehidupan makhluk hidup, termasuk manusia. Unsur-unsur tersebut dapat dilihat pada Tabel 8.2 berikut.</p>
+            <h4>Tabel 8.2 Unsur Penyusun Tubuh Manusia</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unsur</th>
+                        <th>Lambang</th>
+                        <th>Nomor Atom</th>
+                        <th>Persentase dalam Tubuh Manusia (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="4"><strong>Unsur yang menyusun 96% tubuh manusia</strong></td></tr>
+                    <tr><td data-label="Unsur">Oksigen</td><td data-label="Lambang">O</td><td data-label="Nomor Atom">8</td><td data-label="Persentase dalam Tubuh Manusia (%)">65</td></tr>
+                    <tr><td data-label="Unsur">Karbon</td><td data-label="Lambang">C</td><td data-label="Nomor Atom">6</td><td data-label="Persentase dalam Tubuh Manusia (%)">18,5</td></tr>
+                    <tr><td data-label="Unsur">Hidrogen</td><td data-label="Lambang">H</td><td data-label="Nomor Atom">1</td><td data-label="Persentase dalam Tubuh Manusia (%)">9,5</td></tr>
+                    <tr><td data-label="Unsur">Nitrogen</td><td data-label="Lambang">N</td><td data-label="Nomor Atom">7</td><td data-label="Persentase dalam Tubuh Manusia (%)">3,3</td></tr>
+                    <tr><td colspan="4"><strong>Unsur yang menyusun 3,99% tubuh manusia</strong></td></tr>
+                    <tr><td data-label="Unsur">Kalsium</td><td data-label="Lambang">Ca</td><td data-label="Nomor Atom">20</td><td data-label="Persentase dalam Tubuh Manusia (%)">1,5</td></tr>
+                    <tr><td data-label="Unsur">Fosfor</td><td data-label="Lambang">P</td><td data-label="Nomor Atom">15</td><td data-label="Persentase dalam Tubuh Manusia (%)">1</td></tr>
+                    <tr><td data-label="Unsur">Kalium</td><td data-label="Lambang">K</td><td data-label="Nomor Atom">19</td><td data-label="Persentase dalam Tubuh Manusia (%)">0,4</td></tr>
+                    <tr><td data-label="Unsur">Sulfur</td><td data-label="Lambang">S</td><td data-label="Nomor Atom">16</td><td data-label="Persentase dalam Tubuh Manusia (%)">0,3</td></tr>
+                    <tr><td data-label="Unsur">Natrium</td><td data-label="Lambang">Na</td><td data-label="Nomor Atom">11</td><td data-label="Persentase dalam Tubuh Manusia (%)">0,2</td></tr>
+                    <tr><td data-label="Unsur">Klor</td><td data-label="Lambang">Cl</td><td data-label="Nomor Atom">17</td><td data-label="Persentase dalam Tubuh Manusia (%)">0,2</td></tr>
+                    <tr><td data-label="Unsur">Magnesium</td><td data-label="Lambang">Mg</td><td data-label="Nomor Atom">12</td><td data-label="Persentase dalam Tubuh Manusia (%)">0,1</td></tr>
+                     <tr><td colspan="4"><strong>Unsur yang menyusun 0,01% tubuh manusia</strong></td></tr>
+                     <tr><td colspan="4">Boron (B), kromium (Cr), kobalt (Co), tembaga (Cu), fluor (F), iodin (I), besi (Fe), mangan (Mn), molibdenum (Mo), selenium (Se), silikon (Si), timah (Sn), vanadium (V), dan seng (Zn) menyusun kurang dari 0,01% dari tubuh manusia.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+
+    </div>
+
+</body>
+</html>
+```

@@ -1,0 +1,438 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pewarisan Sifat dan Kelainan Turunan</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-title .icon {
+            margin-right: 15px;
+            font-size: 2.5em;
+            color: var(--accent-green);
+        }
+
+        .lesson-content {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .lesson-content p {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .important-term {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .sub-section {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .sub-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .example {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 4px solid var(--semantic-info);
+        }
+
+        .example p {
+            margin-bottom: 5px;
+        }
+
+        .genotype-example {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .color-key {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+            vertical-align: middle;
+        }
+
+        .color-blue { background-color: var(--primary-blue); }
+        .color-green { background-color: var(--accent-green); }
+        .color-amber { background-color: var(--secondary-accent-amber); }
+        .color-info { background-color: var(--semantic-info); }
+        .color-error { background-color: var(--semantic-error); }
+
+        .term-explanation {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        .term-explanation:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .term-explanation strong {
+            color: var(--primary-blue);
+        }
+
+        .phenotype-chart {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        .phenotype-chart th, .phenotype-chart td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .phenotype-chart th {
+            background-color: #f5f5f5;
+            color: var(--text-secondary);
+        }
+
+        .phenotype-chart td:first-child {
+            text-align: left;
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+
+        .phenotype-chart .allele-count {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .allele-key {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .section-title .icon {
+                font-size: 2em;
+            }
+
+            .phenotype-chart {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .phenotype-chart th, .phenotype-chart td {
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            .section-title .icon {
+                display: none; /* Hide icon on very small screens for better space */
+            }
+            .lesson-content {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C. Pewarisan Sifat pada Makhluk Hidup dan Kelainan Sifat yang Diturunkan</h1>
+
+        <p>Bagian ini akan membahas bagaimana sifat-sifat diwariskan dari orang tua kepada keturunannya, serta beberapa kelainan yang juga bersifat turun-temurun. Memahami mekanisme ini sangat penting untuk mengerti keragaman yang ada pada makhluk hidup!</p>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">💡</span>
+                <h2>Mengapa Penting Mempelajari Pewarisan Sifat?</h2>
+            </div>
+            <p>Mempelajari pewarisan sifat membantu kita memahami akar dari berbagai perbedaan antarindividu dalam satu spesies. Dari warna mata, tinggi badan, hingga kerentanan terhadap penyakit tertentu, semuanya memiliki dasar genetik yang diturunkan. Ini juga menjelaskan mengapa anggota keluarga seringkali memiliki kemiripan, namun juga perbedaan.</p>
+            <p>Istilah-istilah penting yang akan kita gunakan:</p>
+            <ul>
+                <li><span class="important-term">Genotipe</span>: Susunan genetik suatu individu, misalnya <span class="genotype-example">Bb</span> atau <span class="genotype-example">AaBb</span>.</li>
+                <li><span class="important-term">Fenotipe</span>: Ciri fisik atau sifat yang dapat diamati dari suatu individu, yang merupakan hasil interaksi genotipe dengan lingkungan. Contohnya warna kulit gelap, rambut keriting, dll.</li>
+                <li><span class="important-term">Alela</span>: Bentuk alternatif dari suatu gen yang terletak pada lokus yang sama di kromosom homolog. Contohnya, gen untuk warna mata bisa memiliki alela untuk mata biru (<span class="genotype-example">B</span>) dan mata cokelat (<span class="genotype-example">b</span>).</li>
+                <li><span class="important-term">Dominan</span>: Alela yang menutupi ekspresi alela resesif ketika keduanya hadir bersamaan dalam genotipe heterozigot.</li>
+                <li><span class="important-term">Resesif</span>: Alela yang hanya dapat berekspresi jika hadir dalam genotipe homozigot (tanpa alela dominan).</li>
+                <li><span class="important-term">Homozigot</span>: Individu yang memiliki sepasang alela yang sama untuk gen tertentu (misalnya <span class="genotype-example">AA</span> atau <span class="genotype-example">aa</span>).</li>
+                <li><span class="important-term">Heterozigot</span>: Individu yang memiliki sepasang alela yang berbeda untuk gen tertentu (misalnya <span class="genotype-example">Aa</span>).</li>
+            </ul>
+        </div>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">🌍</span>
+                <h2>1. Pewarisan Warna Kulit</h2>
+            </div>
+            <p>Warna kulit manusia adalah contoh sifat poligenik, artinya dikendalikan oleh banyak gen. Gen-gen ini mengatur produksi <span class="important-term">melanin</span>, pigmen yang memberikan warna pada kulit, rambut, dan mata. Semakin banyak melanin, semakin gelap warna kulitnya.</p>
+            <p>Misalnya, kita bisa memodelkan warna kulit dengan beberapa gen, seperti gen <span class="genotype-example">A</span>, <span class="genotype-example">B</span>, dan <span class="genotype-example">C</span>. Masing-masing gen ini memiliki alela dominan (misalnya <span class="genotype-example">A, B, C</span>) yang berkontribusi pada produksi melanin, dan alela resesif (misalnya <span class="genotype-example">a, b, c</span>) yang tidak berkontribusi.</p>
+            <ul>
+                <li>Individu dengan genotipe <span class="genotype-example">AABBCC</span> (memiliki semua alela dominan) akan menghasilkan jumlah melanin terbanyak, sehingga memiliki kulit sangat gelap.</li>
+                <li>Individu dengan genotipe <span class="genotype-example">aabbcc</span> (memiliki semua alela resesif) akan menghasilkan jumlah melanin paling sedikit, sehingga memiliki kulit sangat terang.</li>
+                <li>Individu dengan genotipe di antaranya, seperti <span class="genotype-example">AaBbCc</span>, akan memiliki warna kulit sawo matang (tingkat kegelapan di antara keduanya).</li>
+            </ul>
+            <p>Perlu diingat, faktor lingkungan seperti paparan sinar matahari juga dapat mempengaruhi fenotipe warna kulit.</p>
+
+            <div class="example">
+                <p><strong>Model Pewarisan Warna Kulit (Contoh Sederhana 3 Gen):</strong></p>
+                <table class="phenotype-chart">
+                    <thead>
+                        <tr>
+                            <th>Genotipe</th>
+                            <th>Jumlah Alela Dominan</th>
+                            <th>Fenotipe (Perkiraan)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="genotype-example">AABBCC</span></td>
+                            <td class="phenotype-chart .allele-count">6</td>
+                            <td>Sangat Gelap</td>
+                        </tr>
+                        <tr>
+                            <td><span class="genotype-example">AaBbCc</span></td>
+                            <td class="phenotype-chart .allele-count">3</td>
+                            <td>Sawo Matang</td>
+                        </tr>
+                        <tr>
+                            <td><span class="genotype-example">aabbcc</span></td>
+                            <td class="phenotype-chart .allele-count">0</td>
+                            <td>Sangat Terang</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="allele-key">Semakin banyak alela dominan (A, B, C), semakin banyak melanin diproduksi, menghasilkan warna kulit lebih gelap.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">❄️</span>
+                <h2>2. Kelainan Albino</h2>
+            </div>
+            <p>Albino adalah kondisi genetik di mana individu tidak dapat memproduksi <span class="important-term">melanin</span>. Ini disebabkan oleh mutasi pada gen yang mengendalikan produksi melanin.</p>
+            <ul>
+                <li>Gen penyebab albino bersifat <span class="important-term">resesif</span>.</li>
+                <li>Genotipe <span class="genotype-example">aa</span> (homozigot resesif) menyebabkan individu albino.</li>
+                <li>Individu normal memiliki genotipe dominan, bisa <span class="genotype-example">AA</span> (homozigot dominan) atau <span class="genotype-example">Aa</span> (heterozigot, disebut juga sebagai <span class="important-term">carrier</span> atau pembawa sifat).</li>
+            </ul>
+            <p>Individu albino memiliki ciri khas seperti kulit, rambut, dan mata yang sangat terang atau putih, serta sensitif terhadap cahaya (fotofobia). Tanpa melanin, kulit mereka sangat rentan terhadap sinar UV dan kanker kulit.</p>
+            <div class="example">
+                <p><strong>Pewarisan Sifat Albino:</strong></p>
+                <p>Jika seorang laki-laki pembawa (genotipe <span class="genotype-example">Aa</span>) menikah dengan perempuan pembawa (genotipe <span class="genotype-example">Aa</span>), kemungkinan keturunannya adalah:</p>
+                <ul>
+                    <li>Genotipe <span class="genotype-example">AA</span>: 25% (Normal, tidak pembawa)</li>
+                    <li>Genotipe <span class="genotype-example">Aa</span>: 50% (Normal, pembawa sifat albino)</li>
+                    <li>Genotipe <span class="genotype-example">aa</span>: 25% (Albino)</li>
+                </ul>
+                <p>Ini berarti ada kemungkinan 25% dari anak-anak mereka lahir dengan kelainan albino.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">👂</span>
+                <h2>3. Pewarisan Tipe Perlekatan Cuping Telinga</h2>
+            </div>
+            <p>Perlekatan cuping telinga juga merupakan sifat yang diturunkan. Ada dua tipe utama:</p>
+            <ul>
+                <li><strong>Cuping Telinga Terpisah (Terlepas):</strong> Dikendalikan oleh alela dominan, misalnya gen <span class="genotype-example">G</span>. Individu dengan genotipe <span class="genotype-example">GG</span> atau <span class="genotype-example">Gg</span> akan memiliki cuping telinga terpisah.</li>
+                <li><strong>Cuping Telinga Melekat:</strong> Dikendalikan oleh alela resesif, misalnya gen <span class="genotype-example">g</span>. Individu hanya akan memiliki cuping telinga melekat jika genotipenya <span class="genotype-example">gg</span>.</li>
+            </ul>
+        </div>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">🦁</span>
+                <h2>4. Pewarisan Bentuk Rambut</h2>
+            </div>
+            <p>Bentuk rambut dikendalikan oleh gen dengan pola <span class="important-term">dominansi tidak sempurna</span>. Ini berarti jika ada perbedaan alela, hasilnya adalah sifat perantara.</p>
+            <ul>
+                <li>Rambut Keriting: Dikendalikan oleh gen <span class="genotype-example">C</span> (dominan). Genotipe homozigot dominan adalah <span class="genotype-example">CC</span>.</li>
+                <li>Rambut Lurus: Dikendalikan oleh gen <span class="genotype-example">s</span> (resesif). Genotipe homozigot resesif adalah <span class="genotype-example">ss</span>.</li>
+                <li>Rambut Bergelombang/Ikal: Muncul pada individu dengan genotipe heterozigot, yaitu <span class="genotype-example">Cs</span>.</li>
+            </ul>
+            <div class="example">
+                <p><strong>Pola Pewarisan Rambut (Dominansi Tidak Sempurna):</strong></p>
+                <ul>
+                    <li>Ayah (rambut bergelombang, <span class="genotype-example">Cs</span>) x Ibu (rambut bergelombang, <span class="genotype-example">Cs</span>)</li>
+                    <li>Kemungkinan keturunan:
+                        <ul>
+                            <li><span class="genotype-example">CC</span>: Rambut Keriting (25%)</li>
+                            <li><span class="genotype-example">Cs</span>: Rambut Bergelombang (50%)</li>
+                            <li><span class="genotype-example">ss</span>: Rambut Lurus (25%)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">〰️</span>
+                <h2>5. Pewarisan Bentuk Pertumbuhan Rambut pada Dahi (Widow's Peak)</h2>
+            </div>
+            <p>Bentuk pertumbuhan rambut di dahi, seperti adanya lekukan di tengah dahi yang menyerupai huruf "V" (dikenal sebagai <span class="important-term">widow's peak</span>), juga diwariskan.</p>
+            <ul>
+                <li>Sifat <span class="important-term">widow's peak</span> dikendalikan oleh gen dominan, misalnya gen <span class="genotype-example">W</span>.</li>
+                <li>Individu dengan genotipe <span class="genotype-example">WW</span> (homozigot dominan) atau <span class="genotype-example">Ww</span> (heterozigot) akan memiliki <span class="important-term">widow's peak</span>.</li>
+                <li>Individu yang tidak memiliki <span class="important-term">widow's peak</span> (rambut tumbuh melengkung biasa di dahi) memiliki genotipe homozigot resesif, yaitu <span class="genotype-example">ww</span>.</li>
+            </ul>
+        </div>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">👁️</span>
+                <h2>6. Pewarisan Kelainan Buta Warna</h2>
+            </div>
+            <p>Buta warna adalah kelainan genetik yang menyebabkan seseorang kesulitan membedakan warna tertentu (umumnya merah, hijau, oranye, biru). Kelainan ini bersifat <span class="important-term">terpaut kromosom seks X</span>.</p>
+            <p>Artinya, gen untuk buta warna terletak pada kromosom X.</p>
+            <ul>
+                <li><strong>Pada Perempuan (XX):</strong>
+                    <ul>
+                        <li><span class="genotype-example">X<sup>cb</sup>X<sup>cb</sup></span>: Menderita buta warna (kedua kromosom X memiliki gen buta warna).</li>
+                        <li><span class="genotype-example">X<sup>cb</sup>X</span>: Pembawa (carrier) sifat buta warna, tetapi fenotipenya normal (dapat membedakan warna).</li>
+                        <li><span class="genotype-example">XX</span>: Normal dan tidak pembawa.</li>
+                    </ul>
+                </li>
+                <li><strong>Pada Laki-laki (XY):</strong>
+                    <ul>
+                        <li><span class="genotype-example">X<sup>cb</sup>Y</span>: Menderita buta warna (hanya memiliki satu kromosom X yang membawa gen buta warna).</li>
+                        <li><span class="genotype-example">XY</span>: Normal.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Ini menjelaskan mengapa buta warna lebih sering terjadi pada laki-laki, karena mereka hanya memerlukan satu salinan gen buta warna pada satu-satunya kromosom X mereka agar menderita kelainan tersebut.</p>
+        </div>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">🩸</span>
+                <h2>7. Pewarisan Kelainan Hemofilia</h2>
+            </div>
+            <p>Hemofilia adalah kelainan genetik yang ditandai dengan darah yang sulit membeku. Hal ini disebabkan oleh kekurangan faktor pembekuan darah.</p>
+            <p>Seperti buta warna, hemofilia juga merupakan kelainan yang <span class="important-term">terpaut kromosom seks X</span>.</p>
+            <ul>
+                <li>Gen hemofilia dilambangkan dengan <span class="genotype-example">X<sup>h</sup></span> (resesif), sedangkan gen normal dengan <span class="genotype-example">X<sup>H</sup></span> (dominan).</li>
+                <li><strong>Pada Perempuan (XX):</strong>
+                    <ul>
+                        <li><span class="genotype-example">X<sup>H</sup>X<sup>H</sup></span>: Normal.</li>
+                        <li><span class="genotype-example">X<sup>H</sup>X<sup>h</sup></span>: Pembawa (carrier) hemofilia, fenotipe normal.</li>
+                        <li><span class="genotype-example">X<sup>h</sup>X<sup>h</sup></span>: Menderita hemofilia (kondisi ini seringkali bersifat <span class="important-term">letal</span> atau menyebabkan kematian pada janin).</li>
+                    </ul>
+                </li>
+                <li><strong>Pada Laki-laki (XY):</strong>
+                    <ul>
+                        <li><span class="genotype-example">X<sup>H</sup>Y</span>: Normal.</li>
+                        <li><span class="genotype-example">X<sup>h</sup>Y</span>: Menderita hemofilia.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Sama seperti buta warna, laki-laki lebih rentan menderita hemofilia karena hanya membutuhkan satu alel resesif pada kromosom X mereka.</p>
+        </div>
+
+        <div class="lesson-content">
+            <div class="section-title">
+                <span class="icon">⚛️</span>
+                <h2>Kaitan dengan Mutasi Genetik</h2>
+            </div>
+            <p>Perlu dipahami bahwa banyak kelainan yang diwariskan ini timbul akibat adanya perubahan pada materi genetik, yang disebut <span class="important-term">mutasi genetik</span>. Paparan zat berbahaya seperti radiasi dari bom atom (seperti yang terjadi di Hiroshima dan Nagasaki) dapat menyebabkan kerusakan DNA dan memicu mutasi, yang kemudian dapat diwariskan kepada keturunannya, berpotensi menyebabkan cacat lahir atau penyakit seperti kanker.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

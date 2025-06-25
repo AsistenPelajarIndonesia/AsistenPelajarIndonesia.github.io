@@ -1,0 +1,593 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamika Penduduk Benua-Benua di Dunia</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        .wawasan {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            position: relative;
+            font-style: italic;
+            box-shadow: 0 2px 10px rgba(25, 118, 210, 0.3);
+        }
+
+        .wawasan::before {
+            content: '💡';
+            font-size: 1.8em;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .wawasan-content {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: calc(100% - 60px);
+        }
+
+        .data-point {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .data-point::before {
+            content: '•';
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #f9f9f9;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid var(--border-divider);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .key-figures {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .figure-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .figure-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .figure-card .label {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .geography-overview {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-blue);
+            margin-top: 20px;
+        }
+
+        .geography-overview p {
+            margin-bottom: 10px;
+        }
+
+        .geography-overview p:last-child {
+            margin-bottom: 0;
+        }
+
+        .geography-overview strong {
+            color: var(--text-secondary);
+        }
+
+        .conclusion {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(56, 138, 60, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .key-figures {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .figure-card {
+                width: 90%;
+            }
+
+            .wawasan::before {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Dinamika Penduduk Benua-Benua di Dunia</h1>
+
+        <p>Penduduk suatu benua selalu mengalami perubahan, baik dari segi jumlah, distribusi, maupun komposisinya. Perubahan ini merupakan wujud dari dinamika penduduk. Dinamika penduduk terjadi karena adanya berbagai peristiwa demografis seperti kelahiran (natalitas), kematian (mortalitas), serta perpindahan penduduk (migrasi). Selain itu, perubahan dalam komposisi penduduk, seperti perubahan budaya, etnis, dan agama, juga mencerminkan dinamika penduduk.</p>
+
+        <section id="asia">
+            <h2>1. Dinamika Penduduk Asia</h2>
+            <p>Asia merupakan benua terpadat di dunia. Pada tahun 2005, jumlah penduduk Asia tercatat sebanyak 3.921.000.000 jiwa. Sepuluh tahun kemudian, pada tahun 2015, angka ini melonjak menjadi 4.397.000.000 jiwa, menunjukkan pertumbuhan sebesar 476 juta jiwa dalam satu dekade.</p>
+
+            <div class="key-figures">
+                <div class="figure-card">
+                    <div class="value">3.921.000.000</div>
+                    <div class="label">Penduduk Asia (2005)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">4.397.000.000</div>
+                    <div class="label">Penduduk Asia (2015)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">476 Juta</div>
+                    <div class="label">Pertumbuhan (2005-2015)</div>
+                </div>
+            </div>
+
+            <div class="geography-overview">
+                <h3>Sebaran Penduduk Asia</h3>
+                <p>Penyebaran penduduk di Asia sangat tidak merata. Wilayah dengan kepadatan penduduk tinggi umumnya terkonsentrasi di Asia Timur, Asia Tenggara, dan Asia Selatan. Sebaliknya, wilayah pedalaman benua ini cenderung lebih jarang penduduknya.</p>
+                <p>Beberapa negara di Asia memiliki jumlah penduduk terbesar di dunia, seperti <strong>China</strong>, <strong>India</strong>, dan <strong>Indonesia</strong>.</p>
+            </div>
+
+            <div class="wawasan">
+                <div class="wawasan-content">
+                    <p>Beberapa negara di Asia memiliki daya tarik sebagai tujuan migran karena menawarkan peluang ekonomi yang lebih baik atau merupakan pusat ekonomi. Contohnya Hong Kong (39% penduduk pendatang), Makao (55%), Brunei (37%), Malaysia (8%), dan Singapura (39%). Negara-negara seperti Jepang, China, dan Korea yang memiliki pertumbuhan penduduk usia tua yang cepat, justru memiliki angka migrasi yang rendah, namun menjadi tujuan migran dari negara seperti Kamboja, Laos, Myanmar, Filipina, Timor Leste, Bangladesh, Pakistan, dan Sri Lanka.</p>
+                </div>
+            </div>
+
+            <h3>Komposisi Penduduk Asia Berdasarkan Usia</h3>
+            <p>Penduduk Asia didominasi oleh usia produktif:</p>
+            <ul>
+                <li class="data-point">Sekitar <span class="highlight">25%</span> penduduk berusia di bawah 15 tahun.</li>
+                <li class="data-point">Sekitar <span class="highlight">67%</span> penduduk berusia antara 15 hingga 65 tahun (usia produktif).</li>
+                <li class="data-point">Sekitar <span class="highlight">8%</span> penduduk berusia 65 tahun ke atas.</li>
+            </ul>
+
+            <h3>Pertumbuhan Penduduk Asia</h3>
+            <p>Laju pertumbuhan penduduk Asia mencapai <span class="highlight">1,5%</span> per tahun. Namun, pertumbuhan ini tidak merata di setiap kawasan. Negara-negara seperti Yaman, Suriah, Arab Saudi, Laos, dan Yordania memiliki pertumbuhan yang sangat tinggi, yaitu di atas 2,5% per tahun.</p>
+
+            <h3>Kualitas Penduduk Asia</h3>
+            <p>Kualitas penduduk Asia sangat bervariasi. Ini dapat dilihat dari <strong>Human Development Index (HDI)</strong> atau Indeks Pembangunan Manusia (IPM), yang merupakan gabungan dari angka harapan hidup, pendidikan, dan pendapatan per kapita.</p>
+            <ul>
+                <li class="data-point">Negara dengan kualitas HDI sangat tinggi: Jepang, Korea Selatan, Singapura, Brunei, China, dan Saudi Arabia.</li>
+                <li class="data-point">Indonesia termasuk kategori sedang.</li>
+                <li class="data-point">Nepal termasuk kategori rendah.</li>
+            </ul>
+
+            <h3>Ras Penduduk Asia</h3>
+            <p>Penduduk Asia memiliki keragaman ras yang bercampur baur, namun secara garis besar dapat dikelompokkan menjadi:</p>
+            <ul>
+                <li class="data-point"><strong>Asia Utara dan Asia Tengah</strong>: Mayoritas Ras Kaukasoid (Europoid).</li>
+                <li class="data-point"><strong>Asia Timur dan Asia Tenggara</strong>: Mayoritas Ras Mongoloid.</li>
+                <li class="data-point"><strong>Asia Selatan bagian tengah</strong>: Didominasi Ras Kaukasoid.</li>
+                <li class="data-point"><strong>Asia Selatan bagian selatan</strong>: Didominasi Ras Negroid (contoh: suku Dravida di India Selatan dan Sri Lanka).</li>
+                <li class="data-point"><strong>Asia Barat (Timur Tengah) bagian selatan</strong>: Didominasi Ras Negroid (contoh: Semenanjung Arab).</li>
+                <li class="data-point"><strong>Asia Kecil, Asia Barat (Timur Tengah) bagian utara</strong>: Didominasi Ras Kaukasoid/Europoid dan Ras Negroid.</li>
+            </ul>
+
+            <h3>Budaya Penduduk Asia</h3>
+            <p>Asia adalah tempat lahirnya agama-agama besar dunia dan memiliki keragaman budaya yang luar biasa.</p>
+            <ul>
+                <li><strong>Agama</strong>: Hindu, Sikh, Konfusianisme, Taoisme, Shinto, Buddha, Islam, Kristen, Yahudi.</li>
+                <li><strong>Bahasa</strong>: Sangat beragam. Indonesia memiliki sekitar 600 bahasa daerah, Filipina lebih dari 100, India lebih dari 1.600.</li>
+                <li><strong>Karya Seni</strong>: Porselen, keramik, kaligrafi, lukisan, peralatan logam dan gelas, tekstil, arsitektur, serta alat musik.</li>
+            </ul>
+        </section>
+
+        <section id="amerika">
+            <h2>2. Dinamika Penduduk Amerika</h2>
+            <p>Jumlah penduduk Amerika pada tahun 2005 mencapai 888.000.000 jiwa. Pada tahun 2015, angka ini bertambah menjadi 987.000.000 jiwa, menunjukkan pertumbuhan sebesar 99 juta jiwa dalam 10 tahun.</p>
+
+            <div class="key-figures">
+                <div class="figure-card">
+                    <div class="value">888.000.000</div>
+                    <div class="label">Penduduk Amerika (2005)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">987.000.000</div>
+                    <div class="label">Penduduk Amerika (2015)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">99 Juta</div>
+                    <div class="label">Pertumbuhan (2005-2015)</div>
+                </div>
+            </div>
+
+            <div class="wawasan">
+                <div class="wawasan-content">
+                    <p>Benua Amerika dihuni oleh beragam etnik, termasuk etnik kulit hitam atau negro. Keberadaan mereka terkait dengan sejarah perbudakan, di mana jutaan orang Afrika didatangkan sebagai budak antara tahun 1500 hingga 1860. Sebagian besar dari mereka dibawa ke Amerika Selatan.</p>
+                </div>
+            </div>
+
+            <h3>Sebaran Penduduk Amerika</h3>
+            <p>Sebaran penduduk Amerika juga tidak merata. Konsentrasi penduduk tinggi terdapat di bagian timur dan barat Amerika Serikat, Amerika Tengah dan Karibia, serta bagian barat dan timur Amerika Selatan. Wilayah tengah benua ini umumnya memiliki kepadatan penduduk yang lebih rendah. Wilayah paling utara dan paling selatan, yang mendekati kutub, juga cenderung jarang penduduknya.</p>
+
+            <h3>Komposisi Penduduk Amerika Berdasarkan Usia</h3>
+            <p>Struktur usia penduduk Amerika:</p>
+            <ul>
+                <li class="data-point">Sekitar <span class="highlight">24%</span> penduduk berusia di bawah 15 tahun.</li>
+                <li class="data-point">Sekitar <span class="highlight">10%</span> penduduk berusia 65 tahun ke atas.</li>
+                <li class="data-point">Sekitar <span class="highlight">66%</span> penduduk berusia antara 15 hingga 65 tahun (usia produktif).</li>
+            </ul>
+            <p>Ini berarti sekitar 34% penduduknya masuk dalam kategori usia tidak produktif.</p>
+
+            <h3>Pertumbuhan Penduduk Amerika</h3>
+            <p>Laju pertumbuhan penduduk Benua Amerika tergolong rendah, yaitu sekitar <span class="highlight">0,9%</span> per tahun.</p>
+
+            <h3>Kualitas Penduduk Amerika</h3>
+            <p>Kualitas penduduk Amerika bervariasi:</p>
+            <ul>
+                <li class="data-point">Kualitas penduduk tinggi: Amerika Serikat, Kanada, Argentina, dan Chile.</li>
+                <li class="data-point">Kualitas penduduk tinggi (lanjutan): Meksiko, Brazil, dan beberapa negara Amerika Latin lainnya.</li>
+                <li class="data-point">Kualitas penduduk sedang: Paraguay, Bolivia, dan beberapa negara lainnya.</li>
+            </ul>
+
+            <h3>Ras Penduduk Amerika</h3>
+            <p>Penduduk Amerika berasal dari berbagai benua dan memiliki tiga ras utama:</p>
+            <ul>
+                <li class="data-point"><strong>Penduduk asli</strong>: Suku Indian dan Eskimo.</li>
+                <li class="data-point"><strong>Penduduk pendatang</strong>:
+                    <ul>
+                        <li>Ras Negroid dari Afrika.</li>
+                        <li>Ras Mongolia dari Asia.</li>
+                        <li>Ras Kaukasoid dari Eropa.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Terjadi percampuran ras sehingga banyak dijumpai penduduk campuran.</p>
+
+            <h3>Budaya Penduduk Amerika</h3>
+            <p>Budaya Amerika terbagi menjadi Budaya Amerika Utara dan Budaya Amerika Selatan.</p>
+            <ul>
+                <li><strong>Amerika Utara (Amerika Serikat & Kanada)</strong>:
+                    <ul>
+                        <li>Budaya sangat beragam, dipengaruhi budaya asli Amerika, Amerika Latin, Afrika, dan Asia.</li>
+                        <li>Bahasa utama: Inggris. Bahasa lain yang digunakan termasuk Spanyol, Mandarin, Prancis, Jerman. Diperkirakan lebih dari 300 bahasa digunakan di Amerika Serikat.</li>
+                        <li>Agama mayoritas: Kristen (83%). Ada juga pemeluk Yahudi, Islam, dan ateis.</li>
+                        <li>Produk budaya populer: jeans, sepatu, baseball, topi cowboy, hamburger, hotdog, keripik kentang. Seni film dan televisi sangat berpengaruh global.</li>
+                    </ul>
+                </li>
+                <li><strong>Amerika Selatan (Amerika Latin)</strong>:
+                    <ul>
+                        <li>Agama mayoritas: Katolik Roma. Lainnya Kristen Protestan, Hindu, Islam, Animisme, Shamanisme.</li>
+                        <li>Bahasa utama: Portugis dan Spanyol. Bahasa lain seperti Aymara, Wayuu.</li>
+                        <li>Musik dan tarian khas: Samba (Brazil), Tango (Argentina & Uruguay), Cumbia (Kolombia).</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="eropa">
+            <h2>3. Dinamika Penduduk Eropa</h2>
+            <p>Jumlah penduduk Eropa pada tahun 2005 adalah 730.000.000 jiwa. Pada tahun 2016, angka ini mencapai 742.000.000 jiwa, menunjukkan penambahan 12.000.000 jiwa dalam 11 tahun.</p>
+
+            <div class="key-figures">
+                <div class="figure-card">
+                    <div class="value">730.000.000</div>
+                    <div class="label">Penduduk Eropa (2005)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">742.000.000</div>
+                    <div class="label">Penduduk Eropa (2016)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">12 Juta</div>
+                    <div class="label">Pertumbuhan (2005-2016)</div>
+                </div>
+            </div>
+
+            <div class="wawasan">
+                <div class="wawasan-content">
+                    <p>Eropa menjadi tujuan migrasi bagi banyak penduduk dari negara-negara yang berkonflik, terutama dari Afrika Utara dan Timur Tengah. Pada tahun 2015, sekitar 836.000 orang bermigrasi ke Eropa, khususnya Jerman, Inggris, dan Swedia. Mereka mencari tempat yang lebih aman.</p>
+                </div>
+            </div>
+
+            <h3>Pertumbuhan Penduduk Eropa</h3>
+            <p>Pertumbuhan penduduk Eropa relatif rendah, dengan angka kelahiran dan kematian yang sama, yaitu 11 kelahiran dan 11 kematian per 1.000 penduduk. Pertumbuhan alami sangat rendah, hanya sekitar <span class="highlight">0,2%</span> per tahun. Pertumbuhan penduduk Eropa sebagian besar disumbang oleh migrasi masuk.</p>
+
+            <h3>Sebaran Penduduk Eropa</h3>
+            <p>Penduduk Eropa umumnya terkonsentrasi di Eropa Utara, Selatan, dan Barat. Kota-kota besar seperti Amsterdam, Brussel, London, Madrid, dan Warsawa menjadi pusat kepadatan penduduk yang tinggi.</p>
+
+            <h3>Komposisi Penduduk Eropa Berdasarkan Usia</h3>
+            <p>Struktur usia penduduk Eropa:</p>
+            <ul>
+                <li class="data-point">Sekitar <span class="highlight">16%</span> penduduk berusia di bawah 15 tahun.</li>
+                <li class="data-point">Sekitar <span class="highlight">17%</span> penduduk berusia 65 tahun ke atas.</li>
+                <li class="data-point">Sekitar <span class="highlight">67%</span> penduduk berusia antara 15 hingga 65 tahun (usia produktif).</li>
+            </ul>
+            <p>Ini berarti 33% penduduk Eropa masuk dalam kategori usia tidak produktif.</p>
+
+            <h3>Kualitas Penduduk Eropa</h3>
+            <p>Kualitas penduduk Eropa umumnya tinggi hingga sangat tinggi:</p>
+            <ul>
+                <li class="data-point">Kualitas penduduk sangat tinggi: Inggris, Jerman, Prancis, Spanyol (mayoritas di Eropa Barat, Utara, Selatan).</li>
+                <li class="data-point">Kualitas penduduk tinggi: Rumania, Ukraina, Bulgaria (mayoritas di Eropa Timur).</li>
+            </ul>
+
+            <h3>Ras Penduduk Eropa</h3>
+            <p>Mayoritas penduduk Eropa adalah keturunan Kaukasoid, yang terbagi menjadi beberapa suku bangsa:</p>
+            <ul>
+                <li class="data-point"><strong>Bangsa Nordik</strong>: Rambut pirang, mata biru, tengkorak panjang (Eropa Barat & Utara: Norwegia, Inggris, Denmark, Belanda, Swedia, Belgia, Jerman Utara).</li>
+                <li class="data-point"><strong>Bangsa Alpen</strong>: Rambut hitam, mata hitam, tengkorak lebar (Eropa Tengah & Selatan: Prancis, Swiss, Polandia, Austria, Jerman Selatan).</li>
+                <li class="data-point"><strong>Bangsa Mediteran</strong>: Rambut hitam, mata hitam, badan & tengkorak mirip Nordik (Eropa Selatan: Yunani, Italia, Portugis, Spanyol).</li>
+                <li class="data-point"><strong>Bangsa Slavia</strong>: Mirip Bangsa Alpen (Eropa Timur: Kroasia, Bulgaria, Serbia, Montenegro, Ceko, Rusia, Ukraina, Slovakia).</li>
+                <li class="data-point"><strong>Bangsa Dinarik</strong>: Rambut gelap (Rumania).</li>
+            </ul>
+
+            <h3>Budaya Penduduk Eropa</h3>
+            <ul>
+                <li><strong>Agama</strong>: Mayoritas Katolik Roma (Prancis, Spanyol, Italia, dll.), Protestan (Eropa Utara & Tengah), Ortodoks (Eropa Timur). Komunitas Yahudi banyak di Rusia. Islam berkembang di Eropa Timur.</li>
+                <li><strong>Bahasa</strong>: Bahasa Inggris menjadi bahasa internasional. Bahasa utama lainnya adalah Rusia dan Jerman, serta Spanyol, Portugis, Prancis, dan Belanda.</li>
+                <li><strong>Seni dan Budaya</strong>: Berkembang sejak prasejarah (lukisan gua). Periode seni meliputi Klasik, Bizantium, Gotik, Renaisance, hingga Paskamodern. Berakar dari Yunani dan Romawi. Terkenal dalam filsafat.</li>
+            </ul>
+        </section>
+
+        <section id="afrika">
+            <h2>4. Dinamika Penduduk Afrika</h2>
+            <p>Jumlah penduduk Afrika pada tahun 2015 adalah 1.171.000.000 jiwa. Angka ini merupakan pertambahan sebesar 265.000.000 jiwa dari jumlah tahun 2005 (906.000.000 jiwa).</p>
+
+            <div class="key-figures">
+                <div class="figure-card">
+                    <div class="value">906.000.000</div>
+                    <div class="label">Penduduk Afrika (2005)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">1.171.000.000</div>
+                    <div class="label">Penduduk Afrika (2015)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">265 Juta</div>
+                    <div class="label">Pertumbuhan (2005-2015)</div>
+                </div>
+            </div>
+
+            <div class="wawasan">
+                <div class="wawasan-content">
+                    <p>Afrika memiliki angka kelahiran yang tinggi (36 per 1.000 penduduk) karena sistem keluarga yang kuat, orientasi pertanian yang membutuhkan banyak tenaga kerja, dan belum meratanya pendidikan serta fasilitas kesehatan, termasuk alat kontrasepsi.</p>
+                </div>
+            </div>
+
+            <h3>Pertumbuhan Penduduk Afrika</h3>
+            <p>Angka kelahiran yang tinggi (36 per 1.000) dan angka kematian yang relatif lebih rendah (10 per 1.000) menyebabkan laju pertumbuhan penduduk Afrika sangat tinggi, yaitu <span class="highlight">2,5%</span> per tahun.</p>
+            <p>Angka migrasi di Afrika cenderung negatif, kecuali Afrika Selatan, yang berarti lebih banyak penduduk yang meninggalkan benua ini.</p>
+
+            <h3>Sebaran Penduduk Afrika</h3>
+            <p>Sebaran penduduk Afrika sangat tidak merata. Wilayah gurun hampir tidak berpenghuni. Kepadatan penduduk tinggi terdapat di Afrika Utara, Afrika Barat, Afrika Timur, dan sepanjang lembah Sungai Nil. Kepadatan rendah di Gurun Sahara dan bagian tengah Afrika.</p>
+
+            <h3>Kualitas Penduduk Afrika</h3>
+            <p>Kualitas penduduk Afrika secara umum relatif rendah. Tidak ada negara di Afrika yang memiliki kualitas penduduk sangat tinggi berdasarkan HDI. Negara dengan kualitas tinggi antara lain Aljazair dan Tunisia. Kualitas sedang meliputi Mesir, Afrika Selatan, dan Namibia. Kualitas rendah di antaranya Sudan, Ethiopia, Kenya, dan Chad.</p>
+
+            <h3>Ras Penduduk Afrika</h3>
+            <p>Sebagian besar penduduk Afrika adalah keturunan Negro (Benua Hitam). Penduduk Afrika digolongkan menjadi empat kelompok utama:</p>
+            <ul>
+                <li class="data-point"><strong>Ras Negro</strong>: Mayoritas penduduk di selatan Gurun Sahara. Terdiri dari Suku Masai, Kikuyu, Zulu, Sudan, dan Bantu.</li>
+                <li class="data-point"><strong>Ras Kaukasoid (keturunan Arab)</strong>: Mendiami Afrika Utara (pantai Laut Tengah). Terdiri dari suku Semit dan Hamid.</li>
+                <li class="data-point"><strong>Ras Kaukasoid (keturunan Eropa)</strong>: Kulit putih, jumlahnya sedikit, banyak di Afrika Selatan.</li>
+                <li class="data-point"><strong>Suku pribumi</strong>: Penduduk asli di pedalaman, seperti Suku Pygmy (Kongo), Bushman (Kalahari), Hottentot (Afrika Selatan).</li>
+            </ul>
+
+            <h3>Budaya Penduduk Afrika</h3>
+            <ul>
+                <li><strong>Agama</strong>: Islam dominan di Afrika Barat dan Utara. Kristen dominan di Afrika Selatan. Animisme banyak di Afrika Tengah dan Timur, setara dengan Islam. Ada juga penganut Yahudi dan Katolik Roma.</li>
+                <li><strong>Bahasa</strong>: Sangat beragam, diperkirakan 1.500-2.000 bahasa. Bahasa utama: Arab, Swahili, Hausa. Kelompok bahasa utama: Afro-Asiatik, Nilo-Saharan, Congo-Saharan (Niger-Congo), Khoisan.</li>
+                <li><strong>Karya Seni</strong>: Ukiran kayu, kerajinan kulit, patung, alat musik. Musik dan tari tradisional lisan, dipengaruhi budaya Barat dan Arab.</li>
+            </ul>
+        </section>
+
+        <section id="australia">
+            <h2>5. Dinamika Penduduk Australia</h2>
+            <p>Jumlah penduduk Australia pada tahun 2015 adalah 23.900.000 jiwa. Pada tahun 2005, jumlahnya 20.400.000 jiwa. Ini berarti terjadi penambahan sebesar 3.500.000 jiwa dalam 10 tahun.</p>
+
+            <div class="key-figures">
+                <div class="figure-card">
+                    <div class="value">20.400.000</div>
+                    <div class="label">Penduduk Australia (2005)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">23.900.000</div>
+                    <div class="label">Penduduk Australia (2015)</div>
+                </div>
+                <div class="figure-card">
+                    <div class="value">3.5 Juta</div>
+                    <div class="label">Pertumbuhan (2005-2015)</div>
+                </div>
+            </div>
+
+            <div class="wawasan">
+                <div class="wawasan-content">
+                    <p>Australia adalah tujuan utama bagi pengungsi, termasuk dari Timur Tengah, karena memiliki hukum yang mengatur pengungsi dan telah menandatangani Konvensi Pengungsi 1951.</p>
+                </div>
+            </div>
+
+            <h3>Pertumbuhan Penduduk Australia</h3>
+            <p>Angka kelahiran di Australia adalah 13 kelahiran per 1.000 penduduk, dan angka kematian 7 kematian per 1.000 penduduk. Migrasi neto Australia mencapai angka 8.</p>
+
+            <h3>Sebaran Penduduk Australia</h3>
+            <p>Meskipun Australia luas, daerah yang cocok untuk hunian terbatas pada daerah pantai dengan iklim yang nyaman dan curah hujan yang cukup. Daerah pedalaman dan pantai Australia Barat cenderung gersang. Kebanyakan penduduk (lebih dari 85%) tinggal di kota kecil dan kota besar yang umumnya terletak di tepi pantai.</p>
+
+            <h3>Kualitas Penduduk Australia</h3>
+            <p>Kualitas penduduk Australia sangat tinggi:</p>
+            <ul>
+                <li class="data-point">Angka harapan hidup tinggi, mencapai 82 tahun, menunjukkan kesehatan yang baik.</li>
+                <li class="data-point">Pendapatan per kapita tinggi, mencapai 42.880 dolar.</li>
+            </ul>
+
+            <h3>Ras Penduduk Australia</h3>
+            <p>Mayoritas penduduk Australia (92%) adalah bangsa kulit putih (Ras Kaukasoid), sebagian besar berasal dari Eropa (Inggris, Irlandia, Italia, Belanda, Jerman, Yunani). Sisanya adalah penduduk dari Asia (7%), Aborigin, dan lainnya (1%).</p>
+        </section>
+
+        <div class="conclusion">
+            Interaksi antarnegara dan mobilitas penduduk antarbenua terus membentuk dinamika kependudukan dunia. Memahami berbagai faktor yang memengaruhi pertumbuhan, persebaran, dan kualitas penduduk sangat penting untuk menghadapi tantangan global.
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

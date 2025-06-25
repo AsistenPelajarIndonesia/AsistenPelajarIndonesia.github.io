@@ -1,0 +1,500 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabang Ilmu yang Berperan dalam Bioteknologi</title>
+    <style>
+        /* Definisi Variabel Tema Warna */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Global dan Umum */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased; /* Untuk teks lebih halus di beberapa browser */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Bayangan lebih halus dan menonjol */
+        }
+
+        /* Gaya Judul */
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-top: 30px;
+            margin-bottom: 18px;
+            font-weight: 600; /* Sedikit lebih tebal */
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--primary-blue);
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--primary-blue); /* Garis bawah yang lebih menonjol */
+            margin-bottom: 50px;
+            letter-spacing: -0.5px; /* Sedikit rapat */
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-green);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        /* Paragraf Pendahuluan Khusus */
+        .intro-paragraph {
+            font-size: 1.15em;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-left: 6px solid var(--secondary-accent-amber); /* Garis tepi yang menonjol */
+            background-color: rgba(255, 179, 0, 0.07); /* Latar belakang amber transparan */
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Kartu Bagian (Section Card) */
+        .section-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            margin-bottom: 25px;
+            padding: 20px 25px; /* Padding sedikit lebih besar */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px); /* Efek melayang */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Bayangan lebih dalam */
+        }
+
+        /* Gaya Detail/Summary (Expandable Sections) */
+        details {
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease; /* Transisi halus saat membuka/menutup */
+        }
+
+        details[open] {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bayangan lebih dalam saat terbuka */
+            border-color: var(--primary-blue); /* Warna border berubah saat terbuka */
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--primary-blue);
+            padding: 12px 0;
+            outline: none;
+            transition: color 0.2s ease;
+            display: block; /* Agar panah dan teks berada di satu baris */
+            position: relative;
+            padding-left: 25px; /* Ruang untuk ikon panah */
+        }
+
+        summary::before {
+            content: '▶'; /* Panah ke kanan */
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::before {
+            content: '▼'; /* Panah ke bawah saat terbuka */
+            transform: rotate(0deg);
+        }
+
+        summary:hover {
+            color: var(--accent-green);
+        }
+
+        details[open] summary {
+            color: var(--accent-green);
+            border-bottom: 1px solid var(--border-divider);
+            margin-bottom: 15px;
+        }
+
+        details p {
+            padding-left: 15px;
+            border-left: 4px solid var(--primary-blue); /* Garis tepi pada paragraf detail */
+            margin-top: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* Gaya Daftar */
+        ul {
+            list-style-type: disc;
+            margin-left: 30px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Penekanan Teks */
+        .key-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-shadow: 0 0 1px rgba(25, 118, 210, 0.3); /* Sedikit efek shadow */
+        }
+
+        .example {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 12px;
+            padding: 10px 20px;
+            border-left: 3px solid var(--secondary-accent-amber);
+            background-color: rgba(255, 179, 0, 0.03);
+            border-radius: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 15px;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* Bayangan lebih ringan di mobile */
+            }
+
+            h1 {
+                font-size: 2.2em;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            .intro-paragraph {
+                font-size: 1em;
+                padding: 15px;
+                margin-bottom: 30px;
+            }
+
+            .section-card {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            details {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+
+            summary {
+                padding: 10px 0 10px 20px;
+            }
+
+            details p {
+                padding-left: 10px;
+            }
+
+            ul {
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                padding-bottom: 10px;
+                margin-bottom: 25px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            p {
+                margin-bottom: 12px;
+            }
+
+            .intro-paragraph {
+                font-size: 0.95em;
+                padding: 12px;
+                margin-bottom: 20px;
+                border-left-width: 4px;
+            }
+
+            .section-card {
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+            }
+
+            details {
+                padding: 10px;
+                margin-bottom: 12px;
+                border-radius: 6px;
+            }
+
+            summary {
+                padding: 8px 0 8px 20px;
+            }
+
+            summary::before {
+                font-size: 0.8em;
+                left: -2px; /* Sesuaikan posisi panah */
+            }
+
+            details p {
+                padding-left: 8px;
+                border-left-width: 2px;
+            }
+
+            ul {
+                margin-left: 15px;
+            }
+
+            li {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cabang Ilmu yang Berperan dalam Bioteknologi</h1>
+
+        <p class="intro-paragraph">
+            Bioteknologi adalah bidang ilmu yang sangat dinamis dan inovatif, namun tidak dapat berdiri sendiri. Keberhasilannya sangat bergantung pada sinergi dan integrasi dari berbagai disiplin ilmu, baik dari rumpun biologi maupun non-biologi. Interdisipliner ini memungkinkan bioteknologi untuk memanfaatkan prinsip-prinsip dasar dan teknologi canggih dari berbagai sektor untuk mengembangkan produk, proses, dan layanan yang bermanfaat bagi kehidupan manusia dan lingkungan. Pemahaman mendalam tentang setiap cabang ilmu yang terlibat adalah kunci untuk menguasai dan berinovasi di bidang bioteknologi.
+        </p>
+
+        <h2>I. Ilmu-ilmu Biologi Inti</h2>
+        <p>
+            Fondasi utama bioteknologi dibangun di atas pemahaman mendalam tentang sistem kehidupan, dari tingkat molekuler hingga organisme utuh. Berikut adalah cabang-cabang ilmu biologi yang menjadi pilar utama bioteknologi:
+        </p>
+
+        <div class="section-card">
+            <details>
+                <summary>Biokimia (Biochemistry)</summary>
+                <p>
+                    <span class="key-term">Biokimia</span> mempelajari struktur, fungsi, dan interaksi molekul-molekul biologis seperti protein, karbohidrat, lipid, dan asam nukleat, serta proses-proses kimia yang terjadi di dalam organisme hidup. Dalam bioteknologi, biokimia esensial untuk memahami mekanisme dasar reaksi enzimatis, jalur metabolisme, dan regulasi gen.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Memahami cara kerja enzim, sintesis biomolekul, serta proses fermentasi. Ini memungkinkan optimasi produksi zat-zat tertentu, seperti antibiotik, vitamin, atau biofuel. Pengetahuan tentang struktur protein sangat penting dalam desain obat dan antibodi.</li>
+                    <li class="example">Contoh Aplikasi: Desain bioproses untuk produksi <span class="key-term">insulin rekombinan</span>, analisis komposisi nutrisi pada produk pangan hasil bioteknologi (misalnya, kadar gizi tempe atau yoghurt), atau pemahaman tentang mekanisme detoksifikasi limbah oleh mikroorganisme.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Genetika (Genetics)</summary>
+                <p>
+                    <span class="key-term">Genetika</span> adalah ilmu yang mempelajari pewarisan sifat dan variasi genetik pada organisme. Ini mencakup studi tentang gen, hereditas, dan bagaimana sifat-sifat diwariskan dari satu generasi ke generasi berikutnya. Dalam konteks bioteknologi, genetika menjadi dasar bagi manipulasi materi genetik untuk tujuan tertentu.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Modifikasi genetik organisme (misalnya, membuat tanaman tahan hama atau bakteri penghasil zat tertentu), diagnosis penyakit genetik, dan terapi gen. Genetika memungkinkan identifikasi dan isolasi gen target serta reintroduksi gen tersebut ke organisme lain.</li>
+                    <li class="example">Contoh Aplikasi: Rekayasa genetika pada tanaman <span class="key-term"><em>Golden Rice</em></span> untuk meningkatkan kandungan vitamin A, pengembangan organisme transgenik untuk produksi obat-obatan (farmakogenomik), atau identifikasi gen penyebab penyakit pada manusia untuk diagnosis dini.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Biologi Molekul (Molecular Biology)</summary>
+                <p>
+                    <span class="key-term">Biologi Molekul</span> fokus pada studi tentang struktur dan fungsi makromolekul biologis (terutama DNA, RNA, dan protein) serta bagaimana mereka berinteraksi untuk membentuk sistem kehidupan. Ini adalah cabang yang sangat terkait erat dengan genetika dan biokimia, menyediakan alat praktis untuk memanipulasi materi genetik.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Memberikan alat dan teknik untuk memanipulasi DNA (misalnya, teknik <span class="key-term">DNA rekombinan</span>), kloning gen, dan ekspresi protein. Sangat penting untuk rekayasa genetik pada tingkat molekuler, termasuk teknologi CRISPR/Cas9.</li>
+                    <li class="example">Contoh Aplikasi: Teknik <span class="key-term">PCR (Polymerase Chain Reaction)</span> untuk amplifikasi DNA dalam diagnostik dan forensik, sekuensing gen (penentuan urutan basa DNA), produksi <span class="key-term">antibodi monoklonal</span>, atau pengembangan vaksin berbasis DNA/RNA.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Mikrobiologi (Microbiology)</summary>
+                <p>
+                    <span class="key-term">Mikrobiologi</span> adalah ilmu yang mempelajari mikroorganisme, termasuk bakteri, virus, fungi (jamur), alga, dan protozoa. Banyak proses bioteknologi, terutama yang konvensional, sangat bergantung pada aktivitas mikroorganisme sebagai "pabrik" biologis.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Pemanfaatan mikroba untuk fermentasi makanan (tempe, yoghurt, kecap), produksi antibiotik, bioremidiasi (pembersihan limbah dan polutan), produksi enzim, serta pengembangan probiotik dan bio-pestisida.</li>
+                    <li class="example">Contoh Aplikasi: Penggunaan <em>Saccharomyces cerevisiae</em> dalam pembuatan roti dan minuman beralkohol, <em>Rhizopus oligosporus</em> dalam produksi tempe, bakteri dalam pengolahan limbah cair dan padat (biogas), atau pengembangan agen biokontrol untuk pertanian.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Enzimologi (Enzymology)</summary>
+                <p>
+                    <span class="key-term">Enzimologi</span> adalah cabang biokimia yang secara khusus mempelajari enzim, yaitu protein yang berfungsi sebagai katalis biologis. Pemahaman tentang sifat, aktivitas, dan regulasi enzim sangat krusial dalam bioteknologi karena enzim mempercepat reaksi spesifik.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Optimalisasi proses yang melibatkan enzim untuk meningkatkan efisiensi dan spesifisitas reaksi, imobilisasi enzim untuk penggunaan berulang dan stabilitas industri, serta penggunaan enzim dalam diagnostik atau terapi.</li>
+                    <li class="example">Contoh Aplikasi: Penggunaan enzim amilase dalam industri tekstil (pemecah pati) atau deterjen (pembersih noda karbohidrat), enzim protease dalam pengempukan daging atau produksi keju, atau enzim lipase dalam industri makanan (untuk modifikasi lemak) dan biofuel.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Ilmu Pangan (Food Science)</summary>
+                <p>
+                    <span class="key-term">Ilmu Pangan</span> mempelajari aspek-aspek ilmiah makanan, termasuk komposisi, sifat fisik dan kimia, pengolahan, pengawetan, dan keamanannya. Bioteknologi sering diterapkan untuk meningkatkan kualitas, keamanan, dan nutrisi pangan, serta menciptakan produk pangan baru.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Pengembangan produk pangan fungsional (misalnya probiotik dan prebiotik), peningkatan nilai gizi melalui fortifikasi atau bioteknologi tanaman, perbaikan tekstur dan rasa produk, serta peningkatan masa simpan melalui fermentasi atau modifikasi genetik mikroba.</li>
+                    <li class="example">Contoh Aplikasi: Produksi yoghurt, keju, tempe, nata de coco dengan karakteristik sensorik dan nutrisi yang optimal, atau pengembangan tanaman pangan dengan profil vitamin dan mineral yang lebih tinggi.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Rekayasa Teknologi Pangan (Food Technology Engineering)</summary>
+                <p>
+                    <span class="key-term">Rekayasa Teknologi Pangan</span> menggabungkan prinsip-prinsip teknik dengan ilmu pangan untuk merancang, mengoptimalkan, dan mengoperasikan proses produksi makanan. Ini memastikan skala industri dan efisiensi dalam produksi bioteknologi pangan, dari laboratorium ke konsumen.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Merancang reaktor fermentasi (bioreaktor) yang efisien untuk produksi makanan fermentasi, sistem pengolahan pascapanen, dan proses kontrol kualitas untuk produksi pangan skala besar yang melibatkan agen biologis, serta pengembangan kemasan inovatif.</li>
+                    <li class="example">Contoh Aplikasi: Desain bioreaktor untuk produksi massal kultur starter yoghurt atau cuka, sistem sterilisasi dan pengemasan untuk produk fermentasi agar aman dan tahan lama, atau optimasi proses ekstraksi senyawa bioaktif dari bahan pangan.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Rekayasa Biokimia (Biochemical Engineering)</summary>
+                <p>
+                    <span class="key-term">Rekayasa Biokimia</span> adalah disiplin yang menerapkan prinsip-prinsip teknik untuk sistem biologis. Ini berfokus pada desain dan pengembangan proses yang memanfaatkan organisme hidup atau komponennya (seperti enzim) untuk menghasilkan produk secara efisien dan ekonomis.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Merancang dan mengoptimalkan bioreaktor, sistem pemurnian produk biologis (misalnya protein rekombinan), dan proses bioindustri secara keseluruhan untuk efisiensi dan skala produksi. Ini menjembatani gap antara penelitian dasar dan aplikasi industri.</li>
+                    <li class="example">Contoh Aplikasi: Skala produksi antibiotik, vaksin, biofuel (bioetanol, biodiesel), atau biofarmasi dari laboratorium ke skala industri, termasuk optimasi kondisi pertumbuhan mikroba, pemisahan dan pemurnian produk, serta manajemen limbah biologis.</li>
+                </ul>
+            </details>
+        </div>
+
+        <h2>II. Ilmu-ilmu Non-Biologi Pendukung</h2>
+        <p>
+            Selain ilmu-ilmu biologi inti, bioteknologi juga sangat didukung oleh cabang ilmu non-biologi yang menyediakan landasan teoretis, alat analisis, dan infrastruktur komputasi yang memungkinkan inovasi dan aplikasi canggih.
+        </p>
+
+        <div class="section-card">
+            <details>
+                <summary>Kimia (Chemistry)</summary>
+                <p>
+                    <span class="key-term">Kimia</span> adalah ilmu yang mempelajari materi, sifat-sifatnya, dan bagaimana materi berubah. Ini fundamental untuk memahami struktur biomolekul, reaksi-reaksi yang terjadi, pengembangan reagen serta bahan baru, dan analisis kualitas produk bioteknologi.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Analisis komponen biologis (misalnya, identifikasi metabolit), sintesis senyawa baru (misalnya obat-obatan kimia, peptida), pengembangan material biomassa dan bioplastik, serta pemahaman interaksi molekuler pada tingkat atom dan ikatan.</li>
+                    <li class="example">Contoh Aplikasi: Sintesis obat-obatan farmasi, analisis kromatografi (HPLC, GC-MS) untuk pemisahan dan identifikasi biomolekul kompleks, atau pengembangan polimer biodegradable dari sumber daya biologis.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Fisika (Physics)</summary>
+                <p>
+                    <span class="key-term">Fisika</span> mempelajari materi, energi, dan interaksi di antara keduanya. Dalam bioteknologi, fisika berperan dalam pengembangan instrumen canggih, pemahaman sifat fisik biomolekul (misalnya stabilitas protein), dan prinsip-prinsip energi dalam proses biologis dan rekayasa.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Desain dan penggunaan peralatan laboratorium canggih (misalnya, mikroskop elektron, spektrofotometer, centrifuge, bioreaktor dengan sensor), pemahaman tentang aliran fluida dalam bioreaktor dan sistem pemisahan, atau prinsip-prinsip termodinamika dalam reaksi biologis dan desain sistem bioreaksi.</li>
+                    <li class="example">Contoh Aplikasi: Pengembangan <span class="key-term">biosensor</span> yang memanfaatkan prinsip optik atau elektrik, aplikasi teknologi pencitraan medis (MRI, X-ray) untuk diagnosis, atau penggunaan prinsip-prinsip osmotik dan difusi dalam pemrosesan sel dan membran.</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <details>
+                <summary>Ilmu Komputer (Computer Science)</summary>
+                <p>
+                    <span class="key-term">Ilmu Komputer</span> berkaitan dengan teori komputasi, desain komputer, dan aplikasi komputer. Dalam bioteknologi, khususnya bioteknologi modern dan rekayasa genetik, ilmu komputer sangat vital untuk analisis data besar (Big Data) dan pemodelan kompleks.
+                </p>
+                <ul>
+                    <li><strong>Peran dalam Bioteknologi:</strong> Bidang <span class="key-term">Bioinformatika</span> (analisis data genetik dan proteomik, perbandingan genom), pemodelan molekuler (misalnya simulasi interaksi protein-ligan), simulasi proses biologi (misalnya laju pertumbuhan mikroba), desain obat berbasis komputer, dan pengelolaan database biologis skala besar.</li>
+                    <li>Pengembangan <span class="key-term">kecerdasan buatan (AI) dan <em>machine learning</em></span> untuk memprediksi efektivitas obat, mengoptimalkan jalur metabolisme, atau mendeteksi pola dalam data genetik.</li>
+                    <li class="example">Contoh Aplikasi: Analisis sekuens DNA dan protein untuk mengidentifikasi gen atau fungsi protein, prediksi struktur protein dari urutan asam amino, pemodelan interaksi obat-reseptor untuk penemuan obat baru, atau pengembangan algoritma untuk optimasi bioreaktor dan proses fermentasi.</li>
+                </ul>
+            </details>
+        </div>
+
+        <p class="intro-paragraph">
+            Integrasi dari semua cabang ilmu ini menciptakan sinergi yang kuat, memungkinkan bioteknologi untuk terus berkembang dan memberikan solusi inovatif di berbagai sektor, mulai dari pertanian, kesehatan, lingkungan, hingga industri. Tanpa kontribusi dari masing-masing disiplin ini, kemajuan bioteknologi tidak akan sepesat yang kita saksikan saat ini, dan potensi masa depannya akan jauh terbatas.
+        </p>
+
+    </div>
+</body>
+</html>
+```

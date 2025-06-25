@@ -1,0 +1,292 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Pengantar Sistem Elektronika - Semikonduktor</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 1.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--accent-green);
+        }
+
+        h4 {
+            font-size: 1.3em;
+            color: var(--secondary-accent-amber);
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1); /* Light blue highlight */
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: block; /* Make it a block element */
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1em;
+            color: #333;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.95em;
+            border: 1px solid var(--border-divider);
+        }
+
+        .explanation {
+            margin-left: 20px;
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        .concept-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
+        }
+
+        .concept-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .concept-box p {
+            color: white;
+            margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                margin: 10px auto;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .code-block {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab 6: Pengantar Sistem Elektronika - Semikonduktor</h1>
+
+        <div class="section">
+            <h2>1. Pengertian Semikonduktor</h2>
+            <p>Dalam dunia elektronik, material dapat dikategorikan berdasarkan kemampuannya menghantarkan arus listrik. Secara umum, kita mengenal tiga jenis material:</p>
+            <ul>
+                <li><strong>Konduktor:</strong> Bahan yang sangat baik dalam menghantarkan listrik, seperti logam (tembaga, emas).</li>
+                <li><strong>Isolator:</strong> Bahan yang sangat buruk dalam menghantarkan listrik, seperti karet, kaca, atau plastik.</li>
+                <li><strong>Semikonduktor:</strong> Bahan yang memiliki sifat penghantaran listrik di antara konduktor dan isolator. Sifat ini dapat diubah-ubah tergantung pada kondisi lingkungan atau perlakuan yang diberikan.</li>
+            </ul>
+            <p>Bahan-bahan seperti Germanium (Ge) dan Silikon (Si) adalah contoh semikonduktor murni. Dalam kondisi normal, bahan-bahan ini cenderung bersifat isolator. Namun, ketika ada ketidakmurnian (impurities) yang ditambahkan ke dalam struktur kristalnya, atau ketika dipengaruhi oleh panas, cahaya, atau medan listrik tertentu, semikonduktor dapat berubah menjadi konduktor yang baik.</p>
+            <p>Kemampuan unik inilah yang membuat semikonduktor menjadi tulang punggung hampir semua perangkat elektronik modern.</p>
+        </div>
+
+        <div class="section">
+            <h2>Klasifikasi Semikonduktor</h2>
+            <p>Berdasarkan cara terbentuknya sifat semikonduktivitas, semikonduktor dapat dibagi menjadi dua jenis utama:</p>
+
+            <h3>a. Semikonduktor Intrinsik</h3>
+            <p>Semikonduktor intrinsik adalah semikonduktor murni yang belum dicampur dengan atom pengotor (doping). Contohnya adalah silikon atau germanium murni. Pada semikonduktor intrinsik, atom-atomnya terikat oleh ikatan kovalen, di mana setiap atom berbagi elektron valensinya dengan atom tetangganya. Sebagai contoh, silikon memiliki 4 elektron valensi, membentuk 4 ikatan kovalen sempurna.</p>
+            <div class="code-block">
+                Struktur Ikatan Kovalen (Contoh Silikon Murni):<br>
+                Setiap atom Silikon (Si) memiliki 4 elektron valensi.<br>
+                Atom-atom ini saling berbagi elektron untuk membentuk ikatan kovalen.<br>
+                Dalam keadaan normal, semua elektron terikat kuat dalam ikatan kovalen.
+            </div>
+            <p>Ketika suhu dinaikkan, energi termal dapat memutuskan salah satu ikatan kovalen. Elektron yang terlepas dari ikatannya ini dapat bergerak bebas dan menjadi pembawa muatan. Lokasi yang ditinggalkan oleh elektron tersebut disebut sebagai <strong><em>hole</em></strong> (lubang), yang dapat dianggap sebagai muatan positif bergerak.</p>
+            <p>Jadi, dalam semikonduktor intrinsik, pembawa muatan utamanya adalah pasangan elektron dan hole yang dihasilkan dari pemutusan ikatan kovalen akibat energi (misalnya panas).</p>
+
+            <h3>b. Semikonduktor Ekstrinsik</h3>
+            <p>Semikonduktor ekstrinsik dibuat dengan sengaja menambahkan sejumlah kecil atom pengotor (disebut <em>doping</em>) ke dalam semikonduktor intrinsik. Tujuan doping ini adalah untuk meningkatkan jumlah pembawa muatan bebas (elektron atau hole) secara signifikan, sehingga konduktivitasnya dapat dikontrol dengan lebih baik.</p>
+            <p>Berdasarkan jenis atom pengotor yang ditambahkan, semikonduktor ekstrinsik dibagi lagi menjadi:</p>
+
+            <h4>1. Semikonduktor Tipe-N (Negatif)</h4>
+            <p>Semikonduktor tipe-N dibuat dengan mendoping semikonduktor murni (misalnya Silikon) dengan atom pengotor yang memiliki 5 elektron valensi, seperti Fosfor (P) atau Arsenik (As). Atom pengotor ini disebut <strong>donatur</strong>.</p>
+            <p>Ketika atom fosfor (5 elektron valensi) menggantikan atom silikon (4 elektron valensi) dalam kisi kristal, empat dari lima elektron fosfor akan membentuk ikatan kovalen dengan atom silikon tetangganya. Elektron kelima dari fosfor ini menjadi "kelebihan" dan ikatannya lemah, sehingga mudah terlepas menjadi elektron bebas pada suhu ruang. Elektron inilah yang menjadi pembawa muatan mayoritas dalam semikonduktor tipe-N.</p>
+            <div class="code-block">
+                Doping Silikon dengan Fosfor:<br>
+                Atom Fosfor (P) memiliki 5 elektron valensi.<br>
+                4 elektron P membentuk ikatan kovalen dengan atom Si tetangga.<br>
+                1 elektron P sisa menjadi elektron bebas (pembawa muatan mayoritas).<br>
+                Atom P bertindak sebagai DONATUR elektron.
+            </div>
+
+            <h4>2. Semikonduktor Tipe-P (Positif)</h4>
+            <p>Semikonduktor tipe-P dibuat dengan mendoping semikonduktor murni (misalnya Silikon) dengan atom pengotor yang memiliki 3 elektron valensi, seperti Boron (B), Galium (Ga), atau Indium (In). Atom pengotor ini disebut <strong>akseptor</strong>.</p>
+            <p>Ketika atom boron (3 elektron valensi) menggantikan atom silikon (4 elektron valensi) dalam kisi kristal, atom boron hanya dapat membentuk 3 ikatan kovalen dengan atom silikon tetangganya. Akibatnya, ada satu tempat yang seharusnya diisi oleh elektron namun kosong. Kekosongan elektron ini disebut <strong><em>hole</em></strong>. <em>Hole</em> ini dapat menerima elektron dari atom silikon di dekatnya, sehingga <em>hole</em> bergerak melintasi kristal. Oleh karena itu, <em>hole</em> menjadi pembawa muatan mayoritas dalam semikonduktor tipe-P.</p>
+            <div class="code-block">
+                Doping Silikon dengan Boron:<br>
+                Atom Boron (B) memiliki 3 elektron valensi.<br>
+                B hanya dapat membentuk 3 ikatan kovalen dengan atom Si.<br>
+                Tercipta KEKOSONGAN ELEKTRON (HOLE) sebagai pembawa muatan mayoritas.<br>
+                Atom B bertindak sebagai AKSEPTOR elektron.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Penggunaan Semikonduktor</h2>
+            <p>Semikonduktor adalah fondasi dari teknologi modern. Perangkat yang kita gunakan sehari-hari, seperti komputer, <em>smartphone</em>, televisi, hingga peralatan medis, semuanya bergantung pada komponen yang terbuat dari semikonduktor.</p>
+
+            <h3>a. Dioda</h3>
+            <p>Salah satu komponen dasar yang memanfaatkan sifat semikonduktor adalah <strong>dioda</strong>. Dioda adalah komponen dua kutub yang terbuat dari gabungan semikonduktor tipe-N dan tipe-P (yang disebut sambungan P-N). Sambungan P-N inilah yang memberikan sifat unik pada dioda:</p>
+            <ul>
+                <li><strong>Penyearah Arus:</strong> Dioda memungkinkan arus listrik mengalir hanya dalam satu arah (dari sisi-P ke sisi-N saat diberi tegangan maju/<em>forward bias</em>), dan menghambat arus pada arah sebaliknya (saat diberi tegangan mundur/<em>reverse bias</em>).</li>
+                <li><strong>LED (Light Emitting Diode):</strong> Jenis dioda khusus yang memancarkan cahaya ketika diberi arus listrik dalam arah maju. Ketika elektron dari sisi-N bertemu dengan <em>hole</em> di sisi-P pada sambungan P-N, energi dilepaskan dalam bentuk foton (cahaya). Warna cahaya yang dihasilkan bergantung pada jenis material semikonduktor yang digunakan.</li>
+            </ul>
+            <p>Contoh penggunaan LED sangat luas, mulai dari lampu indikator pada perangkat elektronik, lampu lalu lintas, lampu rem mobil, hingga layar tampilan.</p>
+
+            <h3>b. Transistor</h3>
+            <p><strong>Transistor</strong> adalah komponen semikonduktor yang lebih kompleks dan merupakan elemen fundamental dalam rangkaian elektronik. Transistor memiliki tiga terminal dan berfungsi utama sebagai:</p>
+            <ul>
+                <li><strong>Sakelar (Switch):</strong> Mengontrol aliran arus listrik secara ON/OFF berdasarkan sinyal kontrol kecil.</li>
+                <li><strong>Penguat (Amplifier):</strong> Menguatkan sinyal listrik lemah menjadi sinyal yang lebih kuat.</li>
+            </ul>
+            <p>Jenis-jenis transistor yang umum meliputi:</p>
+            <ul>
+                <li><strong>Bipolar Junction Transistor (BJT):</strong> Terdiri dari tipe NPN atau PNP. BJT memiliki tiga terminal yaitu Basis (B), Kolektor (C), dan Emitor (E). Aliran arus kolektor dikontrol oleh arus kecil yang mengalir melalui basis.</li>
+                <li><strong>Field Effect Transistor (FET):</strong> Termasuk di dalamnya MOSFET (Metal-Oxide Semiconductor Field Effect Transistor). FET mengontrol aliran arus melalui saluran (antara <em>Source</em> dan <em>Drain</em>) menggunakan medan listrik yang diterapkan pada terminal <em>Gate</em>.</li>
+            </ul>
+            <p>Transistor adalah blok bangunan utama dari sirkuit terpadu (IC) dan mikroprosesor.</p>
+
+            <h3>c. Sirkuit Terpadu (Integrated Circuit / IC)</h3>
+            <p>Sebuah <strong>sirkuit terpadu (IC)</strong> adalah sebuah chip kecil yang berisi jutaan bahkan miliaran transistor, dioda, resistor, dan kapasitor yang saling terhubung. IC memungkinkan fungsi-fungsi yang sangat kompleks dilakukan dalam satu unit kecil.</p>
+            <p>IC dapat dikategorikan menjadi:</p>
+            <ul>
+                <li><strong>IC Digital:</strong> Bekerja dengan sinyal biner (0 dan 1), seperti pada mikroprosesor dan mikrokontroler.</li>
+                <li><strong>IC Analog:</strong> Bekerja dengan sinyal kontinu yang bervariasi, seperti pada penguat audio atau sensor.</li>
+                <li><strong>IC Mixed-Signal:</strong> Menggabungkan fungsi digital dan analog, seperti pada konverter Analog-ke-Digital (ADC) atau Digital-ke-Analog (DAC).</li>
+            </ul>
+            <p>IC merupakan jantung dari hampir semua perangkat elektronik modern, mulai dari jam tangan digital hingga superkomputer.</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>Prinsip Gerbang Logika</h3>
+            <p>Dalam IC digital, konsep <strong>gerbang logika</strong> sangat penting. Gerbang logika adalah blok bangunan dasar yang melakukan operasi logika Boolean (AND, OR, NOT, dll.) pada input biner (0 atau 1) untuk menghasilkan output.</p>
+            <p>Contohnya, Gerbang AND akan menghasilkan output 1 hanya jika SEMUA inputnya adalah 1. Jika salah satu inputnya 0, maka outputnya akan menjadi 0.</p>
+            <div class="code-block">
+                Gerbang AND (2 Input):<br>
+                Input A | Input B | Output<br>
+                --------------------------<br>
+                0       | 0       | 0<br>
+                0       | 1       | 0<br>
+                1       | 0       | 0<br>
+                1       | 1       | 1
+            </div>
+            <p>Konsep gerbang logika inilah yang memungkinkan perangkat digital untuk memproses informasi, membuat keputusan, dan melakukan berbagai tugas komputasi.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

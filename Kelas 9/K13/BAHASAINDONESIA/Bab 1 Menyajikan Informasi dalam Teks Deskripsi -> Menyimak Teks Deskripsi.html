@@ -1,0 +1,447 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menyajikan Informasi dalam Teks Deskripsi: Panduan Interaktif</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-top: 30px;
+            border-top: 1px solid var(--border-divider);
+            padding-top: 20px;
+        }
+
+        .interactive-element {
+            background-color: #f8f9fa;
+            border: 1px dashed var(--primary-blue);
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .interactive-element:hover {
+            background-color: #e9ecef;
+            border-color: var(--semantic-info);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .interactive-element h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+        }
+
+        .interactive-element p {
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        .toggle-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border-top: 1px solid var(--border-divider);
+            background-color: #ffffff;
+            border-radius: 5px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        .toggle-content.active {
+            display: block;
+        }
+
+        .toggle-button {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: var(--semantic-info);
+        }
+
+        .code-block {
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-primary);
+        }
+
+        .example-text {
+            border-left: 4px solid var(--accent-green);
+            padding-left: 15px;
+            margin-top: 15px;
+            background-color: rgba(153, 255, 153, 0.1); /* Light green */
+            border-radius: 3px;
+        }
+
+        .definition {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .list-item-title {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .question {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 2px solid var(--border-divider);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .toggle-content {
+                padding: 10px;
+            }
+            .code-block {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Memahami dan Menyajikan Informasi dalam Teks Deskripsi</h1>
+
+        <p>Selamat datang di panduan interaktif untuk menguasai penyajian informasi dalam teks deskripsi. Teks deskripsi adalah jenis teks yang sangat fundamental dalam bahasa Indonesia. Ia memungkinkan kita untuk menggambarkan objek, tempat, suasana, atau bahkan perasaan dengan detail yang kaya, sehingga pembaca dapat seolah-olah merasakan, melihat, atau mengalami apa yang dideskripsikan.</p>
+
+        <div class="section">
+            <h2>Apa Itu Teks Deskripsi?</h2>
+            <p>Secara sederhana, teks deskripsi bertujuan untuk memberikan gambaran yang jelas dan rinci tentang sesuatu kepada pembaca. Teks ini menggunakan kata-kata yang memanifestasikan panca indra kita: penglihatan, pendengaran, penciuman, perabaan, dan perasa. Semakin detail dan akurat penggambaran yang diberikan, semakin efektif teks deskripsi tersebut.</p>
+
+            <div class="interactive-element" onclick="toggleContent('what-is-description')">
+                <h4>Inti Teks Deskripsi</h4>
+                <p>(Klik untuk penjelasan lebih lanjut)</p>
+                <div id="what-is-description" class="toggle-content">
+                    <p>Teks deskripsi berfokus pada:</p>
+                    <ul>
+                        <li><strong>Objek:</strong> Merinci ciri fisik, sifat, dan detail lainnya dari suatu benda, makhluk hidup, atau konsep.</li>
+                        <li><strong>Suasana:</strong> Menggambarkan atmosfer atau perasaan yang menyelimuti suatu tempat atau kejadian.</li>
+                        <li><strong>Emosi:</strong> Mengungkapkan perasaan atau kondisi batin seseorang dengan bahasa yang menggugah.</li>
+                    </ul>
+                    <p>Contohnya, ketika Anda mendeskripsikan pantai, Anda tidak hanya menyebutkan "pantai", tetapi juga "pantai berpasir putih halus yang diterpa ombak biru jernih dengan suara deburan yang menenangkan."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Struktur Teks Deskripsi</h2>
+            <p>Teks deskripsi umumnya memiliki dua bagian utama:</p>
+
+            <div class="interactive-element" onclick="toggleContent('structure-part1')">
+                <h4>1. Pernyataan Umum (Identifikasi)</h4>
+                <p>(Klik untuk penjelasan lebih lanjut)</p>
+                <div id="structure-part1" class="toggle-content">
+                    <p>Bagian ini berfungsi untuk mengenalkan objek yang akan dideskripsikan. Di sini, pembaca diperkenalkan pada subjek deskripsi, serta memberikan gambaran umum mengenai objek tersebut.</p>
+                    <p class="example-text">Contoh: "Gunung Bromo adalah salah satu gunung berapi aktif di Indonesia yang terkenal dengan pemandangannya yang memukau."</p>
+                </div>
+            </div>
+
+            <div class="interactive-element" onclick="toggleContent('structure-part2')">
+                <h4>2. Deskripsi Bagian (Perincian)</h4>
+                <p>(Klik untuk penjelasan lebih lanjut)</p>
+                <div id="structure-part2" class="toggle-content">
+                    <p>Bagian ini berisi perincian atau penjelasan lebih lanjut mengenai objek yang dideskripsikan. Perincian ini bisa berupa ciri fisik, sifat, kebiasaan, atau aspek-aspek lain yang penting.</p>
+                    <p class="example-text">Contoh: "Pasir di lautan pasir Bromo berwarna kelabu pekat, menantang setiap langkah. Di kejauhan, kabut tipis seringkali menyelimuti kawah yang masih mengepulkan asap belerang, menciptakan aura mistis yang tak terlupakan. Suara angin yang berhembus melintasi dataran tandus terdengar seperti bisikan purba."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Pola Pengembangan Teks Deskripsi</h2>
+            <p>Teks deskripsi dapat dikembangkan menggunakan beberapa pola, yang membantu menyajikan informasi secara logis dan terstruktur:</p>
+
+            <div class="interactive-element" onclick="toggleContent('pattern-1')">
+                <h4>Pola Spasial (Ruang)</h4>
+                <p>(Klik untuk penjelasan lebih lanjut)</p>
+                <div id="pattern-1" class="toggle-content">
+                    <p>Pola ini mendeskripsikan objek berdasarkan urutan ruang atau lokasi. Penggambaran bisa dimulai dari bagian depan ke belakang, dari atas ke bawah, atau dari luar ke dalam.</p>
+                    <p class="question">Bayangkan Anda mendeskripsikan sebuah rumah. Bagaimana Anda akan menggunakan pola spasial untuk menggambarkannya?</p>
+                    <p class="example-text">Contoh: "Dari depan, rumah itu tampak sederhana dengan pagar kayu yang dicat putih. Begitu melangkah masuk, halaman rumput hijau terhampar luas, mengantar ke teras berlantai keramik. Pintu utama yang terbuat dari kayu jati kokoh mengarah ke ruang tamu yang terang."</p>
+                </div>
+            </div>
+
+            <div class="interactive-element" onclick="toggleContent('pattern-2')">
+                <h4>Pola Deskripsi Subjektif (Sensasi)</h4>
+                <p>(Klik for more details)</p>
+                <div id="pattern-2" class="toggle-content">
+                    <p>Pola ini menggunakan unsur-unsur sensasi, emosi, dan perasaan pribadi penulis. Tujuannya adalah untuk menyampaikan kesan mendalam yang dirasakan oleh penulis.</p>
+                    <p class="example-text">Contoh: "Aroma kopi yang baru diseduh langsung menusuk hidung, membangkitkan nostalgia masa kecilku. Suara tawa riang anak-anak bermain di taman belakang membawa kehangatan yang sulit diungkapkan dengan kata-kata."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ciri Kebahasaan Teks Deskripsi</h2>
+            <p>Untuk membuat teks deskripsi yang hidup dan efektif, perhatikan penggunaan unsur kebahasaan berikut:</p>
+
+            <div class="interactive-element" onclick="toggleContent('language-1')">
+                <h4>Penggunaan Kata Sifat (Adjektiva)</h4>
+                <p>(Klik untuk penjelasan lebih lanjut)</p>
+                <div id="language-1" class="toggle-content">
+                    <p>Kata sifat sangat krusial untuk memberikan detail yang kaya. Gunakan kata sifat yang spesifik dan bervariasi.</p>
+                    <p class="example-text">Bukan hanya 'cantik', tapi 'anggun', 'memesona', 'menawan'. Bukan hanya 'besar', tapi 'luas', 'megah', 'raksasa'.</p>
+                </div>
+            </div>
+
+            <div class="interactive-element" onclick="toggleContent('language-2')">
+                <h4>Penggunaan Kalimat Langsung (Langsung)</h4>
+                <p>(Klik untuk penjelasan lebih lanjut)</p>
+                <div id="language-2" class="toggle-content">
+                    <p>Kalimat langsung adalah kutipan ucapan atau pikiran seseorang secara utuh.</p>
+                    <p class="example-text">Contoh: "Menurut saya, buku ini sangat membuka wawasan," ujar Budi sambil tersenyum.</p>
+                </div>
+            </div>
+
+            <div class="interactive-element" onclick="toggleContent('language-3')">
+                <h4>Penggunaan Majas (Gaya Bahasa)</h4>
+                <p>(Klik untuk penjelasan lebih lanjut)</p>
+                <div id="language-3" class="toggle-content">
+                    <p>Majas dapat membuat deskripsi menjadi lebih hidup, emosional, dan imajinatif.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                        <span class="definition">Personifikasi:</span>
+                        <p class="example-text">Angin berbisik lembut di telinga.</p>
+                        <span class="definition">Metafora:</span>
+                        <p class="example-text">Senyumnya adalah mentari pagi.</p>
+                        <span class="definition">Hiperbola:</span>
+                        <p class="example-text">Suaranya menggetarkan seluruh alam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Menyajikan Informasi dalam Teks Deskripsi: Langkah Praktis</h2>
+            <p>Bagaimana cara kita menyajikan informasi dengan efektif dalam sebuah teks deskripsi? Ikuti langkah-langkah berikut:</p>
+
+            <ol style="padding-left: 20px;">
+                <li style="margin-bottom: 15px;">
+                    <p class="list-item-title">Tentukan Objek Deskripsi.</p>
+                    <p>Pilih objek yang ingin Anda deskripsikan. Bisa berupa benda konkret (misalnya, tas sekolah Anda), tempat (misalnya, sekolah Anda), orang (misalnya, guru favorit Anda), atau bahkan pengalaman.</p>
+                    <div class="interactive-element" onclick="toggleContent('step1-detail')">
+                        <h4>Contoh Pemilihan Objek</h4>
+                        <p>(Klik untuk detail)</p>
+                        <div id="step1-detail" class="toggle-content">
+                            <p>Misalkan Anda memilih objek "Pohon Mangga di Depan Rumah". Apa saja yang ingin Anda tonjolkan dari pohon ini?</p>
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <p class="list-item-title">Kumpulkan Informasi (Observasi).</p>
+                    <p>Amati objek secara detail menggunakan seluruh panca indra Anda. Catat ciri-ciri fisik, warna, tekstur, bau, suara yang terkait, bahkan rasa jika relevan.</p>
+                    <div class="interactive-element" onclick="toggleContent('step2-detail')">
+                        <h4>Teknik Observasi Efektif</h4>
+                        <p>(Klik untuk detail)</p>
+                        <div id="step2-detail" class="toggle-content">
+                            <p>Gunakan pertanyaan panduan:</p>
+                            <ul>
+                                <li>Bagaimana bentuknya?</li>
+                                <li>Apa warnanya? Ada gradasi warna?</li>
+                                <li>Bagaimana tekstur permukaannya? Halus? Kasar? Lengket?</li>
+                                <li>Bagaimana aromanya?</li>
+                                <li>Jika ada suara, seperti apa suaranya?</li>
+                                <li>Bagaimana rasanya (jika memungkinkan)?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <p class="list-item-title">Susun Pernyataan Umum.</p>
+                    <p>Mulailah dengan kalimat pengantar yang mengenalkan objek deskripsi Anda.</p>
+                    <div class="code-block">
+                        Contoh: "Pohon mangga di depan rumahku menjulang tinggi, menjadi saksi bisu perjalanan waktu."
+                    </div>
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <p class="list-item-title">Kembangkan Deskripsi Bagian (Perincian).</p>
+                    <p>Gunakan catatan hasil observasi Anda untuk mengembangkan kalimat-kalimat deskriptif. Atur perincian ini secara logis, misalnya berdasarkan urutan spasial atau fokus pada detail yang paling menarik.</p>
+                    <div class="interactive-element" onclick="toggleContent('step4-detail')">
+                        <h4>Mengolah Catatan Menjadi Deskripsi</h4>
+                        <p>(Klik untuk detail)</p>
+                        <div id="step4-detail" class="toggle-content">
+                            <p>Dari catatan "batang coklat kasar", "daun hijau rimbun", "buah mangga lonjong hijau menguning", Anda bisa merangkainya menjadi:</p>
+                            <p class="example-text">"Batangnya yang kokoh, terbungkus kulit kayu berwarna coklat tua yang kasar, menjadi penyangga bagi dahan-dahan yang merayap ke segala arah. Daun-daunnya yang hijau pekat membentuk kanopi rimbun, memberikan naungan teduh di siang hari. Sesekali, terlihat buah mangga yang masih hijau menggantung, beberapa mulai menguning tanda kedewasaan mereka."</p>
+                            <p>Gunakan kata sifat yang kaya dan mungkin majas agar lebih menarik.</p>
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <p class="list-item-title">Pilih Gaya Bahasa (Majas) yang Tepat.</p>
+                    <p>Pertimbangkan majas apa yang paling cocok untuk menyampaikan kesan yang ingin Anda ciptakan. Apakah Anda ingin memberikan kesan hidup pada objek mati (personifikasi)? Atau ingin membandingkan secara implisit (metafora)?</p>
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <p class="list-item-title">Periksa dan Perbaiki.</p>
+                    <p>Setelah selesai menulis, baca kembali teks deskripsi Anda. Pastikan bahasanya jelas, detailnya akurat, dan tidak ada kesalahan ejaan atau tata bahasa. Cek apakah teks tersebut berhasil membuat pembaca seolah-olah melihat, mendengar, atau merasakan objek yang Anda deskripsikan.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Simulasi Singkat</h2>
+            <p>Mari kita coba menyajikan informasi tentang "Buku Bacaan Anda Saat Ini" menggunakan format teks deskripsi:</p>
+
+            <div class="interactive-element" onclick="toggleContent('simulation')">
+                <h4>Mari Berlatih!</h4>
+                <p>(Klik untuk melihat contoh struktur)</p>
+                <div id="simulation" class="toggle-content">
+                    <p><strong>Objek:</strong> Buku Fiksi "Laskar Pelangi"</p>
+                    <p><strong>Pernyataan Umum:</strong></p>
+                    <div class="code-block">
+                        "Laskar Pelangi adalah sebuah novel yang membangkitkan semangat dan mengajarkan arti perjuangan serta persahabatan melalui kisah anak-anak di Belitong."
+                    </div>
+                    <p><strong>Deskripsi Bagian (Contoh Perincian):</strong></p>
+                    <ul>
+                        <li><strong>Sampul:</strong> Bertuliskan judul dengan warna cerah, dihiasi ilustrasi anak-anak yang sedang berlari penuh keceriaan di bawah terik matahari.</li>
+                        <li><strong>Isi Cerita:</strong> Menggambarkan kesederhanaan hidup di pedesaan, kegigihan para murid untuk belajar meskipun dalam keterbatasan, serta kehangatan ikatan guru dan murid. Terdapat dialog-dialog yang lugas namun penuh makna, membangkitkan rasa haru dan tawa.</li>
+                        <li><strong>Gaya Bahasa:</strong> Penggunaan gaya bahasa yang lugas namun puitis, mampu menyentuh hati pembaca dengan deskripsi suasana yang kuat, misalnya saat menggambarkan sekolah yang hampir roboh atau saat anak-anak berjuang mendapatkan pendidikan.</li>
+                    </ul>
+                    <p><strong>Kesan Subjektif:</strong></p>
+                    <div class="example-text">
+                        Membaca buku ini bagaikan kembali ke masa kecil yang penuh impian. Kisah Ikal dan teman-temannya mengajarkan bahwa keterbatasan bukanlah halangan untuk meraih cita-cita, dan semangat pantang menyerah adalah kunci kesuksesan.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Kesimpulan</h2>
+            <p>Menyajikan informasi dalam teks deskripsi adalah keterampilan berharga yang melatih kita untuk lebih jeli mengamati dan lebih ekspresif dalam menyampaikan detail. Dengan memahami struktur, pola pengembangan, dan ciri kebahasaannya, Anda dapat menciptakan teks deskripsi yang tidak hanya informatif tetapi juga memikat hati pembaca.</p>
+            <p>Teruslah berlatih membaca berbagai teks deskripsi dan mencoba menulisnya sendiri. Semakin sering Anda melakukannya, semakin mahir Anda dalam menyampaikan gambaran yang utuh dan mempesona!</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.classList.toggle('active');
+            }
+        }
+    </script>
+</body>
+</html>
+```

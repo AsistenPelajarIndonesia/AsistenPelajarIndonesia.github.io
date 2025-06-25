@@ -1,0 +1,409 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Kemagnetan - Gaya Gerak Listrik (GGL) Induksi</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--primary-blue);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .formula {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Mengizinkan wrapping teks untuk formula panjang */
+            word-break: break-all; /* Memastikan teks pecah jika perlu */
+        }
+
+        .formula code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .formula-explanation {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: -10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .concept-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .interactive-section {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .interactive-section h3 {
+            color: white;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .interactive-section p {
+            color: #e0e0e0;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .formula {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .interactive-section h3 {
+                font-size: 1.4em;
+            }
+
+            .interactive-section p {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            .formula {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+
+            .interactive-section {
+                padding: 20px;
+            }
+
+            .interactive-section h3 {
+                font-size: 1.2em;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab 3: Kemagnetan - Gaya Gerak Listrik (GGL) Induksi</h1>
+
+        <div class="section">
+            <h2>Pendahuluan: Dari Medan Magnet ke GGL Induksi</h2>
+            <p>
+                Pada bab sebelumnya, kita telah menjelajahi hubungan erat antara arus listrik dan medan magnet. Kita tahu bahwa arus listrik dapat menghasilkan medan magnet. Namun, fenomena yang lebih menakjubkan terjadi ketika kita membalik logika ini: **perubahan medan magnet ternyata dapat menghasilkan arus listrik!** Konsep inilah yang dikenal sebagai <strong>Gaya Gerak Listrik (GGL) Induksi</strong>. GGL Induksi adalah fenomena fundamental yang menjadi dasar dari berbagai teknologi penting, seperti generator listrik yang mengubah energi mekanik menjadi energi listrik.
+            </p>
+            <p>
+                Mari kita selami lebih dalam bagaimana perubahan medan magnet ini dapat "menginduksi" atau menciptakan GGL.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Memahami Fluks Magnet (Φ)</h2>
+            <p>
+                Sebelum memahami GGL induksi, kita perlu memahami konsep dasar yang menjadi penyebabnya, yaitu <strong>Fluks Magnetik (Φ)</strong>. Bayangkan medan magnet sebagai "garis-garis" yang keluar dari kutub utara magnet dan masuk ke kutub selatan. Fluks magnetik adalah ukuran dari "jumlah garis medan magnet" yang menembus suatu luasan secara tegak lurus.
+            </p>
+            <p>
+                Secara matematis, fluks magnetik dapat dinyatakan:
+            </p>
+            <div class="formula">
+                <code>Φ = B ⋅ A</code>
+                <div class="formula-explanation">
+                    (Jika garis medan magnet tegak lurus bidang)
+                </div>
+            </div>
+            <p>
+                Atau, jika garis medan magnet membentuk sudut θ dengan garis normal bidang:
+            </p>
+            <div class="formula">
+                <code>Φ = B ⋅ A ⋅ cos θ</code>
+                <div class="formula-explanation">
+                    (Persamaan umum fluks magnetik)
+                </div>
+            </div>
+            <p>
+                Di sini:
+            </p>
+            <ul>
+                <li><code>Φ</code> adalah Fluks Magnetik, diukur dalam satuan <strong>Weber (Wb)</strong>.</li>
+                <li><code>B</code> adalah Kuat Medan Magnet, diukur dalam satuan <strong>Tesla (T)</strong>.</li>
+                <li><code>A</code> adalah Luas Penampang bidang yang ditembus garis medan magnet, diukur dalam satuan meter persegi (m²).</li>
+                <li><code>θ</code> adalah sudut antara vektor medan magnet <strong>B</strong> dan vektor normal bidang <strong>A</strong>.</li>
+            </ul>
+            <p>
+                Penting untuk diingat bahwa fluks magnetik akan <strong>berubah</strong> jika salah satu atau kedua faktor berikut berubah:
+            </p>
+            <ol>
+                <li><strong>Kuat Medan Magnet (B):</strong> Misalnya, mendekatkan atau menjauhkan magnet.</li>
+                <li><strong>Luas Penampang (A) atau Orientasi Bidang:</strong> Misalnya, memutar kumparan dalam medan magnet.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Hukum Faraday: Dasar GGL Induksi</h2>
+            <p>
+                Fenomena GGL induksi pertama kali dirumuskan oleh Michael Faraday. <strong>Hukum Faraday</strong> menyatakan bahwa GGL induksi yang timbul pada suatu rangkaian tertutup sebanding dengan laju perubahan fluks magnetik yang menembus rangkaian tersebut.
+            </p>
+            <p>
+                Secara matematis, Hukum Faraday dirumuskan sebagai berikut:
+            </p>
+            <div class="formula">
+                <code>ε = -N ⋅ (ΔΦ / Δt)</code>
+                <div class="formula-explanation">
+                    (Hukum Faraday untuk GGL Induksi)
+                </div>
+            </div>
+            <p>
+                Mari kita bedah komponen-komponen dalam rumus ini:
+            </p>
+            <ul>
+                <li><code>ε</code> (epsilon) adalah <strong>GGL Induksi</strong>, diukur dalam satuan <strong>Volt (V)</strong>. Ini adalah "dorongan" listrik yang dihasilkan.</li>
+                <li><code>N</code> adalah <strong>Jumlah Lilitan</strong> pada kumparan. Semakin banyak lilitan, semakin besar GGL induksi yang dihasilkan.</li>
+                <li><code>ΔΦ</code> adalah <strong>Perubahan Fluks Magnetik</strong> dalam selang waktu tertentu. (ΔΦ = Φ<sub>akhir</sub> - Φ<sub>awal</sub>).</li>
+                <li><code>Δt</code> adalah <strong>Selang Waktu</strong> terjadinya perubahan fluks, diukur dalam detik (s).</li>
+                <li>Tanda negatif (<code>-</code>) pada rumus ini merujuk pada <strong>Hukum Lenz</strong>, yang akan kita bahas selanjutnya.</li>
+            </ul>
+            <p>
+                <strong>Intinya:</strong> Semakin cepat fluks magnetik berubah (ΔΦ/Δt besar) atau semakin banyak lilitan kumparan (N besar), maka GGL induksi yang dihasilkan akan semakin besar.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Hukum Lenz: Menentukan Arah Arus Induksi</h2>
+            <p>
+                Tanda negatif dalam Hukum Faraday berasal dari <strong>Hukum Lenz</strong>. Hukum ini sangat penting karena memberi tahu kita <strong>arah</strong> dari arus induksi (dan akibatnya GGL induksi) yang dihasilkan.
+            </p>
+            <p>
+                <strong>Hukum Lenz menyatakan:</strong> Arus induksi yang timbul dalam suatu rangkaian akan selalu mengalir sedemikian rupa sehingga menghasilkan medan magnet yang melawan perubahan fluks magnetik penyebabnya.
+            </p>
+            <p>
+                Dengan kata lain, alam "menolak" perubahan. Jika Anda mencoba menambah fluks magnetik yang menembus kumparan, kumparan akan menghasilkan medan magnet sendiri yang berusaha mengurangi penambahan tersebut. Sebaliknya, jika Anda mencoba mengurangi fluks, kumparan akan menghasilkan medan magnet yang berusaha mempertahankan fluks yang ada.
+            </p>
+            <p>
+                Ini menciptakan sebuah mekanisme umpan balik yang stabil. Perubahan fluks → GGL Induksi → Arus Induksi → Medan Magnet Induksi (melawan perubahan).
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>GGL Induksi Akibat Kawat Bergerak dalam Medan Magnet</h2>
+            <p>
+                Selain perubahan fluks pada kumparan tertutup, GGL induksi juga dapat timbul ketika sebuah kawat penghantar <strong>bergerak</strong> dalam medan magnetik. Ketika kawat bergerak memotong garis-garis medan magnet, muatan-muatan di dalam kawat akan mengalami gaya magnetik, yang kemudian menyebabkan pemisahan muatan dan timbulnya beda potensial (GGL induksi) di ujung-ujung kawat.
+            </p>
+            <p>
+                Jika sebuah kawat lurus dengan panjang <code>L</code> digerakkan dengan kecepatan <code>v</code> tegak lurus terhadap medan magnet <code>B</code>, maka GGL induksi yang dihasilkan adalah:
+            </p>
+            <div class="formula">
+                <code>ε = B ⋅ L ⋅ v</code>
+                <div class="formula-explanation">
+                    (GGL Induksi pada Kawat Bergerak)
+                </div>
+            </div>
+            <p>
+                Di mana:
+            </p>
+            <ul>
+                <li><code>ε</code> adalah GGL Induksi (Volt).</li>
+                <li><code>B</code> adalah Kuat Medan Magnet (Tesla).</li>
+                <li><code>L</code> adalah Panjang Kawat yang memotong medan magnet (meter).</li>
+                <li><code>v</code> adalah Kecepatan Gerak Kawat (meter/detik).</li>
+            </ul>
+            <p>
+                Jika kawat yang bergerak ini dihubungkan dengan resistor <code>R</code> membentuk rangkaian tertutup, maka arus induksi <code>I</code> yang mengalir dapat dihitung menggunakan Hukum Ohm:
+            </p>
+            <div class="formula">
+                <code>I = ε / R = (B ⋅ L ⋅ v) / R</code>
+                <div class="formula-explanation">
+                    (Arus Induksi pada Kawat Bergerak dalam Rangkaian Tertutup)
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Generator Listrik: Aplikasi GGL Induksi</h2>
+            <p>
+                Salah satu aplikasi paling penting dari GGL induksi adalah pada <strong>Generator Listrik</strong>. Generator adalah perangkat yang mengubah energi mekanik (seperti dari turbin air, angin, atau uap) menjadi energi listrik.
+            </p>
+            <p>
+                Prinsip kerja generator didasarkan pada pemutaran kumparan kawat dalam medan magnet. Saat kumparan berputar, orientasi luasan kumparan terhadap medan magnet terus berubah, menyebabkan fluks magnetik yang menembus kumparan juga berubah secara periodik. Perubahan fluks magnetik ini, sesuai Hukum Faraday, menghasilkan GGL induksi yang berubah-ubah seiring waktu.
+            </p>
+            <p>
+                Jika kumparan berputar dengan kecepatan sudut konstan <code>ω</code> dalam medan magnet <code>B</code>, dan memiliki luas penampang <code>A</code> serta jumlah lilitan <code>N</code>, maka GGL induksi yang dihasilkan dapat dinyatakan sebagai fungsi waktu:
+            </p>
+            <div class="formula">
+                <code>ε(t) = N ⋅ B ⋅ A ⋅ ω ⋅ sin(ωt)</code>
+                <div class="formula-explanation">
+                    (GGL Induksi pada Generator)
+                </div>
+            </div>
+            <p>
+                Rumus ini menunjukkan bahwa GGL induksi yang dihasilkan oleh generator memiliki bentuk gelombang sinusoidal, yang merupakan ciri khas dari arus bolak-balik (AC).
+            </p>
+        </div>
+
+        <div class="interactive-section">
+            <h3>Mari Eksplorasi Lebih Lanjut!</h3>
+            <p>
+                Konsep GGL Induksi dan Hukum Faraday serta Lenz merupakan fondasi penting dalam memahami bagaimana listrik dihasilkan di dunia nyata. Cobalah bayangkan berbagai perangkat yang Anda gunakan sehari-hari, banyak di antaranya bekerja berkat prinsip-prinsip elektromagnetik ini.
+            </p>
+            <p>
+                Untuk pengalaman belajar yang lebih mendalam, Anda dapat mencoba simulasi interaktif fenomena GGL induksi yang tersedia secara daring. Ini akan membantu memvisualisasikan bagaimana perubahan medan magnet dapat memicu aliran listrik.
+            </p>
+            <a href="https://phet.colorado.edu/sims/html/faradays-law/latest/faradays-law_en.html" target="_blank" class="cta-button">Jelajahi Simulasi GGL Induksi</a>
+        </div>
+
+        <div class="section">
+            <p>
+                Memahami GGL Induksi membuka pintu ke dunia teknologi yang luar biasa, mulai dari pembangkit listrik hingga transformator dan induktor. Teruslah belajar dan eksplorasi!
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

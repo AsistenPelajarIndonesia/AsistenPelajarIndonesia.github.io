@@ -1,0 +1,282 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekonomi Internasional: Konsep dan Manfaat</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Main Container for Content */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+        }
+
+        /* Heading Styles */
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            color: var(--primary-blue); /* Main title color */
+        }
+
+        h2 {
+            font-size: 1.8em;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas); /* White text on blue background for section titles */
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary); /* Slightly subdued color for subheadings */
+            margin-bottom: 1em;
+            text-align: left;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-primary);
+        }
+
+        /* List Styles */
+        ul {
+            list-style: none; /* Remove default bullets */
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 0.8em;
+            padding-left: 25px; /* Space for custom bullet */
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        li::before {
+            content: '•'; /* Custom bullet point */
+            color: var(--accent-green); /* Accent color for bullets */
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        /* Section Specific Styles */
+        .section-intro, .section-definition, .section-benefits, .section-factors {
+            background-color: var(--background-canvas);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider); /* Subtle border for each section */
+        }
+
+        .concept-box {
+            background-color: #E3F2FD; /* A lighter shade of blue */
+            border-left: 5px solid var(--primary-blue); /* Strong blue left border */
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+        }
+
+        .concept-box strong {
+            color: var(--primary-blue); /* Highlight key terms in concept box */
+        }
+
+        /* Interactive Details/Summary (Accordion-like) Styles */
+        .details-accordion {
+            margin-top: 20px;
+        }
+
+        details {
+            border: 1px solid var(--border-divider);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: var(--background-canvas);
+            transition: background-color 0.3s ease; /* Smooth transition for background */
+        }
+
+        details[open] {
+            background-color: #F5F5F5; /* Slightly darker background when open */
+        }
+
+        summary {
+            padding: 15px 20px;
+            display: block;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-blue);
+            background-color: #E3F2FD; /* Light blue background for summary header */
+            border-bottom: 1px solid var(--border-divider);
+            border-radius: 4px;
+            user-select: none; /* Prevent text selection on summary header */
+            transition: background-color 0.3s ease;
+        }
+
+        summary:hover {
+            background-color: #BBDEFB; /* Darker blue on hover */
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider); /* Border below summary when open */
+            margin-bottom: 10px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        details p, details ul {
+            padding: 0 20px 15px 20px; /* Padding for content inside details */
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            summary {
+                padding: 12px 15px;
+            }
+            details p, details ul {
+                padding: 0 15px 12px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BAB 2: Ekonomi Internasional</h1>
+        <h2 style="text-align: center;">Konsep dan Manfaat Perdagangan Internasional</h2>
+
+        <section class="section-intro">
+            <h3>Mengapa Perdagangan Internasional Penting?</h3>
+            <p>Pernahkah kalian bertanya, bagaimana barang-barang yang kita gunakan sehari-hari, seperti ponsel yang mungkin kalian miliki, bisa sampai ke tangan kita padahal diproduksi di negara lain? Atau bagaimana kita bisa menikmati beragam produk dari berbagai belahan dunia?</p>
+            <p>Jawabannya terletak pada <strong>Perdagangan Internasional</strong>. Ketika suatu negara tidak mampu memproduksi semua barang atau jasa yang dibutuhkan oleh masyarakatnya, atau ingin memperoleh barang dengan kualitas yang lebih baik, variasi yang lebih banyak, atau harga yang lebih bersaing dari negara lain, maka perdagangan internasional menjadi solusi yang esensial. Ini adalah jembatan yang menghubungkan kebutuhan dan kemampuan produksi antarnegara, memastikan ketersediaan barang dan jasa di seluruh dunia.</p>
+        </section>
+
+        <section class="section-definition">
+            <h2>Memahami Konsep Perdagangan Internasional</h2>
+            <div class="concept-box">
+                <p>Secara umum, <strong>Perdagangan Internasional</strong> didefinisikan sebagai kegiatan <strong>tukar menukar (jual beli) barang dan jasa</strong> yang melibatkan <strong>dua negara atau lebih</strong>, dengan tujuan utama untuk <strong>mencari keuntungan dan memenuhi kebutuhan</strong>.</p>
+            </div>
+            <p>Perdagangan internasional adalah bentuk interaksi ekonomi yang melibatkan penduduk suatu negara dengan penduduk negara lain. Penting untuk dicatat bahwa "penduduk" di sini tidak hanya merujuk pada individu perorangan, melainkan juga entitas seperti perusahaan (swasta maupun milik negara), lembaga pemerintah, atau berbagai organisasi dagang lainnya yang berpartisipasi dalam aktivitas ekonomi lintas batas ini.</p>
+            <p>Dalam lingkup perdagangan internasional, terdapat dua aktivitas utama yang menjadi tulang punggung pergerakan barang dan jasa antarnegara:</p>
+            <details class="details-accordion">
+                <summary>1. Ekspor</summary>
+                <p><strong>Ekspor</strong> adalah kegiatan <strong>menjual barang dan jasa dari dalam negeri ke luar negeri</strong>. Istilah ini juga merujuk pada aktivitas memasarkan atau menjual produk ke pasar global. Ekspor merupakan salah satu sumber pendapatan devisa bagi negara dan berperan penting dalam memperluas jangkauan produk-produk domestik ke konsumen di seluruh dunia.</p>
+            </details>
+            <details class="details-accordion">
+                <summary>2. Impor</summary>
+                <p>Sebaliknya, <strong>Impor</strong> adalah kegiatan <strong>membeli barang dan jasa dari negara lain</strong> atau memperolehnya dari pasar global. Impor memungkinkan suatu negara untuk memenuhi kebutuhan domestik yang tidak dapat diproduksi di dalam negeri, atau untuk mendapatkan barang dan jasa dengan kualitas yang lebih unggul, teknologi yang lebih maju, atau harga yang lebih kompetitif dibandingkan jika diproduksi sendiri.</p>
+            </details>
+        </section>
+
+        <section class="section-benefits">
+            <h2>Manfaat Perdagangan Internasional</h2>
+            <p>Ketika suatu negara terlibat dalam perdagangan internasional dengan negara lain, terdapat berbagai keuntungan dan manfaat yang dapat dirasakan, tidak hanya oleh pemerintah tetapi juga oleh masyarakat dan pelaku ekonomi. Berikut adalah beberapa manfaat penting dari kegiatan perdagangan internasional:</p>
+            <details class="details-accordion">
+                <summary>Klik untuk Mengetahui Berbagai Manfaat Perdagangan Internasional</summary>
+                <ul>
+                    <li><strong>Terjalinnya Persahabatan Antarnegara:</strong> Aktivitas perdagangan seringkali memperkuat hubungan diplomatik dan kerja sama politik serta budaya antarnegara, karena adanya kepentingan ekonomi bersama.</li>
+                    <li><strong>Bertambahnya Pendapatan Negara:</strong> Negara dapat memperoleh pendapatan tambahan melalui berbagai pungutan seperti bea impor, Pajak Pertambahan Nilai Barang Mewah (PPnBM), dan cukai yang dikenakan pada barang-barang yang masuk ke dalam negeri.</li>
+                    <li><strong>Terpenuhinya Kebutuhan Barang atau Sumber Daya:</strong> Perdagangan internasional memungkinkan suatu negara untuk memperoleh barang, jasa, atau sumber daya yang tidak dapat dihasilkan di dalam negeri karena keterbatasan geografis, sumber daya alam, atau teknologi.</li>
+                    <li><strong>Bertambahnya Pangsa Pasar dan Keuntungan:</strong> Produsen domestik dapat menjual produknya ke pasar yang jauh lebih luas di seluruh dunia, tidak hanya terbatas pada pasar domestik. Hal ini berpotensi meningkatkan volume penjualan dan keuntungan perusahaan.</li>
+                    <li><strong>Bertambahnya Ketersediaan Jumlah Barang:</strong> Dengan adanya impor, variasi dan jumlah barang yang tersedia di pasar domestik akan meningkat, memberikan lebih banyak pilihan kepada konsumen.</li>
+                    <li><strong>Terjadinya Pertukaran Penggunaan Teknologi:</strong> Melalui perdagangan, negara-negara dapat mengadopsi dan mengaplikasikan teknologi baru yang dibawa oleh produk impor atau melalui investasi asing, yang pada gilirannya dapat mempercepat pertumbuhan ekonomi dan inovasi.</li>
+                    <li><strong>Terbukanya Lapangan Pekerjaan Baru:</strong> Peningkatan aktivitas ekspor-impor, serta pertumbuhan industri yang terkait dengan perdagangan internasional, dapat menciptakan lebih banyak kesempatan kerja di berbagai sektor.</li>
+                    <li><strong>Meningkatnya Kualitas Produksi:</strong> Persaingan dari produk-produk impor yang berkualitas tinggi mendorong produsen domestik untuk terus berinovasi dan meningkatkan kualitas serta efisiensi produksi mereka agar tetap kompetitif.</li>
+                </ul>
+            </details>
+        </section>
+
+        <section class="section-factors">
+            <h2>Faktor Pendorong Terjadinya Perdagangan Internasional</h2>
+            <p>Terdapat berbagai alasan mendasar yang mendorong suatu negara untuk terlibat aktif dalam kegiatan perdagangan internasional. Faktor-faktor ini berperan sebagai motor penggerak terjadinya aktivitas ekspor dan impor antarnegara:</p>
+            <details class="details-accordion">
+                <summary>Klik untuk Mengetahui Faktor-faktor Pendorong Perdagangan Internasional</summary>
+                <ul>
+                    <li><strong>Perbedaan Sumber Daya Alam dan Manusia:</strong> Setiap negara memiliki kekayaan sumber daya alam dan kualitas sumber daya manusia yang berbeda-beda. Perbedaan ini menyebabkan negara-negara memiliki keunggulan komparatif dalam memproduksi barang tertentu, mendorong mereka untuk saling berdagang.</li>
+                    <li><strong>Perbedaan Kemampuan Penguasaan Teknologi:</strong> Tingkat kemajuan dan kemampuan suatu negara dalam menguasai teknologi untuk mengolah sumber daya sangat bervariasi. Negara dengan teknologi lebih maju dapat memproduksi barang dengan lebih efisien dan berkualitas tinggi, sementara negara lain mungkin membutuhkan teknologi tersebut melalui impor.</li>
+                    <li><strong>Perbedaan Biaya Produksi:</strong> Biaya produksi suatu barang dapat sangat berbeda antarnegara karena faktor-faktor seperti upah tenaga kerja, harga bahan baku, atau efisiensi produksi. Negara cenderung mengimpor barang yang biaya produksinya lebih murah di negara lain dan mengekspor barang yang dapat mereka produksi dengan biaya rendah.</li>
+                    <li><strong>Selera Masyarakat:</strong> Konsumen di suatu negara mungkin memiliki selera atau ketertarikan khusus terhadap barang-barang yang diproduksi di luar negeri. Hal ini bisa disebabkan karena barang impor dianggap lebih unik, memiliki kualitas yang lebih baik, atau menawarkan variasi yang tidak tersedia di pasar domestik.</li>
+                    <li><strong>Keinginan untuk Memenuhi Kebutuhan dalam Negeri:</strong> Ini adalah salah satu pendorong paling fundamental. Tidak semua barang atau jasa dapat diproduksi di dalam negeri karena keterbatasan sumber daya atau teknologi, atau jika produksinya tidak mencukupi permintaan. Oleh karena itu, impor menjadi cara penting untuk memenuhi kebutuhan dasar maupun keinginan masyarakat.</li>
+                </ul>
+            </details>
+        </section>
+    </div>
+</body>
+</html>
+```

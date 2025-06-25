@@ -1,0 +1,615 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Enzim dan Metabolisme</title>
+    <style>
+        /* Definisi variabel warna dari tema */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya dasar untuk body dan font */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        /* Gaya untuk header utama */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 20px 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gaya untuk semua level judul */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 { font-size: 2.8em; color: var(--background-canvas); } /* Judul utama di header */
+        h2 { font-size: 2.2em; border-bottom: 2px solid var(--border-divider); padding-bottom: 0.3em; }
+        h3 { font-size: 1.8em; color: var(--accent-green); } /* Sub-judul utama */
+        h4 { font-size: 1.4em; color: var(--text-secondary); } /* Sub-sub-judul */
+        h5 { font-size: 1.2em; color: var(--text-tertiary); } /* Detail judul */
+
+        /* Gaya untuk paragraf */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-primary);
+        }
+
+        /* Gaya untuk setiap bagian konten */
+        section {
+            background-color: #fdfdfd; /* Sedikit berbeda dari background-canvas */
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Container untuk mengatur lebar konten */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Gaya untuk daftar tidak terurut dan terurut */
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+            color: var(--text-primary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Gaya untuk tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px 12px;
+            text-align: left;
+            color: var(--text-primary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+        }
+
+        td:first-child {
+            font-weight: bold;
+        }
+
+        /* Gaya untuk blok kode/reaksi kimia */
+        pre {
+            background-color: #f0f4f7; /* Light blueish grey */
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--text-primary);
+            border: 1px dashed var(--semantic-info);
+            margin: 1.5em 0;
+        }
+
+        /* Gaya untuk elemen details/summary (interaktivitas) */
+        details {
+            background-color: #e8f5e9; /* Light green */
+            border: 1px solid var(--accent-green);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--accent-green);
+            padding: 5px 0;
+            outline: none;
+            user-select: none;
+            display: flex;
+            align-items: center;
+        }
+
+        summary::before {
+            content: "►"; /* Arrow symbol */
+            display: inline-block;
+            margin-right: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        summary:hover {
+            color: var(--primary-blue);
+        }
+
+        details > div {
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-divider);
+            margin-top: 10px;
+        }
+
+        /* Penekanan teks */
+        strong {
+            color: var(--primary-blue);
+        }
+        strong.accent {
+            color: var(--accent-green);
+        }
+        strong.warning {
+            color: var(--secondary-accent-amber);
+        }
+        strong.error {
+            color: var(--semantic-error);
+        }
+        strong.info {
+            color: var(--semantic-info);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            header {
+                padding: 15px 20px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            h4 { font-size: 1.2em; }
+            section {
+                padding: 15px;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            pre {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.1em; }
+            body {
+                padding: 5px;
+            }
+            section {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 1: Enzim dan Metabolisme</h1>
+            <p>Memahami Proses Kehidupan di Tingkat Seluler</p>
+        </header>
+
+        <section id="metabolism-overview">
+            <h2>B. Metabolisme: Roda Kehidupan Sel</h2>
+            <p>
+                Metabolisme adalah <strong class="info">keseluruhan reaksi kimia</strong> yang terjadi di dalam sel makhluk hidup, dibantu oleh <strong class="info">enzim</strong>, dan melibatkan <strong class="info">perubahan energi</strong>. Ini adalah inti dari semua aktivitas seluler, memungkinkan organisme untuk tumbuh, bereproduksi, mempertahankan strukturnya, dan merespons lingkungannya. Metabolisme dibagi menjadi dua kategori utama yang saling melengkapi: anabolisme dan katabolisme.
+            </p>
+
+            <details open>
+                <summary>1. Anabolisme dan Katabolisme</summary>
+                <div>
+                    <h3>Anabolisme (Sintesis/Asimilasi)</h3>
+                    <p>
+                        Anabolisme adalah rangkaian proses reaksi kimia yang berkaitan dengan <strong class="accent">penyusunan molekul/senyawa kompleks</strong> dari molekul/senyawa sederhana, dengan bantuan enzim. Proses ini membutuhkan energi (disebut <strong class="warning">reaksi endergonik</strong>).
+                    </p>
+                    <ul>
+                        <li><strong class="accent">Fotosintesis</strong>: Menggunakan energi cahaya (foton) untuk membentuk glukosa dari CO₂ dan H₂O. Contoh: Tumbuhan, alga, bakteri fotosintetik.</li>
+                        <li><strong class="accent">Kemosintesis</strong>: Menggunakan energi kimia dari oksidasi senyawa anorganik untuk membentuk senyawa organik. Contoh: Bakteri kemosintetik.</li>
+                    </ul>
+
+                    <h3>Katabolisme (Pembongkaran/Desimilasi)</h3>
+                    <p>
+                        Katabolisme adalah rangkaian reaksi kimia yang berkaitan dengan <strong class="error">pembongkaran, penguraian, atau pemecahan molekul/senyawa kompleks</strong> menjadi molekul/senyawa yang lebih sederhana, dengan bantuan enzim. Proses ini <strong class="semantic-success">melepaskan energi</strong> (disebut <strong class="semantic-success">reaksi eksergonik</strong>) yang disimpan dalam bentuk ATP untuk aktivitas sel.
+                    </p>
+                    <p>
+                        Fungsi utama katabolisme adalah:
+                    </p>
+                    <ol>
+                        <li>Menyediakan bahan baku untuk sintesis molekul lain.</li>
+                        <li>Menyediakan energi kimia (ATP) untuk melakukan aktivitas sel.</li>
+                    </ol>
+                    <p>
+                        Reaksi umum yang terjadi pada katabolisme adalah reaksi <strong class="error">oksidasi</strong>.
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <section id="cellular-respiration">
+            <h2>2. Respirasi Seluler: Mengubah Makanan Menjadi Energi</h2>
+            <p>
+                Respirasi seluler adalah proses katabolik di mana glukosa atau molekul organik lainnya dipecah untuk menghasilkan energi dalam bentuk ATP. Mitokondria adalah organel utama yang bertanggung jawab untuk produksi ATP pada sel eukariotik.
+            </p>
+            <p>
+                Persamaan umum reaksi respirasi aerob (dengan oksigen) adalah:
+            </p>
+            <pre><code>C₆H₁₂O₆ (Glukosa) + 6O₂ (Oksigen) → 6CO₂ (Karbondioksida) + 6H₂O (Air) + Energi (ATP)</code></pre>
+            <p>
+                Respirasi dapat terjadi secara <strong class="accent">aerob</strong> (membutuhkan oksigen) atau <strong class="error">anaerob</strong> (tidak membutuhkan oksigen, seperti fermentasi). Tujuan utamanya adalah menghasilkan ATP.
+            </p>
+
+            <details open>
+                <summary>a. Tahapan Respirasi Aerob</summary>
+                <div>
+                    <p>Respirasi aerob memecah glukosa (C₆) menjadi CO₂ (C₁) dan H₂O secara bertahap melalui empat tahapan utama:</p>
+
+                    <h4>1) Glikolisis</h4>
+                    <ul>
+                        <li><strong>Lokasi:</strong> Sitosol (sitoplasma sel).</li>
+                        <li><strong>Bahan Dasar:</strong> 1 molekul glukosa (C₆).</li>
+                        <li><strong>Proses:</strong> Terdiri dari dua fase:
+                            <ol>
+                                <li><strong class="warning">Fase Investasi Energi:</strong> Membutuhkan 2 ATP untuk fosforilasi glukosa dan memecahnya menjadi 2 molekul fosfogliseraldehid (PGAL).</li>
+                                <li><strong class="semantic-success">Fase Pembentukan Energi:</strong> Menghasilkan 4 ATP (melalui fosforilasi tingkat substrat) dan 2 NADH.</li>
+                            </ol>
+                        </li>
+                        <li><strong>Hasil Bersih:</strong> 2 molekul asam piruvat (C₃), <strong class="semantic-success">2 ATP (netto)</strong>, dan <strong class="semantic-success">2 NADH</strong>.</li>
+                        <li><strong>Katalis:</strong> Enzim dehidrogenase terlibat dalam pembentukan NADH.</li>
+                        <li><strong>Pengertian:</strong> Peristiwa pemecahan satu molekul glukosa (6 atom C) menjadi 2 asam piruvat (3 atom C) yang berlangsung di sitosol sitoplasma dalam kondisi anaerob (tanpa oksigen) dengan hasil sampingan berupa 2 molekul NADH dan 2 molekul ATP.</li>
+                    </ul>
+                    <pre><code>Glukosa + 2 ADP + 2 NAD⁺ → 2 Asam Piruvat + 2 ATP + 2 NADH</code></pre>
+
+                    <h4>2) Dekarboksilasi Oksidatif (Oksidasi Asam Piruvat)</h4>
+                    <ul>
+                        <li><strong>Lokasi:</strong> Matriks mitokondria.</li>
+                        <li><strong>Bahan Dasar:</strong> 2 molekul asam piruvat (C₃) dari glikolisis.</li>
+                        <li><strong>Proses:</strong>
+                            <ol>
+                                <li><strong class="error">Pelepasan gugus karboksil:</strong> Setiap molekul asam piruvat melepaskan gugus karboksil sebagai CO₂, menghasilkan <strong class="semantic-success">2CO₂</strong> total, dan <strong class="semantic-success">2 NADH</strong>. Dikatalisis oleh enzim dekarboksilase dan dehidrogenase.</li>
+                                <li><strong>Penambahan KoA:</strong> Sisa 2 atom karbon berikatan dengan koenzim A (KoA) membentuk 2 asetil KoA (C₂).</li>
+                            </ol>
+                        </li>
+                        <li><strong>Hasil:</strong> <strong class="semantic-success">2 molekul asetil KoA (C₂)</strong>, <strong class="semantic-success">2 molekul CO₂</strong>, dan <strong class="semantic-success">2 molekul NADH</strong>.</li>
+                        <li><strong>Pengertian:</strong> Peristiwa pelepasan gugus karboksil dari asam piruvat (2C₃) dan penambahan molekul KoA sehingga menghasilkan Asetil KoA (2C₂) dalam suasana aerob yang berlangsung di matriks mitokondria dengan hasil samping berupa 2CO₂ dan 2NADH.</li>
+                    </ul>
+                    <pre><code>2 Asam Piruvat + 2 KoA + 2 NAD⁺ → 2 Asetil KoA + 2 CO₂ + 2 NADH</code></pre>
+
+                    <h4>3) Siklus Krebs (Siklus Asam Sitrat)</h4>
+                    <ul>
+                        <li><strong>Lokasi:</strong> Matriks mitokondria.</li>
+                        <li><strong>Bahan Dasar:</strong> 2 molekul asetil KoA (C₂).</li>
+                        <li><strong>Proses (terjadi 2 kali untuk setiap molekul glukosa, karena ada 2 Asetil KoA):</strong>
+                            <ol>
+                                <li><strong>Pengikatan Asetil KoA:</strong> Asetil KoA (C₂) bergabung dengan oksaloasetat (C₄) membentuk asam sitrat (C₆), dikatalisis oleh sitrat sintase.</li>
+                                <li>Serangkaian reaksi oksidasi dan dekarboksilasi yang menghasilkan CO₂, NADH, FADH₂, dan ATP (secara langsung melalui fosforilasi tingkat substrat).</li>
+                            </ol>
+                        </li>
+                        <li><strong>Hasil (per 2 asetil KoA):</strong> <strong class="semantic-success">4 molekul CO₂</strong>, <strong class="semantic-success">6 molekul NADH</strong>, <strong class="semantic-success">2 molekul FADH₂</strong>, dan <strong class="semantic-success">2 molekul ATP</strong>.</li>
+                        <li><strong>Pengertian:</strong> Peristiwa pemecahan 2 asetil KoA (2C₂) untuk menghasilkan 4CO₂ (4C₁) dalam suasana anaerob yang berlangsung di matriks mitokondria dengan hasil sampingan berupa 2ATP, 6NADH, dan 2FADH₂.</li>
+                    </ul>
+                    <pre><code>2 Asetil KoA + 6 NAD⁺ + 2 FAD + 2 ADP + 2 Pi → 4 CO₂ + 6 NADH + 2 FADH₂ + 2 ATP</code></pre>
+
+                    <h4>4) Fosforilasi Oksidatif: Transpor Elektron dan Kemiosmosis</h4>
+                    <ul>
+                        <li><strong>Lokasi:</strong> Membran krista mitokondria.</li>
+                        <li><strong>Bahan Dasar:</strong> Elektron berenergi tinggi dari NADH (10 molekul total) dan FADH₂ (2 molekul total) yang dihasilkan dari glikolisis, dekarboksilasi oksidatif, dan siklus Krebs.</li>
+                        <li><strong>Transpor Elektron:</strong> Elektron dilewatkan melalui serangkaian kompleks protein (rantai transpor elektron) di membran dalam mitokondria. Saat elektron bergerak, energi dilepaskan untuk memompa proton (H⁺) dari matriks mitokondria ke ruang antarmembran, menciptakan gradien konsentrasi H⁺.</li>
+                        <li><strong>Kemiosmosis:</strong> Proton (H⁺) mengalir kembali ke matriks mitokondria melalui enzim ATP sintase (menuruni gradien konsentrasi). Aliran H⁺ ini menyediakan energi untuk ATP sintase mengubah ADP dan Pi menjadi ATP.</li>
+                        <li><strong>Akseptor Elektron Terakhir:</strong> Oksigen (O₂) menerima elektron terakhir dan H⁺, membentuk molekul air (H₂O).</li>
+                        <li><strong>Konversi Energi:</strong>
+                            <ul>
+                                <li>1 NADH menghasilkan sekitar <strong class="semantic-success">3 ATP</strong> (dan 1 H₂O).</li>
+                                <li>1 FADH₂ menghasilkan sekitar <strong class="semantic-success">2 ATP</strong> (dan 1 H₂O).</li>
+                                <li>Total ATP dari transpor elektron: (10 NADH x 3 ATP/NADH) + (2 FADH₂ x 2 ATP/FADH₂) = 30 ATP + 4 ATP = <strong class="semantic-success">34 ATP</strong>.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Pengertian:</strong> Peristiwa konversi energi dari 10NADH₂ dan 2FADH₂ yang berlangsung di membran krista mitokondria dalam suasana aerob dengan hasil utama 34 ATP dan hasil sampingan berupa 12H₂O.</li>
+                    </ul>
+                    <pre><code>10 NADH + 2 FADH₂ + 6 O₂ → 34 ATP + 12 H₂O</code></pre>
+
+                    <h4>Rekapitulasi Hasil ATP Respirasi Aerob (per 1 molekul glukosa):</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Proses</th>
+                                <th>Masukan Energi (setara ATP)</th>
+                                <th>Hasil ATP (Netto)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Glikolisis</td>
+                                <td>2 ATP + (2 NADH₂ × 3 ATP) = 8 ATP</td>
+                                <td>8 ATP</td>
+                            </tr>
+                            <tr>
+                                <td>Dekarboksilasi Oksidatif</td>
+                                <td>(2 NADH₂ × 3 ATP) = 6 ATP</td>
+                                <td>6 ATP</td>
+                            </tr>
+                            <tr>
+                                <td>Siklus Krebs</td>
+                                <td>2 ATP + (6 NADH₂ × 3 ATP) + (2 FADH₂ × 2 ATP) = 24 ATP</td>
+                                <td>24 ATP</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right; font-weight: bold;">Jumlah Energi Total yang Dihasilkan</td>
+                                <td style="font-weight: bold; color: var(--accent-green);">38 ATP</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details open>
+                <summary>b. Fermentasi: Energi Tanpa Oksigen</summary>
+                <div>
+                    <p>Fermentasi adalah proses katabolik yang terjadi dalam kondisi <strong class="error">anaerob (tanpa oksigen)</strong>. Berbeda dengan respirasi aerob, fermentasi menghasilkan ATP dalam jumlah yang jauh lebih sedikit.</p>
+
+                    <h4>Tahap Umum Fermentasi: Glikolisis</h4>
+                    <p>Baik fermentasi alkohol maupun asam laktat diawali dengan glikolisis, menghasilkan:</p>
+                    <ul>
+                        <li>2 molekul asam piruvat (C₃)</li>
+                        <li><strong class="semantic-success">2 molekul ATP (netto)</strong></li>
+                        <li>2 molekul NADH</li>
+                    </ul>
+
+                    <h4>1) Fermentasi Alkohol</h4>
+                    <ul>
+                        <li><strong>Terjadi pada:</strong> Ragi (yeast), beberapa bakteri.</li>
+                        <li><strong>Tahap Lanjutan (Dekarboksilasi Nonoksidatif):</strong>
+                            <ol>
+                                <li>Asam piruvat dipecah menjadi asetaldehida dan CO₂.</li>
+                                <li>Asetaldehida kemudian direduksi oleh NADH menjadi etanol (etil alkohol), meregenerasi NAD⁺.</li>
+                            </ol>
+                        </li>
+                        <li><strong>Hasil Akhir:</strong> <strong class="semantic-success">2 molekul etanol (C₂H₅OH)</strong>, <strong class="semantic-success">2 molekul CO₂</strong>, dan <strong class="semantic-success">2 molekul ATP</strong>.</li>
+                        <li><strong>Aplikasi:</strong> Pengembangan adonan roti (karena CO₂), pembuatan minuman beralkohol (etanol).</li>
+                        <li><strong>Pengertian:</strong> Pemecahan molekul organik (glukosa) secara anaerob dengan menghasilkan 2 etanol, 2 ATP, dan 2CO₂.</li>
+                    </ul>
+                    <pre><code>Glukosa → 2 Asam Piruvat → 2 Asetaldehida + 2 CO₂ → 2 Etanol + 2 NAD⁺ (regenerasi)
+<span style="color: var(--text-secondary);">Netto: Glukosa + 2 ADP + 2 Pi → 2 Etanol + 2 CO₂ + 2 ATP</span></code></pre>
+
+                    <h4>2) Fermentasi Asam Laktat</h4>
+                    <ul>
+                        <li><strong>Terjadi pada:</strong> Sel otot manusia (saat kekurangan oksigen), bakteri asam laktat (misal, <em>Lactobacillus</em>).</li>
+                        <li><strong>Tahap Lanjutan (Reduksi Asam Piruvat):</strong>
+                            <ol>
+                                <li>Asam piruvat direduksi secara langsung oleh NADH menjadi asam laktat, meregenerasi NAD⁺.</li>
+                                <li>Tidak ada pelepasan CO₂.</li>
+                            </ol>
+                        </li>
+                        <li><strong>Hasil Akhir:</strong> <strong class="semantic-success">2 molekul asam laktat (C₃H₆O₃)</strong>, dan <strong class="semantic-success">2 molekul ATP</strong>.</li>
+                        <li><strong>Aplikasi:</strong> Produksi yogurt, keju, kram otot.</li>
+                        <li><strong>Pengertian:</strong> Pemecahan molekul organik (glukosa) secara anaerob dengan menghasilkan 2 asam laktat dan 2 ATP.</li>
+                    </ul>
+                    <pre><code>Glukosa → 2 Asam Piruvat → 2 Asam Laktat + 2 NAD⁺ (regenerasi)
+<span style="color: var(--text-secondary);">Netto: Glukosa + 2 ADP + 2 Pi → 2 Asam Laktat + 2 ATP</span></code></pre>
+                    <p style="color: var(--semantic-warning);">
+                        Fermentasi menghasilkan energi yang rendah dibandingkan respirasi aerob karena pembongkaran glukosa tidak sempurna.
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <section id="photosynthesis">
+            <h2>3. Fotosintesis: Memanen Energi Cahaya</h2>
+            <p>
+                Fotosintesis adalah proses anabolik di mana organisme mengubah energi cahaya menjadi energi kimia, yang disimpan dalam ikatan gula. Ini adalah proses vital bagi kehidupan di Bumi, menyediakan makanan dan oksigen.
+            </p>
+
+            <details open>
+                <summary>Struktur Kloroplas</summary>
+                <div>
+                    <p>Fotosintesis berlangsung di dalam <strong class="accent">kloroplas</strong>, organel khusus pada sel tumbuhan dan alga.</p>
+                    <ul>
+                        <li><strong class="primary-blue">Grana:</strong> Kumpulan kantung pipih yang disebut tilakoid. Membran tilakoid mengandung pigmen fotosintetik (klorofil a, klorofil b, karotenoid) dan fotosistem (Fotosistem I dan Fotosistem II).
+                            <ul>
+                                <li><strong>Fotosistem I (FS I / P700):</strong> Menyerap cahaya pada panjang gelombang 700 nm.</li>
+                                <li><strong>Fotosistem II (FS II / P680):</strong> Menyerap cahaya pada panjang gelombang 680 nm.</li>
+                            </ul>
+                        </li>
+                        <li><strong class="primary-blue">Stroma:</strong> Cairan yang mengisi kloroplas, tempat terjadinya reaksi gelap fotosintesis.</li>
+                    </ul>
+                    <p>Klorofil a (C₅₅H₇₂O₅N₄Mg) efektif menyerap cahaya merah, biru, dan ungu. Klorofil b (C₅₅H₇₀O₆N₄Mg) menyerap cahaya biru dan oranye. Karotenoid menyerap cahaya biru-hijau.</p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>a. Reaksi Terang (Light-Dependent Reactions)</summary>
+                <div>
+                    <p>Reaksi terang adalah tahap fotosintesis yang <strong class="info">membutuhkan energi cahaya (foton)</strong> dan terjadi di <strong class="primary-blue">membran tilakoid (grana)</strong> kloroplas.</p>
+                    <p><strong>Tujuan:</strong> Mengubah energi cahaya menjadi energi kimia dalam bentuk ATP dan NADPH, serta menghasilkan O₂ sebagai produk samping.</p>
+                    <h4>Tahapan Utama:</h4>
+                    <ol>
+                        <li><strong>Aktivasi Klorofil:</strong>
+                            <p>Klorofil pada Fotosistem II (P680) menyerap foton, menyebabkan elektronnya tereksitasi (memiliki energi lebih tinggi) dan terlepas dari klorofil. Elektron yang tereksitasi ini kemudian berpindah ke akseptor elektron.</p>
+                        </li>
+                        <li><strong>Fotolisis Air:</strong>
+                            <p>Karena FS II kehilangan elektron, air (H₂O) dipecah oleh energi cahaya (foton) untuk menggantikan elektron yang hilang di FS II. Proses ini juga menghasilkan proton (H⁺) dan <strong class="semantic-success">oksigen (½O₂)</strong> sebagai produk samping. Oksigen inilah yang dilepaskan ke atmosfer.</p>
+                            <pre><code>H₂O → ½O₂ + 2H⁺ + 2e⁻</code></pre>
+                        </li>
+                        <li><strong>Fotofosforilasi Nonsiklik (Aliran Elektron Nonsiklik):</strong>
+                            <p>Elektron dari FS II yang tereksitasi bergerak melalui rantai transpor elektron (yang terdiri dari plastokuinon (Pq), kompleks sitokrom, dan plastosianin (Pc)) menuju Fotosistem I (FS I). Selama perpindahan ini, energi yang dilepaskan digunakan untuk memompa H⁺ ke ruang tilakoid, menciptakan gradien H⁺. Gradien ini kemudian digunakan oleh ATP sintase untuk menghasilkan <strong class="semantic-success">ATP</strong> melalui kemiosmosis.</p>
+                            <p>Setelah mencapai FS I, elektron kembali tereksitasi oleh foton yang diserap FS I. Elektron kemudian ditransfer ke feredoksin (Fd) dan akhirnya ke NADP⁺ reduktase, yang mengikat H⁺ untuk membentuk <strong class="semantic-success">NADPH</strong> (Nicotin Adenine Dinucleotide Phosphate Hydrogen).</p>
+                            <p>Lintasan ini menghasilkan ATP dan NADPH, serta melepaskan O₂.</p>
+                        </li>
+                        <li><strong>Fotofosforilasi Siklik (Aliran Elektron Siklik):</strong>
+                            <p>Jika sel membutuhkan lebih banyak ATP daripada NADPH, elektron dari feredoksin (Fd) dapat ditransfer kembali ke kompleks sitokrom (bukan ke NADP⁺), kemudian kembali ke FS I melalui plastosianin (Pc), membentuk jalur siklik. Dalam jalur ini, <strong class="warning">hanya ATP yang dihasilkan</strong> (melalui kemiosmosis), tetapi tidak ada NADPH atau O₂. NADPH yang sudah ada tidak direduksi kembali.</p>
+                        </li>
+                    </ol>
+                    <p><strong>Pengertian Reaksi Terang:</strong> Proses transformasi energi cahaya (foton) menjadi energi kimia (ATP dan NADPH) yang digunakan pada reaksi gelap. Dapat terjadi melalui fotofosforilasi nonsiklik dan siklik.</p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>b. Reaksi Gelap (Light-Independent Reactions / Siklus Calvin)</summary>
+                <div>
+                    <p>Reaksi gelap adalah tahap fotosintesis yang <strong class="info">tidak membutuhkan energi cahaya secara langsung</strong> dan terjadi di <strong class="primary-blue">stroma</strong> kloroplas.</p>
+                    <p><strong>Tujuan:</strong> Menggunakan ATP dan NADPH dari reaksi terang untuk memfiksasi karbon dioksida (CO₂) dan mensintesis glukosa.</p>
+                    <p><strong>Bahan Utama:</strong> 6 molekul CO₂, 18 molekul ATP, dan 12 molekul NADPH (untuk sintesis 1 molekul glukosa).</p>
+                    <h4>Tahapan Siklus Calvin (per 1 molekul glukosa):</h4>
+                    <ol>
+                        <li><strong>Fiksasi Karbon:</strong>
+                            <p>6 molekul CO₂ diikat oleh 6 molekul gula berkarbon lima, Ribulosa-1,5-bifosfat (RuBP/C₅). Reaksi ini dikatalisis oleh enzim <strong class="accent">Ribulosa-1,5-bifosfat karboksilase-oksigenase (Rubisco)</strong>. Hasilnya adalah pembentukan 12 molekul 3-fosfogliserat (PGA/C₃), senyawa berkarbon tiga yang tidak stabil.</p>
+                            <pre><code>6 CO₂ + 6 RuBP → 12 PGA</code></pre>
+                        </li>
+                        <li><strong>Reduksi:</strong>
+                            <p>12 molekul PGA direduksi menjadi 12 molekul gliseraldehida-3-fosfat (PGAL/C₃). Proses ini membutuhkan energi dari 12 ATP dan elektron dari 12 NADPH yang dihasilkan dari reaksi terang.</p>
+                            <pre><code>12 PGA + 12 ATP + 12 NADPH → 12 PGAL + 12 ADP + 12 NADP⁺</code></pre>
+                        </li>
+                        <li><strong>Sintesis (Pembentukan Glukosa):</strong>
+                            <p>Dari 12 molekul PGAL yang terbentuk, <strong class="semantic-success">2 molekul PGAL</strong> digunakan untuk membentuk <strong class="semantic-success">1 molekul glukosa (C₆H₁₂O₆)</strong>. Ini adalah produk akhir fotosintesis.</p>
+                            <pre><code>2 PGAL → C₆H₁₂O₆ (Glukosa)</code></pre>
+                        </li>
+                        <li><strong>Regenerasi RuBP:</strong>
+                            <p>Sisa 10 molekul PGAL (dari 12 PGAL) digunakan untuk meregenerasi 6 molekul RuBP (C₅) agar siklus dapat berlanjut. Proses regenerasi ini membutuhkan energi dari 6 molekul ATP.</p>
+                            <pre><code>10 PGAL + 6 ATP → 6 RuBP + 6 ADP</code></pre>
+                        </li>
+                    </ol>
+                    <p><strong>Pengertian Reaksi Gelap:</strong> Proses sintesis glukosa dengan bantuan energi kimia (ATP dan NADPH) yang berlangsung di stroma dalam empat tahap reaksi: fiksasi, reduksi, sintesis, dan regenerasi.</p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>c. Faktor-Faktor yang Memengaruhi Fotosintesis</summary>
+                <div>
+                    <p>Kecepatan fotosintesis dipengaruhi oleh beberapa faktor:</p>
+                    <ol>
+                        <li><strong>Intensitas Cahaya:</strong> Semakin tinggi intensitas cahaya, semakin cepat laju fotosintesis hingga titik jenuh. Tanpa cahaya, reaksi terang tidak dapat berlangsung, sehingga fotosintesis terhenti.</li>
+                        <li><strong>Konsentrasi Karbon Dioksida (CO₂):</strong> Peningkatan konsentrasi CO₂ (hingga batas tertentu) akan meningkatkan laju fotosintesis, karena CO₂ adalah salah satu bahan baku utama.</li>
+                        <li><strong>Suhu:</strong> Fotosintesis memiliki suhu optimum karena melibatkan kerja enzim. Suhu terlalu rendah atau terlalu tinggi dapat merusak enzim dan menghambat proses fotosintesis.</li>
+                        <li><strong>Air (H₂O):</strong> Bahan baku untuk fotolisis. Kekurangan air dapat menutup stomata dan membatasi masuknya CO₂.</li>
+                        <li><strong>Klorofil:</strong> Pigmen yang menyerap cahaya. Kekurangan klorofil (misal, karena kekurangan mineral) akan mengurangi kemampuan fotosintesis.</li>
+                    </ol>
+                    <p><strong>Pembuktian Fotosintesis:</strong></p>
+                    <ul>
+                        <li><strong class="semantic-success">Menghasilkan Oksigen:</strong> Terbukti dari munculnya gelembung udara pada percobaan Ingenhouz dan menyalakan bara api.</li>
+                        <li><strong class="semantic-success">Menghasilkan Amilum (Glukosa):</strong> Bagian daun yang terkena cahaya dan berfotosintesis akan berwarna biru kehitaman saat diuji dengan larutan iodin/lugol, menunjukkan adanya amilum.</li>
+                    </ul>
+                    <p><strong>Percobaan Engelmann (1883):</strong> Menunjukkan bahwa cahaya merah dan biru-ungu paling efektif untuk fotosintesis, dibuktikan dengan konsentrasi bakteri aerob yang tinggi di daerah alga yang disinari warna tersebut (karena banyak O₂ dihasilkan).</p>
+                </div>
+            </details>
+
+            <details open>
+                <summary>d. Fotorespirasi</summary>
+                <div>
+                    <p>Fotorespirasi adalah proses yang terjadi pada beberapa tumbuhan (khususnya tumbuhan C₃) ketika kondisi lingkungan panas dan kering. Stomata cenderung tertutup, mengurangi masuknya CO₂ dan meningkatkan konsentrasi O₂ di dalam daun.</p>
+                    <ul>
+                        <li><strong>Penyebab:</strong> Enzim <strong class="error">Rubisco</strong>, selain mengikat CO₂, juga memiliki kemampuan mengikat O₂. Ketika konsentrasi CO₂ rendah dan O₂ tinggi, Rubisco akan mengikat O₂ dan memasukkannya ke dalam siklus Calvin, bukan CO₂.</li>
+                        <li><strong>Proses:</strong> Menggunakan O₂, menghasilkan CO₂, dan terjadi di bawah cahaya (<em>photo</em>). Senyawa berkarbon dua terbentuk dan dipecah di peroksisom dan mitokondria.</li>
+                        <li><strong>Konsekuensi:</strong> <strong class="error">Merugikan</strong> karena tidak menghasilkan ATP, NADPH, atau gula. Menurunkan efisiensi fotosintesis.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details open>
+                <summary>e. Tumbuhan C₃, C₄, dan CAM</summary>
+                <div>
+                    <p>Tumbuhan beradaptasi dengan lingkungan yang berbeda melalui jalur fotosintesis yang bervariasi:</p>
+                    <ul>
+                        <li><strong class="primary-blue">Tumbuhan C₃:</strong>
+                            <ul>
+                                <li><strong>Ciri:</strong> Sebagian besar tumbuhan. Jalur fotosintesis paling umum.</li>
+                                <li><strong>Fiksasi Karbon Pertama:</strong> CO₂ diikat oleh RuBP, dikatalisis oleh Rubisco. Produk stabil pertama adalah senyawa berkarbon tiga, PGA (Asam Fosfogliserat).</li>
+                                <li><strong>Masalah:</strong> Rentan terhadap fotorespirasi dalam kondisi panas dan kering.</li>
+                                <li><strong>Contoh:</strong> Padi, gandum, kedelai, kacang-kacangan.</li>
+                            </ul>
+                        </li>
+                        <li><strong class="primary-blue">Tumbuhan C₄:</strong>
+                            <ul>
+                                <li><strong>Ciri:</strong> Adaptasi untuk lingkungan panas dan intensitas cahaya tinggi. Memiliki anatomi daun khusus (anatomi Kranz) dengan sel mesofil dan sel seludang berkas pengangkut.</li>
+                                <li><strong>Fiksasi Karbon Pertama:</strong> CO₂ pertama kali diikat oleh PEP (Fosfoenolpiruvat) di sel mesofil, membentuk senyawa berkarbon empat, oksaloasetat. Dikatalisis oleh enzim PEP karboksilase (memiliki afinitas tinggi terhadap CO₂ dan tidak mengikat O₂).</li>
+                                <li><strong>Jalur Lanjutan:</strong> Oksaloasetat diubah menjadi malat dan ditransfer ke sel seludang berkas pengangkut. Di sana, malat dipecah melepaskan CO₂ (yang kemudian masuk ke siklus Calvin) dan piruvat.</li>
+                                <li><strong>Keuntungan:</strong> Meminimalkan fotorespirasi karena CO₂ dipompa ke sel seludang berkas pengangkut, menjaga konsentrasi CO₂ tinggi di sekitar Rubisco.</li>
+                                <li><strong>Contoh:</strong> Tebu, jagung, sorgum.</li>
+                            </ul>
+                        </li>
+                        <li><strong class="primary-blue">Tumbuhan CAM (Crassulacean Acid Metabolism):</strong>
+                            <ul>
+                                <li><strong>Ciri:</strong> Adaptasi untuk lingkungan sangat kering (gurun). Memisahkan fiksasi karbon secara temporal (waktu).</li>
+                                <li><strong>Malam Hari:</strong> Stomata terbuka untuk mengambil CO₂ dan memfiksasinya ke dalam senyawa asam organik (misal, malat) yang disimpan di vakuola. Enzim yang terlibat adalah PEP karboksilase.</li>
+                                <li><strong>Siang Hari:</strong> Stomata tertutup untuk mengurangi transpirasi. Senyawa asam organik dipecah, melepaskan CO₂. CO₂ ini kemudian masuk ke siklus Calvin.</li>
+                                <li><strong>Keuntungan:</strong> Menghemat air secara drastis.</li>
+                                <li><strong>Contoh:</strong> Kaktus, nanas, lidah buaya.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="chemosynthesis">
+            <h2>f. Kemosintesis: Energi dari Reaksi Kimia</h2>
+            <p>
+                Kemosintesis adalah proses anabolik di mana organisme (biasanya bakteri) mensintesis senyawa organik (glukosa) menggunakan <strong class="secondary-accent-amber">energi kimia yang bersumber dari peristiwa oksidasi molekul anorganik</strong>, bukan dari cahaya matahari.
+            </p>
+            <p>Contoh bakteri kemosintetik dan reaksinya:</p>
+            <ol>
+                <li><strong>Bakteri Besi (<em>Ferrobacillus</em>):</strong> Mengoksidasi besi (Fe²⁺) menjadi (Fe³⁺) untuk energi.</li>
+                <pre><code>2Fe²⁺ + 4H⁺ + O₂ → 2Fe³⁺ + 2H₂O + Energi
+<span style="color: var(--text-secondary);">Energi digunakan untuk:</span>
+6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</code></pre>
+                <li><strong>Bakteri Nitrifikasi (<em>Nitrosomonas</em> dan <em>Nitrosococcus</em>):</strong> Mengoksidasi amonia menjadi nitrit.</li>
+                <pre><code>2NH₃ + 3O₂ → 2NO₂⁻ + 2H⁺ + 2H₂O + Energi
+<span style="color: var(--text-secondary);">Energi digunakan untuk:</span>
+6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</code></pre>
+                <li><strong>Bakteri Belerang (<em>Thiobacillus</em>):</strong> Mengoksidasi hidrogen sulfida (H₂S) menjadi sulfur.</li>
+                <pre><code>2H₂S + O₂ → 2S + 2H₂O + Energi
+<span style="color: var(--text-secondary);">Energi digunakan untuk:</span>
+6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</code></pre>
+            </ol>
+            <p>
+                Proses kemosintesis sangat penting di ekosistem di mana cahaya matahari tidak tersedia, seperti di dasar laut atau di dalam tanah.
+            </p>
+        </section>
+
+    </div>
+</body>
+</html>
+```

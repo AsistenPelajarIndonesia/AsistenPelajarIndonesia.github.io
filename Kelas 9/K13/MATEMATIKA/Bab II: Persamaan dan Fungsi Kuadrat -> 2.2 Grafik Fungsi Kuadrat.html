@@ -1,0 +1,256 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab II: Persamaan dan Fungsi Kuadrat - 2.2 Grafik Fungsi Kuadrat</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6f8;
+            color: #212121;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3, h4 {
+            color: #1976D2;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.8em;
+        }
+        h3 {
+            font-size: 1.5em;
+            border-bottom: 2px solid #1976D2;
+        }
+        h4 {
+            font-size: 1.3em;
+            color: #388E3C;
+            border-bottom: 1px dashed #E0E0E0;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        strong {
+            color: #1976D2;
+        }
+        .highlight {
+            background-color: #FFF9C4;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FFB300;
+        }
+        .explanation-block {
+            background-color: #E3F2FD;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #BBDEFB;
+        }
+        .key-concept {
+            background-color: #E8F5E9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #C8E6C9;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #dee2e6;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        .interactive-area {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .interactive-box {
+            background-color: #B3E5FC;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .interactive-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .interactive-box h4 {
+            color: #0288D1;
+            margin-top: 0;
+            font-size: 1.2em;
+            border-bottom: none;
+        }
+        .interactive-box p {
+            font-size: 0.9em;
+            color: #01579B;
+        }
+        .tip {
+            background-color: #FFE0B2;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 4px solid #F57C00;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .interactive-area {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab II: Persamaan dan Fungsi Kuadrat</h1>
+        <h2>2.2 Grafik Fungsi Kuadrat</h2>
+
+        <div class="explanation-block">
+            <h3>Memahami Bentuk Umum Fungsi Kuadrat</h3>
+            <p>Fungsi kuadrat adalah fungsi yang memiliki bentuk umum:</p>
+            <div class="code-example">
+y = ax² + bx + c
+            </div>
+            <p>Di mana:</p>
+            <ul>
+                <li><strong>a, b,</strong> dan <strong>c</strong> adalah konstanta (bilangan real).</li>
+                <li><strong>a ≠ 0</strong>. Syarat ini sangat penting! Jika a = 0, maka suku ax² akan hilang, dan fungsi tersebut berubah menjadi fungsi linear (y = bx + c), bukan lagi fungsi kuadrat.</li>
+                <li><strong>x</strong> dan <strong>y</strong> adalah variabel.</li>
+            </ul>
+            <p>Grafik dari fungsi kuadrat akan selalu berbentuk <strong>parabola</strong>. Bentuk parabola ini sangat dipengaruhi oleh nilai-nilai <strong>a, b,</strong> dan <strong>c</strong>.</p>
+        </div>
+
+        <div class="key-concept">
+            <h3>Pengaruh Koefisien <code>a</code> terhadap Grafik</h3>
+            <p>Koefisien <strong>a</strong> menentukan arah terbuka dan "kelebaran" parabola.</p>
+            <ul>
+                <li>
+                    <strong>Jika a > 0 (a positif):</strong>
+                    <p>Parabola akan terbuka ke <strong>atas</strong>. Semakin besar nilai <strong>a</strong>, semakin sempit (kurus) parabola tersebut. Bayangkan seperti Anda menarik ujung-ujung parabola ke atas, ia akan semakin meruncing.</p>
+                </li>
+                <li>
+                    <strong>Jika a < 0 (a negatif):</strong>
+                    <p>Parabola akan terbuka ke <strong>bawah</strong>. Semakin kecil (semakin negatif) nilai <strong>a</strong>, semakin sempit (kurus) parabola tersebut. Bayangkan seperti Anda menarik ujung-ujung parabola ke bawah, ia juga akan semakin meruncing.</p>
+                </li>
+            </ul>
+            <p>Contoh Perbandingan:</p>
+            <div class="code-example">
+y = x² (parabola terbuka ke atas, relatif lebar) <br>
+y = 2x² (parabola terbuka ke atas, lebih sempit dari y = x²) <br>
+y = -x² (parabola terbuka ke bawah, relatif lebar) <br>
+y = -3x² (parabola terbuka ke bawah, lebih sempit dari y = -x²)
+            </div>
+            <p>Titik terendah pada parabola yang terbuka ke atas disebut <strong>titik balik minimum</strong>, sedangkan titik tertinggi pada parabola yang terbuka ke bawah disebut <strong>titik balik maksimum</strong>.</p>
+        </div>
+
+        <div class="explanation-block">
+            <h3>Pengaruh Koefisien <code>c</code> terhadap Grafik</h3>
+            <p>Koefisien <strong>c</strong> menentukan titik perpotongan grafik dengan sumbu-y.</p>
+            <ul>
+                <li>Grafik fungsi kuadrat <code>y = ax² + bx + c</code> akan selalu memotong sumbu-y pada koordinat <strong>(0, c)</strong>.</li>
+            </ul>
+            <p>Ini karena ketika <code>x = 0</code>, maka suku <code>ax²</code> dan <code>bx</code> akan bernilai nol, sehingga <code>y</code> hanya akan bernilai <code>c</code>.</p>
+            <p>Secara visual, nilai <code>c</code> menggeser grafik parabola ke atas atau ke bawah tanpa mengubah bentuk dan arah terbukanya.</p>
+            <ul>
+                <li>Jika <code>c > 0</code>, parabola bergeser ke atas sejauh <code>c</code> satuan dari titik (0,0).</li>
+                <li>Jika <code>c < 0</code>, parabola bergeser ke bawah sejauh <code>|c|</code> satuan dari titik (0,0).</li>
+            </ul>
+            <div class="tip">
+                <strong>Tips:</strong> Untuk menggambar grafik fungsi kuadrat, Anda bisa memulainya dengan mencari beberapa titik koordinat (x, y) dengan mensubstitusikan nilai-nilai x yang berbeda ke dalam fungsi. Titik-titik ini kemudian diplot pada bidang Kartesius.
+            </div>
+        </div>
+
+        <div class="key-concept">
+            <h3>Pengaruh Koefisien <code>b</code> terhadap Grafik (Titik Puncak dan Sumbu Simetri)</h3>
+            <p>Koefisien <strong>b</strong> sangat memengaruhi posisi <strong>titik puncak</strong> dan <strong>sumbu simetri</strong> parabola.</p>
+            <ul>
+                <li><strong>Sumbu Simetri:</strong> Garis vertikal yang membagi parabola menjadi dua bagian yang simetris. Persamaan sumbu simetri untuk fungsi <code>y = ax² + bx + c</code> adalah <code>x = -b / (2a)</code>.</li>
+                <li><strong>Titik Puncak:</strong> Titik di mana parabola "berbelok". Koordinat titik puncak adalah <code>(-b / (2a), f(-b / (2a)))</code>.</li>
+            </ul>
+            <p>Bagaimana <code>b</code> mempengaruhi posisi?</p>
+            <ul>
+                <li>Ketika <code>a</code> dan <code>c</code> tetap, perubahan nilai <code>b</code> akan menggeser sumbu simetri (dan juga titik puncak) secara horizontal.</li>
+                <li>Jika <code>a > 0</code>, titik puncak adalah titik balik minimum.</li>
+                <li>Jika <code>a < 0</code>, titik puncak adalah titik balik maksimum.</li>
+            </ul>
+            <p><strong>Contoh Kasus Sederhana (b ≠ 0, c = 0):</strong></p>
+            <ul>
+                <li><code>y = x²</code> (a=1, b=0, c=0): Sumbu simetri x=0, titik puncak (0,0).</li>
+                <li><code>y = x² + 2x</code> (a=1, b=2, c=0): Sumbu simetri x = -2/(2*1) = -1. Titik puncak (-1, (-1)² + 2(-1)) = (-1, 1 - 2) = (-1, -1). Parabola bergeser ke kiri.</li>
+                <li><code>y = x² - 2x</code> (a=1, b=-2, c=0): Sumbu simetri x = -(-2)/(2*1) = 1. Titik puncak (1, (1)² - 2(1)) = (1, 1 - 2) = (1, -1). Parabola bergeser ke kanan.</li>
+            </ul>
+        </div>
+
+        <div class="interactive-area">
+            <div class="interactive-box">
+                <h4>Perubahan Akibat 'a'</h4>
+                <p>Perhatikan bagaimana perubahan nilai 'a' mempengaruhi bentuk parabola. Grafik akan menjadi lebih sempit atau lebih lebar.</p>
+            </div>
+            <div class="interactive-box">
+                <h4>Perubahan Akibat 'c'</h4>
+                <p>Perhatikan bagaimana perubahan nilai 'c' menggeser grafik ke atas atau ke bawah tanpa mengubah bentuknya.</p>
+            </div>
+            <div class="interactive-box">
+                <h4>Perubahan Akibat 'b'</h4>
+                <p>Perhatikan bagaimana perubahan nilai 'b' menggeser posisi sumbu simetri dan titik puncak secara horizontal.</p>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h3>Kesimpulan Utama</h3>
+            <p>Grafik fungsi kuadrat <code>y = ax² + bx + c</code> adalah parabola yang:</p>
+            <ol>
+                <li>Terbuka ke <strong>atas</strong> jika <code>a > 0</code>, dan ke <strong>bawah</strong> jika <code>a < 0</code>.</li>
+                <li>Semakin <strong>sempit</strong> jika nilai absolut <code>|a|</code> semakin besar.</li>
+                <li>Memotong sumbu-y di titik <strong>(0, c)</strong>.</li>
+                <li>Memiliki sumbu simetri pada <code>x = -b / (2a)</code>.</li>
+                <li>Memiliki titik puncak pada koordinat <code>(-b / (2a), f(-b / (2a)))</code>, yang merupakan titik minimum jika <code>a > 0</code> dan titik maksimum jika <code>a < 0</code>.</li>
+            </ol>
+        </div>
+
+    </div>
+</body>
+</html>
+```

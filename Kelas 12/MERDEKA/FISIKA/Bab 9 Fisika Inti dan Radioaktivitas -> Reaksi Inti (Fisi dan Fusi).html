@@ -1,0 +1,367 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 9: Fisika Inti dan Radioaktivitas - Reaksi Inti (Fisi dan Fusi)</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border-divider);
+            margin-bottom: 15px;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.95em;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .formula {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 20px 0;
+            display: block;
+            color: var(--primary-blue);
+        }
+
+        .formula-inline {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.1em;
+            display: inline-block;
+            margin: 0 5px;
+            color: var(--primary-blue);
+        }
+
+        .explanation-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .explanation-box::before {
+            content: "💡";
+            font-size: 3em;
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .explanation-box p {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .explanation-box a {
+            color: var(--secondary-accent-amber);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .explanation-box a:hover {
+            text-decoration: underline;
+        }
+
+        .callout {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .callout .callout-title {
+            font-weight: bold;
+            color: white;
+        }
+
+        .interactive-element {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .interactive-element:hover {
+            background-color: var(--semantic-success);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .explanation-box::before {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .formula {
+                font-size: 1.1em;
+            }
+            .code-block {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab 9: Fisika Inti dan Radioaktivitas</h1>
+
+        <div class="section">
+            <h2>F. Reaksi Inti: Fisi dan Fusi</h2>
+
+            <p>Proses pelepasan partikel radiasi dari inti atom dapat terjadi secara alami maupun buatan. Secara umum, reaksi-reaksi ini dikelompokkan menjadi dua jenis utama: <span class="highlight">reaksi fisi</span> dan <span class="highlight">reaksi fusi</span>.</p>
+
+            <div class="callout">
+                <div class="callout-title">Apa itu Reaksi Inti?</div>
+                Reaksi inti adalah proses perubahan yang terjadi pada inti atom, yang dapat mengubah satu unsur menjadi unsur lain atau mengubah satu isotop menjadi isotop lain. Perubahan ini biasanya disertai dengan pelepasan atau penyerapan energi yang sangat besar.
+            </div>
+
+            <hr style="border: none; height: 1px; background-color: var(--border-divider); margin: 30px 0;">
+
+            <h3>1. Reaksi Fisi (Nuclear Fission)</h3>
+            <p>Reaksi fisi adalah proses pemecahan inti atom yang berat menjadi dua atau lebih inti atom yang lebih ringan. Proses ini biasanya dipicu oleh penyerapan neutron.</p>
+
+            <p><strong>Mekanisme Dasar:</strong></p>
+            <ul>
+                <li>Sebuah neutron yang memiliki energi kinetik yang cukup menabrak inti atom yang berat dan tidak stabil, seperti Uranium-235 (<span class="formula-inline"><sup>235</sup><sub>92</sub>U</span>).</li>
+                <li>Inti atom menyerap neutron tersebut, membentuk inti yang sangat tidak stabil (seperti Uranium-236).</li>
+                <li>Inti yang tidak stabil ini segera pecah (fisi) menjadi dua inti atom yang lebih ringan (produk fisi), disertai pelepasan energi kinetik, beberapa neutron baru, dan radiasi gamma.</li>
+            </ul>
+
+            <p><strong>Contoh Reaksi Fisi:</strong></p>
+            <p>Contoh yang paling terkenal adalah fisi Uranium-235:</p>
+            <div class="formula">
+                <sup>235</sup><sub>92</sub>U + <span class="formula-inline"><sup>1</sup><sub>0</sub>n</span> → <span class="formula-inline"><sup>236</sup><sub>92</sub>U</span> (tidak stabil) → Produk Fisi + Energi + Neutron Baru
+            </div>
+            <p>Dalam banyak kasus, produk fisi bisa bermacam-macam. Salah satu contoh umum yang sering diilustrasikan adalah:</p>
+            <div class="formula">
+                <sup>235</sup><sub>92</sub>U + <span class="formula-inline"><sup>1</sup><sub>0</sub>n</span> → <span class="formula-inline"><sup>141</sup><sub>56</sub>Ba</span> + <span class="formula-inline"><sup>92</sup><sub>36</sub>Kr</span> + 3<span class="formula-inline"><sup>1</sup><sub>0</sub>n</span> + Energi
+            </div>
+            <p>Perhatikan bahwa jumlah massa dan nomor atom dijaga tetap:</p>
+            <ul>
+                <li>Nomor massa: 235 + 1 = 141 + 92 + 3(1) = 236</li>
+                <li>Nomor atom: 92 + 0 = 56 + 36 + 3(0) = 92</li>
+            </ul>
+
+            <p><strong>Mengapa Neutron Digunakan?</strong></p>
+            <p>Neutron dipilih sebagai "peluru" karena ia tidak memiliki muatan listrik. Tanpa muatan, neutron tidak mengalami gaya tolakan elektrostatik dari proton-proton di dalam inti atom. Ini memungkinkan neutron untuk lebih mudah menembus dan menabrak inti atom target.</p>
+
+            <p><strong>Rantai Reaksi Fisi (Chain Reaction):</strong></p>
+            <p>Neutron yang dilepaskan dari satu peristiwa fisi dapat memicu fisi pada inti atom lain. Jika jumlah neutron yang dilepaskan lebih besar dari jumlah neutron yang diserap, maka akan terjadi reaksi berantai yang dapat menghasilkan pelepasan energi yang eksponensial.</p>
+            <ul>
+                <li><strong>Reaksi Berantai Terkendali:</strong> Digunakan dalam reaktor nuklir untuk menghasilkan energi listrik secara stabil. Kecepatan reaksi dikontrol dengan menyerap kelebihan neutron.</li>
+                <li><strong>Reaksi Berantai Tak Terkendali:</strong> Terjadi pada bom atom, di mana pelepasan energi terjadi sangat cepat dan dahsyat.</li>
+            </ul>
+
+            <div class="callout">
+                <div class="callout-title">Contoh dalam Kehidupan</div>
+                Pembangkit Listrik Tenaga Nuklir (PLTN) memanfaatkan reaksi fisi terkendali untuk menghasilkan listrik. Reaktor menggunakan bahan bakar nuklir (seperti Uranium) dan mengontrol reaksi berantai untuk memanaskan air, menghasilkan uap yang memutar turbin generator.
+            </div>
+
+            <hr style="border: none; height: 1px; background-color: var(--border-divider); margin: 30px 0;">
+
+            <h3>2. Reaksi Fusi (Nuclear Fusion)</h3>
+            <p>Reaksi fusi adalah proses penggabungan dua inti atom ringan menjadi satu inti atom yang lebih berat. Ini adalah kebalikan dari reaksi fisi.</p>
+
+            <p><strong>Mekanisme Dasar:</strong></p>
+            <ul>
+                <li>Dua inti atom ringan (misalnya isotop hidrogen seperti Deuterium dan Tritium) dipaksa untuk bergabung dalam kondisi suhu dan tekanan yang sangat tinggi.</li>
+                <li>Gaya tolakan elektrostatik antara inti-inti atom yang bermuatan positif harus diatasi untuk memungkinkan gaya nuklir kuat bekerja dan menyatukan inti-inti tersebut.</li>
+                <li>Penggabungan ini menghasilkan inti atom yang lebih berat, biasanya disertai pelepasan neutron dan sejumlah besar energi.</li>
+            </ul>
+
+            <p><strong>Contoh Reaksi Fusi:</strong></p>
+            <p>Contoh paling dikenal adalah fusi yang terjadi di Matahari dan bintang-bintang lainnya, serta pada bom hidrogen. Salah satu reaksi fusi yang paling efisien adalah penggabungan Deuterium (<sup>2</sup>H) dan Tritium (<sup>3</sup>H):</p>
+            <div class="formula">
+                <sup>2</sup><sub>1</sub>H + <sup>3</sup><sub>1</sub>H → <sup>4</sup><sub>2</sub>He + <span class="formula-inline"><sup>1</sup><sub>0</sub>n</span> + Energi
+            </div>
+            <p>Perhatikan bahwa dalam reaksi fusi, sebagian kecil massa reaktan diubah menjadi energi. Ini seringkali menghasilkan energi yang jauh lebih besar per satuan massa dibandingkan dengan reaksi fisi.</p>
+
+            <p><strong>Energi dari Fusi:</strong></p>
+            <p>Energi yang dilepaskan dalam reaksi fusi dapat dihitung menggunakan prinsip kesetaraan massa-energi Einstein (<span class="formula-inline">E = mc<sup>2</sup></span>). Perbedaan antara total massa reaktan sebelum fusi dan total massa produk setelah fusi (disebut <span class="highlight">defek massa</span> atau <span class="highlight">Δm</span>) dikonversi menjadi energi.</p>
+            <p>Jika defek massa (<span class="formula-inline">Δm</span>) dinyatakan dalam satuan massa atom (sma) dan energi dikonversi menggunakan faktor 931 MeV/sma, maka energi yang dilepaskan adalah:</p>
+            <div class="formula">
+                E = Δm <span class="formula-inline">c<sup>2</sup></span> = (Δm dalam sma) x 931 MeV/sma
+            </div>
+
+            <div class="callout">
+                <div class="callout-title">Potensi Energi Masa Depan</div>
+                Reaksi fusi memiliki potensi besar sebagai sumber energi bersih di masa depan karena bahan bakarnya (isotop hidrogen) melimpah dan produk sampingannya relatif tidak berbahaya (tidak menghasilkan limbah radioaktif jangka panjang seperti fisi). Tantangan utamanya adalah mencapai dan mempertahankan kondisi suhu dan tekanan yang ekstrem yang diperlukan untuk reaksi fusi.
+            </div>
+
+            <div class="explanation-box">
+                <p><strong>Perbandingan Fisi dan Fusi:</strong></p>
+                <ul>
+                    <li><strong>Fisi:</strong> Memecah inti berat, membutuhkan bahan bakar seperti Uranium, menghasilkan limbah radioaktif berbahaya, dan prosesnya lebih mudah dikendalikan (pada reaktor).</li>
+                    <li><strong>Fusi:</strong> Menggabungkan inti ringan, membutuhkan bahan bakar seperti hidrogen (Deuterium, Tritium), menghasilkan energi yang jauh lebih besar, dan produk sampingan yang lebih aman, namun sangat sulit untuk dikendalikan karena memerlukan suhu dan tekanan ekstrem.</li>
+                </ul>
+            </div>
+
+            <div class="interactive-element">
+                Jelajahi Perbedaan Fisi dan Fusi Lebih Dalam!
+                <div style="display: none;" id="fisi-fusi-detail">
+                    <h3>Detail Perbandingan Fisi vs. Fusi</h3>
+                    <p><strong>Fisi:</strong></p>
+                    <ul>
+                        <li><strong>Proses:</strong> Pemecahan inti atom berat (misal U-235) menjadi inti-inti lebih ringan.</li>
+                        <li><strong>Bahan Bakar:</strong> Uranium, Plutonium.</li>
+                        <li><strong>Pemicu:</strong> Neutron.</li>
+                        <li><strong>Energi yang Dihasilkan:</strong> Besar, namun lebih kecil per reaksi dibandingkan fusi.</li>
+                        <li><strong>Produk Sampingan:</strong> Limbah radioaktif tingkat tinggi yang berbahaya dan berumur panjang.</li>
+                        <li><strong>Aplikasi:</strong> Pembangkit listrik tenaga nuklir, bom atom.</li>
+                        <li><strong>Kondisi:</strong> Memerlukan massa kritis dan pengendalian neutron.</li>
+                    </ul>
+                    <p><strong>Fusi:</strong></p>
+                    <ul>
+                        <li><strong>Proses:</strong> Penggabungan inti atom ringan (misal H-2, H-3) menjadi inti lebih berat (He).</li>
+                        <li><strong>Bahan Bakar:</strong> Deuterium, Tritium (isotop hidrogen).</li>
+                        <li><strong>Pemicu:</strong> Suhu dan tekanan sangat tinggi.</li>
+                        <li><strong>Energi yang Dihasilkan:</strong> Sangat besar, berkali-kali lipat dari fisi per satuan massa.</li>
+                        <li><strong>Produk Sampingan:</strong> Umumnya Helium, yang tidak radioaktif, dan neutron. Limbah radioaktif yang dihasilkan lebih sedikit dan berumur pendek.</li>
+                        <li><strong>Aplikasi:</strong> Sumber energi Matahari dan bintang, bom hidrogen.</li>
+                        <li><strong>Kondisi:</strong> Memerlukan suhu jutaan derajat Celsius dan tekanan tinggi (plasma).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelector('.interactive-element').addEventListener('click', function() {
+            const detailDiv = this.querySelector('#fisi-fusi-detail');
+            if (detailDiv.style.display === 'none') {
+                detailDiv.style.display = 'block';
+                this.querySelector('button').textContent = 'Sembunyikan Detail';
+            } else {
+                detailDiv.style.display = 'none';
+                this.querySelector('button').textContent = 'Jelajahi Perbedaan Fisi dan Fusi Lebih Dalam!';
+            }
+        });
+    </script>
+
+</body>
+</html>
+```

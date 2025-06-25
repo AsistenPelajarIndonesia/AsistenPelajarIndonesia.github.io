@@ -1,0 +1,693 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perubahan Sosial: Teori dan Bentuk</title>
+    <style>
+        /* Theme Variables */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            flex-grow: 1;
+        }
+
+        /* Headings */
+        h1 {
+            color: var(--primary-blue);
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: var(--text-primary);
+            font-size: 2.2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 6px solid var(--accent-green);
+            padding-left: 15px;
+            background-color: #f8f8f8;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h4 {
+            color: var(--text-secondary);
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--accent-green);
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 25px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Section Cards / Highlighted Boxes */
+        .theory-card, .concept-box {
+            background-color: #f0f8ff; /* Light blue background for emphasis */
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .theory-card:hover, .concept-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .concept-box.amber {
+            background-color: #fff8e1; /* Light amber for a different type of highlight */
+            border-left-color: var(--secondary-accent-amber);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures border-radius applies to corners */
+        }
+
+        table thead tr {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+            border: 1px solid var(--border-divider);
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        /* Specific Visuals for Linear, Multilinear, Cyclical (CSS-only "charts") */
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #fcfcfc;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+        }
+
+        .chart-label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .chart-area {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            height: 180px;
+            border-left: 2px solid var(--text-tertiary);
+            border-bottom: 2px solid var(--text-tertiary);
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+
+        .chart-area::before {
+            content: 'Peradaban';
+            position: absolute;
+            top: 50%;
+            left: -80px;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            white-space: nowrap;
+        }
+
+        .chart-area::after {
+            content: 'Waktu';
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+        }
+
+        .linear-line {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary-accent-amber), var(--accent-green), var(--primary-blue));
+            bottom: 0;
+            left: 0;
+            transform-origin: bottom left;
+            transform: rotate(-25deg) scaleX(1.2); /* Adjust rotation and scale for visual effect */
+            animation: growLinear 3s forwards ease-out;
+            border-radius: 2px;
+        }
+
+        .linear-line::after {
+            content: 'Arah Perubahan';
+            position: absolute;
+            top: -40px;
+            right: -80px;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+
+        @keyframes growLinear {
+            from { transform: rotate(-25deg) scaleX(0); }
+            to { transform: rotate(-25deg) scaleX(1.2); }
+        }
+
+        .multilinear-paths {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        .multilinear-paths .path {
+            position: absolute;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(to right, var(--semantic-info), var(--primary-blue));
+        }
+        .multilinear-paths .path:nth-child(1) {
+            width: 40%;
+            bottom: 20%;
+            left: 10%;
+            transform: rotate(-15deg);
+            animation: path1 2s forwards ease-out;
+        }
+        .multilinear-paths .path:nth-child(2) {
+            width: 50%;
+            bottom: 40%;
+            left: 5%;
+            transform: rotate(-30deg);
+            background: linear-gradient(to right, var(--semantic-warning), var(--secondary-accent-amber));
+            animation: path2 2.5s forwards ease-out;
+            animation-delay: 0.5s;
+        }
+        .multilinear-paths .path:nth-child(3) {
+            width: 30%;
+            bottom: 60%;
+            left: 20%;
+            transform: rotate(-10deg);
+            background: linear-gradient(to right, var(--semantic-success), var(--accent-green));
+            animation: path3 1.8s forwards ease-out;
+            animation-delay: 1s;
+        }
+
+        @keyframes path1 { from { width: 0; } to { width: 40%; } }
+        @keyframes path2 { from { width: 0; } to { width: 50%; } }
+        @keyframes path3 { from { width: 0; } to { width: 30%; } }
+
+        .cyclical-path {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border: 3px solid var(--semantic-info);
+            border-radius: 50%;
+            bottom: 10%;
+            left: 10%;
+            box-sizing: border-box;
+            animation: drawCircle 4s infinite linear;
+            clip-path: inset(0 0 0 50%); /* Start as half circle for drawing effect */
+        }
+        .cyclical-path::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            top: calc(50% - 5px); /* Adjusted for visual */
+            right: -5px; /* Adjusted to be on the edge of the clip-path */
+            transform: rotate(0deg); /* Initial rotation for the dot */
+            transform-origin: center center;
+            animation: moveDot 4s infinite linear;
+        }
+        .cyclical-path.simpler { /* Simpler version with waves */
+            border: none;
+            border-bottom: 3px solid var(--semantic-info);
+            border-radius: 0;
+            width: 90%;
+            left: 5%;
+            bottom: 10%;
+            animation: none; /* Remove circular animation */
+            position: absolute;
+        }
+
+        .cyclical-path.simpler .wave {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            border-bottom: 3px solid var(--primary-blue);
+            border-radius: 0 0 50% 50%;
+            transform: scaleY(0.5);
+            animation: waveMotion 3s infinite linear;
+            top: 20px; /* Adjust vertical position */
+        }
+
+        .cyclical-path.simpler .wave::before,
+        .cyclical-path.simpler .wave::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            border-bottom: 3px solid var(--accent-green);
+            border-radius: 0 0 50% 50%;
+            transform: scaleY(0.5);
+            opacity: 0.7;
+        }
+        .cyclical-path.simpler .wave::before {
+            top: -15px;
+            animation: waveMotion 3s infinite linear reverse;
+        }
+        .cyclical-path.simpler .wave::after {
+            top: 15px;
+            animation: waveMotion 3s infinite linear;
+        }
+
+
+        @keyframes waveMotion {
+            0% { transform: scaleY(0.5) translateX(0); }
+            50% { transform: scaleY(0.5) translateX(-5%); }
+            100% { transform: scaleY(0.5) translateX(0); }
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px auto;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+
+            h3 {
+                font-size: 1.5em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1.2em;
+            }
+
+            .theory-card, .concept-box {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+
+            table {
+                font-size: 0.85em;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            table thead, table tbody, table th, table td, table tr {
+                display: block;
+            }
+            table th, table td {
+                width: auto !important; /* Override specific column widths if any */
+                box-sizing: border-box;
+                white-space: normal;
+            }
+            table thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            table tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 10px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            table td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+                border-bottom: 1px solid var(--border-divider);
+            }
+            table td:last-child {
+                border-bottom: none;
+            }
+            table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--text-tertiary);
+            }
+
+            .chart-area {
+                width: 90%;
+                height: 150px;
+            }
+            .chart-area::before {
+                left: -60px;
+                font-size: 0.8em;
+            }
+            .chart-area::after {
+                bottom: -25px;
+                right: -10px;
+                font-size: 0.8em;
+            }
+            .linear-line::after {
+                right: -40px;
+                top: -30px;
+                font-size: 0.7em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.6em; }
+            h3 { font-size: 1.3em; }
+            p, ul, table { font-size: 0.9em; }
+
+            .chart-area::before { left: -50px; font-size: 0.7em; }
+            .chart-area::after { bottom: -20px; right: -5px; font-size: 0.7em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Teori dan Bentuk Perubahan Sosial</h1>
+
+        <p>Terkadang, fenomena perubahan sosial terasa seperti pengulangan, makin kompleks, disengaja, atau bahkan terjadi tanpa diduga sebelumnya. Berbagai karakteristik perubahan sosial tersebut telah diklasifikasikan para ahli melalui teori-teori yang mereka kemukakan. Teori digunakan untuk menganalisis berbagai bentuk perubahan sosial yang terjadi dalam masyarakat.</p>
+
+        <h2>1. Teori Perubahan Sosial</h2>
+        <p>Para sosiolog mengemukakan beberapa teori terkait perubahan sosial. Perubahan sosial dalam masyarakat dapat dipelajari secara ilmiah menggunakan teori-teori ini.</p>
+
+        <div class="theory-card">
+            <h3>Teori Evolusionis</h3>
+            <p>Teori ini mengadopsi pemikiran Charles Darwin tentang evolusi. Tokoh sosiologi yang mengadopsi teori ini antara lain Auguste Comte dan Emile Durkheim. Inti dari teori evolusionis adalah bahwa masyarakat mengalami perkembangan progresif, bergerak dari tahapan sederhana menuju kompleks atau dari bentuk yang lebih rendah ke bentuk yang lebih tinggi.</p>
+            <ul>
+                <li><strong>Auguste Comte:</strong> Berpendapat bahwa pengetahuan manusia dan masyarakat akan terus bergerak maju dari fase mitologis (ketergantungan pada kekuatan supernatural) ke fase metafisik (pemikiran abstrak filosofis) dan akhirnya ke fase ilmiah/positivis (berdasarkan observasi dan logika rasional).</li>
+                <li><strong>Emile Durkheim:</strong> Menilai masyarakat berkembang dari organisasi sosial yang sederhana (solidaritas mekanik, berdasarkan kesamaan) menuju organisasi sosial yang kompleks (solidaritas organik, berdasarkan perbedaan dan saling ketergantungan fungsional).</li>
+            </ul>
+        </div>
+
+        <div class="theory-card">
+            <h3>Teori Fungsionalis</h3>
+            <p>Teori ini, yang dicetuskan oleh Talcott Parsons, menekankan fokusnya pada upaya mempertahankan sistem sosial. Menurut pandangan fungsionalis, masyarakat adalah sistem yang terdiri dari berbagai bagian yang saling berhubungan dan berfungsi untuk memenuhi kebutuhan serta menjaga keseimbangan. Perubahan sosial dipandang sebagai proses yang harus berkontribusi pada stabilitas dan adaptasi sistem.</p>
+            <p>Menurut Talcott Parsons, ada empat proses utama dalam perubahan sosial:</p>
+            <ul>
+                <li><strong>Diferensiasi:</strong> Peningkatan kompleksitas dalam sistem sosial, di mana peran dan fungsi menjadi lebih terspesialisasi.</li>
+                <li><strong>Peningkatan Adaptif (Adaptive Upgrading):</strong> Kemampuan masyarakat untuk meningkatkan kapasitasnya dalam menghadapi tantangan dan perubahan, seringkali melalui pembentukan lembaga baru atau adaptasi struktur lama.</li>
+                <li><strong>Inklusi:</strong> Upaya untuk mengintegrasikan kelompok atau nilai-nilai baru ke dalam sistem sosial yang ada, menjembatani nilai-nilai lama dan baru.</li>
+                <li><strong>Generalisasi Nilai (Value Generalization):</strong> Proses di mana nilai-nilai lama yang spesifik diperluas atau digeneralisasi untuk mencakup situasi atau kelompok yang lebih luas, sehingga nilai-nilai baru dapat diterima secara luas.</li>
+            </ul>
+            <p>Apabila terjadi perubahan pada salah satu unsur, masyarakat harus melakukan penyesuaian pada unsur lain agar keseimbangan tetap terjaga.</p>
+        </div>
+
+        <div class="theory-card">
+            <h3>Teori Konflik</h3>
+            <p>Teori konflik, yang dipelopori oleh Karl Marx, berpendapat bahwa perubahan sosial adalah hasil dari ketegangan dan perjuangan antara kelompok-kelompok yang memiliki kepentingan yang berlawanan dalam masyarakat. Perubahan tidak terjadi secara mulus atau evolusioner, melainkan melalui konflik yang seringkali radikal.</p>
+            <ul>
+                <li><strong>Karl Marx:</strong> Meyakini bahwa konflik antara kelas-kelas sosial (khususnya buruh/proletar dan pemilik modal/borjuis) adalah motor utama perubahan sosial. Perubahan diperlukan untuk menghilangkan ketimpangan dan ketidakadilan yang inheren dalam struktur sosial yang ada, yang pada akhirnya akan menuju masyarakat tanpa kelas.</li>
+                <li>Perubahan sosial dalam perspektif konflik seringkali dianggap sebagai hal yang disruptif namun esensial untuk mencapai sistem sosial yang lebih adil dan baik.</li>
+            </ul>
+        </div>
+
+        <h3>Tabel 1.2 Teori Perubahan Sosial</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Teori dan Tokoh</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Teori dan Tokoh"><strong>Evolusionis</strong><br>(Auguste Comte, Emile Durkheim)</td>
+                    <td data-label="Keterangan">Perubahan sosial menggerakkan masyarakat menuju satu titik tertentu, dimulai dari sederhana ke kompleks/modern.</td>
+                </tr>
+                <tr>
+                    <td data-label="Teori dan Tokoh"><strong>Fungsionalis</strong><br>(Talcott Parsons)</td>
+                    <td data-label="Keterangan">Perubahan sosial harus berkontribusi pada stabilitas sosial masyarakat dan menjaga keseimbangan sistem.</td>
+                </tr>
+                <tr>
+                    <td data-label="Teori dan Tokoh"><strong>Konflik</strong><br>(Karl Marx)</td>
+                    <td data-label="Keterangan">Penyesuaian harus dilakukan untuk mengakomodasi perubahan sosial. Perubahan sosial akibat konflik terkadang diperlukan untuk mengatasi ketidakadilan dan ketimpangan sosial.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Bentuk-Bentuk Perubahan Sosial</h2>
+        <p>Perubahan sosial yang terjadi dalam kehidupan masyarakat sangat beragam. Bentuk-bentuk perubahan sosial dapat diklasifikasikan berdasarkan waktu, ukuran, dan arahnya.</p>
+
+        <div class="concept-box">
+            <h3>a. Perubahan Sosial Cepat dan Lambat</h3>
+            <p>Berdasarkan waktunya, perubahan sosial dapat berlangsung secara cepat (revolusi) atau lambat (evolusi).</p>
+            <h4>Perubahan Cepat (Revolusi)</h4>
+            <p>Terjadi pada sendi-sendi atau dasar-dasar pokok kehidupan masyarakat. Perubahan ini relatif cepat dan seringkali tidak dapat diprediksi. Masyarakat dapat mengalami guncangan karena sistem sosial dan kondisi lingkungan berubah dalam waktu singkat.</p>
+            <ul>
+                <li><strong>Contoh:</strong> Dampak Pandemi Covid-19 yang menyebar cepat ke seluruh dunia mendorong percepatan digitalisasi dalam berbagai aspek kehidupan masyarakat. Revolusi Industri yang mengubah struktur ekonomi dan sosial secara fundamental.</li>
+            </ul>
+            <h4>Perubahan Lambat (Evolusi)</h4>
+            <p>Membutuhkan waktu lama dan biasanya diikuti dengan rentetan perubahan kecil yang saling mengikuti secara lambat. Perubahan ini bersifat kumulatif dan bertahap.</p>
+            <ul>
+                <li><strong>Contoh:</strong> Perubahan peradaban masyarakat dari nomaden (berpindah-pindah) ke masyarakat pertanian, lalu berkembang menjadi sistem barter, kemudian ekonomi pasar, dan akhirnya industrialisasi. Ini adalah proses panjang adaptasi manusia terhadap lingkungan dan peningkatan pengetahuan.</li>
+            </ul>
+        </div>
+
+        <div class="concept-box amber">
+            <h3>b. Perubahan Sosial Kecil dan Besar</h3>
+            <p>Perubahan sosial berdasarkan ukuran pengaruhnya dapat dibedakan menjadi dua, yaitu perubahan kecil dan perubahan besar.</p>
+            <h4>Perubahan Kecil</h4>
+            <p>Tidak menimbulkan pengaruh langsung bagi masyarakat secara keseluruhan dan hanya dirasakan oleh kalangan tertentu atau terbatas. Perubahan ini seringkali bersifat superfisial.</p>
+            <ul>
+                <li><strong>Contoh:</strong> Perubahan gaya busana (fashion), tren musik, atau gaya rambut yang diminati oleh sebagian masyarakat.</li>
+            </ul>
+            <h4>Perubahan Besar</h4>
+            <p>Memberi pengaruh luas bagi masyarakat secara menyeluruh, mengubah pola perilaku dan kebiasaan masyarakat di berbagai belahan dunia, bahkan dari satu generasi ke generasi lainnya.</p>
+            <ul>
+                <li><strong>Contoh:</strong> Penemuan internet dan perkembangan telepon seluler (smartphone). Kemajuan teknologi ini telah memberikan kemudahan akses informasi, hiburan, pendidikan, kesehatan, hingga ekonomi dan bisnis. Namun, juga membawa risiko seperti gaya hidup instan, individualisme, hoaks, dan kejahatan siber. Masyarakat perlu memiliki literasi digital yang memadai untuk bijak dalam menggunakannya.</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h3>c. Perubahan Sosial Linier, Multilinier, dan Siklus</h3>
+            <p>Ini adalah klasifikasi perubahan sosial berdasarkan arah atau polanya.</p>
+
+            <h4>Perubahan Sosial Linier</h4>
+            <p>Menggambarkan kehidupan masyarakat yang terus mengalami kemajuan dan makin modern secara progresif dalam satu arah. Perubahan ini sering dikaitkan dengan teori evolusi, di mana peradaban bergerak dari kondisi sederhana menuju kompleks.</p>
+            <div class="chart-container">
+                <div class="chart-label">Ilustrasi Proses Perubahan Linier</div>
+                <div class="chart-area">
+                    <div class="linear-line"></div>
+                </div>
+            </div>
+            <p>Salah satu contoh paling relevan dari teori perubahan linier adalah hukum tiga tahap perkembangan pengetahuan Auguste Comte:</p>
+            <h3>Tabel 1.3 Tahapan Perkembangan Pengetahuan Masyarakat (Auguste Comte)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tahap</th>
+                        <th>Teologis</th>
+                        <th>Metafisik</th>
+                        <th>Positivis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Tahap"><strong>Pengetahuan</strong></td>
+                        <td data-label="Teologis">Fiktif, supranatural, dan teologis (penjelasan fenomena berdasarkan kekuatan ilahi/mitos).</td>
+                        <td data-label="Metafisik">Abstrak, spekulatif-filosofis, dan metafisik kritis (penjelasan berdasarkan entitas abstrak, bukan personal).</td>
+                        <td data-label="Positivis">Ilmiah dan empiris (penjelasan berdasarkan observasi, eksperimen, dan hukum alam).</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tahap"><strong>Landasan Pengetahuan</strong></td>
+                        <td data-label="Teologis">Kepercayaan dan kebiasaan.</td>
+                        <td data-label="Metafisik">Filsafat dan konsep absolut.</td>
+                        <td data-label="Positivis">Logika rasional dan observasi ilmiah.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tahap"><strong>Otoritas</strong></td>
+                        <td data-label="Teologis">Para tokoh kepercayaan, militer, dan kependetaan.</td>
+                        <td data-label="Metafisik">Metaphysician, pemikir, pembicara agama, dan juru hukum (legalistik).</td>
+                        <td data-label="Positivis">Ilmuwan, usahawan industri, dan filosof positif.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tahap"><strong>Fase Peradaban</strong></td>
+                        <td data-label="Teologis">Mesir kuno hingga abad pertengahan.</td>
+                        <td data-label="Metafisik">Abad ke-18.</td>
+                        <td data-label="Positivis">Abad modern (Revolusi Prancis dan seterusnya).</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tahap"><strong>Struktur Masyarakat</strong></td>
+                        <td data-label="Teologis">Masyarakat teologis, primitif, dan militerisme.</td>
+                        <td data-label="Metafisik">Masyarakat dogma dan masyarakat agraria.</td>
+                        <td data-label="Positivis">Masyarakat industri dan masyarakat ilmiah.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Perubahan Sosial Multilinier</h4>
+            <p>Teori ini berpendapat bahwa perubahan sederhana menuju kompleks tidak selalu mengalami proses yang sama untuk semua masyarakat atau bidang. Berbeda dengan linier, multilinier mengakui bahwa ada banyak jalur yang berbeda menuju modernisasi atau kompleksitas, dan tidak semua masyarakat harus melewati tahapan yang persis sama.</p>
+            <div class="chart-container">
+                <div class="chart-label">Ilustrasi Perubahan Multilinier</div>
+                <div class="chart-area">
+                    <div class="multilinear-paths">
+                        <div class="path"></div>
+                        <div class="path"></div>
+                        <div class="path"></div>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Contoh:</strong> Meskipun beberapa daerah mengalami modernisasi yang cepat, di daerah lain masih mempercayai leluhur dan kekuatan supranatural. Ini menunjukkan bahwa kemajuan tidak seragam atau searah di seluruh dunia.</li>
+            </ul>
+
+            <h4>Perubahan Sosial Siklus</h4>
+            <p>Menunjukkan bahwa suatu perubahan sosial dapat terjadi kembali atau mengalami pengulangan. Menurut teori siklus, suatu peradaban akan terus mengalami fase kelahiran, pertumbuhan, dan keruntuhan, kemudian berulang kembali dalam bentuk yang berbeda. Hal-hal yang dianggap modern saat ini bisa jadi kuno di masa depan, dan sebaliknya.</p>
+            <div class="chart-container">
+                <div class="chart-label">Ilustrasi Proses Perubahan Siklus</div>
+                <div class="chart-area">
+                    <div class="cyclical-path simpler">
+                        <div class="wave"></div>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Contoh:</strong> Tren fashion yang berulang (misalnya, gaya tahun 80-an atau 90-an yang kembali populer). Teknologi mutakhir saat ini akan dianggap kuno/tradisional pada masa mendatang, dan mungkin beberapa aspek dari "masa lalu" akan kembali relevan atau populer di kemudian hari.</li>
+            </ul>
+        </div>
+
+        <div class="concept-box amber">
+            <h3>d. Perubahan Sosial Direncanakan dan Tidak Direncanakan</h3>
+            <p>Klasifikasi ini membedakan perubahan berdasarkan ada tidaknya niat atau tujuan dari pelakunya.</p>
+            <h4>Perubahan Direncanakan (Intended/Planned Change)</h4>
+            <p>Perubahan yang diperkirakan atau direncanakan terlebih dahulu oleh pihak-pihak yang hendak melakukan perubahan sosial dalam masyarakat. Tujuan utamanya adalah untuk mencapai tujuan sosial tertentu, seperti meningkatkan kesejahteraan atau kualitas hidup.</p>
+            <ul>
+                <li><strong>Contoh:</strong> Pembangunan infrastruktur (jalan, jembatan, gedung) yang bertujuan meningkatkan ekonomi dan konektivitas. Program pemerintah untuk meningkatkan kualitas pendidikan atau kesehatan masyarakat. Kebijakan urbanisasi untuk mengatasi kepadatan penduduk.</li>
+                <li>Pembangunan di wilayah perkotaan seringkali lebih maju karena dekat dengan pusat pemerintahan, memiliki fasilitas memadai, dan peluang usaha. Hal ini menjadikan perkotaan sebagai daya tarik, yang merupakan hasil dari perencanaan pembangunan.</li>
+            </ul>
+            <h4>Perubahan Tidak Direncanakan (Unintended/Unplanned Change)</h4>
+            <p>Perubahan yang terjadi tanpa direncanakan atau sebagai dampak lanjutan yang tidak diduga dari suatu tindakan, baik itu dari perubahan yang direncanakan maupun dari peristiwa alam.</p>
+            <ul>
+                <li><strong>Contoh:</strong> Kepadatan penduduk di perkotaan sebagai dampak samping dari pembangunan dan daya tarik kota yang menyebabkan urbanisasi berlebihan. Munculnya masalah sosial seperti kemiskinan kota, kriminalitas, atau pencemaran lingkungan akibat industrialisasi yang tidak terkontrol. Bencana alam seperti gempa bumi atau letusan gunung berapi yang secara drastis mengubah struktur sosial dan ekonomi suatu daerah.</li>
+                <li>Pentingnya perencanaan yang matang dan mempertimbangkan keberlanjutan adalah kunci untuk meminimalisir dampak tidak direncanakan.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sosiologi untuk SMA/MA Kelas XII. Hak Cipta Dilindungi.</p>
+    </footer>
+</body>
+</html>
+```

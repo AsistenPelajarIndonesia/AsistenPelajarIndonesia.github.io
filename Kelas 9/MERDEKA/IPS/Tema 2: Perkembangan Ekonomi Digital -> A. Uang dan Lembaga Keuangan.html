@@ -1,0 +1,533 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 2: Perkembangan Ekonomi Digital - Uang dan Lembaga Keuangan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: #388E3C;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #E0E0E0;
+        }
+        .highlight {
+            background-color: #FFF9C4;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: inline-block;
+        }
+        .timeline {
+            position: relative;
+            padding: 20px 0 20px 40px;
+            border-left: 3px solid #1976D2;
+            margin-top: 20px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -52px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: #1976D2;
+            border-radius: 50%;
+            border: 4px solid #FFFFFF;
+            z-index: 1;
+        }
+        .timeline-content {
+            padding: 15px;
+            background-color: #E3F2FD;
+            border-radius: 5px;
+            position: relative;
+        }
+        .timeline-content h4 {
+            margin-top: 0;
+            color: #1976D2;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .timeline-content p {
+            margin-bottom: 0;
+            font-size: 0.95em;
+            color: #424242;
+        }
+        .types-of-money {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .money-type {
+            background-color: #FCE4EC;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #E0E0E0;
+        }
+        .money-type h4 {
+            margin-top: 0;
+            color: #C2185B;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .money-type p {
+            font-size: 0.9em;
+            color: #424242;
+        }
+        .functions-of-money {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .function-item {
+            background-color: #E8F5E9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #E0E0E0;
+        }
+        .function-item h4 {
+            margin-top: 0;
+            color: #388E3C;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .function-item p {
+            font-size: 0.95em;
+            color: #424242;
+        }
+        .financial-institutions {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .institution-type {
+            background-color: #FFF3E0;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #E0E0E0;
+        }
+        .institution-type h4 {
+            margin-top: 0;
+            color: #E65100;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .institution-type ul {
+            list-style: disc;
+            margin-left: 20px;
+            font-size: 0.95em;
+            color: #424242;
+        }
+        .institution-type li {
+            margin-bottom: 5px;
+        }
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+            display: block;
+            white-space: nowrap;
+        }
+        .responsive-table th,
+        .responsive-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #E0E0E0;
+        }
+        .responsive-table th {
+            background-color: #1976D2;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+        .responsive-table tr:nth-child(even) {
+            background-color: #f3f3f3;
+        }
+        .responsive-table tr:hover {
+            background-color: #e0e0e0;
+        }
+        .interactive-element {
+            background-color: #E1F5FE;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #0288D1;
+            margin: 20px 0;
+        }
+        .interactive-element h4 {
+            margin-top: 0;
+            color: #0288D1;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .interactive-element p {
+            font-size: 0.95em;
+            color: #424242;
+        }
+        .call-to-action {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #E8EAF6;
+            border-radius: 8px;
+            border: 1px solid #C5CAE9;
+        }
+        .call-to-action h3 {
+            color: #3F51B5;
+            margin-bottom: 15px;
+        }
+        .call-to-action a {
+            display: inline-block;
+            background-color: #3F51B5;
+            color: #FFFFFF;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .call-to-action a:hover {
+            background-color: #303F9F;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .functions-of-money, .financial-institutions {
+                grid-template-columns: 1fr;
+            }
+            .responsive-table {
+                display: block;
+                white-space: normal;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .timeline {
+                padding-left: 20px;
+            }
+            .timeline-item::before {
+                left: -40px;
+                width: 12px;
+                height: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Tema 2: Perkembangan Ekonomi Digital</h1>
+        <h2>A. Uang dan Lembaga Keuangan</h2>
+
+        <div class="section">
+            <p>Pernahkah kalian bertanya-tanya bagaimana uang tercipta dan bagaimana masyarakat menggunakannya dalam kehidupan sehari-hari? Sejak kapan uang ada? Jika uang tidak ada, bagaimana aktivitas ekonomi akan berjalan? Mari kita telusuri perjalanan uang dan peran penting lembaga keuangan dalam masyarakat modern.</p>
+        </div>
+
+        <div class="section">
+            <h3>1. Bagaimana Asal Mula Terciptanya Uang?</h3>
+            <p>Pada awalnya, manusia memenuhi kebutuhannya langsung dari alam. Ketika sumber daya menipis, mereka akan berpindah. Di masa komunal, kekayaan umumnya dimiliki bersama. Seiring perkembangan zaman, masyarakat mulai menetap dan melakukan pertukaran untuk memenuhi kebutuhan. Kekayaan individu mulai diakui, dan pertukaran barang dilakukan melalui <strong>sistem barter</strong>, yaitu menukar barang dengan barang lain yang dianggap memiliki nilai sama.</p>
+
+            <p>Namun, sistem barter memiliki banyak kesulitan. Bayangkan jika Anda memiliki banyak beras tetapi membutuhkan sapi, dan pemilik sapi membutuhkan sayuran, bukan beras. Atau kesulitan dalam menentukan berapa karung beras yang setara dengan satu sapi. Kesulitan inilah yang melahirkan kebutuhan akan alat tukar yang lebih efisien dan dapat mengukur nilai barang secara universal.</p>
+
+            <div class="highlight">
+                Kebutuhan akan alat tukar yang universal inilah yang memicu lahirnya uang dalam peradaban manusia.
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Tahap Awal: Benda Bernilai</h4>
+                        <p>Uang pada bentuk paling awalnya adalah benda-benda yang memiliki nilai intrinsik dan disepakati masyarakat sebagai alat tukar. Contohnya adalah kerang, garam, dan manik-manik.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Tahap Logam Mulia</h4>
+                        <p>Benda-benda bernilai seperti kerang dinilai kurang efisien karena nilainya yang berbeda-beda antar wilayah. Masyarakat membutuhkan sesuatu yang lebih kuat, tahan lama, memiliki nilai pecahan, dan diterima di mana saja. Logam mulia seperti emas dan perak menjadi populer sebagai alat tukar.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Tahap Surat Jaminan Emas (Uang Kertas Awal)</h4>
+                        <p>Seiring meluasnya perdagangan, membawa logam mulia dalam jumlah besar menjadi tidak efisien dan berisiko. Muncul konsep surat jaminan emas, di mana emas disimpan aman dan pemiliknya menerima surat yang menunjukkan kepemilikan. Surat ini berfungsi sebagai uang dalam perdagangan berskala besar.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Tahap Uang Kertas Tanpa Jaminan Emas (Fiat Money)</h4>
+                        <p>Pada tahun 1970-an, dolar Amerika melepaskan jaminan emasnya akibat krisis keuangan. Kebijakan ini berdampak luas, mempopulerkan uang kertas (fiat money) yang nilainya tidak lagi dijamin oleh emas, melainkan oleh kepercayaan masyarakat dan pemerintah.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Tahap Uang Elektronik</h4>
+                        <p>Bentuk uang terus berkembang menjadi digital. Uang elektronik adalah bentuk digital dari uang fiat yang dapat ditransaksikan melalui jaringan komputer dan internet, seperti melalui kartu kredit, kartu debit, atau aplikasi smartphone.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Tahap Cryptocurrency (Uang Kripto)</h4>
+                        <p>Perkembangan terbaru adalah uang yang sepenuhnya virtual dan tidak dapat disentuh secara fisik, seperti mata uang kripto. Namun, kehadirannya belum diakui secara penuh dan belum digunakan secara luas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>2. Jenis-Jenis dan Fungsi Uang</h3>
+            <p>Setelah mengalami perkembangan panjang, uang kini memiliki berbagai jenis dan fungsi:</p>
+
+            <h4>Jenis Uang Berdasarkan Bentuk:</h4>
+            <div class="types-of-money">
+                <div class="money-type">
+                    <h4>Uang Kartal</h4>
+                    <p>Uang kertas dan logam yang digunakan sehari-hari.</p>
+                </div>
+                <div class="money-type">
+                    <h4>Uang Giral</h4>
+                    <p>Uang yang ada di sistem perbankan, seperti rekening giro dan deposito.</p>
+                </div>
+            </div>
+
+            <h4>Jenis Uang Berdasarkan Bahan Pembuatan:</h4>
+            <div class="types-of-money">
+                <div class="money-type">
+                    <h4>Uang Kertas</h4>
+                    <p>Diterbitkan oleh Bank Indonesia.</p>
+                </div>
+                <div class="money-type">
+                    <h4>Uang Logam</h4>
+                    <p>Diterbitkan oleh Bank Indonesia.</p>
+                </div>
+            </div>
+
+            <h4>Jenis Uang Berdasarkan Wujud:</h4>
+            <div class="types-of-money">
+                <div class="money-type">
+                    <h4>Uang Fisik (Tunai)</h4>
+                    <p>Uang yang bisa dipegang, seperti uang kertas, uang logam, atau surat berharga.</p>
+                </div>
+                <div class="money-type">
+                    <h4>Uang Elektronik (Nontunai)</h4>
+                    <p>Uang berbentuk digital, ada di rekening atau aplikasi smartphone.</p>
+                </div>
+            </div>
+
+            <h4>Jenis Uang Berdasarkan Nilai:</h4>
+            <div class="types-of-money">
+                <div class="money-type">
+                    <h4>Uang Penuh (Full Bodied Money)</h4>
+                    <p>Nilainya sama dengan nilai bahan pembuatannya (misal: koin emas).</p>
+                </div>
+                <div class="money-type">
+                    <h4>Uang Tanda (Token Money)</h4>
+                    <p>Nilainya lebih rendah dari nilai bahan pembuatannya (misal: uang kertas yang dicetak).</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <strong>Nilai Intrinsik vs. Nilai Nominal:</strong> Nilai intrinsik adalah nilai asli bahan pembuat uang, sementara nilai nominal adalah nilai tukar yang tertera pada uang.
+            </div>
+
+            <h4>Fungsi Uang:</h4>
+            <div class="functions-of-money">
+                <div class="function-item">
+                    <h4>Fungsi Asli</h4>
+                    <p>Merupakan alasan utama terciptanya uang.</p>
+                    <ul>
+                        <li><strong>Alat Tukar:</strong> Memudahkan pertukaran barang dan jasa.</li>
+                        <li><strong>Alat Ukur Nilai:</strong> Menetapkan nilai berbagai barang dan jasa agar mudah dibandingkan.</li>
+                    </ul>
+                </div>
+                <div class="function-item">
+                    <h4>Fungsi Turunan</h4>
+                    <p>Berkembang seiring dengan fungsi asli uang.</p>
+                    <ul>
+                        <li><strong>Alat Penyimpan Kekayaan:</strong> Nilai dapat disimpan untuk digunakan di masa depan.</li>
+                        <li><strong>Alat Pemindah Kekayaan:</strong> Memudahkan pemindahan kekayaan antar pihak.</li>
+                        <li><strong>Alat Pembayar Utang:</strong> Dapat digunakan untuk melunasi kewajiban finansial.</li>
+                        <li><strong>Alat Alat Promosi Perdagangan:</strong> Memudahkan transaksi dalam perdagangan.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="interactive-element">
+                <h4>Fenomena Sosial: Uang sebagai Status Sosial</h4>
+                <p>Terkadang, uang juga digunakan sebagai tolok ukur status sosial. Semakin banyak uang seseorang, semakin dihargai. Bagaimana pandanganmu tentang fenomena ini? Apakah ini baik atau buruk?</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Mengenal Mata Uang Rupiah</h3>
+            <p>Mata uang resmi yang digunakan di Indonesia adalah Rupiah. Bank Indonesia adalah satu-satunya lembaga yang berwenang menerbitkan dan mengatur peredaran uang Rupiah. Bank Indonesia juga bertugas menjaga kestabilan nilai Rupiah agar tidak mengalami inflasi (penurunan nilai uang akibat terlalu banyaknya uang beredar).</p>
+
+            <div class="highlight">
+                <p><strong>Ciri-ciri Keaslian Uang Rupiah:</strong></p>
+                <ul>
+                    <li><strong>Dilihat:</strong> Logo yang berubah warna (gambar tersembunyi multiawarna) dan benang pengaman.</li>
+                    <li><strong>Diraba:</strong> Teks Tuna Netra (kode bagi tunanetra) dan tekstur kertas yang kasar.</li>
+                    <li><strong>Diterawang:</strong> Rectoverso (gambar saling isi yang utuh) dan gambar pahlawan/ornamen yang terlihat tembus pandang.</li>
+                </ul>
+            </div>
+
+            <p>Membuat atau menggunakan uang palsu adalah tindakan ilegal dan dapat dikenakan sanksi pidana berat.</p>
+        </div>
+
+        <div class="section">
+            <h3>3. Bagaimana Bentuk Lembaga Keuangan di Masyarakat?</h3>
+            <p>Lembaga keuangan adalah badan usaha yang menyediakan jasa keuangan kepada masyarakat, diatur oleh regulasi dan undang-undang. Di Indonesia, lembaga keuangan terbagi menjadi dua kategori utama:</p>
+
+            <h4>a. Lembaga Keuangan Bank</h4>
+            <p>Bank adalah badan usaha yang menghimpun dana dari masyarakat dalam bentuk simpanan dan menyalurkan dana tersebut kepada masyarakat dalam bentuk kredit atau layanan lainnya. Tujuannya adalah meningkatkan taraf hidup masyarakat.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Asal Mula Aktivitas Perbankan</h4>
+                        <p>Istilah "bank" berasal dari kata Italia "banca" yang berarti bangku. Di Florence, Italia, para pegawai di tempat penukaran uang duduk di bangku untuk melayani nasabah. Mereka menghimpun dana dari masyarakat untuk disimpan dan dipinjamkan kembali.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Perkembangan Bank di Eropa dan Dunia</h4>
+                        <p>Konsep lembaga keuangan pemberi pinjaman sudah ada sejak lama, namun resmi berkembang pesat di Eropa saat perdagangan modern mulai tumbuh. Bank mulai bermunculan di kota-kota perdagangan di berbagai negara Eropa dan koloninya.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Perkembangan Bank di Nusantara</h4>
+                        <p>Bank pertama di Nusantara adalah De Bank van Leening (1746), namun bangkrut. Kemudian berdiri De Javasche Bank (1828) sebagai cikal bakal perbankan modern Indonesia. Setelah kemerdekaan, bermunculan bank-bank baru maupun hasil nasionalisasi bank Belanda.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Jenis-Jenis Bank di Indonesia:</h4>
+            <div class="financial-institutions">
+                <div class="institution-type">
+                    <h4>Berdasarkan Fungsi:</h4>
+                    <ul>
+                        <li><strong>Bank Sentral:</strong> Menjaga stabilitas nilai mata uang, perbankan, dan sistem finansial (di Indonesia: Bank Indonesia).</li>
+                        <li><strong>Bank Umum:</strong> Melayani jasa pembayaran, menyimpan dana, memberi kredit, jual beli valas, dll.</li>
+                        <li><strong>Bank Perkreditan Rakyat (BPR):</strong> Menyediakan dana untuk masyarakat kecil dan menengah.</li>
+                    </ul>
+                </div>
+                <div class="institution-type">
+                    <h4>Berdasarkan Bentuk Operasional:</h4>
+                    <ul>
+                        <li><strong>Bank Konvensional:</strong> Beroperasi menggunakan sistem bunga.</li>
+                        <li><strong>Bank Syariah:</strong> Beroperasi menggunakan sistem bagi hasil sesuai prinsip syariah Islam.</li>
+                    </ul>
+                </div>
+                <div class="institution-type">
+                    <h4>Berdasarkan Kepemilikan:</h4>
+                    <ul>
+                        <li><strong>Bank Pemerintah:</strong> Mayoritas saham dimiliki negara.</li>
+                        <li><strong>Bank Swasta Nasional:</strong> Mayoritas saham dimiliki pihak swasta.</li>
+                        <li><strong>Bank Asing:</strong> Dimiliki pihak luar negeri yang membuka cabang di Indonesia.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h4>b. Lembaga Keuangan Bukan Bank (LKBB)</h4>
+            <p>LKBB adalah badan yang melakukan kegiatan keuangan, baik langsung maupun tidak langsung, dengan menghimpun dana dari masyarakat melalui surat berharga, lalu menyalurkannya untuk pembiayaan investasi perusahaan yang membutuhkan pinjaman.</p>
+
+            <div class="financial-institutions">
+                <div class="institution-type">
+                    <h4>1. Perusahaan Sewa Guna (Leasing)</h4>
+                    <p>Memberikan pembiayaan kredit, misalnya untuk pembelian kendaraan.</p>
+                </div>
+                <div class="institution-type">
+                    <h4>2. Perusahaan Asuransi</h4>
+                    <p>Memberikan jaminan keuangan dalam kondisi darurat (contoh: asuransi kesehatan, jiwa, kendaraan).</p>
+                </div>
+                <div class="institution-type">
+                    <h4>3. Perusahaan Dana Pensiun</h4>
+                    <p>Menyediakan jaminan masa tua melalui pengumpulan dana dari gaji karyawan.</p>
+                </div>
+                <div class="institution-type">
+                    <h4>4. Bursa Efek/Pasar Modal</h4>
+                    <p>Tempat jual beli surat berharga (saham, obligasi).</p>
+                </div>
+                <div class="institution-type">
+                    <h4>5. Pegadaian</h4>
+                    <p>Memberikan pinjaman dengan jaminan barang berharga.</p>
+                </div>
+                <div class="institution-type">
+                    <h4>6. Koperasi</h4>
+                    <p>Menghimpun dana dan menyalurkannya berdasarkan prinsip kekeluargaan, untuk kesejahteraan anggota (pembagian Sisa Hasil Usaha/SHU).</p>
+                </div>
+            </div>
+            <div class="interactive-element">
+                <h4>Eksplorasi Lanjutan: Koperasi di Indonesia</h4>
+                <p>Koperasi didirikan untuk membantu perekonomian dan kesejahteraan masyarakat dengan prinsip kekeluargaan. Mohammad Hatta dikenal sebagai Bapak Koperasi Indonesia. Namun, seiring waktu, peran koperasi cenderung melemah karena dianggap kurang mampu merespon tantangan zaman. Mengapa demikian?</p>
+            </div>
+        </div>
+
+        <div class="call-to-action">
+            <h3>Teruslah Belajar!</h3>
+            <p>Memahami uang dan lembaga keuangan adalah kunci untuk mengelola keuangan pribadi dan berkontribusi pada perekonomian negara. Jelajahi lebih lanjut topik ini untuk memperluas wawasanmu!</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

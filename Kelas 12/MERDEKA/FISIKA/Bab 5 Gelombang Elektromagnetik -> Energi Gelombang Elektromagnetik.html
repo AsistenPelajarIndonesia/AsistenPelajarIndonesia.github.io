@@ -1,0 +1,331 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 5: Energi Gelombang Elektromagnetik</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .formula-block {
+            background-color: #f9f9f9;
+            padding: 15px 20px;
+            border-left: 4px solid var(--primary-blue);
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+        }
+
+        .formula-block code {
+            background-color: transparent;
+            color: var(--text-secondary);
+        }
+
+        .explanation {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        .variable-definition {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 3px 8px;
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .key-concept {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .emphasis {
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .formula-block {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .formula-block {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bab 5: Energi Gelombang Elektromagnetik</h1>
+
+        <div class="section">
+            <h2>Konsep Dasar Energi dalam Gelombang Elektromagnetik</h2>
+            <p>
+                Gelombang elektromagnetik (GEM), seperti gelombang pada umumnya, memiliki kemampuan untuk merambat sambil membawa energi. Energi ini tidak hanya dibawa oleh satu jenis medan saja, melainkan dibawa oleh interaksi antara <span class="variable-definition">medan listrik</span> (<span class="emphasis">E</span>) dan <span class="variable-definition">medan magnet</span> (<span class="emphasis">B</span>). Cara umum untuk mendeskripsikan energi yang dibawa oleh GEM adalah melalui konsep <span class="key-concept">rapat energi</span>.
+            </p>
+            <p>
+                <span class="key-concept">Rapat energi</span> (<span class="variable-definition">u</span>) didefinisikan sebagai jumlah energi per satuan volume dalam ruang tempat energi tersebut merambat. Untuk sebuah gelombang elektromagnetik, total rapat energi adalah gabungan kontribusi energi dari medan listrik dan medan magnet.
+            </p>
+
+            <div class="formula-block">
+                <code>u = </code><span class="formula-block"><code>energi</code> / <code>volume</code></span><code> = </code><span class="formula-block"><code>1</code>/<code>2</code> * <code>ε₀</code> * <code>E²</code> + </code><span class="formula-block"><code>1</code>/<code>2μ₀</code> * <code>B²</code></span>
+                <div class="explanation">
+                    Persamaan (5-5): Total rapat energi gelombang elektromagnetik.
+                </div>
+            </div>
+
+            <p>Dalam persamaan di atas:</p>
+            <ul>
+                <li><span class="variable-definition">u</span> adalah rapat energi dalam satuan Joule per meter kubik (J/m³).</li>
+                <li><span class="variable-definition">E</span> adalah kuat medan listrik dalam satuan Newton per Coulomb (N/C).</li>
+                <li><span class="variable-definition">B</span> adalah kuat medan magnet dalam satuan Tesla (T).</li>
+                <li><span class="variable-definition">ε₀</span> adalah permitivitas ruang hampa (sekitar 8.85 x 10⁻¹² C²/Nm²).</li>
+                <li><span class="variable-definition">μ₀</span> adalah permeabilitas ruang hampa (sekitar 4π x 10⁻⁷ Tm/A).</li>
+            </ul>
+
+            <p>
+                Poin krusial adalah bahwa ketika gelombang elektromagnetik merambat di ruang hampa atau udara, medan listrik dan medan magnetnya berkontribusi secara setara terhadap total energi yang dibawa per satuan volume. Hal ini dapat dinyatakan sebagai berikut:
+            </p>
+
+            <div class="formula-block">
+                <code><code>1</code>/<code>2</code> * <code>ε₀</code> * <code>E²</code> = </code><span class="formula-block"><code>1</code>/<code>2μ₀</code> * <code>B²</code></span>
+                <div class="explanation">
+                    Persamaan (5-6): Kesetaraan kontribusi energi medan listrik dan medan magnet.
+                </div>
+            </div>
+
+            <p>Dengan kesetaraan ini, persamaan total rapat energi dapat disederhanakan menjadi salah satu komponen saja:</p>
+
+            <div class="formula-block">
+                <code>u = </code><span class="formula-block"><code>ε₀</code> * <code>E²</code></span>
+                <div class="explanation">
+                    Persamaan (5-7): Rapat energi ditinjau dari medan listrik.
+                </div>
+            </div>
+
+            <div class="formula-block">
+                <code>u = </code><span class="formula-block"><code>1</code>/<code>μ₀</code> * <code>B²</code></span>
+                <div class="explanation">
+                    Persamaan (5-8): Rapat energi ditinjau dari medan magnet.
+                </div>
+            </div>
+
+            <p>
+                Hubungan antara nilai maksimum medan listrik (<span class="variable-definition">E₀</span>) dan nilai maksimum medan magnet (<span class="variable-definition">B₀</span>) pada gelombang elektromagnetik yang merambat di ruang hampa adalah sebagai berikut:
+            </p>
+
+            <div class="formula-block">
+                <code><code>E₀</code> / <code>B₀</code> = c</code>
+                <div class="explanation">
+                    Hubungan antara medan listrik dan medan magnet maksimum dengan kecepatan cahaya.
+                </div>
+            </div>
+
+            <p>
+                Di mana <span class="variable-definition">c</span> adalah kecepatan cahaya dalam ruang hampa (sekitar 3 x 10⁸ m/s). Hubungan ini menegaskan bahwa medan listrik dan magnet dalam gelombang elektromagnetik saling terkait erat dan proporsional.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Intensitas Gelombang Elektromagnetik</h2>
+            <p>
+                Konsep lain yang sangat penting dalam mempelajari energi gelombang elektromagnetik adalah <span class="key-concept">intensitas</span>. Intensitas (<span class="variable-definition">S</span>) menggambarkan laju aliran energi per satuan luas per satuan waktu. Ini adalah ukuran seberapa "kuat" gelombang elektromagnetik tersebut ketika sampai pada suatu permukaan.
+            </p>
+            <p>
+                Secara matematis, intensitas dapat diperoleh dari hasil perkalian rapat energi dengan kecepatan rambat gelombang, yang kemudian dibagi dengan satuan luas:
+            </p>
+
+            <div class="formula-block">
+                <code>S = </code><span class="formula-block"><code>total energi</code> / (<code>waktu</code> * <code>luas</code>)</span><code> = (</code><span class="formula-block"><code>rapat energi</code> * <code>volume</code></span><code>) / (</code><span class="formula-block"><code>waktu</code> * <code>luas</code></span><code>)</code>
+                <br><code>S = (u * c*t*A) / (t*A)</code>
+                <br><code>S = u * c</code>
+                <div class="explanation">
+                    Hubungan antara intensitas, rapat energi, dan kecepatan rambat.
+                </div>
+            </div>
+
+            <p>Dengan menggabungkan persamaan intensitas dengan persamaan rapat energi, kita mendapatkan:</p>
+
+            <div class="formula-block">
+                <code>S = </code><span class="formula-block"><code>u * c</code></span><code> = (</code><span class="formula-block"><code>1</code>/<code>2</code> * <code>ε₀</code> * <code>E²</code> + </code><span class="formula-block"><code>1</code>/<code>2μ₀</code> * <code>B²</code></span><code>) * c</code>
+                <br><code>S = c * (</code><span class="formula-block"><code>ε₀</code> * <code>E²</code></span><code>)</code>  <span class="emphasis">(menggunakan u = ε₀E²)</span>
+                <br><code>S = c * (</code><span class="formula-block"><code>1</code>/<code>μ₀</code> * <code>B²</code></span><code>)</code>  <span class="emphasis">(menggunakan u = 1/μ₀ B²)</span>
+                <br><code>S = </code><span class="formula-block"><code>(c/μ₀) * E * B</code></span>
+                <div class="explanation">
+                    Berbagai bentuk persamaan intensitas gelombang elektromagnetik (kondisi sesaat).
+                </div>
+            </div>
+
+            <p>
+                Perlu diingat bahwa persamaan-persamaan ini berlaku untuk nilai sesaat dari medan listrik dan medan magnet karena sifat sinusoidalnya. Dalam banyak aplikasi praktis, kita lebih tertarik pada nilai <span class="key-concept">rata-rata</span> atau <span class="key-concept">efektif</span> dari intensitas. Untuk itu, kita perlu menggunakan nilai efektif (akar kuadrat nilai rata-rata kuadrat atau <em>root mean square</em> - RMS) dari medan listrik dan medan magnet.
+            </p>
+            <p>Hubungan antara nilai maksimum (<span class="variable-definition">E₀</span>, <span class="variable-definition">B₀</span>) dan nilai efektif (<span class="variable-definition">Eef</span>, <span class="variable-definition">Bef</span>) adalah:</p>
+
+            <div class="formula-block">
+                <code>Eef = E₀ / √2</code>
+                <br><code>Bef = B₀ / √2</code>
+                <div class="explanation">
+                    Nilai efektif medan listrik dan medan magnet.
+                </div>
+            </div>
+
+            <p>Dengan mensubstitusikan nilai efektif ini ke dalam persamaan intensitas, kita mendapatkan persamaan intensitas rata-rata gelombang elektromagnetik:</p>
+
+            <div class="formula-block">
+                <code>S = </code><span class="formula-block"><code>1</code>/<code>2</code> * <code>ε₀c</code> * <code>E₀²</code></span><code> = </code><span class="formula-block"><code>1</code>/<code>2μ₀</code> * <code>(c/μ₀) * B₀²</code></span><code> = </code><span class="formula-block"><code>(1/2) * E₀ * B₀</code></span>
+                <div class="explanation">
+                    Persamaan Intensitas Gelombang Elektromagnetik Rata-rata.
+                </div>
+            </div>
+
+            <p>Atau, menggunakan nilai efektif secara langsung:</p>
+
+            <div class="formula-block">
+                <code>S = ε₀c * Eef²</code>
+                <br><code>S = (c/μ₀) * Bef²</code>
+                <br><code>S = (Eef * Bef) / μ₀</code>
+                <div class="explanation">
+                    Persamaan Intensitas Gelombang Elektromagnetik Rata-rata (menggunakan nilai efektif).
+                </div>
+            </div>
+
+            <p>
+                Satuan dari intensitas (<span class="variable-definition">S</span>) adalah Watt per meter persegi (W/m²), yang merupakan ukuran daya yang melewati satu satuan luas. Contohnya, intensitas radiasi matahari yang sampai di bumi (di atas atmosfer) adalah sekitar 1350 W/m².
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Pentingnya Memahami Energi Gelombang Elektromagnetik</h2>
+            <p>
+                Memahami konsep energi yang dibawa oleh gelombang elektromagnetik sangat fundamental dalam berbagai bidang sains dan teknologi. Energi ini adalah dasar dari bagaimana kita melihat dunia (cahaya tampak), bagaimana komunikasi nirkabel bekerja (gelombang radio, gelombang mikro), bagaimana alat-alat medis mendiagnosis penyakit (sinar-X, sinar gamma), dan bahkan bagaimana kita merasakan panas dari matahari.
+            </p>
+            <p>
+                Gelombang elektromagnetik yang berbeda memiliki tingkat energi yang berbeda pula, bergantung pada frekuensi atau panjang gelombangnya. Gelombang dengan frekuensi tinggi (panjang gelombang pendek) seperti sinar gamma dan sinar-X membawa energi yang sangat besar, mampu mengionisasi atom dan molekul, sehingga bisa berbahaya jika terpapar berlebihan. Sementara itu, gelombang dengan frekuensi rendah (panjang gelombang panjang) seperti gelombang radio membawa energi yang jauh lebih rendah.
+            </p>
+            <p>
+                Pengetahuan tentang energi ini memungkinkan kita untuk:
+            </p>
+            <ul>
+                <li>Mengembangkan teknologi komunikasi yang efisien.</li>
+                <li>Merancang sistem pencitraan medis yang aman dan akurat.</li>
+                <li>Memahami fenomena astrofisika.</li>
+                <li>Mengembangkan sumber energi terbarukan (misalnya, panel surya yang mengubah energi cahaya menjadi listrik).</li>
+            </ul>
+            <p>
+                Dengan memahami bagaimana energi dikemas dan dibawa oleh medan listrik dan magnet, kita dapat lebih menghargai peran gelombang elektromagnetik dalam kehidupan sehari-hari dan kemajuan teknologi.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
+```

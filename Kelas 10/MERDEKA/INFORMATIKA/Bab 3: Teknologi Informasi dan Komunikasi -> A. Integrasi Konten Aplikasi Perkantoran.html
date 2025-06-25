@@ -1,0 +1,313 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrasi Konten Aplikasi Perkantoran</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.8em;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #388E3C;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 10px;
+            color: #424242;
+        }
+        .highlight {
+            color: #D32F2F;
+            font-weight: bold;
+        }
+        .code-snippet {
+            background-color: #f5f5f5;
+            border-left: 4px solid #1976D2;
+            padding: 10px 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            color: #212121;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.95em;
+            border-radius: 4px;
+        }
+        .example {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 10px 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            color: #212121;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.95em;
+            border-radius: 4px;
+        }
+        .example p {
+            margin-bottom: 8px;
+        }
+        .example p:last-child {
+            margin-bottom: 0;
+        }
+        .step {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #fff9c4; /* Yellow highlight */
+            border-left: 4px solid #fbc02d;
+            border-radius: 4px;
+        }
+        .step strong {
+            color: #388E3C;
+        }
+        .interactive-container {
+            background-color: #e8f5e9; /* Light green background */
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px dashed #388E3C;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .interactive-container p {
+            color: #212121;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #1976D2;
+            color: #FFFFFF !important;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            font-size: 1.1em;
+        }
+        .cta-button:hover {
+            background-color: #1565C0;
+            color: #FFFFFF;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px auto;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .code-snippet, .example {
+                font-size: 0.85em;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 3: Teknologi Informasi dan Komunikasi</h1>
+        <h2>A. Integrasi Konten Aplikasi Perkantoran</h2>
+
+        <div class="section">
+            <p>Aplikasi perkantoran adalah perangkat lunak yang dirancang khusus untuk membantu dan mempermudah berbagai tugas yang umum dilakukan di lingkungan perkantoran. Bayangkan sebuah kantor modern, ada surat menyurat, perhitungan data, presentasi kepada klien, dan masih banyak lagi. Semua ini bisa diakomodir oleh aplikasi perkantoran. Keunggulan utamanya adalah fitur-fitur yang sudah siap pakai, sehingga pengguna tidak perlu repot membangunnya dari nol menggunakan bahasa pemrograman.</p>
+
+            <p>Secara garis besar, aplikasi perkantoran dikelompokkan berdasarkan fungsi utamanya. Tiga yang paling sering kita jumpai dan gunakan adalah:</p>
+
+            <ol type="1">
+                <li>
+                    <h3>Aplikasi Pengolah Kata (Word Processor)</h3>
+                    <p>Fungsi utama aplikasi ini adalah untuk membuat, menyusun, dan mengolah dokumen teks. Mulai dari membuat surat resmi, menyusun laporan penelitian yang panjang, hingga menulis artikel sederhana, semuanya bisa dilakukan di sini. Contoh populernya meliputi <strong>Microsoft Word</strong>, <strong>Open Office Writer</strong>, dan <strong>Google Docs</strong>.</p>
+                </li>
+                <li>
+                    <h3>Aplikasi Pengolah Lembar Kerja (Spreadsheet)</h3>
+                    <p>Aplikasi ini sangat andal untuk mengelola data yang terstruktur dalam bentuk tabel dua dimensi (kolom dan baris). Fitur-fitur di dalamnya sangat membantu untuk melakukan perhitungan data yang kompleks, analisis statistik, dan bahkan memvisualisasikan data tersebut dalam bentuk diagram yang menarik. Contoh yang paling terkenal adalah <strong>Microsoft Excel</strong>, <strong>OpenOffice Calc</strong>, dan <strong>Google Sheets</strong>.</p>
+                </li>
+                <li>
+                    <h3>Aplikasi Pembuat Bahan Presentasi (Slide Presentation)</h3>
+                    <p>Aplikasi ini dirancang untuk memudahkan pembuatan slide presentasi yang efektif dan menarik. Setiap slide biasanya berisi poin-poin penting yang didukung oleh teks, gambar, atau elemen visual lainnya untuk menyampaikan informasi secara visual. Aplikasi populer untuk kategori ini adalah <strong>Microsoft PowerPoint</strong>, <strong>OpenOffice Impress</strong>, dan <strong>Google Slides</strong>.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Mengintegrasikan Konten Aplikasi Perkantoran</h2>
+            <p>Bayangkan sebuah skenario kerja. Anda perlu membuat laporan akhir yang sangat detail. Data-data pentingnya sudah Anda kumpulkan dan visualisasikan menggunakan <strong>Microsoft Excel</strong>, misalnya dalam bentuk grafik dan tabel. Sebelum laporan akhir ini siap, Anda mungkin sudah membuat proposal awal dalam bentuk presentasi slide menggunakan <strong>Microsoft PowerPoint</strong>.</p>
+            <p>Ketika tiba saatnya menyusun laporan akhir di <strong>Microsoft Word</strong>, Anda tentu tidak ingin mengetik ulang semua data atau deskripsi yang sudah ada di Excel atau PowerPoint. Di sinilah konsep <strong>integrasi konten</strong> menjadi sangat penting. Integrasi berarti menyatukan berbagai elemen, data, atau komponen yang mungkin awalnya terpisah, menjadi satu kesatuan yang utuh dan bermakna.</p>
+
+            <p>Secara sederhana, integrasi konten aplikasi perkantoran adalah kemampuan untuk mengambil data, teks, atau objek dari satu aplikasi dan menempatkannya ke dalam aplikasi lain, tanpa harus membuatnya ulang. Tujuannya adalah agar pekerjaan menjadi lebih efisien dan konsisten.</p>
+
+            <p>Misalnya, dalam ekosistem <strong>Microsoft Office</strong>:</p>
+            <ul>
+                <li>Anda bisa menautkan (link) data dari <strong>Microsoft Excel</strong> ke dalam dokumen <strong>Microsoft Word</strong> untuk membuat surat yang dinamis. Jika data di Excel berubah, surat di Word akan otomatis terupdate.</li>
+                <li>Anda juga bisa menyematkan (embed) grafik dari <strong>Microsoft Excel</strong> ke dalam presentasi <strong>Microsoft PowerPoint</strong> agar visualisasi data tetap akurat dan mudah diedit.</li>
+            </ul>
+            <p>Kedua contoh di atas menunjukkan bagaimana satu aplikasi (misalnya Excel) dapat berperan sebagai sumber data atau objek yang akan disajikan di aplikasi lain (Word atau PowerPoint).</p>
+
+            <p>Ada beberapa metode utama untuk melakukan integrasi konten antar aplikasi perkantoran:</p>
+            <ol type="a">
+                <li><strong>Teknik "Salin-Tempel" (Copy-Paste) atau "Gunting-Tempel" (Cut Paste)</strong></li>
+                <li><strong>Memanfaatkan Menu Bawaan Aplikasi</strong></li>
+                <li><strong>Teknik Object Linking dan Embedding (OLE)</strong></li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h3>1. Integrasi dengan Perintah Cut, Copy, dan Paste</h3>
+            <p>Perintah <strong>Cut</strong> (memotong), <strong>Copy</strong> (menyalin), dan <strong>Paste</strong> (menempel) adalah mekanisme dasar dalam interaksi dengan komputer yang terinspirasi dari cara kerja manual di masa lalu. Dulu, para editor naskah akan memotong bagian tulisan dengan gunting dan menempelkannya di tempat lain. Konsep ini tetap relevan di dunia digital, hanya saja alatnya adalah clipboard komputer.</p>
+            <p>Saat ini, perintah Cut, Copy, dan Paste sangat populer dan dapat diakses melalui berbagai cara, seperti kombinasi tombol keyboard (shortcut), menu dropdown, atau menu pop-up.</p>
+            <div class="example">
+                <p><strong>Contoh Shortcut Umum:</strong></p>
+                <ul>
+                    <li><strong>Ctrl + C</strong> (atau <strong>Cmd + C</strong> di Mac) untuk Copy</li>
+                    <li><strong>Ctrl + X</strong> (atau <strong>Cmd + X</strong> di Mac) untuk Cut</li>
+                    <li><strong>Ctrl + V</strong> (atau <strong>Cmd + V</strong> di Mac) untuk Paste</li>
+                </ul>
+            </div>
+            <p>Mekanisme digitalnya bekerja dengan memindahkan atau menyalin data/objek yang dipilih ke dalam 'clipboard' (area memori sementara) lalu menempelkannya ke lokasi tujuan. Ini memungkinkan Anda untuk mengambil potongan teks, tabel, gambar, atau bahkan grafik dari satu aplikasi dan menempatkannya di aplikasi lain. Anda bahkan bisa membuka dua atau tiga aplikasi secara bersamaan untuk memfasilitasi proses ini.</p>
+
+            <p>Metode <em>Copy-Paste</em> ini sangat praktis, namun perlu dilakukan dengan hati-hati. Terkadang, pengguna lupa mengedit hasil <em>copy-paste</em>, sehingga bisa saja informasi yang ditampilkan menjadi kurang tepat atau bahkan salah.</p>
+
+            <div class="step">
+                <strong>Penting untuk diingat:</strong> Saat Anda melakukan <em>Copy-Paste</em>, Anda membuat salinan objek tersebut. Perubahan pada sumber asli tidak akan mempengaruhi salinan yang sudah ditempel di dokumen tujuan.
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>2. Fitur Integrasi Konten pada Aplikasi</h3>
+            <p>Banyak aplikasi perkantoran modern memiliki fitur bawaan yang mempermudah integrasi konten. Fitur ini seringkali memungkinkan satu aplikasi untuk secara otomatis membuka atau berinteraksi dengan aplikasi lain.</p>
+            <p>Sebagai contoh, ketika Anda ingin menyisipkan sebuah diagram (chart) di <strong>Microsoft Word</strong> melalui menu <strong>Insert Chart</strong>, secara otomatis <strong>Microsoft Excel</strong> akan terbuka di latar belakang. Ini karena Excel adalah mesin utama untuk membuat dan mengelola data grafik tersebut. Anda kemudian bisa mengedit data di Excel, dan grafik tersebut akan diperbarui di dokumen Word Anda.</p>
+            <p>Proses serupa juga berlaku saat Anda ingin membawa diagram dari Excel ke <strong>Microsoft PowerPoint</strong>. Tampilan menu <strong>Insert Chart</strong> di Word atau PowerPoint biasanya akan menampilkan jendela seperti lembar kerja Excel yang siap diisi data untuk membuat diagram.</p>
+            <div class="example">
+                <p><strong>Bayangkan ini:</strong></p>
+                <p>Anda sedang membuat laporan di <strong>Microsoft Word</strong> dan memutuskan untuk menambahkan grafik batang yang menunjukkan data penjualan bulanan.</p>
+                <ol>
+                    <li>Anda masuk ke menu <strong>Insert</strong>, lalu pilih <strong>Chart</strong>.</li>
+                    <li>Anda memilih jenis diagram batang.</li>
+                    <li>Sebuah jendela kecil yang terlihat seperti <strong>Microsoft Excel</strong> akan muncul, menampilkan data contoh (misalnya, "Series 1", "Category 1").</li>
+                    <li>Anda kemudian memasukkan data penjualan bulanan Anda ke dalam tabel di jendela Excel tersebut.</li>
+                    <li>Saat Anda menutup jendela Excel (atau pindah ke Word), grafik batang yang sesuai dengan data Anda akan langsung muncul di dokumen Word.</p>
+                </ol>
+            </div>
+            <p>Ini adalah contoh bagaimana satu aplikasi dapat "memanggil" dan memanfaatkan fungsi dari aplikasi lain untuk menyelesaikan tugas.</p>
+        </div>
+
+        <div class="section">
+            <h3>3. Object Linking & Embedding (OLE)</h3>
+            <p><strong>Object Linking & Embedding (OLE)</strong> adalah teknologi yang lebih canggih untuk integrasi konten, terutama dalam ekosistem <strong>Microsoft Office</strong>. OLE memungkinkan objek dari satu aplikasi (aplikasi sumber) disisipkan ke dalam aplikasi lain (aplikasi tujuan).</p>
+
+            <h4>Perbedaan Kunci: Linking vs. Embedding</h4>
+            <p>Ada dua cara utama OLE bekerja:</p>
+            <ul>
+                <li>
+                    <strong>Embedding (Menyematkan):</strong> Ketika Anda menyematkan sebuah objek (misalnya, tabel Excel) ke dalam dokumen Word, salinan objek tersebut sepenuhnya dimasukkan ke dalam dokumen Word. Perubahan pada file Excel asli tidak akan mempengaruhi objek yang tertanam di Word. Jika Anda ingin mengedit objek yang tertanam, Anda akan mengeditnya langsung di dalam dokumen Word (biasanya dengan membuka tampilan seperti Excel di dalam Word).
+                </li>
+                <li>
+                    <strong>Linking (Menautkan):</strong> Ketika Anda menautkan sebuah objek (misalnya, grafik Excel) ke dalam dokumen Word, dokumen Word sebenarnya hanya menyimpan 'jalan pintas' atau referensi ke file Excel asli. Objek yang ditampilkan di Word adalah tampilan dinamis dari file Excel tersebut. <strong>Inilah keunggulannya: jika data di file Excel asli diubah, perubahan tersebut akan secara otomatis tercermin pada objek yang ditautkan di dokumen Word.</strong> Namun, jika file Excel asli dipindahkan atau dihapus, tautan tersebut akan rusak.
+                </li>
+            </ul>
+
+            <p>Manfaat utama <strong>Object Linking</strong> adalah bahwa perubahan pada data sumber akan secara otomatis diperbarui di semua dokumen yang menautkannya. Ini sangat efisien jika Anda memiliki banyak dokumen yang bergantung pada satu sumber data yang sama.</p>
+
+            <div class="example">
+                <p><strong>Contoh Skenario Object Linking:</strong></p>
+                <p>Anda memiliki sebuah file <strong>Excel</strong> berisi data keuangan bulanan perusahaan. Anda membuat laporan bulanan di <strong>Word</strong>, ringkasan kuartalan di <strong>PowerPoint</strong>, dan dasbor di <strong>Access</strong>. Jika Anda menggunakan <strong>Object Linking</strong> untuk menautkan tabel atau grafik dari file Excel tersebut ke ketiga aplikasi lainnya, maka setiap kali Anda memperbarui data di file Excel, laporan di Word, ringkasan di PowerPoint, dan dasbor di Access akan otomatis terupdate tanpa perlu Anda lakukan apa pun secara manual.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Mekanisme OLE: Insert Object</h3>
+            <p>Untuk melakukan Linking atau Embedding, biasanya kita menggunakan fitur <strong>Insert Object</strong> yang tersedia di banyak aplikasi.</p>
+
+            <p><strong>Contoh Proses Linking Tabel Excel ke PowerPoint:</strong></p>
+            <ol>
+                <li>Buka <strong>Microsoft Excel</strong>, buat sebuah tabel data sederhana, lalu simpan file Excel tersebut.</li>
+                <li>Buka <strong>Microsoft PowerPoint</strong> dan mulai membuat slide presentasi.</li>
+                <li>Di PowerPoint, masuk ke menu <strong>Insert</strong>, lalu pilih <strong>Object</strong>.</li>
+                <li>Akan muncul jendela dialog "Insert Object". Pilih opsi <strong>"Create from file"</strong>.</li>
+                <li>Klik tombol <strong>Browse...</strong> untuk mencari dan memilih file Excel yang sudah Anda simpan tadi.</li>
+                <li><strong>Penting:</strong> Centang kotak <strong>"Link"</strong> jika Anda ingin melakukan Linking (agar perubahan di Excel otomatis terupdate di PowerPoint). Jika tidak dicentang, itu berarti Embedding.</li>
+                <li>Klik <strong>OK</strong>.</li>
+            </ol>
+            <p>Sekarang, tabel dari file Excel Anda akan muncul di slide PowerPoint Anda. Jika Anda melakukan perubahan pada tabel di file Excel asli, tabel di PowerPoint akan otomatis diperbarui setelah Anda membuka kembali file PowerPoint atau menyegarkan tautannya.</p>
+        </div>
+
+        <div class="interactive-container">
+            <p>Teknologi integrasi konten ini membuka banyak kemungkinan untuk bekerja lebih cerdas dan efisien. Cobalah bereksperimen dengan perintah Copy-Paste, lalu bandingkan hasilnya dengan menggunakan fitur Link atau Embed untuk memahami perbedaannya secara langsung!</p>
+            <a href="#" class="cta-button" onclick="alert('Selamat belajar dan bereksperimen dengan integrasi konten!'); return false;">Mari Eksplorasi Lebih Lanjut!</a>
+        </div>
+    </div>
+
+</body>
+</html>
+```

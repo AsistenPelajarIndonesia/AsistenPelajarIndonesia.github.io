@@ -1,0 +1,457 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prinsip Gerbang Logika - Pengantar Sistem Elektronika</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 8px;
+            margin-top: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .sub-heading {
+            color: var(--accent-green);
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-left: 5px solid var(--primary-blue);
+            margin-bottom: 15px;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Ensure line breaks are respected */
+            word-wrap: break-word; /* Break long words */
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.95em;
+            color: var(--text-primary);
+        }
+
+        .interactive-element {
+            background-color: #e3f2fd; /* Light blue background */
+            border: 1px solid var(--primary-blue);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-blue);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            background-color: #bbdefb; /* Slightly darker blue on hover */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e8f0fe;
+        }
+
+        .formula {
+            display: inline-block;
+            background-color: #fff9c4; /* Light yellow for formulas */
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            color: var(--text-primary);
+        }
+
+        .definition {
+            background-color: #f0fff0; /* Honeydew */
+            border-left: 5px solid var(--accent-green);
+            padding: 10px 15px;
+            margin-bottom: 15px;
+        }
+
+        .icon-placeholder {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            line-height: 30px;
+            font-size: 0.9em;
+            vertical-align: middle;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            th, td {
+                padding: 10px 8px;
+            }
+
+            .code-block, .definition {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            th, td {
+                font-size: 0.85em;
+                padding: 8px 6px;
+            }
+
+            .code-block, .definition {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Prinsip Gerbang Logika: Otak Sistem Elektronika Digital 🚀</h1>
+
+        <p>Selamat datang di dunia <span class="highlight">sistem elektronika digital</span>! Bagian ini akan mengupas tuntas tentang <strong>gerbang logika</strong>, komponen fundamental yang menjadi "otak" dari segala perangkat elektronik digital yang kita gunakan sehari-hari. Mulai dari smartphone di saku Anda hingga superkomputer yang kompleks, semuanya beroperasi berkat kerja cerdas gerbang logika.</p>
+
+        <h2>💻 Memahami Dasar-Dasar Gerbang Logika</h2>
+
+        <p>Gerbang logika adalah blok bangunan dasar dari sirkuit digital. Cara kerjanya sangat sederhana namun kuat: menerima satu atau lebih <span class="highlight">input</span> dan menghasilkan satu <span class="highlight">output</span> tunggal berdasarkan aturan logika Boolean. Input dan output ini direpresentasikan dalam bentuk biner:</p>
+        <ul>
+            <li><strong>0:</strong> Merepresentasikan kondisi <span class="highlight">rendah</span> (LOW), "mati" (OFF), atau "salah" (FALSE).</li>
+            <li><strong>1:</strong> Merepresentasikan kondisi <span class="highlight">tinggi</span> (HIGH), "hidup" (ON), atau "benar" (TRUE).</li>
+        </ul>
+
+        <p>Sebuah sirkuit yang terdiri dari dua input dan satu output biasanya disebut sebagai <span class="highlight">sirkuit biner</span>. IC (Integrated Circuit) digital modern dapat mengandung jutaan gerbang logika, transistor, dan komponen lainnya dalam satu chip kecil.</p>
+
+        <h3> diferenciar antara IC Digital dan IC Analog</h3>
+        <p>Penting untuk memahami perbedaan antara IC digital dan analog:</p>
+
+        <div class="definition">
+            <p><span class="icon-placeholder">A</span> <strong>IC Digital:</strong> Beroperasi dengan sinyal diskrit (terpisah) yang hanya memiliki dua nilai: 0 atau 1. Contohnya adalah mikrokontroler dan mikroprosesor yang menjalankan instruksi spesifik.</p>
+        </div>
+
+        <div class="definition">
+            <p><span class="icon-placeholder">B</span> <strong>IC Analog:</strong> Bekerja dengan sinyal kontinu yang nilainya dapat bervariasi dalam rentang tertentu. Contohnya adalah mikrofon yang mengubah gelombang suara menjadi sinyal listrik analog, dan penguat audio.</p>
+        </div>
+
+        <p>Seringkali, kedua jenis IC ini digabungkan dalam satu chip yang disebut <span class="highlight">mixed-signal IC</span>. Contohnya adalah konverter A/D (Analog-to-Digital) dan D/A (Digital-to-Analog), serta IC Clock yang menghasilkan pulsa teratur untuk sinkronisasi.</p>
+
+        <h2>🧠 Jantung Elektronika Digital: Jenis-Jenis Gerbang Logika</h2>
+
+        <p>Gerbang logika adalah komponen inti yang mengendalikan aliran informasi dalam sistem digital. Setiap gerbang memiliki fungsi spesifik dan direpresentasikan dengan simbol serta tabel kebenaran yang unik.</p>
+
+        <h3>Tabel 6.1: Jenis-Jenis Gerbang Logika Dasar</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Jenis Gerbang</th>
+                    <th>Simbol</th>
+                    <th>Fungsi dan Cara Kerja</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>NOT (Inverter)</strong></td>
+                    <td>
+                        <div style="width: 80px; margin: auto;">
+                            <svg width="80" height="40" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 0 10 L 60 10 L 60 0 L 80 20 L 60 40 L 60 30 L 0 30 Z" fill="none" stroke="var(--text-primary)" stroke-width="2"/>
+                                <text x="65" y="25" font-family="sans-serif" font-size="12" fill="var(--text-primary)">out</text>
+                                <path d="M 10 20 L 30 20" stroke="var(--text-primary)" stroke-width="2"/>
+                                <circle cx="30" cy="20" r="3" fill="var(--text-primary)" stroke="var(--text-primary)" stroke-width="2"/>
+                                <text x="15" y="15" font-family="sans-serif" font-size="12" fill="var(--text-primary)">A</text>
+                            </svg>
+                        </div>
+                    </td>
+                    <td>Gerbang paling sederhana, hanya memiliki satu input dan satu output. Output selalu berlawanan dengan input. Jika input 0, output 1. Jika input 1, output 0.</td>
+                </tr>
+                <tr>
+                    <td><strong>AND</strong></td>
+                    <td>
+                         <div style="width: 100px; margin: auto;">
+                            <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 20 10 Q 50 10 50 30 Q 50 50 20 50 L 0 50 L 0 10 Z" fill="none" stroke="var(--text-primary)" stroke-width="2"/>
+                                <path d="M 50 20 L 70 20" stroke="var(--text-primary)" stroke-width="2"/>
+                                <path d="M 50 40 L 70 40" stroke="var(--text-primary)" stroke-width="2"/>
+                                <text x="80" y="25" font-family="sans-serif" font-size="12" fill="var(--text-primary)">out</text>
+                                <path d="M 65 30 L 85 30" stroke="var(--text-primary)" stroke-width="2"/>
+                                <circle cx="65" cy="30" r="3" fill="var(--text-primary)" stroke="var(--text-primary)" stroke-width="2"/>
+                                <text x="15" y="15" font-family="sans-serif" font-size="12" fill="var(--text-primary)">A</text>
+                                <text x="15" y="45" font-family="sans-serif" font-size="12" fill="var(--text-primary)">B</text>
+                            </svg>
+                        </div>
+                    </td>
+                    <td>Memerlukan dua input (atau lebih) untuk menghasilkan satu output. Output bernilai 1 hanya jika <span class="highlight">semua</span> input bernilai 1. Sifatnya seperti perkalian: 0x0=0, 0x1=0, 1x0=0, 1x1=1.</td>
+                </tr>
+                <tr>
+                    <td><strong>NAND (NOT AND)</strong></td>
+                    <td>
+                        <div style="width: 110px; margin: auto;">
+                            <svg width="110" height="60" viewBox="0 0 110 60" xmlns="http://www.w3.org/2000/svg">
+                                <!-- AND gate part -->
+                                <path d="M 20 10 Q 50 10 50 30 Q 50 50 20 50 L 0 50 L 0 10 Z" fill="none" stroke="var(--text-primary)" stroke-width="2"/>
+                                <path d="M 50 20 L 70 20" stroke="var(--text-primary)" stroke-width="2"/>
+                                <path d="M 50 40 L 70 40" stroke="var(--text-primary)" stroke-width="2"/>
+                                <!-- NOT gate part (circle) -->
+                                <circle cx="70" cy="30" r="3" fill="var(--text-primary)" stroke="var(--text-primary)" stroke-width="2"/>
+                                <!-- Output line -->
+                                <path d="M 70 30 L 90 30" stroke="var(--text-primary)" stroke-width="2"/>
+                                <text x="95" y="35" font-family="sans-serif" font-size="12" fill="var(--text-primary)">out</text>
+                                <text x="15" y="15" font-family="sans-serif" font-size="12" fill="var(--text-primary)">A</text>
+                                <text x="15" y="45" font-family="sans-serif" font-size="12" fill="var(--text-primary)">B</text>
+                            </svg>
+                        </div>
+                    </td>
+                    <td>Gabungan dari gerbang AND dan NOT. Cara kerjanya adalah kebalikan dari AND. Output bernilai 0 hanya jika <span class="highlight">semua</span> input bernilai 1. Jika salah satu atau semua input adalah 0, outputnya adalah 1.</td>
+                </tr>
+                <tr>
+                    <td><strong>OR</strong></td>
+                    <td>
+                        <div style="width: 100px; margin: auto;">
+                            <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 0 10 L 30 10 Q 60 10 70 30 Q 60 50 30 50 L 0 50 Z" fill="none" stroke="var(--text-primary)" stroke-width="2"/>
+                                <path d="M 70 30 L 90 30" stroke="var(--text-primary)" stroke-width="2"/>
+                                <circle cx="90" cy="30" r="3" fill="var(--text-primary)" stroke="var(--text-primary)" stroke-width="2"/>
+                                <text x="95" y="35" font-family="sans-serif" font-size="12" fill="var(--text-primary)">out</text>
+                                <text x="15" y="15" font-family="sans-serif" font-size="12" fill="var(--text-primary)">A</text>
+                                <text x="15" y="45" font-family="sans-serif" font-size="12" fill="var(--text-primary)">B</text>
+                            </svg>
+                        </div>
+                    </td>
+                    <td>Memerlukan dua input (atau lebih) untuk menghasilkan satu output. Output bernilai 1 jika <span class="highlight">salah satu atau semua</span> input bernilai 1. Output bernilai 0 hanya jika <span class="highlight">semua</span> input bernilai 0. Sifatnya seperti penjumlahan: 0+0=0, 0+1=1, 1+0=1, 1+1=1 (dalam logika biner).</td>
+                </tr>
+                <tr>
+                    <td><strong>NOR (NOT OR)</strong></td>
+                    <td>
+                        <div style="width: 110px; margin: auto;">
+                            <svg width="110" height="60" viewBox="0 0 110 60" xmlns="http://www.w3.org/2000/svg">
+                                <!-- OR gate part -->
+                                <path d="M 0 10 L 30 10 Q 60 10 70 30 Q 60 50 30 50 L 0 50 Z" fill="none" stroke="var(--text-primary)" stroke-width="2"/>
+                                <!-- NOT gate part (circle) -->
+                                <circle cx="70" cy="30" r="3" fill="var(--text-primary)" stroke="var(--text-primary)" stroke-width="2"/>
+                                <!-- Output line -->
+                                <path d="M 70 30 L 90 30" stroke="var(--text-primary)" stroke-width="2"/>
+                                <text x="95" y="35" font-family="sans-serif" font-size="12" fill="var(--text-primary)">out</text>
+                                <text x="15" y="15" font-family="sans-serif" font-size="12" fill="var(--text-primary)">A</text>
+                                <text x="15" y="45" font-family="sans-serif" font-size="12" fill="var(--text-primary)">B</text>
+                            </svg>
+                        </div>
+                    </td>
+                    <td>Gabungan dari gerbang OR dan NOT. Cara kerjanya kebalikan dari OR. Output bernilai 0 jika <span class="highlight">salah satu atau semua</span> input bernilai 1. Output bernilai 1 hanya jika <span class="highlight">semua</span> input bernilai 0.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Tabel Kebenaran Gerbang AND (Contoh)</h3>
+        <p>Tabel kebenaran adalah tabel yang menunjukkan semua kemungkinan kombinasi input dan output dari sebuah gerbang logika. Mari kita lihat contoh untuk gerbang AND:</p>
+
+        <table>
+            <caption>Tabel Kebenaran Gerbang AND</caption>
+            <thead>
+                <tr>
+                    <th>Input A</th>
+                    <th>Input B</th>
+                    <th>Output F (A AND B)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Perhatikan bagaimana output F hanya bernilai 1 ketika kedua input A dan B juga bernilai 1. Ini adalah prinsip dasar dari operasi logika AND.</p>
+
+        <h2>💡 Simulasi Interaktif Gerbang Logika</h2>
+
+        <p>Untuk memahami cara kerja gerbang logika secara lebih mendalam dan visual, Anda dapat menggunakan simulator gerbang logika online. Ini adalah cara yang bagus untuk bereksperimen dan melihat bagaimana kombinasi gerbang membentuk fungsi yang lebih kompleks.</p>
+
+        <div class="interactive-element">
+            🚀 Coba Simulator Gerbang Logika! 🚀
+        </div>
+        <p><small>Silakan cari simulator gerbang logika online dan coba buat rangkaian sederhana untuk memvisualisasikan fungsi masing-masing gerbang. Anda akan diminta untuk menentukan gerbang, input, dan output, lalu menguji cara kerjanya.</small></p>
+
+        <h2>🛠️ Aplikasi Gerbang Logika dalam Kehidupan Nyata</h2>
+
+        <p>Gerbang logika bukan hanya konsep teoritis; mereka adalah tulang punggung dari berbagai aplikasi elektronika modern:</p>
+
+        <ul>
+            <li><strong>Sistem Keamanan:</strong> Gerbang logika dapat digunakan untuk membuat sistem alarm otomatis. Misalnya, sistem yang mengaktifkan bel ketika sensor mendeteksi adanya gerakan saat kondisi tertentu terpenuhi.</li>
+            <li><strong>Kontrol Otomatis:</strong> Dalam pengatur suhu, sistem lampu jalan, atau bahkan sistem pengaman pada mesin industri, gerbang logika memastikan operasi yang tepat berdasarkan input sensor.</li>
+            <li><strong>Perangkat Komputasi:</strong> Semua operasi aritmatika dan logika dalam CPU (Central Processing Unit) komputer didasarkan pada kombinasi gerbang logika.</li>
+        </ul>
+
+        <h3>Contoh Sistem Keamanan Sederhana</h3>
+        <p>Bayangkan sebuah sistem keamanan untuk melindungi barang berharga. Sistem ini bisa menggunakan gerbang logika <strong>NOT</strong>:</p>
+        <ul>
+            <li>Saat barang aman di tempatnya, sebuah <span class="highlight">sensor</span> memberikan input <strong>1</strong> ke gerbang NOT.</li>
+            <li>Gerbang NOT akan mengubah input 1 menjadi output <strong>0</strong>, sehingga alarm tidak berbunyi.</li>
+            <li>Jika barang diambil (sensor tidak aktif), input menjadi <strong>0</strong>.</li>
+            <li>Gerbang NOT akan mengubah input 0 menjadi output <strong>1</strong>, yang kemudian mengaktifkan alarm (misalnya, membunyikan bel).</li>
+        </ul>
+        <p>Ini menunjukkan bagaimana gerbang logika sederhana dapat diintegrasikan untuk menciptakan fungsi yang praktis.</p>
+
+        <h2>💡 Berpikir Kreatif dengan Gerbang Logika</h2>
+        <p>Sekarang saatnya Anda mengaplikasikan pengetahuan ini! Cobalah rancang diagram blok untuk sistem berikut:</p>
+        <ul>
+            <li>Mengatur agar bel pintu hanya berbunyi pada siang hari.</li>
+            <li>Menyalakan pemanas kamar mandi saat kondisi dingin DAN gelap.</li>
+            <li>Membuat sistem lampu jalan yang menyala saat gelap dan padam saat terang.</li>
+            <li>Sistem peringatan untuk tukang kebun yang lelah di malam hari agar tidak mematikan alarm utama.</li>
+        </ul>
+        <p>Anda bisa membayangkannya atau mencoba menggambarkannya, bahkan jika memungkinkan, gunakan simulator untuk mewujudkannya!</p>
+
+        <div class="interactive-element">
+            💡 Mari Berpikir Kreatif! 💡
+        </div>
+
+        <h2>📚 Rangkuman Bab 6</h2>
+        <ol>
+            <li>Alat elektronik memiliki sistem dasar: <span class="highlight">input</span> -> <span class="highlight">proses</span> -> <span class="highlight">output</span>.</li>
+            <li>Semikonduktor memiliki sifat ganda: konduktor dan isolator, tergantung kondisi operasinya.</li>
+            <li>Jenis semikonduktor utama adalah tipe-p dan tipe-n.</li>
+            <li>Semikonduktor digunakan dalam komponen seperti transistor untuk mengatur aliran listrik.</li>
+            <li>Gerbang logika adalah komponen vital yang berfungsi sebagai "otak" dalam sistem elektronika digital.</li>
+            <li>Jenis gerbang logika dasar meliputi NOT, AND, NAND, OR, dan NOR, masing-masing dengan fungsi dan tabel kebenaran yang khas.</li>
+        </ol>
+
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,459 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Analisis Data - Visualisasi Data</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            background-color: var(--border-divider);
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        nav a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-green);
+        }
+
+        h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            white-space: pre-wrap; /* Allow wrapping */
+            word-wrap: break-word; /* Break long words */
+            font-size: 0.9em;
+        }
+
+        .image-placeholder {
+            background-color: var(--border-divider);
+            color: var(--text-tertiary);
+            text-align: center;
+            padding: 50px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .explanation-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .explanation-box h4 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .interactive-element {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 15px 25px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .interactive-element:hover {
+            background-color: var(--semantic-warning);
+        }
+
+        footer {
+            background-color: var(--text-secondary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            width: 100%;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav a {
+                margin: 5px 10px;
+                display: inline-block;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            th, td {
+                padding: 8px 10px;
+            }
+
+            .code-block {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            nav a {
+                margin: 5px;
+                display: block;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bab 6: Analisis Data</h1>
+    </header>
+
+    <nav>
+        <a href="#scraping-intro">Web Scraping</a>
+        <a href="#visualization-intro">Visualisasi Data</a>
+        <a href="#preprocessing">Pra-pemrosesan Data</a>
+        <a href="#barchart">Visualisasi: Diagram Batang</a>
+        <a href="#other-charts">Visualisasi: Diagram Lain</a>
+        <a href="#real-time-vis">Visualisasi Real-Time</a>
+        <a href="#prediction">Tentang Prediksi</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="scraping-intro" class="section">
+            <h2>C. Visualisasi Data</h2>
+            <p>Setelah kita berhasil mengumpulkan data melalui <strong>web scraping</strong>, langkah selanjutnya yang sangat krusial dalam analisis data adalah <strong>visualisasi data</strong>. Visualisasi mengubah data mentah yang seringkali berupa teks dan angka menjadi format grafis yang mudah dipahami, menarik, dan informatif. Ini membantu kita melihat pola, tren, dan hubungan yang mungkin terlewatkan jika hanya melihat data dalam bentuk tabel.</p>
+
+            <p>Bayangkan data lowongan pekerjaan yang kita dapatkan dari website seperti Jobs ID. Data ini mungkin tersaji dalam tabel yang rapi. Namun, untuk memahami gambaran besar, seperti lowongan mana yang paling banyak, atau rata-rata gaji untuk posisi tertentu, visualisasi adalah kunci.</p>
+
+            <div class="highlight">
+                Visualisasi data adalah proses menyajikan data dalam format grafis agar lebih mudah dipahami, dianalisis, dan diinterpretasikan.
+            </div>
+
+            <p>Di bagian ini, kita akan menjelajahi bagaimana data yang telah kita kumpulkan melalui web scraping dapat divisualisasikan menggunakan berbagai jenis diagram. Kita akan melihat bagaimana kode Python, dengan bantuan <em>library</em> seperti Plotly, dapat mengubah data tekstual menjadi representasi visual yang powerful.</p>
+        </section>
+
+        <section id="preprocessing" class="section">
+            <h3>1. Pra-pemrosesan Data</h3>
+            <p>Sebelum data dapat divisualisasikan, seringkali data tersebut perlu dibersihkan dan dipersiapkan. Proses ini disebut <strong>pra-pemrosesan data (data preprocessing)</strong>. Mengapa ini penting?</p>
+            <ul>
+                <li><strong>Kualitas Data:</strong> Data mentah seringkali mengandung kesalahan, format yang tidak konsisten, atau nilai yang hilang.</li>
+                <li><strong>Format yang Tepat:</strong> Agar dapat diolah oleh alat visualisasi, data harus dalam format yang sesuai (misalnya, angka harus dikenali sebagai angka, bukan teks).</li>
+                <li><strong>Konsistensi:</strong> Memastikan data disajikan secara seragam.</li>
+            </ul>
+
+            <p>Contoh dari teks yang perlu diproses adalah data gaji yang mungkin berisi teks seperti <strong>"Gaji Dirahasiakan"</strong> atau mengandung karakter pemisah ribuan seperti titik (misalnya, 3.000.000). Titik ini dapat diinterpretasikan sebagai desimal dalam perhitungan jika tidak diatasi.</p>
+
+            <p>Mari kita lihat contoh bagaimana membersihkan data gaji menggunakan Python:</p>
+
+            <div class="code-block">
+            ```python
+            # Asumsikan 't2' berisi teks gaji dari halaman web
+            # Misalnya: "3.000.000" atau "Gaji Dirahasiakan"
+
+            # Baris 26-27: Mendapatkan teks gaji
+            t2 = t1[1].select("span") # Ini adalah contoh pengambilan elemen, sesuaikan dengan struktur HTML sebenarnya
+            try:
+                xgaji = t2[1].get_text()
+            except:
+                xgaji = t2[0].get_text() # Jika elemen kedua tidak ada
+
+            # Baris 29: Membersihkan titik sebagai pemisah ribuan
+            xgaji = xgaji.replace(".","")
+
+            # Baris 30-32: Menangani kasus "Gaji Dirahasiakan"
+            if (xgaji == "Gaji Dirahasiakan"):
+                xgaji = 0 # Ganti dengan nilai numerik yang sesuai, misalnya 0
+
+            # Baris 33: Menambahkan gaji yang sudah dibersihkan ke dalam list 'gaji'
+            gaji.append(xgaji)
+            ```
+            </div>
+            <p class="image-placeholder">Representasi kode program Python untuk pra-pemrosesan data gaji. Bayangkan ini adalah langkah penting sebelum membuat grafik.</p>
+
+            <p>Setelah data dibersihkan dan dipersiapkan (misalnya, data gaji diubah menjadi tipe numerik), barulah data siap untuk divisualisasikan.</p>
+        </section>
+
+        <section id="barchart" class="section">
+            <h3>2. Visualisasi Data: Diagram Batang (Barchart)</h3>
+            <p>Diagram batang adalah salah satu cara paling umum dan efektif untuk membandingkan nilai antar kategori. Dalam kasus lowongan pekerjaan, kita bisa membandingkan gaji antar instansi atau antar posisi.</p>
+
+            <p>Untuk membuat visualisasi ini, kita akan menggunakan <em>library</em> <strong>Plotly</strong> di Python. Plotly adalah <em>library</em> yang sangat kuat untuk membuat visualisasi interaktif.</p>
+
+            <p>Pertama, kita perlu mengimpor <em>library</em> tersebut:</p>
+            <div class="code-block">
+            ```python
+            import plotly.express as px
+            ```
+            </div>
+
+            <p>Kemudian, kita bisa menggunakan fungsi <code>px.bar()</code> untuk membuat diagram batang. Mari kita lihat contoh kode yang menggabungkan data posisi dan gaji:</p>
+
+            <div class="code-block">
+            ```python
+            # Asumsikan 'posisi' adalah list nama posisi pekerjaan
+            # Asumsikan 'instansi' adalah list nama instansi
+            # Asumsikan 'gaji' adalah list nilai gaji (sudah dibersihkan dan numerik)
+
+            # Membuat DataFrame menggunakan Pandas
+            import pandas as pd
+            lowker = pd.DataFrame({
+                "Posisi": posisi,
+                "Instansi": instansi,
+                "Gaji": gaji
+            })
+
+            # Membuat diagram batang
+            # Di sini, kita membandingkan Gaji berdasarkan Instansi
+            fig = px.bar(lowker, x='Instansi', y='Gaji', title='Perbandingan Gaji per Instansi')
+            fig.show()
+            ```
+            </div>
+            <p class="image-placeholder">Contoh visualisasi diagram batang yang menampilkan perbandingan gaji berdasarkan instansi. Perhatikan bagaimana setiap batang mewakili satu instansi dengan tinggi batang menunjukkan nilai gaji.</p>
+
+            <h4>Pengelompokan Lanjutan untuk Visualisasi yang Lebih Baik</h4>
+            <p>Terkadang, mengelompokkan berdasarkan satu kategori saja (misalnya, hanya instansi) bisa membuat beberapa batang bertumpuk dan sulit dibedakan. Solusinya adalah menggabungkan beberapa kategori atau memproses data lebih lanjut.</p>
+
+            <p>Misalnya, jika kita ingin melihat setiap lowongan pekerjaan (gabungan posisi dan instansi) secara terpisah, kita perlu memodifikasi cara data diproses sebelum visualisasi.</p>
+
+            <p>Berikut adalah contoh kode yang memproses dan menggabungkan informasi posisi dan instansi, lalu memvisualisasikannya:</p>
+
+            <div class="code-block">
+            ```python
+            # --- Bagian Pra-pemrosesan Lanjutan (menggantikan kode sebelumnya untuk posisi/instansi) ---
+            # Asumsikan ada variasi dalam pengambilan data posisi
+            # Contoh kode yang mungkin sedikit berbeda tergantung struktur HTML asli:
+
+            posisi_dan_instansi_gabungan = [] # List untuk menyimpan gabungan posisi dan instansi
+
+            # Simulasi pengambilan data (sesuaikan dengan struktur HTML sebenarnya)
+            # Misalnya, struktur HTML memberikan judul posisi dan nama instansi terpisah
+            # Kode di bawah ini adalah contoh konseptual untuk menggabungkan
+            # Anda mungkin perlu menyesuaikan selector 'h3', 'p', 'a' dan logika penggabungan
+
+            # Anggap kita punya list 'judul_posisi' dan 'nama_instansi' dari scraping sebelumnya
+            # Contoh:
+            # judul_posisi = ["French Teacher", "Social Media Specialist", ...]
+            # nama_instansi = ["Kukche", "Ara", ...]
+
+            # Iterasi untuk menggabungkan
+            # for i in range(len(judul_posisi)):
+            #    posisi_gabung = f"{judul_posisi[i]} - {nama_instansi[i]}"
+            #    posisi_dan_instansi_gabungan.append(posisi_gabung)
+
+            # --- Bagian Visualisasi ---
+            # Membuat DataFrame baru dengan data yang sudah digabung
+            # Anggap 'gaji' sudah dibersihkan
+            lowker_detail = pd.DataFrame({
+                "PosisiDetail": posisi_dan_instansi_gabungan, # Gunakan list gabungan
+                "Gaji": gaji
+            })
+
+            # Membuat diagram batang dengan label yang lebih spesifik
+            fig_detail = px.bar(lowker_detail, x='PosisiDetail', y='Gaji', title='Rincian Gaji per Lowongan (Posisi & Instansi)')
+            fig_detail.show()
+            ```
+            </div>
+            <p class="image-placeholder">Contoh visualisasi diagram batang yang menampilkan rincian lowongan pekerjaan (Posisi dan Instansi) secara terpisah. Ini memungkinkan perbandingan yang lebih jelas.</p>
+        </section>
+
+        <section id="other-charts" class="section">
+            <h3>3. Visualisasi Data: Diagram Lain</h3>
+            <p>Selain diagram batang, terdapat berbagai jenis visualisasi lain yang dapat digunakan, tergantung pada karakteristik data dan tujuan analisis kita.</p>
+
+            <h4>a. Diagram Lingkaran (Pie Chart)</h4>
+            <p>Diagram lingkaran sangat cocok untuk menunjukkan proporsi atau persentase dari keseluruhan. Misalnya, kita bisa melihat seberapa besar kontribusi gaji dari setiap posisi terhadap total anggaran gaji.</p>
+            <p>Untuk membuat diagram lingkaran, kita mengganti fungsi <code>px.bar()</code> dengan <code>px.pie()</code>:</p>
+            <div class="code-block">
+            ```python
+            # Menggunakan DataFrame 'lowker' yang sama atau yang sudah diproses
+            # 'values' menentukan ukuran setiap irisan (misalnya Gaji)
+            # 'names' menentukan label untuk setiap irisan (misalnya Posisi)
+            fig_pie = px.pie(lowker, values='Gaji', names='Posisi', title='Distribusi Gaji berdasarkan Posisi')
+            fig_pie.show()
+            ```
+            </div>
+            <p class="image-placeholder">Contoh visualisasi diagram lingkaran yang menampilkan distribusi gaji berdasarkan posisi pekerjaan. Setiap irisan mewakili sebuah posisi, dengan ukuran irisan menunjukkan proporsi gajinya.</p>
+            <p><em>Catatan:</em> Meskipun diagram lingkaran dapat digunakan, untuk data lowongan pekerjaan, diagram batang mungkin lebih disukai jika kita ingin membandingkan nilai gaji secara langsung, bukan hanya proporsinya.</p>
+
+            <h4>b. Diagram Sebar (Scatter Plot)</h4>
+            <p>Diagram sebar digunakan untuk melihat hubungan antara dua variabel numerik. Jika kita memiliki data seperti jumlah pengalaman kerja dan gaji, kita bisa menggunakan scatter plot untuk melihat apakah ada korelasi di antara keduanya.</p>
+
+            <div class="explanation-box">
+                <h4>Latihan Interaktif: Mencoba Diagram Lain</h4>
+                <p>Bagaimana jika kita ingin membuat diagram sebar (scatter plot) dari data lowongan pekerjaan ini? Pikirkan dua variabel dari data yang kita miliki (atau yang bisa kita kumpulkan) yang paling cocok untuk divisualisasikan menggunakan scatter plot. Tuliskan kode Python menggunakan <code>plotly.express.scatter()</code> untuk memvisualisasikannya!</p>
+                <a href="#" class="interactive-element">Coba Buat Kode Scatter Plot</a>
+            </div>
+
+            <p>Penting untuk memilih jenis visualisasi yang paling sesuai dengan data dan pertanyaan yang ingin Anda jawab. Diagram lingkaran dan diagram sebar, meskipun dapat dibuat, mungkin kurang ideal untuk kasus lowongan pekerjaan dibandingkan dengan diagram batang, tergantung pada fokus analisisnya.</p>
+        </section>
+
+        <section id="real-time-vis" class="section">
+            <h3>Visualisasi Real-Time</h3>
+            <p>Selain visualisasi data statis dari hasil scraping, ada juga konsep <strong>visualisasi data real-time</strong>. Ini adalah data yang terus menerus diperbarui dan ditampilkan secara langsung, seperti pelacakan posisi driver ojek online di peta.</p>
+            <p>Visualisasi real-time ini sangat berguna untuk memantau perubahan data secara dinamis. Sistem seperti <strong>dashboard</strong> sering digunakan untuk menyajikan berbagai metrik secara real-time.</p>
+            <p class="image-placeholder">Ilustrasi visualisasi data real-time: (a) pelacakan driver ojek online, (b) informasi penerbangan di bandara, (c) kurs mata uang.</p>
+            <p>Bayangkan bagaimana program komputer bekerja sama seperti sebuah sistem, mengumpulkan data dari berbagai sumber dan menyajikannya dalam visualisasi yang informatif. Ini menunjukkan kekuatan kolaborasi program untuk analisis data yang komprehensif.</p>
+        </section>
+
+        <section id="prediction" class="section">
+            <h3>Tentang Prediksi</h3>
+            <p>Visualisasi data juga dapat menjadi alat yang sangat ampuh untuk <strong>prediksi</strong>. Dengan melihat tren yang divisualisasikan, kita bisa membuat perkiraan tentang masa depan.</p>
+            <p>Contohnya, dokter dapat menggunakan kurva pertumbuhan berat badan bayi untuk memprediksi perkembangan dan kesehatan bayi di masa mendatang. Begitu pula, kita bisa memvisualisasikan tren kebutuhan programmer dari tahun ke tahun atau bulan ke bulan, lalu membuat perkiraan tentang berapa banyak lowongan yang mungkin muncul di masa depan.</p>
+            <p class="image-placeholder">Contoh visualisasi data berat badan bayi sebagai alat prediksi pertumbuhan.</p>
+            <p>Dengan pengalaman web scraping, kita dapat mengumpulkan data historis kebutuhan programmer untuk menganalisis tren ini. Data yang sama yang kita olah untuk membuat diagram batang atau lingkaran, kini dapat menjadi dasar untuk membuat prediksi.</p>
+        </section>
+
+        <section class="section">
+            <h3>Uji Kompetensi Singkat</h3>
+            <p>Dengan pemahaman tentang visualisasi data, cobalah renungkan beberapa hal berikut:</p>
+            <ul>
+                <li>Bagaimana Anda akan memodifikasi kode scraping untuk mencari lowongan pekerjaan "programmer" alih-alih "part-time"?</li>
+                <li>Jika Anda ingin menambahkan informasi "Lokasi" ke dalam tabel hasil scraping, bagaimana Anda akan menganalisis struktur HTML website tersebut untuk menemukannya?</li>
+                <li>Bandingkan proses analisis data secara manual (misalnya, dengan menulis tangan) dengan proses otomatis menggunakan web scraping dan visualisasi. Apa kelebihan dan kekurangan masing-masing?</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h3>Ingin Tahu Lebih?</h3>
+            <p>Jika Anda tertarik untuk mendalami materi web scraping dan visualisasi data lebih lanjut, berikut adalah beberapa sumber daya yang direkomendasikan:</p>
+            <ul>
+                <li>Jobs ID (2020): <a href="http://jobs.id" target="_blank">http://jobs.id</a></li>
+                <li>Wikipedia (2020) - Web Scraping: <a href="https://en.wikipedia.org/wiki/Web_scraping" target="_blank">https://en.wikipedia.org/wiki/Web_scraping</a></li>
+                <li>Google Colaboratory: <a href="https://colab.research.google.com/" target="_blank">https://colab.research.google.com/</a></li>
+                <li>Dataquest (2020) - Tutorial Web Scraping with Python: <a href="https://www.dataquest.io/blog/web-scraping-tutorial-python/" target="_blank">https://www.dataquest.io/blog/web-scraping-tutorial-python/</a></li>
+                <li>PyData (2021) - Pandas: <a href="https://pandas.pydata.org/" target="_blank">https://pandas.pydata.org/</a></li>
+                <li>Plotly (2021) - Basic Charts: <a href="https://plotly.com/python/basic-charts/" target="_blank">https://plotly.com/python/basic-charts/</a></li>
+                <li>Plotly (2021) - Dash: <a href="https://dash-gallery.plotly.host/dash-web-trader/" target="_blank">https://dash-gallery.plotly.host/dash-web-trader/</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Informatika SMA Kelas X | Hak Cipta Materi oleh Kemendikbud</p>
+    </footer>
+
+</body>
+</html>
+```

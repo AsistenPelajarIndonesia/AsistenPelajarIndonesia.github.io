@@ -1,0 +1,439 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inovasi Bioteknologi: Aplikasi Bioteknologi Konvensional</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background_canvas);
+            color: var(--text_primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: var(--primary_blue);
+            color: var(--background_canvas);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background_canvas);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border_divider);
+        }
+
+        h2 {
+            color: var(--primary_blue);
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary_blue);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--accent_green);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--text_secondary);
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            list-style-position: inside; /* Ensures bullets/numbers stay inside padding */
+            margin-left: 0;
+            padding-left: 20px;
+            color: var(--text_secondary);
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: var(--primary_blue);
+            font-weight: bold;
+        }
+
+        .note {
+            background-color: rgba(var(--primary_blue), 0.05); /* Using rgba for transparency */
+            border-left: 5px solid var(--primary_blue);
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: var(--text_secondary);
+        }
+
+        /* Data Grid for Protein Content */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .data-item {
+            background-color: #f9f9f9; /* Slightly lighter background */
+            border: 1px solid var(--border_divider);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            color: var(--text_secondary);
+            font-size: 0.95em;
+        }
+
+        .data-item strong {
+            color: var(--primary_blue);
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Process Flow Diagram (using Flexbox) */
+        .process-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px; /* Increased gap for arrow space */
+            margin-top: 30px;
+        }
+
+        .process-step {
+            background-color: var(--background_canvas);
+            border: 2px solid var(--accent_green);
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1 1 280px; /* Allows flexibility but ensures min width */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .process-step h4 {
+            color: var(--accent_green);
+            margin-top: 0;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            color: var(--text_tertiary);
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '→'; /* Right arrow for horizontal flow */
+            position: absolute;
+            right: -35px; /* Position to the right of the box, in the gap */
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary_blue);
+            font-size: 2.5em;
+            font-weight: bold;
+            line-height: 1; /* Adjust line height for better arrow centering */
+            pointer-events: none; /* Make sure it doesn't interfere with clicks */
+            z-index: 10;
+        }
+
+        /* Enzyme Actions Display */
+        .enzyme-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .enzyme-card {
+            flex: 1 1 280px;
+            background-color: var(--background_canvas);
+            border: 1px solid var(--border_divider);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .enzyme-card h4 {
+            color: var(--primary_blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .enzyme-card p {
+            color: var(--text_secondary);
+            font-size: 0.95em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .container {
+                padding: 15px;
+            }
+            section {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .data-grid {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+            }
+            .process-flow {
+                flex-direction: column; /* Stack steps vertically */
+                align-items: center;
+            }
+            .process-step {
+                flex: 0 1 100%; /* Full width on small screens, no shrinking */
+                width: 90%; /* Adjust width to fit container better */
+                margin-bottom: 40px; /* Add space for down arrow */
+            }
+            .process-step:not(:last-child)::after {
+                content: '↓'; /* Down arrow for vertical flow */
+                top: auto;
+                bottom: -40px; /* Position below the box */
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%) translateY(0); /* Adjust transform for vertical */
+            }
+            .enzyme-actions {
+                flex-direction: column; /* Stack enzyme cards */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Inovasi Bioteknologi</h1>
+            <p>Aplikasi Bioteknologi Konvensional dalam Kehidupan Sehari-hari</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section>
+            <h2>Tempe: Warisan Bioteknologi Konvensional Indonesia</h2>
+            <p>Bioteknologi konvensional telah lama menjadi bagian tak terpisahkan dari kehidupan masyarakat, salah satu contohnya yang paling populer dan banyak diminati adalah <span class="highlight">tempe</span>. Makanan fermentasi khas Indonesia ini merupakan hasil transformasi kedelai melalui proses yang dikendalikan oleh aktivitas mikroorganisme.</p>
+            <p>Secara tradisional, tempe dihasilkan melalui proses <span class="highlight">fermentasi</span> biji kedelai yang dilakukan oleh <span class="highlight">jamur dari genus <em>Rhizopus</em> sp.</span>. Proses ini mengubah struktur dan nutrisi kedelai, menghasilkan produk dengan tekstur, aroma, dan rasa yang unik, serta meningkatkan nilai gizinya.</p>
+            <p class="note">Fleksibilitas dalam bahan baku menjadi penting. Pertanyaan mendasar yang sering muncul adalah: "Apakah bahan non-kedelai juga dapat digunakan sebagai bahan dasar pembuatan tempe?" Ini menjadi relevan terutama saat terjadi kelangkaan atau kenaikan harga kedelai, mendorong pencarian alternatif biji-bijian lain.</p>
+        </section>
+
+        <section>
+            <h2>Diversifikasi Bahan Baku Tempe: Potensi Biji-bijian Non-Kedelai</h2>
+            <p>Melalui berbagai penelitian dan eksperimen, telah terbukti bahwa <span class="highlight">bahan non-kedelai dapat digunakan</span> untuk membuat tempe. Inovasi ini membuka peluang baru untuk produksi tempe yang lebih fleksibel dan berkelanjutan.</p>
+            <h3>Contoh Bahan Baku Non-Kedelai yang Potensial untuk Tempe:</h3>
+            <ul>
+                <li>Kacang gude</li>
+                <li>Lamtoro gung</li>
+                <li>Biji saga</li>
+                <li>Kedelai hitam</li>
+                <li>Kacang arab</li>
+                <li>Kacang merah</li>
+                <li>Kacang hijau</li>
+                <li>Kacang bogor</li>
+                <li>Koro benguk</li>
+                <li>Koro pedang</li>
+                <li>Biji nangka</li>
+                <li>Jagung</li>
+            </ul>
+
+            <h3>Kandungan Protein Berbagai Jenis Biji-bijian (Rata-rata):</h3>
+            <p>Kandungan protein adalah salah satu faktor penting dalam pemilihan bahan baku. Berikut adalah perbandingan kandungan protein dari beberapa jenis biji-bijian yang umum digunakan atau memiliki potensi untuk tempe:</p>
+            <div class="data-grid">
+                <div class="data-item">
+                    <strong>Koro Benguk</strong>
+                    38.04%
+                </div>
+                <div class="data-item">
+                    <strong>Kedelai</strong>
+                    31.35%
+                </div>
+                <div class="data-item">
+                    <strong>Kacang Tanah</strong>
+                    28.50%
+                </div>
+                <div class="data-item">
+                    <strong>Kacang Hijau</strong>
+                    22.20%
+                </div>
+                <div class="data-item">
+                    <strong>Kacang Gude</strong>
+                    20.80%
+                </div>
+                <div class="data-item">
+                    <strong>Kacang Bogor</strong>
+                    18.30%
+                </div>
+                <div class="data-item">
+                    <strong>Lamtoro Gung</strong>
+                    16.05%
+                </div>
+                <div class="data-item">
+                    <strong>Koro Pedang</strong>
+                    7.94%
+                </div>
+            </div>
+            <p class="note"><em>Data di atas menunjukkan bahwa beberapa bahan non-kedelai memiliki potensi protein yang tinggi, bahkan ada yang melebihi kedelai, seperti Koro Benguk, membuka peluang untuk tempe dengan karakteristik nutrisi yang berbeda.</em></p>
+        </section>
+
+        <section>
+            <h2>Mengenal Agen Biologis Kunci dalam Pembuatan Tempe</h2>
+            <p>Proses fermentasi tempe adalah sebuah seni yang melibatkan koordinasi sempurna dari berbagai mikroorganisme. Agen-agen biologis ini bekerja secara sinergis untuk mengubah biji-bijian menjadi tempe.</p>
+            <h3>1. Jamur Tempe (Agen Fermentasi Utama):</h3>
+            <p>Pahlawan utama dalam transformasi kedelai menjadi tempe adalah jamur dari genus <em>Rhizopus</em>, khususnya <span class="highlight"><em>Rhizopus oryzae</em></span> dan <span class="highlight"><em>Rhizopus oligosporus</em></span>. Jamur-jamur ini dikenal karena kemampuannya menghasilkan miselium (hifa) yang tebal dan padat, yang secara efektif mengikat biji-bijian menjadi sebuah blok tempe yang kohesif.</p>
+            <p>Sumber jamur ini disiapkan dalam bentuk <span class="highlight">inokulum</span>, yang lebih dikenal sebagai <span class="highlight">usar</span> atau <span class="highlight">laru tempe</span>. Laru tempe adalah campuran spora <em>Rhizopus</em> dengan bahan pembawa, yang kemudian ditebarkan secara merata pada biji kedelai atau bahan baku lainnya sebelum fermentasi.</p>
+            <h3>2. Bakteri (Agen Pembantu dalam Perendaman Awal):</h3>
+            <p>Sebelum jamur <em>Rhizopus</em> mengambil alih, biji kedelai mengalami tahap perendaman awal yang krusial, di mana <span class="highlight">bakteri laktat</span> (lactic acid bacteria) dan <span class="highlight">bakteri asetat</span> (acetic acid bacteria) berperan aktif. Bakteri-bakteri ini bertanggung jawab menciptakan kondisi asam pada biji kedelai.</p>
+            <ul>
+                <li><strong>Tujuan Asidifikasi:</strong> Proses ini menurunkan pH biji kedelai hingga kisaran <span class="highlight">2.5 - 3.5</span>. Lingkungan asam ini sangat penting karena ia secara efektif menghambat pertumbuhan bakteri pembusuk atau patogen yang tidak diinginkan, sekaligus menciptakan kondisi optimal yang mendukung pertumbuhan dan aktivitas jamur <em>Rhizopus</em>.</li>
+                <li><strong>Durasi Proses Awal:</strong> Tahap perendaman dan asidifikasi ini biasanya memakan waktu antara <span class="highlight">24 hingga 36 jam</span>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Siklus Fermentasi Tempe: Transformasi Melalui Enzim dan Kondisi Ideal</h2>
+            <p>Pembuatan tempe adalah sebuah bioproses kompleks yang terbagi menjadi beberapa tahapan penting, di mana setiap tahapan berkontribusi pada karakteristik akhir produk.</p>
+
+            <h3>Tahapan Utama Proses Fermentasi Tempe:</h3>
+            <div class="process-flow">
+                <div class="process-step">
+                    <h4>1. Perendaman & Asidifikasi (Fermentasi I)</h4>
+                    <p>Biji kedelai direndam, pH diturunkan (2.5-3.5) oleh bakteri laktat & asetat. Durasi: 24-36 jam.</p>
+                </div>
+                <div class="process-step">
+                    <h4>2. Penebaran Laru/Inokulum</h4>
+                    <p>Biji yang telah dikupas dan diasamkan dicampur merata dengan laru tempe (spora <em>Rhizopus</em>).</p>
+                </div>
+                <div class="process-step">
+                    <h4>3. Fermentasi Utama (Fermentasi II)</h4>
+                    <p>Pertumbuhan hifa jamur <em>Rhizopus</em> mengikat biji. Optimal pada suhu 35-40°C, durasi 48-72 jam.</p>
+                </div>
+                <div class="process-step">
+                    <h4>4. Pembentukan Tempe Padat</h4>
+                    <p>Biji-bijian terikat kuat oleh miselium jamur, membentuk blok tempe utuh yang padat dan kompak.</p>
+                </div>
+            </div>
+
+            <h3>Peran Enzim yang Dihasilkan Jamur <em>Rhizopus</em> dalam Fermentasi:</h3>
+            <p>Selama fermentasi, jamur <em>Rhizopus</em> tidak hanya mengikat biji, tetapi juga menghasilkan berbagai enzim ekstraseluler. Enzim-enzim ini mendegradasi komponen kompleks dalam biji-bijian menjadi bentuk yang lebih sederhana, yang berkontribusi pada peningkatan nilai gizi, rasa, dan tekstur tempe.</p>
+            <div class="enzyme-actions">
+                <div class="enzyme-card">
+                    <h4>Protease</h4>
+                    <p>Fungsi utama protease adalah mengurai protein kompleks yang ada dalam biji-bijian menjadi molekul yang lebih kecil seperti <span class="highlight">asam amino</span>. Proses ini tidak hanya meningkatkan ketersediaan protein dan membuatnya lebih mudah dicerna, tetapi juga berkontribusi pada pengembangan rasa umami pada tempe.</p>
+                </div>
+                <div class="enzyme-card">
+                    <h4>Lipase</h4>
+                    <p>Lipase berperan dalam memecah lemak (lipid) menjadi komponen penyusunnya yaitu <span class="highlight">asam lemak</span> dan <span class="highlight">gliserol</span>. Degradasi lemak ini penting karena berkontribusi pada aroma khas tempe dan juga teksturnya.</p>
+                </div>
+                <div class="enzyme-card">
+                    <h4>Amilase</h4>
+                    <p>Enzim amilase bertanggung jawab untuk mendegradasi karbohidrat kompleks seperti amilum (pati) menjadi gula sederhana seperti <span class="highlight">maltosa</span>. Proses ini tidak hanya menyediakan sumber energi bagi pertumbuhan jamur, tetapi juga dapat memengaruhi sedikit rasa manis pada tempe.</p>
+                </div>
+                <div class="enzyme-card">
+                    <h4>Fitase</h4>
+                    <p>Fitase adalah enzim yang mengurai <span class="highlight">asam fitat</span> yang banyak ditemukan pada biji-bijian. Asam fitat dikenal sebagai antinutrisi karena dapat mengikat mineral penting (seperti seng, besi, kalsium), sehingga mengurangi bioavailabilitasnya. Dengan mengurai asam fitat menjadi inositol, <span class="highlight">kalium (K)</span>, dan <span class="highlight">fosfor (P)</span>, fitase meningkatkan penyerapan mineral dalam tempe.</p>
+                </div>
+            </div>
+            <p class="note"><em>Proses fermentasi ini adalah contoh sempurna bagaimana bioteknologi konvensional dapat menghasilkan produk makanan yang tidak hanya lezat tetapi juga lebih bergizi dan mudah dicerna.</em></p>
+        </section>
+
+        <section>
+            <h2>Inovasi Tempe: Solusi Gizi untuk Mengatasi Stunting</h2>
+            <p>Pengembangan tempe terus berlanjut, dengan inovasi yang berfokus pada peningkatan nilai gizi, terutama dalam konteks masalah kesehatan masyarakat seperti <span class="highlight">stunting</span>. Konsep <span class="highlight">"Tempe Berprotein Sempurna"</span> adalah salah satu upaya bioteknologi untuk mengatasi masalah ini.</p>
+            <h3>Latar Belakang Masalah Stunting di Indonesia:</h3>
+            <ul>
+                <li>Berdasarkan Studi Status Gizi Indonesia (SSGI) 2021, prevalensi stunting di Indonesia masih tinggi, mencapai <span class="highlight">24.4%</span>.</li>
+                <li>Stunting adalah kondisi kekurangan gizi kronis yang disebabkan oleh <span class="highlight">kurangnya asupan gizi dalam jangka waktu yang lama</span>, terutama protein, pada anak balita.</li>
+                <li>Anjuran kecukupan protein harian adalah <span class="highlight">1 gram/kg berat badan (BB)</span>. Idealnya, asupan protein ini dibagi menjadi <span class="highlight">0.5 gram/kg BB protein hewani</span> dan <span class="highlight">0.5 gram/kg BB protein nabati</span>.</li>
+                <li>Di masyarakat, tempe seringkali menjadi satu-satunya sumber protein nabati yang dikonsumsi anak balita. Namun, ketergantungan pada tempe saja tanpa sumber protein hewani yang cukup dapat menyebabkan ketidakseimbangan gizi dan menghambat pertumbuhan.</li>
+            </ul>
+
+            <h3>Konsep "Tempe Berprotein Sempurna":</h3>
+            <p>Inovasi ini bertujuan untuk <span class="highlight">memperkaya kandungan protein tempe dengan protein hewani</span>, sehingga tempe dapat menyediakan profil protein yang lebih lengkap dan seimbang, memenuhi kebutuhan protein hewani dan nabati sekaligus.</p>
+            <h4>Strategi & Bahan Pengaya Potensial:</h4>
+            <ul>
+                <li>Salah satu alternatif bahan pengaya yang menjanjikan adalah <span class="highlight">tepung putih telur</span>, yang dapat diperoleh dari telur pecah untuk efisiensi.</li>
+                <li>Alasan utama penggunaan bahan pengaya ini adalah untuk <span class="highlight">meningkatkan kualitas protein total</span> tempe. Selain itu, ada potensi <span class="highlight">optimalisasi fermentasi oleh <em>Rhizopus</em> sp.</span> yang dapat lebih baik memproses campuran bahan baku yang kaya protein.</li>
+            </ul>
+
+            <h4>Metode Evaluasi Tempe Inovatif:</h4>
+            <p>Untuk memastikan bahwa tempe yang diperkaya memiliki kualitas yang diinginkan, berbagai pengujian akan dilakukan:</p>
+            <ol>
+                <li><strong>Uji Fisik Tempe:</strong> Meliputi penilaian aspek sensorik seperti <span class="highlight">warna</span> (apakah ada perubahan yang signifikan), <span class="highlight">tekstur</span> (kekompakan, kelembutan), dan <span class="highlight">rasa</span> (penerimaan, ada tidaknya rasa asing).</li>
+                <li><strong>Uji Kadar Protein Tempe:</strong> Menggunakan metode ilmiah standar seperti <span class="highlight">metode Kjeldahl</span> untuk mengukur secara akurat peningkatan kadar protein total setelah penambahan bahan pengaya.</li>
+                <li><strong>Pengujian Daya Tahan Tempe:</strong> Menilai <span class="highlight">lama simpan</span> atau stabilitas tempe inovatif untuk memastikan produk tetap aman dan berkualitas baik selama periode waktu tertentu.</li>
+            </ol>
+            <p class="note"><em>Melalui inovasi "Tempe Berprotein Sempurna," diharapkan tempe tidak hanya menjadi makanan pokok yang terjangkau dan lezat, tetapi juga menjadi alat efektif dalam upaya pencegahan dan penanggulangan stunting di Indonesia.</em></p>
+        </section>
+
+    </main>
+
+</body>
+</html>
+```

@@ -1,0 +1,876 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Memahami Globalisasi - Sosiologi Kelas XII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables based on the lightMode theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), #2196F3);
+            color: var(--background-canvas);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(-45deg);
+        }
+
+
+        header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background-canvas);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        section h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2em;
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
+            color: var(--text-secondary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding-left: 10px;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        /* Highlight Boxes / Callouts */
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue from primary_blue */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-secondary);
+        }
+
+        .highlight-box strong {
+            color: var(--primary-blue);
+        }
+
+        /* List Styling */
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        /* Definition List (for expert definitions) */
+        dl {
+            margin-top: 20px;
+        }
+
+        dt {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        dd {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* Diagram Representation (simulated without images) */
+        .diagram-concept {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .diagram-item {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 15px 25px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: fit-content;
+            transition: background-color 0.3s ease;
+        }
+
+        .diagram-item:hover {
+            background-color: #0d47a1; /* Darker blue */
+        }
+
+        .diagram-arrow {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid var(--border-divider);
+            margin: 5px 0;
+        }
+
+        .diagram-sub-item {
+            background-color: #fffde7; /* Light amber */
+            color: var(--text-secondary);
+            padding: 10px 15px;
+            border: 1px solid var(--secondary-accent-amber);
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 0.95em;
+            display: inline-block;
+        }
+        
+        .diagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .diagram-node {
+            background-color: #f5f5f5;
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .diagram-node:hover {
+            background-color: #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .diagram-node strong {
+            color: var(--primary-blue);
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .diagram-link {
+            font-size: 0.85em;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+        }
+
+        .arrow-up, .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            margin: 10px auto;
+        }
+
+        .arrow-up {
+            border-bottom: 12px solid var(--primary-blue);
+        }
+
+        .arrow-down {
+            border-top: 12px solid var(--primary-blue);
+        }
+
+        .plus-sign {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.5em;
+            margin: 0 10px;
+        }
+        .minus-sign {
+            color: var(--semantic-error);
+            font-weight: bold;
+            font-size: 1.5em;
+            margin: 0 10px;
+        }
+
+        .economic-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            gap: 15px;
+        }
+
+        .economic-box {
+            background-color: #f0f4c3; /* Light green/yellow */
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .economic-box.level1 { background-color: var(--primary-blue); color: var(--background-canvas); font-size: 1.3em; }
+        .economic-box.level2 { background-color: #bbdefb; border: 1px solid var(--primary-blue); }
+        .economic-box.level3 { background-color: #e3f2fd; border: 1px solid var(--primary-blue); }
+        .economic-box.effect { display: flex; align-items: center; justify-content: center; background-color: #fdfae3; border: 1px solid var(--secondary-accent-amber); }
+        .economic-box.effect.positive { background-color: #e8f5e9; border: 1px solid var(--semantic-success); }
+        .economic-box.effect.negative { background-color: #ffebee; border: 1px solid var(--semantic-error); }
+
+        .political-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            gap: 15px;
+        }
+
+        .political-box {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            min-width: 250px;
+        }
+
+        .political-box.level2 { background-color: #90caf9; color: var(--text-primary); }
+        .political-box.level3 { background-color: #e3f2fd; color: var(--text-secondary); }
+
+        .political-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .political-outcome {
+            flex: 1;
+            background-color: #fce4ec; /* Light pink */
+            border: 2px solid var(--semantic-error);
+            padding: 20px;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .political-outcome.positive {
+            background-color: #e8f5e9; /* Light green */
+            border-color: var(--semantic-success);
+        }
+
+        .political-outcome ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .political-outcome li::before {
+            content: '• ';
+            color: var(--primary-blue);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .cultural-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            gap: 15px;
+        }
+
+        .cultural-box {
+            background-color: #ffee58; /* Amber 500 */
+            color: var(--text-primary);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            min-width: 200px;
+        }
+
+        .cultural-box.level2 { background-color: #fff9c4; border: 1px solid var(--secondary-accent-amber); }
+
+        .cultural-impacts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .cultural-impact-box {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f8f8f8;
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .cultural-impact-box.negative {
+            background-color: #fbe9e7; /* Light red */
+            border-color: var(--semantic-error);
+        }
+
+        .cultural-impact-box.positive {
+            background-color: #e8f5e9; /* Light green */
+            border-color: var(--semantic-success);
+        }
+
+        .cultural-impact-box h4 {
+            color: var(--text-secondary);
+            margin-top: 0;
+            font-size: 1.1em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cultural-impact-box ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .cultural-impact-box li::before {
+            content: '• ';
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .environmental-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            gap: 15px;
+        }
+
+        .environmental-box {
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            min-width: 250px;
+        }
+
+        .environmental-box.level2 { background-color: #c8e6c9; color: var(--text-primary); }
+
+        .environmental-outcomes {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .environmental-outcome-box {
+            flex: 1;
+            background-color: #e0f2f7; /* Light cyan */
+            border: 2px solid var(--semantic-info);
+            padding: 20px;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .environmental-outcome-box.positive {
+            background-color: #e8f5e9;
+            border-color: var(--semantic-success);
+        }
+
+        .environmental-outcome-box.negative {
+            background-color: #ffebee;
+            border-color: var(--semantic-error);
+        }
+
+        .environmental-outcome-box ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .environmental-outcome-box li::before {
+            content: '• ';
+            color: var(--accent-green);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            background-color: #f8f8f8;
+            color: var(--text-tertiary);
+            border-top: 1px solid var(--border-divider);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            section h2 {
+                font-size: 1.6em;
+            }
+
+            section h3 {
+                font-size: 1.3em;
+            }
+
+            .economic-box, .political-box, .cultural-box, .environmental-box {
+                min-width: unset;
+                width: 90%;
+            }
+
+            .political-options, .cultural-impacts, .environmental-outcomes {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .political-outcome, .cultural-impact-box, .environmental-outcome-box {
+                min-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            header {
+                padding: 30px 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            section h2 {
+                font-size: 1.4em;
+            }
+
+            section h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>A. Memahami Globalisasi</h1>
+        <p>"Saat ini kalian tidak perlu keliling dunia untuk melihat dunia."</p>
+    </header>
+
+    <main class="container">
+
+        <section id="konsep-globalisasi">
+            <h2>1. Konsep Globalisasi</h2>
+            <p>Konsep globalisasi bukanlah hal baru, bahkan telah dikenalkan sejak dini untuk mempersiapkan generasi muda menghadapi peluang dan tantangan yang ditimbulkannya. Secara sederhana, globalisasi menggambarkan kondisi dunia yang semakin terhubung dan tanpa batas.</p>
+
+            <div class="highlight-box">
+                <p><strong>Dunia Tanpa Batas (Borderless World):</strong> Globalisasi memungkinkan masyarakat melakukan interaksi, komunikasi, dan pertukaran secara masif tanpa terhalang batas wilayah. Ini berarti masyarakat di seluruh dunia saling terhubung dan dapat mengakses informasi dari mana saja tanpa perlu hadir secara fisik. Kondisi ini didorong oleh pesatnya perkembangan teknologi.</p>
+            </div>
+
+            <h3>Perkembangan Globalisasi</h3>
+            <p>Sejarah globalisasi dapat ditelusuri melalui beberapa periode penting:</p>
+            <ul>
+                <li><strong>Periode Pramodern (Globalisasi Awal):</strong> Menurut Luke Martell dalam bukunya <em>The Sociology of Globalization</em>, globalisasi dimulai sejak peradaban awal. Penemuan Jalur Sutra yang menghubungkan Eropa dan Asia sebagai jalur perdagangan internasional merupakan bukti awal adanya globalisasi, meskipun pada masa itu masih mengandalkan jalur darat. Kemudian, perdagangan jalur rempah melalui laut berhasil menghubungkan Timur dan Barat secara lebih luas.</li>
+                <li><strong>Era Penemuan (Akhir Abad XV):</strong> Penjelajah Eropa mulai menghubungkan Barat dan Timur melalui Benua Amerika. Bangsa-bangsa seperti Portugis, Spanyol, Belanda, dan Inggris menemukan wilayah-wilayah baru yang kemudian dijadikan jajahan untuk menunjang ekonomi mereka. Pada era ini, globalisasi masih sangat kental dengan nuansa kolonialisme.</li>
+                <li><strong>Masa Modern Awal (Abad XVI hingga Revolusi Industri):</strong> Aktivitas perdagangan bangsa Eropa mengalami kemajuan pesat. Kemunculan kapitalisme turut memengaruhi penjelajahan samudra untuk mencari tanah jajahan dan daerah pemasaran hasil industri.</li>
+                <li><strong>Revolusi Industri (Sekitar Abad XVIII):</strong> Era ini sering dianggap sebagai awal mula globalisasi modern. Perkembangan mesin uap di Inggris memungkinkan perpindahan barang melintasi ribuan mil melalui kapal dan kereta api. Industrialisasi menghasilkan produk yang diminati secara global.</li>
+                <li><strong>Periode Pasca-Perang Dingin (Pasca 1990-an):</strong> Arus globalisasi sempat melambat akibat Perang Dingin, runtuhnya Tembok Berlin, dan bubarnya Uni Soviet. Namun, globalisasi kembali menjadi kekuatan nyata melalui organisasi dunia seperti World Trade Organization (WTO) yang mendorong perjanjian perdagangan bebas antarnegara.</li>
+                <li><strong>Revolusi Industri Ketiga (Penemuan Internet):</strong> Penemuan internet mempercepat laju perekonomian dunia secara drastis. Aktivitas impor dan ekspor pada tahun 2000-an bahkan menyumbangkan sekitar setengah dari Pendapatan Domestik Bruto (PDB) dunia.</li>
+                <li><strong>Era Revolusi Industri 4.0:</strong> Hingga saat ini, perdagangan dan ekonomi digital terus berkembang secara masif, semakin memperkuat konektivitas global.</li>
+            </ul>
+
+            <h3>Hubungan Perubahan Sosial, Modernisasi, dan Globalisasi</h3>
+            <p>Peristiwa-peristiwa di atas secara jelas menunjukkan adanya perubahan sosial. Teknologi dan modernisasi memiliki peran sentral dalam memengaruhi proses globalisasi. Ketiga konsep ini saling terkait erat, membentuk dinamika masyarakat modern:</p>
+            <div class="diagram-concept">
+                <div class="diagram-item">PERUBAHAN SOSIAL</div>
+                <div class="diagram-arrow"></div>
+                <div class="diagram-item" style="background-color: var(--secondary-accent-amber);">GLOBALISASI<br><small>(Interaksi dan pertukaran melampaui batasan wilayah)</small></div>
+                <div class="diagram-arrow"></div>
+                <div style="display: flex; gap: 20px;">
+                    <div class="diagram-sub-item">MODERNISASI</div>
+                    <div class="diagram-sub-item">PERKEMBANGAN ILMU PENGETAHUAN DAN TEKNOLOGI</div>
+                </div>
+            </div>
+            <p>Infografik di atas menggambarkan bahwa perubahan sosial mencakup berbagai aspek, termasuk modernisasi dan globalisasi. Faktor utama yang memengaruhi kedua proses tersebut adalah perkembangan ilmu pengetahuan dan teknologi (IPTEK). Perkembangan IPTEK mendorong modernisasi, yang pada gilirannya mempercepat perkembangan peradaban manusia, terutama melalui Revolusi Industri. Modernisasi inilah yang mempercepat arus globalisasi. Pada saat yang sama, globalisasi juga mendorong pemerataan kemajuan ilmu pengetahuan, teknologi, dan ekonomi di seluruh dunia (Ritzer, 2010).</p>
+
+            <h3>Definisi Globalisasi Menurut Para Ahli</h3>
+            <dl>
+                <dt>a. Mauro Guillen</dt>
+                <dd>Globalisasi adalah pertukaran arus barang, jasa, uang, orang, informasi, dan budaya ke seluruh dunia. Proses ini mengarah pada ketergantungan yang lebih besar dan kesadaran bersama masyarakat di seluruh dunia (Tischler, 2011).</dd>
+
+                <dt>b. George Ritzer</dt>
+                <dd>Mendefinisikan globalisasi sebagai proses <strong>transplanet (transplanetary process)</strong> atau serangkaian proses peningkatan <strong>likuiditas</strong> dan arus multiarah yang berkembang dari orang, objek, tempat, dan informasi serta struktur (Monaghan, 2011; Ritzer, 2010). Konsep likuiditas menunjukkan bahwa kondisi yang awalnya terbatas kini makin mudah bergerak atau berpindah dari satu wilayah ke wilayah lainnya.</dd>
+
+                <dt>c. Douglas Kellner</dt>
+                <dd>Mengemukakan bahwa globalisasi berhubungan erat dengan seperangkat relasi sosial, aliran komoditas, kapital, teknologi, ide-ide, bentuk-bentuk kultural, dan penduduk yang melewati batas-batas nasional melalui jaringan masyarakat global (Ritzer dan Goodman, 2008).</dd>
+            </dl>
+        </section>
+
+        <section id="transformasi-global">
+            <h2>2. Transformasi Global</h2>
+            <p>Arus globalisasi memiliki pengaruh besar terhadap perkembangan ekonomi dunia. Sejarah menunjukkan bahwa faktor ekonomi, seperti modernisasi, industrialisasi, dan perdagangan internasional, menjadi pendorong utama terjadinya globalisasi, yang pada akhirnya membawa transformasi (perubahan) pada sistem dunia.</p>
+
+            <div class="diagram-concept">
+                <div class="diagram-item" style="background-color: var(--primary-blue);">NEGARA MAJU<br><small>(Tingkat ekonomi dan kesejahteraan penduduknya tinggi)</small></div>
+                <div class="diagram-grid">
+                    <div class="diagram-node">
+                        <strong>IPTEK maju</strong>
+                    </div>
+                    <div class="diagram-node">
+                        <strong>SDM berkualitas</strong>
+                    </div>
+                    <div class="diagram-node">
+                        <strong>Arus modal tinggi</strong>
+                    </div>
+                    <div class="diagram-node">
+                        <strong>Kekuatan militer maju</strong>
+                    </div>
+                    <div class="diagram-node">
+                        <strong>Pengaruh politik kuat</strong>
+                    </div>
+                    <div class="diagram-node" style="grid-column: 1 / -1; background-color: #e0f2f7;">
+                        <strong style="color: var(--semantic-info);">Negara pusat (core)</strong>
+                    </div>
+                </div>
+
+                <div class="arrow-down"></div>
+                <div class="diagram-item" style="background-color: var(--secondary-accent-amber);">NEGARA BERKEMBANG<br><small>(Tingkat ekonomi dan kesejahteraan penduduknya rendah)</small></div>
+                <div class="diagram-grid">
+                    <div class="diagram-node">
+                        <strong>Kekuatan militer terbatas</strong>
+                    </div>
+                    <div class="diagram-node">
+                        <strong>SDA tinggi</strong>
+                    </div>
+                    <div class="diagram-node">
+                        <strong>SDM rendah</strong>
+                    </div>
+                    <div class="diagram-node">
+                        <strong>Utang luar negeri tinggi</strong>
+                    </div>
+                    <div class="diagram-node">
+                        <strong>Pengaruh politik terbatas</strong>
+                    </div>
+                    <div class="diagram-node" style="grid-column: 1 / -1; background-color: #fce4ec;">
+                        <strong style="color: var(--semantic-error);">Negara pinggiran (pheripherel)</strong>
+                    </div>
+                    <div class="diagram-node" style="grid-column: 1 / -1; background-color: #f3e5f5;">
+                        <strong style="color: #9c27b0;">Negara semi pinggiran (semi pheripherel)</strong>
+                    </div>
+                </div>
+            </div>
+
+            <p>Arus globalisasi dicirikan oleh intensitas tinggi pertukaran barang, jasa, serta perpindahan penduduk antarnegara, menunjukkan peran sentral aktivitas ekonomi dalam proses globalisasi. Secara umum, negara-negara di dunia diklasifikasikan menjadi dua kondisi utama: negara maju dan negara berkembang.</p>
+            <ul>
+                <li><strong>Negara Maju:</strong> Memiliki tingkat ekonomi dan kesejahteraan penduduk yang tinggi. Mereka ditandai dengan kemajuan IPTEK, SDM berkualitas, arus modal yang tinggi, kekuatan militer maju, dan pengaruh politik yang kuat. Negara maju sering disebut sebagai negara <strong>pusat (core)</strong> dalam sistem dunia.</li>
+                <li><strong>Negara Berkembang:</strong> Memiliki tingkat ekonomi dan kesejahteraan masyarakat yang relatif rendah. Ciri-cirinya termasuk kekuatan militer terbatas, SDA tinggi, SDM rendah, utang luar negeri yang tinggi, dan pengaruh politik yang terbatas. Negara berkembang sering menyediakan hasil alam, bahan baku, serta tenaga kerja kasar/buruh, dan menjadi sumber profit bagi negara maju.</li>
+            </ul>
+
+            <p>Meskipun berbeda, negara maju dan berkembang saling membutuhkan. Menurut Immanuel Wallerstein, kondisi ini disebut <strong>dependensi (dependency)</strong> atau ketergantungan. Dependensi dibagi menjadi tiga zona dalam teori sistem dunia:</p>
+            <ul>
+                <li><strong>Pusat (Core):</strong> Umumnya negara maju yang menguasai teknologi, modal, dan memiliki pengaruh politik dominan.</li>
+                <li><strong>Semi Pinggiran (Semi Peripheral):</strong> Negara-negara yang berada di antara pusat dan pinggiran, memiliki ciri-ciri dari keduanya.</li>
+                <li><strong>Pinggiran (Peripheral):</strong> Umumnya negara berkembang yang bergantung pada negara pusat untuk teknologi dan modal, serta menjadi penyedia sumber daya dan tenaga kerja murah.</li>
+            </ul>
+            <p>Negara berkembang umumnya bergantung pada negara maju dalam bidang IPTEK, tenaga ahli, serta modal/investasi. Meskipun investasi asing dan industrialisasi perusahaan multinasional di negara berkembang diyakini dapat menyerap tenaga kerja dan mendorong perekonomian, pada kenyataannya, upah yang diberikan relatif murah dan produk yang dihasilkan diekspor kembali dengan standar harga internasional, sehingga keuntungan lebih banyak mengalir ke pemilik modal/investor. Globalisasi adalah fenomena yang tidak dapat dihindari, sehingga perlu disikapi secara kritis dan bijak.</p>
+        </section>
+
+        <section id="dampak-globalisasi">
+            <h2>3. Dampak Globalisasi</h2>
+            <p>Globalisasi membawa dampak multidimensional, tidak hanya positif tetapi juga berpotensi menimbulkan dampak negatif. Dampak-dampak ini terasa di berbagai bidang kehidupan: ekonomi, politik, sosial budaya, dan lingkungan.</p>
+
+            <h3>a. Bidang Ekonomi</h3>
+            <p>Globalisasi mempermudah dan mempercepat arus pertukaran jasa, barang, hiburan, dan perpindahan manusia. Kemudahan ini mendukung laju perdagangan internasional, baik melalui industri makro maupun mikro. Globalisasi mendorong interaksi ekonomi, perdagangan, dan investasi yang lebih intensif.</p>
+
+            <div class="economic-flow">
+                <div class="economic-box level1">PERDAGANGAN INTERNASIONAL</div>
+                <div class="arrow-down"></div>
+                <div class="economic-box level2">EKSPOR - IMPOR</div>
+                <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                    <div class="economic-box effect positive">Devisa negara, perluasan pangsa pasar</div>
+                    <div class="plus-sign">+</div>
+                    <div class="minus-sign">/</div>
+                    <div class="economic-box effect negative">Ketergantungan, konsumerisme</div>
+                </div>
+                <div class="arrow-down"></div>
+                <div class="economic-box level1">INDUSTRIALISASI</div>
+                <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                    <div class="economic-box effect negative">Kapitalisme, persaingan pasar, dan monopoli</div>
+                    <div class="plus-sign">+</div>
+                    <div class="minus-sign">/</div>
+                    <div class="economic-box effect positive">Lapangan kerja, kebutuhan terpenuhi</div>
+                </div>
+                <div class="arrow-down"></div>
+                <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                    <div class="economic-box level3">EKONOMI MIKRO</div>
+                    <span style="font-weight: bold; font-size: 1.5em; margin: 0 15px; color: var(--text-secondary);">VS</span>
+                    <div class="economic-box level3">EKONOMI MAKRO</div>
+                </div>
+            </div>
+
+            <p>Dampak globalisasi di bidang ekonomi mencakup:</p>
+            <ul>
+                <li><strong>Investasi Asing dan Perusahaan Multinasional:</strong> Mendorong pembangunan infrastruktur, transportasi, dan kawasan industri.</li>
+                <li><strong>Penyerapan Tenaga Kerja:</strong> Industrialisasi yang marak dapat menyerap tenaga kerja dalam jumlah besar melalui model padat karya.</li>
+                <li><strong>Peningkatan Produk Ekspor:</strong> Mendorong pelaku ekonomi lokal untuk meningkatkan produk komoditas ekspor.</li>
+                <li><strong>Sistem Kapitalisme:</strong> Industrialisasi memungkinkan berkembangnya sistem kapitalisme, yang dapat ditunjukkan dengan ketidakadilan hubungan antara pekerja dan pemilik modal (upah minimum vs. profit optimal).</li>
+                <li><strong>Perdagangan Bebas (Free Trade):</strong> Perdagangan tidak hanya di tingkat lokal, tetapi juga lintas negara, memudahkan ekspor dan impor, serta memperluas pangsa pasar.</li>
+                <li><strong>Ekonomi Digital:</strong> Pertukaran jasa, bisnis, dan barang secara elektronik menjadi ciri khas globalisasi ekonomi.</li>
+                <li><strong>Risiko Konsumerisme:</strong> Jika tidak disikapi selektif, globalisasi dapat menyebabkan masyarakat cenderung konsumtif karena pasar yang terbuka menuntut produsen bersaing, dan banyak barang yang ditawarkan mendorong perilaku konsumtif. Produsen lokal mungkin kesulitan bersaing dengan produk asing.</li>
+            </ul>
+
+            <h3>b. Bidang Politik</h3>
+            <p>Globalisasi turut memengaruhi iklim politik dunia. Hubungan internasional diperlukan untuk membangun kerja sama dan menaungi kepentingan setiap negara, seringkali melalui organisasi atau lembaga dunia.</p>
+
+            <div class="political-flow">
+                <div class="political-box">HUBUNGAN INTERNASIONAL</div>
+                <div class="arrow-down"></div>
+                <div class="political-box level2">POLITIK</div>
+                <div class="arrow-down"></div>
+                <div class="political-box level3">KEPENTINGAN</div>
+                <div class="arrow-down"></div>
+                <div class="political-options">
+                    <div class="political-outcome positive">
+                        <h4>KERJA SAMA</h4>
+                        <ul>
+                            <li>Mempererat hubungan diplomatik.</li>
+                            <li>Mendorong <em>good governance</em>.</li>
+                            <li>Memelihara perdamaian dunia.</li>
+                        </ul>
+                    </div>
+                    <div class="political-outcome">
+                        <h4>KONFLIK</h4>
+                        <ul>
+                            <li>Dominasi politik.</li>
+                            <li>Peperangan.</li>
+                            <li>Partikularisme.</li>
+                            <li>Sistem blok.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p>Hubungan antarnegara perlu dikelola dengan baik. Dampak globalisasi di bidang politik dapat mengarah pada kerja sama atau konflik:</p>
+            <ul>
+                <li><strong>Kerja Sama:</strong> Menguatkan hubungan diplomatik, mendorong tata kelola pemerintahan yang baik (<em>good governance</em>), dan memelihara perdamaian dunia. Situasi yang aman dan kondusif juga membuka peluang masuknya investor asing.</li>
+                <li><strong>Konflik:</strong> Latar belakang kepentingan yang berbeda (kekuasaan wilayah, ekonomi, ideologi) dapat memicu konflik. Contohnya adalah Perang Dunia I, Perang Dunia II, dan Perang Dingin, di mana dominasi politik dan partikularisme dengan sistem blok memperkeruh situasi. Peperangan menimbulkan dampak besar: menghambat ekonomi (ekspor/impor), perpindahan penduduk, kerusakan lingkungan, krisis, dan inflasi.</li>
+            </ul>
+            <p>Oleh karena itu, hubungan diplomatik, dialog antarnegara, dan peran organisasi internasional seperti PBB sangat dibutuhkan untuk mencegah konflik dan membangun sistem pemerintahan yang baik di setiap negara.</p>
+
+            <h3>c. Bidang Sosial Budaya</h3>
+            <p>Arus globalisasi juga berdampak signifikan terhadap perubahan sosial budaya masyarakat di seluruh dunia. Perkembangan informasi dan komunikasi memungkinkan pertukaran budaya, baik lokal, nasional, maupun internasional, menjadi sangat mudah, tidak lagi terbatas pada interaksi fisik.</p>
+
+            <div class="cultural-flow">
+                <div class="cultural-box">BUDAYA LUAR</div>
+                <div class="arrow-down"></div>
+                <div class="cultural-box level2">PERTUKARAN BUDAYA</div>
+                <div class="arrow-down"></div>
+                <div class="cultural-box">BUDAYA LOKAL</div>
+                <div class="arrow-down"></div>
+                <div class="cultural-impacts">
+                    <div class="cultural-impact-box negative">
+                        <h4>DAMPAK NEGATIF:</h4>
+                        <ul>
+                            <li>Culture shock (gegar budaya)</li>
+                            <li>Culture lag (ketimpangan budaya)</li>
+                            <li>Etnosentrisme</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-impact-box positive">
+                        <h4>DAMPAK POSITIF:</h4>
+                        <ul>
+                            <li>Toleransi dan keterbukaan</li>
+                            <li>Akulturasi</li>
+                            <li>Glokalisasi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p>Pertukaran budaya dalam globalisasi memiliki dua sisi:</p>
+            <ul>
+                <li><strong>Glokalisasi:</strong> Menurut Roland Robertson, globalisasi tidak hanya mendorong masuknya budaya asing, tetapi juga memberikan kesempatan bagi budaya lokal untuk dikenal di ranah global. Konsep "think globally and act locally" sering diinterpretasikan sebagai sikap dalam menyikapi pengaruh globalisasi.</li>
+                <li><strong>Pentingnya Filter Budaya:</strong> Masyarakat perlu memiliki pemikiran terbuka, namun harus tetap mempertahankan kearifan lokal. Menyaring budaya asing yang masuk melalui berbagai media, serta terus memelihara nilai-nilai budaya asli Indonesia, sangat penting.</li>
+                <li><strong>Tantangan Budaya:</strong>
+                    <ul>
+                        <li><strong>Gegar Budaya (Culture Shock):</strong> Masyarakat kadang belum sepenuhnya mampu menerima perbedaan budaya baru, menyebabkan keterkejutan. Namun, seiring intensifikasi interaksi, masyarakat akan terbiasa dan gegar budaya dapat terjadi secara singkat.</li>
+                        <li><strong>Etnosentrisme:</strong> Apabila perbedaan budaya sulit diterima karena etnosentrisme, pembauran budaya sulit terjadi.</li>
+                        <li><strong>Ketimpangan Budaya (Culture Lag):</strong> Kondisi di mana ada kesenjangan antara kemajuan budaya material dengan budaya non-material, atau kesulitan dalam adaptasi terhadap budaya baru.</li>
+                    </ul>
+                </li>
+                <li><strong>Manfaat Positif:</strong> Jika disikapi dengan bijak, pertukaran budaya dapat mendorong toleransi, keterbukaan, dan akulturasi, memperkaya khazanah budaya global.</li>
+            </ul>
+
+            <h3>d. Bidang Lingkungan</h3>
+            <p>Populasi penduduk dunia yang tinggi berpengaruh terhadap tingkat konsumsi dan kebutuhan hidup sehari-hari. Untuk memenuhi kebutuhan tersebut, pembangunan dan industrialisasi di berbagai sektor dilakukan melalui eksplorasi sumber daya alam. Namun, pembangunan harus mempertimbangkan aspek keberlanjutan.</p>
+
+            <div class="environmental-flow">
+                <div class="environmental-box">PEMBANGUNAN DAN INDUSTRIALISASI</div>
+                <div class="arrow-down"></div>
+                <div class="environmental-box level2">EKSPLORASI SDA</div>
+                <div class="arrow-down"></div>
+                <div class="environmental-outcomes">
+                    <div class="environmental-outcome-box positive">
+                        <h4>REHABILITASI</h4>
+                        <ul>
+                            <li>Penghijauan.</li>
+                            <li>Memelihara ekosistem.</li>
+                            <li>Gerakan lingkungan.</li>
+                        </ul>
+                    </div>
+                    <div class="environmental-outcome-box negative">
+                        <h4>EKSPLOITASI</h4>
+                        <ul>
+                            <li>Kerusakan lingkungan.</li>
+                            <li>Bencana alam.</li>
+                            <li>Kehilangan mata pencarian.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p>Eksploitasi sumber daya alam secara berlebihan dapat menyebabkan kerusakan lingkungan, baik di tingkat lokal maupun global:</p>
+            <ul>
+                <li><strong>Bencana Lingkungan Lokal:</strong> Penambangan berlebihan dapat menyebabkan tanah longsor.</li>
+                <li><strong>Pemanasan Global:</strong> Penebangan hutan dalam skala besar berkontribusi pada pemanasan global.</li>
+                <li><strong>Dampak Sosial-Ekonomi Lokal:</strong> Masyarakat lokal yang bergantung pada hasil alam setempat dapat tergusur dan beralih ke sektor mata pencarian lain akibat kerusakan lingkungan.</li>
+            </ul>
+            <p>Oleh karena itu, penting untuk menyeimbangkan antara kebutuhan pembangunan dan pelestarian lingkungan, serta menerapkan prinsip-prinsip keberlanjutan untuk menjaga kelangsungan hidup di masa depan.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Bab 2 Globalisasi dan Masyarakat Digital | Sosiologi untuk SMA/MA Kelas XII</p>
+        <p>Dirancang untuk tujuan pendidikan.</p>
+    </footer>
+</body>
+</html>
+```

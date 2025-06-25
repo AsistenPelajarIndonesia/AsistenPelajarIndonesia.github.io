@@ -1,0 +1,293 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab V: Bangun Ruang Sisi Lengkung - 5.3 Bola</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #424242;
+            margin-top: 25px;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        strong {
+            color: #1976D2;
+        }
+        .definition-box, .formula-box, .property-box {
+            background-color: #E3F2FD;
+            border-left: 5px solid #1976D2;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .formula-box {
+            background-color: #F1F8E9;
+            border-left-color: #388E3C;
+        }
+        .formula-box code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            color: #388E3C;
+            background-color: #FFF;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .property-box {
+            background-color: #FFF3E0;
+            border-left-color: #FFB300;
+        }
+        .property-box strong {
+            color: #FFB300;
+        }
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .highlight {
+            background-color: #FFF9C4;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .math-display {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.3em;
+        }
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .responsive-table th, .responsive-table td {
+            border: 1px solid #E0E0E0;
+            padding: 12px;
+            text-align: center;
+        }
+        .responsive-table th {
+            background-color: #E3F2FD;
+            color: #1976D2;
+        }
+        .responsive-table tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula-box code {
+                font-size: 1em;
+            }
+            .responsive-table th, .responsive-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab V: Bangun Ruang Sisi Lengkung</h1>
+        <h2>5.3 Bola</h2>
+
+        <div class="definition-box">
+            <h3>Definisi Bola</h3>
+            <p>Bola adalah sebuah bangun ruang sisi lengkung yang dibentuk dari kumpulan titik-titik yang memiliki jarak yang sama terhadap satu titik pusat. Bayangkan sebuah lingkaran yang diputar mengelilingi salah satu diameternya. Hasil putaran tersebut akan membentuk sebuah bola.</p>
+            <p>Bola hanya memiliki <strong>satu sisi</strong>, yaitu sisi lengkung yang tertutup rapat. Berbeda dengan bangun ruang lain yang memiliki rusuk dan titik sudut, bola <strong>tidak memiliki rusuk maupun titik sudut</strong>.</p>
+            <p>Contoh benda sehari-hari yang berbentuk bola antara lain:</p>
+            <ul>
+                <li>Bola sepak</li>
+                <li>Bola basket</li>
+                <li>Kelereng</li>
+                <li>Globe/peta dunia</li>
+                <li>Buah jeruk</li>
+            </ul>
+        </div>
+
+        <div class="property-box">
+            <h3>Karakteristik Utama Bola</h3>
+            <p>Sebuah bola dapat didefinisikan sepenuhnya hanya dengan mengetahui <strong>jari-jarinya (r)</strong>. Jari-jari adalah jarak dari titik pusat bola ke setiap titik pada permukaan bola.</p>
+        </div>
+
+        <h2>Luas Permukaan Bola</h2>
+        <p>Luas permukaan bola memiliki hubungan yang menarik dengan luas lingkaran. Jika kita memiliki sebuah lingkaran dengan jari-jari <em>r</em>, maka luas lingkaran tersebut adalah <code>πr²</code>. Luas permukaan bola dengan jari-jari yang sama ternyata empat kali lebih besar dari luas lingkaran tersebut.</p>
+
+        <div class="formula-box">
+            <h3>Rumus Luas Permukaan Bola</h3>
+            <p>Luas permukaan bola (L) dengan jari-jari (r) dirumuskan sebagai:</p>
+            <div class="math-display">
+                <code>L = 4πr²</code>
+            </div>
+            <p>Di mana:</p>
+            <ul>
+                <li><strong>L</strong> adalah Luas Permukaan Bola</li>
+                <li><strong>r</strong> adalah Jari-jari Bola</li>
+                <li><strong>π (pi)</strong> adalah konstanta matematika, bernilai kira-kira 3.14 atau 22/7</li>
+            </ul>
+        </div>
+
+        <p>Konsep ini dapat divisualisasikan dengan membayangkan mengisi penuh luas sebuah lingkaran dengan potongan-potongan kecil dari permukaan bola. Akan dibutuhkan empat lingkaran dengan jari-jari yang sama untuk menutupi seluruh permukaan bola.</p>
+
+        <h2>Volume Bola</h2>
+        <p>Volume bola mengukur seberapa banyak ruang yang ditempati oleh bola. Perhitungan volume bola juga melibatkan jari-jarinya dan konstanta π.</p>
+
+        <div class="formula-box">
+            <h3>Rumus Volume Bola</h3>
+            <p>Volume bola (V) dengan jari-jari (r) dirumuskan sebagai:</p>
+            <div class="math-display">
+                <code>V = 4/3 πr³</code>
+            </div>
+            <p>Di mana:</p>
+            <ul>
+                <li><strong>V</strong> adalah Volume Bola</li>
+                <li><strong>r</strong> adalah Jari-jari Bola</li>
+                <li><strong>π (pi)</strong> adalah konstanta matematika</li>
+            </ul>
+        </div>
+
+        <p>Perhatikan bahwa dalam rumus volume, jari-jari dipangkatkan tiga (<code>r³</code>), menunjukkan hubungan tiga dimensi antara jari-jari dan volume.</p>
+
+        <div class="property-box">
+            <h3>Hubungan dengan Tabung (Menurut Archimedes)</h3>
+            <p>Seorang matematikawan Yunani kuno, Archimedes, menemukan hubungan yang sangat penting antara bola dan tabung. Ia menyatakan bahwa:</p>
+            <p>Luas permukaan tabung yang memiliki jari-jari sama dengan jari-jari bola (<em>r</em>) dan tingginya sama dengan diameter bola (<em>2r</em>) adalah <strong>3/2 kali luas permukaan bola</strong>.</p>
+            <p>Atau dengan kata lain, perbandingan luas permukaan bola dengan luas permukaan tabung tersebut adalah <strong>2 : 3</strong>.</p>
+            <p>Hal ini juga berlaku untuk volume, di mana volume bola adalah <strong>2/3 dari volume tabung</strong> dengan dimensi yang sama.</p>
+            <div class="math-display">
+                <code>L_bola = 2/3 L_tabung (jika r_tabung = r_bola dan t_tabung = 2r_bola)</code><br>
+                <code>V_bola = 2/3 V_tabung (jika r_tabung = r_bola dan t_tabung = 2r_bola)</code>
+            </div>
+        </div>
+
+        <div class="definition-box">
+            <h3>Contoh Penerapan Rumus</h3>
+
+            <h4>Contoh 1: Menghitung Luas Permukaan Bola</h4>
+            <p>Sebuah bola memiliki diameter 10 cm. Hitung luas permukaannya!</p>
+            <p><strong>Diketahui:</strong></p>
+            <ul>
+                <li>Diameter (d) = 10 cm</li>
+                <li>Jari-jari (r) = d / 2 = 10 cm / 2 = 5 cm</li>
+            </ul>
+            <p><strong>Penyelesaian:</strong></p>
+            <div class="math-display">
+                <code>L = 4πr²</code><br>
+                <code>L = 4π(5 cm)²</code><br>
+                <code>L = 4π(25 cm²)</code><br>
+                <code>L = 100π cm²</code>
+            </div>
+            <p>Jadi, luas permukaan bola tersebut adalah <strong>100π cm²</strong>.</p>
+
+            <h4>Contoh 2: Menghitung Volume Bola</h4>
+            <p>Sebuah bola memiliki jari-jari 12 meter. Hitung volumenya!</p>
+            <p><strong>Diketahui:</strong></p>
+            <ul>
+                <li>Jari-jari (r) = 12 m</li>
+            </ul>
+            <p><strong>Penyelesaian:</strong></p>
+            <div class="math-display">
+                <code>V = 4/3 πr³</code><br>
+                <code>V = 4/3 π(12 m)³</code><br>
+                <code>V = 4/3 π(1728 m³)</code><br>
+                <code>V = 4 × π × 576 m³</code><br>
+                <code>V = 2304π m³</code>
+            </div>
+            <p>Jadi, volume bola tersebut adalah <strong>2304π m³</strong>.</p>
+
+            <h4>Contoh 3: Mencari Jari-jari dari Luas Permukaan</h4>
+            <p>Luas permukaan sebuah bola adalah 441π m². Berapakah jari-jarinya?</p>
+            <p><strong>Diketahui:</strong></p>
+            <ul>
+                <li>Luas Permukaan (L) = 441π m²</li>
+            </ul>
+            <p><strong>Penyelesaian:</strong></p>
+            <div class="math-display">
+                <code>L = 4πr²</code><br>
+                <code>441π m² = 4πr²</code><br>
+                <code>441 m² = 4r²</code> (bagi kedua sisi dengan π) <br>
+                <code>r² = 441/4 m²</code> <br>
+                <code>r = √(441/4) m</code> <br>
+                <code>r = 21/2 m</code> <br>
+                <code>r = 10.5 m</code>
+            </div>
+            <p>Jadi, jari-jari bola tersebut adalah <strong>10.5 meter</strong>.</p>
+
+             <h4>Contoh 4: Mencari Jari-jari dari Volume</h4>
+            <p>Volume sebuah bola adalah 288π m³. Berapakah jari-jarinya?</p>
+            <p><strong>Diketahui:</strong></p>
+            <ul>
+                <li>Volume (V) = 288π m³</li>
+            </ul>
+            <p><strong>Penyelesaian:</strong></p>
+            <div class="math-display">
+                <code>V = 4/3 πr³</code><br>
+                <code>288π m³ = 4/3 πr³</code><br>
+                <code>288 m³ = 4/3 r³</code> (bagi kedua sisi dengan π) <br>
+                <code>r³ = 288 m³ × 3/4</code><br>
+                <code>r³ = 72 m³ × 3</code><br>
+                <code>r³ = 216 m³</code><br>
+                <code>r = ³√216 m³</code> <br>
+                <code>r = 6 m</code>
+            </div>
+            <p>Jadi, jari-jari bola tersebut adalah <strong>6 meter</strong>.</p>
+        </div>
+
+        <p>Memahami konsep bola, luas permukaannya, dan volumenya sangat penting dalam berbagai aplikasi, mulai dari perhitungan matematis hingga pemahaman fenomena alam dan rekayasa.</p>
+
+    </div>
+
+</body>
+</html>
+```

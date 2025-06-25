@@ -1,0 +1,323 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 8: Gejala Kuantum - Konsep Foton</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .fact {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fact::before {
+            content: "💡";
+            font-size: 1.5em;
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .explanation-block {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .explanation-block h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item .year {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .timeline-item .event {
+            font-size: 1em;
+            color: var(--text-tertiary);
+        }
+
+        .concept-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .concept-box:hover {
+            background-color: #1565C0;
+        }
+
+        .concept-box .concept-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .concept-box .concept-description {
+            font-size: 1.1em;
+        }
+
+        .equation {
+            background-color: #e3f2fd;
+            border: 1px dashed var(--primary-blue);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: inline-block;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.4em;
+            color: var(--primary-blue);
+            text-align: center;
+        }
+
+        .equation-label {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            .fact {
+                flex-direction: column;
+                text-align: center;
+            }
+            .fact::before {
+                margin-bottom: 10px;
+            }
+            .equation {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Bab 8: Gejala Kuantum - Konsep Foton</h1>
+
+        <div class="explanation-block">
+            <h3>Pendahuluan: Memahami Sifat Cahaya</h3>
+            <p>Cahaya, sesuatu yang kita lihat setiap hari, telah lama menjadi subjek keingintahuan dan perdebatan ilmiah. Apakah cahaya hanyalah gelombang, atau ia memiliki sifat partikel? Bab ini akan membawa kita pada perjalanan menelusuri perkembangan konsep cahaya, dari pandangan klasik hingga revolusi kuantum yang mengubah pemahaman kita tentang alam semesta pada skala terkecil.</p>
+        </div>
+
+        <h2>Perjalanan Konsep Cahaya: Dari Gelombang ke Kuantum</h2>
+
+        <p>Selama berabad-abad, para ilmuwan telah berupaya menjelaskan hakikat cahaya. Dua pandangan utama yang mendominasi adalah cahaya sebagai gelombang dan cahaya sebagai partikel.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="year">1801</span>
+                <div class="event">
+                    <strong>Thomas Young</strong> melalui <span class="highlight">eksperimen celah ganda</span>, secara meyakinkan menunjukkan bahwa cahaya bersifat seperti <span class="highlight">gelombang</span>. Eksperimen ini mendemonstrasikan fenomena interferensi dan difraksi, yang merupakan ciri khas gelombang.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="year">1831-1879</span>
+                <div class="event">
+                    <strong>James Clerk Maxwell</strong> memprediksi bahwa cahaya adalah <span class="highlight">gelombang elektromagnetik</span>. Ia menunjukkan bahwa cahaya membawa energi melalui medan listrik dan magnet yang berosilasi, memperkuat pandangan gelombang.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="year">1857-1894</span>
+                <div class="event">
+                    <strong>Heinrich Hertz</strong> berhasil mendemonstrasikan keberadaan <span class="highlight">gelombang elektromagnetik</span> (termasuk gelombang radio) menggunakan rangkaian listrik, yang secara empiris mendukung teori Maxwell.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="year">1901</span>
+                <div class="event">
+                    <strong>Max Planck</strong> memperkenalkan konsep <span class="highlight">kuantisasi energi</span> saat mempelajari radiasi benda hitam. Ia berhipotesis bahwa energi tidak dipancarkan secara kontinu, melainkan dalam <span class="highlight">paket-paket diskrit</span> yang disebut <span class="highlight">kuanta</span> atau <span class="highlight">foton</span>. Ini adalah awal dari revolusi kuantum.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="year">1905</span>
+                <div class="event">
+                    <strong>Albert Einstein</strong> menggunakan teori kuantum Planck untuk menjelaskan <span class="highlight">efek fotolistrik</span>. Ia menyatakan bahwa cahaya berinteraksi dengan materi dalam bentuk paket energi diskrit (foton), bukan gelombang kontinu. Gagasan ini membawanya memenangkan Hadiah Nobel Fisika.
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-block">
+            <h3>Konsep Foton: Paket Energi Cahaya</h3>
+            <p>Pada awal abad ke-20, fisika menghadapi tantangan besar dalam menjelaskan fenomena tertentu menggunakan teori fisika klasik. Salah satu terobosan terbesar datang dari Max Planck dan Albert Einstein melalui konsep <span class="highlight">foton</span>.</p>
+            <p>Sebelum Planck, cahaya dipahami sebagai gelombang kontinu yang membawa energi. Namun, banyak fenomena, seperti radiasi benda hitam dan efek fotolistrik, tidak dapat dijelaskan dengan baik oleh model gelombang saja.</p>
+
+            <div class="fact">
+                💡 Planck berhipotesis bahwa energi yang dipancarkan atau diserap oleh atom tidak secara terus menerus, melainkan dalam bentuk paket-paket energi yang terkuantisasi. Setiap paket energi ini memiliki besaran tertentu yang disebut <span class="highlight">kuantum</span>.
+            </div>
+
+            <p>Untuk cahaya, paket energi diskrit ini dikenal sebagai <span class="highlight">foton</span>. Setiap foton membawa sejumlah energi yang bergantung pada frekuensi cahaya tersebut.</p>
+
+            <div class="equation">
+                E = nhf
+                <span class="equation-label">Persamaan Planck untuk Energi Kuantum</span>
+            </div>
+
+            <p>Dalam persamaan ini:</p>
+            <ul>
+                <li><span class="highlight">E</span> adalah energi total dari sejumlah kuanta energi.</li>
+                <li><span class="highlight">n</span> adalah bilangan asli (1, 2, 3, ...), yang menunjukkan jumlah paket energi atau foton.</li>
+                <li><span class="highlight">h</span> adalah <span class="highlight">konstanta Planck</span>, sebuah konstanta fundamental dalam fisika kuantum. Nilainya adalah sekitar <span class="highlight">6,63 x 10<sup>-34</sup> Joule-detik (Js)</span>. Konstanta ini sangat penting karena menetapkan batas energi terkecil yang dapat ditukar dalam interaksi kuantum.</li>
+                <li><span class="highlight">f</span> adalah frekuensi cahaya (dalam Hertz, Hz).</li>
+            </ul>
+
+            <p>Jika kita berbicara tentang satu foton tunggal, maka <span class="highlight">n = 1</span>, sehingga energi satu foton adalah:</p>
+
+            <div class="equation">
+                E = hf
+                <span class="equation-label">Energi Satu Foton</span>
+            </div>
+
+            <p>Ini berarti setiap foton memiliki energi yang secara langsung proporsional dengan frekuensi cahaya. Semakin tinggi frekuensi cahaya, semakin besar energi yang dibawa oleh setiap fotonnya.</p>
+
+            <p>Konsep foton ini memberikan penjelasan yang kuat untuk berbagai fenomena:</p>
+            <ul>
+                <li><strong>Efek Fotolistrik:</strong> Cahaya dapat mengeluarkan elektron dari permukaan logam hanya jika energi fotonnya cukup tinggi untuk mengatasi energi ikat elektron tersebut.</li>
+                <li><strong>Radiasi Elektromagnetik:</strong> Spektrum cahaya dari gelombang radio frekuensi rendah hingga sinar gamma frekuensi tinggi semuanya terdiri dari foton, masing-masing dengan energi yang sesuai dengan frekuensinya.</li>
+            </ul>
+        </div>
+
+        <div class="explanation-block">
+            <h3>Mengapa Konsep Foton Penting?</h3>
+            <p>Memahami foton memungkinkan kita untuk mengerti mengapa:</p>
+            <ul>
+                <li>Radiasi microwave dengan frekuensi rendah tidak dapat merusak jaringan sel hidup seperti sinar ultraviolet (UV) atau sinar-X. Foton microwave memiliki energi <span class="highlight">E = hf</span> yang jauh lebih rendah karena frekuensinya rendah, sehingga tidak cukup kuat untuk mengionisasi atom atau molekul dalam sel.</li>
+                <li>Sebaliknya, foton sinar UV dan sinar-X memiliki frekuensi yang sangat tinggi. Ini berarti setiap foton membawa energi yang jauh lebih besar, mampu menyebabkan kerusakan pada sel jika terpapar berlebihan. Energi foton sinar UV bisa jutaan kali lebih besar daripada foton microwave karena frekuensinya jutaan kali lebih tinggi.</li>
+            </ul>
+            <p>Konsep kuantisasi energi dan foton ini menjadi landasan bagi seluruh bidang <span class="highlight">fisika kuantum</span>, yang menjelaskan perilaku materi dan energi pada skala atomik dan sub-atomik.</p>
+        </div>
+
+        <div class="concept-box">
+            <div class="concept-title">Inti Konsep Foton</div>
+            <div class="concept-description">Cahaya terdiri dari paket-paket energi diskrit yang disebut foton. Setiap foton memiliki energi yang ditentukan oleh frekuensi cahaya (E=hf), dan konstanta Planck (h) adalah kunci untuk memahami besaran kuantum energi ini.</div>
+        </div>
+
+    </div>
+</body>
+</html>
+```

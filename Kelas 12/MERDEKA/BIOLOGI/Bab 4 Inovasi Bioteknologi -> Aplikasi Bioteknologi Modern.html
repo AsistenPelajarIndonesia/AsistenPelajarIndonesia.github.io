@@ -1,0 +1,831 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Bioteknologi Modern - Biologi Kelas XII</title>
+    <style>
+        :root {
+            /* Light Mode Theme Colors */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            font-size: 1.8em;
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        section h3 {
+            color: var(--accent-green);
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid var(--accent-green);
+        }
+
+        section h4 {
+            color: var(--secondary-accent-amber);
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-left: 8px;
+            border-left: 2px solid var(--secondary-accent-amber);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .info-box, .warning-box, .success-box {
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            color: var(--background-canvas); /* White text for better contrast */
+            font-weight: bold;
+        }
+
+        .info-box {
+            background-color: var(--semantic-info);
+        }
+
+        .warning-box {
+            background-color: var(--semantic-warning);
+        }
+
+        .success-box {
+            background-color: var(--semantic-success);
+        }
+
+        details {
+            background-color: #f0f8ff; /* Light blue background for collapsibles */
+            border: 1px solid var(--primary-blue);
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        summary {
+            padding: 15px 20px;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        summary:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        details[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .details-content {
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-top: 1px solid var(--border-divider);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            color: var(--text-primary);
+        }
+
+        .details-content p, .details-content ul, .details-content ol {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px 12px;
+            text-align: left;
+            color: var(--text-primary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f7f7; /* Slightly different background for even rows */
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: var(--border-divider);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-tertiary);
+            font-style: italic;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
+
+            section h3 {
+                font-size: 1.2em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 15px;
+            }
+
+            summary {
+                padding: 10px 15px;
+            }
+
+            .details-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Aplikasi Bioteknologi Modern</h1>
+            <p>Memahami Inovasi Bioteknologi di Abad ke-21</p>
+        </header>
+
+        <main>
+            <p>Hidup di abad ke-21 yang bertumpu pada budaya teknologi informasi dan kecerdasan buatan, semakin mendorong lahirnya produk-produk baru pada bioteknologi modern. Bioteknologi modern memanfaatkan teknik-teknik canggih untuk memanipulasi materi genetik organisme hidup, menghasilkan produk atau proses yang bermanfaat bagi manusia.</p>
+
+            <section>
+                <h2>Mengenal Produk Bioteknologi Modern</h2>
+                <p>Bioteknologi modern telah menghasilkan berbagai produk di berbagai bidang kehidupan. Berikut adalah beberapa contoh dan proses pembuatannya:</p>
+
+                <details>
+                    <summary>Produksi Antibodi Monoklonal</summary>
+                    <div class="details-content">
+                        <p>Antibodi monoklonal adalah antibodi identik yang diproduksi oleh sel-sel kloning yang semuanya berasal dari satu sel induk (monoklon). Antibodi ini memiliki kemampuan spesifik untuk mengikat satu jenis antigen tertentu, menjadikannya sangat berguna dalam diagnostik dan terapi.</p>
+                        <h4>Tahapan Produksi Antibodi Monoklonal:</h4>
+                        <ol>
+                            <li><strong>Injeksi Antigen:</strong> Tikus diinjeksi dengan antigen yang diinginkan untuk merangsang respons imun dan produksi limfosit B.</li>
+                            <li><strong>Pengambilan Limfosit B dan Sel Mieloma:</strong> Limfosit B (sel penghasil antibodi) diambil dari limpa tikus. Sel mieloma (sel kanker yang dapat membelah tanpa batas) juga disiapkan.</li>
+                            <li><strong>Fusi Sel (Hibridoma):</strong> Limfosit B dan sel mieloma difusikan untuk membentuk sel hibridoma. Sel hibridoma memiliki kemampuan memproduksi antibodi (dari limfosit B) dan kemampuan membelah diri secara tak terbatas (dari sel mieloma).</li>
+                            <li><strong>Kultur Hibridoma:</strong> Sel hibridoma dibiakkan dalam satu kultur.</li>
+                            <li><strong>Seleksi Sel Hibridoma:</strong> Hibridoma yang berhasil memproduksi antibodi spesifik diseleksi.</li>
+                            <li><strong>Produksi Antibodi Monoklonal:</strong> Sel-sel hibridoma yang terseleksi kemudian diperbanyak untuk menghasilkan antibodi monoklonal dalam jumlah besar.</li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Ilustrasi Tahapan Pembuatan Antibodi Monoklonal
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Produksi Vaksin</summary>
+                    <div class="details-content">
+                        <p>Vaksin adalah zat yang digunakan untuk merangsang sistem kekebalan tubuh agar membentuk imunitas terhadap penyakit tertentu. Bioteknologi modern memungkinkan produksi vaksin yang lebih aman dan efektif.</p>
+                        <h4>Tahapan Umum Produksi Vaksin berbasis Rekayasa Genetika:</h4>
+                        <ol>
+                            <li><strong>Identifikasi Protein Permukaan Virus/Bakteri:</strong> Protein permukaan patogen yang dapat memicu respons imun diidentifikasi.</li>
+                            <li><strong>Isolasi Gen Protein:</strong> Gen yang mengkode protein permukaan virus/bakteri tersebut diisolasi.</li>
+                            <li><strong>Penyisipan Gen ke Plasmid:</strong> Gen ini disisipkan ke dalam plasmid bakteri. Plasmid adalah molekul DNA sirkular kecil pada bakteri yang berfungsi sebagai vektor.</li>
+                            <li><strong>Transformasi Bakteri:</strong> Plasmid rekombinan (plasmid yang telah disisipi gen) dimasukkan kembali ke dalam bakteri.</li>
+                            <li><strong>Perbanyakan Bakteri dan Produksi Protein:</strong> Bakteri yang telah dimodifikasi diperbanyak. Bakteri ini akan memproduksi protein permukaan virus/bakteri dalam jumlah besar.</li>
+                            <li><strong>Ekstraksi dan Pemurnian Protein:</strong> Protein yang dihasilkan diekstrak dan dimurnikan untuk digunakan sebagai vaksin.</li>
+                            <li><strong>Formulasi Vaksin dan Injeksi:</strong> Protein murni diformulasikan menjadi vaksin dan diinjeksikan pada manusia/hewan untuk memicu imunitas.</li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Ilustrasi Tahapan Pembuatan Vaksin
+                        </div>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>1. Kultur Jaringan</h2>
+                <p>Kultur jaringan adalah salah satu teknik bioteknologi modern yang memungkinkan perbanyakan tumbuhan secara vegetatif dalam kondisi aseptik menggunakan medium dan kondisi tertentu. Teknik ini dikenal sebagai <em>kultur in vitro</em>.</p>
+
+                <details>
+                    <summary>Prinsip dan Teori Dasar Kultur Jaringan</summary>
+                    <div class="details-content">
+                        <p>Prinsip utama kultur jaringan adalah perbanyakan tumbuhan secara vegetatif dalam kondisi aseptik (bebas mikroorganisme) dengan menggunakan medium nutrisi khusus dan kondisi lingkungan yang terkontrol.</p>
+                        <h4>Teori yang Mendasari:</h4>
+                        <ul>
+                            <li><strong>Teori Sel:</strong> Setiap sel berasal dari sel sebelumnya dan merupakan unit terkecil reproduksi.</li>
+                            <li><strong>Teori Totipotensi:</strong> Setiap sel tumbuhan memiliki kapasitas genetik untuk beregenerasi dan membentuk tanaman utuh dengan sifat yang sama persis dengan induknya jika ditempatkan pada lingkungan yang sesuai.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Tahapan Kultur Jaringan</summary>
+                    <div class="details-content">
+                        <ol>
+                            <li><strong>Penyiapan Media:</strong> Media dasar yang umum digunakan adalah Murashige dan Skoog (MS), yang mengandung nutrisi esensial, vitamin, dan hormon pertumbuhan.</li>
+                            <li><strong>Inisiasi:</strong> Pengambilan eksplan (bagian tanaman yang akan dibiakkan, seperti daun, tunas, batang, akar, embrio) dari tanaman induk. Eksplan harus berasal dari jaringan meristematis yang aktif membelah.</li>
+                            <li><strong>Sterilisasi:</strong> Proses membersihkan media, eksplan, dan peralatan dari kontaminan (bakteri, jamur) menggunakan disinfektan seperti etanol atau larutan NaClO.</li>
+                            <li><strong>Multiplikasi:</strong> Eksplan ditanam pada media dan diinduksi untuk membentuk kalus (massa sel tak terdiferensiasi) atau langsung tunas baru.</li>
+                            <li><strong>Pemanjangan Akar dan Tunas (Pengakaran):</strong> Kalus atau tunas diinduksi untuk membentuk akar dan tunas yang lengkap, menghasilkan tanaman kecil yang disebut <strong>planlet</strong>.</li>
+                            <li><strong>Aklimatisasi:</strong> Planlet dipindahkan dari lingkungan steril ke lingkungan non-steril (misalnya dalam polybag) yang diberi sungkup untuk adaptasi. Setelah mampu beradaptasi, sungkup dilepas dan planlet dipelihara seperti bibit generatif.</li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Diagram Proses Kultur Jaringan
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Keuntungan Kultur Jaringan</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li>Menghasilkan bibit tanaman dalam jumlah <strong>banyak</strong> dan waktu yang <strong>singkat</strong> dengan sifat yang <strong>sama persis</strong> dengan induknya.</li>
+                            <li>Menghasilkan sifat bibit tanaman yang <strong>unggul</strong>.</li>
+                            <li>Bibit tanaman <strong>terhindar dari hama penyakit</strong> karena diproses dalam kondisi steril.</li>
+                            <li>Pengadaan bibit tanaman <strong>tidak tergantung musim</strong>, memungkinkan produksi sepanjang tahun.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Contoh Aplikasi Kultur Jaringan</summary>
+                    <div class="details-content">
+                        <h4>Contoh Bibit Tanaman Hasil Kultur Jaringan:</h4>
+                        <ul>
+                            <li><strong>Padi Biosalin 1 dan 2:</strong> Toleran terhadap tanah dan air berkadar garam tinggi.</li>
+                            <li><strong>Kedelai Dering 1:</strong> Toleran kekeringan, tanah masam, produktivitas tinggi, dan cepat masak.</li>
+                            <li><strong>Tebu Giant Sugarcane:</strong> Adaptif pada iklim basah, unggul rendemen, dan daya hablur tinggi.</li>
+                            <li><strong>Pisang Abaca (Musa textilis):</strong> Unggul, tahan layu, dan batang berserat tinggi.</li>
+                        </ul>
+                        <h4>Produksi Metabolit Sekunder untuk Kesehatan:</h4>
+                        <p>Kultur jaringan juga digunakan untuk menghasilkan metabolit sekunder dan alkaloid yang berfungsi sebagai obat.</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanaman</th>
+                                    <th>Metabolit Sekunder</th>
+                                    <th>Fungsi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Papaver somniferum</td><td>Kodein (alkaloid)</td><td>Analgesik</td></tr>
+                                <tr><td>2</td><td>Dioscorea deltoidea</td><td>Diosgenin (steroid)</td><td>Antiinflamasi</td></tr>
+                                <tr><td>3</td><td>Cinchona ledgeriana</td><td>Kuinin (alkaloid)</td><td>Antimalaria</td></tr>
+                                <tr><td>4</td><td>Digitalis lantana</td><td>Digoksin</td><td>Kardiotonik</td></tr>
+                                <tr><td>5</td><td>Datura stramonium</td><td>Skopolamin</td><td>Antihipertensi</td></tr>
+                                <tr><td>6</td><td>Catharanthus roseus</td><td>Vinkristin</td><td>Antileukemia</td></tr>
+                                <tr><td>7</td><td>Curcuma sp.</td><td>Curcumin</td><td>Antihipertensi</td></tr>
+                                <tr><td>8</td><td>Chrysanthemum sp.</td><td>Piretrin</td><td>Insektisida</td></tr>
+                                <tr><td>9</td><td>Chinchona ledgeriana</td><td>Kuinin (alkaloid)</td><td>Pemanis</td></tr>
+                                <tr><td>10</td><td>Thaumatococcus sp.</td><td>Taumatin (kalkon)</td><td>Pemanis</td></tr>
+                                <tr><td>11</td><td>Lithosperum erythrorhizon</td><td>Shikonin</td><td>Pewarna kosmetik</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Kelemahan Kultur Jaringan</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li>Membutuhkan <strong>biaya yang relatif besar</strong> untuk pengadaan laboratorium dan peralatan.</li>
+                            <li>Memerlukan <strong>keahlian khusus</strong> dalam pengerjaannya.</li>
+                            <li>Bibit tanaman yang dihasilkan terkadang cenderung <strong>lemah pada akar</strong>.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Analisis Keuangan Usaha Kultur Jaringan</summary>
+                    <div class="details-content">
+                        <p>Memahami implikasi ekonomi dari praktik pembibitan dengan teknik kultur jaringan:</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanaman</th>
+                                    <th>Jenis</th>
+                                    <th>Penerimaan (Rp)</th>
+                                    <th>Biaya (Rp)</th>
+                                    <th>Pendapatan (Rp)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td rowspan="2">Jati</td>
+                                    <td>Botol</td>
+                                    <td>102.500.000</td>
+                                    <td>64.216.970</td>
+                                    <td>38.283.030</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Polibag</td>
+                                    <td>15.100.000</td>
+                                    <td>21.910.101</td>
+                                    <td>(6.810.101)</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Pendapatan total tanaman jati</td>
+                                    <td>31.472.929</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td rowspan="2">Pisang</td>
+                                    <td>Botol</td>
+                                    <td>106.570.950</td>
+                                    <td>69.450.000</td>
+                                    <td>37.120.950</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Polibag</td>
+                                    <td>39.138.876</td>
+                                    <td>71.274.000</td>
+                                    <td>(32.135.124)</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Pendapatan total tanaman pisang</td>
+                                    <td>4.985.826</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Pendapatan total pembibitan tanaman</td>
+                                    <td>36.458.755</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-tertiary"><em>Sumber: Zakia Arifka Janah/UIN Syarif Hidayatulah (2014)</em></p>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>2. Rekayasa Genetika</h2>
+                <p>Rekayasa genetika adalah teknologi yang mengubah susunan genetik suatu organisme melalui transfer gen antarspesies atau modifikasi genetik lainnya untuk menghasilkan organisme dengan sifat-sifat baru yang diinginkan.</p>
+
+                <details>
+                    <summary>Tahapan Rekayasa Genetika (Metode DNA Rekombinan)</summary>
+                    <div class="details-content">
+                        <ol>
+                            <li><strong>Isolasi DNA:</strong> Sel dihancurkan dan DNA diisolasi serta dimurnikan dari komponen sel lainnya.</li>
+                            <li><strong>Pemotongan DNA:</strong> DNA dipotong menggunakan enzim restriksi endonuklease untuk mendapatkan fragmen DNA (cDNA) yang diinginkan, yang berisi gen target.</li>
+                            <li><strong>Transfer DNA (Penyisipan Gen):</strong> cDNA yang telah dipotong kemudian dipasang (disisipkan) pada plasmid bakteri. Plasmid berfungsi sebagai vektor atau pembawa gen, dan penyisipan dibantu oleh enzim ligase.</li>
+                            <li><strong>Identifikasi dan Seleksi DNA Rekombinan:</strong> Sel-sel yang berhasil menerima DNA rekombinan yang diinginkan diidentifikasi dan diseleksi.</li>
+                            <li><strong>Kloning Sel dan Produksi Produk:</strong> Sel-sel yang mengandung DNA rekombinan dikloning (diperbanyak) dan diinduksi untuk mengekspresikan gen yang ditransfer, sehingga menghasilkan produk yang diinginkan.</li>
+                            <li><strong>Pemanenan Produk:</strong> Produk yang dihasilkan dari ekspresi gen (misalnya, protein atau sifat baru pada organisme) kemudian dipanen.</li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Diagram Tahapan Rekayasa Genetika
+                        </div>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>3. Individu Transgenik (GMO)</h2>
+                <p><strong>GMO (Genetically Modified Organism)</strong> adalah organisme yang DNA-nya telah diubah menggunakan teknologi DNA rekombinan. Proses ini sering melibatkan transfer gen dari satu spesies ke spesies lain, bahkan yang tidak berkerabat dekat.</p>
+
+                <details>
+                    <summary>Dampak Positif GMO</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li><strong>Ketahanan Terhadap Hama dan Penyakit:</strong> Tanaman pangan seperti kentang lebih tahan virus, jagung, padi, kapas, kedelai, dan kanola lebih tahan terhadap serangan serangga dan herbisida.</li>
+                            <li><strong>Peningkatan Nutrisi:</strong> Contohnya <strong><em>golden rice</em></strong> yang lebih kaya protein, provitamin A, dan beta karoten.</li>
+                            <li><strong>Produksi Zat Berharga:</strong> GMO dapat digunakan untuk menghasilkan hormon atau obat-obatan, misalnya <em>E. coli</em> penghasil hormon insulin untuk pengobatan diabetes melitus.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Dampak Negatif GMO</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li><strong>Mengganggu Keseimbangan Ekologi:</strong> Contohnya, kapas Bt yang menghasilkan protein <em>cry</em> (paratoxin) dapat membunuh serangga non-target, mengganggu rantai makanan.</li>
+                            <li><strong>Erosi Plasma Nutfah:</strong> Tanaman GMO yang lebih unggul dapat mengalahkan tanaman asli, menyebabkan punahnya varietas lokal.</li>
+                            <li><strong>Menyebabkan Alergi:</strong> Modifikasi gen tertentu dari donor dapat memicu reaksi alergi pada manusia yang mengonsumsi produk GMO. Contoh: alergi pada kacang Brazil.</li>
+                            <li><strong>Penyebab Resistensi Antibiotik:</strong> Tanaman transgenik yang menggunakan gen penanda resisten antibiotik dari mikroba dapat menyebabkan manusia yang mengonsumsinya menjadi resisten terhadap antibiotik. Contoh: tomat <em>Flavr Savr</em>.</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>4. Kloning</h2>
+                <p>Kloning adalah praktik perbanyakan makhluk hidup secara vegetatif untuk menghasilkan keturunan yang identik secara genetik dengan induknya, tanpa melalui proses pembuahan seksual. Kloning dapat dilakukan pada hewan, tumbuhan, dan dalam diskusi etis, pada manusia.</p>
+
+                <details>
+                    <summary>Kloning pada Hewan (Contoh Domba Dolly)</summary>
+                    <div class="details-content">
+                        <p>Kloning domba Dolly adalah salah satu contoh paling terkenal dari kloning reproduktif pada hewan.</p>
+                        <h4>Tahapan Kloning Domba Dolly:</h4>
+                        <ol>
+                            <li><strong>Pengambilan Sel Donor:</strong> Sel kelenjar susu diambil dari domba donor (misalnya, domba Finn-Dorset).</li>
+                            <li><strong>Pengambilan Sel Telur Resipien:</strong> Sel telur diambil dari ovarium domba resipien (misalnya, domba Blackface).</li>
+                            <li><strong>Enukleasi Sel Telur:</strong> Nukleus (inti sel) haploid dari sel telur resipien dikeluarkan, menyisakan sel telur tanpa materi genetik.</li>
+                            <li><strong>Transfer Inti:</strong> Inti sel diploid dari sel kelenjar susu domba donor dimasukkan ke dalam sel telur resipien yang sudah dienukleasi.</li>
+                            <li><strong>Fusi Sel dan Aktivasi:</strong> Kedua sel disatukan menggunakan sengatan listrik, yang juga menstimulasi sel untuk mulai membelah.</li>
+                            <li><strong>Pembentukan Embrio:</strong> Sel yang telah menyatu mulai membelah dan membentuk embrio.</li>
+                            <li><strong>Implantasi Embrio:</strong> Embrio dimasukkan ke dalam rahim domba resipien (domba Blackface).</li>
+                            <li><strong>Kelahiran Klon:</strong> Embrio berkembang menjadi seekor domba "Dolly" yang sifatnya genetik identik dengan domba donor sel kelenjar susu.</li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Diagram Teknologi Transfer Inti pada Domba Dolly
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Kloning pada Tumbuhan</summary>
+                    <div class="details-content">
+                        <p>Kloning pada tumbuhan dapat dilakukan dengan metode sederhana maupun modern.</p>
+                        <ul>
+                            <li><strong>Metode Sederhana:</strong> Mencangkok, menyetek, okulasi.</li>
+                            <li><strong>Metode Modern:</strong> Kultur jaringan, yang memungkinkan produksi tanaman identik dalam jumlah besar.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Kloning pada Manusia</summary>
+                    <div class="details-content">
+                        <p>Kloning pada manusia menimbulkan banyak pertanyaan etis dan bioetika.</p>
+                        <h4>Tahapan Kloning pada Manusia (Konseptual):</h4>
+                        <ol>
+                            <li><strong>Pengambilan Sel Donor:</strong> Sel somatik (misalnya sel kulit) diambil dari individu yang akan dikloning (donor). Inti sel dari sel somatik ini adalah diploid.</li>
+                            <li><strong>Pengambilan Sel Telur Resipien:</strong> Sel telur diambil dari donor sel telur.</li>
+                            <li><strong>Enukleasi Sel Telur:</strong> Inti sel telur resipien dikeluarkan.</li>
+                            <li><strong>Transfer Inti:</strong> Inti sel somatik donor dimasukkan ke dalam sel telur resipien yang telah dihilangkan intinya.</li>
+                            <li><strong>Stimulasi dan Pembelahan Sel:</strong> Sel yang telah disatukan distimulasi (misalnya dengan aliran listrik) agar mulai membelah dan membentuk embrio.</li>
+                            <li><strong>Pengembangan Embrio:</strong> Embrio ditumbuhkan dalam rahim donor (ibu pengganti).</li>
+                            <li><strong>Kelahiran Klon:</strong> Bayi yang dihasilkan secara genetik identik dengan donor sel somatik.</li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Diagram Kloning pada Manusia
+                        </div>
+                        <p class="warning-box">Kloning reproduktif manusia sangat kontroversial dan dilarang di banyak negara karena masalah etika dan moral.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Jenis Kloning Berdasarkan Tujuan</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li><strong>Kloning DNA Rekombinan:</strong> Pemindahan sebagian rantai DNA yang diinginkan dari suatu organisme ke elemen replikasi genetik (misalnya plasmid bakteri) untuk mengklon satu gen.</li>
+                            <li><strong>Kloning Reproduktif:</strong> Teknologi yang digunakan untuk menghasilkan hewan (atau konseptual manusia) yang secara genetik identik.</li>
+                            <li><strong>Kloning Terapeutik:</strong> Kloning untuk memproduksi embrio manusia sebagai sumber sel batang (sel punca) untuk penelitian dan penyembuhan penyakit, tanpa bertujuan untuk melahirkan individu.</li>
+                        </ul>
+                        <div class="image-placeholder">
+                            Ilustrasi Kloning Terapeutik
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Dampak Kloning</summary>
+                    <div class="details-content">
+                        <h4>Dampak Positif Kloning:</h4>
+                        <ul>
+                            <li>Menyelamatkan gen yang hilang dari hewan yang mati secara teratur (misalnya spesies langka).</li>
+                            <li>Resipien transfer embrio tidak dibatasi waktu dan tempat.</li>
+                            <li>Embrio dapat disimpan dalam waktu yang lama.</li>
+                        </ul>
+                        <h4>Dampak Negatif Kloning:</h4>
+                        <ul>
+                            <li>Keterbatasan resipien dalam menerima embrio.</li>
+                            <li>Belum ada rekam medis yang cukup mengenai dampak positif dan negatif jangka panjang penggunaan embrio kloning.</li>
+                            <li>Muncul pewarisan sifat mitokondria dan modifikasi epigenetik yang tidak diharapkan.</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>5. Vaksin</h2>
+                <p>Vaksinasi adalah proses pemberian vaksin ke dalam tubuh untuk memicu imunisasi, yaitu pembentukan zat kekebalan tubuh (antibodi) terhadap penyakit tertentu. Vaksin mengandung zat, senyawa, atau mikroorganisme yang dilemahkan atau dimatikan, atau bagian dari patogen.</p>
+
+                <details>
+                    <summary>Metode Pembuatan Vaksin</summary>
+                    <div class="details-content">
+                        <ol>
+                            <li><strong>Vaksin Dilemahkan dan Hidup (Live-Attenuated Vaccines):</strong> Menggunakan virus yang tidak aktif atau telah dilemahkan sehingga tidak menyebabkan penyakit, tetapi masih dapat memicu respons imun.</li>
+                            <li><strong>Vaksin Mati (Inactivated Vaccines):</strong> Mengandung virus atau bakteri yang telah dimatikan, namun struktur tubuhnya utuh sehingga sistem imun masih dapat mengenalinya.</li>
+                            <li><strong>Vaksin mRNA:</strong> Mengandung komponen materi genetik (mRNA) yang direkayasa agar sel tubuh memproduksi protein spesifik dari patogen, yang kemudian memicu respons imun.</li>
+                            <li><strong>Vaksin Subunit, Rekombinan, Polisakarida, dan Konjugat:</strong> Menggunakan bagian spesifik dari patogen (protein, gula) untuk memicu respons imun.</li>
+                            <li><strong>Vaksin Vektor Viral:</strong> Menggunakan virus lain yang tidak berbahaya (vektor) untuk mengantarkan gen dari patogen target ke dalam sel tubuh.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Tahapan Produksi Vaksin Umum</summary>
+                    <div class="details-content">
+                        <p>Proses pembuatan vaksin umumnya melalui tahapan yang panjang dan ketat:</p>
+                        <ol>
+                            <li><strong>Eksplorasi:</strong> Tahap awal untuk mengidentifikasi target vaksin (misalnya, protein virus) dan memahami cara patogen menyerang sel tubuh.</li>
+                            <li><strong>Uji Praklinis:</strong> Pengujian kandidat vaksin pada tingkat sel (<em>in vitro</em>) dan pada hewan (tikus, monyet) untuk menilai efektivitas, keamanan, dan efek samping.</li>
+                            <li><strong>Uji Coba Klinis Tahap I:</strong> Pengujian pada sejumlah kecil orang dewasa sehat (sekitar 20-100 orang) untuk memastikan keamanan vaksin pada manusia.</li>
+                            <li><strong>Uji Coba Klinis Tahap II:</strong> Pengujian pada populasi yang lebih besar (100-500 orang) dengan berbagai usia dan kondisi kesehatan untuk mengevaluasi efektivitas, dosis yang tepat, keamanan, dan respons kekebalan.</li>
+                            <li><strong>Uji Coba Klinis Tahap III (Efikasi):</strong> Pengujian pada sampel yang sangat besar (1.000-5.000 orang atau lebih) dengan kondisi bervariasi untuk mengkonfirmasi keamanan, efektivitas, dan keuntungan yang melebihi risiko, serta memantau respons kekebalan dan efek samping jangka panjang. Tahap ini mengukur tingkat efikasi (misalnya, Pfizer 94-95%, Sinovac 65.3%, Moderna 94.5%, AstraZeneca 62-75%).</li>
+                            <li><strong>Persetujuan dan Lisensi (Tahap VI):</strong> Setelah lulus semua uji klinis, vaksin dapat memperoleh izin edar dari badan regulasi seperti BPOM.</li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Ilustrasi Vaksin Covid-19
+                        </div>
+                        <p class="info-box">Vaksin diberikan dalam berbagai bentuk, seperti suntikan, tetes minum, atau uap (aerosol).</p>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>6. Sel Punca (Stem Cell)</h2>
+                <p>Sel punca adalah sel dasar yang belum mengalami diferensiasi dan spesialisasi, memiliki potensi untuk berkembang menjadi berbagai jenis sel baru yang menggantikan sel rusak atau menjadi jaringan spesifik jika dikulturkan pada media dan kondisi yang sesuai.</p>
+
+                <details>
+                    <summary>Sumber Sel Punca</summary>
+                    <div class="details-content">
+                        <ol>
+                            <li><strong>Sel Embrionik:</strong>
+                                <ul>
+                                    <li>Berasal dari embrio berusia 3-5 hari.</li>
+                                    <li>Bersifat <strong>pluripotent</strong>, artinya mampu membelah dan berkembang menjadi bermacam-macam sel tubuh.</li>
+                                    <li>Sumber lain termasuk cairan ketuban dan tali pusat.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sel Dewasa:</strong>
+                                <ul>
+                                    <li>Dapat dijadikan sumber sel punca setelah mengalami <em>genetic reprogramming</em> agar bersifat pluripotent.</li>
+                                    <li>Contoh: sel sumsum tulang yang dapat membentuk sel tulang dan sel otot jantung.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Ilustrasi Perkembangan Manusia dan Sumber Sel Punca
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Manfaat Teknologi Sel Punca</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li>Memperbaiki sel mati untuk menyembuhkan luka.</li>
+                            <li>Memproduksi protein sitokin untuk memperbaiki sel rambut dan kulit.</li>
+                            <li>Berdiferensiasi dan membelah diri menjadi sel baru yang menggantikan tugas sel mati, berguna untuk penyembuhan penyakit kardiovaskular (stroke, jantung koroner).</li>
+                            <li>Menyeimbangkan imunitas pada penyakit autoimun.</li>
+                        </ul>
+                        <div class="image-placeholder">
+                            Ilustrasi Teknologi Sel Punca pada Manusia
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Dampak Negatif Sel Punca</summary>
+                    <div class="details-content">
+                        <ol>
+                            <li><strong><em>Embryonic Stem Cell</em>:</strong>
+                                <ul>
+                                    <li>Bersifat <strong>tumorigenik</strong>: Sel yang tak terdiferensiasi dapat menjadi kontaminan yang memicu kanker.</li>
+                                    <li>Bersifat <strong>allogenic</strong>: Berpotensi menimbulkan reaksi penolakan oleh sistem imun resipien.</li>
+                                </ul>
+                            </li>
+                            <li><strong><em>Umbilical Cord Blood Stem Cell</em>:</strong>
+                                <ul>
+                                    <li>Dapat menyebabkan penyakit genetik dari donor jika tidak diskrining dengan baik.</li>
+                                    <li>Jumlah sel punca terbatas, sehingga jumlah yang diperlukan resipien bisa lebih banyak daripada yang tersedia.</li>
+                                </ul>
+                            </li>
+                            <li><strong><em>Adult Stem Cell</em>:</strong>
+                                <ul>
+                                    <li>Jumlahnya sedikit dan sulit ditemukan pada jaringan dewasa.</li>
+                                    <li>Masa hidupnya tidak selama sel punca embrionik.</li>
+                                    <li>Bersifat <strong>multipoten</strong>, diferensiasinya tidak seluas sel punca embrionik (pluripoten).</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>7. Penyuntingan Genom (Genome Editing)</h2>
+                <p>Penyuntingan genom (<em>Genome Editing with Engineered Nucleases, GEEN</em>) adalah rekayasa genetik yang melibatkan penyisipan, penggantian, atau pembuangan (sebagian) DNA pada genom organisme, memanfaatkan enzim nuklease.</p>
+
+                <details>
+                    <summary>Enzim Nuklease dalam Penyuntingan Genom</summary>
+                    <div class="details-content">
+                        <p>Enzim nuklease yang direkayasa dapat memotong bagian <em>double helix</em> DNA pada tempat tertentu. Jenis-jenis enzim nuklease meliputi:</p>
+                        <ul>
+                            <li><strong>Meganuklease</strong></li>
+                            <li><strong>Nuklease Jemari Zink (Zinc Finger Nucleases/ZFN)</strong></li>
+                            <li><strong>Nuklease Efektor Serupa Aktivator Transkripsi (Transcription Activator-like Effector Nucleases/TALEN)</strong></li>
+                            <li><strong>CRISPR-Cas (Clustered Regularly Interspaced Short Palindromic Repeats):</strong>
+                                <ul>
+                                    <li>Terdiri dari protein Cas9 dan <em>single guide RNA</em> (sgRNA).</li>
+                                    <li>Cas9 memiliki dua varian (RuvC dan HNH) yang bekerja bersama memotong DNA target (menghasilkan <em>double-strand break</em>/DSB).</li>
+                                    <li>sgRNA memandu kompleks CRISPR/Cas9 ke lokasi genom yang diinginkan.</li>
+                                    <li>Pengeditan genom dilakukan melalui dua jalur perbaikan:
+                                        <ul>
+                                            <li><strong><em>Non-Homologous End-Joining (NHEJ)</em>:</strong> Penyisipan dan penghilangan basa secara acak, dapat menyebabkan <em>frameshift mutation</em> atau stop kodon prematur.</li>
+                                            <li><strong><em>Homology-Directed Repair (HDR)</em>:</strong> Menggunakan daerah homolog dari untai DNA yang belum diedit sebagai templat untuk mengoreksi DNA yang rusak, menghasilkan pengeditan gen sesuai keinginan.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="image-placeholder">
+                            Ilustrasi Enzim Nuklease Memotong DNA
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Mekanisme Kerja CRISPR/Cas9 (Sederhana)</summary>
+                    <div class="details-content">
+                        <ol>
+                            <li>Bakteri yang mendeteksi infeksi DNA virus mensintesis dua tipe RNA pendek.</li>
+                            <li>RNA I memiliki urutan yang sesuai dengan DNA virus.</li>
+                            <li>RNA II berikatan dengan protein Cas9 dengan urutan sgRNA untuk menemukan target (DNA virus).</li>
+                            <li>Cas9 kemudian memotong DNA virus penginfeksi.</li>
+                        </ol>
+                        <div class="image-placeholder">
+                            Diagram Mekanisme Kerja CRISPR/Cas9
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Manfaat Sistem CRISPR/Cas9 dalam Kesehatan</summary>
+                    <div class="details-content">
+                        <p>Sistem CRISPR/Cas9 memiliki potensi besar untuk pemulihan fungsi gen dan pengobatan berbagai penyakit genetik, di antaranya:</p>
+                        <ul>
+                            <li>Mengedit genom sel T autolog untuk terapi kanker (multiple myeloma, sarkoma sinovial, liposarkoma).</li>
+                            <li>Mengkatalisis perbaikan genom pada penyakit seperti Thalasemia (beta-hemoglobinopati).</li>
+                            <li>Mengobati penyakit darah (purpura pasca transfusi, anemia Fanconi, von Willebrand).</li>
+                            <li>Mengedit gen sel CD4+ untuk membuat makrofag resisten terhadap virus HIV.</li>
+                            <li>Menurunkan protein inti dan protein kapsid virus hepatitis B (HBV) untuk penghambatan karsinogenesis.</li>
+                            <li>Mengidentifikasi komponen toksik infeksi virus hepatitis C.</li>
+                            <li>Menurunkan proliferasi pada infeksi virus dan memulihkan jalur apoptosis sel.</li>
+                            <li>Memperbaiki fungsi gen dan penggerak gen untuk menyembuhkan penyakit demam dengue, Chikungunya, demam kuning, dan malaria.</li>
+                            <li>Mempelajari dan mencari perawatan untuk gangguan neurologis (penyakit Parkinson, <em>amyotrophic lateral sclerosis</em>, penyakit Huntington, skizofrenia, distrofi otot Duchenne, penyakit metabolik, retinitis pigmentosa).</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>Harapan dan Kenyataan Bioteknologi Modern</h2>
+                <p>Bioteknologi modern menjanjikan banyak solusi untuk memenuhi kebutuhan manusia di berbagai bidang.</p>
+
+                <details>
+                    <summary>Harapan di Bidang Kesehatan</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li>Penemuan pengobatan baru untuk penyakit jantung, pembuluh darah, kanker, dan diabetes.</li>
+                            <li>Produksi antibiotik yang lebih baik dan murah.</li>
+                            <li>Penemuan vaksin untuk penyakit menular (hepatitis, influenza, rabies) dan parasitik (malaria, penyakit tidur).</li>
+                            <li>Pengujian laboratorium yang cepat untuk diagnosis akurat berbagai penyakit.</li>
+                            <li>Perbaikan metode identifikasi kecocokan DNA dalam transplantasi jaringan dan organ.</li>
+                            <li>Penemuan teknik pengoreksi gen dan urutan asam amino untuk mengobati penyakit turunan (hemofilia).</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Harapan di Bidang Pertanian dan Produksi Pangan</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li>Penciptaan tanaman baru varietas unggul.</li>
+                            <li>Tanaman yang tahan terhadap kekeringan, kebekuan, salinitas tinggi, dan tekanan lingkungan lainnya.</li>
+                            <li>Pengembangan substansi yang mempercepat pertumbuhan ternak.</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

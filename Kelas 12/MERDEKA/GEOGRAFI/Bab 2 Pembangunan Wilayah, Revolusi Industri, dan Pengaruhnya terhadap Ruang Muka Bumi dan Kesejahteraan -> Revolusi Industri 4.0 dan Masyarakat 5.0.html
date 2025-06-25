@@ -1,0 +1,636 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolusi Industri 4.0 dan Masyarakat 5.0 - Geografi Kelas XII</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for potential anchor links */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-divider);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary-blue);
+            display: inline-block;
+            width: fit-content;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        h4 {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            padding-left: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        /* Timeline Styling */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: var(--border-divider);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .timeline-item {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            width: 80%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            position: relative;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            z-index: 1;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary-blue);
+        }
+
+        .timeline-item h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.3em;
+        }
+
+        .timeline-item p {
+            margin-bottom: 5px;
+            font-size: 0.95em;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        .timeline-item span.year {
+            font-weight: bold;
+            color: var(--accent-green);
+            font-size: 1.1em;
+            display: block;
+            margin-top: 10px;
+            padding-top: 5px;
+            border-top: 1px dashed var(--border-divider);
+        }
+
+        /* Society Flow Chart Styling */
+        .society-flow-container {
+            margin: 40px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .society-flow-item {
+            display: flex;
+            align-items: stretch; /* Make items stretch to fill height */
+            background-color: #f8f8f8; /* Light background for each item */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .society-era {
+            padding: 15px 20px;
+            font-weight: bold;
+            text-align: center;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 150px;
+            color: white;
+        }
+        .society-era.amber {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+        }
+        .society-era.accent {
+            background-color: var(--accent-green);
+        }
+        .society-era.primary-blue {
+            background-color: var(--primary-blue);
+        }
+        .society-era.semantic-success {
+            background-color: var(--semantic-success);
+        }
+
+        .society-description {
+            padding: 15px 20px;
+            flex-grow: 1;
+            color: var(--text-secondary);
+            background-color: var(--background-canvas);
+            border-left: 1px solid var(--border-divider);
+        }
+        .society-description p {
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+        .society-description strong {
+            color: var(--primary-blue);
+        }
+
+        .qr-code-placeholder {
+            width: 80px; /* Smaller for better fit */
+            height: 80px;
+            background-color: var(--border-divider);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7em;
+            color: var(--text-tertiary);
+            border: 1px dashed var(--text-tertiary);
+            margin-left: 15px; /* Adjust margin */
+            vertical-align: middle;
+            text-align: center;
+            flex-shrink: 0;
+            line-height: 1.2;
+            word-break: break-word; /* Allow text to wrap */
+        }
+
+        .link-box {
+            background-color: #fffde7; /* Light amber background */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .link-box .content {
+            flex-grow: 1;
+        }
+        .link-box a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .link-box a:hover {
+            text-decoration: underline;
+        }
+
+
+        footer {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.7em;
+                padding-bottom: 3px;
+                border-bottom: 1px solid var(--primary-blue);
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .timeline-container::before {
+                left: 20px; /* Align timeline to the left on smaller screens */
+            }
+            .timeline-item {
+                width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: left;
+                padding: 15px;
+            }
+            .timeline-item h4, .timeline-item p, .timeline-item span.year {
+                text-align: left;
+            }
+            .timeline-item::before { /* Circle on the timeline */
+                content: '';
+                position: absolute;
+                left: -28px;
+                top: 20px;
+                width: 15px;
+                height: 15px;
+                background-color: var(--primary-blue);
+                border-radius: 50%;
+                border: 2px solid var(--background-canvas);
+                z-index: 2;
+            }
+
+            .society-flow-item {
+                flex-direction: column;
+            }
+            .society-era {
+                width: 100%;
+                text-align: left;
+                padding: 10px 15px;
+            }
+            .society-description {
+                border-left: none;
+                border-top: 1px solid var(--border-divider);
+                padding: 10px 15px;
+            }
+            .link-box {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+            .qr-code-placeholder {
+                margin: 10px 0 0 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.7em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .timeline-item {
+                padding: 10px;
+            }
+            .timeline-item h4 {
+                font-size: 1.2em;
+            }
+            .timeline-item p, .timeline-item span.year {
+                font-size: 0.9em;
+            }
+            .qr-code-placeholder {
+                width: 70px;
+                height: 70px;
+                font-size: 0.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Revolusi Industri 4.0 dan Masyarakat 5.0</h1>
+            <p>Memahami Transformasi Ruang Muka Bumi dan Kesejahteraan Manusia</p>
+        </header>
+
+        <main>
+            <section id="pembangunan-ri-40">
+                <h2>1. Pembangunan Era Revolusi Industri 4.0</h2>
+                <p>Industrialisasi adalah suatu proses pembangunan yang melibatkan perubahan struktural ekonomi secara fundamental. Proses ini dicirikan oleh pergeseran sumber produktivitas, peningkatan <em>output</em>, dan fokus lapangan kerja dari sektor pertanian menuju industri. Transformasi teknologi yang menyertainya memperkenalkan cara-cara baru dalam bekerja dan hidup, yang secara mendasar mengubah tatanan masyarakat. Peningkatan produktivitas dan <em>output</em> industri telah menjadi motor utama pertumbuhan ekonomi, mendorong peningkatan pendapatan nasional serta pendapatan per kapita, dan secara simultan memperluas pasar untuk produk-produk industri.</p>
+                <p>Pembangunan industri bergerak dengan tujuan melepaskan kinerja ekonomi yang dinamis dan kompetitif. Hal ini dilakukan untuk menciptakan keseimbangan antara pendapatan dan ketersediaan lapangan kerja, memfasilitasi perdagangan internasional, dan meningkatkan efisiensi penggunaan sumber daya. Dalam perumusan tujuan pembangunan sektor industri jangka panjang, fokusnya tidak hanya terbatas pada penyelesaian masalah dan kelemahan internal industri, melainkan juga harus mampu mengatasi permasalahan yang bersifat nasional.</p>
+                <p>Sebagai salah satu pilar pembangunan perekonomian nasional, pembangunan industri diarahkan untuk mengimplementasikan prinsip-prinsip <strong>pembangunan industri berkelanjutan</strong>. Konsep ini didasarkan pada tiga aspek utama: pembangunan ekonomi, sosial, dan lingkungan hidup. Menurut Migo (2021), definisi pembangunan industri itu sendiri adalah proses pertumbuhan dan pengembangan industri dalam perekonomian yang memanfaatkan teknologi baru. Tujuannya adalah untuk mempermudah pekerjaan, meningkatkan kecepatan, dan kualitas proses produksi, yang pada akhirnya meningkatkan <em>output</em> bisnis dan keuntungan perusahaan.</p>
+                <p>Munculnya gelombang pembangunan yang berpusat pada sektor industri tidak dapat dilepaskan dari serangkaian peristiwa revolusi industri yang telah berlangsung selama berpuluh-puluh tahun. Peristiwa-peristiwa historis ini telah mengubah kehidupan agraris menjadi masyarakat industri dan manufaktur yang modern.</p>
+
+                <h3>a. Revolusi Industri 1.0</h3>
+                <p>Istilah "revolusi industri pertama" pertama kali dipopulerkan oleh sejarawan ekonomi Inggris, Arnold Toynbee (1852–1883). Ia menggunakannya untuk mendeskripsikan perkembangan ekonomi Inggris yang terjadi antara tahun 1760 hingga 1840. Proses transformatif ini bermula di Inggris pada abad ke-18 dan kemudian menyebar luas ke berbagai negara di dunia.</p>
+                <p>Secara spesifik, terdapat tiga faktor penting yang menjadi pendorong utama Revolusi Industri 1.0:</p>
+                <ul>
+                    <li><strong>Revolusi Pertanian:</strong> Peningkatan teknik pertanian yang menghasilkan surplus pangan dan sumber daya, serta mendorong urbanisasi.</li>
+                    <li><strong>Peningkatan Populasi:</strong> Pertumbuhan penduduk yang menyediakan pasokan tenaga kerja yang melimpah untuk pabrik-pabrik baru.</li>
+                    <li><strong>Keunggulan Inggris Raya:</strong> Posisi geografis yang strategis, ketersediaan sumber daya alam melimpah (terutama batu bara), stabilitas politik, dan inovasi teknologi yang kuat.</li>
+                </ul>
+                <p>Revolusi pertama ini menjadi tonggak sejarah yang paling sering dibicarakan karena penemuan fundamental berupa <strong>mesin uap</strong>. Mesin uap ini berfungsi sebagai pengganti utama tenaga manusia dan hewan dalam melakukan pekerjaan berat. Sebelum penemuan ini, sumber tenaga lain seperti tenaga air dan angin memiliki keterbatasan karena tidak dapat digunakan secara konstan. Dengan demikian, penemuan mesin uap menjadi revolusi yang memungkinkan penggantian tenaga manusia dan dua sumber tenaga alam yang terbatas tersebut, membuka jalan bagi produksi skala besar (Fajariah & Suryo, 2020).</p>
+
+                <h3>b. Revolusi Industri 2.0</h3>
+                <p>Revolusi Industri 2.0, meskipun tidak sering dibicarakan seperti pendahulunya, memiliki dampak transformatif yang besar. Revolusi ini terjadi pada awal abad ke-20. Pada era sebelum Revolusi Industri 2.0, proses produksi masih sangat bergantung pada tenaga manusia, namun seiring waktu, tenaga mesin uap dan kemudian tenaga listrik mulai mendominasi pekerjaan di pabrik. Meskipun demikian, kendala baru muncul dalam proses produksi, khususnya dalam hal transportasi bahan baku dan produk jadi di dalam area pabrik yang luas, seperti pabrik mobil.</p>
+                <p>Kendala ini diatasi dengan inovasi besar pada tahun 1913, yaitu penciptaan <strong>"lini produksi"</strong> atau <strong><em>assembly line</em></strong> yang menggunakan <strong>"ban berjalan"</strong> atau <em>conveyor belt</em>. Kemunculan lini produksi ini secara total mengubah proses manufaktur. Jika sebelumnya satu tukang bertanggung jawab merakit seluruh bagian mobil, dengan adanya lini produksi, tugas perakitan dipecah menjadi bagian-bagian kecil, di mana setiap pekerja hanya mengurus satu komponen spesifik, misalnya pemasangan ban (Binus University, 2019).</p>
+
+                <h3>c. Revolusi Industri 3.0</h3>
+                <p>Apabila Revolusi Industri pertama dipicu oleh mesin uap, dan Revolusi Industri kedua oleh ban berjalan serta listrik, maka Revolusi Industri ketiga dicirikan oleh kemajuan dari sisi <strong>manusia dan kemampuan komputasi</strong>. Inovasi kunci pada revolusi ini adalah penemuan mesin yang memiliki kemampuan bergerak dan berpikir secara otomatis, yaitu <strong>komputer dan robot</strong>. Pada masa ini, dunia mulai bergerak memasuki era <strong>digitalisasi</strong> secara luas. Sebagian besar pekerjaan atau aktivitas yang sebelumnya hanya dapat dilakukan oleh manusia, seperti perhitungan kompleks atau penyimpanan dokumen penting, kini dapat dilakukan oleh komputer. Perubahan ini tidak hanya terbatas pada sektor industri, tetapi juga merambah luas ke bidang informasi.</p>
+                <p>Dari sisi positif, kemajuan teknologi digital secara signifikan mempermudah pekerjaan manusia. Hal ini memungkinkan pengembangan potensi terbesar manusia untuk lebih dioptimalkan, seperti dalam berpikir analitis, kepemimpinan, dan penciptaan karya-karya inovatif. Perkembangan komputer menjadi semakin pesat setelah Perang Dunia Kedua. Komputer yang dulunya berukuran hampir sebesar ruangan, kini telah mengalami evolusi menjadi lebih kecil dengan fungsi yang semakin canggih. Saat ini, komputer berfungsi sebagai perangkat fundamental yang membuka jalan bagi penjelajahan era revolusi industri berikutnya, yaitu Revolusi Industri 4.0.</p>
+
+                <h3>d. Revolusi Industri 4.0</h3>
+                <p>Revolusi Industri keempat pertama kali diperkenalkan pada tahun 2011 dalam acara Hannover Trade Fair oleh sekelompok ahli dari Jerman yang mewakili berbagai bidang. Dalam pertemuan tersebut, dipaparkan bahwa industri telah memasuki babak baru, ditandai dengan inovasi yang akan mengubah proses produksi secara lebih cepat dan komprehensif.</p>
+                <p>Pada tahun 2015, gagasan Revolusi Industri 4.0 secara resmi dikenalkan oleh Angela Merkel di World Economic Forum (WEF). Untuk mendukung riset lintas akademis terkait Revolusi Industri 4.0, Jerman mengalokasikan investasi besar senilai €200 juta, melibatkan akademisi, pemerintah, dan pelaku bisnis.</p>
+                <p>Revolusi Industri keempat merupakan puncak dari seluruh revolusi industri sebelumnya. Revolusi ini melahirkan teknologi digital yang masif, yang berdampak fundamental pada kehidupan manusia di seluruh penjuru dunia. Di era Revolusi Industri 4.0, berbagai aspek kehidupan difasilitasi untuk mencapai produktivitas yang efektif dan efisien, dengan tujuan meminimalkan peran manusia dalam pekerjaan rutin. Secara umum, peran tenaga manusia berevolusi dari sekadar operator menjadi seorang ahli dengan kompetensi yang tinggi. Transformasi ini tidak hanya melibatkan pengembangan mesin dan sistem pintar, tetapi juga perubahan signifikan pada manusia itu sendiri, mulai dari pengurutan DNA, nanoteknologi, energi baru terbarukan, hingga komputasi kuantum (Scwab, 2019).</p>
+                <p>Salah satu bentuk implementasi nyata dari pembangunan industri di Indonesia adalah pembangunan pabrik daur ulang botol <strong><em>polyethylene terephthalate</em> (PET)</strong> di Cikarang. Proyek ini sangat sejalan dengan komitmen pemerintah untuk mendukung pembangunan industri berkelanjutan sekaligus mencapai target pengurangan sampah plastik hingga 70% pada tahun 2025, yang merupakan agenda prioritas nasional. Pembangunan pabrik daur ulang ini juga menjadi dasar bagi upaya pemerintah dalam mengatasi permasalahan ekonomi, sosial, dan lingkungan, selaras dengan konsep pembangunan industri berkelanjutan.</p>
+                <p>Aspek positif dari pembangunan pabrik daur ulang di Cikarang mencakup pemanfaatan pembangunan rendah karbon dan ekonomi sirkular. Kebijakan ini diharapkan mampu memenuhi target <strong>Tujuan Pembangunan Berkelanjutan (Sustainable Development Goals/SDGs)</strong> dan target pengurangan emisi gas rumah kaca sesuai Paris Agreement pada tahun 2030. Selain di Cikarang, pabrik daur ulang plastik juga beroperasi di Pasuruan, dengan total investasi 600 miliar yang dimulai sejak 2019. Fasilitas ini tidak hanya mendukung ekonomi sirkular, tetapi juga menyerap lebih dari 200 tenaga kerja lokal, berkontribusi dalam mengurangi masalah pengangguran. Pabrik ini didukung oleh teknologi mesin modern yang mampu memisahkan tutup dan label botol dengan cepat, memperkuat ekosistem daur ulang secara keseluruhan.</p>
+            </section>
+
+            <section id="keterkaitan-ri-50">
+                <h2>2. Keterkaitan Era Revolusi Industri 4.0 dengan Masyarakat 5.0</h2>
+                <p>Saat ini, Revolusi Industri 4.0 dan Masyarakat 5.0 (Society 5.0) menjadi topik perbincangan yang luas. Meskipun kedua konsep ini muncul pada era yang berbeda, keduanya memiliki keterkaitan yang erat. Penting untuk dipahami bahwa Masyarakat 5.0 bukanlah tahapan lanjutan langsung dari Revolusi Industri 4.0, dan keduanya bukanlah topik yang sama persis. Keterkaitan keduanya terletak pada konsep evolusi perkembangan teknologi dan evolusi peradaban manusia. Revolusi Industri 4.0 merupakan bagian integral dari evolusi teknologi, sementara Masyarakat 5.0 merupakan bagian dari evolusi peradaban manusia. Model Masyarakat 5.0 sendiri adalah konsep masyarakat baru yang pertama kali diumumkan oleh Jepang.</p>
+
+                <h4>Perkembangan Revolusi Industri</h4>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <h4>Revolusi Industri 1.0</h4>
+                        <p><strong>Fokus:</strong> Mekanisasi produksi</p>
+                        <p><strong>Teknologi Utama:</strong> Mesin uap, alat tenun mekanis.</p>
+                        <p><strong>Tahun Kunci:</strong> 1784 (Simbolis)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Revolusi Industri 2.0</h4>
+                        <p><strong>Fokus:</strong> Produksi massal dan elektrifikasi</p>
+                        <p><strong>Teknologi Utama:</strong> Jalur perakitan (<em>assembly line</em>), energi listrik.</p>
+                        <p><strong>Tahun Kunci:</strong> 1870 (Simbolis)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Revolusi Industri 3.0</h4>
+                        <p><strong>Fokus:</strong> Otomatisasi dan digitalisasi</p>
+                        <p><strong>Teknologi Utama:</strong> Komputer, elektronika, internet awal, robotika.</p>
+                        <p><strong>Tahun Kunci:</strong> 1969 (Simbolis)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Revolusi Industri 4.0</h4>
+                        <p><strong>Fokus:</strong> Sistem siber-fisik, integrasi cerdas</p>
+                        <p><strong>Teknologi Utama:</strong> Sistem robot, Internet of Things (IoT), Kecerdasan Buatan (AI), Big Data, komputasi awan, jaringan.</p>
+                        <p><strong>Tahun Kunci:</strong> Sekarang (Dicetuskan 2011)</p>
+                    </div>
+                </div>
+
+                <h4>Tahapan Peradaban Manusia menurut Keidanren Jepang (Roadmap Society 5.0)</h4>
+                <p>Masyarakat 5.0 adalah sebutan bagi peradaban manusia yang mampu bertahan dan menyelesaikan berbagai tantangan atau permasalahan yang muncul di era Revolusi Industri 4.0 (era teknologi). Pemahaman mengenai tahapan peradaban manusia ini dicetuskan pertama kali di Jepang (Falah, 2022), dan dapat dilihat sebagai berikut:</p>
+                <div class="society-flow-container">
+                    <div class="society-flow-item">
+                        <div class="society-era amber">Masyarakat Berburu (Hunting Society)</div>
+                        <div class="society-description">
+                            <p><strong>Periode:</strong> Kelahiran manusia - 13.000 SM</p>
+                            <p>Masyarakat pada tahapan ini sangat bergantung pada alam, dengan kegiatan utama berburu dan mengumpulkan secara langsung dari alam. Persaingan antar manusia didasarkan pada kekuatan otot fisik.</p>
+                        </div>
+                    </div>
+                    <div class="society-flow-item">
+                        <div class="society-era amber">Masyarakat Agraris (Agrarian Society)</div>
+                        <div class="society-description">
+                            <p><strong>Periode:</strong> 13.000 SM - Akhir abad ke-18</p>
+                            <p>Melanjutkan ketergantungan pada alam dan persaingan berbasis kekuatan otot. Namun, pada era ini manusia mulai melakukan kegiatan pertanian dan mengembangkan sistem irigasi, serta mendirikan pemukiman yang lebih kokoh.</p>
+                        </div>
+                    </div>
+                    <div class="society-flow-item">
+                        <div class="society-era accent">Masyarakat Industri (Industrial Society)</div>
+                        <div class="society-description">
+                            <p><strong>Periode:</strong> Akhir abad ke-18 - Paruh kedua abad ke-20</p>
+                            <p>Fase ini beriringan dengan Revolusi Industri 1.0 (penemuan mesin uap) dan Revolusi Industri 2.0 (penggunaan energi listrik). Persaingan tidak hanya lagi dengan otot, tetapi juga mulai menggunakan mesin. Ditandai dengan penemuan lokomotif uap dan awal produksi massal.</p>
+                        </div>
+                    </div>
+                    <div class="society-flow-item">
+                        <div class="society-era primary-blue">Masyarakat Informasi (Information Society)</div>
+                        <div class="society-description">
+                            <p><strong>Periode:</strong> Paruh kedua abad ke-20 - Sekarang (beriringan dengan RI 3.0 &amp; awal RI 4.0)</p>
+                            <p>Fase ini sejalan dengan Revolusi Industri 3.0, ditandai penggunaan Sistem Teknologi Informasi dan Komunikasi (TIK) di segala bidang. Persaingan tidak hanya menggunakan mesin, tetapi juga informasi. Akhirnya memasuki era Revolusi Industri 4.0 dengan AI dan Internet of Things (IoT). Ditandai penemuan komputer dan awal pendistribusian informasi.</p>
+                        </div>
+                    </div>
+                    <div class="society-flow-item">
+                        <div class="society-era semantic-success">Masyarakat Cerdas (Smart Society / Society 5.0)</div>
+                        <div class="society-description">
+                            <p><strong>Periode:</strong> Abad 21 (Respons &amp; Puncak Transformasi)</p>
+                            <p>Perkembangan pesat Revolusi Industri 4.0 melatarbelakangi munculnya fase Masyarakat 5.0. Konsep ini mengusung manusia sebagai pusat kehidupan, bukan semata teknologi atau informasi. Masyarakat 5.0 merupakan respons terhadap penggunaan AI dan IoT yang kuat, menempatkan keseimbangan peran manusia dengan AI dan IoT. Posisi manusia sebagai pusat dari kehidupan memungkinkan keduanya berjalan bersama untuk meningkatkan kesejahteraan manusia.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="perubahan-perilaku-dampak">
+                <h2>3. Perubahan Perilaku Keruangan sebagai Dampak Revolusi Industri 4.0 dan Masyarakat 5.0</h2>
+                <p>Masyarakat 5.0 adalah konsep yang dikembangkan oleh Jepang, yang menggambarkan masyarakat yang berpusat pada manusia (<em>human-centered</em>) dan berbasis teknologi (<em>technology-based</em>). Konsep ini merupakan evolusi dari masyarakat informasi (Masyarakat 4.0) menuju Masyarakat Super Cerdas (MSC). Pada Masyarakat 4.0, informasi dikumpulkan dan dianalisis melalui jaringan. Namun, di Masyarakat 5.0, manusia, benda, dan sistem saling terhubung di dunia maya melalui penggunaan <strong>Kecerdasan Buatan (AI)</strong> dan <strong>Internet of Things (IoT)</strong>. Konsep ini memungkinkan manusia menggunakan teknologi untuk menjalani kehidupan yang nyaman dan mudah, serba otomatis (Fukuyama, 2018).</p>
+
+                <h3>a. Perubahan Perilaku dalam Desain Rumah Tempat Tinggal</h3>
+                <p>Salah satu bentuk transformasi nyata pada era Masyarakat 5.0 adalah kemunculan desain <strong>rumah pintar (<em>Smart Home</em>)</strong>. Rumah pintar ini dirancang dengan bantuan sistem komputasi yang mampu memberikan keamanan, kenyamanan, dan efisiensi energi. Dalam konteks Masyarakat 5.0, manusia memanfaatkan teknologi IoT untuk mengintegrasikan segala perangkat di dalam rumah, yang dapat dikendalikan melalui ponsel atau komputer. Selain keberadaan teknologi canggih, konsep rumah pintar juga semakin sadar akan pentingnya <strong>keberlanjutan (<em>sustainability</em>)</strong> (Koetsier, 2021). Desain rumah pintar bahkan dapat dilengkapi dengan panel surya yang terhubung ke baterai penyimpanan energi rumah (Putri, 2019).</p>
+                <p>Contoh implementasi <em>smart home</em> di Indonesia adalah produk Arbit dari Perusahaan Rumah Pintar Indonesia. Produk ini ditujukan bagi masyarakat yang menginginkan hunian canggih, modern, efisien, hemat energi, dan menghibur. Implementasi teknologi IoT Arbit menghadirkan berbagai manfaat, antara lain (Evandio, 2021):</p>
+                <ul>
+                    <li><strong><em>Smart plug</em>:</strong> Memungkinkan perangkat elektronik terhubung ke jaringan WiFi, sehingga dapat dikontrol dengan mudah.</li>
+                    <li><strong>Steker pintar:</strong> Dapat dinyala-matikan melalui aplikasi, memberikan kendali fleksibel terhadap perangkat listrik 220V.</li>
+                    <li><strong><em>Smart door lock</em>:</strong> Sistem ini memudahkan penghuni untuk membuka atau mengunci pintu rumah melalui <em>smartphone</em>. Gagang pintu <em>smart home</em> ini umumnya dilengkapi fitur sidik jari, PIN, dan kunci pengenal frekuensi radio (RFID).</li>
+                    <li><strong><em>Smart infrared remote</em>:</strong> Pemancar infrared pintar yang dapat dikendalikan melalui aplikasi selama tersedia jaringan internet.</li>
+                    <li><strong><em>Smart curtain set</em>:</strong> Paket lengkap yang memungkinkan gorden dibuka dan ditutup secara otomatis melalui <em>remote</em>, aplikasi, atau perintah suara.</li>
+                </ul>
+                <p>Secara keseluruhan, <em>smart home</em> dirancang untuk memudahkan hidup berkat sistem otomatisasi berbasis <em>smartphone</em>. Selain itu, konsep <em>go green</em> lebih terasa karena adanya sistem penghematan energi yang komprehensif, berdampak pada efisiensi biaya. Konsep ini juga meminimalkan kontak fisik penghuni dengan berbagai peralatan elektronik, meningkatkan keamanan di tengah situasi seperti pandemi.</p>
+
+                <h3>b. Perubahan Perilaku dalam Moda Transportasi</h3>
+                <p>Revolusi industri telah membawa pengaruh signifikan pada berbagai aspek kehidupan, termasuk bidang transportasi. Transportasi terus mengalami perkembangan dan kemajuan seiring dengan evolusi teknologi. Pada era Revolusi Industri 4.0, transportasi konvensional seperti ojek telah berkembang pesat dengan pemanfaatan aplikasi berbasis internet. Menuju era Masyarakat 5.0, transportasi akan mengalami transformasi lebih lanjut, berfokus pada aspek <strong>kendaraan otonom (<em>self-driving vehicle</em>)</strong> dan <strong>digitalisasi</strong>. Transportasi 5.0 mencakup sistem yang ditentukan oleh perangkat lunak, serta eksperimen transportasi O2O (<em>online to offline</em> dan sebaliknya) (Scinteie, 2019).</p>
+                <p>Di Indonesia sendiri, moda transportasi seperti KRL dan MRT telah mengalami kemajuan signifikan, kini dilengkapi dengan LRT. Ketiga moda ini sama-sama menggunakan sumber daya listrik. Dengan berkembangnya teknologi, transformasi masyarakat menuju Masyarakat 5.0 juga mendorong kemajuan transportasi. Dalam Masyarakat 5.0 yang mengusung konsep <em>Society 5.0</em>, <strong>kendaraan otonom (<em>autonomous vehicles</em>)</strong> atau kendaraan pintar akan semakin memudahkan kehidupan manusia.</p>
+                <p>Salah satu hasil nyata dari penggunaan teknologi dalam transportasi adalah lahirnya <strong>Google's self-driving car</strong>, atau mobil pintar tanpa sopir. Sistem dalam mobil semacam ini memiliki kecerdasan yang memungkinkan pengumpulan data dari sensor kendaraan, informasi lalu lintas, cuaca <em>real-time</em>, dan akomodasi. Keberadaan kendaraan pintar ini berpotensi mengurangi kecelakaan yang sering disebabkan oleh kesalahan manusia (Mardiya, 2019). Keuntungan lain dari kendaraan pintar adalah kemudahan mobilitas karena mengintegrasikan layanan berbagi mobil, sepeda, transportasi umum, dan lain-lain.</p>
+
+                <h3>c. Perubahan Perilaku dalam Pemanfaatan Energi</h3>
+                <p>Revolusi Industri 4.0 dan Masyarakat 5.0 memiliki keterkaitan yang sangat erat. Masyarakat 5.0 pada dasarnya adalah komunitas yang hidup dan beradaptasi dengan nyaman dalam era Revolusi Industri 4.0. Kenyamanan komunitas ini berakar pada konsep <strong>kota cerdas (<em>smart city</em>)</strong>. Kota cerdas dan Masyarakat 5.0 memiliki hubungan simbiosis mutualisme; kota cerdas memerlukan penduduk dengan tingkat adaptasi Masyarakat 5.0, sementara tingkat Masyarakat 5.0 akan mempercepat pertumbuhan dan pembangunan kota cerdas. Pemerintah Indonesia sendiri berambisi agar setiap daerah dapat mencapai level kota cerdas.</p>
+                <p>Kunci utama yang menjadikan suatu kota disebut cerdas adalah bagaimana sistem informasi beroperasi di kota tersebut. Pendekatan yang digunakan dalam kota cerdas meliputi keterkaitan dengan lingkungan, konsumsi energi, transportasi, layanan kesehatan, ekonomi, tata kelola, dan pendidikan.</p>
+                <p>Pertanyaan yang muncul adalah apa peranan <strong>energi terbarukan</strong> dalam Masyarakat 5.0? Apakah ini merupakan alternatif dari Revolusi Industri 4.0? Setiap revolusi industri memiliki perubahan mendasar; Revolusi Industri 1.0 dengan mesin uap, Revolusi Industri 2.0 dengan listrik, Revolusi Industri 3.0 dengan komputer, dan Revolusi Industri 4.0 dengan <em>virtual reality</em>, <strong>kecerdasan buatan (AI)</strong>, <strong><em>big data</em></strong>, dan teknologi lainnya. Demikian pula, Masyarakat 5.0 memiliki konsep energi yang baru.</p>
+                <p>Konsep Masyarakat 5.0 mengedepankan peran manusia untuk berbagai aktivitas, bekerja, atau kegiatan lainnya. Konsep ini muncul sebagai respons terhadap permasalahan masyarakat akibat dampak Revolusi Industri 4.0 (era teknologi). Karena itu, energi terbarukan menjadi solusi untuk memenuhi kebutuhan banyak orang (Medium, 2020).</p>
+                <p>Energi terbarukan menawarkan berbagai keuntungan:</p>
+                <ul>
+                    <li>Pertama, lebih ramah lingkungan dan berpusat pada perilaku individu.</li>
+                    <li>Kedua, tidak membahayakan karena mudah diperoleh dan aman untuk kesehatan.</li>
+                    <li>Ketiga, dapat terus diperbarui. Ini berbeda dengan prediksi bahwa cadangan minyak bumi akan menipis, di mana kebutuhan konsumsi (719.048) pada tahun 2025 diproyeksikan melebihi produksi (651.092) (Sa’adah, 2017).</li>
+                </ul>
+                <p>Keuntungan-keuntungan ini sangat dirasakan dan relevan untuk memenuhi kebutuhan hajat hidup orang banyak, sangat sejalan dengan konsep <em>Society 5.0</em>.</p>
+                <div class="highlight-box">
+                    <p><strong>Ayo, Berdiskusi!</strong></p>
+                    <p>Untuk perilaku hidup sehari-hari, revolusi industri 4.0 menyediakan banyak pilihan produk hemat energi. Diskusikan secara kelompok bagaimana berperilaku secara bijaksana dalam pemanfaatan energi di era tersebut.</p>
+                </div>
+            </section>
+
+            <section>
+                <h3>d. Perubahan Perilaku dalam Kegiatan Sosial Ekonomi</h3>
+                <p>Masyarakat 5.0 mencapai tingkat konvergensi yang sangat tinggi antara ruang fisik (ruang nyata) dan ruang maya (ruang virtual). Pada Masyarakat 4.0, pengguna mengakses layanan <em>cloud (database)</em> di dunia maya melalui internet untuk mencari, mengambil, dan menganalisis informasi atau data. Sebaliknya, pada Masyarakat 5.0, informasi diperoleh dari sensor di ruang fisik, yang kemudian terakumulasi di dunia maya. Di dunia maya, <strong><em>big data</em></strong> ini dianalisis dengan <strong>kecerdasan buatan (AI)</strong>, dan hasil analisis tersebut kemudian diumpankan kembali kepada manusia di ruang fisik dalam berbagai bentuk.</p>
+                <p>Skenario dalam Masyarakat 5.0 memiliki enam <em>scene</em> (skenario). Jika dilihat lebih mendalam dari segi ekonomi dan sosial, terdapat dua <em>scene</em> penting yang perlu diketahui:</p>
+                <ul>
+                    <li>Pertama, penggunaan <strong><em>drone</em></strong> yang diterapkan untuk survei properti dan pengiriman barang.</li>
+                    <li>Kedua, <strong><em>smart management</em></strong> yang didukung oleh layanan <em>cloud</em> terbaru yang sangat menguntungkan pengguna dan perusahaan.</li>
+                </ul>
+                <p>Model ini memungkinkan investasi dengan modal rendah dan integrasi yang mudah, menguntungkan perusahaan kecil, menengah, dan bisnis individu.</p>
+                <p>Selain itu, aktivitas ekonomi pada Masyarakat 5.0 juga terlihat di bidang pertanian. Pemanfaatan AI-<em>big data</em>, yang mencakup beragam informasi seperti kondisi pasar, data pertumbuhan tanaman, data meteorologi, serta tren dan kebutuhan pangan, sangat mendukung perubahan di sektor pertanian. Terdapat pula peningkatan dalam pemanfaatan robot traktor, <em>drone</em>, dan distribusi barang yang cepat sesuai kebutuhan konsumen (Firdaus, 2020).</p>
+                <p>Dalam konteks ekonomi dan sosial, Indonesia telah berupaya memaksimalkan penggunaan AI untuk menghadapi tantangan Revolusi Industri 4.0. Penggunaan AI ini dirancang dengan berbagai sistem untuk membantu pertumbuhan ekonomi. Selain itu, AI juga membantu dalam analisis prediksi kinerja, analisis perilaku konsumen, proyeksi/perkiraan anggaran, perancangan sistem pemasaran, mengurangi <em>downtime</em>, dan meningkatkan produktivitas (Teknova, 2021).</p>
+                <div class="link-box">
+                    <div class="content">
+                        <p>Untuk menambah wawasan kalian tentang AI dalam bidang ekonomi di Indonesia, silakan kunjungi tautan berikut:</p>
+                        <p><a href="https://bit.ly/AI-bidang-ekonomi" target="_blank">https://bit.ly/AI-bidang-ekonomi</a></p>
+                    </div>
+                    <div class="qr-code-placeholder">QR Code Placeholder</div>
+                </div>
+
+                <h3>e. Perubahan Perilaku dalam Mitigasi Bencana</h3>
+                <p>Masyarakat 5.0 memanfaatkan teknologi canggih dan keaktifan semua sektor untuk menyiapkan <strong><em>big data</em> cerdas</strong>. Analisis <em>big data</em> ini mencakup beragam informasi, seperti:</p>
+                <ul>
+                    <li>Pengamatan daerah rawan bencana oleh satelit.</li>
+                    <li>Data dari radar cuaca terestrial atau <em>drone</em>.</li>
+                    <li>Informasi kerusakan berdasarkan sensor struktural.</li>
+                    <li>Informasi kerusakan jalan yang dikumpulkan dari mobil (Dalimunthe, 2018).</li>
+                </ul>
+                <p>Bagi masyarakat secara keseluruhan, solusi yang ditawarkan Masyarakat 5.0 dapat membantu mengurangi kerusakan dan mempercepat pemulihan dini akibat bencana. Masyarakat 5.0 diharapkan dapat melakukan berbagai upaya penanggulangan bencana, seperti:</p>
+                <ul>
+                    <li>Menyediakan tempat penampungan dan informasi bantuan yang dipersonalisasi bagi setiap individu melalui <em>smartphone</em> dan perangkat lain, berdasarkan kondisi bencana, serta memindahkan orang dengan aman ke tempat penampungan.</li>
+                    <li>Menemukan korban sesegera mungkin melalui pakaian bantuan, robot penyelamat, dan menyelamatkan mereka dari bangunan yang terkena bencana dengan cepat.</li>
+                    <li>Pengiriman material bantuan secara optimal melalui <em>drone</em>, kendaraan pengiriman swa-kemudi, dan moda transportasi lainnya.</li>
+                    <li>Berbagi informasi bencana antar semua organisasi untuk memfasilitasi respons cepat terhadap bencana, menggunakan teknologi digital untuk mitigasi.</li>
+                </ul>
+                <p>Capaian menuju Masyarakat 5.0 ini telah terlihat setelah gempa besar di Jepang. Serangkaian upaya seperti pemantauan lalu lintas untuk memahami perilaku evakuasi manusia dan kondisi jaringan jalan dilakukan dengan menggunakan informasi dari kendaraan dan data GPS <em>smartphone</em>. Fenomena kemacetan berhasil diatasi dengan cepat untuk menghambat bertambahnya korban (Dalimunthe, 2018). Ini adalah implementasi Masyarakat 5.0 yang bertujuan memberdayakan semua pihak di masyarakat, melibatkan mereka, dan menekankan partisipasi aktif untuk hidup aman, nyaman, dan terlindungi. Berbagai risiko bencana dapat dikendalikan dan diminimalisasi dampaknya.</p>
+                <p>Dalam konteks Indonesia, dengan masyarakatnya yang berubah cepat didorong oleh <em>big data</em>, integrasi dunia maya dan ruang fisik masih merupakan tantangan besar. Namun, masa depan Masyarakat 5.0 memiliki potensi besar untuk diadopsi dan disesuaikan dengan konteks spesifik pencegahan bencana di Indonesia. Beberapa upaya Indonesia terkait <em>big data</em> dalam penanggulangan bencana alam meliputi:</p>
+                <ul>
+                    <li><strong>Data Informasi Bencana Indonesia (DIBI)</strong> atau Indonesia Disaster Data Information oleh BNPB.</li>
+                    <li><strong>The One Map Initiative</strong> oleh Badan Informasi Geospasial (BIG).</li>
+                    <li><strong>PetaJakarta.org</strong> (sekarang PetaBencana.id), sebuah <em>platform online</em> yang mengubah data Twitter menjadi sumber pengumpulan data darurat dan layanan peringatan kritis selama banjir. Pada tahun 2015, <em>platform</em> ini berhasil memetakan 1.000 lokasi banjir secara <em>real time</em>, memungkinkan masyarakat berkontribusi pada informasi dan berinteraksi dengan <em>big data</em> (Dalimunthe, 2018). Informasi ini bahkan mampu menjawab pertanyaan kritis seperti "di mana tempat penampungan terdekat?", "rute mana yang paling aman menuju tempat kerja?", atau "di mana daerah rawan bencana?".</li>
+                </ul>
+                <p>Data yang diperoleh dari berbagai sumber dengan resolusi spasial dan temporal yang lebih tinggi berkontribusi pada upaya manajemen bencana yang lebih efisien. Inovasi teknologi seperti media sosial, sistem berbasis lokasi, dan analisis <em>big data</em> dianggap sebagai alat yang kuat untuk membantu siklus manajemen bencana (mitigasi, kesiapsiagaan, respons, dan pemulihan). Hal ini juga berpotensi menghemat anggaran negara dari redundansi, penipuan, dan penyalahgunaan sumber daya dalam penanggulangan bencana.</p>
+                <p>Dewasa ini, Indonesia masih bergulat dengan tantangan dalam <em>data mining</em>, akurasi, konsistensi, dan kelengkapan data. Keamanan data serta masalah privasi dalam transmisi dan penyimpanan data juga menjadi ancaman konstan. Pertanyaan-pertanyaan krusial tetap ada: bagaimana pengetahuan digunakan ketika kecerdasan buatan, <em>big data</em>, dan interaksi manusia bertabrakan? Siapa yang akan memimpin peran dalam pengambilan keputusan? Dan seperti apa masyarakat masa depan yang akan terbentuk?</p>
+                <p>Respons Indonesia terhadap Revolusi 4.0 telah terlihat di berbagai bidang. Paparan di atas adalah contoh pengenalan di negara kita. Penjelasan lebih lanjut mengenai penggunaan <strong>kecerdasan buatan (<em>artificial intelligence</em>)</strong> di Indonesia dalam bidang pendidikan, keamanan, dan kesehatan dapat ditemukan pada tautan berikut:</p>
+                <div class="link-box">
+                    <div class="content">
+                        <p>Untuk menambah wawasan kalian tentang AI di Indonesia, silakan kunjungi tautan berikut:</p>
+                        <p><a href="https://bit.ly/AI-di-Indonesia" target="_blank">https://bit.ly/AI-di-Indonesia</a></p>
+                    </div>
+                    <div class="qr-code-placeholder">QR Code Placeholder</div>
+                </div>
+            </section>
+
+            <section id="kesejahteraan-penduduk">
+                <h2>C. Kesejahteraan Penduduk sebagai Hasil Pembangunan</h2>
+                <h3>1. Pengertian Kesejahteraan</h3>
+                <p>Kesejahteraan sosial merupakan upaya perubahan yang dilaksanakan secara sistematis, terarah, dan terencana, sejalan dengan visi dan misi pembangunan nasional. Penyelenggaraan kesejahteraan sosial dalam bentuk pelayanan sosial bertujuan untuk memenuhi kebutuhan dasar masyarakat. Masyarakat yang dicirikan oleh angka kemiskinan, pengangguran, dan kriminalitas yang rendah, serta memiliki angka harapan hidup yang tinggi dan tingkat literasi yang baik, dapat dikatakan memiliki tingkat kesejahteraan sosial yang tinggi (Setiawan, 2019). Sebaliknya, tingginya angka kemiskinan, pengangguran, kriminalitas, dan masalah serupa menjadi indikasi rendahnya tingkat kesejahteraan sosial.</p>
+                <p>Berbagai pihak telah mendefinisikan kesejahteraan:</p>
+                <ul>
+                    <li>Menurut <strong>Undang-Undang Nomor 11 Tahun 2009</strong>, kesejahteraan sosial adalah kondisi terpenuhinya kebutuhan material, spiritual, dan sosial warga negara agar dapat hidup layak dan mampu mengembangkan diri, sehingga dapat melaksanakan fungsi sosialnya.</li>
+                    <li>Az-Zahrah (2018) berpendapat bahwa kesejahteraan sosial berarti sistem-sistem sosial (jaringan dan lembaga sosial) dan kemampuan individu, keluarga, kelompok, atau masyarakat dalam merespons dan memenuhi kebutuhan dasar, melaksanakan peran sosial, serta menghadapi tekanan dan goncangan.</li>
+                </ul>
+                <p>Kondisi sejahtera tercapai ketika kehidupan masyarakat terasa bahagia dan aman, di mana kebutuhan dasar seperti gizi, kesehatan, tempat tinggal, pendapatan, dan pendidikan dapat terpenuhi. Selain itu, manusia juga mendapatkan perlindungan yang menjanjikan dari risiko-risiko besar yang mengancam kehidupannya. Secara sederhana, menurut Suharto (2005), kesejahteraan pada intinya adalah terpenuhinya atau tercapainya segala bentuk kebutuhan hidup, terutama yang bersifat pokok, meliputi pangan, sandang, papan, perawatan kesehatan, dan pendidikan.</p>
+                <p>Tujuan utama pembangunan kesejahteraan sosial adalah untuk meningkatkan kualitas hidup manusia secara menyeluruh.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Geografi untuk SMA/MA Kelas XII - Bab 2: Pembangunan Wilayah, Revolusi Industri, dan Pengaruhnya terhadap Ruang Muka Bumi dan Kesejahteraan</p>
+            <p>&copy; 2024. Hak Cipta Dilindungi Undang-Undang.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

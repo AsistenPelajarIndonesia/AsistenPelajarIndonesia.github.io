@@ -1,0 +1,337 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listrik Statis: Gaya Listrik</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1);
+            padding: 15px;
+            border-left: 5px solid var(--primary-blue);
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .definition {
+            background-color: var(--background-canvas);
+            border: 1px dashed var(--border-divider);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .definition::before {
+            content: "✨";
+            position: absolute;
+            left: 10px;
+            top: 15px;
+            font-size: 1.2em;
+            color: var(--secondary-accent-amber);
+        }
+
+        .definition p {
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        .formula-container {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-container code {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1.3em;
+            color: var(--text-primary);
+            background-color: #f5f5f5;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            white-space: pre-wrap; /* Ensure line breaks are preserved */
+        }
+
+        .example {
+            background-color: #e3f2fd; /* Light blue */
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .example p {
+            margin-bottom: 10px;
+        }
+
+        .example p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .sub-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .sub-section:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .interactive-element {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            background-color: #0277bd; /* Darker blue */
+        }
+
+        .explanation-box {
+            background-color: #fff9c4; /* Light yellow */
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            border-left: 5px solid var(--secondary-accent-amber);
+            color: var(--text-primary);
+        }
+
+        .explanation-box h4 {
+            margin-top: 0;
+            color: var(--secondary-accent-amber);
+            font-size: 1.2em;
+        }
+
+        .explanation-box p {
+            margin-bottom: 5px;
+        }
+
+        .explanation-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .formula-container code {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="section-title">Bab 1: Listrik Statis</div>
+
+        <div class="sub-section">
+            <h2>A. Gaya Listrik</h2>
+
+            <p>Dalam kehidupan sehari-hari, kita sering mengamati berbagai fenomena yang melibatkan gaya. Pernahkah Anda menggosok balon karet atau mistar plastik ke kain wol lalu mendekatkannya ke potongan-potongan kertas kecil? Anda akan melihat bahwa potongan kertas tersebut tertarik ke arah balon atau mistar. Fenomena ini terjadi karena adanya <strong>gaya listrik</strong>.</p>
+
+            <div class="highlight">
+                <p><strong>Gaya listrik</strong> adalah gaya tarik-menarik atau tolak-menolak antara dua benda yang bermuatan listrik.</p>
+            </div>
+
+            <p>Ketika Anda menggosok mistar plastik dengan kain wol, terjadi perpindahan elektron. Elektron berpindah dari kain wol ke mistar plastik, sehingga mistar plastik menjadi bermuatan <strong>negatif</strong>. Mistar plastik yang bermuatan negatif ini kemudian menarik potongan-potongan kertas yang netral (atau memiliki muatan yang berlawanan), karena adanya interaksi antara muatan yang berbeda.</p>
+
+            <p>Fenomena serupa terjadi ketika kaca digosok menggunakan kain sutra. Dalam kasus ini, elektron berpindah dari kaca ke kain sutra, sehingga kaca menjadi bermuatan <strong>positif</strong>.</p>
+
+            <div class="definition">
+                <p>Dua jenis muatan listrik yang dikenal adalah muatan positif dan muatan negatif. Muatan sejenis (positif dengan positif, atau negatif dengan negatif) akan saling <strong>tolak-menolak</strong>, sedangkan muatan yang berbeda jenis (positif dengan negatif) akan saling <strong>tarik-menarik</strong>.</p>
+            </div>
+
+            <p>Seorang ilmuwan Amerika bernama <strong>Benjamin Franklin</strong> (1706–1790) menyatakan bahwa mistar plastik yang digosok kain wol bersifat muatan negatif, sedangkan kaca yang digosok kain sutra bersifat muatan positif. Pernyataan ini diterima dan menjadi dasar pemahaman kita hingga saat ini.</p>
+
+            <p>Dua jenis benda bermuatan dapat berinteraksi, baik tarik menarik maupun tolak menolak, jika berada pada jarak tertentu. Peristiwa ini menunjukkan bahwa pada kedua benda bermuatan listrik terdapat <strong>gaya</strong>. Gaya inilah yang dikenal dengan <strong>gaya listrik</strong>.</p>
+
+            <div class="explanation-box">
+                <h4>Aktivitas Sederhana</h4>
+                <p>Cobalah menggosokkan penggaris plastik ke rambut kering Anda, lalu dekatkan ke serpihan kertas kecil. Amati apa yang terjadi.</p>
+            </div>
+
+            <div class="sub-section">
+                <h3>Hukum Coulomb</h3>
+                <p>Besar gaya listrik antar dua muatan titik pertama kali diteliti secara mendalam oleh ilmuwan Prancis bernama <strong>Charles de Coulomb</strong> (1736-1806). Hasil penelitiannya dirumuskan dalam sebuah hukum yang dikenal sebagai <strong>Hukum Coulomb</strong>.</p>
+
+                <p>Hukum Coulomb menyatakan bahwa:</p>
+                <p><strong>Besar gaya tarik-menarik atau tolak-menolak antara dua benda bermuatan listrik (gaya listrik atau gaya Coulomb) berbanding lurus dengan hasil kali besar muatan masing-masing benda dan berbanding terbalik dengan kuadrat jarak antara kedua benda tersebut.</strong></p>
+
+                <p>Secara matematis, Hukum Coulomb dapat dituliskan sebagai:</p>
+
+                <div class="formula-container">
+                    <code>
+                        F = k * |q₁ * q₂| / r²
+                    </code>
+                </div>
+
+                <p>Di mana:</p>
+                <ul>
+                    <li><p><strong>F</strong> adalah besar gaya listrik (dalam Newton, N).</p></li>
+                    <li><p><strong>k</strong> adalah konstanta Coulomb, yang nilainya bergantung pada medium di antara kedua muatan. Untuk medium udara atau ruang hampa, nilai <code>k</code> adalah sekitar <strong>9 x 10⁹ N.m²/C²</strong>.</p></li>
+                    <li><p><strong>q₁</strong> dan <strong>q₂</strong> adalah besar muatan listrik kedua benda (dalam Coulomb, C).</p></li>
+                    <li><p><strong>r</strong> adalah jarak antara kedua muatan (dalam meter, m).</p></li>
+                    <li><p>Tanda <code>| |</code> menunjukkan nilai mutlak, yang berarti kita hanya mengambil besarnya gaya tanpa memperhatikan arahnya pada saat perhitungan rumus.</p></li>
+                </ul>
+
+                <p>Konstanta <code>k</code> dapat dihubungkan dengan permitivitas medium melalui rumus:</p>
+                <div class="formula-container">
+                    <code>
+                        k = 1 / (4 * π * ε)
+                    </code>
+                </div>
+
+                <p>Di mana:</p>
+                <ul>
+                    <li><p><strong>ε</strong> adalah permitivitas medium. Untuk udara atau ruang hampa, permitivitasnya dilambangkan dengan <strong>ε₀</strong>, dengan nilai <strong>8,85 x 10⁻¹² F/m</strong>.</p></li>
+                    <li><p><strong>ε₀</strong> adalah permitivitas ruang hampa.</p></li>
+                    <li><p><strong>εᵣ</strong> adalah konstanta dielektrik medium atau permitivitas relatif medium terhadap permitivitas udara.</p></li>
+                    <li><p>Hubungan antara permitivitas medium, permitivitas ruang hampa, dan konstanta dielektrik adalah <strong>ε = ε₀ * εᵣ</strong>.</p></li>
+                </ul>
+
+                <div class="explanation-box">
+                    <h4>Pentingnya Tanda Muatan</h4>
+                    <p>Dalam Hukum Coulomb, nilai <code>k</code> dan jarak <code>r</code> selalu positif. Namun, hasil perkalian muatan <code>q₁ * q₂</code> bisa positif atau negatif.</p>
+                    <ul>
+                        <li>Jika <code>q₁</code> dan <code>q₂</code> memiliki tanda yang sama (keduanya positif atau keduanya negatif), hasil <code>q₁ * q₂</code> adalah positif. Ini menunjukkan adanya gaya <strong>tolak-menolak</strong>.</li>
+                        <li>Jika <code>q₁</code> dan <code>q₂</code> memiliki tanda yang berbeda (satu positif dan satu negatif), hasil <code>q₁ * q₂</code> adalah negatif. Ini menunjukkan adanya gaya <strong>tarik-menarik</strong>.</li>
+                    </ul>
+                    <p>Saat menghitung besar gaya menggunakan rumus <code>F = k * |q₁ * q₂| / r²</code>, kita menggunakan nilai mutlak dari hasil perkalian muatan untuk mendapatkan besarnya gaya saja. Arah gaya (tarik-menarik atau tolak-menolak) ditentukan berdasarkan tanda muatan.</p>
+                </div>
+
+            </div>
+
+            <div class="sub-section">
+                <h3>Resultan Gaya</h3>
+                <p>Gaya adalah besaran vektor, yang memiliki besar dan arah. Ketika sebuah muatan dipengaruhi oleh lebih dari satu gaya listrik, kita perlu menentukan <strong>resultan gaya</strong> (gaya total) yang bekerja padanya.</p>
+
+                <div class="highlight">
+                    <p>Untuk menentukan resultan gaya, kita harus mempertimbangkan baik besar maupun arah dari masing-masing gaya yang bekerja.</p>
+                </div>
+
+                <p>Jika dua gaya, <strong>F₁</strong> dan <strong>F₂</strong>, bekerja pada sebuah muatan dan membentuk sudut <strong>α</strong> satu sama lain, resultan gaya listriknya (<strong>F</strong>) dapat dicari menggunakan aturan penjumlahan vektor, yaitu:</p>
+
+                <div class="formula-container">
+                    <code>
+                        F = √(F₁² + F₂² + 2 * F₁ * F₂ * cos α)
+                    </code>
+                </div>
+
+                <div class="explanation-box">
+                    <h4>Mengapa Menggunakan Kosinus?</h4>
+                    <p>Rumus ini berasal dari aturan cosinus dalam trigonometri untuk mencari panjang sisi ketiga sebuah segitiga jika diketahui dua sisi dan sudut yang diapitnya. Dalam konteks gaya listrik, resultan gaya dapat divisualisasikan sebagai diagonal dari jajaran genjang yang dibentuk oleh kedua vektor gaya.</p>
+                </div>
+
+                <div class="example">
+                    <h4>Contoh Konseptual</h4>
+                    <p>Bayangkan sebuah muatan positif kecil ditempatkan di antara dua muatan negatif yang berjarak tertentu. Muatan positif ini akan mengalami gaya tolak-menolak dari kedua muatan negatif. Arah dan besar resultan gayanya akan bergantung pada posisi dan besar muatan-muatan negatif tersebut.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+```

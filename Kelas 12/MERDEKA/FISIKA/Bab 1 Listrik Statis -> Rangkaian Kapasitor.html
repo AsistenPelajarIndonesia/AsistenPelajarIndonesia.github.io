@@ -1,0 +1,290 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Listrik Statis - Rangkaian Kapasitor</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        .formula-container {
+            background-color: #e3f2fd;
+            padding: 15px 20px;
+            border-left: 5px solid var(--primary-blue);
+            margin: 20px 0;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .formula-container code {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1.1em;
+            color: var(--primary-blue);
+            background-color: transparent;
+            padding: 0;
+            display: block;
+            white-space: pre-wrap; /* Allows formulas to wrap if too long */
+        }
+
+        .formula-container code span.symbol {
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        .formula-container .equation-label {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 5px;
+            display: block;
+        }
+
+        .explanation-block {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .explanation-block h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .explanation-block p {
+            margin-bottom: 0;
+        }
+
+        .concept-highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .key-takeaway {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 10px 15px;
+            border-left: 5px solid var(--primary-blue);
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula-container code {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .formula-container code {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1: Listrik Statis - Rangkaian Kapasitor</h1>
+
+        <p>Dalam dunia fisika, kapasitor adalah komponen fundamental yang memiliki kemampuan untuk menyimpan energi dalam bentuk medan listrik. Setelah memahami konsep dasar kapasitor, kini saatnya kita menyelami bagaimana kapasitor dapat dihubungkan satu sama lain dalam sebuah rangkaian, baik secara seri maupun paralel, untuk mencapai nilai kapasitansi yang diinginkan. Rangkaian kapasitor adalah metode umum yang digunakan dalam produk-produk elektronik untuk mendapatkan nilai kapasitansi total yang spesifik.</p>
+
+        <h2>E. Rangkaian Kapasitor</h2>
+
+        <p>Kapasitor yang tersedia di pasaran hadir dalam berbagai bentuk, jenis, ukuran, dan nilai kapasitansi. Biasanya, label pada kapasitor akan mencantumkan nilai kapasitansinya. Ketika kita membutuhkan nilai kapasitansi tertentu yang tidak tersedia secara langsung, para insinyur elektronik merangkai beberapa kapasitor secara seri atau paralel. Memahami cara kerja rangkaian ini sangat penting untuk merancang sirkuit yang efisien.</p>
+
+        <div class="explanation-block">
+            <h4>Mengapa Merangkai Kapasitor?</h4>
+            <p>Tujuan utama merangkai kapasitor adalah untuk:
+            <ul>
+                <li><strong>Mencapai nilai kapasitansi total yang lebih besar</strong> dari kapasitor individu (menggunakan rangkaian paralel).</li>
+                <li><strong>Mencapai nilai kapasitansi total yang lebih kecil</strong> dari kapasitor individu (menggunakan rangkaian seri).</li>
+                <li><strong>Meningkatkan tegangan kerja maksimum</strong> rangkaian.</li>
+            </ul>
+            </p>
+        </div>
+
+        <h3>1. Rangkaian Seri Kapasitor</h3>
+
+        <p>Ketika kapasitor dihubungkan secara seri, setiap kapasitor terhubung secara berurutan, membentuk satu jalur tunggal untuk aliran muatan. Dalam konfigurasi ini, muatan yang tersimpan pada setiap kapasitor adalah sama, namun beda potensial (tegangan) pada setiap kapasitor akan berbeda, tergantung pada nilai kapasitansinya. Jumlah total tegangan pada rangkaian seri sama dengan jumlah tegangan pada masing-masing kapasitor.</p>
+
+        <div class="formula-container">
+            <code>
+                V<sub>total</sub> = V<sub>1</sub> + V<sub>2</sub> + V<sub>3</sub> + ... <span class="equation-label">(1)</span>
+            </code>
+        </div>
+
+        <p>Menggunakan hubungan dasar kapasitansi, <code>Q = C * V</code>, di mana <code>Q</code> adalah muatan, <code>C</code> adalah kapasitansi, dan <code>V</code> adalah tegangan, kita dapat menurunkan rumus untuk kapasitansi total dalam rangkaian seri.</p>
+
+        <p>Karena muatan yang tersimpan pada setiap kapasitor dalam rangkaian seri adalah sama (<code>Q<sub>total</sub> = Q<sub>1</sub> = Q<sub>2</sub> = Q<sub>3</sub> = ...</code>), kita dapat mensubstitusikan persamaan <code>V = Q / C</code> ke dalam persamaan tegangan total:</p>
+
+        <div class="formula-container">
+            <code>
+                <span class="symbol"></span><span class="symbol">Q<sub>total</sub></span><span class="symbol"></span> / <span class="symbol">C<sub>seri</sub></span> = <span class="symbol">Q<sub>1</sub></span>/<span class="symbol">C<sub>1</sub></span> + <span class="symbol">Q<sub>2</sub></span>/<span class="symbol">C<sub>2</sub></span> + <span class="symbol">Q<sub>3</sub></span>/<span class="symbol">C<sub>3</sub></span> + ... <span class="equation-label">(2)</span>
+            </code>
+        </div>
+
+        <p>Dengan menyederhanakan persamaan (2) menggunakan prinsip bahwa semua muatan adalah sama, kita mendapatkan:</p>
+
+        <div class="formula-container">
+            <code>
+                <span class="symbol"></span><span class="symbol">1</span><span class="symbol"></span> / <span class="symbol">C<sub>seri</sub></span> = <span class="symbol">1</span><span class="symbol"></span>/<span class="symbol">C<sub>1</sub></span> + <span class="symbol">1</span><span class="symbol"></span>/<span class="symbol">C<sub>2</sub></span> + <span class="symbol">1</span><span class="symbol"></span>/<span class="symbol">C<sub>3</sub></span> + ... <span class="equation-label">(Rumus Kapasitansi Total Seri)</span>
+            </code>
+        </div>
+
+        <p>Rumus ini menunjukkan bahwa hasil dari kebalikan kapasitansi total dalam rangkaian seri adalah jumlah dari kebalikan kapasitansi masing-masing kapasitor. Kapasitansi total dalam rangkaian seri selalu lebih kecil dari kapasitansi terkecil di antara kapasitor-kapasitor yang dirangkai.</p>
+
+        <h3>2. Rangkaian Paralel Kapasitor</h3>
+
+        <p>Dalam rangkaian paralel, setiap kapasitor dihubungkan ke sumber tegangan secara terpisah, sehingga tegangan pada setiap kapasitor adalah sama dengan tegangan sumber. Namun, muatan total yang tersimpan dalam rangkaian adalah jumlah muatan yang tersimpan pada setiap kapasitor.</p>
+
+        <div class="formula-container">
+            <code>
+                V<sub>total</sub> = V<sub>1</sub> = V<sub>2</sub> = V<sub>3</sub> = ... <span class="equation-label">(3)</span>
+            </code>
+        </div>
+
+        <p>Muatan total yang tersimpan dalam rangkaian paralel adalah jumlah muatan pada masing-masing kapasitor:</p>
+
+        <div class="formula-container">
+            <code>
+                Q<sub>total</sub> = Q<sub>1</sub> + Q<sub>2</sub> + Q<sub>3</sub> + ... <span class="equation-label">(4)</span>
+            </code>
+        </div>
+
+        <p>Dengan mensubstitusikan hubungan <code>Q = C * V</code> ke dalam persamaan (4), kita memperoleh:</p>
+
+        <div class="formula-container">
+            <code>
+                <span class="symbol">C<sub>total</sub></span> <span class="symbol">V<sub>total</sub></span> = <span class="symbol">C<sub>1</sub></span> <span class="symbol">V<sub>1</sub></span> + <span class="symbol">C<sub>2</sub></span> <span class="symbol">V<sub>2</sub></span> + <span class="symbol">C<sub>3</sub></span> <span class="symbol">V<sub>3</sub></span> + ... <span class="equation-label">(5)</span>
+            </code>
+        </div>
+
+        <p>Karena tegangan pada setiap kapasitor dalam rangkaian paralel adalah sama (<code>V<sub>total</sub> = V<sub>1</sub> = V<sub>2</sub> = V<sub>3</sub> = ...</code>), kita dapat menyederhanakan persamaan (5) menjadi:</p>
+
+        <div class="formula-container">
+            <code>
+                <span class="symbol">C<sub>total</sub></span> = <span class="symbol">C<sub>1</sub></span> + <span class="symbol">C<sub>2</sub></span> + <span class="symbol">C<sub>3</sub></span> + ... <span class="equation-label">(Rumus Kapasitansi Total Paralel)</span>
+            </code>
+        </div>
+
+        <p>Rumus ini menunjukkan bahwa kapasitansi total dalam rangkaian paralel adalah jumlah langsung dari kapasitansi setiap kapasitor yang dirangkai. Dengan demikian, rangkaian paralel dapat digunakan untuk meningkatkan total kapasitansi.</p>
+
+        <div class="key-takeaway">
+            <h4>Poin Kunci:</h4>
+            <p>
+                <span class="concept-highlight">Seri Kapasitor</span>: Muatan sama, tegangan terbagi. Kapasitansi total lebih kecil.
+            </p>
+            <p>
+                <span class="concept-highlight">Paralel Kapasitor</span>: Tegangan sama, muatan terbagi. Kapasitansi total lebih besar.
+            </p>
+        </div>
+
+        <p>Memahami kedua jenis rangkaian ini memungkinkan kita untuk merancang berbagai aplikasi elektronik yang memanfaatkan sifat penyimpanan energi dari kapasitor. Baik untuk menyaring sinyal, menyimpan energi sesaat, maupun dalam rangkaian pewaktu, rangkaian kapasitor adalah elemen vital dalam dunia elektronika.</p>
+
+    </div>
+</body>
+</html>
+```

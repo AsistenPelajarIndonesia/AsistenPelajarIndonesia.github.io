@@ -1,0 +1,358 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapasitor Keping Sejajar - Listrik Statis Kelas 12</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .formula {
+            display: inline-block;
+            background-color: #e3f2fd;
+            color: var(--primary-blue);
+            padding: 10px 20px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 4px;
+            font-size: 1.1em;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .formula-display {
+            display: block;
+            background-color: #e3f2fd;
+            color: var(--primary-blue);
+            padding: 15px 25px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: auto; /* Add scroll for long formulas */
+        }
+
+        .formula-display span {
+            font-family: 'Times New Roman', Times, serif; /* Use serif for math symbols */
+        }
+
+
+        .concept-box {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .concept-box strong {
+            color: var(--secondary-accent-amber);
+        }
+
+        .application-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid var(--accent-green);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .application-box strong {
+            color: var(--accent-green);
+        }
+
+        .key-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .formula-explanation {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Interactive Elements */
+        .interactive-wrapper {
+            background-color: var(--background-canvas);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .interactive-item {
+            flex: 1 1 300px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .interactive-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .interactive-item h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .interactive-item p {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        .interactive-item a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: var(--primary-blue);
+            color: white !important; /* Override text color for link */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-item a:hover {
+            background-color: #1565C0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .formula, .formula-display {
+                font-size: 1em;
+            }
+            
+            .interactive-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .interactive-item {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .formula, .formula-display {
+                font-size: 0.95em;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1: Listrik Statis - Kapasitor Keping Sejajar</h1>
+
+        <div class="section">
+            <h2>Pengantar Konsep Kapasitor Keping Sejajar</h2>
+            <p>Dalam dunia teknologi modern, konsep <strong>kapasitor keping sejajar</strong> memegang peranan krusial, terutama dalam perangkat elektronik sehari-hari. Salah satu contoh paling umum adalah <strong>layar sentuh kapasitif</strong> yang banyak kita temui pada <em>smartphone</em>.</p>
+            <p>Layar sentuh kapasitif memanfaatkan sifat kapasitif tubuh manusia untuk mengirimkan sinyal ke layar. Keunggulan utamanya terletak pada kemampuannya menampilkan kejernihan gambar hingga 90% dan tidak bergantung pada tekanan fisik seperti layar sentuh resistif. Hal ini menjadikan layar kapasitif lebih dominan digunakan saat ini.</p>
+            <div class="concept-box">
+                <p><strong>Konstruksi Dasar Kapasitor Keping Sejajar:</strong> Terdiri dari dua lapisan konduktor yang dipisahkan oleh sebuah <strong>bahan dielektrik</strong> (isolator).</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Prinsip Kerja dan Kapasitansi</h2>
+            <p>Sebuah kapasitor dapat disimbolkan dalam rangkaian listrik seperti pada gambar standar. Ketika kapasitor dihubungkan dengan sumber tegangan, proses pengisian muatan terjadi hingga tegangan pada kapasitor sama dengan tegangan sumber. Hebatnya, ketika sumber tegangan dilepaskan, kapasitor masih menyimpan energi listrik. Energi ini dapat dialirkan ke komponen lain saat kapasitor dihubungkan dengan beban. Kemampuan ini disebut sebagai <strong>kapasitansi kapasitor</strong>.</p>
+
+            <div class="concept-box">
+                <p><strong>Kapasitansi Kapasitor</strong>: Merupakan ukuran kemampuan kapasitor dalam menyimpan muatan listrik. Satuan kapasitansi dalam Sistem Internasional (SI) adalah <strong>Farad (F)</strong>.</p>
+            </div>
+
+            <p>Hubungan antara muatan (Q), tegangan (V), dan kapasitansi (C) dinyatakan dalam rumus fundamental:</p>
+            <div class="formula-display">
+                <span>C = Q / V</span>
+                <span class="formula-explanation">(Persamaan 1-9)</span>
+            </div>
+            <p>Di sini, <code>C</code> adalah kapasitansi dalam satuan Farad, <code>Q</code> adalah muatan yang tersimpan dalam satuan Coulomb, dan <code>V</code> adalah beda potensial atau tegangan dalam satuan Volt.</p>
+
+            <p>Penting untuk dicatat bahwa nilai kapasitansi <code>C</code> sebuah kapasitor <strong>tidak dipengaruhi</strong> oleh tegangan sumber yang diberikan. Sebaliknya, <code>C</code> bergantung pada faktor-faktor fisik dari kapasitor itu sendiri, yaitu:</p>
+            <ul>
+                <li>Luas penampang keping konduktor (<code>A</code>).</li>
+                <li>Jarak antar kedua keping konduktor (<code>d</code>).</li>
+                <li>Sifat bahan dielektrik yang berada di antara kedua keping (diwakili oleh permitivitas medium, <code>ε</code>).</li>
+            </ul>
+            <p>Rumus yang menggambarkan kapasitansi kapasitor keping sejajar adalah:</p>
+            <div class="formula-display">
+                <span>C = (ε * A) / d</span>
+                <span class="formula-explanation">(Persamaan 1-10)</span>
+            </div>
+            <p>Dalam persamaan ini, <code>ε</code> adalah permitivitas bahan dielektrik, yang merupakan konstanta karakteristik dari bahan tersebut. Jika bahan dielektriknya adalah udara, maka permitivitasnya mendekati permitivitas ruang hampa (<code>ε₀ = 8.85 x 10⁻¹² F/m</code>).</p>
+        </div>
+
+        <div class="section">
+            <h2>Ukuran Kapasitansi dan Energi yang Tersimpan</h2>
+            <p>Satuan <strong>Farad</strong> sebenarnya memiliki nilai yang sangat besar. Untuk memberikan gambaran, kapasitor dengan kapasitansi 1 Farad membutuhkan luas permukaan keping yang sangat luas, bahkan bisa setara dengan luas pulau Jawa jika menggunakan udara sebagai dielektrik dan jarak antar keping 1 meter!</p>
+            <p>Oleh karena itu, dalam praktik, kapasitansi kapasitor umumnya dinyatakan dalam satuan yang lebih kecil:</p>
+            <ul>
+                <li><strong>mikro Farad (µF)</strong>: 1 µF = 10⁻⁶ F</li>
+                <li><strong>nano Farad (nF)</strong>: 1 nF = 10⁻⁹ F</li>
+                <li><strong>piko Farad (pF)</strong>: 1 pF = 10⁻¹² F</li>
+            </ul>
+            <p>Ketika sebuah kapasitor telah terisi muatan hingga tegangannya sama dengan tegangan sumber, kapasitor tersebut telah menyimpan energi listrik. Besarnya energi yang tersimpan (<code>E</code>) dalam kapasitor ditentukan oleh kapasitansinya (<code>C</code>) dan kuadrat tegangan (<code>V²</code>), sesuai dengan rumus:</p>
+            <div class="formula-display">
+                <span>E = ½ * C * V²</span>
+                <span class="formula-explanation">(Persamaan 1-11)</span>
+            </div>
+            <p><code>E</code> diukur dalam satuan Joule.</p>
+        </div>
+
+        <div class="section">
+            <h2>Penerapan dalam Teknologi</h2>
+            <p>Berbagai macam produk elektronik menggunakan kapasitor dengan nilai kapasitansi yang beragam. Untuk mencapai nilai kapasitansi yang spesifik sesuai kebutuhan, kapasitor-kapasitor ini dirangkai secara seri maupun paralel.</p>
+            <div class="application-box">
+                <p><strong>Layar Sentuh Kapasitif</strong>: Contoh aplikasi nyata dari kapasitor keping sejajar. Lapisan konduktor transparan pada layar bekerja sebagai salah satu keping kapasitor, sementara jari pengguna yang menghantarkan muatan bertindak sebagai objek yang mempengaruhi kapasitansi.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Eksplorasi Lebih Lanjut (Interaktif)</h2>
+            <p>Untuk memahami lebih dalam bagaimana faktor-faktor seperti luas keping, jarak antar keping, dan jenis dielektrik mempengaruhi kapasitansi, Anda dapat bereksplorasi menggunakan simulasi interaktif. Aktivitas berikut akan membantu Anda mengidentifikasi faktor-faktor tersebut secara visual:</p>
+            <div class="interactive-wrapper">
+                <div class="interactive-item">
+                    <h4>Simulasi Kapasitor Keping Sejajar</h4>
+                    <p>Pelajari bagaimana perubahan luas keping, jarak, dan tegangan mempengaruhi kapasitansi dan muatan pada kapasitor.</p>
+                    <a href="https://phet.colorado.edu/sims/html/capacitor-lab-basics/latest/capacitor-lab-basics_en.html" target="_blank" rel="noopener noreferrer">Buka Simulasi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```

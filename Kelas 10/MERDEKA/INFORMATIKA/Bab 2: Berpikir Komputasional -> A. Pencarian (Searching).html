@@ -1,0 +1,390 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Berpikir Komputasional - Pencarian (Searching)</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 0.3em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .keyword {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .definition {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-left: 20px;
+            border-left: 3px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        .example-list {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .example-list li {
+            margin-bottom: 10px;
+        }
+
+        .strategy-list {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+
+        .strategy-list li {
+            margin-bottom: 15px;
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+
+        .italic-text {
+            font-style: italic;
+        }
+
+        .code-block {
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+        }
+
+        .game-scenario {
+            background-color: #e3f2fd; /* Light blue background for game context */
+            padding: 15px;
+            border-left: 4px solid var(--primary-blue);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .game-scenario h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .feedback-options {
+            list-style-type: lower-alpha;
+            margin-left: 25px;
+        }
+
+        .feedback-options li {
+            margin-bottom: 8px;
+        }
+
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto; /* Make table responsive */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: white;
+            color: var(--text-primary);
+        }
+
+        /* Responsive Table */
+        @media screen and (max-width: 768px) {
+            th, td {
+                font-size: 0.85em;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.75em;
+            }
+            h3 {
+                font-size: 1.35em;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 2: Berpikir Komputasional</h1>
+            <h2>A. Pencarian (Searching)</h2>
+        </header>
+
+        <div class="section">
+            <p>Di tingkat SMA, kita akan mendalami bagaimana merumuskan <span class="keyword">strategi penyelesaian persoalan</span> menjadi sebuah <span class="keyword">algoritma</span> yang efisien, yang nantinya siap diimplementasikan menjadi program komputer. Dunia kita penuh dengan permasalahan, dan setiap bidang memiliki cara penyelesaiannya tersendiri yang didasarkan pada konsep dan prinsip keilmuannya.</p>
+            <p>Belajar dari persoalan yang ada dan solusinya adalah kunci. Namun, persoalan tersebut perlu kita adaptasi dengan konteks kita, membentuk pola persoalan dan pola solusi dari latihan yang kita lakukan. Mata pelajaran Informatika di SMA berfokus pada persoalan-persoalan mendasar terkait kehidupan sehari-hari yang mengandung konsep <span class="keyword">Informatika</span>. Meskipun persoalan tersebut mungkin bersinggungan dengan bidang lain, fokus kita adalah pada aspek informatikanya. Memusatkan penyelesaian dari satu sudut pandang ini adalah bentuk dari <span class="keyword">berpikir kritis</span>.</p>
+            <p>Dengan mempelajari unit pembelajaran ini, diharapkan kalian dapat menemukan <span class="keyword">solusi-solusi</span> yang membutuhkan program komputer dan membentuk semacam <span class="keyword">katalog solusi</span> yang siap digunakan saat dibutuhkan. Kegiatan ini ibarat menabung potongan-potongan solusi yang kelak bisa dirangkai untuk menyelesaikan persoalan nyata.</p>
+        </div>
+
+        <div class="section">
+            <h3>Hidup Adalah Pencarian</h3>
+            <p>Mari kita renungkan konsep "pencarian" dalam kehidupan sehari-hari. Pernahkah kalian menghadapi situasi seperti ini:</p>
+            <ul class="example-list">
+                <li>Merasa bingung saat mencari buku di lemari atau perpustakaan? Bagaimana seorang pustakawan bisa menemukannya dengan lebih cepat?</li>
+                <li>Kehilangan baju seragam yang harus dipakai dan perlu segera ditemukan? Strategi apa yang kalian gunakan agar cepat menemukannya?</li>
+                <li>Mengingat potongan lirik lagu tetapi tidak ingat judulnya? Bagaimana cara menemukan lagu tersebut?</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Apa Itu Mencari?</h3>
+            <p><span class="keyword">Mencari</span> adalah proses menemukan "sesuatu" yang memenuhi kriteria tertentu dalam suatu ruang pencarian. "Sesuatu" ini bisa berupa benda, angka, konsep, atau informasi.</p>
+            <p class="definition">Masalah pencarian sangat umum dalam kehidupan dan juga dalam dunia komputasi. Dalam setiap pencarian, kita harus menemukan objek yang sesuai dengan kriteria yang kita tentukan dari sekumpulan objek lainnya.</p>
+            <p>Beberapa contoh umum masalah pencarian:</p>
+            <ul class="example-list">
+                <li>Mencari buku dengan judul spesifik di rak perpustakaan.</li>
+                <li>Mencari pakaian batik seragam di dalam lemari yang berisi banyak pakaian lain.</li>
+                <li>Mencari dokumen atau informasi di internet menggunakan mesin pencari seperti Google.</li>
+            </ul>
+            <p>Mencari benda fisik mungkin lebih mudah karena kita bisa melihat dan membandingkannya secara langsung. Namun, mencari informasi atau konsep yang abstrak tentu lebih menantang.</p>
+        </div>
+
+        <div class="section">
+            <h3>Elemen Dasar Masalah Pencarian</h3>
+            <p>Agar masalah pencarian dapat diterapkan secara lebih formal dan umum, kita dapat menguraikannya menjadi beberapa elemen kunci:</p>
+            <ol class="strategy-list">
+                <li><span class="bold-text">Sekumpulan benda atau objek:</span> Ini adalah himpunan data tempat kita melakukan pencarian.</li>
+                <li><span class="bold-text">Kriteria pencarian:</span> Ini adalah spesifikasi atau syarat yang harus dipenuhi oleh objek yang kita cari.</li>
+                <li><span class="bold-text">Proses pengecekan:</span> Ini adalah langkah-langkah untuk memeriksa setiap objek dalam sekumpulan objek, apakah objek tersebut memenuhi kriteria pencarian yang telah ditentukan.</li>
+            </ol>
+            <p>Strategi pencarian bisa bervariasi. Ada cara yang lebih efisien daripada yang lain, tergantung pada kondisi objek atau data yang ada. Misalnya, mencari buku di perpustakaan yang tersusun rapi berdasarkan aturan tertentu akan jauh lebih mudah dibandingkan mencarinya di lemari yang berantakan.</p>
+        </div>
+
+        <div class="section">
+            <h3>Aktivitas: Tebak Angka</h3>
+            <p>Untuk memahami konsep pencarian dengan lebih baik, mari kita lakukan aktivitas tebak angka. Dalam permainan ini, kalian akan berperan sebagai pencari yang berusaha menemukan angka rahasia yang dipilih oleh teman kalian. Tujuannya adalah menemukan angka tersebut dengan jumlah tebakan sesedikit mungkin.</p>
+
+            <div class="game-scenario">
+                <h3>Skenario Permainan: Tebak Angka</h3>
+                <p>Anda akan berpasangan dengan teman Anda. Salah satu dari kalian akan memilih sebuah angka bulat antara 1 sampai 100 (inklusif). Angka ini akan dirahasiakan.</p>
+                <p>Tugas Anda adalah menebak angka tersebut. Anda hanya bisa menebak satu per satu.</p>
+                <p>Setiap kali Anda menebak, teman Anda akan memberikan salah satu dari tiga kemungkinan jawaban:</p>
+                <ul class="feedback-options">
+                    <li><span class="bold-text">“Benar”</span>: Jika tebakan Anda sesuai dengan angka yang dipilih.</li>
+                    <li><span class="bold-text">“Angka milikku lebih kecil”</span>: Jika angka pilihan teman Anda lebih kecil dari tebakan Anda.</li>
+                    <li><span class="bold-text">“Angka milikku lebih besar”</span>: Jika angka pilihan teman Anda lebih besar dari tebakan Anda.</li>
+                </ul>
+                <p>Carilah strategi agar Anda dapat menebak angka tersebut secepat mungkin, dengan jumlah tebakan yang minimal.</p>
+            </div>
+
+            <h4>Ilustrasi Permainan</h4>
+            <p>Mari kita lihat contoh permainan antara Andi dan Binti. Andi memilih sebuah angka antara 1 hingga 100.</p>
+            <p>Binti memulai tebakannya:</p>
+            <div class="code-block">
+Binti: "50?"
+Andi: "Angka milikku lebih kecil."
+Binti: "30?"
+Andi: “Angka milikku lebih besar.”
+Binti: "40?"
+Andi: "Angka milikku lebih kecil.”
+Binti: "35?"
+Andi: "Benar!"
+            </div>
+            <p>Dalam ilustrasi ini, Binti berhasil menebak angka pilihan Andi dalam empat kali tebakan. Angka yang dipilih Andi ternyata adalah 49. Binti melakukan tebakan berurutan: 50, 30, 40, dan 35.</p>
+
+            <p>Untuk mencatat proses pencarian, kita bisa menggunakan tabel seperti berikut. Ini membantu kita menganalisis strategi yang kita gunakan.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Permainan ke-</th>
+                            <th colspan="19">Penebakan ke-</th>
+                        </tr>
+                        <tr>
+                            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>50</td>
+                            <td>30</td>
+                            <td>40</td>
+                            <td>35</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Dalam permainan ini, kalian perlu memikirkan strategi terbaik. Bagaimana cara mengurangi jumlah tebakan secara signifikan? Coba lakukan permainan ini berulang kali dan catat hasilnya di lembar kerja.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

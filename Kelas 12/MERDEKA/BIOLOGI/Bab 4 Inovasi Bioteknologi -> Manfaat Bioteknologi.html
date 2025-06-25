@@ -1,0 +1,470 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manfaat Bioteknologi - Inovasi Biologi Kelas XII</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        section h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        section h4 {
+            color: var(--secondary-accent-amber);
+            font-size: 1.2em;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Details/Summary for interactivity */
+        details {
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-top: 15px;
+            background-color: #F8F8F8; /* A slightly lighter background for details */
+            transition: background-color 0.3s ease;
+        }
+
+        details:hover {
+            background-color: #F0F0F0;
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--primary-blue);
+            padding: 5px 0;
+            outline: none; /* Remove default focus outline */
+            list-style: none; /* Remove default triangle/arrow */
+            position: relative;
+            user-select: none; /* Prevent text selection on click */
+        }
+
+        summary::-webkit-details-marker {
+            display: none; /* Remove default marker for WebKit browsers */
+        }
+
+        summary::before {
+            content: '►'; /* Custom marker */
+            position: absolute;
+            left: -15px;
+            color: var(--accent-green);
+            transition: transform 0.2s ease-in-out;
+            transform-origin: center center;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details p, details ul {
+            padding-left: 15px;
+            margin-top: 10px;
+            border-left: 2px solid var(--border-divider);
+        }
+
+        /* Specific classes for content emphasis */
+        .key-term {
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .highlight-organism {
+            font-style: italic;
+            color: var(--primary-blue);
+        }
+
+        .product-name {
+            font-weight: bold;
+            color: var(--secondary-accent-amber);
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            border-radius: 0 0 8px 8px;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 0.9em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            section h2 {
+                font-size: 1.6em;
+            }
+
+            section h3 {
+                font-size: 1.3em;
+            }
+
+            section h4 {
+                font-size: 1.1em;
+            }
+
+            ul {
+                margin-left: 20px;
+            }
+
+            details p, details ul {
+                padding-left: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+
+            header {
+                padding: 25px 15px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 10px;
+            }
+
+            section h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manfaat Bioteknologi</h1>
+        <p>Inovasi Biologi untuk Kehidupan yang Lebih Baik</p>
+    </header>
+
+    <main class="container">
+        <p>Bioteknologi adalah bidang ilmu yang memanfaatkan organisme hidup atau bagian dari organisme hidup (seperti sel atau molekul) untuk menghasilkan produk atau proses yang bermanfaat bagi manusia. Dari makanan sehari-hari hingga solusi permasalahan lingkungan dan kesehatan, bioteknologi telah membawa banyak inovasi.</p>
+        <p>Contoh sederhana yang sering kita temui adalah pembuatan <span class="product-name">nata de coco</span>. Dengan memanfaatkan bakteri <span class="highlight-organism">Acetobacter xylinum</span>, air kelapa yang merupakan limbah dapat diubah menjadi produk pangan baru yang memiliki nilai ekonomi. Ini hanyalah salah satu dari sekian banyak manfaat bioteknologi. Mari kita jelajahi lebih dalam berbagai penerapannya di berbagai bidang kehidupan.</p>
+
+        <section id="lingkungan">
+            <h2>1. Mengatasi Masalah Pencemaran Lingkungan</h2>
+            <p>Bioteknologi menawarkan solusi inovatif untuk membersihkan dan mengurangi dampak pencemaran lingkungan.</p>
+
+            <details>
+                <summary>Teknologi Bioremediasi</summary>
+                <p>Bioremediasi adalah proses pengolahan limbah atau polutan menggunakan mikroorganisme untuk mendegradasi zat berbahaya. Teknik ini sangat efektif dan ramah lingkungan.</p>
+                <h4>Pengolahan Air Limbah</h4>
+                <ul>
+                    <li>Menggunakan bakteri <span class="key-term">aerob</span> seperti <span class="highlight-organism">Bacillus sp.</span></li>
+                    <li>Menggunakan bakteri <span class="key-term">anaerob</span> seperti <span class="highlight-organism">Acinetobacter sp.</span>, <span class="highlight-organism">Staphylococcus sp.</span>, <span class="highlight-organism">Cardiobacterium sp.</span>, dan <span class="highlight-organism">Mycoplasma sp.</span></li>
+                </ul>
+                <h4>Pengolahan Polutan Minyak di Laut</h4>
+                <ul>
+                    <li>Bakteri yang digunakan antara lain <span class="highlight-organism">Marinobacter</span>, <span class="highlight-organism">Oceanobacter</span>, <span class="highlight-organism">Alcanivorax</span>, <span class="highlight-organism">Thalassospira</span>, <span class="highlight-organism">Stappia</span>, <span class="highlight-organism">Bacillus</span>, <span class="highlight-organism">Novosphingobium</span>, <span class="highlight-organism">Pseudomonas</span>, <span class="highlight-organism">Sphingobium</span>, dan <span class="highlight-organism">Rhodobacter</span>.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Biodegradasi (Penghancuran Plastik)</summary>
+                <p>Bioteknologi memungkinkan penggunaan bakteri spesifik untuk mengurai jenis-jenis plastik yang sulit terurai secara alami.</p>
+                <ul>
+                    <li>Untuk plastik <span class="key-term">PE (Polietilen)</span>, <span class="key-term">PVC (Polivinil Klorida)</span>, dan <span class="key-term">PP (Polipropilen)</span>, bakteri yang digunakan meliputi <span class="highlight-organism">Pseudomonas aeruginosa</span>, <span class="highlight-organism">Pseudomonas putida</span>, <span class="highlight-organism">Pseudomonas chlororaphis</span>, dan <span class="highlight-organism">Pseudomonas fluorescens</span>.</li>
+                    <li>Untuk plastik <span class="key-term">PET (Polietilen Tereftalat)</span>, bakteri yang efektif adalah <span class="highlight-organism">Ideonella sakaiensis</span>.</li>
+                </ul>
+            </details>
+        </section>
+
+        <section id="pertanian">
+            <h2>2. Meningkatkan Produktivitas Pertanian dan Perkebunan</h2>
+            <p>Bioteknologi berperan penting dalam menghasilkan tanaman unggul, melindungi tanaman dari hama, dan meningkatkan kualitas hasil pertanian.</p>
+
+            <details>
+                <summary>Teknologi Kultur Jaringan</summary>
+                <p>Teknik ini memungkinkan produksi bibit unggul dalam jumlah besar dan seragam, serta menghasilkan senyawa berharga dari tanaman.</p>
+                <ul>
+                    <li>Penyediaan bibit unggul dalam jumlah banyak dan seragam.</li>
+                    <li>Produksi <span class="key-term">alkaloid</span> dan <span class="key-term">metabolit sekunder</span> lain yang dapat digunakan sebagai bahan kosmetik dan obat-obatan.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Bioinsektisida</summary>
+                <p>Penggunaan agen biologis untuk mengendalikan hama tanaman, yang lebih aman bagi lingkungan dibandingkan pestisida kimia.</p>
+                <ul>
+                    <li>Pemberantasan hama tanaman yang ramah lingkungan.</li>
+                    <li>Lebih efektif dan efisien dalam jangka panjang.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Rekayasa Genetika (Tanaman Transgenik)</summary>
+                <p>Pengubahan genetik tanaman untuk memberikan sifat-sifat baru yang diinginkan, seperti ketahanan terhadap hama atau kondisi lingkungan ekstrem.</p>
+                <ul>
+                    <li>Menghasilkan tanaman <span class="key-term">tahan hama</span>.</li>
+                    <li>Menghasilkan tanaman yang <span class="key-term">tahan pada tanah berkadar garam tinggi</span>.</li>
+                    <li>Mampu hidup di <span class="key-term">tanah kering</span>.</li>
+                </ul>
+            </details>
+        </section>
+
+        <section id="kesehatan">
+            <h2>3. Mengatasi Masalah Kesehatan</h2>
+            <p>Di bidang kesehatan, bioteknologi telah merevolusi diagnosis, pencegahan, dan pengobatan berbagai penyakit.</p>
+
+            <details>
+                <summary>Teknologi Hibridoma</summary>
+                <p>Produksi antibodi monoklonal yang sangat spesifik untuk mendeteksi atau melawan antigen tertentu, seperti pada sel kanker.</p>
+                <ul>
+                    <li>Mendeteksi antigen yang sulit terdeteksi, contohnya pada sel kanker.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Rekayasa Genetika</summary>
+                <p>Produksi senyawa terapeutik penting melalui modifikasi genetik mikroorganisme.</p>
+                <ul>
+                    <li>Produksi <span class="key-term">Interferon</span>: protein yang mengatur sistem kekebalan tubuh, melawan infeksi virus, mengaktifkan sel imun, dan menghambat pertumbuhan sel tumor.</li>
+                    <li>Produksi <span class="key-term">Hormon insulin</span> dari <span class="highlight-organism">E. coli</span> yang disisipi gen insulin, digunakan untuk menyembuhkan penderita diabetes melitus.</li>
+                    <li>Produksi <span class="key-term">Antibiotik</span> untuk membunuh patogen berupa bakteri dan jamur.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Sel Punca (Stem Cell)</summary>
+                <p>Pemanfaatan sel punca untuk meregenerasi atau memperbaiki jaringan tubuh yang rusak.</p>
+                <ul>
+                    <li>Penyembuhan penderita stroke atau penyakit lain yang disebabkan kerusakan pada jaringan tubuh.</li>
+                </ul>
+            </details>
+        </section>
+
+        <section id="peternakan">
+            <h2>4. Mengatasi Masalah Reproduksi dan Pertumbuhan Ternak</h2>
+            <p>Bioteknologi memberikan solusi untuk meningkatkan kualitas genetik dan efisiensi reproduksi hewan ternak.</p>
+
+            <details>
+                <summary>Teknologi Inseminasi Buatan (IB)</summary>
+                <p>Memaksimalkan sifat unggul hewan jantan dengan transfer sperma ke saluran kelamin betina.</p>
+                <ul>
+                    <li>Menghasilkan anakan yang bersifat unggul dari induk betina yang tidak perlu unggul.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Transfer Embrio (TE)</summary>
+                <p>Memindahkan embrio unggul ke induk penerima, memungkinkan satu induk unggul menghasilkan banyak keturunan.</p>
+                <ul>
+                    <li>Menghasilkan anakan yang bersifat unggul pada induk yang tidak harus unggul.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Kriopreservasi Embrio (KE)</summary>
+                <p>Penyimpanan embrio dalam bentuk beku untuk tujuan konservasi dan pemeliharaan.</p>
+                <ul>
+                    <li>Menyimpan, memelihara, menjamin, dan mempertahankan kelangsungan hidup sel embrio.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Transplantasi Nukleus (Kloning)</summary>
+                <p>Menghasilkan individu duplikasi yang identik secara genetik dengan induknya.</p>
+                <ul>
+                    <li>Menghasilkan individu duplikasi (identik dengan induknya).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Rekayasa Genetika (pada Ternak)</summary>
+                <p>Modifikasi genetik untuk meningkatkan pertumbuhan atau produksi hewan.</p>
+                <ul>
+                    <li>Menghasilkan hormon pertumbuhan seperti <span class="key-term">recombinant Bovine Somatotropic (rBST)</span>.</li>
+                </ul>
+            </details>
+        </section>
+
+        <section id="energi">
+            <h2>5. Sumber Energi Ramah Lingkungan</h2>
+            <p>Bioteknologi menawarkan alternatif energi terbarukan yang lebih bersih dan berkelanjutan.</p>
+            <details>
+                <summary>Teknologi Bioproses Fermentasi</summary>
+                <p>Pemanfaatan mikroorganisme untuk mengurai biomassa dan menghasilkan bahan bakar.</p>
+                <ul>
+                    <li>Produksi <span class="product-name">bioetanol</span>.</li>
+                    <li>Produksi <span class="product-name">biodiesel</span>.</li>
+                    <li>Produksi <span class="product-name">biogas</span>.</li>
+                </ul>
+            </details>
+        </section>
+
+        <section id="pangan">
+            <h2>6. Inovasi Pangan dan Minuman Olahan</h2>
+            <p>Bioteknologi telah memperkaya ragam produk makanan dan minuman melalui fermentasi dan rekayasa genetik.</p>
+
+            <details>
+                <summary>Teknologi Bioproses Fermentasi (Pangan)</summary>
+                <p>Proses fermentasi menggunakan mikroorganisme untuk mengubah bahan baku menjadi berbagai produk pangan yang memiliki rasa, tekstur, dan nilai gizi berbeda.</p>
+                <ul>
+                    <li>Produksi <span class="product-name">tempe</span>, <span class="product-name">kecap</span>, <span class="product-name">mentega</span>, <span class="product-name">keju</span>, <span class="product-name">tape</span>, <span class="product-name">yoghurt</span>, dan <span class="product-name">anggur</span>.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Teknologi Rekayasa Genetika (Pangan)</summary>
+                <p>Pengembangan tanaman pangan dengan sifat unggul melalui modifikasi genetik.</p>
+                <ul>
+                    <li>Menghasilkan <span class="product-name">golden rice</span> (padi dengan kandungan vitamin A tinggi).</li>
+                    <li>Menghasilkan jagung transgenik dan kapas transgenik.</li>
+                </ul>
+            </details>
+        </section>
+
+        <section id="identifikasi">
+            <h2>7. Identifikasi dan Forensik</h2>
+            <p>Teknologi bioteknologi, khususnya analisis DNA, sangat vital dalam bidang forensik dan identifikasi individu.</p>
+
+            <details>
+                <summary>Teknologi Pencocokan DNA (DNA Fingerprinting)</summary>
+                <p>Analisis profil DNA individu untuk identifikasi unik. Sangat berguna dalam kasus-kasus hukum dan identifikasi korban.</p>
+                <ul>
+                    <li>Identifikasi <span class="key-term">korban kecelakaan</span> dan <span class="key-term">bencana alam</span> (post mortem).</li>
+                    <li>Penentuan <span class="key-term">ayah biologis</span> seorang anak (paternity testing).</li>
+                    <li>Menggunakan pencocokan <span class="key-term">DNA mitokondria</span> dari korban dengan anggota keluarganya.</li>
+                </ul>
+            </details>
+        </section>
+
+        <p>Dengan berbagai manfaat ini, bioteknologi terus menjadi salah satu bidang ilmu paling dinamis yang menjanjikan solusi untuk tantangan global di masa depan.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Biologi untuk SMA/MA Kelas XII. Semua Hak Dilindungi Undang-Undang.</p>
+        <p>Inovasi Bioteknologi - Membangun Masa Depan Lebih Baik.</p>
+    </footer>
+</body>
+</html>
+```

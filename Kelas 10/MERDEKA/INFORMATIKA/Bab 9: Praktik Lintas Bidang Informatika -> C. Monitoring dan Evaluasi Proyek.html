@@ -1,0 +1,553 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 9: Praktik Lintas Bidang Informatika - Monitoring dan Evaluasi Proyek</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 5px;
+        }
+
+        .sub-section {
+            margin-top: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--border-divider);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .concept-table {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+        }
+
+        .concept-table th, .concept-table td {
+            border: 1px solid var(--border-divider);
+            border-collapse: collapse;
+        }
+        
+        .concept-table th {
+            background-color: var(--accent-green);
+            color: white;
+        }
+
+        .concept-table td {
+            color: var(--text-secondary);
+        }
+
+        .concept-table tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        .content-block {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #fafafa;
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+        }
+
+        .content-block h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+        }
+
+        .response-area {
+            border: 1px dashed var(--border-divider);
+            background-color: #fefefe;
+            min-height: 80px;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            table, th, td {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            .section, .content-block {
+                padding: 15px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 9: Praktik Lintas Bidang Informatika</h1>
+        <h2>C. Monitoring dan Evaluasi Proyek</h2>
+
+        <p>
+            Dalam sebuah proyek, tahap monitoring dan evaluasi memegang peranan krusial untuk memastikan kelancaran, mengidentifikasi kendala, serta mengukur keberhasilan. Bagian ini akan menguraikan bagaimana tim proyek melakukan pemantauan aktivitas dan mengevaluasi hasil serta proses kerja.
+        </p>
+
+        <div class="section">
+            <h3>Monitoring Aktivitas Proyek</h3>
+            <p>
+                Monitoring aktivitas proyek adalah proses berkelanjutan untuk melacak dan mencatat setiap langkah yang diambil oleh anggota tim. Tujuannya adalah untuk memastikan bahwa setiap individu bergerak sesuai rencana, mengidentifikasi potensi masalah sedini mungkin, dan menjaga keteraturan alur kerja.
+            </p>
+            <p>
+                Luaran utama dari tahap ini adalah <strong>rekaman aktivitas proyek</strong>. Rekaman ini mencakup daftar aktivitas individu dalam mengerjakan proyek, kode program yang dihasilkan, desain prototipe, dan aplikasi itu sendiri. Dokumen pendukung lain seperti poster/infografis dan dokumen refleksi/evaluasi juga merupakan bagian dari luaran proyek yang dipantau.
+            </p>
+
+            <h4>Jurnal Kelompok</h4>
+            <p>
+                Jurnal kelompok berfungsi sebagai catatan kolaboratif mengenai aktivitas proyek. Formatnya dirancang agar mudah diisi dan dipahami oleh seluruh anggota tim.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Aktivitas</th>
+                        <th>Hari/Tanggal/Jam</th>
+                        <th>Pelaksana</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Aktivitas A</td>
+                        <td>Sabtu/13 Februari 2021/10.00</td>
+                        <td>Siswa A</td>
+                        <td>Membuat desain pertanyaan wawancara.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Format Rekaman Aktivitas Proyek Sederhana (Log Activity)</h4>
+            <p>
+                Setiap anggota tim wajib membuat log activity secara individual. Log ini akan menjadi bukti konkret dari kontribusi masing-masing anggota.
+            </p>
+
+            <div class="content-block">
+                <h4>Contoh Format Log Activity Individu</h4>
+                <p><strong>Nama Siswa:</strong> Budi Sudarsono</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Hari/Tanggal/Waktu</th>
+                            <th>Aktivitas</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Senin, 15 Februari 2021/08.00 – 10.00</td>
+                            <td>Membuat laporan observasi.</td>
+                            <td>Dikerjakan secara bersama menggunakan google docs di alamat https://docs.google.com/spreadsheets/d/1FxY3uAk.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Log activity ini akan dikumpulkan kepada guru pada saat penyusunan laporan kemajuan dan laporan akhir. Ini menunjukkan pentingnya dokumentasi yang akurat dalam setiap tahapan proyek.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Penyusunan Laporan Proyek</h2>
+            <p>
+                Laporan proyek adalah dokumen formal yang merangkum seluruh proses dan hasil kerja tim. Terdapat dua jenis laporan utama yang perlu disusun: Laporan Kemajuan dan Laporan Akhir.
+            </p>
+
+            <h3>1. Penyusunan Laporan Kemajuan</h3>
+            <p>
+                Laporan kemajuan bersifat ringkas dan bertujuan untuk memberikan gambaran terkini mengenai status proyek. Komponen utamanya meliputi:
+            </p>
+            <ul>
+                <li><strong>Deskripsi umum proyek:</strong> Ringkasan mengenai tujuan dan cakupan proyek.</li>
+                <li><strong>Temuan masalah di lapangan:</strong> Identifikasi hambatan atau tantangan yang dihadapi selama pelaksanaan proyek.</li>
+                <li><strong>Solusi yang diambil:</strong> Langkah-langkah konkret yang dilakukan untuk mengatasi masalah yang ditemukan.</li>
+                <li><strong>Kendala pengembangan:</strong> Tantangan spesifik terkait proses teknis atau pengembangan aplikasi.</li>
+                <li><strong>Rencana tindak lanjut:</strong> Strategi untuk menyelesaikan sisa pengembangan aplikasi.</li>
+            </ul>
+            <p>
+                Laporan kemajuan dapat dibuat menggunakan aplikasi pembuat presentasi atau aplikasi pengolah kata.
+            </p>
+
+            <h3>2. Penyusunan Laporan Akhir</h3>
+            <p>
+                Laporan akhir merupakan dokumen yang lebih komprehensif, merangkum keseluruhan pengerjaan proyek. Isinya meliputi:
+            </p>
+            <ul>
+                <li><strong>Deskripsi umum proyek:</strong> Penjelasan detail mengenai proyek.</li>
+                <li><strong>Temuan masalah di lapangan:</strong> Laporan mendalam tentang masalah dan dampaknya.</li>
+                <li><strong>Solusi yang diambil:</strong> Rincian solusi yang diimplementasikan.</li>
+                <li><strong>Proses desain dan pengembangan aplikasi:</strong> Tahapan detail pembuatan prototipe dan aplikasi.</li>
+                <li><strong>Demo aplikasi:</strong> Demonstrasi fungsionalitas aplikasi yang telah selesai.</li>
+                <li><strong>Saran:</strong> Rekomendasi untuk perbaikan atau pengembangan lebih lanjut.</li>
+            </ul>
+            <p>
+                Selain laporan, kelompok juga wajib mengumpulkan <strong>desain prototipe</strong> dari aplikasi yang dibuat.
+            </p>
+
+            <div class="content-block" style="border-left-color: var(--secondary-accent-amber);">
+                <h4>TANTANGAN PROYEK</h4>
+                <p>
+                    Salah satu tantangan dalam proyek ini adalah kemampuan kelompok untuk mengimplementasikan desain aplikasi menjadi sebuah program utuh atau aplikasi. Kebebasan dalam memilih bahasa pemrograman yang dikuasai memberikan fleksibilitas, namun juga menuntut tim untuk menguasai teknologi yang dipilih.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. Refleksi dan Evaluasi Diri</h2>
+            <p>
+                Selain evaluasi dari guru, anggota tim juga diberi kesempatan untuk melakukan refleksi diri, baik secara individu maupun kelompok. Refleksi ini bertujuan untuk menumbuhkan kesadaran diri terhadap proses pembelajaran, tantangan yang dihadapi, dan rencana perbaikan di masa depan.
+            </p>
+
+            <h3>Evaluasi Diri Siswa (Individu)</h3>
+            <p>Setiap siswa mengisi formulir refleksi pribadi mengenai pengalaman selama proyek.</p>
+            <div class="content-block">
+                <h4>Form Evaluasi Diri Siswa</h4>
+                <p><strong>Nama Siswa:</strong> [Isi Nama Anda]</p>
+                <p><strong>Selama mengerjakan proyek ini, saya mendapatkan:</strong></p>
+                <div class="response-area"></div>
+                <p><strong>Kendala yang saya hadapi:</strong></p>
+                <div class="response-area"></div>
+                <p><strong>Di masa yang akan datang, jika saya bekerja secara berkelompok, saya akan melakukan:</strong></p>
+                <div class="response-area"></div>
+            </div>
+
+            <h3>Evaluasi Kelompok</h3>
+            <p>Anggota tim juga melakukan refleksi bersama mengenai pengalaman kelompok.</p>
+            <div class="content-block">
+                <h4>Form Evaluasi Kelompok Siswa</h4>
+                <p><strong>Nama Kelompok:</strong> [Isi Nama Kelompok Anda]</p>
+                <p><strong>Anggota Kelompok:</strong> [Daftar Nama Anggota]</p>
+                <p><strong>Selama mengerjakan proyek ini, kelompok saya mendapatkan pengalaman:</strong></p>
+                <div class="response-area"></div>
+                <p><strong>Kendala yang saya hadapi:</strong></p>
+                <div class="response-area"></div>
+                <p><strong>Di masa yang akan datang, kelompok kerja saya akan melakukan perbaikan pada:</strong></p>
+                <div class="response-area"></div>
+            </div>
+
+            <h3>Evaluasi Individu terhadap Teman Satu Kelompok</h3>
+            <p>
+                Untuk membangun budaya kerja tim yang positif, setiap anggota tim juga memberikan penilaian konstruktif kepada anggota tim lainnya. Penilaian ini harus objektif, kritis, dan memberikan saran yang membangun.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Siswa</th>
+                        <th>Evaluasi Kualitatif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Siswa A</td>
+                        <td>Siswa ini mampu menjadi pemimpin di kelompok ini. Mampu membangun kerja sama dan berkomunikasi dengan baik. Perlu ditingkatkan kemampuan menulisnya.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Siswa B</td>
+                        <td><div class="response-area" style="min-height: 50px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Siswa C</td>
+                        <td><div class="response-area" style="min-height: 50px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Siswa D</td>
+                        <td><div class="response-area" style="min-height: 50px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Siswa E</td>
+                        <td><div class="response-area" style="min-height: 50px;"></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Refleksi Individual tentang "Proyekku"</h2>
+            <p>
+                Refleksi individual merupakan momen penting untuk merenungkan pengalaman pribadi dalam mengerjakan proyek.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>Refleksiku</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Secara keseluruhan, apakah saya puas dan senang mengerjakan proyek ini? Mengapa?</td>
+                        <td><div class="response-area" style="min-height: 50px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Apakah Proyekku Keren?</td>
+                        <td><div class="response-area" style="min-height: 30px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Kerennya di mana?</td>
+                        <td><div class="response-area" style="min-height: 50px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Pengalaman apa yang paling mengasyikkan dalam proyek ini?</td>
+                        <td><div class="response-area" style="min-height: 70px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Pengalaman apa yang paling tidak menyenangkan dalam proyek ini?</td>
+                        <td><div class="response-area" style="min-height: 70px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Apakah saya senang dengan peran saya?</td>
+                        <td><div class="response-area" style="min-height: 30px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Andaikata boleh memilih peran lain, peran apa yang saya inginkan?</td>
+                        <td><div class="response-area" style="min-height: 50px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Apakah saya puas dengan hasilnya?</td>
+                        <td><div class="response-area" style="min-height: 30px;"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Adakah yang masih perlu saya perbaiki dan saya sempurnakan?</td>
+                        <td><div class="response-area" style="min-height: 50px;"></div></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Relasi Proyek dengan Konsep Informatika dan Bidang Lain</h4>
+            <p>
+                Merenungkan keterkaitan proyek dengan pengetahuan yang dipelajari di kelas adalah bagian penting dari pembelajaran lintas bidang.
+            </p>
+            <div class="content-block" style="background-color: #e8f5e9; border-left-color: var(--accent-green);">
+                <p>Dari pengalaman mengerjakan proyek ini, tuliskan refleksi kalian tentang relasi proyek yang dikerjakan dengan konsep elemen pengetahuan mata pelajaran Informatika dan bidang lain. Jelaskan dengan ringkas.</p>
+                <table class="concept-table">
+                    <thead>
+                        <tr>
+                            <th>Konsep</th>
+                            <th>Yang perlu untuk mengerjakan proyek, yaitu untuk ....</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BK (Basis Data / Basis Pengetahuan)</td>
+                            <td><div class="response-area" style="min-height: 40px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>TIK (Teknologi Informasi dan Komunikasi)</td>
+                            <td><div class="response-area" style="min-height: 40px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>SK (Sistem Komputer)</td>
+                            <td><div class="response-area" style="min-height: 40px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>JKI (Jaringan Komputer dan Internet)</td>
+                            <td><div class="response-area" style="min-height: 40px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>AD (Algoritma dan Pemrograman)</td>
+                            <td><div class="response-area" style="min-height: 40px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>AP (Aplikasi Perangkat Lunak)</td>
+                            <td><div class="response-area" style="min-height: 40px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>DSI (Dampak Sosial Informatika)</td>
+                            <td><div class="response-area" style="min-height: 40px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>Bidang lain:</td>
+                            <td><div class="response-area" style="min-height: 40px;"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+```

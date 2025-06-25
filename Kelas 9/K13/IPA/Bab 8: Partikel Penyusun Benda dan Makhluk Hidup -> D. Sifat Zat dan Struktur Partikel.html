@@ -1,0 +1,377 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sifat Zat dan Hubungannya dengan Partikel Penyusun</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background_canvas);
+            color: var(--text_primary);
+            overflow-x: hidden; /* Prevent horizontal scroll due to padding/margins */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 15px; /* Add internal padding */
+        }
+
+        h1, h2, h3 {
+            color: var(--primary_blue);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text_primary); /* Main title slightly darker */
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--border_divider);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            color: var(--text_secondary);
+        }
+
+        h3 {
+            color: var(--primary_blue);
+            margin-top: 15px;
+            margin-bottom: 8px;
+            cursor: help; /* Indicate interactivity */
+            transition: color 0.3s ease; /* Smooth transition */
+        }
+
+        h3:hover {
+            color: var(--accent_green); /* Change color on hover */
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text_primary);
+        }
+
+        ul {
+            list-style: disc;
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text_primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border_divider);
+            color: var(--text_primary);
+        }
+
+        th {
+            background-color: var(--primary_blue);
+            color: var(--background_canvas); /* White text for header */
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9; /* Slightly different row color */
+        }
+
+        tbody tr:hover {
+            background-color: #f0f0f0; /* Highlight row on hover */
+        }
+
+        figure {
+            margin: 20px auto;
+            text-align: center;
+            /* max-width: 80%; remove max-width for responsiveness with images removed */
+        }
+
+        figcaption {
+            font-style: italic;
+            color: var(--text_tertiary);
+            margin-top: 5px;
+        }
+
+        /* Example of how to use a tooltip-like effect for H3 definitions (pure CSS) */
+        /* This is more complex and might not be ideal for long definitions.
+           A simple color change on hover as implemented above is often sufficient.
+           Keeping this commented out as an option but favoring the simpler hover. */
+        /*
+        h3::after {
+            content: attr(data-definition);
+            display: none;
+            position: absolute;
+            background-color: var(--text_secondary);
+            color: var(--background_canvas);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 10;
+            max-width: 300px;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 120%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        h3:hover::after {
+            display: block;
+            opacity: 1;
+        }
+        */
+
+        /* Specific styles for text references like (Gambar X.Y) or (Tabel X.Y) */
+        .reference {
+            font-size: 0.9em;
+            color: var(--text_tertiary);
+            font-style: italic;
+        }
+
+        strong {
+            color: var(--text_secondary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 0 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block; /* Stack table elements */
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { border: 1px solid var(--border_divider); margin-bottom: 5px; }
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border_divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right; /* Align data to the right */
+            }
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label); /* Use data-label for headers */
+                font-weight: bold;
+                color: var(--text_secondary);
+                text-align: left; /* Align labels to the left */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>D. Sifat Zat dan Hubungannya dengan Partikel Penyusun dan Strukturnya</h1>
+
+        <p>Mempelajari materi ini sangat penting untuk memahami sifat suatu zat dan hubungannya dengan partikel penyusun serta strukturnya. Pemahaman ini membantu dalam memilih zat atau bahan yang paling sesuai untuk berbagai tujuan dalam kehidupan sehari-hari.</p>
+
+        <p>Setiap zat memiliki sifat yang unik dan berbeda satu sama lain. Perbedaan sifat ini disebabkan oleh perbedaan <strong>jumlah dan jenis atom penyusun</strong> suatu zat, serta perbedaan <strong>ikatan atau struktur (susunan)</strong> atom atau molekul-molekul penyusunnya. Untuk membedakan zat, kita dapat mengidentifikasi sifat-sifatnya, yang dikelompokkan menjadi sifat fisika dan sifat kimia.</p>
+
+        <p>Contohnya, grafit dan intan sama-sama tersusun dari unsur karbon (C). Namun, perbedaan struktur ikatan atomnya menghasilkan sifat yang sangat berbeda. Pada intan, atom karbon terikat kuat dalam struktur tetrahedral, membuatnya sangat keras. Pada grafit, atom karbon membentuk lapisan heksagonal yang diikat lemah oleh gaya Van der Waals antar lapisan, membuatnya rapuh dan mudah meninggalkan bekas.</p>
+
+        <section>
+            <h2>1. Sifat Fisika</h2>
+            <p>Sifat fisika adalah sifat yang dapat diamati tanpa mengubah ciri-ciri dan komposisi suatu zat. Sifat fisika tidak berhubungan dengan pembentukan zat baru.</p>
+
+            <h3>Kerapatan (Densitas / Massa Jenis)</h3>
+            <p>Kerapatan adalah massa zat dalam satuan volume tertentu. Satuan kerapatan umumnya kg/m³ atau g/ml. Contohnya, gas asetilena (C₂H₂) memiliki kerapatan lebih kecil dari udara, sehingga digunakan untuk mengisi balon agar dapat terbang. Perbedaan kerapatan ini pada dasarnya disebabkan oleh perbedaan massa atom partikel penyusun zat.</p>
+
+            <h3>Kekerasan</h3>
+            <p>Kekerasan adalah ukuran untuk menentukan keras atau lunaknya suatu zat, yaitu kemampuan suatu zat untuk menahan goresan. Kekerasan diukur dengan skala Mohs menggunakan alat yang disebut sklerometer. Semakin besar skala Mohs, semakin keras zat tersebut.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Kekerasan (Mohs)</th>
+                        <th>Zat atau Mineral</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="No">1</td>
+                        <td data-label="Kekerasan (Mohs)">0.5 - 0.6</td>
+                        <td data-label="Zat atau Mineral">Logam natrium (Na), kalium (K)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">2</td>
+                        <td data-label="Kekerasan (Mohs)">1</td>
+                        <td data-label="Zat atau Mineral">Talk (Mg₃Si₄O₁₀(OH)₂)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">3</td>
+                        <td data-label="Kekerasan (Mohs)">1,5</td>
+                        <td data-label="Zat atau Mineral">Timah (Sn), grafit (C)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">4</td>
+                        <td data-label="Kekerasan (Mohs)">2</td>
+                        <td data-label="Zat atau Mineral">Kalsium(Ca)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">5</td>
+                        <td data-label="Kekerasan (Mohs)">2,5-3</td>
+                        <td data-label="Zat atau Mineral">Emas (Au), perak (Ag), alumunium (Al), seng (Zn)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">6</td>
+                        <td data-label="Kekerasan (Mohs)">3</td>
+                        <td data-label="Zat atau Mineral">Tembaga (Cu)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">7</td>
+                        <td data-label="Kekerasan (Mohs)">4</td>
+                        <td data-label="Zat atau Mineral">Nikel(Ni), besi (Fe)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">8</td>
+                        <td data-label="Kekerasan (Mohs)">4 - 4,5</td>
+                        <td data-label="Zat atau Mineral">Baja</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Elastisitas</h3>
+            <p>Elastisitas adalah kemampuan suatu benda untuk mempertahankan diri ketika terkena tarikan atau dorongan (gaya) dan mampu untuk kembali ke ukuran serta bentuk awal ketika gaya tersebut dihilangkan. Bahan seperti baja (digunakan pada <em>shock absorber</em>) dan karet memiliki elastisitas yang tinggi. Kemampuan ini terkait dengan susunan atom atau rantai polimer penyusun bahan yang dapat kembali ke posisi semula setelah gaya dihilangkan. Zat dengan elastisitas rendah seperti es batu, kayu, dan gelas cenderung rusak ketika diberi gaya besar.</p>
+
+            <h3>Daya Hantar</h3>
+            <p>Daya hantar adalah kemampuan suatu zat untuk menghantarkan panas atau listrik. Berdasarkan sifat ini, benda dibedakan menjadi konduktor (penghantar baik, misal logam seperti besi, tembaga), isolator (penghantar buruk, misal plastik, kayu), dan semikonduktor (kemampuan menghantar berubah tergantung suhu, misal silikon, germanium - digunakan di elektronik).</p>
+
+            <h3>Kemagnetan</h3>
+            <p>Kemagnetan adalah kemampuan suatu zat untuk dipengaruhi oleh medan magnet. Dibedakan menjadi feromagnetik (ditarik kuat oleh magnet, misal besi, baja, kobalt, nikel), paramagnetik (ditarik lemah, misal magnesium, molibdenum), dan diamagnetik (tidak ditarik atau sedikit ditolak, misal perak, emas, tembaga).</p>
+
+            <h3>Viskositas (Kekentalan)</h3>
+            <p>Viskositas adalah ukuran kekentalan fluida (zat cair dan gas), menyatakan besar kecilnya gesekan di dalamnya. Semakin besar viskositas, semakin sulit fluida mengalir. Viskositas pada zat cair disebabkan oleh gaya kohesi antar molekul, sedangkan pada gas oleh tumbukan antar molekul. Contoh viskositas tinggi: madu dan oli. Contoh viskositas rendah: air.</p>
+
+            <h3>Titik Didih</h3>
+            <p>Titik didih adalah suhu saat zat cair mulai berubah menjadi uap pada tekanan tertentu. Pengetahuan tentang titik didih penting, misalnya dalam pemilihan pelumas mesin (oli) yang harus memiliki titik didih tinggi agar tidak mudah menguap saat mesin panas. Titik didih oli yang tinggi (hingga 300°C) disebabkan oleh susunan rantai atom karbonnya yang panjang.</p>
+
+            <h3>Titik Beku</h3>
+            <p>Titik beku adalah suhu pada tekanan tertentu saat zat cair mulai berubah menjadi padat. Contoh air membeku pada 0°C. Penting untuk menentukan pendingin mesin kendaraan bermotor di daerah dingin. Zat antibeku (<em>antifreeze</em>) seperti propilen glikol dapat menurunkan titik beku cairan pendingin (hingga -37,8 °C), mencegah pembentukan es dengan mengganggu ikatan hidrogen antar molekul air. Zat antibeku juga ditemukan pada makhluk hidup di lingkungan bersuhu sangat rendah.</p>
+
+            <h3>Titik Leleh</h3>
+            <p>Titik leleh adalah suhu pada tekanan tertentu saat zat padat mulai berubah menjadi cair. Contoh, alat masak terbuat dari aluminium karena memiliki titik leleh tinggi (660°C) dibandingkan plastik. Aluminium juga memiliki stabilitas panas dan tidak reaktif, menjadikannya bahan yang cocok untuk memasak.</p>
+             <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Zat atau Bahan</th>
+                        <th>Titik Leleh (°C)</th>
+                        <th>No</th>
+                        <th>Zat atau Bahan</th>
+                        <th>Titik Leleh (°C)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="No">1</td>
+                        <td data-label="Zat atau Bahan">Aluminium</td>
+                        <td data-label="Titik Leleh (°C)">660</td>
+                        <td data-label="No">5</td>
+                        <td data-label="Zat atau Bahan">Timah</td>
+                        <td data-label="Titik Leleh (°C)">232</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">2</td>
+                        <td data-label="Zat atau Bahan">Besi</td>
+                        <td data-label="Titik Leleh (°C)">1539</td>
+                        <td data-label="No">6</td>
+                        <td data-label="Zat atau Bahan">Plastik PVC (Polyvinyl Chloride)</td>
+                        <td data-label="Titik Leleh (°C)">175</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">3</td>
+                        <td data-label="Zat atau Bahan">Magnesium</td>
+                        <td data-label="Titik Leleh (°C)">650</td>
+                        <td data-label="No">7</td>
+                        <td data-label="Zat atau Bahan">Plastik HDPE (High-Density Polyethylene)</td>
+                        <td data-label="Titik Leleh (°C)">130</td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">4</td>
+                        <td data-label="Zat atau Bahan">Nikel</td>
+                        <td data-label="Titik Leleh (°C)">1455</td>
+                        <td data-label="No">8</td>
+                        <td data-label="Zat atau Bahan">Plastik PP (Polypropylene)</td>
+                        <td data-label="Titik Leleh (°C)">160</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. Sifat Kimia</h2>
+            <p>Sifat kimia adalah sifat yang tampak pada suatu zat ketika zat tersebut mengalami perubahan atau reaksi menjadi zat lain. Sifat kimia menunjukkan mekanisme suatu zat berubah atau bereaksi menjadi zat lain. Pemahaman sifat kimia penting dalam penggunaan bahan.</p>
+
+            <h3>Kestabilan</h3>
+            <p>Kestabilan adalah kemampuan suatu zat untuk mempertahankan diri dari perubahan atau dekomposisi akibat lingkungan alami (udara, panas, cahaya, tekanan) atau reaksi alami. Kestabilan dapat diartikan juga sebagai mudah tidaknya suatu zat rusak. Contoh, stirofoam (mengandung polistirena) memiliki stabilitas rendah terhadap panas dan sulit terurai di lingkungan, yang menimbulkan masalah kesehatan dan pencemaran.</p>
+
+            <h3>Kereaktifan</h3>
+            <p>Kereaktifan adalah ukuran yang menunjukkan mudah tidaknya suatu zat bereaksi dengan zat lain. Zat yang mudah bereaksi memiliki reaktivitas tinggi. Contoh, karbid (CaC₂) memiliki reaktivitas tinggi karena mudah bereaksi dengan air menghasilkan gas asetilena. Aluminium bersifat tidak reaktif, menjadikannya aman untuk digunakan sebagai bahan alat masak.</p>
+
+            <h3>Korosifitas</h3>
+            <p>Korosifitas adalah kemampuan suatu zat untuk merusak bahan lain, terutama melalui reaksi kimia seperti pengikisan atau perkaratan. Zat bersifat korosif dapat mengikis kotoran, jaringan tubuh, bahkan logam. Contoh zat yang sangat korosif adalah asam klorida (HCl) yang ada di pembersih lantai dan asam sulfat (H₂SO₄) di aki. Kedua asam ini dapat melukai kulit, sehingga perlu hati-hati dalam penggunaannya.</p>
+        </section>
+
+        <p>Dengan memahami sifat fisika dan sifat kimia suatu zat, kita dapat memilih bahan yang tepat untuk berbagai aplikasi, memaksimalkan fungsinya dan memastikan keamanannya dalam penggunaan sehari-hari.</p>
+
+    </div>
+</body>
+</html>
+```

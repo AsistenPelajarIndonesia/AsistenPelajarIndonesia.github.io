@@ -1,0 +1,537 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 7: Algoritma dan Pemrograman - D. Pengayaan</title>
+    <style>
+        /* Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-green);
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            border: 1px solid var(--border-divider);
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            overflow-x: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .comparison-table td {
+            color: var(--text-secondary);
+        }
+
+        .comparison-table code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        .interactive-concept {
+            background-color: var(--background-canvas);
+            border: 1px dashed var(--primary-blue);
+            padding: 20px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-concept h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.3em;
+        }
+
+        .interactive-concept p {
+            color: var(--text-secondary);
+        }
+
+        .interactive-concept .concept-trigger {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .interactive-concept .concept-trigger:hover {
+            background-color: var(--accent-green);
+        }
+
+        .interactive-concept .concept-details {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-secondary);
+        }
+
+        .interactive-concept.expanded .concept-details {
+            display: block;
+        }
+
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dotted var(--text-tertiary);
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.85em;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .code-block {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .code-block {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 7: Algoritma dan Pemrograman</h1>
+
+        <div class="section">
+            <h2>D. Pengayaan</h2>
+            <p>Bagian pengayaan ini dirancang untuk memperdalam pemahaman Anda tentang praktik pemrograman, mulai dari penggunaan alat bantu hingga perbandingan antar bahasa pemrograman. Ini adalah kesempatan emas untuk mengasah kemampuan Anda di luar materi pokok.</p>
+
+            <div class="section">
+                <h3>1. Menggunakan IDE Daring (Online Integrated Development Environment)</h3>
+                <p>
+                    Dalam dunia pemrograman, <strong>compiler</strong> atau <strong>interpreter</strong> adalah perangkat lunak yang krusial. Tugasnya adalah menerjemahkan kode sumber yang Anda tulis (dalam bahasa yang dapat dibaca manusia seperti C, Python, Java, dll.) menjadi instruksi yang dapat dieksekusi oleh komputer. Tanpa penerjemah ini, komputer tidak akan mengerti apa yang Anda perintahkan.
+                </p>
+                <p>
+                    Untuk mempermudah Anda belajar dan bereksperimen tanpa perlu instalasi perangkat lunak yang rumit di komputer Anda, tersedia berbagai <strong>IDE Daring (Online IDE)</strong>. Salah satu yang populer dan mudah digunakan adalah <strong>Ideone</strong> (<a href="https://ideone.com/" target="_blank">https://ideone.com/</a>). Situs ini memungkinkan Anda menulis, mengompilasi, dan menjalankan kode secara langsung melalui peramban web Anda.
+                </p>
+
+                <div class="interactive-concept">
+                    <h4>Bagaimana Cara Kerja Online IDE?</h4>
+                    <p>Pikirkan Online IDE seperti sebuah meja kerja virtual yang sudah dilengkapi dengan semua alat yang Anda perlukan untuk membuat program. Anda hanya perlu fokus pada kode Anda.</p>
+                    <div class="concept-trigger">Klik untuk Menjelajahi Alur Kerja</div>
+                    <div class="concept-details">
+                        <ol>
+                            <li><strong>Menulis Kode:</strong> Anda mengetikkan instruksi program di editor teks yang disediakan.</li>
+                            <li><strong>Memilih Bahasa:</strong> Anda memberi tahu IDE bahasa pemrograman apa yang Anda gunakan (misalnya, C, Python, Java).</li>
+                            <li><strong>Kompilasi/Interpretasi:</strong> IDE mengirimkan kode Anda ke servernya, di mana <em>compiler</em> atau <em>interpreter</em> menerjemahkannya.</li>
+                            <li><strong>Eksekusi:</strong> Kode yang sudah diterjemahkan dijalankan di server.</li>
+                            <li><strong>Input Pengguna:</strong> Jika program Anda membutuhkan data masukan (input), Anda bisa memberikannya melalui area yang ditentukan (sering disebut 'stdin').</li>
+                            <li><strong>Output:</strong> Hasil dari eksekusi program Anda (output) akan ditampilkan kembali kepada Anda.</li>
+                        </ol>
+                        <p>Keuntungan utama menggunakan Online IDE adalah:</p>
+                        <ul>
+                            <li><strong>Aksesibilitas:</strong> Bisa diakses dari perangkat apa pun yang terhubung ke internet.</li>
+                            <li><strong>Tanpa Instalasi:</strong> Tidak perlu repot menginstal <em>compiler</em> atau <em>environment</em> yang spesifik.</li>
+                            <li><strong>Eksperimen Cepat:</strong> Cocok untuk mencoba ide-ide kecil atau memverifikasi sintaks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>Di Ideone, Anda akan menemukan beberapa elemen penting:</p>
+                <ul>
+                    <li>
+                        <span class="highlight">Pemilih Bahasa</span>: Tombol di paling kiri atas untuk memilih bahasa pemrograman yang akan Anda gunakan. Pastikan Anda memilih bahasa yang benar (misalnya, 'C' jika instruksi Anda menggunakan sintaks C).
+                    </li>
+                    <li>
+                        <span class="highlight">Area Input (stdin)</span>: Di sinilah Anda akan memasukkan data yang dibutuhkan oleh program Anda, terutama saat mengerjakan latihan yang membutuhkan input dari pengguna.
+                    </li>
+                    <li>
+                        <span class="highlight">Tombol Eksekusi</span>: Tombol berwarna hijau di ujung kanan yang akan menjalankan program Anda setelah dikompilasi.
+                    </li>
+                </ul>
+                <p>Membiasakan diri dengan antarmuka seperti ini akan sangat membantu saat Anda mulai mengerjakan soal-soal pemrograman yang lebih kompleks.</p>
+            </div>
+
+            <div class="section">
+                <h3>2. Berlatih Pemrograman Secara Mandiri Menggunakan Auto-Grader</h3>
+                <p>
+                    Dalam dunia pemrograman, baik untuk belajar maupun berkompetisi, ada alat yang sangat berharga yang disebut <strong>auto-grader</strong> (penilai otomatis). Auto-grader adalah program yang dirancang untuk menguji program yang Anda buat secara otomatis terhadap serangkaian kasus uji (test cases) yang telah ditentukan oleh pembuat soal. Tujuannya adalah untuk memastikan bahwa program Anda memberikan hasil yang benar untuk berbagai skenario masukan.
+                </p>
+                <p>
+                    Banyak platform pembelajaran pemrograman menyediakan auto-grader. Salah satu contoh platform yang dikembangkan di Indonesia dan sangat direkomendasikan adalah <a href="https://tlx.toki.or.id/" target="_blank">TLX (The Learning eXperience)</a> oleh Ikatan Alumni Tim Olimpiade Komputer Indonesia (IA-TOKI).
+                </p>
+
+                <div class="interactive-concept">
+                    <h4>Bagaimana Auto-Grader Bekerja?</h4>
+                    <p>Bayangkan auto-grader sebagai seorang guru yang sangat teliti dan adil dalam memeriksa pekerjaan Anda.</p>
+                    <div class="concept-trigger">Pelajari Proses Penilaian Otomatis</div>
+                    <div class="concept-details">
+                        <ol>
+                            <li><strong>Deskripsi Soal:</strong> Setiap soal pemrograman biasanya memiliki deskripsi yang jelas, menjelaskan masalah yang harus dipecahkan, format input yang diharapkan, format output yang benar, serta batasan-batasan (misalnya, waktu eksekusi maksimal, penggunaan memori).</li>
+                            <li><strong>Algoritma & Kode:</strong> Anda menganalisis soal, merancang algoritma yang efisien, lalu menulis kode program berdasarkan algoritma tersebut.</li>
+                            <li><strong>Pengiriman:</strong> Anda mengirimkan kode program Anda ke auto-grader melalui platform.</li>
+                            <li><strong>Pengujian:</strong> Auto-grader akan secara otomatis menjalankan program Anda dengan berbagai macam data masukan (kasus uji atau <em>test cases</em>). Setiap <em>test case</em> adalah pasangan input dan output yang benar.</li>
+                            <li><strong>Perbandingan:</strong> Hasil keluaran dari program Anda untuk setiap <em>test case</em> akan dibandingkan dengan hasil yang seharusnya (yang sudah disimpan oleh pembuat soal di dalam auto-grader).</li>
+                            <li><strong>Penilaian (Skor):</strong>
+                                <ul>
+                                    <li>Jika program Anda menghasilkan output yang benar untuk sebuah <em>test case</em>, itu dianggap lulus untuk kasus tersebut.</li>
+                                    <li>Skor Anda biasanya dihitung berdasarkan persentase <em>test case</em> yang berhasil Anda selesaikan dengan benar.</li>
+                                    <li>Jika semua <em>test case</em> berhasil, program Anda akan mendapatkan status <strong>ACCEPTED</strong> (diterima) dan skor maksimal (biasanya 100).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Status Lain:</strong> Selain <em>ACCEPTED</em>, ada beberapa status lain yang mungkin Anda temui, seperti:
+                                <ul>
+                                    <li><strong>WRONG ANSWER:</strong> Program Anda menghasilkan output yang salah untuk satu atau lebih <em>test case</em>.</li>
+                                    <li><strong>TIME LIMIT EXCEEDED (TLE):</strong> Program Anda membutuhkan waktu eksekusi lebih lama dari batas yang ditentukan untuk satu atau lebih <em>test case</em>. Ini menunjukkan algoritma Anda mungkin kurang efisien.</li>
+                                    <li><strong>MEMORY LIMIT EXCEEDED (MLE):</strong> Program Anda menggunakan memori lebih besar dari batas yang ditentukan.</li>
+                                    <li><strong>RUNTIME ERROR (RTE):</strong> Program Anda mengalami kesalahan saat berjalan (misalnya, pembagian dengan nol, mengakses indeks array di luar batas) dan berhenti secara tidak wajar.</li>
+                                    <li><strong>COMPILE ERROR (CE):</strong> Kode program Anda tidak dapat dikompilasi karena ada kesalahan sintaks atau kesalahan lain yang mencegah pembuatan file eksekusi.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p>Memahami berbagai status ini sangat penting untuk mendiagnosis masalah pada program Anda dan memperbaikinya.</p>
+                    </div>
+                </div>
+
+                <p>
+                    Platform seperti TLX tidak hanya menyediakan materi pembelajaran terstruktur (kursus dasar, kursus kompetitif) tetapi juga seringkali mengadakan kontes pemrograman dengan berbagai tingkat kesulitan. Dengan berlatih secara konsisten, Anda akan terbiasa merancang solusi yang efisien dan mengoptimalkan program Anda agar lolos dari berbagai kendala yang ditetapkan oleh auto-grader.
+                </p>
+                <p>
+                    Jika Anda mengalami kesulitan, jangan ragu untuk mencari bantuan di forum-forum pemrograman online atau komunitas pengembang. Kemampuan memecahkan masalah dan mencari informasi adalah bagian integral dari menjadi seorang programmer yang handal.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>3. Perbandingan Sintaks Bahasa C dan Python</h3>
+                <p>
+                    Dalam pembelajaran informatika, Anda akan diperkenalkan pada berbagai bahasa pemrograman. Di tingkat SMP dan di awal SMA, Anda mungkin sudah mengenal Python, sementara di bab ini kita banyak membahas Bahasa C. Meskipun keduanya memiliki tujuan yang sama dalam memberikan instruksi kepada komputer, sintaks (tata cara penulisan kode) mereka bisa sangat berbeda. Namun, di balik perbedaan sintaks tersebut, logika kontrol program seperti percabangan (if-else) dan perulangan (loop) memiliki struktur dasar yang serupa.
+                </p>
+                <p>Tabel berikut menyajikan perbandingan sintaks untuk beberapa operasi umum di Bahasa C dan Python:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Sintaks pada Bahasa C</th>
+                            <th>Sintaks pada Bahasa Python</th>
+                            <th>Penjelasan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>printf("%d", x);</code></td>
+                            <td><code>print(x)</code></td>
+                            <td>Mencetak keluaran ke layar.</td>
+                        </tr>
+                        <tr>
+                            <td><code>scanf("%d", &x);</code></td>
+                            <td><code>x = input()</code></td>
+                            <td>Membaca masukan dari pengguna (biasanya perlu dikonversi tipenya, contoh: <code>int(input())</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><code>x = 10;</code></td>
+                            <td><code>x = 10</code></td>
+                            <td>Pemberian nilai pada variabel.</td>
+                        </tr>
+                        <tr>
+                            <td><code>a = (x + y)*z;</code></td>
+                            <td><code>a = (x + y) * z</code></td>
+                            <td>Operasi aritmetika dasar.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>!</code> (NOT)</td>
+                            <td><code>and</code>, <code>or</code>, <code>not</code></td>
+                            <td>Operator logika untuk menggabungkan atau membalikkan kondisi.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code></td>
+                            <td><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code></td>
+                            <td>Operator perbandingan untuk membandingkan nilai.</td>
+                        </tr>
+                        <tr>
+                            <td><code>if (kondisi) { pernyataan; }</code></td>
+                            <td><code>if kondisi: <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan</code></td>
+                            <td>Percabangan sederhana (eksekusi blok kode jika kondisi benar). Python menggunakan indentasi (spasi/tab) untuk menandai blok kode, sedangkan C menggunakan kurung kurawal <code>{}</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><code>if (kondisi1) { <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan1; <br> } <br> else if (kondisi2) { <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan2; <br> } <br> else { <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan3; <br> }</code></td>
+                            <td><code>if kondisi1: <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan1 <br> elif kondisi2: <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan2 <br> else: <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan3</code></td>
+                            <td>Percabangan dengan beberapa kemungkinan. Perhatikan penggunaan <code>elif</code> di Python sebagai padanan <code>else if</code> di C.</td>
+                        </tr>
+                        <tr>
+                            <td><code>while (kondisi) { <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan; <br> }</code></td>
+                            <td><code>while kondisi: <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan</code></td>
+                            <td>Perulangan yang terus berjalan selama kondisi terpenuhi.</td>
+                        </tr>
+                        <tr>
+                            <td><code>for (int i = 0; i &lt; n; i++) { <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan dengan i; <br> }</code></td>
+                            <td><code>for i in range(n): <br> &nbsp;&nbsp;&nbsp;&nbsp;pernyataan dengan i</code></td>
+                            <td>Perulangan yang berjalan sejumlah iterasi tertentu menggunakan iterator (variabel penunjuk seperti <code>i</code>). <code>range(n)</code> di Python menghasilkan urutan angka dari 0 hingga n-1.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    Memahami padanan sintaks ini sangat membantu jika Anda perlu beralih antar bahasa pemrograman atau membaca kode dari bahasa yang berbeda. Keduanya memiliki cara yang efisien untuk mengekspresikan logika yang sama.
+                </p>
+                <p>Anda bisa mempelajari lebih lanjut tentang Python di situs resminya, <a href="https://www.python.org/" target="_blank">python.org</a>.</p>
+
+                <div class="section">
+                    <h4>Contoh Perbandingan Program: Menghitung Jumlah Bilangan dari 1 hingga N</h4>
+                    <p>Berikut adalah contoh sederhana bagaimana sebuah program untuk menghitung jumlah bilangan dari 1 hingga N ditulis dalam Bahasa C dan Python:</p>
+
+                    <div class="code-block">
+                        <pre><code>/* Program Hitung Jumlah Bilangan 1 s/d N dalam Bahasa C */
+#include &lt;stdio.h&gt;
+
+int main() {
+    int n, jumlah;
+    scanf("%d", &amp;n); // Membaca nilai N dari pengguna
+    jumlah = 0;       // Inisialisasi variabel jumlah
+    
+    // Perulangan untuk menjumlahkan bilangan dari 1 hingga N
+    for (int i = 1; i &lt;= n; i++) {
+        jumlah = jumlah + i; // Menambahkan nilai i ke jumlah
+    }
+    
+    // Mencetak hasil
+    printf("Jumlah bilangan 1 s/d %d = %d\n", n, jumlah);
+    
+    return 0; // Mengakhiri program
+}</code></pre>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code># Program Hitung Jumlah Bilangan 1 s/d N di Python
+
+n = int(input()) # Membaca nilai N dari pengguna dan mengubahnya menjadi integer
+jumlah = 0      # Inisialisasi variabel jumlah
+
+# Perulangan untuk menjumlahkan bilangan dari 1 hingga N
+# range(1, n + 1) menghasilkan urutan dari 1 sampai n
+for i in range(1, n + 1):
+    jumlah = jumlah + i # Menambahkan nilai i ke jumlah
+
+# Mencetak hasil
+print(f"Jumlah bilangan 1 s/d {n} = {jumlah}")</code></pre>
+                    </div>
+                    <p>Perhatikan bagaimana sintaks <code>printf</code> dan <code>scanf</code> di C digantikan oleh <code>print</code> dan <code>input</code> (dengan konversi tipe) di Python. Demikian pula, struktur perulangan <code>for</code> memiliki perbedaan sintaks meskipun logika dasarnya sama. Menerjemahkan antara bahasa pemrograman seringkali semudah menerjemahkan frasa antar bahasa manusia!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const triggers = document.querySelectorAll('.interactive-concept .concept-trigger');
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const concept = this.closest('.interactive-concept');
+                    concept.classList.toggle('expanded');
+                    if (concept.classList.contains('expanded')) {
+                        this.textContent = 'Sembunyikan Detail';
+                    } else {
+                        this.textContent = 'Klik untuk Menjelajahi Alur Kerja';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+```

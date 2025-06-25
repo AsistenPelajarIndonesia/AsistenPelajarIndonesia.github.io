@@ -1,0 +1,427 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab V: Bangun Ruang Sisi Lengkung - 5.1 Tabung</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        .definition-box, .formula-box, .example-box, .key-concept-box {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .definition-box::before, .formula-box::before, .example-box::before, .key-concept-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 5px;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .definition-box::before { background-color: var(--semantic-info); }
+        .formula-box::before { background-color: var(--primary-blue); }
+        .example-box::before { background-color: var(--accent-green); }
+        .key-concept-box::before { background-color: var(--secondary-accent-amber); }
+
+        .formula-box code {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: var(--text-primary);
+            display: block; /* Ensures code block takes full width */
+            overflow-x: auto; /* Allows horizontal scrolling for long code */
+        }
+
+        .formula-box code span {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .formula-box .formula-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .formula-box ul {
+            list-style: disc;
+            padding-left: 25px;
+        }
+
+        .formula-box li {
+            margin-bottom: 8px;
+        }
+
+        .example-box .step {
+            margin-bottom: 15px;
+        }
+
+        .example-box .step-title {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .explanation {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 5px;
+        }
+
+        .interactive-element {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .interactive-element:hover {
+            background-color: #1565C0;
+        }
+
+        .visual-aid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .visual-aid-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .visual-aid-item p {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .visual-aid-concept {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .visual-aid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .visual-aid-item {
+                margin-bottom: 15px;
+                min-width: auto;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab V: Bangun Ruang Sisi Lengkung</h1>
+        <h2>5.1 Tabung: Memahami Bentuk, Unsur, Luas Permukaan, dan Volume</h2>
+
+        <div class="section">
+            <h3>Pengantar: Mengenal Tabung</h3>
+            <div class="definition-box">
+                <p>Tabung adalah sebuah bangun ruang sisi lengkung yang istimewa. Ia terbentuk dari gabungan dua buah lingkaran yang identik dan sejajar, serta sebuah selimut berbentuk persegi panjang yang melingkupi kedua lingkaran tersebut. Bayangkan sebuah kaleng susu, tong sampah, atau bahkan lilin; semuanya memiliki bentuk dasar tabung!</p>
+                <p>Tabung memiliki tiga sisi utama:</p>
+                <ul>
+                    <li>Dua sisi datar, yaitu sisi alas dan sisi tutup yang berbentuk lingkaran.</li>
+                    <li>Satu sisi lengkung, yang merupakan selimut tabung.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Unsur-Unsur Utama Tabung</h2>
+            <p>Memahami bagian-bagian dari tabung akan sangat membantu kita dalam mempelajari sifat dan rumusnya. Mari kita kenali unsur-unsurnya:</p>
+
+            <div class="key-concept-box">
+                <h3>1. Jari-jari Tabung (r)</h3>
+                <p>Ini adalah jarak dari titik pusat lingkaran alas (atau tutup) ke setiap titik pada keliling lingkaran tersebut. Kedua lingkaran (alas dan tutup) memiliki jari-jari yang sama.</p>
+            </div>
+
+            <div class="key-concept-box">
+                <h3>2. Diameter Tabung (d)</h3>
+                <p>Diameter adalah garis lurus yang melewati titik pusat lingkaran dan menghubungkan dua titik pada keliling lingkaran. Hubungannya dengan jari-jari adalah: <code>d = 2r</code>.</p>
+            </div>
+
+            <div class="key-concept-box">
+                <h3>3. Tinggi Tabung (t)</h3>
+                <p>Tinggi tabung adalah jarak tegak lurus antara sisi alas dan sisi tutupnya. Ini sama dengan panjang sisi persegi panjang yang membentuk selimut tabung.</p>
+            </div>
+
+            <div class="visual-aid">
+                <div class="visual-aid-item">
+                    <p style="font-size: 1.2em; font-weight: bold; color: var(--primary-blue);">Lingkaran Alas (L₁)</p>
+                    <p>Jari-jari: <code>r₁</code></p>
+                </div>
+                <div class="visual-aid-item">
+                    <p style="font-size: 1.2em; font-weight: bold; color: var(--primary-blue);">Selimut Tabung</p>
+                    <p>Persegi Panjang ABCD</p>
+                    <p>Panjang = Keliling Lingkaran</p>
+                    <p>Lebar = Tinggi Tabung (t)</p>
+                </div>
+                <div class="visual-aid-item">
+                    <p style="font-size: 1.2em; font-weight: bold; color: var(--primary-blue);">Lingkaran Tutup (L₂)</p>
+                    <p>Jari-jari: <code>r₂</code></p>
+                </div>
+            </div>
+            <p class="explanation">Penting diingat: Untuk tabung, <code>r₁ = r₂ = r</code>.</p>
+            <p>Jarak antara titik pusat lingkaran alas dan lingkaran tutup adalah tinggi tabung (<code>t</code>).</p>
+        </div>
+
+        <div class="section">
+            <h2>Menjelajahi Luas Permukaan Tabung</h2>
+            <p>Luas permukaan tabung adalah jumlah total dari luas semua sisinya. Jika kita "membuka" tabung menjadi jaring-jaringnya, kita akan menemukan dua lingkaran dan satu persegi panjang.</p>
+
+            <div class="formula-box">
+                <p class="formula-title">Rumus Luas Permukaan Tabung:</p>
+                <p>Luas Permukaan (L) = Luas 2 Lingkaran + Luas Selimut Persegi Panjang</p>
+                <code>
+                    L = 2 &times; (Luas Lingkaran) + (Luas Persegi Panjang)<br>
+                    L = 2 &times; (πr²) + (Panjang AB &times; Lebar BC)<br>
+                    L = 2πr² + (Keliling Lingkaran &times; Tinggi Tabung)<br>
+                    L = 2πr² + (2πr &times; t)<br>
+                    <span class="highlight">L = 2πr(r + t)</span>
+                </code>
+                <p class="explanation">Di mana:</p>
+                <ul>
+                    <li><code>π</code> (pi) adalah konstanta matematika, kira-kira 3.14 atau 22/7.</li>
+                    <li><code>r</code> adalah jari-jari alas/tutup.</li>
+                    <li><code>t</code> adalah tinggi tabung.</li>
+                    <li>Panjang sisi persegi panjang (AB) sama dengan keliling lingkaran (2πr).</li>
+                    <li>Lebar sisi persegi panjang (BC) sama dengan tinggi tabung (t).</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <p class="step-title">Contoh Perhitungan Luas Permukaan:</p>
+                <div class="step">
+                    <p class="step-title">Soal:</p>
+                    <p>Hitung luas permukaan sebuah tabung dengan jari-jari <code>3 cm</code> dan tinggi <code>7 cm</code>.</p>
+                </div>
+                <div class="step">
+                    <p class="step-title">Penyelesaian:</p>
+                    <p>Diketahui:</p>
+                    <ul>
+                        <li><code>r = 3 cm</code></li>
+                        <li><code>t = 7 cm</code></li>
+                        <li>Gunakan <code>π</code></li>
+                    </ul>
+                    <p>Menggunakan rumus:</p>
+                    <code>
+                        L = 2πr(r + t)<br>
+                        L = 2π(3)(3 + 7)<br>
+                        L = 6π(10)<br>
+                        L = 60π cm²
+                    </code>
+                    <p>Jadi, luas permukaannya adalah <code>60π cm²</code>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Menggali Volume Tabung</h2>
+            <p>Volume tabung menggambarkan kapasitas atau ruang yang dapat ditampung oleh tabung tersebut. Konsepnya mirip dengan mengisi tabung dengan air atau pasir.</p>
+
+            <div class="formula-box">
+                <p class="formula-title">Rumus Volume Tabung:</p>
+                <p>Volume (V) adalah hasil perkalian luas alas tabung dengan tingginya.</p>
+                <code>
+                    V = Luas Alas &times; Tinggi<br>
+                    V = (πr²) &times; t<br>
+                    <span class="highlight">V = πr²t</span>
+                </code>
+                <p class="explanation">Di mana:</p>
+                <ul>
+                    <li><code>π</code> adalah konstanta pi.</li>
+                    <li><code>r</code> adalah jari-jari alas tabung.</li>
+                    <li><code>t</code> adalah tinggi tabung.</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <p class="step-title">Contoh Perhitungan Volume:</p>
+                <div class="step">
+                    <p class="step-title">Soal:</p>
+                    <p>Hitung volume sebuah tabung dengan jari-jari <code>2 meter</code> dan tinggi <code>6 meter</code>.</p>
+                </div>
+                <div class="step">
+                    <p class="step-title">Penyelesaian:</p>
+                    <p>Diketahui:</p>
+                    <ul>
+                        <li><code>r = 2 m</code></li>
+                        <li><code>t = 6 m</code></li>
+                        <li>Gunakan <code>π</code></li>
+                    </ul>
+                    <p>Menggunakan rumus:</p>
+                    <code>
+                        V = πr²t<br>
+                        V = π(2)²(6)<br>
+                        V = π(4)(6)<br>
+                        V = 24π m³
+                    </code>
+                    <p>Jadi, volumenya adalah <code>24π m³</code>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ayo Kita Simpulkan</h2>
+            <div class="key-concept-box">
+                <h3>Menentukan Volume Tabung</h3>
+                <p>Setelah memahami unsur-unsurnya, kita bisa menyimpulkan bahwa untuk menentukan volume tabung, kita perlu mengetahui dua hal penting: <strong>jari-jari alasnya (r)</strong> dan <strong>tingginya (t)</strong>. Dengan kedua nilai ini, kita bisa langsung mengalikannya dengan <code>π</code> menggunakan rumus <code>V = πr²t</code>.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Studi Kasus & Tantangan</h2>
+            <p>Mari kita uji pemahaman kita dengan beberapa situasi:</p>
+
+            <div class="example-box">
+                <p class="step-title">Situasi 1: Luas Diketahui, Cari Jari-jari</p>
+                <p>Sebuah tabung memiliki tinggi 8 cm dan luas permukaan 528 cm². Berapakah jari-jarinya?</p>
+                <p>Kita gunakan rumus luas permukaan dan substitusikan nilai yang diketahui:</p>
+                <code>
+                    L = 2πr(r + t)<br>
+                    528 = 2 * (22/7) * r * (r + 8)  <span class="explanation">(Menggunakan π = 22/7)</span><br>
+                    528 = (44/7) * r * (r + 8)<br>
+                    (528 * 7) / 44 = r(r + 8)<br>
+                    84 = r(r + 8)<br>
+                    84 = r² + 8r<br>
+                    r² + 8r - 84 = 0
+                </code>
+                <p>Dengan memfaktorkan atau menggunakan rumus kuadrat, kita dapatkan <code>r = 6</code> (nilai negatif tidak masuk akal untuk jari-jari).</p>
+                <p>Jadi, jari-jarinya adalah 6 cm.</p>
+            </div>
+
+            <div class="example-box">
+                <p class="step-title">Situasi 2: Volume Diketahui, Cari Tinggi</p>
+                <p>Sebuah tabung memiliki diameter 10 cm dan volume 300π cm³. Berapakah tingginya?</p>
+                <p>Pertama, cari jari-jarinya: diameter = 10 cm, jadi <code>r = 10/2 = 5 cm</code>.</p>
+                <p>Sekarang, gunakan rumus volume:</p>
+                <code>
+                    V = πr²t<br>
+                    300π = π(5)² * t<br>
+                    300π = 25π * t<br>
+                    t = 300π / 25π<br>
+                    t = 12 cm
+                </code>
+                <p>Jadi, tingginya adalah 12 cm.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+```

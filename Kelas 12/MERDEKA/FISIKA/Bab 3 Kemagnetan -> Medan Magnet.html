@@ -1,0 +1,364 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Kemagnetan - Medan Magnet</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .concept-box {
+            background-color: rgba(25, 118, 210, 0.05);
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .concept-box p {
+            margin-bottom: 0;
+        }
+
+        .definition {
+            background-color: var(--background-canvas);
+            border: 1px dashed var(--border-divider);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .definition strong {
+            color: var(--primary-blue);
+        }
+
+        .example-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            border: 1px solid var(--border-divider);
+        }
+
+        .example-section h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .interactive-element {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .interactive-item {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            flex: 1;
+            min-width: 180px;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+        }
+
+        .interactive-item:hover {
+            background-color: #1565C0;
+            transform: translateY(-3px);
+        }
+
+        .interactive-item:active {
+            transform: translateY(0);
+        }
+
+        .theory-explanation {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+        }
+
+        .theory-explanation h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .theory-explanation code {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-secondary);
+        }
+
+        .formula {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--border-divider);
+        }
+
+        .formula-desc {
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .math-symbol {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .image-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            background-color: #e0e0e0;
+            color: var(--text-tertiary);
+            font-style: italic;
+            border-radius: 4px;
+            margin: 20px 0;
+            border: 1px dashed var(--border-divider);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .interactive-element {
+                flex-direction: column;
+                align-items: center;
+            }
+            .interactive-item {
+                width: 90%;
+                min-width: unset;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            p, li {
+                font-size: 0.95em;
+            }
+            .formula {
+                font-size: 1.0em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Kemagnetan</h1>
+        <h2>A. Medan Magnet: Memahami Kekuatan Tak Terlihat</h2>
+
+        <p>Pernahkah Anda bertanya-tanya bagaimana sebuah magnet bisa menarik atau menolak benda lain, bahkan dari kejauhan? Fenomena ini terjadi karena adanya <span class="highlight">medan magnet</span>.</p>
+
+        <div class="concept-box">
+            <p>Medan magnet adalah daerah di sekitar magnet atau arus listrik yang masih dapat merasakan gaya magnetik.</p>
+        </div>
+
+        <h3>Sifat Interaksi Magnet</h3>
+        <p>Kita semua tahu bahwa magnet memiliki dua kutub: kutub utara (<span class="highlight">N</span>) dan kutub selatan (<span class="highlight">S</span>).</p>
+        <ul>
+            <li>Kutub yang <span class="highlight">senama</span> (misalnya, Utara dengan Utara, atau Selatan dengan Selatan) akan saling <span class="highlight">tolak menolak</span>.</li>
+            <li>Kutub yang <span class="highlight">berbeda</span> (misalnya, Utara dengan Selatan) akan saling <span class="highlight">tarik menarik</span>.</li>
+        </ul>
+
+        <p>Fenomena ini dapat diamati ketika kita menaburkan serbuk besi di sekitar magnet. Serbuk besi akan mengikuti pola garis-garis yang menunjukkan arah dan kekuatan medan magnet.</p>
+
+        <div class="image-placeholder">
+            [Visualisasi: Serbuk besi membentuk pola garis di sekitar magnet batang]
+        </div>
+        <p class="formula-desc">Gambar 3.5: Medan magnet di sekitar magnet batang</p>
+
+        <h3>Garis-garis Medan Magnet</h3>
+        <p>Garis-garis medan magnet adalah garis khayal yang digambarkan untuk menunjukkan arah dan kekuatan medan magnet. Sifat-sifatnya adalah:</p>
+        <ul>
+            <li>Garis medan magnet keluar dari kutub utara (<span class="highlight">N</span>) dan masuk ke kutub selatan (<span class="highlight">S</span>).</li>
+            <li>Garis-garis ini selalu membentuk loop tertutup, melanjutkan perjalanan dari kutub <span class="highlight">S</span> ke kutub <span class="highlight">N</span> di dalam magnet.</li>
+            <li>Di mana garis-garis medan magnet lebih rapat, di situlah medan magnetnya lebih kuat.</li>
+            <li>Garis-garis medan magnet tidak pernah saling berpotongan.</li>
+        </ul>
+
+        <p>Arah medan magnet di suatu titik dapat ditentukan dengan menggunakan kompas. Jarum kompas akan selalu menunjuk searah dengan garis medan magnet di titik tersebut.</p>
+
+        <div class="image-placeholder">
+            [Visualisasi: Kompas di dekat magnet batang menunjukkan arah medan magnet]
+        </div>
+        <p class="formula-desc">Gambar 3.5 b): Arah medan magnet ditentukan kompas</p>
+
+        <h3>Medan Magnet Bumi</h3>
+        <p>Bumi kita sendiri adalah magnet raksasa! Inti Bumi diperkirakan mengandung logam cair yang bergerak, menghasilkan medan magnet yang sangat luas.</p>
+
+        <div class="concept-box">
+            <p>Medan magnet Bumi melindungi kita dari radiasi berbahaya dari luar angkasa, seperti angin matahari.</p>
+        </div>
+
+        <p>Medan magnet Bumi memiliki kutub utara dan kutub selatan, namun kutub magnetik Bumi tidak tepat berhimpit dengan kutub geografisnya. Ada perbedaan sudut sekitar 11.5 derajat, yang menyebabkan kutub utara magnetik sedikit bergeser dari kutub utara geografis.</p>
+
+        <div class="image-placeholder">
+            [Visualisasi: Ilustrasi medan magnet Bumi dengan kutub geografis dan magnetik yang sedikit berbeda]
+        </div>
+        <p class="formula-desc">Gambar 3.6: Medan magnet bumi</p>
+
+        <div class="example-section">
+            <h3>Penerapan Medan Magnet dalam Kehidupan Modern</h3>
+            <p>Konsep medan magnet induksi dan gaya magnetik telah membawa inovasi luar biasa dalam teknologi:</p>
+            <ul>
+                <li><span class="highlight">Kereta Maglev</span>: Menggunakan medan magnet kuat untuk mengangkat dan mendorong kereta melaju dengan kecepatan sangat tinggi (hingga 600 km/jam) tanpa gesekan roda.</li>
+                <li><span class="highlight">Generator</span>: Mengubah energi mekanik menjadi energi listrik melalui prinsip induksi elektromagnetik, yaitu menghasilkan gaya gerak listrik (GGL) ketika ada perubahan medan magnet pada kumparan.</li>
+                <li><span class="highlight">Trafo (Transformator)</span>: Memanfaatkan prinsip induksi elektromagnetik untuk menaikkan atau menurunkan tegangan listrik. Ini krusial dalam sistem transmisi listrik, dari pembangkit listrik hingga ke rumah-rumah kita. Trafo step-up menaikkan tegangan untuk transmisi jarak jauh, sementara trafo step-down menurunkannya agar aman digunakan.</li>
+            </ul>
+        </div>
+
+        <h2>B. Gaya Magnet: Saat Muatan Bergerak</h2>
+
+        <h3>1. Gaya Pada Muatan Bergerak</h3>
+        <p>Berbeda dengan medan listrik yang selalu memberikan gaya pada muatan statis, medan magnet hanya memberikan gaya pada muatan jika muatan tersebut <span class="highlight">bergerak</span>.</p>
+
+        <div class="definition">
+            <p>Sebuah muatan akan mengalami gaya magnetik jika memenuhi dua syarat:</p>
+            <ol>
+                <li>Muatan tersebut harus <span class="highlight">bergerak</span> (memiliki kecepatan, <span class="math-symbol">v</span>).</li>
+                <li>Arah kecepatan muatan <span class="highlight">tidak sejajar</span> dengan arah medan magnet (<span class="math-symbol">B</span>). Jika sejajar atau berlawanan arah, gaya magnetnya nol.</li>
+            </ol>
+        </div>
+
+        <p>Misalkan sebuah muatan positif (<span class="math-symbol">q</span>) bergerak dengan kecepatan (<span class="math-symbol">v</span>) ke kanan, dan berada dalam medan magnet (<span class="math-symbol">B</span>) yang arahnya menembus bidang kertas. Gaya magnetik (<span class="math-symbol">F</span>) yang dialami muatan tersebut akan berarah vertikal, tegak lurus terhadap arah gerak muatan dan arah medan magnetnya. Fenomena ini digambarkan menggunakan kaidah tangan kanan.</p>
+
+        <div class="image-placeholder">
+            [Visualisasi: Muatan positif bergerak ke kanan dalam medan magnet menembus bidang, dengan vektor gaya ke atas]
+        </div>
+        <p class="formula-desc">Gambar 3.7: Arah gaya magnet pada muatan</p>
+
+        <h3>Besar Gaya Magnetik</h3>
+        <p>Besar gaya magnetik yang dialami oleh muatan bergerak dapat dihitung menggunakan rumus vektor atau rumus skalar (besarnya saja):</p>
+
+        <div class="formula">
+            <p>
+                <span class="math-symbol">\vec{F}</span> = <span class="math-symbol">q</span> <span class="math-symbol">\vec{v}</span> &times; <span class="math-symbol">\vec{B}</span>
+            </p>
+        </div>
+        <p class="formula-desc">Persamaan Vektor Gaya Magnetik (Lorentz)</p>
+
+        <p>Sedangkan besarnya gaya magnetik (<span class="math-symbol">F</span>) dirumuskan sebagai:</p>
+
+        <div class="formula">
+            <p>
+                <span class="math-symbol">F</span> = <span class="math-symbol">q</span> <span class="math-symbol">v</span> <span class="math-symbol">B</span> <span class="math-symbol">\sin{\theta}</span>
+            </p>
+        </div>
+        <p class="formula-desc">Besar Gaya Magnetik</p>
+
+        <p>Di mana:</p>
+        <ul>
+            <li><span class="math-symbol">F</span> adalah besar gaya magnetik (dalam Newton, N).</li>
+            <li><span class="math-symbol">q</span> adalah besar muatan listrik (dalam Coulomb, C).</li>
+            <li><span class="math-symbol">v</span> adalah besar kecepatan muatan (dalam meter per detik, m/s).</li>
+            <li><span class="math-symbol">B</span> adalah besar medan magnet (dalam Tesla, T).</li>
+            <li><span class="math-symbol">\theta</span> adalah sudut antara arah kecepatan (<span class="math-symbol">\vec{v}</span>) dan arah medan magnet (<span class="math-symbol">\vec{B}</span>).</li>
+        </ul>
+
+        <div class="interactive-element">
+            <div class="interactive-item">Pahami Arah Gaya Magnet</div>
+            <div class="interactive-item">Hitung Besar Gaya Magnet</div>
+            <div class="interactive-item">Analisis Efek Medan Bumi</div>
+        </div>
+
+    </div>
+</body>
+</html>
+```

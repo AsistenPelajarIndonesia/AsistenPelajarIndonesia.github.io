@@ -1,0 +1,411 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menulis Cerita Inspiratif - Bahasa Indonesia Kelas 9</title>
+    <style>
+        /* Theme Styles */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .step-block {
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .step-block:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-block h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .step-block p {
+            margin-bottom: 10px;
+        }
+
+        .concept-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .concept-box::before {
+            content: "💡";
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+
+        .example-block {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .example-block p {
+            margin-bottom: 0;
+        }
+
+        .key-term {
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+
+        .structure-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: section;
+        }
+
+        .structure-list li {
+            counter-increment: section;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .structure-list li::before {
+            content: counter(section) ".";
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2em;
+            width: 25px;
+            text-align: center;
+            background-color: var(--semantic-info);
+            color: white;
+            border-radius: 50%;
+            padding: 3px;
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .sub-list {
+            list-style-type: lower-alpha;
+            padding-left: 25px;
+            margin-top: 10px;
+        }
+
+        .sub-list li::before {
+            content: "(" counter(section, lower-alpha) ")";
+            position: absolute;
+            left: 0;
+            color: var(--text-secondary);
+            font-weight: normal;
+            font-size: 1em;
+            width: auto;
+            background-color: transparent;
+            padding: 0;
+            height: auto;
+            line-height: normal;
+        }
+
+        .tip-box {
+            background-color: var(--semantic-warning);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--text-secondary);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .tip-box::before {
+            content: "💡";
+            font-size: 1.5em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .step-block, .example-block, .tip-box, .concept-box {
+                padding: 10px 15px;
+            }
+            .structure-list li::before {
+                font-size: 1.1em;
+                height: 22px;
+                line-height: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            .step-block, .example-block, .tip-box, .concept-box {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Menulis Cerita Inspiratif</h1>
+
+        <p>Cerita inspiratif adalah sebuah karya tulis yang bertujuan untuk <span class="highlight">memotivasi, menginspirasi, dan membangkitkan semangat</span> pembaca melalui kisah nyata atau pengalaman seseorang yang memiliki nilai positif. Cerita semacam ini seringkali mengangkat perjuangan, ketekunan, kebaikan hati, atau pencapaian luar biasa yang dapat menjadi teladan.</p>
+
+        <h2>Memahami Esensi Cerita Inspiratif</h2>
+
+        <p>Sebelum mulai menulis, penting untuk memahami apa yang membuat sebuah cerita menjadi inspiratif. Beberapa elemen kunci meliputi:</p>
+
+        <div class="step-block">
+            <h3>Tokoh yang Memiliki Nilai Positif</h3>
+            <p>Cerita inspiratif biasanya berpusat pada tokoh yang menunjukkan sifat-sifat terpuji, seperti pantang menyerah, peduli sesama, jujur, berani, atau memiliki keikhlasan. Perjuangan dan keberhasilan mereka menjadi poin utama.</p>
+        </div>
+
+        <div class="step-block">
+            <h3>Konflik dan Perjuangan</h3>
+            <p>Setiap cerita yang menarik pasti memiliki konflik atau tantangan. Dalam cerita inspiratif, konflik ini seringkali berat dan penuh rintangan, namun bagaimana tokoh menghadapinya dengan positif adalah inti dari inspirasinya.</p>
+        </div>
+
+        <div class="step-block">
+            <h3>Pesan Moral yang Kuat</h3>
+            <p>Di balik setiap kisah, terdapat pesan moral atau pelajaran hidup yang ingin disampaikan. Pesan ini bisa tentang arti ketekunan, pentingnya kebaikan, keberanian menghadapi kesulitan, atau makna kehidupan itu sendiri.</p>
+        </div>
+
+        <div class="step-block">
+            <h3>Akhir yang Memberikan Harapan</h3>
+            <p>Meskipun perjuangan tokoh bisa sangat berat, cerita inspiratif umumnya memiliki akhir yang positif atau setidaknya memberikan harapan, menunjukkan bahwa kesulitan dapat diatasi dan ada pelajaran berharga yang didapat.</p>
+        </div>
+
+        <h2>Langkah-Langkah Menulis Cerita Inspiratif</h2>
+
+        <p>Menulis cerita inspiratif memerlukan perpaduan antara kreativitas dan pemahaman akan struktur narasi yang baik. Berikut adalah langkah-langkah yang bisa Anda ikuti:</p>
+
+        <div class="step-block">
+            <h3>1. Menentukan Ide Dasar dan Tokoh Inspiratif</h3>
+            <p>
+                Mulailah dengan memikirkan siapa atau peristiwa apa yang ingin Anda jadikan inspirasi. Bisa jadi itu orang terdekat Anda, tokoh publik, atau bahkan pengalaman pribadi yang meninggalkan kesan mendalam.
+                <span class="key-term">Fokus pada "apa yang membuat mereka luar biasa"</span>.
+            </p>
+            <div class="example-block">
+                <p>Contoh: Memikirkan seorang nenek yang tetap berdagang meskipun sudah tua renta untuk menghidupi cucunya, atau seorang relawan yang mengabdikan hidupnya untuk pendidikan di daerah terpencil.</p>
+            </div>
+        </div>
+
+        <div class="step-block">
+            <h3>2. Mengumpulkan Informasi dan Detail (Riset Jika Perlu)</h3>
+            <p>
+                Jika Anda menulis tentang seseorang yang Anda kenal, ingatlah detail-detail penting: kebiasaan mereka, perkataan khas, tantangan yang mereka hadapi, dan momen-momen penting. Jika kisah tersebut fiktif atau Anda tidak memiliki informasi lengkap, Anda bisa melakukan riset untuk membangun latar belakang yang kuat dan kredibel.
+                <span class="key-term">Detail membuat cerita terasa hidup dan nyata</span>.
+            </p>
+        </div>
+
+        <div class="step-block">
+            <h3>3. Menyusun Kerangka Cerita (Struktur Narasi)</h3>
+            <p>
+                Cerita inspiratif umumnya mengikuti struktur narasi dasar. Kerangka ini akan membantu Anda menyusun alur cerita agar runtut dan mudah diikuti. Struktur umum yang bisa digunakan adalah:
+            </p>
+            <ul class="structure-list">
+                <li>
+                    <p><strong>Pendahuluan (Orientasi)</strong></p>
+                    <ul class="sub-list">
+                        <li>Memperkenalkan tokoh utama dan latar belakangnya.</li>
+                        <li>Memberikan gambaran awal tentang situasi atau keadaan.</li>
+                        <li>Menarik perhatian pembaca dengan momen awal yang menarik atau menggugah.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong>Konflik/Masalah (Komplikasi)</strong></p>
+                    <ul class="sub-list">
+                        <li>Menjelaskan tantangan atau kesulitan yang dihadapi tokoh.</li>
+                        <li>Bagaimana tokoh merespons awal dari kesulitan tersebut.</li>
+                        <li>Membangun ketegangan yang mengarah pada klimaks.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong>Puncak Cerita (Klimaks)</strong></p>
+                    <ul class="sub-list">
+                        <li>Momen paling krusial dalam cerita, di mana tokoh menghadapi rintangan terberatnya.</li>
+                        <li>Ini seringkali menjadi titik balik atau saat perjuangan paling heroik ditunjukkan.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong>Penyelesaian (Resolusi)</strong></p>
+                    <ul class="sub-list">
+                        <li>Menjelaskan bagaimana konflik terselesaikan atau bagaimana tokoh bangkit setelah menghadapi kesulitan.</li>
+                        <li>Menunjukkan hasil dari perjuangan tokoh.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong>Amanat/Pesan Moral (Koda)</strong></p>
+                    <ul class="sub-list">
+                        <li>Menyimpulkan pelajaran berharga atau inspirasi yang bisa diambil dari cerita tersebut.</li>
+                        <li>Pesan ini harus jelas dan relevan dengan keseluruhan kisah.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step-block">
+            <h3>4. Mengembangkan Bahasa yang Menginspirasi</h3>
+            <p>
+                Gunakan bahasa yang mampu membangkitkan emosi dan empati pembaca. Pilihlah kata-kata yang kuat, deskriptif, dan positif. Perhatikan juga penggunaan majas atau gaya bahasa lain untuk memperkaya cerita.
+                <span class="key-term">Bahasa yang tepat adalah kunci untuk menyentuh hati pembaca</span>.
+            </p>
+            <div class="tip-box">
+                <p><strong>Tips:</strong> Gunakan kalimat yang menunjukkan perasaan tokoh, seperti "Hatiku bergetar," "Aku takkan menyerah," atau "Senyumnya merekah." Deskripsikan suasana agar pembaca bisa merasakan momen tersebut.</p>
+            </div>
+        </div>
+
+        <div class="step-block">
+            <h3>5. Menulis Draf Pertama</h3>
+            <p>
+                Fokuslah untuk menuangkan semua ide ke dalam tulisan tanpa terlalu khawatir tentang kesempurnaan. Ikuti kerangka yang telah Anda buat. Biarkan cerita mengalir.
+            </p>
+        </div>
+
+        <div class="step-block">
+            <h3>6. Merevisi dan Menyunting</h3>
+            <p>
+                Setelah draf pertama selesai, bacalah kembali cerita Anda. Periksa kelancaran alur, kejelasan pesan, penggunaan kosakata, tata bahasa, dan ejaan. Perbaiki bagian-bagian yang terasa kurang pas atau kurang kuat.
+                <span class="key-term">Revisi adalah tahap penting untuk menyempurnakan karya</span>.
+            </p>
+            <div class="example-block">
+                <p>Misalnya, mengganti kata "sedih" dengan "hatinya remuk" jika ingin efek emosi yang lebih kuat, atau memastikan urutan kejadian benar-benar logis.</p>
+            </div>
+        </div>
+
+        <h2>Unsur Penting dalam Cerita Inspiratif</h2>
+
+        <p>Untuk memastikan cerita Anda benar-benar menginspirasi, perhatikan elemen-elemen berikut:</p>
+
+        <div class="concept-box">
+            <p><strong>Keaslian (Originality)</strong>: Cerita yang tulus dan datang dari hati akan lebih terasa otentik.</p>
+        </div>
+        <div class="concept-box">
+            <p><strong>Kedalaman Emosi</strong>: Kemampuan untuk membuat pembaca merasakan apa yang dirasakan tokoh.</p>
+        </div>
+        <div class="concept-box">
+            <p><strong>Kredibilitas</strong>: Meskipun inspiratif, cerita harus tetap terasa masuk akal dan tidak mengada-ada.</p>
+        </div>
+        <div class="concept-box">
+            <p><strong>Kepositifan</strong>: Fokus pada pembelajaran, ketahanan, dan nilai-nilai baik.</p>
+        </div>
+
+        <p>Dengan memahami langkah-langkah dan unsur-unsur ini, Anda akan lebih siap untuk mulai menulis cerita inspiratif yang dapat menyentuh dan memotivasi siapa saja yang membacanya. Selamat mencoba!</p>
+
+        <footer>
+            <p>&copy; 2023 Materi Pembelajaran Bahasa Indonesia Kelas 9</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

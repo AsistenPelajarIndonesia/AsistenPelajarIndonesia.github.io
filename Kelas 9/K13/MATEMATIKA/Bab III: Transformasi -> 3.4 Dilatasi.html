@@ -1,0 +1,399 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.4 Dilatasi - Matematika Kelas 9</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 4px;
+        }
+
+        .definition-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+        }
+
+        .definition-box h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .definition-box p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .concept-highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .coordinate-example {
+            background-color: var(--border-divider);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .coordinate-box {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .coordinate-box p {
+            margin: 5px 0;
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        .coordinate-box strong {
+            font-size: 1.1em;
+            color: var(--primary-blue);
+        }
+
+        .formula {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-size: 1.15em;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: 0 2px 5px rgba(56, 138, 60, 0.4);
+        }
+
+        .formula-explanation {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .scale-factor-explanation {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed var(--primary-blue);
+            border-radius: 5px;
+            background-color: rgba(33, 150, 243, 0.05);
+        }
+
+        .scale-factor-box {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+
+        .scale-factor-box h4 {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .scale-factor-box p {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .types-of-dilatasi {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .type-box {
+            flex-basis: calc(50% - 15px);
+            background-color: #f0f8ff;
+            border: 1px solid var(--primary-blue);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .type-box h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .type-box p {
+            font-size: 0.95em;
+        }
+
+        .type-box .highlight {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .interactive-placeholder {
+            background-color: var(--semantic-warning);
+            color: var(--text-primary);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-placeholder:hover {
+            background-color: var(--secondary-accent-amber);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .type-box {
+                flex-basis: 100%;
+            }
+            .coordinate-example {
+                flex-direction: column;
+            }
+            .scale-factor-explanation {
+                flex-direction: column;
+            }
+            .scale-factor-box {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab III: Transformasi</h1>
+        <h2>3.4 Dilatasi</h2>
+
+        <div class="section">
+            <div class="definition-box">
+                <h3>Apa itu Dilatasi?</h3>
+                <p>Dilatasi adalah salah satu jenis transformasi yang <strong>mengubah ukuran</strong> sebuah bangun, baik memperbesar maupun memperkecil, tanpa mengubah bentuknya. Bayangan hasil dilatasi akan memiliki perbandingan sisi yang tetap terhadap bangun aslinya.</p>
+            </div>
+
+            <p>Dalam dilatasi, terdapat dua elemen kunci yang sangat penting untuk menentukan bayangan suatu bangun:</p>
+            <ul>
+                <li><span class="concept-highlight">Titik Pusat Dilatasi:</span> Titik acuan di mana proses pembesaran atau pengecilan terjadi.</li>
+                <li><span class="concept-highlight">Faktor Skala (k):</span> Bilangan yang menentukan seberapa besar atau kecil bayangan yang dihasilkan relatif terhadap bangun asli.</li>
+            </ul>
+
+            <p>Bayangan hasil dilatasi selalu sebangun dengan bangun aslinya.</p>
+        </div>
+
+        <div class="section">
+            <h3>Menentukan Koordinat Hasil Dilatasi</h3>
+
+            <p>Dilatasi pada bidang koordinat paling sederhana terjadi ketika titik pusat dilatasi berada di <strong>titik asal (0, 0)</strong>. Jika sebuah titik memiliki koordinat <span class="concept-highlight">(x, y)</span> dan didilatasikan terhadap titik asal dengan faktor skala <span class="concept-highlight">k</span>, maka koordinat bayangannya, kita sebut <span class="concept-highlight">(x', y')</span>, dapat ditentukan dengan rumus:</p>
+
+            <div class="formula">(x', y') = (k × x, k × y)</div>
+            <div class="formula-explanation">Atau dalam notasi transformasi: (x, y) <span style="color: var(--primary-blue);">→</span> (kx, ky)</div>
+
+            <p>Mari kita lihat contohnya:</p>
+
+            <div class="coordinate-example">
+                <div class="coordinate-box">
+                    <p>Titik Asli:</p>
+                    <strong>A(1, 3)</strong>
+                </div>
+                <div class="coordinate-box">
+                    <p>Faktor Skala (k):</p>
+                    <strong>2</strong>
+                </div>
+                <div class="coordinate-box">
+                    <p>Titik Pusat:</p>
+                    <strong>Titik Asal (0,0)</strong>
+                </div>
+                <div class="coordinate-box">
+                    <p>Koordinat Bayangan:</p>
+                    <strong>A'(2 × 1, 2 × 3) = A'(2, 6)</strong>
+                </div>
+            </div>
+
+            <p>Contoh lain dengan faktor skala yang berbeda:</p>
+
+            <div class="coordinate-example">
+                <div class="coordinate-box">
+                    <p>Titik Asli:</p>
+                    <strong>B(4, -2)</strong>
+                </div>
+                <div class="coordinate-box">
+                    <p>Faktor Skala (k):</p>
+                    <strong>1/2</strong>
+                </div>
+                <div class="coordinate-box">
+                    <p>Titik Pusat:</p>
+                    <strong>Titik Asal (0,0)</strong>
+                </div>
+                <div class="coordinate-box">
+                    <p>Koordinat Bayangan:</p>
+                    <strong>B'(0.5 × 4, 0.5 × -2) = B'(2, -1)</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Pengaruh Faktor Skala Terhadap Ukuran</h3>
+
+            <p>Faktor skala (<span class="concept-highlight">k</span>) memegang peranan penting dalam menentukan apakah dilatasi menghasilkan pembesaran atau pengecilan:</p>
+
+            <div class="scale-factor-explanation">
+                <div class="scale-factor-box">
+                    <h4>Jika k > 1</h4>
+                    <p>Dilatasi menghasilkan <strong>pembesaran</strong>.</p>
+                    <p>Bayangan akan lebih besar dari bangun asli.</p>
+                </div>
+                <div class="scale-factor-box">
+                    <h4>Jika 0 < k < 1</h4>
+                    <p>Dilatasi menghasilkan <strong>pengecilan</strong>.</p>
+                    <p>Bayangan akan lebih kecil dari bangun asli.</p>
+                </div>
+                <div class="scale-factor-box">
+                    <h4>Jika k = 1</h4>
+                    <p>Dilatasi menghasilkan bangun yang <strong>kongruen</strong>.</p>
+                    <p>Bayangan sama persis dengan bangun asli.</p>
+                </div>
+                <div class="scale-factor-box">
+                    <h4>Jika k < 0</h4>
+                    <p>Dilatasi menghasilkan bayangan yang <strong>terbalik</strong> terhadap titik pusat.</p>
+                    <p>Jika <span class="concept-highlight">|k| > 1</span>, terjadi pembesaran terbalik.</p>
+                    <p>Jika <span class="concept-highlight">0 < |k| < 1</span>, terjadi pengecilan terbalik.</p>
+                </div>
+            </div>
+
+            <p>Contohnya, dilatasi dengan faktor skala 3 akan memperbesar bangun menjadi 3 kali lipat, sedangkan dilatasi dengan faktor skala 0.25 akan mengecilkan bangun menjadi seperempatnya.</p>
+        </div>
+
+        <div class="section">
+            <h3>Jenis-jenis Dilatasi Berdasarkan Faktor Skala</h3>
+
+            <div class="types-of-dilatasi">
+                <div class="type-box">
+                    <h4>Pembesaran</h4>
+                    <p>Terjadi ketika faktor skala <span class="concept-highlight">k > 1</span>.</p>
+                    <p>Contoh: k = 2, k = 3.5, k = 10.</p>
+                </div>
+                <div class="type-box">
+                    <h4>Pengecilan</h4>
+                    <p>Terjadi ketika faktor skala <span class="concept-highlight">0 < k < 1</span>.</p>
+                    <p>Contoh: k = 0.5, k = 1/4, k = 0.1.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Dilatasi dengan Titik Pusat di Sembarang Titik P(a, b)</h3>
+
+            <p>Bagaimana jika titik pusat dilatasi bukan di titik asal? Misalnya di titik <span class="concept-highlight">P(a, b)</span>. Langkah-langkahnya adalah:</p>
+            <ol>
+                <li><strong>Geser (Translasi)</strong> bangun asli sehingga titik pusat dilatasi <span class="concept-highlight">P(a, b)</span> berpindah ke titik asal <span class="concept-highlight">(0, 0)</span>. Translasi yang dilakukan adalah <span style="color: var(--primary-blue);">(-a, -b)</span>.</li>
+                <li>Lakukan dilatasi terhadap bangun yang telah ditranslasikan tersebut terhadap titik asal <span class="concept-highlight">(0, 0)</span> dengan faktor skala <span class="concept-highlight">k</span>. Gunakan rumus <span class="concept-highlight">(x, y) → (kx, ky)</span> pada koordinat yang telah ditranslasikan.</li>
+                <li><strong>Geser kembali (Translasi)</strong> bayangan hasil dilatasi ke posisi semula. Translasi yang dilakukan adalah <span style="color: var(--primary-blue);">(+a, +b)</span>.</li>
+            </ol>
+
+            <p>Secara ringkas, jika titik asli adalah <span class="concept-highlight">A(x, y)</span> dan didilatasikan terhadap titik pusat <span class="concept-highlight">P(a, b)</span> dengan faktor skala <span class="concept-highlight">k</span>, maka koordinat bayangan <span class="concept-highlight">A'(x', y')</span> adalah:</p>
+            <ol>
+                <li>Translasi A oleh <span style="color: var(--primary-blue);">(-a, -b)</span> menghasilkan <span class="concept-highlight">A_translasi (x-a, y-b)</span>.</li>
+                <li>Dilatasi <span class="concept-highlight">A_translasi</span> oleh <span class="concept-highlight">k</span> menghasilkan <span class="concept-highlight">A'_dilatasi (k(x-a), k(y-b))</span>.</li>
+                <li>Translasi kembali <span class="concept-highlight">A'_dilatasi</span> oleh <span style="color: var(--primary-blue);">(+a, +b)</span> menghasilkan bayangan akhir <span class="concept-highlight">A'(x', y')</span>:
+                    <div class="formula">x' = k(x - a) + a</div>
+                    <div class="formula">y' = k(y - b) + b</div>
+                </li>
+            </ol>
+            <p>Ini adalah rumus umum dilatasi terhadap titik pusat <span class="concept-highlight">P(a, b)</span>.</p>
+        </div>
+
+        <div class="section">
+            <h3>Memahami Pengaruh Luas Akibat Dilatasi</h3>
+            <p>Dilatasi tidak hanya mengubah ukuran panjang sisi tetapi juga mengubah luas bangun secara proporsional. Jika sebuah bangun didilatasi dengan faktor skala <span class="concept-highlight">k</span>, maka luas bayangannya akan berubah sebesar <span class="concept-highlight">k²</span> kali luas bangun aslinya.</p>
+
+            <div class="formula">Luas Bayangan = k² × Luas Awal</div>
+
+            <p>Ini berarti pembesaran atau pengecilan luas berbanding lurus dengan kuadrat faktor skala.</p>
+        </div>
+
+        <div class="section">
+            <p>Dilatasi adalah konsep transformasi yang sangat berguna dalam berbagai aplikasi, mulai dari memperbesar gambar pada layar ponsel hingga memproyeksikan bayangan pada dinding dengan senter.</p>
+            <div class="interactive-placeholder">
+                Coba Bayangkan Membuat Bayangan Kelinci dengan Senter!
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+```

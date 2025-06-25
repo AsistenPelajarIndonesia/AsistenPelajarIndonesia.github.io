@@ -1,0 +1,364 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematika Kelas 9: Pembagian pada Perpangkatan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #424242;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        .highlight {
+            color: #D32F2F;
+            font-weight: bold;
+        }
+        .formula {
+            background-color: #E3F2FD;
+            border-left: 5px solid #1976D2;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-size: 1.2em;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            color: #1976D2;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .formula span {
+            font-weight: bold;
+            color: #D32F2F;
+        }
+        .explanation {
+            background-color: #FFF9C4;
+            border-left: 4px solid #FFC107;
+            padding: 10px 15px;
+            margin: 20px 0;
+            color: #424242;
+            border-radius: 4px;
+        }
+        .example {
+            background-color: #E8F5E9;
+            border-left: 4px solid #388E3C;
+            padding: 15px 20px;
+            margin: 20px 0;
+            color: #212121;
+            border-radius: 4px;
+        }
+        .example-title {
+            font-weight: bold;
+            color: #388E3C;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .example-step {
+            margin-left: 20px;
+            margin-bottom: 8px;
+            display: list-item;
+            list-style-type: disc;
+        }
+        .example-step span {
+            font-weight: bold;
+            color: #D32F2F;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #E0E0E0;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #F5F5F5;
+            color: #424242;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #FAFAFA;
+        }
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #EEEEEE;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .conclusion {
+            background-color: #E0F2F1;
+            border-left: 5px solid #00796B;
+            padding: 15px 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+        .conclusion p {
+            margin-bottom: 0;
+        }
+        .interactive-element {
+            background-color: #FFFDE7;
+            border: 1px dashed #FFCA28;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            color: #795548;
+        }
+        .interactive-element strong {
+            color: #4CAF50;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula, .explanation, .example, .conclusion, .interactive-element {
+                font-size: 0.95em;
+                padding: 10px 15px;
+            }
+            table, th, td {
+                font-size: 0.9em;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .formula {
+                white-space: normal; /* Allow wrapping for narrow screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab I: Perpangkatan dan Bentuk Akar</h1>
+        <h2>1.3 Pembagian pada Perpangkatan</h2>
+
+        <p>Halo! Mari kita selami dunia perpangkatan dan pahami bagaimana melakukan pembagian antar perpangkatan dengan basis yang sama. Konsep ini sangat fundamental dalam aljabar dan akan sangat membantu kita dalam menyederhanakan berbagai ekspresi matematika.</p>
+
+        <h3>Dasar-Dasar Pembagian Perpangkatan</h3>
+        <p>Ketika kita membagi dua perpangkatan yang memiliki basis (bilangan pokok) yang sama, kita dapat menyederhanakannya dengan menggunakan aturan yang sangat efisien. Aturan ini didasarkan pada sifat perkalian berulang.</p>
+
+        <div class="formula">
+            Jika kita memiliki perpangkatan <span class="code">a<sup>m</sup></span> dan <span class="code">a<sup>n</sup></span>, di mana <span class="code">a</span> adalah basis yang sama dan <span class="code">m</span> serta <span class="code">n</span> adalah bilangan bulat positif, maka berlaku:</br>
+            <span class="code">a<sup>m</sup> / a<sup>n</sup> = a<sup>m - n</sup></span>
+        </div>
+
+        <p>Artinya, untuk membagi dua perpangkatan dengan basis yang sama, kita cukup mengurangkan eksponen (pangkat) pembilang dengan eksponen penyebutnya. Basisnya tetap sama.</p>
+
+        <h3>Mengapa Aturan Ini Bekerja? (Penjelasan Interaktif)</h3>
+        <p>Mari kita lihat lebih dalam mengapa aturan ini berlaku menggunakan contoh perkalian berulang.</p>
+
+        <div class="explanation">
+            Misalkan kita ingin menghitung <span class="code">a<sup>5</sup> / a<sup>2</sup></span>.
+            <br>
+            <span class="code">a<sup>5</sup></span> berarti <span class="code">a × a × a × a × a</span> (a dikalikan sebanyak 5 kali).
+            <br>
+            <span class="code">a<sup>2</sup></span> berarti <span class="code">a × a</span> (a dikalikan sebanyak 2 kali).
+            <br><br>
+            Jadi,
+            <span class="code">a<sup>5</sup> / a<sup>2</sup></span> = <span class="code">(a × a × a × a × a) / (a × a)</span>
+            <br>
+            Kita bisa membatalkan pasangan <span class="code">a</span> di pembilang dan penyebut:
+            <span class="code">(<span>a</span> × <span>a</span> × a × a × a) / (<span>a</span> × <span>a</span>)</span>
+            <br>
+            Setelah dibatalkan, kita menyisakan <span class="code">a × a × a</span>, yang sama dengan <span class="code">a<sup>3</sup></span>.
+            <br><br>
+            Menggunakan aturan: <span class="code">a<sup>5</sup> / a<sup>2</sup> = a<sup>5-2</sup> = a<sup>3</sup></span>.
+            <br>
+            Hasilnya sama! Ini menunjukkan bahwa mengurangkan pangkat adalah cara yang tepat.
+        </div>
+
+        <h3>Contoh Penerapan</h3>
+        <p>Mari kita lihat beberapa contoh untuk memperkuat pemahaman:</p>
+
+        <div class="example">
+            <span class="example-title">Contoh 1: Menyederhanakan Pembagian Perpangkatan</span>
+            <ol>
+                <li class="example-step">Sederhanakan <span class="code">3<sup>6</sup> / 3<sup>4</sup></span>.
+                    <br>
+                    Menggunakan aturan: <span class="code">3<sup>6</sup> / 3<sup>4</sup> = 3<sup>6-4</sup></span>
+                    <br>
+                    Hasilnya adalah <span class="code">3<sup>2</sup></span>.
+                </li>
+                <li class="example-step">Sederhanakan <span class="code">x<sup>8</sup> / x<sup>3</sup></span>.
+                    <br>
+                    Menggunakan aturan: <span class="code">x<sup>8</sup> / x<sup>3</sup> = x<sup>8-3</sup></span>
+                    <br>
+                    Hasilnya adalah <span class="code">x<sup>5</sup></span>.
+                </li>
+                <li class="example-step">Sederhanakan <span class="code">(-7)<sup>9</sup> / (-7)<sup>5</sup></span>.
+                    <br>
+                    Menggunakan aturan: <span class="code">(-7)<sup>9</sup> / (-7)<sup>5</sup> = (-7)<sup>9-5</sup></span>
+                    <br>
+                    Hasilnya adalah <span class="code">(-7)<sup>4</sup></span>. Penting untuk tetap mempertahankan basisnya, termasuk tanda negatif jika ada.
+                </li>
+            </ol>
+        </div>
+
+        <h3>Perpangkatan pada Pecahan</h3>
+        <p>Aturan yang sama juga berlaku untuk perpangkatan pada pecahan. Jika kita memiliki bentuk seperti <span class="code">(a/b)<sup>m</sup> / (a/b)<sup>n</sup></span>, maka hasilnya adalah <span class="code">(a/b)<sup>m-n</sup></span>.</p>
+
+        <div class="formula">
+            <span class="code">(a/b)<sup>m</sup> / (a/b)<sup>n</sup> = (a/b)<sup>m - n</sup></span>
+        </div>
+
+        <p>Ini juga bisa ditulis sebagai:</p>
+
+        <div class="formula">
+            <span class="code">a<sup>m</sup> / b<sup>m</sup></span> dibagi <span class="code">a<sup>n</sup> / b<sup>n</sup></span> adalah <span class="code">a<sup>m-n</sup> / b<sup>m-n</sup></span>
+        </div>
+
+        <div class="example">
+            <span class="example-title">Contoh 2: Pembagian Perpangkatan Pecahan</span>
+            <ol>
+                <li class="example-step">Sederhanakan <span class="code">(2/3)<sup>5</sup> / (2/3)<sup>2</sup></span>.
+                    <br>
+                    Menggunakan aturan: <span class="code">(2/3)<sup>5</sup> / (2/3)<sup>2</sup> = (2/3)<sup>5-2</sup></span>
+                    <br>
+                    Hasilnya adalah <span class="code">(2/3)<sup>3</sup></span>.
+                    <br>
+                    Ini setara dengan <span class="code">2<sup>3</sup> / 3<sup>3</sup></span>.
+                </li>
+                <li class="example-step">Sederhanakan <span class="code">(a/b)<sup>7</sup> / (a/b)<sup>3</sup></span>.
+                    <br>
+                    Menggunakan aturan: <span class="code">(a/b)<sup>7</sup> / (a/b)<sup>3</sup> = (a/b)<sup>7-3</sup></span>
+                    <br>
+                    Hasilnya adalah <span class="code">(a/b)<sup>4</sup></span>.
+                    <br>
+                    Atau bisa juga ditulis sebagai <span class="code">a<sup>4</sup> / b<sup>4</sup></span>.
+                </li>
+            </ol>
+        </div>
+
+        <h3>Menyederhanakan Ekspresi yang Lebih Kompleks</h3>
+        <p>Kita bisa menggabungkan aturan perkalian dan pembagian perpangkatan untuk menyederhanakan ekspresi yang lebih rumit.</p>
+
+        <div class="example">
+            <span class="example-title">Contoh 3: Menggabungkan Perkalian dan Pembagian</span>
+            <p>Sederhanakan bentuk:</p>
+            <div class="formula">
+                <span class="code">(4<sup>3</sup> × 4<sup>8</sup>) / 4<sup>5</sup></span>
+            </div>
+            <ol>
+                <li class="example-step">Pertama, sederhanakan pembilang dengan menjumlahkan pangkatnya karena basisnya sama:
+                    <br>
+                    <span class="code">4<sup>3</sup> × 4<sup>8</sup> = 4<sup>3+8</sup> = 4<sup>11</sup></span>
+                </li>
+                <li class="example-step">Sekarang, kita memiliki bentuk <span class="code">4<sup>11</sup> / 4<sup>5</sup></span>.
+                    <br>
+                    Gunakan aturan pembagian: <span class="code">4<sup>11</sup> / 4<sup>5</sup> = 4<sup>11-5</sup></span>
+                </li>
+                <li class="example-step">Hasil akhirnya adalah <span class="code">4<sup>6</sup></span>.
+                </li>
+            </ol>
+        </div>
+
+        <div class="example">
+            <span class="example-title">Contoh 4: Penerapan dalam Kehidupan Nyata (Kepadatan Penduduk)</span>
+            <p>Berdasarkan data, jumlah penduduk Pulau Jawa adalah 1,3 × 10<sup>8</sup> jiwa, sedangkan luasnya adalah 1,3 × 10<sup>5</sup> km<sup>2</sup>. Berapakah kepadatan penduduknya?</p>
+            <ol>
+                <li class="example-step">Kepadatan penduduk dihitung dengan membagi jumlah penduduk dengan luas area.
+                    <br>
+                    Kepadatan = <span class="code">Jumlah Penduduk / Luas Area</span>
+                </li>
+                <li class="example-step">Substitusikan nilai yang diketahui:
+                    <br>
+                    Kepadatan = <span class="code">(1,3 × 10<sup>8</sup>) / (1,3 × 10<sup>5</sup>)</span>
+                </li>
+                <li class="example-step">Pisahkan bagian basis yang sama:
+                    <br>
+                    Kepadatan = <span class="code">(1,3 / 1,3) × (10<sup>8</sup> / 10<sup>5</sup>)</span>
+                </li>
+                <li class="example-step">Sederhanakan setiap bagian:
+                    <br>
+                    <span class="code">1,3 / 1,3 = 1</span>
+                    <br>
+                    <span class="code">10<sup>8</sup> / 10<sup>5</sup> = 10<sup>8-5</sup> = 10<sup>3</sup></span>
+                </li>
+                <li class="example-step">Gabungkan hasilnya:
+                    <br>
+                    Kepadatan = <span class="code">1 × 10<sup>3</sup></span>
+                    <br>
+                    Kepadatan = <span class="code">1000</span> jiwa/km<sup>2</sup>.
+                </li>
+            </ol>
+            <p>Jadi, kepadatan penduduk Pulau Jawa pada tahun 2010 adalah 1.000 jiwa per kilometer persegi.</p>
+        </div>
+
+        <div class="conclusion">
+            <h3>Kesimpulan Penting</h3>
+            <p>Mengingat kembali inti dari pembagian pada perpangkatan:</p>
+            <ul>
+                <li>Untuk membagi perpangkatan dengan basis yang sama, kurangkan eksponennya: <span class="code">a<sup>m</sup> / a<sup>n</sup> = a<sup>m - n</sup></span>.</li>
+                <li>Aturan ini juga berlaku untuk perpangkatan dengan basis pecahan: <span class="code">(a/b)<sup>m</sup> / (a/b)<sup>n</sup> = (a/b)<sup>m - n</sup></span>.</li>
+                <li>Kita bisa mengaplikasikan aturan ini secara bertahap, bersama dengan aturan perkalian perpangkatan, untuk menyederhanakan ekspresi yang lebih kompleks.</li>
+            </ul>
+        </div>
+
+        <div class="interactive-element">
+            Semoga penjelasan ini membuat Anda lebih nyaman dengan pembagian pada perpangkatan! Teruslah berlatih soal-soal untuk menguasai materi ini. Ingat, matematika itu seperti otot, semakin sering dilatih, semakin kuat jadinya!
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

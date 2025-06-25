@@ -1,0 +1,276 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Arus Bolak-Balik - Persamaan Arus Bolak-Balik</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        strong {
+            color: #1976D2;
+        }
+        .formula-section {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #1976D2;
+        }
+        .formula-section h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #1976D2;
+        }
+        .formula {
+            font-size: 1.3em;
+            text-align: center;
+            color: #212121;
+            font-weight: bold;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px dashed #BDBDBD;
+            display: block; /* Ensure it's on its own line */
+            overflow-x: auto; /* Allow horizontal scrolling for long formulas */
+            white-space: nowrap; /* Prevent wrapping of formula */
+        }
+        .formula code {
+            background: none;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .highlight {
+            background-color: #E3F2FD;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            color: #1976D2;
+            font-style: italic;
+        }
+        .explanation {
+            margin-left: 20px;
+            border-left: 2px solid #E0E0E0;
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }
+        .explanation p {
+            margin-bottom: 5px;
+        }
+        .example {
+            background-color: #FFF9C4;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 1px solid #FBC02D;
+        }
+        .example p {
+            margin-bottom: 5px;
+        }
+        .key-terms {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #E0E0E0;
+        }
+        .key-terms h3 {
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+        .key-terms ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .key-terms li {
+            margin-bottom: 8px;
+            color: #424242;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            .formula {
+                font-size: 1.1em;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            .formula {
+                font-size: 1em;
+            }
+            .explanation {
+                margin-left: 10px;
+                padding-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 4: Arus Bolak-Balik</h1>
+
+        <section>
+            <h2>A. Persamaan Arus Bolak-Balik</h2>
+            <p>
+                Arus bolak-balik (AC) adalah jenis aliran listrik di mana polaritas kutub positif dan negatifnya berubah-ubah secara sinusoidal seiring waktu. Ini sangat berbeda dengan arus searah (DC) yang mengalir dalam satu arah dari kutub positif ke negatif. Sifat perubahan polaritas yang sinusoidal inilah yang menjadi ciri khas utama dari arus bolak-balik.
+            </p>
+            <p>
+                Konsep dasar bagaimana tegangan bolak-balik ini dihasilkan telah dibahas sebelumnya, terutama terkait dengan prinsip kerja generator. GGL (Gaya Gerak Listrik) atau tegangan yang dihasilkan oleh generator AC memiliki karakteristik grafik yang sinusoidal.
+            </p>
+
+            <div class="formula-section">
+                <h3>Persamaan Tegangan Arus Bolak-Balik</h3>
+                <p>
+                    Persamaan matematika yang menggambarkan tegangan pada arus bolak-balik dapat dinyatakan sebagai berikut:
+                </p>
+                <div class="formula">
+                    <code>V = V<sub>maks</sub> sin(ωt)</code>
+                </div>
+                <p class="highlight">
+                    Di mana:
+                    <ul>
+                        <li><strong>V</strong> adalah tegangan sesaat pada waktu <code>t</code>.</li>
+                        <li><strong>V<sub>maks</sub></strong> adalah tegangan maksimum (amplitudo) dari gelombang sinusoidal.</li>
+                        <li><strong>ω</strong> (omega) adalah frekuensi sudut, yang terkait dengan frekuensi linier (<code>f</code>) melalui hubungan <code>ω = 2πf</code>.</li>
+                        <li><strong>t</strong> adalah waktu.</li>
+                    </ul>
+                </p>
+                <p>
+                    Tegangan maksimum (V<sub>maks</sub>) ini merupakan nilai puncak tertinggi yang dicapai oleh tegangan dalam satu siklus. Untuk mengetahui nilai ini secara akurat, kita memerlukan alat yang dapat menampilkan grafik tegangan sebagai fungsi waktu. Alat yang paling umum digunakan untuk tujuan ini adalah <strong>Osiloskop</strong>.
+                </p>
+                <div class="highlight">
+                    Osiloskop adalah instrumen elektronik yang menampilkan variasi amplitudo sinyal listrik dari waktu ke waktu. Ia dapat memvisualisasikan bentuk gelombang, mengukur amplitudo, periode, dan frekuensi sinyal.
+                </div>
+                <p>
+                    Osiloskop memiliki peran penting dalam berbagai bidang. Dalam dunia otomotif, osiloskop digunakan untuk mendiagnosis masalah kelistrikan pada kendaraan dengan menganalisis sinyal listrik komponennya. Di bidang medis, osiloskop membantu para profesional kesehatan dalam menganalisis gelombang otak (EEG) atau sinyal fisiologis lainnya dari pasien.
+                </p>
+            </div>
+
+            <div class="formula-section">
+                <h3>Memahami Gelombang Sinusoidal dengan Osiloskop</h3>
+                <p>
+                    Cara membaca informasi dari layar osiloskop melibatkan analisis pada dua sumbu utama: sumbu vertikal dan sumbu horizontal.
+                </p>
+                <div class="explanation">
+                    <h4>Sumbu Vertikal (Y): Pengukuran Tegangan</h4>
+                    <p>
+                        Arah vertikal pada layar osiloskop merepresentasikan besar tegangan. Pengaturan sensitivitas vertikal (biasanya dalam satuan Volt per divisi, <strong>V/div</strong>) menentukan seberapa besar tegangan yang diwakili oleh setiap kotak atau divisi pada layar.
+                    </p>
+                    <p>
+                        Misalnya, jika pengaturan vertikal adalah <strong>2 Volt/div</strong> dan kita melihat puncak gelombang berjarak 4 divisi dari garis tengah ke puncak, maka tegangan maksimum (V<sub>maks</sub>) adalah:
+                        <div class="formula">
+                            <code>V<sub>maks</sub> = 4 div × 2 Volt/div = 8 Volt</code>
+                        </div>
+                    </p>
+                    <p>
+                        Selain itu, kita juga bisa mengukur tegangan puncak ke puncak (V<sub>pp</sub>), yaitu jarak vertikal total dari puncak tertinggi ke lembah terendah. Jika jarak dari garis tengah ke puncak adalah 4 divisi, maka jarak puncak ke puncak adalah dua kali lipatnya (8 divisi).
+                        <div class="formula">
+                            <code>V<sub>pp</sub> = 8 div × 2 Volt/div = 16 Volt</code>
+                        </div>
+                        Atau, V<sub>pp</sub> = 2 × V<sub>maks</sub> = 2 × 8 Volt = 16 Volt.
+                    </p>
+                </div>
+
+                <div class="explanation">
+                    <h4>Sumbu Horizontal (X): Pengukuran Waktu dan Frekuensi</h4>
+                    <p>
+                        Sumbu horizontal menampilkan waktu. Pengaturan <strong>timebase</strong> atau horizontal (biasanya dalam satuan milidetik per divisi, <strong>ms/div</strong>) menentukan durasi waktu yang diwakili oleh setiap kotak horizontal.
+                    </p>
+                    <p>
+                        Periode (<strong>T</strong>) adalah waktu yang dibutuhkan untuk satu siklus gelombang lengkap. Jika satu siklus gelombang menempati 4 divisi horizontal, dan pengaturan timebase adalah <strong>20 ms/div</strong>, maka periode gelombang adalah:
+                        <div class="formula">
+                            <code>T = 4 div × 20 ms/div = 80 ms = 80 × 10<sup>-3</sup> s</code>
+                        </div>
+                    </p>
+                    <p>
+                        Frekuensi (<strong>f</strong>) adalah kebalikan dari periode (<code>f = 1/T</code>). Jadi, frekuensi gelombang tersebut adalah:
+                        <div class="formula">
+                            <code>f = 1 / T = 1 / (80 × 10<sup>-3</sup> s) = 1000 / 80 Hz = 12.5 Hz</code>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="formula-section">
+                <h3>Hubungan Penting dalam Arus Bolak-Balik</h3>
+                <p>
+                    Selain tegangan maksimum, ada konsep lain yang sangat penting dalam analisis arus bolak-balik, yaitu tegangan efektif (V<sub>ef</sub> atau V<sub>rms</sub>). Tegangan efektif adalah nilai tegangan AC yang setara dengan tegangan DC yang akan menghasilkan daya disipasi yang sama pada resistor.
+                </p>
+                <p>
+                    Hubungan antara tegangan maksimum dan tegangan efektif adalah:
+                </p>
+                <div class="formula">
+                    <code>V<sub>maks</sub> = V<sub>ef</sub> √2</code>
+                </div>
+                <p>
+                    Dari persamaan di atas, kita dapat menurunkan hubungan untuk tegangan efektif:
+                </p>
+                <div class="formula">
+                    <code>V<sub>ef</sub> = V<sub>maks</sub> / √2</code>
+                </div>
+                <p>
+                    Hal serupa berlaku untuk arus bolak-balik. Persamaan arus bolak-balik dinyatakan sebagai:
+                </p>
+                <div class="formula">
+                    <code>I = I<sub>maks</sub> sin(ωt)</code>
+                </div>
+                <p>
+                    Di mana <strong>I<sub>maks</sub></strong> adalah arus maksimum (amplitudo arus). Arus efektif (I<sub>ef</sub>) dinyatakan sebagai:
+                </p>
+                <div class="formula">
+                    <code>I<sub>ef</sub> = I<sub>maks</sub> / √2</code>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Kajian Konsep Tegangan Efektif</h3>
+                <p>
+                    Ketika Anda mengukur tegangan AC menggunakan voltmeter biasa, nilai yang terbaca adalah <strong>tegangan efektif (V<sub>ef</sub>)</strong>, bukan tegangan maksimum. Hal ini karena voltmeter dirancang untuk menampilkan nilai yang setara dengan efek pemanasan (daya disipasi) dari arus bolak-balik tersebut.
+                </p>
+            </div>
+
+        </section>
+    </div>
+</body>
+</html>
+```

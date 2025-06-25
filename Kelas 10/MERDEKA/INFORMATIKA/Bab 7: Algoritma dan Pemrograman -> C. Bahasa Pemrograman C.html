@@ -1,0 +1,489 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 7: Algoritma dan Pemrograman - Bahasa Pemrograman C</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.7em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .code-block {
+            background-color: #f8f9fa; /* Light gray background for code */
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto; /* Enable horizontal scrolling for code */
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+            word-wrap: break-word; /* Break long words if necessary */
+        }
+
+        .code-block code {
+            display: block; /* Make code element a block for better formatting */
+            white-space: pre-wrap;
+        }
+
+        .highlight {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .keywords {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .comment {
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        .structure {
+            font-style: italic;
+            color: var(--secondary-accent-amber);
+        }
+
+        .example-box {
+            background-color: #e3f2fd; /* Light blue for examples */
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .table-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            overflow-x: auto; /* Responsive tables */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--border-divider);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e0e0e0; /* Light gray header */
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f5f5; /* Zebra striping */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .code-block {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 7: Algoritma dan Pemrograman</h1>
+
+        <section class="section">
+            <h2>C. Bahasa Pemrograman C</h2>
+            <p>
+                Bahasa Pemrograman C, yang sering disingkat sebagai bahasa C, merupakan bahasa pemrograman yang dirancang oleh
+                <span class="highlight">Dennis M. Ritchie</span> dan
+                <span class="highlight">Brian W. Kernighan</span> pada awal
+                tahun <span class="highlight">1970</span>. Perkembangan bahasa C sangat erat kaitannya dengan sistem operasi UNIX, yang sebagian besar ditulis menggunakan bahasa C.
+            </p>
+            <p>
+                Karena sejarahnya yang panjang, bahasa C telah memiliki berbagai standar yang mendefinisikan perilakunya. Beberapa standar yang umum dikenal antara lain:
+            </p>
+            <ul>
+                <li>Definisi Kernighan & Ritchie (K&R)</li>
+                <li>ANSI-C (X-3.159 -1989-)</li>
+                <li>Definisi AT&T (termasuk superset C, C++)</li>
+                <li>GNU Coding Standards</li>
+            </ul>
+            <p>
+                Di lingkungan PC, terdapat berbagai versi implementasi bahasa C seperti Lattice C, Microsoft C/Microsoft QuickC, dan Turbo C/Borland C++.
+            </p>
+            <p>
+                Bahasa C sangat populer dan banyak digunakan untuk berbagai keperluan, termasuk pengembangan sistem operasi, program tingkat rendah (yang berinteraksi langsung dengan perangkat keras), pembuatan toolkit pemrograman, dan pengembangan aplikasi. Kelebihan utama bahasa C adalah kemampuannya menghasilkan kode yang <span class="highlight">singkat</span>, <span class="highlight">efisien</span>, namun tetap <span class="highlight">mudah dibaca</span>. Ini membedakannya dari bahasa mesin yang sangat efisien tetapi sulit dibaca, atau bahasa tingkat tinggi lain yang mudah dibaca tetapi kurang efisien. Namun, perlu diakui bahwa membaca program bahasa C membutuhkan latihan lebih dibandingkan bahasa tingkat tinggi lainnya.
+            </p>
+
+            <h3>1. Membuat Program Pertama dengan Bahasa C</h3>
+            <p>
+                Untuk memulai perjalanan Anda dalam pemrograman C, Anda memerlukan dua hal utama:
+                <ol>
+                    <li><strong>Lingkungan Pengembangan</strong>: Sebuah tempat untuk menulis, mengkompilasi, dan menjalankan kode program Anda.</li>
+                    <li><strong>Pemahaman Proses Kompilasi</strong>: Mengetahui bagaimana kode program yang Anda ketik diubah menjadi program yang dapat dieksekusi oleh komputer.</li>
+                </ol>
+            </p>
+            <div class="example-box">
+                <p>
+                    Secara tradisional, proses pembuatan program melibatkan beberapa tahap:
+                </p>
+                <div class="code-block">
+                    <code>
+                        Sumber Data (Contoh: &lt;span class="keywords"&gt;Sample.c&lt;/span&gt;) -> Compiler -> Data Objek (Contoh: &lt;span class="keywords"&gt;Sample.obj&lt;/span&gt;) -> Linker -> File yang Dapat Dieksekusi (Contoh: &lt;span class="keywords"&gt;Sample.exe&lt;/span&gt;)
+                    </code>
+                </div>
+                <p>
+                    Namun, dengan adanya <span class="highlight">IDE (Integrated Development Environment)</span>, proses ini menjadi jauh lebih sederhana. Anda cukup menulis kode, lalu dengan satu klik, program Anda siap dijalankan.
+                </p>
+            </div>
+
+            <h4>a. Persiapan Lingkungan Pengembangan Program Menggunakan Bahasa C</h4>
+            <p>
+                Untuk membuat program di bahasa C, Anda memerlukan beberapa perangkat lunak:
+            </p>
+            <ul>
+                <li><strong>Editor Teks</strong>: Tempat Anda mengetikkan kode program (misalnya, dalam file dengan ekstensi .c).</li>
+                <li><strong>Kompilator (Compiler)</strong>: Menerjemahkan kode bahasa C Anda menjadi bahasa mesin atau bahasa assembly.</li>
+                <li><strong>Assembler</strong>: Mengubah bahasa mesin/assembly menjadi kode biner yang dapat dieksekusi komputer.</li>
+                <li><strong>Linker</strong>: Menggabungkan berbagai bagian program yang dihasilkan menjadi satu file executable.</li>
+            </ul>
+            <p>
+                Untuk mempermudah, semua perangkat lunak ini seringkali terintegrasi dalam satu paket yang disebut <span class="highlight">Lingkungan Pengembangan Terpadu (Integrated Development Environment - IDE)</span>. Beberapa IDE populer untuk bahasa C antara lain: Eclipse, Atom, Code::Blocks, Geany, dan Visual Studio. Selain IDE yang terpasang di komputer, ada juga IDE berbasis cloud seperti Ideone, tutorialspoint.com, dan onlinegdb.com. Untuk pengembangan di ponsel, ada CppDroid, Mobile C, dan Coding C.
+            </p>
+            <p>
+                Menguasai lingkungan pengembangan secara maksimal akan meningkatkan produktivitas Anda dalam menghasilkan program yang efisien dan berkualitas tinggi, terutama saat bekerja dalam tim.
+            </p>
+            <div class="example-box">
+                <p>Contoh Tampilan IDE (Visual Studio Code):</p>
+                <div class="code-block">
+                    <code>
+                        // Contoh bagian dari IDE yang menunjukkan editor kode dan ekstensi yang terpasang
+                        import app from './app';
+                        import debugModule = require('debug');
+                        // ... kode lainnya ...
+                        const port = normalizePort(process.env.PORT || '3000');
+                        app.set('port', port);
+                        // ...
+                    </code>
+                </div>
+            </div>
+
+            <h4>Menentukan Versi Sistem Operasi (32-bit atau 64-bit)</h4>
+            <p>Sebelum melanjutkan, penting untuk mengetahui versi sistem operasi Anda:</p>
+            <ul>
+                <li><strong>Windows</strong>: Klik kanan "My Computer" atau "This PC" -> Properties -> System Type.</li>
+                <li><strong>Linux</strong>: Buka terminal, ketik &quot;<span class="keywords">uname -a</span>&quot; atau melalui System Settings -> Details.</li>
+            </ul>
+
+            <h4>Membuat Program Pertama: "Halo Dunia!"</h4>
+            <p>Mari kita buat program C pertama kita.</p>
+            <div class="code-block">
+                <code>
+                    <span class="comment">/* Program Pertamaku:</span><br>
+                    <span class="comment"> * Membuat program untuk mencetak "Halo Dunia!"</span><br>
+                    <span class="comment"> */</span><br>
+                    <span class="keywords">#include</span>&lt;<span class="structure">stdio.h</span>&gt;<br>
+                    <br>
+                    <span class="keywords">int</span> <span class="structure">main</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="structure">printf</span>(<span class="highlight">"Halo Dunia!\n"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywords">return</span> 0;<br>
+                    }<br>
+                </code>
+            </div>
+            <p>
+                Saat mengetik kode ini, perhatikan setiap karakter. Bahasa C sangat sensitif terhadap kesalahan pengetikan (misalnya, lupa tanda titik koma <span class="keywords">;</span> akan menyebabkan error sintaks).
+            </p>
+
+            <h4>Langkah-langkah Praktis</h4>
+            <ol>
+                <li>Buka IDE pilihan Anda (misalnya, Code::Blocks atau Geany).</li>
+                <li>Pilih <span class="keywords">File</span> -> <span class="keywords">New</span> -> <span class="keywords">Empty File</span>.</li>
+                <li>Ketikkan kode program "Halo Dunia!" di atas.</li>
+                <li>Simpan berkas kode Anda dengan nama yang deskriptif, contohnya <span class="keywords">hello_world.cpp</span>, di direktori yang terorganisir.</li>
+                <li>Kompilasi program Anda: Pilih <span class="keywords">Build</span> -> <span class="keywords">Build</span> atau tekan <span class="keywords">Ctrl+F9</span>.</li>
+                <li>Jalankan program Anda: Pilih <span class="keywords">Build</span> -> <span class="keywords">Run</span> atau tekan <span class="keywords">Ctrl+F10</span>.</li>
+            </ol>
+            <p>Jika berhasil, Anda akan melihat keluaran:</p>
+            <div class="code-block">
+                <code>Halo Dunia!</code>
+            </div>
+
+            <h3>Praktik Baik Pemrograman</h3>
+            <ul>
+                <li><strong>Penamaan File</strong>: Selalu berikan nama file yang deskriptif dan gunakan komentar di baris pertama kode untuk menjelaskan isi file tersebut.</li>
+                <li><strong>Komentar Kode</strong>: Tulis komentar untuk menjelaskan fungsi dari sebuah blok kode. Komentar tidak dieksekusi oleh kompiler, tetapi sangat membantu dalam pemahaman. Komentar dapat ditulis dalam dua cara:
+                    <ul>
+                        <li><span class="keywords">/* Ini adalah komentar */</span> (bisa multi-baris)</li>
+                        <li><span class="comment">// Ini adalah komentar satu baris</span></li>
+                    </ul>
+                </li>
+                <li><strong>Struktur Program</strong>: Memahami struktur dasar program C, seperti header file (<span class="keywords">#include &lt;stdio.h&gt;</span>) yang menyediakan fungsi input/output, fungsi utama (<span class="keywords">int main()</span>) sebagai titik awal eksekusi, dan pernyataan <span class="keywords">return 0;</span> yang menandakan program berjalan dengan sukses.</li>
+            </ul>
+
+            <h3>2. Struktur Program Bahasa C</h3>
+            <p>
+                Bahasa C adalah bahasa yang terstruktur. Mari kita bedah struktur program "Halo Dunia!" yang sudah kita buat:
+            </p>
+            <div class="code-block">
+                <code>
+                    <span class="keywords">#include</span>&lt;<span class="structure">stdio.h</span>&gt; <span class="comment">// Memasukkan file header untuk fungsi input/output</span><br>
+                    <br>
+                    <span class="keywords">int</span> <span class="structure">main</span>() { <span class="comment">// Fungsi utama, titik awal eksekusi program</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="structure">printf</span>(<span class="highlight">"Halo Dunia!\n"</span>); <span class="comment">// Mencetak teks ke layar, \n untuk baris baru</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywords">return</span> 0; <span class="comment">// Menandakan program berakhir dengan sukses</span><br>
+                    }<br>
+                </code>
+            </div>
+            <p>
+                Penjelasan detail dari setiap bagian:
+            </p>
+            <ul>
+                <li><span class="keywords">#include &lt;stdio.h&gt;</span>: Merupakan direktif preprosesor yang memberitahu kompiler untuk menyertakan file header <span class="structure">stdio.h</span>. File header ini berisi deklarasi fungsi-fungsi standar untuk input dan output, seperti <span class="structure">printf</span> dan <span class="structure">scanf</span>.</li>
+                <li><span class="keywords">int main() { ... }</span>: Ini adalah fungsi utama program. Eksekusi program selalu dimulai dari sini. Kode di dalam kurung kurawal <span class="keywords">{ }</span> adalah blok kode yang akan dijalankan.</li>
+                <li><span class="structure">printf("Halo Dunia!\n");</span>: Memanggil fungsi <span class="structure">printf</span> untuk menampilkan teks "Halo Dunia!" ke layar. Karakter <span class="highlight">\n</span> (newline) akan memindahkan kursor ke baris berikutnya setelah teks ditampilkan.</li>
+                <li><span class="keywords">return 0;</span>: Mengindikasikan bahwa fungsi <span class="structure">main</span> telah selesai dieksekusi dengan sukses. Nilai 0 adalah konvensi umum untuk eksekusi yang berhasil.</li>
+            </ul>
+
+            <h4>Modifikasi Program</h4>
+            <p>Anda bisa mencoba memodifikasi program untuk:</p>
+            <ol>
+                <li>Mengubah teks "Halo Dunia!" menjadi "Hello World!".</li>
+                <li>Mencetak dua baris kalimat, misalnya "Halo Dunia!" dan "Saya siap belajar pemrograman!".</li>
+            </ol>
+
+            <h4>a. Komponen Program dalam Bahasa C</h4>
+            <p>Sebelum membuat program yang lebih kompleks, kita perlu memahami komponen dasar bahasa C:</p>
+            <ol>
+                <li><strong>Kata Kunci (Keyword)</strong>: Kata-kata yang memiliki makna khusus dan tidak dapat diubah atau digunakan sebagai nama identifier. Bahasa C standar memiliki 32 kata kunci. Contoh: <span class="keywords">int</span>, <span class="keywords">float</span>, <span class="keywords">return</span>, <span class="keywords">if</span>, <span class="keywords">else</span>, dll.</li>
+                <li><strong>Identifier</strong>: Nama unik yang Anda berikan pada variabel, fungsi, atau elemen program lainnya. Aturan penulisan identifier:
+                    <ul>
+                        <li>Tidak boleh sama dengan kata kunci.</li>
+                        <li>Terdiri dari kombinasi huruf (besar/kecil), angka, dan underscore (<span class="keywords">_</span>).</li>
+                        <li>Harus dimulai dengan huruf atau underscore.</li>
+                        <li>Bersifat <span class="highlight">case-sensitive</span> (misalnya, <span class="keywords">Nama</span> berbeda dengan <span class="keywords">nama</span>).</li>
+                    </ul>
+                    <p><strong>Praktik Baik Identifier</strong>:</p>
+                    <ul>
+                        <li>Hindari penggunaan underscore di awal nama kecuali untuk keperluan khusus.</li>
+                        <li>Gunakan huruf kecil untuk nama variabel dan fungsi. Jika terdiri dari beberapa kata, gunakan <span class="highlight">camel case</span> (misalnya, <span class="keywords">totalHargaBarang</span>).</li>
+                        <li>Hindari penggunaan identifier yang mirip untuk menghindari kebingungan (misalnya, <span class="keywords">totalHarga</span> vs <span class="keywords">total_harga</span>).</li>
+                        <li>Pilih nama identifier yang <span class="highlight">mnemonic</span> (mudah diingat dan menggambarkan fungsinya).</li>
+                        <li>Konstanta biasanya ditulis dengan huruf kapital (misalnya, <span class="keywords">PI</span>).</li>
+                    </ul>
+                </li>
+                <li><strong>Tipe Data</strong>: Menentukan jenis data yang dapat disimpan oleh sebuah variabel dan berapa banyak memori yang dialokasikan. Tipe data dasar dalam C antara lain:
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nama Tipe</th>
+                                    <th>Jenis Data</th>
+                                    <th>Ukuran Memori</th>
+                                    <th>Rentang Nilai</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><span class="keywords">int</span></td><td>Bilangan bulat</td><td>4 byte</td><td>-2.1x10<sup>9</sup> hingga 2.1x10<sup>9</sup></td></tr>
+                                <tr><td><span class="keywords">short</span></td><td>Bilangan bulat</td><td>2 byte</td><td>-32768 hingga 32767</td></tr>
+                                <tr><td><span class="keywords">long</span></td><td>Bilangan bulat</td><td>8 byte</td><td>-9.2x10<sup>8</sup> hingga 9.2x10<sup>8</sup></td></tr>
+                                <tr><td><span class="keywords">float</span></td><td>Bilangan riil (desimal)</td><td>4 byte</td><td>1.2x10<sup>-38</sup> hingga 3.4x10<sup>38</sup></td></tr>
+                                <tr><td><span class="keywords">double</span></td><td>Bilangan riil (desimal)</td><td>8 byte</td><td>2.3x10<sup>-308</sup> hingga 1.7x10<sup>308</sup></td></tr>
+                                <tr><td><span class="keywords">char</span></td><td>Karakter</td><td>1 byte</td><td>-127 hingga 128 (ASCII)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        Tipe data <span class="highlight">signed</span> (bawaan) dapat menampung nilai positif dan negatif. Dengan menambahkan kata kunci <span class="keywords">unsigned</span> di depan tipe data, tipe data hanya akan menampung nilai positif.
+                    </p>
+                    <p><strong>Praktik Baik Tipe Data</strong>: Gunakan tipe data yang paling sesuai dengan kebutuhan untuk menghemat memori dan meningkatkan efisiensi.</p>
+                </li>
+                <li><strong>Variabel</strong>: Wadah untuk menyimpan nilai yang dapat berubah selama program berjalan. Variabel harus dideklarasikan dengan tipe data dan nama identifier.
+                    <div class="code-block">
+                        <code>
+                            <span class="keywords">int</span> totalHarga; <span class="comment">// Deklarasi variabel totalHarga bertipe int</span><br>
+                            <span class="keywords">float</span> jarak = 2.28; <span class="comment">// Deklarasi dengan nilai awal</span><br>
+                            <span class="keywords">int</span> a, b, c; <span class="comment">// Deklarasi beberapa variabel sekaligus</span>
+                        </code>
+                    </div>
+                    <p>
+                        Variabel dapat bersifat <span class="highlight">lokal</span> (hanya bisa diakses di dalam fungsi tempat ia dideklarasikan) atau <span class="highlight">global</span> (dapat diakses di mana saja dalam program).
+                    </p>
+                </li>
+                <li><strong>Konstanta</strong>: Nilai yang tidak dapat diubah setelah dideklarasikan. Menggunakan kata kunci <span class="keywords">const</span>.
+                    <div class="code-block">
+                        <code>
+                            <span class="keywords">const</span> <span class="keywords">float</span> PI = 3.14;
+                        </code>
+                    </div>
+                </li>
+                <li><strong>Membaca dan Menulis (Input/Output)</strong>:
+                    <ul>
+                        <li>Fungsi <span class="structure">scanf</span> digunakan untuk membaca input dari pengguna.</li>
+                        <li>Fungsi <span class="structure">printf</span> digunakan untuk menampilkan output ke layar.</li>
+                    </ul>
+                    <p><strong>Spesifikasi Format</strong> digunakan untuk menentukan bagaimana data dibaca atau ditulis:</p>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nama Tipe</th>
+                                    <th>Spesifikasi Format (Signed)</th>
+                                    <th>Spesifikasi Format (Unsigned)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><span class="keywords">int</span></td><td><span class="highlight">%d</span></td><td><span class="highlight">%ud</span></td></tr>
+                                <tr><td><span class="keywords">short</span></td><td><span class="highlight">%d</span></td><td><span class="highlight">%ud</span></td></tr>
+                                <tr><td><span class="keywords">long</span></td><td><span class="highlight">%ld</span></td><td><span class="highlight">%uld</span></td></tr>
+                                <tr><td><span class="keywords">float</span></td><td><span class="highlight">%f</span></td><td><span class="highlight">%ud</span></td></tr>
+                                <tr><td><span class="keywords">double</span></td><td><span class="highlight">%lf</span></td><td><span class="highlight">%uld</span></td></tr>
+                                <tr><td><span class="keywords">char</span></td><td><span class="highlight">%c</span></td><td><span class="highlight">%uc</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        Saat menggunakan <span class="structure">scanf</span> untuk membaca variabel, gunakan operator alamat <span class="highlight">&</span> (misalnya, <span class="structure">scanf("%d", &bilangan);</span>).
+                    </p>
+                    <p>
+                        Untuk menampilkan nilai variabel dengan <span class="structure">printf</span>, cukup sertakan spesifikasi formatnya (misalnya, <span class="structure">printf("%d\n", bilangan);</span>).
+                    </p>
+                    <p>
+                        Karakter khusus seperti <span class="highlight">\n</span> (newline), <span class="highlight">\t</span> (tab), dan lainnya disebut <span class="highlight">escape sequence</span>.
+                    </p>
+                    <div class="code-block">
+                        <code>
+                            <span class="comment">/* Program Baca Tulis */</span><br>
+                            <span class="keywords">#include</span>&lt;<span class="structure">stdio.h</span>&gt;<br>
+                            <br>
+                            <span class="keywords">int</span> <span class="structure">main</span>() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywords">int</span> bilangan;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="structure">scanf</span>(<span class="highlight">"%d"</span>, &amp;<span class="structure">bilangan</span>);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="structure">printf</span>(<span class="highlight">"Bilangan yang dibaca bernilai: %d.\n"</span>, <span class="structure">bilangan</span>);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywords">return</span> 0;<br>
+                            }<br>
+                        </code>
+                    </div>
+                    <p>
+                        Untuk memformat bilangan riil (float/double), Anda bisa menentukan jumlah digit di belakang desimal, contohnya <span class="highlight">%.3f</span> untuk menampilkan 3 digit desimal.
+                    </p>
+                    <div class="code-block">
+                        <code>
+                            <span class="keywords">float</span> x = 12.3456789;<br>
+                            <span class="structure">printf</span>(<span class="highlight">"%.3f\n"</span>, x); <span class="comment">// Output: 12.346</span><br>
+                        </code>
+                    </div>
+                </li>
+            </ol>
+        </section>
+    </div>
+</body>
+</html>
+```

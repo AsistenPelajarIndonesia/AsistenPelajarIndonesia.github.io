@@ -1,0 +1,595 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Keuangan - Ekonomi SMA/MA Kelas XII</title>
+    <style>
+        /* CSS Variables for Theme - Light Mode */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Reset & Box-sizing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body & Typography */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        header p {
+            color: var(--text-tertiary);
+            font-size: 1.1em;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            background-color: #fcfcfc; /* Slightly off-white for sections */
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            display: inline-block; /* Makes the border only as wide as the text */
+        }
+
+        section h3 {
+            color: var(--accent-green);
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        section h4 {
+            color: var(--text-secondary);
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--secondary-accent-amber); /* Decorative left border */
+            padding-left: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        blockquote {
+            background-color: #e3f2fd; /* Light blue for quotes */
+            border-left: 5px solid var(--semantic-info);
+            margin: 15px 0;
+            padding: 15px 20px;
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        /* Details (Interactive Collapsible Sections) */
+        details {
+            background-color: #e3f2fd; /* Light blue background */
+            border: 1px solid var(--semantic-info);
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden; /* Ensures content doesn't spill out */
+        }
+
+        summary {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--semantic-info);
+            outline: none; /* Remove outline on focus */
+            user-select: none; /* Prevent text selection on click */
+            display: block; /* Make summary take full width */
+            position: relative;
+        }
+
+        summary::marker {
+            content: ''; /* Hide default marker */
+            display: none; /* Hide default marker for Firefox */
+        }
+
+        summary::before {
+            content: '+'; /* Custom marker */
+            position: absolute;
+            right: 15px;
+            font-size: 1.2em;
+            line-height: 1;
+            transition: transform 0.3s ease; /* Smooth animation for marker */
+        }
+
+        details[open] summary::before {
+            content: '-';
+            transform: rotate(0deg); /* No rotation, just change content */
+        }
+
+        details p, details ul {
+            padding: 10px 15px 15px;
+            border-top: 1px solid var(--semantic-info);
+            margin: 0; /* Reset margin for content inside details */
+            color: var(--text-secondary);
+        }
+        details ul {
+            padding-top: 0;
+        }
+
+        /* Table Styling for Financial Statement Examples */
+        .financial-statement-example {
+            margin-top: 30px;
+            background-color: var(--background-canvas);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-divider);
+            overflow-x: auto; /* Enable horizontal scrolling for small screens */
+        }
+
+        .financial-statement-example table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .financial-statement-example th,
+        .financial-statement-example td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--text-secondary);
+            vertical-align: top; /* Align content to top for multi-line cells */
+        }
+
+        .financial-statement-example th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .financial-statement-example tbody tr:nth-child(even) {
+            background-color: #f9f9f9; /* Zebra striping */
+        }
+
+        .financial-statement-example .total-row td,
+        .financial-statement-example .total-row {
+            font-weight: bold;
+            background-color: #e8eaf6; /* Lighter blue for totals */
+            color: var(--primary-blue);
+        }
+
+        .financial-statement-example .total-asset-row,
+        .financial-statement-example .total-liability-equity-row {
+            font-weight: bold;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            text-align: center;
+            padding: 12px 15px;
+            border: 1px solid var(--primary-blue);
+            font-size: 1.1em;
+        }
+
+        .financial-statement-example .final-result-row {
+            font-weight: bold;
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+        }
+
+        .financial-statement-example .formula {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffe0b2; /* Light amber */
+            border: 1px solid var(--secondary-accent-amber);
+            border-radius: 5px;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+        
+        /* Adjustments for details tag inside table cells */
+        .financial-statement-example td details {
+            border: none;
+            background: none;
+            margin: 0;
+        }
+        .financial-statement-example td details summary {
+            padding: 0; /* Override padding for summary inside table cell */
+            color: var(--text-secondary); /* Adjust color for table summaries */
+            background: none;
+        }
+        .financial-statement-example td details p,
+        .financial-statement-example td details ul {
+            padding: 5px 0 0 0; /* Adjust padding for content inside table cell details */
+            border-top: none; /* No top border for content inside table cell details */
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+        }
+        .financial-statement-example td details ul {
+            margin-left: 20px;
+        }
+        .financial-statement-example td details summary::before {
+            right: 0px; /* Adjust marker position for table cell summaries */
+        }
+        .financial-statement-example td details[open] summary::before {
+            content: '-';
+        }
+
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            section h3 {
+                font-size: 1.4em;
+            }
+
+            .financial-statement-example th,
+            .financial-statement-example td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
+
+            section h3 {
+                font-size: 1.2em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            details summary {
+                padding: 10px;
+            }
+
+            details p {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Laporan Keuangan</h1>
+            <p>Bab 4 - Akuntansi: Ekonomi untuk SMA/MA Kelas XII</p>
+        </header>
+
+        <section id="introduction">
+            <h2>Pendahuluan</h2>
+            <p>Sama seperti halnya kalian mencatat pemasukan dan pengeluaran uang saku pribadi untuk memahami kondisi keuangan kalian, sebuah badan usaha atau perusahaan juga perlu menyusun catatan keuangan yang terstruktur dan komprehensif. Catatan ini dikenal sebagai laporan keuangan.</p>
+            <p>Laporan keuangan memberikan gambaran yang jelas dan menyeluruh mengenai kondisi keuangan serta kinerja suatu perusahaan. Dengan memahami laporan keuangan, kita dapat menilai apakah perusahaan tersebut dalam keadaan sehat (laba) atau kurang sehat (rugi), efisien dalam operasionalnya, dan mampu memenuhi kewajibannya.</p>
+        </section>
+
+        <section id="definition">
+            <h2>Definisi Laporan Keuangan</h2>
+            <p>Menurut <strong>Ikatan Akuntan Indonesia (IAI)</strong> dalam <strong>Pernyataan Standar Akuntansi Keuangan (PSAK) Nomor 1 tentang Penyajian Laporan Keuangan</strong>, disebutkan bahwa:</p>
+            <blockquote>
+                <p>"Laporan keuangan merupakan penyajian terstruktur dari posisi keuangan dan kinerja keuangan suatu entitas."</p>
+            </blockquote>
+            <p>Sederhananya, laporan keuangan adalah seperangkat catatan formal yang merangkum semua transaksi keuangan suatu perusahaan dalam periode tertentu, yang kemudian digunakan untuk mendeskripsikan kondisi baik atau tidaknya suatu badan usaha.</p>
+        </section>
+
+        <section id="purpose">
+            <h2>Tujuan Laporan Keuangan</h2>
+            <p>Menurut <strong>Standar Akuntansi Keuangan Entitas Mikro, Kecil, dan Menengah (SAK-EMKM)</strong>, tujuan laporan keuangan adalah:</p>
+            <ul>
+                <li>Menyediakan informasi keuangan dan kinerja keuangan suatu entitas yang bermanfaat bagi sejumlah besar pengguna dalam pengambilan keputusan ekonomi oleh siapapun.</li>
+                <li>Menunjukkan pertanggungjawaban manajemen atas sumber daya yang dipercayakan kepadanya.</li>
+            </ul>
+            <p>Informasi yang disajikan dalam laporan keuangan sangat krusial bagi berbagai pihak, seperti investor, kreditur, manajemen, pemerintah, dan masyarakat umum, untuk membuat keputusan yang tepat.</p>
+        </section>
+
+        <section id="characteristics">
+            <h2>Karakteristik Kualitatif Laporan Keuangan</h2>
+            <p>Agar laporan keuangan dapat berfungsi secara efektif dan bermanfaat, laporan tersebut harus memenuhi beberapa karakteristik kualitatif. Kalian dapat mengklik judul karakteristik di bawah ini untuk melihat penjelasannya:</p>
+            <details>
+                <summary>1. Relevan</summary>
+                <p>Laporan keuangan yang relevan adalah laporan yang informasinya mampu memengaruhi keputusan ekonomi pengguna. Informasi dikatakan relevan jika memiliki nilai prediktif (membantu memprediksi masa depan) dan/atau nilai konfirmatif (mengkonfirmasi atau mengoreksi ekspektasi sebelumnya).</p>
+            </details>
+            <details>
+                <summary>2. Representasi Tepat</summary>
+                <p>Informasi keuangan harus merepresentasikan fenomena ekonomi yang dimaksud secara tepat dan akurat. Ini berarti informasi harus lengkap, netral, dan bebas dari kesalahan material. Representasi tepat memastikan bahwa pengguna dapat mengandalkan informasi yang disajikan.</p>
+            </details>
+            <details>
+                <summary>3. Keterbandingan</summary>
+                <p>Keterbandingan memungkinkan pengguna untuk mengidentifikasi dan memahami kesamaan serta perbedaan antara item-item. Ini berarti informasi keuangan suatu entitas dapat dibandingkan antar periode waktu yang berbeda (komparabilitas internal) dan juga dapat dibandingkan dengan entitas lain (komparabilitas eksternal).</p>
+            </details>
+            <details>
+                <summary>4. Keterpahaman</summary>
+                <p>Informasi dalam laporan keuangan harus disajikan dengan jelas dan ringkas sehingga dapat dipahami oleh pengguna yang memiliki pengetahuan memadai tentang aktivitas bisnis dan ekonomi. Meskipun kompleksitas terkadang tidak dapat dihindari, penyajian harus tetap mudah dicerna.</p>
+            </details>
+        </section>
+
+        <section id="types">
+            <h2>Jenis-Jenis Laporan Keuangan Utama (Menurut SAK-EMKM)</h2>
+            <p>Terdapat tiga jenis laporan keuangan utama yang disusun oleh entitas berdasarkan SAK-EMKM, cocok untuk perusahaan jasa maupun dagang. Klik pada judul laporan untuk melihat detailnya:</p>
+
+            <section id="laporan-posisi-keuangan">
+                <h3>1. Laporan Posisi Keuangan (Neraca)</h3>
+                <p>Laporan Posisi Keuangan, atau sering disebut Neraca, menyajikan informasi mengenai aset (harta), liabilitas (kewajiban), dan ekuitas (modal) suatu entitas pada suatu titik waktu tertentu (misalnya, per 31 Desember 2023). Ini memberikan gambaran statis tentang apa yang dimiliki perusahaan, apa yang menjadi utangnya, dan berapa sisa kepemilikan pemilik.</p>
+                <div class="financial-statement-example">
+                    <h4>Struktur Umum Laporan Posisi Keuangan</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ASET</th>
+                                <th>LIABILITAS & EKUITAS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <details open>
+                                        <summary>A. Aset Lancar</summary>
+                                        <p>Aset yang diharapkan dapat dicairkan menjadi kas atau digunakan dalam waktu satu tahun atau satu siklus operasi normal perusahaan, mana yang lebih lama. Klik untuk melihat contoh:</p>
+                                        <ul>
+                                            <li>Kas dan Setara Kas: Uang tunai di tangan dan di bank.</li>
+                                            <li>Investasi Jangka Pendek: Investasi yang mudah dicairkan.</li>
+                                            <li>Piutang Usaha: Uang yang belum diterima dari pelanggan atas penjualan kredit.</li>
+                                            <li>Persediaan: Barang yang tersedia untuk dijual.</li>
+                                            <li>Beban Dibayar di Muka: Beban yang sudah dibayar tetapi manfaatnya belum dinikmati (misal: sewa dibayar di muka, asuransi dibayar di muka).</li>
+                                        </ul>
+                                    </details>
+                                    <p class="total-row"><strong>Jumlah Aset Lancar: RpX.XXX.XXX</strong></p>
+                                </td>
+                                <td>
+                                    <details open>
+                                        <summary>A. Liabilitas Jangka Pendek</summary>
+                                        <p>Kewajiban yang diharapkan akan diselesaikan dalam waktu satu tahun atau satu siklus operasi normal perusahaan, mana yang lebih lama. Klik untuk melihat contoh:</p>
+                                        <ul>
+                                            <li>Utang Usaha: Kewajiban kepada pemasok atas pembelian kredit.</li>
+                                            <li>Utang Gaji: Gaji karyawan yang belum dibayar.</li>
+                                            <li>Utang Pajak: Pajak yang terutang kepada pemerintah.</li>
+                                            <li>Pendapatan Diterima di Muka: Pendapatan yang sudah diterima kasnya tetapi jasanya/barangnya belum diserahkan.</li>
+                                        </ul>
+                                    </details>
+                                    <p class="total-row"><strong>Jumlah Liabilitas Jangka Pendek: RpX.XXX.XXX</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <details open>
+                                        <summary>B. Aset Tidak Lancar (Aset Tetap)</summary>
+                                        <p>Aset yang memiliki umur ekonomis lebih dari satu tahun dan tidak dimaksudkan untuk dijual dalam siklus operasi normal. Klik untuk melihat contoh:</p>
+                                        <ul>
+                                            <li>Tanah: Tidak disusutkan.</li>
+                                            <li>Bangunan dan Peralatan: Disusutkan seiring waktu.</li>
+                                            <li>Akumulasi Penyusutan: Akun kontra aset yang mengurangi nilai aset tetap.</li>
+                                            <li>Investasi Jangka Panjang: Investasi yang disimpan lebih dari satu tahun.</li>
+                                            <li>Aset Tidak Berwujud: Paten, merek dagang, hak cipta (diamortisasi).</li>
+                                        </ul>
+                                    </details>
+                                    <p class="total-row"><strong>Jumlah Aset Tidak Lancar: RpY.YYY.YYY</strong></p>
+                                </td>
+                                <td>
+                                    <details open>
+                                        <summary>B. Liabilitas Jangka Panjang</summary>
+                                        <p>Kewajiban yang jatuh tempo atau diharapkan akan diselesaikan dalam jangka waktu lebih dari satu tahun. Klik untuk melihat contoh:</p>
+                                        <ul>
+                                            <li>Utang Bank Jangka Panjang: Pinjaman bank dengan jatuh tempo lebih dari satu tahun.</li>
+                                            <li>Utang Obligasi: Dana yang dipinjam dari publik melalui penerbitan obligasi.</li>
+                                            <li>Kewajiban Imbalan Pasca Kerja: Kewajiban terkait pensiun karyawan.</li>
+                                        </ul>
+                                    </details>
+                                    <p class="total-row"><strong>Jumlah Liabilitas Jangka Panjang: RpY.YYY.YYY</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="total-asset-row"><strong>TOTAL ASET: RpZ.ZZZ.ZZZ</strong></td>
+                                <td>
+                                    <details open>
+                                        <summary>C. Ekuitas (Modal)</summary>
+                                        <p>Sisa hak pemilik dalam aset entitas setelah dikurangi semua liabilitas. Ini adalah klaim residual atas aset perusahaan. Klik untuk melihat contoh:</p>
+                                        <ul>
+                                            <li>Modal Disetor: Kontribusi awal dari pemilik.</li>
+                                            <li>Laba Ditahan: Akumulasi laba bersih yang tidak dibagikan sebagai dividen.</li>
+                                            <li>Prive: Pengambilan aset perusahaan oleh pemilik untuk keperluan pribadi (mengurangi ekuitas).</li>
+                                        </ul>
+                                    </details>
+                                    <p class="total-row"><strong>Total Liabilitas: RpA.AAA.AAA</strong></p>
+                                    <p class="total-row"><strong>Total Ekuitas: RpB.BBB.BBB</strong></p>
+                                    <p class="total-liability-equity-row"><strong>TOTAL LIABILITAS + EKUITAS: RpZ.ZZZ.ZZZ</strong></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="formula"><strong>Prinsip Keseimbangan Akuntansi (Persamaan Dasar Akuntansi):</strong><br>
+                        <strong>ASET = LIABILITAS + EKUITAS</strong><br>
+                        <em>Jumlah total aset harus selalu sama dengan jumlah total liabilitas ditambah ekuitas.</em>
+                    </p>
+                </div>
+            </section>
+
+            <section id="laporan-laba-rugi">
+                <h3>2. Laporan Laba Rugi</h3>
+                <p>Laporan Laba Rugi menyajikan kinerja keuangan suatu perusahaan selama periode waktu tertentu (misalnya, sebulan, triwulan, atau setahun). Laporan ini menunjukkan apakah perusahaan menghasilkan laba (keuntungan) atau rugi dalam periode tersebut, dengan membandingkan pendapatan dan beban.</p>
+                <div class="financial-statement-example">
+                    <h4>Struktur Umum Laporan Laba Rugi (Bentuk Langsung / Single-Step)</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Keterangan</th>
+                                <th>Jumlah (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="total-row">
+                                <td colspan="2"><strong>PENDAPATAN</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Pendapatan Usaha (misal: Penjualan Jasa, Penjualan Barang)</td>
+                                <td>Rp15.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Pendapatan Non-Usaha (misal: Pendapatan Bunga, Pendapatan Sewa)</td>
+                                <td>Rp1.000.000</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>Total Pendapatan</strong></td>
+                                <td><strong>Rp16.000.000</strong></td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="2"><strong>BEBAN</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Beban Gaji</td>
+                                <td>Rp5.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban Sewa</td>
+                                <td>Rp1.500.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban Listrik, Air, Telepon</td>
+                                <td>Rp750.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban Perlengkapan</td>
+                                <td>Rp500.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban Penyusutan Aset Tetap</td>
+                                <td>Rp300.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban Umum dan Administrasi lainnya</td>
+                                <td>Rp400.000</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>Total Beban</strong></td>
+                                <td><strong>Rp8.450.000</strong></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="final-result-row">
+                                <td><strong>LABA BERSIH (RUGI BERSIH)</strong></td>
+                                <td><strong>Rp7.550.000</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <details>
+                        <summary>Perbedaan Laporan Laba Rugi: Bentuk Langsung (Single-Step) vs. Bertahap (Multi-Step)</summary>
+                        <p><strong>Bentuk Langsung (Single-Step):</strong> Semua pendapatan dijumlahkan menjadi satu kategori "Total Pendapatan", dan semua beban dijumlahkan menjadi "Total Beban". Laba atau rugi bersih kemudian dihitung dalam satu langkah sederhana (Total Pendapatan - Total Beban).</p>
+                        <p><strong>Bentuk Bertahap (Multi-Step):</strong> Memisahkan pendapatan dan beban operasional dari pendapatan dan beban non-operasional. Laporan ini biasanya menghitung beberapa "sub-total" seperti Laba Kotor (Pendapatan Penjualan - Harga Pokok Penjualan), Laba Operasi (Laba Kotor - Beban Operasi), sebelum akhirnya mencapai Laba Bersih. Bentuk ini memberikan rincian lebih detail tentang sumber laba dan jenis beban, sehingga lebih informatif bagi manajemen dan investor.</p>
+                    </details>
+                    <p class="formula"><strong>Prinsip Laba/Rugi:</strong><br>
+                        Jika Pendapatan &gt; Beban = <strong>Laba</strong> (keuntungan)<br>
+                        Jika Pendapatan &lt; Beban = <strong>Rugi</strong> (kerugian)
+                    </p>
+                </div>
+            </section>
+
+            <section id="catatan-atas-laporan-keuangan">
+                <h3>3. Catatan Atas Laporan Keuangan (CALK)</h3>
+                <p>Catatan Atas Laporan Keuangan (CALK) adalah bagian integral dari laporan keuangan yang menyediakan informasi tambahan dan penjelasan rinci mengenai pos-pos yang disajikan dalam Laporan Posisi Keuangan dan Laporan Laba Rugi. CALK ini sangat penting karena:</p>
+                <ul>
+                    <li>Menyajikan informasi tentang dasar penyusunan laporan keuangan dan kebijakan akuntansi spesifik yang diterapkan (misal: metode penyusutan aset, pengakuan pendapatan).</li>
+                    <li>Mengungkapkan informasi yang diwajibkan oleh SAK-EMKM tetapi tidak disajikan secara rinci dalam laporan keuangan utama.</li>
+                    <li>Memberikan informasi yang tidak disajikan di "atas laporan keuangan" namun relevan untuk memahami laporan keuangan (misal: rincian aset tetap, rincian piutang, informasi kontinjensi seperti gugatan hukum yang berpotensi memengaruhi keuangan).</li>
+                </ul>
+                <p>CALK membantu pengguna untuk memahami transaksi penting dan material, serta memberikan konteks yang lebih dalam untuk angka-angka yang disajikan, sehingga laporan keuangan menjadi lebih informatif dan bermanfaat untuk pengambilan keputusan.</p>
+            </section>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 - Materi Ekonomi untuk SMA/MA Kelas XII. Dibuat untuk tujuan pendidikan.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

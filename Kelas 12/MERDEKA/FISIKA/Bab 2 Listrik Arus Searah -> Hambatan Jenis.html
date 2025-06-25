@@ -1,0 +1,316 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Arus Searah - Hambatan Jenis</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .formula-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        .formula-box p {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+        }
+
+        .explanation {
+            background-color: var(--background-canvas);
+            padding: 15px;
+            border: 1px dashed var(--border-divider);
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .explanation h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .activity-box {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .activity-box h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .activity-box ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .activity-box li {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .key-concept {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .interactive-element {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            background-color: var(--semantic-warning);
+        }
+
+        .variable-explanation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .variable-item {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .variable-item strong {
+            display: block;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .variable-item span {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            .formula-box {
+                font-size: 0.9em;
+            }
+            .variable-explanation {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Arus Searah - Hambatan Jenis</h1>
+
+        <p>Pada subbab sebelumnya, kita telah memahami bagaimana arus listrik mengalir dalam rangkaian tertutup. Untuk membentuk rangkaian listrik yang baik, kita sering menggunakan <span class="highlight">kawat tembaga</span> karena sifatnya sebagai penghantar listrik yang sangat baik. Namun, tahukah kamu bahwa tidak hanya jenis bahan kawat yang mempengaruhi kelancaran aliran listrik, tetapi juga <span class="highlight">ukuran</span> kawat itu sendiri? Mari kita selami lebih dalam konsep <span class="highlight">Hambatan Jenis</span>.</p>
+
+        <div class="activity-box">
+            <h3>Ayo, Bernalar Kritis!</h3>
+            <p>Pernahkah kamu memperhatikan bahwa kabel listrik yang menghubungkan pusat sumber tegangan ke rumah-rumah memiliki <span class="highlight">diameter yang besar</span>, sementara sekring yang ada di rumah menggunakan kawat yang <span class="highlight">sangat tipis</span>? Mengapa demikian? Pemilihan ukuran kawat ini memiliki tujuan penting dalam efisiensi dan keamanan aliran listrik. Jawabannya terkait erat dengan konsep yang akan kita pelajari!</p>
+        </div>
+
+        <h2>Memahami Hambatan Jenis (Resistivitas)</h2>
+
+        <p>Dalam dunia kelistrikan, ada sebuah besaran fisis yang secara spesifik menggambarkan karakteristik sebuah kawat dalam menghantarkan listrik. Besaran ini dikenal sebagai <span class="highlight">hambatan jenis</span> atau sering juga disebut <span class="highlight">resistivitas</span>. Secara definisi, hambatan jenis adalah hambatan yang dimiliki oleh sebuah penghantar yang memiliki panjang satu meter dengan luas penampang satu meter persegi.</p>
+
+        <div class="formula-box">
+            <p>Hambatan jenis (ρ) sebuah penghantar dapat dinyatakan melalui persamaan:</p>
+            <p><code>R = ρ * (l / A)</code></p>
+        </div>
+
+        <div class="variable-explanation">
+            <div class="variable-item">
+                <strong>R</strong>
+                <span>Hambatan kawat (dalam Ohm, Ω)</span>
+            </div>
+            <div class="variable-item">
+                <strong>ρ</strong>
+                <span>Hambatan jenis kawat (dalam Ohm-meter, Ωm)</span>
+            </div>
+            <div class="variable-item">
+                <strong>l</strong>
+                <span>Panjang kawat (dalam meter, m)</span>
+            </div>
+            <div class="variable-item">
+                <strong>A</strong>
+                <span>Luas penampang kawat (dalam meter persegi, m²)</span>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h4>Penjelasan Penting:</h4>
+            <p>Dari persamaan di atas, kita dapat menyimpulkan bahwa semakin <span class="highlight">kecil nilai hambatan jenis (ρ)</span> suatu bahan, maka semakin <span class="highlight">kecil pula hambatannya</span>. Ini menjadikan bahan tersebut pilihan yang lebih baik sebagai penghantar listrik yang efisien.</p>
+        </div>
+
+        <div class="key-concept">
+            Bahan dengan hambatan jenis yang rendah adalah konduktor yang baik!
+        </div>
+
+        <h2>Faktor yang Mempengaruhi Hambatan Jenis: Suhu</h2>
+
+        <p>Perlu diingat, hambatan jenis suatu konduktor ternyata tidaklah tetap, melainkan sangat bergantung pada <span class="highlight">suhu</span>. Bagaimana pengaruhnya?</p>
+
+        <ul>
+            <li><strong>Konduktor:</strong> Pada umumnya, semakin besar perubahan suhu (kenaikan suhu) pada sebuah konduktor, maka <span class="highlight">hambatan jenisnya akan ikut membesar</span>. Ini berarti hambatan kawat juga akan bertambah.</li>
+            <li><strong>Semikonduktor:</strong> Situasinya berbeda dengan semikonduktor. Jika suhu meningkat, <span class="highlight">hambatan jenisnya justru akan menurun</span>.</li>
+        </ul>
+
+        <p>Perubahan hambatan jenis bahan penghantar terhadap perubahan suhu dapat dirumuskan sebagai berikut:</p>
+
+        <div class="formula-box">
+            <p>Perubahan hambatan jenis (ρ):</p>
+            <p><code>ρ = ρ₀ [1 + αΔT]</code></p>
+        </div>
+
+        <div class="formula-box">
+            <p>Atau perubahan hambatannya (R):</p>
+            <p><code>R = R₀ [1 + αΔT]</code></p>
+        </div>
+
+        <div class="variable-explanation">
+            <div class="variable-item">
+                <strong>R</strong>
+                <span>Hambatan akhir (dalam Ohm, Ω)</span>
+            </div>
+            <div class="variable-item">
+                <strong>R₀</strong>
+                <span>Hambatan awal (dalam Ohm, Ω)</span>
+            </div>
+            <div class="variable-item">
+                <strong>ΔT</strong>
+                <span>Perubahan suhu (dalam derajat Celsius, °C)</span>
+            </div>
+            <div class="variable-item">
+                <strong>α</strong>
+                <span>Koefisien suhu hambatan jenis (dalam /°C)</span>
+            </div>
+        </div>
+
+        <div class="activity-box">
+            <h3>Aktivitas 2.2: Mengamati Pengaruh Ukuran dan Jenis Kawat</h3>
+            <h4>Tujuan:</h4>
+            <ul>
+                <li>Menentukan faktor-faktor yang mempengaruhi hambatan kawat.</li>
+            </ul>
+            <h4>Alat dan Bahan yang Digunakan:</h4>
+            <ul>
+                <li>Kawat Nikrom (tersedia dengan diameter 0,1 mm, 0,5 mm, dan 1 mm), masing-masing sepanjang 60 cm.</li>
+                <li>Kawat Konstantan dengan diameter 0,5 mm sepanjang 60 cm.</li>
+                <li>Papan/alat untuk menancapkan kawat.</li>
+                <li>Paku/pengait/peniti.</li>
+                <li>Penggaris/milimeter blok.</li>
+                <li>Multimeter (fungsi ohm meter).</li>
+            </ul>
+            <p>Dengan menggunakan alat dan bahan ini, kalian dapat melakukan penyelidikan langsung untuk mengukur hambatan kawat dengan variasi jenis bahan dan ukurannya. Catat hasil pengukuran kalian dan analisis bagaimana faktor-faktor tersebut mempengaruhi nilai hambatan.</p>
+        </div>
+
+        <div class="activity-box">
+            <h3>Aktivitas 2.3: Ayo, Berdiskusi!</h3>
+            <p>Konsep hambatan jenis atau resistivitas bukan hanya teori di buku. Ia memiliki aplikasi penting dalam kehidupan sehari-hari, seperti dalam menentukan jenis kawat yang sesuai untuk berbagai kebutuhan kelistrikan, termasuk memastikan keamanan jaringan listrik. Diskusikanlah bersama teman kelompokmu, bagaimana pemahaman tentang hambatan jenis ini dapat membantu kita dalam memilih material dan merancang sistem kelistrikan yang efisien dan aman.</p>
+        </div>
+
+        <div class="explanation">
+            <h4>Contoh Penerapan dalam Kehidupan: Pletismografi</h4>
+            <p>Pernahkah kamu mendengar tentang tes pletismografi? Tes ini sangat penting untuk mendeteksi gangguan paru-paru atau perubahan aliran darah pada tubuh, seperti pembekuan darah di kaki. Alat ini menggunakan elektroda yang ditempelkan pada tubuh untuk mengukur perubahan tegangan. Perubahan tegangan ini terjadi karena adanya perubahan aliran darah yang mempengaruhi hambatan pada area tubuh tersebut. Dengan membandingkan tegangan sebelum dan sesudah, dokter dapat memprediksi kondisi kesehatan pasien. Ini menunjukkan bagaimana prinsip-prinsip kelistrikan, termasuk yang berkaitan dengan hambatan, berperan dalam teknologi medis modern.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

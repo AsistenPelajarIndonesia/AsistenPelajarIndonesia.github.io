@@ -1,0 +1,423 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Harapan dan Kenyataan Bioteknologi Modern</title>
+    <style>
+        /* Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-green);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            color: #FFFFFF;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        h2 {
+            color: var(--text-primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 0.5rem;
+            display: inline-block; /* to make border-bottom fit text */
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        h4 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-green);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background-color: var(--semantic-info);
+            color: #FFFFFF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: 8px solid var(--primary-blue);
+        }
+
+        .highlight-box h3 {
+            color: #FFFFFF;
+            margin-top: 0;
+            border-left: none; /* remove accent green border for this box h3 */
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box p {
+            color: #FFFFFF;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        .bioethics-section {
+            background-color: #e8f5e9; /* Light green background */
+            border-color: var(--accent-green);
+            padding: 2rem;
+        }
+
+        .bioethics-section h2 {
+            border-bottom-color: var(--accent-green);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            background-color: #f8f8f8;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            h4 {
+                font-size: 1.2rem;
+            }
+
+            ul li {
+                padding-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.8rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            h4 {
+                font-size: 1.1rem;
+            }
+
+            ul li {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bab 4: Inovasi Bioteknologi</h1>
+        <p>Harapan dan Kenyataan Bioteknologi Modern</p>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Harapan Bioteknologi Modern</h2>
+            <p>
+                Bioteknologi modern merupakan salah satu bidang ilmu pengetahuan yang paling menjanjikan di abad ke-21. Dengan kemampuannya memanipulasi materi genetik dan proses biologis, bioteknologi diharapkan dapat memberikan solusi inovatif untuk berbagai tantangan global, mulai dari kesehatan, pangan, energi, hingga industri. Berikut adalah beberapa harapan besar yang diemban oleh bioteknologi modern:
+            </p>
+
+            <h3>1. Bidang Kesehatan</h3>
+            <p>
+                Dalam sektor kesehatan, bioteknologi modern diproyeksikan untuk merevolusi diagnosis, pencegahan, dan pengobatan penyakit. Potensi yang dimilikinya sangat luas dan mencakup:
+            </p>
+            <ul>
+                <li>
+                    <h4>Pengobatan Penyakit Degeneratif dan Kronis</h4>
+                    <p>Diharapkan adanya penemuan pengobatan inovatif untuk penyakit jantung, pembuluh darah, berbagai jenis kanker, dan diabetes. Ini melibatkan pengembangan terapi gen, terapi sel punca, serta obat-obatan berbasis protein yang lebih spesifik dan efektif, mengurangi efek samping yang merugikan.</p>
+                </li>
+                <li>
+                    <h4>Produksi Antibiotik yang Lebih Baik</h4>
+                    <p>Pengembangan antibiotik generasi baru yang lebih efektif dan memiliki resistensi rendah terhadap bakteri patogen, serta diproduksi dengan biaya yang lebih murah melalui fermentasi mikroba yang dioptimalkan.</p>
+                </li>
+                <li>
+                    <h4>Pengembangan Vaksin Unggul</h4>
+                    <p>Penciptaan vaksin yang lebih aman, stabil, dan efektif untuk penyakit menular yang masih menjadi ancaman global seperti hepatitis, influenza, rabies, serta penyakit parasitik seperti malaria dan penyakit tidur. Vaksin rekombinan dan berbasis DNA/RNA menawarkan metode perlindungan yang inovatif.</p>
+                </li>
+                <li>
+                    <h4>Diagnosis Penyakit yang Akurat dan Cepat</h4>
+                    <p>Pengembangan metode pengujian laboratorium yang canggih untuk diagnosis penyakit secara akurat dan cepat, bahkan pada tahap awal. Ini termasuk alat diagnostik berbasis molekuler seperti PCR (Polymerase Chain Reaction) dan sekuensing genetik yang memungkinkan identifikasi patogen atau penanda penyakit secara presisi.</p>
+                </li>
+                <li>
+                    <h4>Peningkatan Kesesuaian Transplantasi Organ</h4>
+                    <p>Penyempurnaan metode identifikasi kecocokan DNA untuk transplantasi jaringan dan organ, mengurangi risiko penolakan organ dan meningkatkan keberhasilan prosedur transplantasi. Teknologi pengeditan gen juga berpotensi untuk menciptakan organ yang lebih kompatibel atau bahkan organ dari hewan transgenik.</p>
+                </li>
+                <li>
+                    <h4>Terapi Penyakit Turunan</h4>
+                    <p>Penemuan teknik pengoreksi jenis dan urutan asam amino atau gen untuk mengobati penyakit turunan genetik seperti hemofilia. Ini membuka jalan bagi terapi gen yang dapat memperbaiki cacat genetik pada tingkat dasar, memberikan kesembuhan permanen bagi pasien.</p>
+                </li>
+            </ul>
+
+            <h3>2. Bidang Pertanian dan Produksi Pangan</h3>
+            <p>
+                Bioteknologi diharapkan dapat meningkatkan ketahanan pangan global dengan menghasilkan tanaman dan hewan yang lebih produktif, tahan penyakit, dan mampu beradaptasi dengan kondisi lingkungan ekstrem. Harapan-harapan ini meliputi:
+            </p>
+            <ul>
+                <li>
+                    <h4>Pengembangan Varietas Tanaman Unggul</h4>
+                    <p>Penciptaan tanaman varietas baru yang memiliki hasil panen lebih tinggi, kualitas nutrisi yang ditingkatkan (misalnya, beras emas yang kaya vitamin A), serta karakteristik agronomis yang lebih baik melalui rekayasa genetika dan pemuliaan tanaman modern.</p>
+                </li>
+                <li>
+                    <h4>Tanaman Tahan Stres Lingkungan</h4>
+                    <p>Pengembangan tanaman yang resisten terhadap kekeringan, pembekuan, salinitas tinggi (kadar garam tinggi), serta tekanan lingkungan lainnya, memungkinkan pertanian di lahan marjinal dan menghadapi perubahan iklim.</p>
+                </li>
+                <li>
+                    <h4>Peningkatan Pertumbuhan Ternak dan Produksi Pakan</h4>
+                    <p>Penemuan substansi yang mempercepat pertumbuhan ternak, meningkatkan efisiensi pakan, dan meningkatkan kualitas produk hewani. Selain itu, pengembangan pakan ternak yang lebih murah dan bergizi melalui fermentasi mikroba atau modifikasi genetik.</p>
+                </li>
+                <li>
+                    <h4>Vaksin untuk Ternak</h4>
+                    <p>Produksi vaksin yang efektif untuk mencegah penyakit pada ternak, mengurangi kerugian ekonomi dan memastikan kesehatan hewan, yang pada gilirannya mendukung ketahanan pangan.</p>
+                </li>
+            </ul>
+
+            <h3>3. Produksi Energi</h3>
+            <p>
+                Dengan krisis energi dan kebutuhan akan sumber energi terbarukan, bioteknologi diharapkan dapat menyediakan solusi yang ramah lingkungan:
+            </p>
+            <ul>
+                <li>
+                    <h4>Pengembangan Bahan Bakar Terbarukan</h4>
+                    <p>Penemuan dan peningkatan produksi bahan bakar terbarukan (renewable fuels) seperti biogas (metana, CH₄), hidrogen (H₂), dan alkohol (bioetanol) dari biomassa melalui proses fermentasi oleh mikroorganisme. Bahan bakar ini diharapkan dapat digunakan untuk kebutuhan domestik dan industri, mengurangi ketergantungan pada bahan bakar fosil.</p>
+                </li>
+                <li>
+                    <h4>Eksplorasi Minyak Bumi</h4>
+                    <p>Pemanfaatan substansi biologis atau mikroba yang mampu membantu ekstraksi minyak dari perut bumi secara lebih efisien dan ramah lingkungan, misalnya melalui metode <em>Microbial Enhanced Oil Recovery</em> (MEOR).</p>
+                </li>
+            </ul>
+
+            <h3>4. Industri</h3>
+            <p>
+                Bioteknologi juga menjanjikan inovasi dalam proses industri, menciptakan bahan baku baru dan solusi untuk masalah lingkungan:
+            </p>
+            <ul>
+                <li>
+                    <h4>Sumber Bahan Baku Industri</h4>
+                    <p>Ditemukannya sumber atau bahan dasar baru untuk produksi plastik biodegradable, cat non-toksik, serat sintetis ramah lingkungan, dan perekat kuat yang berasal dari sumber daya biologis terbarukan.</p>
+                </li>
+                <li>
+                    <h4>Ekstraksi Logam</h4>
+                    <p>Pengembangan teknik bioleaching menggunakan mikroba untuk mengekstraksi metal dari batuan bijih secara lebih efisien dan minim polusi dibandingkan metode kimia tradisional.</p>
+                </li>
+                <li>
+                    <h4>Pengendalian Polusi</h4>
+                    <p>Penciptaan sistem-sistem baru berbasis biologis (bioremediasi) untuk mengontrol dan membersihkan polusi lingkungan, seperti limbah industri, tumpahan minyak, atau kontaminan lain menggunakan mikroorganisme.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Kenyataan Penerapan Bioteknologi Modern</h2>
+            <p>
+                Meskipun harapan terhadap bioteknologi modern sangat tinggi, implementasinya di lapangan seringkali menghadapi berbagai realita dan tantangan. Perlu dipahami bahwa antara potensi ideal dan kondisi praktis terdapat kesenjangan yang harus diatasi.
+            </p>
+
+            <h3>1. Penerapan di Indonesia</h3>
+            <p>
+                Secara umum, penerapan dan pemanfaatan bioteknologi modern di Indonesia masih menunjukkan tingkat yang relatif tertinggal dibandingkan dengan negara-negara maju. Kesenjangan ini mencakup berbagai aspek, mulai dari infrastruktur penelitian, investasi, hingga regulasi dan adopsi oleh masyarakat. Indonesia masih berada pada tahap awal dalam mengintegrasikan bioteknologi ke dalam sektor-sektor kunci.
+            </p>
+
+            <h3>2. Realita Secara Umum</h3>
+            <p>
+                Secara global, perjalanan bioteknologi modern telah menunjukkan capaian yang signifikan, namun juga mengungkap beberapa keterbatasan:
+            </p>
+            <ul>
+                <li>
+                    <h4>Akses Pasar Produk Bioteknologi</h4>
+                    <p>Produk-produk bioteknologi, terutama di bidang farmasi dan pertanian transgenik, memang telah berhasil mencapai pasaran. Namun, dominasi dan akses pasar ini lebih banyak terkonsentrasi di negara-negara maju yang memiliki kapasitas penelitian, pengembangan, dan komersialisasi yang kuat.</p>
+                </li>
+                <li>
+                    <h4>Produk Non-Pangan yang Beredar</h4>
+                    <p>Beberapa produk bioteknologi non-pangan telah berhasil dikomersialkan dan diterima pasar, seperti biopestisida (pestisida alami berbasis mikroba), enzim-enzim industri yang digunakan dalam produksi pangan dan tekstil, serta tanaman yang direkayasa genetik agar resisten terhadap herbisida tertentu (misalnya, kedelai Roundup Ready).</p>
+                </li>
+                <li>
+                    <h4>Produk yang Belum Tervalidasi di Pasar</h4>
+                    <p>Beberapa harapan besar, seperti tanaman pertanian yang secara genetik tahan terhadap kekeringan, pembekuan, atau salinitas tinggi, belum sepenuhnya terlihat atau tersebar luas di pasaran. Meskipun penelitian terus berlanjut dan prototipe ada, skala komersial dan adaptasi massal masih menjadi tantangan.</p>
+                </li>
+                <li>
+                    <h4>Kemajuan di Bidang Kesehatan</h4>
+                    <p>Bidang kesehatan mengalami kemajuan pesat dalam pemanfaatan bioteknologi, khususnya untuk diagnosis penyakit (misalnya, tes diagnostik molekuler untuk COVID-19, HIV) dan pengembangan terapi baru (vaksin, obat-obatan biologis). Meskipun demikian, penaklukan penyakit sepenuhnya masih jauh dari komplit. Penyakit kompleks seperti kanker, Alzheimer, dan beberapa penyakit infeksi masih memerlukan penelitian dan inovasi lebih lanjut.</p>
+                </li>
+            </ul>
+
+            <h3>3. Kendala dalam Penerapan Bioteknologi Modern</h3>
+            <p>
+                Kesenjangan antara harapan dan kenyataan ini sebagian besar disebabkan oleh beberapa kendala fundamental dalam penerapan bioteknologi modern:
+            </p>
+            <ul>
+                <li>
+                    <h4>Keterbatasan Industrialisasi</h4>
+                    <p>Industrialisasi produk bioteknologi, yaitu proses membawa inovasi dari laboratorium ke produksi massal, masih berada pada tahap "tertarik" atau percobaan. Jumlah perusahaan atau industri yang berinvestasi secara signifikan dalam produksi bioteknologi skala besar masih sangat terbatas, terutama di negara berkembang. Ini menghambat adopsi teknologi dan pemanfaatan potensi sepenuhnya.</p>
+                </li>
+                <li>
+                    <h4>Kekurangan Sumber Daya Manusia</h4>
+                    <p>Salah satu hambatan terbesar adalah kurangnya sumber daya manusia yang berkualitas, baik dalam kuantitas maupun kualitas. Bioteknologi membutuhkan ahli di berbagai disiplin ilmu (biologi molekuler, rekayasa genetika, bioinformatika, dll.), dan ketersediaan tenaga ahli ini masih terbatas di banyak negara.</p>
+                </li>
+                <li>
+                    <h4>Keterbatasan Sarana dan Prasarana</h4>
+                    <p>Infrastruktur penelitian dan pengembangan (litbang) serta fasilitas produksi bioteknologi yang memadai memerlukan investasi besar. Banyak negara, termasuk Indonesia, masih menghadapi keterbatasan dalam sarana laboratorium canggih, peralatan produksi, dan fasilitas uji klinis yang esensial untuk memajukan bioteknologi.</p>
+                </li>
+                <li>
+                    <h4>Program yang Tumpang Tindih</h4>
+                    <p>Seringkali, program-program penelitian, pengembangan, dan regulasi di bidang bioteknologi tumpang tindih atau kurang terkoordinasi antarlembaga pemerintah, akademisi, dan industri. Hal ini dapat menyebabkan inefisiensi, duplikasi upaya, dan memperlambat kemajuan inovasi.</p>
+                </li>
+                <li>
+                    <h4>Isu Regulasi dan Etika</h4>
+                    <p>Proses komersialisasi produk bioteknologi sangat terkait erat dengan regulasi pemerintah yang ketat (misalnya, persetujuan GMO, uji klinis obat). Selain itu, penerimaan konsumen dan isu hak kekayaan intelektual (HKI) juga menjadi faktor penting yang seringkali kompleks dan memakan waktu.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="bioethics-section">
+            <h2>H. Bioetika</h2>
+            <p>
+                Seiring dengan perkembangan pesat bioteknologi modern, muncul pula pertanyaan-pertanyaan etis yang mendalam mengenai batas-batas manipulasi biologis dan dampaknya terhadap kehidupan. Inilah ranah bioetika.
+            </p>
+            <p>
+                Pernahkah Anda memikirkan bagaimana penelitian ilmiah dilakukan, khususnya yang melibatkan makhluk hidup? Misalnya, penggunaan hewan uji coba seperti tikus Wistar dalam pengujian obat atau prosedur medis. Apakah penggunaan hewan tersebut dapat menyebabkan penderitaan bagi mereka? Bagaimana memastikan bahwa penggunaan hewan uji coba dilakukan secara aman dan etis, meminimalkan rasa sakit atau stres? Pertanyaan-pertanyaan ini mengarah pada pentingnya kode etik dalam penelitian.
+            </p>
+            <p>
+                Kode etik khusus untuk memperlakukan hewan dalam penelitian disebut <strong>etik klirens (ethical clearance)</strong>. Penerapan etik klirens merupakan salah satu praktik nyata dari bioetika. Ini memastikan bahwa setiap penelitian yang melibatkan hewan atau manusia telah melalui tinjauan komite etik independen untuk memastikan standar moral dan kesejahteraan yang tinggi terpenuhi.
+            </p>
+            <div class="highlight-box">
+                <h3>Definisi Bioetika</h3>
+                <p>
+                    <strong>Bioetika</strong> adalah studi dan penerapan prinsip-prinsip etika dalam ilmu biologi, kedokteran (obat), pemeliharaan kesehatan, dan bidang-bidang terkait. Ini berlandaskan pada data ilmiah dan biologis, namun melampaui fakta ilmiah murni untuk mempertimbangkan nilai-nilai moral, sosial, dan filosofis yang muncul dari kemajuan biologi dan kedokteran. Bioetika berupaya mencari jalan tengah antara inovasi ilmiah dan tanggung jawab moral terhadap individu, masyarakat, dan lingkungan.
+                </p>
+                <p>
+                    Topik-topik yang sering dibahas dalam bioetika meliputi: rekayasa genetika pada manusia dan organisme lain, kloning, sel punca, aborsi, eutanasia, etika penelitian pada manusia dan hewan, transplantasi organ, dan distribusi sumber daya medis yang adil. Dengan demikian, bioetika menjadi sangat krusial dalam membimbing arah perkembangan bioteknologi agar selalu sejalan dengan nilai-nilai kemanusiaan dan keberlanjutan.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Pembelajaran Biologi SMA Kelas XII - Inovasi Bioteknologi</p>
+    </footer>
+</body>
+</html>
+```

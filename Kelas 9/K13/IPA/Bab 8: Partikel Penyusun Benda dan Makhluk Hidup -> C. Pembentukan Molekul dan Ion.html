@@ -1,0 +1,406 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 8: Pembentukan Molekul dan Ion</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* Use white background for content area */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-green); /* Use accent green for main title */
+        }
+
+        h2 {
+             border-bottom: 2px solid var(--border-divider);
+             padding-bottom: 5px;
+             margin-bottom: 15px;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        strong {
+            color: var(--text-secondary);
+        }
+
+        em {
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        .info-box {
+            background-color: #e3f2fd; /* Light blue background for info boxes */
+            border-left: 4px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box strong {
+            color: var(--semantic-info);
+        }
+
+        .key-terms {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #fff3e0; /* Light amber background for key terms */
+            border-left: 4px solid var(--secondary-accent-amber);
+            border-radius: 4px;
+        }
+
+        .key-terms h3 {
+            color: var(--secondary-accent-amber);
+            margin-top: 0;
+        }
+
+        .key-terms ul {
+            list-style: disc;
+            margin: 10px 0 0 20px;
+            padding: 0;
+            color: var(--text-secondary);
+        }
+
+         .key-terms li {
+             margin-bottom: 5px;
+         }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f5f5f5; /* Light grey for even rows */
+        }
+
+        tbody tr:hover {
+            background-color: #e0e0e0; /* Darker grey on hover */
+        }
+
+        .activity-hint {
+            background-color: #e8f5e9; /* Light green for activity hints */
+            border-left: 4px solid var(--semantic-success);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .activity-hint strong {
+            color: var(--semantic-success);
+        }
+
+        details {
+            border: 1px solid var(--border-divider);
+            border-radius: 4px;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f9f9f9; /* Slightly off-white for collapsible sections */
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px 0;
+            outline: none;
+            color: var(--primary-blue);
+        }
+
+        summary:hover {
+             text-decoration: underline;
+        }
+
+        details p, details table, details .info-box, details .key-terms {
+             padding: 0 10px 0 10px; /* Indent content inside details */
+        }
+
+         details table {
+             margin: 10px 0;
+         }
+
+         details .info-box, details .key-terms {
+             margin: 15px 0;
+         }
+
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { border: 1px solid var(--border-divider); margin-bottom: 5px; }
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label); /* Use data-label attribute for column header */
+                font-weight: bold;
+                color: var(--text-secondary);
+                text-align: left;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 8: Partikel Penyusun Benda dan Makhluk Hidup</h1>
+        <h2>C. Prinsip Pembentukan Molekul dan Ion</h2>
+
+        <div class="info-box">
+            <h3>Ayo, Kita Pelajari</h3>
+            <p>Materi ini mencakup topik-topik penting untuk memahami bagaimana atom-atom berikatan membentuk senyawa:</p>
+            <ul>
+                <li>Konfigurasi elektron</li>
+                <li>Ion</li>
+                <li>Identifikasi unsur</li>
+            </ul>
+        </div>
+
+        <div class="key-terms">
+            <h3>Istilah Penting</h3>
+            <ul>
+                <li>Konfigurasi</li>
+                <li>Ion</li>
+                <li>Senyawa ionik</li>
+                <li>Senyawa kovalen</li>
+                <li>Ikatan kimia</li>
+                <li>Kation</li>
+                <li>Anion</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>Mengapa Penting?</h3>
+            <p>Mempelajari materi ini akan membantumu memahami dasar pembentukan suatu senyawa kimia.</p>
+        </div>
+
+        <details open>
+            <summary>1. Konfigurasi Elektron</summary>
+            <p>Untuk mengetahui cara atom berikatan, penting untuk memahami susunan elektron di dalam atom, yang disebut <strong>konfigurasi elektron</strong>.</p>
+            <p>Menurut model atom Bohr, elektron bergerak mengelilingi inti atom pada tingkat-tingkat energi tertentu yang disebut <strong>kulit-kulit atom</strong>. Tingkat energi ini diberi lambang K (n=1) untuk kulit pertama, L (n=2) untuk kulit kedua, M (n=3) untuk kulit ketiga, dan seterusnya.</p>
+            <p>Setiap kulit atom memiliki jumlah maksimum elektron yang dapat ditempatinya. Kulit terdalam (K) dapat ditempati maksimum 2 elektron. Kulit L dapat ditempati maksimum 8 elektron, M 18 elektron, dan N 32 elektron. Pengisian elektron dimulai dari kulit terdalam (energi paling rendah) ke kulit yang lebih tinggi.</p>
+
+            <h3>Tabel 8.5 Kulit Atom dan Jumlah Elektron Maksimal yang Dapat Menempati Kulit Tersebut</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tingkat Energi (n) Ke-</th>
+                        <th>Lambang Kulit Atom</th>
+                        <th>Jumlah Elektron Maksimal yang dapat Menempati</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Tingkat Energi (n) Ke-">1</td><td data-label="Lambang Kulit Atom">K</td><td data-label="Jumlah Elektron Maksimal yang dapat Menempati">2</td></tr>
+                    <tr><td data-label="Tingkat Energi (n) Ke-">2</td><td data-label="Lambang Kulit Atom">L</td><td data-label="Jumlah Elektron Maksimal yang dapat Menempati">8</td></tr>
+                    <tr><td data-label="Tingkat Energi (n) Ke-">3</td><td data-label="Lambang Kulit Atom">M</td><td data-label="Jumlah Elektron Maksimal yang dapat Menempati">18</td></tr>
+                    <tr><td data-label="Tingkat Energi (n) Ke-">4</td><td data-label="Lambang Kulit Atom">N</td><td data-label="Jumlah Elektron Maksimal yang dapat Menempati">32</td></tr>
+                </tbody>
+            </table>
+
+            <p>Susunan elektron atom pada tingkat energi dapat dilihat pada tabel berikut. Elektron mengisi kulit secara berurutan dari K ke tingkat energi yang lebih tinggi. Pengisian ini dilakukan hingga membentuk susunan yang paling stabil.</p>
+            <p>Sebagai contoh, atom Ca (20 elektron) memiliki konfigurasi K=2, L=8, M=8, N=2. Meskipun kulit M bisa menampung 18 elektron, penempatan 8 elektron di kulit M dan 2 di kulit N lebih stabil daripada 10 di kulit M.</p>
+
+            <h3>Tabel 8.6 Susunan Elektron Atom pada Tingkat Energi</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Atom</th>
+                        <th>Lambang</th>
+                        <th>Nomor Atom</th>
+                        <th>Jumlah Elektron</th>
+                        <th colspan="4">Susunan Elektron pada Tingkat Energi:</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>K</th>
+                        <th>L</th>
+                        <th>M</th>
+                        <th>N</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Nama Atom">Hidrogen</td><td data-label="Lambang">H</td><td data-label="Nomor Atom">1</td><td data-label="Jumlah Elektron">1</td><td data-label="K">1</td><td data-label="L">0</td><td data-label="M">0</td><td data-label="N">0</td></tr>
+                    <tr><td data-label="Nama Atom">Helium</td><td data-label="Lambang">He</td><td data-label="Nomor Atom">2</td><td data-label="Jumlah Elektron">2</td><td data-label="K">2</td><td data-label="L">0</td><td data-label="M">0</td><td data-label="N">0</td></tr>
+                    <tr><td data-label="Nama Atom">Neon</td><td data-label="Lambang">Ne</td><td data-label="Nomor Atom">10</td><td data-label="Jumlah Elektron">10</td><td data-label="K">2</td><td data-label="L">8</td><td data-label="M">0</td><td data-label="N">0</td></tr>
+                    <tr><td data-label="Nama Atom">Natrium</td><td data-label="Lambang">Na</td><td data-label="Nomor Atom">11</td><td data-label="Jumlah Elektron">11</td><td data-label="K">2</td><td data-label="L">8</td><td data-label="M">1</td><td data-label="N">0</td></tr>
+                    <tr><td data-label="Nama Atom">Klorin</td><td data-label="Lambang">Cl</td><td data-label="Nomor Atom">17</td><td data-label="Jumlah Elektron">17</td><td data-label="K">2</td><td data-label="L">8</td><td data-label="M">7</td><td data-label="N">0</td></tr>
+                    <tr><td data-label="Nama Atom">Argon</td><td data-label="Lambang">Ar</td><td data-label="Nomor Atom">18</td><td data-label="Jumlah Elektron">18</td><td data-label="K">2</td><td data-label="L">8</td><td data-label="M">8</td><td data-label="N">0</td></tr>
+                    <tr><td data-label="Nama Atom">Kalsium</td><td data-label="Lambang">Ca</td><td data-label="Nomor Atom">20</td><td data-label="Jumlah Elektron">20</td><td data-label="K">2</td><td data-label="L">8</td><td data-label="M">8</td><td data-label="N">2</td></tr>
+                    <tr><td data-label="Nama Atom">Bromin</td><td data-label="Lambang">Br</td><td data-label="Nomor Atom">35</td><td data-label="Jumlah Elektron">35</td><td data-label="K">2</td><td data-label="L">8</td><td data-label="M">18</td><td data-label="N">7</td></tr>
+                    <tr><td data-label="Nama Atom">Kripton</td><td data-label="Lambang">Kr</td><td data-label="Nomor Atom">36</td><td data-label="Jumlah Elektron">36</td><td data-label="K">2</td><td data-label="L">8</td><td data-label="M">18</td><td data-label="N">8</td></tr>
+                </tbody>
+            </table>
+
+            <div class="activity-hint">
+                 <strong>Ayo, Kita Diskusikan</strong>
+                 <p>Anda telah mempelajari konsep konfigurasi elektron. Untuk pendalaman, Anda diminta untuk menentukan konfigurasi elektron untuk atom-atom Magnesium (₁₂Mg), Fosfor (₁₅P), dan Kalium (₁₉K).</p>
+            </div>
+
+            <div class="activity-hint">
+                <strong>Ayo, Kita Lakukan - Aktivitas 8.2 Membuat Model Atom Bohr</strong>
+                <p>Aktivitas ini bertujuan untuk membuat model atom Bohr menggunakan bahan sederhana. Anda akan menentukan jenis atom, jumlah partikel subatomik (proton, neutron, elektron), membuat model fisik partikel, menyusunnya dalam kulit atom menggunakan kawat, menempelkannya, memberi label, mencari informasi tambahan tentang fungsi unsur tersebut, dan mempresentasikannya. Contoh model atom Litium (Li) diberikan sebagai panduan.</p>
+           </div>
+
+        </details>
+
+        <details open>
+            <summary>2. Ion dan Ikatan Ion</summary>
+            <p>Atom-atom dengan nomor atom 1-18 cenderung menjadi stabil jika kulit terluarnya terisi 2 elektron (seperti Helium) atau 8 elektron (seperti Neon, Argon, Kripton). Untuk mencapai stabilitas ini, atom dapat <strong>melepaskan</strong> atau <strong>menerima</strong> satu atau lebih elektron.</p>
+
+            <h3>Pembentukan Ion</h3>
+            <p>Ketika atom melepaskan atau menerima elektron, jumlah elektron (negatif) dan proton (positif) menjadi tidak seimbang, sehingga atom menjadi bermuatan listrik. Atom bermuatan listrik ini disebut <strong>ion</strong>.</p>
+            <ul>
+                <li>Atom yang melepaskan elektron akan memiliki jumlah proton lebih banyak daripada elektron, sehingga menjadi <strong>ion positif</strong>. Ion positif disebut <strong>kation</strong>. Contoh: Natrium (Na) dengan 11 elektron (2-8-1) cenderung melepaskan 1 elektron terluar agar kulit M menjadi kosong dan kulit L yang terisi 8 menjadi kulit terluar yang stabil. Setelah melepaskan 1 elektron, Na menjadi Na+ (11 proton, 10 elektron), bermuatan +1. Kalsium (Ca) dengan 20 elektron (2-8-8-2) melepaskan 2 elektron terluar menjadi Ca2+ (20 proton, 18 elektron), bermuatan +2.</li>
+                <li>Atom yang menerima elektron akan memiliki jumlah elektron lebih banyak daripada proton, sehingga menjadi <strong>ion negatif</strong>. Ion negatif disebut <strong>anion</strong>. Contoh: Klorin (Cl) dengan 17 elektron (2-8-7) membutuhkan 1 elektron untuk mencapai 8 elektron di kulit terluar (M). Ketika menerima 1 elektron, Cl menjadi Cl- (17 proton, 18 elektron), bermuatan -1.</li>
+            </ul>
+
+            <h3>Pembentukan Senyawa Ion (Ikatan Ion)</h3>
+            <p>Senyawa ion terbentuk dari gabungan kation dan anion. Antara kation dan anion terjadi gaya tarik-menarik elektrostatik yang kuat. Gaya tarik-menarik ini disebut <strong>ikatan ion</strong>.</p>
+            <p>Contoh paling umum adalah pembentukan Garam Dapur (Natrium Klorida, NaCl). Atom Natrium (Na) melepaskan 1 elektron menjadi kation Na+, dan atom Klorin (Cl) menerima 1 elektron tersebut menjadi anion Cl-. Ion Na+ dan Cl- yang berbeda muatan ini kemudian saling tarik-menarik secara elektrostatik membentuk senyawa netral NaCl. Senyawa yang terbentuk dari ikatan ion disebut <strong>senyawa ionik</strong>.</p>
+            <p>Pada NaCl, kation (Na+) dan anion (Cl-) tersusun secara teratur membentuk struktur yang disebut <strong>kristal</strong>.</p>
+            <p>Secara umum, unsur logam cenderung melepaskan elektron (membentuk kation), sedangkan unsur nonlogam cenderung menerima elektron (membentuk anion). Kecenderungan ini dapat diprediksi dari jumlah elektron valensi (elektron terluar): atom dengan elektron valensi lebih dari 5 cenderung menerima elektron, sedangkan atom dengan elektron valensi kurang dari 4 cenderung melepaskan elektron.</p>
+
+            <div class="info-box">
+                <strong>Tahukah Kamu? - Peranan Ion dalam Tubuh Manusia</strong>
+                <p>Ion sangat penting bagi kehidupan. Contohnya, ion kalsium (Ca²⁺) berperan penting dalam pembekuan darah saat luka. Ion-ion lain seperti kalium (K⁺), magnesium (Mg²⁺), klorida (Cl⁻), karbonat (CO₃²⁻), dan hidrogen karbonat (HCO₃⁻) banyak terdapat dalam tubuh. Saat beraktivitas fisik berat dan berkeringat, ion-ion ini dikeluarkan, menyebabkan kelelahan. Asupan ion dari makanan atau minuman dapat menggantikan ion yang hilang dan mengembalikan kesegaran tubuh. Ion juga berperan dalam transpor gas oksigen (O₂) dan karbon dioksida (CO₂) dalam darah, misalnya melalui pembentukan ion bikarbonat (HCO₃⁻) yang dibantu pertukaran ion klorida (Cl⁻).</p>
+            </div>
+
+            <div class="info-box">
+                 <strong>Tahukah Kamu? - Ion untuk Membunuh Mikroba</strong>
+                 <p>Ion juga dapat digunakan untuk membunuh bakteri dan virus. Teknologi seperti Plasma Cluster pada AC menghasilkan ion H⁺ dan O²⁻. Kedua ion ini bereaksi membentuk hidrogen peroksida (H₂O₂) yang memiliki energi potensial tinggi. H₂O₂ ini dapat merusak dinding sel bakteri atau selubung protein virus, menyebabkan kematiannya. Contoh bakteri yang dapat dibunuh antara lain <em>Escherichia coli</em> dan <em>Micrococcus pyogenes</em>, serta virus influenza.</p>
+            </div>
+
+        </details>
+
+         <details open>
+            <summary>Pembentukan Molekul Kovalen</summary>
+            <p>Selain melepaskan atau menerima elektron untuk mencapai kestabilan, atom juga dapat mencapai kestabilan dengan <strong>menggunakan sejumlah elektron secara bersama-sama</strong>. Proses ini menyebabkan atom-atom bergabung membentuk <strong>molekul</strong>.</p>
+            <p>Contoh paling sederhana adalah molekul hidrogen (H₂). Setiap atom H memiliki 1 elektron. Untuk stabil seperti Helium (2 elektron), dua atom H menggunakan 2 elektron secara bersama-sama. Dengan demikian, setiap atom H dalam molekul H₂ 'merasa' memiliki 2 elektron di kulit terluarnya.</p>
+            <p>Hal serupa terjadi pada atom klorin (Cl). Setiap atom Cl memiliki 7 elektron valensi (2-8-7). Untuk stabil seperti Argon (8 elektron valensi), dua atom Cl menggunakan 1 pasang elektron secara bersama-sama, membentuk molekul Cl₂.</p>
+            <p>Pembentukan ikatan kimia melalui penggunaan bersama elektron oleh dua atom disebut <strong>ikatan kovalen</strong>. Ikatan kovalen tunggal (penggunaan 1 pasang elektron bersama) biasanya dilambangkan dengan satu garis tunggal ('—') di antara atom, misalnya H—H atau Cl—Cl.</p>
+            <p>Pada molekul oksigen (O₂), setiap atom O membutuhkan 2 elektron untuk stabil. Dua atom O menggunakan 2 pasang elektron (total 4 elektron) secara bersama-sama. Ikatan kovalen ini disebut ikatan rangkap dua dan ditulis O=O.</p>
+            <p>Pada molekul nitrogen (N₂), setiap atom N membutuhkan 3 elektron untuk stabil (memiliki 5 elektron valensi, 2-5). Dua atom N menggunakan 3 pasang elektron (total 6 elektron) secara bersama-sama. Ikatan kovalen ini disebut ikatan rangkap tiga dan ditulis N≡N. Jumlah garis menunjukkan banyaknya pasangan elektron yang digunakan bersama.</p>
+            <p>Senyawa yang atom-atomnya berikatan secara kovalen disebut <strong>senyawa kovalen</strong>. Contoh lainnya termasuk Air (H₂O) di mana satu atom O berikatan kovalen dengan dua atom H (H-O-H), dan Karbon Dioksida (CO₂) di mana satu atom C berikatan rangkap dua dengan dua atom O (O=C=O).</p>
+
+            <div class="activity-hint">
+                 <strong>Ayo, Kita Selesaikan</strong>
+                 <p>Anda diminta untuk menggambarkan penggunaan elektron bersama pada molekul air (H₂O) dan molekul karbon dioksida (CO₂). Setelah menggambar, cocokkan dengan simbol molekul H-O-H dan O=C=O. Tentukan berapa pasang elektron yang digunakan bersama pada masing-masing molekul.</p>
+            </div>
+
+            <p>Pencapaian kestabilan atom (dengan melepaskan, menerima, atau menggunakan elektron bersama) memungkinkan atom bergabung membentuk molekul. Molekul-molekul sederhana dapat bergabung lagi membentuk molekul yang lebih besar atau rantai molekul, seperti molekul glukosa (C₆H₁₂O₆) yang bergabung membentuk rantai panjang penyusun amilum.</p>
+        </details>
+
+        <details open>
+            <summary>3. Identifikasi Unsur (Uji Nyala)</summary>
+            <p>Unsur-unsur tertentu dapat diidentifikasi secara kualitatif berdasarkan warna nyala yang dihasilkan ketika dibakar. Prinsip ini dikenal sebagai <strong>uji nyala</strong>.</p>
+            <p>Ketika suatu senyawa mengandung unsur tertentu dipanaskan (dibakar), molekul-molekulnya menyerap energi. Energi ini menyebabkan elektron pada atom-atom unsur tersebut berpindah ke kulit atom dengan tingkat energi yang lebih tinggi (keadaan tereksitasi). Keadaan ini tidak stabil, sehingga elektron akan kembali ke kulit dengan energi yang lebih rendah (keadaan dasar), sambil melepaskan energi dalam bentuk cahaya.</p>
+            <p>Setiap unsur memiliki jarak antarkulit atom yang spesifik, yang berarti energi yang diserap dan dilepaskan juga spesifik. Energi yang dilepaskan inilah yang menentukan warna cahaya yang terlihat. Akibatnya, unsur-unsur yang berbeda menghasilkan warna nyala yang berbeda.</p>
+            <p>Contoh warna nyala untuk beberapa unsur:</p>
+            <ul>
+                <li>Natrium (Na): Nyala berwarna jingga (orange).</li>
+                <li>Kalium (K): Nyala berwarna biru-ungu (blue).</li>
+                <li>Litium (Li): Nyala berwarna merah (red).</li>
+            </ul>
+            <p>Uji nyala digunakan oleh ilmuwan untuk mengetahui keberadaan unsur tertentu dalam suatu bahan. Namun, perlu dicatat bahwa tidak semua unsur menghasilkan warna nyala yang khas, sehingga uji nyala hanya efektif untuk identifikasi beberapa unsur.</p>
+
+            <div class="activity-hint">
+                <strong>Ayo, Kita Lakukan - Aktivitas 8.3 Mengidentifikasi Unsur Melalui Pembakaran (Uji Nyala)</strong>
+                <p>Aktivitas ini bertujuan untuk mengidentifikasi unsur tertentu dalam garam dapur dan pupuk NPK menggunakan prinsip uji nyala. Anda akan membakar sedikit sampel bahan tersebut menggunakan kawat tembaga dan pembakar spiritus, lalu mengamati warna nyala yang dihasilkan untuk mengidentifikasi unsur yang ada, merujuk pada contoh warna nyala unsur Na, K, dan Li yang telah dijelaskan. Penting untuk menggunakan sarung tangan pengaman saat melakukan aktivitas ini.</p>
+            </div>
+        </details>
+
+        <div class="info-box">
+            <h3>Ayo, Kita Renungkan</h3>
+            <p>Mempelajari peranan ion dalam sistem peredaran darah dan transpor gas dalam tubuh manusia menunjukkan betapa kompleks dan menakjubkannya mekanisme yang telah dirancang oleh Tuhan Yang Maha Esa. Keberadaan ion-ion ini sangat krusial; tanpa salah satu jenis ion, seperti ion klorida yang membantu transpor gas, kehidupan manusia bisa terancam. Hal ini mengingatkan kita akan kelemahan manusia dan kebesaran Sang Pencipta.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

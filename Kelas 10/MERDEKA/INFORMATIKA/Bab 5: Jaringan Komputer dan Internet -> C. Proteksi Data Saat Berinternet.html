@@ -1,0 +1,293 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 5: Jaringan Komputer dan Internet - Proteksi Data Saat Berinternet</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        h1, h2, h3 {
+            color: var(--primary-blue);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .concept-box {
+            background-color: #f0f8ff; /* AliceBlue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .concept-box h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+        .keyword {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        .explanation-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+        .explanation-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .code-example {
+            background-color: #e3f2fd; /* Light Blue */
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Consolas', Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+            overflow-x: auto; /* Add scroll for long lines */
+            border: 1px solid #bbdefb; /* Slightly darker blue */
+        }
+        .definition {
+            font-style: italic;
+            color: var(--text-tertiary);
+            border-left: 3px solid var(--text-tertiary);
+            padding-left: 10px;
+            margin-left: 5px;
+        }
+        .important-note {
+            background-color: var(--semantic-warning);
+            color: var(--text-primary);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        .faq-container {
+            margin-top: 30px;
+            background-color: #f5f5f5; /* Light Gray */
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: var(--primary-blue);
+            cursor: pointer;
+            position: relative;
+            padding-left: 25px;
+        }
+        .faq-question::before {
+            content: '+';
+            position: absolute;
+            left: 5px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+        .faq-item.open .faq-question::before {
+            content: '-';
+        }
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .concept-box, .explanation-section, .faq-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Proteksi Data Saat Berinternet</h1>
+
+        <p>
+            Di era digital ini, penggunaan media sosial dan berbagai platform online lainnya telah menjadi bagian tak terpisahkan dari kehidupan kita. Komunikasi lintas jarak menjadi begitu mudah, namun di balik kemudahannya, tersimpan pula potensi risiko terkait keamanan data pribadi. Bab ini akan membongkar bagaimana data kita dilindungi saat berinternet, terutama melalui konsep <span class="keyword">enkripsi</span> dan protokol keamanan seperti <span class="keyword">HTTPS</span>.
+        </p>
+
+        <div class="explanation-section">
+            <h2>Mengapa Proteksi Data Penting?</h2>
+            <p>
+                Saat kita berinteraksi di dunia maya, terutama melalui media sosial, pesan atau panggilan yang kita lakukan seringkali melalui proses yang disebut <span class="keyword">enkripsi</span>. Enkripsi adalah proses mengubah data menjadi kode rahasia yang tidak dapat dibaca tanpa kunci dekripsi khusus. Tujuannya adalah untuk <span class="highlight">melindungi kerahasiaan pesan</span> kita agar tidak dapat diintip atau disalahgunakan oleh pihak yang tidak berhak, seperti <span class="keyword">hacker</span>.
+            </p>
+            <p>
+                Bayangkan jika pesan "Halo, apa kabar?" yang dikirimkan dari Budi ke Joko melalui server internet tidak dienkripsi. Seperti ilustrasi pada Gambar 5.15, seorang hacker bisa saja mencegat dan membaca pesan tersebut dengan mudah. Hal ini menunjukkan betapa pentingnya memastikan aplikasi <span class="keyword">messenger</span> yang kita gunakan memiliki fitur enkripsi untuk menjaga data tetap aman dan <span class="keyword">terproteksi</span>.
+            </p>
+        </div>
+
+        <div class="explanation-section">
+            <h2>Memastikan Keamanan Situs Web yang Dikunjungi</h2>
+            <p>
+                Selain aplikasi komunikasi, keamanan juga sangat krusial saat kita membuka situs web, terutama ketika harus melakukan <span class="keyword">log in</span> dengan memasukkan nama pengguna dan kata sandi. Bagaimana kita bisa yakin bahwa data sensitif yang kita masukkan itu aman? Jawabannya adalah dengan memahami cara mengenali situs web yang aman.
+            </p>
+            <p>
+                Cara paling mudah adalah dengan memeriksa alamat URL di bilah browser. Situs web yang aman akan menggunakan protokol <span class="keyword">HTTPS</span>, yang merupakan versi lebih aman dari <span class="keyword">HTTP</span>. Anda bisa menemukannya dengan ciri-ciri:
+            </p>
+            <ul>
+                <li><span class="keyword">HTTPS</span> di awal alamat URL (bukan hanya HTTP).</li>
+                <li>Adanya ikon <span class="keyword">gembok terkunci</span> di sebelah kiri alamat URL.</li>
+            </ul>
+            <p>
+                Ikon gembok ini menunjukkan bahwa koneksi Anda ke situs web tersebut aman dan data yang dikirimkan akan dienkripsi.
+            </p>
+        </div>
+
+        <div class="concept-box">
+            <h3>HTTP vs HTTPS: Perbedaan Mendasar</h3>
+            <p>
+                <span class="keyword">HTTP (Hypertext Transfer Protocol)</span> adalah protokol dasar yang mengatur komunikasi antara komputer pengguna (<span class="keyword">client</span>) dan server (penyimpan data situs web). Client mengirimkan permintaan (<span class="keyword">request</span>), dan server meresponsnya. Namun, HTTP <span class="highlight">tidak menjamin keamanan data</span>, sehingga ada potensi data dimanipulasi.
+            </p>
+            <p>
+                <span class="keyword">HTTPS (Hypertext Transfer Protocol Secure)</span> adalah versi HTTP yang ditingkatkan dengan menambahkan lapisan keamanan. Lapisan ini menggunakan teknologi enkripsi untuk menjaga kerahasiaan dan integritas data yang sedang diproses.
+            </p>
+            <div class="code-example">
+                <p>Contoh URL HTTP: <code>http://www.contohsitus.com</code></p>
+                <p>Contoh URL HTTPS: <code>https://www.kemdikbud.go.id</code></p>
+            </div>
+        </div>
+
+        <div class="explanation-section">
+            <h2>SSL/TLS: Fondasi Keamanan HTTPS</h2>
+            <p>
+                Teknologi enkripsi di balik HTTPS dikenal sebagai <span class="keyword">SSL (Secure Sockets Layer)</span> atau yang kini lebih modern disebut <span class="keyword">TLS (Transport Layer Security)</span>. SSL/TLS adalah standar keamanan global yang memungkinkan komunikasi terenkripsi antara peramban web (browser) dan server web.
+            </p>
+            <p>
+                SSL/TLS sangat penting untuk melindungi informasi sensitif seperti:
+            </p>
+            <ul>
+                <li>Nomor kartu kredit</li>
+                <li>Nama pengguna dan kata sandi</li>
+                <li>Alamat email</li>
+                <li>Informasi pribadi lainnya</li>
+            </ul>
+            <p>
+                Teknologi ini berperan penting dalam mencegah pencurian identitas dan perusakan data oleh peretas.
+            </p>
+            <p>
+                Sertifikat SSL berfungsi untuk:
+            </p>
+            <ol>
+                <li><span class="keyword">Mengotentikasi identitas situs web</span>: Memastikan bahwa situs web yang Anda kunjungi adalah asli dan bukan situs palsu yang dirancang untuk menipu.</li>
+                <li><span class="keyword">Mengenkripsi data</span>: Melindungi data yang dikirimkan antara browser Anda dan server web.</li>
+            </ol>
+            <p>
+                Ketika Anda melihat ikon gembok pada situs web, mengkliknya akan menampilkan informasi tentang validitas sertifikat SSL situs tersebut. Oleh karena itu, selalu pastikan situs web yang Anda kunjungi aman sebelum memasukkan data penting.
+            </p>
+        </div>
+
+        <div class="important-note">
+            <p><strong>Penting untuk diingat:</strong> Sebelum Anda memasukkan data apa pun ke sebuah situs web, periksa keberadaan <span class="keyword">HTTPS</span> dan ikon <span class="keyword">gembok terkunci</span>. Ini adalah langkah awal yang krusial untuk melindungi privasi dan keamanan data Anda di internet.</p>
+        </div>
+
+        <div class="faq-container">
+            <h2>Pertanyaan Umum Seputar Proteksi Data</h2>
+            <div class="faq-item">
+                <div class="faq-question">Apa bahaya utama jika pesan tidak dienkripsi?</div>
+                <div class="faq-answer">Jika pesan tidak dienkripsi, pesan tersebut dapat dengan mudah dibaca atau disadap oleh pihak yang tidak berhak (misalnya hacker), sehingga kerahasiaan data tidak terjamin.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Apa saja ciri-ciri situs web yang aman?</div>
+                <div class="faq-answer">Situs web yang aman biasanya diawali dengan "https://" pada alamat URL-nya dan memiliki ikon gembok terkunci di bilah alamat browser.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Apa fungsi dari sertifikat SSL?</div>
+                <div class="faq-answer">Sertifikat SSL berfungsi untuk mengotentikasi identitas situs web (memastikan keasliannya) dan mengenkripsi data yang dikirimkan antara pengguna dan server, sehingga melindungi informasi sensitif.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Mengapa HTTPS lebih aman daripada HTTP?</div>
+                <div class="faq-answer">HTTPS menggunakan enkripsi (melalui SSL/TLS) untuk mengamankan komunikasi, sementara HTTP tidak menyediakan lapisan keamanan tersebut, sehingga data lebih rentan terhadap manipulasi atau penyadapan.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const faqItem = item.closest('.faq-item');
+                faqItem.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
+```

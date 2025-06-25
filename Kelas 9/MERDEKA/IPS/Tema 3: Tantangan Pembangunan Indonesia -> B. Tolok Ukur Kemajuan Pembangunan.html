@@ -1,0 +1,324 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3: Tantangan Pembangunan Indonesia - Tolok Ukur Kemajuan Pembangunan</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .interactive-element {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 20px 0;
+            display: inline-block;
+        }
+
+        .interactive-element:hover {
+            background-color: #1565C0;
+        }
+
+        .explanation-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .explanation-box::before {
+            content: "💡"; /* Lightbulb emoji */
+            font-size: 1.5em;
+        }
+
+        .key-term {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .glossary-item {
+            background-color: #e3f2fd;
+            color: var(--primary-blue);
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+            display: inline-block;
+            cursor: help;
+            position: relative;
+        }
+
+        .glossary-item .tooltip {
+            visibility: hidden;
+            width: 250px;
+            background-color: #424242;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        .glossary-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #424242 transparent transparent transparent;
+        }
+
+        .glossary-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tema 3: Tantangan Pembangunan Indonesia</h1>
+        <h2>B. Tolok Ukur Kemajuan Pembangunan</h2>
+
+        <div class="section">
+            <p>Setiap negara di dunia terus berupaya untuk mencapai pembangunan yang efektif. Dalam prosesnya, muncul pertanyaan penting: <strong>Bagaimana cara mengukur keberhasilan sebuah pembangunan?</strong> Untuk menjawab ini, kita perlu memahami berbagai indikator yang digunakan.</p>
+
+            <p>Secara umum, ada dua indikator utama yang sering digunakan untuk mengukur kemajuan pembangunan:</p>
+
+            <ol>
+                <li><strong>Indikator Kemajuan Ekonomi</strong></li>
+                <li><strong>Indeks Pembangunan Manusia (IPM)</strong> atau <em>Human Development Index (HDI)</em></li>
+            </ol>
+
+            <p>Awalnya, fokus utama pengukuran pembangunan adalah pada kemajuan ekonomi. Namun, seiring waktu, disadari bahwa indikator ekonomi saja belum cukup mencerminkan kondisi pembangunan secara menyeluruh karena belum mencakup aspek sosial dan kualitas hidup masyarakat. Oleh karena itu, lahirlah IPM yang menggabungkan dimensi ekonomi dan sosial.</p>
+        </div>
+
+        <div class="section">
+            <h3>1. Pertumbuhan Ekonomi</h3>
+            <p>Pembangunan dapat dikatakan berhasil apabila tingkat produktivitas ekonomi masyarakat tinggi. Tingkat produktivitas ini diukur dari jumlah nilai barang dan jasa yang dihasilkan oleh seluruh masyarakat dalam jangka waktu tertentu. Sederhananya, produktivitas ekonomi berkaitan dengan seberapa aktif masyarakat melakukan transaksi ekonomi, baik jual beli barang maupun jasa.</p>
+
+            <p>Dua konsep penting dalam mengukur produktivitas ekonomi adalah:</p>
+            <ul>
+                <li><span class="key-term">Produk Domestik Bruto (PDB)</span> atau <em>Gross Domestic Product (GDP)</em>: Nilai total barang dan jasa yang dihasilkan oleh seluruh penduduk suatu negara, termasuk Warga Negara Asing yang bekerja di dalam negeri.</li>
+                <li><span class="key-term">Produk Nasional Bruto (PNB)</span> atau <em>Gross National Product (GNP)</em>: Nilai total barang dan jasa yang dihasilkan oleh seluruh penduduk suatu negara, termasuk warga negara yang bekerja di luar negeri, namun tidak termasuk produk yang dihasilkan oleh warga negara asing di dalam negeri.</li>
+            </ul>
+
+            <p>Pertumbuhan ekonomi dihitung dari persentase perubahan PDB dari tahun ke tahun. Ini menunjukkan seberapa besar perkembangan ekonomi sebuah negara dalam periode tertentu.</p>
+
+            <div class="explanation-box">
+                <div>💡 <strong>Wawasan:</strong></div>
+                <div>
+                    <p>Pertumbuhan ekonomi yang dihitung dari PDB memang menjadi acuan umum. Namun, PDB belum sepenuhnya mencerminkan apakah pertumbuhan tersebut dirasakan merata oleh seluruh lapisan masyarakat. Oleh karena itu, <strong>pemerataan pendapatan</strong> menjadi kunci penting untuk memastikan bahwa pembangunan ekonomi benar-benar membawa kesejahteraan bagi semua.</p>
+                    <p>Pemerintah berupaya melakukan pemerataan pendapatan melalui berbagai program, seperti:</p>
+                    <ul>
+                        <li><strong>Pajak:</strong> Kontribusi wajib warga negara kepada negara yang digunakan untuk membiayai pembangunan.</li>
+                        <li><strong>Subsidi:</strong> Bantuan pemerintah kepada masyarakat yang kurang mampu, misalnya subsidi bahan bakar minyak, untuk meringankan biaya hidup.</li>
+                        <li><strong>Asuransi:</strong> Dana yang dikelola oleh lembaga seperti BPJS untuk menjamin kesehatan dan ketenagakerjaan.</li>
+                        <li><strong>Kredit Lunak:</strong> Pinjaman modal dengan bunga ringan dari pemerintah untuk mengembangkan usaha.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>2. Kualitas Kehidupan (Indeks Pembangunan Manusia - IPM)</h3>
+            <p>Selain indikator ekonomi, lembaga keuangan dunia seperti Bank Dunia dan IMF juga melengkapi pengukuran pembangunan dengan indikator yang mencakup dimensi sosial, yaitu <strong>Indeks Pembangunan Manusia (IPM)</strong> atau <em>Human Development Index (HDI)</em>.</p>
+
+            <p>IPM mengukur kualitas hidup manusia berdasarkan tiga komponen utama:</p>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komponen</th>
+                            <th>Deskripsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Kesehatan</strong></td>
+                            <td>Diukur dari <strong>tingkat harapan hidup</strong> saat kelahiran. Ini mencerminkan kondisi kesehatan rata-rata masyarakat.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pendidikan</strong></td>
+                            <td>Diukur dari <strong>rata-rata lama bersekolah</strong>. Ini menunjukkan tingkat partisipasi masyarakat dalam pendidikan formal.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Standar Hidup Layak</strong></td>
+                            <td>Diukur dari <strong>pendapatan per kapita</strong>. Ini mencerminkan kemampuan masyarakat untuk memenuhi kebutuhan hidupnya.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Setiap komponen ini memiliki rentang nilai tertentu, dan kemudian diintegrasikan menjadi satu nilai IPM. IPM digunakan oleh Perserikatan Bangsa-Bangsa (PBB) melalui UNDP untuk mengukur dan membandingkan kemajuan pembangunan antarnegara.</p>
+
+            <div class="explanation-box">
+                <div>💡 <strong>Wawasan:</strong></div>
+                <div>
+                    <p>IPM juga dapat dilengkapi dengan indikator lain seperti <strong>Indeks Mutu Hidup</strong> atau <em>Physical Quality Life Index (IPQL)</em>. IPQL melihat kualitas kehidupan dari angka kematian bayi, angka harapan hidup setelah umur satu tahun, dan angka melek huruf.</p>
+                    <p><span class="key-term">Pendapatan per kapita</span> sendiri dihitung dengan membagi total PDB suatu negara dengan jumlah penduduknya. Ini memberikan gambaran rata-rata kekayaan atau pendapatan yang diterima setiap individu di negara tersebut.</p>
+                </div>
+            </div>
+
+            <p>Dengan memahami kedua tolok ukur ini, kita dapat melihat gambaran yang lebih komprehensif mengenai kemajuan pembangunan suatu negara, tidak hanya dari sisi ekonomi, tetapi juga dari sisi kualitas sumber daya manusianya.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

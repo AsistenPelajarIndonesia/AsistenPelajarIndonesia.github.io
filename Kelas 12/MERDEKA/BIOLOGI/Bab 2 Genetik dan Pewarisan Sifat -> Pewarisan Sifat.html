@@ -1,0 +1,620 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Genetik dan Pewarisan Sifat</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--primary-blue);
+            margin-top: 30px;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .highlight-blue {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .highlight-green {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .highlight-amber {
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+        }
+
+        .info-box {
+            background-color: rgba(var(--semantic-info), 0.05); /* Lighter tint of info blue */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .concept-card {
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: var(--background-canvas);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        details {
+            margin: 15px 0;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            background-color: var(--background-canvas);
+        }
+
+        summary {
+            font-weight: bold;
+            padding: 15px;
+            cursor: pointer;
+            color: var(--primary-blue);
+            background-color: rgba(var(--primary-blue), 0.05);
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: rgba(var(--primary-blue), 0.1);
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+            border-radius: 6px 6px 0 0;
+        }
+
+        .details-content {
+            padding: 15px;
+            color: var(--text-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: rgba(var(--border-divider), 0.2);
+        }
+
+        .punnett-square {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 1 header + 4 gametes */
+            gap: 1px;
+            background-color: var(--border-divider);
+            border: 1px solid var(--border-divider);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .punnett-cell {
+            background-color: var(--background-canvas);
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .punnett-header {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        .punnett-empty-corner {
+            background-color: var(--background-canvas);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            h4 {
+                font-size: 1em;
+            }
+            .punnett-square {
+                grid-template-columns: repeat(5, 1fr); /* Still works for 4x4 */
+                font-size: 0.8em;
+            }
+            table th, table td {
+                padding: 8px;
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            h4 {
+                font-size: 0.95em;
+            }
+            .punnett-square {
+                grid-template-columns: repeat(5, minmax(0, 1fr)); /* Allow flexible columns */
+                font-size: 0.7em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Genetik dan Pewarisan Sifat</h1>
+
+        <p>Bab ini akan membawa kalian menjelajahi dunia pewarisan sifat, inti dari genetika, yang menjelaskan mengapa kita menyerupai orang tua kita dan bagaimana keanekaragaman hayati dapat muncul. Kita akan memulai dengan memahami dasar-dasar seluler dari pewarisan, kemudian mendalami prinsip-prinsip yang dicanangkan oleh Gregor Mendel, hingga berbagai penyimpangan yang membuat genetika semakin menarik.</p>
+
+        <details open>
+            <summary>Dasar-Dasar Seluler Pewarisan Sifat</summary>
+            <div class="details-content">
+                <p>Sebelum membahas lebih jauh tentang pewarisan sifat, penting untuk memahami proses pembelahan sel yang menjadi dasarnya, yaitu <span class="highlight-blue">Mitosis</span> dan <span class="highlight-blue">Meiosis</span>.</p>
+                <ul>
+                    <li>
+                        <h4>Mitosis</h4>
+                        <p>Mitosis adalah proses pembelahan sel yang menghasilkan dua sel anakan yang identik secara genetik dengan sel induknya. Setiap sel anakan memiliki jumlah kromosom yang sama dengan sel induk (diploid, 2n). Mitosis penting untuk pertumbuhan, perbaikan jaringan, dan reproduksi aseksual.</p>
+                    </li>
+                    <li>
+                        <h4>Meiosis</h4>
+                        <p>Meiosis adalah pembelahan sel yang terjadi pada sel-sel reproduksi (gametogenesis) yang menghasilkan empat sel anakan yang memiliki setengah jumlah kromosom dari sel induknya (haploid, n). Proses ini melibatkan dua tahap pembelahan (meiosis I dan meiosis II) dan krusial untuk menjaga jumlah kromosom spesies dari generasi ke generasi, serta menciptakan variasi genetik melalui rekombinasi dan pindah silang.</p>
+                        <p>Dalam konteks pewarisan sifat, meiosis berperan penting dalam pembentukan sel kelamin (<span class="highlight-blue">gamet</span>). Misalnya, pada <span class="highlight-blue">oogenesis</span> (pembentukan sel telur), satu sel induk oogonium (2n) melalui meiosis menghasilkan satu sel telur fungsional (n) dan tiga badan kutub yang berdegenerasi. Proses ini memastikan gamet membawa hanya separuh informasi genetik, siap untuk bergabung dengan gamet lain dalam fertilisasi.</p>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <h2>D. Pewarisan Sifat</h2>
+        <p>Pewarisan sifat adalah proses menurunnya sifat dari induk kepada keturunannya. Ilmu yang mempelajari pewarisan sifat ini disebut <span class="highlight-blue">Genetika</span>. Tokoh sentral dalam genetika adalah <span class="highlight-green">Gregor Johann Mendel</span>, yang sering disebut sebagai "Bapak Genetika" berkat eksperimennya pada tanaman kacang polong (<em>Pisum sativum</em>) yang melahirkan dua hukum dasar pewarisan sifat.</p>
+
+        <details>
+            <summary>Hukum-Hukum Mendel</summary>
+            <div class="details-content">
+                <h3>Hukum Mendel I: Hukum Pemisahan (Segregation)</h3>
+                <p>Hukum ini menyatakan bahwa pada saat pembentukan gamet, gen yang merupakan pasangan alel akan <span class="highlight-blue">memisah secara bebas</span> dari pasangannya. Setiap gamet hanya akan menerima satu alel dari setiap pasangan gen.</p>
+
+                <h3>Hukum Mendel II: Hukum Berpasangan Secara Bebas (Independent Assortment)</h3>
+                <p>Hukum ini menyatakan bahwa gen di dalam gamet akan <span class="highlight-blue">bergabung secara bebas</span> saat pembentukan individu baru. Artinya, alel untuk satu sifat tidak akan memengaruhi pemisahan alel untuk sifat lainnya.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>1. Persilangan Monohibrid</summary>
+            <div class="details-content">
+                <p><span class="highlight-blue">Persilangan monohibrid</span> adalah persilangan yang hanya memerhatikan satu sifat beda. Contohnya adalah persilangan bunga ungu dengan bunga putih, atau biji bulat dengan biji keriput.</p>
+                <p>Dalam persilangan monohibrid, Mendel menemukan konsep <span class="highlight-blue">dominansi penuh</span>, di mana satu alel (<span class="highlight-green">gen dominan</span>) dapat menutupi ekspresi alel lain (<span class="highlight-amber">gen resesif</span>). Sifat yang tampak pada organisme disebut <span class="highlight-blue">fenotip</span>, sementara komposisi genetiknya disebut <span class="highlight-blue">genotip</span>.</p>
+
+                <h4>Contoh Percobaan Mendel (Monohibrid):</h4>
+                <p>Mendel menyilangkan kacang polong berbiji bulat dengan biji keriput. Semua keturunan F1 menunjukkan fenotip bulat. Ketika F1 disilangkan sesamanya, F2 menghasilkan rasio fenotip mendekati <span class="highlight-green">3 (dominan) : 1 (resesif)</span>.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sifat Tumbuhan Induk</th>
+                            <th>Generasi F1 (Sifat Dominan)</th>
+                            <th>Generasi F2</th>
+                            <th>Rasio Fenotip F2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Biji Bulat x Biji Keriput</td>
+                            <td>Semua Bulat</td>
+                            <td>5474 Bulat, 1850 Keriput</td>
+                            <td>2.96 : 1 (mendekati 3:1)</td>
+                        </tr>
+                        <tr>
+                            <td>Bunga Ungu x Bunga Putih</td>
+                            <td>Semua Ungu</td>
+                            <td>705 Ungu, 224 Putih</td>
+                            <td>3.15 : 1 (mendekati 3:1)</td>
+                        </tr>
+                        <tr>
+                            <td>Batang Panjang x Batang Pendek</td>
+                            <td>Semua Panjang</td>
+                            <td>787 Panjang, 277 Pendek</td>
+                            <td>2.84 : 1 (mendekati 3:1)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Rasio fenotip 3:1 pada F2 ini merupakan ciri khas persilangan monohibrid dengan dominansi penuh.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>2. Persilangan Dihibrid</summary>
+            <div class="details-content">
+                <p><span class="highlight-blue">Persilangan dihibrid</span> adalah persilangan yang memerhatikan dua sifat beda atau lebih. Hukum Mendel II (Hukum Berpasangan Secara Bebas) ditemukan berdasarkan persilangan dihibrid.</p>
+
+                <h4>Contoh Persilangan Dihibrid: Biji Bulat Kuning x Biji Kisut Hijau</h4>
+                <p>Misalkan: B = bulat (dominan), b = kisut (resesif); K = kuning (dominan), k = hijau (resesif).</p>
+                <p><strong>P2 (Parental Kedua):</strong> Biji Bulat Kuning (BbKk) x Biji Bulat Kuning (BbKk)</p>
+                <p><strong>Gamet dari BbKk:</strong> BK, Bk, bK, bk</p>
+
+                <h4>Tabel Punnett (Persilangan Dihibrid)</h4>
+                <div class="punnett-square">
+                    <div class="punnett-empty-corner"></div>
+                    <div class="punnett-header">BK</div>
+                    <div class="punnett-header">Bk</div>
+                    <div class="punnett-header">bK</div>
+                    <div class="punnett-header">bk</div>
+
+                    <div class="punnett-header">BK</div>
+                    <div class="punnett-cell">BBKK <br> (Bulat Kuning)</div>
+                    <div class="punnett-cell">BBKk <br> (Bulat Kuning)</div>
+                    <div class="punnett-cell">BbKK <br> (Bulat Kuning)</div>
+                    <div class="punnett-cell">BbKk <br> (Bulat Kuning)</div>
+
+                    <div class="punnett-header">Bk</div>
+                    <div class="punnett-cell">BBKk <br> (Bulat Kuning)</div>
+                    <div class="punnett-cell">BBkk <br> (Bulat Hijau)</div>
+                    <div class="punnett-cell">BbKk <br> (Bulat Kuning)</div>
+                    <div class="punnett-cell">Bbkk <br> (Bulat Hijau)</div>
+
+                    <div class="punnett-header">bK</div>
+                    <div class="punnett-cell">BbKK <br> (Bulat Kuning)</div>
+                    <div class="punnett-cell">BbKk <br> (Bulat Kuning)</div>
+                    <div class="punnett-cell">bbKK <br> (Keriput Kuning)</div>
+                    <div class="punnett-cell">bbKk <br> (Keriput Kuning)</div>
+
+                    <div class="punnett-header">bk</div>
+                    <div class="punnett-cell">BbKk <br> (Bulat Kuning)</div>
+                    <div class="punnett-cell">Bbkk <br> (Bulat Hijau)</div>
+                    <div class="punnett-cell">bbKk <br> (Keriput Kuning)</div>
+                    <div class="punnett-cell">bbkk <br> (Keriput Hijau)</div>
+                </div>
+                <p>Dari persilangan dihibrid ini, diperoleh rasio fenotip F2 sebesar <span class="highlight-green">9 (Bulat Kuning) : 3 (Bulat Hijau) : 3 (Keriput Kuning) : 1 (Keriput Hijau)</span>. Rasio 9:3:3:1 ini adalah ciri khas persilangan dihibrid yang mengikuti hukum Mendel II.</p>
+                <p>Metode <span class="highlight-blue">Punnett Square</span> (segi empat Punnett) adalah alat yang sangat berguna untuk mempermudah perhitungan dan melacak hasil persilangan genetik.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>3. Uji Silang (Test Cross)</summary>
+            <div class="details-content">
+                <p><span class="highlight-blue">Uji silang (test cross)</span> adalah persilangan yang dilakukan untuk menentukan genotip suatu individu yang menunjukkan fenotip dominan tetapi genotipnya tidak diketahui (misal: A_). Individu tersebut disilangkan dengan individu yang memiliki genotip <span class="highlight-green">homozigot resesif</span> (misal: aa).</p>
+                <ul>
+                    <li>Jika hasil uji silang menunjukkan <span class="highlight-amber">100% fenotip dominan</span>, maka individu yang diuji adalah <span class="highlight-green">homozigot dominan</span> (AA).</li>
+                    <li>Jika hasil uji silang menunjukkan <span class="highlight-amber">50% fenotip dominan dan 50% fenotip resesif</span>, maka individu yang diuji adalah <span class="highlight-blue">heterozigot</span> (Aa).</li>
+                </ul>
+
+                <h4>Contoh (sesuai definisi standar):</h4>
+                <p>Untuk menguji genotip bunga mawar merah (M_), silangkan dengan mawar putih (mm).</p>
+                <p class="info-box"><strong>Kasus 1:</strong> Jika Mawar Merah adalah homozigot dominan (MM)</p>
+                <p>Fenotip Induk: Mawar Merah (MM) x Mawar Putih (mm)</p>
+                <p>Gamet: M x m</p>
+                <p>Keturunan F1: 100% Mm (Mawar Merah)</p>
+
+                <p class="info-box"><strong>Kasus 2:</strong> Jika Mawar Merah adalah heterozigot (Mm)</p>
+                <p>Fenotip Induk: Mawar Merah (Mm) x Mawar Putih (mm)</p>
+                <p>Gamet Mm: M, m</p>
+                <p>Gamet mm: m</p>
+                <p>Keturunan F1: Mm (Mawar Merah) dan mm (Mawar Putih)</p>
+                <p>Rasio Fenotip: 1 Mawar Merah : 1 Mawar Putih (50% : 50%)</p>
+                <p>Dengan demikian, hasil uji silang dapat mengungkapkan genotip individu berfenotip dominan.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>4. Penyimpangan Semu Hukum Mendel</summary>
+            <div class="details-content">
+                <p><span class="highlight-blue">Penyimpangan semu hukum Mendel</span> adalah kondisi di mana rasio fenotip hasil persilangan tidak sesuai dengan rasio Mendel yang standar (misalnya 3:1 atau 9:3:3:1). Meskipun rasio fenotipnya "menyimpang", prinsip-prinsip dasar Mendel (pemisahan dan pengelompokan bebas gen) tetap berlaku pada tingkat genetik. Penyimpangan ini terjadi karena adanya interaksi antar gen yang unik.</p>
+
+                <details>
+                    <summary>a. Alel Majemuk (Multiple Alleles)</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Alel majemuk</span> adalah kondisi di mana suatu gen memiliki <span class="highlight-green">lebih dari dua alel</span> dalam populasi. Meskipun setiap individu diploid hanya memiliki dua alel untuk gen tersebut, dalam populasi bisa terdapat banyak variasi alel.</p>
+                        <h4>Contoh: Golongan Darah ABO Manusia</h4>
+                        <p>Golongan darah ABO ditentukan oleh tiga alel: <span class="highlight-blue">I<sup>A</sup></span>, <span class="highlight-blue">I<sup>B</sup></span>, dan <span class="highlight-blue">I<sup>O</sup></span>. Alel I<sup>A</sup> dan I<sup>B</sup> bersifat dominan terhadap I<sup>O</sup>, tetapi <span class="highlight-green">kodominan</span> satu sama lain.</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Golongan Darah (Fenotip)</th>
+                                    <th>Genotip</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>A</td><td>I<sup>A</sup>I<sup>A</sup> atau I<sup>A</sup>I<sup>O</sup></td></tr>
+                                <tr><td>B</td><td>I<sup>B</sup>I<sup>B</sup> atau I<sup>B</sup>I<sup>O</sup></td></tr>
+                                <tr><td>AB</td><td>I<sup>A</sup>I<sup>B</sup></td></tr>
+                                <tr><td>O</td><td>I<sup>O</sup>I<sup>O</sup></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>b. Kodominansi (Codominance)</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Kodominansi</span> adalah bentuk hubungan antara alel di mana <span class="highlight-green">kedua alel diekspresikan sepenuhnya dan bersamaan</span> dalam fenotip heterozigot. Tidak ada alel yang menutupi yang lain, melainkan keduanya memberikan kontribusi yang berbeda dan terlihat jelas.</p>
+                        <h4>Contoh: Golongan Darah AB</h4>
+                        <p>Pada golongan darah AB (genotip I<sup>A</sup>I<sup>B</sup>), baik alel I<sup>A</sup> maupun I<sup>B</sup> diekspresikan. Individu dengan genotip ini memiliki antigen A dan antigen B pada sel darah merahnya, menghasilkan fenotip AB.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>c. Atavisme (Atavism)</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Atavisme</span> adalah interaksi antar gen (berbeda alel dan lokus) yang menghasilkan <span class="highlight-green">fenotip baru</span> yang berbeda dari induknya. Ini sering terlihat ketika dua gen dominan berinteraksi untuk menghasilkan fenotip baru, atau ketika gen resesif homozigot juga menghasilkan fenotip yang berbeda.</p>
+                        <h4>Contoh: Bentuk Jengger Ayam</h4>
+                        <p>Bentuk jengger ayam dipengaruhi oleh dua gen berbeda alel, yaitu gen <span class="highlight-blue">R</span> (rose) dan gen <span class="highlight-blue">P</span> (pea). Interaksi gen-gen ini menghasilkan empat fenotip berbeda:</p>
+                        <ul>
+                            <li><strong>Walnut:</strong> Ketika gen R dan P dominan bertemu (R_P_)</li>
+                            <li><strong>Rose:</strong> Ketika gen R dominan (R_pp)</li>
+                            <li><strong>Pea:</strong> Ketika gen P dominan (rrP_)</li>
+                            <li><strong>Single:</strong> Ketika kedua gen resesif (rrpp)</li>
+                        </ul>
+                        <p>Persilangan dihibrid antara individu Walnut (RrPp) x Walnut (RrPp) akan menghasilkan rasio fenotip <span class="highlight-green">9 Walnut : 3 Rose : 3 Pea : 1 Single</span>.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>d. Kriptomeri (Cryptomerism)</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Kriptomeri</span> adalah peristiwa di mana gen dominan <span class="highlight-green">sifatnya tersembunyi (kriptos)</span> jika tidak berpasangan dengan gen dominan dari alel lain (gen pelengkap). Gen tersebut baru akan terekspresikan jika ada gen dominan lain yang melengkapinya.</p>
+                        <h4>Contoh: Warna Bunga <em>Linaria maroccana</em></h4>
+                        <p>Warna bunga <em>Linaria maroccana</em> dipengaruhi oleh dua gen:</p>
+                        <ul>
+                            <li><span class="highlight-blue">A</span> = membentuk pigmen antosianin; <span class="highlight-blue">a</span> = tidak membentuk pigmen.</li>
+                            <li><span class="highlight-blue">B</span> = protoplasma basa (pH tinggi); <span class="highlight-blue">b</span> = protoplasma asam (pH rendah).</li>
+                        </ul>
+                        <p>Interaksi warna:</p>
+                        <ul>
+                            <li><span class="highlight-blue">A_B_</span>: Ungu (pigmen ada, pH basa)</li>
+                            <li><span class="highlight-blue">A_bb</span>: Merah (pigmen ada, pH asam)</li>
+                            <li><span class="highlight-blue">aaB_</span> atau <span class="highlight-blue">aabb</span>: Putih (pigmen tidak ada, tidak peduli pH)</li>
+                        </ul>
+                        <p>Persilangan Putih (AAbb) x Putih (aaBB) menghasilkan F1 semua Ungu (AaBb). Ketika F1 (AaBb) disilangkan sesamanya, F2 menghasilkan rasio fenotip <span class="highlight-green">9 Ungu : 3 Merah : 4 Putih</span>. Ini terjadi karena gen A yang menghasilkan pigmen tersembunyi efeknya (yaitu tidak berwarna) jika tidak ada gen B yang membuat protoplasma basa, dan gen a (resesif) membuat bunga tetap putih meskipun ada gen B.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>e. Polimeri (Polymeri)</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Polimeri</span> adalah kondisi di mana suatu sifat dipengaruhi oleh <span class="highlight-green">banyak gen non-alelik</span> (gen-gen pada lokus berbeda) yang memiliki <span class="highlight-green">efek kumulatif</span>. Semakin banyak gen dominan yang ada, semakin kuat atau intens sifat yang terekspresi.</p>
+                        <h4>Contoh: Warna Biji Gandum</h4>
+                        <p>Warna merah pada biji gandum dapat ditentukan oleh dua pasang gen dominan (misalnya M1 dan M2). Semakin banyak gen dominan, semakin merah warnanya. Persilangan individu heterozigot (M1m1M2m2 x M1m1M2m2) menghasilkan rasio fenotip F2 sebesar <span class="highlight-green">15 (merah) : 1 (putih)</span>.</p>
+                        <p>Ini karena setiap kombinasi genotip yang memiliki setidaknya satu alel dominan dari M1 dan/atau M2 akan menunjukkan fenotip "merah", sementara hanya individu dengan genotip homozigot resesif untuk kedua gen (m1m1m2m2) yang akan menunjukkan fenotip "putih".</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>f. Epistasis - Hipostasis</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Epistasis</span> adalah peristiwa ketika suatu gen dominan (<span class="highlight-green">gen epistatis</span>) <span class="highlight-green">menutupi pengaruh</span> gen dominan lain yang bukan alelnya (<span class="highlight-amber">gen hipostatis</span>). Artinya, meskipun gen hipostatis ada dan dominan, efeknya tidak akan muncul jika ada gen epistatis.</p>
+                        <h4>Contoh: Warna Kulit Labu (<em>Cucurbita pepo</em>)</h4>
+                        <p>Warna kulit labu dipengaruhi oleh dua gen:</p>
+                        <ul>
+                            <li><span class="highlight-blue">P</span> = menghasilkan warna putih (epistatis)</li>
+                            <li><span class="highlight-blue">p</span> = tidak menghasilkan warna putih</li>
+                            <li><span class="highlight-blue">K</span> = menghasilkan warna kuning (hipostatis)</li>
+                            <li><span class="highlight-blue">k</span> = tidak menghasilkan warna kuning (menghasilkan hijau jika tidak ada P)</li>
+                        </ul>
+                        <p>Interaksi warna:</p>
+                        <ul>
+                            <li><span class="highlight-blue">P_K_</span> atau <span class="highlight-blue">P_kk</span>: Putih (Gen P epistatis, menutupi K atau k)</li>
+                            <li><span class="highlight-blue">ppK_</span>: Kuning (Tidak ada P, K terekspresi)</li>
+                            <li><span class="highlight-blue">ppkk</span>: Hijau (Tidak ada P dan K)</li>
+                        </ul>
+                        <p>Persilangan Putih (PpKk) x Putih (PpKk) menghasilkan F2 dengan rasio fenotip <span class="highlight-green">12 Putih : 3 Kuning : 1 Hijau</span>. Ini menunjukkan dominansi gen P yang menutupi ekspresi gen K.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>g. Komplementer (Complementary Genes)</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Gen komplementer</span> adalah dua gen dominan non-alelik yang <span class="highlight-green">saling melengkapi</span> untuk menghasilkan fenotip tertentu. Jika salah satu gen dominan tidak ada, fenotip yang dimaksud tidak akan muncul (biasanya menghasilkan fenotip resesif).</p>
+                        <h4>Contoh: Warna Bunga <em>Lathyrus odoratus</em> (Sweet Pea)</h4>
+                        <p>Warna ungu pada bunga <em>Lathyrus odoratus</em> hanya akan muncul jika terdapat kedua gen dominan, yaitu:</p>
+                        <ul>
+                            <li><span class="highlight-blue">C</span> = membentuk pigmen warna</li>
+                            <li><span class="highlight-blue">P</span> = membentuk enzim pengaktif pigmen</li>
+                        </ul>
+                        <p>Jika salah satu gen dominan (C atau P) tidak ada, bunga akan berwarna putih.</p>
+                        <ul>
+                            <li><span class="highlight-blue">C_P_</span>: Ungu (pigmen ada, enzim pengaktif ada)</li>
+                            <li><span class="highlight-blue">C_pp</span>: Putih (pigmen ada, tapi tidak ada enzim pengaktif)</li>
+                            <li><span class="highlight-blue">ccP_</span>: Putih (tidak ada pigmen, meskipun ada enzim pengaktif)</li>
+                            <li><span class="highlight-blue">ccpp</span>: Putih (tidak ada pigmen dan enzim pengaktif)</li>
+                        </ul>
+                        <p>Persilangan Putih (ccPP) x Putih (CCpp) menghasilkan F1 semua Ungu (CcPp). Ketika F1 (CcPp) disilangkan sesamanya, F2 menghasilkan rasio fenotip <span class="highlight-green">9 Ungu : 7 Putih</span>. Ini karena semua genotip yang mengandung setidaknya satu alel dominan C dan satu alel dominan P akan menghasilkan ungu, sementara genotip lainnya (C_pp, ccP_, ccpp) akan menghasilkan putih.</p>
+                    </div>
+                </details>
+            </div>
+        </details>
+
+        <details>
+            <summary>5. Penentuan Jenis Kelamin</summary>
+            <div class="details-content">
+                <p>Penentuan jenis kelamin pada organisme sebagian besar ditentukan oleh faktor genetik, terutama oleh <span class="highlight-blue">kromosom gonosom</span> (kromosom seks).</p>
+                <h4>a. Penentuan Jenis Kelamin pada Manusia (Sistem XY)</h4>
+                <p>Manusia memiliki 23 pasang kromosom: 22 pasang <span class="highlight-blue">autosom</span> (kromosom tubuh) dan 1 pasang <span class="highlight-blue">gonosom</span>.</p>
+                <ul>
+                    <li><span class="highlight-green">Perempuan</span> memiliki genotip XX (homozigot untuk kromosom X).</li>
+                    <li><span class="highlight-green">Laki-laki</span> memiliki genotip XY (heterozigot untuk kromosom X dan Y).</li>
+                </ul>
+                <p>Sel telur (ovum) selalu membawa satu kromosom X. Sperma dapat membawa kromosom X atau kromosom Y. Oleh karena itu, jenis kelamin keturunan ditentukan oleh jenis sperma yang membuahi sel telur:</p>
+                <ul>
+                    <li>Sperma X + Ovum X &rarr; Zigot XX (Perempuan)</li>
+                    <li>Sperma Y + Ovum X &rarr; Zigot XY (Laki-laki)</li>
+                </ul>
+
+                <h4>b. Penentuan Jenis Kelamin pada Lebah Madu (Sistem Haplodiploidi)</h4>
+                <p>Pada lebah madu, penentuan jenis kelamin sangat unik dan disebut sistem <span class="highlight-blue">Haplodiploidi</span>:</p>
+                <ul>
+                    <li><span class="highlight-green">Lebah Betina</span> (Ratu dan Pekerja) bersifat <span class="highlight-blue">diploid (2n)</span>. Mereka berkembang dari telur yang dibuahi oleh sperma.</li>
+                    <li><span class="highlight-green">Lebah Jantan</span> (Drone) bersifat <span class="highlight-blue">haploid (n)</span>. Mereka berkembang dari telur yang tidak dibuahi.</li>
+                </ul>
+                <p>Sistem ini menyebabkan lebah betina memiliki dua set kromosom (satu dari induk betina, satu dari induk jantan), sedangkan lebah jantan hanya memiliki satu set kromosom (dari induk betina saja).</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>6. Mutasi dan Penyakit Keturunan</summary>
+            <div class="details-content">
+                <p><span class="highlight-blue">Mutasi</span> adalah perubahan acak dan mendadak pada struktur gen atau jumlah kromosom suatu organisme. Mutasi dapat menyebabkan timbulnya alel-alel baru, yang berkontribusi pada <span class="highlight-green">keanekaragaman genetik</span> dalam suatu spesies.</p>
+                <ul>
+                    <li><span class="highlight-blue">Mutasi Somatik</span>: Terjadi pada sel tubuh dan <span class="highlight-amber">tidak diwariskan</span> kepada keturunan.</li>
+                    <li><span class="highlight-blue">Mutasi Germline</span>: Terjadi pada sel gamet (sel kelamin) dan <span class="highlight-green">dapat diwariskan</span> kepada keturunan. Mutasi inilah yang menjadi penyebab banyak penyakit keturunan.</li>
+                </ul>
+                <p>Individu yang memperlihatkan perubahan sifat akibat mutasi disebut <span class="highlight-blue">mutan</span>.</p>
+
+                <h3>Contoh Penyakit Keturunan Akibat Mutasi</h3>
+                <details>
+                    <summary>a. Albinisme</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Albinisme</span> adalah penyakit keturunan yang disebabkan oleh mutasi gen <span class="highlight-green">resesif</span>. Individu <span class="highlight-blue">albino</span> memiliki alel albinisme homozigot resesif (misalnya aa). Kondisi ini ditandai dengan <span class="highlight-amber">tidak adanya pigmen melanin</span> pada kulit, rambut, dan mata, menyebabkan kulit pucat, rambut putih, dan iris mata kemerahan.</p>
+                        <p>Kulit mereka sangat sensitif terhadap sinar matahari karena kurangnya perlindungan pigmen.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>b. Sindrom Down</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Sindrom Down</span> adalah penyakit keturunan yang disebabkan oleh mutasi pada <span class="highlight-green">jumlah kromosom</span>. Individu dengan Sindrom Down memiliki <span class="highlight-blue">tambahan satu kromosom 21</span>, sehingga total kromosomnya menjadi 47 (normalnya 46). Kondisi ini dikenal sebagai <span class="highlight-blue">Trisomi 21</span>.</p>
+                        <p>Penyebab utamanya adalah kegagalan pemisahan kromosom (non-disjunction) selama proses meiosis I atau II pada pembentukan sel gamet.</p>
+                        <p>Ciri-ciri fisik dan kognitif yang umum meliputi hidung pesek, mata sipit, telinga kecil, lidah besar, perawakan tubuh pendek, dan disabilitas intelektual.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>c. Buta Warna</summary>
+                    <div class="details-content">
+                        <p><span class="highlight-blue">Buta warna</span> adalah kondisi di mana seseorang tidak dapat melihat atau membedakan warna tertentu. Penyakit ini merupakan kelainan <span class="highlight-blue">terpaut kromosom X resesif</span>, artinya gen penyebabnya terletak pada kromosom X.</p>
+                        <ul>
+                            <li><span class="highlight-green">Laki-laki</span> (XY) akan menderita buta warna jika memiliki satu gen buta warna pada kromosom X-nya (X<sup>c</sup>Y), karena mereka hanya memiliki satu kromosom X.</li>
+                            <li><span class="highlight-green">Perempuan</span> (XX) akan menderita buta warna hanya jika memiliki kedua kromosom X dengan gen buta warna (X<sup>c</sup>X<sup>c</sup>). Jika perempuan hanya memiliki satu kromosom X dengan gen buta warna (X<sup>C</sup>X<sup>c</sup>), mereka biasanya menjadi <span class="highlight-blue">pembawa (carrier)</span> dan memiliki penglihatan warna normal, tetapi dapat mewariskan gen tersebut kepada anak-anaknya.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </details>
+    </div>
+</body>
+</html>
+```

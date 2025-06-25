@@ -1,0 +1,781 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengembangan Wilayah: Desa dan Kota</title>
+    <style>
+        /* Color Theme Variables (Light Mode) */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Resets & Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-canvas);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; color: var(--accent-green); }
+        h3 { font-size: 1.5em; color: var(--text-primary); }
+        h4 { font-size: 1.2em; color: var(--text-secondary); }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Callout Boxes */
+        .callout-box {
+            background-color: #E3F2FD; /* Light Blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .callout-box h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .callout-box p {
+            margin-bottom: 0.5em;
+            color: var(--text-secondary);
+        }
+
+        .callout-box ul {
+            list-style-type: decimal;
+            margin-left: 15px;
+        }
+
+        .callout-box strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-blue {
+            background-color: #E3F2FD; /* Light Blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-green {
+            background-color: #E8F5E9; /* Light Green */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-amber {
+            background-color: #FFFDE7; /* Light Amber */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--bg-canvas);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px 12px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F5F5F5; /* Slightly darker for even rows */
+        }
+
+        /* Collapsible Sections (using details/summary) */
+        details {
+            border: 1px solid var(--border-divider);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: var(--bg-canvas);
+        }
+
+        summary {
+            font-weight: bold;
+            padding: 15px;
+            cursor: pointer;
+            outline: none;
+            color: var(--primary-blue);
+            background-color: #F8F8F8; /* Lighter background for summary */
+            border-bottom: 1px solid var(--border-divider);
+            border-radius: 4px;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .details-content {
+            padding: 15px;
+            color: var(--text-secondary);
+        }
+
+        .details-content p, .details-content ul, .details-content ol {
+            margin-top: 0.5em;
+        }
+
+        /* Specific section styling */
+        .section-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.1em; }
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+            h1 { font-size: 1.5em; }
+            h2 { font-size: 1.3em; }
+            h3 { font-size: 1.1em; }
+            .callout-box {
+                padding: 10px;
+            }
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+            border-top: 1px solid var(--border-divider);
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="section-header">B. Pengembangan Desa dan Kota</h1>
+
+        <p>Wilayah perdesaan dan perkotaan merupakan dua entitas geografis yang terus berinteraksi dan mengalami dinamika perubahan. Sebagian besar dari kita tinggal di salah satu dari kedua wilayah ini, dan dapat mengamati langsung perbedaan corak serta fungsi pemanfaatan lahan di dalamnya.</p>
+        <p>Di perdesaan, pemanfaatan lahan didominasi oleh kegiatan pertanian, seperti sawah padi, kebun jagung, atau lahan cabai. Sebaliknya, wilayah perkotaan dicirikan oleh kepadatan hunian, pusat bisnis dan retail, ruang terbuka, pergudangan, fasilitas pendidikan, kesehatan, dan berbagai infrastruktur lainnya.</p>
+
+        <p>Secara umum, terjadi tren persentase penduduk yang tinggal di perdesaan mengalami penurunan, sementara penduduk di perkotaan terus meningkat. Fenomena ini diproyeksikan akan terus berlanjut di masa depan, membawa implikasi signifikan terhadap kedua wilayah.</p>
+
+        <h3>Tabel 1.2 Peningkatan Jumlah Penduduk yang Tinggal di Perkotaan</h3>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Kota (%)</th>
+                        <th>Desa (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>2010</td><td>49,8</td><td>50,2</td></tr>
+                    <tr><td>2015</td><td>53,3</td><td>46,7</td></tr>
+                    <tr><td>2020</td><td>56,7</td><td>43,3</td></tr>
+                    <tr><td>2025</td><td>60,0</td><td>40,0</td></tr>
+                    <tr><td>2030</td><td>63,4</td><td>36,6</td></tr>
+                    <tr><td>2035</td><td>66,6</td><td>33,4</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Data di atas menunjukkan bahwa wilayah perkotaan akan semakin meluas, dan sebaliknya, wilayah perdesaan akan semakin berkurang luasnya. Hal ini menuntut penyediaan fasilitas perkotaan yang lebih banyak, seperti pasar, ruang terbuka, tempat bermain, rumah sakit, dan sekolah, untuk menunjang kebutuhan populasi yang terus bertumbuh.</p>
+
+        <details>
+            <summary>1. Pengembangan Wilayah Desa dan Perdesaan</summary>
+            <div class="details-content">
+                <details>
+                    <summary>a. Pengertian Desa dan Perdesaan</summary>
+                    <div class="details-content">
+                        <p>Secara harfiah, kata "desa" berasal dari bahasa India, <em>swadesi</em>, yang berarti negeri asal, tempat asal, atau tanah leluhur. Desa sering diartikan sebagai sistem sosial terkecil yang jauh dari perkotaan.</p>
+                        <ul>
+                            <li><strong>Definisi Yuridis:</strong> Menurut Undang-Undang Nomor 6 Tahun 2014 tentang Desa, desa adalah kesatuan masyarakat hukum yang memiliki batas wilayah dan wewenang untuk mengatur serta mengurus urusan pemerintahan dan kepentingan masyarakat setempat berdasarkan prakarsa masyarakat, hak asal-usul, atau hak tradisional.</li>
+                            <li><strong>Definisi Ahli Geografi:</strong>
+                                <ul>
+                                    <li><strong>Bintarto:</strong> Desa adalah wujud geografis yang muncul akibat unsur-unsur fisiografis, sosial, ekonomi, politik, dan kultural yang terdapat di suatu tempat dalam hubungannya dengan wilayah lain.</li>
+                                    <li><strong>Finch:</strong> Desa adalah kesatuan lokasi yang menjadi tempat tinggal dan bukan merupakan pusat perdagangan.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p>Dari berbagai pengertian, desa dapat disimpulkan sebagai unit geografis terkecil yang dicirikan oleh sistem sosial tradisional, potensi alam yang beragam, dan aktivitas ekonomi yang didominasi oleh kegiatan pertanian (agraris).</p>
+                        <p>Sedangkan, <strong>Perdesaan</strong> adalah kawasan yang mempunyai kegiatan utama pertanian, termasuk pengelolaan sumber daya alam, permukiman perdesaan, pelayanan jasa pemerintahan, pelayanan sosial, dan kegiatan ekonomi.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>b. Karakteristik Desa</summary>
+                    <div class="details-content">
+                        <p>Setiap wilayah memiliki karakteristik unik, termasuk desa. Beberapa unsur yang membedakan desa dari kota adalah:</p>
+                        <ol>
+                            <li><strong>Sistem Sosial:</strong> Masyarakat desa sangat terikat pada kebudayaan tradisional, adat istiadat, dan norma yang berlaku, yang membentuk segala bentuk kegiatan dan hukum.</li>
+                            <li><strong>Hubungan Kekerabatan:</strong> Pola interaksi dan hubungan kekerabatan yang kuat, permasalahan sering diselesaikan secara kekeluargaan.</li>
+                            <li><strong>Basis Kegiatan Masyarakat:</strong> Identik dengan sektor ekonomi primer (mengelola sumber daya alam), meliputi pertanian, peternakan, dan perikanan.</li>
+                            <li><strong>Hubungan Masyarakat:</strong> Sangat erat, ditandai dengan sistem gotong royong sebagai ciri khas. Tetangga dianggap sebagai keluarga.</li>
+                            <li><strong>Struktur Data Kependudukan:</strong> Kepadatan penduduk rendah dengan rasio perbandingan luas lahan per manusia yang relatif besar, artinya daya tampung lahan lebih besar dibandingkan jumlah penduduk.</li>
+                        </ol>
+                        <p>Sebagai unit geografis, desa memiliki tiga unsur vital penentu perkembangan:</p>
+                        <ol>
+                            <li><strong>Daerah:</strong> Meliputi lokasi, luas, dan batas lingkungan geografis. Tersusun dari lahan produktif dan nonproduktif serta pengelolaannya, umumnya lahan pertanian dan permukiman petani.</li>
+                            <li><strong>Penduduk:</strong> Sekumpulan individu yang menempati wilayah geografis tertentu, meliputi jumlah, pertambahan, kepadatan, penyebaran, dan mata pencarian.</li>
+                            <li><strong>Tata Kehidupan:</strong> Berkaitan dengan pola interaksi masyarakat dan kebudayaan, identik dengan kerukunan, gotong royong, dan nilai tradisi lokal.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>c. Klasifikasi Desa</summary>
+                    <div class="details-content">
+                        <p>Indonesia memiliki banyak desa (sekitar 74.961 desa) dengan beragam kondisi. Klasifikasi diperlukan untuk pengembangan optimal.</p>
+
+                        <h4>Berdasarkan Tingkat Kemajuan:</h4>
+                        <ol>
+                            <li><strong>Desa Mandiri (Desa Sembada):</strong>
+                                <p>Desa maju yang mampu melaksanakan pembangunan untuk peningkatan kualitas hidup dan kesejahteraan masyarakat. Cirinya:</p>
+                                <ul>
+                                    <li>Ketersediaan dan akses pelayanan dasar memadai.</li>
+                                    <li>Infrastruktur baik dan aksesibilitas tidak sulit.</li>
+                                    <li>Pelayanan umum dan penyelenggaraan pemerintahan sangat baik.</li>
+                                </ul>
+                                <p>Memiliki Indeks Desa Membangun (IDM) > 0,8155. Jumlah desa mandiri terus meningkat (6.064 di 2015 menjadi 6.238 di 2022).</p>
+                            </li>
+                            <li><strong>Desa Berkembang (Desa Madya):</strong>
+                                <p>Desa potensial yang nantinya mampu menjadi desa maju. Memiliki potensi sumber daya memadai (pelayanan dasar, infrastruktur, aksesibilitas, pelayanan umum, pemerintahan) tetapi belum dikelola maksimal.</p>
+                                <p>Memiliki IDM ≤ 0,7072 dan > 0,5989. Terdapat sekitar 33.878 desa berkembang di Indonesia pada tahun 2022.</p>
+                            </li>
+                            <li><strong>Desa Tertinggal (Desa Pramadya):</strong>
+                                <p>Desa dengan potensi sumber daya (pelayanan dasar, infrastruktur, aksesibilitas, pelayanan umum, pemerintahan) yang belum atau kurang mampu dikelola untuk meningkatkan kesejahteraan dan kualitas hidup. Mengalami kemiskinan.</p>
+                                <p>Memiliki IDM ≤ 0,5989 dan > 0,4907. Terdapat sekitar 9.202 desa tertinggal di Indonesia pada tahun 2022.</p>
+                            </li>
+                        </ol>
+
+                        <h4>Persentase Desa Berdasarkan Data Badan Pusat Statistik Tahun 2019:</h4>
+                        <ul>
+                            <li>Desa Berkembang: 73,40%</li>
+                            <li>Desa Tertinggal: 19,17%</li>
+                            <li>Desa Mandiri: 7,43%</li>
+                        </ul>
+
+                        <h4>Berdasarkan Tingkat Pembangunan dan Kemampuan Wilayah:</h4>
+                        <ol>
+                            <li><strong>Desa Swadaya:</strong>
+                                <p>Masyarakatnya sebagian besar memenuhi kebutuhan sendiri. Umumnya terpencil dan jarang berinteraksi dengan luar. Proses kemajuannya lambat. Contoh: Desa Kanekes (Suku Badui) yang menjaga tradisi dan tidak terkontaminasi budaya luar (tidak menggunakan handphone, TV, listrik, dll.) untuk menjaga keseimbangan alam.</p>
+                            </li>
+                            <li><strong>Desa Swakarya:</strong>
+                                <p>Lebih maju dari desa swadaya. Masyarakatnya mampu menjual kelebihan hasil produksi ke daerah lain. Interaksi dengan luar sudah mulai nampak, namun intensitasnya belum terlalu sering. Contoh: Desa Kemiren di Banyuwangi, yang ditetapkan sebagai Desa Wisata Suku Osing.</p>
+                            </li>
+                            <li><strong>Desa Swasembada:</strong>
+                                <p>Mampu mengembangkan semua potensi secara optimal. Ditandai interaksi kuat dengan masyarakat luar, pertukaran barang (perdagangan), dan saling memengaruhi. Mampu menyerap teknologi baru untuk pembangunan. Contoh: Desa Wonoayu di Kabupaten Malang, penyokong daging sapi nasional, dengan mayoritas warga beternak sapi.</p>
+                            </li>
+                        </ol>
+                        <p>Hierarki klasifikasi desa ini dipengaruhi oleh faktor-faktor pendukung kemajuan, seperti sumber daya alam, sumber daya manusia, dan kelembagaan desa.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>d. Potensi Desa</summary>
+                    <div class="details-content">
+                        <p><strong>Potensi desa</strong> adalah segala sumber daya alam dan sumber daya manusia yang dimiliki desa untuk dimanfaatkan sebagai penunjang keberlangsungan dan perkembangan desa, atau untuk pemecahan masalah dan pembangunan desa.</p>
+                        <p>Potensi desa meliputi tiga aspek utama:</p>
+                        <ol>
+                            <li><strong>Lingkungan Fisik (Sumber Daya Alam):</strong>
+                                <p>Mencakup kondisi alam secara keseluruhan:</p>
+                                <ul>
+                                    <li><strong>Tanah:</strong> Lahan pertanian, sumber daya tambang (batuan, mineral), dan lahan permukiman.</li>
+                                    <li><strong>Sumber Daya Air:</strong> Ketersediaan air untuk aktivitas sehari-hari dan ekonomi, khususnya irigasi.</li>
+                                    <li><strong>Iklim:</strong> Komponen esensial pendukung kegiatan pertanian dan perkebunan.</li>
+                                    <li><strong>Hewan Ternak:</strong> Dikelola masyarakat sebagai aktivitas ekonomi, dapat menjadi nilai tambah.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Potensi Sumber Daya Manusia:</strong>
+                                <p>Kemampuan terpadu (akal budi, pengetahuan, pengalaman) dan fisik (kecakapan, keterampilan) individu. SDM berkualitas menjadi aset pembangunan desa. Peningkatan SDM dapat melalui pendidikan, pelatihan, dan pengelolaan tenaga kerja.</p>
+                            </li>
+                            <li><strong>Kelembagaan Desa:</strong>
+                                <p>Lembaga atau organisasi desa penting dalam pembangunan desa. Tanpa kelembagaan, infrastruktur tidak dapat dilaksanakan. Bertugas membantu pemerintah desa dalam perencanaan, pelaksanaan, dan pengendalian pembangunan berbasis masyarakat.</p>
+                                <p>Komponen kelembagaan yang mendorong kemajuan desa:</p>
+                                <ul>
+                                    <li><strong>Masyarakat desa:</strong> Motor penggerak melalui usaha, aktivitas ekonomi, kegiatan sosial (gotong royong), dan kebudayaan.</li>
+                                    <li><strong>Lembaga sosial, pendidikan, dan organisasi sosial:</strong> Memberikan bantuan sosial dan bimbingan untuk pemberdayaan masyarakat.</li>
+                                    <li><strong>Aparatur atau pamong desa:</strong> Berperan aktif menjaga ketertiban, keamanan, dan kelancaran pemerintahan.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p>Ditinjau dari potensi fisik dan sosial, ada tiga klasifikasi potensi desa:</p>
+                        <ol>
+                            <li><strong>Desa Potensi Tinggi:</strong>
+                                <p>Ciri-ciri: lahan pertanian subur, topografi datar atau agak miring, fasilitas irigasi teknis memadai, SDM produktif, kelembagaan desa aktif dalam pemberdayaan masyarakat.</p>
+                            </li>
+                            <li><strong>Desa Potensi Sedang:</strong>
+                                <p>Ciri-ciri: lahan pertanian kurang subur, sebagian irigasi teknis dan nonteknis, topografi tidak rata.</p>
+                            </li>
+                            <li><strong>Desa Potensi Rendah:</strong>
+                                <p>Ciri-ciri: lahan pertanian tidak subur, topografi berbukit, sumber air sulit, pertanian bergantung curah hujan.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>e. Permasalahan Desa</summary>
+                    <div class="details-content">
+                        <p>Selain potensi, desa juga menghadapi berbagai permasalahan yang memerlukan pemecahan dalam upaya pembangunan:</p>
+                        <ol>
+                            <li><strong>Kondisi Desa Tertinggal:</strong>
+                                <p>Masyarakat desa tertinggal memiliki keterbatasan akses terhadap pelayanan sosial, ekonomi, politik, dan terisolir. Kesejahteraan mereka memerlukan perhatian dan keberpihakan pembangunan dari pemerintah.</p>
+                                <p>Data menunjukkan jumlah desa tertinggal di Indonesia:</p>
+                                <div style="overflow-x: auto;">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Tahun</th>
+                                                <th>Jumlah Desa Tertinggal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>2019</td><td>Sekitar 12.000-15.000 (dari konteks gambar)</td></tr>
+                                            <tr><td>2020</td><td>Tren menurun (dari konteks gambar)</td></tr>
+                                            <tr><td>2021</td><td>Tren menurun (dari konteks gambar)</td></tr>
+                                            <tr><td>2022</td><td>9.202 desa</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                            <li><strong>Kemiskinan:</strong>
+                                <p>Sering dikaitkan dengan masyarakat desa. Terjadi karena rendahnya pendidikan dasar dan terbatasnya lapangan kerja yang sesuai. Tenaga kerja berpendidikan dasar cenderung terserap di sektor primer (pertanian).</p>
+                                <p>Data menunjukkan persentase dan jumlah penduduk miskin di Indonesia:</p>
+                                <div style="overflow-x: auto;">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Maret 2019</th>
+                                                <th>September 2019</th>
+                                                <th>Maret 2020</th>
+                                                <th>September 2020</th>
+                                                <th>Maret 2021</th>
+                                                <th>September 2021</th>
+                                                <th>Maret 2022</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>25.14 Juta / 9.41%</td>
+                                                <td>24.78 Juta / 9.22%</td>
+                                                <td>26.42 Juta / 9.78%</td>
+                                                <td>27.55 Juta / 10.19%</td>
+                                                <td>27.54 Juta / 10.14%</td>
+                                                <td>26.50 Juta / 9.71%</td>
+                                                <td>26.16 Juta / 9.54%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>Pada Maret 2022, persentase penduduk miskin menurun 0,17% dari September 2021, dan 0,60% dari Maret 2021. Jumlah penduduk miskin juga menurun.</p>
+                            </li>
+                            <li><strong>Minimnya Tenaga Kerja Potensial Akibat Peningkatan Laju Urbanisasi:</strong>
+                                <p>Daya tarik kota menyebabkan banyak tenaga kerja potensial berpindah dari desa ke kota. Ini mengurangi sumber daya manusia yang penting untuk pembangunan desa. Akses pasar dan fasilitas di kota menarik masyarakat desa untuk meningkatkan kualitas hidup. Diprediksi jumlah penduduk di perkotaan Indonesia akan mencapai 220 juta pada 2045, dengan urbanisasi meningkat dari 56,7% (2022) menjadi 70%.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>f. Prinsip Pengelolaan Pembangunan Desa</summary>
+                    <div class="details-content">
+                        <p>Pembangunan desa harus dilakukan secara holistik dan arif, berdasarkan prinsip-prinsip pengelolaan berikut:</p>
+                        <ul>
+                            <li><strong>Akuntabilitas:</strong> Pengelolaan kegiatan harus dapat dipertanggungjawabkan kepada masyarakat.</li>
+                            <li><strong>Transparansi:</strong> Pengelolaan kegiatan harus dilakukan secara terbuka dan diketahui masyarakat.</li>
+                            <li><strong>Partisipatif:</strong> Masyarakat aktif terlibat dalam proses pembangunan.</li>
+                            <li><strong>Berkelanjutan:</strong> Pengelolaan kegiatan harus memberikan manfaat jangka panjang kepada masyarakat.</li>
+                        </ul>
+                        <p>Selain prinsip-prinsip ini, implementasi pembangunan desa juga memperhatikan elemen penting yang memengaruhi kemajuan desa:</p>
+                        <ol>
+                            <li><strong>Potensi Desa:</strong> Sumber daya alam dan manusia. Desa dengan potensi besar memiliki peluang lebih cepat untuk maju, sebaliknya desa dengan sumber daya terbatas akan menghadapi kendala.</li>
+                            <li><strong>Interaksi Desa-Kota:</strong> Hubungan timbal balik yang intensif (barang primer dari desa ke kota, barang sekunder/tersier dari kota ke desa) akan mendorong kemajuan desa.</li>
+                            <li><strong>Posisi Desa Terhadap Wilayah Lain yang Lebih Maju:</strong> Keberadaan desa di sekitar desa lain atau dekat wilayah maju akan memberikan dukungan aksesibilitas untuk kemajuan.</li>
+                        </ol>
+                        <p>Perbedaan potensi, posisi, dan interaksi ini berarti praktik pembangunan wilayah tidak dapat diseragamkan.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>g. Dinamika dan Arah Pembangunan Desa</summary>
+                    <div class="details-content">
+                        <p>Pembangunan desa adalah proses penting dalam pelaksanaan pembangunan nasional, diamanatkan dalam Rencana Pembangunan Jangka Menengah Nasional (RPJMN) 2015–2019 sebagai acuan resmi.</p>
+                        <p>Arah kebijakan pembangunan desa sesuai dengan perencanaan pembangunan kabupaten/kota (Permendesa PDTT No. 21 Tahun 2020) meliputi:</p>
+                        <ul>
+                            <li>Pemenuhan standar pelayanan minimum desa, termasuk permukiman transmigrasi, sesuai kondisi geografis.</li>
+                            <li>Penanggulangan kemiskinan dan pengembangan usaha ekonomi masyarakat desa, termasuk di permukiman transmigrasi.</li>
+                            <li>Pembangunan sumber daya manusia, peningkatan keberdayaan, dan pembentukan modal sosial budaya masyarakat desa, termasuk di permukiman transmigrasi.</li>
+                            <li>Pengawalan implementasi UU Desa secara sistematis, konsisten, dan berkelanjutan melalui koordinasi, fasilitasi, supervisi, dan pendampingan.</li>
+                            <li>Pengembangan kapasitas serta pendampingan aparatur pemerintah desa dan kelembagaan pemerintahan desa secara berkelanjutan.</li>
+                            <li>Pengelolaan sumber daya alam dan lingkungan hidup berkelanjutan serta penataan ruang kawasan perdesaan, termasuk di kawasan transmigrasi.</li>
+                            <li>Pengembangan ekonomi kawasan perdesaan, termasuk kawasan transmigrasi, untuk mendorong keterkaitan desa-kota.</li>
+                        </ul>
+                        <div class="highlight-blue">
+                            <h3>Tautan</h3>
+                            <p>Untuk menambah wawasan kalian tentang pengembangan desa, kunjungi: <br><a href="https://www.kemenkopmk.go.id/desa-nglanggeran-contoh-keberhasilan-pengembangan-desa-wisata" target="_blank">https://www.kemenkopmk.go.id/desa-nglanggeran-contoh-keberhasilan-pengembangan-desa-wisata</a></p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </details>
+
+        <details>
+            <summary>2. Pengembangan Wilayah Kota dan Perkotaan</summary>
+            <div class="details-content">
+                <details>
+                    <summary>a. Pengertian Kota dan Perkotaan</summary>
+                    <div class="details-content">
+                        <p>Berbeda dengan desa, kota menunjukkan perkembangan yang lebih dinamis dengan fasilitas publik yang lengkap (kesehatan, pendidikan, sosial, seni, perbelanjaan, dll.).</p>
+                        <p>Pengertian kota secara umum merujuk pada wilayah dengan aktivitas ekonomi non-agraris, fasilitas publik lengkap, dan jumlah penduduk yang lebih besar dari desa. Kota merupakan wujud dari perkembangan wilayah desa.</p>
+                        <ul>
+                            <li><strong>Kamus Tata Ruang:</strong> Wilayah dengan konsentrasi penduduk padat akibat pemusatan kegiatan fungsional.</li>
+                            <li><strong>Bintarto:</strong> Sistem jaringan kehidupan manusia dengan kepadatan penduduk tinggi, strata sosial ekonomi heterogen, dan corak materialistis.</li>
+                            <li><strong>Harris dan Ullman:</strong> Pusat permukiman dan pemanfaatan ruang bumi yang dilakukan manusia secara unggul, dicirikan pertumbuhan wilayah cepat dan luas.</li>
+                            <li><strong>Weber:</strong> Daerah tempat tinggal yang dicirikan kemampuan masyarakat memenuhi sebagian besar kebutuhan ekonominya di pasar lokal.</li>
+                        </ul>
+                        <p><strong>Kesimpulan:</strong> Kota adalah wilayah sentral permukiman dan ekonomi masyarakat, dihuni SDM unggul, dan menyediakan peluang lebih besar dibanding perdesaan. Banyak penduduk desa bermobilitas ke kota untuk meningkatkan kualitas hidup.</p>
+                        <p><strong>Perkotaan</strong> merujuk pada permukiman yang meliputi kota induk dan daerah sekitarnya yang mendapat pengaruh dari kota induk, berfungsi sebagai pusat kegiatan ekonomi, industri, distribusi pelayanan jasa pemerintahan, sosial, dan non-pertanian.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>b. Karakteristik Perkotaan</summary>
+                    <div class="details-content">
+                        <p>Kawasan perkotaan memiliki karakteristik khusus:</p>
+                        <ul>
+                            <li>Pola keruangan didominasi wilayah terbangun.</li>
+                            <li>Kepadatan penduduk tinggi.</li>
+                            <li>Rasio manusia dan lahan cenderung kecil.</li>
+                            <li>Masyarakat umumnya individualis, kosmopolitan, dan pola interaksi terkotak-kotak.</li>
+                            <li>Variasi kegiatan ekonomi heterogen, dengan corak sektor non-agraris.</li>
+                            <li>Fungsi perkotaan selain tempat tinggal: pusat ekonomi (pasar), pelayanan, pemerintahan, militer, keagamaan, pendidikan.</li>
+                            <li>Masyarakat memiliki latar belakang ekonomi, suku, dan budaya yang beragam.</li>
+                        </ul>
+                        <p>Komponen penting penyusun kota:</p>
+                        <ul>
+                            <li><strong>Manusia:</strong> SDM sebagai penggerak utama, kualitas SDM penting untuk pembangunan.</li>
+                            <li><strong>Alam:</strong> Aset negara (tanah, kekayaan alam, iklim) yang mempengaruhi pertumbuhan industri dan penyediaan bahan baku.</li>
+                            <li><strong>Ruang:</strong> Tempat berdirinya kota dan segala aktivitasnya, memerlukan tata ruang sebagai pedoman pembangunan dan solusi masalah kota.</li>
+                            <li><strong>Jaringan:</strong> Fasilitas (infrastruktur seperti jalan, transportasi, air bersih, limbah, persampahan, energi, telekomunikasi, pendidikan, kesehatan, perdagangan) yang melayani dan mendorong lingkungan permukiman dan usaha optimal.</li>
+                            <li><strong>Masyarakat:</strong> Mengalami banyak perubahan dibanding pedesaan, lebih terbuka terhadap pengaruh luar.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>c. Klasifikasi Kota</summary>
+                    <div class="details-content">
+                        <h4>1) Klasifikasi Kota Berdasarkan Jumlah Populasi dan Permukiman (Doxiadis, 1968):</h4>
+                        <ol>
+                            <li><strong>Dwelling group:</strong> Permukiman dengan populasi terendah (40 jiwa).</li>
+                            <li><strong>Small neighborhood:</strong> Permukiman dengan penduduk 250 jiwa.</li>
+                            <li><strong>Neighborhood:</strong> Permukiman dengan penduduk 1.500 jiwa.</li>
+                            <li><strong>Small town:</strong> Kota kecil dengan penduduk 9.000 jiwa.</li>
+                            <li><strong>Town:</strong> Penduduk 50.000 jiwa.</li>
+                            <li><strong>Large city:</strong> Penduduk 300.000 jiwa.</li>
+                            <li><strong>Metropolis:</strong> Penduduk 2.000.000 jiwa.</li>
+                            <li><strong>Conurbation:</strong> Penduduk 14.000.000 jiwa.</li>
+                            <li><strong>Megalopolis:</strong> Penduduk 100.000.000 jiwa.</li>
+                            <li><strong>Urban region:</strong> Penduduk 700.000.000 jiwa.</li>
+                            <li><strong>Urban continent:</strong> Penduduk 5.000.000.000 jiwa.</li>
+                            <li><strong>Ecumenepolis:</strong> Penduduk 30.000.000.000 jiwa.</li>
+                        </ol>
+
+                        <h4>2) Klasifikasi Kota Berdasarkan Keberadaan Pusat Pelayanan (Retail) (Sinulingga, 2005):</h4>
+                        <ol>
+                            <li><strong>Kota Monosentris:</strong>
+                                <p>Belum berkembang pesat, jumlah penduduk belum banyak, dan hanya memiliki satu pusat pelayanan yang berfungsi sebagai Central Business District (CBD). Contoh: ibu kota kecamatan.</p>
+                            </li>
+                            <li><strong>Kota Polisentris:</strong>
+                                <p>Telah berkembang hingga membutuhkan lebih dari satu pusat pelayanan. Jumlah pusat pelayanan bergantung pada jumlah penduduk. Contoh: kota-kota di daerah dan ibu kota kabupaten.</p>
+                            </li>
+                            <li><strong>Kota Metropolitan:</strong>
+                                <p>Kota besar yang dikelilingi kota-kota satelit yang terpisah cukup jauh tetapi membentuk satu kesatuan sistem pelayanan penduduk. Contoh: Jakarta (Jabodetabek) dan Surabaya (Gerbangkertosusila).</p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>d. Teori Struktur Keruangan Kota</summary>
+                    <div class="details-content">
+                        <p>Ekologi kota dapat ditelaah melalui tiga teori struktur keruangan kota:</p>
+                        <h4>1) Teori Konsentris (Burgess, 1924)</h4>
+                        <p>Asumsi: perkembangan kota mengikuti pola ruang konsentris, tersusun dalam lingkaran bertingkat mengelilingi titik pusat.</p>
+                        <ul>
+                            <li><strong>Zona 1: Titik Pusat (Central Business District - CBD):</strong> Pusat kehidupan sosial, ekonomi, budaya, politik. Bangunan utama untuk kegiatan tersebut, jaringan transportasi memusat ke zona ini, aksesibilitas tinggi.</li>
+                            <li><strong>Zona 2: Zona Peralihan (Zone of Transition):</strong> Dihuni penduduk berpenghasilan rendah dan migran dari desa. Berkembang sebagai kawasan sesak atau <em>slum area</em>. Kualitas lingkungan permukiman menurun.</li>
+                            <li><strong>Zona 3: Zona Kelas Rendah (Zone of Low Status):</strong> Tempat tinggal pekerja. Perumahan lebih baik dan teratur, penghuni umumnya bekas penghuni zona kedua (pekerja pabrik, buruh).</li>
+                            <li><strong>Zona 4: Zona Kelas Menengah (Zone of Middle Status):</strong> Dihuni kelas menengah (profesional, pemilik usaha, pegawai). Perumahan pribadi, rumah bangsa rendah, pusat perniagaan kecil.</li>
+                            <li><strong>Zona 5: Zona Kelas Tinggi (Zone of High Status / Commuters):</strong> Bagian terluar kota, kawasan perumahan mewah. Ditempati mereka yang memiliki kendaraan pribadi untuk pulang-pergi kerja ke pusat kota. Berkembang sebagai kota satelit.</li>
+                        </ul>
+                        <p class="note">Variabel pengukur zona adalah harga tanah: semakin dekat pusat kota, harga tanah semakin tinggi.</p>
+
+                        <h4>2) Teori Sektoral (Homer Hoyt, 1939)</h4>
+                        <p>Asumsi: struktur tata guna lahan berkembang melalui sektor-sektor menyerupai irisan kue. CBD di pusat, tetapi pemanfaatan lahan lainnya berkembang dalam sektor.</p>
+                        <ul>
+                            <li><strong>Lingkaran dalam:</strong> Pusat kota (CBD) berisi kantor, hotel, bank, bioskop, pasar, perbelanjaan.</li>
+                            <li><strong>Sektor tertentu:</strong> Kawasan industri ringan dan perdagangan.</li>
+                            <li><strong>Dekat pusat kota & sektor industri:</strong> Sektor murbawisma (tempat tinggal kaum buruh).</li>
+                            <li><strong>Agak jauh:</strong> Sektor madyawisma (perumahan kelas menengah).</li>
+                            <li><strong>Lebih jauh:</strong> Sektor adiwisma (permukiman golongan atas).</li>
+                        </ul>
+
+                        <h4>3) Teori Inti Berganda (Harris dan Ullman, 1949)</h4>
+                        <p>Asumsi: suatu kota terdiri dari beberapa inti atau pusat perkembangan, bukan hanya satu. Setiap pusat cenderung diwarnai satu jenis kegiatan. Pusat-pusat kegiatan baru muncul seiring perkembangan kota.</p>
+                        <ul>
+                            <li>Pusat kota atau Central Business District (CBD)</li>
+                            <li>Kawasan niaga dan industri ringan</li>
+                            <li>Kawasan murbawisma (tempat tinggal berkualitas rendah)</li>
+                            <li>Kawasan madyawisma (tempat tinggal berkualitas menengah)</li>
+                            <li>Kawasan adiwisma (tempat tinggal berkualitas tinggi)</li>
+                            <li>Pusat industri berat</li>
+                            <li>Pusat niaga/perbelanjaan lain di pinggiran</li>
+                            <li>Upakota (suburban) untuk kawasan madyawisma dan adiwisma</li>
+                            <li>Upakota (suburban) kawasan industri</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>e. Stadia Perkembangan Kota (Lewis Mumford)</summary>
+                    <div class="details-content">
+                        <p>Kota terbentuk akibat pesatnya laju aktivitas ekonomi. Setiap kota pada mulanya adalah desa yang berkembang. Ada enam tahapan/stadia perkembangan kota:</p>
+                        <ol>
+                            <li><strong>Tahap Eopolis:</strong> Desa teratur yang mulai menunjukkan perubahan ke arah kehidupan kota. Infrastruktur mulai berkembang (jalan beraspal, listrik, telepon genggam), gaya hidup mulai kekotaan.</li>
+                            <li><strong>Tahap Polis:</strong> Aktivitas ekonomi masih agraris. Umumnya ibu kota daerah pemekaran, penduduk sebagian besar bekerja di pertanian.</li>
+                            <li><strong>Tahap Metropolis:</strong> Sebagian besar aktivitas ekonomi berorientasi pada sektor industri. Contoh: Kota Sidoarjo, Tangerang, Bekasi, dengan penduduk mayoritas bekerja di industri.</li>
+                            <li><strong>Tahap Megalopolis:</strong> Wilayah kota yang telah mencapai tingkat perkembangan tertinggi akibat pemekaran atau perluasan. Pengaruh meluas ke daerah sekitar (Jabodetabek, Gerbangkertosusila).</li>
+                            <li><strong>Tahap Tiranopolis:</strong> Pola kehidupan masyarakat sulit dikendalikan. Dicirikan masalah seperti kemacetan, kejahatan, kriminalitas, dan kekacauan pelayanan. Tahapan ini belum dialami kota-kota di Indonesia.</li>
+                            <li><strong>Tahap Nekropolis:</strong> Perkembangan kota mengarah pada "kota mati" atau kemunduran. Tahapan ini juga belum dialami kota-kota di Indonesia.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>f. Paradigma Pembangunan Kota</summary>
+                    <div class="details-content">
+                        <p>Paradigma pembangunan kota saat ini berfokus pada menciptakan suasana nyaman, dengan penataan fisik yang harmonis (jalan mulus, pedestrian lebar, jalur difabel, taman serasi, ruang terbuka hijau tertata), serta sistem transportasi umum yang memadai.</p>
+                        <p>Pembangunan kota dengan paradigma baru tidak hanya membangun fisik dan ekonomi, tetapi juga pembangunan yang menyeluruh, kompak, nyaman, efisien dalam pengelolaan, dan berkelanjutan. Visi seperti "Maju Kotanya, Bahagia Warganya" mencerminkan tujuan ini.</p>
+                        <p>Pembangunan kota dapat dilakukan melalui:</p>
+                        <ul>
+                            <li><strong>Penerapan manajemen perkotaan yang baik:</strong> Optimasi dan pengendalian pemanfaatan ruang, pengamanan zona penyangga, penegakan hukum yang tegas.</li>
+                            <li><strong>Pengembangan kegiatan ekonomi kota yang ramah lingkungan:</strong> Pengembangan industri jasa keuangan, perbankan, asuransi, telematika, peningkatan kemampuan keuangan daerah.</li>
+                            <li><strong>Revitalisasi kawasan kota:</strong> Mengembalikan fungsi kawasan melalui pembangunan kembali, peningkatan kualitas lingkungan (fisik, sosial, budaya), penataan pelayanan fasilitas publik, dan pengembangan sistem transportasi massal terintegrasi.</li>
+                        </ul>
+                        <p>Konsep "kota baru" merupakan upaya mengatasi pertumbuhan permukiman tak terkendali dan kemacetan. Di Indonesia, banyak fenomena "kota baru" (meski tidak selalu disebut demikian) seperti Balikpapan Baru, Semarang, Gresik, Kendari, Manado, Batu, Yogyakarta, dan Solo.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>g. Arah dan Dinamika Pembangunan Kota</summary>
+                    <div class="details-content">
+                        <p>Kota berkembang secara dinamis dipengaruhi tiga faktor:</p>
+                        <ol>
+                            <li><strong>Struktur Keruangan Kota:</strong> Penataan jejaring jalan, penggunaan lahan, dan pemanfaatan lahan.</li>
+                            <li><strong>Potensi Sumber Daya:</strong> Modal dalam penentuan arah kebijakan pembangunan.</li>
+                            <li><strong>Tantangan:</strong> Masalah urbanisasi berlebih, kemiskinan, krisis keamanan, melemahnya daya dukung lingkungan, kesenjangan ekonomi, dan globalisasi.</li>
+                        </ol>
+                        <p>Dampak serius urbanisasi terjadi ketika kota tidak lagi mampu menyediakan fasilitas pokok dan peluang kerja akibat pertambahan penduduk yang pesat. Urbanisasi memperburuk pengangguran dan menimbulkan masalah sosial (kesesakan, penyerobotan tanah, permukiman liar).</p>
+                        <p>Paradigma pembangunan kota melihat wilayah desa dan kota sebagai sistem yang tak terpisahkan. Pengembangan desa juga strategi penting untuk pengembangan kota. Urbanisasi secara tidak langsung menuntut kota untuk terus berkembang dan membangun fasilitas untuk memenuhi kebutuhan penduduk urbanis yang meningkat.</p>
+                        <div class="highlight-blue">
+                            <h3>Tautan</h3>
+                            <p>Untuk menambah wawasan kalian tentang pengembangan kota, kunjungi: <br><a href="https://bpiw.pu.go.id/" target="_blank">https://bpiw.pu.go.id/</a></p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </details>
+
+        <details>
+            <summary>3. Interaksi Desa-Kota</summary>
+            <div class="details-content">
+                <details>
+                    <summary>a. Pengertian dan Faktor Pendorong Interaksi Desa-Kota</summary>
+                    <div class="details-content">
+                        <p>Desa dan kota selalu terjalin dalam hubungan saling memenuhi dan membutuhkan. Desa menyediakan bahan pokok/mentah hasil pertanian dan tenaga kerja produktif, sedangkan kota menyediakan barang jadi produk industri.</p>
+                        <p>Hubungan timbal balik ini disebut <strong>interaksi desa-kota</strong>. Desa berfungsi sebagai <strong>hinterland</strong> (daerah penyangga) bagi kota.</p>
+                        <p>Tiga faktor utama pendorong interaksi desa-kota (Latarre, 2012):</p>
+                        <ol>
+                            <li><strong>Komplementasi Regional (Regional Complementary):</strong>
+                                <p>Wilayah-wilayah saling melengkapi kebutuhan. Interaksi terjadi jika potensi suatu wilayah melengkapi kebutuhan wilayah lain. Contoh: kota Malang dipasok beras dan sayuran dari desa-desa Pakis.</p>
+                            </li>
+                            <li><strong>Kesempatan Intervensi (Intervening Opportunity):</strong>
+                                <p>Pengaruh yang menghambat interaksi antarwilayah karena adanya komponen alternatif atau pengganti sumber daya. Contoh: kekurangan sayur diatasi dengan pertanian kota (<em>urban farming</em>).</p>
+                            </li>
+                            <li><strong>Kemudahan Perpindahan dalam Ruang (Spatial Transfer Ability):</strong>
+                                <p>Faktor yang mendorong pergerakan manusia, barang, dan informasi. Terkait jarak mutlak dan relatif antarwilayah, biaya angkutan, dan kelancaran prasarana transportasi. Contoh: pengiriman produk pertanian dari desa sekitar Malang mudah karena akses jalan dan angkutan yang mudah.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>b. Dampak Interaksi Desa-Kota</summary>
+                    <div class="details-content">
+                        <p>Interaksi desa-kota memiliki dampak positif dan negatif:</p>
+                        <h4>Dampak Positif:</h4>
+                        <ol>
+                            <li><strong>Peningkatan Pengetahuan dan Literasi Masyarakat:</strong>
+                                <p>Kemudahan pertukaran informasi dan perkembangan teknologi (internet) meningkatkan pengetahuan, wawasan, dan akses informasi masyarakat desa.</p>
+                            </li>
+                            <li><strong>Peningkatan Pergerakan Barang dan Jasa:</strong>
+                                <p>Pergerakan barang dan jasa dari desa ke kota atau sebaliknya meningkat. Kota dengan ekonomi modern membutuhkan bahan pokok dari desa, dan desa membutuhkan produk industri dan jasa dari kota.</p>
+                            </li>
+                            <li><strong>Penciptaan Akses Teknologi yang Lebih Mudah:</strong>
+                                <p>Masyarakat desa lebih mudah mengakses teknologi tepat guna, terutama di bidang pertanian. Pemerintah berupaya mengajarkan dan memberikan bantuan alat pertanian modern.</p>
+                            </li>
+                        </ol>
+
+                        <h4>Dampak Negatif:</h4>
+                        <ol>
+                            <li><strong>Peningkatan Urbanisasi:</strong>
+                                <p>Masyarakat usia produktif cenderung bekerja di kota karena daya tarik pekerjaan beragam, upah lebih tinggi, dan infrastruktur memadai di kota. Ini menyebabkan masalah sosial di kota akibat pertambahan penduduk yang pesat.</p>
+                            </li>
+                            <li><strong>Penurunan Lahan Pertanian dan Lahan Terbuka Hijau:</strong>
+                                <p>Pertambahan penduduk meningkatkan kebutuhan lahan tempat tinggal/usaha. Ketersediaan lahan tetap, menyebabkan lahan produktif beralih fungsi menjadi permukiman atau kegiatan usaha yang lebih menguntungkan.</p>
+                            </li>
+                            <li><strong>Penetrasi Budaya Kota ke Desa yang Kurang Sesuai:</strong>
+                                <p>Masuknya pengaruh kebudayaan kota yang berbeda dengan kebudayaan lokal desa. Jika tidak seimbang, dapat merusak kebudayaan lama.</p>
+                            </li>
+                            <li><strong>Memicu Masalah-Masalah Sosial:</strong>
+                                <p>Munculnya pengangguran, tunawisma, kriminalitas di kota jika penduduk desa tidak memiliki keterampilan yang dibutuhkan. Kondisi sulit ini dapat mendorong tindakan kriminal. Juga menyebabkan tunakarya dan tunasusila.</p>
+                            </li>
+                            <li><strong>Memunculkan Area-Area Kumuh (Slum Area):</strong>
+                                <p>Meluasnya urbanisasi menyebabkan pertumbuhan kantong-kantong permukiman kumuh di tengah kota yang padat dan tidak layak huni. Area ini terus mendapat tambahan pemukim.</p>
+                            </li>
+                            <li><strong>Penurunan Minat Bekerja di Sektor Pertanian:</strong>
+                                <p>Berkembangnya pekerjaan non-pertanian dan rendahnya penghasilan di sektor pertanian menyebabkan generasi muda kurang tertarik. Jumlah tenaga kerja pertanian menurun (dari 42,46 juta jiwa di 2011 menjadi 38,77 juta jiwa di 2021), padahal Indonesia negara agraris.</p>
+                            </li>
+                            <li><strong>Peningkatan Gaya Hidup Hedonisme:</strong>
+                                <p>Perilaku konsumtif masyarakat desa meningkat terhadap barang industri. Pembelian didorong keinginan (tren, gengsi, prestise) bukan hanya kebutuhan, yang meningkatkan daya beli dan sikap konsumtif.</p>
+                            </li>
+                        </ol>
+                        <div class="highlight-blue">
+                            <h3>Tautan</h3>
+                            <p>Untuk menambah wawasan kalian tentang interaksi desa dan kota, kunjungi: <br><a href="https://repositori.kemdikbud.go.id/20638/1/Kelas%20XII_Geografi_KD%203.2%20%282%29.pdf" target="_blank">https://repositori.kemdikbud.go.id/20638/1/Kelas%20XII_Geografi_KD%203.2%20%282%29.pdf</a></p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </details>
+
+        <h1 class="section-header">C. Tata Ruang dan Dinamikanya dalam Pembangunan Wilayah</h1>
+
+        <details>
+            <summary>1. Pengertian dan Konsep Penataan Ruang</summary>
+            <div class="details-content">
+                <p>Dalam kehidupan sehari-hari, kita mengenal ruang dengan batas-batas jelas (misalnya ruang tamu). Namun, di luar rumah, ruang memiliki batas yang lebih abstrak (RT, RW, desa, kabupaten/kota, negara) yang merupakan bagian permukaan bumi untuk aktivitas manusia.</p>
+                <p><strong>Ruang (space)</strong> memiliki arti penting sebagai kesatuan tempat hidup manusia dan sumber daya alam. Mangunsukarjo (1990) mendefinisikan ruang sebagai bagian lingkungan fisik dengan dimensi geografis dan geometris, sehingga batasan kenampakan ruang dapat dilihat dan diukur (vertikal maupun horizontal).</p>
+                <p>Istilah ruang mencakup darat, laut, dan udara. <strong>Penataan ruang</strong> adalah kegiatan pemanfaatan dan pengelolaan ruang secara optimal untuk meningkatkan kesejahteraan hidup masyarakat. Menurut Undang-Undang Nomor 26 Tahun 2007 tentang Penataan Ruang, penataan ruang merujuk pada kegiatan:</p>
+                <ol>
+                    <li><strong>Perencanaan Tata Ruang:</strong>
+                        <p>Kegiatan pengaturan, pembinaan, pelaksanaan, dan pengawasan penataan ruang. Tujuannya mewujudkan ruang wilayah yang aman, nyaman, produktif, dan berkelanjutan, berlandaskan wawasan nusantara dan ketahanan nasional. Mewujudkan keharmonisan lingkungan alam dan buatan, serta keterpaduan penggunaan sumber daya alam.</p>
+                    </li>
+                </ol>
+            </div>
+        </details>
+
+        <div class="note">
+            <p><strong>Geografi untuk SMA/MA Kelas XII</strong></p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

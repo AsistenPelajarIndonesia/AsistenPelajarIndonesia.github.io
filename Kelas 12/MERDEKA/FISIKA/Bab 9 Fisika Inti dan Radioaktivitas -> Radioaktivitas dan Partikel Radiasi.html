@@ -1,0 +1,509 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radioaktivitas dan Partikel Radiasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.5em;
+            margin-top: 25px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #fdfdfd;
+            border-radius: 8px;
+            border: 1px solid #E0E0E0;
+        }
+        .content-block {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 4px solid #1976D2;
+        }
+        .content-block p {
+            margin-bottom: 15px;
+        }
+        .content-block ul {
+            list-style-type: disc;
+            margin-left: 30px;
+        }
+        .content-block li {
+            margin-bottom: 10px;
+        }
+        .highlight {
+            background-color: #FFF9C4;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid #FFB300;
+        }
+        .formula {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.1em;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #E0E0E0;
+            margin: 15px 0;
+            text-align: center;
+            overflow-x: auto; /* Handle long formulas */
+        }
+        .formula-inline {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.05em;
+            background-color: #f5f5f5;
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: 1px solid #E0E0E0;
+            display: inline-block;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            overflow: hidden; /* To ensure rounded corners are applied */
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #E0E0E0;
+        }
+        th {
+            background-color: #1976D2;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+        .interactive-element {
+            background-color: #E3F2FD;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px dashed #1976D2;
+            text-align: center;
+            font-weight: bold;
+            color: #1976D2;
+            cursor: pointer;
+        }
+        .interactive-element:hover {
+            background-color: #BBDEFB;
+        }
+        .explanation-block {
+            background-color: #FCE4EC;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 5px solid #D32F2F;
+            font-style: italic;
+            color: #424242;
+        }
+        .keyword {
+            font-weight: bold;
+            color: #388E3C;
+        }
+        .definition {
+            font-style: italic;
+            color: #757575;
+        }
+        .responsive-text {
+            font-size: 1.1em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .section {
+                padding: 15px;
+            }
+            .formula {
+                font-size: 1em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .content-block {
+                padding-left: 10px;
+                border-left-width: 3px;
+            }
+            .responsive-text {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Radioaktivitas dan Partikel Radiasi</h1>
+
+        <div class="section">
+            <h2>Interaksi dengan Materi dan Energi Ikat</h2>
+
+            <div class="content-block">
+                <p>Dalam fisika inti, kita seringkali berbicara tentang energi yang dilepaskan atau dibutuhkan dalam suatu reaksi nuklir. Salah satu konsep penting adalah energi ikat per nukleon. Energi ini menunjukkan seberapa kuat nukleon (proton dan neutron) terikat dalam inti atom.</p>
+
+                <h3>Energi yang Diperoleh per Nukleon</h3>
+                <p>Energi yang diperoleh per nukleon adalah ukuran stabilitas inti. Semakin besar energi ikat per nukleon, semakin stabil inti tersebut.</p>
+
+                <div class="formula">
+                    <p>Energi per Nukleon = <span class="formula-inline">Total Energi Ikat</span> / <span class="formula-inline">Jumlah Nukleon</span></p>
+                </div>
+
+                <p>Ketika inti atom mengalami reaksi, seperti fisi atau fusi, seringkali terjadi perubahan massa. Perubahan massa ini berhubungan langsung dengan energi yang dilepaskan atau diserap, sesuai dengan persamaan terkenal Einstein:</p>
+
+                <div class="formula">
+                    <p>E = mc²</p>
+                </div>
+
+                <p>Dalam konteks fisika inti, perubahan massa (<span class="formula-inline">Δm</span>) ini dikenal sebagai defek massa. Jika defek massa bernilai positif (<span class="formula-inline">Δm > 0</span>), berarti ada energi yang dilepaskan (reaksi eksotermik), yang sering kita lihat dalam reaksi fisi. Jika defek massa bernilai negatif (<span class="formula-inline">Δm < 0</span>), berarti ada energi yang dibutuhkan (reaksi endotermik), seperti pada reaksi fusi.</p>
+
+                <p>Informasi penting yang perlu diingat:</p>
+                <div class="highlight">
+                    <p>1 <span class="formula-inline">sma</span> = 931 <span class="formula-inline">MeV/c²</span></p>
+                </div>
+
+                <h3>Rumusan Energi Ikat secara Umum</h3>
+                <p>Berdasarkan perhitungan energi yang diperoleh per nukleon, kita bisa merumuskan energi ikat suatu inti atom. Untuk sebuah reaksi nuklir umum:</p>
+
+                <div class="formula">
+                    <p><span class="formula-inline"><sup>A</sup><sub>Z</sub>X + <sup>1</sup><sub>0</sub>n → <sup>A-1</sup><sub>Z</sub>Y + <sup>A-1</sup><sub>Z</sub>Z + 3<sup>1</sup><sub>0</sub>n + Δm</span></p>
+                </div>
+
+                <p>Energi ikat total (<span class="formula-inline">ΔE</span>) dapat dihitung dari defek massa (<span class="formula-inline">Δm</span>):</p>
+
+                <div class="formula">
+                    <p><span class="formula-inline">ΔE = (massa reaktan - massa produk)c²</span></p>
+                </div>
+
+                <p>Atau, jika dinyatakan dalam satuan massa atom (sma):</p>
+
+                <div class="formula">
+                    <p><span class="formula-inline">ΔE (MeV) = (massa reaktan (sma) - massa produk (sma)) × 931</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Isotop dan Kestabilan Inti</h2>
+
+            <div class="content-block">
+                <p>Setiap atom terdiri dari inti yang berisi proton dan neutron, serta elektron yang mengorbit. Jumlah proton menentukan jenis unsur, sedangkan jumlah neutron dapat bervariasi untuk unsur yang sama, menghasilkan <span class="keyword">isotop</span>.</p>
+
+                <h3>Isotop: Varian Inti yang Sama</h3>
+                <p>Isotop adalah atom-atom dari unsur yang sama yang memiliki jumlah proton yang sama tetapi jumlah neutron yang berbeda.</p>
+
+                <div class="highlight">
+                    <p>Contoh: Isotop Nikel (Ni) dan Kalium (K)</p>
+                    <ul>
+                        <li>Nikel (Ni): <span class="formula-inline"><sup>55</sup><sub>28</sub>Ni</span>, <span class="formula-inline"><sup>56</sup><sub>28</sub>Ni</span>, <span class="formula-inline"><sup>57</sup><sub>28</sub>Ni</span></li>
+                        <li>Kalium (K): <span class="formula-inline"><sup>37</sup><sub>19</sub>K</span>, <span class="formula-inline"><sup>38</sup><sub>19</sub>K</span>, <span class="formula-inline"><sup>39</sup><sub>19</sub>K</span></li>
+                    </ul>
+                </div>
+
+                <p>Perhatikan bahwa semua isotop Ni memiliki 28 proton, dan semua isotop K memiliki 19 proton. Perbedaan terletak pada jumlah neutronnya.</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nuklida</th>
+                                <th>Proton (Z)</th>
+                                <th>Neutron (N)</th>
+                                <th>Elektron</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><sup>55</sup><sub>28</sub>Ni</td>
+                                <td>28</td>
+                                <td>27</td>
+                                <td>28</td>
+                            </tr>
+                            <tr>
+                                <td><sup>56</sup><sub>28</sub>Ni</td>
+                                <td>28</td>
+                                <td>28</td>
+                                <td>28</td>
+                            </tr>
+                            <tr>
+                                <td><sup>57</sup><sub>28</sub>Ni</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td>28</td>
+                            </tr>
+                            <tr>
+                                <td><sup>37</sup><sub>19</sub>K</td>
+                                <td>19</td>
+                                <td>18</td>
+                                <td>19</td>
+                            </tr>
+                            <tr>
+                                <td><sup>38</sup><sub>19</sub>K</td>
+                                <td>19</td>
+                                <td>19</td>
+                                <td>19</td>
+                            </tr>
+                            <tr>
+                                <td><sup>39</sup><sub>19</sub>K</td>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>19</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Faktor yang Mempengaruhi Kestabilan Inti</h3>
+                <p>Kestabilan inti atom sangat bergantung pada keseimbangan antara jumlah proton dan neutron, serta energi ikat inti.</p>
+                <ul>
+                    <li><strong>Inti Ringan (Z ≤ 20):</strong> Cenderung stabil jika jumlah neutron (N) mendekati jumlah proton (Z), yaitu <span class="formula-inline">N ≈ Z</span>.</li>
+                    <li><strong>Inti Berat (Z > 20):</strong> Cenderung stabil jika jumlah neutron lebih banyak dari proton, yaitu <span class="formula-inline">N > Z</span>. Rasio <span class="formula-inline">N/Z</span> yang optimal biasanya berkisar antara 1.2 hingga 1.5.</li>
+                </ul>
+
+                <p>Secara visual, kestabilan inti dapat digambarkan menggunakan <span class="keyword">grafik pita kestabilan</span>, yang memplot jumlah neutron (N) terhadap jumlah proton (Z).</p>
+
+                <div class="content-block">
+                    <p><strong>Interpretasi Grafik Pita Kestabilan:</strong></p>
+                    <ul>
+                        <li>Unsur-unsur yang terletak <span class="keyword">segaris</span> dengan pita kestabilan (dimana <span class="formula-inline">N = Z</span>) pada umumnya stabil.</li>
+                        <li>Unsur-unsur yang terletak <span class="keyword">di atas</span> pita kestabilan (jumlah neutron lebih banyak dari rasio stabil) cenderung tidak stabil dan mengalami peluruhan beta minus (<span class="formula-inline">β⁻</span>) untuk mengurangi jumlah neutron.</li>
+                        <li>Unsur-unsur yang terletak <span class="keyword">di bawah</span> pita kestabilan (jumlah neutron lebih sedikit dari rasio stabil) cenderung tidak stabil dan mengalami peluruhan beta positif (<span class="formula-inline">β⁺</span>) atau penangkapan elektron (EC) untuk meningkatkan jumlah neutron.</li>
+                        <li>Inti yang sangat berat (Z > 83) cenderung tidak stabil dan dapat mengalami peluruhan alfa (<span class="formula-inline">α</span>).</li>
+                    </ul>
+                </div>
+
+                <p>Ketika sebuah inti tidak stabil, ia akan berusaha mencapai keadaan yang lebih stabil dengan cara melepaskan partikel-partikel tertentu. Peristiwa ini disebut <span class="keyword">peluruhan radioaktif</span>.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Partikel Radiasi</h2>
+
+            <div class="content-block">
+                <p>Peluruhan radioaktif adalah proses pelepasan nukleon (proton dan neutron) atau partikel lain dari inti atom yang tidak stabil untuk mencapai keadaan yang lebih stabil. Partikel-partikel yang dilepaskan ini disebut <span class="keyword">partikel radiasi</span>.</p>
+
+                <h3>Jenis-jenis Partikel Radiasi dan Karakteristiknya</h3>
+                <p>Partikel radiasi memiliki karakteristik yang berbeda-beda, termasuk massa, muatan, kecepatan, dan daya tembusnya.</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Karakteristik</th>
+                                <th>Partikel Alfa (<span class="formula-inline">α</span>)</th>
+                                <th>Partikel Beta Minus (<span class="formula-inline">β⁻</span>)</th>
+                                <th>Partikel Beta Positif (<span class="formula-inline">β⁺</span>)</th>
+                                <th>Radiasi Gamma (<span class="formula-inline">γ</span>)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Massa</strong></td>
+                                <td>4 <span class="formula-inline">u</span> (inti Helium: 2 proton, 2 neutron)</td>
+                                <td>Kurang lebih <span class="formula-inline">u/2000</span> (elektron)</td>
+                                <td>Kurang lebih <span class="formula-inline">u/2000</span> (positron)</td>
+                                <td>0 (gelombang elektromagnetik)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Muatan</strong></td>
+                                <td>+2e</td>
+                                <td>-e</td>
+                                <td>+e</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bentuk</strong></td>
+                                <td>Inti Helium</td>
+                                <td>Elektron</td>
+                                <td>Positron</td>
+                                <td>Gelombang Elektromagnetik</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kecepatan</strong></td>
+                                <td>Hingga 0.05c</td>
+                                <td>Hingga 0.99c</td>
+                                <td>Hingga 0.99c</td>
+                                <td>c (kecepatan cahaya)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mempen-garuhi Plat Film?</strong></td>
+                                <td>Ya</td>
+                                <td>Ya</td>
+                                <td>Ya</td>
+                                <td>Ya</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Kesimpulan dari perbandingan ini:</p>
+                <ul>
+                    <li><strong>Perbedaan Utama:</strong> Partikel alfa memiliki massa paling besar dan muatan positif, beta memiliki massa sangat kecil dan muatan negatif/positif, sementara gamma adalah radiasi elektromagnetik tanpa massa dan muatan.</li>
+                    <li><strong>Persamaan:</strong> Semua adalah bentuk radiasi yang dipancarkan oleh inti atom yang tidak stabil dan dapat memengaruhi plat film (melalui ionisasi).</li>
+                    <li><strong>Ukuran Terkecil:</strong> Radiasi gamma adalah yang terkecil (karena tidak memiliki massa), diikuti oleh partikel beta (elektron/positron), dan partikel alfa yang terbesar.</li>
+                </ul>
+
+                <div class="highlight">
+                    <p><strong>Prinsip Penting:</strong> Semakin kecil ukuran suatu partikel radiasi, maka semakin besar daya tembusnya. Ini karena partikel yang lebih kecil lebih mudah menembus materi.</p>
+                </div>
+
+                <h3>Daya Tembus Partikel Radiasi</h3>
+                <p>Daya tembus partikel radiasi dipengaruhi oleh beberapa faktor, termasuk massa, muatan, dan energi.</p>
+                <ul>
+                    <li><strong>Partikel Alfa (<span class="formula-inline">α</span>):</strong> Massa besar, muatan +2e, kecepatan relatif rendah (hingga 0.05c). Memiliki daya ionisasi tinggi tetapi daya tembus rendah. Hanya dapat menembus kertas atau beberapa sentimeter udara.</li>
+                    <li><strong>Partikel Beta (<span class="formula-inline">β⁻</span> dan <span class="formula-inline">β⁺</span>):</strong> Massa kecil, muatan -e atau +e, kecepatan tinggi (hingga 0.99c). Daya ionisasi sedang dan daya tembus lebih tinggi dari alfa. Dapat menembus beberapa milimeter aluminium.</li>
+                    <li><strong>Radiasi Gamma (<span class="formula-inline">γ</span>):</strong> Tidak bermassa, tidak bermuatan, kecepatan cahaya (c). Daya ionisasi rendah tetapi daya tembus sangat tinggi. Memerlukan pelindung tebal seperti timbal atau beton untuk meredamnya.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Aktivitas Peluruhan dan Waktu Paruh</h2>
+
+            <div class="content-block">
+                <p>Inti atom yang tidak stabil akan terus meluruh hingga mencapai keadaan stabil. <span class="keyword">Aktivitas peluruhan</span> (A) adalah ukuran seberapa cepat inti atom meluruh, dinyatakan sebagai jumlah peluruhan per satuan waktu.</p>
+
+                <h3>Hubungan Aktivitas, Jumlah Nuklida, dan Konstanta Peluruhan</h3>
+                <p>Aktivitas peluruhan berbanding lurus dengan jumlah nuklida yang belum meluruh (N) dan konstanta peluruhan (<span class="formula-inline">λ</span>). Konstanta peluruhan (<span class="formula-inline">λ</span>) adalah probabilitas sebuah inti untuk meluruh dalam satuan waktu, dan bersifat unik untuk setiap jenis radioisotop.</p>
+
+                <div class="formula">
+                    <p><span class="formula-inline">A = λN</span></p>
+                </div>
+
+                <p>Hubungan perubahan jumlah nuklida terhadap waktu dapat dinyatakan dengan persamaan diferensial:</p>
+
+                <div class="formula">
+                    <p><span class="formula-inline">dN/dt = -λN</span></p>
+                    <p>di mana:</p>
+                    <ul>
+                        <li><span class="formula-inline">A</span> adalah aktivitas peluruhan (dalam Becquerel, Bq)</li>
+                        <li><span class="formula-inline">λ</span> adalah konstanta peluruhan</li>
+                        <li><span class="formula-inline">N</span> adalah jumlah nuklida yang belum meluruh</li>
+                        <li><span class="formula-inline">dN/dt</span> adalah laju perubahan jumlah nuklida terhadap waktu</li>
+                    </ul>
+                </div>
+
+                <p>Satuan aktivitas yang umum digunakan:</p>
+                <ul>
+                    <li><strong>Bequerel (Bq):</strong> 1 Bq = 1 peluruhan per detik.</li>
+                    <li><strong>Curie (Ci):</strong> 1 Ci = 3.70 x 10<sup>10</sup> Bq.</li>
+                </ul>
+
+                <h3>Waktu Paruh (<span class="formula-inline">t<sub>1/2</sub></span>)</h3>
+                <p><span class="keyword">Waktu paruh</span> adalah waktu yang dibutuhkan agar setengah dari jumlah awal suatu radioisotop meluruh.</p>
+                <p>Jumlah atom yang belum meluruh (<span class="formula-inline">N(t)</span>) pada waktu (<span class="formula-inline">t</span>) dapat dihitung dengan rumus:</p>
+
+                <div class="formula">
+                    <p><span class="formula-inline">N(t) = N₀e<sup>-λt</sup></span></p>
+                    <p>Hubungan antara konstanta peluruhan (<span class="formula-inline">λ</span>) dan waktu paruh (<span class="formula-inline">t<sub>1/2</sub></span>) adalah:</p>
+                    <p><span class="formula-inline">λ = ln(2) / t<sub>1/2</sub></span></p>
+                    <p>Atau, jika menggunakan basis 2:</p>
+                    <p><span class="formula-inline">N(t) = N₀ (1/2)<sup>t/t<sub>1/2</sub></sup></span></p>
+                </div>
+
+                <p>Konsep waktu paruh sangat penting dalam berbagai aplikasi, salah satunya adalah <span class="keyword">penanggalan karbon (carbon dating)</span>.</p>
+
+                <div class="explanation-block">
+                    <p><strong>Penanggalan Karbon:</strong> Dengan mengukur jumlah karbon-14 (<span class="formula-inline"><sup>14</sup>C</span>) yang tersisa dalam artefak organik (seperti perkakas kayu atau fosil), para ilmuwan dapat menentukan usia artefak tersebut. Karbon-14 adalah isotop radioaktif dari karbon dengan waktu paruh sekitar 5.730 tahun. Proses ini memungkinkan para ilmuwan untuk menelusuri sejarah hingga puluhan ribu tahun yang lalu.</p>
+                </div>
+
+                <div class="interactive-element">
+                    Simulasikan peluruhan radioaktif untuk memahami konsep waktu paruh!
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Peluruhan Radioaktif</h2>
+
+            <div class="content-block">
+                <p>Peluruhan radioaktif adalah proses spontan di mana inti atom yang tidak stabil memancarkan partikel atau energi untuk menjadi inti yang lebih stabil. Peluruhan dapat terjadi secara alami atau diinduksi.</p>
+
+                <h3>1. Peluruhan Alfa (<span class="formula-inline">α</span>)</h3>
+                <p>Peluruhan alfa umumnya terjadi pada inti yang berat (dengan nomor atom Z > 83) untuk mengurangi jumlah proton dan neutronnya.</p>
+                <ul>
+                    <li>Partikel alfa adalah inti atom Helium (<span class="formula-inline"><sup>4</sup><sub>2</sub>He</span>), terdiri dari 2 proton dan 2 neutron.</li>
+                    <li>Memiliki massa yang relatif besar dan muatan positif (+2e).</li>
+                    <li>Daya ionisasinya tinggi, tetapi daya tembusnya rendah (dapat dihentikan oleh selembar kertas).</li>
+                    <li>Kecepatannya relatif rendah, sekitar 5% dari kecepatan cahaya.</li>
+                </ul>
+
+                <p><strong>Persamaan Reaksi Peluruhan Alfa:</strong></p>
+                <div class="formula">
+                    <p><span class="formula-inline"><sup>A</sup><sub>Z</sub>X → <sup>A-4</sup><sub>Z-2</sub>Y + <sup>4</sup><sub>2</sub>α</span></p>
+                    <p>Di sini, X adalah inti induk, Y adalah inti anak, dan α adalah partikel alfa.</p>
+                </div>
+
+                <p>Energi yang dibebaskan (<span class="formula-inline">Q</span>) dalam peluruhan alfa dihitung dari perbedaan massa inti induk dan inti anak beserta partikel alfa:</p>
+                <div class="formula">
+                    <p><span class="formula-inline">Q = (massa<sub>X</sub> - massa<sub>Y</sub> - massa<sub>α</sub>)c²</span></p>
+                    <p>Energi ini sebagian besar dilepaskan sebagai energi kinetik partikel alfa (<span class="formula-inline">K<sub>α</sub></span>) dan inti anak (<span class="formula-inline">K<sub>Y</sub></span>):</p>
+                    <p><span class="formula-inline">Q = K<sub>Y</sub> + K<sub>α</sub></span></p>
+                    <p>Energi kinetik alfa dapat diestimasi menggunakan rumus:</p>
+                    <p><span class="formula-inline">K<sub>α</sub> = ((A-4)/A)Q</span></p>
+                </div>
+
+                <p>Perlu dicatat bahwa peluruhan alfa membantu inti yang tidak stabil menjadi lebih stabil dengan mengurangi jumlah massa nukleonnya.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```

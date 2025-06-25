@@ -1,0 +1,295 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Arus Bolak-Balik - Karakteristik Rangkaian RLC</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid #E0E0E0;
+            padding-bottom: 8px;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #424242;
+            margin-top: 25px;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 5px;
+            background-color: #FAFAFA;
+        }
+        .code-block {
+            background-color: #F5F5F5;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin-bottom: 15px;
+            border: 1px solid #EEEEEE;
+        }
+        .formula {
+            display: block;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #D32F2F; /* Semantic Error color for emphasis */
+        }
+        .formula-label {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: #757575;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #1976D2;
+            font-weight: bold;
+        }
+        .sub-heading {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #424242;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .interactive-placeholder {
+            background-color: #E3F2FD; /* Semantic Info color */
+            color: #1976D2;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 20px;
+            border: 1px dashed #1976D2;
+        }
+        .explanation {
+            font-style: italic;
+            color: #757575;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .responsive-table th,
+        .responsive-table td {
+            border: 1px solid #E0E0E0;
+            padding: 10px;
+            text-align: center;
+        }
+        .responsive-table th {
+            background-color: #F5F5F5;
+            color: #424242;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula {
+                font-size: 1em;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab 4: Arus Bolak-Balik (AC)</h1>
+        <h2>B. Karakteristik Rangkaian RLC</h2>
+
+        <p>Dalam rangkaian arus bolak-balik (AC), setiap komponen pasif seperti resistor (R), induktor (L), dan kapasitor (C) memiliki karakteristik perilakunya sendiri ketika dihubungkan dengan sumber tegangan AC. Memahami karakteristik ini sangat penting untuk menganalisis bagaimana rangkaian RLC bekerja secara keseluruhan.</p>
+
+        <div class="section">
+            <h3>1. Resistor dalam Sirkuit AC</h3>
+            <p>Ketika resistor dihubungkan dengan sumber tegangan AC, arus listrik yang mengalir melaluinya akan berperilaku sama seperti tegangan sumber. Artinya, arus dan tegangan pada resistor selalu berada dalam fase yang sama. Jika tegangan meningkat, arus juga meningkat, dan jika tegangan menurun, arus pun menurun, semuanya terjadi secara serentak.</p>
+            <p>Secara matematis, jika tegangan pada resistor murni adalah:</p>
+            <div class="formula">V = V<sub>maks</sub> sin ωt</div>
+            <div class="formula-label">Persamaan Tegangan pada Resistor</div>
+            <p>Maka arus yang mengalir melaluinya adalah:</p>
+            <div class="formula">I = I<sub>maks</sub> sin ωt</div>
+            <div class="formula-label">Persamaan Arus pada Resistor</div>
+            <p>Hubungan antara tegangan dan arus ini sesuai dengan Hukum Ohm (V = IR). Perbedaan utama dengan sirkuit DC adalah amplitudo arus (I<sub>maks</sub>) yang lebih rendah dibandingkan amplitudo tegangan (V<sub>maks</sub>) karena adanya resistansi (R).</p>
+            <p>Dalam bentuk diagram fasor, resistor digambarkan dengan vektor tegangan (V) dan arus (I) yang searah, menunjukkan bahwa keduanya memiliki fase yang sama.</p>
+            <div class="explanation">Diagram fasor resistor: V dan I searah.</div>
+        </div>
+
+        <div class="section">
+            <h3>2. Induktor dalam Sirkuit AC</h3>
+            <p>Induktor, yang merupakan lilitan kawat, akan menghasilkan GGL induksi ketika arus listrik melewatinya berubah. Dalam sirkuit AC, perubahan arus yang terus-menerus ini menyebabkan induktor memberikan hambatan terhadap aliran arus yang disebut <strong>reaktansi induktif (X<sub>L</sub>)</strong>. Nilai X<sub>L</sub> ini berbanding lurus dengan frekuensi sudut (ω) dan induktansi diri (L) dari induktor.</p>
+            <p>Reaktansi induktif dapat dinyatakan sebagai:</p>
+            <div class="formula">X<sub>L</sub> = ωL</div>
+            <div class="formula-label">Reaktansi Induktif</div>
+            <p>Atau dalam bentuk frekuensi (f):</p>
+            <div class="formula">X<sub>L</sub> = 2πfL</div>
+            <div class="formula-label">Reaktansi Induktif dalam Frekuensi</div>
+            <p>Semakin besar frekuensi sumber tegangan AC, semakin besar reaktansi induktif yang diberikan oleh induktor. Ini berarti induktor lebih menghambat arus frekuensi tinggi.</p>
+            <p>Hubungan antara tegangan dan arus pada induktor murni adalah:</p>
+            <div class="formula">V<sub>L</sub> = I⋅X<sub>L</sub></div>
+            <div class="formula-label">Hubungan Tegangan dan Arus pada Induktor</div>
+            <p>Yang menarik adalah, dalam sirkuit AC, tegangan pada induktor selalu mendahului arus sebesar 90 derajat (atau seperempat siklus, π/2 radian). Ini terjadi karena GGL induksi yang timbul dalam induktor selalu berlawanan arah dengan perubahan arus yang menyebabkannya.</p>
+            <p>Persamaan tegangan dan arus pada induktor murni:</p>
+            <div class="formula">V<sub>L</sub> = V<sub>L,maks</sub> sin (ωt + π/2)</div>
+            <div class="formula-label">Persamaan Tegangan pada Induktor</div>
+            <div class="formula">I = I<sub>maks</sub> sin ωt</div>
+            <div class="formula-label">Persamaan Arus pada Induktor</div>
+            <p>Dalam diagram fasor, vektor tegangan (V<sub>L</sub>) akan tegak lurus dan mengarah ke depan (mendahului) vektor arus (I).</p>
+            <div class="explanation">Diagram fasor induktor: V<sub>L</sub> mendahului I sebesar 90°.</div>
+        </div>
+
+        <div class="section">
+            <h3>3. Kapasitor dalam Sirkuit AC</h3>
+            <p>Berbeda dengan induktor, kapasitor memiliki sifat yang berlawanan dalam sirkuit AC. Ketika kapasitor dihubungkan dengan tegangan AC, ia akan terus menerus mengisi dan mengosongkan muatan. Hambatan yang diberikan kapasitor terhadap aliran arus AC ini disebut <strong>reaktansi kapasitif (X<sub>C</sub>)</strong>. Nilai X<sub>C</sub> berbanding terbalik dengan hasil kali frekuensi sudut (ω) dan kapasitansi (C) kapasitor.</p>
+            <p>Reaktansi kapasitif dapat dinyatakan sebagai:</p>
+            <div class="formula">X<sub>C</sub> = 1 / (ωC)</div>
+            <div class="formula-label">Reaktansi Kapasitif</div>
+            <p>Atau dalam bentuk frekuensi (f):</p>
+            <div class="formula">X<sub>C</sub> = 1 / (2πfC)</div>
+            <div class="formula-label">Reaktansi Kapasitif dalam Frekuensi</div>
+            <p>Semakin tinggi frekuensi sumber tegangan AC, semakin kecil reaktansi kapasitifnya. Ini berarti kapasitor lebih menghambat arus frekuensi rendah dan lebih meloloskan arus frekuensi tinggi.</p>
+            <p>Hubungan antara tegangan dan arus pada kapasitor murni adalah:</p>
+            <div class="formula">V<sub>C</sub> = I⋅X<sub>C</sub></div>
+            <div class="formula-label">Hubungan Tegangan dan Arus pada Kapasitor</div>
+            <p>Dalam sirkuit AC, arus pada kapasitor selalu mendahului tegangan sebesar 90 derajat (atau seperempat siklus, π/2 radian). Hal ini dikarenakan arus listrik harus mengalir untuk mengisi pelat kapasitor sebelum tegangan melintasinya tercapai.</p>
+            <p>Persamaan tegangan dan arus pada kapasitor murni:</p>
+            <div class="formula">V<sub>C</sub> = V<sub>C,maks</sub> sin (ωt - π/2)</div>
+            <div class="formula-label">Persamaan Tegangan pada Kapasitor</div>
+            <div class="formula">I = I<sub>maks</sub> sin ωt</div>
+            <div class="formula-label">Persamaan Arus pada Kapasitor</div>
+            <p>Dalam diagram fasor, vektor arus (I) akan mendahului vektor tegangan (V<sub>C</sub>) sebesar 90 derajat.</p>
+            <div class="explanation">Diagram fasor kapasitor: I mendahului V<sub>C</sub> sebesar 90°.</div>
+        </div>
+
+        <div class="section">
+            <h3>4. Rangkaian Seri RLC</h3>
+            <p>Dalam rangkaian seri yang terdiri dari resistor (R), induktor (L), dan kapasitor (C), komponen-komponen ini dihubungkan secara berurutan dengan sumber tegangan AC. Analogi dengan rangkaian seri pada arus searah, rangkaian RLC seri juga memiliki besaran yang menggambarkan hambatan total terhadap aliran arus AC, yaitu <strong>impedansi (Z)</strong>. Impedansi ini bukan sekadar penjumlahan aljabar dari R, X<sub>L</sub>, dan X<sub>C</sub>, melainkan perpaduan vektorialnya.</p>
+
+            <p>Hubungan tegangan total (V) pada rangkaian dengan tegangan pada masing-masing komponen (V<sub>R</sub>, V<sub>L</sub>, V<sub>C</sub>) juga bersifat vektorial. Karena V<sub>R</sub> sefase dengan arus, V<sub>L</sub> mendahului arus sebesar 90°, dan V<sub>C</sub> tertinggal dari arus sebesar 90°, maka resultan tegangan total dapat dihitung menggunakan teorema Pythagoras:</p>
+
+            <div class="formula">V² = V<sub>R</sub>² + (V<sub>L</sub> - V<sub>C</sub>)²</div>
+            <div class="formula-label">Hubungan Tegangan Total dalam Rangkaian RLC Seri</div>
+
+            <p>Menggunakan analogi Hukum Ohm (V=IR), kita bisa mengadaptasinya untuk impedansi:</p>
+
+            <div class="formula">(IZ)² = (IR)² + (IX<sub>L</sub> - IX<sub>C</sub>)²</div>
+            <div class="formula-label">Adaptasi Hukum Ohm untuk Sirkuit AC</div>
+
+            <p>Karena arus (I) sama untuk semua komponen dalam rangkaian seri, kita dapat menyederhanakannya menjadi:</p>
+
+            <div class="formula">Z² = R² + (X<sub>L</sub> - X<sub>C</sub>)²</div>
+            <div class="formula-label">Impedansi Rangkaian RLC Seri</div>
+
+            <p>Atau dinyatakan sebagai:</p>
+
+            <div class="formula">Z = √[R² + (X<sub>L</sub> - X<sub>C</sub>)²]</div>
+            <div class="formula-label">Perhitungan Impedansi Rangkaian RLC Seri</div>
+
+            <p>Di mana:</p>
+            <ul>
+                <li>Z adalah impedansi (dalam Ohm, Ω).</li>
+                <li>R adalah resistansi (dalam Ohm, Ω).</li>
+                <li>X<sub>L</sub> adalah reaktansi induktif (dalam Ohm, Ω).</li>
+                <li>X<sub>C</sub> adalah reaktansi kapasitif (dalam Ohm, Ω).</li>
+            </ul>
+
+            <p>Jika persamaan arus pada rangkaian adalah I = I<sub>maks</sub> sin ωt, maka persamaan tegangan totalnya adalah:</p>
+
+            <div class="formula">V = V<sub>maks</sub> sin (ωt ± θ)</div>
+            <div class="formula-label">Persamaan Tegangan Total dalam Rangkaian RLC Seri</div>
+
+            <p>Di sini, θ adalah beda fase antara tegangan total (V) dan arus (I) pada rangkaian. Nilai θ dapat ditentukan menggunakan:</p>
+
+            <div class="formula">tan θ = (X<sub>L</sub> - X<sub>C</sub>) / R</div>
+            <div class="formula-label">Menentukan Sudut Fase (θ)</div>
+
+            <p>Hubungan antara impedansi (Z), resistansi (R), dan beda fase (θ) juga dapat digambarkan dalam diagram impedansi (segitiga impedansi). Dari diagram ini, kita dapat memperoleh:</p>
+
+            <div class="formula">cos θ = R / Z</div>
+            <div class="formula-label">Hubungan Impedansi dan Sudut Fase</div>
+
+            <p>Nilai cos θ ini dikenal sebagai <strong>faktor daya</strong>. Faktor daya sangat penting karena berhubungan dengan daya disipasi (daya yang benar-benar diubah menjadi panas atau kerja) dalam rangkaian. Daya disipasi hanya terjadi pada resistor, bukan pada induktor atau kapasitor.</p>
+
+            <p>Besar daya disipasi (P) pada rangkaian RLC adalah:</p>
+
+            <div class="formula">P = I<sub>ef</sub>² ⋅ R</div>
+            <div class="formula-label">Daya Disipasi pada Rangkaian RLC</div>
+
+            <p>Di mana I<sub>ef</sub> adalah arus efektif (atau arus RMS). Menggunakan faktor daya, persamaan daya disipasi juga dapat ditulis sebagai:</p>
+
+            <div class="formula">P = I<sub>ef</sub> ⋅ Z ⋅ cos θ</div>
+            <div class="formula-label">Daya Disipasi Menggunakan Faktor Daya</div>
+
+            <p>Dalam diagram fasor rangkaian RLC seri, vektor tegangan total (V) akan memiliki arah tertentu terhadap arus (I) tergantung pada nilai reaktansi induktif (X<sub>L</sub>) dan reaktansi kapasitif (X<sub>C</sub>). Jika X<sub>L</sub> > X<sub>C</sub>, rangkaian bersifat induktif dan tegangan mendahului arus. Jika X<sub>C</sub> > X<sub>L</sub>, rangkaian bersifat kapasitif dan arus mendahului tegangan. Jika X<sub>L</sub> = X<sub>C</sub>, maka rangkaian bersifat resistif murni dan tegangan sefase dengan arus (kondisi resonansi).</p>
+        </div>
+
+        <div class="interactive-placeholder">
+            Simulasi interaktif dapat membantu Anda memvisualisasikan perilaku rangkaian RLC! Cobalah untuk mengatur nilai R, L, dan C serta frekuensi sumber tegangan dan amati bagaimana tegangan, arus, dan beda fase berubah.
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

@@ -1,0 +1,300 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B. Kegiatan Ekonomi - Ilmu Ekonomi</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .section-intro {
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .content-block {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-left: 5px solid var(--primary-blue);
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .definition {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .activity-block {
+            background-color: #e3f2fd;
+            border: 1px dashed var(--primary-blue);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .activity-block h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .activity-block ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .activity-block li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background-color: #f0f4c3;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 3px solid var(--secondary-accent-amber);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+        }
+
+        .concept-map-container {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: var(--border-divider);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .concept-map-container h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+
+        .concept-map-node {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 10px;
+            font-weight: bold;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .concept-map-node:hover {
+            transform: scale(1.05);
+        }
+
+        .concept-map-arrow {
+            color: var(--text-tertiary);
+            font-size: 1.5em;
+            margin: 0 15px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .concept-map-container .concept-map-node {
+                display: block; /* Stack nodes vertically on smaller screens */
+                margin: 10px auto;
+            }
+
+            .concept-map-container .concept-map-arrow {
+                display: block;
+                margin: 5px auto;
+                transform: rotate(90deg); /* Rotate arrows */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Kegiatan Ekonomi: Penggerak Kesejahteraan Manusia</h1>
+
+        <p class="section-intro">
+            Memahami alur kegiatan ekonomi adalah kunci untuk mengenali bagaimana kebutuhan kita dipenuhi dan bagaimana perekonomian bekerja. Mari kita selami lebih dalam tiga pilar utama dari setiap aktivitas ekonomi.
+        </p>
+
+        <div class="content-block">
+            <h3>Mengamati Lingkungan Sekitar Kita</h3>
+            <p>
+                Pernahkah Anda membayangkan bagaimana makanan yang Anda nikmati di kantin sekolah atau jajanan di warung dekat rumah sampai ke tangan Anda? Setiap aktivitas makan atau membeli barang di sebuah tempat seperti kantin sekolah, sejatinya adalah potret kecil dari sebuah kegiatan ekonomi yang kompleks.
+            </p>
+            <p>
+                Kita semua menyadari bahwa untuk memenuhi berbagai kebutuhan hidup—mulai dari makanan, alat tulis, hingga kebutuhan lainnya—kita tidak bisa berdiri sendiri. Kita selalu bergantung pada pihak lain yang menyediakan barang atau jasa yang kita perlukan. Kehidupan modern menuntut adanya interdependensi antarindividu dalam memenuhi kebutuhan.
+            </p>
+        </div>
+
+        <div class="content-block">
+            <h3>Pelaku Ekonomi: Jalinan Interaksi</h3>
+            <p>
+                Setiap barang atau jasa yang kita nikmati, mulai dari produk pertanian hingga layanan transportasi, melalui sebuah proses panjang. Barang atau jasa tersebut pada awalnya dibuat atau diciptakan oleh seseorang atau sekelompok orang yang disebut <span class="definition">Produsen</span>. Setelah diproduksi, barang atau jasa tersebut kemudian disalurkan dan diperdagangkan hingga sampai ke tangan konsumen oleh pihak yang disebut <span class="definition">Distributor</span>. Akhirnya, kita sebagai individu yang menggunakan atau mengonsumsi barang dan jasa tersebut berperan sebagai <span class="definition">Konsumen</span>.
+            </p>
+            <p>
+                Ketiga peran—Produsen, Distributor, dan Konsumen—ini merupakan bagian integral dari sebuah sistem. Keterlibatan mereka dan berbagai kegiatan yang mereka lakukan dalam proses penyediaan dan pemenuhan kebutuhan inilah yang secara kolektif kita sebut sebagai <span class="highlight">Pelaku Ekonomi</span>. Memahami peran masing-masing pelaku dan bagaimana mereka saling berinteraksi adalah fundamental dalam mempelajari ilmu ekonomi.
+            </p>
+        </div>
+
+        <h2>Tiga Kegiatan Ekonomi Utama</h2>
+        <p>
+            Ilmu ekonomi, sejak bangku SMP, telah memperkenalkan kita pada tiga kegiatan ekonomi mendasar yang membentuk roda perekonomian. Ketiga kegiatan ini saling terkait dan menjadi fondasi bagi aktivitas ekonomi lainnya.
+        </p>
+
+        <div class="content-block">
+            <h3>1. Produksi: Menciptakan Nilai Tambah</h3>
+            <p>
+                <span class="definition">Produksi</span> adalah segala upaya yang dilakukan untuk menambah atau menciptakan nilai guna suatu barang atau jasa. Ini bisa berupa mengubah bahan mentah menjadi barang setengah jadi, atau barang setengah jadi menjadi barang jadi yang siap dikonsumsi. Contohnya, petani yang menanam padi (menambah nilai guna tanah dan benih), pabrik yang mengolah padi menjadi beras, atau pengusaha yang membuat nasi goreng dari beras.
+            </p>
+            <p class="highlight">Tujuan utama produksi adalah untuk memenuhi kebutuhan dan keinginan konsumen serta mendapatkan keuntungan bagi produsen.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>2. Distribusi: Menghubungkan Produsen dan Konsumen</h3>
+            <p>
+                <span class="definition">Distribusi</span> adalah proses menyalurkan atau mendistribusikan barang dan jasa dari produsen ke konsumen. Tanpa distribusi, barang atau jasa yang telah diproduksi tidak akan sampai ke tangan orang yang membutuhkan.
+            </p>
+            <p>
+                Kegiatan distribusi mencakup berbagai hal, seperti:
+            </p>
+            <ul>
+                <li><strong>Perdagangan:</strong> Jual beli barang di pasar, toko, atau secara online.</li>
+                <li><strong>Pengangkutan:</strong> Memindahkan barang menggunakan kendaraan (darat, laut, udara).</li>
+                <li><strong>Penyimpanan:</strong> Menyimpan barang di gudang sebelum didistribusikan lebih lanjut.</li>
+                <li><strong>Pengklasifikasian:</strong> Mengelompokkan barang berdasarkan jenis, kualitas, atau kuantitas.</li>
+                <li><strong>Penjualan:</strong> Aktivitas menawarkan dan menjual barang atau jasa.</li>
+                <li><strong>Promosi:</strong> Menginformasikan dan membujuk konsumen untuk membeli produk.</li>
+            </ul>
+            <p class="highlight">Distribusi memastikan ketersediaan barang dan jasa di tempat yang tepat dan waktu yang tepat bagi konsumen.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>3. Konsumsi: Memenuhi Kebutuhan</h3>
+            <p>
+                <span class="definition">Konsumsi</span> adalah segala aktivitas untuk menghabiskan atau mengurangi nilai guna suatu barang atau jasa. Konsumsi merupakan tujuan akhir dari kegiatan produksi dan distribusi.
+            </p>
+            <p>
+                Setiap kali kita makan, minum, menggunakan pakaian, atau memanfaatkan layanan seperti transportasi, kita sedang melakukan kegiatan konsumsi. Aktivitas konsumsi ini bertujuan untuk menghilangkan atau mengurangi rasa lapar, haus, kebutuhan akan sandang, atau kebutuhan akan mobilitas.
+            </p>
+            <p class="highlight">Setiap barang dan jasa yang dikonsumsi akan berkurang atau habis nilainya, memuaskan kebutuhan atau keinginan penggunanya.</p>
+        </div>
+
+        <div class="concept-map-container">
+            <h3>Alur Kegiatan Ekonomi: Sebuah Gambaran Sederhana</h3>
+            <div>
+                <span class="concept-map-node">Produsen</span>
+                <span class="concept-map-arrow">➡️</span>
+                <span class="concept-map-node">Distribusi</span>
+                <span class="concept-map-arrow">➡️</span>
+                <span class="concept-map-node">Konsumen</span>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.9em; color: var(--text-tertiary);">Setiap elemen saling membutuhkan dalam siklus ekonomi.</p>
+        </div>
+
+        <div class="activity-block">
+            <h3>Menghubungkan Konsep dengan Kehidupan Nyata</h3>
+            <p>
+                Ketiga kegiatan ekonomi ini tidak hanya terjadi di industri besar atau perusahaan multinasional. Bahkan dalam skala terkecil, seperti kegiatan Anda membeli alat tulis di toko kelontong, ketiga unsur tersebut bisa diidentifikasi:
+            </p>
+            <ul>
+                <li><strong>Produksi:</strong> Pabrik kertas yang memproduksi kertas, atau perusahaan tinta yang membuat bolpoin.</li>
+                <li><strong>Distribusi:</strong> Toko kelontong yang membeli stok dari agen atau distributor, lalu menjualnya kepada Anda.</li>
+                <li><strong>Konsumsi:</strong> Anda yang membeli dan menggunakan bolpoin tersebut untuk mencatat pelajaran.</li>
+            </ul>
+            <p>
+                Mari kita gunakan pemahaman ini untuk mengamati lebih jauh lingkungan sekitar kita. Dengan memahami ketiga kegiatan ekonomi ini, kita dapat lebih mengapresiasi bagaimana berbagai kebutuhan kita terpenuhi dan bagaimana ekonomi bekerja dalam kehidupan sehari-hari.
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

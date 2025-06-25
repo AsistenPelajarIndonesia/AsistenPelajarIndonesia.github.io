@@ -1,0 +1,335 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kekongruenan Dua Segitiga</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.7em;
+            border-bottom: 1px solid var(--primary-blue);
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .definition {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .criteria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .criterion-item {
+            background-color: white;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .criterion-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .criterion-item h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+        }
+
+        .criterion-item p {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        .concept-box {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .concept-box h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.1em;
+        }
+
+        .example {
+            background-color: #e3f2fd; /* Light blue for examples */
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .example h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.1em;
+        }
+
+        .key- takeaway {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .math-notation {
+            font-style: italic;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .symbol {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 0 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .criteria {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab IV: Kekongruenan Dua Segitiga</h1>
+
+        <div class="section">
+            <h2>Apa Itu Kekongruenan Dua Segitiga?</h2>
+            <p>Dua bangun dikatakan kongruen jika keduanya memiliki bentuk dan ukuran yang sama persis. Dalam konteks segitiga, dua segitiga dikatakan kongruen jika ketiga pasangan sisi yang bersesuaian memiliki panjang yang sama, DAN ketiga pasangan sudut yang bersesuaian memiliki besar yang sama.</p>
+
+            <div class="definition">
+                Dua segitiga kongruen jika dan hanya jika ketiga pasangan sisi yang bersesuaian sama panjang DAN ketiga pasangan sudut yang bersesuaian sama besar.
+            </div>
+
+            <p>Pertanyaannya adalah, apakah kita perlu memeriksa keenam pasangan unsur (3 sisi dan 3 sudut) ini secara keseluruhan untuk memastikan dua segitiga kongruen? Ternyata, tidak! Ada cara yang lebih efisien dengan hanya menggunakan beberapa pasangan unsur saja.</p>
+        </div>
+
+        <div class="section">
+            <h2>Kriteria Kekongruenan Dua Segitiga</h2>
+            <p>Untuk membuktikan dua segitiga kongruen, kita dapat menggunakan beberapa kriteria yang lebih ringkas. Kriteria ini memastikan bahwa jika kondisi terpenuhi, maka kedua segitiga tersebut pasti kongruen.</p>
+
+            <div class="criteria">
+                <div class="criterion-item">
+                    <h4>1. Sisi-Sisi-Sisi (SSS)</h4>
+                    <p>Jika ketiga pasangan sisi yang bersesuaian dari dua segitiga sama panjang, maka kedua segitiga tersebut kongruen.</p>
+                    <p class="concept-box">
+                        <span class="math-notation">Jika △ABC dan △DEF memiliki:</span><br>
+                        <span class="math-notation">AB = DE,</span><br>
+                        <span class="math-notation">BC = EF,</span><br>
+                        <span class="math-notation">AC = DF</span><br>
+                        <span class="math-notation">Maka, △ABC ≅ △DEF</span>
+                    </p>
+                </div>
+
+                <div class="criterion-item">
+                    <h4>2. Sisi-Sudut-Sisi (SAS)</h4>
+                    <p>Jika dua pasang sisi yang bersesuaian dari dua segitiga sama panjang dan sudut yang diapit oleh kedua sisi tersebut sama besar, maka kedua segitiga tersebut kongruen.</p>
+                     <p class="concept-box">
+                        <span class="math-notation">Jika △ABC dan △DEF memiliki:</span><br>
+                        <span class="math-notation">AB = DE,</span><br>
+                        <span class="math-notation">∠A = ∠D,</span><br>
+                        <span class="math-notation">AC = DF</span><br>
+                        <span class="math-notation">Maka, △ABC ≅ △DEF</span>
+                    </p>
+                </div>
+
+                <div class="criterion-item">
+                    <h4>3. Sudut-Sisi-Sudut (SAS)</h4>
+                    <p>Jika dua pasang sudut yang bersesuaian dari dua segitiga sama besar dan sisi yang menghubungkan kedua sudut tersebut sama panjang, maka kedua segitiga tersebut kongruen.</p>
+                    <p class="concept-box">
+                        <span class="math-notation">Jika △ABC dan △DEF memiliki:</span><br>
+                        <span class="math-notation">∠A = ∠D,</span><br>
+                        <span class="math-notation">AB = DE,</span><br>
+                        <span class="math-notation">∠B = ∠E</span><br>
+                        <span class="math-notation">Maka, △ABC ≅ △DEF</span>
+                    </p>
+                </div>
+
+                <div class="criterion-item">
+                    <h4>4. Sudut-Sudut-Sisi (SSA)</h4>
+                    <p>Jika dua pasang sudut yang bersesuaian dari dua segitiga sama besar dan sepasang sisi yang bersesuaian (tidak diapit oleh kedua sudut tersebut) sama panjang, maka kedua segitiga tersebut kongruen.</p>
+                    <p class="concept-box">
+                        <span class="math-notation">Jika △ABC dan △DEF memiliki:</span><br>
+                        <span class="math-notation">∠A = ∠D,</span><br>
+                        <span class="math-notation">∠B = ∠E,</span><br>
+                        <span class="math-notation">AC = DF</span><br>
+                        <span class="math-notation">Maka, △ABC ≅ △DEF</span>
+                    </p>
+                </div>
+
+                <div class="criterion-item">
+                    <h4>5. Sisi Miring-Sisi Siku (Khusus Segitiga Siku-siku)</h4>
+                    <p>Jika pada dua segitiga siku-siku, sisi miringnya sama panjang dan salah satu sisi siku-sikunya juga sama panjang, maka kedua segitiga tersebut kongruen.</p>
+                    <p class="concept-box">
+                        <span class="math-notation">Jika △ABC dan △ADE adalah segitiga siku-siku:</span><br>
+                        <span class="math-notation">AC = AD (Sisi miring)</span><br>
+                        <span class="math-notation">AB = AE (Sisi siku)</span><br>
+                        <span class="math-notation">Maka, △ABC ≅ △ADE</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Pentingnya Penulisan Kekongruenan</h2>
+            <p>Saat menyatakan dua segitiga kongruen, urutan penulisan titik-titik sudut sangatlah penting. Urutan ini menunjukkan pasangan sisi dan sudut yang bersesuaian.</p>
+
+            <div class="example">
+                <h4>Contoh Penulisan yang Benar:</h4>
+                <p>Jika diketahui <span class="math-notation">△ABC ≅ △DEF</span>, ini berarti:</p>
+                <ul>
+                    <li>Sisi yang bersesuaian: <span class="math-notation">AB=DE</span>, <span class="math-notation">BC=EF</span>, <span class="math-notation">AC=DF</span></li>
+                    <li>Sudut yang bersesuaian: <span class="math-notation">∠A=∠D</span>, <span class="math-notation">∠B=∠E</span>, <span class="math-notation">∠C=∠F</span></li>
+                </ul>
+                <p>Penulisan lain yang juga benar jika titik-titiknya berurutan sesuai korespondensi:</p>
+                <ul>
+                    <li><span class="math-notation">△BAC ≅ △EDF</span></li>
+                    <li><span class="math-notation">△CBA ≅ △FED</span></li>
+                </ul>
+            </div>
+
+            <div class="key-takeaway">
+                Pastikan urutan titik-titik sudut saat menyatakan kekongruenan segitiga sesuai dengan korespondensi sisi dan sudut yang sama!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ringkasan Kriteria Kekongruenan</h2>
+            <p>Secara ringkas, dua segitiga dikatakan kongruen jika memenuhi salah satu dari kriteria berikut:</p>
+            <ul>
+                <li><span class="math-notation">SSS</span>: Ketiga pasang sisi yang bersesuaian sama panjang.</li>
+                <li><span class="math-notation">SAS</span>: Dua pasang sisi yang bersesuaian sama panjang dan sudut yang diapitnya sama besar.</li>
+                <li><span class="math-notation">ASA</span>: Dua pasang sudut yang bersesuaian sama besar dan sisi yang menghubungkan kedua sudut tersebut sama panjang.</li>
+                <li><span class="math-notation">AAS</span>: Dua pasang sudut yang bersesuaian sama besar dan sepasang sisi yang bersesuaian (bukan diapit) sama panjang.</li>
+                <li><span class="math-notation">HL</span> (Hypotenuse-Leg): Khusus segitiga siku-siku, sisi miring dan satu sisi siku yang bersesuaian sama panjang.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Poin Penting</h2>
+            <p>Dalam memahami kekongruenan, perhatikan poin-poin berikut:</p>
+            <ul>
+                <li>Untuk membuktikan kekongruenan, kita tidak perlu menguji semua 6 pasangan unsur (3 sisi dan 3 sudut). Cukup salah satu dari kriteria di atas terpenuhi.</li>
+                <li>Penting untuk mengidentifikasi pasangan sisi dan sudut yang bersesuaian dengan benar.</li>
+                <li>Ketiga sudutnya sama besar saja (AAA) tidak cukup untuk menjamin kekongruenan. Segitiga yang memiliki tiga pasang sudut bersesuaian sama besar bisa jadi hanya sebangun, bukan kongruen (misalnya segitiga sebangun tapi ukurannya berbeda).</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
+```

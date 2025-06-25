@@ -1,0 +1,655 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Inovasi Bioteknologi - Definisi, Sejarah, dan Manfaat</title>
+    <style>
+        /* --- Theme Colors --- */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            margin-top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #f8f8f8;
+            margin-bottom: 0.5rem;
+            padding: 0.8rem 1rem;
+            border-left: 4px solid var(--accent-green);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        ul li:hover {
+            background-color: #f0f0f0;
+        }
+
+        strong {
+            color: var(--accent-green);
+        }
+
+        /* --- Specific Sections Styling --- */
+
+        /* Definition Diagram (Inspired by Gambar 4.2) */
+        .biotech-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem; /* Smaller gap for mobile */
+            margin-top: 2rem;
+        }
+
+        .biotech-box {
+            color: var(--background-canvas);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 200px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .biotech-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .biotech-box.process {
+            background-color: var(--primary-blue);
+            width: 100%; /* Full width on mobile */
+        }
+
+        .biotech-box.agent {
+            background-color: var(--accent-green);
+        }
+
+        .biotech-box.raw-material {
+            background-color: var(--secondary-accent-amber);
+        }
+
+        .biotech-box.product {
+            background-color: var(--semantic-success);
+        }
+
+        .biotech-arrow {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            align-self: center;
+            margin: 0 0.5rem; /* Space between boxes on mobile */
+        }
+
+        /* Agent detail box */
+        .agent-detail {
+            background-color: var(--text-primary);
+            color: var(--background-canvas);
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-top: 0.7rem;
+            width: fit-content;
+            text-align: left;
+            line-height: 1.4;
+            display: inline-block; /* To make it fit its content */
+        }
+
+        /* Product Examples */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .product-card {
+            background-color: #fdfdfd;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        .product-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding: 1rem 0;
+            border-left: 2px solid var(--border-divider);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-left: 2rem;
+            padding-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-bottom: 1px dashed var(--border-divider);
+            transition: background-color 0.2s ease-in-out;
+        }
+        .timeline-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.75rem;
+            top: 0.3rem;
+            width: 14px;
+            height: 14px;
+            background-color: var(--primary-blue);
+            border: 2px solid var(--background-canvas);
+            border-radius: 50%;
+            z-index: 1;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            display: block;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .timeline-event {
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .timeline-item:hover {
+            background-color: #f9f9f9;
+        }
+        .timeline-item:hover .timeline-year,
+        .timeline-item:hover .timeline-event {
+            color: var(--accent-green);
+        }
+        .timeline-item:hover::before {
+            background-color: var(--accent-green);
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                padding: 1.5rem 0.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            .biotech-flow {
+                flex-direction: column;
+                gap: 1rem; /* Adjust gap for stacked elements */
+            }
+            .biotech-box {
+                width: 90%;
+                min-width: unset;
+            }
+            .biotech-arrow {
+                transform: rotate(90deg); /* Arrows point downwards when stacked */
+                margin: 0.5rem 0; /* Vertical margin for stacked arrows */
+            }
+            .timeline {
+                margin: 1rem 0.5rem;
+                padding: 0.5rem 0;
+            }
+            .timeline-item {
+                margin-left: 1.5rem;
+                padding-left: 1rem;
+            }
+            .timeline-item::before {
+                left: -0.65rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .biotech-flow {
+                display: grid;
+                /* 5 columns: 1 (raw), 2 (arrow), 3 (agent), 4 (arrow), 5 (product) */
+                grid-template-columns: 1fr auto 1fr auto 1fr; /* Use fr for flexible widths */
+                grid-template-rows: auto auto; /* Process row, Main flow row */
+                justify-items: center;
+                align-items: center;
+                gap: 1rem 0; /* Row gap, column gap */
+            }
+
+            .biotech-box.process {
+                grid-column: 1 / -1; /* Spans all columns */
+                grid-row: 1;
+                margin-bottom: 2rem; /* More space below process box */
+            }
+
+            .biotech-box.raw-material {
+                grid-column: 1;
+                grid-row: 2;
+            }
+            .biotech-flow .arrow-to-agent {
+                grid-column: 2;
+                grid-row: 2;
+                font-size: 2.5rem;
+                color: var(--primary-blue);
+                transform: none; /* Reset rotation for desktop */
+                margin: 0; /* Reset margin for desktop */
+            }
+            .biotech-box.agent {
+                grid-column: 3;
+                grid-row: 2;
+            }
+            .biotech-flow .arrow-to-product {
+                grid-column: 4;
+                grid-row: 2;
+                font-size: 2.5rem;
+                color: var(--primary-blue);
+                transform: none; /* Reset rotation for desktop */
+                margin: 0; /* Reset margin for desktop */
+            }
+            .biotech-box.product {
+                grid-column: 5;
+                grid-row: 2;
+            }
+            .agent-detail {
+                margin-top: 0.5rem; /* Closer to parent box text */
+                font-size: 0.8rem; /* Slightly smaller text */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Bab 4: Inovasi Bioteknologi</h1>
+
+    <div class="container">
+        <h2>Pendahuluan</h2>
+        <p>
+            Bioteknologi adalah bidang ilmu yang telah lama ada dan terus berkembang, membawa banyak manfaat dalam kehidupan sehari-hari kita.
+            Dari makanan yang kita konsumsi hingga obat-obatan yang kita gunakan, banyak di antaranya merupakan produk dari inovasi bioteknologi.
+            Bab ini akan menjelaskan secara mendalam tentang definisi bioteknologi, komponen-komponen utamanya, contoh produk yang sering kita jumpai, serta sejarah perkembangannya yang menarik.
+        </p>
+
+        <h2>1. Definisi Bioteknologi</h2>
+        <p>
+            Secara sederhana, <strong>bioteknologi</strong> dapat didefinisikan sebagai penerapan prinsip-prinsip ilmiah dan rekayasa pengolahan bahan oleh agen-agen biologi untuk menghasilkan barang dan jasa yang bermanfaat bagi pemenuhan kebutuhan manusia.
+            Ini melibatkan penggunaan organisme hidup, bagian dari organisme, atau produknya untuk memecahkan masalah atau membuat produk baru.
+        </p>
+        <p>
+            Mari kita pahami skema dasar bioteknologi, yang menggambarkan bagaimana bahan mentah diubah menjadi produk melalui peran agen biologi di bawah arahan prinsip ilmiah dan rekayasa:
+        </p>
+
+        <div class="biotech-flow">
+            <div class="biotech-box process">
+                Prinsip Ilmiah dan Rekayasa Pengolahan Bahan
+                <div class="agent-detail">
+                    Meliputi disiplin ilmu seperti Genetika, Mikrobiologi, Biokimia, Teknik Kimia, dan lain-lain.
+                </div>
+            </div>
+
+            <div class="biotech-box raw-material">
+                Bahan Mentah
+            </div>
+            <div class="biotech-arrow arrow-to-agent">&#10140;</div> <!-- Right arrow -->
+            <div class="biotech-box agent">
+                Agen Biologi
+                <div class="agent-detail">
+                    Meliputi: Mikroorganisme (bakteri, jamur, alga), Tumbuhan, Hewan, Enzim, Hormon, Sel, dan komponen biologis lainnya.
+                </div>
+            </div>
+            <div class="biotech-arrow arrow-to-product">&#10140;</div> <!-- Right arrow -->
+            <div class="biotech-box product">
+                Produk
+            </div>
+        </div>
+        <p class="text-tertiary" style="text-align: center; margin-top: 1rem;">
+            Skema umum proses Bioteknologi. Prinsip ilmiah dan rekayasa menjadi dasar yang mengarahkan interaksi antara bahan mentah dan agen biologi untuk menghasilkan produk akhir.
+        </p>
+
+        <h3>Komponen Utama dalam Bioteknologi:</h3>
+        <ul>
+            <li><strong>Prinsip Ilmiah dan Rekayasa Pengolahan Bahan:</strong> Ini adalah fondasi teoritis dan praktis yang digunakan. Meliputi berbagai disiplin ilmu seperti mikrobiologi, biokimia, genetika, hingga teknik kimia yang diterapkan untuk memproses bahan secara efisien dan terkontrol.</li>
+            <li><strong>Bahan Mentah:</strong> Sumber daya awal yang akan diolah atau dimanipulasi. Bisa berupa bahan organik (seperti susu, air kelapa, kedelai, biomassa) atau bahan anorganik, yang akan diubah melalui proses bioteknologi untuk mendapatkan nilai tambah.</li>
+            <li><strong>Agen Biologi:</strong> Ini adalah "mesin" utama dalam bioteknologi. Agen biologi bisa berupa keseluruhan organisme (misalnya bakteri, ragi, sel tumbuhan/hewan), bagian dari organisme (misalnya enzim yang diisolasi), atau bahkan komponen genetik. Mereka melakukan transformasi kimiawi atau biologis yang diinginkan pada bahan mentah.</li>
+            <li><strong>Produk:</strong> Hasil akhir dari proses bioteknologi. Ini bisa berupa barang (misalnya makanan olahan, obat-obatan, biofuel, bahan kimia industri) atau jasa (misalnya pengolahan limbah, diagnostik medis, terapi) yang memiliki nilai dan memenuhi berbagai kebutuhan manusia.</li>
+        </ul>
+
+        <h2>2. Contoh Produk Bioteknologi Sehari-hari</h2>
+        <p>
+            Bioteknologi tidaklah asing; banyak produk di sekitar kita yang merupakan hasil penerapannya. Berikut adalah beberapa contoh populer yang sering kita jumpai dan konsumsi:
+        </p>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <h3>Yogurt</h3>
+                <p>
+                    <strong>Bahan Dasar:</strong> Susu <br>
+                    <strong>Agen Biologi:</strong> Bakteri <em>Lactobacillus bulgaricus</em> dan <em>Streptococcus thermophilus</em> <br>
+                    <strong>Proses Kunci:</strong> Fermentasi laktosa (gula susu) menjadi asam laktat, yang menyebabkan susu mengental dan menghasilkan rasa asam khas yogurt. Fermentasi ini juga meningkatkan masa simpan dan profil nutrisi susu.
+                </p>
+            </div>
+            <div class="product-card">
+                <h3>Nata de Coco</h3>
+                <p>
+                    <strong>Bahan Dasar:</strong> Air kelapa <br>
+                    <strong>Agen Biologi:</strong> Bakteri <em>Acetobacter xylinum</em> <br>
+                    <strong>Proses Kunci:</strong> Bakteri ini mengkonversi gula dalam air kelapa menjadi selulosa yang berbentuk gel padat, membentuk tekstur kenyal dan transparan yang khas dari nata de coco.
+                </p>
+            </div>
+            <div class="product-card">
+                <h3>Tempe</h3>
+                <p>
+                    <strong>Bahan Dasar:</strong> Kacang kedelai <br>
+                    <strong>Agen Biologi:</strong> Jamur <em>Rhizopus oligosporus</em> <br>
+                    <strong>Proses Kunci:</strong> Jamur tumbuh dan membentuk miselium (benang-benang halus) yang mengikat biji kedelai menjadi blok padat. Proses ini juga memecah makromolekul dalam kedelai, meningkatkan nilai gizi dan pencernaannya.
+                </p>
+            </div>
+            <div class="product-card">
+                <h3>Tape</h3>
+                <p>
+                    <strong>Bahan Dasar:</strong> Singkong atau beras ketan <br>
+                    <strong>Agen Biologi:</strong> Campuran ragi (terutama <em>Saccharomyces cerevisiae</em> dan jamur lain) <br>
+                    <strong>Proses Kunci:</strong> Fermentasi karbohidrat kompleks (pati) menjadi gula sederhana, lalu menjadi alkohol dan asam organik, memberikan rasa manis, sedikit asam, dan tekstur yang lembut.
+                </p>
+            </div>
+            <div class="product-card">
+                <h3>Kecap</h3>
+                <p>
+                    <strong>Bahan Dasar:</strong> Kacang kedelai dan gandum <br>
+                    <strong>Agen Biologi:</strong> Jamur (misalnya <em>Aspergillus oryzae</em>) dan bakteri asam laktat serta ragi <br>
+                    <strong>Proses Kunci:</strong> Melibatkan dua tahap fermentasi utama: fermentasi koji (oleh jamur) untuk memecah protein dan pati, dilanjutkan dengan fermentasi moromi (oleh bakteri dan ragi) yang mengembangkan rasa dan aroma kompleks.
+                </p>
+            </div>
+            <div class="product-card">
+                <h3>Mentega</h3>
+                <p>
+                    <strong>Bahan Dasar:</strong> Krim susu <br>
+                    <strong>Agen Biologi:</strong> Bakteri (misalnya <em>Lactococcus</em> spp.) <br>
+                    <strong>Proses Kunci:</strong> Fermentasi krim susu oleh bakteri untuk menghasilkan senyawa diasetil yang memberikan aroma khas mentega, diikuti dengan proses pengadukan untuk memisahkan lemak susu.
+                </p>
+            </div>
+        </div>
+
+        <h2>3. Sejarah dan Perkembangan Bioteknologi</h2>
+        <p>
+            Bioteknologi memiliki sejarah panjang yang membentang ribuan tahun, dimulai dari praktik tradisional hingga inovasi modern dengan rekayasa genetika. Berikut adalah lini masa penemuan penting dalam bioteknologi yang menunjukkan evolusi bidang ini:
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-year">6000 SM</span>
+                <span class="timeline-event"><strong>Bioteknologi Tradisional:</strong> Pemanfaatan mikroorganisme secara tidak langsung untuk membuat roti, alkohol (anggur dan bir), dan keju. Ini adalah cikal bakal bioteknologi yang telah ada sejak peradaban kuno.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1857</span>
+                <span class="timeline-event"><strong>Louis Pasteur:</strong> Menemukan teknik fermentasi mikroorganisme dan menjelaskan peran mikroba dalam proses ini, yang menjadi dasar mikrobiologi modern.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1917</span>
+                <span class="timeline-event"><strong>Karl Ereky:</strong> Ilmuwan pertanian Hungaria memperkenalkan istilah "bioteknologi" untuk menggambarkan produksi barang dari bahan mentah dengan bantuan organisme hidup.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1943</span>
+                <span class="timeline-event"><strong>Produksi Penisilin Industri:</strong> Penisilin mulai diproduksi dalam skala industri, menandai era baru antibiotik dan farmasi bioteknologi.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1944</span>
+                <span class="timeline-event"><strong>Penemuan DNA sebagai Bahan Genetik:</strong> Avery, Macleod, dan McCarty mendemonstrasikan bahwa DNA adalah materi genetik.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1953</span>
+                <span class="timeline-event"><strong>Struktur DNA:</strong> Watson dan Crick menemukan struktur DNA untai ganda, membuka jalan bagi pemahaman dan rekayasa genetika.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1970</span>
+                <span class="timeline-event"><strong>Isolasi Enzim Restriksi:</strong> Enzim restriksi endonuklease diisolasi, alat penting untuk memotong DNA pada situs spesifik.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1972</span>
+                <span class="timeline-event"><strong>Sintesis Gen:</strong> Khorana berhasil mensintesis secara kimiawi seluruh gen tRNA.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1973</span>
+                <span class="timeline-event"><strong>Teknologi DNA Rekombinan:</strong> Boyer dan Cohen memaparkan teknologi DNA rekombinan, awal dari bioteknologi modern dan rekayasa genetika.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1975</span>
+                <span class="timeline-event"><strong>Antibodi Monoklonal:</strong> Kohler dan Milstein menjabarkan produksi antibodi monoklonal, penting untuk diagnostik dan terapi.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1976</span>
+                <span class="timeline-event"><strong>Teknik Sekuensing DNA:</strong> Perkembangan teknik-teknik untuk menentukan urutan basa DNA semakin maju.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1978</span>
+                <span class="timeline-event"><strong>Insulin Manusia Rekombinan:</strong> Genentech berhasil menghasilkan insulin manusia dalam bakteri <em>E. coli</em>, produk farmasi pertama dari rekayasa genetika.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1980</span>
+                <span class="timeline-event"><strong>Paten Mikroorganisme Rekayasa Genetik:</strong> Mikroorganisme hasil rekayasa genetika dapat dipatenkan, membuka jalan bagi industri bioteknologi.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1982</span>
+                <span class="timeline-event">Vaksin hewan DNA rekombinan pertama disetujui di Eropa.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1983</span>
+                <span class="timeline-event"><strong>Transformasi DNA Tumbuhan:</strong> Plasmid Ti dipakai untuk transformasi DNA rekombinan pada tumbuhan.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1988</span>
+                <span class="timeline-event"><strong>Metode PCR:</strong> Metode <strong>Polymerase Chain Reaction (PCR)</strong> dipublikasikan oleh Kary Mullis, merevolusi amplifikasi DNA dan analisis genetik.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1997</span>
+                <span class="timeline-event"><strong>Kloning Dolly:</strong> Kloning sel inti pada mamalia (domba Dolly) dengan menggunakan sel somatik, memicu debat etika yang luas.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">1999</span>
+                <span class="timeline-event">Kode genetik lengkap dari kromosom manusia telah diuraikan.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2000</span>
+                <span class="timeline-event"><strong>Penyelesaian Human Genome Project:</strong> Proyek besar yang memetakan seluruh genom manusia selesai.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2002</span>
+                <span class="timeline-event"><strong>Golden Rice:</strong> Padi transgenik beta karoten (Golden Rice) mulai diproduksi, bertujuan mengatasi defisiensi Vitamin A.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2003</span>
+                <span class="timeline-event">Pemetaan genom manusia secara keseluruhan selesai dilakukan.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2004</span>
+                <span class="timeline-event">Penggunaan antibodi monoklonal untuk terapi kanker semakin meluas.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2006</span>
+                <span class="timeline-event">Penggunaan vaksin untuk papillomavirus di 82 negara, mengurangi risiko kanker serviks.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2007</span>
+                <span class="timeline-event">Penemuan teknik <em>stem cell</em> (sel punca) dari sel kulit manusia, membuka potensi terapi regeneratif tanpa etika kontroversi.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2009</span>
+                <span class="timeline-event">Sekuensing genom virus H1N1, penting untuk respon cepat terhadap pandemi.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2010</span>
+                <span class="timeline-event">Penemuan genom artifisial yang dapat bereplikasi secara otonom, sebuah langkah besar dalam biologi sintetis.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2012</span>
+                <span class="timeline-event">Draft genom tanaman gandum telah selesai dianalisis.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2013</span>
+                <span class="timeline-event">Vaksin atau antibodi untuk HIV dan sel iPS (induced Pluripotent Stem Cells) untuk terapi kanker.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2014</span>
+                <span class="timeline-event">Ditemukan darah sintetis, potensi revolusi dalam transfusi darah.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2015</span>
+                <span class="timeline-event">Ditemukan vaksin Ebola dan teknologi pengeditan genom <strong>CRISPR (Clustered Regularly Interspaced Short Palindromic Repeats)</strong>, alat revolusioner untuk rekayasa genetik.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2016</span>
+                <span class="timeline-event">Ditemukan pankreas buatan (Minimed 670G) untuk penderita diabetes.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2017</span>
+                <span class="timeline-event">Pengeditan embrio manusia dengan CRISPR, serta kloning kuda.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2018</span>
+                <span class="timeline-event">Terapi <em>stem cell</em> berhasil menyembuhkan mata yang buta, menunjukkan potensi regeneratif.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2019</span>
+                <span class="timeline-event">Penemuan obat cystic fibrosis, hasil dari pemahaman genetik yang mendalam.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2020</span>
+                <span class="timeline-event"><strong>Vaksin mRNA:</strong> Vaksin mRNA Pfizer dan Moderna untuk Covid-19 dikembangkan dengan sangat cepat berkat kemajuan bioteknologi.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2021</span>
+                <span class="timeline-event">Rekayasa DNA bayi untuk mencegah HIV, serta integrasi Bioteknologi dengan Internet of Behavior (IoB).</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2022</span>
+                <span class="timeline-event">Ditemukan komputasi kuantum dan Human Augmentation, menjanjikan masa depan bioteknologi yang semakin terintegrasi dengan teknologi informasi dan peningkatan kapasitas manusia.</span>
+            </div>
+        </div>
+
+        <h2>4. Manfaat Bioteknologi di Berbagai Bidang Kehidupan</h2>
+        <p>
+            Bioteknologi memiliki jangkauan aplikasi yang sangat luas dan terus berkembang, membawa solusi inovatif untuk berbagai tantangan global dan meningkatkan kualitas hidup manusia. Beberapa bidang utama di mana bioteknologi memberikan dampak signifikan antara lain:
+        </p>
+        <ul>
+            <li>
+                <strong>Bidang Pangan:</strong>
+                <p>Meningkatkan produksi pangan melalui pengembangan tanaman transgenik yang tahan hama/penyakit, toleran terhadap kondisi lingkungan ekstrem (kekeringan, salinitas), atau memiliki nilai gizi yang lebih tinggi (misalnya Golden Rice dengan provitamin A). Selain itu, bioteknologi juga berperan dalam produksi bahan tambahan pangan seperti enzim, vitamin, dan asam amino, serta pengembangan makanan fermentasi yang lebih aman dan berkualitas (contohnya yogurt, keju, tempe, kecap).</p>
+            </li>
+            <li>
+                <strong>Bidang Kesehatan dan Farmasi:</strong>
+                <p>Pengembangan vaksin baru (termasuk vaksin mRNA yang revolusioner untuk Covid-19) dan terapi gen untuk penyakit genetik yang sebelumnya tidak dapat diobati. Produksi massal obat-obatan penting seperti insulin, hormon pertumbuhan, dan antibodi monoklonal menggunakan rekayasa genetika. Bioteknologi juga memungkinkan diagnostik penyakit yang lebih cepat dan akurat (misalnya tes PCR untuk deteksi virus) serta terapi sel punca (stem cell) untuk regenerasi jaringan dan organ yang rusak.</p>
+            </li>
+            <li>
+                <strong>Bidang Pertanian:</strong>
+                <p>Pengembangan varietas tanaman unggul yang lebih produktif, resisten terhadap serangan hama, penyakit, dan gulma, serta adaptif terhadap perubahan iklim. Selain itu, produksi bio-pestisida dan bio-pupuk yang ramah lingkungan sebagai alternatif bahan kimia, serta perbaikan kualitas dan produktivitas ternak melalui rekayasa genetika atau teknik reproduksi berbantuan.</p>
+            </li>
+            <li>
+                <strong>Bidang Industri:</strong>
+                <p>Produksi biofuel dari biomassa sebagai sumber energi terbarukan, mengurangi ketergantungan pada bahan bakar fosil. Pengembangan enzim untuk berbagai aplikasi industri seperti deterjen (untuk efisiensi pencucian), tekstil (untuk pemrosesan serat), dan industri kertas (untuk pemutihan). Bioteknologi juga digunakan untuk bioremediasi, yaitu pembersihan polutan lingkungan (air, tanah) menggunakan mikroorganisme, serta produksi biomaterial baru yang berkelanjutan dan ramah lingkungan.</p>
+            </li>
+            <li>
+                <strong>Bidang Lingkungan:</strong>
+                <p>Pengelolaan dan pengolahan limbah (padat dan cair) secara efisien menggunakan mikroorganisme untuk mendegradasi zat-zat berbahaya. Deteksi polutan dan monitoring kualitas lingkungan secara real-time. Bioteknologi juga berkontribusi pada pengembangan solusi berkelanjutan untuk mengatasi masalah lingkungan global seperti perubahan iklim dan hilangnya keanekaragaman hayati.</p>
+            </li>
+        </ul>
+        <p>
+            Dengan terus berlanjutnya penelitian dan inovasi, bioteknologi diproyeksikan akan memainkan peran yang semakin krusial dalam membentuk masa depan yang lebih baik, efisien, dan berkelanjutan bagi umat manusia, menawarkan solusi transformatif untuk tantangan kompleks di berbagai sektor kehidupan.
+        </p>
+    </div>
+</body>
+</html>
+```

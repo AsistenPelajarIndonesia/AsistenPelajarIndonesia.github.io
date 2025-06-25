@@ -1,0 +1,337 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menelaah Struktur dan Aspek Kebahasaan Cerita Pendek</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the top */
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        .structure-diagram {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            padding-bottom: 100px; /* Space for the arrows and labels */
+        }
+
+        .structure-diagram::before,
+        .structure-diagram::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top: 2px solid var(--border-divider);
+        }
+
+        .structure-diagram::before {
+            top: 0;
+            width: 0; /* Will be adjusted by JS or CSS pseudo-elements */
+        }
+
+        .structure-diagram::after {
+            bottom: 0;
+            width: 0; /* Will be adjusted by JS or CSS pseudo-elements */
+        }
+
+        .structure-elements {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px; /* Space for connections */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .structure-element {
+            text-align: center;
+            flex: 1; /* Distribute space evenly */
+            padding: 15px 10px;
+            margin: 0 10px; /* Spacing between elements */
+            border: 1px solid var(--primary-blue);
+            border-radius: 5px;
+            background-color: rgba(25, 118, 210, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .structure-element:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+            cursor: pointer;
+        }
+
+        .structure-element h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.1em;
+        }
+
+        .structure-element p {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Connecting lines */
+        .structure-diagram .line {
+            position: absolute;
+            background-color: var(--text-tertiary);
+            height: 2px;
+            transform-origin: 0 0;
+        }
+
+        /* Styles for specific connections */
+        .conn-1 { top: calc(50% - 1px); left: 25%; width: 25%; } /* Orientasi to Rangkaian */
+        .conn-2 { top: 50%; left: 50%; width: 25%; }       /* Rangkaian to Komplikasi */
+        .conn-3 { top: calc(50% + 1px); left: 75%; width: 25%; } /* Komplikasi to Resolusi */
+
+        /* Vertical connectors (for simpler representation) */
+        .structure-diagram .vertical-line {
+            position: absolute;
+            background-color: var(--text-tertiary);
+            width: 2px;
+            transform-origin: 0 0;
+        }
+
+        .vert-1 { top: 0; left: 25%; height: 50%; }
+        .vert-2 { top: 50%; left: 50%; height: 50%; }
+        .vert-3 { top: 0; left: 75%; height: 50%; }
+
+        /* Definitions */
+        .definitions {
+            margin-top: 30px;
+        }
+
+        .definition-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        .definition-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .definition-item h3 {
+            color: var(--accent-green);
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .definition-item p {
+            color: var(--text-secondary);
+            margin-left: 15px; /* Indentation for description */
+        }
+
+        .example-text {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .structure-elements {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .structure-element {
+                margin: 10px 0;
+            }
+            .conn-1, .conn-2, .conn-3 {
+                display: none; /* Hide complex lines on small screens for simplicity */
+            }
+            .structure-diagram::before, .structure-diagram::after {
+                display: none; /* Hide complex lines on small screens */
+            }
+            .structure-diagram {
+                padding-bottom: 0; /* Adjust padding if lines are hidden */
+            }
+            .structure-diagram .vertical-line {
+                display: none; /* Hide vertical lines as well */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .section h2 {
+                font-size: 1.2em;
+            }
+            .structure-element h3 {
+                font-size: 1em;
+            }
+            .definition-item h3 {
+                font-size: 1em;
+            }
+            .structure-element p, .definition-item p {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 4: Mengkritisi Teks Diskusi</h1>
+        <p class="section-intro">Mari kita selami bagaimana cara menelaah struktur dan aspek kebahasaan dalam sebuah cerita pendek. Pemahaman ini akan membantu kita mengapresiasi kedalaman narasi dan bagaimana penulis membangun cerita yang menarik.</p>
+
+        <div class="section">
+            <h2>C. Menelaah Struktur dan Aspek Kebahasaan Cerita Pendek</h2>
+            <p>Setiap cerita pendek memiliki struktur yang membentuk alur dan memberikan pengalaman membaca yang kohesif. Struktur ini pada dasarnya adalah kerangka yang menopang seluruh cerita. Memahami komponen-komponen struktur ini akan membantu kita mengidentifikasi bagaimana cerita berkembang dari awal hingga akhir.</p>
+
+            <div class="structure-diagram">
+                <div class="structure-elements">
+                    <div class="structure-element">
+                        <h3>Orientasi</h3>
+                        <p>Pengenalan latar dan karakter.</p>
+                    </div>
+                    <div class="structure-element">
+                        <h3>Rangkaian Peristiwa</h3>
+                        <p>Perkembangan cerita melalui serangkaian kejadian.</p>
+                    </div>
+                    <div class="structure-element">
+                        <h3>Komplikasi</h3>
+                        <p>Munculnya masalah atau konflik utama.</p>
+                    </div>
+                    <div class="structure-element">
+                        <h3>Resolusi</h3>
+                        <p>Penyelesaian masalah atau konflik.</p>
+                    </div>
+                </div>
+
+                <!-- Visualisasi sederhana struktur (tanpa SVG kompleks agar kompatibel) -->
+                <!-- Arrows can be represented by borders and positioning -->
+                <div class="vertical-line vert-1" style="top: 50%; height: 50%;"></div>
+                <div class="vertical-line vert-2" style="top: 0; height: 50%;"></div>
+                <div class="vertical-line vert-3" style="top: 50%; height: 50%;"></div>
+                <div class="line conn-1" style="top: 50%; left: 25%;"></div>
+                <div class="line conn-2" style="top: 50%; left: 50%;"></div>
+                <div class="line conn-3" style="top: 50%; left: 75%;"></div>
+
+            </div>
+
+            <div class="definitions">
+                <h3>Penjelasan Struktur Naratif</h3>
+
+                <div class="definition-item">
+                    <h3>1. Orientasi</h3>
+                    <p>Tahap awal cerita. Bertujuan untuk menciptakan gambaran visual mengenai latar (setting) cerita, baik itu tempat, waktu, maupun atmosfer. Di tahap ini juga diperkenalkan karakter-karakter utama dan memberikan petunjuk awal mengenai arah cerita yang akan menuju pada perkembangan masalah.</p>
+                    <div class="example-text">
+                        Contoh: "Di sebelah barat kampung ada gunung yang tidak begitu besar. Disebut gunung barangkali tidak tepat karena areanya terlalu kecil. Lebih tepatnya disebut bukit. Tapi, penduduk kampung, sejak dulu sampai sekarang, menyebutnya dengan Gunung Beser." (Memperkenalkan latar tempat: Gunung Beser).
+                    </div>
+                </div>
+
+                <div class="definition-item">
+                    <h3>2. Rangkaian Peristiwa</h3>
+                    <p>Bagian ini adalah jembatan yang menghubungkan orientasi dengan komplikasi. Cerita mulai bergerak melalui serangkaian kejadian yang biasanya bersifat tak terduga atau membangun ketegangan. Peristiwa-peristiwa ini secara bertahap mengarahkan pembaca menuju inti konflik.</p>
+                    <div class="example-text">
+                        Contoh: "Saat pendudukan Belanda, di kampung saya ada seorang tokoh yang melawan Belanda yang berjuang sendirian tanpa pasukan bernama Jayasakti. Tentu saja tokoh ini menjadi incaran Belanda untuk ditangkap dan dipenjarakan. Jayasakti lari dari kampung ke Gunung Beser dan bersembunyi..." (Mulai memperkenalkan aksi dan konsekuensi, mengarah ke konflik).
+                    </div>
+                </div>
+
+                <div class="definition-item">
+                    <h3>3. Komplikasi</h3>
+                    <p>Merupakan inti dari konflik atau masalah yang dihadapi oleh tokoh utama. Tahap ini menyoroti bagaimana konflik tersebut memengaruhi latar waktu, karakter, dan jalannya cerita secara keseluruhan. Di sini, tokoh utama mulai dihadapkan pada tantangan yang harus diatasi, dan cerita akan bergerak menuju resolusi.</p>
+                    <div class="example-text">
+                        Contoh: "Bertahun-tahun pasukan Belanda dan centeng-centeng demang mengepung Gunung Beser, tapi Jayasakti tidak pernah menyerah... Karena cerita itu dipercaya kebenarannya, tidak seorang pun penduduk berani masuk ke kelebatan Gunung Beser. Mereka menghormati perjuangan yang pernah dilakukan Mbah Jayasakti. Selain itu, konon, mereka takut masuk ke dalam gunung karena dulu ada beberapa orang pencari kayu bakar nekad masuk ke dalam. Akan tetapi, dia bernasib seperti pasukan Belanda dan centeng-centeng demang itu, tidak bisa kembali." (Konflik antara Jayasakti dan Belanda, serta ketakutan masyarakat terhadap gunung menjadi komplikasi yang kuat).
+                    </div>
+                </div>
+
+                <div class="definition-item">
+                    <h3>4. Resolusi</h3>
+                    <p>Tahap akhir cerita di mana solusi untuk masalah atau tantangan yang dihadapi tokoh utama dicapai. Ini adalah cara pengarang mengakhiri cerita, memberikan penutup bagi konflik, dan seringkali menyisakan kesan atau pesan bagi pembaca.</p>
+                    <div class="example-text">
+                        Contoh: "...kata orang-orang pintar, Jayasakti bersemedi dan tubuhnya menjadi pohon harum yang baunya dibawa angin ke sekitar gunung. ...Jayasakti, begitu penduduk kampung menyebut penghuni Gunung Beser, melindungi kampung. Akan tetapi, jika ada orang yang sembrono melanggar keheningan Gunung Beser, Mbah Jayasakti bisa marah. Jangankan menebang pohon tanpa izin, masuk saja ke dalam gunung akan kualat." (Penyelesaian konflik Jayasakti dengan cara supranatural, dan konsekuensi bagi siapa saja yang mengganggu Gunung Beser, menciptakan penutup yang misterius dan penuh makna).
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Aspek Kebahasaan yang Perlu Diperhatikan</h3>
+                <p>Selain struktur, aspek kebahasaan juga sangat krusial dalam membangun sebuah cerita pendek yang efektif. Perhatikan penggunaan:</p>
+                <ul>
+                    <li><strong>Diksi (Pilihan Kata):</strong> Bagaimana penulis memilih kata-kata yang tepat untuk menggambarkan suasana, emosi, dan karakter. Kata-kata yang kuat dapat membangkitkan imajinasi pembaca.</li>
+                    <li><strong>Gaya Bahasa (Majas):</strong> Penggunaan metafora, simile, personifikasi, atau gaya bahasa lain untuk memberikan warna dan kedalaman pada narasi.</li>
+                    <li><strong>Sudut Pandang:</strong> Apakah cerita diceritakan dari sudut pandang orang pertama ('aku'), orang kedua ('kamu'), atau orang ketiga ('dia', 'mereka'). Sudut pandang memengaruhi bagaimana pembaca terhubung dengan cerita.</li>
+                    <li><strong>Dialog:</strong> Percakapan antar tokoh yang natural dan informatif, yang mengungkapkan kepribadian dan memajukan plot.</li>
+                    <li><strong>Kalimat Efektif:</strong> Penggunaan kalimat yang jelas, ringkas, dan mudah dipahami.</li>
+                </ul>
+
+                <p class="example-text">
+                    Contoh dalam teks: Penggunaan kata seperti "keangkerannya", "bergidik", "menyejukkan", "takjub" dalam deskripsi Gunung Beser dan pengalaman narator menunjukkan pilihan diksi yang kuat untuk membangun atmosfer. Personifikasi juga terlihat pada "Gunung Beser memberikan air yang melimpah" atau "angin membawa bau".
+                </p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+```

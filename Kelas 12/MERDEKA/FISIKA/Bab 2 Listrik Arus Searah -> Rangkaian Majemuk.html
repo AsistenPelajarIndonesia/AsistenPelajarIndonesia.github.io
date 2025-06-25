@@ -1,0 +1,281 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listrik Arus Searah: Rangkaian Majemuk</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        h2 {
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 8px;
+            font-size: 2em;
+        }
+        h3 {
+            font-size: 1.5em;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        .concept-box {
+            background-color: #E3F2FD;
+            border-left: 5px solid #1976D2;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .example-box {
+            background-color: #FFF9C4;
+            border-left: 5px solid #FFB300;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .highlight {
+            color: #1976D2;
+            font-weight: bold;
+        }
+        .formula {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+            background-color: #F5F5F5;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px dashed #E0E0E0;
+            overflow-x: auto;
+        }
+        .formula span {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #E0E0E0;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #BBDEFB;
+            color: #1976D2;
+        }
+        tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .formula {
+                font-size: 1em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula {
+                font-size: 0.9em;
+            }
+            th, td {
+                padding: 6px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rangkaian Majemuk dalam Listrik Arus Searah</h1>
+
+        <p>Selamat datang di eksplorasi mendalam tentang <strong>Rangkaian Majemuk</strong> dalam konteks Listrik Arus Searah (DC). Rangkaian majemuk, atau dikenal juga sebagai rangkaian campuran, adalah kombinasi dari rangkaian seri dan rangkaian paralel. Memahami cara menganalisis rangkaian ini sangat penting dalam fisika listrik, mulai dari merancang sirkuit sederhana hingga memahami sistem kelistrikan yang kompleks.</p>
+
+        <h2>Memahami Rangkaian Majemuk</h2>
+
+        <p>Rangkaian majemuk menawarkan fleksibilitas desain yang luar biasa. Dengan menggabungkan elemen-elemen secara seri (yang memungkinkan arus mengalir melalui setiap komponen secara berurutan) dan secara paralel (yang memungkinkan arus terpecah dan mengalir melalui cabang-cabang yang berbeda secara bersamaan), kita dapat menciptakan konfigurasi yang sesuai dengan kebutuhan spesifik.</p>
+
+        <h3>Karakteristik Utama</h3>
+        <ul>
+            <li><strong>Kombinasi Seri dan Paralel:</strong> Komponen-komponen tidak hanya tersusun dalam satu baris lurus (seri) atau terpisah dalam cabang-cabang (paralel), tetapi keduanya hadir dalam satu rangkaian yang sama.</li>
+            <li><strong>Analisis Bertahap:</strong> Untuk menyelesaikan analisis rangkaian majemuk, kita biasanya akan menyederhanakan bagian-bagian rangkaian terlebih dahulu. Bagian paralel dalam rangkaian majemuk dapat dihitung terlebih dahulu untuk mendapatkan hambatan pengganti totalnya, baru kemudian dihitung secara seri dengan komponen lainnya.</li>
+            <li><strong>Hukum Kirchhoff adalah Kunci:</strong> Analisis yang lebih kompleks seringkali memerlukan penggunaan Hukum Kirchhoff, baik hukum arus maupun hukum tegangan, untuk memecahkan arus dan tegangan di setiap titik percabangan dan loop.</li>
+        </ul>
+
+        <div class="concept-box">
+            <h3>Konsep Dasar: Menyederhanakan Rangkaian</h3>
+            <p>Langkah pertama dalam menganalisis rangkaian majemuk adalah mengidentifikasi bagian mana yang tersusun seri dan bagian mana yang tersusun paralel. Kemudian, gunakan rumus-rumus berikut:</p>
+            <ul>
+                <li><strong>Hambatan Pengganti untuk Rangkaian Paralel (Rp):</strong> Jika ada $n$ komponen dengan hambatan $R_1, R_2, ..., R_n$ yang tersusun paralel:
+                    <div class="formula"><span>&frac1{R_p} = &frac1{R_1} + &frac1{R_2} + ... + &frac1{R_n}</span></div>
+                    Untuk dua komponen paralel:
+                    <div class="formula"><span>R_p = &frac{R_1 \times R_2}{R_1 + R_2}</span></div>
+                </li>
+                <li><strong>Hambatan Pengganti untuk Rangkaian Seri (Rs):</strong> Jika ada $n$ komponen dengan hambatan $R_1, R_2, ..., R_n$ yang tersusun seri:
+                    <div class="formula"><span>R_s = R_1 + R_2 + ... + R_n</span></div>
+                </li>
+            </ul>
+            <p>Setelah menyederhanakan bagian paralel menjadi satu hambatan pengganti, rangkaian tersebut kini dapat dilihat sebagai rangkaian seri yang lebih sederhana.</p>
+        </div>
+
+        <h2>Aktivitas 2.4: Merancang Rangkaian Lampu</h2>
+
+        <p>Bayangkan Anda memiliki 5 buah lampu yang masing-masing dirancang untuk beroperasi optimal pada tegangan 2.1 V. Namun, Anda dihadapkan pada sumber tegangan sebesar 9 V. Tantangannya adalah bagaimana merangkai kelima lampu tersebut (menggunakan kombinasi seri dan paralel) agar semuanya menyala normal tanpa rusak. Selain itu, Anda perlu menganalisis apakah ada komponen tambahan, seperti resistor, yang diperlukan untuk melindungi lampu dan memastikan operasi yang optimal. Evaluasi berbagai rancangan untuk menentukan mana yang paling efektif.</p>
+
+        <p>Dalam skenario seperti ini, kita perlu mengatur lampu sedemikian rupa sehingga tegangan total 9 V terbagi secara merata atau sesuai dengan kebutuhan masing-masing lampu. Jika kita merangkai kelima lampu secara seri, tegangan per lampu hanya akan sekitar 9 V / 5 = 1.8 V, yang mungkin kurang dari 2.1 V. Jika kita merangkai secara paralel, setiap lampu akan menerima tegangan penuh 9 V, yang jelas akan merusak lampu.</p>
+
+        <p>Solusinya terletak pada <strong>rangkaian majemuk</strong>. Misalnya, kita bisa membagi 5 lampu menjadi beberapa grup paralel, dan grup-grup ini dirangkai seri. Atau, kita bisa menggabungkan beberapa lampu secara seri untuk membentuk satu unit, dan kemudian unit-unit ini dirangkai paralel. Tujuannya adalah agar total tegangan 9 V terbagi secara proporsional pada setiap cabang atau segmen rangkaian, sesuai dengan tegangan operasi optimal lampu (2.1 V).</p>
+
+        <div class="example-box">
+            <h3>Contoh Konfigurasi Potensial (Konseptual)</h3>
+            <p>Misalkan kita ingin membagi 5 lampu menjadi dua grup. Grup pertama terdiri dari 2 lampu secara seri, dan grup kedua terdiri dari 3 lampu secara seri. Kedua grup ini kemudian dihubungkan secara paralel ke sumber 9 V.</p>
+            <ul>
+                <li>Grup 1 (2 lampu seri): Tegangan per lampu = 2.1 V. Total tegangan grup = 2 x 2.1 V = 4.2 V.</li>
+                <li>Grup 2 (3 lampu seri): Tegangan per lampu = 2.1 V. Total tegangan grup = 3 x 2.1 V = 6.3 V.</li>
+            </ul>
+            <p>Jika kedua grup ini diparalel, masing-masing akan tetap mendapat tegangan 9 V. Hal ini belum optimal karena grup 1 hanya butuh 4.2 V dan grup 2 butuh 6.3 V. Ini menunjukkan bahwa konfigurasi sederhana ini tidak langsung berhasil.</p>
+            <p>Pendekatan yang lebih baik adalah memastikan bahwa tegangan total 9 V dapat dibagi oleh jumlah segmen yang dirangkai secara seri. Jika kita bisa membentuk segmen-segmen yang masing-masing membutuhkan tegangan total yang sama dari sumber 9 V, maka konfigurasi paralel antar segmen akan berhasil. Misalnya, jika kita membagi 5 lampu menjadi konfigurasi yang membuat total tegangan seri di setiap "jalur" paralel mendekati 9V.</p>
+            <p>Penting juga untuk mempertimbangkan kebutuhan resistor tambahan. Jika hasil perhitungan menunjukkan bahwa konfigurasi seri-paralel tertentu masih menyebabkan arus yang berlebihan pada lampu, maka resistor seri dapat ditambahkan pada cabang tersebut untuk membatasi arus.</p>
+        </div>
+
+        <h2>Aktivitas 2.5: Rangkaian Majemuk dengan Resistor dan Baterai</h2>
+
+        <p>Aktivitas ini mengajak Anda untuk membangun sebuah rangkaian yang terdiri dari 3 resistor dan dua sumber tegangan (baterai) seperti yang digambarkan. Tugas Anda adalah mengukur arus yang mengalir pada setiap cabang serta tegangan di titik-titik tertentu. Data yang diperoleh kemudian dicatat dalam sebuah tabel untuk analisis lebih lanjut.</p>
+
+        <p>Dalam rangkaian majemuk dengan beberapa sumber tegangan, analisis menjadi lebih kompleks. Di sinilah Hukum Kirchhoff menjadi sangat berharga.</p>
+
+        <div class="concept-box">
+            <h3>Menggunakan Hukum Kirchhoff untuk Rangkaian Majemuk</h3>
+            <p>Gustav Kirchhoff merumuskan dua hukum fundamental untuk analisis rangkaian listrik:</p>
+
+            <h4>1. Hukum Kirchhoff I (Hukum Arus / Hukum Titik Percabangan)</h4>
+            <p>Hukum ini menyatakan bahwa jumlah total arus yang masuk ke suatu titik percabangan (simpul) dalam rangkaian sama dengan jumlah total arus yang keluar dari titik percabangan tersebut. Ini adalah manifestasi dari hukum kekekalan muatan.</p>
+            <div class="formula"><span>&Sigma;I_{masuk} = &Sigma;I_{keluar}</span></div>
+            <p>Contoh: Jika pada titik cabang ada arus $I_1$ dan $I_2$ masuk, serta arus $I_3$ dan $I_4$ keluar, maka:</p>
+            <div class="formula"><span>I_1 + I_2 = I_3 + I_4</span></div>
+
+            <h4>2. Hukum Kirchhoff II (Hukum Tegangan / Hukum Loop)</h4>
+            <p>Hukum ini menyatakan bahwa jumlah aljabar dari semua perubahan potensial (tegangan) di sepanjang loop tertutup dalam rangkaian adalah nol. Ini adalah manifestasi dari hukum kekekalan energi.</p>
+            <p>Secara matematis:</p>
+            <div class="formula"><span>&Sigma;V = 0 \quad \text{atau} \quad &Sigma;&mathcal{E} = &Sigma;IR</span></div>
+            <p>Dimana:</p>
+            <ul>
+                <li>$&Sigma;V$ adalah jumlah aljabar tegangan di dalam loop.</li>
+                <li>$&Sigma;&mathcal{E}$ adalah jumlah aljabar GGL (Gaya Gerak Listrik) dari sumber tegangan dalam loop.</li>
+                <li>$&Sigma;IR$ adalah jumlah aljabar dari hasil kali arus dan hambatan untuk setiap komponen dalam loop.</li>
+            </ul>
+            <p><strong>Perjanjian Tanda untuk Loop:</strong></p>
+            <ul>
+                <li>Saat menelusuri loop dan bergerak dari kutub negatif ke kutub positif sumber tegangan, GGL dianggap positif ($+\mathcal{E}$).</li>
+                <li>Saat menelusuri loop dan bergerak dari kutub positif ke kutub negatif sumber tegangan, GGL dianggap negatif ($-\mathcal{E}$).</li>
+                <li>Jika arah penelusuran loop searah dengan arah arus ($I$) pada resistor, maka $IR$ dianggap positif ($+IR$).</li>
+                <li>Jika arah penelusuran loop berlawanan dengan arah arus ($I$) pada resistor, maka $IR$ dianggap negatif ($-IR$).</li>
+            </ul>
+
+            <p>Dengan menerapkan kedua hukum ini, kita dapat membentuk sistem persamaan linear yang kemudian dapat diselesaikan untuk menemukan nilai arus dan tegangan yang tidak diketahui di setiap bagian rangkaian.</p>
+        </div>
+
+        <h2>Aplikasi dalam Kehidupan Nyata: Kelistrikan Mobil</h2>
+
+        <p>Contoh menarik bagaimana rangkaian majemuk dan Hukum Kirchhoff diterapkan adalah pada sistem kelistrikan mobil. Seperti yang digambarkan, terdapat alternator (dinamo) sebagai sumber tegangan utama saat mesin hidup, aki sebagai penyimpan energi, dan lampu depan sebagai beban.</p>
+
+        <p>Alternator dan aki masing-masing memiliki GGL dan hambatan dalam internal. Lampu depan juga memiliki hambatan. Rangkaian ini merupakan contoh rangkaian majemuk yang kompleks karena ada lebih dari satu sumber tegangan dan percabangan arus. Untuk menentukan arus yang mengalir ke alternator ($I_A$), aki ($I_B$), dan lampu depan ($I_C$), serta tegangan di berbagai titik, kita harus menggunakan Hukum Kirchhoff.</p>
+
+        <p>Misalnya, untuk menganalisis rangkaian ini, kita akan:</p>
+        <ol>
+            <li><strong>Mengidentifikasi Loop:</strong> Membagi rangkaian menjadi dua atau lebih loop tertutup.</li>
+            <li><strong>Menentukan Arah Arus dan Loop:</strong> Memberikan asumsi arah arus pada setiap cabang dan arah penelusuran loop.</li>
+            <li><strong>Menerapkan Hukum Kirchhoff I:</strong> Di titik percabangan (misalnya, di terminal aki), arus yang masuk harus sama dengan arus yang keluar.</li>
+            <li><strong>Menerapkan Hukum Kirchhoff II:</strong> Untuk setiap loop yang diidentifikasi, jumlah aljabar GGL sama dengan jumlah aljabar $IR$.</li>
+            <li><strong>Menyelesaikan Sistem Persamaan:</strong> Dari langkah 3 dan 4, kita akan mendapatkan sistem persamaan linear yang kemudian diselesaikan untuk menemukan nilai arus yang tidak diketahui.</li>
+        </ol>
+
+        <div class="example-box">
+            <h3>Analisis Sederhana Rangkaian Mobil (Berdasarkan Contoh Soal)</h3>
+            <p>Jika alternator memiliki GGL &epsilon;₁ = 14 V dan hambatan dalam R₁ = 0.1 Ω, aki memiliki GGL &epsilon;₂ = 12 V dan hambatan dalam R₂ = 0.01 Ω, serta lampu depan memiliki hambatan R_lampu = 1.20 Ω. Untuk mencari arus ($I_A$, $I_B$, $I_C$):</p>
+            <p>Kita akan membentuk dua loop:</p>
+            <p><strong>Loop 1 (Misal loop yang melibatkan aki dan lampu):</strong></p>
+            <p>Dengan menerapkan Hukum Kirchhoff II, kita dapatkan persamaan pertama (misalnya, setelah memperhitungkan arah arus dan GGL).</p>
+            <div class="formula"><span><span>1.2 $I_C$ + 0.01 $I_B$ = 12</span></span></div>
+            <p><strong>Loop 2 (Misal loop yang melibatkan alternator dan lampu):</strong></p>
+            <p>Dengan menerapkan Hukum Kirchhoff II lagi untuk loop kedua, kita dapatkan persamaan kedua (memperhitungkan arah alternator, aki, dan hambatan dalam).</p>
+            <div class="formula"><span><span>0.1 $I_A$ – 0.01 $I_B$ = 2</span></span></div>
+            <p><strong>Hukum Kirchhoff I di Titik Percabangan:</strong></p>
+            <p>Di titik di mana arus alternator, arus aki, dan arus lampu bertemu, berlaku hukum arus.</p>
+            <div class="formula"><span><span>$I_A = I_C + I_B$</span></span></div>
+            <p>Dengan ketiga persamaan ini, kita dapat menyelesaikan untuk $I_A$, $I_B$, dan $I_C$. Hasilnya mungkin menunjukkan bahwa arah arus pada aki berlawanan dengan asumsi awal (ditandai dengan nilai negatif), yang berarti aki sebenarnya sedang diisi daya oleh alternator.</p>
+        </div>
+
+        <h2>Daya Listrik: Pengait ke Bab Selanjutnya</h2>
+
+        <p>Dalam memahami rangkaian listrik, kita tidak bisa lepas dari konsep <strong>Daya Listrik</strong>. Satuan daya adalah Watt (W), dan ini menjelaskan seberapa cepat energi listrik diubah menjadi bentuk energi lain, seperti panas (pada resistor) atau cahaya (pada lampu). Produk elektronik selalu memiliki spesifikasi daya (misalnya, lampu 5 Watt, 10 Watt). Memahami bagaimana arus dan tegangan berkontribusi pada daya (P = VI) akan menjadi fokus di bab berikutnya.</p>
+
+        <div class="concept-box">
+            <h3>Hubungan Daya dengan Arus dan Tegangan</h3>
+            <p>Daya listrik ($P$) yang dikonsumsi oleh suatu komponen atau dihasilkan oleh sumber tegangan berkaitan langsung dengan arus listrik ($I$) yang mengalir melaluinya dan beda potensial atau tegangan ($V$) di ujung-ujungnya. Rumus dasarnya adalah:</p>
+            <div class="formula"><span>P = V &times; I</span></div>
+            <p>Dengan menggabungkan rumus ini dengan Hukum Ohm ($V = IR$), kita juga bisa mendapatkan rumus daya lainnya:</p>
+            <div class="formula"><span>P = I²R</span></div>
+            <div class="formula"><span>P = &frac{V²}{R}</span></div>
+            <p>Konsep daya ini sangat relevan ketika kita berbicara tentang efisiensi rangkaian, kebutuhan energi, dan spesifikasi perangkat listrik.</p>
+        </div>
+
+        <p>Demikianlah eksplorasi kita tentang Rangkaian Majemuk. Dengan memahami prinsip-prinsip dasar rangkaian seri dan paralel, serta menerapkan Hukum Kirchhoff, Anda kini memiliki alat yang ampuh untuk menganalisis dan memahami sirkuit listrik yang lebih kompleks.</p>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,385 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perdagangan Internasional - Ketergantungan Antarruang & Kesejahteraan Masyarakat</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.08); /* Light blue highlight */
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .explanation {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f8fc; /* Very light blue for even rows */
+        }
+
+        .bullet-points ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        .bullet-points li {
+            margin-bottom: 10px;
+        }
+
+        /* Interactive elements */
+        .interactive-concept {
+            background-color: #e3f2fd; /* Lighter blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .interactive-concept:hover {
+            background-color: #bbdefb; /* Slightly darker blue */
+        }
+
+        .interactive-concept-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-divider);
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .interactive-concept.active .interactive-concept-content {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            background-color: var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.85em;
+            border-radius: 0 0 8px 8px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6em;
+            }
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+            .comparison-table {
+                display: block;
+                width: 100%;
+            }
+            .comparison-table thead {
+                display: block;
+                float: left;
+                width: 20%; /* Adjust as needed */
+            }
+            .comparison-table tbody {
+                display: block;
+                float: right;
+                width: 80%; /* Adjust as needed */
+            }
+            .comparison-table tr {
+                display: block;
+                margin-bottom: 10px;
+            }
+            .comparison-table td {
+                display: block;
+                text-align: right;
+            }
+            .comparison-table td:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+             .comparison-table th {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>A. Perdagangan Internasional</h1>
+        <p>Dalam bab ini, kita akan menyelami dunia <strong class="highlight">Perdagangan Internasional</strong>, sebuah konsep fundamental yang menunjukkan bagaimana dunia kita saling terhubung. Bayangkan dunia tanpa batasan negara; itulah esensi dari bagaimana barang dan jasa bergerak melintasi batas-batas geografis, menciptakan jaringan ketergantungan yang memengaruhi kesejahteraan setiap masyarakat.</p>
+
+        <section class="section">
+            <h2>1. Pengertian Perdagangan Internasional</h2>
+            <p>Secara sederhana, perdagangan internasional adalah kegiatan pertukaran barang dan jasa antara dua negara atau lebih. Ini adalah aktivitas yang sama dengan perdagangan dalam negeri, namun cakupannya lebih luas dan melibatkan entitas antarnegara.</p>
+
+            <div class="explanation">
+                <p>Tidak ada satu negara pun di dunia ini yang bisa memproduksi semua kebutuhan penduduknya sendiri. Bahkan negara adidaya sekalipun, seperti Amerika Serikat, harus mengimpor barang-barang tertentu yang tidak mereka hasilkan, misalnya minyak dari Timur Tengah. Sebaliknya, negara-negara lain mungkin membutuhkan produk atau teknologi yang hanya dimiliki oleh Amerika.</p>
+                <p>Perbedaan inilah yang mendorong terjadinya pertukaran. Suatu negara mungkin unggul dalam memproduksi gandum, sementara negara lain unggul dalam memproduksi tekstil. Perbedaan keunggulan inilah yang menjadi dasar mengapa negara-negara perlu berinteraksi melalui perdagangan. Pertukaran ini umumnya dilakukan dengan perantaraan mata uang, yang dikenal sebagai <strong class="highlight">devisa</strong>.</p>
+            </div>
+
+            <div class="interactive-concept" onclick="toggleContent('export-import')">
+                <h3>Ekspor dan Impor: Dua Sisi Mata Uang Perdagangan</h3>
+                <p>Klik untuk melihat penjelasan ekspor dan impor.</p>
+                <div id="export-import" class="interactive-concept-content">
+                    <p><strong>Ekspor:</strong> Kegiatan menjual barang atau jasa dari dalam negeri ke luar negeri. Negara atau pelaku yang melakukan ekspor disebut <strong>eksportir</strong>.</p>
+                    <p><strong>Impor:</strong> Kegiatan membeli barang atau jasa dari luar negeri untuk dibawa masuk ke dalam negeri. Negara atau pelaku yang melakukan impor disebut <strong>importir</strong>.</p>
+                    <p>Jadi, dalam perdagangan internasional, selalu ada arus barang keluar (ekspor) dan arus barang masuk (impor).</p>
+                </div>
+            </div>
+
+            <div class="comparison-table-container">
+                <h3>Perbedaan Mendasar: Perdagangan Dalam Negeri vs. Perdagangan Internasional</h3>
+                <p>Meskipun sama-sama berupa pertukaran, ada beberapa perbedaan kunci antara kedua jenis perdagangan ini:</p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>Perdagangan Dalam Negeri</th>
+                            <th>Perdagangan Internasional</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Aspek">Wilayah Kegiatan</td>
+                            <td data-label="Perdagangan Dalam Negeri">Dalam wilayah satu negara.</td>
+                            <td data-label="Perdagangan Internasional">Melintasi batas negara (antarnegara).</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Aspek">Interaksi Penjual & Pembeli</td>
+                            <td data-label="Perdagangan Dalam Negeri">Cenderung bertemu dan berinteraksi langsung.</td>
+                            <td data-label="Perdagangan Internasional">Cenderung tidak berinteraksi langsung.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Aspek">Mata Uang</td>
+                            <td data-label="Perdagangan Dalam Negeri">Menggunakan mata uang yang sama (misalnya Rupiah).</td>
+                            <td data-label="Perdagangan Internasional">Menggunakan mata uang yang berbeda, memerlukan devisa.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Aspek">Pajak/Biaya</td>
+                            <td data-label="Perdagangan Dalam Negeri">Tidak dikenai bea masuk, hanya retribusi daerah.</td>
+                            <td data-label="Perdagangan Internasional">Dikenai pajak/bea masuk (tarif impor).</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Aspek">Biaya Angkut</td>
+                            <td data-label="Perdagangan Dalam Negeri">Relatif lebih murah.</td>
+                            <td data-label="Perdagangan Internasional">Relatif lebih mahal (menggunakan kapal laut, pesawat).</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Aspek">Standar Kualitas</td>
+                            <td data-label="Perdagangan Dalam Negeri">Bervariasi, tergantung produsen.</td>
+                            <td data-label="Perdagangan Internasional">Harus mengikuti standar internasional.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Aspek">Regulasi Hukum</td>
+                            <td data-label="Perdagangan Dalam Negeri">Mengikuti hukum nasional.</td>
+                            <td data-label="Perdagangan Internasional">Mengikuti hukum internasional dan perjanjian antarnegara.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2. Faktor Pendorong Perdagangan Internasional</h2>
+            <p>Ada beberapa alasan mendasar mengapa negara-negara melakukan perdagangan internasional. Perbedaan dalam berbagai aspek inilah yang menjadi pemicunya:</p>
+
+            <div class="bullet-points">
+                <ul>
+                    <li>
+                        <h3>a. Perbedaan Sumber Daya Alam (SDA)</h3>
+                        <p>Setiap negara memiliki SDA yang berbeda-beda. Arab Saudi, misalnya, kaya minyak namun kurang dalam produksi sayur mayur, sehingga mereka mengimpor sayur dari Asia. Indonesia, yang memiliki hutan luas, dapat mengekspor hasil hutan. Keunggulan dalam memproduksi barang karena ketersediaan SDA inilah yang disebut <strong class="highlight">keunggulan absolut</strong>.</p>
+                    </li>
+                    <li>
+                        <h3>b. Perbedaan Tingkat Kualitas Sumber Daya Manusia (SDM)</h3>
+                        <p>Kualitas SDM sangat menentukan mutu dan efisiensi produksi. Negara dengan SDM yang terampil dan berpendidikan cenderung menghasilkan barang dan jasa dengan kualitas lebih baik.</p>
+                    </li>
+                    <li>
+                        <h3>c. Perbedaan Ilmu Pengetahuan dan Teknologi (IPTEK)</h3>
+                        <p>Negara yang menguasai IPTEK maju dapat memproduksi barang lebih banyak, bermutu, dan efisien. Penguasaan IPTEK juga dapat menekan biaya produksi. Keunggulan dalam memproduksi barang dengan biaya lebih murah dibandingkan negara lain dikenal sebagai <strong class="highlight">keunggulan komparatif</strong>.</p>
+                    </li>
+                    <li>
+                        <h3>d. Perbedaan Budaya Suatu Bangsa</h3>
+                        <p>Unsur budaya seperti seni ukir atau batik Indonesia memiliki daya tarik tersendiri bagi pasar internasional. Begitu pula keramik dari China. Perbedaan budaya dapat menciptakan produk unik yang menjadi komoditas ekspor.</p>
+                    </li>
+                    <li>
+                        <h3>e. Faktor Lain</h3>
+                        <p>Perbedaan harga barang, biaya produksi, upah tenaga kerja, dan selera konsumen juga menjadi faktor pendorong perdagangan internasional.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>3. Manfaat dan Hambatan Perdagangan Internasional</h2>
+
+            <h3>a. Manfaat Perdagangan Internasional</h3>
+            <p>Selain untuk memperoleh keuntungan, perdagangan internasional memberikan banyak manfaat, di antaranya:</p>
+            <div class="bullet-points">
+                <ul>
+                    <li>Memenuhi kebutuhan barang dan jasa yang tidak dapat diproduksi sendiri.</li>
+                    <li>Mendorong spesialisasi produk, di mana negara fokus pada produksi barang yang paling dikuasainya.</li>
+                    <li>Memudahkan masyarakat memperoleh barang dengan harga yang lebih terjangkau dan variatif.</li>
+                    <li>Mendorong peningkatan produksi karena adanya pasar yang lebih luas.</li>
+                    <li>Mempererat hubungan persahabatan antarnegara.</li>
+                    <li>Meningkatkan kemajuan perusahaan, membuka lapangan kerja, dan pertumbuhan ekonomi.</li>
+                    <li>Meningkatkan pendapatan negara melalui devisa hasil ekspor.</li>
+                    <li>Mendorong kemajuan IPTEK karena persaingan global.</li>
+                </ul>
+            </div>
+
+            <h3>b. Hambatan Perdagangan Internasional</h3>
+            <p>Meskipun bermanfaat, perdagangan internasional juga menghadapi tantangan:</p>
+            <div class="explanation">
+                <p>Hambatan utama seringkali berkaitan dengan upaya melindungi industri dalam negeri dari persaingan asing. Beberapa hambatan tersebut meliputi:</p>
+                <ul>
+                    <li><strong>Harga Barang Luar Negeri Lebih Murah:</strong> Produk impor yang lebih murah dapat mengancam keberlangsungan produk lokal.</li>
+                    <li><strong>Bea Masuk yang Tinggi (Tarif):</strong> Pajak yang dikenakan pada barang impor bertujuan untuk menaikkan harga barang impor agar produk lokal lebih kompetitif.</li>
+                    <li><strong>Proteksi:</strong> Kebijakan pemerintah untuk melindungi industri dalam negeri, misalnya dengan mengenakan tarif tinggi pada impor kain dari China agar kain lokal lebih laku.</li>
+                    <li><strong>Kuota:</strong> Pembatasan jumlah atau volume barang yang boleh diekspor atau diimpor. Contoh, Amerika membatasi kuota impor tekstil dari Indonesia.</li>
+                    <li><strong>Peraturan Perdagangan:</strong> Standar kualitas, kesehatan, atau keamanan yang berbeda antarnegara bisa menjadi hambatan.</li>
+                    <li><strong>Dumping:</strong> Menjual barang di pasar internasional dengan harga yang sangat murah (bahkan di bawah biaya produksi) untuk menguasai pasar.</li>
+                    <li><strong>Pertentangan Politik dan Peperangan:</strong> Kondisi politik yang tidak stabil atau konflik antarnegara dapat mengganggu kelancaran perdagangan.</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Materi ini disajikan untuk membantu pemahaman tentang Perdagangan Internasional dalam konteks ketergantungan antarruang dan pengaruhnya terhadap kesejahteraan masyarakat.</p>
+    </footer>
+
+    <script>
+        function toggleContent(id) {
+            var element = document.getElementById(id);
+            var parent = element.parentElement;
+            parent.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
+```

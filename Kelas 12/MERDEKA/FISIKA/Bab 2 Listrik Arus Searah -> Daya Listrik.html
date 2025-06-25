@@ -1,0 +1,346 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daya Listrik - Arus Searah</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .formula {
+            display: block;
+            background-color: var(--text-secondary);
+            color: white;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: bold;
+            overflow-x: auto; /* Enable horizontal scrolling for long formulas */
+        }
+
+        .formula code {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+
+        .explanation {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .example {
+            background-color: #f8f8f8;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .example h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .equation-box {
+            background-color: var(--background-canvas);
+            border: 1px dashed var(--primary-blue);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .equation-box .formula {
+            margin: 10px 0;
+            background-color: var(--primary-blue); /* Darken for emphasis */
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.3em;
+        }
+        
+        .equation-box .explanation {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+        }
+
+        .interactivity-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            background-color: var(--border-divider);
+            color: var(--text-tertiary);
+            border-radius: 8px;
+            font-style: italic;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .formula {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+
+            .equation-box .formula {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daya Listrik dalam Arus Searah</h1>
+
+        <div class="section">
+            <h2>Konsep Dasar Daya Listrik</h2>
+            <p class="explanation">
+                Dalam kehidupan sehari-hari, kita sering menjumpai produk elektronik dengan spesifikasi daya, seperti lampu 5 watt atau 10 watt. Satuan watt (W) ini merupakan standar pengukuran <strong>daya listrik</strong>. Daya listrik menggambarkan seberapa cepat energi listrik diubah menjadi bentuk energi lain (seperti cahaya, panas, atau gerak) per satuan waktu.
+            </p>
+            <p class="explanation">
+                Meskipun sumber listrik di rumah umumnya adalah arus bolak-balik (AC), konsep dasar daya listrik tetap sama dengan arus searah (DC). Jika kita menganalisis konsumsi daya, kita akan menemukan hubungan antara tegangan (Volt, V), arus (Ampere, I), dan satuan daya (Watt, W), yang seringkali dinyatakan dalam Volt Ampere (VA).
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Hubungan Energi dan Daya Listrik</h2>
+            <p class="explanation">
+                Mirip dengan konsep daya dalam mekanika, daya listrik juga didefinisikan sebagai energi yang ditransfer atau diubah per satuan waktu. Ketika sebuah komponen terhubung ke sumber tegangan, muatan listrik akan bergerak dari potensial tinggi ke potensial rendah. Energi potensial yang dimiliki oleh muatan ini terkait dengan beda potensial yang dialaminya.
+            </p>
+            <div class="equation-box">
+                <div class="formula"><code>E = qV</code></div>
+                <p class="explanation">
+                    Di mana: <br>
+                    <code>E</code> = Energi potensial (Joule) <br>
+                    <code>q</code> = Muatan listrik (Coulomb) <br>
+                    <code>V</code> = Beda potensial (Volt)
+                </p>
+            </div>
+            <p class="explanation">
+                Daya listrik (P) adalah energi (E) yang ditransfer atau diubah dalam selang waktu (t).
+            </p>
+            <div class="equation-box">
+                <div class="formula"><code>P = E / t</code></div>
+                <p class="explanation">
+                    Karena <code>E = qV</code>, maka persamaan daya menjadi:
+                </p>
+                <div class="formula"><code>P = (qV) / t</code></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Daya Listrik Berdasarkan Arus dan Tegangan</h2>
+            <p class="explanation">
+                Kita telah mempelajari pada sub bab sebelumnya bahwa arus listrik (I) didefinisikan sebagai jumlah muatan (q) yang mengalir per satuan waktu (t):
+            </p>
+            <div class="equation-box">
+                <div class="formula"><code>I = q / t</code></div>
+            </div>
+            <p class="explanation">
+                Dengan mensubstitusikan definisi arus listrik ini ke dalam persamaan daya, kita mendapatkan hubungan fundamental antara daya, arus, dan tegangan:
+            </p>
+            <div class="equation-box">
+                <div class="formula"><code>P = VI</code></div>
+                <p class="explanation">
+                    Di mana: <br>
+                    <code>P</code> = Daya listrik (Watt, W) <br>
+                    <code>V</code> = Beda potensial (Volt, V) <br>
+                    <code>I</code> = Arus listrik (Ampere, A)
+                </p>
+            </div>
+            <p class="explanation">
+                Persamaan <code>P = VI</code> sangat penting karena menunjukkan bahwa daya yang dikonsumsi atau dihasilkan oleh suatu rangkaian berbanding lurus dengan tegangan yang diberikan dan arus yang mengalir melaluinya.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Daya Listrik Berdasarkan Hukum Ohm</h2>
+            <p class="explanation">
+                Kita juga dapat menurunkan bentuk lain dari persamaan daya listrik dengan memanfaatkan <strong>Hukum Ohm</strong>, yang menyatakan hubungan antara tegangan (V), arus (I), dan hambatan (R) dalam suatu rangkaian: <code>V = IR</code>.
+            </p>
+            <p class="explanation">
+                Jika kita substitusikan <code>V = IR</code> ke dalam persamaan <code>P = VI</code>, kita akan mendapatkan:
+            </p>
+            <div class="equation-box">
+                <div class="formula"><code>P = (IR) * I</code></div>
+                <div class="formula"><code>P = I²R</code></div>
+                 <p class="explanation">
+                    Di mana: <br>
+                    <code>P</code> = Daya listrik (Watt, W) <br>
+                    <code>I</code> = Arus listrik (Ampere, A) <br>
+                    <code>R</code> = Hambatan listrik (Ohm, Ω)
+                </p>
+            </div>
+            <p class="explanation">
+                Persamaan <code>P = I²R</code> menunjukkan bahwa daya yang didisipasikan oleh suatu hambatan berbanding lurus dengan kuadrat arus yang mengalir melaluinya dan nilai hambatannya. Ini menjelaskan mengapa kabel yang dialiri arus besar dapat menjadi panas (terjadi disipasi daya dalam bentuk panas).
+            </p>
+            <p class="explanation">
+                Selanjutnya, jika kita substitusikan <code>I = V/R</code> (dari Hukum Ohm) ke dalam persamaan <code>P = VI</code>, kita akan mendapatkan bentuk ketiga dari persamaan daya listrik:
+            </p>
+            <div class="equation-box">
+                <div class="formula"><code>P = V * (V/R)</code></div>
+                <div class="formula"><code>P = V²/R</code></div>
+                 <p class="explanation">
+                    Di mana: <br>
+                    <code>P</code> = Daya listrik (Watt, W) <br>
+                    <code>V</code> = Beda potensial (Volt, V) <br>
+                    <code>R</code> = Hambatan listrik (Ohm, Ω)
+                </p>
+            </div>
+            <p class="explanation">
+                Persamaan <code>P = V²/R</code> menunjukkan bahwa untuk hambatan yang sama, daya yang didisipasikan berbanding lurus dengan kuadrat tegangan yang diberikan. Semakin besar tegangan, semakin besar pula daya yang ditransfer.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Aplikasi dalam Kehidupan Sehari-hari: Konsumsi Listrik Rumah Tangga</h2>
+            <p class="explanation">
+                Besar daya listrik yang digunakan di rumah tangga seringkali diukur dalam kilowatt-hour (kWh), yang merupakan satuan energi (daya dikali waktu). Semakin besar konsumsi daya listrik suatu alat dan semakin lama alat tersebut digunakan, semakin besar pula biaya listrik yang harus dibayarkan.
+            </p>
+            <div class="example">
+                <h3>Contoh Penerapan</h3>
+                <p class="explanation">
+                    Bayangkan sebuah lampu pijar dengan spesifikasi 60 Watt (W) digunakan selama 10 jam. Berapa energi listrik yang dikonsumsi lampu tersebut dalam satuan kWh? Dan jika tarif listrik adalah Rp 1.500,- per kWh, berapa biaya yang harus dikeluarkan untuk menyalakan lampu tersebut selama 10 jam?
+                </p>
+                <p class="explanation">
+                    <strong>Diketahui:</strong> <br>
+                    Daya lampu (P) = 60 W <br>
+                    Waktu penggunaan (t) = 10 jam <br>
+                    Tarif listrik = Rp 1.500,-/kWh
+                </p>
+                <p class="explanation">
+                    <strong>Ditanya:</strong> <br>
+                    Energi listrik yang dikonsumsi (E) dan Biaya listrik.
+                </p>
+                <p class="explanation">
+                    <strong>Langkah 1: Hitung Energi Listrik (E)</strong> <br>
+                    Energi = Daya × Waktu <br>
+                    E = P × t <br>
+                    Sebelum menghitung, ubah daya dari Watt ke Kilowatt (kW): <br>
+                    60 W = 60 / 1000 kW = 0.06 kW <br>
+                    E = 0.06 kW × 10 jam <br>
+                    E = 0.6 kWh
+                </p>
+                <p class="explanation">
+                    <strong>Langkah 2: Hitung Biaya Listrik</strong> <br>
+                    Biaya = Energi × Tarif per kWh <br>
+                    Biaya = 0.6 kWh × Rp 1.500,-/kWh <br>
+                    Biaya = Rp 900,-
+                </p>
+                <p class="explanation">
+                    Jadi, untuk menyalakan lampu 60 Watt selama 10 jam, dibutuhkan energi sebesar 0.6 kWh dengan biaya Rp 900,-.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ringkasan Rumus Penting</h2>
+            <p class="explanation">Berikut adalah rangkuman rumus-rumus utama terkait daya listrik:</p>
+            <div class="formula"><code>P = VI</code></div>
+            <div class="formula"><code>P = I²R</code></div>
+            <div class="formula"><code>P = V²/R</code></div>
+            <p class="explanation">
+                Ketiga rumus ini saling berkaitan dan dapat digunakan tergantung pada besaran yang diketahui dalam suatu rangkaian listrik. Memahami daya listrik sangat krusial untuk menganalisis efisiensi penggunaan energi dan perhitungan biaya listrik.
+            </p>
+        </div>
+
+        <!-- Placeholder for future interactive elements -->
+        <!-- <div class="interactivity-placeholder">
+            [Di sini bisa ditambahkan simulasi interaktif untuk menghitung daya berdasarkan nilai V, I, dan R]
+        </div> -->
+
+        <footer>
+            <p>Materi ini disusun untuk membantu pemahaman konsep Daya Listrik dalam Arus Searah.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

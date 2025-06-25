@@ -1,0 +1,406 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaksi Masyarakat Abad ke-21</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 25px;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .definition {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .concept-box {
+            background-color: var(--background-canvas);
+            border: 1px dashed var(--primary-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .concept-box h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+        .key-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        ul {
+            list-style: disc;
+            margin-left: 25px;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .ethical-principles {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .ethical-principles h3 {
+            color: var(--text-primary);
+            margin-top: 0;
+        }
+        .principle-item {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted var(--border-divider);
+        }
+        .principle-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .principle-name {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        .principle-description {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+        .statistics-section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+        }
+        .stat-card {
+            text-align: center;
+            flex: 1 1 150px; /* Flex basis for cards */
+            min-width: 120px; /* Minimum width for cards */
+        }
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            display: block;
+            line-height: 1;
+        }
+        .stat-card .label {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            display: block;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        .stat-card .percentage {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--accent-green);
+            display: block;
+            margin-top: 5px;
+        }
+        .data-source {
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+        }
+        .faq-section {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .faq-icon {
+            font-size: 2em;
+            flex-shrink: 0;
+        }
+        .faq-text {
+            flex-grow: 1;
+        }
+        .faq-text h3 {
+            margin-top: 0;
+            color: white;
+            font-size: 1.3em;
+        }
+        .social-media-list {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .social-media-list h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+        .social-media-list ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .social-media-list li {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .statistics-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .stat-card {
+                flex-basis: auto; /* Remove flex basis on smaller screens */
+                width: 80%;
+                max-width: 200px;
+            }
+            .faq-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .faq-icon {
+                font-size: 1.5em;
+            }
+            .social-media-list ul {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .stat-card .number {
+                font-size: 2em;
+            }
+            .stat-card .label {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Interaksi Masyarakat Abad ke-21: Memahami Dunia Digital</h1>
+
+        <div class="section">
+            <h2>Apa Itu Masyarakat Jaringan atau Network Society?</h2>
+            <p>Bayangkan dunia di mana informasi dan komunikasi mengalir tanpa henti, menghubungkan miliaran orang dalam hitungan detik. Inilah inti dari konsep <span class="key-term">Masyarakat Jaringan</span> atau <span class="key-term">Network Society</span>.</p>
+            <p>Konsep ini muncul seiring dengan pesatnya perkembangan teknologi informasi dan komunikasi (TIK) di seluruh dunia. Istilah ini pertama kali diperkenalkan oleh sosiolog Norwegia, <span class="key-term">Stein Braten</span> pada tahun 1981, yang merujuk pada masyarakat yang ditopang oleh TIK.</p>
+            <p>Kemudian, sosiolog Spanyol ternama, <span class="key-term">Manuel Castells</span>, secara intensif meneliti dan mengembangkan konsep ini. Dalam karyanya yang monumental, "The Rise of The Network Society" (1996), Castells menjelaskan bahwa masyarakat global saat ini sedang bertransformasi dari era industri menuju era informasi. Perubahan ini ditandai dengan pergeseran fokus dari produksi barang material ke produksi informasi dan pengetahuan.</p>
+            <div class="definition">
+                <p>Menurut Castells, <span class="key-term">"jaringan"</span> adalah sebuah sistem kompleks yang terdiri dari simpul-simpul komunikasi antar individu. Kemajuan teknologi komunikasi membuat jaringan ini semakin rumit dan luas. Dalam masyarakat jaringan, individu dapat terhubung satu sama lain melintasi batas geografis tanpa perlu bertemu secara langsung, melalui berbagai media komunikasi digital.</p>
+            </div>
+            <p>Sosiolog Belanda, <span class="key-term">Jan Van Dijk</span>, menambahkan beberapa ciri khas masyarakat jaringan:</p>
+            <ul>
+                <li><span class="key-term">Individualisasi</span>: Terjadi pemisahan fisik antar individu karena meningkatnya interaksi melalui media komunikasi seperti smartphone dan komputer.</li>
+                <li><span class="key-term">Gaya Hidup Dinamis</span>: Tren baru dapat tercipta dan menyebar dengan cepat, dipengaruhi oleh diskusi dan ramai perbincangan di media sosial.</li>
+                <li><span class="key-term">Jejaring Koneksi Geografis</span>: Akses komunikasi merata di berbagai wilayah, memungkinkan orang-orang di lokasi berbeda untuk terhubung secara digital.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Perkembangan Teknologi dan Interaksi Manusia</h2>
+            <div class="concept-box">
+                <h3>Pengayaan: Dampak Teknologi pada Interaksi</h3>
+                <p>Bagaimana pengaruh perkembangan teknologi terhadap cara orang-orang berinteraksi?</p>
+                <p>Teknologi telah merevolusi cara kita berkomunikasi. Media sosial, aplikasi pesan instan, dan platform konferensi video memungkinkan kita untuk tetap terhubung dengan teman, keluarga, dan kolega di mana pun mereka berada. Namun, ini juga membawa tantangan baru dalam menjaga kualitas interaksi dan etika digital.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Indonesia dalam Masyarakat Jaringan</h2>
+            <p>Indonesia adalah salah satu negara yang terlibat aktif dalam perkembangan masyarakat jaringan global. Data menunjukkan betapa masifnya penetrasi internet dan penggunaan media sosial di tanah air.</p>
+
+            <div class="statistics-section">
+                <div class="stat-card">
+                    <span class="number">175,4</span>
+                    <span class="label">Juta Pengguna Internet</span>
+                    <span class="percentage">64%</span>
+                    <span class="label">dari Total Penduduk</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">160</span>
+                    <span class="label">Juta Akun Media Sosial Aktif</span>
+                </div>
+            </div>
+            <p class="data-source">Sumber: Laporan We Are Social terbaru</p>
+
+            <div class="social-media-list">
+                <h3>Aplikasi Media Sosial Paling Populer di Indonesia:</h3>
+                <ul>
+                    <li>YouTube</li>
+                    <li>WhatsApp</li>
+                    <li>Facebook</li>
+                    <li>Instagram</li>
+                    <li>Twitter</li>
+                    <li>Line</li>
+                    <li>FB Messenger</li>
+                    <li>LinkedIn</li>
+                    <li>Pinterest</li>
+                </ul>
+            </div>
+
+            <p>Dalam masyarakat jaringan, muncul istilah <span class="key-term">netizen</span> (singkatan dari <span class="key-term">Net Citizen</span> atau warga internet). Di Indonesia, istilah ini dikenal juga sebagai <span class="key-term">warganet</span> (warga internet).</p>
+        </div>
+
+        <div class="section">
+            <h2>Menerapkan Prinsip Interaksi yang Tepat di Dunia Digital</h2>
+            <p>Keterhubungan digital yang difasilitasi oleh internet menciptakan dunia baru dengan dinamika interaksinya sendiri. Untuk menavigasi dunia digital ini dengan baik, diperlukan pemahaman dan praktik yang bijak. Mike Ribble, seorang konsultan pendidikan teknologi, merumuskan tiga prinsip dasar yang menjadi pilar penting dalam interaksi digital:</p>
+
+            <div class="ethical-principles">
+                <h3>Tiga Prinsip Utama Interaksi Digital</h3>
+                <div class="principle-item">
+                    <span class="principle-name">1. Respect (Menghargai)</span>
+                    <p class="principle-description">Meskipun berinteraksi secara virtual dan mungkin tidak mengenal orang lain secara langsung, sikap sopan dan saling menghargai tetap harus dijaga. Ini berarti menghormati pendapat orang lain, tidak melakukan ujaran kebencian, dan menjaga privasi.</p>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-name">2. Educate (Terdidik)</span>
+                    <p class="principle-description">Setiap pengguna internet perlu memiliki pemahaman yang baik tentang apa yang mereka lakukan di dunia maya. Ini mencakup kemampuan untuk memilah informasi, memahami etika berkomunikasi, dan terus belajar mengenai perkembangan teknologi serta dampaknya.</p>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-name">3. Protect (Perlindungan)</span>
+                    <p class="principle-description">Menjaga keamanan diri di dunia digital sangatlah penting. Ini meliputi melindungi akun pribadi dengan kata sandi yang kuat, tidak mudah membagikan informasi pribadi secara sembarangan, dan waspada terhadap potensi kejahatan siber.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-icon">💡</div>
+            <div class="faq-text">
+                <h3>Pentingnya Prinsip dalam Interaksi Digital</h3>
+                <p>Memahami dan menerapkan prinsip <span class="key-term">Respect, Educate, dan Protect</span> adalah kunci untuk menciptakan lingkungan digital yang aman, nyaman, dan produktif bagi semua penggunanya.</p>
+            </div>
+        </div>
+
+        <!-- Data Pengguna Internet Global -->
+        <div class="section">
+            <h2>Gambaran Digital Dunia (Januari 2020)</h2>
+            <p>Untuk memberikan gambaran lebih luas, berikut adalah data penggunaan digital di seluruh dunia pada awal tahun 2020:</p>
+            <div class="statistics-section">
+                <div class="stat-card">
+                    <span class="number">7.75</span>
+                    <span class="label">Miliar Populasi Total</span>
+                    <span class="percentage">55%</span>
+                    <span class="label">Urbanisasi</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">5.19</span>
+                    <span class="label">Miliar Pengguna Ponsel Unik</span>
+                    <span class="percentage">67%</span>
+                    <span class="label">Penetrasi</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">4.54</span>
+                    <span class="label">Miliar Pengguna Internet</span>
+                    <span class="percentage">59%</span>
+                    <span class="label">Penetrasi</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">3.80</span>
+                    <span class="label">Miliar Pengguna Media Sosial Aktif</span>
+                    <span class="percentage">49%</span>
+                    <span class="label">Penetrasi</span>
+                </div>
+            </div>
+            <p class="data-source">Sumber: Data dari datareportal.com (2020), UN, GSMA Intelligence, ITU, dll.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

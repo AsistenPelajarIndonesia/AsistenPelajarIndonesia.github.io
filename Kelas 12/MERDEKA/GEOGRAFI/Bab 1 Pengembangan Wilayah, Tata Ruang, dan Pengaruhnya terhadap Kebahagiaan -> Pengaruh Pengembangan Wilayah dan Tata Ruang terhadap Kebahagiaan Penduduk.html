@@ -1,0 +1,377 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Pengembangan Wilayah, Tata Ruang, dan Kebahagiaan Penduduk</title>
+    <style>
+        /* Define CSS Variables based on the provided theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Body and overall layout styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for potential anchor links */
+        }
+
+        .container {
+            max-width: 960px; /* Max width for readability on large screens */
+            margin: 2rem auto; /* Center the container with margin top/bottom */
+            padding: 1.5rem; /* Inner padding */
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+            border-radius: 10px; /* Slightly rounded corners */
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-blue); /* Stronger bottom border */
+            margin-bottom: 2.5rem;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.8rem;
+            margin-bottom: 0.75rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Light text shadow */
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfcfc; /* Slightly off-white for sections to break up background */
+        }
+
+        /* Heading Styles */
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 0.6rem;
+            text-align: left;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            position: relative; /* For a subtle pseudo-element line */
+            padding-left: 15px; /* Space for the pseudo-element */
+        }
+
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+        }
+
+        h4 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            border-left: 4px solid var(--secondary-accent-amber);
+            padding-left: 0.8rem;
+        }
+
+        /* Paragraph and List Styling */
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: none; /* Remove default bullet */
+            margin-left: 0;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            position: relative; /* For custom bullet */
+            padding-left: 25px; /* Space for custom bullet */
+        }
+
+        li::before {
+            content: '•'; /* Custom bullet point */
+            color: var(--primary-blue);
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        ul ul { /* Nested lists */
+            list-style-type: circle;
+            margin-left: 2rem;
+            padding-left: 0;
+        }
+        ul ul li::before {
+            content: '-';
+            color: var(--accent-green);
+            font-size: 1em;
+        }
+
+        /* Text Highlights and Emphasis */
+        .highlight {
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .emphasis {
+            font-style: italic;
+            color: var(--primary-blue);
+        }
+
+        .semantic-error {
+            color: var(--semantic-error);
+            font-weight: bold;
+        }
+
+        .semantic-warning {
+            color: var(--semantic-warning);
+            font-weight: bold;
+        }
+
+        /* Callout/Note Box */
+        .note {
+            background-color: #e3f2fd; /* Light blue from semantic_info family */
+            border-left: 6px solid var(--semantic-info);
+            padding: 1.2rem;
+            margin-top: 2rem;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .note p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .note strong {
+            color: var(--semantic-info);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem auto;
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            h4 {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 0.5rem auto;
+                padding: 0.8rem;
+                border-radius: 0; /* No border-radius on very small screens */
+                box-shadow: none; /* No shadow on very small screens */
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+                text-align: center; /* Center align headings on mobile */
+            }
+
+            h3 {
+                font-size: 1.3rem;
+                padding-left: 0; /* Remove padding for pseudo-element */
+                text-align: center;
+            }
+            h3::before {
+                display: none; /* Hide pseudo-element on mobile */
+            }
+
+            h4 {
+                font-size: 1.1rem;
+                padding-left: 0.5rem;
+            }
+
+            section {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            ul {
+                padding-left: 0; /* Remove default padding */
+            }
+            li {
+                padding-left: 20px; /* Adjust padding for custom bullet */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 1: Pengembangan Wilayah, Tata Ruang, dan Pengaruhnya terhadap Kebahagiaan</h1>
+            <p>Mengkaji hubungan kompleks antara perencanaan spasial, pembangunan regional, dan kualitas hidup individu.</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Pengaruh Pengembangan Wilayah dan Tata Ruang terhadap Kebahagiaan Penduduk</h2>
+                <p>Kesejahteraan dan kebahagiaan penduduk merupakan tujuan fundamental dari setiap kebijakan pembangunan. Dalam konteks geografi dan perencanaan, <span class="emphasis">pengembangan wilayah</span> dan <span class="emphasis">tata ruang</span> memainkan peran krusial dalam membentuk lingkungan yang mendukung kualitas hidup yang lebih baik, secara langsung mempengaruhi tingkat kebahagiaan masyarakat.</p>
+            </section>
+
+            <section>
+                <h3>1. Pengaruh Pengembangan Wilayah terhadap Indeks Kebahagiaan</h3>
+                <p>Pengembangan wilayah adalah upaya strategis yang dirancang untuk memberdayakan potensi unik suatu daerah dan secara langsung meningkatkan kesejahteraan masyarakatnya. Tujuan utamanya adalah menciptakan lingkungan di mana penduduk tidak hanya berkembang secara ekonomi, tetapi juga merasakan tingkat <span class="highlight">kebahagiaan hidup yang tinggi</span> (AL, 2017; Wibowo, 2016).</p>
+
+                <h4>Dampak Positif Pengembangan Wilayah:</h4>
+                <ul>
+                    <li>
+                        <strong>Peningkatan Kesejahteraan Ekonomi:</strong> Melalui pengembangan potensi lokal (misalnya pertanian, pariwisata, industri kecil), pendapatan rumah tangga dapat meningkat, mengurangi kemiskinan, dan meningkatkan daya beli masyarakat.
+                    </li>
+                    <li>
+                        <strong>Pemerataan Pembangunan:</strong> Pengembangan wilayah yang berorientasi pada pemerataan, seperti penerapan paradigma <span class="emphasis">agropolitan</span>, bertujuan menghapus ketimpangan antara daerah perkotaan dan perdesaan. Ini memastikan bahwa masyarakat di pedesaan juga memiliki akses yang memadai terhadap fasilitas publik esensial seperti kesehatan, pendidikan, dan infrastruktur dasar.
+                    </li>
+                    <li>
+                        <strong>Kesehatan Mental dan Fisik yang Terjamin:</strong> Lingkungan yang tertata baik, dengan akses ke fasilitas kesehatan dan ruang terbuka hijau, berkontribusi pada peningkatan kesehatan mental dan fisik penduduk. Adanya peluang ekonomi dan sosial yang merata juga mengurangi stres dan meningkatkan rasa aman dan ketenangan.
+                    </li>
+                    <li>
+                        <strong>Peningkatan Kepercayaan Diri dan Kepuasan Hidup:</strong> Pengembangan yang berfokus pada penguatan sumber daya manusia, melalui peningkatan pendidikan dan keterampilan, memberdayakan individu. Individu yang terdidik dan terampil cenderung memiliki kepercayaan diri yang lebih tinggi dan merasa lebih puas dengan kehidupan mereka (BPS, 2021; Hidayat et al., 2016).
+                    </li>
+                </ul>
+
+                <h4>Contoh Implementasi Pengembangan Wilayah di Indonesia:</h4>
+                <ul>
+                    <li>
+                        <strong>Kabupaten Wakatobi, Sulawesi Tenggara:</strong>
+                        <p>Dikenal sebagai destinasi wisata internasional, Wakatobi berhasil mengembangkan sektor pariwisata melalui kolaborasi erat antara pemerintah, sektor swasta, dan masyarakat. Berbagai kegiatan wisata yang inovatif tidak hanya menarik wisatawan tetapi juga secara signifikan menguatkan perubahan sosial dan ekonomi bagi penduduk setempat, menciptakan peluang kerja dan meningkatkan pendapatan secara berkelanjutan.</p>
+                    </li>
+                    <li>
+                        <strong>Kabupaten Jeneponto, Sulawesi Selatan:</strong>
+                        <p>Jeneponto menunjukkan bagaimana perpaduan sumber daya dan potensi lokal dapat dimanfaatkan secara optimal. Dengan mengembangkan wahana wisata modern yang terintegrasi dengan penguatan budaya dan tradisi lokal, Jeneponto berhasil menciptakan daya tarik yang meningkatkan kunjungan wisatawan dan berkontribusi pada pendapatan daerah serta kemakmuran rakyat.</p>
+                    </li>
+                    <li>
+                        <strong>Kota Batu, Jawa Timur:</strong>
+                        <p>Pengembangan Kota Batu menuju keberlanjutan didorong oleh kerja sama yang kuat antara pemerintah, investor, dan masyarakat. Konsep kepariwisataan yang inovatif dan menarik telah mengubah pendapatan daerah menjadi sumber kemakmuran bagi rakyatnya, menunjukkan bagaimana pengembangan berkelanjutan dapat meningkatkan kualitas hidup dan kebahagiaan penduduknya.</p>
+                    </li>
+                </ul>
+                <div class="note">
+                    <p><strong>Catatan Penting:</strong> Pengembangan wilayah bukan hanya tentang pertumbuhan ekonomi semata, tetapi merupakan fondasi untuk menciptakan masyarakat yang seimbang, berdaya, dan bahagia. Indeks kebahagiaan menjadi salah satu tolok ukur penting keberhasilan pembangunan yang berpusat pada manusia.</p>
+                </div>
+            </section>
+
+            <section>
+                <h3>2. Pengaruh Tata Ruang terhadap Indeks Kebahagiaan</h3>
+                <p><span class="emphasis">Tata ruang</span> adalah proses pengelolaan dan pemanfaatan ruang untuk menghasilkan struktur dan pola ruang yang optimal dan sesuai dengan tujuan pembangunan berkelanjutan. Kualitas tata ruang suatu wilayah secara langsung mempengaruhi <span class="highlight">indeks kesejahteraan subjektif</span> penduduk, yang dinilai berdasarkan tiga dimensi utama:</p>
+                <ul>
+                    <li><span class="emphasis">Dimensi Kepuasan Hidup:</span> Sejauh mana individu merasa puas dengan berbagai aspek kehidupannya.</li>
+                    <li><span class="emphasis">Dimensi Perasaan:</span> Tingkat emosi positif dan negatif yang dialami individu.</li>
+                    <li><span class="emphasis">Dimensi Makna Hidup:</span> Sejauh mana individu merasa hidupnya memiliki tujuan dan nilai.</li>
+                </ul>
+
+                <h4>Perbedaan Penataan Ruang Wilayah dan Dampaknya:</h4>
+                <ul>
+                    <li>
+                        <strong>Tata Ruang yang Baik (Contoh Gambar 1.37a):</strong>
+                        <p>Wilayah dengan tata ruang yang terencana dengan baik dicirikan oleh <span class="highlight">struktur ruang kota yang dilengkapi fasilitas memadai</span> (misalnya, ruang terbuka hijau, fasilitas kesehatan, sekolah, transportasi publik yang efisien) dan <span class="highlight">ruang permukiman yang tertata dengan baik</span>. Masyarakat yang tinggal di lingkungan seperti ini cenderung merasa <span class="accent-green">aman, nyaman, dan memiliki kepuasan hidup yang tinggi</span> karena aksesibilitas layanan, lingkungan yang bersih, teratur, dan mendukung interaksi sosial.</p>
+                    </li>
+                    <li>
+                        <strong>Tata Ruang yang Kurang Optimal (Contoh Gambar 1.37b):</strong>
+                        <p>Sebaliknya, pemanfaatan ruang yang kurang sesuai dengan asas penataan ruang seringkali menghasilkan <span class="semantic-error"><em>slum area</em> (kawasan kumuh)</span> dan berbagai permasalahan lingkungan seperti <span class="semantic-error">tumpukan sampah, drainase yang buruk, dan permukiman yang tidak tertata</span>. Kondisi ini secara signifikan menurunkan kualitas hidup, menimbulkan rasa tidak nyaman, tidak aman, dan berpotensi memicu stres serta ketidakpuasan bagi penduduknya (Iskandar et al., 2016).</p>
+                    </li>
+                </ul>
+
+                <h4>Studi Kasus: Permasalahan Tata Ruang di Kota Semarang</h4>
+                <p>Meskipun Kota Semarang telah menunjukkan kemajuan pesat dalam pembangunan ekonomi, didukung oleh iklim investasi yang kondusif dan stabilitas politik, kota ini masih menghadapi sejumlah tantangan tata ruang yang belum teratasi sepenuhnya (Beta, 2017). Permasalahan ini secara kontradiktif berdampak pada kualitas hidup penduduk:</p>
+                <ul>
+                    <li>
+                        <span class="semantic-warning">Banjir Rob:</span> Intrusi air laut yang menyebabkan genangan berkepanjangan di wilayah pesisir, mengganggu aktivitas ekonomi dan sosial, serta merusak infrastruktur.
+                    </li>
+                    <li>
+                        <span class="semantic-warning">Penurunan Kualitas Udara dan Air:</span> Akibat urbanisasi dan industrialisasi yang tidak terkendali, berdampak negatif pada kesehatan masyarakat.
+                    </li>
+                    <li>
+                        <span class="semantic-warning">Kesemrawutan Lalu Lintas:</span> Infrastruktur jalan yang tidak sejalan dengan pertumbuhan jumlah kendaraan, menyebabkan kemacetan dan penurunan efisiensi mobilitas.
+                    </li>
+                    <li>
+                        <span class="semantic-warning">Tingginya Migrasi Masuk (Imigrasi):</span> Pertumbuhan penduduk yang tidak diimbangi dengan ketersediaan infrastruktur dan permukiman yang memadai, memperparah masalah kepadatan dan kualitas lingkungan.
+                    </li>
+                </ul>
+                <p>Secara keseluruhan, kecenderungan pembangunan tata ruang di Kota Semarang belum sepenuhnya mampu memenuhi ketentuan undang-undang dan <span class="emphasis">Rencana Tata Ruang Wilayah (RTRW)</span> belum dapat berperan efektif sebagai instrumen pengendali pembangunan. Kondisi ini menunjukkan bahwa tanpa perencanaan tata ruang yang komprehensif dan implementasi yang ketat, kemajuan ekonomi saja tidak cukup untuk menjamin kebahagiaan dan kesejahteraan optimal bagi penduduk.</p>
+                <div class="note">
+                    <p><strong>Kesimpulan:</strong> Penataan ruang yang baik bukan hanya tentang estetika kota atau efisiensi penggunaan lahan, tetapi merupakan fondasi esensial bagi terciptanya lingkungan yang mendukung kehidupan yang sehat, produktif, nyaman, dan bahagia bagi setiap warga.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

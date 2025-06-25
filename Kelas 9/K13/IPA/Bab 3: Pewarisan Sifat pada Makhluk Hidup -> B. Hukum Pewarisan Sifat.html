@@ -1,0 +1,716 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B. Hukum Pewarisan Sifat - IPA Kelas 9</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 5px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.8em;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #388E3C;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        .highlight {
+            background-color: #E3F2FD;
+            padding: 10px 15px;
+            border-left: 4px solid #1976D2;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .term-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .term-item {
+            background-color: #F5F5F5;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #E0E0E0;
+            transition: transform 0.2s ease-in-out;
+        }
+        .term-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .term-item strong {
+            color: #1976D2;
+            font-size: 1.1em;
+        }
+        .example-box {
+            background-color: #FFF8E1;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px dashed #FFB300;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .genetics-diagram {
+            background-color: #FAFAFA;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #E0E0E0;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            text-align: center;
+        }
+        .genetics-diagram p {
+            font-weight: bold;
+            color: #212121;
+            margin-bottom: 10px;
+        }
+        .parental-info {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .parental-info div {
+            margin: 5px 10px;
+            text-align: center;
+        }
+        .parental-info span {
+            display: block;
+            font-weight: bold;
+            color: #1976D2;
+            margin-bottom: 5px;
+        }
+        .gamet-representation {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .gamet-representation div {
+            text-align: center;
+        }
+        .gamet-representation span {
+            display: block;
+            font-weight: bold;
+            color: #388E3C;
+            margin-bottom: 5px;
+        }
+        .gamet-representation div:nth-child(1) span,
+        .gamet-representation div:nth-child(3) span { color: #1976D2; }
+        .gamet-representation div:nth-child(2) span,
+        .gamet-representation div:nth-child(4) span { color: #FFB300; }
+
+        .punnett-square {
+            display: grid;
+            grid-template-columns: auto repeat(2, 1fr);
+            gap: 5px;
+            margin: 20px auto;
+            border: 2px solid #1976D2;
+            max-width: 300px;
+        }
+        .punnett-square div {
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .punnett-square .header-cell {
+            background-color: #E3F2FD;
+            color: #1976D2;
+        }
+        .punnett-square .cell {
+            background-color: #F5F5F5;
+            border: 1px solid #E0E0E0;
+        }
+        .punnett-square .corner-cell {
+            background-color: #FFFFFF;
+            border: none;
+            font-weight: normal;
+        }
+        .ratio {
+            text-align: center;
+            font-weight: bold;
+            color: #D32F2F;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+        .section-intro {
+            text-align: center;
+            font-size: 1.2em;
+            color: #757575;
+            margin-bottom: 30px;
+        }
+        .sub-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #E0E0E0;
+        }
+        .gen-explanation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .gen-explanation span {
+            font-weight: bold;
+            color: #388E3C;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .gen-explanation-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .gen-explanation-item .allele {
+            background-color: #E3F2FD;
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: 1px solid #1976D2;
+            font-weight: bold;
+            color: #1976D2;
+            min-width: 30px;
+            text-align: center;
+        }
+        .gen-explanation-item .allele.resesif {
+            background-color: #F5F5F5;
+            border-color: #757575;
+            color: #757575;
+        }
+        .gen-explanation-item span.arrow {
+            color: #424242;
+            font-size: 1.5em;
+        }
+        .gen-explanation-item p {
+            color: #424242;
+            margin: 0;
+        }
+        .final-result {
+            background-color: #F1F8E9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #8BC34A;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .final-result p {
+            margin: 5px 0;
+            color: #388E3C;
+            font-weight: bold;
+        }
+        .summary {
+            background-color: #EDE7F6;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #673AB7;
+            margin-top: 20px;
+        }
+        .summary p {
+            margin: 5px 0;
+        }
+        .emphasis {
+            font-weight: bold;
+            color: #1976D2;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .term-list {
+                grid-template-columns: 1fr;
+            }
+            .parental-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            .genetics-diagram {
+                padding: 10px;
+            }
+            .gamet-representation {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Hukum Pewarisan Sifat</h1>
+        <p class="section-intro">Memahami bagaimana sifat diturunkan dari generasi ke generasi adalah kunci untuk memahami keragaman hayati dan bagaimana kita dapat meningkatkan kualitas makhluk hidup.</p>
+
+        <h2>Mengapa Mempelajari Pewarisan Sifat Itu Penting?</h2>
+        <div class="highlight">
+            <p>Mempelajari hukum pewarisan sifat membantu kita memahami dasar-dasar bagaimana karakteristik atau sifat-sifat tertentu dari orang tua diturunkan kepada keturunannya. Pemahaman ini sangat krusial untuk mengembangkan varietas tanaman maupun hewan dengan kualitas yang unggul melalui metode persilangan yang tepat. Ini juga menjadi fondasi dalam bidang kedokteran genetika dan bioteknologi.</p>
+        </div>
+
+        <h2>Sejarah Singkat: Gregor Mendel sang Bapak Genetika</h2>
+        <p>Penelitian sistematis pertama mengenai penurunan sifat dilakukan oleh <strong>Gregor Mendel</strong>, seorang pendeta dan ahli botani asal Austria. Selama bertahun-tahun, mulai dari 1856, Mendel melakukan eksperimennya dengan cermat pada tanaman kacang kapri. Hasil temuannya kemudian dipublikasikan pada tahun 1866 di jurnal Natural Science Society of Brunn, Austria.</p>
+        <p>Meskipun hasil penelitiannya sempat tidak mendapat perhatian luas pada masanya, pada awal tahun 1900-an, para ahli botani lainnya menemukan kembali dan memvalidasi kesimpulan-kesimpulan Mendel. Mereka mengkonfirmasi bahwa dasar-dasar hukum pewarisan sifat memang ditemukan oleh Mendel.</p>
+        <p>Mendel memilih kacang kapri (<em>Pisum sativum</em>) sebagai objek penelitiannya karena beberapa alasan:</p>
+        <ul>
+            <li>Memiliki ciri-ciri fisik yang mudah dibedakan (misalnya warna bunga, bentuk biji).</li>
+            <li>Mampu melakukan penyerbukan sendiri secara efisien.</li>
+            <li>Memungkinkan untuk dilakukan penyerbukan silang dengan mudah.</li>
+            <li>Memiliki siklus hidup yang relatif pendek, memungkinkan pengamatan banyak generasi.</li>
+            <li>Menghasilkan keturunan dalam jumlah yang banyak, sehingga data yang diperoleh lebih akurat.</li>
+        </ul>
+        <p>Berkat kontribusinya yang monumental, Gregor Mendel dikenal sebagai <strong>Bapak Genetika</strong>.</p>
+
+        <div class="sub-section">
+            <h2>Istilah-Istilah Penting dalam Pewarisan Sifat</h2>
+            <ul class="term-list">
+                <li class="term-item"><strong>Monohibrida</strong>: Persilangan antara dua individu yang hanya melibatkan satu sifat beda.</li>
+                <li class="term-item"><strong>Dihibrida</strong>: Persilangan antara dua individu yang melibatkan dua sifat beda.</li>
+                <li class="term-item"><strong>Parental (P)</strong>: Individu induk yang disilangkan.</li>
+                <li class="term-item"><strong>Filial (F)</strong>: Keturunan hasil persilangan. F1 adalah keturunan pertama, F2 adalah keturunan kedua, dan seterusnya.</li>
+                <li class="term-item"><strong>Gamet</strong>: Sel kelamin (sperma atau ovum) yang membawa informasi genetik (gen).</li>
+                <li class="term-item"><strong>Genotipe</strong>: Susunan genetik suatu individu, biasanya dilambangkan dengan pasangan huruf (misalnya AA, Aa, aa).</li>
+                <li class="term-item"><strong>Fenotipe</strong>: Sifat fisik atau karakteristik yang dapat diamati dari suatu individu, yang merupakan hasil ekspresi genotipe (misalnya bunga ungu, biji bulat).</li>
+                <li class="term-item"><strong>Alela</strong>: Variasi dari suatu gen yang menempati lokus yang sama pada kromosom homolog (misalnya alela untuk warna bunga ungu 'U' dan alela untuk warna bunga putih 'u').</li>
+                <li class="term-item"><strong>Dominan</strong>: Alela yang menutupi ekspresi alela lainnya ketika berada dalam satu genotipe heterozigot (ditulis dengan huruf kapital, contoh: U).</li>
+                <li class="term-item"><strong>Resesif</strong>: Alela yang ekspresinya ditutupi oleh alela dominan dalam genotipe heterozigot (ditulis dengan huruf kecil, contoh: u).</li>
+                <li class="term-item"><strong>Homozigot</strong>: Individu yang memiliki sepasang alela yang sama untuk suatu sifat (misalnya UU atau uu).</li>
+                <li class="term-item"><strong>Heterozigot</strong>: Individu yang memiliki sepasang alela yang berbeda untuk suatu sifat (misalnya Uu).</li>
+            </ul>
+        </div>
+
+        <div class="sub-section">
+            <h2>1. Persilangan Monohibrida (Satu Sifat Beda)</h2>
+            <p>Mendel melakukan persilangan monohibrida untuk memahami pewarisan satu sifat saja. Contoh klasiknya adalah persilangan antara tanaman kacang kapri berbunga ungu dengan tanaman berbunga putih.</p>
+
+            <h3>Contoh Kasus: Persilangan Bunga Ungu dan Bunga Putih</h3>
+            <p>Mendel menyilangkan tanaman kapri induk (Parental 1) yang berbunga ungu dengan tanaman kapri induk yang berbunga putih.</p>
+
+            <div class="genetics-diagram">
+                <p><strong>Persilangan Parental 1 (P1)</strong></p>
+                <div class="parental-info">
+                    <div>
+                        <span>Fenotipe Induk 1</span>
+                        Bunga Ungu
+                    </div>
+                    <div>
+                        <span>Genotipe Induk 1</span>
+                        <span style="color: #1976D2;">UU</span>
+                    </div>
+                    <div>
+                        <span>Induk Jantan (simbol ♂)</span>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMTRjMi4yMSAwIDQgMS43OSA0IDRDOC43OSAxOC43OSAxMCAyMCAxMiAyMHM0LTEuNzkgNC00YzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0em0zLjY4LTEyLjkyQzE1LjA0IDUuMDkgMTMuNTkgNi41NiAxMiA2LjU2Yy0xLjU5IDAtMy4wNC0xLjQ3LTMuNjgtMy42M0M2LjA3IDQuMDcgNy40NiA1LjQ1IDEwIDUuNDVjMS44OCA4LjA3IDguMTEgMTMuMTQgMTUuNzMgMTYuMDcgMy4zOSAwLjggNS42OS0yLjEzIDUuMjktNS43N0M0Ny40OSAxMi4zNCA0NS42NiAxMC45MSAzOC42OCAxMC40N3oiLz48L3N2Zz4=" alt="Male Symbol" style="width:20px; height:20px; vertical-align: middle; margin-right: 5px;">
+                    </div>
+                </div>
+                <div class="gamet-representation">
+                    <div>
+                        <span>Gamet Induk 1</span>
+                        <span style="color: #1976D2;">U</span>
+                    </div>
+                    <div style="font-size: 1.5em; color: #424242;">×</div>
+                    <div>
+                        <span>Gamet Induk 1</span>
+                        <span style="color: #1976D2;">U</span>
+                    </div>
+                </div>
+                <hr style="border: 0; height: 1px; background-color: #E0E0E0; margin: 15px 0;">
+                <p><strong>Persilangan Parental 1 (P1)</strong></p>
+                <div class="parental-info">
+                    <div>
+                        <span>Fenotipe Induk 2</span>
+                        Bunga Putih
+                    </div>
+                    <div>
+                        <span>Genotipe Induk 2</span>
+                        <span style="color: #757575;">uu</span>
+                    </div>
+                    <div>
+                        <span>Induk Betina (simbol ♀)</span>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMTRjLTIuMjEgMCA0LTEuNzkgNC00czAtMS43OS00LTRzLTQuIDEuNzktNCA0IDMuNzkgNCA1LjY4IDQuMDcgMy4zOSAwLjggNS42OS0yLjEzIDUuMjktNS43N0MxOS40NiAxMi40NiAxNS42NyAxMC45MSAxMiA5LjQ1IDkuMzQgMTIuOTcgNi42MSAxNS43NyA0LjAzIDE5LjIxIDMuNTkgOS40MyAwLjUgMTEuODUtMy4wNSA5LjE5LTEuMTUtMC44LTEuOTMtMS4xMy0yLjc5LTEuOTRsMCAwQzYuMDcgMTMuOTQgNiAxMy40NSA2IDEyYy0wLjc5IDEuMjMtMS44OSA0LjI4LTUuMjIgNy4zNi0wLjQ1IDAuNi0wLjUgMS4yOS0wLjUyIDEuOTZDMi4xMiAyMS42IDE0IDI0IDE0IDI0czExLjMxLTcuMjMgMTIuMzUtMTYuMTljMC4wMy0wLjY2LTAuMDctMS4zNS0wLjUyLTEuOTZDMTguMjMgMTMuMjYgMTYuMjQgMTIgMTIgMTJ6bTAgMi40M2MwIDYuMTctNS4zOSAxMS4xNy0xMiAxMS4xNy02LjYxIDAtMTItNS4wMS0xMi0xMS4xNyAwLTYuMTcgNS4zOS0xMS4xNyAxMi0xMS4xNyA2LjYxIDAgMTItNS4wMSAxMi0xMS4xN3oiLz48L3N2Zz4=" alt="Female Symbol" style="width:20px; height:20px; vertical-align: middle; margin-right: 5px;">
+                    </div>
+                </div>
+                <div class="gamet-representation">
+                    <div>
+                        <span>Gamet Induk 2</span>
+                        <span style="color: #757575;">u</span>
+                    </div>
+                    <div style="font-size: 1.5em; color: #424242;">×</div>
+                    <div>
+                        <span>Gamet Induk 2</span>
+                        <span style="color: #757575;">u</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Penentuan Gamet</h3>
+            <p>Pada saat pembentukan gamet, gen-gen pada kromosom akan memisah secara bebas (sesuai Hukum Segregasi). Ini berarti setiap gamet hanya membawa satu alela dari setiap pasangan alela.</p>
+            <div class="gen-explanation">
+                <div class="gen-explanation-item">
+                    <span class="allele">U</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele">U</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <p>Untuk genotipe <span class="allele">UU</span>, meskipun dihasilkan dua gamet, keduanya sama, yaitu <span class="allele">U</span>. Dalam persilangan, seringkali dituliskan satu saja.</p>
+            </div>
+            <div class="gen-explanation">
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">u</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">u</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <p>Untuk genotipe <span class="allele resesif">uu</span>, gamet yang terbentuk juga sama, yaitu <span class="allele resesif">u</span>.</p>
+            </div>
+            <div class="gen-explanation">
+                <div class="gen-explanation-item">
+                    <span class="allele">U</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">u</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <p>Untuk genotipe heterozigot <span class="allele">Uu</span>, gamet yang terbentuk berbeda, yaitu <span class="allele">U</span> dan <span class="allele resesif">u</span>.</p>
+            </div>
+
+            <h3>Hasil Persilangan Generasi Pertama (Filial 1 / F1)</h3>
+            <p>Untuk memprediksi hasil persilangan, kita dapat menggunakan Tabel Punnett. Tabel ini memvisualisasikan kombinasi gen yang mungkin terjadi antara gamet dari kedua induk.</p>
+
+            <div class="genetics-diagram">
+                <p><strong>Tabel Punnett untuk Persilangan P1 (UU × uu)</strong></p>
+                <div class="punnett-square">
+                    <div class="corner-cell"></div>
+                    <div class="header-cell">U</div>
+                    <div class="header-cell">u</div>
+                    <div class="header-cell">U</div> <div class="cell">Uu</div> <div class="cell">Uu</div>
+                    <div class="header-cell">u</div> <div class="cell">Uu</div> <div class="cell">Uu</div>
+                </div>
+                <p>Semua keturunan pertama (F1) memiliki genotipe <strong>Uu</strong>.</p>
+                <p>Karena alela <strong>U</strong> (ungu) bersifat dominan terhadap alela <strong>u</strong> (putih), maka fenotipe semua keturunan F1 adalah <strong>bunga ungu</strong>.</p>
+            </div>
+
+            <h3>Persilangan Generasi Kedua (Filial 2 / F2)</h3>
+            <p>Selanjutnya, Mendel menyilangkan antar keturunan pertama (F1) yang semuanya berbunga ungu (dengan genotipe Uu) untuk mendapatkan generasi kedua (F2).</p>
+
+            <div class="genetics-diagram">
+                <p><strong>Persilangan Parental 2 (P2) (Uu × Uu)</strong></p>
+                <div class="parental-info">
+                    <div>
+                        <span>Fenotipe Induk (F1)</span>
+                        Bunga Ungu
+                    </div>
+                    <div>
+                        <span>Genotipe Induk (F1)</span>
+                        <span style="color: #1976D2;">Uu</span>
+                    </div>
+                    <div>
+                        <span>Induk Jantan (simbol ♂)</span>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMTRjMi4yMSAwIDQgMS43OS00IDRDOC43OSAxOC43OSAxMCAyMCAxMiAyMHM0LTEuNzkgNC00YzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0em0zLjY4LTEyLjkyQzE1LjA0IDUuMDkgMTMuNTkgNi41NiAxMiA2LjU2Yy0xLjU5IDAtMy4wNC0xLjQ3LTMuNjgtMy42M0M2LjA3IDQuMDcgNy40NiA1LjQ1IDEwIDUuNDVjMS44OCA4LjA3IDguMTEgMTMuMTQgMTUuNzMgMTYuMDcgMy4zOSAwLjggNS42OS0yLjEzIDUuMjktNS43N0M0Ny40OSAxMi4zNCA0NS42NiAxMC45MSAzOC42OCAxMC40N3oiLz48L3N2Zz4=" alt="Male Symbol" style="width:20px; height:20px; vertical-align: middle; margin-right: 5px;">
+                    </div>
+                </div>
+                <div class="gamet-representation">
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #1976D2;">U</span>
+                    </div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #757575;">u</span>
+                    </div>
+                    <div style="font-size: 1.5em; color: #424242;">×</div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #1976D2;">U</span>
+                    </div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #757575;">u</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="genetics-diagram">
+                <p><strong>Tabel Punnett untuk Persilangan P2 (Uu × Uu)</strong></p>
+                <div class="punnett-square">
+                    <div class="corner-cell"></div>
+                    <div class="header-cell">U</div>
+                    <div class="header-cell">u</div>
+                    <div class="header-cell">U</div> <div class="cell">UU</div> <div class="cell">Uu</div>
+                    <div class="header-cell">u</div> <div class="cell">Uu</div> <div class="cell">uu</div>
+                </div>
+                <p>Hasil persilangan F2 menunjukkan genotipe:</p>
+                <ul>
+                    <li><strong>UU</strong> : 1</li>
+                    <li><strong>Uu</strong> : 2</li>
+                    <li><strong>uu</strong> : 1</li>
+                </ul>
+                <p>Dalam perbandingan genotipe 1:2:1, fenotipenya adalah:</p>
+                <ul>
+                    <li><strong>Bunga Ungu</strong> (dari UU dan Uu) : 3</li>
+                    <li><strong>Bunga Putih</strong> (dari uu) : 1</li>
+                </ul>
+                <p class="ratio">Rasio fenotipe F2: Bunga Ungu : Bunga Putih = 3 : 1</p>
+                <div class="final-result">
+                    <p>Genotipe UU, Uu menghasilkan fenotipe Bunga Ungu.</p>
+                    <p>Genotipe uu menghasilkan fenotipe Bunga Putih.</p>
+                </div>
+            </div>
+
+            <h3>Hukum I Mendel (Hukum Segregasi)</h3>
+            <p>Dari persilangan monohibrida ini, Mendel merumuskan hukum pertamanya, yang dikenal sebagai <strong>Hukum Segregasi</strong>. Hukum ini menyatakan bahwa:</p>
+            <div class="highlight">
+                <p>Saat pembentukan gamet, alela-alela yang berpasangan akan memisah (bersegregasi) secara bebas dari diploid menjadi haploid, di mana setiap gamet hanya akan menerima satu alela dari setiap pasangan.</p>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h2>2. Persilangan Dihibrida (Dua Sifat Beda)</h2>
+            <p>Setelah memahami pewarisan satu sifat, Mendel melanjutkan dengan persilangan yang melibatkan dua sifat berbeda secara bersamaan. Ia menyilangkan tanaman kapri yang memiliki biji bulat berwarna kuning dengan tanaman kapri yang memiliki biji kisut berwarna hijau.</p>
+
+            <p>Mendel menetapkan:</p>
+            <ul>
+                <li>Genotipe untuk biji bulat dan kuning: <strong>BBKK</strong> (dominan penuh).</li>
+                <li>Genotipe untuk biji kisut dan hijau: <strong>bbkk</strong> (resesif penuh).</li>
+            </ul>
+
+            <h3>Penentuan Gamet pada Persilangan Dihibrida</h3>
+            <p>Pada persilangan dihibrida, penentuan gamet menjadi lebih kompleks karena melibatkan dua pasang alela yang bisa memisah secara bebas.</p>
+
+            <div class="gen-explanation">
+                <p><strong>a. Genotipe Homozigot Dominan (BBKK)</strong></p>
+                <div class="gen-explanation-item">
+                    <span class="allele">B</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele">B</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele">K</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele">K</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <p>Induk dengan genotipe <strong>BBKK</strong> akan menghasilkan satu jenis gamet, yaitu <strong>BK</strong>.</p>
+            </div>
+            <div class="gen-explanation">
+                <p><strong>b. Genotipe Homozigot Resesif (bbkk)</strong></p>
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">b</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">b</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">k</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">k</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <p>Induk dengan genotipe <strong>bbkk</strong> akan menghasilkan satu jenis gamet, yaitu <strong>bk</strong>.</p>
+            </div>
+            <div class="gen-explanation">
+                <p><strong>c. Genotipe Heterozigot (BbKk)</strong></p>
+                <div class="gen-explanation-item">
+                    <span class="allele">B</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">b</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele">K</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <div class="gen-explanation-item">
+                    <span class="allele resesif">k</span> <span class="arrow">→</span> <p>Gamet</p>
+                </div>
+                <p>Induk dengan genotipe <strong>BbKk</strong> akan menghasilkan empat jenis gamet, yaitu: <strong>BK</strong>, <strong>Bk</strong>, <strong>bK</strong>, dan <strong>bk</strong>.</p>
+            </div>
+
+            <h3>Hasil Persilangan Dihibrida (Contoh BBKK × bbkk)</h3>
+            <p>Berdasarkan Hukum Segregasi, gamet-gamet akan berpasangan secara bebas.</p>
+            <div class="genetics-diagram">
+                <p><strong>Persilangan Parental 1 (P1): BBKK × bbkk</strong></p>
+                <div class="parental-info">
+                    <div>
+                        <span>Fenotipe P1</span>
+                        Biji Bulat Kuning
+                    </div>
+                    <div>
+                        <span>Genotipe P1</span>
+                        BBKK
+                    </div>
+                    <div>
+                        <span>Fenotipe P1</span>
+                        Biji Kisut Hijau
+                    </div>
+                    <div>
+                        <span>Genotipe P1</span>
+                        bbkk
+                    </div>
+                </div>
+                <div class="gamet-representation">
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #1976D2;">BK</span>
+                    </div>
+                    <div style="font-size: 1.5em; color: #424242;">×</div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #757575;">bk</span>
+                    </div>
+                </div>
+                <p><strong>Hasil Persilangan Filial 1 (F1):</strong></p>
+                <div class="parental-info">
+                    <div>
+                        <span>Fenotipe F1</span>
+                        Biji Bulat Kuning
+                    </div>
+                    <div>
+                        <span>Genotipe F1</span>
+                        <span style="color: #1976D2;">BbKk</span>
+                    </div>
+                </div>
+                <p>Semua keturunan pertama (F1) bersifat heterozigot <strong>BbKk</strong>, yang menunjukkan fenotipe biji bulat berwarna kuning karena sifat bulat dan kuning bersifat dominan.</p>
+            </div>
+
+            <div class="genetics-diagram">
+                <p><strong>Persilangan Parental 2 (P2): BbKk × BbKk</strong></p>
+                <div class="parental-info">
+                    <div>
+                        <span>Fenotipe F1</span>
+                        Biji Bulat Kuning
+                    </div>
+                    <div>
+                        <span>Genotipe F1</span>
+                        BbKk
+                    </div>
+                    <div>
+                        <span>Fenotipe F1</span>
+                        Biji Bulat Kuning
+                    </div>
+                    <div>
+                        <span>Genotipe F1</span>
+                        BbKk
+                    </div>
+                </div>
+                <div class="gamet-representation">
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #1976D2;">BK</span>
+                    </div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #FFB300;">Bk</span>
+                    </div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #1976D2;">bK</span>
+                    </div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #757575;">bk</span>
+                    </div>
+                    <div style="font-size: 1.5em; color: #424242; margin: 0 20px;">×</div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #1976D2;">BK</span>
+                    </div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #FFB300;">Bk</span>
+                    </div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #1976D2;">bK</span>
+                    </div>
+                    <div>
+                        <span>Gamet</span>
+                        <span style="color: #757575;">bk</span>
+                    </div>
+                </div>
+
+                <p><strong>Tabel Punnett untuk Persilangan P2 (BbKk × BbKk)</strong></p>
+                <div class="punnett-square" style="max-width: 500px;">
+                    <div class="corner-cell"></div>
+                    <div class="header-cell">BK</div>
+                    <div class="header-cell">Bk</div>
+                    <div class="header-cell">bK</div>
+                    <div class="header-cell">bk</div>
+
+                    <div class="header-cell">BK</div> <div class="cell">BBKK</div> <div class="cell">BBKk</div> <div class="cell">BbKK</div> <div class="cell">BbKk</div>
+                    <div class="header-cell">Bk</div> <div class="cell">BBKk</div> <div class="cell">BBkk</div> <div class="cell">BbKk</div> <div class="cell">Bbkk</div>
+                    <div class="header-cell">bK</div> <div class="cell">BbKK</div> <div class="cell">BbKk</div> <div class="cell">bbKK</div> <div class="cell">bbKk</div>
+                    <div class="header-cell">bk</div> <div class="cell">BbKk</div> <div class="cell">Bbkk</div> <div class="cell">bbKk</div> <div class="cell">bbkk</div>
+                </div>
+
+                <p><strong>Hasil Perbandingan Fenotipe F2:</strong></p>
+                <div class="final-result">
+                    <p><strong>9</strong> Biji Bulat Kuning</p>
+                    <p><strong>3</strong> Biji Bulat Hijau</p>
+                    <p><strong>3</strong> Biji Kisut Kuning</p>
+                    <p><strong>1</strong> Biji Kisut Hijau</p>
+                </div>
+                <p class="ratio">Rasio Fenotipe F2: Bulat Kuning : Bulat Hijau : Kisut Kuning : Kisut Hijau = 9 : 3 : 3 : 1</p>
+            </div>
+
+            <h3>Hukum II Mendel (Hukum Pengelompokan Bebas)</h3>
+            <p>Persilangan dihibrida mengarah pada penemuan <strong>Hukum Pengelompokan Bebas</strong> (<em>Law of Independent Assortment</em>) oleh Mendel. Hukum ini menyatakan bahwa:</p>
+            <div class="highlight">
+                <p>Ketika dua atau lebih pasangan gen berbeda menempati lokus yang berbeda pada kromosom yang sama atau berbeda, alela dari setiap pasangan gen akan bersegregasi (memisah) secara independen satu sama lain selama pembentukan gamet.</p>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h2>Rangkuman Penting</h2>
+            <p>Gregor Mendel meletakkan dasar ilmu genetika melalui penelitiannya pada kacang kapri.</p>
+            <p><strong>Hukum I Mendel (Segregasi)</strong> menjelaskan pemisahan alela secara bebas saat pembentukan gamet.</p>
+            <p><strong>Hukum II Mendel (Pengelompokan Bebas)</strong> menjelaskan bahwa pewarisan sifat satu pasang gen tidak bergantung pada pewarisan sifat pasang gen lainnya.</p>
+            <p>Pemahaman tentang persilangan monohibrida dan dihibrida memungkinkan kita memprediksi hasil persilangan dan memahami mekanisme pewarisan sifat pada organisme.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

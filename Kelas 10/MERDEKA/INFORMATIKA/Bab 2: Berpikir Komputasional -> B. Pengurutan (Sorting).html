@@ -1,0 +1,403 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Berpikir Komputasional - Pengurutan (Sorting)</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fdfdfd;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 1em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 1.8em;
+            color: var(--text-secondary);
+        }
+
+        h4 {
+            font-size: 1.2em;
+            margin-top: 1.5em;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 0.6em;
+            color: var(--text-secondary);
+        }
+
+        .concept-box {
+            background-color: #eef7ff;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .algorithm-step {
+            background-color: #fff9e6;
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .example-section {
+            background-color: #e8f5e9;
+            border-left: 5px solid var(--accent-green);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .code-snippet {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f5f5f5;
+            border: 1px solid var(--border-divider);
+            border-radius: 4px;
+            padding: 10px 15px;
+            display: block;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        .note {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 0.5em;
+            font-size: 0.9em;
+        }
+
+        .highlight-blue {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .highlight-green {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .highlight-amber {
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+        }
+
+        .comparison-item {
+            margin-bottom: 1em;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .comparison-item strong {
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 0.3em;
+        }
+
+        .comparison-item p {
+            margin-bottom: 0.3em;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+            }
+
+            .code-snippet {
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                margin: 10px auto;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 2: Berpikir Komputasional - Pengurutan (Sorting)</h1>
+
+        <p>Dalam dunia komputasi, mengatur data agar tersusun secara rapi dan teratur adalah salah satu tugas fundamental. Bayangkan ketika kamu mencari buku di perpustakaan, akan jauh lebih mudah jika buku-buku tersebut tersusun berdasarkan abjad pengarang atau judul. Inilah yang disebut dengan <strong>Pengurutan</strong> atau <strong>Sorting</strong>.</p>
+
+        <p>Pengurutan adalah proses mengatur sekumpulan objek (seperti angka, kata, atau elemen data lainnya) ke dalam urutan tertentu, baik secara menaik (ascending) maupun menurun (descending), berdasarkan kriteria perbandingan yang telah ditentukan.</p>
+
+        <div class="concept-box">
+            <h2>Mengapa Pengurutan Penting?</h2>
+            <p>Pengurutan bukan hanya tentang kerapian, tetapi memiliki banyak aplikasi praktis dalam kehidupan sehari-hari dan dalam pengembangan perangkat lunak:</p>
+            <ul>
+                <li><strong>Pencarian Data yang Efisien:</strong> Data yang terurut memungkinkan pencarian dilakukan dengan lebih cepat, misalnya menggunakan algoritma Binary Search.</li>
+                <li><strong>Analisis Data:</strong> Mempermudah dalam menemukan nilai minimum, maksimum, median, dan statistik lainnya.</li>
+                <li><strong>Visualisasi Data:</strong> Grafik dan tabel seringkali lebih mudah dipahami jika data di dalamnya terurut.</li>
+                <li><strong>Efisiensi Algoritma:</strong> Banyak algoritma lain yang membutuhkan data terurut sebagai input untuk dapat berjalan optimal.</li>
+                <li><strong>Pengelolaan Basis Data:</strong> Mengatur data dalam basis data agar mudah diakses dan dikelola.</li>
+            </ul>
+        </div>
+
+        <p>Secara umum, masalah pengurutan melibatkan sekumpulan objek yang awalnya tersusun secara acak. Tujuan dari algoritma pengurutan adalah untuk menyusun ulang objek-objek tersebut agar sesuai dengan aturan urutan yang diinginkan.</p>
+
+        <p>Setiap algoritma pengurutan bekerja dengan melakukan dua langkah dasar:</p>
+        <ol>
+            <li><strong>Pembandingan (Comparison):</strong> Membandingkan dua elemen untuk menentukan hubungan urutannya (lebih besar, lebih kecil, atau sama).</li>
+            <li><strong>Penempatan (Placement):</strong> Mengatur posisi elemen berdasarkan hasil perbandingan.</li>
+        </ol>
+
+        <div class="example-section">
+            <h2>Contoh Sederhana: Mengurutkan Angka</h2>
+            <p>Misalnya kita memiliki sekumpulan angka acak seperti ini:</p>
+            <p class="code-snippet">2, 3, 7, 6, 5</p>
+            <p>Tujuan kita adalah mengurutkannya secara menaik (dari terkecil ke terbesar). Dalam satu kali langkah, kita bisa saja menukar angka 4 dengan angka 3 untuk membuatnya lebih teratur.</p>
+        </div>
+
+        <div class="concept-box">
+            <h2>Berbagai Strategi Pengurutan (Algoritma Sorting)</h2>
+            <p>Ada banyak teknik atau algoritma yang dapat digunakan untuk melakukan pengurutan. Masing-masing memiliki kelebihan dan kekurangan dalam hal kecepatan, penggunaan memori, dan kompleksitas implementasi. Beberapa algoritma yang umum dikenal antara lain:</p>
+            <ul>
+                <li>Bubble Sort</li>
+                <li><strong>Insertion Sort</strong></li>
+                <li>Selection Sort</li>
+                <li>Merge Sort</li>
+                <li>Quick Sort</li>
+                <li>Heap Sort</li>
+                <li>dan lain-lain.</li>
+            </ul>
+            <p class="note">Pada bab ini, kita akan fokus mempelajari dua algoritma dasar: Insertion Sort dan Selection Sort.</p>
+        </div>
+
+        <hr style="border: none; height: 1px; background-color: var(--border-divider); margin: 30px 0;">
+
+        <h3>1. Insertion Sort (Pengurutan Sisip)</h3>
+        <p><strong>Insertion Sort</strong> adalah salah satu algoritma pengurutan yang sederhana dan intuitif. Algoritma ini bekerja dengan cara membangun daftar terurut satu per satu elemen. Ia mengambil elemen dari daftar yang belum terurut dan menyisipkannya ke posisi yang tepat dalam daftar yang sudah terurut.</p>
+
+        <div class="algorithm-step">
+            <h4>Cara Kerja Insertion Sort</h4>
+            <ol>
+                <li>Algoritma membagi daftar menjadi dua bagian: bagian yang sudah terurut dan bagian yang belum terurut. Awalnya, bagian yang terurut hanya berisi elemen pertama.</li>
+                <li>Algoritma mengambil elemen berikutnya dari bagian yang belum terurut.</li>
+                <li>Elemen yang diambil ini kemudian dibandingkan dengan elemen-elemen dalam bagian yang sudah terurut, dimulai dari elemen terakhir.</li>
+                <li>Jika elemen yang diambil lebih kecil dari elemen yang dibandingkan, elemen tersebut digeser ke kanan (atau ditukar). Proses ini terus berlanjut hingga elemen yang diambil menemukan posisinya yang benar atau elemen tersebut lebih besar dari elemen yang dibandingkan.</li>
+                <li>Proses ini diulang hingga semua elemen dari bagian yang belum terurut telah disisipkan ke dalam bagian yang terurut.</li>
+            </ol>
+        </div>
+
+        <div class="example-section">
+            <h4>Ilustrasi Insertion Sort dengan Angka</h4>
+            <p>Mari kita urutkan angka <code>2, 3, 7, 6, 5</code> secara menaik menggunakan Insertion Sort.</p>
+
+            <h5>Iterasi Pertama:</h5>
+            <p>Daftar: <code>[2, 3, 7, 6, 5]</code></p>
+            <p>Bagian terurut: <code>[2]</code></p>
+            <p>Ambil elemen berikutnya: <code>3</code>.</p>
+            <p>Bandingkan <code>3</code> dengan elemen terakhir di bagian terurut (<code>2</code>). Karena <code>3</code> lebih besar dari <code>2</code>, maka <code>3</code> ditempatkan setelah <code>2</code>.</p>
+            <p>Daftar setelah iterasi: <code>[2, 3, 7, 6, 5]</code> (Urutan <code>2, 3</code> sudah terurut).</p>
+
+            <h5>Iterasi Kedua:</h5>
+            <p>Daftar: <code>[2, 3, 7, 6, 5]</code></p>
+            <p>Bagian terurut: <code>[2, 3]</code></p>
+            <p>Ambil elemen berikutnya: <code>7</code>.</p>
+            <p>Bandingkan <code>7</code> dengan elemen terakhir di bagian terurut (<code>3</code>). Karena <code>7</code> lebih besar dari <code>3</code>, maka <code>7</code> ditempatkan setelah <code>3</code>.</p>
+            <p>Daftar setelah iterasi: <code>[2, 3, 7, 6, 5]</code> (Urutan <code>2, 3, 7</code> sudah terurut).</p>
+
+            <h5>Iterasi Ketiga:</h5>
+            <p>Daftar: <code>[2, 3, 7, 6, 5]</code></p>
+            <p>Bagian terurut: <code>[2, 3, 7]</code></p>
+            <p>Ambil elemen berikutnya: <code>6</code>.</p>
+            <p>Bandingkan <code>6</code> dengan elemen terakhir di bagian terurut (<code>7</code>). Karena <code>6</code> lebih kecil dari <code>7</code>, maka <code>6</code> perlu disisipkan di antara <code>3</code> dan <code>7</code>. Geser <code>7</code> ke kanan.</p>
+            <p>Sekarang bandingkan <code>6</code> dengan elemen sebelumnya (<code>3</code>). Karena <code>6</code> lebih besar dari <code>3</code>, maka <code>6</code> ditempatkan setelah <code>3</code>.</p>
+            <p>Daftar setelah iterasi: <code>[2, 3, 6, 7, 5]</code> (Urutan <code>2, 3, 6, 7</code> sudah terurut).</p>
+
+            <h5>Iterasi Keempat:</h5>
+            <p>Daftar: <code>[2, 3, 6, 7, 5]</code></p>
+            <p>Bagian terurut: <code>[2, 3, 6, 7]</code></p>
+            <p>Ambil elemen berikutnya: <code>5</code>.</p>
+            <p>Bandingkan <code>5</code> dengan elemen terakhir di bagian terurut (<code>7</code>). Karena <code>5</code> lebih kecil dari <code>7</code>, geser <code>7</code> ke kanan.</p>
+            <p>Bandingkan <code>5</code> dengan elemen sebelumnya (<code>6</code>). Karena <code>5</code> lebih kecil dari <code>6</code>, geser <code>6</code> ke kanan.</p>
+            <p>Bandingkan <code>5</code> dengan elemen sebelumnya (<code>3</code>). Karena <code>5</code> lebih besar dari <code>3</code>, maka <code>5</code> ditempatkan setelah <code>3</code>.</p>
+            <p>Daftar setelah iterasi: <code>[2, 3, 5, 6, 7]</code> (Semua elemen terurut).</p>
+            <p class="note">Proses memindahkan elemen ke posisi yang tepat inilah yang disebut 'penyisipan' (insertion).</p>
+        </div>
+
+
+        <hr style="border: none; height: 1px; background-color: var(--border-divider); margin: 30px 0;">
+
+        <h3>2. Selection Sort (Pengurutan Pilihan)</h3>
+        <p><strong>Selection Sort</strong> adalah algoritma pengurutan lain yang juga relatif sederhana. Cara kerjanya adalah dengan berulang kali mencari elemen terkecil (atau terbesar, tergantung urutan yang diinginkan) dari bagian daftar yang belum terurut, lalu menukarnya dengan elemen pertama dari bagian yang belum terurut tersebut.</p>
+
+        <div class="algorithm-step">
+            <h4>Cara Kerja Selection Sort</h4>
+            <ol>
+                <li>Algoritma membagi daftar menjadi dua bagian: bagian yang sudah terurut (di sebelah kiri) dan bagian yang belum terurut (di sebelah kanan). Awalnya, bagian terurut kosong, dan seluruh daftar adalah bagian yang belum terurut.</li>
+                <li><strong>Cari Elemen Terkecil:</strong> Cari elemen dengan nilai terkecil di dalam bagian yang belum terurut.</li>
+                <li><strong>Tukar:</strong> Tukar elemen terkecil yang ditemukan tersebut dengan elemen pertama dari bagian yang belum terurut.</li>
+                <li><strong>Perbarui Batas:</strong> Geser batas antara bagian terurut dan belum terurut ke kanan, sehingga elemen yang baru saja ditempatkan masuk ke dalam bagian terurut.</li>
+                <li>Ulangi langkah 2-4 sampai seluruh elemen telah berada di bagian terurut (yaitu, bagian yang belum terurut habis).</li>
+            </ol>
+        </div>
+
+        <div class="example-section">
+            <h4>Ilustrasi Selection Sort dengan Angka</h4>
+            <p>Mari kita urutkan angka <code>2, 3, 7, 6, 5</code> secara menaik menggunakan Selection Sort.</p>
+
+            <p>Data Awal: <code>[2, 3, 7, 6, 5]</code></p>
+            <p>Bagian terurut: <code>[]</code> | Bagian belum terurut: <code>[2, 3, 7, 6, 5]</code></p>
+
+            <h5>Iterasi Pertama:</h5>
+            <p>Cari elemen terkecil di bagian belum terurut <code>[2, 3, 7, 6, 5]</code>. Ditemukan <code>2</code>.</p>
+            <p>Tukar <code>2</code> (elemen terkecil) dengan elemen pertama bagian belum terurut (yaitu <code>2</code> itu sendiri). Tidak ada perubahan posisi karena sudah di tempat yang benar.</p>
+            <p>Geser batas. Bagian terurut: <code>[2]</code> | Bagian belum terurut: <code>[3, 7, 6, 5]</code></p>
+
+            <h5>Iterasi Kedua:</h5>
+            <p>Cari elemen terkecil di bagian belum terurut <code>[3, 7, 6, 5]</code>. Ditemukan <code>3</code>.</p>
+            <p>Tukar <code>3</code> (elemen terkecil) dengan elemen pertama bagian belum terurut (yaitu <code>3</code> itu sendiri). Tidak ada perubahan posisi.</p>
+            <p>Geser batas. Bagian terurut: <code>[2, 3]</code> | Bagian belum terurut: <code>[7, 6, 5]</code></p>
+
+            <h5>Iterasi Ketiga:</h5>
+            <p>Cari elemen terkecil di bagian belum terurut <code>[7, 6, 5]</code>. Ditemukan <code>5</code>.</p>
+            <p>Tukar <code>5</code> (elemen terkecil) dengan elemen pertama bagian belum terurut (yaitu <code>7</code>). Kartu <code>7</code> bergeser ke posisi <code>5</code>, dan kartu <code>5</code> bergeser ke awal bagian belum terurut.</p>
+            <p>Daftar setelah pertukaran: <code>[2, 3, 5, 7, 6]</code></p>
+            <p>Geser batas. Bagian terurut: <code>[2, 3, 5]</code> | Bagian belum terurut: <code>[7, 6]</code></p>
+
+            <h5>Iterasi Keempat:</h5>
+            <p>Cari elemen terkecil di bagian belum terurut <code>[7, 6]</code>. Ditemukan <code>6</code>.</p>
+            <p>Tukar <code>6</code> (elemen terkecil) dengan elemen pertama bagian belum terurut (yaitu <code>7</code>). Kartu <code>7</code> bergeser ke posisi <code>6</code>, dan kartu <code>6</code> bergeser ke awal bagian belum terurut.</p>
+            <p>Daftar setelah pertukaran: <code>[2, 3, 5, 6, 7]</code></p>
+            <p>Geser batas. Bagian terurut: <code>[2, 3, 5, 6]</code> | Bagian belum terurut: <code>[7]</code></p>
+
+            <h5>Iterasi Kelima:</h5>
+            <p>Cari elemen terkecil di bagian belum terurut <code>[7]</code>. Ditemukan <code>7</code>.</p>
+            <p>Tukar <code>7</code> dengan elemen pertama bagian belum terurut (yaitu <code>7</code> itu sendiri). Tidak ada perubahan posisi.</p>
+            <p>Geser batas. Bagian terurut: <code>[2, 3, 5, 6, 7]</code> | Bagian belum terurut: <code>[]</code></p>
+
+            <p>Seluruh elemen telah terurut.</p>
+        </div>
+
+        <div class="concept-box">
+            <h2>Perbandingan Sederhana: Insertion Sort vs. Selection Sort</h2>
+            <div class="comparison-item">
+                <strong>Insertion Sort</strong>
+                <p>Lebih efisien jika data sebagian besar sudah terurut.</p>
+                <p>Bekerja dengan menyisipkan elemen satu per satu ke posisi yang tepat.</p>
+                <p>Pergerakan elemen (penukaran) bisa lebih banyak jika data sangat acak.</p>
+            </div>
+            <div class="comparison-item">
+                <strong>Selection Sort</strong>
+                <p>Jumlah penukaran elemen minimal (hanya sebanyak jumlah elemen).</p>
+                <p>Bekerja dengan mencari elemen terkecil/terbesar dan menukarnya ke depan.</p>
+                <p>Cenderung lebih lambat dibandingkan Insertion Sort pada data yang hampir terurut.</p>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <h2>Menyusun Algoritma: Bermain Kartu</h2>
+            <p>Dalam aktivitas bermain kartu, kamu diminta untuk mengurutkan 10 kartu angka 1-10 secara menaik. Ini adalah simulasi langsung dari konsep pengurutan.</p>
+            <p>Kamu bisa menggunakan strategi seperti:</p>
+            <ul>
+                <li><strong>Memilih kartu terkecil:</strong> Cari kartu dengan angka terkecil, letakkan di paling kiri. Lalu cari kartu terkecil berikutnya, letakkan di sebelahnya, dan seterusnya (mirip <em>Selection Sort</em>).</li>
+                <li><strong>Mengurutkan per kartu:</strong> Ambil satu kartu, lalu sisipkan ke barisan kartu yang sudah terurut di meja sesuai posisinya (mirip <em>Insertion Sort</em>).</li>
+            </ul>
+            <p>Kunci utamanya adalah membuat langkah-langkah yang jelas (algoritma) agar semua kartu dapat terurut dengan benar.</p>
+        </div>
+    </div>
+
+</body>
+</html>
+```

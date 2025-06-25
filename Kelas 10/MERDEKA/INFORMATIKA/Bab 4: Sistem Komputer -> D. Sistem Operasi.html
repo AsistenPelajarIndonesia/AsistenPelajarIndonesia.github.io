@@ -1,0 +1,346 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Sistem Komputer - D. Sistem Operasi</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .interactive-section {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(25, 118, 210, 0.3);
+        }
+
+        .interactive-section h3 {
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        .card code {
+            background-color: #e0e0e0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .list-with-icons li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .list-with-icons li::before {
+            content: '•';
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            margin-right: 0.5em;
+            font-size: 1.2em;
+        }
+
+        .example-block {
+            background-color: #e3f2fd; /* Light blue background */
+            padding: 15px 20px;
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .example-block h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .example-block p {
+            margin-bottom: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .interactive-section {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab 4: Sistem Komputer</h1>
+        <h2>D. Sistem Operasi</h2>
+
+        <p>Sistem Operasi (Operating System atau OS) adalah <strong>perangkat lunak sistem</strong> yang sangat krusial dalam sebuah komputer. Bayangkan OS sebagai <strong>manajer utama</strong> yang mengendalikan semua sumber daya komputer Anda, baik itu perangkat keras (hardware) maupun perangkat lunak (software).</p>
+
+        <p>Secara fundamental, Sistem Operasi bertugas untuk:</p>
+        <ul>
+            <li><strong>Mengelola Perangkat Keras</strong>: OS memastikan semua komponen hardware seperti CPU, memori (RAM), penyimpanan (hard disk, SSD), perangkat input (keyboard, mouse), dan perangkat output (monitor, printer) dapat berkomunikasi dan bekerja sama dengan efisien.</li>
+            <li><strong>Menyediakan Layanan Umum</strong>: OS menyediakan fungsi-fungsi dasar yang dibutuhkan oleh semua program aplikasi. Ini termasuk manajemen file, manajemen memori, penjadwalan proses, dan penanganan input/output.</li>
+            <li><strong>Menyediakan Antarmuka</strong>: OS bertindak sebagai perantara antara pengguna dan komputer. Antarmuka ini bisa berupa antarmuka baris perintah (Command Line Interface/CLI) atau antarmuka grafis (Graphical User Interface/GUI) yang lebih familiar bagi pengguna awam.</li>
+        </ul>
+
+        <div class="card">
+            <h4>Apa itu Driver?</h4>
+            <p>Sebelum OS dapat berkomunikasi dengan hardware spesifik (seperti printer), ia memerlukan sebuah <strong>driver</strong>. Driver adalah program kecil yang berfungsi sebagai 'penerjemah' antara OS dan hardware tersebut. Driver menggunakan kode biner untuk memerintahkan hardware melakukan tugas yang diminta oleh OS dan mengambil data dari hardware.</p>
+            <div class="example-block">
+                <h4>Contoh Sederhana</h4>
+                <p>Saat Anda mencetak dokumen, OS mengirimkan perintah ke driver printer. Driver printer kemudian menerjemahkan perintah ini menjadi sinyal yang dapat dipahami oleh printer, memerintahkannya untuk mencetak teks atau gambar sesuai dengan data yang dikirimkan.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h4>Proses Booting: Memulai Komputer</h4>
+            <p>Ketika Anda menghidupkan komputer, serangkaian proses yang disebut <strong>booting</strong> terjadi. Proses ini adalah urutan startup untuk membangunkan dan memulai Sistem Operasi.</p>
+            <p>Secara umum, proses booting melibatkan langkah-langkah berikut:</p>
+            <ol>
+                <li><strong>Daya (Power) Dihidupkan</strong>: Komputer menerima aliran listrik.</li>
+                <li><strong>POST (Power-On Self Test)</strong>: BIOS (Basic Input Output System) melakukan pemeriksaan singkat terhadap komponen-komponen utama komputer untuk memastikan semuanya berfungsi.</li>
+                <li><strong>Memuat BIOS</strong>: BIOS memuat program startup awal.</li>
+                <li><strong>Memuat Sistem Operasi</strong>: BIOS menemukan lokasi Sistem Operasi di media penyimpanan (misalnya hard disk) dan memuatnya ke dalam memori (RAM).</li>
+                <li><strong>Kontrol Diberikan ke OS</strong>: Setelah OS dimuat, ia mengambil alih kendali komputer, dan Anda akan melihat tampilan login atau desktop.</li>
+            </ol>
+            <p>Proses ini menjawab pertanyaan klasik "ayam dan telur" dalam konteks komputer: Sistem Operasi membutuhkan hardware untuk berjalan, tetapi hardware memerlukan instruksi dari Sistem Operasi untuk beroperasi.</p>
+        </div>
+
+        <div class="interactive-section">
+            <h3>Fungsi-Fungsi Utama Sistem Operasi</h3>
+            <p>Mari kita telaah lebih dalam fungsi-fungsi krusial yang dijalankan oleh Sistem Operasi:</p>
+            <ul>
+                <li><strong>Menyediakan Antarmuka Pengguna</strong>: Memudahkan interaksi antara pengguna dan komputer.</li>
+                <li><strong>Mengendalikan Input dan Output</strong>: Mengelola aliran data dari dan ke perangkat input/output.</li>
+                <li><strong>Mengelola Perangkat Keras dan Periferal</strong>: Mengatur penggunaan semua komponen hardware.</li>
+                <li><strong>Mengelola Pemuatan dan Eksekusi Perangkat Lunak</strong>: Memastikan program aplikasi dapat berjalan dengan baik di atas OS.</li>
+                <li><strong>Mengelola File</strong>: Mengatur penyimpanan, pengorganisasian, penamaan, penyalinan, penghapusan, dan pencarian file.</li>
+                <li><strong>Menangani Interupsi dan Kesalahan (Error Handling)</strong>: Mengatur permintaan dari berbagai program dan mendeteksi serta menangani kesalahan.</li>
+                <li><strong>Mengelola Prosesor (CPU Scheduling)</strong>: Mengatur dan menjadwalkan program mana yang akan dijalankan oleh CPU, seringkali menggunakan teknik seperti <em>multitasking</em>.</li>
+                <li><strong>Mengelola Memori (Memory Management)</strong>: Mengalokasikan dan membebaskan memori untuk program yang berjalan.</li>
+                <li><strong>Mengelola Keamanan</strong>: Mengatur akun pengguna, kata sandi, dan perlindungan sistem seperti firewall.</li>
+                <li><strong>Menangani Komunikasi Jaringan</strong>: Memfasilitasi koneksi dan pertukaran data melalui jaringan.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Konsep Multitasking</h4>
+            <p>Salah satu fungsi OS yang paling menonjol adalah kemampuannya untuk menjalankan beberapa program atau tugas secara bersamaan, yang dikenal sebagai <strong>multitasking</strong>.</p>
+            <p>Bagaimana komputer melakukannya? Berbeda dengan manusia yang bisa melompat antar tugas dengan cepat, komputer menggunakan <strong>penjadwal (scheduler)</strong>. Penjadwal ini, yang merupakan bagian dari OS, menggunakan algoritma untuk menentukan program mana yang akan mendapatkan giliran menggunakan CPU.</p>
+
+            <div class="example-block">
+                <h4>Algoritma Round Robin (RR)</h4>
+                <p>Salah satu algoritma penjadwalan yang umum digunakan adalah <strong>Round Robin (RR)</strong>. Prinsipnya adalah memberikan setiap proses sebuah <strong>slot waktu (time slice)</strong> yang sama secara bergiliran. Jika sebuah proses belum selesai dalam slot waktunya, ia akan 'diinterupsi' dan dimasukkan kembali ke antrean untuk menunggu giliran berikutnya.</p>
+                <p>Ini memastikan bahwa semua proses mendapatkan kesempatan untuk berjalan, mencegah satu proses mendominasi CPU.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h4>Contoh Sistem Operasi</h4>
+            <p>Beberapa contoh sistem operasi yang Anda kenal mungkin termasuk:</p>
+            <ul>
+                <li>MS Windows (untuk PC dan laptop)</li>
+                <li>macOS (untuk komputer Apple)</li>
+                <li>Linux (digunakan di server dan berbagai perangkat)</li>
+                <li>Android (untuk smartphone dan tablet)</li>
+                <li>iOS (untuk iPhone dan iPad)</li>
+                <li>BlackBerry OS</li>
+                <li>Symbian OS</li>
+                <li>Unix</li>
+                <li>FreeBSD</li>
+                <li>Solaris</li>
+                <li>Palm OS</li>
+            </ul>
+            <p>Setiap OS memiliki karakteristik dan keunggulannya masing-masing, namun tujuan utamanya tetap sama: mengelola sumber daya komputer secara efisien.</p>
+        </div>
+
+        <div class="card">
+            <h4>Struktur Internal Komputer (Singkat)</h4>
+            <p>Untuk menjalankan program, komputer memiliki komponen-komponen utama yang berinteraksi:</p>
+            <ul>
+                <li><strong>CPU (Central Processing Unit)</strong>: Otak komputer. Bertugas mengambil instruksi dari memori, menerjemahkannya, dan mengeksekusi operasi perhitungan atau logika. CPU terdiri dari <strong>Control Unit (CU)</strong> untuk mengontrol alur eksekusi dan <strong>Arithmetic Logic Unit (ALU)</strong> untuk melakukan perhitungan.</li>
+                <li><strong>Memori Utama (RAM)</strong>: Tempat penyimpanan data dan instruksi yang sedang aktif digunakan oleh CPU. Sifatnya sementara (volatile).</li>
+                <li><strong>Memori Sekunder (Hard Disk, SSD, dll.)</strong>: Tempat penyimpanan data dan program secara permanen.</li>
+                <li><strong>BUS</strong>: Jalur komunikasi yang menghubungkan berbagai komponen komputer.</li>
+            </ul>
+            <p>CPU menjalankan instruksi melalui siklus yang disebut <strong>Fetch-Decode-Execute Cycle</strong>: mengambil instruksi, menerjemahkannya, lalu mengeksekusinya.</p>
+        </div>
+
+        <div class="card">
+            <h4>Memori dan Alamat</h4>
+            <p>Setiap lokasi dalam memori komputer memiliki <strong>alamat</strong> unik, seperti nomor loker di sekolah. Alamat ini memungkinkan CPU untuk menemukan dan mengakses data atau instruksi yang tersimpan di sana.</p>
+            <p><strong>Programmer</strong> tidak perlu tahu nomor alamat fisik sebenarnya, karena mereka menggunakan <strong>nama simbolis (simbolik)</strong> untuk variabel (misalnya, <code>Tarif</code>, <code>Jam</code>, <code>Gaji</code>) yang akan diterjemahkan oleh kompiler atau interpreter menjadi alamat memori yang sebenarnya.</p>
+        </div>
+
+        <div class="interactive-section">
+            <h3>Bagaimana CPU Menjalankan Instruksi? (Mesin Konseptual Sederhana)</h3>
+            <p>Mari kita bayangkan sebuah mesin konseptual sederhana untuk memahami cara kerja CPU:</p>
+            <p>Mesin ini memiliki komponen seperti:</p>
+            <ul>
+                <li><strong>Memori</strong>: Disimpan dalam kotak-kotak dengan alamat (misal: AAA1, AAA2).</li>
+                <li><strong>Register</strong>: Tempat penyimpanan sementara di dalam CPU (misal: REG1, REG2).</li>
+            </ul>
+            <p>CPU melakukan siklus <strong>Fetch-Decode-Execute</strong>:</p>
+            <ol>
+                <li><strong>Fetch</strong>: CU mengambil instruksi dari memori.</li>
+                <li><strong>Decode</strong>: CU menerjemahkan instruksi untuk mengetahui apa yang harus dilakukan.</li>
+                <li><strong>Execute</strong>: ALU melakukan operasi yang diperintahkan (misalnya, penjumlahan, pengurangan) menggunakan data dari register. Hasilnya disimpan kembali ke register atau memori.</li>
+            </ol>
+            <p>Instruksi dasar seperti <code>SIMPAN</code> (menyimpan data ke memori), <code>SALIN</code> (menyalin data), <code>TAMBAH</code> (menjumlahkan), <code>PRINT</code> (mencetak) memungkinkan mesin ini menjalankan program.</p>
+            <div class="example-block">
+                <h4>Contoh Simulasi: Menghitung 100 + 200</h4>
+                <p>Untuk menghitung <code>100 + 200</code>:</p>
+                <ul>
+                    <li><code>INPUT 100 AAA1</code>: Simpan 100 ke memori AAA1.</li>
+                    <li><code>INPUT 200 AAA2</code>: Simpan 200 ke memori AAA2.</li>
+                    <li><code>LOAD AAA1</code>: Muat data dari AAA1 ke AKUMULATOR (register tunggal).</li>
+                    <li><code>TAMBAH AAA2</code>: Tambahkan data dari AAA2 ke AKUMULATOR.</li>
+                    <li><code>OUTPUT</code>: Tampilkan hasil dari AKUMULATOR.</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>Memahami cara kerja dasar Sistem Operasi dan komponen komputer membantu kita menghargai kompleksitas dan kecanggihan teknologi yang kita gunakan setiap hari. OS adalah fondasi yang memungkinkan semua interaksi tersebut terjadi dengan mulus!</p>
+
+    </div>
+
+</body>
+</html>
+```

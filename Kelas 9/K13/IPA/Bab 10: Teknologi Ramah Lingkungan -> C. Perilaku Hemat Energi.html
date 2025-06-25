@@ -1,0 +1,263 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perilaku Hemat Energi dalam Keseharian - IPA Kelas 9</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: var(--background-canvas);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-divider);
+        }
+
+        h1, h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: var(--text-primary); /* Keep main title primary */
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+        }
+
+        .section-intro p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .key-concepts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .concept-box {
+            flex: 1 1 300px; /* Allow boxes to grow but have a base width */
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        .concept-box h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .concept-box.pelajari {
+            background-color: #e3f2fd; /* Light blue background */
+            border-color: var(--primary-blue);
+        }
+
+        .concept-box.penting {
+            background-color: #fff9c4; /* Light amber background */
+            border-color: var(--secondary-accent-amber);
+        }
+
+        .concept-box ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .concept-box li {
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        .concept-box.penting li {
+            color: var(--text-tertiary); /* Tertiary for definitions */
+        }
+
+
+        .behaviors-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .behaviors-list li {
+            background-color: #e8f5e9; /* Light green background */
+            border: 1px solid var(--accent-green);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            color: var(--text-secondary);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            position: relative; /* For numbering */
+            padding-left: 40px; /* Make space for number */
+        }
+
+         .behaviors-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #dcedc8; /* Slightly darker green on hover */
+        }
+
+         .behaviors-list li::before {
+            content: counter(list-item) ".";
+            counter-increment: list-item;
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            font-weight: bold;
+            color: var(--accent-green);
+            font-size: 1.1em;
+         }
+
+         .behaviors-list ul {
+             counter-reset: list-item; /* Reset counter for the list */
+         }
+
+
+        .why-important {
+            background-color: #e1f5fe; /* Very light blue */
+            border: 1px solid var(--semantic-info);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: var(--text-secondary);
+        }
+
+        .why-important strong {
+            color: var(--semantic-info);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .key-concepts {
+                flex-direction: column; /* Stack boxes on small screens */
+                gap: 15px;
+            }
+
+            .concept-box {
+                flex-basis: auto; /* Remove flex-basis on small screens */
+            }
+
+             .behaviors-list li {
+                 padding: 12px;
+                 padding-left: 35px; /* Adjust padding for number */
+             }
+
+             .behaviors-list li::before {
+                 left: 12px;
+                 top: 12px;
+             }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Perilaku Hemat Energi dalam Keseharian</h1>
+
+        <div class="key-concepts">
+            <div class="concept-box pelajari">
+                <h3>Ayo, Kita Pelajari</h3>
+                <ul>
+                    <li>Perilaku hemat energi dalam kehidupan sehari-hari</li>
+                </ul>
+            </div>
+            <div class="concept-box penting">
+                <h3>Istilah Penting</h3>
+                <ul>
+                    <li>Kendaraan hybrid</li>
+                    <li>LED (light emitting diode)</li>
+                </ul>
+            </div>
+        </div>
+
+         <div class="why-important">
+            <p><strong>Mengapa Penting?</strong> Mempelajari materi ini akan membantu kamu memahami pentingnya menerapkan perilaku hemat energi dalam kehidupan sehari-hari, sebagai upaya menjaga kelestarian lingkungan.</p>
+        </div>
+
+        <div class="section-intro">
+            <h2>Pentingnya Hemat Energi</h2>
+            <p>Coba perhatikan lingkungan sekitarmu. Pernahkah kamu merasakan bahwa semakin hari semakin banyak kendaraan bermotor di sekitarmu? Jumlah kendaraan bermotor terus bertambah seiring dengan peningkatan populasi dan kebutuhan transportasi, terutama di perkotaan.</p>
+            <p>Peningkatan jumlah kendaraan bermotor ini memiliki dampak signifikan, yaitu **peningkatan polusi udara**. Polusi udara tidak hanya mengganggu kesehatan kita, tetapi juga merusak kelestarian lingkungan. Mengingat banyaknya dampak negatif dari pencemaran udara, menjadi sangat penting bagi kita untuk mulai berupaya mengurangi polusi.</p>
+            <p>Salah satu cara untuk mengurangi polusi dan menjaga lingkungan adalah dengan menerapkan **perilaku hemat energi** dalam kehidupan sehari-hari.</p>
+        </div>
+
+        <div class="behaviors-list">
+            <h2>Contoh Perilaku Hemat Energi</h2>
+            <p>Berikut adalah beberapa perilaku sederhana yang dapat kita terapkan untuk menghemat energi berdasarkan sumber:</p>
+            <ul>
+                <li>Membudayakan penggunaan sepeda atau berjalan kaki untuk kegiatan sehari-hari. Ini tidak hanya menghemat bahan bakar, tetapi juga mengurangi polusi udara dan menyehatkan tubuh.</li>
+                <li>Mematikan kendaraan jika sedang tidak digunakan dan menghindari menyalakan mesin terlalu lama saat menunggu.</li>
+                <li>Mematikan lampu saat tidur atau saat siang hari. Memanfaatkan cahaya matahari dengan membuat rumah yang memiliki banyak jendela juga merupakan cara efektif menghemat energi listrik.</li>
+                <li>Menggunakan pompa air listrik dengan bijak, misalnya dengan mengisi penuh bak mandi atau tempat penampungan air dalam sekali waktu.</li>
+                <li>Membuat jadwal mencuci dan menyetrika pakaian secara teratur, misalnya dua kali seminggu, untuk menghemat energi listrik dan air.</li>
+                <li>Jika menggunakan kendaraan, sebaiknya berangkat lebih pagi untuk menghindari kemacetan. Macet menyebabkan kendaraan membuang bahan bakar secara percuma.</li>
+                <li>Memilih peralatan rumah tangga yang hemat energi. Contohnya mengganti lampu pijar dengan lampu neon atau lampu LED (Light Emitting Diode) yang lebih efisien dan tahan lama (hingga 15 tahun).</li>
+                <li>Mendaur ulang kertas atau menggunakan kertas bekas kembali. Setiap lembar kertas berasal dari pohon, menghemat kertas berarti membantu menjaga kelestarian hutan.</li>
+                <li>Menggunakan air secukupnya saat mandi dan mencuci.</li>
+            </ul>
+        </div>
+
+         <div class="section-intro">
+            <h2>Penerapan dalam Kehidupan Sehari-hari</h2>
+            <p>Selain perilaku-perilaku yang telah disebutkan, masih banyak cara lain untuk menghemat energi. Penting bagi kita untuk mengidentifikasi perilaku hemat energi apa saja yang paling mungkin dan paling efektif kita terapkan dalam kehidupan sehari-hari kita sendiri.</p>
+            <p>Mendiskusikan perilaku hemat energi ini bersama teman-teman di kelas juga bisa menjadi langkah awal yang baik untuk mendorong penerapan perilaku positif ini secara bersama-sama.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

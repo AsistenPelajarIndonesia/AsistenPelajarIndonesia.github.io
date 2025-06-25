@@ -1,0 +1,584 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab III: Transformasi - 3.1 Pencerminan (Refleksi)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 5px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            border-bottom: 3px solid #1976D2;
+        }
+        h2 {
+            font-size: 1.8em;
+        }
+        h3 {
+            font-size: 1.4em;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 5px;
+        }
+        .definition {
+            background-color: #E3F2FD;
+            padding: 15px;
+            border-left: 5px solid #1976D2;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .properties {
+            background-color: #F1F8E9;
+            padding: 15px;
+            border-left: 5px solid #388E3C;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .properties ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .coordinate-plane {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(15, 30px);
+            grid-template-rows: repeat(11, 30px);
+            border: 1px solid #757575;
+            position: relative;
+            background-color: #FFFFFF;
+        }
+        .grid-line-h, .grid-line-v {
+            background-color: #E0E0E0;
+        }
+        .grid-line-h {
+            grid-column: 1 / -1;
+        }
+        .grid-line-v {
+            grid-row: 1 / -1;
+        }
+        .axis-label {
+            position: absolute;
+            color: #212121;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+        .axis-x {
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .axis-y {
+            top: -15px;
+            left: -25px;
+            transform: translateY(-50%);
+            transform: rotate(-90deg);
+            transform-origin: left top;
+        }
+        .origin {
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+        .point {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #D32F2F;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .point-label {
+            position: absolute;
+            font-size: 0.8em;
+            color: #757575;
+        }
+        .axis-tick-x, .axis-tick-y {
+            position: absolute;
+            background-color: #757575;
+        }
+        .axis-tick-x {
+            width: 6px;
+            height: 1px;
+            bottom: -3px;
+            transform: translateX(-50%);
+        }
+        .axis-tick-y {
+            width: 1px;
+            height: 6px;
+            left: -3px;
+            transform: translateY(-50%);
+        }
+        .transform-rule {
+            background-color: #FFF3E0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9em;
+            border: 1px dashed #FF9800;
+        }
+        .example {
+            background-color: #FCE4EC;
+            padding: 15px;
+            border-left: 5px solid #E91E63;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .example pre {
+            background-color: #FFF;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+        .interactive-element {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+            background-color: #F9F9F9;
+        }
+        .interactive-element span {
+            margin-right: 10px;
+            font-weight: bold;
+            color: #424242;
+        }
+        .slider {
+            flex-grow: 1;
+            cursor: pointer;
+        }
+        .value-display {
+            font-family: monospace;
+            min-width: 60px;
+            text-align: right;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #E0E0E0;
+            font-size: 0.9em;
+            color: #757575;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .grid {
+                grid-template-columns: repeat(11, 25px);
+                grid-template-rows: repeat(9, 25px);
+            }
+            .point-label {
+                font-size: 0.7em;
+            }
+            .interactive-element {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .interactive-element span {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab III: Transformasi</h1>
+        <h2>3.1 Pencerminan (Refleksi)</h2>
+
+        <div class="section">
+            <h3>Apa itu Pencerminan?</h3>
+            <div class="definition">
+                Refleksi atau pencerminan adalah salah satu jenis transformasi yang memindahkan setiap titik pada suatu bidang menggunakan sifat bayangan cermin. Bayangan yang dihasilkan memiliki bentuk dan ukuran yang sama dengan objek aslinya, tetapi posisinya berhadapan. Garis yang membagi objek asli dan bayangannya menjadi dua bagian yang sama dan tegak lurus disebut <strong>garis refleksi</strong> atau <strong>cermin</strong>.
+            </div>
+
+            <h3>Sifat-sifat Bayangan Hasil Pencerminan</h3>
+            <div class="properties">
+                <ul>
+                    <li>Bayangan suatu bangun yang dicerminkan memiliki <strong>bentuk dan ukuran yang sama</strong> dengan bangun aslinya.</li>
+                    <li>Jarak bayangan ke cermin <strong>sama dengan</strong> jarak benda aslinya ke cermin.</li>
+                    <li>Bayangan bangun pada cermin saling <strong>berhadapan</strong> dengan bangun aslinya.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Konsep Dasar Pencerminan pada Bidang Datar</h3>
+            <p>Mari kita pahami konsep pencerminan dengan memperhatikan bagaimana titik-titik dipindahkan relatif terhadap garis refleksi.</p>
+
+            <h4>Pencerminan Terhadap Sumbu-x</h4>
+            <p>Bayangkan sumbu-x sebagai cermin. Jika sebuah titik memiliki koordinat (x, y), maka bayangannya setelah dicerminkan terhadap sumbu-x akan memiliki koordinat:</p>
+            <div class="transform-rule">
+                (x, y)  <span style="color: #388E3C;">→</span>  (x, -y)
+            </div>
+            <p>Artinya, koordinat x tetap sama, sedangkan koordinat y berubah tanda (menjadi negatif jika aslinya positif, dan positif jika aslinya negatif).</p>
+
+            <div class="coordinate-plane">
+                <div class="grid" id="grid-sumbu-x">
+                    <!-- Sumbu-x -->
+                    <div class="grid-line-v axis-y" style="left: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-y-label" style="left: -25px; top: calc(50% - 10px); transform: rotate(-90deg); transform-origin: left top;">y</div>
+                    <div class="axis-tick-y" style="left: -3px; top: calc(50% - 3px);"></div>
+                    <div class="axis-tick-y" style="left: -3px; top: 147px;"></div> <!-- Tick for y=2 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 177px;"></div> <!-- Tick for y=1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 207px;"></div> <!-- Tick for y=0 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 237px;"></div> <!-- Tick for y=-1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 267px;"></div> <!-- Tick for y=-2 -->
+
+                    <div class="grid-line-h axis-x" style="bottom: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-x-label" style="bottom: -25px; left: calc(50% - 10px);">x</div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: calc(50% - 3px);"></div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: 177px;"></div> <!-- Tick for x=2 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 207px;"></div> <!-- Tick for x=1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 237px;"></div> <!-- Tick for x=0 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 267px;"></div> <!-- Tick for x=-1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 297px;"></div> <!-- Tick for x=-2 -->
+
+                    <div class="origin">O</div>
+
+                    <!-- Titik A dan bayangannya -->
+                    <div class="point" id="point-A" style="top: 117px; left: 267px;"></div> <!-- A(-1, 2) -->
+                    <div class="point-label" style="top: 107px; left: 257px;">A(-1, 2)</div>
+                    <div class="point" id="point-A-prime" style="top: 177px; left: 267px;"></div> <!-- A'(-1, -2) -->
+                    <div class="point-label" style="top: 187px; left: 257px;">A'(-1, -2)</div>
+
+                    <!-- Garis refleksi -->
+                    <div class="grid-line-h" style="bottom: 207px; background-color: #FF9800; height: 2px; width: 100%; left: 0;"></div>
+                    <div class="point-label" style="bottom: 217px; left: calc(50% + 5px); color: #FF9800;">Sumbu-x</div>
+                </div>
+            </div>
+
+            <h4>Pencerminan Terhadap Sumbu-y</h4>
+            <p>Bayangkan sumbu-y sebagai cermin. Jika sebuah titik memiliki koordinat (x, y), maka bayangannya setelah dicerminkan terhadap sumbu-y akan memiliki koordinat:</p>
+            <div class="transform-rule">
+                (x, y)  <span style="color: #388E3C;">→</span>  (-x, y)
+            </div>
+            <p>Artinya, koordinat y tetap sama, sedangkan koordinat x berubah tanda.</p>
+
+            <div class="coordinate-plane">
+                <div class="grid" id="grid-sumbu-y">
+                    <!-- Sumbu-x -->
+                    <div class="grid-line-v axis-y" style="left: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-y-label" style="left: -25px; top: calc(50% - 10px); transform: rotate(-90deg); transform-origin: left top;">y</div>
+                    <div class="axis-tick-y" style="left: -3px; top: calc(50% - 3px);"></div>
+                    <div class="axis-tick-y" style="left: -3px; top: 147px;"></div> <!-- Tick for y=2 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 177px;"></div> <!-- Tick for y=1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 207px;"></div> <!-- Tick for y=0 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 237px;"></div> <!-- Tick for y=-1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 267px;"></div> <!-- Tick for y=-2 -->
+
+                    <div class="grid-line-h axis-x" style="bottom: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-x-label" style="bottom: -25px; left: calc(50% - 10px);">x</div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: calc(50% - 3px);"></div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: 177px;"></div> <!-- Tick for x=2 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 207px;"></div> <!-- Tick for x=1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 237px;"></div> <!-- Tick for x=0 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 267px;"></div> <!-- Tick for x=-1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 297px;"></div> <!-- Tick for x=-2 -->
+
+                    <div class="origin">O</div>
+
+                    <!-- Titik B dan bayangannya -->
+                    <div class="point" id="point-B" style="top: 177px; left: 237px;"></div> <!-- B(1, 1) -->
+                    <div class="point-label" style="top: 187px; left: 227px;">B(1, 1)</div>
+                    <div class="point" id="point-B-prime" style="top: 177px; left: 297px;"></div> <!-- B'(-1, 1) -->
+                    <div class="point-label" style="top: 187px; left: 307px;">B'(-1, 1)</div>
+
+                    <!-- Garis refleksi -->
+                    <div class="grid-line-v" style="left: 237px; background-color: #FF9800; width: 2px; height: 100%; top: 0;"></div>
+                    <div class="point-label" style="left: 247px; top: calc(50% + 5px); color: #FF9800;">Sumbu-y</div>
+                </div>
+            </div>
+
+            <h4>Pencerminan Terhadap Titik Asal (0, 0)</h4>
+            <p>Pencerminan terhadap titik asal sama dengan melakukan dua kali pencerminan, yaitu pencerminan terhadap sumbu-x dilanjutkan dengan pencerminan terhadap sumbu-y (atau sebaliknya). Jika sebuah titik memiliki koordinat (x, y), maka bayangannya setelah dicerminkan terhadap titik asal akan memiliki koordinat:</p>
+            <div class="transform-rule">
+                (x, y)  <span style="color: #388E3C;">→</span>  (-x, -y)
+            </div>
+            <p>Artinya, baik koordinat x maupun koordinat y berubah tanda.</p>
+
+            <div class="coordinate-plane">
+                <div class="grid" id="grid-titik-asal">
+                    <!-- Sumbu-x -->
+                    <div class="grid-line-v axis-y" style="left: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-y-label" style="left: -25px; top: calc(50% - 10px); transform: rotate(-90deg); transform-origin: left top;">y</div>
+                    <div class="axis-tick-y" style="left: -3px; top: calc(50% - 3px);"></div>
+                    <div class="axis-tick-y" style="left: -3px; top: 147px;"></div> <!-- Tick for y=2 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 177px;"></div> <!-- Tick for y=1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 207px;"></div> <!-- Tick for y=0 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 237px;"></div> <!-- Tick for y=-1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 267px;"></div> <!-- Tick for y=-2 -->
+
+                    <div class="grid-line-h axis-x" style="bottom: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-x-label" style="bottom: -25px; left: calc(50% - 10px);">x</div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: calc(50% - 3px);"></div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: 177px;"></div> <!-- Tick for x=2 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 207px;"></div> <!-- Tick for x=1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 237px;"></div> <!-- Tick for x=0 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 267px;"></div> <!-- Tick for x=-1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 297px;"></div> <!-- Tick for x=-2 -->
+
+                    <div class="origin">O</div>
+
+                    <!-- Titik C dan bayangannya -->
+                    <div class="point" id="point-C" style="top: 147px; left: 267px;"></div> <!-- C(0, 2) -->
+                    <div class="point-label" style="top: 137px; left: 257px;">C(0, 2)</div>
+                    <div class="point" id="point-C-prime" style="top: 237px; left: 237px;"></div> <!-- C'(0, -2) -->
+                    <div class="point-label" style="top: 247px; left: 227px;">C'(0, -2)</div>
+
+                    <!-- Garis refleksi -->
+                    <div class="point" id="origin-point" style="top: 207px; left: 237px;"></div> <!-- Titik Asal -->
+                    <div class="point-label" style="top: 217px; left: 247px; color: #E91E63;">Titik Asal (0,0)</div>
+                </div>
+            </div>
+
+            <h4>Pencerminan Terhadap Garis y = x</h4>
+            <p>Garis y = x adalah garis yang memotong sumbu-x dan sumbu-y pada sudut 45 derajat. Jika sebuah titik memiliki koordinat (x, y), maka bayangannya setelah dicerminkan terhadap garis y = x akan memiliki koordinat:</p>
+            <div class="transform-rule">
+                (x, y)  <span style="color: #388E3C;">→</span>  (y, x)
+            </div>
+            <p>Artinya, koordinat x dan y bertukar tempat.</p>
+
+            <div class="coordinate-plane">
+                <div class="grid" id="grid-garis-y-x">
+                    <!-- Sumbu-x -->
+                    <div class="grid-line-v axis-y" style="left: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-y-label" style="left: -25px; top: calc(50% - 10px); transform: rotate(-90deg); transform-origin: left top;">y</div>
+                    <div class="axis-tick-y" style="left: -3px; top: calc(50% - 3px);"></div>
+                    <div class="axis-tick-y" style="left: -3px; top: 147px;"></div> <!-- Tick for y=2 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 177px;"></div> <!-- Tick for y=1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 207px;"></div> <!-- Tick for y=0 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 237px;"></div> <!-- Tick for y=-1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 267px;"></div> <!-- Tick for y=-2 -->
+
+                    <div class="grid-line-h axis-x" style="bottom: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-x-label" style="bottom: -25px; left: calc(50% - 10px);">x</div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: calc(50% - 3px);"></div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: 177px;"></div> <!-- Tick for x=2 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 207px;"></div> <!-- Tick for x=1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 237px;"></div> <!-- Tick for x=0 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 267px;"></div> <!-- Tick for x=-1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 297px;"></div> <!-- Tick for x=-2 -->
+
+                    <div class="origin">O</div>
+
+                    <!-- Titik D dan bayangannya -->
+                    <div class="point" id="point-D" style="top: 177px; left: 267px;"></div> <!-- D(0, 1) -->
+                    <div class="point-label" style="top: 187px; left: 257px;">D(0, 1)</div>
+                    <div class="point" id="point-D-prime" style="top: 177px; left: 237px;"></div> <!-- D'(1, 0) -->
+                    <div class="point-label" style="top: 187px; left: 227px;">D'(1, 0)</div>
+
+                    <!-- Garis refleksi y=x -->
+                    <div class="grid-line-h" style="transform: rotate(45deg); transform-origin: 0 0; height: 2px; background-color: #4CAF50; width: 200px; position: absolute; top: 207px; left: 237px;"></div>
+                    <div class="point-label" style="top: 227px; left: 247px; color: #4CAF50;">Garis y = x</div>
+                </div>
+            </div>
+
+            <h4>Pencerminan Terhadap Garis y = -x</h4>
+            <p>Garis y = -x adalah garis yang memotong sumbu-x dan sumbu-y pada sudut 135 derajat (atau -45 derajat). Jika sebuah titik memiliki koordinat (x, y), maka bayangannya setelah dicerminkan terhadap garis y = -x akan memiliki koordinat:</p>
+            <div class="transform-rule">
+                (x, y)  <span style="color: #388E3C;">→</span>  (-y, -x)
+            </div>
+            <p>Artinya, koordinat x dan y bertukar tempat dan keduanya berubah tanda.</p>
+
+            <div class="coordinate-plane">
+                <div class="grid" id="grid-garis-y-neg-x">
+                    <!-- Sumbu-x -->
+                    <div class="grid-line-v axis-y" style="left: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-y-label" style="left: -25px; top: calc(50% - 10px); transform: rotate(-90deg); transform-origin: left top;">y</div>
+                    <div class="axis-tick-y" style="left: -3px; top: calc(50% - 3px);"></div>
+                    <div class="axis-tick-y" style="left: -3px; top: 147px;"></div> <!-- Tick for y=2 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 177px;"></div> <!-- Tick for y=1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 207px;"></div> <!-- Tick for y=0 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 237px;"></div> <!-- Tick for y=-1 -->
+                    <div class="axis-tick-y" style="left: -3px; top: 267px;"></div> <!-- Tick for y=-2 -->
+
+                    <div class="grid-line-h axis-x" style="bottom: calc(50% - 1px);"></div>
+                    <div class="axis-label axis-x-label" style="bottom: -25px; left: calc(50% - 10px);">x</div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: calc(50% - 3px);"></div>
+                    <div class="axis-tick-x" style="bottom: -3px; left: 177px;"></div> <!-- Tick for x=2 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 207px;"></div> <!-- Tick for x=1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 237px;"></div> <!-- Tick for x=0 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 267px;"></div> <!-- Tick for x=-1 -->
+                    <div class="axis-tick-x" style="bottom: -3px; left: 297px;"></div> <!-- Tick for x=-2 -->
+
+                    <div class="origin">O</div>
+
+                    <!-- Titik E dan bayangannya -->
+                    <div class="point" id="point-E" style="top: 177px; left: 267px;"></div> <!-- E(0, 1) -->
+                    <div class="point-label" style="top: 187px; left: 257px;">E(0, 1)</div>
+                    <div class="point" id="point-E-prime" style="top: 177px; left: 237px;"></div> <!-- E'(-1, 0) -->
+                    <div class="point-label" style="top: 187px; left: 227px;">E'(-1, 0)</div>
+
+                    <!-- Garis refleksi y=-x -->
+                    <div class="grid-line-h" style="transform: rotate(-45deg); transform-origin: 0 0; height: 2px; background-color: #2196F3; width: 200px; position: absolute; top: 207px; left: 237px;"></div>
+                    <div class="point-label" style="top: 187px; left: 247px; color: #2196F3;">Garis y = -x</div>
+                </div>
+            </div>
+
+            <h4>Pencerminan Terhadap Garis y = h (Garis Horizontal)</h4>
+            <p>Garis y = h adalah garis horizontal yang sejajar dengan sumbu-x. Jika sebuah titik memiliki koordinat (x, y) dan dicerminkan terhadap garis y = h, maka bayangannya akan memiliki koordinat:</p>
+            <div class="transform-rule">
+                (x, y)  <span style="color: #388E3C;">→</span>  (x, 2h - y)
+            </div>
+            <p>Artinya, koordinat x tetap sama. Koordinat y bayangan adalah dua kali nilai h dikurangi koordinat y asli.</p>
+
+            <h4>Pencerminan Terhadap Garis x = h (Garis Vertikal)</h4>
+            <p>Garis x = h adalah garis vertikal yang sejajar dengan sumbu-y. Jika sebuah titik memiliki koordinat (x, y) dan dicerminkan terhadap garis x = h, maka bayangannya akan memiliki koordinat:</p>
+            <div class="transform-rule">
+                (x, y)  <span style="color: #388E3C;">→</span>  (2h - x, y)
+            </div>
+            <p>Artinya, koordinat y tetap sama. Koordinat x bayangan adalah dua kali nilai h dikurangi koordinat x asli.</p>
+        </div>
+
+        <div class="section">
+            <h3>Contoh Penerapan Pencerminan</h3>
+
+            <div class="example">
+                <h4>Contoh 1: Pencerminan Segitiga Terhadap Sumbu-x</h4>
+                <p>Diketahui segitiga ABC dengan titik sudut A(-1, 1), B(-1, 3), dan C(6, 3). Gambarlah segitiga ABC dan bayangannya setelah dicerminkan terhadap sumbu-x.</p>
+                <p><strong>Penyelesaian:</strong></p>
+                <p>Berdasarkan aturan pencerminan terhadap sumbu-x:</p>
+                <ul>
+                    <li>A(-1, 1) → A'(-1, -1)</li>
+                    <li>B(-1, 3) → B'(-1, -3)</li>
+                    <li>C(6, 3) → C'(6, -3)</li>
+                </ul>
+                <p>Dengan menghubungkan titik-titik bayangan A', B', dan C', kita mendapatkan segitiga A'B'C'. Perhatikan bahwa A'B'C' memiliki bentuk dan ukuran yang sama dengan ABC, serta berhadapan dengannya.</p>
+                <div class="coordinate-plane">
+                    <div class="grid" id="grid-example-1" style="width: 450px; height: 300px; transform: scale(0.8); transform-origin: top left;">
+                        <!-- Sumbu-x -->
+                        <div class="grid-line-v axis-y" style="left: 237px;"></div>
+                        <div class="axis-label axis-y-label" style="left: -25px; top: 140px; transform: rotate(-90deg); transform-origin: left top;">y</div>
+                        <div class="axis-tick-y" style="left: -3px; top: 147px;"></div><div class="axis-tick-y" style="left: -3px; top: 177px;"></div><div class="axis-tick-y" style="left: -3px; top: 207px;"></div><div class="axis-tick-y" style="left: -3px; top: 237px;"></div><div class="axis-tick-y" style="left: -3px; top: 267px;"></div>
+
+                        <!-- Sumbu-y -->
+                        <div class="grid-line-h axis-x" style="bottom: 207px;"></div>
+                        <div class="axis-label axis-x-label" style="bottom: -25px; left: 227px;">x</div>
+                        <div class="axis-tick-x" style="bottom: -3px; left: 237px;"></div><div class="axis-tick-x" style="bottom: -3px; left: 177px;"></div><div class="axis-tick-x" style="bottom: -3px; left: 207px;"></div><div class="axis-tick-x" style="bottom: -3px; left: 267px;"></div><div class="axis-tick-x" style="bottom: -3px; left: 297px;"></div>
+
+                        <div class="origin">O</div>
+
+                        <!-- Titik A, B, C -->
+                        <div class="point" style="top: 177px; left: 207px;"></div> <div class="point-label" style="top: 187px; left: 197px;">A(-1, 1)</div>
+                        <div class="point" style="top: 147px; left: 207px;"></div> <div class="point-label" style="top: 137px; left: 197px;">B(-1, 3)</div>
+                        <div class="point" style="top: 147px; left: 357px;"></div> <div class="point-label" style="top: 137px; left: 347px;">C(6, 3)</div>
+
+                        <!-- Titik A', B', C' -->
+                        <div class="point" style="top: 237px; left: 207px; background-color: #2196F3;"></div> <div class="point-label" style="top: 247px; left: 197px; color: #2196F3;">A'(-1, -1)</div>
+                        <div class="point" style="top: 267px; left: 207px; background-color: #2196F3;"></div> <div class="point-label" style="top: 277px; left: 197px; color: #2196F3;">B'(-1, -3)</div>
+                        <div class="point" style="top: 267px; left: 417px; background-color: #2196F3;"></div> <div class="point-label" style="top: 277px; left: 407px; color: #2196F3;">C'(6, -3)</div>
+
+                        <!-- Garis refleksi -->
+                        <div class="grid-line-h" style="bottom: 207px; background-color: #FF9800; height: 2px; width: 100%; left: 0;"></div>
+                        <div class="point-label" style="bottom: 217px; left: 247px; color: #FF9800;">Sumbu-x</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example">
+                <h4>Contoh 2: Pencerminan Segi Empat Terhadap Garis y = x</h4>
+                <p>Diketahui segi empat ABCD dengan koordinat A(-1, -1), B(1, 0), C(-1, 2), dan D(-2, 1). Gambarlah segi empat ABCD dan bayangannya setelah dicerminkan terhadap garis y = x.</p>
+                <p><strong>Penyelesaian:</strong></p>
+                <p>Berdasarkan aturan pencerminan terhadap garis y = x:</p>
+                <ul>
+                    <li>A(-1, -1) → A'(-1, -1)</li>
+                    <li>B(1, 0) → B'(0, 1)</li>
+                    <li>C(-1, 2) → C'(2, -1)</li>
+                    <li>D(-2, 1) → D'(1, -2)</li>
+                </ul>
+                <p>Dengan menghubungkan titik-titik bayangan A', B', C', dan D', kita mendapatkan segi empat A'B'C'D'.</p>
+                <div class="coordinate-plane">
+                    <div class="grid" id="grid-example-2" style="width: 450px; height: 300px; transform: scale(0.8); transform-origin: top left;">
+                        <!-- Sumbu-x -->
+                        <div class="grid-line-v axis-y" style="left: 237px;"></div>
+                        <div class="axis-label axis-y-label" style="left: -25px; top: 140px; transform: rotate(-90deg); transform-origin: left top;">y</div>
+                        <div class="axis-tick-y" style="left: -3px; top: 147px;"></div><div class="axis-tick-y" style="left: -3px; top: 177px;"></div><div class="axis-tick-y" style="left: -3px; top: 207px;"></div><div class="axis-tick-y" style="left: -3px; top: 237px;"></div><div class="axis-tick-y" style="left: -3px; top: 267px;"></div>
+
+                        <!-- Sumbu-y -->
+                        <div class="grid-line-h axis-x" style="bottom: 207px;"></div>
+                        <div class="axis-label axis-x-label" style="bottom: -25px; left: 227px;">x</div>
+                        <div class="axis-tick-x" style="bottom: -3px; left: 237px;"></div><div class="axis-tick-x" style="bottom: -3px; left: 177px;"></div><div class="axis-tick-x" style="bottom: -3px; left: 207px;"></div><div class="axis-tick-x" style="bottom: -3px; left: 267px;"></div><div class="axis-tick-x" style="bottom: -3px; left: 297px;"></div>
+
+                        <div class="origin">O</div>
+
+                        <!-- Titik A, B, C, D -->
+                        <div class="point" style="top: 237px; left: 207px;"></div> <div class="point-label" style="top: 247px; left: 197px;">A(-1, -1)</div>
+                        <div class="point" style="top: 207px; left: 237px;"></div> <div class="point-label" style="top: 217px; left: 227px;">B(1, 0)</div>
+                        <div class="point" style="top: 147px; left: 207px;"></div> <div class="point-label" style="top: 137px; left: 197px;">C(-1, 2)</div>
+                        <div class="point" style="top: 177px; left: 177px;"></div> <div class="point-label" style="top: 187px; left: 167px;">D(-2, 1)</div>
+
+                        <!-- Titik A', B', C', D' -->
+                        <div class="point" style="top: 237px; left: 207px; background-color: #2196F3;"></div> <div class="point-label" style="top: 247px; left: 197px; color: #2196F3;">A'(-1, -1)</div>
+                        <div class="point" style="top: 177px; left: 237px; background-color: #2196F3;"></div> <div class="point-label" style="top: 187px; left: 227px; color: #2196F3;">B'(0, 1)</div>
+                        <div class="point" style="top: 207px; left: 267px; background-color: #2196F3;"></div> <div class="point-label" style="top: 217px; left: 257px; color: #2196F3;">C'(2, -1)</div>
+                        <div class="point" style="top: 177px; left: 267px; background-color: #2196F3;"></div> <div class="point-label" style="top: 187px; left: 257px; color: #2196F3;">D'(1, -2)</div>
+
+                        <!-- Garis refleksi y=x -->
+                        <div class="grid-line-h" style="transform: rotate(45deg); transform-origin: 0 0; height: 2px; background-color: #4CAF50; width: 300px; position: absolute; top: 207px; left: 177px;"></div>
+                        <div class="point-label" style="top: 227px; left: 247px; color: #4CAF50;">Garis y = x</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Materi ini dirancang untuk membantu pemahaman Anda tentang konsep pencerminan dalam transformasi geometri. Teruslah berlatih untuk menguasai materi ini!</p>
+            <p>&copy; 2023 Pembelajaran Matematika Kelas IX</p>
+        </footer>
+    </div>
+
+    <script>
+        // Basic interactive elements can be added here if needed, e.g., sliders for point movement.
+        // For simplicity in this static HTML, no complex JavaScript is included.
+    </script>
+</body>
+</html>
+```

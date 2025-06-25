@@ -1,0 +1,522 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekonomi Internasional: Teori & Kebijakan Perdagangan</title>
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        nav {
+            background-color: var(--text-tertiary);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--background-canvas);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--accent-green);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 0.5rem;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+            color: var(--secondary-accent-amber);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        h5 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-top: 1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        ul {
+            list-style-type: none; /* Removed default bullets */
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 25px; /* Space for custom bullet */
+        }
+
+        ul li::before {
+            content: '•'; /* Custom bullet point */
+            color: var(--primary-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+        
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        ol li {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            color: var(--text-primary);
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            min-width: 500px; /* Ensures table doesn't get too squished */
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 15px 18px;
+            text-align: left;
+            color: var(--text-secondary);
+            font-size: 1em;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f5f5; /* A subtle stripe */
+        }
+
+        tr:hover {
+            background-color: #e8eaf6; /* Hover effect for rows */
+            transition: background-color 0.2s ease;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            background-color: var(--text-tertiary);
+            color: var(--background-canvas);
+            font-size: 0.95rem;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            header p { font-size: 1rem; }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            main {
+                margin: 1.5rem auto;
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            h2 { font-size: 1.8rem; padding-bottom: 0.6rem; margin-bottom: 1.5rem; }
+            h3 { font-size: 1.5rem; margin-top: 1.5rem; }
+            h4 { font-size: 1.2rem; margin-top: 1rem; }
+            h5 { font-size: 1rem; }
+            p { font-size: 0.95rem; }
+
+            th, td {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+
+            /* For smaller screens, make tables stackable or responsive */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                border: 1px solid var(--border-divider);
+                border-radius: 8px;
+            }
+
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+                font-size: 1em;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--text-primary);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.8rem; }
+            header p { font-size: 0.9rem; }
+            
+            section {
+                padding: 1rem;
+            }
+
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.3rem; }
+            h4 { font-size: 1.1rem; }
+            p { font-size: 0.9rem; }
+
+            nav ul li a {
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ekonomi Internasional</h1>
+        <p>Memahami Teori dan Kebijakan Perdagangan Antar Negara</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#intro">Pengantar</a></li>
+            <li><a href="#teori-perdagangan">Teori Perdagangan</a></li>
+            <li><a href="#kebijakan-perdagangan">Kebijakan Perdagangan</a></li>
+            <li><a href="#neraca-pembayaran">Neraca Pembayaran</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="intro">
+            <h2>Pengantar Ekonomi Internasional</h2>
+            <p>Ekonomi internasional adalah cabang ilmu ekonomi yang mempelajari interaksi ekonomi antara berbagai negara, termasuk perdagangan barang dan jasa, pergerakan modal, tenaga kerja, serta dampak kebijakan pemerintah terhadap interaksi tersebut. Perdagangan internasional menjadi salah satu pilar utama dalam membangun hubungan ekonomi antarnegara, mendorong spesialisasi, efisiensi, dan pertumbuhan ekonomi global.</p>
+            <p>Berbagai faktor seperti perbedaan sumber daya, teknologi, biaya produksi, hingga preferensi konsumen mendorong negara-negara untuk terlibat dalam perdagangan internasional. Interaksi ini tidak hanya membuka peluang pasar baru, tetapi juga membawa tantangan dalam menjaga keseimbangan ekonomi dan kepentingan nasional.</p>
+        </section>
+
+        <section id="teori-perdagangan">
+            <h2>Teori Perdagangan Internasional</h2>
+            <p>Teori perdagangan internasional menjelaskan mengapa negara-negara melakukan perdagangan satu sama lain dan bagaimana pola perdagangan tersebut terbentuk. Pemahaman ini penting untuk merumuskan kebijakan yang efektif.</p>
+
+            <h3>1. Teori Merkantilisme</h3>
+            <p>Merkantilisme adalah pandangan ekonomi yang dominan pada abad ke-16 hingga ke-18. Teori ini berpendapat bahwa kemakmuran suatu negara diukur dari akumulasi logam mulia (emas dan perak).</p>
+            <ul>
+                <li><strong>Gagasan Utama:</strong> Sebuah negara harus berusaha mencapai surplus perdagangan, yaitu lebih banyak mengekspor daripada mengimpor, untuk mengumpulkan kekayaan.</li>
+                <li><strong>Kebijakan Pendukung:</strong> Mendorong ekspor (melalui subsidi) dan membatasi impor (melalui tarif dan kuota) serta melakukan proteksi terhadap industri dalam negeri.</li>
+                <li><strong>Tokoh:</strong> Meskipun tidak ada satu "tokoh" tunggal yang merumuskan merkantilisme sebagai teori koheren, pemikiran ini diwakili oleh banyak penulis dan praktisi ekonomi pada masanya, seperti Jean-Baptiste Colbert (menteri keuangan Prancis).</li>
+                <li><strong>Kelemahan:</strong> Pandangan ini menganggap bahwa kekayaan global itu tetap (<em>zero-sum game</em>), sehingga satu negara hanya bisa untung jika negara lain rugi. Merkantilisme mengabaikan manfaat spesialisasi dan efisiensi yang bisa didapat dari perdagangan bebas, serta dapat memicu konflik antarnegara.</li>
+            </ul>
+
+            <h3>2. Teori Keunggulan Mutlak (Absolute Advantage)</h3>
+            <p>Dikemukakan oleh Adam Smith, teori ini menjadi fondasi awal pemikiran perdagangan bebas.</p>
+            <ul>
+                <li><strong>Gagasan Utama:</strong> Suatu negara dikatakan memiliki keunggulan mutlak jika dapat memproduksi barang dengan biaya produksi yang lebih rendah (menggunakan lebih sedikit tenaga kerja atau sumber daya) dibandingkan negara lain. Smith berargumen bahwa negara-negara harus berspesialisasi dalam produksi barang di mana mereka memiliki keunggulan mutlak dan kemudian berdagang satu sama lain.</li>
+                <li><strong>Manfaat:</strong> Spesialisasi dan perdagangan berdasarkan keunggulan mutlak akan meningkatkan total output dunia dan memungkinkan kedua negara untuk mengonsumsi lebih banyak barang daripada jika mereka memproduksi sendiri. Ini adalah situasi <em>positive-sum game</em>.</li>
+                <li><strong>Tokoh:</strong> Adam Smith, melalui karyanya <em>"The Wealth of Nations"</em> (1776).</li>
+                <li><strong>Kelemahan:</strong> Teori ini tidak dapat menjelaskan mengapa perdagangan tetap terjadi jika satu negara memiliki keunggulan mutlak dalam produksi semua barang, atau sebaliknya, tidak memiliki keunggulan mutlak dalam produksi barang apa pun.</li>
+            </ul>
+
+            <h3>3. Teori Keunggulan Komparatif (Comparative Advantage)</h3>
+            <p>Dikembangkan oleh David Ricardo untuk mengatasi keterbatasan teori keunggulan mutlak.</p>
+            <ul>
+                <li><strong>Gagasan Utama:</strong> Sebuah negara harus berspesialisasi dalam produksi barang di mana ia memiliki biaya kesempatan (<em>opportunity cost</em>) yang lebih rendah dibandingkan negara lain. Biaya kesempatan adalah nilai barang lain yang harus dikorbankan untuk memproduksi satu unit barang tertentu. Bahkan jika suatu negara memiliki keunggulan mutlak dalam semua barang, perdagangan tetap dapat menguntungkan jika ada perbedaan dalam biaya kesempatan.</li>
+                <li><strong>Implikasi:</strong> Perdagangan internasional dimungkinkan dan menguntungkan bagi semua pihak selama ada perbedaan dalam biaya kesempatan antarnegara. Ini menjelaskan mengapa negara-negara dengan tingkat produktivitas sangat berbeda masih bisa saling berdagang.</li>
+                <li><strong>Tokoh:</strong> David Ricardo, dalam bukunya <em>"On the Principles of Political Economy and Taxation"</em> (1817).</li>
+                <li><strong>Kelemahan:</strong> Teori ini mengasumsikan biaya produksi konstan, tidak mempertimbangkan biaya transportasi, dan mengabaikan dampak perdagangan terhadap distribusi pendapatan di dalam negeri.</li>
+            </ul>
+
+            <h3>4. Teori Heckscher-Ohlin (HO) / Teori Proporsi Faktor</h3>
+            <p>Teori ini memberikan penjelasan lebih lanjut mengenai mengapa biaya kesempatan berbeda antarnegara.</p>
+            <ul>
+                <li><strong>Gagasan Utama:</strong> Pola perdagangan internasional ditentukan oleh perbedaan dalam proporsi faktor produksi (seperti modal, tenaga kerja, tanah) yang dimiliki oleh negara-negara dan intensitas faktor yang dibutuhkan dalam produksi barang. Sebuah negara akan mengekspor barang yang produksinya intensif menggunakan faktor produksi yang relatif melimpah dan murah di negara tersebut. Sebaliknya, ia akan mengimpor barang yang produksinya intensif menggunakan faktor produksi yang relatif langka dan mahal.</li>
+                <li><strong>Contoh:</strong> Negara dengan banyak tenaga kerja akan mengekspor barang padat karya, sedangkan negara dengan banyak modal akan mengekspor barang padat modal.</li>
+                <li><strong>Tokoh:</strong> Eli Heckscher dan Bertil Ohlin.</li>
+                <li><strong>Kelemahan:</strong> Teori ini menghadapi anomali, seperti paradoks Leontief, yang menunjukkan bahwa AS (negara kaya modal) justru mengekspor barang padat karya dan mengimpor barang padat modal. Selain itu, teori ini mengabaikan peran teknologi, preferensi konsumen, dan skala ekonomi.</li>
+            </ul>
+        </section>
+
+        <section id="kebijakan-perdagangan">
+            <h2>Kebijakan Perdagangan Internasional</h2>
+            <p>Kebijakan perdagangan internasional adalah serangkaian tindakan atau peraturan yang diterapkan oleh pemerintah untuk mengatur dan memengaruhi aliran barang dan jasa lintas batas negara. Tujuan utama kebijakan ini adalah untuk melindungi industri dalam negeri, mengatasi hambatan perdagangan, atau mencapai tujuan ekonomi nasional lainnya.</p>
+
+            <h3>1. Kebijakan Proteksi</h3>
+            <p>Kebijakan proteksi bertujuan untuk melindungi industri dalam negeri dari persaingan produk asing. Ini dilakukan dengan membuat produk impor menjadi lebih mahal atau sulit diakses.</p>
+            <ul>
+                <li><h5>a. Kebijakan Bea Masuk (Tarif Impor)</h5>
+                    <p>Pungutan yang dikenakan oleh pemerintah atas barang yang masuk (impor) atau keluar (ekspor) dari suatu negara. Bea masuk impor bertujuan membatasi masuknya barang impor dan melindungi produk dalam negeri, menyebabkan harga barang impor menjadi lebih mahal di pasar domestik. Tarif dapat berupa persentase dari nilai barang (tarif ad valorem) atau jumlah tetap per unit (tarif spesifik).</p>
+                </li>
+                <li><h5>b. Kebijakan Kuota Impor</h5>
+                    <p>Pembatasan kuantitas fisik barang yang dapat diimpor atau diekspor dalam periode waktu tertentu. Kuota bertujuan untuk membatasi volume impor agar tidak membanjiri pasar domestik dan merugikan produsen lokal.</p>
+                </li>
+                <li><h5>c. Subsidi</h5>
+                    <p>Pemberian bantuan finansial atau insentif lain dari pemerintah kepada produsen dalam negeri. Tujuannya adalah untuk menurunkan biaya produksi produsen domestik sehingga mereka dapat menjual produknya dengan harga yang lebih kompetitif di pasar domestik maupun internasional, tanpa harus menaikkan harga jual secara signifikan.</p>
+                </li>
+                <li><h5>d. Dumping</h5>
+                    <p>Praktik menjual barang di pasar luar negeri dengan harga yang lebih rendah daripada harga jual di pasar domestik negara pengekspor, atau di bawah biaya produksi. Dumping sering dilakukan untuk menyingkirkan pesaing di pasar asing, mendominasi pasar, atau menghabiskan stok berlebih. Negara pengimpor dapat menerapkan "bea masuk anti-dumping" untuk melawan praktik ini.</p>
+                </li>
+                <li><h5>e. Larangan Impor dan Larangan Ekspor</h5>
+                    <p>
+                        <ul>
+                            <li><strong>Larangan Impor:</strong> Kebijakan yang melarang sama sekali masuknya barang tertentu dari negara lain. Ini biasanya diterapkan karena alasan keamanan nasional, kesehatan, lingkungan, atau untuk melindungi industri strategis dalam negeri secara total.</li>
+                            <li><strong>Larangan Ekspor:</strong> Kebijakan yang melarang pengiriman barang tertentu ke luar negeri. Ini dapat diterapkan untuk menjaga ketersediaan barang di dalam negeri (misalnya bahan pangan pokok), melindungi sumber daya alam, atau sebagai alat politik/diplomatik.</li>
+                        </ul>
+                    </p>
+                </li>
+                <li><h5>f. Diskriminasi Harga</h5>
+                    <p>Praktik menjual barang atau jasa dengan harga berbeda kepada pembeli atau negara yang berbeda, tanpa adanya perbedaan biaya produksi yang signifikan. Dalam konteks internasional, ini bisa berarti menetapkan harga ekspor yang berbeda untuk negara yang berbeda.</p>
+                </li>
+            </ul>
+
+            <h3>2. Kebijakan Perdagangan Bebas (Free Trade Policy)</h3>
+            <p>Kebijakan perdagangan bebas adalah kebalikan dari proteksi, di mana pemerintah mengurangi atau menghilangkan hambatan-hambatan perdagangan seperti tarif, kuota, dan subsidi. Tujuannya adalah untuk mendorong aliran barang dan jasa yang lebih bebas antarnegara.</p>
+            <ul>
+                <li><strong>Manfaat Kebijakan Perdagangan Bebas:</strong>
+                    <ul>
+                        <li>Konsumen memiliki lebih banyak pilihan barang dengan harga yang lebih murah dan kualitas yang lebih baik.</li>
+                        <li>Mendorong peningkatan kualitas produk dan adopsi teknologi modern karena persaingan yang lebih ketat.</li>
+                        <li>Mendorong negara-negara untuk mengefisienkan biaya produksi dan berspesialisasi sesuai keunggulan komparatif mereka.</li>
+                        <li>Meningkatkan mobilitas sumber daya manusia dan modal antarnegara, mendorong investasi dan pertukaran pengetahuan.</li>
+                    </ul>
+                </li>
+                <li><strong>Dampak Negatif (jika tidak siap bersaing):</strong>
+                    <ul>
+                        <li>Industri dalam negeri yang tidak kompetitif bisa kalah bersaing dan gulung tikar.</li>
+                        <li>Peningkatan ketergantungan terhadap negara lain untuk pasokan barang atau bahan baku.</li>
+                        <li>Potensi hilangnya lapangan kerja di sektor-sektor yang tidak kompetitif.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="neraca-pembayaran">
+            <h2>Neraca Pembayaran Internasional</h2>
+            <p>Neraca Pembayaran Internasional (NPI) adalah catatan sistematis dari semua transaksi ekonomi internasional yang terjadi antara penduduk suatu negara dengan penduduk negara lain dalam jangka waktu tertentu (biasanya satu tahun).</p>
+            <p>Menurut <strong>International Monetary Fund (IMF)</strong>, neraca pembayaran mencatat transaksi seperti barang, jasa, pendapatan, transfer, serta kewajiban finansial. NPI memiliki dua sisi pencatatan utama: transaksi debit dan transaksi kredit.</p>
+
+            <h3>1. Transaksi Debit (-)</h3>
+            <p>Transaksi debit mencatat aliran dana <strong>keluar</strong> dari suatu negara atau transaksi yang menimbulkan kewajiban pembayaran ke luar negeri. Ini berarti negara tersebut harus melakukan pembayaran kepada pihak asing.</p>
+            <ul>
+                <li><strong>Contoh:</strong>
+                    <ul>
+                        <li>Kegiatan impor barang (pembelian barang dari luar negeri).</li>
+                        <li>Investasi penduduk domestik di luar negeri (misalnya, perusahaan Indonesia membangun pabrik di negara lain).</li>
+                        <li>Pengeluaran uang ke luar negeri (misalnya, pembayaran jasa konsultan asing, turis Indonesia berbelanja di luar negeri, pembayaran bunga utang luar negeri).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>2. Transaksi Kredit (+)</h3>
+            <p>Transaksi kredit mencatat aliran dana <strong>masuk</strong> ke suatu negara atau transaksi yang menimbulkan hak penerimaan pembayaran dari luar negeri. Ini berarti negara tersebut menerima pembayaran dari pihak asing.</p>
+            <ul>
+                <li><strong>Contoh:</strong>
+                    <ul>
+                        <li>Kegiatan ekspor barang (penjualan barang ke luar negeri).</li>
+                        <li>Pendapatan investasi milik penduduk domestik yang berada di luar negeri (misalnya, keuntungan dari investasi perusahaan Indonesia di luar negeri yang dikirim kembali ke Indonesia).</li>
+                        <li>Penerimaan uang dari luar negeri (misalnya, turis asing berbelanja di Indonesia, pendapatan dari jasa pelayaran atau penerbangan asing yang digunakan oleh penduduk domestik, penerimaan pinjaman dari luar negeri, remitansi TKI/pekerja migran).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaksi Kredit (+) (Aliran Dana Masuk)</th>
+                            <th>Transaksi Debit (-) (Aliran Dana Keluar)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Transaksi Kredit (+)">Kegiatan ekspor barang dan jasa.</td>
+                            <td data-label="Transaksi Debit (-)">Kegiatan impor barang dan jasa.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Transaksi Kredit (+)">Pendapatan investasi milik penduduk domestik yang berada di luar negeri (misalnya, dividen, bunga).</td>
+                            <td data-label="Transaksi Debit (-)">Investasi penduduk dalam negeri ke luar negeri (investasi langsung, portofolio).</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Transaksi Kredit (+)">Penerimaan uang dari luar negeri (hibah, transfer, pinjaman, remitansi TKI).</td>
+                            <td data-label="Transaksi Debit (-)">Pengeluaran uang ke luar negeri (pembayaran hibah, transfer, pinjaman, pembayaran turis ke luar negeri).</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Transaksi Kredit (+)">Investasi asing di dalam negeri.</td>
+                            <td data-label="Transaksi Debit (-)">Bantuan luar negeri yang diberikan.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Keseimbangan neraca pembayaran tidak harus nol setiap tahun. Surplus atau defisit dalam neraca pembayaran dapat memberikan indikasi tentang kekuatan atau kelemahan ekonomi suatu negara dalam hubungan internasionalnya.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Materi Pembelajaran Ekonomi Internasional. Hak Cipta Dilindungi.</p>
+        <p>Dirancang untuk siswa SMA/MA Kelas XII.</p>
+    </footer>
+
+</body>
+</html>
+```

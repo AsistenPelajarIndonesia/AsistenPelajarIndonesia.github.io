@@ -1,0 +1,681 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Genetik dan Pewarisan Sifat - Biologi Kelas 12</title>
+    <style>
+        /* CSS Variables based on the provided theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-green);
+            border-bottom: 2px solid var(--accent-green);
+            margin-top: 45px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--secondary-accent-amber);
+            border-bottom: none;
+        }
+
+        h4 {
+            font-size: 1.4em;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        /* Strong/Key Terms */
+        strong {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* Definition/Concept Boxes */
+        .definition-box, .concept-box {
+            background-color: #f9f9f9;
+            border-left: 6px solid var(--semantic-info);
+            padding: 18px 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .definition-box:hover, .concept-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .definition-box h4, .concept-box h4 {
+            color: var(--semantic-info);
+            margin-top: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+            font-size: 1.3em;
+        }
+
+        /* Interactive Details/Summary */
+        details {
+            background-color: #f0f8ff; /* Light blue background for interactive sections */
+            border: 1px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        details:hover {
+            background-color: #e6f3ff;
+        }
+
+        summary {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.15em;
+            outline: none;
+            padding-bottom: 5px; /* Spacing for the summary text */
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        details p {
+            color: var(--text-secondary);
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* Specific styles for DNA structure representations */
+        .nucleotide-concept {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .nucleotide-block {
+            background-color: #e8f5e9; /* Light green for DNA blocks */
+            border: 2px dashed var(--accent-green);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 180px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .nucleotide-block span {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .nucleotide-block small {
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Genetic Code Table */
+        .code-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            background-color: var(--background-canvas);
+        }
+
+        .code-table th, .code-table td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .code-table th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .code-table tr:nth-child(even) {
+            background-color: #F8F8F8;
+        }
+
+        .code-table td:first-child {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .amino {
+            font-weight: bold;
+            color: var(--accent-green);
+            font-size: 0.8em;
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                margin: 10px auto;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            h4 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            ul, ol {
+                margin-left: 20px;
+            }
+            .nucleotide-block {
+                width: 100%;
+            }
+            .code-table {
+                font-size: 0.8em;
+            }
+            .code-table th, .code-table td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+                padding-bottom: 10px;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 1.5em;
+                margin-top: 30px;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+            ul, ol {
+                margin-left: 15px;
+            }
+            .definition-box, .concept-box, details {
+                padding: 12px 18px;
+                margin: 20px 0;
+            }
+            summary {
+                font-size: 1em;
+            }
+            .code-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch; /* for smoother scrolling on iOS */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Genetik dan Pewarisan Sifat</h1>
+
+        <section id="dna-gen">
+            <h2>1. DNA dan Gen</h2>
+            <p>Dalam biologi, karakteristik suatu individu yang dapat kita amati secara langsung, seperti warna bunga, bentuk bunga, atau jenis rambut, dikenal sebagai <strong>fenotip</strong>. Fenotip ini pada dasarnya ditentukan oleh struktur khas gen yang disebut <strong>genotip</strong>. Ini berarti, genotip adalah 'instruksi' yang menentukan bagaimana fenotip akan muncul.</p>
+
+            <details>
+                <summary>Apa itu Gen?</summary>
+                <p><strong>Gen</strong> adalah segmen spesifik dari molekul <strong>DNA</strong> yang terdiri dari rangkaian unit-unit dasar yang disebut <strong>nukleotida</strong> dengan urutan tertentu. Urutan inilah yang membawa informasi genetik.</p>
+            </details>
+
+            <h3>Komponen Dasar Materi Genetik: Nukleotida</h3>
+            <p>Nukleotida adalah blok bangunan dasar DNA. Setiap nukleotida tersusun dari tiga komponen utama:</p>
+            <div class="nucleotide-concept">
+                <div class="nucleotide-block">
+                    <span>Gula Deoksiribosa</span>
+                    <small>(Penyusun tulang punggung)</small>
+                </div>
+                <div class="nucleotide-block">
+                    <span>Gugus Fosfat</span>
+                    <small>(Penyusun tulang punggung)</small>
+                </div>
+                <div class="nucleotide-block">
+                    <span>Basa Nitrogen</span>
+                    <small>(Pembawa informasi genetik)</small>
+                </div>
+            </div>
+            <p>Ada empat jenis basa nitrogen yang ditemukan dalam DNA:</p>
+            <ul>
+                <li><strong>Adenin (A)</strong></li>
+                <li><strong>Sitosin (C)</strong></li>
+                <li><strong>Guanin (G)</strong></li>
+                <li><strong>Timin (T)</strong></li>
+            </ul>
+
+            <h3>Dogma Sentral Biologi</h3>
+            <p>Keterkaitan antara DNA, gen, dan protein dalam penentuan sifat (fenotip) dijelaskan oleh konsep <strong>Dogma Sentral</strong>. Ini adalah alur dasar bagaimana informasi genetik mengalir di dalam sel:</p>
+            <ol>
+                <li><strong>DNA</strong> mengandung instruksi genetik.</li>
+                <li>Melalui proses <strong>transkripsi</strong>, informasi dari DNA disalin menjadi <strong>mRNA</strong> (messenger RNA).</li>
+                <li><strong>mRNA</strong> membawa pesan ini ke ribosom.</li>
+                <li>Di ribosom, melalui proses <strong>translasi</strong>, pesan mRNA diterjemahkan menjadi rantai <strong>polipeptida</strong>.</li>
+                <li>Rantai polipeptida kemudian melipat dan membentuk <strong>protein</strong> yang fungsional.</li>
+                <li>Protein inilah yang menjalankan fungsi gen, menentukan sifat dan karakteristik suatu organisme.</li>
+            </ol>
+            <p>Bahkan perubahan sekecil apapun pada satu nukleotida dapat memengaruhi sifat individu. Peristiwa ini dikenal sebagai <strong>Single Nucleotide Polymorphism (SNP)</strong>, misalnya perubahan sitosin menjadi guanin dapat mengubah fenotip rambut lurus menjadi keriting.</p>
+        </section>
+
+        <section id="merakit-nukleotida">
+            <h2>2. Merakit Nukleotida: Struktur DNA</h2>
+            <p>Gabungan basa nitrogen, gula deoksiribosa, dan gugus fosfat membentuk molekul nukleotida. Sejumlah besar nukleotida dapat dihubungkan bersama membentuk rantai panjang yang disebut <strong>polinukleotida</strong>.</p>
+            <p>Setiap gen memiliki urutan nukleotida (basa-basa) yang unik. Perbedaan urutan inilah yang membuat gen bersifat spesifik, dan setiap gen berbeda satu sama lain.</p>
+
+            <h3>Struktur DNA: Heliks Ganda Antiparalel</h3>
+            <p>Molekul DNA umumnya tersusun dari dua rantai polinukleotida yang berpasangan. Struktur ini disebut <strong>antiparalel</strong> karena kedua rantai membentang ke arah yang berlawanan (dari ujung 5' ke 3' dan sebaliknya).</p>
+            <p>Basa-basa pada satu rantai DNA berikatan dengan basa-basa pada rantai seberang yang disebut <strong>basa komplementer</strong>, mengikuti aturan perpasangan basa yang ketat, membentuk struktur pilin ganda atau <strong>double helix</strong>.</p>
+
+            <details>
+                <summary>3. Aturan Perpasangan Basa Nitrogen</summary>
+                <p>Aturan ini adalah kunci stabilitas struktur DNA:</p>
+                <ul>
+                    <li><strong>Adenin (A)</strong> selalu berpasangan dengan <strong>Timin (T)</strong>.</li>
+                    <li><strong>Sitosin (C)</strong> selalu berpasangan dengan <strong>Guanin (G)</strong>.</li>
+                </ul>
+                <p>Pasangan basa komplementer ini dihubungkan oleh <strong>ikatan hidrogen</strong>, yang menjaga kedua untai DNA tetap bersama.</p>
+            </details>
+
+            <details>
+                <summary>4. Model Molekul DNA oleh Watson dan Crick</summary>
+                <p>Penemuan struktur DNA heliks ganda oleh James Watson dan Francis Crick pada tahun 1953 adalah tonggak penting dalam biologi. Mereka mendapatkan Hadiah Nobel pada tahun 1962 atas temuan ini. Artikel riset mereka, "A Structure for Deoxyribose Nucleic Acid", membuka jalan bagi kemajuan pesat dalam rekayasa genetika dan pemahaman tentang pewarisan sifat.</p>
+            </details>
+        </section>
+
+        <section id="replikasi-dna">
+            <h2>5. Replikasi DNA</h2>
+            <div class="definition-box">
+                <h4>Definisi Replikasi DNA</h4>
+                <p><strong>Replikasi DNA</strong> adalah proses penggandaan DNA yang terjadi sebelum pembelahan sel, tepatnya pada tahap interfase. Tujuannya adalah untuk memastikan setiap sel anakan menerima salinan DNA yang identik.</p>
+            </div>
+
+            <h3>Komponen dan Proses Replikasi DNA</h3>
+            <p>Proses replikasi DNA memerlukan beberapa enzim penting:</p>
+            <ul>
+                <li><strong>Enzim Helikase:</strong> Berfungsi membuka pilin ganda (double helix) DNA, memisahkan kedua untai.</li>
+                <li><strong>Enzim DNA Polimerase:</strong> Bertugas membentuk DNA baru (polimer) dengan menggunakan untai DNA lama sebagai cetakan. Sintesis DNA baru selalu terjadi dari arah 5' ke 3', sementara DNA polimerase bergerak pada untai induk dari arah 3' ke 5'.</li>
+                <li><strong>Enzim Ligase:</strong> Berperan dalam menyatukan fragmen-fragmen DNA yang terpisah (dikenal sebagai fragmen Okazaki) menjadi satu rantai DNA yang utuh pada untai tertinggal.</li>
+            </ul>
+
+            <h3>Model Replikasi DNA</h3>
+            <p>Ada beberapa hipotesis mengenai bagaimana DNA mereplikasi diri. Tiga model utama adalah:</p>
+            <ol>
+                <li><strong>Teori Semikonservatif:</strong> Setiap molekul DNA baru terdiri dari satu untai DNA lama (induk) dan satu untai DNA baru. Ini adalah model yang paling diterima dan terbukti benar.</li>
+                <li><strong>Teori Konservatif:</strong> Pita DNA rangkap heliks asli tetap utuh, dan sel menghasilkan pita DNA rangkap heliks baru yang sepenuhnya terdiri dari untai baru.</li>
+                <li><strong>Teori Dispersif:</strong> Pita DNA heliks rangkap terputus-putus. Setiap potongan lama berfungsi sebagai cetakan untuk membentuk DNA baru, sehingga molekul DNA hasil replikasi mengandung campuran untai lama dan baru secara acak di sepanjang rantai.</li>
+            </ol>
+            <p>Eksperimen oleh Meselson dan Stahl menunjukkan bahwa replikasi DNA berlangsung secara semikonservatif.</p>
+        </section>
+
+        <section id="pengemasan-dna">
+            <h2>6. Pengaturan atau Pengemasan DNA di Dalam Sel</h2>
+            <p>Meskipun untaian DNA sangat panjang (sekitar 2 meter pada manusia), ia dapat dikemas ke dalam inti sel yang sangat kecil. Mekanisme pengemasannya sangat efisien dan melibatkan beberapa tingkatan:</p>
+            <ol>
+                <li>DNA dipintal mengelilingi protein yang disebut <strong>protein histon</strong>.</li>
+                <li>Gabungan DNA dan histon ini membentuk unit dasar yang disebut <strong>nukleosom</strong>.</li>
+                <li>Nukleosom-nukleosom kemudian bergabung dan melipat menjadi struktur yang lebih padat yang disebut <strong>solenoid</strong>.</li>
+                <li>Solenoid selanjutnya membentuk benang yang lebih tebal dan terlipat-lipat, dikenal sebagai <strong>benang kromatin</strong>.</li>
+                <li>Benang-benang kromatin ini kemudian memadat lebih lanjut, membentuk lengan <strong>kromatid</strong>.</li>
+                <li>Pada akhirnya, sepasang lengan kromatid berpasangan membentuk <strong>kromosom</strong>, struktur yang padat dan terorganisir, terutama saat sel siap membelah.</li>
+            </ol>
+        </section>
+
+        <section id="kromosom">
+            <h2>7. Kromosom</h2>
+            <div class="definition-box">
+                <h4>Definisi Kromosom</h4>
+                <p><strong>Kromosom</strong> adalah struktur makromolekul yang tersusun atas asam nukleat (DNA/RNA) dan protein. Kromosom merupakan bagian penting dari inti sel yang berfungsi sebagai pembawa sifat pada keturunan, memastikan informasi genetik diwariskan dengan benar.</p>
+            </div>
+
+            <p>Ukuran kromosom sangat kecil sehingga memerlukan mikroskop elektron untuk dapat dilihat. Namun, ada pengecualian seperti <strong>kromosom raksasa</strong> atau <strong>kromosom politen</strong> yang dapat dilihat dengan mikroskop cahaya. Kromosom ini ditemukan pada organisme seperti <em>Drosophila melanogaster</em> (lalat buah) dan <em>Chironomus sp.</em> Kromosom politen terbentuk karena DNA mengalami penggandaan (replikasi) berulang kali (hingga 10 kali) tanpa diikuti pembelahan sel.</p>
+            <p>Pada sel eukariotik, kromosom ditemukan di dalam <strong>inti sel (nukleus)</strong> yang dilingkupi membran inti. Sementara itu, pada organisme prokariotik seperti virus dan bakteri, materi genetiknya (DNA atau RNA murni) tidak ditemukan dalam bentuk kromosom yang terorganisir dan tidak dilingkupi membran inti, melainkan di area yang disebut <strong>nukleoid</strong>.</p>
+
+            <h3>8. Bagian Kromosom</h3>
+            <p>Kromosom eukariotik terdiri dari DNA yang dikemas oleh protein histon. Setiap rangkaian nukleotida tertentu pada DNA akan membentuk gen, dan gen tertentu akan mengkode protein spesifik. Jadi, kromosom adalah totalitas gen yang membawa semua faktor keturunan dalam sel.</p>
+            <p>Bagian utama kromosom meliputi:</p>
+            <ul>
+                <li><strong>Lengan (Kromatid):</strong> Bagian badan kromosom itu sendiri, yang mengandung untai DNA terkemas.</li>
+                <li><strong>Sentromer:</strong> Bagian vital yang berperan sebagai tempat melekatnya <strong>benang spindel</strong> selama pembelahan sel. Benang spindel adalah struktur yang menghubungkan sentriol dan menarik kromosom menuju kutub berlawanan untuk memisahkan diri.</li>
+            </ul>
+
+            <h4>Bentuk Kromosom Berdasarkan Letak Sentromer</h4>
+            <p>Letak sentromer membagi kromosom menjadi berbagai bentuk:</p>
+            <ul>
+                <li><strong>Telosentrik:</strong> Sentromer terletak di ujung kromosom, hanya memiliki satu lengan.</li>
+                <li><strong>Akrosentrik:</strong> Sentromer terletak dekat ujung, menyebabkan satu lengan sangat pendek dan satu lengan sangat panjang.</li>
+                <li><strong>Submetasentrik:</strong> Sentromer terletak di antara tengah dan ujung, menghasilkan dua lengan yang tidak sama panjang.</li>
+                <li><strong>Metasentrik:</strong> Sentromer terletak tepat di tengah kromosom, menghasilkan dua lengan yang sama panjang.</li>
+            </ul>
+
+            <h3>9. Struktur Kromosom pada Inti Eukariot</h3>
+            <p>Secara etimologi, kata "kromosom" berasal dari bahasa Yunani, <strong><em>chrome</em></strong> (berarti warna) dan <strong><em>soma</em></strong> (berarti badan/tubuh). Ini merujuk pada kemampuannya untuk menyerap warna saat diwarnai untuk observasi mikroskopis.</p>
+            <p>Studi kromosom menunjukkan adanya pita-pita akibat perbedaan intensitas penyerapan warna pada wilayahnya:</p>
+            <ul>
+                <li><strong>Heterokromatin:</strong> Wilayah yang menyerap warna lebih pekat, menunjukkan DNA yang sangat padat/kompak. Gen-gen di wilayah ini umumnya tidak aktif berekspresi.</li>
+                <li><strong>Eukromatin:</strong> Wilayah yang berwarna lebih terang, menunjukkan DNA yang lebih longgar. Gen-gen di wilayah ini aktif berekspresi.</li>
+            </ul>
+            <p>Secara sederhana, kromosom dapat dibayangkan sebagai untaian DNA yang berasosiasi dengan protein histon, membentuk struktur seperti manik-manik. Kromosom tidak selalu tampak jelas; pada sel yang aktif bermetabolisme, hanya benang-benang kromatin yang terlihat. Kromosom paling jelas terlihat saat sel sedang aktif membelah (misalnya pada ujung batang, ujung akar, kelenjar, epitel).</p>
+            <p>Protein penyusun kromosom eukariotik:</p>
+            <ul>
+                <li><strong>Protein Histon:</strong> Bersifat basa, kaya akan asam amino arginin dan lisin. Ada lima macam (H1, H2A, H2B, H3, H4). Penting untuk mempertahankan integritas fungsi dan struktur kromatin.</li>
+                <li><strong>Protein Nonhiston:</strong> Bersifat asam, sebagian besar berupa enzim dan faktor yang berperan dalam replikasi DNA dan transkripsi RNA.</li>
+            </ul>
+
+            <h3>10. Jumlah Kromosom</h3>
+            <p>Setiap jenis organisme memiliki jumlah kromosom yang tetap. Kromosom ini berpasangan, membentuk <strong>kromosom homolog</strong> yang memiliki ukuran, bentuk, dan jumlah gen yang sama.</p>
+            <ul>
+                <li><strong>Diploid (2n):</strong> Kondisi di mana sel memiliki dua set kromosom homolog. Umumnya ditemukan pada sel-sel tubuh (sel somatik).</li>
+                <li><strong>Haploid (n):</strong> Kondisi di mana sel hanya memiliki satu set kromosom (tidak berpasangan). Umumnya ditemukan pada gamet (sel kelamin) yang akan melebur saat fertilisasi untuk membentuk zigot diploid.</li>
+            </ul>
+            <p>Selain diploid dan haploid, ada juga kondisi seperti <strong>triploid (3n)</strong> dan <strong>poliploid</strong> (memiliki banyak set kromosom).</p>
+
+            <h3>11. Jenis Kromosom</h3>
+            <p>Kromosom dapat dibedakan menjadi dua jenis utama:</p>
+            <ul>
+                <li><strong>Kromosom Autosom (Kromosom Tubuh):</strong> Kromosom yang membawa gen-gen untuk sifat-sifat tubuh secara umum, tidak terkait langsung dengan penentuan jenis kelamin.</li>
+                <li><strong>Kromosom Gonosom (Kromosom Seks):</strong> Kromosom yang menentukan jenis kelamin suatu individu dan juga membawa gen-gen untuk sifat-sifat tertentu yang terkait dengan jenis kelamin.</li>
+            </ul>
+            <p>Penting untuk dipahami bahwa kedua jenis kromosom ini (autosom dan gonosom) terdapat di semua sel individu, baik sel tubuh maupun sel kelamin, dan keduanya mengekspresikan sifat-sifat fenotip.</p>
+        </section>
+
+        <section id="rna-kode-genetik">
+            <h2>12. RNA (Ribonucleic Acid)</h2>
+            <p><strong>RNA</strong> adalah asam ribonukleat, yang juga merupakan polinukleotida seperti DNA, namun dengan beberapa perbedaan penting:</p>
+            <ul>
+                <li>Struktur: Umumnya hanya terdiri atas satu rantai (<strong>single-stranded</strong>).</li>
+                <li>Gula: Mengandung gula <strong>ribosa</strong>, bukan deoksiribosa.</li>
+                <li>Basa Nitrogen: Mengandung basa <strong>Urasil (U)</strong> sebagai pengganti Timin (T) yang ada di DNA. Jadi, basa pada RNA adalah Adenin (A), Sitosin (C), Guanin (G), dan Urasil (U).</li>
+                <li>Lokasi: Umumnya terletak di inti sel, sitoplasma, dan ribosom.</li>
+                <li>Jumlah dan jenis RNA dapat bervariasi bergantung pada aktivitas sintesis protein sel.</li>
+            </ul>
+
+            <h3>Jenis-Jenis RNA</h3>
+            <p>Ada tiga jenis utama RNA, masing-masing dengan peran spesifik dalam sintesis protein:</p>
+            <ol>
+                <li>
+                    <h4>Messenger RNA (mRNA) atau RNA duta (dRNA)</h4>
+                    <p>Berfungsi membawa "pesan" atau informasi genetik dari DNA di inti sel ke ribosom di sitoplasma. Pesan ini berupa urutan tiga basa nitrogen yang disebut <strong>kodon</strong>. Kodon pada mRNA adalah komplemen dari <strong>kodogen</strong> (urutan basa pada DNA cetakan). mRNA hanya dibentuk saat akan dilakukan sintesis protein dan akan segera dihancurkan setelah proses selesai.</p>
+                </li>
+                <li>
+                    <h4>Transfer RNA (tRNA) atau RNA pemindah</h4>
+                    <p>Berfungsi mengenali kodon pada mRNA dan menerjemahkannya menjadi asam amino di ribosom. tRNA dibuat di inti sel dan kemudian berpindah ke sitoplasma. tRNA memiliki struktur khas seperti daun semanggi dengan bagian yang berpasangan dan tidak berpasangan. Di salah satu ujung lengannya, terdapat tiga urutan basa yang disebut <strong>antikodon</strong>, yang akan cocok secara spesifik dengan kodon pada mRNA (misal, kodon ACC UAU GGA pada mRNA akan cocok dengan antikodon UGG AUA CCU pada tRNA).</p>
+                </li>
+                <li>
+                    <h4>Ribosom RNA (rRNA)</h4>
+                    <p>Dibentuk di inti sel dan kemudian membentuk struktur <strong>ribosom</strong>. Ribosom adalah tempat terjadinya sintesis protein. Ribosom terdiri dari dua subunit (kecil dan besar); subunit kecil mengikat mRNA, sementara subunit besar mengikat tRNA yang sesuai.</p>
+                </li>
+            </ol>
+
+            <h3>13. Genotip dan Keterkaitannya dengan Sifat</h3>
+            <p>Sifat fenotip suatu individu ditentukan oleh interaksi antara sifat gen dominan dan resesif. Gen dominan (disimbolkan dengan huruf kapital, misal 'A') akan selalu muncul sebagai sifat yang tampak (fenotip A), bahkan jika berpasangan dengan gen resesif (misal, Aa).</p>
+            <p>Sebaliknya, gen resesif (disimbolkan dengan huruf kecil, misal 'a') hanya akan muncul sebagai sifat yang tampak (fenotip a) apabila berpasangan dengan gen resesif lainnya (aa).</p>
+            <ul>
+                <li><strong>Homozigot:</strong> Organisme yang memiliki dua gen yang sama pada satu lokus (posisi gen pada kromosom), misalnya <strong>AA</strong> (homozigot dominan) atau <strong>aa</strong> (homozigot resesif).</li>
+                <li><strong>Heterozigot:</strong> Organisme yang memiliki pasangan gen alternatif pada lokus yang sama, misalnya <strong>Aa</strong>. Meskipun heterozigot (Aa) memiliki gen resesif, fenotip yang muncul adalah fenotip dominan (A).</li>
+                <li><strong>Alel:</strong> Istilah yang merujuk pada bentuk alternatif dari suatu gen yang menempati lokus yang sama pada kromosom homolog, namun dapat menentukan sifat yang berlawanan (misal, A dan a adalah alel).</li>
+            </ul>
+
+            <h3>14. Kode Genetik</h3>
+            <p><strong>Kode genetik</strong> adalah aturan yang menentukan bagaimana urutan nukleotida (basa nitrogen) dalam DNA atau RNA diterjemahkan menjadi urutan asam amino dalam protein. Kode ini bersifat <strong>triplet</strong>, artinya setiap tiga basa nitrogen berturut-turut pada mRNA (disebut <strong>kodon</strong>) menyandikan satu jenis asam amino spesifik.</p>
+            <p>Meskipun ada 20 jenis asam amino yang umum, kemungkinan kombinasi tiga basa nitrogen dari empat jenis basa (A, C, G, U) adalah 4<sup>3</sup> = 64. Ini menunjukkan bahwa satu asam amino dapat disandikan oleh lebih dari satu kodon (fenomena ini disebut <strong>degenerasi kode genetik</strong>).</p>
+            <p>Ciri khas suatu protein, termasuk fungsi dan strukturnya, ditentukan oleh jumlah, macam, dan urutan spesifik asam amino yang menyusunnya.</p>
+
+            <h4>Tabel Kode Genetika (Kodon) Asam Amino</h4>
+            <p>Tabel berikut menunjukkan kodon mRNA dan asam amino yang disandikannya.</p>
+            <div class="concept-box">
+                <table class="code-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Basa Pertama (5')</th>
+                            <th colspan="4">Basa Kedua</th>
+                            <th rowspan="2">Basa Ketiga (3')</th>
+                        </tr>
+                        <tr>
+                            <th>U</th>
+                            <th>C</th>
+                            <th>A</th>
+                            <th>G</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4">U</td>
+                            <td>UUU <span class="amino">Phe</span></td>
+                            <td>UCU <span class="amino">Ser</span></td>
+                            <td>UAU <span class="amino">Tyr</span></td>
+                            <td>UGU <span class="amino">Cys</span></td>
+                            <td>U</td>
+                        </tr>
+                        <tr>
+                            <td>UUC <span class="amino">Phe</span></td>
+                            <td>UCC <span class="amino">Ser</span></td>
+                            <td>UAC <span class="amino">Tyr</span></td>
+                            <td>UGC <span class="amino">Cys</span></td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td>UUA <span class="amino">Leu</span></td>
+                            <td>UCA <span class="amino">Ser</span></td>
+                            <td>UAA <span class="amino">Stop</span></td>
+                            <td>UGA <span class="amino">Stop</span></td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>UUG <span class="amino">Leu</span></td>
+                            <td>UCG <span class="amino">Ser</span></td>
+                            <td>UAG <span class="amino">Stop</span></td>
+                            <td>UGG <span class="amino">Trp</span></td>
+                            <td>G</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">C</td>
+                            <td>CUU <span class="amino">Leu</span></td>
+                            <td>CCU <span class="amino">Pro</span></td>
+                            <td>CAU <span class="amino">His</span></td>
+                            <td>CGU <span class="amino">Arg</span></td>
+                            <td>U</td>
+                        </tr>
+                        <tr>
+                            <td>CUC <span class="amino">Leu</span></td>
+                            <td>CCC <span class="amino">Pro</span></td>
+                            <td>CAC <span class="amino">His</span></td>
+                            <td>CGC <span class="amino">Arg</span></td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td>CUA <span class="amino">Leu</span></td>
+                            <td>CCA <span class="amino">Pro</span></td>
+                            <td>CAA <span class="amino">Gln</span></td>
+                            <td>CGA <span class="amino">Arg</span></td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>CUG <span class="amino">Leu</span></td>
+                            <td>CCG <span class="amino">Pro</span></td>
+                            <td>CAG <span class="amino">Gln</span></td>
+                            <td>CGG <span class="amino">Arg</span></td>
+                            <td>G</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">A</td>
+                            <td>AUU <span class="amino">Ile</span></td>
+                            <td>ACU <span class="amino">Thr</span></td>
+                            <td>AAU <span class="amino">Asn</span></td>
+                            <td>AGU <span class="amino">Ser</span></td>
+                            <td>U</td>
+                        </tr>
+                        <tr>
+                            <td>AUC <span class="amino">Ile</span></td>
+                            <td>ACC <span class="amino">Thr</span></td>
+                            <td>AAC <span class="amino">Asn</span></td>
+                            <td>AGC <span class="amino">Ser</span></td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td>AUA <span class="amino">Ile</span></td>
+                            <td>ACA <span class="amino">Thr</span></td>
+                            <td>AAA <span class="amino">Lys</span></td>
+                            <td>AGA <span class="amino">Arg</span></td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>AUG <span class="amino">Met (Start)</span></td>
+                            <td>ACG <span class="amino">Thr</span></td>
+                            <td>AAG <span class="amino">Lys</span></td>
+                            <td>AGG <span class="amino">Arg</span></td>
+                            <td>G</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">G</td>
+                            <td>GUU <span class="amino">Val</span></td>
+                            <td>GCU <span class="amino">Ala</span></td>
+                            <td>GAU <span class="amino">Asp</span></td>
+                            <td>GGU <span class="amino">Gly</span></td>
+                            <td>U</td>
+                        </tr>
+                        <tr>
+                            <td>GUC <span class="amino">Val</span></td>
+                            <td>GCC <span class="amino">Ala</span></td>
+                            <td>GAC <span class="amino">Asp</span></td>
+                            <td>GGC <span class="amino">Gly</span></td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td>GUA <span class="amino">Val</span></td>
+                            <td>GCA <span class="amino">Ala</span></td>
+                            <td>GAA <span class="amino">Glu</span></td>
+                            <td>GGA <span class="amino">Gly</span></td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>GUG <span class="amino">Val</span></td>
+                            <td>GCG <span class="amino">Ala</span></td>
+                            <td>GAG <span class="amino">Glu</span></td>
+                            <td>GGG <span class="amino">Gly</span></td>
+                            <td>G</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.9em; color: var(--text-tertiary); text-align: center;">Tabel ini menunjukkan semua 64 kodon mRNA dan asam amino yang sesuai. Kodon "Stop" menandai akhir dari sintesis protein.</p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
+```

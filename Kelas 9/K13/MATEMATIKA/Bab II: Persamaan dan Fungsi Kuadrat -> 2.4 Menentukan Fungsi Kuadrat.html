@@ -1,0 +1,365 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menentukan Fungsi Kuadrat</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.6em;
+        }
+        h3 {
+            font-size: 1.3em;
+            color: #388E3C;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+        }
+        .concept-box {
+            background-color: #E3F2FD;
+            border-left: 5px solid #1976D2;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            color: #1565C0;
+            font-weight: bold;
+        }
+        .formula {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #F5F5F5;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: inline-block;
+            border: 1px dashed #757575;
+        }
+        .example-section {
+            background-color: #F9F9F9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            border: 1px solid #E0E0E0;
+        }
+        .example-section h3 {
+            margin-top: 0;
+            color: #FFB300;
+            border-bottom-color: #FFD54F;
+        }
+        .code-like {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #FFF9C4;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+        ul {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        strong {
+            color: #212121;
+        }
+        .key-info {
+            background-color: #FFF3E0;
+            border-left: 5px solid #FF8F00;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            color: #EF6C00;
+        }
+        .sub-heading {
+            color: #424242;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Menentukan Fungsi Kuadrat dari Informasi yang Diberikan</h1>
+
+        <p>Dalam matematika, fungsi kuadrat adalah fungsi polinomial yang memiliki derajat tertinggi 2. Bentuk umumnya adalah <span class="formula">f(x) = ax² + bx + c</span>, di mana <span class="code-like">a</span>, <span class="code-like">b</span>, dan <span class="code-like">c</span> adalah konstanta, dengan <span class="code-like">a ≠ 0</span>. Fungsi kuadrat ini dapat digambarkan dalam bentuk parabola.</p>
+
+        <p>Sebelumnya, kita telah mempelajari cara menggambar grafik fungsi kuadrat, menemukan titik puncak, titik potong dengan sumbu-x dan sumbu-y, serta sumbu simetri. Pada bagian ini, kita akan fokus pada kebalikannya: bagaimana cara menentukan fungsi kuadrat jika kita diberi informasi-informasi tertentu mengenai grafiknya.</p>
+
+        <div class="key-info">
+            <p><strong>Informasi Kunci untuk Menentukan Fungsi Kuadrat:</strong></p>
+            <ul>
+                <li>Beberapa titik koordinat yang dilalui grafik fungsi kuadrat.</li>
+                <li>Titik potong grafik fungsi kuadrat dengan sumbu-x (akar-akar persamaan kuadrat).</li>
+                <li>Titik potong grafik fungsi kuadrat dengan sumbu-y.</li>
+                <li>Titik puncak dan sumbu simetri dari grafik fungsi kuadrat.</li>
+            </ul>
+        </div>
+
+        <p>Langkah awal yang paling umum adalah memisalkan fungsi kuadratnya dalam bentuk umum:</p>
+        <p class="formula">f(x) = ax² + bx + c</p>
+        <p>Kemudian, informasi yang diberikan akan digunakan untuk membentuk sistem persamaan linear untuk mencari nilai konstanta <span class="code-like">a</span>, <span class="code-like">b</span>, dan <span class="code-like">c</span>.</p>
+
+        <div class="concept-box">
+            Secara umum, untuk menentukan sebuah fungsi kuadrat secara unik, kita memerlukan setidaknya tiga informasi independen (seperti tiga titik koordinat, atau titik puncak dan satu titik lain, atau titik potong sumbu-x dan satu titik lain).
+        </div>
+
+        <hr>
+
+        <h2>Cara Menentukan Fungsi Kuadrat Berdasarkan Informasi yang Diberikan</h2>
+
+        <h3>1. Jika Diketahui Tiga Titik Koordinat yang Berbeda</h3>
+        <p>Jika kita diberi tiga titik koordinat yang dilalui oleh grafik fungsi kuadrat, misalnya <span class="code-like">(x₁, y₁)</span>, <span class="code-like">(x₂, y₂)</span>, dan <span class="code-like">(x₃, y₃)</span>, kita dapat mensubstitusikan setiap titik ke dalam bentuk umum <span class="formula">f(x) = ax² + bx + c</span> untuk membentuk tiga persamaan linear.</p>
+
+        <p>Misalnya, untuk titik <span class="code-like">(x₁, y₁)</span>, kita dapatkan:</p>
+        <p class="formula">y₁ = ax₁² + bx₁ + c</p>
+
+        <p>Dengan cara yang sama untuk dua titik lainnya, kita akan memperoleh sistem tiga persamaan linear dengan tiga variabel (<span class="code-like">a</span>, <span class="code-like">b</span>, <span class="code-like">c</span>). Sistem persamaan ini kemudian dapat diselesaikan untuk menemukan nilai <span class="code-like">a</span>, <span class="code-like">b</span>, dan <span class="code-like">c</span>.</p>
+
+        <div class="example-section">
+            <h3>Contoh: Melalui Tiga Titik</h3>
+            <p>Tentukan fungsi kuadrat yang grafiknya melalui titik <span class="code-like">(0, 1)</span>, <span class="code-like">(1, 3)</span>, dan <span class="code-like">(2, 7)</span>.</p>
+            <ol>
+                <li>Misalkan fungsi kuadratnya adalah <span class="formula">f(x) = ax² + bx + c</span>.</li>
+                <li>Substitusikan titik <span class="code-like">(0, 1)</span>:
+                    <p class="formula">f(0) = a(0)² + b(0) + c = 1</p>
+                    <p>Diperoleh <span class="code-like">c = 1</span>.</p>
+                    <p>Jadi, fungsinya menjadi <span class="formula">f(x) = ax² + bx + 1</span>.</p>
+                </li>
+                <li>Substitusikan titik <span class="code-like">(1, 3)</span>:
+                    <p class="formula">f(1) = a(1)² + b(1) + 1 = 3</p>
+                    <p><span class="code-like">a + b + 1 = 3</span></p>
+                    <p>Diperoleh persamaan 1: <span class="formula">a + b = 2</span></p>
+                </li>
+                <li>Substitusikan titik <span class="code-like">(2, 7)</span>:
+                    <p class="formula">f(2) = a(2)² + b(2) + 1 = 7</p>
+                    <p><span class="code-like">4a + 2b + 1 = 7</span></p>
+                    <p>Diperoleh persamaan 2: <span class="formula">4a + 2b = 6</span> (atau <span class="formula">2a + b = 3</span> setelah disederhanakan).</p>
+                </li>
+                <li>Selesaikan sistem persamaan:
+                    <p>Persamaan 1: <span class="formula">a + b = 2</span></p>
+                    <p>Persamaan 2: <span class="formula">2a + b = 3</span></p>
+                    <p>Kurangkan Persamaan 1 dari Persamaan 2:</p>
+                    <p><span class="formula">(2a + b) - (a + b) = 3 - 2</span></p>
+                    <p><span class="formula">a = 1</span></p>
+                    <p>Substitusikan nilai <span class="code-like">a = 1</span> ke Persamaan 1:</p>
+                    <p><span class="formula">1 + b = 2</span></p>
+                    <p><span class="formula">b = 1</span></p>
+                </li>
+                <li>Jadi, nilai <span class="code-like">a = 1</span>, <span class="code-like">b = 1</span>, dan <span class="code-like">c = 1</span>. Fungsi kuadratnya adalah <span class="formula">f(x) = x² + x + 1</span>.</li>
+            </ol>
+        </div>
+
+        <h3>2. Jika Diketahui Titik Potong Sumbu-x (Akar-akar)</h3>
+        <p>Jika grafik fungsi kuadrat memotong sumbu-x di titik <span class="code-like">(p, 0)</span> dan <span class="code-like">(q, 0)</span>, ini berarti <span class="code-like">p</span> dan <span class="code-like">q</span> adalah akar-akar dari persamaan kuadrat <span class="formula">ax² + bx + c = 0</span>. Dalam kasus ini, bentuk fungsi kuadrat dapat dituliskan dalam bentuk faktor:</p>
+        <p class="formula">f(x) = a(x - p)(x - q)</p>
+
+        <p>Nilai <span class="code-like">a</span> dapat ditentukan jika kita diberi informasi tambahan, misalnya satu titik lain yang dilalui grafik, atau titik potong sumbu-y.</p>
+
+        <div class="example-section">
+            <h3>Contoh: Titik Potong Sumbu-x dan Satu Titik Lain</h3>
+            <p>Tentukan fungsi kuadrat yang memotong sumbu-x di <span class="code-like">(-2, 0)</span> dan <span class="code-like">(3, 0)</span>, serta melalui titik <span class="code-like">(0, 3)</span>.</p>
+            <ol>
+                <li>Karena memotong sumbu-x di <span class="code-like">(-2, 0)</span> dan <span class="code-like">(3, 0)</span>, maka akar-akarnya adalah <span class="code-like">-2</span> dan <span class="code-like">3</span>.</li>
+                <li>Gunakan bentuk faktor:
+                    <p class="formula">f(x) = a(x - (-2))(x - 3)</p>
+                    <p class="formula">f(x) = a(x + 2)(x - 3)</p>
+                </li>
+                <li>Karena melalui titik <span class="code-like">(0, 3)</span>, maka <span class="code-like">f(0) = 3</span>. Substitusikan ke dalam fungsi:
+                    <p class="formula">f(0) = a(0 + 2)(0 - 3) = 3</p>
+                    <p class="formula">a(2)(-3) = 3</p>
+                    <p class="formula">-6a = 3</p>
+                    <p><span class="code-like">a = -1/2</span></p>
+                </li>
+                <li>Substitusikan nilai <span class="code-like">a</span> kembali ke bentuk faktor:
+                    <p class="formula">f(x) = -1/2 (x + 2)(x - 3)</p>
+                    <p>Untuk mendapatkan bentuk <span class="code-like">ax² + bx + c</span>, kita jabarkan:</p>
+                    <p class="formula">f(x) = -1/2 (x² - 3x + 2x - 6)</p>
+                    <p class="formula">f(x) = -1/2 (x² - x - 6)</p>
+                    <p class="formula">f(x) = -1/2 x² + 1/2 x + 3</p>
+                </li>
+            </ol>
+        </div>
+
+        <h3>3. Jika Diketahui Titik Puncak dan Sumbu Simetri</h3>
+        <p>Titik puncak dari parabola adalah koordinat titik tertinggi atau terendah dari grafik. Jika titik puncaknya adalah <span class="code-like">(s, t)</span>, maka sumbu simetrinya adalah garis vertikal <span class="code-like">x = s</span>.</p>
+
+        <p>Ada dua bentuk umum yang bisa digunakan ketika titik puncak diketahui:</p>
+        <ul>
+            <li><strong>Bentuk Puncak:</strong> <span class="formula">f(x) = a(x - s)² + t</span>. Dengan mengetahui satu titik lain yang dilalui, kita dapat mencari nilai <span class="code-like">a</span>.</li>
+            <li>Jika kita mengetahui sumbu simetri <span class="code-like">x = s</span> dan satu titik potong sumbu-x, misalnya <span class="code-like">(p, 0)</span>, maka titik potong sumbu-x yang lain dapat dicari dengan memanfaatkan sifat simetri. Titik tersebut adalah <span class="code-like">(2s - p, 0)</span>. Setelah mengetahui kedua titik potong sumbu-x dan satu titik lain (misalnya titik puncak itu sendiri atau titik potong sumbu-y), kita bisa menggunakan metode sebelumnya.</li>
+        </ul>
+
+        <div class="example-section">
+            <h3>Contoh: Titik Puncak dan Sumbu Simetri</h3>
+            <p>Tentukan fungsi kuadrat yang memiliki titik puncak <span class="code-like">(-1, 3)</span> dan memotong sumbu-y di <span class="code-like">(0, 1)</span>.</p>
+            <ol>
+                <li>Titik puncak adalah <span class="code-like">(-1, 3)</span>, sehingga <span class="code-like">s = -1</span> dan <span class="code-like">t = 3</span>.</li>
+                <li>Gunakan bentuk puncak:
+                    <p class="formula">f(x) = a(x - s)² + t</p>
+                    <p class="formula">f(x) = a(x - (-1))² + 3</p>
+                    <p class="formula">f(x) = a(x + 1)² + 3</p>
+                </li>
+                <li>Karena memotong sumbu-y di <span class="code-like">(0, 1)</span>, maka <span class="code-like">f(0) = 1</span>. Substitusikan:
+                    <p class="formula">f(0) = a(0 + 1)² + 3 = 1</p>
+                    <p class="formula">a(1)² + 3 = 1</p>
+                    <p class="formula">a + 3 = 1</p>
+                    <p><span class="code-like">a = -2</span></p>
+                </li>
+                <li>Substitusikan nilai <span class="code-like">a</span> kembali ke bentuk puncak:
+                    <p class="formula">f(x) = -2(x + 1)² + 3</p>
+                    <p>Untuk mendapatkan bentuk <span class="code-like">ax² + bx + c</span>, kita jabarkan:</p>
+                    <p class="formula">f(x) = -2(x² + 2x + 1) + 3</p>
+                    <p class="formula">f(x) = -2x² - 4x - 2 + 3</p>
+                    <p class="formula">f(x) = -2x² - 4x + 1</p>
+                </li>
+            </ol>
+        </div>
+
+        <h3>4. Jika Diketahui Titik Potong Sumbu-y dan Titik Puncak</h3>
+        <p>Titik potong sumbu-y selalu berada di koordinat <span class="code-like">(0, c)</span>. Jika kita mengetahui titik potong sumbu-y <span class="code-like">(0, r)</span>, maka nilai <span class="code-like">c = r</span>.</p>
+
+        <p>Jika kita mengetahui titik potong sumbu-y dan titik puncak <span class="code-like">(s, t)</span>, kita dapat menggunakan dua informasi ini. Titik potong sumbu-y <span class="code-like">(0, r)</span> memberikan kita nilai <span class="code-like">c</span>. Titik puncak <span class="code-like">(s, t)</span> memberikan kita informasi tentang sumbu simetri <span class="code-like">x = s</span>. Jika kita menggunakan bentuk <span class="formula">f(x) = ax² + bx + c</span>, maka kita sudah tahu <span class="code-like">c</span>. Sumbu simetri <span class="code-like">x = -b/(2a) = s</span> memberikan satu persamaan. Titik puncak <span class="code-like">(s, t)</span> memberikan persamaan <span class="formula">as² + bs + c = t</span>. Dengan dua persamaan ini, kita dapat mencari <span class="code-like">a</span> dan <span class="code-like">b</span>.</p>
+
+        <div class="example-section">
+            <h3>Contoh: Titik Potong Sumbu-y dan Titik Puncak</h3>
+            <p>Tentukan fungsi kuadrat yang memotong sumbu-y di <span class="code-like">(0, 3)</span> dan memiliki titik puncak <span class="code-like">(-2, 1)</span>.</p>
+            <ol>
+                <li>Titik potong sumbu-y adalah <span class="code-like">(0, 3)</span>, sehingga <span class="code-like">c = 3</span>.</li>
+                <li>Titik puncak adalah <span class="code-like">(-2, 1)</span>, sehingga sumbu simetri adalah <span class="code-like">x = -2</span>. Ingat bahwa sumbu simetri juga diberikan oleh <span class="formula">x = -b/(2a)</span>. Jadi, <span class="formula">-b/(2a) = -2</span>, yang berarti <span class="code-like">b = 4a</span>.</li>
+                <li>Gunakan informasi titik puncak:
+                    <p class="formula">f(s) = t</p>
+                    <p class="formula">f(-2) = 1</p>
+                    <p>Substitusikan <span class="code-like">x = -2</span>, <span class="code-like">c = 3</span> ke dalam <span class="formula">f(x) = ax² + bx + c</span>:</p>
+                    <p class="formula">a(-2)² + b(-2) + 3 = 1</p>
+                    <p class="formula">4a - 2b + 3 = 1</p>
+                    <p class="formula">4a - 2b = -2</p>
+                    <p class="formula">2a - b = -1</p>
+                </li>
+                <li>Kita punya sistem persamaan:
+                    <p>1. <span class="code-like">b = 4a</span></p>
+                    <p>2. <span class="code-like">2a - b = -1</span></p>
+                    <p>Substitusikan (1) ke (2):</p>
+                    <p><span class="code-like">2a - (4a) = -1</span></p>
+                    <p><span class="code-like">-2a = -1</span></p>
+                    <p><span class="code-like">a = 1/2</span></p>
+                </li>
+                <li>Cari nilai <span class="code-like">b</span> menggunakan <span class="code-like">b = 4a</span>:
+                    <p><span class="code-like">b = 4(1/2) = 2</span></p>
+                </li>
+                <li>Jadi, nilai <span class="code-like">a = 1/2</span>, <span class="code-like">b = 2</span>, dan <span class="code-like">c = 3</span>. Fungsi kuadratnya adalah <span class="formula">f(x) = 1/2 x² + 2x + 3</span>.</li>
+            </ol>
+        </div>
+
+        <h3>5. Penentuan Titik Potong Antar Dua Grafik</h3>
+        <p>Menentukan titik potong dua grafik, baik linear maupun kuadrat, dilakukan dengan menyamakan kedua fungsi tersebut.</p>
+
+        <div class="example-section">
+            <h3>Contoh: Titik Potong Fungsi Kuadrat dengan Fungsi Linear</h3>
+            <p>Tentukan titik potong antara grafik fungsi linear <span class="code-like">y = x - 1</span> dengan fungsi kuadrat <span class="code-like">y = x² - 5x + 4</span>.</p>
+            <ol>
+                <li>Samakan kedua persamaan:
+                    <p class="formula">x² - 5x + 4 = x - 1</p>
+                </li>
+                <li>Pindahkan semua suku ke satu sisi untuk membentuk persamaan kuadrat:
+                    <p class="formula">x² - 5x - x + 4 + 1 = 0</p>
+                    <p class="formula">x² - 6x + 5 = 0</p>
+                </li>
+                <li>Faktorkan persamaan kuadrat tersebut:
+                    <p class="formula">(x - 1)(x - 5) = 0</p>
+                </li>
+                <li>Dapatkan nilai <span class="code-like">x</span>:
+                    <p><span class="code-like">x = 1</span> atau <span class="code-like">x = 5</span>.</p>
+                </li>
+                <li>Substitusikan nilai <span class="code-like">x</span> ke salah satu persamaan (misalnya fungsi linear <span class="code-like">y = x - 1</span>) untuk mencari nilai <span class="code-like">y</span>:
+                    <ul>
+                        <li>Jika <span class="code-like">x = 1</span>, maka <span class="code-like">y = 1 - 1 = 0</span>. Titik potongnya adalah <span class="code-like">(1, 0)</span>.</li>
+                        <li>Jika <span class="code-like">x = 5</span>, maka <span class="code-like">y = 5 - 1 = 4</span>. Titik potongnya adalah <span class="code-like">(5, 4)</span>.</li>
+                    </ul>
+                </li>
+                <li>Jadi, titik potongnya adalah <span class="code-like">(1, 0)</span> dan <span class="code-like">(5, 4)</span>.</li>
+            </ol>
+        </div>
+
+        <div class="example-section">
+            <h3>Contoh: Titik Potong Dua Fungsi Kuadrat</h3>
+            <p>Tentukan titik potong antara grafik fungsi kuadrat <span class="code-like">f₁(x) = x² - 5x + 4</span> dan <span class="code-like">f₂(x) = x² - 4x + 2</span>.</p>
+            <ol>
+                <li>Samakan kedua fungsi:
+                    <p class="formula">x² - 5x + 4 = x² - 4x + 2</p>
+                </li>
+                <li>Pindahkan semua suku ke satu sisi:
+                    <p class="formula">x² - 5x + 4 - x² + 4x - 2 = 0</p>
+                    <p class="formula">-x + 2 = 0</p>
+                </li>
+                <li>Dapatkan nilai <span class="code-like">x</span>:
+                    <p><span class="code-like">x = 2</span>.</p>
+                </li>
+                <li>Substitusikan nilai <span class="code-like">x</span> ke salah satu fungsi (misalnya <span class="code-like">f₁(x)</span>):
+                    <p class="formula">f₁(2) = (2)² - 5(2) + 4 = 4 - 10 + 4 = -2</p>
+                </li>
+                <li>Jadi, titik potongnya adalah <span class="code-like">(2, -2)</span>.</li>
+            </ol>
+        </div>
+
+        <div class="concept-box">
+            <strong>Tahukah Kamu?</strong>
+            Dua grafik fungsi kuadrat dapat berpotongan paling banyak di dua titik. Jika dua grafik fungsi kuadrat berpotongan di lebih dari dua titik, maka kedua fungsi tersebut identik (merupakan fungsi yang sama).
+        </div>
+
+    </div>
+</body>
+</html>
+```

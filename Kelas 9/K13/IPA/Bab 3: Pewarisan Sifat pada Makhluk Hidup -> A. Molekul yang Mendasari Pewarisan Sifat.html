@@ -1,0 +1,384 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Pewarisan Sifat pada Makhluk Hidup - A. Molekul yang Mendasari Pewarisan Sifat</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--accent-green);
+            margin-top: 25px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .subsection {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--secondary-accent-amber);
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .terms-list {
+            list-style: disc inside;
+            padding-left: 20px;
+        }
+
+        .terms-list li {
+            margin-bottom: 8px;
+        }
+
+        .term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .explanation {
+            color: var(--text-secondary);
+            margin-top: 5px;
+            font-size: 0.95em;
+        }
+
+        .concept-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .content-block {
+            background-color: var(--background-canvas);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+            margin-top: 15px;
+        }
+
+        .content-block h3 {
+            margin-top: 0;
+            border-bottom: none;
+        }
+
+        .interactive-element {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+            cursor: pointer; /* Indicates interactivity */
+        }
+
+        .interactive-element:hover {
+            background-color: #2e7d32; /* Darker green */
+        }
+
+        .example-text {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-left: 15px;
+            display: block;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .section, .content-block {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            .interactive-element {
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Pewarisan Sifat pada Makhluk Hidup</h1>
+
+        <div class="section">
+            <h2>A. Molekul yang Mendasari Pewarisan Sifat</h2>
+
+            <div class="content-block">
+                <h3>Peran Penting Materi Genetik</h3>
+                <p>Pernahkah kamu bertanya-tanya mengapa kamu memiliki beberapa ciri yang mirip dengan ayahmu dan beberapa lagi mirip dengan ibumu? Atau mengapa warna kulit, bentuk rambut, bentuk hidung, bahkan jenis penyakit tertentu bisa diturunkan dari generasi ke generasi?</p>
+                <p>Semua ini berkat adanya <strong>materi genetik</strong>. Materi genetik adalah "buku panduan" yang membawa instruksi untuk membentuk dan mengatur setiap aspek kehidupan suatu organisme. Materi genetik inilah yang bertanggung jawab dalam pewarisan sifat dari orang tua kepada keturunannya.</p>
+                <p>Ayah mewariskan materi genetiknya melalui sel sperma, dan ibu mewariskan materi genetiknya melalui sel ovum. Ketika keduanya bergabung dalam proses fertilisasi, materi genetik gabungan inilah yang menentukan ciri-ciri unik pada diri setiap individu.</p>
+            </div>
+
+            <div class="concept-box">
+                <h3>Apa Itu Materi Genetik?</h3>
+                <p>Molekul utama yang berperan sebagai materi genetik adalah <strong>asam nukleat</strong>. Ada dua jenis asam nukleat yang sangat penting dalam pewarisan sifat, yaitu:</p>
+                <ul>
+                    <li><strong>DNA (Asam Deoksiribonukleat)</strong></li>
+                    <li><strong>RNA (Asam Ribonukleat)</strong></li>
+                </ul>
+                <p>Di dalam untaian DNA, terdapat unit-unit spesifik yang disebut <strong>gen</strong>. Gen inilah yang membawa informasi untuk sifat-sifat tertentu, seperti warna mata atau tinggi badan.</p>
+            </div>
+
+            <div class="section">
+                <h3>Lokasi Materi Genetik: Kromosom</h3>
+                <p>Materi genetik berupa DNA ini sebagian besar terletak di dalam <strong>inti sel</strong>. Namun, ada juga DNA yang ditemukan di luar inti sel, misalnya di mitokondria.</p>
+                <p>DNA adalah molekul yang sangat panjang. Agar dapat muat di dalam inti sel yang kecil, DNA melilit pada protein khusus yang disebut <strong>protein histon</strong>. Kumpulan DNA yang sudah melilit pada protein histon ini membentuk struktur padat yang disebut <strong>kromosom</strong>.</p>
+                <p>Saat sel bersiap untuk membelah diri, kromosom akan memadat sehingga strukturnya menjadi lebih jelas dan mudah diamati. Struktur kromosom inilah yang membawa gen-gen pewarisan sifat.</p>
+
+                <div class="content-block">
+                    <h4>Memahami Kromosom</h4>
+                    <p>Bayangkan DNA seperti benang yang sangat panjang. Agar rapi dan tersimpan dengan baik, benang tersebut digulung pada rol (protein histon) dan gulungan-gulungan ini membentuk struktur seperti untaian manik-manik yang lebih terorganisir, yaitu kromosom.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>2. Struktur DNA dan RNA: Molekul Kehidupan</h3>
+                <p>Penemuan struktur DNA merupakan tonggak penting dalam biologi, berkat penelitian para ilmuwan seperti Maurice Wilkins dan Rosalind Franklin yang menggunakan teknik kristalografi sinar-X pada tahun 1950-an. Penelitian mereka kemudian dilanjutkan oleh James Watson dan Francis Crick yang pada tahun 1953 berhasil mengemukakan model struktur DNA yang terkenal.</p>
+
+                <div class="content-block">
+                    <h4>Struktur Heliks Ganda DNA</h4>
+                    <p>Model struktur DNA yang ditemukan Watson dan Crick menggambarkan DNA sebagai <strong>untai ganda yang membentuk heliks atau ulir</strong>, seperti tangga berputar. Setiap "anak tangga" pada heliks ini dibentuk oleh pasangan basa nitrogen, sedangkan "pegangan" tangga dibentuk oleh tulang punggung gula deoksiribosa dan gugus fosfat.</p>
+                    <p><strong>Komponen Utama DNA:</strong></p>
+                    <ul>
+                        <li><strong>Gula Deoksiribosa:</strong> Gula berkarbon lima yang menjadi bagian dari tulang punggung DNA.</li>
+                        <li><strong>Gugus Fosfat:</strong> Gugus kimia yang menghubungkan unit-unit gula, membentuk tulang punggung DNA yang kuat.</li>
+                        <li><strong>Basa Nitrogen:</strong> Molekul yang terdiri dari atom nitrogen dan karbon. Ada empat jenis basa nitrogen pada DNA:
+                            <ul>
+                                <li><strong>Adenin (A)</strong></li>
+                                <li><strong>Timin (T)</strong></li>
+                                <li><strong>Guanin (G)</strong></li>
+                                <li><strong>Sitosin (C)</strong></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Dalam struktur heliks DNA, basa nitrogen selalu berpasangan secara spesifik: Adenin (A) berpasangan dengan Timin (T), dan Guanin (G) berpasangan dengan Sitosin (C). Pasangan basa ini dihubungkan oleh <strong>ikatan hidrogen</strong>.</p>
+                    <p>Basa Adenin (A) dan Guanin (G) termasuk dalam kelompok <strong>basa purin</strong>, sementara Timin (T) dan Sitosin (C) termasuk dalam kelompok <strong>basa pirimidin</strong>.</p>
+                </div>
+
+                <div class="content-block">
+                    <h4>Perbedaan DNA dan RNA</h4>
+                    <p>Meskipun sama-sama asam nukleat, DNA dan RNA memiliki beberapa perbedaan penting:</p>
+                    <ul>
+                        <li><strong>Gula:</strong> DNA menggunakan gula deoksiribosa, sedangkan RNA menggunakan gula ribosa.</li>
+                        <li><strong>Struktur:</strong> DNA umumnya beruntai ganda membentuk heliks, sementara RNA umumnya beruntai tunggal.</li>
+                        <li><strong>Basa Nitrogen:</strong> DNA memiliki basa Adenin (A), Timin (T), Guanin (G), dan Sitosin (C). RNA memiliki basa Adenin (A), Urasil (U), Guanin (G), dan Sitosin (C). Perlu diingat, pada RNA, basa Timin (T) digantikan oleh basa Urasil (U).</li>
+                        <li><strong>Lokasi:</strong> DNA sebagian besar berada di inti sel, sedangkan RNA banyak ditemukan di sitoplasma dan ribosom.</li>
+                        <li><strong>Fungsi:</strong> DNA menyimpan informasi genetik jangka panjang, sementara RNA berperan dalam sintesis protein (mengubah informasi dari DNA menjadi protein).</li>
+                    </ul>
+                </div>
+
+                <div class="highlight">
+                    Tahukah Kamu?
+                    <p>Cabang ilmu biologi yang mempelajari materi genetik, mulai dari struktur, ekspresi, perubahan, hingga penerapannya dalam rekayasa genetika disebut <strong>Genetika</strong>.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>3. Peranan Materi Genetik dalam Penentuan Sifat</h3>
+                <p>Setelah memahami struktur molekuler materi genetik, kini saatnya kita menjelajahi bagaimana materi genetik ini bekerja dalam menentukan berbagai sifat pada makhluk hidup.</p>
+
+                <div class="content-block">
+                    <h4>Mengamati Pewarisan Sifat Keluarga</h4>
+                    <p>Untuk memahami bagaimana sifat diwariskan, kita bisa mengamati ciri-ciri fisik anggota keluarga. Ciri-ciri seperti warna kulit, bentuk wajah, warna mata, hingga perlekatan cuping telinga adalah contoh sifat yang dikode oleh gen dalam DNA.</p>
+                    <p><strong>Contoh Ciri-Ciri yang Diwariskan:</strong></p>
+                    <ul>
+                        <li>Warna Kulit</li>
+                        <li>Bentuk Wajah</li>
+                        <li>Ukuran Mata</li>
+                        <li>Postur Tubuh</li>
+                        <li>Perlekatan Cuping Telinga</li>
+                        <li>Bentuk Hidung</li>
+                        <li>Bentuk Rambut</li>
+                        <li>Kemampuan Menyatukan Lidah</li>
+                        <li>Lekukan Pipi saat Senyum</li>
+                        <li>Kebiasaan Tangan (Kanan/Kiri)</li>
+                    </ul>
+                    <p>Dengan mengamati ciri-ciri ini pada ayah, ibu, dan diri sendiri, kita bisa melihat pola pewarisan sifat.</p>
+                </div>
+
+                <div class="content-block">
+                    <h4>Konsep Dominan dan Resesif</h4>
+                    <p>Dalam pewarisan sifat, seringkali kita menemukan adanya sifat yang "menutupi" atau lebih kuat dari sifat lainnya. Sifat yang mampu menutupi sifat lain disebut <strong>sifat dominan</strong>. Sebaliknya, sifat yang tertutupi atau lebih lemah disebut <strong>sifat resesif</strong>.</p>
+                    <p>Sebagai contoh, mari kita lihat sifat perlekatan cuping telinga:</p>
+                    <ul>
+                        <li><strong>Cuping Telinga Terpisah:</strong> Dianggap sebagai sifat dominan, dikode oleh gen <em>G</em>.</li>
+                        <li><strong>Cuping Telinga Melekat:</strong> Dianggap sebagai sifat resesif, dikode oleh gen <em>g</em>.</li>
+                    </ul>
+                    <p>Jika seseorang mewarisi gen <em>G</em> (dominan), maka cuping telinganya akan terpisah, meskipun ia juga mewarisi gen <em>g</em> dari salah satu orang tuanya. Kombinasi genotipe yang mungkin untuk cuping terpisah adalah <em>GG</em> atau <em>Gg</em>. Hanya jika kedua gen yang diwarisi adalah <em>gg</em> (resesif), barulah cuping telinganya akan melekat.</p>
+                    <div class="example-text">
+                        Bayangkan gen dominan seperti "suara yang lantang" yang akan selalu terdengar, sementara gen resesif seperti "suara yang lirih" yang hanya akan terdengar jika tidak ada suara lantang yang mengalahkannya.
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h4>Genotipe dan Fenotipe</h4>
+                    <p>Setiap sifat yang kita amati pada organisme adalah hasil dari interaksi antara genetik dan lingkungan. Ada dua istilah penting yang perlu kita pahami:</p>
+                    <ul>
+                        <li><strong>Fenotipe:</strong> Ini adalah ciri-ciri fisik yang dapat kita amati secara langsung pada suatu organisme, seperti warna kulit, bentuk rambut, atau perlekatan cuping telinga. Fenotipe adalah "ekspresi" dari gen. Namun, tidak semua fenotipe mudah diamati.</li>
+                        <li><strong>Genotipe:</strong> Ini adalah keseluruhan informasi genetik yang dimiliki oleh suatu individu, yang tersimpan dalam bentuk susunan gen-gennya. Genotipe inilah yang menentukan fenotipe.</li>
+                    </ul>
+                    <p>Dalam beberapa kasus, fenotipe yang bersifat fisiologis (seperti proses metabolisme) atau perilaku (seperti tingkah laku) juga merupakan bagian dari fenotipe yang dikendalikan oleh genotipe.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Peran Kromosom dalam Penentuan Jenis Kelamin</h3>
+                <p>Setiap manusia memiliki set kromosom dalam sel tubuhnya. Kromosom ini membawa informasi genetik. Menariknya, ada kromosom khusus yang menentukan jenis kelamin.</p>
+
+                <div class="content-block">
+                    <h4>Kromosom Seks (Gonosom)</h4>
+                    <p>Manusia memiliki 23 pasang kromosom dalam sel tubuhnya. Dari jumlah tersebut, 22 pasang adalah <strong>autosom</strong> (kromosom tubuh), sedangkan 1 pasang terakhir adalah <strong>gonosom</strong> (kromosom kelamin).</p>
+                    <ul>
+                        <li><strong>Perempuan:</strong> Memiliki gonosom dengan susunan <strong>XX</strong>.</li>
+                        <li><strong>Laki-laki:</strong> Memiliki gonosom dengan susunan <strong>XY</strong>.</li>
+                    </ul>
+                    <p>Penulisan kariotipe (susunan kromosom) manusia adalah sebagai berikut:</p>
+                    <ul>
+                        <li>Perempuan: 22 pasang autosom + XX = <strong>44A + XX</strong></li>
+                        <li>Laki-laki: 22 pasang autosom + XY = <strong>44A + XY</strong></li>
+                    </ul>
+                    <p>Kondisi sel tubuh yang memiliki pasangan kromosom disebut <strong>diploid (2n)</strong>. Sementara itu, sel kelamin (sperma dan ovum) hanya memiliki separuh dari jumlah kromosom sel tubuh, yaitu satu set kromosom saja. Kondisi ini disebut <strong>haploid (n)</strong>.</p>
+                    <ul>
+                        <li>Ovum (sel telur) selalu membawa kromosom <strong>X</strong>.</li>
+                        <li>Sperma dapat membawa kromosom <strong>X</strong> atau kromosom <strong>Y</strong>.</li>
+                    </ul>
+                    <p>Oleh karena itu:</p>
+                    <ul>
+                        <li>Jika ovum (X) dibuahi oleh sperma (X), maka akan terbentuk individu perempuan (XX).</li>
+                        <li>Jika ovum (X) dibuahi oleh sperma (Y), maka akan terbentuk individu laki-laki (XY).</li>
+                    </ul>
+                    <p>Jadi, jenis kelamin anak ditentukan oleh jenis sperma yang membuahi sel telur!</p>
+                </div>
+
+                <div class="interactive-element">
+                    Pelajari Lebih Lanjut tentang Kromosom!
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="content-block">
+                    <h3>Ringkasan Penting:</h3>
+                    <p><strong>Materi genetik (DNA dan RNA)</strong> adalah fondasi pewarisan sifat.</p>
+                    <p><strong>Gen</strong> adalah unit fungsional dari materi genetik yang membawa informasi sifat.</p>
+                    <p><strong>Kromosom</strong> adalah struktur DNA yang padat yang terletak di dalam inti sel.</p>
+                    <p><strong>Struktur DNA</strong> berbentuk heliks ganda dengan pasangan basa A-T dan G-C.</p>
+                    <p><strong>RNA</strong> memiliki struktur beruntai tunggal dan basa U menggantikan T.</p>
+                    <p><strong>Fenotipe</strong> adalah ciri yang terlihat, <strong>Genotipe</strong> adalah susunan genetiknya.</p>
+                    <p><strong>Dominan</strong> adalah sifat yang menutupi, <strong>Resesif</strong> adalah sifat yang tertutupi.</p>
+                    <p><strong>Kromosom Seks (XX untuk perempuan, XY untuk laki-laki)</strong> menentukan jenis kelamin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```

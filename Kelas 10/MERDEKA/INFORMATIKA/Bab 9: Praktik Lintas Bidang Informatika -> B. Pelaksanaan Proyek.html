@@ -1,0 +1,749 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 9: Praktik Lintas Bidang Informatika - Pelaksanaan Proyek</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .interactive-block {
+            background-color: #f9f9f9;
+            border: 1px dashed var(--primary-blue);
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        .interactive-block h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: none;
+            font-size: 1.2em;
+        }
+
+        .roles-table, .gantt-table, .example-gantt-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+
+        .roles-table th, .roles-table td,
+        .gantt-table th, .gantt-table td,
+        .example-gantt-table th, .example-gantt-table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .roles-table th, .gantt-table th, .example-gantt-table th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        .roles-table tbody tr:nth-child(even),
+        .gantt-table tbody tr:nth-child(even),
+        .example-gantt-table tbody tr:nth-child(even) {
+            background-color: #fefefe;
+        }
+
+        .gantt-table td.empty, .example-gantt-table td.empty {
+            background-color: var(--background-canvas);
+            border: none;
+        }
+
+        .gantt-table td.filled, .example-gantt-table td.filled {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+        }
+
+        .gantt-table td.filled-week1, .example-gantt-table td.filled-week1 { background-color: #FFB300; }
+        .gantt-table td.filled-week2, .example-gantt-table td.filled-week2 { background-color: #FFC107; }
+        .gantt-table td.filled-week3, .example-gantt-table td.filled-week3 { background-color: #FFCA2C; }
+        .gantt-table td.filled-week4, .example-gantt-table td.filled-week4 { background-color: #FFD54F; }
+
+        .gantt-table .month-header {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .gantt-table .week-header {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .gantt-table .highlight-column {
+            border-left: 2px solid var(--primary-blue);
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .list-item .icon {
+            flex-shrink: 0;
+            width: 25px;
+            height: 25px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 0.9em;
+        }
+
+        .list-item .content {
+            flex-grow: 1;
+        }
+
+        .list-item ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+
+        .list-item li {
+            margin-bottom: 8px;
+        }
+
+        .sub-list-item .icon {
+            background-color: var(--accent-green);
+        }
+
+        .step-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .step-container .step-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 5px;
+        }
+
+        .step-container .step-description {
+            font-size: 1em;
+        }
+
+        .step-container .step-number {
+            background-color: white;
+            color: var(--primary-blue);
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .step-container .step-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .further-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            border-radius: 6px;
+            font-style: italic;
+        }
+
+        .further-info strong {
+            color: var(--text-primary);
+        }
+
+        .code-sample {
+            background-color: #e0f2f1;
+            color: #004d40;
+            padding: 15px;
+            border-left: 4px solid #00796b;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .roles-table, .gantt-table, .example-gantt-table,
+            .gantt-table th, .gantt-table td,
+            .example-gantt-table th, .example-gantt-table td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+            .step-container {
+                padding: 15px;
+            }
+            .step-container .step-title {
+                font-size: 1.1em;
+            }
+            .list-item {
+                flex-direction: column;
+            }
+            .list-item .icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .roles-table, .gantt-table, .example-gantt-table,
+            .gantt-table th, .gantt-table td,
+            .example-gantt-table th, .example-gantt-table td {
+                font-size: 0.85em;
+            }
+            .step-container .step-number {
+                font-size: 1em;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Bab 9: Praktik Lintas Bidang Informatika</h1>
+        <h2>B. Pelaksanaan Proyek</h2>
+
+        <div class="section">
+            <h3>Pengantar Proyek</h3>
+            <p>Proyek ini dirancang untuk memberikan pengalaman langsung dalam menerapkan konsep informatika di lingkungan sekitar Anda. Anda akan diajak untuk mengidentifikasi permasalahan nyata dalam kepengurusan RT/RW, merancang solusi, dan mengimplementasikannya menggunakan pemrograman. Tujuannya adalah untuk membangun pemahaman yang lebih mendalam tentang bagaimana teknologi dapat berkontribusi pada masyarakat.</p>
+
+            <p>Kalian akan menggali keadaan lingkungan sekitar rumah, berinteraksi dengan pengurus RT/RW, dan memformulasikan sebuah permasalahan yang dihadapi seputar kependudukan atau pelayanan publik. Selanjutnya, kalian akan mengembangkan alternatif solusi dan menyusun langkah-langkah terstruktur untuk menyelesaikannya. Sebagai produk akhir, kalian akan membuat program sederhana dalam bahasa pemrograman Python untuk menyelesaikan permasalahan tersebut. Ini juga menjadi kesempatan untuk mentransfer pola pikir pemrograman dari bahasa C yang telah dipelajari ke bahasa Python.</p>
+
+            <div class="interactive-block">
+                <h4>Tujuan Utama Proyek</h4>
+                <div class="list-item">
+                    <div class="icon">1</div>
+                    <div class="content">
+                        <p><strong>Membangun Sistem Sederhana:</strong> Membantu proses pengelolaan pekerjaan rutin di kepengurusan RT/RW setempat.</p>
+                    </div>
+                </div>
+                <div class="list-item sub-list-item">
+                    <div class="icon">2</div>
+                    <div class="content">
+                        <p><strong>Analisis dan Solusi Permasalahan:</strong> Memahami masalah yang ada dan mencari solusi yang efektif.</p>
+                    </div>
+                </div>
+                <div class="list-item sub-list-item">
+                    <div class="icon">3</div>
+                    <div class="content">
+                        <p><strong>Interaksi Masyarakat:</strong> Memberikan pengalaman berinteraksi secara langsung dengan anggota masyarakat.</p>
+                    </div>
+                </div>
+                <div class="list-item sub-list-item">
+                    <div class="icon">4</div>
+                    <div class="content">
+                        <p><strong>Penerapan Informatika:</strong> Menerapkan konsep informatika dalam kehidupan bermasyarakat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>1. Penyusunan Tim/Kelompok</h2>
+            <p>Setelah memahami arahan dan melakukan observasi awal, langkah pertama adalah membentuk tim. Carilah 5-6 orang untuk bekerja sama dalam proyek ini. Dokumentasikan anggota tim Anda dalam format berikut:</p>
+
+            <table class="roles-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Peran</th>
+                        <th>No HP</th>
+                        <th>Alamat Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>[Nama Anggota 1]</td>
+                        <td>[Peran]</td>
+                        <td>[Nomor Telepon]</td>
+                        <td>[Alamat Email]</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>[Nama Anggota 2]</td>
+                        <td>[Peran]</td>
+                        <td>[Nomor Telepon]</td>
+                        <td>[Alamat Email]</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Anda dapat menggunakan aplikasi pengolah data (seperti spreadsheet) atau pengolah kata untuk mencatat informasi ini.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. Pembagian Peran</h2>
+            <p>Setiap anggota kelompok akan memegang peran kunci dalam proyek. Pemilihan peran ini penting untuk memastikan semua aspek proyek tertangani dengan baik. Berikut adalah beberapa peran yang dapat Anda pilih:</p>
+
+            <table class="roles-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Peran</th>
+                        <th>Tugas/Pekerjaan Utama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Project Manager</strong></td>
+                        <td>
+                            <ul>
+                                <li>Menyusun jadwal kerja proyek secara keseluruhan.</li>
+                                <li>Membagi tugas dan tanggung jawab antar anggota kelompok.</li>
+                                <li>Membangun dan memelihara komunikasi yang baik dengan pengurus RT/RW.</li>
+                                <li>Memonitor kemajuan seluruh tahapan proyek agar sesuai rencana.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>System Analyst</strong></td>
+                        <td>
+                            <ul>
+                                <li>Melakukan analisis mendalam terhadap proses yang ada.</li>
+                                <li>Mendefinisikan secara jelas kebutuhan dari pengurus RT/RW.</li>
+                                <li>Memodelkan kebutuhan aplikasi dalam bentuk prototipe atau rancangan awal.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Programmer</strong></td>
+                        <td>
+                            <ul>
+                                <li>Menerjemahkan hasil analisis sistem menjadi kode program yang fungsional.</li>
+                                <li>Menulis kode program aplikasi sesuai dengan spesifikasi yang ditentukan.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Tester</strong></td>
+                        <td>
+                            <ul>
+                                <li>Membuat skenario pengujian (test cases) untuk aplikasi.</li>
+                                <li>Melakukan pengujian menyeluruh terhadap aplikasi yang telah dibuat.</li>
+                                <li>Mendokumentasikan hasil pengujian dan melaporkan bug atau error.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="further-info">
+                <strong>Penting:</strong> Peran-peran ini sangat krusial untuk keberhasilan proyek, baik solusi berupa program komputer maupun jenis solusi lainnya. Analisis sistem membantu memahami persoalan dan mencari solusi optimal. Programmer membangun produknya, dan tester memastikan kualitasnya. Project Manager bertugas menjaga agar semua berjalan sesuai rencana. Jika tugas besar, satu peran bisa diemban lebih dari satu orang. Sebaliknya, jika tugas kecil, satu orang bisa merangkap beberapa peran, bahkan dalam proyek mandiri, Anda mungkin harus menjalankan semua peran. Kuncinya adalah kesadaran akan peran yang sedang dijalankan agar tugas selesai dengan baik.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. Penyusunan Rencana Kerja (Gantt Chart)</h2>
+            <p>Setelah kelompok terbentuk dan peran terbagi, langkah krusial berikutnya adalah menyusun rencana kerja. Gunakan <strong>Gantt Chart</strong> sederhana untuk memvisualisasikan urutan pekerjaan. Gantt Chart adalah sebuah grafik yang memetakan jadwal proyek, menunjukkan paket-paket pekerjaan, siapa yang bertanggung jawab, dan perkiraan durasinya.</p>
+
+            <p>Setiap proyek biasanya dipecah menjadi beberapa paket kerja (task). Pembagian ini harus disesuaikan dengan peran masing-masing anggota agar tujuan proyek tercapai secara optimal.</p>
+
+            <div class="interactive-block">
+                <h4>Contoh Struktur Gantt Chart Sederhana</h4>
+                <p>Kolom KEGIATAN diisi daftar aktivitas. Kolom BULAN dan MINGGU menandai kapan kegiatan dilaksanakan. Kolom PENANGGUNG JAWAB diisi nama anggota yang bertanggung jawab. Kolom KETERANGAN bisa diisi catatan tambahan.</p>
+                <table class="example-gantt-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">No</th>
+                            <th rowspan="2">Kegiatan</th>
+                            <th colspan="4" class="month-header">Bulan</th>
+                            <th rowspan="2">Penanggung Jawab</th>
+                            <th rowspan="2">Keterangan</th>
+                        </tr>
+                        <tr>
+                            <th class="week-header">Minggu ke 1</th>
+                            <th class="week-header">Minggu ke 2</th>
+                            <th class="week-header">Minggu ke 3</th>
+                            <th class="week-header">Minggu ke 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Observasi ke rumah Ketua RT.</td>
+                            <td class="filled-week1"></td>
+                            <td class="empty"></td>
+                            <td class="empty"></td>
+                            <td class="empty"></td>
+                            <td>Budi</td>
+                            <td>Bawa surat pengantar dari sekolah, tanggal 2 Januari 2021.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Diskusi internal kelompok.</td>
+                            <td class="filled-week1"></td>
+                            <td class="filled-week2"></td>
+                            <td class="empty"></td>
+                            <td class="empty"></td>
+                            <td>Ani</td>
+                            <td>Membahas temuan observasi awal.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Pembuatan laporan observasi lapang.</td>
+                            <td class="empty"></td>
+                            <td class="filled-week2"></td>
+                            <td class="filled-week3"></td>
+                            <td class="empty"></td>
+                            <td>Joni</td>
+                            <td>Merangkum hasil observasi.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Presentasi ke rumah Ketua RT.</td>
+                            <td class="empty"></td>
+                            <td class="empty"></td>
+                            <td class="filled-week3"></td>
+                            <td class="filled-week4"></td>
+                            <td>Rustam</td>
+                            <td>Menyampaikan temuan dan rencana proyek.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Secara umum, jadwal kegiatan PLB ini berpusat pada siswa dengan pendekatan <em>Project Based Learning</em>. Berikut adalah gambaran umum jadwal kegiatan:</p>
+
+            <table class="gantt-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Deskripsi Kegiatan</th>
+                        <th>Luaran Hasil Siswa</th>
+                        <th>Keterangan</th>
+                        <th>Durasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Pembagian Kelompok Kerja</td>
+                        <td>Kelompok Kerja Siswa</td>
+                        <td>Guru memimpin pembagian kelompok dan peran siswa dalam kelompok.</td>
+                        <td>1 Hari / 2 JP</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Penjelasan Umum Proyek</td>
+                        <td>Dokumen Presentasi Proyek</td>
+                        <td>Guru menjelaskan alur pengerjaan proyek dari Panduan Proyek yang disusunnya.</td>
+                        <td>1 Hari / 2 JP</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Survei Lapangan</td>
+                        <td>Dokumen hasil survei</td>
+                        <td>Siswa turun ke lapangan untuk menggali permasalahan.</td>
+                        <td>1 Minggu</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Diskusi Internal Kelompok</td>
+                        <td>Brainstorming, Dokumen tindak lanjut hasil survei</td>
+                        <td>Kelompok siswa melakukan diskusi internal untuk membahas temuan-temuan pada saat survei lapangan.</td>
+                        <td>1 Minggu</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Presentasi Awal Proyek</td>
+                        <td>Dokumen Presentasi Proyek</td>
+                        <td>Setiap kelompok mempresentasikan proyek yang akan dikerjakan dan akan diberi masukan oleh guru.</td>
+                        <td>2 Hari / 4 JP</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Inisiasi Proyek</td>
+                        <td>Foto/Video</td>
+                        <td>Kelompok siswa melakukan persiapan awal untuk turun ke lokasi observasi dan melakukan pemaparan ke masyarakat tentang proyek yang akan dilakukan.</td>
+                        <td>1 Minggu</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Pengerjaan Proyek</td>
+                        <td>Log kegiatan</td>
+                        <td>Siswa melakukan pengerjaan proyek secara mandiri dipantau oleh Guru.</td>
+                        <td>1 Minggu</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Diskusi Guru - Siswa</td>
+                        <td>Foto/Video, Produk</td>
+                        <td>Guru mendampingi pengerjaan proyek yang dilakukan oleh siswa secara berkala.</td>
+                        <td>1 Minggu</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Diskusi Siswa - Masyarakat</td>
+                        <td>Foto/Video, Produk</td>
+                        <td>Siswa mempresentasikan hasil sementara dari proyek ke masyarakat.</td>
+                        <td>1 Minggu</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Presentasi Akhir ke Klien</td>
+                        <td>Foto/Video, Produk</td>
+                        <td>Siswa mempresentasikan hasil proyek akhir ke klien (pengurus RT/RW).</td>
+                        <td>2 Hari / 4 JP</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Presentasi Akhir ke Guru</td>
+                        <td>Foto/Video, Produk, dokumen proyek</td>
+                        <td>Siswa mempresentasikan hasil implementasi proyek di masyarakat kepada guru.</td>
+                        <td>1 Hari / 4 JP</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Detail jadwal spesifik akan ditentukan oleh guru Anda.</p>
+        </div>
+
+        <div class="section">
+            <h2>4. Observasi Lapangan</h2>
+            <p>Ini adalah tahapan krusial di mana Anda akan turun langsung ke lapangan. Misalkan dalam konteks "Kota Cerdas", Anda akan berdiskusi dengan pengurus RT/RW setempat. Fokus utama adalah pada permasalahan pendataan kependudukan atau pelayanan publik di lingkungan Anda.</p>
+
+            <p>Beberapa contoh pertanyaan yang bisa Anda gali saat observasi:</p>
+            <div class="list-item">
+                <div class="icon">1</div>
+                <div class="content">
+                    <p>Apa saja permasalahan utama yang dihadapi terkait pendataan kependudukan di tingkat RT/RW?</p>
+                </div>
+            </div>
+            <div class="list-item sub-list-item">
+                <div class="icon">2</div>
+                <div class="content">
+                    <p>Bagaimana alur pelaksanaan atau prosedur dari sebuah pelayanan publik yang ada di lingkungan RT/RW Anda?</p>
+                </div>
+            </div>
+            <div class="list-item sub-list-item">
+                <div class="icon">3</div>
+                <div class="content">
+                    <p>Siapa saja aktor atau pihak yang terlibat dalam proses pelayanan di lingkungan RT/RW?</p>
+                </div>
+            </div>
+
+            <div class="interactive-block">
+                <h4>Format Laporan Hasil Observasi Lapangan</h4>
+                <p>Catat temuan Anda menggunakan format berikut:</p>
+                <p><strong>Hari/Tanggal:</strong> [Tanggal Pelaksanaan Observasi]</p>
+                <p><strong>Lokasi:</strong> [Alamat RT/RW yang Dikunjungi]</p>
+                <p><strong>Peserta Observasi Lapangan:</strong></p>
+                <ul>
+                    <li>1. [Nama Anggota 1]</li>
+                    <li>2. [Nama Anggota 2]</li>
+                    <li>...</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid var(--border-divider); margin: 15px 0;">
+                <h4>Hasil Observasi Lapangan</h4>
+                <p><strong>Nama Pelayanan yang Diamati:</strong> [Contoh: Pelayanan Surat Keterangan Domisili]</p>
+                <p><strong>Alur Pelayanan:</strong> [Deskripsikan langkah-langkah pelayanan dari awal hingga akhir]</p>
+                <p><strong>Aktor yang Terlibat dalam Pelayanan:</strong> [Sebutkan siapa saja yang berperan dalam pelayanan tersebut, misal: Ketua RT, Petugas Kelurahan, dll.]</p>
+                <p><strong>Permasalahan yang Ditemukan:</strong> [Identifikasi dan jelaskan masalah-masalah yang Anda temukan terkait pelayanan tersebut]</p>
+                <p><strong>Rencana Tindak Lanjut:</strong></p>
+                <ul>
+                    <li>1. [Langkah konkret untuk mengatasi masalah pertama]</li>
+                    <li>2. [Langkah konkret untuk mengatasi masalah kedua]</li>
+                    <li>...</li>
+                </ul>
+            </div>
+
+            <p>Setelah mendapatkan gambaran yang jelas mengenai permasalahan di lapangan, diskusikan dengan kelompok Anda untuk menentukan rencana tindak lanjut yang paling sesuai.</p>
+        </div>
+
+        <div class="section">
+            <h2>5. Perancangan dan Pengembangan Aplikasi</h2>
+            <p>Tahap ini adalah inti dari proyek Anda, yaitu merancang dan mengembangkan aplikasi yang akan menjadi solusi permasalahan yang Anda identifikasi.</p>
+
+            <h4>Peralatan, Bahan, dan Sarana yang Dibutuhkan:</h4>
+            <ol>
+                <li>Komputer/Laptop</li>
+                <li>Koneksi Internet (untuk riset dan kolaborasi)</li>
+                <li>Kertas HVS dan Alat Tulis (untuk sketsa ide, diagram)</li>
+                <li>Pulpen</li>
+                <li>Aplikasi Pengolah Kata (misal: Microsoft Word, Google Docs, LibreOffice Writer)</li>
+                <li>Aplikasi Pengolah Anggaran/Jadwal (misal: Microsoft Excel, Google Sheets)</li>
+                <li>Alat bantu visualisasi atau prototyping (opsional, misal: Figma, Balsamiq)</li>
+                <li>Lingkungan Pengembangan Python (IDE seperti VS Code, PyCharm, atau Jupyter Notebook)</li>
+                <li>Library Python yang relevan dengan proyek Anda (misal: Pandas untuk data, Flask/Django untuk web app, Tkinter/PyQt untuk GUI)</li>
+                <li>Dan lain-lain sesuai kebutuhan spesifik proyek Anda.</li>
+            </ol>
+
+            <p>Pengembangan desain aplikasi adalah tujuan utama proyek ini. Anda dan kelompok Anda akan mengembangkan aplikasi secara mandiri. Manfaatkan internet untuk belajar dan mencari referensi mengenai desain alur aplikasi, antarmuka pengguna (UI), dan pengalaman pengguna (UX).</p>
+
+            <div class="step-container">
+                <div class="step-title">Tahapan Penting dalam Pengembangan Aplikasi</div>
+                <div class="step-detail">
+                    <div class="step-number">1</div>
+                    <div class="step-description"><strong>Perencanaan & Desain:</strong> Buat diagram alur kerja aplikasi, wireframe (kerangka visual), dan mockup (desain tampilan). Tentukan fitur-fitur utama aplikasi.</div>
+                </div>
+                <div class="step-detail">
+                    <div class="step-number">2</div>
+                    <div class="step-description"><strong>Implementasi (Coding):</strong> Mulai menulis kode program menggunakan Python berdasarkan desain yang telah dibuat. Lakukan secara bertahap, sesuai dengan pembagian tugas programmer.</div>
+                </div>
+                <div class="step-detail">
+                    <div class="step-number">3</div>
+                    <div class="step-description"><strong>Pengujian (Testing):</strong> Lakukan pengujian secara berkala untuk menemukan dan memperbaiki kesalahan (bug). Libatkan tester dalam proses ini.</div>
+                </div>
+                <div class="step-detail">
+                    <div class="step-number">4</div>
+                    <div class="step-description"><strong>Dokumentasi:</strong> Buat dokumentasi yang baik untuk kode program, cara penggunaan aplikasi, dan laporan hasil proyek.</div>
+                </div>
+                <div class="step-detail">
+                    <div class="step-number">5</div>
+                    <div class="step-description"><strong>Presentasi & Evaluasi:</strong> Sajikan hasil akhir proyek Anda kepada klien (pengurus RT/RW) dan guru, serta siap menerima masukan untuk perbaikan.</div>
+                </div>
+            </div>
+
+            <div class="further-info">
+                <strong>Tips:</strong> Gunakan kontrol versi seperti Git untuk mengelola kode program Anda dan memfasilitasi kolaborasi tim. Ini akan sangat membantu dalam melacak perubahan dan mencegah konflik antar anggota tim.
+            </div>
+        </div>
+        <p style="text-align: right; font-size: 0.9em; color: var(--text-tertiary);">Informasi dari Bab 9: Praktika Lintas Bidang Informatika - Kelas X SMA</p>
+    </div>
+</body>
+</html>
+```

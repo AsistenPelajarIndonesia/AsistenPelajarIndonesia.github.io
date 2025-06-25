@@ -1,0 +1,322 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Kemagnetan - Medan Magnet Induksi</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            background-color: var(--background-canvas);
+            border: 1px dashed var(--border-divider);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--primary-blue);
+            font-weight: bold;
+            overflow-x: auto;
+        }
+
+        .formula span {
+            color: var(--text-secondary);
+        }
+
+        .formula .variable {
+            color: var(--accent-green);
+        }
+
+        .example {
+            background-color: #e3f2fd;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .example h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+        }
+
+        .concept-box {
+            background-color: #fff9c4; /* Amber background for key concepts */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .concept-box h4 {
+            margin-top: 0;
+            color: var(--secondary-accent-amber);
+            font-size: 1.2em;
+        }
+
+        .concept-box ul {
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+
+        .concept-box li {
+            margin-bottom: 8px;
+        }
+
+        .interactive-placeholder {
+            background-color: var(--border-divider);
+            color: var(--text-tertiary);
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Kemagnetan</h1>
+        <h2>D. Medan Magnet Induksi</h2>
+
+        <div class="section">
+            <p>Pada sub-bab ini, kita akan menjelajahi bagaimana fenomena kelistrikan dan kemagnetan saling terkait, sebuah penemuan revolusioner yang mengubah pandangan ilmu fisika.</p>
+
+            <h3>Sejarah Penemuan Keterkaitan Listrik dan Magnet</h3>
+            <p>Selama berabad-abad, teori kemagnetan dan kelistrikan dikembangkan secara terpisah. Namun, pada tahun 1820, seorang ilmuwan Denmark bernama <strong>Hans Christian Oersted</strong> membuat sebuah penemuan fundamental. Melalui percobaannya, Oersted mengamati bahwa ketika arus listrik dialirkan melalui sebuah kawat, kompas di dekatnya mengalami simpangan. Ini adalah bukti nyata pertama bahwa arus listrik menghasilkan efek magnetik.</p>
+            <p>Penemuan Oersted ini membuka jalan bagi para ilmuwan lain untuk mendalami hubungan antara listrik dan magnet. Tak lama setelah Oersted, ilmuwan Prancis, <strong>Andre Marie Ampere</strong>, pada tahun 1827, mengusulkan teori yang lebih mendalam. Ampere menyatakan bahwa arus listrik itu sendiri adalah sumber dari semua fenomena magnetik yang kita amati. Konsep ini menjadi dasar dari apa yang kita kenal sebagai elektromagnetisme.</p>
+
+            <h3>Medan Magnet di Sekitar Kawat Lurus Berarus Listrik</h3>
+            <p>Penemuan Oersted tentang pengaruh arus listrik pada kompas kini dapat kita pahami lebih lanjut. Ketika arus listrik mengalir melalui sebuah kawat, ia menciptakan apa yang disebut <strong>medan magnet induksi</strong> di sekelilingnya. Medan magnet ini adalah "area pengaruh" di mana gaya magnet dapat bekerja.</p>
+            <p>Bagaimana kita mengetahui arah medan magnet ini? Fisika memberikan kita sebuah aturan praktis yang sangat berguna: <strong>Aturan Tangan Kanan I</strong>. Aturan ini menyatakan:</p>
+            <ul>
+                <li>Arahkan <strong>ibu jari tangan kanan</strong> Anda searah dengan <strong>arah arus listrik</strong> (I) pada kawat.</li>
+                <li>Kemudian, arah <strong>jari-jari tangan kanan</strong> Anda yang melingkar akan menunjukkan <strong>arah medan magnet induksi (B)</strong> di sekitar kawat tersebut.</li>
+            </ul>
+
+            <div class="concept-box">
+                <h4>Aturan Tangan Kanan I</h4>
+                <p>Bayangkan kawat lurus dengan arus mengalir ke atas:</p>
+                <ul>
+                    <li>Ibu jari menunjuk ke atas (arah arus).</li>
+                    <li>Jari-jari yang melingkar menunjukkan bahwa medan magnet berputar mengelilingi kawat.</li>
+                    <li>Di sisi kanan kawat, medan magnet mengarah keluar dari bidang kertas (ditunjukkan dengan titik '•').</li>
+                    <li>Di sisi kiri kawat, medan magnet mengarah masuk ke dalam bidang kertas (ditunjukkan dengan silang 'X').</li>
+                </ul>
+            </div>
+
+            <p>Berdasarkan eksperimen, telah ditemukan bahwa:</p>
+            <ul>
+                <li>Besar medan magnet induksi (B) <strong>sebanding</strong> dengan besar arus listrik (I) yang mengalir pada kawat. Semakin besar arusnya, semakin kuat medan magnetnya.</li>
+                <li>Besar medan magnet induksi (B) <strong>berbanding terbalik</strong> dengan jarak (r) dari kawat. Semakin jauh Anda dari kawat, semakin lemah medan magnetnya.</li>
+            </ul>
+
+            <div class="formula">
+                <span>Besar Medan Magnet di Sekitar Kawat Lurus Panjang</span><br>
+                <span class="variable">B</span> = <span class="variable">&mu;</span><span class="variable"><sub>0</span> <span class="variable">I</span> / <span class="variable">2&pi;r</span>
+            </div>
+
+            <p>Di mana:</p>
+            <ul>
+                <li><span class="variable">B</span> adalah kuat medan magnet induksi (dalam Tesla, T).</li>
+                <li><span class="variable">&mu;<sub>0</sub></span> adalah permeabilitas magnetik ruang hampa, sebuah konstanta dengan nilai 4&pi; &times; 10<sup>-7</sup> T.m/A.</li>
+                <li><span class="variable">I</span> adalah kuat arus listrik (dalam Ampere, A).</li>
+                <li><span class="variable">r</span> adalah jarak dari kawat ke titik yang ditinjau (dalam meter, m).</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Medan Magnet di Sekitar Kawat Melingkar Berarus Listrik</h3>
+            <p>Konsep medan magnet tidak hanya berlaku pada kawat lurus, tetapi juga pada kawat yang dibentuk melingkar. Ketika arus listrik mengalir dalam kawat melingkar, medan magnet yang dihasilkan memiliki pola yang khas, terutama di pusat lingkaran.</p>
+
+            <div class="concept-box">
+                <h4>Aturan Tangan Kanan II (untuk Kawat Melingkar)</h4>
+                <p>Untuk menentukan arah medan magnet di pusat kawat melingkar:</p>
+                <ul>
+                    <li>Arahkan <strong>jari-jari tangan kanan</strong> Anda searah dengan <strong>arah arus listrik (I)</strong> yang mengalir pada kawat melingkar.</li>
+                    <li>Arah <strong>ibu jari tangan kanan</strong> Anda akan menunjukkan <strong>arah medan magnet (B)</strong> di pusat lingkaran.</li>
+                </ul>
+            </div>
+
+            <p>Untuk kawat melingkar dengan jumlah lilitan <span class="variable">N</span> dan jari-jari <span class="variable">R</span>, besar medan magnet di pusat lingkaran dapat dihitung menggunakan rumus:</p>
+
+            <div class="formula">
+                <span>Besar Medan Magnet di Pusat Kawat Melingkar</span><br>
+                <span class="variable">B</span> = <span class="variable">&mu;</span><span class="variable"><sub>0</sub></span> <span class="variable">N I</span> / <span class="variable">2R</span>
+            </div>
+
+            <p>Penting untuk diingat bahwa medan magnet adalah besaran vektor. Ini berarti medan magnet memiliki nilai (besar) dan arah. Ketika ada beberapa sumber medan magnet, kita perlu menentukan arah masing-masing medan magnet terlebih dahulu sebelum menjumlahkannya secara vektor.</p>
+
+            <div class="example">
+                <h4>Contoh Penentuan Arah Medan Magnet</h4>
+                <p>Misalkan kita memiliki dua kawat yang membentuk setengah lingkaran dan berdekatan. Arus mengalir pada kedua kawat tersebut. Untuk menemukan medan magnet total di pusat, kita perlu menentukan arah medan dari masing-masing kawat:</p>
+                <ul>
+                    <li>Jika medan magnet dari satu kawat masuk ke dalam bidang kertas (dilambangkan dengan 'X'), kita asumsikan arahnya negatif.</li>
+                    <li>Jika medan magnet dari kawat lain keluar dari bidang kertas (dilambangkan dengan '•'), kita asumsikan arahnya positif.</li>
+                </ul>
+                <p>Resultan medan magnet (<span class="variable">B<sub>tot</sub></span>) kemudian dihitung dengan menjumlahkan medan-medan tersebut, dengan memperhatikan arahnya:</p>
+                <div class="formula" style="text-align: center; font-size: 1em; color: var(--primary-blue);">
+                    <span class="variable">B<sub>tot</sub></span> = <span class="variable">B<sub>1</sub></span> &pm; <span class="variable">B<sub>2</sub></span>
+                </div>
+                <p><em>(Tanda '+' atau '-' digunakan tergantung arah medan magnetnya)</em></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Solenoida</h3>
+            <p>Solenoida adalah kumparan kawat yang dibentuk seperti pegas heliks dengan panjangnya lebih besar daripada diameternya. Ketika arus listrik dialirkan melalui solenoida, ia menghasilkan medan magnet yang relatif seragam di bagian dalamnya.</p>
+
+            <div class="concept-box">
+                <h4>Bagaimana Solenoida Menghasilkan Medan Magnet?</h4>
+                <p>Solenoida dapat dianggap sebagai tumpukan dari banyak kumparan kawat melingkar. Masing-masing kumparan ini menghasilkan medan magnetnya sendiri. Ketika digabungkan, medan-medan ini saling menguatkan di dalam solenoida, menciptakan medan magnet yang lebih kuat dan merata. Arah medan magnet di dalam solenoida dapat ditentukan menggunakan Aturan Tangan Kanan II, di mana ibu jari menunjuk ke arah medan magnet utama, dan jari-jari yang melingkar menunjukkan arah arus.</p>
+            </div>
+
+            <p>Besar medan magnet di pusat solenoida dapat dihitung dengan rumus:</p>
+
+            <div class="formula">
+                <span>Besar Medan Magnet di Pusat Solenoida</span><br>
+                <span class="variable">B</span> = <span class="variable">&mu;</span><span class="variable"><sub>0</sub></span> <span class="variable">n I</span>
+            </div>
+
+            <p>Di mana:</p>
+            <ul>
+                <li><span class="variable">B</span> adalah kuat medan magnet induksi (dalam Tesla, T).</li>
+                <li><span class="variable">&mu;<sub>0</sub></span> adalah permeabilitas magnetik ruang hampa (4&pi; &times; 10<sup>-7</sup> T.m/A).</li>
+                <li><span class="variable">n</span> adalah jumlah lilitan per satuan panjang solenoida (total lilitan <span class="variable">N</span> dibagi dengan panjang solenoida <span class="variable">l</span>, yaitu <span class="variable">n = N/l</span>).</li>
+                <li><span class="variable">I</span> adalah kuat arus listrik yang mengalir dalam solenoida (dalam Ampere, A).</li>
+            </ul>
+
+            <p>Untuk meningkatkan kekuatan medan magnet yang dihasilkan oleh solenoida, seringkali sebuah inti yang terbuat dari bahan feromagnetik (seperti besi) dimasukkan ke dalam kumparan. Bahan inti besi ini memiliki permeabilitas magnetik yang sangat tinggi, sehingga dapat memperkuat medan magnet secara signifikan.</p>
+
+            <p>Aplikasi teknologi dari solenoida sangat luas, salah satunya adalah pada <strong>bel listrik</strong>. Saat arus mengalir dalam kumparan solenoida bel listrik, ia menghasilkan medan magnet yang menarik sebuah batang besi. Tarikan ini menyebabkan batang besi bergerak dan memukul lonceng, menghasilkan suara.</p>
+        </div>
+
+        <div class="section">
+            <h3>Maglev: Kereta Melayang Berkat Magnetisme</h3>
+            <p>Salah satu aplikasi paling menarik dari medan magnet induksi adalah pada teknologi <strong>Maglev (Magnetic Levitation)</strong>, yaitu kereta api yang melayang di atas jalur pemandunya. Bagaimana ini bisa terjadi?</p>
+            <p>Maglev tidak menggunakan rel seperti kereta pada umumnya. Sebaliknya, ia menggunakan sebuah jalur pemandu yang berperan seperti solenoida yang sangat panjang. Medan magnet dihasilkan di jalur pemandu ini ketika arus listrik dialirkan.</p>
+            <p>Pada badan kereta Maglev, dipasang elektromagnet yang kutub-kutubnya dapat diatur. Kunci dari teknologi ini adalah penggunaan gaya tolak-menolak dan tarik-menarik antar kutub magnet:</p>
+            <ul>
+                <li><strong>Levitasi (Mengangkat Kereta):</strong> Jika kutub-kutub magnet pada jalur pemandu dan badan kereta dibuat <strong>berlawanan</strong> (misalnya, kutub Utara di jalur bertemu kutub Utara di kereta), maka akan timbul gaya tolak-menolak yang kuat. Gaya tolak ini mengangkat badan kereta beberapa sentimeter di atas jalur, sehingga menghilangkan gesekan roda dengan rel. Gaya angkat magnetik ini harus seimbang dengan berat kereta.</li>
+                <li><strong>Gerak Maju (Mendorong Kereta):</strong> Untuk menggerakkan kereta ke depan, arah arus pada jalur pemandu diatur sedemikian rupa sehingga kutub magnet yang <strong>berlawanan jenis</strong> berada di depan kereta, sementara kutub yang <strong>sejenis</strong> berada di belakang. Interaksi antara kutub berlawanan jenis di depan ini menciptakan gaya tarik yang menarik kereta maju, sementara kutub sejenis di belakang menciptakan gaya tolak yang mendorongnya.</li>
+            </ul>
+            <p>Pengaturan kutub magnet ini tidak hanya memungkinkan kereta untuk melayang dan bergerak maju, tetapi juga berperan dalam mengatur kecepatan kereta.</p>
+            <p>Keunggulan Maglev terletak pada efisiensi dan ketahanannya. Karena tidak ada kontak mekanis antara kereta dan jalur, keausan sangat minimal, memungkinkan jalur pemandu bertahan hingga 50 tahun. Selain itu, Maglev sangat hemat energi. Dibandingkan kereta konvensional berkecepatan tinggi, Maglev mengkonsumsi energi yang jauh lebih sedikit per penumpang per kilometer, bahkan pada kecepatan yang sangat tinggi.</p>
+        </div>
+
+        <div class="section">
+            <h3>Gaya Gerak Listrik (GGL) Induksi</h3>
+            <p>Di awal bab ini, kita telah mempelajari bahwa arus listrik dapat menghasilkan medan magnet. Fenomena yang sebaliknya juga ada: perubahan medan magnet dapat menghasilkan arus listrik atau yang kita sebut <strong>Gaya Gerak Listrik (GGL) Induksi</strong>. Ini adalah inti dari prinsip kerja generator dan banyak teknologi kelistrikan lainnya.</p>
+            <p>GGL induksi terjadi ketika ada perubahan fluks magnetik yang menembus suatu kumparan. Fluks magnetik adalah ukuran jumlah garis-garis medan magnet yang melewati suatu area. Perubahan ini bisa disebabkan oleh:</p>
+            <ul>
+                <li>Perubahan kekuatan medan magnet.</li>
+                <li>Perubahan luas area yang ditembus medan magnet.</li>
+                <li>Perubahan sudut antara arah medan magnet dan arah normal bidang area.</li>
+            </ul>
+            <p>Semakin cepat perubahan fluks magnetik tersebut, semakin besar GGL induksi yang dihasilkan.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

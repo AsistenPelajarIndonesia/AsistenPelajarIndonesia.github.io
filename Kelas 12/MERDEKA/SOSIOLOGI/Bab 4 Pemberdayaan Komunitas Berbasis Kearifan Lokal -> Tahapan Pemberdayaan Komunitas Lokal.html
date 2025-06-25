@@ -1,0 +1,986 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tahapan Pemberdayaan Komunitas Lokal - Sosiologi Kelas XII</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px; /* Base font size */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; color: var(--accent-green); }
+        h3 { font-size: 1.4em; color: var(--text-secondary); }
+        h4 { font-size: 1.2em; color: var(--text-tertiary); }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .section-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-content {
+            padding: 10px 20px;
+            border: 1px solid var(--border-divider);
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            display: none; /* Hidden by default */
+            overflow: hidden;
+            background-color: #F9F9F9; /* Light background for content */
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        .arrow {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .arrow.rotate {
+            transform: rotate(90deg);
+        }
+
+        .example-box {
+            background-color: #f0f8ff; /* A very light blue */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .swot-table, .proposal-table, .indicator-table, .evaluation-form, .report-components-list, .benefit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .swot-table th, .swot-table td,
+        .proposal-table th, .proposal-table td,
+        .indicator-table th, .indicator-table td,
+        .evaluation-form th, .evaluation-form td,
+        .benefit-table th, .benefit-table td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .swot-table th, .proposal-table th, .indicator-table th, .evaluation-form th, .benefit-table th {
+            background-color: #e0f2f7; /* Lighter blue for headers */
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        .swot-table td ul, .indicator-table td ul {
+            list-style-type: disc;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .evaluation-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .evaluation-form input[type="radio"], .evaluation-form input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .evaluation-form td {
+            vertical-align: top;
+        }
+
+        .sub-heading {
+            color: var(--accent-green);
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            h4 { font-size: 1em; }
+            body { font-size: 14px; }
+            .section-header { padding: 10px 15px; font-size: 1.2em; }
+            .section-content { padding: 10px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C. Tahapan Pemberdayaan Komunitas Lokal</h1>
+        <p>Setelah memahami konsep pemberdayaan dan mempelajari berbagai contoh, penting untuk mengetahui bagaimana merancang aksi pemberdayaan secara sistematis. Proses pemberdayaan komunitas secara garis besar melibatkan empat tahapan utama, yang akan dijelaskan secara rinci di bawah ini.</p>
+
+        <div class="section-header" onclick="toggleSection('identifikasi')">
+            <span>1. Identifikasi Potensi, Masalah, dan Peluang</span>
+            <span class="arrow">&#9658;</span>
+        </div>
+        <div id="identifikasi" class="section-content">
+            <h3>Tujuan Utama</h3>
+            <p>Langkah awal dalam pemberdayaan masyarakat adalah mengenal dan menganalisis kebutuhan komunitas penerima manfaat. Upaya ini bertujuan agar perencanaan program lebih efektif dan memberikan manfaat sesuai kebutuhan, harapan, dan kemampuan komunitas lokal, sehingga program dapat dikelola secara mandiri oleh masyarakat dalam jangka waktu lama (keberlanjutan).</p>
+
+            <h3>Komponen yang Diidentifikasi</h3>
+            <ul>
+                <li><strong>Sumber daya alam:</strong> Potensi alam yang bisa dimanfaatkan.</li>
+                <li><strong>Sumber daya manusia:</strong> Keterampilan, pengetahuan, dan semangat masyarakat.</li>
+                <li><strong>Ikatan sosial:</strong> Jaringan dan solidaritas antaranggota komunitas.</li>
+            </ul>
+
+            <h3>Alat Analisis: SWOT (Strength, Weakness, Opportunities, Threats)</h3>
+            <p>Untuk memetakan potensi, masalah, dan peluang, analisis SWOT sangat dibutuhkan:</p>
+            <table class="swot-table">
+                <thead>
+                    <tr>
+                        <th>Strength (Kekuatan)</th>
+                        <th>Weakness (Kelemahan)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Kearifan lokal yang dimiliki komunitas.</li>
+                                <li>Kelebihan atau keunikan yang dimiliki komunitas lokal.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Aspek yang perlu ditingkatkan oleh komunitas lokal.</li>
+                                <li>Kondisi atau aspek yang harus dihindari oleh komunitas lokal.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Opportunities (Peluang)</th>
+                        <th>Threats (Ancaman)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Elemen yang dapat dimanfaatkan komunitas lokal.</li>
+                                <li>Peluang pasar.</li>
+                                <li>Ketersediaan teknologi.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Situasi yang dapat menimbulkan masalah.</li>
+                                <li>Unsur-unsur lain yang mengancam stabilitas sosial dan lingkungan.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <h4>Contoh Tahap Analisis Kebutuhan: Pemberdayaan Komunitas Pengolah Udang Rebon</h4>
+                <p>Di Desa Ujung, komunitas perempuan penangkap udang rebon menghadapi masalah pendapatan yang tidak sebanding karena penjualan langsung ke tengkulak dengan harga murah. Pengolahan udang rebon menjadi produk bernilai ekonomi tinggi dibutuhkan.</p>
+                <p>Siswa Angel, Ahmad, Wayan, dan Cici melakukan observasi dan wawancara untuk analisis SWOT:</p>
+                <table class="swot-table">
+                    <thead>
+                        <tr>
+                            <th>Strength (Kekuatan)</th>
+                            <th>Weakness (Kelemahan)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Udang rebon yang melimpah.</li>
+                                    <li>Semangat untuk meningkatkan ekonomi keluarga tinggi.</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Penjualan tergantung pada tengkulak.</li>
+                                    <li>Pendidikan dan keterampilan masyarakat rendah.</li>
+                                    <li>Modal terbatas.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th>Opportunities (Peluang)</th>
+                            <th>Threats (Ancaman)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Nilai jual udang rebon yang sudah diolah lebih tinggi di pasaran.</li>
+                                    <li>Banyak restoran dan toko oleh-oleh di sekitar pantai.</li>
+                                    <li>Adanya aplikasi jual beli online.</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Distributor penjualan produk belum tersedia.</li>
+                                    <li>Sudah banyak produk olahan udang rebon di pasaran.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Kesimpulan:</strong> Komunitas lokal sangat bergantung pada tengkulak dan belum mencoba berwirausaha, padahal memiliki potensi besar untuk mengembangkan usaha secara mandiri.</p>
+            </div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('perencanaan')">
+            <span>2. Perencanaan Pemberdayaan</span>
+            <span class="arrow">&#9658;</span>
+        </div>
+        <div id="perencanaan" class="section-content">
+            <h3>Pentingnya Proposal Kegiatan Pemberdayaan</h3>
+            <p>Sebelum melaksanakan pemberdayaan, inisiator perlu menyusun perencanaan yang biasanya disajikan dalam bentuk proposal. Komponen proposal pemberdayaan umumnya terdiri dari:</p>
+            <ul class="report-components-list">
+                <li><strong>Pendahuluan:</strong> Gambaran analisis situasi, permasalahan masyarakat, solusi, dan target yang ingin dicapai.</li>
+                <li><strong>Metode Pelaksanaan:</strong> Langkah-langkah mewujudkan solusi.</li>
+                <li><strong>Jadwal Kegiatan:</strong> Uraian garis besar kegiatan dan waktu pelaksanaan.</li>
+                <li><strong>Pembagian Peran atau Tugas:</strong> Pembagian tanggung jawab selama program.</li>
+                <li><strong>Rencana Anggaran Biaya:</strong> Perhitungan biaya dan sumber keuangan.</li>
+                <li><strong>Jenis Evaluasi:</strong> Metode evaluasi yang akan dilakukan.</li>
+            </ul>
+
+            <h3>Langkah-langkah Garis Besar Perencanaan</h3>
+            <ol>
+                <li>
+                    <h4>a. Mengomunikasikan Ide atau Gagasan</h4>
+                    <p>Aksi pemberdayaan membutuhkan dukungan berbagai pihak. Ide/gagasan perlu dirancang oleh pihak penerima dan fasilitator. Komunikasi dapat dilakukan melalui sosialisasi dan musyawarah dengan komunitas lokal, akademisi, dan tenaga ahli pemerintah. Tujuannya agar program matang, tepat sasaran, melibatkan partisipasi, dan memudahkan penyusunan anggaran.</p>
+                    <p>Fasilitator harus mengenal lingkungan sosial budaya masyarakat penerima manfaat untuk menghindari penolakan, dengan berkomunikasi dan meminta izin kepada tetua adat, tokoh masyarakat, pemerintah desa, atau pihak berwenang.</p>
+                </li>
+                <li>
+                    <h4>b. Menyusun Jadwal Kegiatan</h4>
+                    <p>Jadwal kegiatan dari awal hingga akhir harus disepakati dan dipatuhi. Perencanaan sistematis penting untuk efektivitas dan pencapaian target. Pelaksanaan bisa membutuhkan waktu panjang dan prosesnya dapat berulang (misalnya, perbaikan metode jika hasil evaluasi belum optimal).</p>
+                </li>
+                <li>
+                    <h4>c. Menyusun Pembagian Tugas</h4>
+                    <p>Pembagian tugas penting agar setiap pihak memiliki tanggung jawab dan dapat menjalankan perannya dengan baik. Komunitas lokal (penerima manfaat) harus dilibatkan. Pembagian tugas yang jelas juga mengurangi risiko konflik antarpihak dan meminimalkan kendala adaptasi awal.</p>
+                </li>
+                <li>
+                    <h4>d. Menyusun Anggaran Kegiatan</h4>
+                    <p>Anggaran biaya harus diperhitungkan karena merupakan faktor penentu keberhasilan. Biaya dikelompokkan (bahan habis pakai, belanja barang, jasa), didata, disurvei harganya, dan diakumulasi. Keterlibatan pihak terkait untuk bantuan dana dan swadaya masyarakat bisa menjadi alternatif pendanaan.</p>
+                </li>
+            </ol>
+
+            <div class="example-box">
+                <h4>Contoh Tahap Perencanaan: Pengolahan Udang Rebon</h4>
+                <p>Angel, Ahmad, Wayan, dan Cici mencetuskan ide pengolahan udang rebon (abon/peyek kemasan) berdasarkan analisis kebutuhan dan potensi pasar (restoran, toko oleh-oleh, online).</p>
+                <p>Mereka berkomunikasi dengan guru, kepala desa, dan POKDARWIS (Kelompok Sadar Wisata). Ide mereka disambut baik, dan kepala desa serta POKDARWIS menindaklanjuti dengan mengumpulkan ibu-ibu penangkap udang rebon. Mereka memperoleh dukungan penuh.</p>
+                <p>Garis besar rancangan proposal kegiatan mereka:</p>
+                <h4 class="sub-heading">Pendampingan Pengolahan Udang Rebon</h4>
+                <p><strong>A. Pendahuluan</strong></p>
+                <ul>
+                    <li>Desa Ujung memiliki udang rebon melimpah, namun penjualan langsung ke tengkulak memberikan harga rendah.</li>
+                    <li>Pengolahan udang rebon menjadi produk bernilai ekonomi tinggi (abon/peyek kemasan) memiliki potensi pasar yang besar (toko online, restoran, toko oleh-oleh).</li>
+                    <li>Komunitas perempuan setempat belum mengoptimalkan peluang karena tingkat ekonomi dan pendidikan rendah.</li>
+                    <li>Target: Menciptakan produk olahan udang rebon kemasan untuk dijual di tempat wisata dan online.</li>
+                    <li>Produk unggulan: Abon atau peyek udang kemasan berbagai variasi ukuran, mudah dibuat, dan ditawarkan di berbagai lokasi.</li>
+                </ul>
+                <p><strong>B. Metode Pelaksanaan</strong></p>
+                <ul>
+                    <li>Presentasi: Menjelaskan detail ide produk dan target.</li>
+                    <li>Diskusi: Menggali kesesuaian program dengan harapan dan kondisi komunitas.</li>
+                    <li>Praktik: Pembuatan peyek udang rebon.</li>
+                </ul>
+                <p><strong>C. Jadwal Kegiatan</strong></p>
+                <table class="proposal-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Kegiatan</th>
+                            <th>Tanggal Pelaksanaan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td>Melakukan sosialisasi dan pengembangan ide usaha melalui diskusi bersama komunitas dan pihak terkait.</td>
+                            <td>6 September 2023</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Persiapan penataan lokasi, alat, dan bahan praktik pembuatan peyek udang rebon.</td>
+                            <td>7 September 2023</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Praktik pembuatan dan pengemasan produk bersama komunitas.</td>
+                            <td>8 September 2023</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Survei hasil olahan produk ke beberapa konsumen dan sasaran lokasi pemasaran.</td>
+                            <td>9-12 September 2023</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>Mengolah data dan menulis laporan hasil program pemberdayaan.</td>
+                            <td>14-18 September 2023</td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>Sosialisasi hasil evaluasi kegiatan kepada komunitas dan pihak terkait sebagai bahan pertimbangan tindak lanjut usaha.</td>
+                            <td>19 September 2023</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>D. Pembagian Tugas Kelompok (Siswa)</strong></p>
+                <table class="proposal-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama</th>
+                            <th>Deskripsi Tugas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td>Angel</td>
+                            <td>Mengurus perizinan lokasi, membuat surat undangan untuk kepala desa, POKDARWIS, narasumber, dan komunitas.</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Wayan</td>
+                            <td>Menyiapkan alat dan bahan (dibantu perwakilan POKDARWIS).</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Ahmad</td>
+                            <td>Mendokumentasikan seluruh kegiatan (foto & video).</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Cici</td>
+                            <td>Memandu acara (MC) dan membantu menjelaskan proses pembuatan peyek bersama narasumber (Ibu Maya).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>E. Rencana Anggaran Biaya</strong></p>
+                <p>Sumber dana: Bantuan dari pemerintah desa sebesar Rp750.000</p>
+                <table class="proposal-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Alat/Bahan</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td>Air mineral untuk konsumsi (4 dus)</td>
+                            <td>Rp100.000</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Konsumsi (makanan ringan) (25 paket x 4 hari x @4.000)</td>
+                            <td>Rp400.000</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Bahan pembuatan peyek (minyak, tepung, gas, plastik kemasan, dll)</td>
+                            <td>Rp220.000</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Penggandaan angket untuk survei konsumen</td>
+                            <td>Rp30.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('pelaksanaan')">
+            <span>3. Pelaksanaan Pemberdayaan</span>
+            <span class="arrow">&#9658;</span>
+        </div>
+        <div id="pelaksanaan" class="section-content">
+            <h3>Teknik Pelaksanaan</h3>
+            <p>Kegiatan pemberdayaan dapat dilakukan melalui berbagai teknik seperti presentasi, tanya jawab, diskusi, dan praktik pendampingan. Kombinasi teknik-teknik ini dapat menciptakan rangkaian aksi pemberdayaan yang efektif.</p>
+
+            <h3>Peran Fasilitator</h3>
+            <p>Penting untuk menciptakan situasi yang aman, nyaman, dan mendorong keterlibatan komunitas. Fasilitator (pelaksana pemberdayaan) memiliki peran kunci dalam mendampingi program:</p>
+            <ul>
+                <li>Mengomunikasikan informasi dengan jelas dan mudah dipahami.</li>
+                <li>Menjalin hubungan akrab dengan penerima manfaat.</li>
+                <li>Mendorong, memotivasi, dan menunjukkan semangat untuk menggerakkan komunitas.</li>
+                <li>Membangun kolaborasi dan kerja sama untuk memfasilitasi komunitas dengan pihak luar.</li>
+            </ul>
+
+            <div class="example-box">
+                <h4>Contoh Tahap Pelaksanaan Pemberdayaan: Sosialisasi Ide Usaha</h4>
+                <p><strong>Tujuan Kegiatan:</strong> Melakukan sosialisasi peluang dan pengembangan ide usaha kepada komunitas bersama beberapa pihak terkait.</p>
+                <ul>
+                    <li><strong>Tanggal:</strong> 6 September 2023</li>
+                    <li><strong>Waktu:</strong> 08.00-12.00 WIB</li>
+                    <li><strong>Tempat:</strong> SMA Harapan di Desa Ujung</li>
+                    <li><strong>Peserta:</strong> Komunitas perempuan penangkap udang rebon.</li>
+                </ul>
+                <p>Angel, Ahmad, Wayan, dan Cici bersama pihak desa dan POKDARWIS menyelenggarakan sosialisasi. Susunan acara:</p>
+                <ol type="a">
+                    <li>Pembukaan</li>
+                    <li>Pengarahan dari kepala desa</li>
+                    <li>Presentasi ide/materi (oleh Cici dan perwakilan POKDARWIS)</li>
+                    <li>Tanya jawab dan diskusi (Angel sebagai moderator)</li>
+                    <li>Pengisian angket evaluasi (Wayan membagikan)</li>
+                    <li>Penutup</li>
+                </ol>
+                <p>Tempat duduk diatur setengah lingkaran. POKDARWIS mendampingi dan memberikan penguatan. Bahasa yang digunakan disesuaikan dengan tingkat pendidikan peserta, dan materi diberikan dalam salinan. Ahmad mendokumentasikan kegiatan.</p>
+            </div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('evaluasi')">
+            <span>4. Evaluasi Pemberdayaan Komunitas</span>
+            <span class="arrow">&#9658;</span>
+        </div>
+        <div id="evaluasi" class="section-content">
+            <h3>Konsep Monitoring dan Evaluasi</h3>
+            <p>Keberlanjutan program adalah tujuan utama. Untuk mencapainya, monitoring dan evaluasi (Monev) perlu dilakukan secara terencana dan sistematis sejak awal program. Monev berfungsi untuk memantau keberjalanan program dan menilai keberhasilan pencapaian tujuan.</p>
+            <ul>
+                <li><strong>Monitoring (Pemantauan):</strong> Proses pengumpulan informasi untuk memantau keberjalanan program agar berlangsung baik.</li>
+                <li><strong>Evaluasi:</strong> Penggunaan konsep, teknik, dan temuan evaluasi untuk menumbuhkan, meningkatkan, dan menentukan keberlanjutan program.</li>
+            </ul>
+            <h4>Tujuan Evaluasi:</h4>
+            <ul>
+                <li>Meningkatkan pencapaian keberhasilan program.</li>
+                <li>Memberikan alat (instrumen) kepada <em>stakeholder</em> untuk menilai perencanaan, implementasi, dan evaluasi program.</li>
+                <li>Menyebarluaskan pemahaman dan kesadaran masyarakat tentang pentingnya evaluasi sebagai bagian dari perencanaan dan manajemen.</li>
+            </ul>
+            <h4>Empat Komponen yang Dapat Diketahui Melalui Evaluasi:</h4>
+            <ol>
+                <li><strong>Efektivitas:</strong> Mengukur ketercapaian tujuan yang direncanakan.</li>
+                <li><strong>Efisiensi:</strong> Perbandingan antara input dan output (waktu, biaya).</li>
+                <li><strong>Mutu:</strong> Mengukur sejauh mana upaya menghasilkan output yang lebih baik.</li>
+                <li><strong>Kegunaan:</strong> Melihat manfaat program bagi sasaran.</li>
+            </ol>
+
+            <h3>Jenis Evaluasi</h3>
+            <p><strong>Berdasarkan Pihak yang Terlibat:</strong></p>
+            <ul>
+                <li><strong>Internal:</strong> Dilakukan oleh pelaksana program (anggota komunitas lokal).</li>
+                <li><strong>Eksternal:</strong> Dilakukan berkolaborasi dengan pihak luar.</li>
+            </ul>
+            <p><strong>Berdasarkan Waktu Pelaksanaan:</strong></p>
+            <ul>
+                <li><strong><em>Pre-program evaluation:</em></strong> Sebelum pelaksanaan, untuk memastikan persiapan program (kesiapan tim, susunan program, dana, lokasi).</li>
+                <li><strong><em>On-going evaluation:</em></strong> Saat program berlangsung, untuk mengetahui hambatan dan mencari solusi (kelancaran acara, partisipasi peserta).</li>
+                <li><strong><em>Ex-post evaluation:</em></strong> Setelah pelaksanaan, untuk menilai keberhasilan keseluruhan proses dan dampak program bagi kesejahteraan komunitas.</li>
+            </ul>
+
+            <h3>Langkah-langkah Monitoring dan Evaluasi</h3>
+            <ol>
+                <li>Menetapkan tujuan yang hendak diukur atau dievaluasi.</li>
+                <li>Mengembangkan indikator dan instrumen yang sesuai.</li>
+                <li>Mengumpulkan data melalui teknik yang tepat.</li>
+                <li>Menganalisis data yang sudah dikumpulkan.</li>
+                <li>Menarik kesimpulan dan menyusun rekomendasi tindak lanjut.</li>
+            </ol>
+
+            <h3>Indikator dan Subindikator Keberhasilan Pemberdayaan</h3>
+            <table class="indicator-table">
+                <thead>
+                    <tr>
+                        <th>Indikator</th>
+                        <th>Subindikator</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Keterlibatan</td>
+                        <td>
+                            <ul>
+                                <li>Kehadiran peserta.</li>
+                                <li>Penyampaian pendapat.</li>
+                                <li>Kesediaan mengikuti kegiatan program.</li>
+                                <li>Kesediaan mengikuti program lanjutan.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dampak Program</td>
+                        <td>
+                            <ul>
+                                <li>Ketercapaian tujuan atau dampak program.</li>
+                                <li>Relevansi tujuan dengan proses pemberdayaan.</li>
+                                <li>Efektivitas strategi untuk mencapai tujuan.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kelayakan Program</td>
+                        <td>
+                            <ul>
+                                <li>Efektivitas perencanaan program.</li>
+                                <li>Efektivitas pengorganisasian sumber daya.</li>
+                                <li>Efektivitas metode pemberdayaan.</li>
+                                <li>Efektivitas mekanisme monitoring dan evaluasi.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Indikator dan subindikator ini dirumuskan menjadi instrumen (daftar pertanyaan/lembar pengecekan) yang bervariasi sesuai metode pengumpulan data.</p>
+
+            <h3>Pelaksanaan Evaluasi Pemberdayaan: Teknik Pengumpulan Data</h3>
+            <p>Teknik pengumpulan data yang dapat digunakan:</p>
+            <ol>
+                <li>
+                    <h4>1) Survei</h4>
+                    <p>Teknik pengumpulan data kepada banyak responden secara bersamaan, bertujuan mengumpulkan informasi dari sampel yang mewakili populasi. Instrumen yang digunakan adalah kuesioner atau angket.</p>
+                    <p><strong>Jenis Angket:</strong></p>
+                    <table class="evaluation-form">
+                        <thead>
+                            <tr>
+                                <th>Angket Terbuka</th>
+                                <th>Angket Tertutup</th>
+                                <th>Angket Campuran</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p><strong>Deskripsikan manfaat yang Anda peroleh setelah pelaksanaan program!</strong></p>
+                                    <p>Jawaban:</p>
+                                    <p>.......................................</p>
+                                </td>
+                                <td>
+                                    <p><strong>Apakah Anda memperoleh manfaat program pemberdayaan yang sudah dilakukan?</strong></p>
+                                    <label><input type="radio" name="manfaat_tertutup" value="ya"> a. Ya</label>
+                                    <label><input type="radio" name="manfaat_tertutup" value="tidak"> b. Tidak</label>
+                                </td>
+                                <td>
+                                    <p><strong>Apakah Anda memperoleh manfaat program pemberdayaan yang sudah dilakukan?</strong></p>
+                                    <label><input type="radio" name="manfaat_campuran" value="ya"> a. Ya</label>
+                                    <label><input type="radio" name="manfaat_campuran" value="tidak"> b. Tidak</label>
+                                    <p><strong>Deskripsikan alasan Anda!</strong></p>
+                                    <p>.......................................</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    <h4>2) Observasi</h4>
+                    <p>Pengumpulan data melalui pengamatan langsung di lapangan untuk mengetahui aktivitas, perilaku, atau kemampuan praktikal. Hasil pengamatan didokumentasikan sebagai bukti pelaksanaan program.</p>
+                    <p><strong>Contoh Format Lembar Observasi: Evaluasi Praktik Kerja Peserta dalam Proses Pelatihan</strong></p>
+                    <p>Nama Peserta: ..........................</p>
+                    <table class="evaluation-form">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Tahapan Praktik Kerja</th>
+                                <th colspan="2">Hasil Pengamatan</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Dilakukan</th>
+                                <th>Tidak Dilakukan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1.</td><td></td><td></td><td></td></tr>
+                            <tr><td>2.</td><td></td><td></td><td></td></tr>
+                            <tr><td>dst.</td><td></td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                    <p>Dokumentasi Kegiatan: (Ruang untuk foto/keterangan visual)</p>
+                </li>
+                <li>
+                    <h4>3) Wawancara</h4>
+                    <p>Proses tanya jawab untuk menggali persepsi atau pemahaman seseorang. Peneliti menyiapkan instrumen wawancara (pedoman wawancara) berisi pertanyaan terkait fakta, data, pengetahuan, konsep, pendapat, persepsi, atau evaluasi.</p>
+                    <p><strong>Contoh Pedoman Wawancara</strong></p>
+                    <p>Nama Informan: ..........................</p>
+                    <p>Tempat/Tanggal: ..........................</p>
+                    <table class="evaluation-form">
+                        <thead>
+                            <tr>
+                                <th>Aspek</th>
+                                <th>Daftar Pertanyaan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Motivasi peserta mengikuti program pelatihan</td>
+                                <td>
+                                    <ol>
+                                        <li>Mengapa Anda mengikuti pelatihan ini?</li>
+                                        <li>Bagaimana kontribusi yang Anda lakukan selama pelatihan?</li>
+                                        <li>Apa yang akan Anda lakukan setelah pelatihan selesai?</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                            <tr><td>Dst...</td><td>...</td></tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    <h4>4) Focus Group Discussion (FGD)</h4>
+                    <p>Teknik pengumpulan data melalui wawancara berkelompok skala kecil (5–10 orang) untuk membahas topik khusus. Peserta duduk melingkar dengan moderator dan narasumber, diminta mengemukakan pendapat setelah pemaparan materi.</p>
+                    <p><strong>Contoh Instrumen Pertanyaan dalam FGD</strong></p>
+                    <p>Topik: ..........................</p>
+                    <p>Tempat: ..........................</p>
+                    <p>Tanggal: ..........................</p>
+                    <p>Peserta: 1... 2... (Daftar peserta)</p>
+                    <table class="evaluation-form">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Pertanyaan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pertanyaan Pembuka</td>
+                                <td>
+                                    <ol>
+                                        <li>Bagaimana pendapat Bapak/Ibu mengenai kondisi ekonomi yang ada di desa?</li>
+                                        <li>Bagaimana pendapat Bapak/Ibu mengenai potensi sumber daya alam sekitar desa?</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pertanyaan Inti</td>
+                                <td>
+                                    <ol>
+                                        <li>Bagaimana pendapat Bapak/Ibu mengenai program yang sudah dilaksanakan?</li>
+                                        <li>Apa yang akan Bapak/Ibu lakukan setelah pelatihan program?</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pertanyaan Penutup</td>
+                                <td>
+                                    <ol>
+                                        <li>Mohon berikan kritik dan saran atas pelaksanaan program yang sudah dilakukan.</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ol>
+
+            <div class="example-box">
+                <h4>Contoh Evaluasi Pemberdayaan Komunitas Penangkap Udang Rebon</h4>
+                <p>Wayan, Ahmad, Cici, dan Angel melakukan evaluasi internal selama program berlangsung menggunakan angket. Tujuan evaluasi: Mengevaluasi keterlibatan atau partisipasi komunitas dalam menerima ide usaha baru.</p>
+                <h4 class="sub-heading">Indikator dan Subindikator:</h4>
+                <table class="indicator-table">
+                    <thead>
+                        <tr>
+                            <th>Indikator</th>
+                            <th>Subindikator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Keterlibatan</td>
+                            <td>
+                                <ol>
+                                    <li>Kehadiran peserta.</li>
+                                    <li>Penyampaian pendapat.</li>
+                                    <li>Kesediaan mengikuti kegiatan program.</li>
+                                    <li>Kesediaan untuk mengikuti program lanjutan.</li>
+                                </ol>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4 class="sub-heading">Angket Partisipasi Peserta</h4>
+                <p>Nama Peserta: ..........................</p>
+                <p>Tanggal Kegiatan: ..........................</p>
+                <p>Berilah tanda (v) untuk menunjukkan jawaban yang tepat dengan diri Anda.</p>
+                <table class="evaluation-form">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Pernyataan</th>
+                            <th>Pilihan Jawaban</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td>Saya menghadiri kegiatan pada tanggal...........</td>
+                            <td>
+                                <label><input type="checkbox"> 6 September 2023</label><br>
+                                <label><input type="checkbox"> 8 September 2023</label><br>
+                                <label><input type="checkbox"> 19 September 2023</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Saya datang tepat waktu di setiap kegiatan.</td>
+                            <td>
+                                <label><input type="radio" name="Q2" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q2" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Saya menyampaikan pendapat di setiap fase kegiatan rata-rata...........</td>
+                            <td>
+                                <label><input type="radio" name="Q3" value="tidak_pernah"> Tidak pernah</label><br>
+                                <label><input type="radio" name="Q3" value="1-2_kali"> 1-2 kali</label><br>
+                                <label><input type="radio" name="Q3" value="3-4_kali"> 3-4 kali</label><br>
+                                <label><input type="radio" name="Q3" value="lebih_4_kali"> Lebih dari 4 kali</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Saya memberikan saran pada ide program yang sudah disampaikan.</td>
+                            <td>
+                                <label><input type="radio" name="Q4" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q4" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>Saya memberikan kritik pada ide program yang sudah disampaikan.</td>
+                            <td>
+                                <label><input type="radio" name="Q5" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q5" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>Saya mengikuti setiap sesi kegiatan dari awal sampai akhir.</td>
+                            <td>
+                                <label><input type="radio" name="Q6" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q6" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td>Saya antusias menyimak paparan materi.</td>
+                            <td>
+                                <label><input type="radio" name="Q7" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q7" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td>Saya memahami materi yang disampaikan.</td>
+                            <td>
+                                <label><input type="radio" name="Q8" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q8" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9.</td>
+                            <td>Saya merasa materi yang sudah dipaparkan dapat memberi manfaat nyata.</td>
+                            <td>
+                                <label><input type="radio" name="Q9" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q9" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10.</td>
+                            <td>Saya merasa ide yang disampaikan dapat diterapkan dalam kehidupan.</td>
+                            <td>
+                                <label><input type="radio" name="Q10" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q10" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>11.</td>
+                            <td>Saya bersedia mengikuti kegiatan lanjutan yang sudah dipaparkan.</td>
+                            <td>
+                                <label><input type="radio" name="Q11" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q11" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12.</td>
+                            <td>Saya bersedia bekerja sama mengembangkan ide usaha yang dipaparkan bersama peserta lainnya.</td>
+                            <td>
+                                <label><input type="radio" name="Q12" value="ya"> Ya</label><br>
+                                <label><input type="radio" name="Q12" value="tidak"> Tidak</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Pengembangan pernyataan angket:</strong></p>
+                <ul>
+                    <li>Nomor 1–2: Subindikator kehadiran.</li>
+                    <li>Nomor 3–5: Subindikator penyampaian pendapat.</li>
+                    <li>Nomor 6–9: Subindikator kesediaan mengikuti setiap tahapan program.</li>
+                    <li>Nomor 10–12: Subindikator kesediaan untuk mengikuti program lanjutan.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('pelaporan')">
+            <span>5. Pelaporan dan Tindak Lanjut Hasil Evaluasi Pemberdayaan</span>
+            <span class="arrow">&#9658;</span>
+        </div>
+        <div id="pelaporan" class="section-content">
+            <p>Setelah evaluasi, pelaksana perlu membuat laporan dan rekomendasi tindak lanjut. Laporan ini berfungsi sebagai dokumentasi pelaksanaan program.</p>
+            <h3>Komponen Laporan Hasil Pelaksanaan dan Evaluasi Pemberdayaan:</h3>
+            <ul class="report-components-list">
+                <li>Halaman Judul</li>
+                <li>Pengesahan</li>
+                <li>Daftar Isi</li>
+                <li>A. Pendahuluan</li>
+                <li>B. Metode Evaluasi</li>
+                <li>C. Pelaksanaan</li>
+                <li>D. Hasil Evaluasi</li>
+                <li>E. Rekomendasi</li>
+                <li>F. Penutup</li>
+                <li>Lampiran</li>
+            </ul>
+
+            <h3>Manfaat Laporan Evaluasi Pemberdayaan bagi Berbagai Pihak:</h3>
+            <table class="benefit-table">
+                <thead>
+                    <tr>
+                        <th>Pihak</th>
+                        <th>Manfaat Laporan Evaluasi Pemberdayaan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Motivasi peserta</td>
+                        <td>
+                            <ol>
+                                <li>Mengetahui capaian program yang telah dilaksanakan.</li>
+                                <li>Memperoleh informasi efektivitas dan efisiensi kerja yang sudah dilakukan.</li>
+                                <li>Meningkatkan partisipasi dan kepedulian antaranggota.</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fasilitator pemberdayaan</td>
+                        <td>
+                            <ol>
+                                <li>Peluang untuk mengembangkan kompetensi diri.</li>
+                                <li>Sarana pengembangan karier.</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pemerintah, perusahaan, atau lembaga penyelenggara program lainnya</td>
+                        <td>
+                            <ol>
+                                <li>Sebagai pertimbangan atau landasan perumusan kebijakan.</li>
+                                <li>Sebagai landasan untuk perbaikan program di masa mendatang.</li>
+                            </ol>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Laporan hasil evaluasi juga perlu dikomunikasikan kepada pihak-pihak terkait, misalnya melalui presentasi atau seminar, untuk memperbaiki program pemberdayaan berikutnya.</p>
+
+            <h3>Refleksi Pembelajaran</h3>
+            <p>Mempelajari proses pemberdayaan mendorong kalian menjadi pribadi yang kritis dan peduli terhadap lingkungan sekitar, serta menunjukkan peran positif dalam masyarakat. Kalian dapat merekomendasikan upaya pemecahan masalah sosial dan mengembangkan sikap peduli, tanggung jawab, serta cara berpikir kreatif dan sistematis.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+            const arrow = header.querySelector('.arrow');
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                arrow.classList.remove('rotate');
+            } else {
+                // Close all other open sections
+                document.querySelectorAll('.section-content.active').forEach(openContent => {
+                    openContent.classList.remove('active');
+                    openContent.previousElementSibling.querySelector('.arrow').classList.remove('rotate');
+                });
+
+                // Open the clicked section
+                content.classList.add('active');
+                arrow.classList.add('rotate');
+            }
+        }
+    </script>
+</body>
+</html>
+```

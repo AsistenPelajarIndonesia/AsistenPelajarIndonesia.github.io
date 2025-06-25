@@ -1,0 +1,403 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perkembangan Masyarakat Digital - Sosiologi Kelas XII</title>
+    <style>
+        /* Definisi Variabel Warna untuk Tema Terang */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121; /* Judul utama, teks penting */
+            --text-secondary: #424242; /* Teks paragraf, daftar */
+            --text-tertiary: #757575; /* Teks pendukung, keterangan */
+            --border-divider: #E0E0E0; /* Garis pemisah, border elemen */
+            --primary-blue: #1976D2; /* Warna aksen utama, judul bagian, tautan */
+            --accent-green: #388E3C; /* Aksesori hijau (opsional, tidak banyak digunakan di sini) */
+            --secondary-accent-amber: #FFB300; /* Aksesori amber (opsional) */
+            --semantic-success: #4CAF50; /* Untuk pesan sukses */
+            --semantic-warning: #FFC107; /* Untuk pesan peringatan */
+            --semantic-error: #D32F2F; /* Untuk pesan error */
+            --semantic-info: #2196F3; /* Untuk pesan informasi */
+        }
+
+        /* Gaya Dasar Global */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            font-size: 16px;
+            scroll-behavior: smooth; /* Untuk efek scroll halus jika ada tautan anchor */
+        }
+
+        /* Kontainer Utama untuk Responsivitas */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #fff; /* Konten utama lebih terang dari canvas */
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Bagian Header Halaman */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-tertiary);
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        /* Gaya untuk Setiap Bagian Utama (Section) */
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            background-color: #f9f9f9; /* Sedikit berbeda dari background-canvas */
+        }
+
+        section h2 {
+            color: var(--text-primary);
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        section h3 {
+            color: var(--primary-blue);
+            font-size: 1.4em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Gaya Paragraf dan Daftar */
+        p {
+            margin-bottom: 1em;
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding: 0;
+            margin-bottom: 1em;
+        }
+
+        ul li {
+            margin-bottom: 0.5em;
+            color: var(--text-secondary);
+        }
+
+        /* Gaya Kotak Sorotan (Highlight Box) */
+        .highlight-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        /* Gaya Daftar Data (Data List) */
+        .data-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .data-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        .data-list li:last-child {
+            border-bottom: none;
+        }
+
+        .data-list li strong {
+            color: white; /* Untuk highlight box, teks kuatnya putih */
+        }
+        .highlight-box .data-list li strong {
+            color: white; /* Pastikan teks kuat tetap putih dalam highlight-box */
+        }
+        .highlight-box .data-list li span {
+            color: white; /* Pastikan persentase juga putih */
+            font-weight: bold;
+        }
+
+
+        /* Gaya Kotak Definisi */
+        .definition-box {
+            background-color: #e3f2fd; /* Biru muda */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        .definition-box strong {
+            color: var(--primary-blue);
+        }
+
+        /* Gaya Akordion (Menggunakan <details> dan <summary> untuk Interaktivitas HTML-only) */
+        .accordion details {
+            background-color: #f0f4f7; /* Sedikit lebih gelap dari latar belakang bagian */
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion summary {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            position: relative;
+            user-select: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion summary:hover {
+            background-color: #1565C0; /* Sedikit lebih gelap saat hover */
+        }
+
+        /* Menyembunyikan marker default dan menambahkan ikon kustom */
+        .accordion summary::-webkit-details-marker {
+            display: none;
+        }
+        .accordion summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+        .accordion details[open] summary::after {
+            content: '-';
+            transform: translateY(-50%) rotate(0deg); /* Ikon minus tanpa rotasi */
+        }
+        
+        .accordion .content {
+            padding: 15px 20px;
+            background-color: var(--background-canvas);
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .accordion .content ul {
+            list-style: decimal; /* Daftar bernomor di dalam akordion */
+            margin-left: 20px;
+            padding-top: 10px;
+        }
+
+        .accordion .content ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Media Queries untuk Responsivitas */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
+
+            section h3 {
+                font-size: 1.2em;
+            }
+            .accordion summary {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+            .accordion summary::after {
+                right: 15px;
+                font-size: 1.2em;
+            }
+            .accordion .content {
+                padding: 12px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            .container {
+                margin: 5px;
+                padding: 10px;
+                box-shadow: none; /* Hilangkan shadow di layar sangat kecil */
+                border-radius: 0; /* Hilangkan border-radius di layar sangat kecil */
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            section {
+                padding: 10px;
+                border-radius: 0;
+                margin-bottom: 20px;
+            }
+            section h2 {
+                font-size: 1.3em;
+                padding-bottom: 8px;
+            }
+            section h3 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Perkembangan Masyarakat Digital</h1>
+            <p>Sosiologi untuk Kelas XII SMA</p>
+        </header>
+
+        <section id="konsep-masyarakat-digital">
+            <h2>1. Konsep Masyarakat Digital</h2>
+            <p>Kehidupan masyarakat modern saat ini tidak hanya terbatas pada interaksi di dunia nyata (fisik), tetapi juga meluas ke dunia maya (virtual). Media digital atau media daring (online) telah memungkinkan individu yang sebelumnya tidak saling mengenal untuk merasa terhubung dan akrab melalui platform virtual ini. Dunia maya, meskipun seringkali terasa sangat nyata, sebenarnya adalah sebuah simulasi yang diciptakan oleh teknologi dan dihidupkan oleh penggunanya.</p>
+
+            <p>Sebagai contoh konkret, kita dapat berkomunikasi dalam berbagai format—mulai dari teks, audio, visual, hingga audiovisual—melalui beragam aplikasi yang tersedia. Interaksi ini mampu menciptakan perasaan kedekatan yang kuat, bahkan tanpa adanya pertemuan fisik secara langsung. Contoh lain yang menarik adalah kemampuan untuk "hadir" secara virtual di suatu tempat; misalnya, kita dapat menjelajahi koleksi museum secara mendalam tanpa perlu berada di lokasi fisik, yang membuka dimensi baru dalam pengalaman budaya, pendidikan, dan rekreasi.</p>
+
+            <div class="definition-box">
+                <h3>Definisi Masyarakat Digital</h3>
+                <p><strong>Masyarakat Digital</strong> merujuk pada masyarakat di mana eksistensinya dan sebagian besar aktivitasnya direpresentasikan atau diwujudkan melalui penggunaan perangkat elektronik (seperti komputer, ponsel pintar) dan jaringan internet. Konsep ini mencerminkan pergeseran fundamental dalam cara manusia berinteraksi, bekerja, belajar, dan hidup di era modern, di mana dunia fisik dan digital saling beririsan dan membentuk satu kesatuan yang tidak terpisahkan.</p>
+            </div>
+            <p>Fenomena ini menunjukkan bahwa teknologi telah menjadi bagian tak terpisahkan dari struktur sosial, membentuk pola-pola interaksi baru dan membuka ruang-ruang komunitas yang sebelumnya tidak terpikirkan. Ini mendorong kita untuk memahami bahwa batasan antara yang "nyata" dan "maya" semakin menipis dalam kehidupan sehari-hari.</p>
+        </section>
+
+        <section id="kehidupan-era-digital">
+            <h2>2. Kehidupan Masyarakat Era Digital</h2>
+            <p>Era digital telah membawa perubahan signifikan dalam pola kehidupan masyarakat, terutama dalam interaksi sosial dan dinamika keluarga. Beberapa dekade silam, merupakan pemandangan umum melihat keluarga menghabiskan waktu berkualitas bersama di depan televisi. Namun, dengan munculnya teknologi seperti komputer/laptop, telepon seluler pintar, dan akses internet yang kian meluas, aktivitas ini bergeser secara drastis.</p>
+
+            <p>Saat ini, ruang keluarga seringkali menjadi lebih sepi karena setiap anggota keluarga cenderung sibuk dengan gawai masing-masing. Gawai menawarkan kemudahan akses informasi, hiburan tanpa batas, dan komunikasi yang portabel di ujung jari. Meskipun demikian, kemudahan ini seringkali paradoks, karena dapat menghambat interaksi langsung dan mendalam antaranggota keluarga. Padahal, interaksi keluarga sangat krusial untuk transfer nilai, norma, dan pembentukan kepribadian yang utuh pada individu.</p>
+
+            <h3>Pergeseran Pola Penggunaan Teknologi di Indonesia (Data BPS)</h3>
+            <p>Berdasarkan data Badan Pusat Statistik (BPS), penggunaan Teknologi Informasi dan Komunikasi (TIK) di Indonesia menunjukkan peningkatan yang sangat pesat dalam beberapa tahun terakhir:</p>
+            <ul>
+                <li>Pemanfaatan internet dalam lingkup rumah tangga mencapai <strong>78,18%</strong> pada tahun 2020. Angka ini melonjak signifikan dari 25,37% pada 2016 menjadi 53,73% pada 2020, menunjukkan penetrasi internet yang semakin merata.</li>
+                <li>Penggunaan telepon seluler mencapai <strong>62,84%</strong> pada tahun 2020, mengindikasikan dominasi perangkat seluler sebagai gerbang utama menuju dunia digital.</li>
+                <li>Sementara itu, jumlah penggunaan telepon kabel untuk rumah tangga mengalami penurunan drastis, dari 3,49% pada 2016 menjadi 1,65% pada 2020, mencerminkan pergeseran menuju mobilitas dan konektivitas nirkabel yang lebih fleksibel.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Prioritas Utama Penggunaan Internet Masyarakat (Survei BPS 2020)</h3>
+                <p>Survei BPS tahun 2020 juga secara rinci menunjukkan bagaimana masyarakat Indonesia memanfaatkan internet. Data ini menyoroti tren penggunaan yang dominan:</p>
+                <ul class="data-list">
+                    <li><strong>Media sosial:</strong> <span>95.56%</span></li>
+                    <li><strong>Mendapat informasi/berita:</strong> <span>79.04%</span></li>
+                    <li><strong>Hiburan:</strong> <span>77.60%</span></li>
+                    <li><strong>Mengerjakan tugas sekolah:</strong> <span>39.00%</span></li>
+                    <li><strong>Pembelian barang/jasa:</strong> <span>22.35%</span></li>
+                    <li><strong>Mengirim/menerima e-mail:</strong> <span>18.94%</span></li>
+                    <li><strong>Fasilitas finansial:</strong> <span>10.91%</span></li>
+                    <li><strong>Lainnya:</strong> <span>5.29%</span></li>
+                </ul>
+                <p>Data ini secara jelas menunjukkan dominasi interaksi sosial, akses informasi, dan hiburan sebagai alasan utama masyarakat berinteraksi dengan internet.</p>
+            </div>
+
+            <h3>Dari Konsumen Menjadi Produsen Informasi (Konten Kreator)</h3>
+            <p>Peningkatan pesat penggunaan media sosial telah memengaruhi pola kehidupan masyarakat secara fundamental. Jika dahulu masyarakat cenderung berperan sebagai pencari informasi pasif, kini di era digital, setiap individu memiliki potensi untuk menjadi "pembuat konten" (content creator) atau produsen informasi aktif. Masyarakat saat ini memiliki kemampuan untuk mengolah, memproduksi, dan menyebarkan informasi melalui berbagai saluran media sosial atau konten yang mereka buat sendiri. Ini adalah pergeseran signifikan dari era media massa tradisional.</p>
+
+            <p>Namun, kemudahan ini juga membawa serta tanggung jawab besar. Masyarakat dituntut untuk bersikap selektif dan cerdas dalam menerima serta menyebarluaskan informasi. Tujuan utama dari tindakan ini adalah untuk mencegah penyebaran berita bohong (hoaks) yang memiliki potensi serius untuk memecah belah persatuan bangsa dan menimbulkan disinformasi yang merugikan.</p>
+
+            <h3>Pentingnya Literasi Digital</h3>
+            <p>Untuk menghadapi tantangan informasi di era digital, terutama fenomena "post-truth" di mana batas antara fakta dan kebenaran seringkali menjadi kabur, kemampuan literasi digital menjadi sangat krusial. Literasi digital bukan hanya sekadar kemampuan menggunakan teknologi, tetapi juga mencakup pemahaman yang lebih luas, meliputi:</p>
+            <ul>
+                <li><strong>Melawan fenomena post-truth:</strong> Ini melibatkan kemampuan untuk mengedepankan verifikasi fakta, mencari sumber informasi yang kredibel, dan tidak mudah terprovokasi oleh narasi emosional.</li>
+                <li><strong>Kecerdasan emosional digital:</strong> Merujuk pada kemampuan untuk mengelola emosi diri dan berinteraksi secara empatik serta bertanggung jawab di lingkungan digital, menghindari konflik atau ujaran kebencian.</li>
+                <li><strong>Penggunaan digital yang bertanggung jawab:</strong> Ini berarti memanfaatkan teknologi secara etis, aman, dan produktif, mematuhi norma-norma sosial dan hukum.</li>
+                <li><strong>Hak digital:</strong> Memahami hak dan kewajiban sebagai warga digital, termasuk privasi data, kebebasan berekspresi, dan perlindungan dari kejahatan siber.</li>
+                <li><strong>Berpikir kritis:</strong> Mendorong masyarakat untuk menganalisis informasi secara mendalam, mempertanyakan asumsi, dan mengevaluasi argumen sebelum menerima atau menyebarkannya.</li>
+            </ul>
+            <p>Dengan fondasi literasi digital yang kuat, masyarakat dapat memanfaatkan kemudahan dan peluang teknologi secara optimal, sekaligus meminimalkan risiko serta menghindari penyalahgunaan yang dapat berdampak negatif pada individu maupun masyarakat luas.</p>
+        </section>
+
+        <section id="peluang-tantangan">
+            <h2>3. Peluang dan Tantangan Masyarakat Era Digital</h2>
+            <p>Kehidupan masyarakat di era digital ditandai dengan modernisasi yang berorientasi pada efisiensi tinggi dan otomatisasi sistem. Kondisi ini sangat terlihat dari tingginya tingkat penggunaan akses internet di kalangan masyarakat serta perkembangan pesat dalam bidang <em>electronic-commerce</em> (e-commerce).</p>
+
+            <div class="definition-box">
+                <h3>Definisi E-commerce</h3>
+                <p><strong>E-commerce</strong> didefinisikan sebagai proses transaksi yang dilakukan melalui teknologi jaringan internet dan komputer. Proses ini menghubungkan penyedia jasa (penjual) dengan konsumen (pembeli) untuk melakukan pertukaran barang, penyediaan layanan, dan pertukaran informasi secara elektronik. Ini mencakup seluruh siklus mulai dari penemuan produk hingga pembayaran dan pengiriman.</p>
+            </div>
+            
+            <p>Indonesia sendiri memiliki potensi besar untuk menjadi salah satu pelaku ekonomi terbesar di ASEAN. Proyeksi menunjukkan bahwa pada tahun 2030, Indonesia akan memiliki sekitar 135 juta konsumen e-commerce. Selain itu, dengan perkiraan 60% populasi berada dalam usia produktif, dan 27% di antaranya adalah generasi muda yang berpotensi menjadi wirausaha di industri e-commerce baru, prospek ekonomi digital Indonesia semakin cerah. Namun, di balik potensi besar ini, terdapat peluang dan tantangan yang perlu dicermati secara seksama.</p>
+
+            <div class="accordion">
+                <details>
+                    <summary>Peluang Masyarakat di Era Digital</summary>
+                    <div class="content">
+                        <p>Era digital membuka berbagai peluang transformatif yang dapat dioptimalkan untuk kemajuan masyarakat:</p>
+                        <ul>
+                            <li><strong>1. Peningkatan Efisiensi dan Produktivitas:</strong> Digitalisasi memungkinkan sistem produksi, distribusi, dan konsumsi beroperasi dengan efisiensi yang jauh lebih tinggi. Hal ini secara langsung mendorong peningkatan produktivitas usaha dan percepatan pengembangan layanan di berbagai sektor.</li>
+                            <li><strong>2. Akses Informasi yang Luas dan Mudah:</strong> Dengan adanya sistem dan jaringan data yang terintegrasi dalam skala besar, masyarakat menjadi lebih mudah dan nyaman dalam mengakses berbagai informasi yang relevan, dari berita hingga data riset.</li>
+                            <li><strong>3. Mendorong Inovasi dan Kreativitas:</strong> Ketersediaan informasi yang melimpah, akses yang cepat dan mudah, serta biaya yang relatif murah, merangsang masyarakat untuk menjadi lebih inovatif. Ini memicu munculnya ide-ide baru dan solusi kreatif untuk berbagai permasalahan.</li>
+                            <li><strong>4. Peningkatan Konsumsi dan Pasar yang Lebih Besar:</strong> Kemudahan akses informasi dan data tentang produk dan jasa secara global mampu meningkatkan minat konsumsi masyarakat. Ini membuka pasar yang lebih besar bagi pelaku usaha, baik lokal maupun internasional.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Tantangan Masyarakat di Era Digital</summary>
+                    <div class="content">
+                        <p>Di samping peluang, era digital juga menyajikan sejumlah tantangan signifikan yang memerlukan kewaspadaan dan adaptasi dari masyarakat:</p>
+                        <ul>
+                            <li><strong>1. Pengurangan Kebutuhan Tenaga Kerja Manusia:</strong> Otomatisasi melalui sistem digital, terutama di sektor industri dan layanan, dapat mengurangi kebutuhan akan tenaga kerja manusia. Hal ini berpotensi menyebabkan gelombang PHK dan peningkatan angka pengangguran.</li>
+                            <li><strong>2. Kesenjangan Keterampilan dan Pengangguran Struktural:</strong> Tenaga kerja yang kurang memiliki keterampilan digital atau tidak mampu beradaptasi dengan tuntutan pekerjaan era digital akan kesulitan bersaing. Ini dapat menambah masalah pengangguran, meningkatkan ketergantungan, memperlebar ketimpangan sosial, dan memperburuk kemiskinan.</li>
+                            <li><strong>3. Ketidakseimbangan Sektor Ekonomi:</strong> Sektor jasa cenderung berkembang jauh lebih pesat dibandingkan sektor manufaktur di era digital. Hal ini dapat menimbulkan risiko dalam pemenuhan kebutuhan dasar tertentu yang masih bergantung pada produksi manufaktur, serta menciptakan ketidakseimbangan struktural dalam ekonomi.</li>
+                            <li><strong>4. Risiko Krisis Ekonomi Akibat Ketergantungan Asing:</strong> Jika pengembangan usaha dan teknologi di suatu negara sangat bergantung pada utang luar negeri atau investasi asing tanpa disertai dengan kapasitas domestik yang kuat dan hasil yang optimal, maka hal tersebut berpotensi memicu krisis ekonomi di masa mendatang.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <p>Menghadapi peluang dan tantangan yang kompleks ini memerlukan adaptasi berkelanjutan, peningkatan keterampilan individu, serta kebijakan pemerintah yang mendukung inklusivitas, inovasi, dan keberlanjutan dalam perkembangan masyarakat digital.</p>
+        </section>
+    </div>
+</body>
+</html>
+```

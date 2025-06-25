@@ -1,0 +1,407 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 9: Fisika Inti dan Radioaktivitas - Penemuan Inti Atom</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid var(--primary-blue);
+            background-color: #f9f9f9;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0 20px 40px;
+            border-left: 2px solid var(--border-divider);
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            border: 3px solid var(--background-canvas);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content {
+            color: var(--text-secondary);
+        }
+
+        .experiment-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .experiment-box .highlight {
+            background-color: var(--secondary-accent-amber);
+            font-size: 1.2em;
+            padding: 8px 15px;
+        }
+
+        .explanation {
+            background-color: #e8f5e9; /* Light green */
+            border-left: 4px solid var(--accent-green);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .conclusion {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 1.15em;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid var(--border-divider);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .simulasi-link {
+            display: block;
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .simulasi-link:hover {
+            background-color: var(--semantic-warning);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item::before {
+                left: -8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 9: Fisika Inti dan Radioaktivitas</h1>
+        <h2>Bagian A: Penemuan Inti Atom</h2>
+
+        <p>Selamat datang di bab Fisika Inti dan Radioaktivitas! Bagian ini akan membawa kita menyelami dunia terkecil dalam atom, yaitu inti atom. Bagaimana para ilmuwan berhasil mengungkap keberadaan bagian atom yang begitu mungil namun menyimpan kekuatan luar biasa ini? Mari kita mulai perjalanan sejarah penemuan inti atom!</p>
+
+        <div class="section">
+            <h3>Sejarah Perkembangan Model Atom Menuju Inti Atom</h3>
+            <p>Pemahaman kita tentang atom tidaklah instan. Selama berabad-abad, para filsuf dan ilmuwan telah berusaha memahami hakikat materi. Berikut adalah alur penting yang membawa kita pada penemuan inti atom:</p>
+
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <div class="timeline-date">Abad ke-4 SM</div>
+                    <div class="timeline-content">
+                        <strong>Demokritus:</strong> Mengemukakan bahwa materi tersusun dari bagian terkecil yang tidak dapat dibagi lagi, yang ia sebut "atom".
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-date">1808</div>
+                    <div class="timeline-content">
+                        <strong>John Dalton:</strong> Memperkenalkan kembali konsep atom, menyatakan bahwa materi tersusun dari bola-bola kecil yang padat, tak terpisahkan, dan tidak dapat diciptakan atau dimusnahkan.
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-date">1897</div>
+                    <div class="timeline-content">
+                        <strong>J.J. Thomson:</strong> Menemukan elektron, partikel bermuatan negatif yang jauh lebih kecil dari atom. Ia mengusulkan model atom "roti kismis" (plum pudding model), di mana elektron tersebar merata dalam bola bermuatan positif.
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-date">1910-1911</div>
+                    <div class="timeline-content">
+                        <strong>Ernest Rutherford:</strong> Melalui eksperimennya yang legendaris, Rutherford merevolusi pemahaman kita tentang atom. Ia menemukan bahwa atom bukanlah bola padat seperti yang dibayangkan Thomson.
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Eksperimen Rutherford: Percobaan Lempeng Emas</h3>
+            <p>Titik balik dalam penemuan inti atom adalah eksperimen yang dilakukan oleh Ernest Rutherford bersama Hans Geiger dan Ernest Marsden. Mereka menembakkan partikel alfa (inti helium bermuatan positif) ke selembar tipis lempeng emas.</p>
+
+            <p><strong>Apa yang mereka amati?</strong></p>
+            <ul>
+                <li>Sebagian besar partikel alfa melewati lempeng emas tanpa mengalami pembelokan (atau sedikit pembelokan).</li>
+                <li>Beberapa partikel alfa mengalami pembelokan dengan sudut yang cukup besar.</li>
+                <li>Sebagian kecil partikel alfa memantul kembali ke arah sumbernya.</li>
+            </ul>
+
+            <div class="experiment-box">
+                Fenomena ini sangat mengejutkan! Rutherford berkata, "Ini adalah peristiwa yang paling luar biasa yang pernah terjadi dalam hidup saya. Ini seperti Anda menembakkan peluru 15 inci ke selembar kertas tisu dan pelurunya kembali mengenai Anda."
+            </div>
+
+            <p><strong>Penjelasan Rutherford:</strong></p>
+            <p>Berdasarkan hasil pengamatan ini, Rutherford menyimpulkan:</p>
+            <ol>
+                <li>Karena sebagian besar partikel alfa melewati lempeng emas tanpa hambatan, ini menunjukkan bahwa atom sebagian besar terdiri dari ruang kosong.</li>
+                <li>Karena ada beberapa partikel alfa yang dibelokkan bahkan memantul kembali, ini menandakan adanya bagian yang sangat kecil, padat, dan bermuatan positif di dalam atom yang mampu menolak partikel alfa yang bermuatan positif.</li>
+            </ol>
+
+            <div class="conclusion">
+                Dari eksperimen inilah, Rutherford mengusulkan model atom yang revolusioner: atom memiliki sebuah inti yang sangat kecil, padat, dan bermuatan positif, yang dikelilingi oleh elektron yang bergerak mengelilinginya. Inti atom inilah yang kemudian disebut sebagai <strong>inti atom</strong>.
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Simulasi Eksperimen Rutherford</h3>
+            <p>Untuk lebih memahami bagaimana eksperimen Rutherford bekerja dan apa saja faktor yang memengaruhinya, Anda dapat mencoba simulasi interaktif berikut. Simulasi ini memungkinkan Anda mengubah parameter seperti jumlah proton dalam inti dan melihat bagaimana lintasan partikel alfa berubah.</p>
+            <a href="https://phet.colorado.edu/sims/html/rutherford-scattering/latest/rutherford-scattering_en.html" target="_blank" class="simulasi-link">Kunjungi Simulasi Eksperimen Rutherford</a>
+
+            <p>Dengan simulasi ini, Anda bisa bereksperimen dengan:</p>
+            <ul>
+                <li>Mengamati lintasan partikel alfa ketika inti atom memiliki jumlah proton tertentu.</li>
+                <li>Mengubah jumlah proton dan mengamati dampaknya pada pembelokan partikel alfa.</li>
+                <li>Memahami bagaimana interaksi antara partikel alfa dan inti atom terjadi.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Dua Pertanyaan Kunci dari Rutherford</h3>
+            <p>Mengapa Rutherford begitu yakin dengan model atomnya? Dua hal utama yang meyakinkannya adalah:</p>
+            <ol>
+                <li><strong>Ruang Kosong:</strong> Sebagian besar partikel alfa yang melewati lempeng emas tanpa terhambat menunjukkan bahwa atom sebagian besar adalah ruang kosong. Jika atom padat, semua partikel alfa akan dibelokkan.</li>
+                <li><strong>Massa dan Muatan Positif:</strong> Pembelokan signifikan dan pantulan kembali partikel alfa menunjukkan adanya konsentrasi massa dan muatan positif yang sangat padat di pusat atom. Partikel alfa yang positif ditolak oleh muatan positif inti. Massa yang besar dari partikel alfa (dibandingkan elektron) juga menjelaskan mengapa mereka bisa dibelokkan oleh objek yang jauh lebih kecil namun padat.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h3>Karakteristik Inti Atom</h3>
+            <p>Setelah penemuan inti atom, para ilmuwan terus meneliti lebih lanjut mengenai penyusun dan sifatnya. Inti atom merupakan bagian pusat atom yang sangat kecil namun sangat padat dan menyimpan sebagian besar massa atom.</p>
+
+            <p><strong>Penyusun Inti Atom:</strong></p>
+            <p>Inti atom terdiri dari dua jenis partikel utama:</p>
+            <ul>
+                <li><strong>Proton:</strong> Partikel bermuatan positif (+e).</li>
+                <li><strong>Neutron:</strong> Partikel yang tidak bermuatan (netral, muatan 0).</li>
+            </ul>
+            <p>Proton dan neutron bersama-sama disebut sebagai <strong>nukleon</strong>.</p>
+
+            <p><strong>Hubungan Jumlah Proton dan Elektron:</strong></p>
+            <p>Dalam keadaan netral, jumlah proton dalam inti sama dengan jumlah elektron yang mengorbit inti. Jika jumlah proton dan elektron tidak sama, atom akan bermuatan listrik dan disebut sebagai <strong>ion</strong>.</p>
+
+            <p><strong>Penomoran Nuklida:</strong></p>
+            <p>Sebuah nuklida (inti atom) dilambangkan sebagai berikut:</p>
+            <p style="text-align: center; font-size: 1.5em; font-weight: bold;">
+                <sup>A</sup><sub>Z</sub>X
+            </p>
+            <p>Di mana:</p>
+            <ul>
+                <li><strong>A</strong> = Nomor Massa (jumlah proton + neutron)</li>
+                <li><strong>Z</strong> = Nomor Atom (jumlah proton, yang menentukan identitas unsur)</li>
+                <li><strong>X</strong> = Simbol unsur</li>
+            </ul>
+            <p>Perubahan jumlah proton (Z) akan mengubah unsur menjadi unsur lain.</p>
+
+            <p><strong>Massa dalam Satuan Massa Atom (sma):</strong></p>
+            <p>Massa partikel sub-atomik lebih mudah dinyatakan dalam satuan massa atom (sma), bukan kilogram.</p>
+            <p>1 sma = 1,66 × 10<sup>-27</sup> kg</p>
+            <p>Berikut adalah karakteristik massa dan muatan penyusun atom:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Partikel</th>
+                        <th>Massa (sma)</th>
+                        <th>Muatan</th>
+                        <th>Posisi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Proton</td>
+                        <td>1,0773</td>
+                        <td>+e</td>
+                        <td>Dalam inti</td>
+                    </tr>
+                    <tr>
+                        <td>Neutron</td>
+                        <td>1,0087</td>
+                        <td>0</td>
+                        <td>Dalam inti</td>
+                    </tr>
+                    <tr>
+                        <td>Elektron</td>
+                        <td>0,00056</td>
+                        <td>-e</td>
+                        <td>Mengorbit inti</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Perhatikan bahwa massa proton dan neutron hampir sama (sekitar 1 sma), sedangkan massa elektron sangat kecil. Ini berarti hampir seluruh massa atom terkonsentrasi di dalam inti atom.</p>
+
+            <p><strong>Contoh:</strong> Inti Natrium (Na)</p>
+            <p>Jika kita melihat lambang Natrium, misalnya <sup>23</sup><sub>11</sub>Na:</p>
+            <ul>
+                <li>Nomor atom (Z) = 11, artinya Natrium memiliki 11 proton.</li>
+                <li>Nomor massa (A) = 23, artinya jumlah proton + neutron = 23.</li>
+                <li>Jumlah neutron = A - Z = 23 - 11 = 12 neutron.</li>
+            </ul>
+            <p>Jadi, inti atom Natrium terdiri dari 11 proton dan 12 neutron.</p>
+        </div>
+
+        <p>Demikianlah perjalanan kita memahami penemuan inti atom. Bagian selanjutnya akan membahas fenomena menarik lainnya dari fisika inti, yaitu defek massa dan energi ikat.</p>
+    </div>
+</body>
+</html>
+```

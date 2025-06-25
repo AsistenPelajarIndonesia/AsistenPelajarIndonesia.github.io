@@ -1,0 +1,482 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Respons Masyarakat terhadap Globalisasi dan Era Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for theme */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-canvas);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--bg-canvas);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-green); /* A strong visual accent */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: var(--bg-canvas);
+            letter-spacing: 0.05em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: var(--bg-canvas);
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--bg-canvas);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-divider);
+        }
+
+        section h2 {
+            color: var(--text-primary);
+            font-size: 2em;
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        section h3 {
+            color: var(--text-primary);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-divider);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        ul li::before {
+            content: "•"; /* Custom bullet point */
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            flex-shrink: 0;
+            margin-right: 5px;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+            font-size: 1.1em;
+        }
+
+        .highlight-box.pro-global {
+            background-color: #e8f5e9; /* Light green based on accent_green */
+            border-left: 5px solid var(--accent-green);
+        }
+
+        .highlight-box.anti-global {
+            background-color: #fffde7; /* Light amber based on semantic_warning */
+            border-left: 5px solid var(--semantic-warning);
+        }
+
+        .highlight-box.semantic-info {
+            background-color: #e3f2fd; /* Light blue based on semantic_info */
+            border-left: 5px solid var(--semantic-info);
+        }
+
+        /* Interactive Elements - Details/Summary (Accordion) */
+        details {
+            background-color: #fcfcfc;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        summary {
+            padding: 15px 20px;
+            background-color: var(--primary-blue);
+            color: var(--bg-canvas);
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            list-style: none; /* Hide default marker */
+            transition: background-color 0.3s ease;
+        }
+
+        summary:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        summary::-webkit-details-marker {
+            display: none; /* Hide default marker for webkit browsers */
+        }
+
+        summary::before {
+            content: '+'; /* Custom marker */
+            position: absolute;
+            right: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::before {
+            content: '-';
+            transform: rotate(0deg); /* No rotation needed for '-' */
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+            background-color: #1565C0; /* Keep darker when open */
+        }
+
+        .details-content {
+            padding: 15px 20px;
+            color: var(--text-secondary);
+        }
+
+        .details-content ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .details-content ul li::before {
+            content: none; /* Remove custom bullet for nested lists */
+        }
+        .details-content ul li {
+            border-bottom: none; /* Remove border for nested list items */
+        }
+
+        /* Diagram for Skepticism Factors */
+        .diagram-complex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            margin: 30px 0;
+            padding: 15px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        .diagram-complex .node, .diagram-complex .node-small {
+            color: var(--bg-canvas);
+            padding: 12px 22px;
+            margin: 10px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            flex-shrink: 0; /* Prevent shrinking on small screens */
+        }
+
+        .diagram-complex .node-small {
+            background-color: var(--accent-green); /* Color for input factors */
+            font-size: 0.95em;
+        }
+
+        .diagram-complex .node {
+            background-color: var(--primary-blue); /* Color for central factor */
+            min-width: 150px; /* Ensure sufficient width */
+        }
+
+        .diagram-complex .node.skeptical {
+            background-color: var(--semantic-warning); /* Color for output */
+            min-width: 150px;
+        }
+
+        .diagram-complex .factors-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Aligns items to the right in column flow */
+            margin-right: 20px; /* Space before the connector text/arrow */
+        }
+
+        .diagram-complex .connector-text {
+            font-size: 1.1em;
+            color: var(--text-tertiary);
+            font-style: italic;
+            margin: 0 15px;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            section {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            section h2 {
+                font-size: 1.7em;
+            }
+            section h3 {
+                font-size: 1.3em;
+                border-left-width: 3px;
+            }
+
+            .diagram-complex {
+                flex-direction: column; /* Stack elements vertically */
+                align-items: center;
+            }
+            .diagram-complex .factors-group {
+                flex-direction: row; /* Factors side-by-side on smaller screens */
+                justify-content: center;
+                width: 100%; /* Take full width */
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .diagram-complex .node, .diagram-complex .node-small, .diagram-complex .node.skeptical {
+                margin: 8px; /* Adjust margin for stacked items */
+                min-width: unset; /* Allow content to dictate width */
+            }
+            .diagram-complex .connector-text {
+                margin: 10px 0; /* Adjust margin for vertical flow */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            section {
+                padding: 15px;
+            }
+            section h2 {
+                font-size: 1.5em;
+                padding-bottom: 8px;
+            }
+            section h3 {
+                font-size: 1.2em;
+                padding-left: 8px;
+            }
+            ul li {
+                padding: 8px 0;
+            }
+            .diagram-complex .node, .diagram-complex .node-small {
+                padding: 10px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 2: Globalisasi dan Masyarakat Digital</h1>
+            <p>Respons Masyarakat Terhadap Globalisasi dan Era Digital</p>
+        </header>
+
+        <section>
+            <h2>Pendahuluan</h2>
+            <p>Globalisasi dan digitalisasi adalah dua arus perubahan besar yang telah meresap ke dalam sendi-sendi kehidupan masyarakat di seluruh dunia. Namun, penerimaan terhadap kedua fenomena ini tidaklah seragam. Sebagian masyarakat menyambutnya dengan optimisme, sementara yang lain menghadapi dengan kekhawatiran dan bahkan penolakan.</p>
+            <p>Perbedaan respons ini menjadi cerminan dari dampak globalisasi yang kompleks, memunculkan berbagai keuntungan sekaligus tantangan di berbagai aspek kehidupan. Untuk memahami spektrum respons ini, kita akan menjelajahi dua kelompok masyarakat utama: kelompok yang mendukung (proglobalisasi) dan kelompok yang skeptis atau menentang (antiglobalisasi).</p>
+        </section>
+
+        <section>
+            <h2>1. Kelompok yang Mendukung Proglobalisasi</h2>
+            <div class="highlight-box pro-global">
+                <p>Kelompok proglobalisasi memandang globalisasi sebagai kekuatan progresif yang esensial untuk kemajuan dan kesejahteraan umat manusia. Mereka percaya bahwa keterbukaan dan interkonektivitas global adalah kunci untuk mencapai kemakmuran ekonomi dan mengatasi berbagai isu global yang kompleks.</p>
+            </div>
+
+            <h3>Kerja Sama Internasional dan Penanganan Isu Global</h3>
+            <p>Bagi kelompok proglobalisasi, kerja sama lintas batas adalah indikator penting dari keterbukaan terhadap globalisasi. Tidak ada satu negara pun yang dapat berdiri sendiri menghadapi permasalahan global yang semakin kompleks. Beberapa contoh nyata dukungan ini meliputi:</p>
+            <ul>
+                <li><strong>Forum Multilateral seperti G20:</strong> Ini adalah wadah kerja sama yang melibatkan 19 negara dengan perekonomian terbesar di dunia dan Uni Eropa. G20 membahas berbagai isu global, mulai dari keuangan (<em>finance track</em>) hingga permasalahan nonkeuangan (<em>sherpa track</em>). Indonesia sendiri berkesempatan menjadi presidensi G20 pada tahun 2022, menunjukkan peran aktif dalam tata kelola global.</li>
+                <li><strong>Organisasi Dunia:</strong> Lembaga seperti World Trade Organization (WTO) mempromosikan perdagangan bebas untuk pertumbuhan ekonomi global, sementara Perserikatan Bangsa-Bangsa (PBB) menangani isu-isu perdamaian, keamanan, dan pembangunan di seluruh dunia. Keduanya merupakan pilar penting dalam memfasilitasi interaksi global.</li>
+                <li><strong>Aksi Sosial Global:</strong> Gerakan seperti <strong>Earth Hour</strong> adalah manifestasi nyata dari kepedulian global terhadap lingkungan. Dengan memadamkan lampu selama satu jam, masyarakat dari berbagai negara menunjukkan solidaritas dalam upaya mengurangi penggunaan energi dan mitigasi perubahan iklim. Ini membuktikan bahwa kesadaran global mampu menggerakkan aksi kolektif.</li>
+            </ul>
+            <p>Dukungan terhadap globalisasi juga tercermin dalam upaya bersama mengatasi isu-isu lintas batas lainnya seperti ketimpangan gender, kemiskinan, dan konflik, yang memerlukan solusi komprehensif dari seluruh masyarakat dunia.</p>
+
+            <h3>Dampak Positif Globalisasi: Transformasi Ekonomi dan Budaya</h3>
+            <details>
+                <summary>Aksesibilitas dan Pertumbuhan Ekonomi</summary>
+                <div class="details-content">
+                    <p>Globalisasi telah mendorong perubahan mendasar dalam sistem ekonomi dunia, menjadikannya lebih terhubung dan saling bergantung.</p>
+                    <ul>
+                        <li><strong>Perdagangan Internasional:</strong> Aktivitas ekspor dan impor menjadi tulang punggung perekonomian banyak negara, memungkinkan pemenuhan kebutuhan domestik yang tidak dapat diproduksi sendiri dan membuka peluang pasar baru.</li>
+                        <li><strong>Investasi Asing dan Ekspansi Usaha:</strong> Arus investasi internasional dan perdagangan bebas membuka peluang besar bagi ekspansi usaha secara global, tidak hanya menguntungkan perusahaan besar tetapi juga mendorong pertumbuhan ekonomi di negara-negara berkembang.</li>
+                        <li><strong>Penciptaan Lapangan Kerja:</strong> Pertumbuhan investasi dan ekspansi usaha dapat menyerap tenaga kerja dalam jumlah besar, bahkan mampu mengurangi ketimpangan gender dengan membuka lebih banyak kesempatan kerja bagi perempuan di berbagai sektor usaha.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Dinamika Budaya dan Inovasi Digital</summary>
+                <div class="details-content">
+                    <p>Selain ekonomi, globalisasi juga membawa dampak signifikan pada sektor budaya dan digital.</p>
+                    <ul>
+                        <li><strong>Pertukaran Budaya Global:</strong> Industri film, musik, dan gim daring (<em>online</em>) menjadi medium pertukaran budaya yang kuat, memperkenalkan berbagai tradisi dan gaya hidup ke seluruh penjuru dunia. Ini menciptakan dinamika budaya yang kaya dan beragam.</li>
+                        <li><strong>Peluang Ekonomi Digital:</strong> Sektor usaha digital, seperti platform <em>marketplace</em>, telah merevolusi cara masyarakat berbisnis dan berinteraksi secara ekonomi. Ini membuka peluang usaha baru bagi individu dan Usaha Mikro, Kecil, dan Menengah (UMKM) untuk menjangkau pasar yang jauh lebih luas, melampaui batas geografis.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <h3>Kesiapan Menghadapi Era Digital</h3>
+            <p>Kemudahan dan kesempatan yang ditawarkan globalisasi dan digitalisasi dapat dimanfaatkan secara maksimal jika masyarakat mampu beradaptasi. Kemampuan mengembangkan potensi diri dan kesiapan bersaing di era digital menjadi prasyarat penting untuk meraih manfaat positif dari kedua arus ini. Dukungan akan terus menguat seiring dengan terasanya peningkatan kesejahteraan hidup.</p>
+        </section>
+
+        <section>
+            <h2>2. Kelompok yang Skeptis/Menentang Globalisasi (Antiglobalisasi)</h2>
+            <div class="highlight-box anti-global">
+                <p>Sikap skeptis atau menentang globalisasi muncul dari kekhawatiran terhadap dampak negatif yang ditimbulkan. Bagi kelompok ini, globalisasi seringkali dianggap membawa konsekuensi yang merugikan, terutama bagi mereka yang rentan dan tidak memiliki kekuatan tawar yang setara di panggung global.</p>
+            </div>
+
+            <h3>Resistensi Terhadap Arus Globalisasi</h3>
+            <p>Meskipun globalisasi membawa kemudahan arus informasi, barang, dan jasa, dampaknya juga memicu resistensi dari berbagai pihak. Penolakan ini mulai terlihat jelas sekitar tahun 1990-an, dengan berbagai aksi protes menentang kebijakan global, seperti yang terjadi pada konferensi World Trade Organization (WTO) di Seattle (1999) dan Genoa (2001).</p>
+
+            <h3>Faktor Pendorong Skeptisme Globalisasi</h3>
+            <p>Menurut penelitian, skeptisme terhadap globalisasi dapat muncul dari tiga faktor pendorong utama yang saling berkaitan:</p>
+            <div class="diagram-complex">
+                <div class="factors-group">
+                    <div class="node-small">Perbedaan</div>
+                    <div class="node-small">Pengaruh</div>
+                    <div class="node-small">Identitas</div>
+                </div>
+                <div class="connector-text">Memicu</div>
+                <div class="node">Faktor Pendorong</div>
+                <div class="connector-text">Mengarahkan pada</div>
+                <div class="node skeptical">Skeptisme</div>
+            </div>
+
+            <details>
+                <summary>1. Faktor Perbedaan (Ketimpangan dan Kemiskinan)</summary>
+                <div class="details-content">
+                    <p>Skeptisme muncul karena globalisasi ekonomi seringkali diidentikkan dengan kapitalisme dan liberalisasi pasar bebas yang dianggap hanya menguntungkan segelintir pihak.</p>
+                    <ul>
+                        <li><strong>Kesenjangan Ekonomi:</strong> Kekayaan dan pendapatan yang tidak merata antarindividu dan antarnegara menjadi lebih parah, membuat negara-negara berkembang dengan sumber daya terbatas makin sulit bersaing.</li>
+                        <li><strong>Gulung Tikar Perusahaan Lokal:</strong> Banyak perusahaan domestik tidak mampu bersaing di pasar bebas yang didominasi raksasa multinasional, mengakibatkan peningkatan pengangguran dan kesulitan ekonomi bagi masyarakat.</li>
+                        <li><strong>Kerentanan Ekonomi:</strong> Masyarakat miskin dan rentan makin terpinggirkan karena tidak merasakan dampak positif globalisasi, bahkan justru menanggung beban persaingan.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>2. Faktor Pengaruh (Dominasi Politik dan Korporasi)</summary>
+                <div class="details-content">
+                    <p>Skeptisme juga berakar pada kekhawatiran akan hilangnya kedaulatan negara dan pengaruh pihak eksternal.</p>
+                    <ul>
+                        <li><strong>Kekuatan Negara Tertentu:</strong> Adanya internasionalisasi ekonomi dan politik membuat kekuasaan beberapa negara menjadi sangat kuat, bahkan mampu memengaruhi kebijakan global.</li>
+                        <li><strong>Dominasi Multinasional:</strong> Perusahaan-perusahaan raksasa multinasional memiliki modal dan pengaruh besar dalam perdagangan dunia, seringkali dapat memengaruhi kebijakan pemerintah dan organisasi internasional, yang dikhawatirkan hanya menguntungkan kepentingan mereka.</li>
+                        <li><strong>Ketidakadilan Kebijakan:</strong> Kebijakan yang cenderung hanya menguntungkan kelompok tertentu dapat menimbulkan ketidakadilan dan ketimpangan dalam masyarakat, memicu penolakan massal.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>3. Faktor Identitas (Erosi Budaya dan Jati Diri)</summary>
+                <div class="details-content">
+                    <p>Aspek budaya merupakan salah satu sumber kekhawatiran terbesar bagi kelompok antiglobalisasi.</p>
+                    <ul>
+                        <li><strong>Arus Budaya Asing:</strong> Kemudahan teknologi komunikasi dan dunia digital memfasilitasi masuknya arus budaya dan ideologi asing secara masif.</li>
+                        <li><strong>Ancaman Jati Diri:</strong> Eksistensi budaya lokal terancam terkikis. Masyarakat berisiko kehilangan jati diri budaya mereka karena lebih mengagungkan budaya asing, yang dapat menyebabkan fragmentasi budaya dan munculnya blok-blok identitas tertentu.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <h3>Refleksi: Menghadapi Keniscayaan Globalisasi dan Digitalisasi</h3>
+            <p>Globalisasi dan digitalisasi adalah kenyataan yang tidak dapat kita hindari. Kedua proses ini telah menjadi seperti dua sisi mata uang yang selalu menyertai kehidupan modern, membawa dampak positif dan negatif secara bersamaan.</p>
+            <div class="highlight-box semantic-info">
+                <p>Oleh karena itu, respons terbaik adalah kesiapan dan adaptasi. Penting bagi setiap individu untuk membangun kepercayaan diri, memperluas wawasan, dan mengembangkan minat serta bakat yang positif. Dengan demikian, kita dapat menghadapi tantangan era digital dengan bijak dan memanfaatkan peluang yang ada untuk kemajuan diri dan masyarakat.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Materi Sosiologi SMA/MA Kelas XII. Dibuat untuk tujuan pembelajaran.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

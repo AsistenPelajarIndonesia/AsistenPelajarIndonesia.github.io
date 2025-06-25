@@ -1,0 +1,306 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Arus Listrik - Fisika SMA Kelas XII</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #E0E0E0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.3em;
+            margin-top: 20px;
+            color: #424242;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #424242;
+            text-align: justify;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .formula-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid #1976D2;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+            overflow-x: auto;
+            text-align: center;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+        }
+        .formula-box .formula {
+            display: inline-block;
+            white-space: pre-wrap; /* Allows for line breaks in formulas */
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+        }
+        .formula-box .label {
+            font-style: italic;
+            color: #757575;
+            margin-top: 5px;
+            display: block;
+        }
+        .highlight {
+            color: #1976D2;
+            font-weight: bold;
+        }
+        .explanation-block {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid #1976D2;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .explanation-block p {
+            color: #212121;
+            margin-bottom: 0;
+        }
+        .concept-definition {
+            background-color: #fff9c4; /* Light yellow background */
+            border-left: 5px solid #FFB300;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .concept-definition p {
+            color: #212121;
+            margin-bottom: 0;
+        }
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .responsive-table th, .responsive-table td {
+            padding: 12px 15px;
+            border: 1px solid #E0E0E0;
+            text-align: left;
+        }
+        .responsive-table th {
+            background-color: #1976D2;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+        .responsive-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .responsive-table tbody tr:hover {
+            background-color: #e3f2fd;
+        }
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .formula-box {
+                font-size: 0.95em;
+            }
+            .responsive-table th, .responsive-table td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .container {
+                padding: 10px;
+            }
+            .formula-box {
+                font-size: 0.9em;
+            }
+            .responsive-table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap; /* Prevent table content from breaking */
+            }
+            .responsive-table table {
+                width: auto; /* Allow table to be wider than its container */
+                display: inline-table; /* Keep table cells on one line */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Bab 2: Arus Listrik</h1>
+
+        <div class="section">
+            <h2>Pengantar Arus Listrik</h2>
+            <p>
+                Dalam kehidupan sehari-hari, kita sering mendengar tentang listrik. Listrik adalah fenomena fisika yang sangat penting dan fundamental, yang menjadi tulang punggung peradaban modern. Di dalam bab ini, kita akan menyelami lebih dalam salah satu konsep kunci dalam listrik, yaitu <strong>Arus Listrik</strong>.
+            </p>
+            <p>
+                Sebelum kita membahas arus listrik, mari kita ingat kembali konsep dasar dari <strong>medan listrik</strong>. Anda ingat dari Bab 1 bahwa ketika sebuah muatan berada dalam pengaruh medan listrik, muatan tersebut akan mengalami gaya listrik. Gaya ini memiliki potensi untuk menyebabkan muatan tersebut bergerak. Sumber dari medan listrik ini bisa berasal dari berbagai hal, salah satunya adalah <strong>beda potensial listrik</strong>. Beda potensial ini umum kita temui pada sumber energi seperti baterai.
+            </p>
+            <p>
+                Bayangkan sebuah rangkaian sederhana yang terdiri dari kawat penghantar yang dihubungkan dengan baterai. Baterai ini menciptakan perbedaan potensial listrik antara kedua ujungnya. Perbedaan potensial inilah yang memberikan "dorongan" kepada elektron-elektron bebas di dalam kawat penghantar. Elektron-elektron ini, yang bermuatan negatif, akan bergerak melalui kawat menuju kutub positif baterai. Aliran muatan inilah yang kita kenal sebagai <strong>arus listrik</strong>.
+            </p>
+            <div class="explanation-block">
+                <p>
+                    Dalam mobil, berbagai komponen kelistrikan seperti lampu, radio, dan AC dirangkai secara <strong>paralel</strong>. Keuntungan utama dari rangkaian paralel ini adalah jika salah satu komponen mengalami kerusakan (misalnya putus), komponen lainnya tetap dapat berfungsi karena masih terhubung dengan sumber tegangan. Ini berbeda dengan rangkaian seri, di mana jika satu komponen rusak, seluruh rangkaian akan terputus.
+                </p>
+                <p>
+                    Mobil memiliki dua sumber tegangan utama: <strong>aki</strong> dan <strong>dinamo</strong>. Saat mobil belum dinyalakan, hanya aki yang menjadi sumber tegangan untuk sistem kelistrikan. Namun, ketika mobil berjalan, dinamo akan ikut berperan sebagai sumber tegangan tambahan yang mengisi daya aki sekaligus menyuplai energi untuk seluruh komponen kelistrikan mobil. Rangkaian kelistrikan saat mobil melaju ini bisa dianggap sebagai rangkaian majemuk karena melibatkan lebih dari satu sumber tegangan dan berbagai jenis rangkaian.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Konsep Arus Listrik dan Arah Konvensional</h2>
+            <p>
+                Secara teknis, arus listrik adalah ukuran dari jumlah muatan listrik yang mengalir melalui suatu penampang melintang suatu penghantar dalam satuan waktu. Dalam fisika, kita mendefinisikan besarnya arus listrik (dilambangkan dengan <span class="highlight">I</span>) sebagai berikut:
+            </p>
+            <div class="formula-box">
+                <div class="formula">I = \frac{Q}{t}</div>
+                <div class="label">(Persamaan 2-1)</div>
+            </div>
+            <p>
+                Di sini, <span class="highlight">Q</span> adalah jumlah total muatan listrik yang mengalir (dalam satuan Coulomb, C) dan <span class="highlight">t</span> adalah selang waktu yang dibutuhkan muatan tersebut untuk mengalir (dalam satuan sekon, s).
+            </p>
+            <p>
+                Satuan dari arus listrik adalah Coulomb per sekon (C/s). Satuan ini secara internasional dikenal sebagai <strong>Ampere (A)</strong>, yang diambil dari nama seorang ilmuwan fisika Prancis ternama, André-Marie Ampère, yang memberikan kontribusi besar pada perkembangan ilmu elektromagnetisme.
+            </p>
+            <p>
+                Penting untuk dipahami bahwa muatan listrik yang sebenarnya bergerak dalam kawat penghantar adalah <strong>elektron</strong>, yang memiliki muatan negatif. Elektron-elektron ini, karena adanya beda potensial, bergerak dari kutub negatif sumber tegangan menuju kutub positifnya.
+            </p>
+            <p>
+                Namun, secara konvensi yang telah disepakati dalam dunia fisika, arah arus listrik ditetapkan berlawanan dengan arah aliran elektron. Jadi, arah arus listrik (yang disebut <strong>arus konvensional</strong>) adalah dari kutub positif sumber tegangan ke kutub negatifnya.
+            </p>
+            <div class="concept-definition">
+                <p>
+                    <span class="highlight">Arus Konvensional</span>: Arah aliran muatan positif (dianggap) yang bergerak dari potensial tinggi (kutub positif) ke potensial rendah (kutub negatif).
+                </p>
+            </div>
+            <p>
+                Perlu diingat bahwa tidak semua elektron yang ada dalam penghantar akan berkontribusi pada terbentuknya arus listrik. Hanya elektron yang bergerak secara teratur dan terarahlah yang menghasilkan arus.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Muatan Elementer dan Rumus Arus Listrik</h2>
+            <p>
+                Muatan listrik suatu benda, secara fundamental, merupakan kelipatan bulat dari muatan sebuah elektron (atau proton). Muatan elektron ini dikenal sebagai <strong>muatan elementer</strong>, yang nilainya adalah sekitar <span class="highlight">e = 1,6 x 10<sup>-19</sup> Coulomb</span>.
+            </p>
+            <p>
+                Jika kita mengetahui jumlah elektron (<span class="highlight">n</span>) yang mengalir dalam waktu <span class="highlight">t</span>, maka total muatan <span class="highlight">Q</span> dapat dihitung sebagai <span class="highlight">Q = n x e</span>. Dengan mengganti <span class="highlight">Q</span> dalam Persamaan 2-1, kita mendapatkan rumus lain untuk menghitung arus listrik:
+            </p>
+            <div class="formula-box">
+                <div class="formula">I = \frac{ne}{t}</div>
+                <div class="label">(Persamaan 2-2)</div>
+            </div>
+            <p>
+                Persamaan ini sangat berguna ketika kita berurusan dengan kasus di mana jumlah partikel bermuatan yang mengalir diketahui.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Ringkasan Konsep Kunci</h2>
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Konsep</th>
+                        <th>Definisi/Penjelasan</th>
+                        <th>Satuan SI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Arus Listrik (I)</td>
+                        <td>Aliran muatan listrik per satuan waktu.</td>
+                        <td>Ampere (A)</td>
+                    </tr>
+                    <tr>
+                        <td>Muatan Listrik (Q)</td>
+                        <td>Sifat dasar materi yang menyebabkan gaya elektromagnetik.</td>
+                        <td>Coulomb (C)</td>
+                    </tr>
+                    <tr>
+                        <td>Waktu (t)</td>
+                        <td>Lamanya proses aliran muatan.</td>
+                        <td>Sekon (s)</td>
+                    </tr>
+                    <tr>
+                        <td>Muatan Elementer (e)</td>
+                        <td>Muatan terkecil yang ada dalam alam semesta (muatan elektron/proton).</td>
+                        <td>Coulomb (C)</td>
+                    </tr>
+                    <tr>
+                        <td>Arus Konvensional</td>
+                        <td>Arah aliran muatan positif (dari kutub positif ke negatif).</td>
+                        <td>Ampere (A)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <p>
+                Memahami konsep arus listrik ini adalah langkah awal yang krusial dalam mempelajari lebih lanjut tentang rangkaian listrik, hukum Ohm, daya listrik, dan berbagai aplikasi kelistrikan lainnya. Konsep ini berlaku baik dalam rangkaian sederhana di rumah tangga maupun sistem kelistrikan yang kompleks pada kendaraan bermotor seperti yang telah disinggung sebelumnya.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

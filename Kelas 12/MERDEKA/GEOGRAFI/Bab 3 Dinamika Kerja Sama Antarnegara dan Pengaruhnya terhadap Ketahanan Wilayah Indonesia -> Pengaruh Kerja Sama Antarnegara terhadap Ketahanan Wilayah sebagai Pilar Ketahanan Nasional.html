@@ -1,0 +1,394 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamika Kerja Sama Antarnegara dan Ketahanan Wilayah</title>
+    <style>
+        /* Define Color Palette based on lightMode theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Body Styling */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 25px;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Headings Styling */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            margin-top: 1.8em;
+            margin-bottom: 0.8em;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: var(--primary-blue);
+            text-align: center;
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            border-left: 6px solid var(--primary-blue);
+            padding-left: 15px;
+            margin-top: 2.5em;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 8px;
+            margin-top: 2em;
+            font-weight: 500;
+        }
+
+        h4 {
+            font-size: 1.4em;
+            color: var(--secondary-accent-amber);
+            margin-bottom: 0.6em;
+            font-weight: 500;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 1.2em;
+            text-align: justify;
+        }
+
+        ul, ol {
+            list-style-position: outside;
+            margin-left: 25px;
+            margin-bottom: 1.2em;
+        }
+
+        li {
+            margin-bottom: 0.6em;
+            padding-left: 5px;
+        }
+        
+        ul li {
+            list-style-type: square;
+        }
+        
+        ol li {
+            list-style-type: decimal;
+        }
+
+        /* Section Specific Styling */
+        .section-box {
+            background-color: #FDFDFD; /* A very slight shade for section distinction */
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Highlight Boxes (Activities) */
+        .highlight-box {
+            background-color: #E6F3FF; /* Lighter primary blue */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+        }
+
+        .green-highlight-box {
+            background-color: #EBF7EB; /* Lighter accent green */
+            border-left: 6px solid var(--accent-green);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+        }
+
+        .highlight-box h3, .green-highlight-box h3 {
+            color: var(--primary-blue); /* Activities title color */
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: none;
+            font-size: 1.6em;
+            font-weight: 600;
+        }
+
+        /* Citation Style */
+        .citation {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            text-align: right;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Strong Text */
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85em;
+            color: var(--text-tertiary);
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                font-size: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.5em;
+            }
+            h4 {
+                font-size: 1.2em;
+            }
+            ul, ol {
+                margin-left: 20px;
+            }
+            .section-box, .highlight-box, .green-highlight-box {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                font-size: 14px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.8em;
+                padding-bottom: 15px;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 1.6em;
+                padding-left: 10px;
+                border-left-width: 4px;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            h4 {
+                font-size: 1.1em;
+            }
+            ul, ol {
+                margin-left: 15px;
+            }
+            .section-box, .highlight-box, .green-highlight-box {
+                padding: 15px;
+            }
+            .highlight-box h3, .green-highlight-box h3 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dinamika Kerja Sama Antarnegara dan Pengaruhnya terhadap Ketahanan Wilayah Indonesia</h1>
+
+        <section class="section-box">
+            <p>Kerja sama antarnegara merupakan salah satu pilar krusial dalam membangun dan menjaga ketahanan wilayah sebuah negara. Dalam konteks Indonesia, dinamika kerja sama internasional, baik bilateral maupun multilateral, memiliki dampak signifikan terhadap stabilitas, perkembangan, dan kemampuan suatu wilayah menghadapi berbagai tantangan kompleks.</p>
+            <p>Sebagai contoh, peran lembaga seperti <strong>IMF (International Monetary Fund)</strong> dalam kerja sama antarnegara sangat vital. Sesuai Pasal 1 dari *Article of Agreement*, IMF memiliki peran sentral dalam memberikan bantuan dana darurat. Bantuan ini dapat berasal langsung dari IMF atau dari lembaga keuangan internasional lain yang menggunakan IMF sebagai rujukan utama. IMF menawarkan tiga jenis bantuan utama: fasilitas umum IMF, fasilitas khusus IMF, dan fasilitas konsesi IMF.</p>
+            <p>Dalam memberikan bantuan, IMF bertindak sebagai lembaga internasional yang melakukan pengamanan terhadap pinjaman yang diberikan kepada negara pemohon. Tujuannya adalah untuk memastikan dana pinjaman dapat dikembalikan apabila terjadi penarikan sepihak dari persetujuan yang ada, atau jika negara pemohon tidak mengikuti kesepakatan yang telah disepakati, sesuai prinsip yang ditegaskan dalam anggaran dasar pendirian IMF.</p>
+            <p>Penting untuk dicatat bahwa apabila suatu negara meminta bantuan dana kepada IMF, negara tersebut diwajibkan untuk memenuhi syarat-syarat tertentu sesuai dengan kebijakan IMF. Syarat-syarat ini umumnya mencakup penyesuaian kebijakan ekonomi domestik negara pemohon. Tujuan dari persyaratan ini adalah agar negara pemohon dapat segera mengatasi kesulitan neraca pembayaran dan mampu membayar kembali pinjaman yang telah diajukan. Dengan demikian, IMF dapat menanamkan pengaruhnya ke dalam kebijakan negara peminjam, dan pengaruh ini akan terus tertanam selama negara peminjam membutuhkan bantuan dana dari IMF.</p>
+            <p class="citation">(Pamungkas et al., 2019)</p>
+        </section>
+
+        <section class="section-box">
+            <h2>D. Pengaruh Kerja Sama Antarnegara terhadap Ketahanan Wilayah sebagai Pilar Ketahanan Nasional</h2>
+
+            <h3>1. Pengertian Ketahanan Wilayah</h3>
+            <p>Secara spesifik, rumusan definisi ketahanan wilayah belum banyak dijumpai. Namun, konsep ini sangat erat kaitannya dengan <strong>ketahanan nasional</strong>, yang definisinya lebih banyak digunakan dan menjadi dasar pemahaman.</p>
+            <p><strong>Ketahanan Nasional</strong> adalah kondisi dinamis suatu wilayah yang meliputi seluruh aspek kehidupan masyarakat yang terintegrasi, berisi keuletan dan ketangguhan yang mengandung kemampuan mengembangkan kekuatan wilayah dalam menghadapi dan mengatasi segala tantangan, ancaman, hambatan, serta gangguan, baik yang datang dari dalam maupun dari luar, yang langsung maupun tidak langsung.</p>
+            <p class="citation">(Lemhannas, 2000 dalam Asrofi et al., 2017)</p>
+
+            <p>Berdasarkan pengertian ketahanan nasional tersebut, dapat dikemukakan bahwa <strong>ketahanan wilayah</strong> ialah wujud dari ketahanan nasional di daerah. Ketahanan wilayah ditentukan oleh beberapa faktor utama, yaitu:</p>
+            <ul>
+                <li>Kualitas sumber daya manusia, mencakup kualitas intelektual, moral, etika, kepemimpinan, serta pengabdian.</li>
+                <li>Tingkat stabilitas sosial yang dinamis pada seluruh aspek kehidupan.</li>
+                <li>Dukungan perekonomian rakyat yang baik.</li>
+                <li>Keamanan yang mantap.</li>
+                <li>Kesadaran bela negara.</li>
+            </ul>
+            <p class="citation">(Yasin, 2007)</p>
+
+            <p>Perwujudan ketahanan wilayah dapat dilakukan dengan memanfaatkan potensi-potensi yang ada di setiap daerah. Perbedaan potensi antarwilayah membuka peluang untuk saling bekerja sama dalam pemenuhan kebutuhan guna mewujudkan ketahanan wilayah. Salah satu bentuk kerja sama antarwilayah yang sangat populer adalah penerapan konsep <strong><em>sister city</em></strong> (kota kembar) atau <strong><em>sister province</em></strong> (provinsi kembar).</p>
+            <ul>
+                <li><strong><em>Sister City</em></strong>: Merupakan kerja sama antar kota dari dua negara yang memiliki tujuan bersama, seperti meningkatkan perekonomian, mempromosikan kebudayaan masing-masing negara, dan menjalin kerja sama dalam bidang lainnya secara resmi. Kerja sama ini sering terjadi karena adanya kesamaan demografis, kepentingan, atau masalah yang dihadapi, menjadikannya wadah saling memenuhi kebutuhan dan membangun ikatan kuat.</li>
+                <li><strong><em>Sister Province</em></strong>: Merupakan kerja sama antarprovinsi dari dua negara, dengan cakupan yang lebih luas dari *sister city*.</li>
+            </ul>
+            <p>Melalui kerja sama tersebut, ketahanan wilayah dapat ditingkatkan dengan lebih kuat dan komprehensif.</p>
+            <p class="citation">(Khairi et al., 2021; Sinaga, 2019)</p>
+
+            <p>Regulasi mengenai kerja sama daerah/wilayah dengan pihak luar negeri telah diatur secara jelas dalam perundang-undangan Indonesia. <strong>Undang-Undang Nomor 23 Tahun 2014 tentang Pemerintahan Pasal 363</strong>, menjelaskan tentang pembagian kerja sama luar negeri daerah dengan daerah/lembaga lain (lokal dan internasional), dengan mempertimbangkan aspek saling menguntungkan demi meningkatkan kesejahteraan rakyat dalam berbagai bidang.</p>
+            <p>Lebih rinci lagi, <strong>Peraturan Pemerintah Nomor 28 Tahun 2018 tentang Kerja Sama Daerah</strong>, menjelaskan peraturan-peraturan mengenai:
+            <ul>
+                <li>Kerja Sama Daerah dengan Daerah Lain (KSDD)</li>
+                <li>Kerja Sama Daerah dengan Pihak Ketiga (KSDK)</li>
+                <li>Kerja Sama Daerah dengan Daerah di Luar Negeri (KSDPL)</li>
+                <li>Kerja Sama Daerah dengan Lembaga di Luar Negeri (KSDLL)</li>
+            </ul>
+            Selain itu, <strong>Permendagri Nomor 25 Tahun 2020</strong> menjelaskan secara rinci mengenai tata cara Kerja Sama Daerah dengan Pemerintah Daerah di Luar Negeri dan kerja sama Daerah dengan Lembaga di Luar Negeri.</p>
+        </section>
+
+        <section class="section-box">
+            <h3>2. Unsur-unsur Ketahanan Wilayah</h3>
+            <p>Setiap wilayah memiliki unsur-unsur esensial yang dibutuhkan untuk mencapai ketahanan wilayah yang optimal. Unsur-unsur pokok ini sangat penting dalam membangun fondasi kerja sama antarwilayah:</p>
+
+            <h4>a. Unsur Fisik</h4>
+            <p>Unsur fisik meliputi ketersediaan sumber daya alam seperti tanah, air, udara, serta keberadaan tumbuhan dan hewan yang diperlukan untuk mendukung kehidupan di wilayah tersebut. Wilayah yang memiliki lahan cukup luas, ketersediaan air yang cukup dan bersih, udara yang segar, serta ketersediaan tumbuhan dan hewan yang memadai, memiliki potensi ketahanan wilayah yang tinggi. Sebaliknya, banyak wilayah kota yang mungkin tidak mampu menyediakan unsur-unsur fisik ini secara mandiri (misalnya lahan dan air bersih, udara sehat, atau bahan pangan). Untuk mengatasi kebutuhan ini, kerja sama dengan wilayah pedesaan menjadi solusi efektif, di mana kebutuhan pangan seperti beras, sayur, ikan, dan buah-buahan dapat dipasok dari wilayah perdesaan.</p>
+
+            <h4>b. Unsur Nonfisik</h4>
+            <p>Unsur nonfisik meliputi penduduk yang hidup atau tinggal di wilayah tersebut. Kualitas dan kuantitas penduduk sangat menentukan. Wilayah yang memiliki jumlah penduduk tidak melebihi daya dukungnya dan memiliki kualitas penduduk yang memadai (misalnya, tingkat pendidikan dan kesehatan yang baik), memiliki potensi ketahanan wilayah yang tinggi. Sebaliknya, jika jumlah penduduk melebihi daya dukung wilayah dan kualitasnya tidak memadai, hal ini akan menjadikan ketahanan wilayah rendah.</p>
+
+            <h4>c. Infrastruktur Fisik dan Nonfisik</h4>
+            <p>Infrastruktur dibagi menjadi dua bentuk utama:</p>
+            <ul>
+                <li><strong>Infrastruktur Fisik</strong>: Berupa sarana dan prasarana dasar seperti jaringan jalan, sistem air bersih, dan fasilitas komunikasi yang dibutuhkan untuk mendukung aktivitas sehari-hari penduduk. Infrastruktur fisik yang memadai sangat vital untuk kelancaran ekonomi dan kehidupan sosial.</li>
+                <li><strong>Infrastruktur Nonfisik</strong>: Berupa peraturan-peraturan yang mengikat masyarakat serta kebiasaan atau tradisi yang tumbuh dan berkembang di masyarakat. Contohnya adalah peraturan dan tradisi untuk menjaga sumber air, melestarikan tanaman pelindung, atau norma-norma sosial lainnya yang mendukung keberlanjutan wilayah.</li>
+            </ul>
+        </section>
+
+        <section class="section-box">
+            <h3>3. Pentingnya Kerja Sama Antarnegara untuk Ketahanan Wilayah</h3>
+            <p>Kerja sama antarnegara memiliki pengaruh yang sangat penting dan strategis bagi peningkatan ketahanan wilayah. Berikut adalah beberapa arti penting dari kerja sama ini:</p>
+
+            <h4>a. Meningkatkan Stabilitas Kawasan</h4>
+            <p>Kerja sama antarnegara dapat menumbuhkan saling pengertian dan kepercayaan antarnegara. Perasaan saling pengertian ini sangat vital karena banyak permasalahan antarnegara dapat diselesaikan melalui dialog dan kolaborasi, bukan konfrontasi. Contohnya termasuk penyelesaian kesalahpahaman yang dipicu karena perselisihan antar warga, atau permasalahan perbatasan seperti dengan Malaysia, dan isu-isu regional lainnya.</p>
+
+            <h4>b. Memantapkan Stabilitas Ketersediaan Kebutuhan Penduduk</h4>
+            <p>Kebutuhan warga suatu negara tidak selalu dapat dipenuhi secara keseluruhan oleh produksi domestik. Bahan atau barang tertentu mungkin tidak tersedia atau tidak tercukupi di dalam negeri. Dalam situasi ini, kerja sama antarnegara berfungsi sebagai solusi untuk mengatasi kekurangan kebutuhan penduduk. Sebagai contoh, Indonesia sering mengimpor gandum dari beberapa negara Eropa untuk memenuhi kebutuhan pangan dalam negeri.</p>
+
+            <h4>c. Meningkatkan Daya Inovasi Perbaikan Wilayah</h4>
+            <p>Kemajuan wilayah dalam berbagai bidang adalah hal yang sangat penting untuk mencapai ketahanan. Namun, ada aspek-aspek tertentu yang tidak dapat dilakukan atau dikembangkan oleh suatu wilayah secara mandiri. Kerja sama antarnegara dapat menjadi solusi efektif dalam upaya memajukan wilayah dengan berbagi pengetahuan, teknologi, dan praktik terbaik. Sebagai contoh, kerja sama *sister city* yang dilakukan oleh beberapa pemerintah daerah seperti DKI Jakarta, Malang, dan Makassar, telah membawa inovasi dan perbaikan di berbagai sektor.</p>
+
+            <h4>d. Membuka Lapangan Kerja</h4>
+            <p>Jumlah penduduk pencari kerja yang terus bertambah secara cepat menuntut ketersediaan lapangan kerja baru. Kehadiran investasi dari luar negeri melalui kerja sama antarnegara sangat diperlukan untuk menciptakan peluang kerja. Kerja sama antarnegara dapat menjadi alternatif yang efektif untuk menghadirkan investasi yang membuka lapangan kerja baru di berbagai sektor, misalnya dalam pembukaan tambang bauksit, pembangunan fasilitas perhotelan, dan industri lainnya.</p>
+
+            <h4>e. Transfer Teknologi ke Daerah</h4>
+            <p>Perkembangan teknologi di era digital saat ini berlangsung sangat cepat. Seringkali, pengembangan teknologi canggih tersebut tidak dapat dilakukan sepenuhnya oleh daerah secara mandiri karena keterbatasan sumber daya atau keahlian. Kerja sama antarnegara dapat menjadi solusi strategis untuk memenuhi kebutuhan pengembangan inovasi dan transfer teknologi ke daerah. Sebagai contoh, melalui kerja sama internasional, DKI Jakarta berpotensi menjadi kota terkemuka di dunia dalam inovasi transportasi kota.</p>
+        </section>
+
+        <div class="highlight-box">
+            <h3>Ayo, Berpikir Kreatif!</h3>
+            <p>Lakukan kegiatan belajar berikut untuk mengaplikasikan pemahaman Anda:</p>
+            <ol>
+                <li>Indonesia telah menjalin kerja sama bilateral dan multilateral dengan banyak negara di dunia.</li>
+                <li>Identifikasi beberapa negara yang memiliki potensi kerja sama strategis dengan Indonesia ke depan, khususnya dalam pengembangan wilayah.</li>
+                <li>Pilihlah satu negara yang paling memiliki potensi untuk mengembangkan wilayah kalian masing-masing (kota/kabupaten tempat tinggal).</li>
+                <li>Buatlah rancangan kerja sama secara bilateral atau multilateral yang spesifik untuk meningkatkan ketahanan wilayah kota/kabupaten tempat kalian tinggal, dengan mempertimbangkan potensi dan kebutuhan lokal.</li>
+            </ol>
+        </div>
+
+        <section class="section-box">
+            <h3>4. Bentuk Kerja Sama Internasional dalam Pengembangan Wilayah</h3>
+            <p>Beberapa kota di Indonesia telah aktif menjalin kerja sama internasional dengan kota-kota lain, terutama melalui program kota kembar (*sister city*). Berikut adalah beberapa contoh penting:</p>
+
+            <h4>a. Sister City Kota Malang dengan Kota Fuqing (Republik Rakyat Tiongkok)</h4>
+            <p>Kerja sama ini bergerak dalam berbagai bidang: pendidikan, pariwisata, kebudayaan, dan perdagangan. <strong>Pendidikan</strong> dianggap sebagai salah satu prioritas utama, mencakup pendidikan vokasi, pendidikan inklusif, pengembangan sekolah model, dan pertukaran pelajar. Kota Fuqing dinilai memiliki standar pendidikan yang tinggi, menjadi faktor pendorong kerja sama ini. Di bidang <strong>kebudayaan dan pariwisata</strong>, kerja sama ini bertujuan untuk penyatuan budaya dan diharapkan dapat meningkatkan kunjungan warga Fuqing ke Malang. Dalam bidang <strong>perdagangan</strong>, kerja sama ini meliputi impor komoditas kedelai dari Fuqing ke Malang untuk memenuhi kebutuhan perajin atau Industri Kecil dan Menengah (IKM) tempe di Kota Malang. Kedua belah pihak berharap menjalin hubungan bilateral yang baik dan merealisasikan kerja sama *sister city* ini dengan sukses.</p>
+            <p class="citation">(Pemkot Malang, 2017)</p>
+
+            <h4>b. Sister City Kota Surabaya dengan Kota Kitakyushu (Jepang)</h4>
+            <p>Kerja sama ini fokus pada bidang <strong>lingkungan</strong>. Kota Kitakyushu memiliki persamaan dengan Kota Surabaya, yaitu sama-sama pernah menjadi kota industri yang mengalami masalah lingkungan serius (limbah pabrik, polusi udara). Namun, Kitakyushu berhasil mengatasi masalahnya melalui upaya pemerintah, partisipasi masyarakat, dan pengembangan *green technology*, menjadikannya kota yang sangat bersih dengan udara segar dan langit cerah. Surabaya, sebagai kota industri besar dengan masalah polusi udara, limbah industri di sungai, dan sampah yang belum teratasi, sangat perlu belajar dari Kitakyushu. Kerja sama ini diawali dengan penandatanganan nota kesepahaman *green sister city* antara Wali Kota Surabaya Tri Rismaharini dan Wali Kota Kitakyushu Kenji Kitahashi pada 12 November 2012.</p>
+            <p>Sejak MoU ini, Kota Surabaya telah banyak mengadopsi model pengelolaan lingkungan Kitakyushu. Salah satu hasilnya adalah pengelolaan sampah dengan pembangunan fasilitas pemilahan sampah di <strong>Super Depo Sutorejo</strong> pada tahun 2013. Super Depo Sutorejo, atau Tempat Pembuangan Sementara (TPS) Sutorejo, merupakan hasil kerja sama *Green Sister City* Surabaya-Kitakyushu melalui perusahaan Nishihara. Ini adalah fasilitas pengolahan limbah organik dan anorganik secara modern pertama di Surabaya, memungkinkan proses pemilahan sampah yang lebih efektif, efisien, dan higienis.</p>
+
+            <h4>c. Sister City DKI Jakarta dengan Kota-Kota di Dunia</h4>
+            <p>DKI Jakarta telah menjalin kerja sama *sister city* dengan setidaknya tiga kota besar dunia: Berlin (Jerman), Bangkok (Thailand), dan Kairo (Mesir). Sejak 1979, Jakarta telah memiliki kerja sama *sister city* dengan 18 kota lainnya di dunia. Kerja sama ini memberikan banyak manfaat bagi ibu kota.</p>
+            <ul>
+                <li><strong>Jakarta dan Berlin</strong>: Telah menjadi kota kembar selama lebih dari 25 tahun, dimulai tahun 1994. Fokus awal pada kebudayaan dan olahraga. Sejak 2016, fokus bergeser ke penghubungan ekosistem *startup* mereka melalui platform kolektif “Asia Berlin”.</li>
+                <li><strong>Jakarta dan Bangkok</strong>: Ditandatangani sejak tahun 2001. Salah satu program unggulan adalah pertukaran pelajar Bangkok-Jakarta, meskipun tertunda karena pandemi Covid-19. Diharapkan program ini dapat segera berlanjut pada 2022, memungkinkan pelajar saling berinteraksi dan belajar di sekolah dan komunitas yang ditentukan.</li>
+                <li><strong>Jakarta dan Kairo</strong>: Terjalin sejak tahun 2016. Kerja sama ini direncanakan untuk mengembangkan berbagai bidang, termasuk perdagangan dan investasi, perencanaan dan pengembangan kota, pariwisata dan budaya, pendidikan, kesehatan dan obat-obatan, olahraga dan kepemudaan, serta lingkungan dan pelestarian.</li>
+            </ul>
+            <p class="citation">(SINDOnews, 2022)</p>
+
+            <h4>d. Sister City Kota Makassar dengan Kota Gold Coast (Australia)</h4>
+            <p>Pemerintah Kota Makassar menandatangani MoU kerja sama *sister city* dengan Pemerintah Kota Gold Coast, Australia. Kedua belah pihak akan berkolaborasi dalam berbagai bidang. Melalui instansi terkait yang ditunjuk para pihak atau pihak swasta, kolaborasi ini akan dilanjutkan dalam satu atau lebih bidang kerja sama. Penandatanganan MoU ini dilakukan di Kota Gold Coast antara Wali Kota Makassar M. Iqbal Samad Suhaeb dan Wali Kota Gold Coast Mr. Cr. Tom Tate. Pasca-MoU, kerja sama akan langsung ditindaklanjuti dalam bidang <strong>pendidikan</strong> serta <strong>pengembangan investasi pariwisata dan kepulauan</strong>. Bidang kerja sama antara Pemkot Makassar dengan Pemerintah Gold Coast meliputi:</p>
+            <ul>
+                <li><strong>Lingkungan</strong>: Pengolahan limbah, pengembangan sistem pengelolaan pencemaran tanah, air, udara, dan kerusakan lingkungan akibat dampak pembangunan, serta sistem analisis dampak lingkungan.</li>
+                <li><strong>Pengembangan Ekonomi Kreatif</strong>: Promosi dagang, promosi budaya, dan pengembangan usaha kecil menengah.</li>
+                <li><strong>Peningkatan Kapasitas Sumber Daya Manusia</strong>: Pertukaran pelajar, pengembangan SDM untuk tenaga pendidik/guru atau pegawai negeri sipil, serta pengembangan pemuda dan olahraga.</li>
+                <li><strong>Pariwisata</strong>: Pengembangan sistem pariwisata terpadu, pengelolaan kawasan wisata, serta promosi pariwisata.</li>
+            </ul>
+        </section>
+
+        <div class="green-highlight-box">
+            <h3>Ayo, Berkebinekaan Global!</h3>
+            <p>Lakukan kegiatan belajar berikut untuk memperkaya perspektif global Anda:</p>
+            <ol>
+                <li>Ingat produk karya belajar atau proyek yang telah kalian lakukan sebelumnya. Ambillah inisiatif untuk berbagi (*sharing*) karya tersebut dengan mengirimkannya kepada teman di sekolah lain. Jika memungkinkan, bagikan juga kepada teman sekolah di daerah lain, provinsi lain, bahkan negara lain.</li>
+                <li>Mintalah pendapat atau komentar konstruktif dari teman yang telah menerima karya kalian tersebut untuk mendapatkan umpan balik yang beragam.</li>
+                <li>Konsultasikan gagasan baik tersebut dengan bapak/ibu guru kalian untuk mendapatkan bimbingan dan dukungan lebih lanjut.</li>
+            </ol>
+        </div>
+
+        <footer>
+            <p>Bab 3 - Dinamika Kerja Sama Antarnegara dan Pengaruhnya terhadap Ketahanan Wilayah Indonesia</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

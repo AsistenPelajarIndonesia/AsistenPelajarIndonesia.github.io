@@ -1,0 +1,471 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akuntansi: Persamaan Dasar Akuntansi - Bab 4 Ekonomi Kelas XII</title>
+    <style>
+        /* CSS Reset & Basic Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas); /* background_canvas */
+            color: var(--text-primary); /* text_primary */
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* Color Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 0.05em;
+        }
+        header p {
+            font-size: 1.1em;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        section h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+        section h3 {
+            color: var(--text-secondary);
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-green);
+            padding-left: 10px;
+        }
+        section h4 {
+            color: var(--text-tertiary);
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Accordion Styles */
+        .accordion {
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: background-color 0.4s, color 0.4s;
+            border-bottom: 1px solid var(--border-divider);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .accordion:hover {
+            background-color: #f5f5f5;
+        }
+        .accordion.active {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            box-shadow: none;
+        }
+        .accordion.active + .panel {
+            max-height: 1000px; /* Adjust as needed for content length */
+            padding: 0 18px 18px;
+            border: 1px solid var(--border-divider);
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .accordion:after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+            font-size: 1.5em;
+            transition: transform 0.4s ease;
+        }
+        .accordion.active:after {
+            content: "\2212"; /* Minus sign */
+            transform: rotate(180deg);
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            color: var(--text-secondary);
+        }
+        .panel p, .panel ul {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .panel ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            padding-left: 0;
+        }
+        .panel ul ul {
+            list-style-type: circle;
+            margin-left: 20px;
+        }
+
+        /* Key Terms & Emphasis */
+        .key-term {
+            font-weight: bold;
+            color: var(--primary-blue); /* Changed from accent-green for better contrast with primary text */
+            background-color: #e3f2fd; /* Light blue background */
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .highlight {
+            background-color: #e3f2fd; /* Light blue background for emphasis */
+            padding: 15px;
+            border-left: 5px solid var(--semantic-info);
+            margin: 15px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+        .equation {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.4em;
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border: 1px dashed var(--primary-blue);
+            margin: 20px 0;
+            border-radius: 8px;
+            color: var(--primary-blue);
+            box-shadow: inset 0 0 8px rgba(25, 118, 210, 0.1);
+        }
+
+        /* Lists */
+        ul.styled-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        ul.styled-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-divider);
+            color: var(--text-secondary);
+        }
+        ul.styled-list li:last-child {
+            border-bottom: none;
+        }
+        ul.styled-list li strong {
+            color: var(--primary-blue);
+            margin-right: 5px;
+        }
+        ul.styled-list li:before {
+            content: '• ';
+            color: var(--accent-green);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .panel ul li:before { /* Override for nested lists */
+            content: '';
+            width: 0;
+            margin-left: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            section h2 {
+                font-size: 1.5em;
+            }
+            section h3 {
+                font-size: 1.2em;
+            }
+            .accordion {
+                font-size: 1em;
+                padding: 15px;
+            }
+            .panel {
+                padding: 0 15px 15px;
+            }
+            .equation {
+                font-size: 1.2em;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            section {
+                padding: 15px;
+            }
+            section h2 {
+                font-size: 1.3em;
+            }
+            section h3 {
+                font-size: 1.1em;
+            }
+            .accordion {
+                font-size: 0.95em;
+                padding: 12px;
+            }
+            .panel {
+                padding: 0 12px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ekonomi Kelas XII</h1>
+        <p>BAB 4: Akuntansi - Persamaan Dasar Akuntansi</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>A. Persamaan Dasar Akuntansi</h2>
+            
+            <button class="accordion">1. Konsep Akuntansi</button>
+            <div class="panel">
+                <h3>Apa itu Akuntansi?</h3>
+                <p>Akuntansi adalah <span class="key-term">ilmu yang mencatat, menganalisis, dan mengomunikasikan transaksi atau kejadian ekonomi suatu entitas bisnis</span>. Tujuannya adalah untuk menghasilkan dan melaporkan informasi yang relevan bagi berbagai pihak yang berkepentingan dalam pengambilan keputusan.</p>
+                <p>Singkatnya, akuntansi dapat dipahami sebagai <span class="key-term">sistem informasi</span> yang menghasilkan laporan mengenai aktivitas ekonomi dan kondisi suatu badan usaha kepada pihak-pihak yang berkepentingan.</p>
+
+                <h3>Tiga Poin Penting Pengertian Akuntansi:</h3>
+                <ul class="styled-list">
+                    <li><strong>Proses:</strong> Mencakup aktivitas mencatat, menganalisis, dan mengomunikasikan transaksi ekonomi. Ini adalah serangkaian kegiatan sistematis yang dilakukan akuntan.</li>
+                    <li><strong>Produk:</strong> Hasil akhir dari proses akuntansi adalah <span class="key-term">laporan keuangan</span>. Laporan ini memberikan gambaran tentang kondisi finansial dan kinerja suatu entitas.</li>
+                    <li><strong>Tujuan & Peran:</strong> Informasi akuntansi digunakan sebagai dasar dalam <span class="key-term">pengambilan keputusan</span>. Oleh karena perannya yang krusial dalam dunia bisnis, akuntansi sering dijuluki sebagai <span class="key-term">"bahasa bisnis" (language of business)</span>.</li>
+                </ul>
+
+                <h3>Manfaat Akuntansi sebagai Bahasa Bisnis:</h3>
+                <ul class="styled-list">
+                    <li><strong>Penyedia Informasi Ekonomi:</strong> Akuntansi menyajikan data dan informasi ekonomi perusahaan yang esensial, menjadi fondasi kuat untuk setiap keputusan bisnis.</li>
+                    <li><strong>Gambaran Kondisi Perusahaan:</strong> Memungkinkan manajemen dan pihak berkepentingan lainnya untuk melihat dan membandingkan kondisi keuangan perusahaan dari satu periode ke periode berikutnya, membantu dalam analisis tren dan perencanaan.</li>
+                    <li><strong>Bentuk Pertanggungjawaban:</strong> Melalui laporan keuangan, perusahaan dapat menunjukkan transparansi dan akuntabilitas kepada berbagai pihak eksternal, seperti investor, kreditor, pemerintah, dan masyarakat umum.</li>
+                </ul>
+                <p>Individu atau profesional yang bekerja di bidang akuntansi disebut <span class="key-term">Akuntan</span>.</p>
+            </div>
+
+            <button class="accordion">2. Penggolongan Akun (Klasifikasi Akun)</button>
+            <div class="panel">
+                <p><span class="key-term">Akun</span>, sering juga disebut rekening atau perkiraan, adalah daftar sistematis yang digunakan untuk mencatat perubahan pada elemen-elemen keuangan utama perusahaan: aset, liabilitas, ekuitas, pendapatan, dan beban, akibat adanya transaksi keuangan. Singkatnya, akun adalah <span class="key-term">alat fundamental untuk mencatat dan mengorganisir transaksi</span>.</p>
+                
+                <h3>Dua Kelompok Akun Utama:</h3>
+
+                <h4>a. Akun Riil (Real Accounts)</h4>
+                <p>Akun riil adalah akun yang <span class="key-term">tercantum dalam Laporan Posisi Keuangan (Neraca)</span> pada akhir periode akuntansi. Akun-akun ini memiliki saldo yang terus berlanjut ke periode berikutnya (bersifat permanen) dan mencerminkan kondisi keuangan perusahaan pada suatu titik waktu tertentu.</p>
+                <ul class="styled-list">
+                    <li><strong>Aset (Assets):</strong>
+                        <p>Merupakan <span class="key-term">sumber daya yang dikuasai oleh entitas</span> sebagai hasil dari peristiwa masa lalu, dan dari mana manfaat ekonomi di masa depan diharapkan akan diperoleh. Dalam bahasa sederhana, aset adalah <span class="key-term">seluruh kekayaan yang dimiliki oleh perusahaan</span> yang dapat memberikan nilai ekonomi di masa mendatang.</p>
+                        <p><strong>Contoh Aset:</strong> Kas, Piutang Usaha, Perlengkapan, Peralatan, Kendaraan, Gedung/Bangunan, Tanah, Surat Berharga, Hak Paten, Goodwill, Sewa Dibayar Dimuka, Asuransi Dibayar Dimuka.</p>
+                    </li>
+                    <li><strong>Liabilitas (Liabilities):</strong>
+                        <p>Adalah <span class="key-term">kewajiban terkini entitas</span> yang timbul dari peristiwa masa lalu, dan penyelesaiannya diharapkan mengakibatkan arus keluar sumber daya entitas yang mengandung manfaat ekonomi. Ini adalah <span class="key-term">utang atau beban perusahaan kepada pihak lain</span>.</p>
+                        <p><strong>Contoh Liabilitas:</strong> Utang Usaha, Utang Dagang, Utang Hipotek, Utang Obligasi, Utang Bank, Pendapatan Diterima Dimuka (karena perusahaan masih memiliki kewajiban untuk memberikan jasa/barang di masa depan), Beban yang Masih Harus Dibayar (akrual).</p>
+                    </li>
+                    <li><strong>Ekuitas (Equity):</strong>
+                        <p>Merepresentasikan <span class="key-term">hak residual atas aset entitas setelah dikurangi liabilitasnya</span>. Ekuitas juga sering disebut <span class="key-term">modal</span>. Ini adalah sumber dana perusahaan yang berasal dari <span class="key-term">pemilik perusahaan atau pemegang saham</span>.</p>
+                        <p><strong>Contoh Ekuitas:</strong> Modal Pemilik, Prive (pengambilan pribadi oleh pemilik yang mengurangi ekuitas perusahaan).</p>
+                    </li>
+                </ul>
+
+                <h4>b. Akun Nominal (Nominal Accounts)</h4>
+                <p>Akun nominal adalah akun yang <span class="key-term">tercantum di Laporan Laba Rugi</span> pada akhir periode akuntansi. Akun-akun ini bersifat temporer dan saldonya akan ditutup pada akhir setiap periode akuntansi untuk memulai perhitungan baru di periode berikutnya.</p>
+                <ul class="styled-list">
+                    <li><strong>Pendapatan (Revenue):</strong>
+                        <p>Merupakan <span class="key-term">hasil yang diperoleh dari kegiatan usaha atau operasional</span> perusahaan yang pada akhirnya mengalir ke kas perusahaan. Pendapatan secara langsung <span class="key-term">meningkatkan ekuitas</span>.</p>
+                        <p><strong>Contoh Pendapatan:</strong> Pendapatan Jasa, Pendapatan Penjualan Barang, Pendapatan Usaha, Pendapatan Bunga, Laba Penjualan Aset.</p>
+                    </li>
+                    <li><strong>Beban (Expenses):</strong>
+                        <p>Adalah <span class="key-term">uang yang dikeluarkan oleh perusahaan</span> untuk menunjang kegiatan operasionalnya. Beban secara langsung <span class="key-term">mengurangi ekuitas</span>.</p>
+                        <p><strong>Contoh Beban:</strong> Beban Gaji, Beban Sewa, Beban Asuransi, Beban Bunga, Beban Listrik/Air/Telepon, Biaya yang Masih Harus Dibayar, Beban Penyusutan.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="accordion">3. Sumber Pencatatan Transaksi (Bukti Transaksi)</button>
+            <div class="panel">
+                <p>Setiap pencatatan transaksi keuangan dalam akuntansi harus didasarkan pada <span class="key-term">dokumen sumber</span> yang sah, yang dikenal sebagai <span class="key-term">bukti transaksi</span>. Bukti transaksi sangat fundamental karena berfungsi sebagai bukti legal yang dapat dipertanggungjawabkan atas setiap peristiwa ekonomi yang terjadi.</p>
+
+                <h3>Jenis Bukti Transaksi:</h3>
+                <ul class="styled-list">
+                    <li><strong>Bukti Internal:</strong>
+                        <p>Merupakan bukti transaksi yang <span class="key-term">dihasilkan dari dalam perusahaan itu sendiri</span>. Bukti ini umumnya digunakan untuk mengesahkan transaksi internal atau komunikasi resmi antar departemen.</p>
+                        <p><strong>Contoh:</strong> <span class="key-term">Memo</span> (surat internal yang dikeluarkan oleh pimpinan atau pihak yang memiliki wewenang untuk mencatat transaksi atau instruksi).</p>
+                    </li>
+                    <li><strong>Bukti Eksternal:</strong>
+                        <p>Merupakan bukti transaksi yang <span class="key-term">bersumber dari transaksi dengan pihak luar perusahaan</span>. Bukti ini penting untuk memverifikasi transaksi dengan entitas lain.</p>
+                        <p><strong>Contoh-contoh Bukti Eksternal:</strong></p>
+                        <ul>
+                            <li><span class="key-term">Kuitansi:</span> Surat bukti yang sah atas <span class="key-term">penerimaan uang tunai</span> untuk suatu pembayaran atau transaksi.</li>
+                            <li><span class="key-term">Cek:</span> Surat perintah tertulis dari pihak yang memiliki rekening bank kepada bank untuk <span class="key-term">memindahkan sejumlah uang</span> kepada pihak lain atau pembawa.</li>
+                            <li><span class="key-term">Nota Kontan:</span> Bukti transaksi yang dikeluarkan oleh penjual kepada pembeli sebagai bukti atas transaksi <span class="key-term">jual beli secara tunai</span>.</li>
+                            <li><span class="key-term">Faktur:</span> Bukti transaksi yang dikeluarkan oleh penjual kepada pembeli untuk transaksi <span class="key-term">jual beli secara kredit</span> (menimbulkan piutang bagi penjual dan utang bagi pembeli).</li>
+                            <li><span class="key-term">Nota Debet:</span> Bukti transaksi yang dikeluarkan oleh <span class="key-term">pembeli</span> ketika mengembalikan barang yang telah dibeli (retur pembelian) karena alasan seperti kerusakan atau ketidaksesuaian pesanan.</li>
+                            <li><span class="key-term">Nota Kredit:</span> Bukti transaksi yang dikeluarkan oleh <span class="key-term">penjual</span> ketika menerima pengembalian barang dari pembeli (retur penjualan).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="accordion">4. Konsep Persamaan Dasar Akuntansi</button>
+            <div class="panel">
+                <p>Mempelajari <span class="key-term">persamaan dasar akuntansi</span> adalah langkah fundamental dalam memahami bagaimana transaksi keuangan dicatat dan dilaporkan. Ini adalah sistematika pencatatan yang menggambarkan <span class="key-term">hubungan dasar antara aset (harta) perusahaan dengan sumber pendanaannya (utang dan modal)</span>.</p>
+
+                <div class="highlight">
+                    <p>Prinsip inti dari persamaan dasar akuntansi adalah <span class="key-term">keseimbangan</span>: total nilai <span class="key-term">Aktiva (Aset)</span> perusahaan harus selalu sama dengan total nilai <span class="key-term">Pasiva (Liabilitas + Ekuitas)</span>.</p>
+                </div>
+
+                <h3>Bentuk Persamaan Dasar Akuntansi:</h3>
+                <div class="equation">
+                    Aset &nbsp;= &nbsp;Liabilitas &nbsp;+ &nbsp;Ekuitas
+                </div>
+                <p>Penjelasan elemen-elemennya:</p>
+                <ul class="styled-list">
+                    <li><strong>Aset (Aktiva):</strong> Merujuk pada semua kekayaan atau sumber daya yang dimiliki dan dikendalikan oleh perusahaan.</li>
+                    <li><strong>Liabilitas (Utang):</strong> Merujuk pada kewajiban perusahaan kepada pihak ketiga (misalnya pemasok, bank) yang harus dilunasi di masa depan.</li>
+                    <li><strong>Ekuitas (Modal):</strong> Merujuk pada hak kepemilikan pemilik atas aset perusahaan setelah dikurangi semua liabilitas. Ini adalah investasi bersih dari pemilik.</li>
+                </ul>
+                <p>Persamaan ini secara sederhana menunjukkan dari mana dana perusahaan berasal (utang atau modal sendiri) dan bagaimana dana tersebut dialokasikan dalam bentuk aset.</p>
+
+                <h3>Bentuk Persamaan Dasar Akuntansi yang Diperluas:</h3>
+                <p>Untuk mencerminkan dampak operasional perusahaan (pendapatan dan beban) terhadap ekuitas, persamaan dasar akuntansi dapat diperluas sebagai berikut:</p>
+                <div class="equation">
+                    Aset &nbsp;= &nbsp;Liabilitas &nbsp;+ &nbsp;Ekuitas &nbsp;+ &nbsp;Pendapatan &nbsp;- &nbsp;Beban
+                </div>
+                <p>Dalam bentuk yang diperluas ini:</p>
+                <ul class="styled-list">
+                    <li><span class="key-term">Pendapatan</span> akan <span class="key-term">meningkatkan Ekuitas</span>.</li>
+                    <li><span class="key-term">Beban</span> akan <span class="key-term">mengurangi Ekuitas</span>.</li>
+                </ul>
+                <p>Ini menunjukkan bagaimana aktivitas menghasilkan pendapatan akan menambah kekayaan pemilik, sementara biaya operasional akan menguranginya, tetapi keseimbangan persamaan dasar akuntansi harus tetap terjaga.</p>
+            </div>
+
+            <button class="accordion">5. Analisis Transaksi dalam Persamaan Dasar Akuntansi</button>
+            <div class="panel">
+                <p>Setiap transaksi keuangan yang terjadi dalam suatu perusahaan akan memiliki <span class="key-term">pengaruh langsung terhadap setidaknya dua akun</span> dalam persamaan dasar akuntansi. Penting untuk diingat bahwa setelah setiap transaksi, <span class="key-term">keseimbangan antara sisi Aset dan sisi Liabilitas + Ekuitas harus selalu terjaga</span>.</p>
+
+                <h3>Jenis-jenis Pengaruh Transaksi Umum:</h3>
+                <ul class="styled-list">
+                    <li><strong>Perubahan Aset diiringi Perubahan Aset Lain:</strong>
+                        <p>Dalam transaksi ini, satu jenis aset akan <span class="key-term">bertambah</span>, dan jenis aset lainnya akan <span class="key-term">berkurang</span> dengan jumlah yang sama. Total nilai aset perusahaan tidak berubah. <br><strong>Contoh:</strong> Pembelian perlengkapan atau peralatan secara tunai (Perlengkapan/Peralatan <span class="key-term">bertambah</span>, Kas <span class="key-term">berkurang</span>).</p>
+                    </li>
+                    <li><strong>Perubahan Aset diiringi Perubahan Liabilitas:</strong>
+                        <p>Transaksi ini menyebabkan aset dan liabilitas <span class="key-term">bertambah atau berkurang</span> secara bersamaan dengan jumlah yang sama. Ekuitas tidak terpengaruh. <br><strong>Contoh:</strong></p>
+                        <ul>
+                            <li>Pembelian perlengkapan atau peralatan secara <span class="key-term">kredit</span> (Perlengkapan/Peralatan <span class="key-term">bertambah</span>, Utang Usaha <span class="key-term">bertambah</span>).</li>
+                            <li>Peminjaman uang dari bank (Kas <span class="key-term">bertambah</span>, Utang Bank <span class="key-term">bertambah</span>).</li>
+                            <li>Pembayaran utang (Kas <span class="key-term">berkurang</span>, Utang <span class="key-term">berkurang</span>).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Perubahan Aset diiringi Perubahan Ekuitas:</strong>
+                        <p>Pada jenis transaksi ini, aset dan ekuitas akan <span class="key-term">bertambah atau berkurang</span> secara bersamaan dengan jumlah yang sama. Liabilitas tidak terpengaruh. <br><strong>Contoh:</strong></p>
+                        <ul>
+                            <li><span class="key-term">Investasi awal pemilik:</span> Ketika pemilik menyetorkan dana atau aset ke perusahaan (Kas/Aset lain <span class="key-term">bertambah</span>, Modal/Ekuitas <span class="key-term">bertambah</span>).</li>
+                            <li><span class="key-term">Penerimaan pendapatan:</span> Ketika perusahaan menerima pembayaran atas jasa atau barang yang telah diberikan (Kas <span class="key-term">bertambah</span>, Pendapatan <span class="key-term">bertambah</span> yang pada gilirannya <span class="key-term">meningkatkan Ekuitas</span>).</li>
+                            <li><span class="key-term">Pembayaran beban:</span> Ketika perusahaan membayar biaya operasional (Kas <span class="key-term">berkurang</span>, Beban <span class="key-term">bertambah</span> yang pada gilirannya <span class="key-term">mengurangi Ekuitas</span>).</li>
+                            <li><span class="key-term">Pengambilan pribadi (Prive):</span> Ketika pemilik mengambil uang tunai atau aset perusahaan untuk kepentingan pribadinya (Kas <span class="key-term">berkurang</span>, Prive <span class="key-term">bertambah</span> yang pada gilirannya <span class="key-term">mengurangi Ekuitas</span>).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Pelunasan Piutang:</strong>
+                        <p>Ketika pelanggan membayar tagihannya, ini memengaruhi dua akun aset: Kas <span class="key-term">bertambah</span>, dan Piutang Usaha <span class="key-term">berkurang</span>. Total aset tetap, dan tidak ada pengaruh pada liabilitas atau ekuitas.</p>
+                    </li>
+                </ul>
+
+                <div class="highlight">
+                    <p>Setiap transaksi, tidak peduli seberapa kompleksnya, harus selalu menjaga <span class="key-term">keseimbangan</span> persamaan dasar akuntansi. Ini adalah pondasi dari seluruh sistem pencatatan akuntansi.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // JavaScript for Accordion Functionality
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                // Toggle the 'active' class on the clicked accordion button
+                this.classList.toggle("active");
+
+                // Get the panel element which is the next sibling of the button
+                var panel = this.nextElementSibling;
+
+                // Check if the panel is currently open (has a maxHeight value)
+                if (panel.style.maxHeight) {
+                    // If open, close it by setting maxHeight to null (or '0px')
+                    panel.style.maxHeight = null;
+                    panel.style.paddingTop = '0px'; // Remove padding when closing
+                    panel.style.paddingBottom = '0px'; // Remove padding when closing
+                } else {
+                    // If closed, open it by setting maxHeight to its scrollHeight
+                    // scrollHeight is the minimum height required to fit all content
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    panel.style.paddingTop = '18px'; // Add padding when opening
+                    panel.style.paddingBottom = '18px'; // Add padding when opening
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+```

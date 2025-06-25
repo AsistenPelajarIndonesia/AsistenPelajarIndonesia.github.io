@@ -1,0 +1,319 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonansi Rangkaian RLC - Arus Bolak-Balik</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1);
+            padding: 10px 15px;
+            border-left: 4px solid var(--primary-blue);
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .formula {
+            display: block;
+            text-align: center;
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px dashed var(--border-divider);
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.3em;
+            color: var(--primary-blue);
+            line-height: 1.8;
+            overflow-x: auto; /* For long formulas */
+        }
+
+        .formula span {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .concept-box {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .concept-box:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 2px 10px rgba(25, 118, 210, 0.2);
+        }
+
+        .concept-box h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .concept-box ul {
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+
+        .concept-box li {
+            margin-bottom: 8px;
+        }
+
+        .example {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-size: 1.1em;
+        }
+
+        .example p {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .example p:last-child {
+            margin-bottom: 0;
+        }
+
+        .interactive-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            background-color: var(--border-divider);
+            border-radius: 8px;
+            color: var(--text-tertiary);
+            font-style: italic;
+            text-align: center;
+            margin: 25px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-placeholder:hover {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            border-color: var(--secondary-accent-amber);
+        }
+
+        .key-takeaway {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-size: 1.1em;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(56, 142, 60, 0.3);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .formula {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            .formula {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .concept-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Resonansi pada Rangkaian RLC</h1>
+
+        <p>Dalam dunia kelistrikan arus bolak-balik (AC), fenomena resonansi pada rangkaian RLC (Resistor-Induktor-Kapasitor) memegang peranan krusial. Prinsip ini mendasari cara kerja berbagai perangkat elektronik, mulai dari radio hingga sistem telekomunikasi.</p>
+
+        <h2>Memahami Konsep Resonansi</h2>
+
+        <div class="concept-box">
+            <h4>Apa itu Resonansi?</h4>
+            <p>Secara umum, resonansi terjadi ketika sebuah sistem bergetar dengan amplitudo maksimum ketika diberi gaya atau frekuensi yang sama dengan frekuensi alamiah sistem tersebut. Dalam konteks rangkaian listrik AC, resonansi terjadi ketika frekuensi sumber tegangan AC sama dengan frekuensi karakteristik rangkaian RLC.</p>
+            <p>Pada rangkaian RLC seri, resonansi dicapai ketika reaktansi induktif ($X_L$) sama dengan reaktansi kapasitif ($X_C$). Pada kondisi ini, impedansi total rangkaian menjadi minimum, hanya bernilai sebesar resistansi ($R$), sehingga arus yang mengalir dalam rangkaian mencapai nilai maksimumnya.</p>
+        </div>
+
+        <h3>Faktor-faktor yang Mempengaruhi</h3>
+
+        <p>Resonansi pada rangkaian RLC sangat dipengaruhi oleh nilai induktansi ($L$) dari induktor dan kapasitansi ($C$) dari kapasitor. Resistansi ($R$) dalam rangkaian tidak mempengaruhi frekuensi resonansi itu sendiri, namun sangat berpengaruh terhadap besarnya arus pada saat resonansi (lebar pita resonansi).</p>
+
+        <div class="highlight">
+            <p><strong>Hubungan antara Reaktansi Induktif dan Kapasitif:</strong></p>
+            <p>Reaktansi induktif ($X_L$) berbanding lurus dengan frekuensi sudut ($\omega$):</p>
+            <div class="formula">
+                <span>$X_L = \omega L$</span>
+            </div>
+            <p>Sementara reaktansi kapasitif ($X_C$) berbanding terbalik dengan frekuensi sudut ($\omega$):</p>
+            <div class="formula">
+                <span>$X_C = \frac{1}{\omega C}$</span>
+            </div>
+        </div>
+
+        <h3>Menemukan Frekuensi Resonansi</h3>
+
+        <p>Pada kondisi resonansi, berlaku:</p>
+        <div class="formula">
+            <span>$X_L = X_C$</span>
+            <br>
+            <span>$\omega L = \frac{1}{\omega C}$</span>
+            <br>
+            <span>$\omega^2 = \frac{1}{LC}$</span>
+            <br>
+            <span>$\omega = \sqrt{\frac{1}{LC}}$</span>
+        </div>
+
+        <p>Karena frekuensi sudut ($\omega$) berhubungan dengan frekuensi linear ($f$) melalui persamaan $\omega = 2 \pi f$, maka frekuensi resonansi ($f_r$) dapat dirumuskan sebagai:</p>
+
+        <div class="formula">
+            <span>$f_r = \frac{\omega}{2 \pi} = \frac{1}{2 \pi \sqrt{LC}}$</span>
+            <span style="font-size: 0.8em;">(Persamaan 4-20)</span>
+        </div>
+
+        <p>Rumus ini menunjukkan bahwa frekuensi resonansi berbanding terbalik dengan akar kuadrat dari hasil kali induktansi dan kapasitansi.</p>
+
+        <div class="concept-box">
+            <h4>Karakteristik Rangkaian saat Resonansi</h4>
+            <ul>
+                <li><strong>Impedansi Minimum:</strong> $Z = R$</li>
+                <li><strong>Arus Maksimum:</strong> $I_{maks} = \frac{V}{R}$</li>
+                <li><strong>Resistor, Induktor, dan Kapasitor:</strong> Pada saat resonansi, tegangan pada resistor, induktor, dan kapasitor memiliki nilai yang berbeda, namun fasenya berada pada titik yang saling mengkompensasi sehingga menghasilkan arus maksimum.</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <h4>Ilustrasi dalam Radio</h4>
+            <p>Bayangkan sebuah radio yang sedang mencari siaran stasiun. Stasiun radio memancarkan sinyal pada frekuensi tertentu. Agar radio dapat menangkap sinyal tersebut, rangkaian internal radio yang terdiri dari induktor dan kapasitor variabel harus diatur sedemikian rupa sehingga frekuensi resonansinya sama dengan frekuensi siaran yang diinginkan. Dengan mengubah nilai kapasitansi (menggunakan kapasitor variabel), radio dapat "disetel" untuk beresonansi pada frekuensi siaran yang berbeda-beda, seperti 90 MHz atau 105 MHz.</p>
+        </div>
+
+        <h3>Penerapan Lainnya</h3>
+
+        <p>Prinsip resonansi tidak hanya terbatas pada radio. Fenomena ini juga penting dalam:</p>
+        <ul>
+            <li><strong>Sistem Pemancar dan Penerima Sinyal:</strong> Memastikan transmisi dan penerimaan sinyal yang efisien.</li>
+            <li><strong>Filter Elektronik:</strong> Digunakan untuk melewatkan frekuensi tertentu sambil menahan frekuensi lainnya.</li>
+            <li><strong>Alat Ukur:</strong> Seperti pada alat BIA (Bioelectrical Impedance Analysis) dan mikrofon (speaker telepon) yang memanfaatkan resonansi untuk mendeteksi perubahan atau mengkonversi energi.</li>
+        </ul>
+
+        <div class="interactive-placeholder">
+            <p>Bayangkan Anda dapat bereksperimen secara virtual dengan rangkaian RLC dan melihat bagaimana perubahan nilai L dan C mempengaruhi frekuensi resonansi. Anda bisa mengunjungi simulasi online untuk memahami konsep ini lebih dalam!</p>
+        </div>
+
+        <div class="key-takeaway">
+            <p><strong>Inti dari Resonansi Rangkaian RLC:</strong> Mencapai kondisi di mana reaktansi induktif dan kapasitif saling meniadakan, menghasilkan impedansi minimum dan arus maksimum pada frekuensi sumber tertentu yang dikenal sebagai frekuensi resonansi.</p>
+        </div>
+
+    </div>
+</body>
+
+</html>
+```

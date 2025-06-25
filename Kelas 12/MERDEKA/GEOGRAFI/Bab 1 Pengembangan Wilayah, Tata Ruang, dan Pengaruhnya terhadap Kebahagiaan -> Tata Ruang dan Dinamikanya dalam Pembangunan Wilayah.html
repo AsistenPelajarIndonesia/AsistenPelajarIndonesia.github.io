@@ -1,0 +1,373 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tata Ruang dan Dinamikanya dalam Pembangunan Wilayah</title>
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: #FFFFFF; /* Ensure content background is white */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            margin-top: 35px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-left: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        ul ul {
+            list-style-type: circle;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        .highlight-box {
+            background-color: #f0f8ff; /* Light blue background */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .tautan-box {
+            background-color: #e8f5e9; /* Very light green */
+            border-left-color: var(--accent-green);
+        }
+
+        .diskusi-box {
+            background-color: #fffde7; /* Very light amber */
+            border-left-color: var(--secondary-accent-amber);
+        }
+
+        .box-title {
+            font-weight: bold;
+            color: var(--accent-green); /* For Tautan */
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .diskusi-box .box-title {
+            color: var(--secondary-accent-amber); /* For Diskusi */
+        }
+
+        .box-title::before {
+            content: "💡"; /* Unicode for lightbulb */
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        .diskusi-box .box-title::before {
+            content: "🤔"; /* Unicode for thinking face */
+        }
+
+        .link-container {
+            background-color: #ffffff;
+            border: 1px solid var(--border-divider);
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .link-container a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            word-break: break-all; /* Ensures long URLs wrap */
+        }
+
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            h4 {
+                font-size: 1em;
+            }
+            ul {
+                margin-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 5px;
+            }
+            h1 {
+                font-size: 1.5em;
+                text-align: left;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+                padding-left: 8px;
+            }
+            h4 {
+                font-size: 0.95em;
+                margin-left: 10px;
+            }
+            .highlight-box {
+                padding: 10px 15px;
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C. Tata Ruang dan Dinamikanya dalam Pembangunan Wilayah</h1>
+
+        <h2>1. Pengertian dan Konsep Penataan Ruang</h2>
+        <p>Dalam kehidupan sehari-hari di rumah, kalian tentu berada di dalam ruang. Ada ruang tamu, ruang keluarga, ruang istirahat, dan mungkin ruang lainnya. Batas-batas ruang tersebut tampak begitu jelas, berupa lantai, dinding, dan atap. Namun, begitu keluar rumah, kalian berada dalam ruang terbuka dengan batas-batas yang tidak begitu jelas lagi. Misalnya ada ruang RT, RW, desa/kelurahan, kecamatan, kabupaten/kota, provinsi, dan negara yang semakin abstrak batas-batas ruangnya. Tidak ada lagi batas lantai, dinding, dan atap yang membatasi sebelah kanan dan kiri, apalagi batas atasnya hingga langit yang tak terhingga batasnya. Itulah gambaran ruang, yaitu bagian dari permukaan bumi yang digunakan untuk aktivitas manusia dengan batas-batas tertentu.</p>
+        <p>Konsep tata ruang tidak dapat dipisahkan dari aspek ruang itu sendiri. Sebagai objek dari tata ruang, <strong>ruang (<em>space</em>)</strong> memiliki arti penting sebagai satu kesatuan tempat hidup bagi manusia dan juga sumber daya alam yang terkandung di dalamnya. Mangunsukarjo (1990) mendefinisikan ruang sebagai bagian dari lingkungan fisik yang memiliki dimensi geografis dan geometris sehingga batasan kenampakan ruang dapat dilihat dan diukur, baik secara vertikal maupun horizontal.</p>
+        <p>Istilah ruang secara tersurat mencakup wilayah darat, laut, dan udara sehingga penataan ruang harus menjangkau ketiga dimensi tersebut secara menyeluruh. <strong>Penataan ruang</strong> diartikan sebagai kegiatan pemanfaatan dan pengelolaan ruang secara optimal untuk meningkatkan kesejahteraan hidup masyarakat. Undang-Undang Nomor 26 Tahun 2007 tentang Penataan Ruang juga telah menegaskan bahwa istilah penataan ruang merujuk pada kegiatan perencanaan, pemanfaatan, dan pengendalian pemanfaatan ruang yang dapat diuraikan sebagai berikut:</p>
+
+        <h3>a. Perencanaan Tata Ruang</h3>
+        <p>Perencanaan tata ruang merupakan kegiatan yang meliputi pengaturan, pembinaan, pelaksanaan, dan pengawasan penataan ruang. Penyelenggaraan penataan ruang bertujuan mewujudkan ruang wilayah yang aman, nyaman, produktif, dan berkelanjutan berlandaskan wawasan nusantara dan ketahanan nasional. Selanjutnya mewujudkan keharmonisan antara lingkungan alam dan lingkungan buatan, keterpaduan dalam penggunaan sumber daya alam dan sumber daya buatan dengan memperhatikan sumber daya manusia, serta melindungi fungsi ruang dan pencegahan dampak negatif terhadap lingkungan.</p>
+
+        <h3>b. Pemanfaatan Ruang</h3>
+        <p>Pemanfaatan ruang merupakan usaha untuk mewujudkan struktur ruang dan pola ruang sesuai dengan rencana tata ruang berdasarkan penyusunan dan pelaksanaan program beserta pembiayaannya. Pemanfaatan ruang mengacu pada fungsi ruang yang ditetapkan dalam rencana tata ruang yang dilaksanakan dengan mengembangkan penatagunaan tanah, penatagunaan air, penatagunaan udara, dan penatagunaan sumber daya alam lain. Pemanfaatan ruang dalam wilayah nasional, provinsi, dan kabupaten/kota dapat dilaksanakan sesuai dengan standar pelayanan minimal bidang penataan ruang, kualitas lingkungan, serta daya dukung dan daya tampung lingkungan hidup.</p>
+
+        <h3>c. Pengendalian Pemanfaatan Ruang</h3>
+        <p>Pengendalian pemanfaatan ruang diselenggarakan melalui kegiatan pengawasan dan penertiban terhadap pemanfaatan ruang. Persoalan penataan ruang pada dasarnya berakar pada bagaimana pelaksanaan pembangunan dilakukan. Dalam pelaksanaan pembangunan suatu kawasan sering kali tidak sejalan dengan rencana tata ruang yang telah disusun dan menjadikan keduanya sebagai suatu hal yang bertentangan (Sutaryono et al., 2020).</p>
+
+        <h3>d. Pengendalian Ketertiban</h3>
+        <p>Ketidaksesuaian antara rencana tata ruang yang telah disusun dengan pelaksanaan pembangunan ini membutuhkan apa yang disebut dengan pengendalian. Melalui pengendalian ini diharapkan mewujudkan ketertiban tata kelola ruang. Kegiatan ini dilakukan dalam rangka memastikan bahwa proses pemanfaatan ruang telah sesuai dengan rencana tata ruang yang berlaku.</p>
+
+        <h2>2. Asas-Asas Penataan Ruang</h2>
+        <p>Dalam penataan ruang diperlukan asas-asas sebagai landasan bekerja agar tujuan dapat tercapai. Menurut Undang-Undang No. 26 Tahun 2007, ada 14 asas penataan ruang, yaitu keterpaduan, keserasian, keselarasan, keseimbangan, keberlanjutan, keberdayagunaan dan keberhasilgunaan, keterbukaan, kebersamaan dan kemitraan, perlindungan kepentingan umum, kepastian hukum dan keadilan, serta akuntabilitas. Secara terbatas ke 14 asas tersebut diuraikan sebagai berikut:</p>
+
+        <h4>a. Keterpaduan</h4>
+        <p>Perencanaan tata ruang berperan penting dalam memfasilitasi keterpaduan kebijakan melalui strategi keruangan. Keterpaduan di antara berbagai tingkat pemerintahan, baik yang bersifat lintas sektor, lintas wilayah, dan lintas pemangku kepentingan mampu membantu menciptakan penguatan saling melengkapi di antara berbagai kebijakan dan kegiatan. Hal ini juga dapat mengurangi dampak negatif dari persaingan di antara pemerintah daerah.</p>
+
+        <h4>b. Keserasian, Keselarasan, dan Keseimbangan</h4>
+        <p>Penataan ruang diselenggarakan dengan memperhatikan keserasian antara struktur ruang dan pola ruang sehingga dapat terwujud pemanfaatan yang sesuai dengan rencana tata ruang wilayah yang telah ditetapkan. Selain itu, diperlukan juga keselarasan antara kehidupan manusia dengan lingkungannya sebab sumber daya alam terbatas. Sebagai wadah, ruang terbatas pada besaran wilayahnya, sedangkan sebagai sumber daya terbatas pada daya dukungnya. Oleh karena itu, pemanfaatan ruang perlu ditata dengan memperhatikan kedua aspek tersebut agar tidak terjadi pemborosan dan penurunan kualitas ruang. Dengan demikian, dapat mewujudkan ruang yang aman, nyaman, produktif, dan berkelanjutan.</p>
+        <p>Selanjutnya, prinsip keseimbangan pertumbuhan dan perkembangan antardaerah serta antara kawasan perkotaan dan kawasan perdesaan. Dalam strategi ini, kota dan desa tidak lagi dilihat sebagai dua hal yang terpisah, tetapi perlu adanya keterkaitan antara kota dan desa dalam pengembangan wilayah. Kota dan desa merupakan suatu kesatuan yang utuh sehingga dalam upaya pengembangan wilayah tidak dapat dipisahkan satu sama lain. Kunci utama keberhasilan strategi keterkaitan desa-kota adalah pengoptimalan peran dan fungsi kota dan desa dalam pengembangan wilayah (BPSDM, 2015). Kota memiliki peran sebagai <strong><em>market center</em></strong> (pusat pemasaran) hasil pertanian desa dan pendistribusian hasil pertanian ke wilayah lain.</p>
+
+        <h4>c. Keberlanjutan</h4>
+        <p>Keberlanjutan akan terjadi apabila penataan ruang diselenggarakan dengan menjamin kelestarian dan kelangsungan daya dukung dan daya tampung lingkungan, juga memperhatikan kepentingan generasi mendatang. Konsep ini menitikberatkan pada pembangunan berwawasan jangka panjang, yang meliputi jangka waktu antargenerasi dan berupaya menyediakan sumber daya yang cukup dan lingkungan yang sehat sehingga dapat mendukung kehidupan.</p>
+
+        <h4>d. Keberdayagunaan dan Keberhasilgunaan</h4>
+        <p>Penataan ruang diselenggarakan dengan mengoptimalkan manfaat ruang dan sumber daya yang terkandung di dalamnya serta menjamin terwujudnya tata ruang yang berkualitas. Hal ini pada dasarnya diupayakan agar mampu mewujudkan pemanfaatan ruang yang berhasil guna dan berdaya guna serta mampu mendukung pengelolaan lingkungan hidup yang berkelanjutan. Selain itu, agar tidak terjadi pemborosan pemanfaatan ruang dan tidak menyebabkan terjadinya penurunan kualitas ruang.</p>
+
+        <h4>e. Keterbukaan</h4>
+        <p>Penataan ruang diselenggarakan dengan memberikan akses yang seluas-luasnya kepada masyarakat untuk mendapatkan informasi yang berkaitan dengan penataan ruang sehingga masyarakat memahami seluruh pertimbangan pengambilan keputusan. Masyarakat seharusnya mempunyai akses terhadap informasi terkait rancangan usulan dan kebijakan, termasuk juga kepada para pengambil keputusan. Masyarakat sewajarnya dapat mengomentari bahkan mengajukan keberatan secara formal.</p>
+
+        <h4>f. Kebersamaan dan Kemitraan</h4>
+        <p>Penataan ruang diselenggarakan dengan melibatkan seluruh pemangku kepentingan. Peluncuran Undang-Undang Cipta Kerja berikut Peraturan Pemerintah Nomor 21 Tahun 2021 tentang Penyelenggaraan Penataan Ruang, membawa angin segar terhadap upaya pelibatan masyarakat dalam penyelenggaraan penataan ruang di Indonesia. Terutama dengan tercantumnya Forum Penataan Ruang (FPR) sebagai pengganti Tim Koordinasi Penataan Ruang Daerah (TKPRD) yang selama ini hanya berisikan para birokrat (Mungkasa, 2022). FPR nantinya beranggotakan tidak hanya birokrat, tetapi juga akademisi dan asosiasi terkait penataan ruang, termasuk tokoh masyarakat. Diharapkan FPR menjadi wadah kolaborasi pemangku kepentingan penyelenggaraan penataan ruang di Indonesia sehingga tahapan tokenisme saat ini dapat meningkat menjadi kemitraan.</p>
+
+        <h4>g. Perlindungan Kepentingan Umum</h4>
+        <p>Penataan ruang diselenggarakan dengan mengutamakan kepentingan masyarakat. Prinsip ini dimaksudkan agar masyarakat sebagai pihak yang paling terkena akibat penataan ruang harus dilindungi dari berbagai tekanan dan paksaan pembangunan yang dilegitimasi oleh birokrasi yang sering tidak dipahaminya. Masyarakat juga bagian dari rakyat Indonesia yang sepatutnya mendapat perlindungan hak asasi manusia yang dapat dirumuskan dalam perencanaan tata ruang. Hak asasi tersebut contohnya hak memiliki rasa aman terhadap keberlanjutan ekonomi, hak untuk mendapatkan pelayanan kesehatan dan pendidikan, serta hak untuk mendapatkan rasa aman terhadap bencana.</p>
+
+        <h4>h. Kepastian Hukum dan Keadilan</h4>
+        <p>Penataan ruang diselenggarakan dengan berlandaskan hukum/ketentuan peraturan perundang-undangan. Penataan ruang dilaksanakan dengan mempertimbangkan rasa keadilan masyarakat serta melindungi hak dan kewajiban semua pihak secara adil dengan jaminan kepastian hukum.</p>
+
+        <h4>i. Akuntabilitas</h4>
+        <p>Penataan ruang harus dapat dipertanggungjawabkan, baik prosesnya, pembiayaannya, maupun hasilnya. Hal ini dijamin dalam Pasal 55 UU Penataan Ruang, bahwa bilamana penataan ruang mengalami penyimpangan dari pedoman yang telah ditetapkan, maka diberlakukan sanksi administratif, perdata, dan pidana (Romi, 2011).</p>
+
+        <div class="highlight-box diskusi-box">
+            <div class="box-title">Ayo, Berdiskusi!</div>
+            <p>Dalam penataan ruang terdapat asas keterpaduan, keberlanjutan, dan keberhasilgunaan. Ini adalah kesempatan untuk mendiskusikan penerapannya di wilayah kalian dan kendala-kendala yang mungkin dihadapi.</p>
+        </div>
+
+        <h2>3. Strategi Penataan Ruang</h2>
+        <p>Untuk mewujudkan penataan ruang yang baik, perlu strategi yang baik pula. Strategi pelaksanaan penataan ruang diselenggarakan dengan memperhatikan beberapa pertimbangan khusus, yaitu sebagai berikut.</p>
+
+        <h3>a. Kondisi wilayah Indonesia yang rawan bencana</h3>
+        <p>Pengurangan risiko bencana banjir tidak hanya dilakukan dengan pembangunan dan pengaturan bangunan sarana dan prasarana saja. Sesuai dengan UU No. 26 Tahun 2007 tentang Penataan Ruang, Negara Kesatuan Republik Indonesia (NKRI) yang berada pada kawasan rawan bencana memerlukan penataan ruang yang berbasis mitigasi bencana sebagai upaya meningkatkan keselamatan dan kenyamanan kehidupan serta menjaga kelestarian lingkungan (BNPB, 2016).</p>
+
+        <h3>b. Potensi sumber daya manusia, sumber daya alam, dan sumber daya buatan</h3>
+        <p>Dengan adanya tujuan untuk mewujudkan keterpaduan berbagai sumber daya, maka sebagai implikasinya, proses penataan ruang perlu mempertimbangkan aspek-aspek yang menyangkut berbagai kewenangan di berbagai tingkat pemerintahan, seperti kewenangan antara pusat, daerah provinsi, dan daerah kabupaten/kota. Ini berarti bahwa produk tata ruang wilayah tidak lagi hanya dilihat sebagai sesuatu yang statis, tetapi luwes dan fleksibel, serta tetap tegas dan jelas dalam asasnya agar dapat mengantisipasi dinamika perkembangan masyarakat di masing-masing wilayah.</p>
+
+        <h3>c. Geostrategi</h3>
+        <p>Geostrategi merupakan rumusan strategi nasional dengan memperhitungkan kondisi dan konstelasi geografi sebagai faktor utama. Dalam merumuskan geostrategi perlu memperhatikan berbagai faktor internal dan eksternal yang akan memengaruhinya. Faktor tersebut adalah geografi, demografi, sumber kekayaan alam, ideologi, politik, ekonomi, sosial budaya, serta pertahanan dan keamanan, di samping faktor lainnya seperti keadaan global dan regional.</p>
+
+        <h3>d. Geopolitik</h3>
+        <p>Geopolitik merupakan pengetahuan segala sesuatu yang berhubungan dengan konstelasi geopolitik sebuah negeri. Geopolitik diwujudkan dalam konsep wawasan nusantara dan politik luar negeri yang bebas aktif.</p>
+
+        <h3>e. Geoekonomi</h3>
+        <p>Geoekonomi dapat dikembangkan melalui pembentukan kawasan-kawasan ekonomi khusus yang memiliki daya saing global. Hal ini dilaksanakan dengan mengkombinasikan keunggulan faktor ekonomi dan letak geografis dalam perdagangan internasional (Djohan, 2011).</p>
+        <p>Penyelenggaraan penataan ruang bertujuan mewujudkan ruang wilayah nasional yang aman, nyaman, produktif, dan berkelanjutan berlandaskan wawasan nusantara dan ketahanan nasional. Ruang wilayah nasional yang aman menggambarkan suatu kondisi dinamis yang nyaman, produktif, dan berkelanjutan. Nyaman artinya keadaan masyarakat dapat mengartikulasi nilai sosial budaya dan fungsinya dalam suasana yang tenang dan damai. Produktif artinya segala proses produksi dan distribusi dalam berbagai aktivitas manusia dapat berjalan secara efisien sehingga dapat memberikan nilai tambah bagi perekonomian. Selain itu, mampu meningkatkan kesejahteraan masyarakat dan juga mampu meningkatkan daya saing. Berkelanjutan artinya kondisi kualitas lingkungan fisik yang dapat dipertahankan dan ditingkatkan termasuk di dalamnya terdapat upaya antisipasi untuk mengembangkan orientasi ekonomi kawasan (Hasni 2008).</p>
+
+        <div class="highlight-box tautan-box">
+            <div class="box-title">Tautan</div>
+            <p>Untuk menambah wawasan kalian tentang tata ruang, silakan kunjungi tautan berikut:</p>
+            <div class="link-container">
+                <a href="https://tataruang.atrbpn.go.id/" target="_blank">https://tataruang.atrbpn.go.id/</a>
+            </div>
+        </div>
+
+        <h2>4. Penataan Ruang Nasional, Regional, dan Lokal</h2>
+        <p>Negara kita memiliki wilayah yang luas, dari Sabang sampai Merauke, dari Pulau Miangas sampai Pulau Rote. Wilayah yang demikian luas itu terdiri atas 34 provinsi, 514 kabupaten/kota, dan 83.381 desa/kelurahan. Demikian luas wilayah negara kita yang terdiri atas banyak daerah, maka perlu ditata ruangnya secara nasional, regional, dan lokal agar dapat menjadi wilayah yang nyaman, efisien, dan produktif bagi penduduk dalam beraktivitas.</p>
+        <p>Landasan dalam penataan ruang wilayah Indonesia dirumuskan secara berjenjang, mulai dari lingkup wilayah tertinggi hingga ke lingkup wilayah terendah. Kebijakan sentralisasi pada masa lalu membuat ketergantungan daerah-daerah kepada pusat semakin tinggi dan nyaris mematikan kreativitas masyarakat beserta seluruh perangkat pemerintah di daerah. Sementara itu dalam era desentralisasi, partisipasi masyarakat dan asas keterbukaan cenderung untuk dijadikan pedoman dengan asumsi bahwa pelaksanaan prinsip tersebut akan menghasilkan kebijakan yang sesuai dengan kebutuhan masyarakat. Dengan kata lain, terdapat rasa memiliki masyarakat terhadap kebijakan yang ditetapkan dan muncul komitmen untuk melaksanakannya sehingga pembangunan yang berkelanjutan dapat diwujudkan.</p>
+
+        <h3>a. Rencana Tata Ruang Wilayah Nasional</h3>
+        <p>Wilayah Negara Kesatuan Republik Indonesia (NKRI) sangat luas. Secara topografi, wilayah Indonesia memiliki bentuk permukaan dan pemanfaatan lahan yang bervariasi. Misalnya ada wilayah pesisir, dataran rendah, dataran tinggi, pegunungan dengan tanaman penutup berupa hutan alam, produksi, perkebunan, dan juga pertanian. Agar ruang wilayah tersebut dapat berfungsi optimal, maka perlu dilakukan penataan secara nasional.</p>
+        <p>Sesuai dengan Undang-Undang Nomor 25 Tahun 2004 tentang Sistem Perencanaan Pembangunan Nasional, dalam rangka mendorong proses pembangunan secara terpadu dan efisien, pada dasarnya perencanaan pembangunan nasional di Indonesia mempunyai lima tujuan dan fungsi pokok, yaitu sebagai berikut:</p>
+        <ul>
+            <li>Untuk mendukung koordinasi antar pelaku pembangunan.</li>
+            <li>Untuk menjamin terciptanya integrasi, sinkronisasi, dan sinergi antardaerah.</li>
+            <li>Untuk menjamin keterkaitan dan konsistensi antara perencanaan, penganggaran, pelaksanaan, dan pengawasan.</li>
+            <li>Untuk mengoptimalkan partisipasi dan peran masyarakat dalam perencanaan.</li>
+            <li>Untuk menjamin tercapainya penggunaan sumber daya secara efisien, efektif, dan adil.</li>
+        </ul>
+        <p>Rencana Tata Ruang Wilayah (RTRW) Nasional perlu disusun dengan baik. Untuk penyusunannya perlu memperhatikan hal-hal sebagai berikut (UU No. 26 Tahun 2007).</p>
+        <ul>
+            <li>Wawasan nusantara dan ketahanan nasional.</li>
+            <li>Perkembangan permasalahan regional dan global, serta hasil pengkajian implikasi penataan ruang nasional.</li>
+            <li>Upaya pemerataan pembangunan dan pertumbuhan serta stabilitas ekonomi.</li>
+            <li>Keselarasan aspirasi pembangunan nasional dan pembangunan daerah.</li>
+            <li>Daya dukung dan daya tampung lingkungan hidup.</li>
+            <li>Rencana pembangunan jangka panjang nasional.</li>
+            <li>Rencana tata ruang kawasan strategis nasional.</li>
+            <li>Rencana tata ruang wilayah provinsi dan rencana tata ruang wilayah kabupaten/kota.</li>
+        </ul>
+        <p>Agar RTRW Nasional dapat memadai, maka perlu memuat hal-hal sebagai berikut.</p>
+        <ul>
+            <li>Tujuan, kebijakan, dan strategi penataan ruang wilayah nasional.</li>
+            <li>Rencana struktur ruang wilayah nasional yang meliputi sistem perkotaan nasional yang terkait dengan kawasan perdesaan dalam wilayah pelayanannya dan sistem jaringan prasarana utama.</li>
+            <li>Rencana pola ruang wilayah nasional yang meliputi kawasan lindung nasional dan kawasan budi daya yang memiliki nilai strategis nasional.</li>
+            <li>Penetapan kawasan strategis nasional.</li>
+            <li>Arahan pemanfaatan ruang yang berisi indikasi program utama jangka menengah lima tahunan.</li>
+            <li>Arahan pengendalian pemanfaatan ruang wilayah nasional yang berisi indikasi arahan peraturan zonasi sistem nasional, arahan perizinan, arahan insentif dan disinsentif, serta arahan sanksi.</li>
+        </ul>
+        <p>RTRW Nasional adalah kebijaksanaan pemanfaatan ruang dengan wilayah cakupan terluas, meliputi seluruh wilayah Indonesia. RTRW Nasional disusun pada tingkat ketelitian skala 1:1.000.000 dengan jangka waktu perencanaan selama 25 tahun.</p>
+
+        <h3>b. Rencana Tata Ruang Wilayah Regional (Provinsi)</h3>
+        <p>Ada 38 provinsi yang tersebar di seluruh wilayah Indonesia. Wilayah-wilayah tersebut memiliki pemanfaatan lahan yang bervariasi. Agar lahan-lahan tersebut berfungsi optimal, perlu ditata sebagai rujukan tata ruang kota dan kabupaten. Penyusunan Rencana Tata Ruang Wilayah (RTRW) Provinsi mengacu pada dokumen Rencana Tata Ruang Wilayah Nasional, Pedoman dan Petunjuk Pelaksanaan Bidang Penataan Ruang, dan Rencana Pembangunan Jangka Panjang Daerah. Selanjutnya, penyusunan RTRW Provinsi harus memperhatikan hal-hal sebagai berikut.</p>
+        <ul>
+            <li>Perkembangan permasalahan nasional dan hasil analisis penataan ruang provinsi.</li>
+            <li>Upaya pemerataan pembangunan dan pertumbuhan ekonomi provinsi.</li>
+            <li>Keselarasan aspirasi pembangunan provinsi dan pembangunan kabupaten/kota.</li>
+            <li>Daya dukung dan daya tampung lingkungan hidup.</li>
+            <li>Rencana pembangunan jangka panjang daerah.</li>
+            <li>Rencana tata ruang wilayah provinsi yang berbatasan.</li>
+            <li>Rencana tata ruang kawasan strategis provinsi.</li>
+            <li>Rencana tata ruang wilayah kabupaten/kota.</li>
+        </ul>
+        <p>RTRW Provinsi merupakan kebijaksanaan pemanfaatan ruang yang berada di bawah RTRW Nasional. RTRW Provinsi berfokus pada keterkaitan antar kawasan/kabupaten/kota karena perkembangan suatu wilayah tidak dapat dilepaskan dari wilayah lain di sekitarnya. RTRW Provinsi disusun pada tingkat ketelitian skala 1:250.000 dengan jangka waktu perencanaan selama 15 tahun.</p>
+
+        <h3>c. Rencana Tata Ruang Wilayah Regional (Kabupaten/Kota)</h3>
+        <p>Ada 514 daerah kabupaten/kota yang tersebar di seluruh wilayah Indonesia. Ruang wilayah kabupaten dan kota perlu dirancang tata ruangnya agar menjadi wilayah yang nyaman, efisien, dan berkelanjutan. Penyusunan Rencana Tata Ruang Wilayah (RTRW) Kabupaten/Kota mengacu pada dokumen Rencana Tata Ruang Wilayah Nasional, Rencana Tata Ruang Wilayah Provinsi, Pedoman dan Petunjuk Pelaksanaan Bidang Penataan Ruang, dan Rencana Pembangunan Jangka Panjang Daerah. Penyusunan RTRW Kabupaten/Kota harus memperhatikan hal-hal sebagai berikut.</p>
+        <ul>
+            <li>Perkembangan permasalahan provinsi dan hasil pengkajian implikasi penataan ruang kabupaten/kota.</li>
+            <li>Upaya pemerataan pembangunan dan pertumbuhan ekonomi kabupaten/kota.</li>
+            <li>Keselarasan aspirasi pembangunan kabupaten/kota.</li>
+            <li>Daya dukung dan daya tampung lingkungan hidup.</li>
+            <li>Rencana pembangunan jangka panjang daerah.</li>
+            <li>Rencana tata ruang wilayah kabupaten/kota yang berbatasan.</li>
+            <li>Rencana tata ruang kawasan strategis kabupaten/kota.</li>
+        </ul>
+        <p>RTRW Kabupaten/Kota perlu memuat hal-hal sebagai berikut.</p>
+        <ul>
+            <li>Tujuan, kebijakan, dan strategi penataan ruang wilayah kabupaten/kota.</li>
+            <li>Rencana struktur ruang wilayah kabupaten/kota yang meliputi sistem perkotaan di wilayahnya yang terkait dengan kawasan perdesaan dan sistem jaringan prasarana wilayah kabupaten/kota.</li>
+        </ul>
+        <p>RTRW Kabupaten/Kota disusun oleh daerah otonom kabupaten/kota, dengan memperhatikan RTRW wilayah di atasnya, pada tingkat ketelitian yang lebih besar. Penataan ruang wilayah nasional, provinsi, dan kabupaten/kota saling melengkapi satu sama lain, bersinergi, dan tidak terjadi tumpang tindih kewenangan dalam penyelenggaraannya (UU No. 26 Tahun 2007).</p>
+
+        <h2>D. Indeks Kebahagiaan sebagai Hasil Pembangunan Wilayah</h2>
+        <p>Sering kalian mendengar pernyataan bahwa pembangunan sebenarnya bukan untuk pembangunan itu sendiri, tetapi pembangunan harus ditujukan untuk membahagiakan masyarakat. Sebagai contoh pembangunan jalan. Bukan jalan itu sendiri supaya halus dan mulus, tetapi pembangunan jalan itu ditujukan agar membuat perjalanan masyarakat menjadi lebih lancar, aman, dan tepat waktu dalam menjalankan aktivitas sehari-hari sehingga membahagiakan masyarakat. Membangun taman bukan untuk taman itu sendiri supaya cantik dan indah sehingga tidak boleh diinjak rumputnya. Namun, pembangunan taman itu diarahkan untuk masyarakat agar dapat menikmatinya bersama keluarga sehingga kehadiran taman itu membahagiakan.</p>
+    </div>
+</body>
+</html>
+```

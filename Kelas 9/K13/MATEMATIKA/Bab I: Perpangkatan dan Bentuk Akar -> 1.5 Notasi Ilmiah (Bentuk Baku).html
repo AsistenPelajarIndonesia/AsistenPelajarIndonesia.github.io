@@ -1,0 +1,551 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.5 Notasi Ilmiah (Bentuk Baku) - Matematika Kelas IX</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .concept-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .concept-box .title {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .concept-box .description {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .explanation {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .definition {
+            background-color: #e3f2fd;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .definition strong {
+            color: var(--primary-blue);
+        }
+
+        .example-block {
+            background-color: #fce4ec; /* Light red for examples */
+            border-left: 5px solid var(--semantic-error);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .example-block .title {
+            font-weight: bold;
+            color: var(--semantic-error);
+            margin-bottom: 10px;
+        }
+
+        .example-block code {
+            background-color: #ffebee; /* Lighter red for code */
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .example-block .step {
+            margin-bottom: 10px;
+        }
+
+        .example-block .step span {
+            font-weight: bold;
+        }
+
+        .rule-block {
+            background-color: #fff9c4; /* Light yellow for rules */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .rule-block .title {
+            font-weight: bold;
+            color: var(--secondary-accent-amber);
+            margin-bottom: 10px;
+        }
+
+        .rule-block ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            padding: 0;
+        }
+
+        .rule-block li {
+            margin-bottom: 5px;
+        }
+
+        .key-takeaway {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        .formula {
+            display: inline-block;
+            background-color: #eceff1; /* Light grey */
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+            margin: 0 5px;
+        }
+
+        .formula-large {
+            display: block;
+            background-color: #eceff1;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .interactive-hint {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .concept-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            .concept-box .description {
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .explanation, .definition, .example-block, .rule-block {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+            .formula, .formula-large {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Datang di Bab I: Perpangkatan dan Bentuk Akar</h1>
+
+        <div class="section">
+            <h2>1.5 Notasi Ilmiah (Bentuk Baku)</h2>
+            <p class="explanation">
+                Dalam matematika, kita sering berhadapan dengan bilangan yang sangat besar atau sangat kecil. Untuk memudahkan penulisan dan perhitungan, kita menggunakan metode yang disebut "Notasi Ilmiah" atau "Bentuk Baku". Ini adalah cara standar untuk merepresentasikan angka-angka ini.
+            </p>
+
+            <div class="concept-box">
+                <div class="title">Apa itu Notasi Ilmiah?</div>
+                <div class="description">Cara menuliskan bilangan yang sangat besar atau sangat kecil dalam bentuk yang lebih ringkas.</div>
+            </div>
+
+            <div class="definition">
+                <strong>Definisi Notasi Ilmiah:</strong>
+                Sebuah bilangan ditulis dalam notasi ilmiah (bentuk baku) jika ditulis dalam bentuk
+                <span class="formula">a × 10<sup>n</sup></span>
+                dengan syarat:
+                <ul>
+                    <li><span class="formula">1 ≤ a &lt; 10</span> (nilai <code>a</code> lebih dari atau sama dengan 1, tetapi kurang dari 10)</li>
+                    <li><code>n</code> adalah bilangan bulat (bisa positif, negatif, atau nol).</li>
+                </ul>
+            </div>
+
+            <p class="explanation">
+                Mari kita lihat contohnya. Angka seperti 2.300 dapat ditulis dalam notasi ilmiah. Untuk membuatnya sesuai dengan aturan notasi ilmiah, kita perlu menggeser koma desimal sehingga hanya ada satu angka bukan nol di depannya.
+            </p>
+            <div class="example-block">
+                <div class="title">Contoh Konversi ke Notasi Ilmiah: 2.300</div>
+                <div class="step">
+                    <span>Langkah 1:</span> Pindahkan koma desimal dari kanan ke kiri hingga berada di antara angka '2' dan '3'.
+                    <div class="formula-large">2.300 -> 2.300.</div>
+                </div>
+                <div class="step">
+                    <span>Langkah 2:</span> Hitung berapa kali koma desimal digeser. Dalam kasus ini, digeser sebanyak 3 kali ke kiri.
+                    <div class="formula-large">2.300 -> 2,300.</div>
+                    Jumlah pergeseran = 3
+                </div>
+                <div class="step">
+                    <span>Langkah 3:</span> Tuliskan dalam bentuk <span class="formula">a × 10<sup>n</sup></span>. Nilai <code>a</code> adalah 2,3 (karena <span class="formula">1 ≤ 2,3 &lt; 10</span>) dan nilai <code>n</code> adalah jumlah pergeseran (3).
+                    <div class="formula-large">2.300 = 2,3 × 10<sup>3</sup></div>
+                </div>
+            </div>
+
+            <div class="rule-block">
+                <div class="title">Aturan Pergeseran Koma Desimal:</div>
+                <ul>
+                    <li><strong>Menggeser ke Kiri:</strong> Jika koma desimal digeser ke <strong>kiri</strong>, pangkat <span class="formula">10</span> akan menjadi <strong>positif</strong>. Semakin banyak pergeseran ke kiri, semakin besar pangkat positifnya.</li>
+                    <li><strong>Menggeser ke Kanan:</strong> Jika koma desimal digeser ke <strong>kanan</strong>, pangkat <span class="formula">10</span> akan menjadi <strong>negatif</strong>. Semakin banyak pergeseran ke kanan, semakin besar nilai negatif dari pangkatnya.</li>
+                </ul>
+            </div>
+
+            <div class="example-block">
+                <div class="title">Contoh Bilangan Besar (Menggeser ke Kiri): 8.500.000</div>
+                <div class="step">
+                    <span>Langkah 1:</span> Pindahkan koma desimal ke kiri hingga menjadi 8,5.
+                    <div class="formula-large">8.500.000.</div>
+                </div>
+                <div class="step">
+                    <span>Langkah 2:</span> Koma desimal digeser sebanyak 6 kali ke kiri.
+                    <div class="formula-large">8,500000.</div>
+                    Jumlah pergeseran = 6
+                </div>
+                <div class="step">
+                    <span>Langkah 3:</span> Tuliskan dalam notasi ilmiah.
+                    <div class="formula-large">8.500.000 = 8,5 × 10<sup>6</sup></div>
+                </div>
+            </div>
+
+            <div class="example-block">
+                <div class="title">Contoh Bilangan Kecil (Menggeser ke Kanan): 0,0000085</div>
+                <div class="step">
+                    <span>Langkah 1:</span> Pindahkan koma desimal ke kanan hingga menjadi 8,5.
+                    <div class="formula-large">0,0000085</div>
+                </div>
+                <div class="step">
+                    <span>Langkah 2:</span> Koma desimal digeser sebanyak 6 kali ke kanan.
+                    <div class="formula-large">0,000008,5</div>
+                    Jumlah pergeseran = 6
+                </div>
+                <div class="step">
+                    <span>Langkah 3:</span> Tuliskan dalam notasi ilmiah dengan pangkat negatif.
+                    <div class="formula-large">0,0000085 = 8,5 × 10<sup>-6</sup></div>
+                </div>
+            </div>
+
+            <p class="explanation">
+                Perhatikan juga bilangan yang sudah memiliki koma desimal, seperti 144.000.000 atau 0,0000000144. Prinsipnya sama, hanya saja kita memastikan nilai <code>a</code> berada di antara 1 dan 10.
+            </p>
+
+            <div class="example-block">
+                <div class="title">Contoh Lain: 144.000.000</div>
+                <div class="step">
+                    <span>1.</span> Pindahkan koma desimal ke kiri hingga menjadi 1,44.
+                    <div class="formula-large">144.000.000.</div>
+                </div>
+                <div class="step">
+                    <span>2.</span> Koma desimal digeser sebanyak 8 kali ke kiri.
+                    <div class="formula-large">1,44000000.</div>
+                    Jumlah pergeseran = 8
+                </div>
+                <div class="step">
+                    <span>3.</span> Notasi ilmiahnya:
+                    <div class="formula-large">144.000.000 = 1,44 × 10<sup>8</sup></div>
+                </div>
+            </div>
+
+            <div class="example-block">
+                <div class="title">Contoh Lain: 0,0000000144</div>
+                <div class="step">
+                    <span>1.</span> Pindahkan koma desimal ke kanan hingga menjadi 1,44.
+                    <div class="formula-large">0,0000000144</div>
+                </div>
+                <div class="step">
+                    <span>2.</span> Koma desimal digeser sebanyak 8 kali ke kanan.
+                    <div class="formula-large">0,00000001,44</div>
+                    Jumlah pergeseran = 8
+                </div>
+                <div class="step">
+                    <span>3.</span> Notasi ilmiahnya:
+                    <div class="formula-large">0,0000000144 = 1,44 × 10<sup>-8</sup></div>
+                </div>
+            </div>
+
+            <div class="key-takeaway">
+                Ingat: Kiri = Positif (+), Kanan = Negatif (-) pada pangkat 10!
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>Mengubah Notasi Ilmiah ke Bentuk Biasa</h2>
+            <p class="explanation">
+                Sekarang mari kita pelajari kebalikannya: mengubah bilangan dari notasi ilmiah kembali ke bentuk biasa. Ini melibatkan perkalian dengan pangkat 10 yang sesuai.
+            </p>
+
+            <div class="example-block">
+                <div class="title">Contoh Mengubah ke Bentuk Biasa: 2,16 × 10<sup>5</sup></div>
+                <div class="step">
+                    <span>Langkah 1:</span> Perhatikan pangkat dari 10. Di sini adalah 5 (positif).
+                </div>
+                <div class="step">
+                    <span>Langkah 2:</span> Pangkat positif berarti kita menggeser koma desimal dari <code>a</code> ke <strong>kanan</strong> sebanyak nilai pangkatnya.
+                    <div class="formula-large">2,16</div>
+                    Geser 5 tempat ke kanan.
+                </div>
+                <div class="step">
+                    <span>Langkah 3:</span> Lakukan pergeseran dan tambahkan angka nol jika perlu.
+                    <div class="formula-large">2,16 -> 21.600,0</div>
+                    (Ditambah tiga angka nol karena hanya ada dua angka di belakang koma).
+                </div>
+                <div class="step">
+                    <span>Langkah 4:</span> Hasilnya adalah bilangan biasa.
+                    <div class="formula-large">2,16 × 10<sup>5</sup> = 216.000</div>
+                </div>
+            </div>
+
+            <div class="example-block">
+                <div class="title">Contoh Mengubah ke Bentuk Biasa: 0,16 × 10<sup>-3</sup></div>
+                <div class="step">
+                    <span>Langkah 1:</span> Perhatikan pangkat dari 10. Di sini adalah -3 (negatif).
+                </div>
+                <div class="step">
+                    <span>Langkah 2:</span> Pangkat negatif berarti kita menggeser koma desimal dari <code>a</code> ke <strong>kiri</strong> sebanyak nilai mutlak dari pangkatnya.
+                    <div class="formula-large">0,16</div>
+                    Geser 3 tempat ke kiri.
+                </div>
+                <div class="step">
+                    <span>Langkah 3:</span> Lakukan pergeseran dan tambahkan angka nol jika perlu.
+                    <div class="formula-large">0,16 -> 0,00016</div>
+                    (Ditambah dua angka nol di depan).
+                </div>
+                <div class="step">
+                    <span>Langkah 4:</span> Hasilnya adalah bilangan biasa.
+                    <div class="formula-large">0,16 × 10<sup>-3</sup> = 0,00016</div>
+                </div>
+            </div>
+
+            <p class="explanation">
+                Penting untuk diingat bahwa nilai <code>a</code> dalam notasi ilmiah harus selalu antara 1 dan 10. Jika hasil dari perhitungan belum memenuhi syarat ini, kita perlu menyesuaikannya lagi.
+            </p>
+
+            <div class="example-block">
+                <div class="title">Contoh Penyesuaian Nilai 'a': 155 × 10<sup>6</sup></div>
+                <div class="step">
+                    <span>Langkah 1:</span> Ubah 155 menjadi notasi ilmiahnya sendiri: <span class="formula">1,55 × 10<sup>2</sup></span>.
+                </div>
+                <div class="step">
+                    <span>Langkah 2:</span> Gabungkan dengan <span class="formula">10<sup>6</sup></span> yang ada:
+                    <div class="formula-large">1,55 × 10<sup>2</sup> × 10<sup>6</sup></div>
+                </div>
+                <div class="step">
+                    <span>Langkah 3:</span> Gunakan sifat perpangkatan: <span class="formula">10<sup>m</sup> × 10<sup>n</sup> = 10<sup>m+n</sup></span>.
+                    <div class="formula-large">1,55 × 10<sup>2+6</sup> = 1,55 × 10<sup>8</sup></div>
+                </div>
+                <div class="step">
+                    <span>Langkah 4:</span> Hasil akhir dalam notasi ilmiah yang benar adalah <span class="formula">1,55 × 10<sup>8</sup></span>.
+                </div>
+            </div>
+             <div class="example-block">
+                <div class="title">Contoh Penyesuaian Nilai 'a': 46,78 × 10<sup>-3</sup></div>
+                <div class="step">
+                    <span>Langkah 1:</span> Ubah 46,78 menjadi notasi ilmiahnya sendiri: <span class="formula">4,678 × 10<sup>1</sup></span>.
+                </div>
+                <div class="step">
+                    <span>Langkah 2:</span> Gabungkan dengan <span class="formula">10<sup>-3</sup></span> yang ada:
+                    <div class="formula-large">4,678 × 10<sup>1</sup> × 10<sup>-3</sup></div>
+                </div>
+                <div class="step">
+                    <span>Langkah 3:</span> Gunakan sifat perpangkatan: <span class="formula">10<sup>m</sup> × 10<sup>n</sup> = 10<sup>m+n</sup></span>.
+                    <div class="formula-large">4,678 × 10<sup>1+(-3)</sup> = 4,678 × 10<sup>-2</sup></div>
+                </div>
+                <div class="step">
+                    <span>Langkah 4:</span> Hasil akhir dalam notasi ilmiah yang benar adalah <span class="formula">4,678 × 10<sup>-2</sup></span>.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>Penerapan Notasi Ilmiah</h2>
+            <p class="explanation">
+                Notasi ilmiah sangat berguna dalam berbagai bidang, seperti astronomi (jarak antar bintang), biologi (ukuran sel), fisika (kecepatan cahaya), dan ilmu komputer (kapasitas penyimpanan data).
+            </p>
+
+            <div class="example-block">
+                <div class="title">Contoh Penerapan: Kapasitas Flashdisk</div>
+                <div class="step">
+                    <span>Soal:</span> Hikmah membeli flashdisk berkapasitas 16 GB. Berapa <em>byte</em> kapasitas yang digunakan jika 95% nya terpakai?
+                </div>
+                <div class="step">
+                    <span>1 GB</span> = <span class="formula">10<sup>9</sup> byte</span> (ini adalah definisi umum, kadang ada yang menggunakan 2<sup>30</sup> byte, tapi untuk notasi ilmiah kita pakai 10<sup>9</sup>).
+                </div>
+                 <div class="step">
+                    <span>Kapasitas Terpakai</span> = 95% dari 16 GB
+                 </div>
+                 <div class="step">
+                    = <span class="formula">0,95 × 16 GB</span>
+                 </div>
+                <div class="step">
+                    = <span class="formula">0,95 × 16 × 10<sup>9</sup> byte</span>
+                </div>
+                 <div class="step">
+                    = <span class="formula">15,2 × 10<sup>9</sup> byte</span>
+                </div>
+                <div class="step">
+                    <span>Penyesuaian ke Notasi Ilmiah:</span> Karena 15,2 lebih dari 10, kita ubah menjadi <span class="formula">1,52 × 10<sup>1</sup></span>.
+                 </div>
+                 <div class="step">
+                    = <span class="formula">1,52 × 10<sup>1</sup> × 10<sup>9</sup> byte</span>
+                 </div>
+                 <div class="step">
+                    = <span class="formula">1,52 × 10<sup>10</sup> byte</span>
+                 </div>
+                 <div class="step">
+                    <span>Jawaban:</span> Kapasitas yang digunakan adalah <span class="formula">1,52 × 10<sup>10</sup> byte</span>.
+                </div>
+            </div>
+
+            <div class="example-block">
+                <div class="title">Contoh Penerapan: Massa Planet</div>
+                <div class="step">
+                    <span>Soal:</span> Massa planet Jupiter adalah <span class="formula">1,9 × 10<sup>22</sup> kg</span>. Massa planet Bumi adalah 30% dari massa Jupiter. Berapa massa planet Bumi dalam bentuk baku?
+                </div>
+                 <div class="step">
+                    <span>Massa Bumi</span> = 30% dari Massa Jupiter
+                 </div>
+                 <div class="step">
+                    = <span class="formula">0,30 × 1,9 × 10<sup>22</sup> kg</span>
+                 </div>
+                <div class="step">
+                    = <span class="formula">0,57 × 10<sup>22</sup> kg</span>
+                </div>
+                 <div class="step">
+                    <span>Penyesuaian ke Notasi Ilmiah:</span> Karena 0,57 kurang dari 1, kita ubah menjadi <span class="formula">5,7 × 10<sup>-1</sup></span>.
+                 </div>
+                 <div class="step">
+                    = <span class="formula">5,7 × 10<sup>-1</sup> × 10<sup>22</sup> kg</span>
+                 </div>
+                 <div class="step">
+                    = <span class="formula">5,7 × 10<sup>21</sup> kg</span>
+                 </div>
+                 <div class="step">
+                    <span>Jawaban:</span> Massa planet Bumi adalah <span class="formula">5,7 × 10<sup>21</sup> kg</span>.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="key-takeaway">
+            Notasi Ilmiah adalah alat penting untuk menyederhanakan angka-angka ekstrem dan membuat perhitungan lebih efisien!
+        </div>
+
+        <div class="interactive-hint">
+            Coba gunakan kalkulator atau alat online untuk mengkonversi berbagai bilangan besar dan kecil ke notasi ilmiah untuk melatih pemahamanmu!
+        </div>
+
+    </div>
+</body>
+</html>
+```

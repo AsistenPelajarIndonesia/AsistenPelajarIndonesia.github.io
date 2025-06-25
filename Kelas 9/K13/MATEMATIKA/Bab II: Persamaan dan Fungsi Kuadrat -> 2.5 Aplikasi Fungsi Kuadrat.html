@@ -1,0 +1,341 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Fungsi Kuadrat</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #424242;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #1976D2;
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .highlight {
+            background-color: #e3f2fd;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 5px solid #1976D2;
+            margin-bottom: 15px;
+        }
+        .formula-box {
+            background-color: #fff9c4; /* Light yellow for formulas */
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px dashed #fbc02d; /* Dashed border */
+            margin: 20px 0;
+            overflow-x: auto; /* For horizontal scroll if formula is too wide */
+        }
+        .formula-box p {
+            margin-bottom: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            color: #333;
+        }
+        .example-section {
+            margin-top: 30px;
+            border-top: 1px solid #E0E0E0;
+            padding-top: 20px;
+        }
+        .example-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #EEEEEE;
+        }
+        .example-item h3 {
+            margin-top: 0;
+            font-size: 1.3em;
+            color: #388E3C; /* Green for examples */
+            border-bottom: 1px solid #388E3C;
+        }
+        .example-item p {
+            margin-bottom: 10px;
+        }
+        .example-item .problem {
+            font-weight: bold;
+            color: #D32F2F; /* Red for problem statement */
+        }
+        .example-item .solution-step {
+            font-weight: 500;
+            color: #4CAF50; /* Green for solution steps */
+            margin-left: 20px;
+            margin-bottom: 8px;
+        }
+        .steps {
+            list-style-type: decimal-leading-zero;
+            padding-left: 30px;
+        }
+        .steps li {
+            margin-bottom: 10px;
+        }
+        .steps li strong {
+            color: #1976D2;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #E0E0E0;
+            font-size: 0.9em;
+            color: #757575;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .formula-box p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aplikasi Fungsi Kuadrat dalam Kehidupan Nyata</h1>
+
+        <p>Fungsi kuadrat, yang memiliki bentuk umum <code>y = ax² + bx + c</code>, bukanlah sekadar konsep abstrak dalam matematika. Bentuk kurva parabola yang dihasilkannya sering kali mewakili pola pergerakan atau hubungan yang umum terjadi di dunia nyata. Memahami bagaimana menerapkan fungsi kuadrat dapat membantu kita menganalisis, memprediksi, dan mengoptimalkan berbagai situasi.</p>
+
+        <div class="highlight">
+            <p>Secara umum, masalah yang melibatkan fungsi kuadrat dalam kehidupan nyata seringkali berkisar pada pencarian nilai <strong>maksimum</strong> atau <strong>minimum</strong> dari suatu kuantitas, atau menentukan kapan suatu peristiwa mencapai puncak atau titik terendahnya.</p>
+        </div>
+
+        <h2>Langkah-Langkah Menyelesaikan Masalah Optimalisasi Fungsi Kuadrat</h2>
+
+        <p>Setiap masalah aplikasi fungsi kuadrat memiliki struktur yang dapat dipecahkan dengan mengikuti langkah-langkah sistematis:</p>
+
+        <ol class="steps">
+            <li>
+                <strong>Identifikasi Variabel:</strong> Tentukan variabel mana yang akan dioptimalkan (misalnya, luas, tinggi, volume, keuntungan) dan variabel bebas yang mempengaruhi kuantitas tersebut (misalnya, panjang, lebar, waktu, jumlah barang). Seringkali, variabel yang akan dioptimalkan kita sebut sebagai <strong>y</strong> (atau fungsi <strong>f(x)</strong>), dan variabel bebasnya adalah <strong>x</strong>.
+            </li>
+            <li>
+                <strong>Bentuk Model Matematika:</strong> Berdasarkan informasi yang diberikan dalam soal, bangunlah sebuah model fungsi kuadrat <code>y = ax² + bx + c</code> yang menghubungkan variabel bebas (x) dengan variabel yang akan dioptimalkan (y). Ini mungkin memerlukan pemahaman tentang geometri, fisika, atau konsep lain yang relevan dengan masalah.
+            </li>
+            <li>
+                <strong>Tentukan Nilai Optimum:</strong>
+                <ul>
+                    <li>Jika Anda mencari nilai <strong>maksimum</strong> (misalnya, luas terbesar, tinggi tertinggi), Anda perlu mencari koordinat titik puncak parabola pada sumbu y (nilai <strong>y</strong>). Nilai ini dapat dihitung menggunakan rumus <code>y_puncak = -D / 4a</code>, di mana <code>D = b² - 4ac</code>.</li>
+                    <li>Jika Anda mencari nilai <strong>minimum</strong> (misalnya, biaya terendah, jarak terpendek), Anda juga menggunakan rumus yang sama untuk menemukan nilai <strong>y</strong> di titik puncak.</li>
+                    <li>Untuk menemukan nilai variabel bebas (<strong>x</strong>) yang menghasilkan nilai optimum tersebut, gunakan rumus <code>x_puncak = -b / 2a</code>.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <div class="formula-box">
+            <p>Rumus Kunci:</p>
+            <p>Fungsi Kuadrat: <code>y = ax² + bx + c</code></p>
+            <p>Koordinat Titik Puncak (x, y): <code>( -b/2a , -D/4a )</code></p>
+            <p>Diskriminan: <code>D = b² - 4ac</code></p>
+        </div>
+
+        <div class="example-section">
+            <h2>Contoh Aplikasi</h2>
+
+            <div class="example-item">
+                <h3>Contoh 1: Tukang Talang Air (Optimalisasi Volume)</h3>
+                <p class="problem">Pak Suradi membuat talang air dari lembaran seng selebar 40 cm dengan cara melipatnya menjadi tiga bagian. Tentukan ukuran <strong>x</strong> agar volume talang maksimum.</p>
+                <p><strong>Analisis Masalah:</strong></p>
+                <p>Lembaran seng memiliki lebar total 40 cm. Talang dibuat dengan melipatnya. Asumsikan satu sisi lipatan adalah <code>x</code>, maka dua sisi lipatan lainnya masing-masing adalah <code>(40 - x) / 2</code>. Bentuk talang adalah prisma dengan alas trapesium jika dilipat dengan cara yang berbeda, namun pada gambar yang diberikan, talang tersebut berbentuk prisma persegi panjang dengan lebar alas <code>x</code> dan tinggi lipatan <code>(40-x)/2</code>. Jika talang memiliki panjang tertentu (misalnya <code>L</code>), maka volume talang adalah Luas Alas × Panjang.</p>
+                <p>Dalam konteks soal ini, gambar menunjukkan dimensi talang tanpa panjang. Diasumsikan kita sedang mengoptimalkan luas penampang melintang talang, yang mana hubungannya dengan volume akan proporsional jika panjangnya tetap.</p>
+
+                <p><strong>Penyelesaian:</strong></p>
+                <ol class="steps">
+                    <li>
+                        <strong>Variabel:</strong>
+                        <p>Variabel yang dioptimalkan (Luas Penampang Melintang/sebagai proxy volume) = <strong>y</strong>.</p>
+                        <p>Variabel bebas (Lebar alas talang) = <strong>x</strong>.</p>
+                        <p>Lebar sisi lipatan = <code>0.5 * (40 - x)</code>.</p>
+                    </li>
+                    <li>
+                        <strong>Model Matematika:</strong>
+                        <p>Luas penampang talang (y) adalah hasil kali lebar alas (x) dengan tinggi lipatan (0.5(40-x)).</p>
+                        <div class="formula-box">
+                            <p><code>y = x * (0.5 * (40 - x))</code></p>
+                            <p><code>y = x * (20 - 0.5x)</code></p>
+                            <p><code>y = 20x - 0.5x²</code></p>
+                            <p>Ini adalah fungsi kuadrat dengan <code>a = -0.5</code>, <code>b = 20</code>, <code>c = 0</code>.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Nilai Optimum:</strong>
+                        <p>Untuk mencari nilai <strong>x</strong> yang memaksimalkan luas <strong>y</strong>, kita cari koordinat x dari titik puncak:</p>
+                        <div class="formula-box">
+                            <p><code>x_puncak = -b / 2a</code></p>
+                            <p><code>x_puncak = -20 / (2 * -0.5)</code></p>
+                            <p><code>x_puncak = -20 / -1</code></p>
+                            <p><code>x_puncak = 20 cm</code></p>
+                        </div>
+                        <p>Jadi, lebar alas talang (x) sebesar 20 cm akan menghasilkan luas penampang melintang (dan volume, jika panjang tetap) yang maksimum.</p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="example-item">
+                <h3>Contoh 2: Tinggi Balon Udara (Optimalisasi Ketinggian)</h3>
+                <p class="problem">Tinggi balon udara dalam waktu <strong>t</strong> (detik) dinyatakan dengan fungsi <code>f(t) = -16t² + 112t - 91</code>. Tentukan tinggi maksimum balon udara.</p>
+                <p><strong>Analisis Masalah:</strong></p>
+                <p>Fungsi yang diberikan adalah fungsi kuadrat yang melambangkan ketinggian balon terhadap waktu. Karena koefisien <code>a</code> (-16) negatif, parabola terbuka ke bawah, yang berarti memiliki titik puncak maksimum. Kita perlu mencari nilai <strong>y</strong> (dalam hal ini <strong>f(t)</strong>) dari titik puncak.</p>
+
+                <p><strong>Penyelesaian:</strong></p>
+                <ol class="steps">
+                    <li>
+                        <strong>Variabel:</strong>
+                        <p>Variabel yang dioptimalkan (Tinggi balon) = <strong>f(t)</strong>.</p>
+                        <p>Variabel bebas (Waktu) = <strong>t</strong>.</p>
+                    </li>
+                    <li>
+                        <strong>Model Matematika:</strong>
+                        <p>Model sudah diberikan: <code>f(t) = -16t² + 112t - 91</code>.</p>
+                        <p>Ini adalah fungsi kuadrat dengan <code>a = -16</code>, <code>b = 112</code>, <code>c = -91</code>.</p>
+                    </li>
+                    <li>
+                        <strong>Nilai Optimum:</strong>
+                        <p>Untuk mencari tinggi maksimum, kita perlu mencari koordinat y dari titik puncak (nilai f(t) maksimum).</p>
+                        <p>Pertama, kita bisa mencari waktu (t) saat ketinggian maksimum:</p>
+                        <div class="formula-box">
+                            <p><code>t_puncak = -b / 2a</code></p>
+                            <p><code>t_puncak = -112 / (2 * -16)</code></p>
+                            <p><code>t_puncak = -112 / -32</code></p>
+                            <p><code>t_puncak = 3.5 detik</code></p>
+                        </div>
+                        <p>Selanjutnya, substitusikan nilai <strong>t</strong> ini ke dalam fungsi untuk mendapatkan tinggi maksimum:</p>
+                        <div class="formula-box">
+                            <p><code>f(3.5) = -16(3.5)² + 112(3.5) - 91</code></p>
+                            <p><code>f(3.5) = -16(12.25) + 392 - 91</code></p>
+                            <p><code>f(3.5) = -196 + 392 - 91</code></p>
+                            <p><code>f(3.5) = 196 - 91</code></p>
+                            <p><code>f(3.5) = 105 meter</code></p>
+                        </div>
+                        <p>Atau, menggunakan rumus <code>y_puncak = -D / 4a</code>:</p>
+                        <div class="formula-box">
+                            <p><code>D = b² - 4ac</code></p>
+                            <p><code>D = (112)² - 4(-16)(-91)</code></p>
+                            <p><code>D = 12544 - 5824</code></p>
+                            <p><code>D = 6720</code></p>
+                            <br>
+                            <p><code>f_puncak = -D / 4a</code></p>
+                            <p><code>f_puncak = -6720 / (4 * -16)</code></p>
+                            <p><code>f_puncak = -6720 / -64</code></p>
+                            <p><code>f_puncak = 105 meter</code></p>
+                        </div>
+                        <p>Jadi, tinggi maksimum yang dapat dicapai balon udara adalah 105 meter.</p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="example-item">
+                <h3>Contoh 3: Luas Kebun Maksimum (Optimalisasi Luas)</h3>
+                <p class="problem">Seorang tukang kebun ingin memagari kebun berbentuk persegi panjang dengan keliling 100 m. Berapa luas maksimum kebun yang bisa dipagari?</p>
+                <p><strong>Analisis Masalah:</strong></p>
+                <p>Kita perlu mencari dimensi (panjang dan lebar) dari persegi panjang yang memiliki keliling tetap (100 m) namun luasnya maksimum. Fungsi kuadrat akan muncul ketika kita menyatakan luas dalam satu variabel.</p>
+
+                <p><strong>Penyelesaian:</strong></p>
+                <ol class="steps">
+                    <li>
+                        <strong>Variabel:</strong>
+                        <p>Misalkan panjang persegi panjang adalah <strong>x</strong> dan lebarnya adalah <strong>y</strong>.</p>
+                        <p>Variabel yang dioptimalkan = Luas Persegi Panjang (<strong>A</strong>).</p>
+                        <p>Variabel bebas = Panjang (<strong>x</strong>).</p>
+                    </li>
+                    <li>
+                        <strong>Model Matematika:</strong>
+                        <p>Keliling persegi panjang: <code>2(panjang + lebar) = 100</code></p>
+                        <p><code>2(x + y) = 100</code></p>
+                        <p><code>x + y = 50</code></p>
+                        <p>Dari sini, kita bisa nyatakan lebar dalam panjang: <code>y = 50 - x</code>.</p>
+                        <p>Luas persegi panjang: <code>A = panjang × lebar</code></p>
+                        <p>Substitusikan <code>y</code>:</p>
+                        <div class="formula-box">
+                            <p><code>A(x) = x * (50 - x)</code></p>
+                            <p><code>A(x) = 50x - x²</code></p>
+                            <p>Ini adalah fungsi kuadrat dengan <code>a = -1</code>, <code>b = 50</code>, <code>c = 0</code>.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Nilai Optimum:</strong>
+                        <p>Untuk mencari luas maksimum, kita cari nilai <strong>x</strong> (panjang) yang menghasilkan titik puncak.</p>
+                        <div class="formula-box">
+                            <p><code>x_puncak = -b / 2a</code></p>
+                            <p><code>x_puncak = -50 / (2 * -1)</code></p>
+                            <p><code>x_puncak = -50 / -2</code></p>
+                            <p><code>x_puncak = 25 meter</code></p>
+                        </div>
+                        <p>Jadi, panjangnya adalah 25 meter. Untuk mencari lebarnya:</p>
+                        <p><code>y = 50 - x = 50 - 25 = 25 meter</code>.</p>
+                        <p>Persegi panjang dengan luas maksimum adalah persegi (panjang = lebar).</p>
+                        <p>Luas maksimumnya adalah:</p>
+                        <div class="formula-box">
+                            <p><code>A_maksimum = 25 m * 25 m = 625 m²</code></p>
+                        </div>
+                        <p>Jadi, luas maksimum kebun yang bisa dipagari adalah 625 meter persegi.</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <p>Penting untuk diingat bahwa dalam aplikasi dunia nyata, kita juga harus memperhatikan batasan atau kondisi yang mungkin ada. Misalnya, panjang dan lebar tidak boleh negatif.</p>
+        </div>
+
+        <h2>Aplikasi Lain dalam Kehidupan</h2>
+        <ul>
+            <li><strong>Lintasan Proyektil:</strong> Bentuk lintasan bola basket, bola yang dilempar, atau peluru yang ditembakkan seringkali dapat dimodelkan dengan fungsi kuadrat (parabola). Nilai maksimum dari fungsi tersebut mewakili ketinggian tertinggi yang dicapai.</li>
+            <li><strong>Ekonomi:</strong> Fungsi kuadrat dapat digunakan untuk memodelkan keuntungan atau biaya. Misalnya, keuntungan perusahaan mungkin meningkat seiring dengan produksi hingga titik tertentu, kemudian menurun jika produksi terlalu tinggi karena biaya tambahan.</li>
+            <li><strong>Teknik:</strong> Dalam desain jembatan lengkung atau antena parabola, bentuk parabola yang dihasilkan oleh fungsi kuadrat sangat penting untuk kekuatan struktural dan efisiensi transmisi sinyal.</li>
+            <li><strong>Olahraga:</strong> Menganalisis gerakan atlet seperti lompat tinggi, lompat jauh, atau bahkan gerakan pemain sepak bola, bisa melibatkan pemodelan dengan fungsi kuadrat untuk memahami lintasan dan mencapai performa optimal.</li>
+        </ul>
+
+        <footer>
+            <p>&copy; 2023 Materi Pembelajaran Matematika. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

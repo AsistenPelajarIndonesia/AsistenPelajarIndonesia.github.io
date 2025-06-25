@@ -1,0 +1,464 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 7: Relativitas - Postulat Einstein</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 25px;
+        }
+
+        .section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-block {
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .definition {
+            background-color: #e3f2fd; /* Light blue background for definitions */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .postulate-box {
+            background-color: #fff9c4; /* Light yellow for postulates */
+            border: 1px dashed var(--secondary-accent-amber);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .postulate-box h3 {
+            margin-top: 0;
+            color: var(--secondary-accent-amber);
+        }
+
+        .postulate-box p {
+            margin-bottom: 10px;
+        }
+
+        .example {
+            background-color: #e8f5e9; /* Light green for examples */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            color: var(--text-secondary);
+        }
+
+        .concept-map-container {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            background-color: #fce4ec; /* Light pink for concept map intro */
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #f8bbd0;
+        }
+
+        .concept-map-container p {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+        }
+
+        .interactive-concept {
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f5f5f5; /* Slightly darker background for interactive part */
+            text-align: center;
+        }
+
+        .interactive-concept p {
+            margin-bottom: 15px;
+        }
+
+        .btn-simulate {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-simulate:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        .explanation-detail {
+            margin-top: 20px;
+            background-color: #fff3e0; /* Light orange for details */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            color: var(--text-secondary);
+        }
+
+        .lorentz-transform {
+            background-color: #e8eaf6; /* Light purple for Lorentz */
+            border: 1px dashed var(--primary-blue);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .lorentz-transform h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        code {
+            background-color: #eeeeee;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .formula {
+            background-color: #e0f2f1; /* Light teal for formulas */
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.2em;
+            overflow-x: auto; /* For wide formulas */
+        }
+
+        .formula span {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .formula .equation {
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .formula .equation-name {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        .comparison {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .comparison-item {
+            background-color: #fff8e1; /* Light yellow for comparison */
+            border: 1px solid #fbc02d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .comparison-item h4 {
+            margin-top: 0;
+            color: var(--text-secondary);
+        }
+
+        .comparison-item p {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            width: 100%;
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .definition, .example, .explanation-detail {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .comparison {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .section {
+                padding: 15px;
+            }
+            .btn-simulate {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 7: Relativitas - Menggali Postulat Einstein</h1>
+
+        <div class="section">
+            <h2>Gerak Relatif Newton: Pondasi Klasik</h2>
+            <div class="content-block">
+                <p>Sebelum kita menyelami pemikiran revolusioner Einstein, mari kita ingat kembali konsep gerak relatif menurut Isaac Newton.</p>
+                <div class="definition">
+                    <p><strong>Gerak Relatif Newton</strong> mempelajari bagaimana pengukuran besaran fisika bergantung pada kerangka acuan pengamat. Menurut Newton, suatu benda dikatakan bergerak jika kedudukannya berubah terhadap kerangka acuannya. Kerangka acuan ini disebut <strong>kerangka acuan inersia</strong>, yaitu tempat di mana benda bergerak.</p>
+                </div>
+                <p>Bayangkan Anda berada di dalam kereta api yang melaju kencang. Bagi Anda, penumpang lain terlihat diam. Namun, bagi seseorang di luar kereta, Anda dan penumpang lainnya terlihat bergerak bersama kereta. Inilah inti dari gerak relatif Newton: hukum fisika berlaku sama pada semua kerangka acuan inersial.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Percobaan Michelson-Morley: Menantang Paradigma</h2>
+            <div class="content-block">
+                <p>Pada akhir abad ke-19, para fisikawan mencoba membuktikan keberadaan "eter" sebagai medium yang dipercaya merambatkan cahaya. Eksperimen Michelson-Morley menjadi tonggak penting dalam pencarian ini.</p>
+                <div class="definition">
+                    <p>Eksperimen yang dilakukan oleh A. A. Michelson dan E. W. Morley pada tahun 1887 bertujuan untuk mengukur kelajuan Bumi relatif terhadap eter. Mereka menggunakan alat yang sangat sensitif yang disebut <strong>interferometer</strong>.</p>
+                </div>
+                <p>Prinsip dasarnya adalah membandingkan waktu tempuh berkas cahaya yang merambat dalam dua jalur tegak lurus. Jika Bumi bergerak melalui eter, seharusnya ada perbedaan waktu tempuh antara kedua jalur tersebut. Namun, hasil eksperimen menunjukkan hasil yang mengejutkan: <strong>tidak ada perbedaan kecepatan cahaya yang terdeteksi</strong>, terlepas dari arah gerakan Bumi.</p>
+                <div class="concept-map-container">
+                    <p>Eksperimen Michelson-Morley mengindikasikan bahwa konsep eter mungkin tidak tepat, dan kecepatan cahaya tampaknya bersifat konstan.</p>
+                    <p>Untuk memahami lebih lanjut, Anda dapat mencoba simulasi eksperimen ini:</p>
+                    <a href="https://galileoandeinstein.phys.virginia.edu/more_stuff/Applets/MichelsonMorley/michelsonmorley.html" target="_blank" rel="noopener noreferrer" class="btn-simulate">Simulasi Eksperimen Michelson-Morley</a>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Ikuti petunjuk yang ada di simulasi untuk mengamati bagaimana pengaturan kecepatan eter mempengaruhi hasil.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Postulat Einstein: Dua Pilar Relativitas Khusus</h2>
+            <div class="content-block">
+                <p>Berdasarkan pemikiran dari eksperimen Michelson-Morley dan analisis mendalam, Albert Einstein merumuskan dua postulat dasar yang menjadi landasan teori relativitas khusus:</p>
+
+                <div class="postulate-box">
+                    <h3>Postulat 1: Prinsip Relativitas</h3>
+                    <p><strong>Hukum-hukum fisika memiliki bentuk yang sama pada semua kerangka acuan inersial.</strong></p>
+                    <p>Ini berarti, tidak peduli apakah Anda bergerak dengan kecepatan konstan atau diam, hukum-hukum alam seperti hukum Newton tentang gerak akan berlaku dengan cara yang sama.</p>
+                </div>
+
+                <div class="postulate-box">
+                    <h3>Postulat 2: Kecepatan Cahaya Konstan</h3>
+                    <p><strong>Cahaya yang merambat di ruang hampa dengan kecepatan c = 3 x 10<sup>8</sup> m/s adalah sama untuk semua pengamat dan tidak bergantung pada gerak sumber cahaya maupun kecepatan pengamat.</strong></p>
+                    <p>Ini adalah postulat yang paling revolusioner. Kecepatan cahaya adalah batas kecepatan universal dan bersifat sama bagi siapa pun yang mengukurnya, bahkan jika pengamat tersebut bergerak sangat cepat.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Konsekuensi Postulat Kedua: Keseruntakan (K EDIT: this is a bit of a tricky concept that needs more detail for clarity, so I'll build out the explanation here!)</h2>
+            <div class="content-block">
+                <p>Salah satu konsekuensi paling menarik dari postulat kedua Einstein adalah konsep <strong>keseruntakan (simultaneity)</strong>.</p>
+                <div class="definition">
+                    <p>Dua peristiwa dikatakan <strong>serentak</strong> jika keduanya terjadi pada waktu yang sama.</p>
+                </div>
+                <p>Mari kita ilustrasikan dengan sebuah contoh:</p>
+                <div class="example">
+                    <p>Bayangkan sebuah roket bergerak dengan kecepatan tinggi. Di tengah roket terdapat sumber cahaya. Jika sumber cahaya dinyalakan, cahaya akan menyebar ke segala arah. Bagi pengamat <strong>di dalam roket</strong>, cahaya akan mencapai ujung depan dan ujung belakang roket pada saat yang bersamaan, karena jaraknya sama dan kecepatan cahaya konstan.</p>
+                </div>
+                <div class="explanation-detail">
+                    <p>Namun, bagaimana jika ada pengamat <strong>di luar roket</strong> (misalnya, di sebuah planet)? Pengamat luar ini akan melihat situasi yang berbeda.</p>
+                    <p>Saat cahaya dipancarkan, roket sedang bergerak maju. Ini berarti:</p>
+                    <ul>
+                        <li>Bagian belakang roket bergerak <em>mendekati</em> sumber cahaya.</li>
+                        <li>Bagian depan roket bergerak <em>menjauhi</em> sumber cahaya.</li>
+                    </ul>
+                    <p>Karena kecepatan cahaya sama di kedua arah, cahaya yang menuju bagian belakang roket akan menempuh jarak yang lebih pendek (atau tiba lebih dulu) dibandingkan cahaya yang menuju bagian depan roket, dari sudut pandang pengamat luar. Akibatnya, pengamat luar akan melihat peristiwa cahaya mengenai bagian belakang roket <strong>sebelum</strong> cahaya mengenai bagian depan roket. Dengan kata lain, bagi pengamat luar, kedua peristiwa itu <strong>tidak serentak</strong>.</p>
+                    <p>Ini menunjukkan bahwa konsep keseruntakan bersifat relatif, bergantung pada kerangka acuan pengamat. Ketidakserentakan ini adalah hasil langsung dari postulat bahwa kecepatan cahaya selalu konstan untuk semua pengamat.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Transformasi Galileo vs. Transformasi Lorentz</h2>
+            <div class="content-block">
+                <p>Sebelum Einstein, <strong>Transformasi Galileo</strong> digunakan untuk menggambarkan bagaimana koordinat dan waktu berubah antar kerangka acuan inersial yang bergerak relatif. Transformasi Galileo mengasumsikan bahwa waktu bersifat absolut, artinya selang waktu antara dua peristiwa adalah sama untuk semua pengamat, tidak peduli seberapa cepat mereka bergerak.</p>
+
+                <div class="formula">
+                    <span><code>t' = t</code></span>
+                    <span class="equation-name">Transformasi Galileo untuk waktu</span>
+                </div>
+
+                <p>Namun, postulat kedua Einstein bahwa kecepatan cahaya konstan menantang gagasan waktu absolut ini. Jika kecepatan cahaya konstan, maka selang waktu pengamatan haruslah bergantung pada kecepatan pengamat.</p>
+
+                <p>Di sinilah peran <strong>Hendrick A. Lorentz</strong> menjadi krusial. Lorentz menurunkan persamaan transformasi yang dikenal sebagai <strong>Transformasi Lorentz</strong>. Transformasi ini konsisten dengan postulat Einstein dan berlaku untuk kecepatan yang mendekati kecepatan cahaya.</p>
+
+                <div class="lorentz-transform">
+                    <h3>Transformasi Lorentz</h3>
+                    <p>Transformasi Lorentz menunjukkan bahwa selang waktu pengamatan tidaklah sama untuk semua pengamat. Ini adalah dasar dari fenomena seperti dilatasi waktu dan kontraksi panjang.</p>
+                    <p>Salah satu persamaan kunci dari transformasi Lorentz terkait waktu adalah:</p>
+                    <div class="formula">
+                        <span><code>t = γt₀</code></span>
+                        <span class="equation-name">dengan <code>γ = 1 / sqrt(1 - v²/c²)</code></span>
+                    </div>
+                    <p>Di mana:</p>
+                    <ul>
+                        <li><code>t</code> adalah waktu yang diamati oleh pengamat yang bergerak relatif.</li>
+                        <li><code>t₀</code> adalah waktu yang diamati oleh pengamat yang diam (waktu proper).</li>
+                        <li><code>v</code> adalah kecepatan relatif antara kedua pengamat.</li>
+                        <li><code>c</code> adalah kecepatan cahaya.</li>
+                        <li><code>γ</code> (gamma) disebut faktor Lorentz, yang selalu lebih besar dari atau sama dengan 1.</li>
+                    </ul>
+                    <p>Persamaan ini secara matematis menjelaskan bagaimana waktu dapat "meregang" (dilatasi waktu) bagi pengamat yang bergerak relatif terhadap pengamat lain, terutama pada kecepatan tinggi.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Hubungan Besaran Fisis dalam Transformasi Lorentz</h2>
+            <div class="content-block">
+                <p>Persamaan transformasi Lorentz mengungkapkan hubungan fundamental antara besaran-besaran fisis seperti waktu, ruang, dan kecepatan dalam kerangka yang berbeda.</p>
+                <p>Berikut adalah interpretasi dari hubungan besaran-besaran fisis berdasarkan persamaan (7.1) yang diturunkan dari simulasi jam cahaya:</p>
+
+                <div class="formula">
+                    <span><code>c²t² = c²t₀² + v²t²</code></span>
+                    <span class="equation-name">Hubungan dasar</span>
+                </div>
+                <p>Setelah diolah, persamaan ini menghasilkan:</p>
+                <div class="formula">
+                    <span><code>t = t₀ / sqrt(1 - v²/c²)</code></span>
+                    <span class="equation-name">Persamaan 7.1</span>
+                </div>
+                <p>Dan faktor Lorentz yang merupakan kebalikan dari bagian akar kuadrat:</p>
+                <div class="formula">
+                    <span><code>γ = 1 / sqrt(1 - v²/c²)</code></span>
+                    <span class="equation-name">Persamaan 7.2 (Faktor Lorentz)</span>
+                </div>
+
+                <p><strong>Interpretasi:</strong></p>
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <h4>Waktu (<code>t</code>)</h4>
+                        <p><code>t = γt₀</code></p>
+                        <p>Jika <code>v</code> mendekati <code>c</code>, maka <code>γ</code> menjadi sangat besar. Ini berarti waktu yang diukur oleh pengamat luar (<code>t</code>) akan jauh lebih lama daripada waktu yang diukur oleh pengamat yang bergerak bersama jam (<code>t₀</code>). Ini adalah <strong>Dilatasi Waktu</strong>.</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Faktor Lorentz (<code>γ</code>)</h4>
+                        <p><code>γ ≥ 1</code></p>
+                        <p>Faktor ini menunjukkan seberapa besar efek relativistik. Nilainya selalu lebih besar dari atau sama dengan 1. Pada kecepatan rendah (<code>v << c</code>), <code>γ</code> mendekati 1, dan efek relativistik hampir tidak terlihat, sehingga hukum Newton masih berlaku.</p>
+                    </div>
+                </div>
+                <p>Jadi, pemikiran Einstein mengenai perbedaan selang waktu antara dua pengamat yang bergerak relatif dapat dijelaskan secara matematis melalui persamaan transformasi Lorentz.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Pembelajaran Fisika SMA. Hak Cipta Dilindungi.</p>
+    </footer>
+
+</body>
+</html>
+```

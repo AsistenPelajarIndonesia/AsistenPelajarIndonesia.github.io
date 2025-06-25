@@ -1,0 +1,389 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Arus Searah - Rangkaian Listrik</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #FAFAFA;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .formula {
+            background-color: #F5F5F5;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .formula-title {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .formula code {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+            word-break: break-word; /* Break long words */
+        }
+
+        .example-box {
+            background-color: #E3F2FD;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .example-box h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+        }
+
+        .interactive-element {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .interactive-element:hover {
+            background-color: #1565C0;
+        }
+
+        .concept-card {
+            background-color: #FFF9C4;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-accent-amber);
+        }
+
+        .concept-card h4 {
+            margin-top: 0;
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        .concept-card p {
+            margin-bottom: 5px;
+        }
+
+        .explanation-block {
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 3px solid var(--text-tertiary);
+        }
+
+        .final-thought {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px 20px;
+            margin: 30px 0 0 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--text-tertiary);
+            cursor: help;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 250px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .formula code {
+                font-size: 1em;
+            }
+            .tooltip .tooltiptext {
+                width: 200px;
+                margin-left: -100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .container {
+                padding: 10px;
+            }
+            .formula code {
+                font-size: 0.9em;
+            }
+            .interactive-element {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Arus Searah</h1>
+        <h2>D. Rangkaian Listrik</h2>
+
+        <div class="section">
+            <p>Dalam dunia kelistrikan, komponen-komponen seperti resistor seringkali tidak berdiri sendiri. Sebagian besar produk teknologi, mulai dari perangkat elektronik sederhana hingga sistem kelistrikan yang kompleks, mengandalkan rangkaian yang terdiri dari beberapa resistor yang dihubungkan bersama. Pemahaman mendalam mengenai bagaimana resistor ini dirangkai menjadi kunci untuk menganalisis dan memprediksi perilaku arus dan tegangan dalam sebuah sirkuit.</p>
+
+            <p>Secara umum, resistor dapat dirangkai dalam dua konfigurasi dasar: rangkaian seri dan rangkaian paralel. Masing-masing konfigurasi memiliki karakteristik unik yang mempengaruhi distribusi arus dan tegangan di seluruh rangkaian.</p>
+
+            <div class="explanation-block">
+                <h3>1. Rangkaian Seri</h3>
+                <p>Dalam rangkaian seri, komponen-komponen dihubungkan secara berurutan, satu demi satu, membentuk satu jalur tunggal bagi arus listrik untuk mengalir.</p>
+
+                <p>Bayangkan seperti menyusun domino berjajar; jika satu domino jatuh, ia akan meruntuhkan yang berikutnya. Dalam rangkaian seri, arus listrik harus melewati setiap resistor secara berurutan sebelum kembali ke sumber tegangan.</p>
+
+                <div class="formula">
+                    <span class="formula-title">Karakteristik Utama Rangkaian Seri:</span>
+                    <ul>
+                        <li><strong>Arus Tetap:</strong> Besar arus yang mengalir melalui setiap komponen dalam rangkaian seri adalah sama. Ini karena hanya ada satu jalur bagi elektron untuk bergerak.</li>
+                        <li><strong>Tegangan Terbagi:</strong> Tegangan total dari sumber akan terbagi di antara setiap resistor. Besarnya tegangan pada setiap resistor berbanding lurus dengan nilai hambatannya.</li>
+                        <li><strong>Hambatan Total (Resistansi Ekuivalen):</strong> Hambatan total dalam rangkaian seri merupakan penjumlahan sederhana dari hambatan masing-masing resistor.</li>
+                    </ul>
+                </div>
+
+                <div class="formula">
+                    <span class="formula-title">Hukum Dasar Rangkaian Seri:</span>
+                    <p>Jika $N$ resistor dengan nilai hambatan $R_1, R_2, \dots, R_N$ dihubungkan secara seri dengan sumber tegangan $V_{tot}$, maka:</p>
+                    <code>
+    V_{tot} = V_1 + V_2 + \dots + V_N
+    </code>
+                    <p>Dengan menerapkan Hukum Ohm ($V = IR$), kita dapatkan:</p>
+                    <code>
+    I_{tot} \times R_{seri} = (I_1 \times R_1) + (I_2 \times R_2) + \dots + (I_N \times R_N)
+    </code>
+                    <p>Karena arus pada rangkaian seri sama ($I_{tot} = I_1 = I_2 = \dots = I_N = I$), maka:</p>
+                    <code>
+    I \times R_{seri} = (I \times R_1) + (I \times R_2) + \dots + (I \times R_N)
+    </code>
+                    <p>Membagi kedua sisi dengan $I$, kita peroleh:</p>
+                    <code>
+    R_{seri} = R_1 + R_2 + \dots + R_N
+    </code>
+                    <p>Jadi, hambatan total pada rangkaian seri adalah jumlah dari semua hambatan komponennya.</p>
+                </div>
+            </div>
+
+            <div class="explanation-block">
+                <h3>2. Rangkaian Paralel</h3>
+                <p>Dalam rangkaian paralel, komponen-komponen dihubungkan pada titik-titik yang sama, sehingga arus listrik memiliki beberapa jalur untuk mengalir.</p>
+
+                <p>Pikirkan seperti jaringan jalan raya bercabang; kendaraan dapat mengambil jalur yang berbeda untuk mencapai tujuan yang sama. Dalam rangkaian paralel, arus total yang keluar dari sumber akan terbagi ke setiap cabang yang berisi resistor.</p>
+
+                <div class="formula">
+                    <span class="formula-title">Karakteristik Utama Rangkaian Paralel:</span>
+                    <ul>
+                        <li><strong>Arus Terbagi:</strong> Arus total yang mengalir dari sumber akan terbagi di antara setiap cabang paralel. Besarnya arus pada setiap cabang berbanding terbalik dengan nilai hambatannya.</li>
+                        <li><strong>Tegangan Tetap:</strong> Tegangan pada ujung-ujung setiap komponen dalam rangkaian paralel adalah sama, dan sama dengan tegangan sumber.</li>
+                        <li><strong>Hambatan Total (Resistansi Ekuivalen):</strong> Hambatan total dalam rangkaian paralel lebih kompleks dan dihitung menggunakan kebalikan dari hambatan masing-masing resistor. Nilai hambatan total rangkaian paralel selalu lebih kecil dari hambatan terkecil sekalipun.</li>
+                    </ul>
+                </div>
+
+                <div class="formula">
+                    <span class="formula-title">Hukum Dasar Rangkaian Paralel:</span>
+                    <p>Jika $N$ resistor dengan nilai hambatan $R_1, R_2, \dots, R_N$ dihubungkan secara paralel dengan sumber tegangan $V_{tot}$, maka:</p>
+                    <code>
+    V_{tot} = V_1 = V_2 = \dots = V_N
+    </code>
+                    <p>Dengan menerapkan Hukum Ohm ($I = V/R$), kita dapatkan:</p>
+                    <code>
+    I_{tot} = I_1 + I_2 + \dots + I_N
+    </code>
+                    <code>
+    \frac{V_{tot}}{R_{par}} = \frac{V_1}{R_1} + \frac{V_2}{R_2} + \dots + \frac{V_N}{R_N}
+    </code>
+                    <p>Karena tegangan pada rangkaian paralel sama ($V_{tot} = V_1 = V_2 = \dots = V_N = V$), maka:</p>
+                    <code>
+    \frac{V}{R_{par}} = \frac{V}{R_1} + \frac{V}{R_2} + \dots + \frac{V}{R_N}
+    </code>
+                    <p>Membagi kedua sisi dengan $V$, kita peroleh:</p>
+                    <code>
+    \frac{1}{R_{par}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_N}
+    </code>
+                    <p>Ini berarti, untuk mencari hambatan total rangkaian paralel, kita menjumlahkan kebalikan dari hambatan setiap komponen, lalu mengambil kebalikan dari hasil penjumlahannya.</p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Analogi Lampu Mobil: Seri vs. Paralel</h4>
+                <p>Mari kita bayangkan dua buah lampu mobil identik yang akan dihubungkan dengan aki. Jika kedua lampu dihubungkan secara seri, arus harus melewati satu lampu, lalu lampu berikutnya. Ini berarti tegangan aki akan terbagi antara kedua lampu. Jika aki memiliki tegangan yang pas untuk satu lampu, maka saat dihubungkan seri, masing-masing lampu hanya mendapatkan setengah tegangan, sehingga nyalanya akan redup.</p>
+                <p>Namun, jika kedua lampu dihubungkan secara paralel, setiap lampu mendapatkan tegangan penuh dari aki secara langsung. Ini akan memungkinkan kedua lampu menyala dengan terang sesuai spesifikasinya (asumsi aki mampu memberikan daya yang cukup dan lampu dirancang untuk tegangan tersebut).</p>
+                <p><em>Konfigurasi paralel umumnya lebih disukai untuk beban seperti lampu yang memerlukan tegangan penuh untuk beroperasi secara optimal, sementara rangkaian seri sering digunakan untuk membatasi arus atau mendistribusikan tegangan secara merata pada beberapa komponen yang dirancang untuk itu.</em></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>E. Rangkaian Majemuk</h2>
+            <p>Dalam praktiknya, banyak rangkaian listrik yang tidak hanya terdiri dari rangkaian seri atau paralel murni, tetapi merupakan kombinasi keduanya. Rangkaian yang menggabungkan elemen seri dan paralel ini dikenal sebagai <strong>rangkaian majemuk</strong> atau rangkaian campuran.</p>
+
+            <p>Analisis rangkaian majemuk memerlukan pemahaman yang kuat terhadap prinsip-prinsip rangkaian seri dan paralel. Langkah-langkah umum untuk menganalisis rangkaian majemuk meliputi:</p>
+
+            <ol>
+                <li><strong>Identifikasi Sub-Rangkaian:</strong> Pecah rangkaian majemuk menjadi bagian-bagian yang lebih kecil yang merupakan rangkaian seri murni atau paralel murni.</li>
+                <li><strong>Hitung Hambatan Ekuivalen:</strong> Hitung hambatan total untuk setiap sub-rangkaian seri atau paralel yang telah diidentifikasi menggunakan rumus yang sesuai.</li>
+                <li><strong>Sederhanakan Rangkaian:</strong> Ganti setiap sub-rangkaian dengan hambatan ekuivalennya. Rangkaian yang lebih kompleks kini akan menjadi rangkaian yang lebih sederhana.</li>
+                <li><strong>Ulangi Proses:</strong> Jika setelah penyederhanaan masih terdapat bagian rangkaian yang merupakan kombinasi seri-paralel, ulangi proses identifikasi dan perhitungan hambatan ekuivalen hingga rangkaian tersisa hanya berupa rangkaian seri atau paralel tunggal dengan satu resistor ekuivalen total.</li>
+                <li><strong>Analisis Arus dan Tegangan:</strong> Setelah mendapatkan hambatan total ekuivalen dari seluruh rangkaian, kita dapat menghitung arus total yang mengalir dari sumber tegangan menggunakan Hukum Ohm. Dari sana, kita dapat bekerja mundur melalui sub-rangkaian untuk menentukan distribusi arus dan tegangan pada setiap komponen individual.</li>
+            </ol>
+
+            <div class="concept-card">
+                <h4>Pentingnya Urutan Analisis</h4>
+                <p>Perlu diingat bahwa urutan analisis sangat krusial. Kesalahan dalam mengidentifikasi bagian mana yang seri atau paralel dapat menyebabkan perhitungan yang salah. Selalu mulai dari bagian yang paling sederhana di dalam rangkaian majemuk, biasanya bagian paralel yang terdiri dari dua atau tiga resistor.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Contoh Ilustrasi Rangkaian Majemuk</h4>
+                <p>Bayangkan sebuah rangkaian di mana dua resistor ($R_1$ dan $R_2$) dihubungkan secara paralel, dan kemudian kombinasi paralel ini dihubungkan secara seri dengan resistor ketiga ($R_3$).</p>
+                <p><strong>Langkah 1:</strong> Identifikasi bahwa $R_1$ dan $R_2$ membentuk sub-rangkaian paralel.</p>
+                <p><strong>Langkah 2:</strong> Hitung hambatan ekuivalen untuk $R_1$ dan $R_2$ menggunakan rumus paralel: $1/R_{12} = 1/R_1 + 1/R_2$.</p>
+                <p><strong>Langkah 3:</strong> Sederhanakan rangkaian. Sekarang kita memiliki dua komponen yang tersisa: $R_{12}$ (yang mewakili kombinasi paralel $R_1$ dan $R_2$) dan $R_3$, yang terhubung secara seri.</p>
+                <p><strong>Langkah 4:</strong> Hitung hambatan total keseluruhan rangkaian. Karena $R_{12}$ dan $R_3$ terhubung seri, hambatan totalnya adalah $R_{total} = R_{12} + R_3$.</p>
+                <p>Setelah mendapatkan $R_{total}$, kita bisa menghitung arus total yang keluar dari sumber dan kemudian menelusuri kembali untuk mencari arus dan tegangan pada $R_1$, $R_2$, dan $R_3$.</p>
+            </div>
+        </div>
+
+        <div class="final-thought">
+            Memahami rangkaian seri, paralel, dan majemuk adalah fondasi penting dalam menganalisis dan merancang berbagai aplikasi kelistrikan. Dengan penguasaan konsep-konsep ini, Anda akan mampu memprediksi perilaku sirkuit dan memecahkan masalah kelistrikan dengan lebih efektif.
+        </div>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,352 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bioteknologi dan Perkembangannya</title>
+    <style>
+        /* Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        section {
+            background-color: var(--background-canvas);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        .key-terms {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .key-terms h3 {
+            color: var(--background-canvas);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            padding-bottom: 8px;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .key-terms ul li {
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: var(--background-canvas);
+        }
+
+        .why-important {
+             background-color: var(--secondary-accent-amber);
+             color: var(--text-primary); /* Using text-primary for better contrast on amber */
+             padding: 15px;
+             border-radius: 8px;
+             margin-bottom: 20px;
+        }
+
+        .why-important h3 {
+            color: var(--text-primary);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .why-important p {
+            color: var(--text-primary);
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            border: 1px solid var(--border-divider);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--border-divider);
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Slightly different background for readability */
+        }
+
+        .callout {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .callout h3 {
+             color: var(--semantic-info);
+             margin-top: 0;
+             margin-bottom: 10px;
+             border-bottom: none; /* Remove border for h3 in callout */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1em;
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr { border: 1px solid var(--border-divider); margin-bottom: 10px; }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label); /* Use data-label for column headers */
+                font-weight: bold;
+                color: var(--text-primary);
+                text-align: left;
+            }
+            /* Add data-label attributes to td in HTML for this to work */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Bioteknologi dan Perkembangannya</h1>
+            <p>Bab 7 - Ilmu Pengetahuan Alam Kelas IX</p>
+        </header>
+
+        <section>
+            <h2>Pengertian Bioteknologi</h2>
+            <p>Bioteknologi berasal dari gabungan dua kata, yaitu "bio" yang berarti makhluk hidup, dan "teknologi" yang berarti suatu cara atau alat untuk memudahkan manusia dalam memecahkan masalah atau membuat produk yang berguna.</p>
+            <p>Secara umum, Bioteknologi dapat didefinisikan sebagai penggunaan organisme atau bagian dari organisme untuk membuat suatu produk atau jasa yang bermanfaat bagi manusia.</p>
+        </section>
+
+        <section class="key-terms">
+            <h3>Istilah Penting</h3>
+            <p>Mempelajari bioteknologi akan melibatkan pemahaman terhadap beberapa istilah kunci, di antaranya:</p>
+            <ul>
+                <li>Mikroorganisme</li>
+                <li>Fermentasi</li>
+                <li>Rekayasa genetika</li>
+                <li>Plasmid</li>
+                <li>Organisme transgenik</li>
+                <li>DNA Rekombinan</li>
+            </ul>
+        </section>
+
+         <section class="why-important">
+            <h3>Mengapa Penting?</h3>
+            <p>Mempelajari materi bioteknologi sangat penting karena dapat membantu kamu memahami bagaimana makhluk hidup dimanfaatkan untuk membantu pekerjaan manusia atau menghasilkan produk-produk yang bermanfaat bagi kehidupan manusia.</p>
+        </section>
+
+
+        <section>
+            <h2>Sejarah dan Perkembangan Bioteknologi</h2>
+            <p>Bioteknologi mulai berkembang pesat sejak ditemukannya proses fermentasi yang dilakukan oleh mikroorganisme pada tahun 1857 oleh Louis Pasteur.</p>
+            <p>Pada tahun 1920, penggunaan proses fermentasi yang melibatkan mikroorganisme semakin meluas untuk menghasilkan larutan kimia, seperti pembuatan alkohol.</p>
+            <p>Perkembangan bioteknologi kemudian terbagi menjadi dua jenis utama: Bioteknologi Konvensional dan Bioteknologi Modern.</p>
+        </section>
+
+        <section>
+            <h2>Bioteknologi Konvensional</h2>
+            <p>Bioteknologi Konvensional memanfaatkan secara langsung mikroorganisme, seperti bakteri maupun jamur, enzim yang dihasilkan oleh mikroorganisme, dan melibatkan proses fermentasi untuk menghasilkan produk atau jasa.</p>
+            <p>Ciri utama bioteknologi konvensional adalah penggunaannya yang masih terbatas dan sederhana, tanpa melibatkan manipulasi materi genetik secara kompleks.</p>
+            <h3>Contoh Produk Bioteknologi Konvensional:</h3>
+            <ul>
+                <li>Tempe</li>
+                <li>Tapai</li>
+                <li>Roti</li>
+                <li>Keju</li>
+                <li>Yoghurt</li>
+            </ul>
+
+            <div class="callout">
+                 <h3>Ayo, Kita Cari Tahu: Contoh Produk Tempe</h3>
+                 <p>Tempe adalah salah satu contoh makanan yang merupakan produk bioteknologi konvensional. Proses pembuatannya memanfaatkan mikroorganisme tertentu.</p>
+                 <p>Berikut contoh identifikasi produk bioteknologi berdasarkan teks:</p>
+                 <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Jenis Makanan atau Minuman</th>
+                            <th>Bahan yang Digunakan</th>
+                            <th>Mikroorganisme yang Berperan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="No">1</td>
+                            <td data-label="Jenis">Tempe</td>
+                            <td data-label="Bahan">Kedelai</td>
+                            <td data-label="Mikroorganisme"><em>Rhizopus oryzae</em></td>
+                        </tr>
+                    </tbody>
+                 </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Bioteknologi Modern</h2>
+            <p>Seiring dengan kemajuan ilmu pengetahuan, bioteknologi berkembang menjadi Bioteknologi Modern. Bioteknologi modern melibatkan prinsip biokimia, biologi molekuler, dan rekayasa genetika.</p>
+            <p>Penemuan enzim-enzim yang berperan penting dalam proses rekayasa genetika menjadi dasar pengembangan bioteknologi modern.</p>
+            <h3>Rekayasa Genetika</h3>
+            <p>Melalui teknik rekayasa genetika, para ahli bioteknologi dapat memanipulasi dan menyusun pola gen sedemikian rupa untuk menghasilkan organisme yang memiliki sifat-sifat yang diinginkan.</p>
+            <p>Contoh penerapan rekayasa genetika adalah dihasilkannya ikan yang memiliki ukuran tubuh lebih besar dibandingkan ikan normal.</p>
+
+            <h3>Teknik DNA Rekombinan</h3>
+            <p>Teknik rekayasa genetika dikenal juga dengan istilah teknik <strong>DNA rekombinan</strong>. Teknik ini melibatkan proses penggabungan (mengkombinasikan) DNA dari satu organisme ke dalam DNA organisme lain.</p>
+            <p>Tujuan utama dari teknik DNA rekombinan adalah untuk memodifikasi sifat genetik suatu organisme agar memiliki karakteristik yang unggul atau baru.</p>
+        </section>
+
+    </div>
+
+</body>
+</html>
+```

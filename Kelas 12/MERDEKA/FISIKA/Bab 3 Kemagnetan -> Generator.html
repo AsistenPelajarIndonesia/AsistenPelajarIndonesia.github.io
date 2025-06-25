@@ -1,0 +1,351 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAB 3: Kemagnetan - Generator</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 0 8px 8px 0;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .content-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border-left: 3px solid var(--semantic-info);
+        }
+
+        .content-block p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .content-block strong {
+            color: var(--text-primary);
+        }
+
+        .formula {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.2em;
+            background-color: var(--border-divider);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--text-primary);
+        }
+
+        .formula code {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .explanation {
+            font-size: 0.95em;
+            color: var(--text-tertiary);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .interactive-element {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            background-color: #1565C0; /* Darker blue */
+        }
+
+        .concept-highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .visual-analogy {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .visual-analogy strong {
+            color: white;
+        }
+
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .responsive-table th,
+        .responsive-table td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .responsive-table th {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .responsive-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .section-title {
+                font-size: 1.3em;
+            }
+            .formula {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>BAB 3: Kemagnetan - Generator Listrik</h1>
+
+        <div class="section">
+            <div class="section-title">F. Generator: Mengubah Gerak Menjadi Listrik</div>
+            <div class="content-block">
+                <p>Anda telah memahami prinsip dasar <span class="concept-highlight">GGL Induksi</span>. Konsep inilah yang menjadi pondasi utama dalam pengembangan <span class="concept-highlight">Generator</span>, sebuah perangkat krusial yang berfungsi sebagai sumber tegangan listrik dalam kehidupan sehari-hari.</p>
+                <p>Pada dasarnya, generator terdiri dari dua komponen utama yang saling berinteraksi: <span class="concept-highlight">magnet</span> dan <span class="concept-highlight">kumparan</span>.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Bagaimana Generator Bekerja?</div>
+            <div class="content-block">
+                <p>Kumparan dalam generator diputar secara mekanis. Energi mekanik ini bisa berasal dari berbagai sumber, seperti:</p>
+                <ul>
+                    <li>Gerakan <span class="concept-highlight">Air</span> (misalnya pada PLTA)</li>
+                    <li>Hembusan <span class="concept-highlight">Angin</span> (misalnya pada turbin angin)</li>
+                    <li>Energi <span class="concept-highlight">Panas Bumi</span></li>
+                    <li>Bahkan energi dari pembakaran <span class="concept-highlight">Batu Bara</span></li>
+                </ul>
+                <p>Proses inilah yang mendasari konversi energi, yaitu generator mengubah <span class="concept-highlight">energi mekanik</span> menjadi <span class="concept-highlight">energi listrik</span>.</p>
+            </div>
+
+            <div class="visual-analogy">
+                <p>Bayangkan sebuah dinamo sepeda. Putaran roda sepeda (energi mekanik) akan memutar kumparan di dekat magnet, dan menghasilkan listrik untuk menyalakan lampu (energi listrik).</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Perubahan Fluks Magnetik dan GGL Induksi</div>
+            <div class="content-block">
+                <p>Ketika kumparan berputar di dalam medan magnet, terjadi perubahan terus-menerus pada <span class="concept-highlight">fluks magnetik</span> yang menembus kumparan tersebut. Sesuai dengan Hukum Faraday tentang Induksi Elektromagnetik, perubahan fluks magnetik inilah yang akan menginduksi GGL (Gaya Gerak Listrik) dalam kumparan.</p>
+                <p>Jika kumparan terhubung dalam sebuah rangkaian tertutup, GGL induksi yang timbul akan menyebabkan mengalirnya <span class="concept-highlight">arus listrik</span>.</p>
+                <p>Grafik tegangan (GGL) yang dihasilkan oleh generator saat kumparan berputar dalam medan magnet biasanya berbentuk sinusoidal, menunjukkan hubungan harmonik antara posisi kumparan dan tegangan yang dihasilkan.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Rumus GGL Induksi pada Generator</div>
+            <div class="content-block">
+                <p>Persamaan dasar GGL induksi yang dihasilkan oleh generator dapat diturunkan dari Hukum Faraday. Kita tahu bahwa perubahan fluks magnetik (<span class="concept-highlight">Φ</span>) terhadap waktu (<span class="concept-highlight">t</span>) menghasilkan GGL (<span class="concept-highlight">ε</span>).</p>
+                <p>Jika kita memiliki kumparan dengan <span class="concept-highlight">N</span> lilitan, dan fluks magnetik yang menembusnya berubah seiring waktu, maka GGL induksi dapat dirumuskan sebagai:</p>
+                <div class="formula">
+                    <code>ε = -N * (dΦ / dt)</code>
+                    <div class="explanation">Perubahan fluks magnetik terhadap waktu</div>
+                </div>
+                <p>Dalam konteks generator, fluks magnetik (<span class="concept-highlight">Φ</span>) melalui sebuah loop kawat yang luasnya <span class="concept-highlight">A</span> dan berada dalam medan magnet <span class="concept-highlight">B</span> dengan sudut <span class="concept-highlight">θ</span> antara vektor normal luas dan vektor medan magnet adalah:</p>
+                <div class="formula">
+                    <code>Φ = B * A * cos(θ)</code>
+                    <div class="explanation">Fluks magnetik</div>
+                </div>
+                <p>Dengan mensubstitusikan persamaan fluks ke dalam persamaan GGL induksi, dan menganggap kumparan berputar dengan kecepatan sudut konstan (<span class="concept-highlight">ω</span>), sehingga <span class="concept-highlight">θ = ωt</span>:</p>
+                <div class="formula">
+                    <code>ε = -N * d/dt (B * A * cos(ωt))</code>
+                    <div class="explanation">Substitusi fluks ke dalam GGL induksi</div>
+                </div>
+                <p>Karena <span class="concept-highlight">B</span> (kuat medan magnet) dan <span class="concept-highlight">A</span> (luas penampang kumparan) adalah konstan, dan hanya <span class="concept-highlight">θ</span> (sudut) yang berubah terhadap waktu, kita bisa mengeluarkan <span class="concept-highlight">B</span> dan <span class="concept-highlight">A</span> dari turunan:</p>
+                <div class="formula">
+                    <code>ε = -N * B * A * d/dt (cos(ωt))</code>
+                    <div class="explanation">Mengeluarkan konstanta dari turunan</div>
+                </div>
+                <p>Turunan dari <span class="concept-highlight">cos(ωt)</span> terhadap <span class="concept-highlight">t</span> adalah <span class="concept-highlight">-ω * sin(ωt)</span>.</p>
+                <div class="formula">
+                    <code>ε = -N * B * A * (-ω * sin(ωt))</code>
+                    <div class="explanation">Hasil turunan cos(ωt)</div>
+                </div>
+                <p>Menyederhanakan persamaan tersebut, kita mendapatkan:</p>
+                <div class="formula">
+                    <code>ε = N * B * A * ω * sin(ωt)</code>
+                    <div class="explanation">Rumus GGL Induksi Generator (Persamaan 3-17)</div>
+                </div>
+                <p>Persamaan ini menunjukkan bahwa GGL induksi (<span class="concept-highlight">ε</span>) bervariasi secara sinusoidal terhadap waktu, sesuai dengan grafik yang diamati.</p>
+            </div>
+
+            <div class="content-block">
+                <p>Besar GGL induksi maksimum (<span class="concept-highlight">ε_max</span>) terjadi ketika <span class="concept-highlight">sin(ωt) = 1</span>. Sehingga, nilai maksimum GGL adalah:</p>
+                <div class="formula">
+                    <code>ε_max = N * B * A * ω</code>
+                    <div class="explanation">GGL Induksi Maksimum (Persamaan 3-18)</div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <p>Dalam rumus ini:</p>
+                <div class="responsive-table">
+                    <table>
+                        <tr>
+                            <th>Simbol</th>
+                            <th>Deskripsi</th>
+                            <th>Satuan SI</th>
+                        </tr>
+                        <tr>
+                            <td><code>N</code></td>
+                            <td>Jumlah lilitan kumparan</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><code>B</code></td>
+                            <td>Kuat medan magnet</td>
+                            <td>Tesla (T)</td>
+                        </tr>
+                        <tr>
+                            <td><code>A</code></td>
+                            <td>Luas penampang loop kumparan</td>
+                            <td>meter persegi (m²)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ω</code></td>
+                            <td>Kecepatan sudut putaran kumparan</td>
+                            <td>radian per detik (rad/s)</td>
+                        </tr>
+                    </table>
+                </div>
+                <p>Kecepatan sudut (<span class="concept-highlight">ω</span>) sendiri dapat dinyatakan dalam frekuensi putaran (<span class="concept-highlight">f</span>) melalui hubungan:</p>
+                <div class="formula">
+                    <code>ω = 2πf</code>
+                    <div class="explanation">Hubungan Kecepatan Sudut dan Frekuensi</div>
+                </div>
+                <p>Dengan demikian, rumus GGL induksi juga bisa ditulis ulang menggunakan frekuensi:</p>
+                <div class="formula">
+                    <code>ε = N * B * A * (2πf) * sin(2πft)</code>
+                    <div class="explanation">GGL Induksi dalam Frekuensi</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Prinsip Induktansi Timbal Balik (Mutual Inductance)</div>
+            <div class="content-block">
+                <p>Prinsip kerja transformator atau trafo sangat erat kaitannya dengan induksi elektromagnetik, khususnya <span class="concept-highlight">induktansi timbal balik</span>. Transformator adalah alat penting dalam sistem transmisi energi listrik, mulai dari pembangkit hingga rumah tangga.</p>
+                <p>Transformator <span class="concept-highlight">step-up</span> digunakan untuk menaikkan tegangan agar energi listrik dapat ditransmisikan jarak jauh dengan kehilangan daya minimal. Sebaliknya, transformator <span class="concept-highlight">step-down</span> digunakan untuk menurunkan tegangan agar aman digunakan oleh industri maupun rumah tangga.</p>
+            </div>
+
+            <div class="visual-analogy">
+                <p>Bayangkan dua kumparan berdekatan. Ketika arus listrik mengalir pada kumparan pertama dan berubah (misalnya saat sakelar ditutup atau dibuka), medan magnet yang dihasilkan oleh kumparan pertama juga berubah. Perubahan medan magnet ini akan menginduksi GGL pada kumparan kedua, meskipun tidak ada kabel penghubung langsung di antara keduanya. Fenomena inilah yang disebut induktansi timbal balik.</p>
+            </div>
+
+            <div class="content-block">
+                <p>Secara sederhana, induktansi timbal balik terjadi ketika:</p>
+                <ol>
+                    <li>Adanya perubahan arus listrik pada satu kumparan.</li>
+                    <li>Perubahan arus ini menimbulkan perubahan fluks magnetik.</li>
+                    <li>Perubahan fluks magnetik ini menembus kumparan lain.</li>
+                    <li>Perubahan fluks pada kumparan kedua tersebut menginduksi GGL pada kumparan kedua.</li>
+                </ol>
+            </div>
+        </div>
+
+        <footer style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-divider); color: var(--text-tertiary);">
+            <p>&copy; 2023 - Materi Pembelajaran Fisika - Generator</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

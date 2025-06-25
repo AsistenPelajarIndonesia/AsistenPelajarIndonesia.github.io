@@ -1,0 +1,343 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengkritisi Teks Diskusi: Berbicara Menyampaikan Pendapat (Bahasa Indonesia Kelas 9)</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-top: -20px; /* Adjust to connect with container margin */
+            margin-left: -20px; /* Adjust to connect with container margin */
+            margin-right: -20px; /* Adjust to connect with container margin */
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .steps-section {
+            background-color: #e3f2fd; /* Light blue background */
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 25px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .steps-section h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            background-color: var(--primary-blue);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .step-description {
+            flex-grow: 1; /* Allow description to take available space */
+        }
+
+        .step-description p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .key-concepts {
+            background-color: #fff3e0; /* Light amber background */
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 25px;
+            border-left: 5px solid var(--secondary-accent-amber);
+        }
+
+        .key-concepts h3 {
+            color: var(--secondary-accent-amber);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .key-concepts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-concepts li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .key-concepts li::before {
+            content: '\2022'; /* Bullet point */
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.3em; /* Adjust positioning */
+            font-size: 1.5em;
+        }
+
+        .example-box {
+            background-color: #e8f5e9; /* Light green background */
+            border: 1px dashed var(--accent-green);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .example-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .example-box strong {
+            color: var(--accent-green);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .step-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .step-description {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .steps-section, .key-concepts, .example-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mengkritisi Teks Diskusi: Berbicara Menyampaikan Pendapat</h1>
+        </div>
+
+        <div class="content">
+            <h2>Memahami Esensi Teks Diskusi</h2>
+            <p>Teks diskusi adalah sebuah genre teks yang menyajikan dua sudut pandang yang berlawanan mengenai suatu isu atau topik. Tujuannya adalah untuk menggali lebih dalam suatu permasalahan, membandingkan argumen, dan pada akhirnya mencapai pemahaman yang lebih utuh atau bahkan keputusan bersama. Dalam konteks pembelajaran, mengkritisi teks diskusi berarti kita mampu menganalisis struktur, unsur kebahasaan, serta substansi argumen yang disajikan.</p>
+            <p>Bab ini akan membekali Anda dengan kemampuan untuk menyampaikan pendapat secara kritis dan efektif, baik dalam bentuk lisan maupun tulisan, sejalan dengan pemahaman terhadap teks diskusi.</p>
+
+            <div class="steps-section">
+                <h3>Kunci Berbicara Menyampaikan Pendapat dalam Diskusi</h3>
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-description">
+                        <p><strong>Pahami Topik dan Isu:</strong> Sebelum berbicara, pastikan Anda benar-benar mengerti topik yang sedang didiskusikan. Identifikasi inti permasalahan dan berbagai sudut pandang yang mungkin muncul.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-description">
+                        <p><strong>Sajikan Argumen yang Kuat dan Berbasis Fakta:</strong> Pendapat yang disampaikan harus didukung oleh data, bukti, atau logika yang masuk akal. Hindari opini yang bersifat personal tanpa dasar yang jelas.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-description">
+                        <p><strong>Gunakan Bahasa yang Sopan dan Lugas:</strong> Sampaikan pendapat dengan jelas, ringkas, dan santun. Perhatikan intonasi dan pilihan kata agar tidak menyinggung pihak lain.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-description">
+                        <p><strong>Dengarkan dengan Aktif Pendapat Orang Lain:</strong> Diskusi bukan hanya tentang menyampaikan pendapat sendiri, tetapi juga memahami perspektif orang lain. Dengarkan baik-baik argumen lawan bicara.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-description">
+                        <p><strong>Tanggapi dengan Kritis dan Konstruktif:</strong> Jika Anda tidak setuju, sampaikan sanggahan Anda dengan disertai alasan yang logis dan solusi jika memungkinkan. Fokus pada substansi argumen, bukan pada pribadi.</p>
+                    </div>
+                </div>
+                 <div class="step-item">
+                    <div class="step-number">6</div>
+                    <div class="step-description">
+                        <p><strong>Jaga Keseimbangan Waktu Berbicara:</strong> Berikan kesempatan yang sama bagi semua peserta diskusi untuk menyampaikan pendapatnya. Hindari mendominasi forum.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-concepts">
+                <h3>Konsep Penting dalam Menyampaikan Pendapat</h3>
+                <ul>
+                    <li><strong>Afirmasi:</strong> Sikap mendukung atau menyetujui pendapat orang lain. Contoh: "Saya setuju dengan pendapat Saudara X bahwa..."</li>
+                    <li><strong>Kontra/Sanggahan:</strong> Sikap tidak setuju atau memberikan argumen tandingan terhadap pendapat orang lain. Penting untuk disertai alasan yang jelas. Contoh: "Namun, perlu dipertimbangkan juga bahwa..."</li>
+                    <li><strong>Netral:</strong> Sikap tidak memihak atau belum memiliki kesimpulan yang pasti. Contoh: "Saya masih perlu mendengarkan lebih banyak argumen terkait hal ini."</li>
+                    <li><strong>Memberikan Solusi/Saran:</strong> Jika ada kritik, sebaiknya disertai dengan saran atau solusi yang konstruktif.</li>
+                    <li><strong>Menggunakan Kata Penghubung:</strong> Kata seperti 'namun', 'akan tetapi', 'meskipun', 'oleh karena itu', 'dengan demikian', 'selain itu' membantu menghubungkan ide dan memperjelas alur argumen.</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <p><strong>Contoh Penerapan:</strong></p>
+                <p>Dalam sebuah diskusi tentang kebijakan larangan membawa gawai ke sekolah, Anda mungkin ingin menyampaikan pendapat kontra terhadap kebijakan tersebut.</p>
+                <p><strong>Cara Menyampaikan Pendapat (Kontra):</strong></p>
+                <p>"Saya memahami kekhawatiran mengenai potensi penyalahgunaan gawai di sekolah. Namun, saya berpendapat bahwa pelarangan total mungkin bukan solusi terbaik. <strong>Menurut studi yang pernah saya baca,</strong> gawai, jika digunakan dengan bijak, dapat menjadi alat bantu belajar yang efektif, misalnya untuk riset cepat atau akses materi digital. <strong>Oleh karena itu,</strong> mungkin ada baiknya jika kebijakan tersebut tidak sepenuhnya melarang, melainkan lebih fokus pada edukasi penggunaan yang bertanggung jawab dan penetapan aturan yang jelas kapan gawai boleh digunakan. <strong>Dengan demikian,</strong> kita dapat memanfaatkan teknologi untuk pembelajaran tanpa mengesampingkan potensi risikonya."</p>
+                <p>Perhatikan bagaimana argumen tersebut diawali dengan afirmasi singkat, kemudian menyajikan sanggahan yang didukung oleh <strong>alasan</strong> (studi) dan diakhiri dengan <strong>saran</strong> yang konstruktif.</p>
+            </div>
+
+            <h2>Mengkritisi Struktur Teks Diskusi</h2>
+            <p>Sebuah teks diskusi yang baik umumnya memiliki struktur yang jelas untuk memandu pembaca atau pendengar melalui argumen yang disajikan. Struktur ini sering kali meliputi:</p>
+            <ul>
+                <li><strong>Pendahuluan (Isu):</strong> Pengenalan topik atau permasalahan yang akan didiskusikan.</li>
+                <li><strong>Argumentasi Mendukung (Pro):</strong> Paparan argumen yang mendukung posisi tertentu terhadap isu tersebut.</li>
+                <li><strong>Argumentasi Menentang (Kontra):</strong> Paparan argumen yang berlawanan dengan posisi yang didukung di bagian sebelumnya.</li>
+                <li><strong>Kesimpulan/Saran:</strong> Rangkuman dari argumen-argumen yang telah disampaikan, seringkali diakhiri dengan rekomendasi atau solusi.</li>
+            </ul>
+            <p>Saat mengkritisi, perhatikan apakah setiap bagian tersaji dengan jelas, apakah argumen dalam setiap bagian saling mendukung atau membantah secara logis, dan apakah kesimpulan yang diambil memang merupakan hasil dari pembahasan argumen-argumen sebelumnya.</p>
+
+            <h2>Aspek Kebahasaan dalam Teks Diskusi</h2>
+            <p>Keefektifan penyampaian pendapat dalam diskusi juga sangat dipengaruhi oleh aspek kebahasaan yang digunakan. Beberapa yang perlu diperhatikan antara lain:</p>
+            <ul>
+                <li><strong>Penggunaan Kata/Istilah yang Tepat:</strong> Memilih kata yang spesifik dan sesuai dengan konteks diskusi untuk menghindari ambiguitas.</li>
+                <li><strong>Penggunaan Kalimat yang Efektif:</strong> Kalimat harus jelas, padat, dan mudah dipahami. Penggunaan kalimat aktif seringkali lebih disukai.</li>
+                <li><strong>Konjungsi (Kata Penghubung):</strong> Penggunaan konjungsi yang tepat sangat krusial untuk membangun kohesi antar kalimat dan paragraf, serta menunjukkan hubungan logis antar gagasan (misalnya, sebab-akibat, perbandingan, penambahan). Contoh: <em>karena, sehingga, tetapi, namun, selain itu, selanjutnya, dengan demikian.</em></li>
+                <li><strong>Moda (Modalitas):</strong> Penggunaan kata-kata seperti <em>mungkin, bisa jadi, seharusnya, perlu, harus</em> dapat menunjukkan tingkat kepastian atau kewajiban dalam sebuah pernyataan.</li>
+                <li><strong>Kata Sanggahan dan Dukungan:</strong> Penggunaan frasa seperti "menurut saya", "saya setuju", "saya kurang sependapat karena", "perlu ditambahkan bahwa" sangat penting dalam dialog diskusi.</li>
+            </ul>
+            <p>Menguasai aspek-aspek kebahasaan ini akan membantu Anda menyampaikan pendapat dengan lebih persuasif dan terstruktur, baik dalam teks diskusi tertulis maupun dalam forum diskusi lisan.</p>
+
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Materi Pembelajaran Bahasa Indonesia. Hak Cipta Dilindungi.</p>
+    </footer>
+</body>
+</html>
+```

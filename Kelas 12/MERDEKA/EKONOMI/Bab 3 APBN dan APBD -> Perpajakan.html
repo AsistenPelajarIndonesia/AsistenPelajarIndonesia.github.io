@@ -1,0 +1,366 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpajakan: Membangun Negeri dengan Pajak Kita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--primary-blue);
+            padding: 20px 0;
+            border-bottom: 3px solid var(--primary-blue);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            border-left: 6px solid var(--primary-blue);
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--accent-green);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            font-size: 1.4em;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 1em;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        ul li::before {
+            content: '•'; /* Bullet point character */
+            position: absolute;
+            left: 0;
+            color: var(--accent-green); /* Color for bullet point */
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .key-definition {
+            background-color: #E3F2FD; /* Light blue from primary */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .key-definition p {
+            margin: 0;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                padding-left: 10px;
+                border-left-width: 4px;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            h4 {
+                font-size: 1.2em;
+            }
+
+            .section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+
+            ul li {
+                padding-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+
+            ul li {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Perpajakan: Membangun Negeri dengan Pajak Kita</h1>
+            <p style="text-align: center; color: var(--text-tertiary);">Bab 3: APBN dan APBD</p>
+        </header>
+
+        <main>
+            <section id="introduction" class="section">
+                <h2>Pendahuluan Perpajakan</h2>
+                <p>Dalam materi Anggaran Pendapatan dan Belanja Negara (APBN) serta Anggaran Pendapatan dan Belanja Daerah (APBD), kita telah memahami bahwa <strong>pajak adalah penyumbang penerimaan pemerintah yang paling besar</strong>. Kontribusi ini sangat vital dalam menjalankan roda pemerintahan dan pembangunan.</p>
+                <p>Pemerintah secara aktif mengimbau masyarakat untuk menjadi warga negara yang taat pajak melalui berbagai media, termasuk iklan layanan masyarakat dan papan reklame. Upaya ini bertujuan untuk <strong>meningkatkan kesadaran masyarakat dalam membayar pajak</strong>.</p>
+                <p>Pertanyaan-pertanyaan penting yang sering muncul adalah: <em>Mengapa masyarakat harus membayar pajak?</em> dan <em>Apa manfaat dari pajak itu sendiri?</em> Mari kita selami lebih dalam konsep perpajakan untuk memahami jawaban atas pertanyaan-pertanyaan ini.</p>
+            </section>
+
+            <section id="definition" class="section">
+                <h2>1. Pengertian Pajak</h2>
+                <p>Pajak adalah salah satu konsep fundamental dalam ekonomi dan keuangan negara. Untuk memahami esensinya, mari kita lihat beberapa definisi:</p>
+
+                <h3>Menurut Kamus Besar Bahasa Indonesia (KBBI)</h3>
+                <p>Pajak didefinisikan sebagai <strong>pungutan wajib</strong>.</p>
+
+                <h3>Secara Istilah</h3>
+                <p>Pajak adalah <strong>iuran atau pungutan wajib yang dibayarkan rakyat kepada negara</strong> dan akan digunakan untuk kepentingan pemerintah serta masyarakat umum.</p>
+
+                <p>Pajak menjadi salah satu sumber dana utama bagi pemerintah dalam melaksanakan pembangunan, baik di tingkat pusat maupun daerah. Pemungutan pajak memiliki sifat yang unik, yaitu dapat <strong>dipaksakan</strong> karena pelaksanaannya didasarkan pada undang-undang negara Indonesia.</p>
+
+                <div class="key-definition">
+                    <h4>Definisi Pajak dalam Undang-Undang</h4>
+                    <p>Definisi pajak juga tertulis jelas dalam <strong>Pasal 1 Undang-Undang Nomor 28 Tahun 2007</strong>. Dalam pasal tersebut dijelaskan bahwa pajak adalah:</p>
+                    <ul>
+                        <li><strong>Kontribusi wajib</strong> kepada negara oleh perseorangan atau kelompok.</li>
+                        <li>Bersifat <strong>memaksa</strong>, berdasarkan undang-undang.</li>
+                        <li><strong>Tidak mendapatkan timbal balik secara langsung</strong>.</li>
+                        <li>Digunakan untuk kepentingan negara bagi <strong>sebesar-besarnya kemakmuran rakyat</strong>.</li>
+                    </ul>
+                </div>
+
+                <h3>Ciri-Ciri Melekat dari Pajak</h3>
+                <p>Berdasarkan definisi di atas, pajak memiliki ciri-ciri khusus yang membedakannya dari pungutan lain:</p>
+                <ul>
+                    <li><strong>Iuran wajib warga negara:</strong> Setiap warga negara yang memenuhi syarat memiliki kewajiban untuk membayar pajak.</li>
+                    <li><strong>Bersifat memaksa:</strong> Pembayaran pajak bersifat wajib dan dapat dipaksakan oleh negara sesuai peraturan perundang-undangan.</li>
+                    <li><strong>Tidak ada timbal balik secara langsung:</strong> Pembayar pajak tidak langsung merasakan manfaat individual dari setiap rupiah pajak yang dibayarkan. Manfaatnya bersifat kolektif.</li>
+                    <li><strong>Digunakan untuk melayani kepentingan masyarakat umum:</strong> Dana pajak dimanfaatkan untuk membiayai fasilitas dan layanan publik yang dinikmati bersama.</li>
+                </ul>
+            </section>
+
+            <section id="functions" class="section">
+                <h2>2. Fungsi Pajak</h2>
+                <p>Pajak yang dipungut dari rakyat kepada negara memiliki beberapa fungsi krusial dalam pengelolaan negara dan perekonomian:</p>
+
+                <h3>a. Fungsi Anggaran (Fungsi Budgeter)</h3>
+                <p>Fungsi anggaran merupakan fungsi utama pajak. Pajak berfungsi sebagai <strong>sumber utama kas negara</strong>. Dana yang dikumpulkan dari pajak digunakan untuk membiayai seluruh pengeluaran negara, mulai dari operasional rutin hingga program pembangunan.</p>
+                <p>Semakin tinggi tingkat kepatuhan dan kesadaran masyarakat dalam membayar pajak, semakin tinggi pula penerimaan negara. Penerimaan pajak yang melimpah ini pada gilirannya akan kembali kepada masyarakat dalam bentuk <strong>pembangunan infrastruktur</strong> (seperti jalan, jembatan, gedung publik) atau <strong>perluasan lapangan kerja</strong>.</p>
+
+                <h3>b. Fungsi Alokasi</h3>
+                <p>Fungsi alokasi menekankan bahwa pajak harus digunakan untuk <strong>mendaanai atau menyediakan barang atau jasa yang dibutuhkan masyarakat</strong>. Pajak menjadi salah satu sumber pembiayaan utama bagi pemerintah dalam melaksanakan proses pembangunan di berbagai sektor.</p>
+                <p>Contoh nyata dari fungsi alokasi adalah pembangunan sarana dan prasarana umum, serta infrastruktur vital yang mendukung aktivitas ekonomi dan sosial masyarakat.</p>
+
+                <h3>c. Fungsi Distribusi (Fungsi Pemerataan)</h3>
+                <p>Fungsi distribusi sering disebut juga fungsi pemerataan. Melalui fungsi ini, pajak digunakan untuk pembangunan ekonomi dengan tujuan <strong>pemerataan kesejahteraan</strong>.</p>
+                <p>Dana pajak yang diterima pemerintah didistribusikan dan disebarkan ke berbagai sektor pembangunan dan wilayah, baik di tingkat pusat maupun daerah. Penting untuk memastikan bahwa distribusi hasil pajak berlangsung secara <strong>adil, bebas dari korupsi, kolusi, dan nepotisme (KKN)</strong>, serta tidak memprioritaskan kepentingan tertentu. Dengan pendistribusian yang merata, diharapkan terjadi <strong>perbaikan taraf hidup masyarakat</strong> secara keseluruhan.</p>
+
+                <h3>d. Fungsi Regulasi (Fungsi Mengatur)</h3>
+                <p>Pajak juga berfungsi sebagai <strong>salah satu alat pengatur kegiatan ekonomi</strong>. Fungsi mengatur ini memungkinkan pemerintah untuk mengintervensi atau mengarahkan perekonomian sesuai tujuan kebijakan.</p>
+                <p>Beberapa contoh penerapan fungsi regulasi antara lain:</p>
+                <ul>
+                    <li><strong>Mengatasi inflasi melalui kebijakan fiskal:</strong> Pemerintah dapat menaikkan atau menurunkan tarif pajak untuk mengendalikan daya beli masyarakat dan stabilisasi harga.</li>
+                    <li><strong>Memberikan perlindungan terhadap barang produksi dalam negeri:</strong> Melalui pengenaan pajak impor yang tinggi, pemerintah dapat melindungi industri domestik dari persaingan produk luar negeri.</li>
+                    <li><strong>Alat pendorong ekspor:</strong> Pemerintah dapat memberikan insentif pajak atau pembebasan pajak untuk mendorong kegiatan ekspor.</li>
+                </ul>
+            </section>
+
+            <section id="benefits" class="section">
+                <h2>3. Manfaat Pajak</h2>
+                <p>Pajak adalah tulang punggung keuangan negara, dan keberadaannya membawa banyak manfaat bagi perekonomian serta kehidupan masyarakat. Berikut adalah beberapa manfaat utama pajak:</p>
+                <ul>
+                    <li>
+                        <h4>Sumber Utama Penerimaan Negara</h4>
+                        <p>Tanpa pajak, sebagian besar kegiatan negara akan sulit bahkan mustahil untuk dilaksanakan. Uang pajak adalah modal utama pemerintah untuk membiayai segala operasional dan pembangunan.</p>
+                    </li>
+                    <li>
+                        <h4>Pembiayaan Keamanan dan Pelayanan Publik</h4>
+                        <p>Pajak digunakan untuk membiayai aparat keamanan (TNI/Polri) dalam rangka memberikan rasa aman bagi seluruh lapisan masyarakat. Selain itu, setiap warga negara dapat menikmati berbagai fasilitas atau pelayanan dari pemerintah, seperti infrastruktur jalan, pendidikan, kesehatan, dan transportasi umum, yang semuanya dibiayai oleh pajak.</p>
+                    </li>
+                    <li>
+                        <h4>Memberikan Subsidi dan Membayar Utang Negara</h4>
+                        <p>Pajak juga dimanfaatkan untuk memberikan subsidi pada barang-barang yang sangat dibutuhkan masyarakat (misalnya subsidi BBM, listrik, pupuk) serta untuk membayar utang negara, baik utang dalam negeri maupun luar negeri.</p>
+                    </li>
+                    <li>
+                        <h4>Mendukung UMKM</h4>
+                        <p>Pajak juga dialokasikan untuk membantu usaha mikro, kecil, dan menengah (UMKM), baik dalam hal pembinaan, pelatihan, maupun pemberian modal. Ini membantu UMKM berkembang dan berkontribusi pada pertumbuhan ekonomi.</p>
+                    </li>
+                    <li>
+                        <h4>Menunjang Roda Pemerintahan dan Pembangunan</h4>
+                        <p>Peranan penerimaan pajak sangat penting dalam menunjang jalannya roda pemerintahan dan membiayai berbagai program pembangunan di seluruh sektor, mulai dari pertanian, industri, hingga pariwisata.</p>
+                    </li>
+                    <li>
+                        <h4>Meningkatkan Kualitas Pendidikan</h4>
+                        <p>Pajak mempunyai peranan besar dalam pembangunan di bidang pendidikan. Kebutuhan biaya pendidikan di Indonesia sangat besar, dan sebagian besar kebutuhan ini bergantung pada penerimaan pajak. Dengan dana pajak, pemerintah dapat membangun sekolah, memberikan beasiswa, menyediakan fasilitas belajar, dan meningkatkan kualitas tenaga pengajar, yang pada akhirnya meningkatkan kualitas sumber daya manusia bangsa.</p>
+                    </li>
+                </ul>
+                <p>Dengan demikian, jelaslah bahwa setiap warga negara memiliki tanggung jawab untuk turut serta dalam penggunaan dan penyaluran pajak demi kemajuan bersama.</p>
+            </section>
+
+            <section id="types" class="section">
+                <h2>4. Jenis-Jenis Pajak</h2>
+                <p>Dalam keseharian, kita mungkin tidak menyadari bahwa berbagai transaksi yang kita lakukan melibatkan pajak. Pernahkah kalian mendapati harga barang di kasir berbeda dengan yang tertera di etalase toko? Itu adalah salah satu contoh penerapan pajak!</p>
+                <p>Secara umum, pajak di Indonesia terbagi menjadi dua jenis utama berdasarkan lembaga pengelolanya:</p>
+
+                <h3>a. Pajak Pusat</h3>
+                <p>Pajak pusat adalah jenis pajak yang <strong>dikelola oleh pemerintah pusat</strong>, dalam hal ini Direktorat Jenderal Pajak (DJP) di bawah Kementerian Keuangan Republik Indonesia. Dana yang terkumpul dari pajak pusat digunakan untuk <strong>membiayai belanja rutin negara dan berbagai program pembangunan nasional</strong>.</p>
+                <h4>Contoh Pajak Pusat:</h4>
+                <ul>
+                    <li><strong>Pajak Penghasilan (PPh):</strong> Pajak yang dikenakan atas penghasilan yang diterima atau diperoleh seseorang atau badan dalam satu tahun pajak.</li>
+                    <li><strong>Pajak Pertambahan Nilai (PPN):</strong> Pajak yang dikenakan atas konsumsi barang dan jasa di dalam daerah pabean. Ini adalah pajak tidak langsung, yang bebannya ditanggung oleh konsumen akhir.</li>
+                    <li><strong>Pajak Penjualan atas Barang Mewah (PPnBM):</strong> Pajak yang dikenakan atas penjualan barang-barang tertentu yang tergolong mewah. Tujuannya untuk mengendalikan pola konsumsi masyarakat terhadap barang mewah dan menciptakan keadilan.</li>
+                    <li><strong>Bea Materai:</strong> Pajak atas dokumen, seperti surat perjanjian, akta notaris, atau surat berharga.</li>
+                    <li><strong>Pajak Bumi dan Bangunan (PBB) tertentu:</strong> Pajak ini sebenarnya Pajak Daerah, namun ada beberapa objek PBB tertentu (seperti PBB sektor pertambangan, perhutanan, dan perkebunan) yang pengelolaannya di bawah pajak pusat.</li>
+                </ul>
+
+                <h3>b. Pajak Daerah</h3>
+                <p>Pajak daerah adalah semua jenis pajak yang <strong>dikelola oleh pemerintah daerah</strong> (provinsi dan kabupaten/kota). Hasil dari pajak daerah ini akan dimasukkan ke dalam Anggaran Pendapatan dan Belanja Daerah (APBD) dan dialokasikan untuk <strong>membiayai pengeluaran pemerintah daerah</strong>, seperti pembangunan infrastruktur lokal, pelayanan publik daerah, dan gaji pegawai daerah.</p>
+                <h4>Contoh Pajak Daerah:</h4>
+                <ul>
+                    <li><strong>Pajak Restoran:</strong> Pajak atas pelayanan yang disediakan oleh restoran.</li>
+                    <li><strong>Pajak Hiburan:</strong> Pajak atas penyelenggaraan hiburan.</li>
+                    <li><strong>Pajak Kendaraan Bermotor:</strong> Pajak atas kepemilikan dan/atau penguasaan kendaraan bermotor.</li>
+                    <li><strong>Bea Balik Nama Kendaraan Bermotor (BBNKB):</strong> Pajak atas penyerahan hak milik kendaraan bermotor sebagai akibat perjanjian dua pihak atau perbuatan sepihak atau keadaan lain yang sah.</li>
+                    <li><strong>Pajak Reklame:</strong> Pajak atas penyelenggaraan reklame.</li>
+                    <li><strong>Bea Perolehan Hak atas Tanah dan Bangunan (BPHTB):</strong> Pajak atas perolehan hak atas tanah dan/atau bangunan.</li>
+                    <li><strong>Pajak Bumi dan Bangunan Perdesaan dan Perkotaan (PBB-P2):</strong> Pajak atas bumi dan/atau bangunan yang dimiliki, dikuasai, dan/atau dimanfaatkan oleh orang pribadi atau badan, kecuali kawasan yang digunakan untuk kegiatan usaha perkebunan, perhutanan, dan pertambangan.</li>
+                    <li><strong>Pajak Air Tanah:</strong> Pajak atas pengambilan dan/atau pemanfaatan air tanah.</li>
+                    <li>Dan berbagai jenis pajak daerah lainnya yang diatur oleh undang-undang dan peraturan daerah.</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Ekonomi untuk SMA/MA Kelas XII. Dibuat untuk pembelajaran siswa.</p>
+            <p style="margin-top: 10px;">Hak Cipta Dilindungi Undang-Undang.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

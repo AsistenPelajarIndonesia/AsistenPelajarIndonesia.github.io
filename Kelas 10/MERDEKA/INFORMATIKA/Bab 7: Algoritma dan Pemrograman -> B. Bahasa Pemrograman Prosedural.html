@@ -1,0 +1,453 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 7: Algoritma dan Pemrograman - Bahasa Pemrograman Prosedural</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 25px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .sub-section {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .code-block {
+            background-color: #f4f6f8;
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            white-space: pre-wrap; /* Allows wrapping of long lines */
+            word-wrap: break-word; /* Breaks long words */
+        }
+
+        .code-block code {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .example {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--primary-blue);
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .tip {
+            background-color: #fff3e0;
+            border-left: 4px solid var(--secondary-accent-amber);
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .key-concept {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        ul {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .diagram-placeholder {
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            border: 2px dashed var(--border-divider);
+            border-radius: 8px;
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        .visual-aid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .visual-aid-item {
+            flex: 1 1 250px; /* Flexible items */
+            background-color: #f4f6f8;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .visual-aid-item strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .code-block {
+                font-size: 0.8em;
+            }
+
+            .visual-aid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 7: Algoritma dan Pemrograman</h1>
+
+        <div class="section">
+            <h2>B. Bahasa Pemrograman Prosedural</h2>
+            <p>Belajar bahasa pemrograman itu ibarat belajar bahasa manusia. Kita memulainya dengan mencoba, mengenal, dan menggunakannya untuk keperluan sehari-hari. Kita tidak langsung mempelajari teori bahasa secara mendalam. Seperti saat belajar Bahasa Inggris, kita mulai dengan menyapa, bertanya, atau mengucapkan kalimat sederhana yang sering kita gunakan. Dari contoh-contoh ini, kita belajar kosakata penting dan pola kalimat, misalnya struktur SPOK (Subjek, Predikat, Objek, Keterangan), kalimat tanya, dan sebagainya. Setelah itu, barulah kita beranjak ke konsep yang lebih kompleks dan mempelajari tata bahasanya secara formal, sebelum akhirnya bisa menulis.</p>
+            <p>Dalam pemrograman, prosesnya juga serupa. Kita belajar dari "membaca" program yang sudah ada, sebelum mencoba "menulis" kode program sendiri. Proses menulis kode (coding) baru dimulai setelah kita memahami pola-pola dari contoh program yang sudah ada. Perbedaan utamanya dengan bahasa manusia adalah, teks program yang kita tulis tidak hanya dibaca dan dipahami, tetapi juga bisa dimengerti oleh mesin dan dieksekusi (dijalankan).</p>
+
+            <div class="visual-aid">
+                <div class="visual-aid-item">
+                    <strong>Variabel</strong>
+                    <p>Wadah untuk menyimpan data.</p>
+                </div>
+                <div class="visual-aid-item">
+                    <strong>Ekspresi</strong>
+                    <p>Kombinasi operand dan operator yang menghasilkan nilai.</p>
+                </div>
+                <div class="visual-aid-item">
+                    <strong>Struktur Kontrol Keputusan</strong>
+                    <p>Mengatur alur program berdasarkan kondisi (jika-maka).</p>
+                </div>
+                <div class="visual-aid-item">
+                    <strong>Struktur Kontrol Perulangan</strong>
+                    <p>Mengatur program untuk melakukan aksi berulang kali.</p>
+                </div>
+            </div>
+
+            <p>Setiap bahasa pemrograman memiliki paradigma, keunggulan, dan tantangannya masing-masing. Di unit ini, kita akan mengenal bahasa pemrograman <strong>C</strong>, salah satu contoh bahasa pemrograman prosedural. Bahasa C memiliki empat elemen generik yang berlaku di hampir semua bahasa pemrograman prosedural, yaitu:</p>
+            <ul>
+                <li><strong>Variabel</strong>: Tempat menyimpan nilai.</li>
+                <li><strong>Ekspresi</strong>: Kombinasi data dan operator untuk menghasilkan nilai baru.</li>
+                <li><strong>Struktur Kontrol Keputusan</strong>: Mengarahkan alur program berdasarkan kondisi.</li>
+                <li><strong>Struktur Kontrol Perulangan</strong>: Mengulang blok kode berdasarkan kondisi tertentu.</li>
+            </ul>
+            <p>Memahami keempat elemen dasar ini adalah kunci untuk membuat program, bukan sekadar menguasai satu bahasa pemrograman saja.</p>
+        </div>
+
+        <div class="section">
+            <h3>C. Bahasa Pemrograman C</h3>
+            <p>Bahasa C dikembangkan oleh Dennis M. Ritchie dan Brian W. Kernighan pada awal tahun 1970-an. Perkembangan C sangat erat kaitannya dengan sistem operasi UNIX, yang sebagian besar ditulis menggunakan C. Seiring waktu, muncul berbagai standar C, seperti K&R, ANSI-C, dan GNU Coding Standards. Di lingkungan PC, kita mengenal varian C seperti Lattice C, Microsoft C, dan Turbo C.</p>
+            <p>Kelebihan bahasa C menjadikannya sangat populer untuk membuat berbagai jenis program, mulai dari sistem operasi, pemrograman tingkat rendah (yang berinteraksi langsung dengan perangkat keras), toolkit pemrograman, hingga aplikasi umum. C mampu menghasilkan kode yang singkat, efisien, dan relatif mudah dibaca, meskipun tingkat kesulitannya membaca program C bisa jadi lebih tinggi dibandingkan bahasa tingkat tinggi lainnya.</p>
+
+            <div class="sub-section">
+                <h4>1. Membuat Program Pertama dengan Bahasa C</h4>
+                <p>Sebelum memulai coding, kita perlu mempersiapkan lingkungan pengembangan. Ini termasuk editor teks untuk menulis kode, <strong>kompilator</strong> (compiler) yang menerjemahkan kode C ke bahasa mesin, <strong>assembler</strong> yang mengubah bahasa mesin ke kode biner, dan <strong>linker</strong> yang menyatukan semua komponen menjadi program yang dapat dieksekusi (executable).</p>
+                <div class="diagram-placeholder">
+                    Alur Proses Kompilasi Program (Konseptual)
+                    <br>
+                    Sumber Data -> Compiler -> Data Objek -> Linker -> File Eksekusi
+                    <br>
+                    (CPU & Layar Pengguna adalah tujuan eksekusi)
+                </div>
+                <p>Untungnya, kini ada <strong>IDE (Integrated Development Environment)</strong> yang menyatukan semua alat ini dalam satu paket. Dengan IDE, proses menulis, mengompilasi, dan menjalankan program menjadi jauh lebih mudah, seringkali hanya dengan satu klik!</p>
+                <div class="example">
+                    <p>Contoh tampilan IDE:</p>
+                    <div class="code-block"><code>
+// Tampilan jendela IDE dengan berbagai ekstensi pemrograman
+// (Contoh: TypeScript, C#, Python, C/C++)
+                    </code></div>
+                </div>
+                <p>IDE modern seperti Visual Studio Code, Eclipse, Atom, atau Code::Blocks sangat membantu. Ada juga IDE berbasis cloud yang bisa diakses dari mana saja.</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>a. Persiapan Lingkungan Pengembangan Program Menggunakan Bahasa C</h4>
+                <p>Untuk memulai pemrograman C, kita perlu menyiapkan beberapa perangkat lunak:</p>
+                <ul>
+                    <li><strong>Editor Teks</strong>: Tempat kita mengetikkan kode program (misalnya `.c` file).</li>
+                    <li><strong>Kompilator (Compiler)</strong>: Menerjemahkan kode C menjadi bahasa mesin atau assembly.</li>
+                    <li><strong>Assembler</strong>: Mengubah bahasa mesin menjadi kode biner yang bisa dijalankan komputer.</li>
+                    <li><strong>Linker</strong>: Menggabungkan berbagai hasil proses sebelumnya menjadi satu file executable.</li>
+                </ul>
+                <p>Saat ini, semua alat tersebut seringkali sudah terintegrasi dalam sebuah <strong>Integrated Development Environment (IDE)</strong>. Beberapa IDE populer untuk C antara lain:</p>
+                <ul>
+                    <li>Eclipse</li>
+                    <li>Atom</li>
+                    <li>Code::Blocks</li>
+                    <li>Geany</li>
+                    <li>Visual Studio</li>
+                </ul>
+                <p>Beberapa IDE juga tersedia secara online (cloud-based) seperti Ideone, tutorialspoint.com, dan onlinegdb.com, atau bahkan untuk perangkat seluler seperti CppDroid, Mobile C, dan Coding C.</p>
+                <p>Menguasai IDE secara maksimal akan meningkatkan produktivitas dan kualitas program yang kita hasilkan, terutama saat bekerja dalam tim.</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>Menulis Program Pertama Anda: "Halo, Dunia!"</h4>
+                <p>Mari kita mulai dengan program paling dasar, yaitu "Halo, Dunia!". Program ini akan menampilkan teks tersebut ke layar.</p>
+                <div class="code-block"><code>
+/* Program Pertamaku:
+ * Membuat program untuk mencetak "Halo Dunia!"
+ */
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Halo Dunia!\n");
+    return 0;
+}
+                </code></div>
+                <p><strong>Langkah-langkahnya</strong>:</p>
+                <ol>
+                    <li>Buka IDE Anda (misalnya Code::Blocks atau Geany) dan buat file baru (File -> New -> Empty File).</li>
+                    <li>Ketikkan kode di atas dengan cermat. Perhatikan setiap karakter, karena bahasa pemrograman sangat sensitif terhadap kesalahan pengetikan (misalnya lupa titik koma `;` akan menyebabkan error).</li>
+                    <li>Simpan file dengan nama yang deskriptif, misalnya `hello_world.cpp`, dalam direktori yang mudah ditemukan. Struktur folder yang baik sangat penting!</li>
+                    <li>Kompilasi (Build -> Build atau Ctrl+F9) dan jalankan program (Build -> Run atau Ctrl+F10).</li>
+                </ol>
+                <p>Jika semuanya benar, Anda akan melihat output:</p>
+                <div class="code-block"><code>
+Halo Dunia!
+                </code></div>
+                <p>Selamat! Anda berhasil menjalankan program pertama Anda.</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>Praktik Baik Pemrograman: Komentar dan Struktur Kode</h4>
+                <p>Menulis kode yang baik dan mudah dipahami adalah kunci. Berikut beberapa praktik baik:</p>
+                <ul>
+                    <li><strong>Komentar</strong>: Gunakan komentar untuk menjelaskan apa yang dilakukan kode Anda. Komentar tidak dieksekusi oleh compiler. Ada dua cara membuat komentar:
+                        <ul>
+                            <li><code>/* Komentar ini bisa lebih dari satu baris */</code></li>
+                            <li><code>// Komentar satu baris</code></li>
+                        </ul>
+                        <div class="code-block"><code>
+/* Program Pertamaku:
+ * Membuat program untuk mencetak "Halo Dunia!"
+ */
+#include &lt;stdio.h&gt;
+
+int main(){
+    // Fungsi utama program
+    printf("Halo Dunia!\n"); // Mencetak Halo Dunia! ke layar
+    return 0; // Program berjalan dengan benar
+}
+                        </code></div>
+                    </li>
+                    <li><strong>Nama File</strong>: Sebutkan nama file di baris pertama kode sebagai komentar.</li>
+                    <li><strong>Deskripsi Fungsi</strong>: Tuliskan tujuan dari potongan kode agar mudah dicari kembali.</li>
+                </ul>
+            </div>
+
+            <div class="sub-section">
+                <h4>Struktur Dasar Program Bahasa C</h4>
+                <p>Mari kita bedah struktur program "Halo, Dunia!":</p>
+                <div class="code-block"><code>
+#include &lt;stdio.h&gt;
+
+int main(){
+    printf("Halo Dunia!\n");
+    return 0;
+}
+                </code></div>
+                <ul>
+                    <li><code>#include &lt;stdio.h&gt;</code>: Ini adalah <strong>preprocessor directive</strong> yang menyertakan file header `stdio.h`. File ini berisi fungsi-fungsi standar input/output, seperti `printf` (untuk menampilkan output) dan `scanf` (untuk menerima input).</li>
+                    <li><code>int main() { ... }</code>: Ini adalah <strong>fungsi utama</strong>. Setiap program C harus memiliki fungsi `main`. Program akan mulai dieksekusi dari sini. Tanda kurung kurawal `{}` menandai awal dan akhir blok kode dalam fungsi.</li>
+                    <li><code>printf("Halo Dunia!\n");</code>: Memanggil fungsi `printf` untuk menampilkan teks "Halo Dunia!" ke layar. Karakter <code>\n</code> adalah <strong>escape sequence</strong> yang berarti pindah ke baris baru (newline).</li>
+                    <li><code>return 0;</code>: Mengindikasikan bahwa program telah selesai dieksekusi dengan sukses. Nilai 0 adalah konvensi untuk eksekusi yang berhasil.</li>
+                </ul>
+                <p>Anda bisa memodifikasi program ini, misalnya mengubah teks "Halo Dunia!" menjadi "Hello World!".</p>
+            </div>
+
+            <div class="sub-section">
+                <h4>Komponen Program dalam Bahasa C</h4>
+                <p>Sebelum mempelajari hal yang lebih kompleks, kita perlu memahami komponen dasar bahasa C:</p>
+                <ol>
+                    <li>
+                        <strong>Kata Kunci (Keyword)</strong>: Kata-kata yang sudah memiliki makna khusus dalam C dan tidak bisa digunakan sebagai nama identifier. Contohnya `int`, `return`, `if`, `while`, dll. Ada 32 kata kunci standar dalam C.
+                    </li>
+                    <li>
+                        <strong>Identifier</strong>: Nama unik yang kita berikan untuk variabel, fungsi, atau elemen program lainnya. Identifier harus mengikuti aturan:
+                        <ul>
+                            <li>Tidak boleh sama dengan kata kunci.</li>
+                            <li>Terdiri dari huruf (a-z, A-Z), angka (0-9), dan underscore (_).</li>
+                            <li>Harus dimulai dengan huruf atau underscore.</li>
+                            <li>Sifatnya <em>case-sensitive</em> (huruf besar dan kecil berbeda maknanya, misal: `nama` berbeda dengan `Nama`).</li>
+                        </ul>
+                        <p class="tip"><strong>Praktik Baik Identifier</strong>:</p>
+                        <ul>
+                            <li>Hindari menggunakan nama yang terlalu mirip atau membingungkan (misal: `a` dan `A`, `l` dan `1`).</li>
+                            <li>Gunakan nama yang <strong><em>mnemonic</em></strong> (mudah diingat dan menggambarkan tujuannya).</li>
+                            <li>Untuk nama variabel atau fungsi yang terdiri dari beberapa kata, gunakan format <strong>camelCase</strong> (misal: `totalHargaBarang`, `hitungLuasLingkaran`).</li>
+                            <li>Hindari nama yang diawali underscore kecuali untuk keperluan khusus.</li>
+                            <li>Konstanta biasanya dinamai dengan huruf kapital (misal: `PI`).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Tipe Data</strong>: Menentukan jenis data yang dapat disimpan dalam variabel dan berapa banyak memori yang dibutuhkan. Beberapa tipe data dasar dalam C:
+                        <ul>
+                            <li><code>int</code>: Bilangan bulat (contoh: 10, -5).</li>
+                            <li><code>float</code>: Bilangan desimal (contoh: 3.14, -0.5).</li>
+                            <li><code>double</code>: Bilangan desimal dengan presisi lebih tinggi dari float.</li>
+                            <li><code>char</code>: Satu karakter (contoh: 'a', 'B', '?').</li>
+                        </ul>
+                        <p>Setiap tipe data memiliki <strong>spesifikasi format</strong> yang digunakan saat input/output, contohnya <code>%d</code> untuk <code>int</code>, <code>%f</code> untuk <code>float</code>, dan <code>%c</code> untuk <code>char</code>.</p>
+                        <div class="example">
+                            <p>Contoh penggunaan tipe data:</p>
+                            <div class="code-block"><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int umur = 17;
+    float tinggi = 1.75;
+    char grade = 'A';
+
+    printf("Umur: %d tahun\n", umur);
+    printf("Tinggi: %.2f meter\n", tinggi); // %.2f untuk 2 angka di belakang koma
+    printf("Grade: %c\n", grade);
+    return 0;
+}
+                            </code></div>
+                            <p>Outputnya akan menampilkan nilai-nilai tersebut dengan format yang sesuai.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Variabel</strong>: Wadah untuk menyimpan nilai yang dapat berubah selama program berjalan. Variabel harus dideklarasikan dengan tipe data dan nama identifier.
+                        <div class="code-block"><code>
+int jumlah;        // Deklarasi variabel 'jumlah' bertipe integer
+float harga = 15000.50; // Deklarasi dan inisialisasi variabel 'harga'
+                        </code></div>
+                        <p>Variabel yang dideklarasikan di dalam sebuah fungsi disebut <strong>variabel lokal</strong> dan hanya bisa digunakan di dalam fungsi itu saja. Variabel yang dideklarasikan di luar fungsi disebut <strong>variabel global</strong> dan bisa diakses di mana saja dalam program.</p>
+                    </li>
+                    <li>
+                        <strong>Konstanta</strong>: Mirip variabel, namun nilainya tidak bisa diubah setelah dideklarasikan. Menggunakan kata kunci <code>const</code>.
+                        <div class="code-block"><code>
+const float PI = 3.14159;
+                        </code></div>
+                    </li>
+                    <li>
+                        <strong>Membaca dan Menulis</strong>: Menggunakan fungsi <code>scanf()</code> untuk membaca input dari pengguna dan <code>printf()</code> untuk menampilkan output.
+                        <p class="tip">Perhatikan penggunaan <code>%d</code>, <code>%f</code>, <code>%c</code> sebagai <strong>spesifikasi format</strong>. Saat menggunakan <code>scanf</code>, kita perlu menggunakan tanda <code>&</code> di depan nama variabel untuk memberikan alamat memori.</p>
+                        <div class="code-block"><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int angka;
+    printf("Masukkan sebuah angka: ");
+    scanf("%d", &angka); // Membaca integer dan menyimpannya di variabel 'angka'
+    printf("Anda memasukkan angka: %d\n", angka);
+    return 0;
+}
+                        </code></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```

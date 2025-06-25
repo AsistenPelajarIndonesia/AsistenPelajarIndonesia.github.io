@@ -1,0 +1,285 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Kemagnetan - Motor Listrik</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .concept-box {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula {
+            display: block;
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px 0;
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-blue);
+            color: var(--primary-blue);
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .formula-text {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.1em;
+            color: var(--text-primary);
+        }
+
+        .interactive-example {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .interactive-example strong {
+            color: white;
+        }
+
+        .definition {
+            background-color: var(--border-divider);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            color: var(--text-secondary);
+        }
+
+        .definition strong {
+            color: var(--text-primary);
+        }
+
+        .key-takeaway {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .equation-explanation {
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary-blue);
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .equation-explanation p {
+            margin-bottom: 5px;
+        }
+
+        .formula-part {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .formula {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .formula {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Kemagnetan - Motor Listrik</h1>
+
+        <p>Selamat datang di bagian menarik dari Bab 3 tentang Kemagnetan, di mana kita akan menyelami dunia <strong>Motor Listrik</strong>! Pernahkah Anda bertanya-tanya bagaimana kipas angin berputar, bagaimana blender bekerja, atau apa yang membuat mobil mainan bergerak tanpa Anda dorong? Jawabannya terletak pada prinsip-prinsip kemagnetan yang kita pelajari.</p>
+
+        <div class="concept-box">
+            <p>Motor listrik adalah inti dari banyak perangkat elektronik yang kita gunakan setiap hari. Perangkat ini mengubah <strong>energi listrik</strong> menjadi <strong>energi mekanik</strong>, yang seringkali berupa gerakan berputar.</p>
+        </div>
+
+        <h2>Prinsip Dasar Motor Listrik</h2>
+        <p>Fondasi dari motor listrik adalah interaksi antara medan magnet dan arus listrik. Ketika sebuah kawat yang dialiri arus listrik ditempatkan dalam medan magnet, kawat tersebut akan mengalami sebuah <strong>gaya</strong>. Gaya inilah yang mendorong terjadinya gerakan.</p>
+
+        <div class="definition">
+            <p><strong>Gaya Lorentz:</strong> Gaya yang dialami oleh kawat berarus listrik ketika berada dalam medan magnet. Arah gaya ini dapat ditentukan menggunakan Aturan Tangan Kanan.</p>
+        </div>
+
+        <p>Bayangkan Anda memegang sebuah kawat yang dialiri arus listrik dengan tangan kanan Anda:</p>
+        <ul>
+            <li><strong>Jari Telunjuk</strong> menunjukkan arah medan magnet (dari Kutub Utara ke Kutub Selatan).</li>
+            <li><strong>Jari Tengah</strong> menunjukkan arah arus listrik dalam kawat.</li>
+            <li><strong>Ibu Jari Anda</strong> yang terbuka akan menunjukkan arah gaya yang dialami oleh kawat tersebut.</li>
+        </ul>
+        <p>Gaya ini adalah "kekuatan" yang membuat motor listrik bergerak.</p>
+
+        <h2>Momen Kopel (Torsi)</h2>
+        <p>Di dalam motor listrik, biasanya terdapat kumparan kawat (sebuah loop) yang ditempatkan di antara kutub-kutub magnet. Ketika arus listrik mengalir melalui kumparan ini, dua sisi kumparan akan mengalami gaya yang berlawanan arah.</p>
+        <p>Gaya-gaya yang berlawanan ini, yang bekerja pada jarak tertentu dari poros putar kumparan, menghasilkan apa yang disebut <strong>momen kopel</strong> atau <strong>torsi</strong>. Momen kopel inilah yang menyebabkan kumparan berputar.</p>
+
+        <div class="formula">
+            <p class="formula-text">F = iLB sin θ</p>
+            <div class="equation-explanation">
+                <p><span class="formula-part">F</span>: Besar gaya pada kawat (Newton)</p>
+                <p><span class="formula-part">i</span>: Kuat arus listrik yang mengalir pada kawat (Ampere)</p>
+                <p><span class="formula-part">L</span>: Panjang kawat yang berada dalam medan magnet (meter)</p>
+                <p><span class="formula-part">B</span>: Kuat medan magnet (Tesla)</p>
+                <p><span class="formula-part">θ</span>: Sudut antara arah arus listrik (i) dan arah medan magnet (B)</p>
+            </div>
+        </div>
+
+        <p>Dalam banyak kasus pada motor listrik, kumparan dirancang sedemikian rupa sehingga arus dalam sisi-sisi kumparan tegak lurus terhadap medan magnet. Dalam situasi ini, <span class="formula-part">θ = 90°</span>, sehingga <span class="formula-part">sin 90° = 1</span>. Rumus gaya menjadi:</p>
+
+        <div class="formula">
+            <p class="formula-text">F = iLB</p>
+        </div>
+
+        <p>Selanjutnya, momen kopel (<span class="formula-part">τ</span>) pada satu sisi kumparan dihitung dengan mengalikan gaya (<span class="formula-part">F</span>) dengan lengan gaya (<span class="formula-part">d</span>), yaitu jarak tegak lurus dari poros putar ke titik kerja gaya:</p>
+
+        <div class="formula">
+            <p class="formula-text">τ = F × d</p>
+        </div>
+
+        <p>Jika kumparan memiliki <strong>N</strong> lilitan dan luas penampang kawatnya adalah <strong>A</strong> (yang seringkali merupakan hasil perkalian panjang sisi dan lebar kumparan), maka momen kopel total pada kumparan menjadi:</p>
+
+        <div class="formula">
+            <p class="formula-text">τ = NAB sin θ</p>
+            <div class="equation-explanation">
+                <p><span class="formula-part">τ</span>: Momen kopel (Newton meter)</p>
+                <p><span class="formula-part">N</span>: Jumlah lilitan kumparan</p>
+                <p><span class="formula-part">A</span>: Luas penampang kumparan (meter persegi)</p>
+                <p><span class="formula-part">B</span>: Kuat medan magnet (Tesla)</p>
+                <p><span class="formula-part">i</span>: Kuat arus listrik (Ampere)</p>
+                <p><span class="formula-part">θ</span>: Sudut antara sumbu kumparan dan arah medan magnet</p>
+            </div>
+        </div>
+        <p>Perhatikan bahwa nilai <span class="formula-part">A sin θ</span> ini merupakan proyeksi luas kumparan yang efektif memotong garis medan magnet. Luas penampang kumparan <strong>A</strong> dalam konteks ini adalah luas yang dibentuk oleh loop kawat, bukan luas penampang fisik kawat tembaga itu sendiri.</p>
+
+        <div class="interactive-example">
+            <p><strong>Bayangkan sebuah kumparan persegi panjang</strong> dengan panjang <span class="formula-part">L</span> dan lebar <span class="formula-part">w</span>. Jika kumparan ini berada dalam medan magnet <span class="formula-part">B</span> dan berputar pada porosnya, sisi panjang <span class="formula-part">L</span> yang dialiri arus <span class="formula-part">i</span> akan mengalami gaya ke atas atau ke bawah, tergantung arah arus dan medan magnet.</p>
+            <p>Jika sudut antara bidang kumparan dan garis medan magnet adalah <span class="formula-part">φ</span>, maka lengan gaya untuk sisi panjang <span class="formula-part">L</span> akan menjadi <span class="formula-part">(w/2) cos φ</span>. Namun, dalam banyak literatur fisika, sudut yang digunakan dalam rumus momen kopel adalah sudut antara <strong>normal bidang kumparan</strong> dan arah medan magnet. Jika <span class="formula-part">θ</span> adalah sudut ini, maka lengan gaya menjadi <span class="formula-part">(w/2) sin θ</span>. Dengan luas <span class="formula-part">A = Lw</span>, momen kopel pada satu sisi adalah <span class="formula-part">iL * (w/2) sin θ = iA/2 sin θ</span>. Karena ada dua sisi yang mengalami momen kopel berlawanan, momen kopel totalnya adalah <span class="formula-part">τ = 2 * (iA/2 sin θ) = iA sin θ</span>. Jika ada N lilitan, maka <span class="formula-part">τ = NiA sin θ</span>.</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>Perubahan Momen Kopel</h3>
+            <p>Nilai momen kopel (<span class="formula-part">τ</span>) tidak konstan selama kumparan berputar. Ini karena nilai <span class="formula-part">sin θ</span> berubah seiring dengan perubahan posisi kumparan terhadap medan magnet. </p>
+            <ul>
+                <li><strong>Momen kopel terbesar</strong> terjadi saat <span class="formula-part">θ = 90°</span> (ketika bidang kumparan sejajar dengan arah medan magnet, atau ketika normal bidang kumparan tegak lurus medan magnet), sehingga <span class="formula-part">sin 90° = 1</span>.</li>
+                <li><strong>Momen kopel terkecil</strong> (nol) terjadi saat <span class="formula-part">θ = 0°</span> (ketika bidang kumparan tegak lurus terhadap medan magnet, atau ketika normal bidang kumparan sejajar medan magnet), sehingga <span class="formula-part">sin 0° = 0</span>.</li>
+            </ul>
+        </div>
+
+        <div class="key-takeaway">
+            <p>Agar putaran motor tetap berlanjut dan tidak berhenti pada posisi <span class="formula-part">θ = 0°</span>, digunakan komponen yang disebut <strong>komutator</strong> dan <strong>sikat</strong>. Komutator membalik arah arus dalam kumparan setiap kali kumparan melewati posisi vertikalnya, sehingga gaya dan momen kopel selalu bekerja untuk mempertahankan arah putaran.</p>
+        </div>
+
+        <h2>Bagian-Bagian Utama Motor Listrik Sederhana</h2>
+        <ul>
+            <li><strong>Magnet (Stator):</strong> Sumber medan magnet tetap. Bisa berupa magnet permanen atau elektromagnet.</li>
+            <li><strong>Kumparan (Rotor):</strong> Kawat yang dililitkan dan ditempatkan di dalam medan magnet. Ini adalah bagian yang berputar.</li>
+            <li><strong>Komutator:</strong> Cincin logam yang terbelah menjadi dua atau lebih segmen, terhubung ke ujung-ujung kumparan. Fungsinya adalah membalik arah arus dalam kumparan secara periodik.</li>
+            <li><strong>Sikat:</strong> Kontak tetap yang terbuat dari karbon atau logam, yang menyentuh komutator untuk mengalirkan arus dari sumber listrik ke kumparan.</li>
+        </ul>
+
+        <p>Dengan memahami interaksi gaya magnetik dan konsep momen kopel, kita dapat melihat bagaimana energi listrik diubah menjadi gerakan mekanik yang sangat berguna dalam kehidupan sehari-hari. Motor listrik adalah bukti luar biasa dari kekuatan fisika dalam dunia teknologi!</p>
+    </div>
+</body>
+</html>
+```

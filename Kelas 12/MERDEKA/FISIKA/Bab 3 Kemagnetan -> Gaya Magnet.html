@@ -1,0 +1,275 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Kemagnetan - Gaya Magnet</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .formula {
+            display: block;
+            background-color: #f5f5f5;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary-blue);
+            overflow-x: auto; /* Allow horizontal scrolling for long formulas */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3em;
+            text-align: center;
+            white-space: pre-wrap; /* Preserve line breaks in formulas */
+        }
+
+        .formula-text {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+        }
+
+        .sub-heading {
+            font-size: 1.3em;
+            color: var(--text-primary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .list-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+
+        .explanation-block {
+            background-color: #e3f2fd; /* Light blue background */
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .key-concept {
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+
+        .interactive-element {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 20px 0;
+            display: inline-block;
+        }
+
+        .interactive-element:hover {
+            background-color: #1565C0; /* Darker blue */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .formula {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Kemagnetan - Gaya Magnet</h1>
+
+        <p>Magnet adalah objek yang memiliki kemampuan untuk menarik atau menolak benda lain, terutama logam seperti besi dan nikel. Bumi kita sendiri bertindak sebagai magnet raksasa, menghasilkan medan magnet yang meluas ke luar angkasa. Medan magnet ini sangat penting bagi kehidupan di Bumi, karena melindungi kita dari radiasi berbahaya dari matahari.</p>
+
+        <div class="explanation-block">
+            <p>Bayangkan Bumi memiliki magnet batang raksasa di dalamnya. Kutub utara magnet Bumi terletak di dekat kutub selatan geografisnya, dan sebaliknya. Namun, ada sedikit perbedaan sudut sekitar 11,5 derajat antara kutub magnet dan kutub geografis Bumi. Fenomena ini menjelaskan mengapa kompas tidak selalu menunjuk tepat ke arah utara geografis.</p>
+        </div>
+
+        <h2>A. Gaya Magnet pada Muatan Bergerak</h2>
+
+        <p>Berbeda dengan medan listrik yang selalu memberikan gaya pada muatan, baik yang diam maupun bergerak, medan magnet hanya memberikan gaya pada muatan yang bergerak dan dalam kondisi tertentu. Agar sebuah muatan yang bergerak merasakan gaya magnet, dua syarat utama harus terpenuhi:</p>
+
+        <div style="padding-left: 20px; margin-bottom: 20px;">
+            <div class="list-item">Muatan tersebut harus dalam keadaan <span class="highlight">bergerak</span>.</div>
+            <div class="list-item">Arah gerak muatan <span class="highlight">tidak sejajar</span> dengan arah medan magnet.</div>
+        </div>
+
+        <p>Ketika sebuah muatan positif bergerak dengan kecepatan <span class="formula-text">v</span> tegak lurus terhadap medan magnet <span class="formula-text">B</span>, ia akan mengalami gaya magnet <span class="formula-text">F</span> yang arahnya tegak lurus terhadap arah kecepatan maupun arah medan magnet. Besar gaya magnet ini dapat dihitung menggunakan persamaan:</p>
+
+        <div class="formula">
+            <span class="formula-text">F = qvB sin θ</span>
+        </div>
+
+        <p>Di sini:</p>
+        <div style="padding-left: 20px;">
+            <div class="list-item"><span class="formula-text">F</span> adalah besar gaya magnet (dalam Newton, N).</div>
+            <div class="list-item"><span class="formula-text">q</span> adalah besar muatan partikel (dalam Coulomb, C).</div>
+            <div class="list-item"><span class="formula-text">v</span> adalah besar kecepatan muatan (dalam meter per detik, m/s).</div>
+            <div class="list-item"><span class="formula-text">B</span> adalah kuat medan magnet (dalam Tesla, T).</div>
+            <div class="list-item"><span class="formula-text">θ</span> adalah sudut antara arah kecepatan (<span class="formula-text">v</span>) dan arah medan magnet (<span class="formula-text">B</span>).</div>
+        </div>
+
+        <p>Penting untuk diingat bahwa jika muatan diam dalam medan magnet, tidak akan ada gaya magnet yang bekerja padanya. Gaya magnet hanya muncul ketika ada pergerakan muatan yang tidak searah dengan medan magnet.</p>
+
+        <div class="explanation-block">
+            <p>Untuk menentukan arah gaya magnet, kita menggunakan <span class="key-concept">Aturan Tangan Kanan</span>. Jika kita meluruskan ibu jari tangan kanan searah dengan arah kecepatan muatan (<span class="formula-text">v</span>), dan jari telunjuk searah dengan arah medan magnet (<span class="formula-text">B</span>), maka arah telapak tangan kita akan menunjukkan arah gaya magnet (<span class="formula-text">F</span>).</p>
+        </div>
+
+        <h3>Gerak Muatan dalam Medan Magnet</h3>
+        <p>Ketika sebuah partikel bermuatan bergerak tegak lurus dalam medan magnet, gaya magnet yang bekerja padanya akan selalu tegak lurus terhadap arah geraknya. Gaya ini berperan sebagai <span class="key-concept">gaya sentripetal</span>, yang menyebabkan muatan bergerak dalam lintasan melingkar.</p>
+
+        <p>Karena gaya magnet berperan sebagai gaya sentripetal, kita dapat menyamakan kedua persamaan tersebut:</p>
+
+        <div class="formula">
+            <span class="formula-text">F_magnet = F_sentripetal</span>
+            <br>
+            <span class="formula-text">qvB = mv²/r</span>
+        </div>
+
+        <p>Dari persamaan ini, kita dapat menurunkan berbagai hubungan, misalnya untuk jari-jari lintasan:</p>
+
+        <div class="formula">
+            <span class="formula-text">r = mv / qB</span>
+        </div>
+
+        <p>Persamaan ini sangat berguna dalam alat seperti <span class="key-concept">Spektrometer Massa</span>, yang digunakan untuk mengukur massa partikel berdasarkan lintasan melingkarnya dalam medan magnet.</p>
+
+        <h3>Gaya Lorentz</h3>
+        <p>Jika sebuah muatan bergerak dalam pengaruh medan listrik <span class="formula-text">E</span> DAN medan magnet <span class="formula-text">B</span> secara bersamaan, maka muatan tersebut akan mengalami gaya total yang dikenal sebagai <span class="key-concept">Gaya Lorentz</span>. Gaya Lorentz adalah gabungan vektor dari gaya listrik dan gaya magnet.</p>
+
+        <div class="formula">
+            <span class="formula-text">F_Lorentz = qE + q(v × B)</span>
+        </div>
+
+        <p>Gaya Lorentz memainkan peran kunci dalam banyak teknologi, seperti <span class="key-concept">pemilih kecepatan</span> (velocity selector), di mana medan listrik dan medan magnet diatur sedemikian rupa untuk hanya mengizinkan muatan dengan kecepatan tertentu lewat tanpa dibelokkan.</p>
+
+        <h2>B. Gaya Magnet pada Kawat Berarus Listrik</h2>
+
+        <p>Kawat yang dialiri arus listrik sebenarnya adalah kumpulan muatan yang bergerak. Oleh karena itu, ketika kawat berarus listrik ditempatkan dalam medan magnet, kawat tersebut juga akan mengalami gaya magnet.</p>
+
+        <p>Besar gaya magnet pada kawat yang memiliki panjang <span class="formula-text">l</span>, dialiri arus listrik <span class="formula-text">i</span>, dan berada dalam medan magnet <span class="formula-text">B</span> diberikan oleh rumus:</p>
+
+        <div class="formula">
+            <span class="formula-text">F = ilB sin θ</span>
+        </div>
+
+        <p>Di mana:</p>
+        <div style="padding-left: 20px;">
+            <div class="list-item"><span class="formula-text">F</span> adalah gaya magnet pada kawat (Newton, N).</div>
+            <div class="list-item"><span class="formula-text">i</span> adalah kuat arus listrik (Ampere, A).</div>
+            <div class="list-item"><span class="formula-text">l</span> adalah panjang kawat yang berada dalam medan magnet (meter, m).</div>
+            <div class="list-item"><span class="formula-text">B</span> adalah kuat medan magnet (Tesla, T).</div>
+            <div class="list-item"><span class="formula-text">θ</span> adalah sudut antara arah arus listrik (<span class="formula-text">i</span>) dan arah medan magnet (<span class="formula-text">B</span>).</div>
+        </div>
+
+        <div class="explanation-block">
+            <p>Arah gaya magnet pada kawat berarus juga ditentukan menggunakan <span class="key-concept">Aturan Tangan Kanan</span>. Kali ini, ibu jari menunjukkan arah arus listrik (<span class="formula-text">i</span>), jari telunjuk menunjukkan arah medan magnet (<span class="formula-text">B</span>), dan telapak tangan menunjukkan arah gaya magnet (<span class="formula-text">F</span>).</p>
+        </div>
+
+        <p>Prinsip gaya magnet pada kawat berarus inilah yang menjadi dasar kerja dari berbagai peralatan listrik seperti motor listrik dan speaker.</p>
+
+        <h3>Motor Listrik</h3>
+        <p>Motor listrik mengubah energi listrik menjadi energi mekanik (gerak putar). Di dalamnya terdapat kumparan kawat yang ditempatkan dalam medan magnet. Ketika arus listrik dialirkan melalui kumparan, gaya magnet yang berlawanan arah pada sisi-sisi kumparan akan menghasilkan torsi, menyebabkan kumparan berputar.</p>
+    </div>
+</body>
+</html>
+```

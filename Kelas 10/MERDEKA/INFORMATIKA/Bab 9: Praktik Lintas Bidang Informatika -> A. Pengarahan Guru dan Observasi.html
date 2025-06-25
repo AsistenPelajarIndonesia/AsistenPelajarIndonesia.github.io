@@ -1,0 +1,398 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 9: Praktik Lintas Bidang Informatika - Pengarahan Guru & Observasi</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1);
+            padding: 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .sub-section {
+            margin-top: 20px;
+            margin-left: 20px;
+            border-left: 3px solid var(--primary-blue);
+            padding-left: 15px;
+        }
+
+        .example-box {
+            background-color: #f5f5f5;
+            border: 1px solid var(--border-divider);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .example-box:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .example-box h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2em;
+        }
+
+        .concept-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .concept-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .concept-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 18px;
+            height: 18px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            border: 3px solid var(--background-canvas);
+            box-shadow: 0 0 0 2px var(--primary-blue);
+        }
+
+        .concept-list li:hover::before {
+             background-color: var(--accent-green);
+             box-shadow: 0 0 0 2px var(--accent-green);
+        }
+
+        .concept-list li strong {
+            color: var(--primary-blue);
+        }
+
+        .concept-list li p {
+            margin-bottom: 5px;
+            font-size: 0.95em;
+            color: var(--text-tertiary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #1565C0;
+            color: white;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .concept-list li {
+                padding-left: 25px;
+            }
+
+            .concept-list li::before {
+                width: 15px;
+                height: 15px;
+                top: 6px;
+            }
+
+            table, th, td {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .action-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 9: Praktik Lintas Bidang Informatika</h1>
+        <h2>A. Pengarahan Guru dan Observasi</h2>
+
+        <p>Selamat datang di bab yang akan membawamu ke dunia nyata penerapan teknologi informasi! Di bagian ini, kita akan menyelami inti dari <strong>Praktik Lintas Bidang (PLB)</strong>, sebuah kegiatan proyek yang akan melatih kemampuanmu dalam memecahkan masalah menggunakan Informatika.</p>
+
+        <div class="section">
+            <h3>Pengantar: Teknologi Informasi dalam Kehidupan Nyata</h3>
+            <p>Pernahkah kamu membayangkan betapa pesatnya perkembangan <strong><em>e-commerce</em></strong>? Dari sekadar ide hingga menjadi raksasa bisnis global, prosesnya melibatkan banyak sekali langkah. Bayangkan saja, untuk membangun sebuah aplikasi yang digunakan oleh jutaan orang, dibutuhkan analisis masalah yang mendalam, pemilihan solusi yang tepat, pengembangan aplikasi yang canggih, hingga pengujian di tengah masyarakat. Semua ini tidak lepas dari konsep <strong>Manajemen Proyek</strong>.</p>
+
+            <p><strong>Manajemen Proyek</strong>, menurut Kamus Besar Bahasa Indonesia, adalah telaah atau kumpulan pengetahuan tentang cara menginisiasi, menjalankan, memonitor, dan mengevaluasi sebuah proyek. Dalam konteks Informatika, ini berarti kita akan belajar bagaimana membangun sebuah desain aplikasi untuk menyelesaikan permasalahan nyata di lingkungan sekitar kita, secara berkelompok. Ini adalah kesempatan emas untuk mempraktikkan ilmu Informatika lintas bidang.</p>
+
+            <div class="highlight">
+                <strong>Praktik Lintas Bidang (PLB)</strong> adalah kegiatan pengembangan aplikasi yang berdurasi setengah semester (sekitar 7 minggu). Kegiatan ini bersifat <strong>kelompok</strong> (5-6 anggota per kelompok) dan fokus pada <strong>observasi langsung</strong> untuk menemukan studi kasus permasalahan. Kalian akan berinteraksi dengan anggota kelompok dan masyarakat, menerapkan ilmu Informatika yang sudah didapat di sekolah, dan merasakan langsung bagaimana proyek pengembangan aplikasi disusun. Hasil akhir PLB ini berupa <strong>dokumentasi proyek</strong> yang lengkap dan <strong>desain aplikasi</strong> yang fungsional.
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Fokus Utama Bagian A: Pengarahan Guru dan Observasi</h3>
+            <p>Bagian ini adalah fondasi dari seluruh kegiatan PLB. Kita akan memulai dengan mendapatkan arahan yang jelas dari guru, lalu beralih ke tahap observasi untuk mengidentifikasi masalah yang akan kita pecahkan.</p>
+
+            <div class="sub-section">
+                <h4>1. Pengarahan Guru</h4>
+                <p>Di awal perjalanan PLB ini, guru akan memberikan penjelasan mendalam mengenai pelaksanaan proyek. Sangat penting bagi kalian untuk mencatat semua informasi penting yang disampaikan. Gunakan format di bawah ini sebagai panduan, namun jangan ragu untuk menyesuaikannya dengan gaya belajarmu. Jika kamu suka menggambar, membuat komik bisa menjadi cara yang kreatif untuk mendokumentasikan. Yang terpenting, semua informasi esensial harus tercatat.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hari / Tanggal Kegiatan</th>
+                            <th>Narasumber</th>
+                            <th>Catatan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>(Isi dengan informasi dari guru)</td>
+                            <td>Guru Informatika</td>
+                            <td>
+                                <strong>Deskripsi Kegiatan:</strong> <br>
+                                (Catat poin-poin penting penjelasan guru mengenai tujuan, proses, dan luaran PLB.) <br><br>
+                                <strong>Yang Perlu Dipersiapkan:</strong> <br>
+                                (Catat alat, bahan, atau pengetahuan awal yang dibutuhkan.) <br><br>
+                                <strong>Timeline / Rencana Jadwal Kegiatan PLB:</strong> <br>
+                                (Catat tahapan proyek beserta perkiraan waktunya.)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="highlight">Ingat, mencatat secara detail dan terstruktur akan sangat membantu kelancaran proyekmu!</p>
+
+                <div class="example-box">
+                    <h4>Tips untuk Pengarahan Guru:</h4>
+                    <ul>
+                        <li>Siapkan pertanyaan sebelumnya.</li>
+                        <li>Fokus mendengarkan dan mencatat poin kunci.</li>
+                        <li>Perhatikan detail mengenai pembagian tugas dalam kelompok.</li>
+                        <li>Tanyakan hal-hal yang belum jelas terkait harapan guru.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sub-section">
+                <h4>2. Observasi</h4>
+                <p>Setelah mendapatkan pengarahan, langkah selanjutnya adalah <strong>observasi</strong>. Guru akan memberikan beberapa contoh tema atau kasus yang relevan untuk kamu amati di lingkungan sekitarmu. Salah satu tema yang menarik dan banyak dikembangkan saat ini adalah <strong>konsep kota cerdas (smart city)</strong>.</p>
+
+                <div class="example-box">
+                    <h4>Mengenal Konsep Kota Cerdas (Smart City)</h4>
+                    <p>Menjelang tahun 2045, banyak kota di Indonesia berambisi menjadi <strong>kota cerdas</strong>. Konsep ini memanfaatkan perkembangan teknologi informasi untuk meningkatkan kualitas hidup masyarakatnya. Sebagai siswa Informatika, kalian akan dilatih untuk menerapkan konsep ini dalam proyek kecilmu.</p>
+
+                    <p>Konsep kota cerdas umumnya mencakup beberapa pilar utama, yang disusun oleh Kementerian Komunikasi dan Informatika:</p>
+
+                    <ul class="concept-list">
+                        <li>
+                            <strong>1. Smart Environment:</strong>
+                            <p>Fokus pada pengelolaan kawasan yang bersih, tertib, dan bebas sampah, sambil tetap mempertahankan unsur tradisionalnya.</p>
+                        </li>
+                        <li>
+                            <strong>2. Smart Economy:</strong>
+                            <p>Memastikan penggunaan Teknologi Informasi dan Komunikasi (TIK) dalam transaksi, seperti sistem pembayaran <em>cashless</em>, di kawasan prioritas dan sekitarnya.</p>
+                        </li>
+                        <li>
+                            <strong>3. Smart Branding:</strong>
+                            <p>Membantu pemerintah daerah dalam mempromosikan kawasan wisata prioritas untuk meningkatkan jumlah kunjungan wisatawan.</p>
+                        </li>
+                        <li>
+                            <strong>4. Smart Government:</strong>
+                            <p>Memastikan pemerintah daerah menerapkan Sistem Pemerintahan Berbasis Elektronik (SPBE) secara berkualitas untuk pelayanan publik yang baik.</p>
+                        </li>
+                        <li>
+                            <strong>5. Smart Society:</strong>
+                            <p>Meningkatkan kapasitas masyarakat di kawasan wisata agar menjadi tuan rumah yang baik dan memiliki keunggulan.</p>
+                        </li>
+                        <li>
+                            <strong>6. Smart Living:</strong>
+                            <p>Menciptakan suasana kawasan wisata yang nyaman dan kondusif bagi masyarakat serta wisatawan melalui penyediaan transportasi dan logistik yang aman.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>Dalam proyek PLB ini, kalian akan diminta untuk berkolaborasi dengan pengurus RT/RW di lingkungan kalian. Tugasnya adalah menggali permasalahan terkait <strong>pendataan kependudukan dan aktivitas bulanan</strong>. Beberapa contoh data yang bisa kamu gali meliputi:</p>
+
+                <ol>
+                    <li>Pendataan kelahiran</li>
+                    <li>Pendataan kematian</li>
+                    <li>Pendataan tamu</li>
+                    <li>Penarikan iuran sampah</li>
+                    <li>Penarikan iuran keamanan</li>
+                    <li>Pendataan jumlah sampah yang dihasilkan warga</li>
+                    <li>Pendataan luas wilayah RT</li>
+                </ol>
+
+                <p>Tantanganmu adalah membangun sebuah <strong>sistem sederhana</strong> yang dapat menjadi solusi untuk permasalahan-permasalahan tersebut. Ini adalah kesempatanmu untuk membawa teknologi Informatika langsung ke tengah masyarakat dan memberikan kontribusi nyata!</p>
+
+                <div class="example-box">
+                    <h4>Contoh Studi Kasus Observasi</h4>
+                    <p>Bayangkan sebuah RT dengan tingkat pendatang yang cukup tinggi. Pendataan tamu yang masuk dan keluar seringkali tidak tercatat dengan baik. Hal ini bisa menimbulkan potensi masalah keamanan. Sebuah aplikasi sederhana yang memungkinkan warga melaporkan tamu melalui smartphone dan tercatat secara otomatis oleh pengurus RT bisa menjadi solusi efektif.</p>
+                    <p>Atau, bayangkan kesulitan RT dalam mengumpulkan iuran sampah dan keamanan secara rutin. Sebuah sistem aplikasi yang dapat mengirimkan notifikasi pembayaran, mencatat siapa yang sudah membayar, dan menghasilkan laporan secara otomatis akan sangat membantu.</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="footer-note">Mari persiapkan dirimu untuk perjalanan PLB yang penuh tantangan dan pembelajaran!</p>
+    </div>
+</body>
+</html>
+```

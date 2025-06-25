@@ -1,0 +1,441 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Listrik Statis dalam Kehidupan Sehari-hari</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .section-title {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .concept-box {
+            background-color: #f5f5f5;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .concept-box h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+            font-size: 1.2em;
+            border-bottom: none;
+        }
+
+        .concept-box p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        .key-term {
+            font-weight: 500;
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        .highlight {
+            background-color: rgba(255, 224, 130, 0.3); /* Light amber */
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .formula-box {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+        }
+
+        .formula-box code {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1.1em;
+            display: block;
+            overflow-x: auto;
+        }
+
+        .formula-explanation {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 10px;
+        }
+
+        .sub-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border-divider);
+        }
+
+        .sub-section:first-of-type {
+            border-top: none;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .interactive-element {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            background-color: #1565C0; /* Darker blue */
+        }
+
+        .image-placeholder {
+            background-color: var(--border-divider);
+            color: var(--text-tertiary);
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 1.4em;
+            }
+
+            .formula-box {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            .section-title {
+                font-size: 1.2em;
+            }
+
+            .concept-box, .formula-box, .interactive-element {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 4: Listrik Statis dalam Kehidupan Sehari-hari</h1>
+
+        <p>
+            Tuhan menganugerahkan pikiran kepada manusia untuk terus berinovasi demi kesejahteraan. Salah satu inovasi terpenting adalah listrik. Listrik telah menjadi bagian tak terpisahkan dari kehidupan modern, mulai dari menerangi rumah, menghidupkan perangkat elektronik, hingga memasak. Bab ini akan mengupas tuntas mengenai <strong>Konsep Listrik Statis</strong> dan berbagai fenomena yang terjadi dalam kehidupan sehari-hari.
+        </p>
+
+        <h2 class="section-title">A. Konsep Listrik Statis</h2>
+
+        <div class="concept-box">
+            <h3>Apa yang Akan Kita Pelajari?</h3>
+            <p>Dalam bab ini, kita akan menjelajahi topik-topik penting seperti:</p>
+            <ul>
+                <li><span class="key-term">Muatan Listrik</span></li>
+                <li><span class="key-term">Hukum Coulomb</span></li>
+                <li><span class="key-term">Beda Potensial</span></li>
+                <li><span class="key-term">Energi Listrik</span></li>
+                <li><span class="key-term">Medan Listrik</span></li>
+            </ul>
+        </div>
+
+        <p>Memahami konsep-konsep ini akan membantu kita menjelaskan berbagai fenomena listrik statis yang sering kita jumpai di sekitar kita.</p>
+
+        <div class="sub-section">
+            <h3>1. Muatan Listrik</h3>
+            <p>
+                Setiap benda tersusun dari atom. Atom terdiri dari partikel subatom:
+                <ul>
+                    <li><span class="key-term">Proton</span>: Bermuatan positif.</li>
+                    <li><span class="key-term">Neutron</span>: Tidak bermuatan (netral).</li>
+                    <li><span class="key-term">Elektron</span>: Bermuatan negatif.</li>
+                </ul>
+                Proton dan neutron membentuk inti atom, sementara elektron bergerak mengelilingi inti. Elektron inilah yang memainkan peran krusial dalam fenomena kelistrikan.
+            </p>
+            <p>
+                Bagaimana interaksi antara muatan-muatan ini? Perhatikan sekeliling Anda, fenomena apa saja yang menunjukkan adanya interaksi muatan listrik?
+            </p>
+            <div class="concept-box">
+                <h3>Konsep Dasar Interaksi Muatan</h3>
+                <p>
+                    Perbedaan jumlah elektron dan proton dalam suatu atom akan menentukan muatan listrik suatu benda:
+                    <ul>
+                        <li>Jika suatu benda memiliki <strong>kelebihan elektron</strong>, benda tersebut disebut bermuatan <strong>negatif</strong>.</li>
+                        <li>Jika suatu benda memiliki <strong>kekurangan elektron</strong>, benda tersebut disebut bermuatan <strong>positif</strong>.</li>
+                    </ul>
+                    Interaksi antar muatan listrik bersifat sebagai berikut:
+                    <ul>
+                        <li>Muatan yang <strong>berbeda jenis</strong> (positif dan negatif) akan saling <strong>tarik-menarik</strong>.</li>
+                        <li>Muatan yang <strong>sejenis</strong> (positif dengan positif, atau negatif dengan negatif) akan saling <strong>tolak-menolak</strong>.</li>
+                    </ul>
+                    Fenomena tarik-menarik atau tolak-menolak antar muatan inilah yang disebut sebagai <strong>listrik statis</strong>.
+                </p>
+            </div>
+            <p>
+                Dalam keadaan normal, atom bersifat netral karena jumlah proton dan elektronnya sama. Namun, benda dapat diubah menjadi bermuatan melalui proses seperti <strong>penggosokan</strong>.
+            </p>
+            <p>
+                Saat dua benda digosokkan, elektron dapat berpindah dari satu benda ke benda lain. Misalnya:
+                <ul>
+                    <li><strong>Sisir/penggaris plastik</strong> yang digosokkan pada rambut kering menjadi bermuatan <strong>negatif</strong> karena menerima elektron dari rambut.</li>
+                    <li><strong>Batang kaca</strong> yang digosokkan pada rambut kering menjadi bermuatan <strong>positif</strong> karena kehilangan elektron yang berpindah ke rambut.</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="sub-section">
+            <h3>Deret Tribolistrik</h3>
+            <p>
+                Urutan benda berdasarkan kecenderungannya untuk memperoleh atau melepaskan elektron saat digosokkan dikenal sebagai <strong>deret tribolistrik</strong>. Dalam deret ini:
+                <ul>
+                    <li>Benda yang berada di atas akan bermuatan <strong>negatif</strong> jika digosokkan dengan benda di bawahnya.</li>
+                    <li>Benda yang berada di bawah akan bermuatan <strong>positif</strong> jika digosokkan dengan benda di atasnya.</li>
+                </ul>
+                Contoh: Jika gelas (kaca) digosokkan pada wol, gelas akan bermuatan positif dan wol akan bermuatan negatif.
+            </p>
+            <div class="image-placeholder">
+                [Tabel 4.1 Deret Tribolistrik akan ditampilkan di sini jika ada gambar]
+                <p><em>(Placeholder untuk tabel deret tribolistrik)</em></p>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h3>Mendeteksi Muatan Listrik: Elektroskop</h3>
+            <p>
+                Bagaimana cara mengetahui apakah suatu benda bermuatan listrik atau tidak? Alat yang digunakan adalah <strong>elektroskop</strong>.
+            </p>
+            <p>
+                Elektroskop sederhana terdiri dari tiga bagian utama:
+                <ul>
+                    <li><strong>Kepala elektroskop</strong></li>
+                    <li><strong>Daun elektroskop</strong> (biasanya terbuat dari lempeng emas atau aluminium)</li>
+                    <li><strong>Batang penghantar</strong> (konduktor)</li>
+                </ul>
+                Daun elektroskop akan <strong>membuka</strong> jika didekatkan dengan benda bermuatan listrik. Semakin lebar daun membuka, semakin besar muatan pada benda tersebut. Untuk mengetahui jenis muatannya, elektroskop perlu diberi muatan terlebih dahulu dengan jenis yang diketahui.
+            </p>
+            <div class="image-placeholder">
+                [Gambar 4.2 Elektroskop Sederhana akan ditampilkan di sini jika ada gambar]
+                <p><em>(Placeholder untuk gambar elektroskop sederhana)</em></p>
+            </div>
+            <p>
+                Anda dapat mencoba membuat elektroskop sederhana dari bahan-bahan di sekitar Anda, seperti kertas aluminium dan botol plastik.
+            </p>
+        </div>
+
+        <div class="sub-section">
+            <h3>2. Hukum Coulomb</h3>
+            <p>
+                Hukum Coulomb menjelaskan hubungan antara gaya listrik (tarik-menarik atau tolak-menolak) dengan besar muatan kedua benda dan jarak di antara keduanya. Ilmuwan Prancis, Charles Augustin Coulomb, melakukan penelitian menggunakan alat yang disebut <strong>neraca puntir Coulomb</strong>.
+            </p>
+            <p>
+                Inti dari Hukum Coulomb adalah:
+                <ul>
+                    <li><strong>Berbanding lurus</strong> dengan hasil kali besar muatan kedua benda. Artinya, semakin besar muatannya, semakin besar gayanya.</li>
+                    <li><strong>Berbanding terbalik</strong> dengan kuadrat jarak antara kedua benda. Artinya, semakin jauh jaraknya, semakin kecil gayanya.</li>
+                </ul>
+            </p>
+            <div class="formula-box">
+                <code>F<sub>C</sub> = k * (q<sub>1</sub> * q<sub>2</sub>) / r<sup>2</sup></code>
+                <div class="formula-explanation">
+                    dengan:<br>
+                    F<sub>C</sub> = Gaya Coulomb (Newton)<br>
+                    k = Konstanta Coulomb (sekitar 9 x 10<sup>9</sup> Nm²/C²)<br>
+                    q<sub>1</sub> = Besar muatan benda pertama (Coulomb)<br>
+                    q<sub>2</sub> = Besar muatan benda kedua (Coulomb)<br>
+                    r = Jarak antara kedua muatan (meter)
+                </div>
+            </div>
+            <p>
+                Fenomena seperti tarik-menarik atau tolak-menolak antara dua balon yang digosok menunjukkan prinsip Hukum Coulomb. Variasi dalam lama penggosokan (yang memengaruhi jumlah muatan) dan jarak antar balon akan menghasilkan perubahan pada kuat interaksi keduanya.
+            </p>
+        </div>
+
+        <div class="sub-section">
+            <h3>3. Medan Listrik</h3>
+            <p>
+                Di sekitar muatan listrik terdapat daerah yang disebut <strong>medan listrik</strong>. Medan listrik adalah area di sekitar muatan yang dapat menimbulkan gaya listrik pada muatan lain yang berada di dalamnya.
+            </p>
+            <p>
+                Medan listrik digambarkan menggunakan <strong>garis-garis gaya listrik</strong>:
+                <ul>
+                    <li>Garis gaya listrik <strong>keluar</strong> dari muatan <strong>positif</strong>.</li>
+                    <li>Garis gaya listrik <strong>masuk</strong> ke muatan <strong>negatif</strong>.</li>
+                </ul>
+            </p>
+            <div class="image-placeholder">
+                [Gambar 4.6 Garis Medan Listrik Dua Muatan akan ditampilkan di sini jika ada gambar]
+                <p><em>(Placeholder untuk gambar garis medan listrik)</em></p>
+            </div>
+            <p>
+                Besar atau kuat medan listrik (E) pada suatu titik dapat dihitung dengan membandingkan gaya Coulomb (F) yang dialami oleh muatan uji (q) dengan besar muatan uji tersebut.
+            </p>
+            <div class="formula-box">
+                <code>E = F / q</code>
+                <div class="formula-explanation">
+                    dengan:<br>
+                    E = Medan Listrik (N/C)<br>
+                    F = Gaya Coulomb (Newton)<br>
+                    q = Muatan uji (Coulomb)
+                </div>
+            </div>
+            <p>
+                Hubungan antara kuat medan listrik (E), konstanta Coulomb (k), muatan sumber (Q), dan jarak (r) adalah:
+            </p>
+            <div class="formula-box">
+                <code>E = k * Q / r<sup>2</sup></code>
+                <div class="formula-explanation">
+                    dengan:<br>
+                    E = Medan Listrik (N/C)<br>
+                    k = Konstanta Coulomb (sekitar 9 x 10<sup>9</sup> Nm²/C²)<br>
+                    Q = Muatan sumber (Coulomb)<br>
+                    r = Jarak dari muatan sumber (meter)
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h3>4. Beda Potensial dan Energi Listrik</h3>
+            <p>
+                Pernahkah Anda bertanya-tanya mengapa petir bisa sangat berbahaya? Petir adalah contoh nyata dari fenomena listrik statis yang melibatkan beda potensial tinggi. Benjamin Franklin adalah ilmuwan pertama yang menyatakan bahwa petir terjadi akibat gejala listrik statis, yaitu perpindahan muatan negatif (elektron) dalam jumlah besar antara awan, atau antara awan dan bumi.
+            </p>
+            <p>
+                Perpindahan muatan ini terjadi karena adanya <strong>beda potensial</strong> yang sangat besar antara dua titik.
+            </p>
+            <div class="image-placeholder">
+                [Gambar 4.8 (a) Benjamin Franklin, (b) Sambaran Petir akan ditampilkan di sini jika ada gambar]
+                <p><em>(Placeholder untuk gambar Benjamin Franklin dan petir)</em></p>
+            </div>
+            <p>
+                <strong>Beda potensial listrik (V)</strong> didefinisikan sebagai perbandingan antara energi listrik (W) yang diperlukan untuk memindahkan muatan (Q) dengan jumlah muatan itu sendiri.
+            </p>
+            <div class="formula-box">
+                <code>ΔV = W / Q</code>
+                <div class="formula-explanation">
+                    dengan:<br>
+                    ΔV = Beda Potensial Listrik (Volt)<br>
+                    W = Energi Listrik (Joule)<br>
+                    Q = Muatan Listrik (Coulomb)
+                </div>
+            </div>
+            <p>
+                Jika beda potensial antara dua benda cukup besar, akan terjadi perpindahan muatan (elektron) dari benda berpotensial lebih rendah ke benda berpotensial lebih tinggi.
+            </p>
+        </div>
+
+        <div class="interactive-element">
+            Jelajahi lebih lanjut konsep-konsep ini melalui aktivitas dan contoh soal yang disajikan!
+        </div>
+
+    </div>
+</body>
+</html>
+```
