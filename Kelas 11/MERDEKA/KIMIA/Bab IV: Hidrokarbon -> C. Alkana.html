@@ -1,0 +1,552 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab IV: Hidrokarbon - C. Alkana</title>
+    <style>
+        /* Color Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Reset & Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Headings */
+        h1, h2, h3, h4, h5 {
+            color: var(--text-primary);
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-top: 20px;
+        }
+
+        h5 {
+            font-size: 1.1em;
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraphs & Lists */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        table thead tr {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f9f9f9; /* Slightly off-white for contrast */
+        }
+
+        table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Code/Structure Representation */
+        .structure-code {
+            background-color: #f0f4f8; /* A light grey-blue to distinguish */
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto; /* For horizontal scrolling on small screens */
+            font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+            color: var(--text-primary);
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        /* Special text highlighting */
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .term {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .note {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 15px;
+            padding: 10px;
+            border-left: 4px solid var(--semantic-info);
+            background-color: #e3f2fd; /* Light blue background */
+            border-radius: 4px;
+        }
+        
+        .example-box {
+            background-color: #fbfbfb;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .example-box .step-label {
+            font-weight: bold;
+            color: var(--accent-green);
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* Custom styling for Alkana shapes (minimalistic, text-based) */
+        .alkana-shape-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .alkana-shape {
+            border: 2px solid var(--primary-blue);
+            padding: 20px;
+            display: inline-block;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-align: center;
+            border-radius: 5px; /* Default for general shape */
+            min-width: 120px; /* Ensure some minimum size */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            /* Fallback style for simple box if clip-path is not supported/desired */
+            clip-path: none;
+        }
+        
+        /* Attempted clip-path for shapes - will fallback to simple box if not supported well */
+        .siklopentana {
+            clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%);
+            border-radius: 0;
+            padding-top: 30px;
+        }
+        .sikloheksana {
+            clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
+            border-radius: 0;
+            padding-top: 30px;
+        }
+        
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+            }
+
+            table th, table td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+
+            .structure-code {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            h4 {
+                font-size: 1em;
+            }
+            /* Make tables scrollable horizontally on small screens */
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap; 
+            }
+            table thead, table tbody, table th, table td, table tr {
+                display: table-cell; /* Revert to table-cell for intrinsic sizing */
+            }
+            table thead tr {
+                background-color: var(--primary-blue); /* Apply background to entire row */
+                color: var(--background-canvas);
+            }
+            table td, table th {
+                min-width: 80px; /* Ensure columns have minimum width */
+                padding: 8px;
+            }
+            /* Specific fix for cells not showing on narrow screens, force them to stack if needed */
+            table {
+                width: 100%;
+                display: block;
+                overflow-x: auto;
+            }
+            table thead, table tbody, table tr {
+                display: inline-block; /* Makes rows behave like blocks side-by-side */
+                vertical-align: top;
+                width: auto;
+            }
+            table th, table td {
+                display: block;
+                border-bottom: 1px solid var(--border-divider);
+            }
+            table thead {
+                border-right: 1px solid var(--border-divider); /* Separator for header column */
+            }
+            table td:last-child {
+                border-bottom: none; /* No bottom border for the last cell in a column */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab IV: Hidrokarbon - C. Alkana</h1>
+
+        <p>Dalam studi kimia organik, senyawa hidrokarbon, yang hanya terdiri dari atom karbon dan hidrogen, dapat dikelompokkan berdasarkan <span class="highlight">jenis ikatan yang terbentuk antaratom karbonnya</span>. Pembagian ini menghasilkan dua kategori utama:</p>
+        <ul>
+            <li><span class="term">Hidrokarbon Jenuh</span>: Merupakan senyawa yang seluruh ikatan antaratom karbonnya adalah ikatan tunggal. Kelompok ini mencakup <span class="highlight">Alkana</span> dan <span class="highlight">Sikloalkana</span>.</li>
+            <li><span class="term">Hidrokarbon Tidak Jenuh</span>: Merupakan senyawa yang setidaknya memiliki satu ikatan rangkap dua (alkena) atau ikatan rangkap tiga (alkuna) antaratom karbonnya. Kelompok ini juga termasuk Sikloalkena dan Sikloalkuna.</li>
+        </ul>
+
+        <hr style="border: none; border-top: 1px solid var(--border-divider); margin: 30px 0;">
+
+        <h2>C. Alkana</h2>
+        <p>Alkana adalah jenis hidrokarbon <span class="highlight">alifatik jenuh</span>. Ini berarti atom-atom karbon dalam alkana hanya berikatan satu sama lain melalui <span class="term">ikatan tunggal</span>. Dengan demikian, setiap atom karbon dapat mengikat atom hidrogen secara <span class="highlight">maksimal</span>, menjadikannya salah satu kelompok senyawa hidrokarbon yang paling stabil.</p>
+
+        <h3>1. Struktur Alkana</h3>
+        <p>Ciri fundamental dari alkana adalah keberadaan hanya ikatan tunggal antaratom karbonnya. Sisa ikatan valensi karbon yang tidak digunakan untuk berikatan dengan atom karbon lain akan sepenuhnya diisi oleh atom hidrogen. Bentuk molekul alkana dapat berupa rantai lurus, bercabang, atau bahkan membentuk cincin (siklik).</p>
+
+        <h4>Tabel 3.1 Sepuluh Senyawa Alkana Paling Sederhana</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rumus molekul</th>
+                    <th>Nama</th>
+                    <th>Massa molekul (g.mol<sup>-1</sup>)</th>
+                    <th>Titik didih (°C)</th>
+                    <th>Jumlah struktur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>CH<sub>4</sub></td><td>Metana</td><td>16</td><td>-162</td><td>1</td></tr>
+                <tr><td>C<sub>2</sub>H<sub>6</sub></td><td>Etana</td><td>30</td><td>-89</td><td>1</td></tr>
+                <tr><td>C<sub>3</sub>H<sub>8</sub></td><td>Propana</td><td>44</td><td>-42</td><td>1</td></tr>
+                <tr><td>C<sub>4</sub>H<sub>10</sub></td><td>Butana</td><td>58</td><td>0</td><td>2</td></tr>
+                <tr><td>C<sub>5</sub>H<sub>12</sub></td><td>Pentana</td><td>72</td><td>36</td><td>3</td></tr>
+                <tr><td>C<sub>6</sub>H<sub>14</sub></td><td>Heksana</td><td>86</td><td>68</td><td>5</td></tr>
+                <tr><td>C<sub>7</sub>H<sub>16</sub></td><td>Heptana</td><td>100</td><td>98</td><td>9</td></tr>
+                <tr><td>C<sub>8</sub>H<sub>18</sub></td><td>Oktana</td><td>114</td><td>126</td><td>18</td></tr>
+                <tr><td>C<sub>9</sub>H<sub>20</sub></td><td>Nonana</td><td>128</td><td>151</td><td>35</td></tr>
+                <tr><td>C<sub>10</sub>H<sub>22</sub></td><td>Dekana</td><td>142</td><td>174</td><td>75</td></tr>
+            </tbody>
+        </table>
+
+        <p>Berdasarkan Tabel 3.1, kita dapat mengamati pola yang konsisten: setiap senyawa alkana berturut-turut dalam daftar memiliki selisih <span class="highlight">—CH<sub>2</sub>—</span> (satu gugus metilen) dalam rumus molekulnya. Deret senyawa yang menunjukkan pola selisih ini dikenal sebagai <span class="term">deret homolog</span>.</p>
+        <p>Dengan menganalisis perbandingan jumlah atom karbon (C) dan hidrogen (H) pada alkana, dapat dirumuskan <span class="highlight">rumus umum C<sub>n</sub>H<sub>2n+2</sub></span>, di mana <span class="term">n</span> merepresentasikan jumlah atom karbon dalam molekul alkana tersebut.</p>
+
+        <h3>Gugus Alkil (Alkyl Groups)</h3>
+        <p>Struktur alkana kadang-kadang dapat disederhanakan dengan notasi <span class="highlight">R—H</span>. Dalam notasi ini, <span class="term">R</span> melambangkan <span class="highlight">gugus alkil</span>. Gugus alkil adalah bagian dari molekul alkana yang telah kehilangan satu atom hidrogen, sehingga memiliki satu ikatan bebas yang siap berikatan dengan atom atau gugus lain.</p>
+
+        <h4>Tabel 3.2 Struktur dan Tata Nama Gugus Alkil yang Paling Umum</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Jumlah karbon</th>
+                    <th>Rumus molekul</th>
+                    <th>Struktur</th>
+                    <th>Nama</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>CH<sub>3</sub>—</td>
+                    <td><pre>CH<sub>3</sub>—</pre></td>
+                    <td>metil</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>C<sub>2</sub>H<sub>5</sub>—</td>
+                    <td><pre>CH<sub>3</sub>—CH<sub>2</sub>—</pre></td>
+                    <td>etil</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">3</td>
+                    <td rowspan="2">C<sub>3</sub>H<sub>7</sub>—</td>
+                    <td><pre>CH<sub>3</sub>—CH<sub>2</sub>—CH<sub>2</sub>—</pre></td>
+                    <td>propil</td>
+                </tr>
+                <tr>
+                    <td><pre>   CH<sub>3</sub>—CH—
+      |
+      CH<sub>3</sub></pre></td>
+                    <td>isopropil</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">4</td>
+                    <td rowspan="4">C<sub>4</sub>H<sub>9</sub>—</td>
+                    <td><pre>CH<sub>3</sub>—CH<sub>2</sub>—CH<sub>2</sub>—CH<sub>2</sub>—</pre></td>
+                    <td>n-butil</td>
+                </tr>
+                <tr>
+                    <td><pre>CH<sub>3</sub>—CH—CH<sub>2</sub>—
+      |
+      CH<sub>3</sub></pre></td>
+                    <td>isobutil</td>
+                </tr>
+                <tr>
+                    <td><pre>CH<sub>3</sub>—CH<sub>2</sub>—CH—
+      |
+      CH<sub>3</sub></pre></td>
+                    <td>sekunder butil (sek-butil)</td>
+                </tr>
+                <tr>
+                    <td><pre>   CH<sub>3</sub>
+   |
+CH<sub>3</sub>—C—
+   |
+   CH<sub>3</sub></pre></td>
+                    <td>tersier butil (ters-butil)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Isomer</h3>
+        <p>Penting untuk diingat bahwa atom karbon memiliki kemampuan unik untuk membentuk rantai bercabang. Oleh karena itu, baik alkana maupun gugus alkil dapat memiliki <span class="term">berbagai variasi penulisan struktur</span> meskipun memiliki rumus molekul yang sama. Senyawa-senyawa dengan rumus molekul yang sama tetapi struktur yang berbeda ini disebut <span class="highlight">isomer</span>. Pembahasan lebih mendalam mengenai isomer akan dilakukan setelah kita memahami lebih lanjut tentang tata nama alkana.</p>
+
+        <h3>2. Tata Nama Alkana</h3>
+        <p>Untuk memastikan penamaan hidrokarbon bersifat universal dan tidak membingungkan, IUPAC (International Union of Pure and Applied Chemistry) telah merumuskan panduan tata nama yang standar. Semua nama alkana, baik yang lurus maupun bercabang, selalu diakhiri dengan sufiks <span class="highlight">"-ana"</span>.</p>
+
+        <h4>Alkana Rantai Lurus (Normal Alkanes)</h4>
+        <p>Alkana dengan rantai karbon lurus (tidak bercabang) dinamai sesuai dengan jumlah atom karbonnya, seperti yang tertera pada Tabel 3.1. Untuk alkana yang memiliki empat atom karbon atau lebih dalam rantai lurusnya, awalan <span class="highlight">"n-" (normal)</span> sering ditambahkan di depan namanya untuk menekankan bahwa rantainya tidak bercabang.</p>
+        <div class="structure-code">
+            <p>CH<sub>3</sub>—CH<sub>2</sub>—CH<sub>2</sub>—CH<sub>3</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; → &nbsp; n-butana</p>
+            <p>CH<sub>3</sub>—CH<sub>2</sub>—CH<sub>2</sub>—CH<sub>2</sub>—CH<sub>3</sub> &nbsp;&nbsp;&nbsp;&nbsp; → &nbsp; n-pentana</p>
+        </div>
+
+        <h4>Alkana Rantai Tertutup (Sikloalkana)</h4>
+        <p>Alkana yang memiliki struktur rantai tertutup (cincin) diberi nama dengan menambahkan awalan <span class="highlight">"siklo-"</span> di depan nama alkana yang sesuai dengan jumlah atom karbon dalam cincin tersebut. Jumlah atom karbon paling sedikit yang dapat membentuk cincin adalah tiga, dan alkana tersebut dinamai <span class="term">siklopropana</span>.</p>
+        <p>Contoh Sikloalkana:</p>
+        <div class="alkana-shape-container">
+            <div class="alkana-shape siklopentana">
+                siklopentana
+                <p style="font-size: 0.8em; color: var(--text-tertiary);"> (5 atom C dalam cincin)</p>
+            </div>
+            <div class="alkana-shape sikloheksana">
+                sikloheksana
+                <p style="font-size: 0.8em; color: var(--text-tertiary);"> (6 atom C dalam cincin)</p>
+            </div>
+        </div>
+        <p class="note">Catatan: Bentuk di atas adalah representasi skematis dari struktur cincin. Dalam penggambaran kimia sebenarnya, siklopentana direpresentasikan sebagai pentagon (segilima) dan sikloheksana sebagai heksagon (segienam).</p>
+
+
+        <h4>Aturan Penamaan Alkana Bercabang (IUPAC)</h4>
+        <p>Jika sebuah alkana memiliki rantai bercabang, penamaannya harus mengikuti serangkaian aturan IUPAC secara sistematis untuk memastikan nama yang unik dan jelas:</p>
+        <ol>
+            <li><strong>Menentukan Rantai Utama:</strong> Identifikasi dan pilih rantai karbon terpanjang yang ada dalam molekul. Rantai ini akan menjadi "tulang punggung" dan diberi nama alkana sesuai jumlah atom karbonnya (misalnya, heksana, heptana, dll.).</li>
+            <li><strong>Menentukan Cabang (Gugus Alkil):</strong> Identifikasi semua gugus alkil yang terikat pada rantai utama. Gugus-gugus ini akan berfungsi sebagai "cabang" dan diberi nama sesuai dengan jenis gugus alkilnya (misalnya, metil, etil, isopropil).</li>
+            <li><strong>Penomoran Rantai Utama:</strong> Beri nomor atom-atom karbon pada rantai utama. Penomoran harus dimulai dari ujung yang paling dekat dengan cabang pertama. Jika ada beberapa cabang, pilih penomoran yang memberikan set lokasi (nomor) terendah untuk semua cabang.</li>
+            <li><strong>Penggunaan Awalan Jumlah:</strong> Apabila terdapat dua atau lebih cabang yang sejenis (misalnya, dua gugus metil), gunakan awalan berikut sebelum nama cabang:
+                <ul>
+                    <li><span class="highlight">di-</span> untuk 2 cabang sejenis</li>
+                    <li><span class="highlight">tri-</span> untuk 3 cabang sejenis</li>
+                    <li><span class="highlight">tetra-</span> untuk 4 cabang sejenis</li>
+                    <li>dan seterusnya untuk jumlah yang lebih banyak.</li>
+                </ul>
+            </li>
+            <li><strong>Urutan Abjad untuk Cabang Berbeda:</strong> Jika terdapat lebih dari satu jenis cabang (misalnya, gugus etil dan gugus metil), nama-nama cabang tersebut dituliskan sesuai urutan abjad. Penting: Awalan seperti di-, tri-, tetra- tidak dihitung dalam penentuan urutan abjad (misalnya, "etil" disebutkan sebelum "dimetil").</li>
+            <li><strong>Pilihan Rantai Utama Tambahan:</strong> Jika ada lebih dari satu pilihan rantai karbon yang memiliki panjang maksimal yang sama, pilih rantai yang mengikat <span class="highlight">jumlah cabang terbanyak</span> sebagai rantai utama.</li>
+            <li><strong>Penyusunan Nama Akhir:</strong> Susun nama lengkap alkana bercabang dengan urutan: <span class="highlight">posisi cabang + nama cabang + nama rantai utama</span>. Jika ada beberapa cabang, daftar posisi dan nama cabang ditulis berurutan sebelum nama rantai utama.</li>
+            <li><strong>Penggunaan Tanda Baca:</strong>
+                <ul>
+                    <li>Gunakan <span class="highlight">koma (,)</span> untuk memisahkan angka dengan angka (misalnya, "2,3-dimetil").</li>
+                    <li>Gunakan <span class="highlight">tanda hubung (-)</span> untuk memisahkan angka dengan huruf (misalnya, "2-metil").</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h4>Contoh Penamaan Senyawa Alkana Bercabang</h4>
+
+        <div class="example-box">
+            <h5>a. Senyawa:</h5>
+            <div class="structure-code">
+                <pre>H<sub>3</sub>C—CH(CH<sub>3</sub>)—CH<sub>2</sub>—CH<sub>3</sub></pre>
+            </div>
+            <p><span class="step-label">Analisis Struktur:</span></p>
+            <ul>
+                <li><strong>Rantai Utama:</strong> Rantai karbon terpanjang adalah empat atom karbon (butana).</li>
+                <li><strong>Cabang:</strong> Terdapat satu gugus metil (CH<sub>3</sub>).</li>
+                <li><strong>Penomoran:</strong> Jika dihitung dari kiri, gugus metil berada pada karbon ke-2. Jika dari kanan, gugus metil berada pada karbon ke-3. Aturan IUPAC mengharuskan penomoran yang memberikan lokasi cabang nomor terendah, yaitu dari kiri.</li>
+            </ul>
+            <p><span class="step-label">Nama IUPAC:</span> <strong>2-metilbutana</strong></p>
+        </div>
+
+        <div class="example-box">
+            <h5>b. Senyawa:</h5>
+            <div class="structure-code">
+                <pre>CH<sub>3</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)C(CH<sub>3</sub>)<sub>3</sub></pre>
+            </div>
+            <p><span class="step-label">Analisis Struktur (dibuka):</span></p>
+            <div class="structure-code">
+                <pre>     CH<sub>3</sub> CH<sub>3</sub>
+     |  |
+CH<sub>3</sub>—CH<sub>2</sub>—CH—C—CH<sub>3</sub>
+            |
+            CH<sub>3</sub></pre>
+            </div>
+            <ul>
+                <li><strong>Rantai Utama:</strong> Rantai karbon terpanjang adalah lima atom karbon (pentana).</li>
+                <li><strong>Cabang:</strong> Terdapat tiga gugus metil (CH<sub>3</sub>).</li>
+                <li><strong>Penomoran:</strong> Jika dinomori dari kiri, gugus metil berada pada posisi C3, C4, C4 (3,4,4). Jika dari kanan, gugus metil berada pada posisi C2, C2, C3 (2,2,3). Penomoran yang benar adalah dari kanan karena memberikan set lokasi yang lebih rendah.</li>
+            </ul>
+            <p><span class="step-label">Nama IUPAC:</span> <strong>2,2,3-trimetilpentana</strong></p>
+        </div>
+
+        <div class="example-box">
+            <h5>c. Senyawa:</h5>
+            <div class="structure-code">
+                <pre>H<sub>3</sub>C—CH(CH<sub>3</sub>)—CH(CH<sub>3</sub>)—CH(CH<sub>2</sub>CH<sub>3</sub>)—CH<sub>2</sub>—CH<sub>3</sub></pre>
+            </div>
+            <p><span class="step-label">Analisis Struktur:</span></p>
+            <ul>
+                <li><strong>Rantai Utama:</strong> Rantai karbon terpanjang adalah enam atom karbon (heksana).</li>
+                <li><strong>Cabang:</strong> Terdapat dua gugus metil (CH<sub>3</sub>) dan satu gugus etil (CH<sub>2</sub>CH<sub>3</sub>).</li>
+                <li><strong>Penomoran:</strong> Jika dinomori dari kiri, cabang berada pada posisi C2, C3 (metil) dan C4 (etil). Set lokasi: (2,3,4). Jika dari kanan, cabang berada pada posisi C3 (etil) dan C4, C5 (metil). Set lokasi: (3,4,5). Penomoran dari kiri memberikan set lokasi yang lebih rendah.</li>
+                <li><strong>Urutan Abjad:</strong> Nama "etil" (E) ditulis sebelum "metil" (M). Awalan "di-" pada "dimetil" tidak dihitung dalam urutan abjad.</li>
+            </ul>
+            <p><span class="step-label">Nama IUPAC:</span> <strong>4-etil-2,3-dimetilheksana</strong></p>
+        </div>
+
+        <div class="example-box">
+            <h5>d. Senyawa:</h5>
+            <div class="structure-code">
+                <pre>CH<sub>3</sub>—CH(CH<sub>3</sub>)—C(CH<sub>3</sub>)(CH<sub>2</sub>CH<sub>3</sub>)—C(CH<sub>3</sub>)(CH<sub>2</sub>CH<sub>3</sub>)—CH(CH<sub>3</sub>)—CH<sub>3</sub></pre>
+            </div>
+            <p><span class="step-label">Analisis Struktur:</span></p>
+            <ul>
+                <li><strong>Rantai Utama:</strong> Rantai karbon terpanjang adalah enam atom karbon (heksana).</li>
+                <li><strong>Cabang:</strong> Terdapat tiga gugus metil (CH<sub>3</sub>) dan dua gugus etil (CH<sub>2</sub>CH<sub>3</sub>).</li>
+                <li><strong>Penomoran:</strong> Jika dinomori dari kiri, posisi cabang adalah C2, C3, C3 (metil), C4, C4 (etil), C5 (metil). Set lokasi metil: (2,3,5). Set lokasi etil: (3,4). Jadi, total posisi cabang adalah (2,3,3,4,5). Jika dari kanan, posisi cabang adalah C2, C3, C3 (metil), C4, C4 (etil), C5 (metil). Set lokasi metil: (2,4,5). Set lokasi etil: (3,4). Total posisi cabang: (2,3,4,4,5). Penomoran dari kiri (2,3,3,4,5) memberikan nomor yang lebih rendah.</li>
+                <li><strong>Urutan Abjad:</strong> "Dietil" (E) ditulis sebelum "Trimetil" (M).</li>
+            </ul>
+            <p><span class="step-label">Nama IUPAC:</span> <strong>3,4-dietil-2,3,5-trimetilheksana</strong></p>
+        </div>
+
+        <div class="note">
+            <p>Untuk menguasai penamaan senyawa bercabang, sangat disarankan untuk banyak berlatih menggambar struktur dari nama dan sebaliknya. Perhatikan dengan cermat identifikasi rantai terpanjang, penomoran yang benar, dan urutan penamaan cabang.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

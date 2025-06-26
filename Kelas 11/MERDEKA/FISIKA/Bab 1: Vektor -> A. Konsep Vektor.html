@@ -1,0 +1,323 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisika Kelas XI - Bab 1: Konsep Vektor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300,400,700&display=swap" rel="stylesheet">
+    <style>
+        /* Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--background-canvas);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 1rem;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .info-box {
+            background-color: rgba(var(--semantic-info), 0.1);
+            border-left: 5px solid var(--semantic-info);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            color: var(--semantic-info);
+        }
+
+        .info-box h3 {
+            color: var(--semantic-info);
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        code {
+            background-color: var(--border-divider);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-primary);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-tertiary);
+            border-left: 3px solid var(--secondary-accent-amber);
+            padding-left: 1rem;
+            margin: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                padding-left: 0.8rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Bab 1: Vektor</h1>
+            <p>Memahami Konsep Dasar dan Aplikasinya dalam Fisika</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>A. Konsep Vektor</h2>
+            <p>Dalam fisika, kita sering berhadapan dengan berbagai besaran yang menggambarkan fenomena alam. Besaran-besaran ini dapat dikelompokkan menjadi dua kategori utama: <strong class="highlight">besaran skalar</strong> dan <strong class="highlight">besaran vektor</strong>.</p>
+
+            <h3>Apa itu Besaran Skalar?</h3>
+            <p>Besaran skalar adalah besaran yang hanya memiliki <strong class="highlight">nilai (magnitudo)</strong>. Untuk mendefinisikan besaran skalar, kita hanya perlu menyebutkan angka dan satuannya. Arah tidak relevan bagi besaran skalar.</p>
+            <p><strong>Contoh Besaran Skalar:</strong></p>
+            <ul>
+                <li><strong>Massa:</strong> Ketika Anda mengatakan massa suatu benda adalah 5 kg, informasi itu sudah lengkap. Arah "5 kg" tidak memiliki makna.</li>
+                <li><strong>Waktu:</strong> Jika suatu peristiwa berlangsung selama 10 detik, kita tidak perlu menambahkan informasi arah.</li>
+                <li><strong>Suhu:</strong> Suhu 25°C hanya menyatakan seberapa panas atau dingin, tanpa ada arah.</li>
+                <li><strong>Jarak:</strong> Jarak 100 meter hanya menyatakan panjang lintasan, tanpa memperhitungkan arah tempuh.</li>
+                <li><strong>Volume, Energi, Daya, Kerja:</strong> Semua ini adalah contoh besaran skalar.</li>
+            </ul>
+
+            <h3>Apa itu Besaran Vektor?</h3>
+            <p>Berbeda dengan skalar, besaran vektor adalah besaran yang memiliki <strong class="highlight">nilai (magnitudo)</strong> dan juga <strong class="highlight">arah</strong>. Untuk mendefinisikan besaran vektor secara lengkap, kita harus menyebutkan nilai serta arahnya. Arah ini sangat krusial karena dapat mengubah makna atau hasil dari suatu interaksi fisik.</p>
+            <p><strong>Contoh Besaran Vektor:</strong></p>
+            <ul>
+                <li><strong>Perpindahan:</strong> Jika Anda bergerak 5 meter, itu belum lengkap. Apakah 5 meter ke timur, ke barat, ke atas, atau ke bawah? Arah sangat penting untuk mengetahui posisi akhir Anda.</li>
+                <li><strong>Kecepatan:</strong> Kecepatan 60 km/jam tidak hanya berarti Anda bergerak secepat itu, tetapi juga ke arah mana Anda bergerak (misalnya, 60 km/jam ke utara).</li>
+                <li><strong>Gaya:</strong> Ketika Anda mendorong meja dengan gaya 10 Newton, meja akan bergerak ke arah Anda mendorong. Gaya ke depan akan menghasilkan efek yang berbeda dari gaya ke belakang.</li>
+                <li><strong>Percepatan, Momentum, Medan Listrik, Medan Magnet:</strong> Ini semua adalah contoh besaran vektor lainnya.</li>
+            </ul>
+
+            <div class="quote">
+                <p>"Hal yang paling penting adalah jangan pernah berhenti bertanya. Rasa penasaran memiliki alasan tersendiri untuk ada"</p>
+                <p>&mdash; Albert Einstein</p>
+            </div>
+            <p>Kutipan Albert Einstein ini sangat relevan dalam memahami konsep vektor. Rasa penasaran kita tentang "ke mana?" atau "ke arah mana?" saat mendeskripsikan suatu fenomena fisik adalah kunci untuk memahami pentingnya vektor.</p>
+        </section>
+
+        <section>
+            <h2>Pentingnya Vektor dalam Kehidupan Sehari-hari</h2>
+            <p>Konsep vektor tidak hanya abstrak di buku fisika, tetapi sangat fundamental dan banyak ditemukan dalam kehidupan sehari-hari serta aplikasi teknologi:</p>
+
+            <h3>Kasus 1: Gerak Penerjun Payung</h3>
+            <p>Bayangkan seorang penerjun payung yang ingin mendarat di titik target. Tanpa adanya angin, ia mungkin akan jatuh lurus ke bawah. Namun, kenyataannya, seringkali ada tiupan angin yang kuat. Angin ini memberikan <strong class="highlight">gaya (vektor)</strong> yang arahnya bisa bervariasi.</p>
+            <ul>
+                <li>Jika angin bertiup dari timur ke barat, penerjun payung tidak akan jatuh lurus ke bawah melainkan akan terdorong ke arah barat.</li>
+                <li>Hasilnya, posisi pendaratan penerjun akan <strong class="highlight">melenceng</strong> dari target awal.</li>
+            </ul>
+            <p>Ini menunjukkan bahwa <strong class="highlight">perpindahan (vektor)</strong> penerjun payung adalah hasil kombinasi dari gerak jatuh bebasnya (vektor ke bawah) dan dorongan angin (vektor horizontal). Tanpa mempertimbangkan arah angin, perhitungan posisi pendaratan akan salah.</p>
+
+            <h3>Kasus 2: Penopang Jembatan</h3>
+            <p>Jembatan gantung besar, seperti yang sering kita lihat, ditopang oleh banyak kabel baja. Setiap kabel memberikan <strong class="highlight">gaya tarik (vektor)</strong> pada jembatan. Gaya-gaya ini tidak semuanya vertikal ke atas; banyak di antaranya memiliki sudut tertentu.</p>
+            <ul>
+                <li>Masing-masing kabel menarik jembatan dengan nilai dan arah yang spesifik.</li>
+                <li>Para insinyur harus menghitung <strong class="highlight">resultan (jumlah total)</strong> dari semua gaya vektor ini agar jembatan tetap stabil dan kuat menahan beban.</li>
+                <li>Jika perhitungan arah dan nilai gaya ini salah, jembatan bisa goyang, retak, atau bahkan runtuh.</li>
+            </ul>
+            <p>Ini adalah contoh nyata bagaimana <strong class="highlight">penjumlahan vektor</strong> (untuk mendapatkan resultan gaya) adalah kunci dalam desain struktural.</p>
+
+            <h3>Kasus 3: Navigasi Pesawat Terbang</h3>
+            <p>Seorang pilot pesawat terbang sangat bergantung pada sistem navigasi yang canggih. Sistem ini menggunakan konsep vektor secara ekstensif:</p>
+            <ul>
+                <li>Pesawat memiliki <strong class="highlight">kecepatan (vektor)</strong> relatif terhadap udara.</li>
+                <li>Angin juga memiliki <strong class="highlight">kecepatan (vektor)</strong>.</li>
+                <li><strong class="highlight">Kecepatan pesawat relatif terhadap tanah (vektor)</strong> adalah hasil penjumlahan vektor dari kecepatan pesawat relatif terhadap udara dan kecepatan angin.</li>
+            </ul>
+            <p>Jika pilot hanya mempertimbangkan kecepatan relatif terhadap udara tanpa memperhitungkan arah dan kecepatan angin, pesawat bisa saja berakhir di lokasi yang sangat jauh dari tujuan yang diinginkan. Komputer navigasi terus-menerus menghitung vektor-vektor ini untuk memastikan pesawat tetap berada pada jalur yang benar.</p>
+        </section>
+
+        <section>
+            <h2>Representasi Vektor</h2>
+            <p>Untuk memudahkan pemahaman dan perhitungan, vektor dapat direpresentasikan dalam beberapa cara:</p>
+
+            <h3>1. Representasi Grafis (Geometris)</h3>
+            <p>Vektor digambarkan sebagai <strong class="highlight">anak panah</strong>.</p>
+            <ul>
+                <li>Panjang anak panah merepresentasikan <strong class="highlight">nilai (magnitudo)</strong> dari vektor. Semakin panjang panahnya, semakin besar nilai vektornya. Tentu saja, ini harus diskalakan (misalnya, 1 cm panah = 10 N gaya).</li>
+                <li>Arah anak panah merepresentasikan <strong class="highlight">arah</strong> dari vektor. Kepala panah menunjukkan arah vektor, dan pangkal panah (atau ekor) menunjukkan titik awal atau titik tangkap.</li>
+            </ul>
+            <p>Contoh: Sebuah gaya 50 N ke timur akan digambarkan dengan anak panah yang lebih pendek daripada gaya 100 N ke timur, tetapi keduanya menunjuk ke arah yang sama (timur).</p>
+
+            <h3>2. Representasi Simbolis (Matematis)</h3>
+            <p>Dalam penulisan, vektor sering dilambangkan dengan huruf yang dicetak tebal atau dengan tanda panah di atas huruf.</p>
+            <ul>
+                <li><strong>Huruf Tebal:</strong> Misalnya, gaya dilambangkan sebagai <code>**F**</code>, kecepatan sebagai <code>**v**</code>, dan perpindahan sebagai <code>**s**</code>.</li>
+                <li><strong>Panah di Atas Huruf:</strong> Ini adalah notasi yang sangat umum, misalnya <span style="font-style: italic;">F</span>&#x2192;, <span style="font-style: italic;">v</span>&#x2192;, atau <span style="font-style: italic;">s</span>&#x2192;. Karena keterbatasan teks HTML murni, bayangkan ada panah di atas huruf-huruf tersebut.</li>
+            </ul>
+            <p>Nilai (magnitudo) dari sebuah vektor <code>**A**</code> biasanya ditulis sebagai <code>|**A**|</code> atau cukup <code>A</code> (huruf biasa, tidak tebal).</p>
+        </section>
+
+        <section>
+            <h2>Perbedaan Jarak dan Perpindahan (Relevan dengan Aktivitas 1.1)</h2>
+            <p>Untuk memahami konsep vektor secara mendalam, mari kita tinjau kembali skenario perjalanan dari terminal bus ke bandara yang sering kita temui dalam kehidupan sehari-hari.</p>
+
+            <h3>Skenario Perjalanan Terminal Bus ke Bandara</h3>
+            <p>Misalkan Ayah ingin pergi dari Terminal Bus ke Bandara. Ada berbagai cara untuk mencapai bandara:</p>
+            <ol>
+                <li><strong>Lintasan Langsung (Garis Lurus):</strong> Secara ideal, jika tidak ada hambatan, bus bisa saja bergerak dalam garis lurus dari terminal ke bandara. Lintasan ini adalah lintasan terpendek antara dua titik.</li>
+                <li><strong>Rute Berbeda-beda:</strong> Dalam kenyataan, bus harus mengikuti jalanan, yang berarti harus berbelok-belok, melewati persimpangan, dan mungkin bahkan memutar. Ini menghasilkan lintasan yang lebih panjang dan tidak lurus.</li>
+            </ol>
+
+            <p>Dari skenario ini, kita bisa membedakan dua konsep penting:</p>
+
+            <h3>1. Jarak (Distance)</h3>
+            <ul>
+                <li><strong class="highlight">Jarak</strong> adalah total panjang lintasan yang ditempuh oleh suatu objek, tanpa memperhatikan arah pergerakan.</li>
+                <li>Jarak adalah <strong class="highlight">besaran skalar</strong>.</li>
+                <li>Jika bus menempuh jalan berbelok-belok sepanjang 15 km dari terminal ke bandara, maka jarak yang ditempuh adalah 15 km. Walaupun ada dua rute yang berbeda dari terminal ke bandara, keduanya dapat memiliki jarak tempuh yang berbeda (misalnya, Rute A sejauh 15 km, Rute B sejauh 18 km).</li>
+            </ul>
+
+            <h3>2. Perpindahan (Displacement)</h3>
+            <ul>
+                <li><strong class="highlight">Perpindahan</strong> adalah perubahan posisi suatu objek, diukur dari titik awal ke titik akhir secara <strong class="highlight">garis lurus</strong>, beserta arahnya.</li>
+                <li>Perpindahan adalah <strong class="highlight">besaran vektor</strong>.</li>
+                <li>Meskipun bus mengambil rute yang berbeda-beda, selama titik awal (Terminal Bus) dan titik akhir (Bandara) adalah sama, maka <strong class="highlight">perpindahan bus adalah sama</strong>. Perpindahan hanya peduli di mana Anda memulai dan di mana Anda berakhir, bukan bagaimana Anda sampai di sana.</li>
+                <li>Misalnya, jika bandara berjarak 10 km lurus ke arah tenggara dari terminal, maka perpindahan bus adalah 10 km ke tenggara, tidak peduli seberapa panjang atau berbelok-beloknya rute yang diambil.</li>
+            </ul>
+
+            <div class="info-box">
+                <h3>Ayo, Berpikir Kritis!</h3>
+                <p>Bagaimana rute yang berbeda dari terminal ke bandara yang Anda bayangkan dalam Aktivitas 1.1 mempengaruhi konsep jarak dan perpindahan? Meskipun rute (lintasan) bisa sangat bervariasi dan menghasilkan jarak yang berbeda, <strong style="color: var(--semantic-info);">perpindahan selalu unik</strong> jika titik awal dan titik akhir telah ditentukan. Ini adalah esensi dari konsep vektor dalam perpindahan.</p>
+            </div>
+
+            <p>Pemahaman ini sangat penting karena dalam fisika, terutama dalam dinamika dan kinematika, seringkali kita lebih tertarik pada perpindahan (sebagai vektor) daripada hanya jarak (sebagai skalar) karena perpindahan memberikan informasi yang lebih lengkap tentang perubahan posisi objek.</p>
+        </section>
+
+        <section>
+            <h2>Kesimpulan Konsep Vektor</h2>
+            <p>Sebagai rangkuman, memahami konsep vektor adalah fondasi penting dalam fisika. Vektor bukan hanya angka, melainkan representasi dari besaran yang memiliki arah, yang krusial untuk menjelaskan fenomena alam secara akurat.</p>
+            <p>Ingatlah perbedaan mendasar antara skalar (hanya nilai) dan vektor (nilai dan arah). Kemampuan untuk mengidentifikasi, merepresentasikan, dan nantinya mengoperasikan vektor akan menjadi keterampilan dasar yang tak ternilai saat Anda menjelajahi topik fisika yang lebih kompleks.</p>
+            <p>Dalam bab selanjutnya, kita akan mempelajari lebih lanjut bagaimana cara melakukan operasi pada vektor, seperti penjumlahan, pengurangan, dan perkalian, yang akan membuka pintu untuk menganalisis berbagai situasi fisik dengan lebih mendalam.</p>
+        </section>
+    </main>
+
+</body>
+</html>
+```

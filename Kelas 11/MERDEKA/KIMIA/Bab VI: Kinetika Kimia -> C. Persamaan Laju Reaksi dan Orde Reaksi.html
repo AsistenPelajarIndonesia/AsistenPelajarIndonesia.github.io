@@ -1,0 +1,433 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetika Kimia: Persamaan Laju Reaksi dan Orde Reaksi</title>
+    <!-- Google Fonts - Roboto for general text, Roboto Mono for formulas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300; /* Not explicitly used in this content, but good to keep */
+            --semantic-success: #4CAF50; /* Not explicitly used in this content, but good to keep */
+            --semantic-warning: #FFC107; /* Not explicitly used in this content, but good to keep */
+            --semantic-error: #D32F2F; /* Not explicitly used in this content, but good to keep */
+            --semantic-info: #2196F3; /* Not explicitly used in this content, but good to keep */
+        }
+
+        /* General Body and Font Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll from potential minor overflows */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 25px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Softer, more pronounced shadow */
+        }
+
+        /* Headings */
+        h1 {
+            color: var(--primary-blue);
+            font-size: 2.4em;
+            margin-bottom: 30px;
+            border-bottom: 4px solid var(--border-divider);
+            padding-bottom: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--accent-green);
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 1em;
+        }
+
+        ul li::before {
+            content: '✓'; /* Checkmark for a cleaner, more engaging list */
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.3em;
+            top: 0;
+            line-height: 1.6; /* Align with text */
+        }
+
+        /* Code/Formula Styling */
+        .formula-block {
+            background-color: #f8f8f8; /* A slightly off-white for distinction */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px 25px;
+            margin: 25px 0;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.2em;
+            color: var(--text-primary);
+            overflow-x: auto; /* For long formulas */
+            border-radius: 8px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+        }
+
+        .formula-block code {
+            display: block;
+            white-space: pre-wrap; /* Allows text to wrap */
+            line-height: 1.8;
+        }
+
+        /* Text Highlights */
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .accent-highlight {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .tertiary-text {
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        /* Graph Styling */
+        .graph-container {
+            width: 100%;
+            max-width: 450px; /* Slightly larger graphs */
+            height: 280px; /* Adjust height proportionally */
+            margin: 40px auto;
+            position: relative;
+            border-left: 3px solid var(--text-primary);
+            border-bottom: 3px solid var(--text-primary);
+            box-sizing: border-box;
+            background-color: #fdfdfd; /* Very light background for graph area */
+            border-radius: 4px;
+        }
+
+        .graph-container::before {
+            content: 'Laju reaksi';
+            position: absolute;
+            top: -35px;
+            left: -15px;
+            transform: rotate(-90deg);
+            transform-origin: bottom left;
+            color: var(--text-secondary);
+            font-size: 1em;
+            white-space: nowrap;
+        }
+
+        .graph-container::after {
+            content: 'Konsentrasi';
+            position: absolute;
+            bottom: -35px;
+            right: 0;
+            color: var(--text-secondary);
+            font-size: 1em;
+        }
+
+        /* SVG Graph Lines */
+        .graph-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible; /* Allow paths to extend slightly if needed */
+        }
+        .graph-svg line, .graph-svg path {
+            stroke: var(--primary-blue);
+            stroke-width: 3; /* Thicker lines for clarity */
+            fill: none;
+        }
+
+        /* Caption for Graphs */
+        .graph-caption {
+            text-align: center;
+            font-size: 1em;
+            color: var(--text-tertiary);
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 18px;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 20px;
+                padding-bottom: 12px;
+            }
+
+            h2 {
+                font-size: 1.7em;
+                margin-top: 30px;
+                margin-bottom: 18px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+
+            ul li {
+                font-size: 0.95em;
+                padding-left: 25px;
+                margin-bottom: 10px;
+            }
+
+            ul li::before {
+                font-size: 1.2em;
+            }
+
+            .formula-block {
+                font-size: 1.1em;
+                padding: 15px 20px;
+                margin: 20px 0;
+            }
+
+            .graph-container {
+                max-width: 90%;
+                height: 250px;
+                margin: 30px auto;
+            }
+
+            .graph-caption {
+                font-size: 0.9em;
+                margin-top: 15px;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 10px;
+                border-radius: 0; /* Remove border-radius on very small screens for full width */
+                box-shadow: none; /* Remove shadow for a simpler look */
+            }
+
+            h1 {
+                font-size: 1.7em;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+                text-align: left; /* Align left on small screens */
+            }
+
+            h2 {
+                font-size: 1.4em;
+                margin-top: 25px;
+                margin-bottom: 15px;
+                padding-left: 10px;
+                border-left-width: 4px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 0.95em;
+                margin-bottom: 12px;
+            }
+
+            ul li {
+                font-size: 0.9em;
+                padding-left: 20px;
+                margin-bottom: 8px;
+            }
+
+            ul li::before {
+                font-size: 1.1em;
+            }
+
+            .formula-block {
+                font-size: 0.95em;
+                padding: 10px 15px;
+                margin: 15px 0;
+            }
+
+            .graph-container {
+                max-width: 95%; /* Adjust width to fit more comfortably */
+                height: 200px;
+                margin: 25px auto;
+                border-left-width: 2px;
+                border-bottom-width: 2px;
+            }
+
+            .graph-container::before,
+            .graph-container::after {
+                font-size: 0.85em;
+                top: -25px;
+                bottom: -25px;
+            }
+
+            .graph-caption {
+                font-size: 0.85em;
+                margin-top: 10px;
+                margin-bottom: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab VI Kinetika Kimia: Persamaan Laju Reaksi dan Orde Reaksi</h1>
+
+        <section id="persamaan-laju-reaksi">
+            <h2>1. Persamaan Laju Reaksi</h2>
+            <p>
+                Dalam kajian <span class="highlight">kinetika kimia</span>, salah satu tujuan utama adalah memahami seberapa cepat suatu reaksi berlangsung dan faktor-faktor apa saja yang memengaruhinya. Konsep inti untuk ini adalah <span class="accent-highlight">Persamaan Laju Reaksi</span>, atau sering juga disebut Hukum Laju Reaksi.
+            </p>
+            <p>
+                Persamaan laju reaksi adalah sebuah <span class="accent-highlight">ekspresi matematis</span> yang secara empiris menghubungkan <span class="highlight">laju reaksi (r)</span> dengan <span class="highlight">konsentrasi reaktan</span> serta sebuah <span class="highlight">konstanta laju (k)</span> pada suhu tertentu. Ini adalah ringkasan dari bagaimana laju suatu reaksi bergantung pada konsentrasi zat-zat yang bereaksi.
+            </p>
+
+            <h3>Bentuk Umum Persamaan Laju Reaksi</h3>
+            <p>
+                Pertimbangkan reaksi umum hipotetis berikut:
+            </p>
+            <div class="formula-block">
+                <code>pA<span class="tertiary-text">(g)</span> + qB<span class="tertiary-text">(g)</span> &rarr; rC<span class="tertiary-text">(g)</span> + sD<span class="tertiary-text">(g)</span></code>
+            </div>
+            <p>
+                Berdasarkan data eksperimen, persamaan laju reaksi untuk reaksi di atas umumnya dinyatakan sebagai:
+            </p>
+            <div class="formula-block">
+                <code>r = k [A]<sup>x</sup> [B]<sup>y</sup></code>
+            </div>
+
+            <h3>Penjelasan Variabel dalam Persamaan Laju Reaksi:</h3>
+            <ul>
+                <li><span class="highlight">r</span>: <span class="accent-highlight">Laju reaksi</span> (Rate of Reaction). Mengukur perubahan konsentrasi reaktan atau produk per satuan waktu, umumnya dalam satuan Molar per detik (M.detik<sup>-1</sup> atau mol L<sup>-1</sup> detik<sup>-1</sup>).</li>
+                <li><span class="highlight">[A]</span>: <span class="accent-highlight">Konsentrasi molar zat A</span>. Dinyatakan dalam Molaritas (M) atau mol per Liter (mol L<sup>-1</sup>).</li>
+                <li><span class="highlight">[B]</span>: <span class="accent-highlight">Konsentrasi molar zat B</span>. Dinyatakan dalam Molaritas (M) atau mol per Liter (mol L<sup>-1</sup>).</li>
+                <li><span class="highlight">k</span>: <span class="accent-highlight">Tetapan laju reaksi</span> (Rate Constant). Ini adalah nilai konstanta proporsionalitas yang spesifik untuk setiap reaksi pada suhu tertentu. Nilai 'k' tidak berubah dengan perubahan konsentrasi, namun sangat dipengaruhi oleh suhu dan keberadaan katalis. Satuan 'k' bervariasi tergantung pada orde reaksi total.</li>
+                <li><span class="highlight">x</span>: <span class="accent-highlight">Orde reaksi terhadap zat A</span>. Ini menunjukkan bagaimana laju reaksi bergantung pada perubahan konsentrasi A. Jika x=1, laju sebanding dengan [A]; jika x=2, laju sebanding dengan [A]<sup>2</sup>, dan seterusnya. Penting untuk dicatat bahwa nilai 'x' <span class="tertiary-text">hanya dapat ditentukan melalui eksperimen</span> dan <span class="tertiary-text">tidak selalu sama dengan koefisien stoikiometri 'p'</span>.</li>
+                <li><span class="highlight">y</span>: <span class="accent-highlight">Orde reaksi terhadap zat B</span>. Sama seperti 'x', ini menunjukkan ketergantungan laju reaksi pada konsentrasi B, dan nilai 'y' juga <span class="tertiary-text">ditentukan secara eksperimen</span> dan <span class="tertiary-text">tidak selalu sama dengan koefisien stoikiometri 'q'</span>.</li>
+                <li><span class="highlight">x + y</span>: <span class="accent-highlight">Orde reaksi total</span>. Ini adalah jumlah dari semua orde reaksi individu terhadap setiap pereaksi, memberikan gambaran keseluruhan tentang ketergantungan laju reaksi terhadap konsentrasi seluruh reaktan.</li>
+            </ul>
+            <p>
+                Konsep krusial di sini adalah bahwa <span class="accent-highlight">orde reaksi selalu ditentukan secara eksperimen</span>. Koefisien stoikiometri dalam persamaan reaksi setara <b>tidak dapat</b> digunakan untuk menentukan orde reaksi kecuali jika reaksi tersebut adalah reaksi elementer (terjadi dalam satu langkah).
+            </p>
+        </section>
+
+        <section id="orde-reaksi">
+            <h2>2. Orde Reaksi</h2>
+            <p>
+                <span class="highlight">Orde reaksi</span> adalah eksponen yang melekat pada istilah konsentrasi dalam persamaan laju reaksi. Ini merupakan variabel yang secara kuantitatif <span class="accent-highlight">menunjukkan bagaimana konsentrasi pereaksi memengaruhi laju reaksi</span>. Orde reaksi dapat berupa bilangan bulat (0, 1, 2, ...), pecahan, atau bahkan bilangan negatif, meskipun yang terakhir jarang terjadi.
+            </p>
+
+            <h3>a. Orde Reaksi Nol</h3>
+            <p>
+                Jika suatu reaksi adalah <span class="accent-highlight">orde reaksi nol</span> terhadap pereaksi tertentu, itu berarti <span class="accent-highlight">laju reaksi tidak bergantung pada konsentrasi pereaksi tersebut</span>. Dengan kata lain, tidak peduli seberapa banyak konsentrasi pereaksi berubah, laju reaksi akan tetap konstan. Ini sering terjadi pada reaksi yang melibatkan permukaan katalis yang jenuh atau proses fotokimia.
+            </p>
+            <div class="graph-container">
+                <svg class="graph-svg" viewBox="0 0 400 250" preserveAspectRatio="none">
+                    <!-- Axes are drawn by the container's borders -->
+                    <!-- Zero order: Horizontal line -->
+                    <line x1="50" y1="125" x2="350" y2="125"/>
+                </svg>
+            </div>
+            <p class="graph-caption">Gambar: Grafik Laju Reaksi vs. Konsentrasi untuk Orde Reaksi Nol</p>
+
+            <h3>b. Orde Reaksi Satu</h3>
+            <p>
+                Pada <span class="accent-highlight">orde reaksi satu</span>, <span class="accent-highlight">laju reaksi berbanding lurus dengan konsentrasi pereaksi</span>. Ini berarti jika konsentrasi pereaksi digandakan (dilipatgandakan), laju reaksi juga akan berlipat ganda. Jika konsentrasi dilipat tigakan, laju juga dilipat tigakan, dan seterusnya. Banyak reaksi peluruhan radioaktif adalah contoh reaksi orde satu.
+            </p>
+            <div class="graph-container">
+                <svg class="graph-svg" viewBox="0 0 400 250" preserveAspectRatio="none">
+                    <!-- First order: Straight diagonal line (linear relationship) -->
+                    <line x1="50" y1="220" x2="300" y2="50"/>
+                </svg>
+            </div>
+            <p class="graph-caption">Gambar: Grafik Laju Reaksi vs. Konsentrasi untuk Orde Reaksi Satu</p>
+
+            <h3>c. Orde Reaksi Dua</h3>
+            <p>
+                Ketika suatu reaksi memiliki <span class="accent-highlight">orde reaksi dua</span> terhadap pereaksi tertentu, itu berarti <span class="accent-highlight">laju reaksi berbanding lurus dengan pangkat dua dari konsentrasi pereaksi tersebut</span>. Jadi, jika konsentrasi pereaksi digandakan, laju reaksi akan meningkat empat kali lipat (2<sup>2</sup>). Jika konsentrasi dilipat tigakan, laju akan meningkat sembilan kali lipat (3<sup>2</sup>).
+            </p>
+            <div class="graph-container">
+                <svg class="graph-svg" viewBox="0 0 400 250" preserveAspectRatio="none">
+                    <!-- Second order: Upward curving line (parabolic relationship) -->
+                    <!-- Path for a smoother curve: M = moveto, C = curveto (C x1 y1, x2 y2, x y) -->
+                    <path d="M 50 220 C 120 180, 200 100, 300 40"/>
+                </svg>
+            </div>
+            <p class="graph-caption">Gambar: Grafik Laju Reaksi vs. Konsentrasi untuk Orde Reaksi Dua</p>
+        </section>
+    </div>
+</body>
+</html>
+```

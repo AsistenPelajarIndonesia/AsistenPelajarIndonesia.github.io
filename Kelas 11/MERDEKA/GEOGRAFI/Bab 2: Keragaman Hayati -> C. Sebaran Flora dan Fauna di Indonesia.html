@@ -1,0 +1,580 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keragaman Hayati: Sebaran Flora dan Fauna di Indonesia</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Slightly stronger shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            margin-top: 2em;
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--primary-blue); /* Main title in primary blue */
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-green); /* Section titles in accent green */
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5em;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+        }
+
+        h4 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+            list-style-type: disc;
+        }
+
+        ul li {
+            margin-bottom: 0.6em;
+            padding-left: 5px; /* Slight padding for list items */
+        }
+
+        a {
+            color: var(--semantic-info);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: var(--primary-blue);
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            height: 1px;
+            background-color: var(--border-divider);
+            margin: 40px 0;
+            border-radius: 1px;
+        }
+
+        /* Themed Box for "Tautan" / "Konsep" (conceptual) */
+        .themed-box {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        .themed-box h3 {
+            color: var(--background-canvas);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+        .themed-box p {
+            color: var(--background-canvas);
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+        .themed-box a {
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .themed-box a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+        }
+
+        /* Conceptual Diagram Styles */
+        .diagram-container {
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            background-color: #F9F9F9; /* Very light grey */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .diagram-title {
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .pyramid-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .pyramid-layer {
+            width: 80%;
+            max-width: 400px;
+            padding: 15px 0;
+            margin-bottom: 5px;
+            text-align: center;
+            color: var(--background-canvas);
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        .pyramid-layer:hover {
+            transform: translateY(-3px);
+        }
+
+        .pyramid-layer.top { background-color: #64B5F6; } /* Light blue for cold */
+        .pyramid-layer.middle { background-color: #81C784; } /* Light green for temperate */
+        .pyramid-layer.bottom { background-color: #FFB74D; } /* Light orange for hot */
+
+        .pyramid-layer-label-left, .pyramid-layer-label-right {
+            position: absolute;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+        }
+        .pyramid-layer-label-left { left: -80px; }
+        .pyramid-layer-label-right { right: -80px; }
+
+        .pyramid-base-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 400px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            padding: 0 10px;
+        }
+
+        .pyramid-base-label-left { text-align: left; flex: 1; }
+        .pyramid-base-label-right { text-align: right; flex: 1; }
+
+
+        /* Temperature Zone Grid Diagram */
+        .temperature-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Temperature range | Description */
+            gap: 1px;
+            background-color: var(--border-divider);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+        .temperature-grid-header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            padding: 15px;
+            text-align: center;
+        }
+        .temperature-grid-cell {
+            background-color: var(--background-canvas);
+            padding: 15px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+        .temperature-grid-cell:nth-child(4n+1),
+        .temperature-grid-cell:nth-child(4n+2) {
+             background-color: #FBFBFB; /* Slightly different background for alternating rows */
+        }
+        .temp-range-col {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+            h4 { font-size: 1.2em; }
+
+            .themed-box {
+                padding: 15px;
+            }
+            .themed-box h3 { font-size: 1.4em; }
+            .themed-box p { font-size: 0.9em; }
+
+            .pyramid-layer-label-left, .pyramid-layer-label-right {
+                position: static;
+                transform: none;
+                margin-top: 5px;
+                text-align: center;
+            }
+            .pyramid-diagram .pyramid-layer {
+                width: 95%;
+                max-width: none;
+            }
+            .pyramid-base-labels {
+                flex-direction: column;
+                align-items: center;
+                width: 95%;
+                max-width: none;
+            }
+            .pyramid-base-label-left, .pyramid-base-label-right {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+
+            .temperature-grid {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+            }
+            .temperature-grid-header:nth-child(2) { /* Hide second header column on small screen */
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C. Sebaran Flora dan Fauna di Indonesia</h1>
+
+        <section id="introduction-lines">
+            <h2>Pengantar Garis Wallace dan Garis Weber</h2>
+            <p>Untuk memahami karakteristik flora dan fauna di Indonesia, penting untuk mengenal dua garis imajiner yang membagi wilayah biogeografis ini: Garis Wallace dan Garis Weber.</p>
+
+            <h3>Garis Wallace</h3>
+            <p>Garis Wallace diciptakan oleh <strong>Alfred Russel Wallace</strong>, seorang naturalis dan geografer dari Inggris. Garis ini berfungsi sebagai pembatas imajiner yang memisahkan persebaran fauna dan flora Indonesia bagian barat (yang bercorak <strong>Asiatis</strong>) dengan wilayah Indonesia tengah (wilayah <strong>peralihan</strong>).</p>
+            <ul>
+                <li><strong>Wilayah Barat (Asiatis):</strong> Sumatra, Jawa, Bali, Kalimantan.</li>
+                <li><strong>Wilayah Tengah (Peralihan/Wallacea):</strong> Sulawesi, Nusa Tenggara, Maluku.</li>
+            </ul>
+
+            <h3>Garis Weber</h3>
+            <p>Garis Weber dibuat oleh <strong>Max Wilhelm Carl Weber</strong>, seorang profesor zoologi dari Belanda. Garis ini merupakan pembatas yang memisahkan wilayah Indonesia tengah (peralihan) dengan wilayah Indonesia Timur (yang bercorak <strong>Australis</strong>).</p>
+            <ul>
+                <li><strong>Wilayah Tengah (Peralihan/Wallacea):</strong> Sulawesi, Nusa Tenggara, Maluku.</li>
+                <li><strong>Wilayah Timur (Australis):</strong> Papua dan pulau-pulau kecil sekitarnya.</li>
+            </ul>
+
+            <div class="section-divider"></div>
+        </section>
+
+        <section id="flora-indonesia">
+            <h2>1. Persebaran Flora Indonesia</h2>
+            <p>Persebaran flora di Indonesia dapat dikelompokkan menjadi tiga kawasan utama dan empat wilayah berdasarkan karakteristiknya:</p>
+            <ul>
+                <li><strong>Kawasan Utama:</strong>
+                    <ol>
+                        <li>Subregion Indonesia-Malaysia (bagian barat)</li>
+                        <li>Kepulauan Wallacea (bagian tengah)</li>
+                        <li>Subregion Australia (bagian timur)</li>
+                    </ol>
+                </li>
+                <li><strong>Empat Wilayah Flora:</strong>
+                    <ol>
+                        <li>Flora Sumatra-Kalimantan</li>
+                        <li>Flora Jawa-Bali</li>
+                        <li>Flora Kepulauan Wallacea</li>
+                        <li>Flora Papua</li>
+                    </ol>
+                </li>
+            </ul>
+
+            <article id="flora-sumatra-kalimantan">
+                <h3>a. Flora Sumatra-Kalimantan</h3>
+                <p>Wilayah Sumatra dan Kalimantan didominasi oleh iklim <strong>hutan hujan tropis</strong>. Karakteristik utamanya meliputi:</p>
+                <ul>
+                    <li>Tingkat kelembaban udara tinggi sepanjang tahun.</li>
+                    <li>Curah hujan tinggi.</li>
+                    <li>Suhu udara rata-rata senantiasa tinggi (di atas 18°C pada bulan terdingin).</li>
+                    <li>Vegetasi didominasi hutan hujan tropis dengan tanaman heterogen dan kerapatan tinggi.</li>
+                </ul>
+                <p><strong>Contoh Flora Khas:</strong></p>
+                <ul>
+                    <li>Pohon: Meranti, Damar</li>
+                    <li>Tanaman Epifit: Berbagai jenis Anggrek</li>
+                    <li>Tumbuhan Bawah: Lumut, Cendawan (jamur), Paku-pakuan</li>
+                    <li>Pesisir: Hutan bakau (mangrove)</li>
+                </ul>
+            </article>
+
+            <article id="flora-jawa-bali">
+                <h3>b. Flora Jawa-Bali</h3>
+                <p>Wilayah Jawa dan Bali memiliki variasi curah hujan, suhu, dan kelembaban. Ini menciptakan beragam tipe vegetasi:</p>
+                <ul>
+                    <li><strong>Jawa Bagian Barat:</strong> Lebih basah, didominasi hutan hujan tropis dan muson tropis (misalnya di Ujung Kulon, Cibodas, Pananjung).</li>
+                    <li><strong>Jawa Bagian Timur dan Pulau Bali:</strong> Semakin kering ke arah timur, bahkan beberapa wilayah memiliki iklim sabana tropis.</li>
+                </ul>
+                <p><strong>Jenis Vegetasi Alami:</strong></p>
+                <ul>
+                    <li>Hutan hujan tropis</li>
+                    <li>Hutan muson tropis (meranggas di musim kemarau, contoh: Pohon Jati yang endemik Jawa)</li>
+                    <li>Sabana tropis (dominan di Jawa Timur bagian timur dan Bali)</li>
+                    <li>Vegetasi pegunungan (Pinus merkusii, Cemara) di daerah tinggi.</li>
+                    <li>Hutan bakau di wilayah pantai.</li>
+                </ul>
+            </article>
+
+            <article id="flora-wallacea">
+                <h3>c. Flora Kepulauan Wallacea</h3>
+                <p>Meliputi pulau Sulawesi, Kepulauan Nusa Tenggara, Pulau Timor, dan Kepulauan Maluku. Wilayah ini cenderung lebih kering dengan kelembaban udara rendah, kecuali di sekitar Kepulauan Maluku.</p>
+                <p><strong>Corak Vegetasi:</strong></p>
+                <ul>
+                    <li>Sabana dan stepa tropis (di wilayah Nusa Tenggara).</li>
+                    <li>Hutan pegunungan (di sekitar Sulawesi).</li>
+                    <li>Hutan campuran dengan jenis rempah-rempah (Pala, Cengkeh, Kayu Manis, Kenari, Kayu Ebony, Lontar) di wilayah Maluku.</li>
+                </ul>
+            </article>
+
+            <article id="flora-papua">
+                <h3>d. Flora Papua</h3>
+                <p>Sebagian besar Papua didominasi iklim <strong>hutan hujan tropis</strong>. Namun, vegetasi Papua memiliki corak yang mirip dengan <strong>Australia Utara</strong>.</p>
+                <p><strong>Ciri Khas Flora:</strong></p>
+                <ul>
+                    <li>Hutan hujan tropis.</li>
+                    <li>Flora khas Australia seperti Eucaliptus.</li>
+                    <li>Vegetasi pegunungan tinggi di Jayawijaya.</li>
+                    <li>Vegetasi bakau banyak dijumpai di daerah pantai.</li>
+                </ul>
+            </article>
+
+            <div class="themed-box">
+                <h3>Sumber Daya Tambahan</h3>
+                <p>Ingin tahu lebih banyak tentang kekayaan flora dan fauna Indonesia? Kunjungi tautan berikut:</p>
+                <a href="https://bit.ly/PenemuanBaruFloraFauna" target="_blank">Jelajahi Lebih Lanjut!</a>
+            </div>
+
+            <div class="section-divider"></div>
+        </section>
+
+        <section id="fauna-indonesia">
+            <h2>2. Persebaran Fauna Indonesia</h2>
+            <p>Pola persebaran fauna di Indonesia sangat mirip dengan flora, terbagi menjadi tiga kelompok utama yang dibatasi oleh Garis Wallace dan Garis Weber.</p>
+            <ul>
+                <li><strong>Fauna Barat:</strong> Corak Oriental.</li>
+                <li><strong>Fauna Tengah:</strong> Fauna khas Indonesia (Kepulauan Wallacea).</li>
+                <li><strong>Fauna Timur:</strong> Corak Australia.</li>
+            </ul>
+
+            <article id="fauna-barat">
+                <h3>a. Wilayah Fauna Indonesia Barat (Dangkalan Sunda)</h3>
+                <p>Meliputi Sumatra, Jawa, Bali, Kalimantan, dan pulau-pulau kecil di sekitarnya. Fauna di wilayah ini memiliki kemiripan dengan fauna Asia (Oriental).</p>
+                <p><strong>Contoh Fauna:</strong></p>
+                <ul>
+                    <li><strong>Mamalia:</strong> Gajah, Badak bercula satu, Tapir, Rusa, Banteng, Kerbau, Monyet, Orang Utan, Macan, Tikus, Bajing, Kijang, Kelelawar, Landak, Babi Hutan, Kancil, Kukang.</li>
+                    <li><strong>Reptil:</strong> Buaya, Kura-kura, Kadal, Ular, Tokek, Biawak, Bunglon.</li>
+                    <li><strong>Burung:</strong> Burung Hantu, Elang, Jalak, Merak, Kutilang, berbagai jenis Unggas.</li>
+                    <li><strong>Serangga:</strong> Belalang, Capung.</li>
+                    <li><strong>Ikan:</strong> Berbagai jenis ikan air tawar, Pesut (lumba-lumba Sungai Mahakam).</li>
+                </ul>
+            </article>
+
+            <article id="fauna-tengah">
+                <h3>b. Wilayah Fauna Indonesia Tengah (Kepulauan Wallacea)</h3>
+                <p>Meliputi Sulawesi, Kepulauan Nusa Tenggara, Pulau Timor, dan Kepulauan Maluku. Wilayah ini memiliki hewan khas yang hanya dapat ditemukan di Indonesia (endemik).</p>
+                <p><strong>Contoh Fauna:</strong></p>
+                <ul>
+                    <li><strong>Mamalia:</strong> Anoa (endemik), Babi Rusa (endemik), Ikan Duyung, Kuskus, Monyet Hitam, Tarsius, Monyet Seba, Kuda, Sapi.</li>
+                    <li><strong>Reptil:</strong> Biawak, Komodo (endemik), Kura-kura, Buaya, Ular, Soa-soa.</li>
+                    <li><strong>Amfibi:</strong> Katak Pohon, Katak Terbang, Katak Air.</li>
+                    <li><strong>Burung:</strong> Burung Dewata, Maleo, Mandar, Raja Udang, Burung Pemakan Lebah, Rangkong, Kakatua, Nuri, Merpati, Angsa.</li>
+                </ul>
+            </article>
+
+            <article id="fauna-timur">
+                <h3>c. Wilayah Fauna Indonesia Timur (Dangkalan Sahul)</h3>
+                <p>Meliputi Kepulauan Papua dan pulau-pulau kecil sekitarnya. Karakteristik hewan di wilayah ini memiliki kesamaan dengan fauna Australia.</p>
+                <p><strong>Contoh Fauna:</strong></p>
+                <ul>
+                    <li><strong>Mamalia:</strong> Kanguru, Wallaby, Nokdiak (Landak Irian), Opossum Layang (pemanjat berkantung), Kuskus (Kanguru Pohon), Kelelawar.</li>
+                    <li><strong>Reptil:</strong> Buaya, Biawak, Ular, Kadal, Kura-kura.</li>
+                    <li><strong>Amfibi:</strong> Katak Pohon, Katak Terbang, Katak Air.</li>
+                    <li><strong>Burung:</strong> Nuri, Raja Udang, Cendrawasih (endemik dengan beragam jenis), Kasuari, Kiwi, Namundur.</li>
+                    <li><strong>Lain-lain:</strong> Berbagai jenis Ikan dan Serangga/Insecta.</li>
+                </ul>
+            </article>
+
+            <div class="section-divider"></div>
+        </section>
+
+        <section id="factors-influence">
+            <h2>3. Faktor-Faktor yang Memengaruhi Sebaran Flora dan Fauna</h2>
+            <p>Berbagai jenis tumbuhan dan hewan memiliki persyaratan hidup tertentu yang berkaitan dengan tipe iklim, tanah, dan unsur alam lainnya. Persebaran flora dan fauna berbeda-beda antara satu daerah dengan daerah lainnya karena dipengaruhi oleh beberapa faktor utama:</p>
+
+            <article id="factor-iklim">
+                <h3>a. Iklim</h3>
+                <p>Iklim mencakup rata-rata suhu udara, curah hujan, penyinaran matahari, kelembaban, dan tekanan udara dalam jangka waktu lama. Unsur-unsur ini sangat berpengaruh pada pertumbuhan tumbuhan dan keberadaan hewan.</p>
+
+                <h4>1) Suhu Udara</h4>
+                <p>Suhu udara dipengaruhi oleh garis lintang (daerah khatulistiwa menerima sinar matahari lebih intensif) dan ketinggian tempat. Semakin tinggi suatu tempat, suhu udaranya semakin dingin (rata-rata turun 0,5°C setiap naik 100 meter).</p>
+
+                <div class="diagram-container">
+                    <div class="diagram-title">Perbedaan Vegetasi Berdasarkan Perbedaan Iklim (Konseptual)</div>
+                    <div class="pyramid-diagram">
+                        <div class="pyramid-layer top">
+                            Kutub - Tundra
+                            <span class="pyramid-layer-label-left">Dingin</span>
+                            <span class="pyramid-layer-label-right">Kenaikan Garis Lintang</span>
+                        </div>
+                        <div class="pyramid-layer top">
+                            Taiga
+                        </div>
+                        <div class="pyramid-layer middle">
+                            Hutan Hujan Temperata - Hutan Gugur - Stepa - Semak Belukar
+                        </div>
+                        <div class="pyramid-layer bottom">
+                            Hutan Hujan Tropis - Sabana - Gurun
+                            <span class="pyramid-layer-label-left">Panas</span>
+                            <span class="pyramid-layer-label-right">Tropis</span>
+                        </div>
+                        <div class="pyramid-base-labels">
+                            <span class="pyramid-base-label-left">Tinggi</span>
+                            <span class="pyramid-base-label-left">Penurunan Curah Hujan</span>
+                            <span class="pyramid-base-label-right">Rendah</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="temperature-grid">
+                    <div class="temperature-grid-header">Rentang Suhu</div>
+                    <div class="temperature-grid-header">Karakteristik & Jenis Tanaman Budidaya</div>
+                    <div class="temperature-grid-cell temp-range-col">&lt; 11°C</div>
+                    <div class="temperature-grid-cell"><strong>Daerah Dingin:</strong> Tidak ada tanaman budidaya yang cocok.</div>
+                    <div class="temperature-grid-cell temp-range-col">11.1°C - 17.1°C</div>
+                    <div class="temperature-grid-cell"><strong>Daerah Sejuk:</strong> Hutan tanaman industri (pinus, cemara), sayuran, kopi, teh, kina.</div>
+                    <div class="temperature-grid-cell temp-range-col">17.1°C - 22°C</div>
+                    <div class="temperature-grid-cell"><strong>Daerah Sedang:</strong> Tembakau, kopi, cokelat, padi.</div>
+                    <div class="temperature-grid-cell temp-range-col">22°C - 23.3°C</div>
+                    <div class="temperature-grid-cell"><strong>Daerah Panas:</strong> Padi, tebu, karet, kelapa.</div>
+                </div>
+
+
+                <h4>2) Kelembaban Udara</h4>
+                <p>Tingkat uap air di udara sangat memengaruhi kehidupan flora. Berbagai jenis tumbuhan dikategorikan berdasarkan tingkat kelembaban yang dibutuhkan:</p>
+                <ul>
+                    <li><strong>Xerophyta:</strong> Tahan lingkungan kering/kelembaban rendah (misalnya Kaktus).</li>
+                    <li><strong>Mesophyta:</strong> Cocok di lingkungan lembab tapi tidak basah (misalnya Anggrek, Cendawan).</li>
+                    <li><strong>Hydrophyta:</strong> Cocok di kawasan basah/berair (misalnya Teratai, Eceng Gondok, Selada Air).</li>
+                    <li><strong>Tropophyta:</strong> Mampu beradaptasi dengan musim hujan dan kemarau (flora khas iklim monsun tropis, misalnya Pohon Jati, Eucaliptus).</li>
+                </ul>
+            </article>
+
+            <article id="factor-curah-hujan">
+                <h3>b. Curah Hujan</h3>
+                <p>Air hujan sangat vital untuk pertumbuhan tumbuhan dan kelangsungan hidup hewan. Sebaran curah hujan yang tidak merata di permukaan Bumi menyebabkan perbedaan jenis tumbuhan:</p>
+                <ul>
+                    <li><strong>Curah Hujan Tinggi (>100 mm/hari):</strong> Keragaman tanaman lebih bervariasi, seperti hutan lebat dengan pohon tinggi dan daun hijau sepanjang tahun (hutan hujan tropis).</li>
+                    <li><strong>Curah Hujan Rendah (<60 mm/hari):</strong> Tanaman lebih sedikit dan spesifik, seperti kaktus dan semak berdaun keras (daerah gurun).</li>
+                    <li><strong>Curah Hujan Sedang (60-100 mm/hari):</strong> Daerah dengan vegetasi campuran atau peralihan.</li>
+                </ul>
+                <p>Tingkat curah hujan membentuk karakter khas formasi vegetasi dan memengaruhi jenis hewan yang dapat hidup di suatu daerah, karena banyak hewan bergantung pada tumbuhan sebagai sumber makanan.</p>
+            </article>
+
+            <article id="factor-topografi">
+                <h3>c. Topografi (Ketinggian Tempat)</h3>
+                <p>Ketinggian suatu tempat sangat memengaruhi suhu udara dan, consequently, sebaran tumbuhan. Ini menciptakan iklim mikro yang berbeda di berbagai elevasi lereng gunung.</p>
+                <ul>
+                    <li><strong>Semakin Tinggi Ketinggian:</strong> Suhu udara semakin dingin, pertumbuhan vegetasi dapat berkurang pada ketinggian ekstrem.</li>
+                    <li><strong>Semakin Rendah Ketinggian:</strong> Suhu udara semakin panas.</li>
+                </ul>
+                <p>Contoh: Pertumbuhan vegetasi pada ketinggian 2100m dengan suhu 19°C lebih tinggi dibandingkan 2109m dengan suhu 18.54°C, namun pada 4500m dengan suhu 4°C, pertumbuhan tanaman jauh berkurang.</p>
+            </article>
+
+            <article id="factor-tanah">
+                <h3>d. Tanah</h3>
+                <p>Tanah adalah media hidup utama bagi flora. Kesuburan tanah ditentukan oleh unsur kimia, struktur, tekstur, porositas (menyimpan udara dan air), dan suhunya. Komposisi tanah umumnya meliputi bahan mineral anorganik (70-90%), bahan organik (1-15%), udara, dan air.</p>
+                <p>Perbedaan jenis tanah menyebabkan perbedaan jenis dan keanekaragaman tumbuhan:</p>
+                <ul>
+                    <li><strong>Tanah Kapur (misal di Jawa Selatan):</strong> Cocok untuk hutan jati.</li>
+                    <li><strong>Tanah Subur (misal di Jawa Tengah):</strong> Mengandung banyak unsur hara dan air, cocok untuk berbagai jenis tanaman.</li>
+                    <li><strong>Tanah Kering (misal di Nusa Tenggara):</strong> Banyak dijumpai sabana.</li>
+                </ul>
+            </article>
+
+            <article id="factor-manusia-hewan-tumbuhan">
+                <h3>e. Manusia, Hewan, dan Tumbuh-Tumbuhan</h3>
+                <p>Selain faktor alam, interaksi antar makhluk hidup juga memengaruhi sebaran:</p>
+                <ul>
+                    <li><strong>Manusia:</strong> Dengan ilmu pengetahuan dan teknologi, manusia dapat memindahkan tumbuhan dari satu tempat ke tempat lain (misalnya pohon kurma dari Timur Tengah, berbagai jenis pisang dari luar negeri dibudidayakan di Indonesia).</li>
+                    <li><strong>Hewan:</strong> Berperan dalam penyebaran biji (dispersal). Contoh: Kalong memindahkan biji durian, serangga membantu penyerbukan, kelelawar, burung, dan tupai membantu penyebaran biji tumbuhan lainnya setelah memakan buahnya.</li>
+                    <li><strong>Tumbuh-tumbuhan:</strong> Secara tidak langsung memengaruhi tanah (misalnya bakteri saprofit membantu penghancuran sampah organik, meningkatkan kesuburan tanah, dan memungkinkan pertumbuhan jenis tumbuhan lain).</li>
+                </ul>
+            </article>
+        </section>
+
+        <div class="section-divider"></div>
+
+    </div>
+</body>
+</html>
+```

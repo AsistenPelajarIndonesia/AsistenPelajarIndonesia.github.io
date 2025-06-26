@@ -1,0 +1,448 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reformasi Ekonomi dan Pembangunan Infrastruktur di Indonesia</title>
+    <style>
+        /* Definisi Palet Warna (Light Mode) */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Umum */
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            overflow: hidden; /* Clear floats */
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 3em;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Bagian Konten */
+        section {
+            margin-bottom: 50px;
+            padding: 25px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfdff; /* Slight tint */
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        section:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2.2em;
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--border-divider);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.7em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        h3::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-green);
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style: none; /* Remove default bullet */
+            margin-left: 0;
+            padding-left: 20px; /* Indent for custom bullet */
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            color: var(--text-primary);
+        }
+
+        ul li::before {
+            content: '✓'; /* Custom bullet point */
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Elemen Interaktif (Details/Summary) */
+        details {
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 25px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .details-summary {
+            display: block; /* Make summary fill width */
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        .details-summary:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+
+        .details-summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] .details-summary::after {
+            content: '-';
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .details-content {
+            padding: 20px 25px 15px;
+            border-top: 1px solid var(--border-divider);
+            background-color: #f9fbff; /* Lighter background for content */
+        }
+
+        .details-content p, .details-content ul, .details-content li {
+            color: var(--text-primary);
+        }
+
+        .details-content ul li::before {
+            color: var(--accent-green);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 50px;
+            border-top: 2px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                margin: 15px;
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2.5em;
+            }
+            header p {
+                font-size: 1.1em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            h3 {
+                font-size: 1.5em;
+            }
+            .details-summary {
+                font-size: 1em;
+                padding: 12px 18px;
+            }
+            .details-content {
+                padding: 18px 22px 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+                padding-left: 10px;
+            }
+            h3::before {
+                font-size: 0.8em;
+            }
+            ul li {
+                padding-left: 20px;
+            }
+            ul li::before {
+                font-size: 0.9em;
+            }
+            section {
+                padding: 18px;
+                margin-bottom: 30px;
+            }
+            details {
+                margin-bottom: 20px;
+            }
+            .details-summary::after {
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            header {
+                padding-bottom: 20px;
+                margin-bottom: 25px;
+            }
+            header h1 {
+                font-size: 1.7em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.5em;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+            h3 {
+                font-size: 1.1em;
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-bottom: 10px;
+            }
+            ul li {
+                font-size: 0.9em;
+                margin-bottom: 5px;
+            }
+            .details-summary {
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+            .details-content {
+                padding: 15px 20px 10px;
+            }
+            footer {
+                padding-top: 20px;
+                margin-top: 25px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reformasi Ekonomi dan Pembangunan Infrastruktur</h1>
+            <p>Sejak transisi dari Orde Baru, Indonesia telah melakukan berbagai upaya reformasi dalam sektor ekonomi, yang secara nyata diwujudkan melalui pembangunan infrastruktur. Perjalanan ini mencerminkan prioritas dan tantangan di setiap era kepemimpinan.</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Transformasi Ekonomi di Era Reformasi: Fokus dan Tantangan</h2>
+                <p>Periode Reformasi di Indonesia ditandai dengan serangkaian kebijakan ekonomi yang bertujuan untuk memulihkan stabilitas pasca-krisis 1997 dan mendorong pertumbuhan berkelanjutan. Setiap pemerintahan membawa agenda serta fokus yang berbeda dalam menghadapi dinamika ekonomi global dan domestik.</p>
+
+                <details>
+                    <summary class="details-summary">Masa Pemerintahan Presiden B.J. Habibie (1998-1999)</summary>
+                    <div class="details-content">
+                        <h3>Prioritas: Pemulihan Pascakrisis Ekonomi 1997</h3>
+                        <p>Langkah awal reformasi ekonomi di era Presiden Habibie menghadapi situasi yang sangat sulit, didominasi oleh upaya pemulihan dari dampak krisis moneter 1997. Kebijakan difokuskan pada stabilisasi nilai tukar rupiah, restrukturisasi sektor perbankan, dan upaya menekan inflasi yang melonjak. Meskipun singkat, periode ini meletakkan fondasi penting bagi reformasi struktural berikutnya, termasuk pembentukan lembaga-lembaga baru yang independen seperti Bank Indonesia.</p>
+                        <ul>
+                            <li><strong>Fokus Utama:</strong> Penanganan krisis dan stabilisasi darurat.</li>
+                            <li><strong>Tantangan Besar:</strong> Kondisi ekonomi yang rapuh dan kepercayaan pasar yang rendah.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary class="details-summary">Masa Pemerintahan Presiden Megawati Soekarnoputri (2001-2004)</summary>
+                    <div class="details-content">
+                        <h3>Keberhasilan dalam Stabilitas Makroekonomi</h3>
+                        <p>Pada masa Presiden Megawati, reformasi ekonomi menunjukkan keberhasilan yang signifikan dalam menjaga dan meningkatkan stabilitas makroekonomi. Indikator seperti pertumbuhan PDB yang positif, terkendalinya inflasi, dan peningkatan cadangan devisa menjadi bukti keberhasilan ini. Namun, upaya reformasi pada tingkat mikroekonomi, yang menyentuh sektor riil dan tata kelola bisnis, masih dinilai kurang optimal dan memerlukan perbaikan lebih lanjut.</p>
+                        <ul>
+                            <li><strong>Aspek Berhasil:</strong> Stabilitas makroekonomi yang solid.</li>
+                            <li><strong>Aspek Kurang Optimal:</strong> Reformasi pada tingkat mikroekonomi.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary class="details-summary">Masa Pemerintahan Presiden Susilo Bambang Yudhoyono (2004-2014)</summary>
+                    <div class="details-content">
+                        <h3>Penekanan pada Stabilitas dan Pengelolaan Ekonomi yang Hati-hati</h3>
+                        <p>Reformasi ekonomi di bawah kepemimpinan Presiden Susilo Bambang Yudhoyono (SBY) tidak terlalu menonjolkan perubahan struktural yang drastis. Kebijakan ekonomi lebih diarahkan pada penekanan stabilitas makroekonomi, pengelolaan fiskal yang prudent, dan program-program yang berfokus pada peningkatan kesejahteraan rakyat. Meskipun pertumbuhan ekonomi terjaga, akselerasi reformasi di sektor-sektor kunci untuk daya saing jangka panjang belum terlalu signifikan.</p>
+                        <ul>
+                            <li><strong>Ciri Khas:</strong> Stabilitas dan kehati-hatian dalam pengelolaan ekonomi.</li>
+                            <li><strong>Tingkat Reformasi:</strong> Kurang signifikan dalam perubahan struktural besar.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary class="details-summary">Masa Pemerintahan Presiden Joko Widodo (2014-Sekarang)</summary>
+                    <div class="details-content">
+                        <h3>Agenda Reformasi dengan Spirit Keterbukaan Investasi</h3>
+                        <p>Presiden Joko Widodo dikenal sebagai pemimpin yang secara agresif mendorong agenda reformasi ekonomi dengan semangat keterbukaan investasi yang kuat. Kebijakannya berfokus pada pembangunan infrastruktur secara masif sebagai mesin penggerak ekonomi, penyederhanaan regulasi untuk menarik investor asing maupun domestik, dan peningkatan daya saing melalui hilirisasi industri. Tujuan utamanya adalah menciptakan lapangan kerja, mengurangi kemiskinan, dan mempercepat pertumbuhan ekonomi yang inklusif.</p>
+                        <ul>
+                            <li><strong>Fokus Utama:</strong> Pembangunan infrastruktur dan menarik investasi.</li>
+                            <li><strong>Pendekatan:</strong> Deregulasi dan peningkatan daya saing.</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+
+            <section>
+                <h2>Realisasi Reformasi Ekonomi dalam Pembangunan Infrastruktur</h2>
+                <p>Salah satu pilar utama reformasi ekonomi, terutama di era modern, adalah investasi besar-besaran pada pembangunan infrastruktur. Infrastruktur yang memadai adalah prasyarat vital untuk mobilitas, efisiensi ekonomi, dan peningkatan kualitas hidup masyarakat.</p>
+
+                <details open> <!-- Default open for easy visibility -->
+                    <summary class="details-summary">1. Pembangunan Infrastruktur Transportasi hingga Perbatasan</summary>
+                    <div class="details-content">
+                        <h3>Meningkatkan Konektivitas dan Pemerataan Ekonomi</h3>
+                        <p>Pembangunan infrastruktur transportasi yang menjangkau hingga ke daerah perbatasan merupakan misi penting dari pembangunan nasional pada masa Reformasi. Infrastruktur jalan, khususnya, menjadi mesin penggerak utama untuk mengembangkan ekonomi di kota-kota besar maupun di desa-desa terpencil, menghubungkan pusat produksi dengan pasar, serta membuka akses bagi masyarakat.</p>
+
+                        <h3>Mengapa Infrastruktur Transportasi Begitu Penting?</h3>
+                        <ol>
+                            <li><strong>Membuka Lapangan Pekerjaan:</strong> Proyek-proyek pembangunan infrastruktur berskala besar secara langsung menciptakan jutaan lapangan pekerjaan, mulai dari tahap perencanaan, konstruksi, hingga operasional dan pemeliharaan. Ini juga mendorong pertumbuhan sektor-sektor pendukung lainnya.</li>
+                            <li><strong>Mempengaruhi Mobilitas dan Menentukan Integrasi Sosial-Ekonomi Rakyat:</strong> Ketersediaan akses transportasi yang efisien meningkatkan mobilitas penduduk dan barang. Hal ini memfasilitasi pertukaran ekonomi, budaya, dan sosial antarwilayah, memperkuat integrasi nasional dan mengurangi kesenjangan antar daerah.</li>
+                            <li><strong>Membuka Isolasi Fisik dan Nonfisik di Sejumlah Wilayah:</strong> Banyak daerah di Indonesia yang terisolasi karena minimnya akses transportasi. Pembangunan infrastruktur membuka wilayah-wilayah ini dari keterisolasian fisik (sulit dijangkau) maupun nonfisik (minim akses informasi, pendidikan, dan pasar), memungkinkan mereka untuk berkembang dan berpartisipasi dalam perekonomian nasional.</li>
+                        </ol>
+
+                        <h3>Tantangan Maritim dan Percepatan Pembangunan</h3>
+                        <p>Sebagai negara kepulauan terbesar di dunia, Indonesia menghadapi paradoks di mana ongkos transportasi laut masih lebih mahal daripada transportasi darat. Ini sebagian besar disebabkan oleh belum dikembangkannya infrastruktur maritim secara substansial dan belum optimalnya bisnis makanan laut. Kesadaran akan pentingnya aspek maritim mulai menguat pada awal Reformasi, mendorong kajian dan rancangan kebijakan untuk sektor ini.</p>
+                        <p>Pada masa Kabinet Indonesia Maju (era Presiden Jokowi), pembangunan infrastruktur jalur laut dan udara digenjot secara masif, menunjukkan komitmen kuat pemerintah untuk mewujudkan konektivitas nasional dan mendukung visi "Poros Maritim Dunia". Data terbaru menunjukkan capaian signifikan:</p>
+                        <ul>
+                            <li><strong>Jaringan Jalan Tol:</strong> Total panjang jalan tol yang berhasil dibangun mencapai <strong>2.042 kilometer</strong>, menghubungkan berbagai kota dan pusat ekonomi.</li>
+                            <li><strong>Infrastruktur Bandara:</strong> Proyek pembangunan bandara baru telah merampungkan <strong>16 bandara</strong>, dan sebanyak <strong>38 bandara</strong> lainnya telah mendapatkan perbaikan serta peningkatan kapasitas untuk melayani penerbangan domestik dan internasional.</li>
+                            <li><strong>Pengembangan Pelabuhan:</strong> Upaya optimalisasi sektor kemaritiman meliputi pembangunan <strong>18 pelabuhan baru</strong> dan perbaikan infrastruktur di <strong>128 pelabuhan eksisting</strong>, bertujuan untuk memperlancar arus logistik dan mengurangi biaya transportasi laut.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details open> <!-- Default open for easy visibility -->
+                    <summary class="details-summary">2. Pembangunan Infrastruktur Teknologi dan Sosial</summary>
+                    <div class="details-content">
+                        <h3>Meningkatkan Kualitas Sumber Daya Manusia dan Akses Informasi</h3>
+                        <p>Selain infrastruktur fisik, pembangunan infrastruktur di bidang teknologi dan sosial juga mendapat perhatian khusus. Tujuannya adalah untuk meningkatkan kualitas sumber daya manusia, pemerataan akses informasi, serta pelayanan dasar bagi masyarakat.</p>
+
+                        <h3>Perkembangan Infrastruktur Teknologi dan Sosial di Berbagai Era:</h3>
+                        <ul>
+                            <li><strong>Era Presiden B.J. Habibie:</strong>
+                                <p>Perhatian awal terhadap infrastruktur teknologi sudah mulai terlihat. Fokus pada dua area utama:</p>
+                                <ul>
+                                    <li><strong>Pengembangan Industri Kedirgantaraan:</strong> Upaya untuk membangun kemandirian di sektor teknologi tinggi, khususnya di bidang penerbangan.</li>
+                                    <li><strong>Pendirian Yayasan Sumber Daya Manusia Berbasis IPTEK:</strong> Langkah strategis untuk memfasilitasi penelitian, pengembangan, dan peningkatan kapasitas sumber daya manusia di bidang ilmu pengetahuan dan teknologi.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Era Presiden Megawati Soekarnoputri:</strong>
+                                <p>Pembangunan infrastruktur teknologi diperluas ke sektor perikanan, mendukung modernisasi dan peningkatan produktivitas di salah satu sektor ekonomi maritim vital Indonesia.</p>
+                            </li>
+                            <li><strong>Era Presiden Susilo Bambang Yudhoyono:</strong>
+                                <p>Dengan komitmen untuk merealisasikan alokasi anggaran pendidikan sebesar 20% dari APBN, pemerintahan SBY gencar membangun infrastruktur pendidikan yang inovatif dan merata:</p>
+                                <ul>
+                                    <li><strong>Rumah Pintar:</strong> Pusat-pusat belajar non-formal yang menyediakan berbagai fasilitas edukasi dan kreativitas bagi masyarakat.</li>
+                                    <li><strong>Unit Mobil Pintar:</strong> Perpustakaan atau fasilitas belajar bergerak yang dirancang untuk menjangkau daerah-daerah terpencil dan terisolasi.</li>
+                                    <li><strong>Kapal Pintar:</strong> Konsep perpustakaan terapung yang melayani masyarakat di pulau-pulau kecil dan pesisir, memastikan akses pendidikan.</li>
+                                    <li><strong>Kampung Pintar:</strong> Inisiatif untuk mengembangkan desa-desa menjadi pusat kegiatan belajar dan pemberdayaan masyarakat berbasis edukasi dan teknologi.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+        </main>
+
+        <footer>
+            <p>Materi ini merupakan ringkasan dan penjelasan dari Bab 4: Indonesia Masa Reformasi, fokus pada Reformasi Ekonomi dan Pembangunan Infrastruktur, untuk mata pelajaran Sejarah SMA/MA Kelas XII.</p>
+            <p>&copy; 2023. Hak Cipta Dilindungi Undang-Undang.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

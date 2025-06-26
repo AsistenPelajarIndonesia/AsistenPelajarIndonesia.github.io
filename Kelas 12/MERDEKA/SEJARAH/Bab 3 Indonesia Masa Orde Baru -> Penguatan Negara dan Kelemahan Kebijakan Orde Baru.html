@@ -1,0 +1,445 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejarah Indonesia: Orde Baru - Penguatan Negara & Kelemahan Kebijakan</title>
+    <style>
+        /* Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 1.5em;
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 0.5em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 10px;
+            margin-top: 2em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 1.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .section-intro {
+            background-color: rgba(var(--primary-blue), 0.05);
+            padding: 20px;
+            border-left: 5px solid var(--primary-blue);
+            margin-bottom: 2em;
+            border-radius: 5px;
+        }
+
+        .highlight-box {
+            background-color: rgba(var(--accent-green), 0.05);
+            padding: 15px;
+            border-left: 5px solid var(--accent-green);
+            margin: 1.5em 0;
+            border-radius: 5px;
+        }
+
+        .viva-historia {
+            background-color: rgba(var(--secondary-accent-amber), 0.05);
+            padding: 20px;
+            border-left: 5px solid var(--secondary-accent-amber);
+            margin: 2em 0;
+            border-radius: 5px;
+        }
+
+        .viva-historia h3 {
+            color: var(--secondary-accent-amber);
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+
+        .viva-historia::before {
+            content: '📜'; /* Simple text icon */
+            font-size: 1.5em;
+            float: left;
+            margin-right: 10px;
+            color: var(--secondary-accent-amber);
+        }
+
+        .activity-box {
+            background-color: rgba(var(--semantic-info), 0.05);
+            padding: 20px;
+            border-left: 5px solid var(--semantic-info);
+            margin: 2em 0;
+            border-radius: 5px;
+        }
+
+        .activity-box h3 {
+            color: var(--semantic-info);
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+
+        .activity-box::before {
+            content: '💡'; /* Simple text icon */
+            font-size: 1.5em;
+            float: left;
+            margin-right: 10px;
+            color: var(--semantic-info);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5em;
+            margin-bottom: 2em;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--border-divider);
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .viva-historia, .activity-box {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 1em;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td::before {
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--text-primary);
+            }
+
+            td:nth-of-type(1)::before { content: "Bidang"; }
+            td:nth-of-type(2)::before { content: "Dampak Positif"; }
+            td:nth-of-type(3)::before { content: "Dampak Negatif"; }
+        }
+
+        /* QR Code Placeholder (since images are not allowed) */
+        .qr-placeholder {
+            background-color: var(--border-divider);
+            color: var(--text-tertiary);
+            padding: 10px;
+            margin: 1em 0;
+            text-align: center;
+            border-radius: 5px;
+            font-style: italic;
+            height: 100px; /* Simulate size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .qr-placeholder span {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Penguatan Negara dan Kelemahan Kebijakan Orde Baru bagi Pembangunan Masyarakat</h1>
+        </header>
+
+        <main>
+            <section class="section-intro">
+                <p>Masa pemerintahan Orde Baru di bawah Presiden Soeharto (1966-1998) merupakan periode krusial dalam sejarah Indonesia, ditandai oleh program pembangunan nasional yang ambisius dengan fokus pada kesejahteraan masyarakat di berbagai sektor: politik, ekonomi, sosial, dan budaya. Berbeda dengan era Sukarno yang menekankan "Politik sebagai Panglima", Orde Baru mengusung semboyan "Ekonomi sebagai Panglima" sebagai prioritas utama.</p>
+                <p>Namun, penting untuk dicermati bahwa kebijakan politik pada masa itu juga turut membentuk arah pembangunan ekonomi. Meskipun banyak keberhasilan yang dicapai dan warisan yang masih terasa manfaatnya hingga kini, periode ini juga diwarnai oleh berbagai kontroversi dan resistensi yang signifikan.</p>
+                <p>Indonesia pernah mencapai predikat swasembada beras pada tahun 1984, sebuah pengakuan dari Food and Agriculture Organization (FAO). Capaian ini menjadi salah satu ikon keberhasilan Orde Baru di sektor pangan, sejalan dengan target pemerintah saat ini untuk menjadikan Indonesia lumbung pangan dunia pada tahun 2045, sebuah isu penting yang juga dibahas dalam agenda G20 di Bali pada tahun 2022.</p>
+            </section>
+
+            <section>
+                <h2>1. Memindahkan Poros Politik hingga Memberlakukan Politik Tiga Warna</h2>
+                <h3>Pemulihan Politik Luar Negeri dan Keterlibatan Internasional</h3>
+                <p>Salah satu langkah awal yang diambil Soeharto adalah mengembalikan politik luar negeri Indonesia ke prinsip "bebas aktif" setelah periode konfrontatif Sukarno yang cenderung membentuk poros <span style="font-weight: bold; color: var(--accent-green);">Pyongyang-Beijing-Jakarta</span>. Kebijakan ini bertujuan memulihkan krisis politik luar negeri dan meningkatkan kerja sama internasional.</p>
+                <ul>
+                    <li>Konfrontasi dengan Malaysia dinormalisasi, mengakhiri permusuhan antara kedua negara.</li>
+                    <li>Indonesia kembali menjadi anggota Perserikatan Bangsa-Bangsa (PBB) pada <span style="font-weight: bold; color: var(--accent-green);">28 September 1966</span>, setelah Sukarno menarik diri dari keanggotaan PBB.</li>
+                </ul>
+
+                <h3>Pembentukan ASEAN</h3>
+                <p>Untuk memperkuat posisi regional, Indonesia bersama empat negara Asia Tenggara lainnya memprakarsai berdirinya <span style="font-weight: bold; color: var(--accent-green);">ASEAN (Association of Southeast Asian Nation)</span> pada <span style="font-weight: bold; color: var(--accent-green);">8 Agustus 1967</span>. Pertemuan ini menghasilkan Deklarasi Bangkok, dengan perwakilan kunci seperti Adam Malik (Indonesia), Tun Abdul Razak (Malaysia), Narciso Ramos (Filipina), S. Rajaratnam (Singapura), dan Thanat Khoman (Thailand).</p>
+
+                <h3>Perluasan Dwifungsi Angkatan Bersenjata Republik Indonesia (ABRI)</h3>
+                <p>Dalam rangka menciptakan stabilitas politik dalam negeri, pemerintah Orde Baru memperluas konsep Dwifungsi ABRI. Kebijakan ini memberikan ABRI dua fungsi utama: menjaga pertahanan dan keamanan negara, sekaligus memegang kekuasaan dan mengatur negara. Hal ini memperkuat legitimasi kekuasaan Orde Baru, namun juga menimbulkan dampak negatif berupa kecenderungan penggunaan pendekatan militer dalam menyelesaikan masalah pembangunan dan urusan negara.</p>
+
+                <div class="viva-historia">
+                    <h3>Viva Historia: Dwifungsi ABRI dan Barisan Jenderal Orba</h3>
+                    <p>Konsep Dwifungsi ABRI sebenarnya telah ada sejak masa Demokrasi Terpimpin Sukarno, digagas oleh Jenderal Abdul Haris Nasution. Awalnya, Dwifungsi ABRI bertujuan untuk memperkuat negara dengan memungkinkan militer berpartisipasi dalam pemerintahan dan memanfaatkan keahlian non-militernya untuk pembangunan bangsa.</p>
+                    <p>Namun, pada masa Orde Baru, peran sosial ABRI dilembagakan secara struktural. Anggota ABRI tidak hanya duduk di lembaga legislatif tanpa prosedur pemilu, tetapi juga memegang posisi penting di sektor ekonomi dan sosial. Studi oleh David Jenkins menunjukkan bahwa barisan jenderal Orde Baru mendominasi kelompok elite negara, dengan loyalitas mereka digunakan untuk menghadapi oposisi. Perkembangan ini, meskipun memperkuat kekuasaan Orde Baru, juga menyebabkan pendekatan militeristik dalam banyak aspek kehidupan sipil.</p>
+                    <p class="text-tertiary"><em>(Referensi tambahan untuk eksplorasi lebih lanjut topik Dwifungsi ABRI dapat ditemukan pada karya-karya Anwar, 2018; David Jenkins, 2010; dan Petrik Matanasi, 2000.)</em></p>
+                </div>
+
+                <h3>Pemilu dan Politik Tiga Warna</h3>
+                <p>Pemerintahan Orde Baru secara rutin mengadakan pemilihan umum setiap lima tahun sekali untuk menata kehidupan politik dan ekonomi. Pemilu berlangsung sebanyak enam kali pada tahun <span style="font-weight: bold; color: var(--accent-green);">1971, 1977, 1982, 1987, 1992, dan 1997</span>.</p>
+                <ul>
+                    <li>Pemilu pertama tahun 1971 diikuti oleh sepuluh partai. Namun, pada tahun 1973, dilakukan fusi partai politik yang menghasilkan "Politik Tiga Warna":
+                        <ul>
+                            <li><span style="font-weight: bold; color: var(--accent-green);">Partai Persatuan Pembangunan (PPP)</span>: Gabungan NU, PSII, Partai Muslimin, dan Perti.</li>
+                            <li><span style="font-weight: bold; color: var(--accent-green);">Partai Demokrasi Indonesia (PDI)</span>: Gabungan PNI, Partai Kristen Indonesia, MURBA, dan IPKI.</li>
+                            <li><span style="font-weight: bold; color: var(--accent-green);">Golongan Karya (Golkar)</span>: Fraksi yang selalu memenangkan setiap pemilu di masa Orde Baru. Meskipun awalnya digagas dari pemikiran kolektif tokoh-tokoh seperti Supomo, Sukarno, dan Ki Hadjar Dewantara pada 1950-an, ideologi Golkar di bawah Orde Baru berkembang jauh berbeda.</li>
+                        </ul>
+                    </li>
+                    <li>Sistem tiga partai ini, yang mulai berlaku sejak 1977 hingga 1998, sangat berperan dalam melanggengkan kekuasaan Soeharto selama 32 tahun.</li>
+                </ul>
+                <div class="qr-placeholder">
+                    <span>Scan QR Code atau kunjungi link berikut untuk direktori penyelenggaraan pemilu di Indonesia:</span>
+                    <a href="https://kepustakaan-presiden.perpusnas.go.id/election/directory/election/?box=list&" target="_blank">kepustakaan-presiden.perpusnas.go.id</a>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Ekonomi sebagai Panglima Pembangunan</h2>
+                <h3>Pemulihan Ekonomi dan Kebijakan Awal</h3>
+                <p>Soeharto berhasil memulihkan perekonomian Indonesia yang sempat terpuruk pada akhir masa pemerintahan Sukarno. Fokus pemulihan ekonomi dilakukan sekitar tahun <span style="font-weight: bold; color: var(--accent-green);">1966—1973</span> melalui beberapa upaya strategis:</p>
+                <ul>
+                    <li>Menjalin kerja sama dengan lembaga keuangan internasional seperti International Monetary Fund (IMF) dan Bank Dunia.</li>
+                    <li>Indonesia kembali menjadi anggota PBB.</li>
+                    <li>Menghentikan konfrontasi dengan Malaysia.</li>
+                    <li>Membuka pintu bagi masuknya investasi asing.</li>
+                </ul>
+
+                <h3>Dampak Fenomena Oil Boom</h3>
+                <p>Pertumbuhan ekonomi Indonesia mengalami peningkatan pesat berkat dua kali fenomena <span style="font-weight: bold; color: var(--accent-green);">Oil Boom</span> pada tahun 1970-an:</p>
+                <ol>
+                    <li><span style="font-weight: bold;">Tahun 1973—1974</span>: Boikot yang dilakukan negara-negara Arab yang tergabung dalam OPEC terhadap Amerika (akibat dukungan AS terhadap Israel dalam Perang Yom Kippur) menyebabkan harga minyak dunia naik drastis.</li>
+                    <li><span style="font-weight: bold;">Tahun 1978—1979</span>: Peristiwa Revolusi Iran mengganggu produksi minyak dunia, yang kembali menaikkan harga minyak.</li>
+                </ol>
+                <p>Sebagai negara penghasil minyak bumi, Indonesia meraup pendapatan pemerintah yang melimpah selama periode ini. Hal ini memungkinkan pemerintah mengurangi ketergantungan pada investasi asing dan membiayai dana pembangunan secara besar-besaran.</p>
+
+                <h3>Karakteristik Negatif Ekonomi Orde Baru</h3>
+                <p>Sayangnya, karakteristik pemerintahan Soeharto yang <span style="font-weight: bold; color: var(--semantic-error);">militeristik</span> dan cenderung membagi porsi politik ekonomi kepada sekelompok kecil elite pendukung menyebabkan merebaknya praktik <span style="font-weight: bold; color: var(--semantic-error);">Korupsi, Kolusi, dan Nepotisme (KKN)</span>.</p>
+
+                <h3>Kebijakan Ekonomi 1980-an dan Krisis 1998</h3>
+                <p>Memasuki tahun 1980-an, pemerintah menggalakkan kegiatan ekspor dan menderegulasi sistem finansial, termasuk mengizinkan pembukaan bank-bank swasta dan asing di Indonesia. Namun, keterbukaan ini ternyata membawa dampak berkepanjangan:</p>
+                <ul>
+                    <li>Pemerintah kesulitan memonitor aliran uang dalam sistem perbankan.</li>
+                    <li>Situasi ini menjadi faktor pemberat beban Indonesia pada masa <span style="font-weight: bold; color: var(--semantic-error);">krisis keuangan Asia tahun 1997/1998</span>, yang pada akhirnya memicu runtuhnya rezim Orde Baru.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. Penegakkan Hegemoni Lewat Aspek Sosial dan Budaya</h2>
+                <p>Pemerintahan Orde Baru banyak memprogramkan kebijakan yang masih relevan hingga saat ini, terutama dalam bidang kependudukan dan kesehatan masyarakat. Secara statistik, angka pembangunan masyarakat Indonesia memang bertambah signifikan pada masa Orde Baru.</p>
+
+                <h3>Pembangunan Kesehatan Masyarakat</h3>
+                <p>Unit-unit pelayanan kesehatan dasar seperti <span style="font-weight: bold; color: var(--accent-green);">Puskesmas</span> dibentuk pada masa Presiden Soeharto. Selain itu, program <span style="font-weight: bold; color: var(--accent-green);">Pos Pelayanan Terpadu (Posyandu)</span> dicanangkan pada tahun <span style="font-weight: bold; color: var(--accent-green);">1986 di Yogyakarta</span> untuk mempercepat penurunan angka kematian Ibu dan Bayi. Lima kegiatan utama Posyandu meliputi:</p>
+                <ol>
+                    <li>Kesehatan Ibu dan Anak (KIA)</li>
+                    <li>Keluarga Berencana (KB)</li>
+                    <li>Imunisasi</li>
+                    <li>Pendidikan Gizi</li>
+                    <li>Penanggulangan Diare</li>
+                </ol>
+                <p>Tokoh-tokoh penting di balik pembangunan kesehatan ini antara lain <span style="font-weight: bold;">dr. Sulianti Saroso</span> (pelopor pembatasan fertilitas, kampanye anti-pernikahan dini), <span style="font-weight: bold;">dr. Johannes Leimena</span> (Bapak Puskesmas Indonesia), dan <span style="font-weight: bold;">dr. Gerrit Augustinus Siwabessy</span> (pelopor Puskesmas). Instruksi bersama dari Menteri Kesehatan, Kepala BKKBN, dan Menteri Dalam Negeri pada tahun 1984 memperkuat integrasi pelayanan kesehatan hingga pelosok.</p>
+
+                <h3>Pengendalian Jumlah Penduduk melalui Program Keluarga Berencana (KB)</h3>
+                <p>Program Keluarga Berencana (KB) merupakan salah satu program unggulan Orde Baru untuk mengendalikan jumlah penduduk, meskipun sempat ditentang pada masa Sukarno. Program ini didukung penuh oleh Badan Kependudukan dan Keluarga Berencana Nasional (BKKBN), yang perintisannya dimulai sejak pembentukan Perkumpulan Keluarga Berencana pada tahun 1957.</p>
+
+                <div class="viva-historia">
+                    <h3>Viva Historia: Jalan Panjang Usaha Pengendalian Jumlah Penduduk</h3>
+                    <p>Program Transmigrasi dan Keluarga Berencana menjadi ikon keberhasilan Orde Baru. Transmigrasi sendiri telah ada sejak masa Hindia Belanda (1905) dan terus berlanjut hingga masa Reformasi. Museum Transmigrasi di Lampung menyimpan memori para transmigran.</p>
+                    <p>Selain perpindahan penduduk, wabah penyakit juga memengaruhi jumlah penduduk. <span style="font-weight: bold;">Dr. Sulianti Saroso</span>, yang namanya diabadikan menjadi Rumah Sakit Penyakit Infeksi (RSPI) Sulianti Saroso (rujukan pandemi COVID-19), memiliki peran krusial dalam pengendalian jumlah penduduk dan kesehatan masyarakat. Kiprah beliau diabadikan dalam film dokumenter sejarah.</p>
+                    <p class="text-tertiary"><em>(Informasi lebih lanjut tentang Museum Transmigrasi: <a href="https://wisata.pesawarankab.go.id/destinasi/museum-transmigrasi" target="_blank">wisata.pesawarankab.go.id</a>. Mengenai Dr. Johannes Leimena: <a href="https://tirto.id/johannes-leimena-menteri-sukarno-penggagas-cikal-bakal-puskesmas-ehyG" target="_blank">tirto.id</a>. Film dokumenter Dr. Sulianti Saroso dapat ditonton melalui YouTube: <a href="https://www.youtube.com/watch?v=04knESfpFG4" target="_blank">YouTube link</a>.)</em></p>
+                </div>
+
+                <h3>Program Transmigrasi dan Swasembada Pangan</h3>
+                <p>Program transmigrasi adalah unsur penting dalam pelaksanaan Rencana Pembangunan Lima Tahun (Repelita) I hingga VI. Capaian penting dari program ini adalah penyebarluasan teknologi pertanian, terutama di luar Jawa, dan diarahkan agar pendatang menanam padi, yang berkontribusi pada <span style="font-weight: bold; color: var(--accent-green);">surplus beras dan swasembada pangan</span> pada masa Orde Baru.</p>
+                <p>Namun, kesuksesan "berasisasi" ini menyisakan permasalahan: perubahan konsumsi bahan pangan pokok menjadi hanya beras, yang mengurangi eksistensi dan keberagaman bahan pangan lokal di banyak tempat.</p>
+
+                <h3>Pengembangan Pendidikan</h3>
+                <p>Di bidang pendidikan, Soeharto melakukan beberapa gebrakan:</p>
+                <ul>
+                    <li><span style="font-weight: bold; color: var(--accent-green);">Pemberantasan Buta Aksara</span>: Dimulai pada <span style="font-weight: bold; color: var(--accent-green);">16 Agustus 1978</span> dengan pembentukan Kelompok Belajar "Kejar", menyasar kelompok usia produktif.</li>
+                    <li><span style="font-weight: bold; color: var(--accent-green);">Gerakan Wajib Belajar 9 Tahun</span>: Dicanangkan pada <span style="font-weight: bold; color: var(--accent-green);">2 Mei 1994</span>, mewajibkan anak usia 7–15 tahun untuk sekolah, diperkuat dengan Instruksi Presiden.</li>
+                    <li>Pembangunan SD Inpres hingga ke pelosok daerah.</li>
+                </ul>
+                <p>Kebijakan ini meningkatkan jumlah peserta didik secara signifikan. Namun, sayangnya, peningkatan kuantitas ini <span style="font-weight: bold; color: var(--semantic-error);">tidak diimbangi dengan perbaikan kualitas dan pertumbuhan mutu pendidikan</span>.</p>
+
+                <h3>Peran Perempuan pada Masa Orde Baru</h3>
+                <p>Gerakan perempuan pada masa Orde Baru mengalami <span style="font-weight: bold; color: var(--semantic-error);">sentralisasi</span>. Penunjukan Kongres Wanita Indonesia (Kowani) sebagai organisasi payung semua kelompok perempuan mencerminkan watak <span style="font-weight: bold; color: var(--semantic-error);">patriarki</span> dan melemahkan organisasi perempuan lain yang sudah ada.</p>
+                <ul>
+                    <li>Meskipun kemitraan Kowani dengan Kementerian Urusan Peranan Wanita memberikan ruang bagi partisipasi perempuan dalam pembangunan dan kegiatan sosial politik, pada kenyataannya, pemerintah Orde Baru <span style="font-weight: bold; color: var(--semantic-error);">memaksa</span> agar gerakan perempuan mendukung tujuan pembangunan pemerintah.</li>
+                    <li>Hal ini menyebabkan organisasi perempuan <span style="font-weight: bold; color: var(--semantic-error);">tidak leluasa bergerak, berinovasi, atau menyalurkan kritik terhadap kebijakan pemerintah</span>.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Tabel Dampak Kebijakan Orde Baru</h2>
+                <p>Untuk lebih memahami kompleksitas kebijakan Orde Baru, berikut adalah tabel yang merangkum potensi dampak positif dan negatif di berbagai bidang:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bidang</th>
+                            <th>Dampak Positif</th>
+                            <th>Dampak Negatif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Politik</strong></td>
+                            <td>Stabilitas politik nasional, pemulihan hubungan luar negeri (kembali ke PBB, ASEAN), modernisasi birokrasi, pemilu rutin (meskipun dikontrol).</td>
+                            <td>Sentralisasi kekuasaan (otoritarianisme), Dwifungsi ABRI (militerisasi sipil), minimnya partisipasi politik rakyat, pembatasan partai politik, praktik KKN, pelanggaran HAM.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ekonomi</strong></td>
+                            <td>Pertumbuhan ekonomi pesat (didukung Oil Boom), swasembada beras, pembangunan infrastruktur (jalan, irigasi), peningkatan investasi asing (awal), program transmigrasi.</td>
+                            <td>Ketergantungan pada utang luar negeri, kesenjangan ekonomi, praktik KKN yang merajalela, rentan terhadap krisis global (terbukti 1997/1998), monopoli ekonomi, degradasi lingkungan akibat pembangunan.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sosial</strong></td>
+                            <td>Peningkatan akses pendidikan (wajib belajar, SD Inpres, pemberantasan buta aksara), peningkatan layanan kesehatan (Puskesmas, Posyandu), program KB (pengendalian penduduk), peningkatan kesadaran sanitasi.</td>
+                            <td>Sentralisasi gerakan perempuan, perubahan pola konsumsi pangan (uniformitas beras), terbatasnya kebebasan berekspresi dan berorganisasi, represi sosial, masalah agraria akibat transmigrasi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Budaya</strong></td>
+                            <td>Promosi budaya nasional (tertentu), pembangunan fasilitas kebudayaan (misal, TMII).</td>
+                            <td>Homogenisasi budaya, pembatasan kebebasan berekspresi seni dan sastra, sensor, represi terhadap ekspresi budaya yang dianggap subversif, marginalisasi budaya lokal non-arus utama.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

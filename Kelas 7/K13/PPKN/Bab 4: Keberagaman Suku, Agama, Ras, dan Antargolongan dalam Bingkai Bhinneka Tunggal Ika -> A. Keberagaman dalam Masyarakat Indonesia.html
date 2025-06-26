@@ -1,0 +1,349 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Keberagaman dalam Masyarakat Indonesia</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1);
+            padding: 10px 15px;
+            border-left: 5px solid var(--primary-blue);
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background-color: rgba(255, 179, 0, 0.1);
+            border: 1px dashed var(--secondary-accent-amber);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            margin-top: 0;
+            color: var(--secondary-accent-amber);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .section-title {
+            font-size: 1.6em;
+            color: var(--accent-green);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .sub-section-title {
+            font-size: 1.3em;
+            color: var(--text-primary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .interactive-explanation {
+            background-color: #f0f8ff; /* Light Alice Blue */
+            border: 1px solid #e0f0ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-explanation::before {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            opacity: 0.3;
+        }
+
+        .interactive-explanation h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            border-bottom: none;
+            font-size: 1.5em;
+        }
+
+        .interactive-explanation p {
+            margin-bottom: 0;
+        }
+
+        .key-term {
+            font-weight: 600;
+            color: var(--primary-blue);
+            cursor: help;
+            position: relative;
+        }
+
+        .key-term .tooltip {
+            visibility: hidden;
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the term */
+            left: 50%;
+            margin-left: -125px; /* Use half of the width to center */
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .key-term:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .key-term .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%; /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent; /* Arrow pointing down */
+        }
+
+        .factor-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .factor-item {
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fafafa;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .factor-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .factor-item h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .factor-item p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .factor-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 4: Keberagaman dalam Masyarakat Indonesia</h1>
+
+        <p>Indonesia adalah bangsa yang kaya akan keberagaman. Keberagaman ini bukan hanya sekadar perbedaan, melainkan aset berharga yang membentuk identitas bangsa. Dalam bab ini, kita akan menjelajahi berbagai aspek keberagaman di Indonesia, mulai dari suku, agama, ras, hingga antargolongan, serta memahami bagaimana semua ini terjalin dalam bingkai <strong>Bhinneka Tunggal Ika</strong>.</p>
+
+        <div class="section-title">A. Keberagaman dalam Masyarakat Indonesia</div>
+
+        <p>Keberagaman dalam masyarakat Indonesia adalah sebuah keniscayaan yang telah ditetapkan oleh Tuhan Yang Maha Esa. Keberagaman ini merupakan anugerah yang patut disyukuri dan dikelola dengan baik. Keberagaman dalam berbagai bidang kehidupan adalah ciri khas bangsa Indonesia yang membedakannya dari bangsa lain.</p>
+
+        <div class="sub-section-title">1. Faktor Penyebab Keberagaman Masyarakat Indonesia</div>
+
+        <p>Keberagaman masyarakat Indonesia terbentuk karena dipengaruhi oleh berbagai faktor. Faktor-faktor ini berasal dari dalam maupun luar masyarakat, serta dipengaruhi oleh kondisi alam, sejarah, dan interaksi antarindividu.</p>
+
+        <div class="factor-list">
+            <div class="factor-item">
+                <h4>a. Letak Strategis Wilayah Indonesia</h4>
+                <p>Indonesia terletak di persimpangan jalur perdagangan internasional, di antara dua samudra dan dua benua. Hal ini membuat Indonesia menjadi tujuan para pedagang dari berbagai belahan dunia. Kedatangan bangsa asing tidak hanya membawa komoditas dagang, tetapi juga memengaruhi budaya, bahasa, dan bahkan ras penduduk lokal.</p>
+            </div>
+
+            <div class="factor-item">
+                <h4>b. Kondisi Negara Kepulauan</h4>
+                <p>Sebagai negara kepulauan dengan ribuan pulau yang terpisah secara fisik, setiap pulau di Indonesia cenderung mengembangkan budaya dan kebiasaan mereka sendiri. Keterpisahan ini menghambat komunikasi langsung antarmasyarakat pulau yang berbeda, namun justru melahirkan kekayaan budaya dan bahasa daerah yang beragam.</p>
+            </div>
+
+            <div class="factor-item">
+                <h4>c. Perbedaan Kondisi Alam</h4>
+                <p>Bervariasi kondisi alam di Indonesia, mulai dari pantai, pegunungan, dataran subur, hingga lautan, menciptakan perbedaan dalam mata pencaharian, bentuk rumah, makanan pokok, pakaian, kesenian, bahkan kepercayaan masyarakat. Lingkungan alam sangat memengaruhi cara hidup dan kebudayaan masyarakatnya.</p>
+            </div>
+
+            <div class="factor-item">
+                <h4>d. Keadaan Transportasi dan Komunikasi</h4>
+                <p>Kemajuan teknologi transportasi dan komunikasi mempermudah interaksi antarindividu dan kelompok masyarakat, meskipun terpisah jarak dan kondisi alam. Sebaliknya, keterbatasan sarana ini di masa lalu juga menjadi faktor yang melahirkan perbedaan dan kekhasan budaya di setiap daerah.</p>
+            </div>
+
+            <div class="factor-item">
+                <h4>e. Penerimaan Masyarakat terhadap Perubahan</h4>
+                <p>Sikap masyarakat dalam menerima sesuatu yang baru, baik dari dalam maupun luar, sangat memengaruhi keberagaman. Beberapa masyarakat lebih terbuka terhadap pengaruh luar dan mudah beradaptasi, sementara yang lain cenderung mempertahankan budaya asli mereka. Sikap inilah yang turut membentuk perbedaan karakter masyarakat.</p>
+            </div>
+        </div>
+
+        <div class="interactive-explanation">
+            <h3>Memahami Suku Bangsa</h3>
+            <p>Keberagaman Indonesia juga tercermin dalam keragaman suku bangsa. Suku bangsa atau etnik dapat diartikan sebagai sekelompok manusia yang memiliki kesatuan budaya, terikat oleh kesadaran dan identitas bersama, serta seringkali diperkuat oleh kesamaan bahasa.</p>
+            <p>Ciri-ciri pembeda antar suku bangsa umumnya meliputi:</p>
+            <ul>
+                <li><span class="key-term">Bahasa Daerah</span><span class="tooltip">Bahasa yang digunakan oleh masyarakat suatu daerah sebagai alat komunikasi sehari-hari.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Adat Istiadat</span><span class="tooltip">Aturan, kebiasaan, dan tradisi yang diwariskan dari generasi ke generasi.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Sistem Kekerabatan</span><span class="tooltip">Cara masyarakat mengatur hubungan antar anggota keluarga dan kerabat.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Kesenian Daerah</span><span class="tooltip">Bentuk ekspresi seni seperti tarian, musik, lukisan, dan ukiran yang khas dari suatu daerah.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Tempat Asal</span><span class="tooltip">Wilayah geografis tempat suatu suku bangsa bermula atau berkembang.<span class="tooltip-arrow"></span></span></li>
+            </ul>
+            <p>Setiap suku bangsa di Indonesia memiliki ciri khas dan keunikannya sendiri. Keragaman inilah yang menjadi kekayaan dan kekuatan bangsa Indonesia.</p>
+        </div>
+
+        <div class="highlight">
+            <p>Indonesia memiliki lebih dari seribu suku bangsa, masing-masing dengan budayanya yang unik. Contohnya, suku Aceh, Batak, dan Minangkabau di Sumatera; suku Jawa, Sunda, dan Badui di Jawa; suku Dayak di Kalimantan; suku Bugis dan Toraja di Sulawesi; serta suku Asmat dan Dani di Papua. Keragaman ini menunjukkan betapa luas dan kayanya budaya Indonesia.</p>
+        </div>
+
+        <div class="interactive-explanation">
+            <h3>Keberagaman Agama dan Kepercayaan</h3>
+            <p>Agama dan kepercayaan merupakan salah satu pilar utama keberagaman di Indonesia. Sejarah mencatat bahwa ajaran agama-agama besar dunia telah masuk dan berkembang di Indonesia melalui berbagai jalur interaksi, seperti perdagangan dan penyebaran.</p>
+            <p>Aspek-aspek penting dalam keberagaman agama meliputi:</p>
+            <ul>
+                <li><span class="key-term">Kitab Suci</span><span class="tooltip">Kitab yang berisi ajaran-ajaran pokok dan panduan hidup umat beragama.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Tempat Ibadah</span><span class="tooltip">Bangunan suci yang digunakan umat beragama untuk beribadah dan berdialog dengan Tuhan.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Hari Besar Keagamaan</span><span class="tooltip">Hari-hari raya yang diperingati oleh umat beragama sebagai momen penting dalam perjalanan spiritual.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Upacara Keagamaan</span><span class="tooltip">Rangkaian ritual atau ibadah yang dilakukan sesuai dengan ajaran agama.<span class="tooltip-arrow"></span></span></li>
+            </ul>
+            <p>Agama mengajarkan nilai-nilai kebaikan dan kebenaran. Sebagai pelajar, penting untuk menjalankan ajaran agama masing-masing dengan taat, sekaligus menumbuhkan sikap toleran, hormat-menghormati, dan kerja sama antarumat beragama untuk menciptakan kerukunan hidup.</p>
+        </div>
+
+        <div class="interactive-explanation">
+            <h3>Keberagaman Ras</h3>
+            <p>Ras adalah penggolongan manusia berdasarkan ciri-ciri fisik yang bersifat umum, terutama yang berkaitan dengan ciri keturunan. Perbedaan ras manusia disebabkan oleh adanya perbedaan ciri fisik seperti warna kulit, bentuk rambut, bentuk wajah, ukuran tubuh, dan lain sebagainya.</p>
+            <p>Beberapa ras yang umum ditemukan di Indonesia antara lain:</p>
+            <ul>
+                <li><span class="key-term">Malayan Mongoloid</span><span class="tooltip">Ras yang dominan di wilayah Indonesia, ciri-cirinya antara lain kulit sawo matang, rambut hitam, dan bentuk wajah cenderung oval.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Melanesoid</span><span class="tooltip">Ras yang mendiami wilayah Papua, Maluku, dan Nusa Tenggara Timur, dengan ciri kulit gelap, rambut keriting, dan tubuh kekar.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Asiatic Mongoloid</span><span class="tooltip">Ras yang berasal dari Asia Timur seperti Tionghoa, Jepang, dan Korea, seringkali memiliki kulit kuning langsat, rambut hitam lurus, dan bentuk mata khas.<span class="tooltip-arrow"></span></span></li>
+                <li><span class="key-term">Kaukasoid</span><span class="tooltip">Ras yang berasal dari Eropa, Timur Tengah, India, Australia, dan Amerika, dengan ciri kulit bervariasi dari putih hingga cokelat, rambut bervariasi, dan hidung mancung.<span class="tooltip-arrow"></span></span></li>
+            </ul>
+            <p>Penting untuk diingat bahwa perbedaan ras tidak boleh dijadikan dasar untuk melakukan diskriminasi. Sila kedua Pancasila, Kemanusiaan yang Adil dan Beradab, mengajarkan kita untuk menghargai harkat dan martabat setiap manusia tanpa memandang ras.</p>
+        </div>
+
+        <div class="interactive-explanation">
+            <h3>Keberagaman Antargolongan</h3>
+            <p>Selain suku, agama, dan ras, masyarakat Indonesia juga memiliki keberagaman dalam struktur sosialnya, yang dikenal sebagai <span class="key-term">antargolongan</span>.<span class="tooltip">Perbedaan kedudukan atau posisi anggota masyarakat dalam kelompok-kelompok yang berbeda.<span class="tooltip-arrow"></span></span> Keberagaman ini dapat dilihat dari dua perspektif:</p>
+            <ul>
+                <li><strong>Secara Horizontal:</strong> Terbentuknya kesatuan-kesatuan sosial berdasarkan perbedaan suku bangsa, agama, adat istiadat, dan kedaerahan.</li>
+                <li><strong>Secara Vertikal:</strong> Adanya lapisan-lapisan sosial atau kelas-kelas dalam masyarakat, yang ditandai dengan perbedaan dalam pembagian hak, kewajiban, kedudukan, dan status sosial.</li>
+            </ul>
+            <p>Dalam masyarakat, penggolongan ini bisa didasarkan pada berbagai faktor, seperti kelas sosial, status ekonomi, pendidikan, pekerjaan, atau keanggotaan dalam organisasi kemasyarakatan. Penting untuk diingat bahwa keberagaman antargolongan ini tidak boleh menimbulkan konflik atau perpecahan. Sebaliknya, ini harus menjadi pendorong untuk memperkuat persatuan dan kesatuan bangsa, misalnya dengan semangat gotong royong dan saling membantu antar golongan.</p>
+        </div>
+
+        <div class="highlight">
+            <p>Semboyan <strong>Bhinneka Tunggal Ika</strong> (Berbeda-beda tetapi tetap satu) menjadi pengingat bahwa meskipun terdapat berbagai macam perbedaan dalam masyarakat Indonesia, kita semua adalah satu bangsa, satu tanah air, yaitu Indonesia. Menjaga dan melestarikan keberagaman ini adalah tugas seluruh warga negara untuk mewujudkan persatuan dan kesatuan.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

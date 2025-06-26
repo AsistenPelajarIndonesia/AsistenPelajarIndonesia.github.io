@@ -1,0 +1,404 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operasi Vektor - Fisika Kelas XI</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            color: var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--primary-blue);
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1em;
+            color: var(--text-primary);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        .callout {
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .callout.technology {
+            border-color: var(--primary-blue);
+            background-color: rgba(25, 118, 210, 0.08); /* primary_blue with transparency */
+            color: var(--text-secondary);
+        }
+
+        .callout.observe {
+            border-color: var(--accent-green);
+            background-color: rgba(56, 142, 60, 0.08); /* accent_green with transparency */
+            color: var(--text-secondary);
+        }
+
+        .callout.check {
+            border-color: var(--secondary-accent-amber);
+            background-color: rgba(255, 179, 0, 0.08); /* secondary_accent_amber with transparency */
+            color: var(--text-secondary);
+        }
+
+        .callout h4 {
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .formula {
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.1em;
+            margin: 15px 0;
+            overflow-x: auto; /* For long formulas */
+            color: var(--text-primary);
+        }
+
+        .note {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin: 10px 0;
+            padding-left: 15px;
+            border-left: 3px solid var(--border-divider);
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .responsive-table {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 0.95em;
+        }
+
+        th {
+            background-color: #f7f7f7;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Specific styles for graphical representation hints (no actual images) */
+        .vector-representation {
+            background-color: #e8f5e9; /* Light green */
+            border: 1px dashed var(--accent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-style: italic;
+            color: var(--accent-green);
+        }
+
+        .vector-representation p {
+            color: var(--accent-green);
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                box-shadow: none; /* Remove shadow on small screens for cleaner look */
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1: Vektor &mdash; C. Operasi Vektor</h1>
+
+        <div class="section">
+            <h2>Pendahuluan Operasi Vektor</h2>
+            <p>Setelah memahami konsep dasar vektor, bagaimana vektor direpresentasikan, dan bagaimana vektor dikalikan dengan suatu skalar, kini kita akan mendalami operasi-operasi yang dapat dilakukan antar-vektor. Operasi vektor tidak hanya sekadar penjumlahan atau pengurangan angka biasa, melainkan melibatkan arah dan besar secara simultan.</p>
+            <p>Dalam fisika, operasi vektor sangat fundamental untuk menggambarkan fenomena yang melibatkan besaran vektor seperti gaya, kecepatan, percepatan, atau perpindahan. Hasil dari operasi penjumlahan atau pengurangan vektor sering disebut sebagai <strong>resultan vektor</strong>, yang merepresentasikan efek gabungan dari vektor-vektor yang dioperasikan.</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Penjumlahan dan Pengurangan Vektor dengan Metode Grafis</h2>
+            <p>Metode grafis adalah cara visual untuk menentukan resultan vektor. Meskipun tidak seakurat metode analitis, metode ini sangat membantu dalam membangun intuisi tentang bagaimana vektor-vektor saling berinteraksi.</p>
+
+            <h3>a. Metode Segitiga (Tail-to-Head Method)</h3>
+            <p>Metode segitiga adalah pendekatan yang paling dasar untuk menjumlahkan dua vektor. Prinsipnya sangat sederhana:</p>
+            <ul>
+                <li>Geser vektor kedua sehingga pangkalnya berimpit dengan ujung vektor pertama.</li>
+                <li>Resultan vektor ditarik dari pangkal vektor pertama ke ujung vektor kedua.</li>
+                <li>Jika vektor pertama adalah <strong>A</strong> dan vektor kedua adalah <strong>B</strong>, maka resultan <strong>R</strong> = <strong>A</strong> + <strong>B</strong> akan membentuk sisi ketiga dari sebuah segitiga.</li>
+            </ul>
+            <div class="vector-representation">
+                <p><strong>Visualisasi Konseptual Metode Segitiga:</strong></p>
+                <p>Vektor A (panah ke kanan)</p>
+                <p>Vektor B (panah miring ke atas dari ujung A)</p>
+                <p>----------------------------------------------------</p>
+                <p>Resultan R (panah dari pangkal A ke ujung B)</p>
+            </div>
+            <p>Untuk pengurangan vektor, misalnya <strong>A</strong> - <strong>B</strong>, kita dapat mengubahnya menjadi penjumlahan dengan vektor negatif: <strong>A</strong> + (-<strong>B</strong>). Vektor -<strong>B</strong> adalah vektor yang memiliki besar yang sama dengan <strong>B</strong> tetapi arahnya berlawanan 180 derajat.</p>
+            <div class="vector-representation">
+                <p><strong>Visualisasi Konseptual Pengurangan (A + (-B)):</strong></p>
+                <p>Vektor A (panah ke kanan)</p>
+                <p>Vektor -B (panah miring ke bawah dari ujung A, berlawanan arah dengan B)</p>
+                <p>----------------------------------------------------</p>
+                <p>Resultan R (panah dari pangkal A ke ujung -B)</p>
+            </div>
+
+            <h3>b. Metode Jajargenjang</h3>
+            <p>Metode jajargenjang juga digunakan untuk menjumlahkan dua vektor, tetapi pendekatannya sedikit berbeda dari metode segitiga. Metode ini sangat berguna ketika kita ingin melihat kedua vektor "berangkat" dari titik yang sama.</p>
+            <ul>
+                <li>Tempatkan kedua vektor (misalnya <strong>F<sub>1</sub></strong> dan <strong>F<sub>2</sub></strong>) sehingga pangkalnya berimpit pada satu titik.</li>
+                <li>Buat garis-garis putus-putus yang sejajar dengan masing-masing vektor, membentuk sebuah jajargenjang.</li>
+                <li>Resultan vektor ditarik dari titik pangkal bersama ke titik perpotongan garis-garis putus-putus tersebut (diagonal jajargenjang).</li>
+            </ul>
+            <div class="vector-representation">
+                <p><strong>Visualisasi Konseptual Metode Jajargenjang:</strong></p>
+                <p>Vektor F1 (panah ke kanan dari titik O)</p>
+                <p>Vektor F2 (panah miring ke atas dari titik O)</p>
+                <p>----------------------------------------------------</p>
+                <p>Buat garis putus-putus sejajar F2 dari ujung F1.</p>
+                <p>Buat garis putus-putus sejajar F1 dari ujung F2.</p>
+                <p>Resultan R (panah dari titik O ke titik perpotongan garis putus-putus)</p>
+            </div>
+
+            <h3>c. Metode Poligon</h3>
+            <p>Metode poligon adalah perpanjangan dari metode segitiga, memungkinkan kita untuk menjumlahkan tiga atau lebih vektor secara grafis. Prinsipnya sama, yaitu menghubungkan ujung vektor sebelumnya dengan pangkal vektor berikutnya secara berurutan.</p>
+            <ul>
+                <li>Tempatkan vektor pertama.</li>
+                <li>Geser vektor kedua sehingga pangkalnya berimpit dengan ujung vektor pertama.</li>
+                <li>Geser vektor ketiga sehingga pangkalnya berimpit dengan ujung vektor kedua, dan seterusnya untuk vektor-vektor selanjutnya.</li>
+                <li>Resultan vektor ditarik dari pangkal vektor pertama ke ujung vektor terakhir yang telah ditempatkan. Ini akan membentuk sisi penutup dari sebuah poligon.</li>
+            </ul>
+            <div class="vector-representation">
+                <p><strong>Visualisasi Konseptual Metode Poligon:</strong></p>
+                <p>Vektor A (panah ke kanan)</p>
+                <p>Vektor B (panah miring ke atas dari ujung A)</p>
+                <p>Vektor C (panah miring ke bawah dari ujung B)</p>
+                <p>----------------------------------------------------</p>
+                <p>Resultan R (panah dari pangkal A ke ujung C)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Resultan Vektor Nol (Vektor Nol)</h2>
+            <p>Vektor nol adalah konsep penting dalam operasi vektor. Vektor nol didefinisikan sebagai vektor yang memiliki besar (magnitudo) nol dan arahnya tidak tentu (indefinite).</p>
+            <p>Kapan resultan vektor menghasilkan vektor nol?</p>
+            <ul>
+                <li><strong>Dua Vektor Senilai tetapi Berlawanan Arah:</strong> Jika dua vektor memiliki besar yang sama tetapi arahnya berlawanan 180 derajat, maka penjumlahan keduanya akan menghasilkan vektor nol. Misalnya, jika Anda berjalan 5 meter ke timur, kemudian 5 meter ke barat, posisi akhir Anda kembali ke posisi awal, sehingga perpindahan totalnya nol.
+                    <div class="formula">
+                        Vektor <strong>A</strong> dan Vektor <strong>-A</strong><br>
+                        <strong>A</strong> + (<strong>-A</strong>) = <strong>0</strong>
+                    </div>
+                </li>
+                <li><strong>Poligon Vektor yang Tertutup:</strong> Jika beberapa vektor dijumlahkan secara berurutan (menggunakan metode poligon) dan ujung vektor terakhir berimpit dengan pangkal vektor pertama, maka resultan vektornya adalah nol. Ini berarti sistem vektor tersebut berada dalam keadaan setimbang atau kembali ke titik awal.</li>
+            </ul>
+            <div class="note">
+                <strong>Definisi Vektor Nol:</strong> "Vektor nol adalah vektor yang pangkal dan ujung vektornya berhimpit. Vektor nol mempunyai panjang nol dan arahnya tidak tentu."
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Penjumlahan dan Pengurangan Vektor dengan Metode Analitis</h2>
+            <p>Metode grafis memang intuitif, tetapi seringkali kurang akurat karena keterbatasan dalam menggambar dan mengukur. Untuk hasil yang presisi, kita menggunakan metode analitis yang memanfaatkan trigonometri dan aljabar.</p>
+
+            <h3>a. Metode Komponen (Penjumlahan Komponen)</h3>
+            <p>Metode ini adalah yang paling sering digunakan karena fleksibilitas dan akurasinya untuk menjumlahkan berapa pun jumlah vektor. Ide utamanya adalah menguraikan setiap vektor ke dalam komponen-komponennya sepanjang sumbu koordinat (misalnya x dan y), menjumlahkan komponen-komponen tersebut secara terpisah, dan kemudian mencari resultan dari komponen-komponen total.</p>
+            <p>Setiap vektor <strong>F</strong> yang membentuk sudut α dengan sumbu x positif dapat diuraikan menjadi komponen horizontal (sumbu x) dan komponen vertikal (sumbu y):</p>
+            <div class="formula">
+                F<sub>x</sub> = F cos α<br>
+                F<sub>y</sub> = F sin α
+            </div>
+            <p>Untuk menjumlahkan beberapa vektor (misalnya <strong>F<sub>1</sub></strong>, <strong>F<sub>2</sub></strong>, ...):</p>
+            <ul>
+                <li>Uraikan setiap vektor menjadi komponen x dan y-nya.</li>
+                <li>Jumlahkan semua komponen x untuk mendapatkan resultan komponen x (F<sub>Rx</sub>):</li>
+                <div class="formula">
+                    F<sub>Rx</sub> = ΣF<sub>x</sub> = F<sub>1x</sub> + F<sub>2x</sub> + F<sub>3x</sub> + ...
+                </div>
+                <li>Jumlahkan semua komponen y untuk mendapatkan resultan komponen y (F<sub>Ry</sub>):</li>
+                <div class="formula">
+                    F<sub>Ry</sub> = ΣF<sub>y</sub> = F<sub>1y</sub> + F<sub>2y</sub> + F<sub>3y</sub> + ...
+                </div>
+                <li>Besar (magnitudo) resultan vektor (F<sub>R</sub>) kemudian dapat dihitung menggunakan teorema Pythagoras:</li>
+                <div class="formula">
+                    F<sub>R</sub> = &radic;(F<sub>Rx</sub>² + F<sub>Ry</sub>²)
+                </div>
+                <li>Arah resultan vektor (α<sub>R</sub>) relatif terhadap sumbu x positif dapat dihitung menggunakan fungsi tangen invers:</li>
+                <div class="formula">
+                    tan α<sub>R</sub> = F<sub>Ry</sub> / F<sub>Rx</sub>
+                </div>
+                <p><strong>Catatan:</strong> Perhatikan kuadran F<sub>Rx</sub> dan F<sub>Ry</sub> untuk menentukan arah α<sub>R</sub> yang benar (0-360 derajat).</p>
+            </ul>
+
+            <h3>b. Penentuan Resultan Vektor Menggunakan Rumus Kosinus</h3>
+            <p>Rumus kosinus sangat berguna untuk menemukan besar resultan dari <strong>dua</strong> vektor yang membentuk sudut tertentu satu sama lain. Misalkan kita memiliki dua vektor <strong>F<sub>1</sub></strong> dan <strong>F<sub>2</sub></strong> yang membentuk sudut apit α (sudut di antara kedua vektor ketika pangkalnya berimpit).</p>
+            <p>Besar resultan <strong>R</strong> dari kedua vektor tersebut dihitung dengan rumus:</p>
+            <div class="formula">
+                R² = F<sub>1</sub>² + F<sub>2</sub>² + 2F<sub>1</sub>F<sub>2</sub> cos α<br>
+                atau<br>
+                R = &radic;(F<sub>1</sub>² + F<sub>2</sub>² + 2F<sub>1</sub>F<sub>2</sub> cos α)
+            </div>
+            <p>Dimana:</p>
+            <ul>
+                <li>R = besar resultan dari dua vektor</li>
+                <li>F<sub>1</sub> = besar vektor pertama</li>
+                <li>F<sub>2</sub> = besar vektor kedua</li>
+                <li>α = sudut apit antara kedua vektor (sudut di antara F<sub>1</sub> dan F<sub>2</sub>)</li>
+            </ul>
+            <p><strong>Penting:</strong> Rumus ini langsung memberikan besar resultan tanpa perlu menguraikan komponen, namun hanya berlaku untuk penjumlahan dua vektor.</p>
+
+            <h3>c. Penentuan Arah Resultan Vektor Menggunakan Rumus Sinus</h3>
+            <p>Setelah mendapatkan besar resultan menggunakan rumus kosinus, kita dapat menemukan arah resultan relatif terhadap salah satu vektor komponennya menggunakan rumus sinus. Misalkan resultan <strong>R</strong> membentuk sudut β dengan vektor <strong>F<sub>2</sub></strong>, dan sudut (α - β) dengan vektor <strong>F<sub>1</sub></strong> (dimana α adalah sudut apit antara <strong>F<sub>1</sub></strong> dan <strong>F<sub>2</sub></strong>).</p>
+            <p>Hubungan sinus ini dijelaskan sebagai berikut:</p>
+            <div class="formula">
+                R / sin α = F<sub>1</sub> / sin β = F<sub>2</sub> / sin (α - β)
+            </div>
+            <p>Dari persamaan ini, kita bisa mencari sudut β (arah R relatif terhadap F<sub>2</sub>) atau (α - β) (arah R relatif terhadap F<sub>1</sub>). Misalnya, untuk mencari β:</p>
+            <div class="formula">
+                sin β = (F<sub>1</sub> sin α) / R
+            </div>
+            <p>Rumus sinus ini adalah alat pelengkap setelah rumus kosinus untuk memberikan gambaran lengkap tentang resultan (baik besar maupun arah) dari dua vektor.</p>
+        </div>
+
+        <div class="callout technology">
+            <h4>Ayo, Berteknologi!</h4>
+            <p>Manfaatkan aplikasi seperti Geogebra atau simulasi online (misalnya di ophysics.com) untuk memvisualisasikan operasi vektor. Menggambar vektor dan resultannya secara interaktif dapat sangat membantu dalam memahami konsep metode grafis dan analitis secara mendalam. Eksplorasi ini akan memperkuat intuisi Anda tentang bagaimana vektor berinteraksi dalam berbagai skenario.</p>
+        </div>
+
+        <div class="callout observe">
+            <h4>Ayo, Cermati!</h4>
+            <p>Perhatikan baik-baik perbedaan dan kesamaan antara metode grafis dan analitis. Metode grafis memberikan gambaran visual yang cepat, tetapi seringkali kurang presisi. Metode analitis, meskipun membutuhkan perhitungan lebih, memberikan hasil yang akurat dan dapat diterapkan pada situasi yang lebih kompleks dengan banyak vektor.</p>
+        </div>
+
+        <div class="callout check">
+            <h4>Ayo, Cek Pemahaman!</h4>
+            <p>Pikirkan skenario dunia nyata di mana Anda mungkin perlu menggunakan masing-masing metode ini. Misalnya, kapan metode grafis akan menjadi pilihan pertama, dan kapan metode analitis menjadi keharusan? Contoh kasus dalam navigasi, teknik sipil, atau bahkan permainan dapat membantu Anda memahami relevansi praktis dari setiap operasi vektor.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

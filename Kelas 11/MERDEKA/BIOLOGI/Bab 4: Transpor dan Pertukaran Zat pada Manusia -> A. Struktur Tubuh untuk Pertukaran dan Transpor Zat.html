@@ -1,0 +1,384 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Transpor dan Pertukaran Zat pada Manusia - Biologi Kelas 11</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2; /* Deep Sky Blue */
+            --accent-green: #388E3C; /* Forest Green */
+            --secondary-accent-amber: #FFB300; /* Amber */
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 25px;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2.2em;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.7em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 30px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .info-box {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 6px solid var(--primary-blue);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-box::before {
+            content: '💡'; /* Lightbulb icon */
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2.5em;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .info-box h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        .tissue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .tissue-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tissue-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background-color: #f9f9f9; /* Slightly brighter on hover */
+        }
+
+        .tissue-card h4 {
+            color: var(--primary-blue);
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .tissue-card p {
+            margin-bottom: 10px;
+            font-size: 1em;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .tissue-card p.ciri-umum {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--secondary-accent-amber);
+            padding-left: 8px;
+        }
+
+        .tissue-card p.fungsi {
+            color: var(--accent-green);
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 8px 0;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .example-list {
+            list-style: '✅ '; /* Custom bullet point */
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+
+        .example-list li {
+            font-size: 1.05em;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            background-color: #f5f5f5; /* Light grey for footer */
+            color: var(--text-tertiary);
+            font-size: 0.95em;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px auto;
+                padding: 0 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            h3 {
+                font-size: 1.4em;
+                margin-top: 25px;
+            }
+            p, ul li {
+                font-size: 0.95em;
+            }
+            .tissue-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .tissue-card {
+                padding: 20px;
+            }
+            .tissue-card h4 {
+                font-size: 1.2em;
+            }
+            .info-box {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.5em;
+                padding-bottom: 10px;
+            }
+            h3 {
+                font-size: 1.2em;
+                padding-left: 8px;
+            }
+            .container {
+                padding: 0 10px;
+            }
+            ul {
+                margin-left: 20px;
+            }
+            .info-box::before {
+                font-size: 2em;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Bab 4: Transpor dan Pertukaran Zat pada Manusia</h1>
+            <p>Mekanisme Krusial dalam Fisiologi Tubuh</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="pengantar">
+            <h2>Pengantar Transpor dan Pertukaran Zat</h2>
+            <p>
+                Tubuh manusia secara terus-menerus berinteraksi dengan lingkungan eksternal melalui proses <strong>pertukaran zat</strong>. Zat-zat yang masuk dan keluar ini kemudian <strong>diangkut</strong> ke seluruh penjuru tubuh oleh sistem sirkulasi, khususnya sistem peredaran darah. Bab ini akan membedah secara rinci bagaimana mekanisme transpor dan pertukaran zat ini terjadi, melibatkan empat sistem organ vital pada manusia.
+            </p>
+            <p>
+                Empat sistem organ yang terlibat langsung dalam proses ini meliputi:
+            </p>
+            <ul>
+                <li><strong>Sistem Sirkulasi:</strong> Berperan sebagai jaringan transportasi utama.</li>
+                <li><strong>Sistem Pernapasan:</strong> Pusat pertukaran gas oksigen dan karbon dioksida.</li>
+                <li><strong>Sistem Pencernaan:</strong> Tempat penyerapan nutrisi penting dari makanan.</li>
+                <li><strong>Sistem Ekskresi:</strong> Bertanggung jawab atas pembuangan limbah metabolisme.</li>
+            </ul>
+            <div class="info-box">
+                <h3>Memahami Konsep Transpor dan Pertukaran</h3>
+                <p>Dalam konteks fisiologi, dua istilah ini memiliki makna yang berbeda namun saling terkait:</p>
+                <ul>
+                    <li><strong>Transpor Zat:</strong> Mengacu pada pergerakan zat dalam skala sistem organ, utamanya melalui sistem sirkulasi. Ini adalah proses "pengiriman" atau "distribusi" zat ke seluruh sel dan jaringan tubuh.</li>
+                    <li><strong>Pertukaran Zat:</strong> Merujuk pada perpindahan zat antara tubuh dengan lingkungan eksternal atau antara kompartemen tubuh yang berbeda, khususnya di organ-organ spesifik. Pertukaran ini bisa bersifat:
+                        <ul>
+                            <li><strong>Dua Arah:</strong> Contohnya, pertukaran oksigen dan karbon dioksida di paru-paru.</li>
+                            <li><strong>Satu Arah:</strong> Contohnya, penyerapan sari makanan di usus halus, atau pengeluaran sisa metabolisme di ginjal.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Dengan demikian, kita dapat melihat bahwa sistem organ dalam tubuh tidak bekerja sendiri-sendiri, melainkan terintegrasi dan bersinergi untuk menjalankan fungsi-fungsi esensial kehidupan.</p>
+            </div>
+        </section>
+
+        <section id="struktur-tubuh-pertukaran">
+            <h2>A. Struktur Tubuh untuk Pertukaran dan Transpor Zat</h2>
+            <p>
+                Meskipun setiap organ memiliki spesialisasi fungsi, fondasi struktural mereka dibangun dari jenis <strong>jaringan dasar</strong> yang sama. Empat jenis jaringan dasar ini adalah blok bangunan fundamental yang memungkinkan semua fungsi tubuh, termasuk transpor dan pertukaran zat, dapat berjalan.
+            </p>
+            <p>
+                Mari kita telaah lebih jauh keempat jaringan dasar tersebut:
+            </p>
+
+            <div class="tissue-grid">
+                <div class="tissue-card">
+                    <h4>Jaringan Epitel</h4>
+                    <p class="ciri-umum">Terletak di permukaan organ (internal dan eksternal) atau melapisi rongga tubuh dan saluran, tersusun atas sel-sel yang padat dan rapat, bisa selapis atau berlapis-lapis.</p>
+                    <p class="fungsi"><strong>Fungsi:</strong> Utama sebagai pelindung, sekresi (mengeluarkan zat), absorbsi (menyerap zat), dan mengatur <strong>pertukaran zat</strong> yang selektif antara tubuh dan lingkungannya atau antar-kompartemen tubuh.</p>
+                </div>
+                <div class="tissue-card">
+                    <h4>Jaringan Ikat</h4>
+                    <p class="ciri-umum">Mengisi ruang di antara jaringan-jaringan dasar lainnya. Komponen utamanya terdiri dari sel-sel yang tersebar, serabut protein (kolagen, elastin, retikuler), dan matriks ekstraseluler (zat dasar amorf, biasanya cairan).</p>
+                    <p class="fungsi"><strong>Fungsi:</strong> Memberikan dukungan struktural (penguat), penghubung antarjaringan dan organ, transportasi zat (melalui darah dan limfa yang juga merupakan jaringan ikat khusus), serta penyimpanan cadangan makanan (misalnya lemak).</p>
+                </div>
+                <div class="tissue-card">
+                    <h4>Jaringan Otot</h4>
+                    <p class="ciri-umum">Tersusun dari sel-sel (serat otot) yang memanjang dan mengandung protein kontraktil seperti filamen aktin dan miosin, memungkinkan mereka untuk berkontraksi.</p>
+                    <p class="fungsi"><strong>Fungsi:</strong> Bertanggung jawab atas semua jenis pergerakan tubuh, mulai dari gerakan sadar (seperti berjalan) hingga gerakan tak sadar (seperti detak jantung atau peristaltik usus).</p>
+                </div>
+                <div class="tissue-card">
+                    <h4>Jaringan Saraf</h4>
+                    <p class="ciri-umum">Terdiri dari neuron (sel saraf) yang memiliki penjuluran sitoplasma panjang (akson dan dendrit) untuk transmisi sinyal, serta sel glia yang mendukung. Sebagian besar menyusun otak, sumsum tulang belakang, dan saraf.</p>
+                    <p class="fungsi"><strong>Fungsi:</strong> Menerima, memproses, dan mengirimkan impuls saraf (sinyal listrik dan kimia) untuk mengoordinasikan dan mengontrol semua aktivitas tubuh, termasuk kerja antarorgan.</p>
+                </div>
+            </div>
+
+            <h3>Contoh Integrasi Jaringan: Usus Halus</h3>
+            <p>
+                Usus halus adalah contoh sempurna bagaimana keempat jaringan dasar ini berkolaborasi untuk menjalankan fungsi pencernaan dan penyerapan yang efisien.
+            </p>
+            <ul class="example-list">
+                <li><strong>Gerakan Peristaltik Optimal:</strong> Dinding usus halus kaya akan <strong>jaringan otot polos</strong>. Kontraksi dan relaksasi otot ini menghasilkan gerakan peristaltik yang mendorong makanan dan memaksimalkan kontak dengan dinding usus untuk penyerapan nutrisi. Gerakan ini harus lambat dan ritmis untuk efisiensi penyerapan, berbeda dengan kontraksi cepat otot jantung.</li>
+                <li><strong>Efisiensi Penyerapan:</strong> Permukaan dalam usus sangat berlipat-lipat membentuk <em>vili</em>, dan setiap sel epitel pada vili memiliki lipatan mikroskopis yang disebut <em>mikrovili</em>. Lapisan ini terutama tersusun dari <strong>jaringan epitel silindris selapis</strong>. Desain ini secara drastis memperluas area permukaan penyerapan dan memperpendek jalur difusi zat. Setelah nutrisi diserap oleh sel epitel, mereka harus segera diangkut.</li>
+                <li><strong>Jalur Transpor Nutrisi:</strong> Di bawah lapisan epitel, terdapat <strong>jaringan ikat</strong> yang padat. Jaringan ikat ini tidak hanya memberikan dukungan struktural, tetapi juga berfungsi sebagai "stasiun" di mana terdapat banyak <strong>pembuluh darah</strong> dan <strong>pembuluh lakteal (limfa)</strong>. Nutrisi yang telah diserap sel epitel kemudian masuk ke pembuluh-pembuluh ini untuk didistribusikan ke seluruh tubuh melalui sistem sirkulasi.</li>
+                <li><strong>Koordinasi Pencernaan:</strong> Seluruh proses pencernaan dan penyerapan diatur oleh <strong>jaringan saraf</strong> yang tersebar di dinding usus (sistem saraf enterik). Saraf ini mengoordinasikan kontraksi otot, sekresi enzim pencernaan, dan respons terhadap keberadaan makanan, memastikan fungsi usus berjalan lancar.</li>
+            </ul>
+            <p>
+                Kesamaan sifat umum pada keempat tipe jaringan dasar ini, meskipun dengan variasi spesifik, adalah kunci yang memungkinkan terjalinnya kerja sama yang harmonis antar sistem organ. Sinergi ini, yang juga dikoordinasikan oleh sistem saraf, memastikan tubuh berfungsi sebagai satu kesatuan yang efisien.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Materi Biologi Kelas 11 - Transpor dan Pertukaran Zat pada Manusia.</p>
+            <p>Dirancang untuk membantu pemahaman siswa.</p>
+        </div>
+    </footer>
+</body>
+</html>
+```

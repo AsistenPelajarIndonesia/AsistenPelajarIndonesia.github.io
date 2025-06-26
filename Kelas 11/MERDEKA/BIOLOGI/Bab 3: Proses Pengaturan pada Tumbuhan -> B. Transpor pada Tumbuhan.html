@@ -1,0 +1,391 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Transpor pada Tumbuhan - Biologi Kelas XI</title>
+    <style>
+        /* Light Mode Theme - Defined Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+
+            /* Lighter shades for background elements, derived from primary colors */
+            --primary-blue-bg-light: #e0f2f7; /* Custom light blue */
+            --accent-green-bg-light: #e8f5e9; /* Custom light green */
+            --secondary-accent-amber-bg-light: #fff8e1; /* Custom light amber */
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1000px; /* Slightly wider for more content */
+            margin: 20px auto;
+            padding: 25px;
+            background-color: var(--background-canvas);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--border-divider);
+            margin-bottom: 35px;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 40px;
+            padding: 15px 0;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2.2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.7em;
+            margin-top: 30px;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: var(--text-secondary);
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-primary);
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            font-size: 1em;
+        }
+
+        /* Special Boxes */
+        .info-box, .activity-box, .thought-bubble {
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-box {
+            background-color: var(--primary-blue-bg-light);
+            border-left: 6px solid var(--primary-blue);
+        }
+
+        .info-box h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            padding-bottom: 5px;
+            border-bottom: none;
+            font-size: 1.6em;
+        }
+
+        .activity-box {
+            background-color: var(--accent-green-bg-light);
+            border-left: 6px solid var(--accent-green);
+        }
+
+        .activity-box h3 {
+            color: var(--accent-green);
+            margin-top: 0;
+            padding-bottom: 5px;
+            border-bottom: none;
+            font-size: 1.6em;
+        }
+
+        .thought-bubble {
+            background-color: var(--secondary-accent-amber-bg-light);
+            border-left: 6px solid var(--secondary-accent-amber);
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        .thought-bubble p {
+            margin-bottom: 0;
+            color: var(--text-tertiary);
+        }
+
+        /* Specific text emphasis */
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-divider);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px auto;
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 1.9em;
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            ul, ol {
+                margin-left: 20px;
+            }
+
+            li {
+                margin-bottom: 8px;
+            }
+
+            .info-box, .activity-box, .thought-bubble {
+                padding: 18px 20px;
+                margin: 20px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 15px;
+                border-radius: 0; /* Full width on very small screens */
+                box-shadow: none;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.95em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1em;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+
+            ul, ol {
+                margin-left: 15px;
+            }
+
+            li {
+                font-size: 0.9em;
+            }
+
+            .info-box, .activity-box, .thought-bubble {
+                padding: 15px 18px;
+                margin: 15px 0;
+                border-radius: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 3: Proses Pengaturan pada Tumbuhan</h1>
+            <p>Memahami Mekanisme Transpor Esensial dalam Kehidupan Tumbuhan</p>
+        </header>
+
+        <section id="transpor-tumbuhan">
+            <h2>B. Transpor pada Tumbuhan</h2>
+            <p>Tumbuhan, sebagai organisme autotrof, memiliki kemampuan unik untuk menghasilkan makanannya sendiri melalui fotosintesis. Namun, untuk mendukung proses ini dan berbagai fungsi kehidupan lainnya, tumbuhan memerlukan sistem transpor yang efisien. Sistem ini bertanggung jawab untuk mengangkut air dan mineral dari tanah, mendistribusikan hasil fotosintesis (gula) dari daun, serta memindahkan hormon dan zat-zat lain ke seluruh bagian tubuh tumbuhan.</p>
+            <p>Transpor pada tumbuhan adalah proses yang kompleks, melibatkan pergerakan zat dari tingkat seluler hingga tingkat organ. Ini adalah kunci keberhasilan tumbuhan dalam beradaptasi dengan lingkungannya dan mempertahankan kelangsungan hidupnya.</p>
+        </section>
+
+        <section id="adaptasi-parenkim">
+            <h2>Adaptasi Jaringan Parenkim dalam Transpor dan Penyimpanan</h2>
+            <div class="info-box">
+                <h3>Tahukah Kalian? Fleksibilitas Luar Biasa Jaringan Parenkim!</h3>
+                <p>Jaringan parenkim sering disebut sebagai jaringan dasar tumbuhan karena perannya yang beragam, meliputi fotosintesis, penyimpanan cadangan makanan, sekresi, dan regenerasi. Yang menarik, bentuk dan struktur jaringan parenkim ini dapat sangat bervariasi dan beradaptasi sesuai dengan lingkungan atau habitat spesifik tumbuhan.</p>
+                <h4>Parenkim pada Tumbuhan Darat vs. Tumbuhan Air</h4>
+                <ul>
+                    <li><strong>Parenkim Tumbuhan Darat:</strong> Pada umumnya, sel-sel parenkim di tumbuhan darat berfungsi sebagai tempat penyimpanan cadangan makanan (seperti butir amilum) dan mengisi ruang dasar jaringan. Mereka seringkali memiliki ruang antar sel kecil.</li>
+                    <li><strong>Parenkim Tumbuhan Air (Aerenkim):</strong> Sebaliknya, pada tumbuhan yang hidup di lingkungan berair (hidrofit), jaringan parenkim mengalami modifikasi khusus yang dikenal sebagai <strong>aerenkim</strong>. Aerenkim ditandai dengan adanya ruang-ruang udara yang sangat besar dan saling terhubung di antara sel-selnya, membentuk jaringan "spons" yang dipenuhi gas.</li>
+                </ul>
+                <p>Fungsi utama aerenkim adalah <strong>penyimpanan dan sirkulasi udara</strong>. Udara yang terperangkap dalam aerenkim sangat vital bagi tumbuhan air untuk:</p>
+                <ul>
+                    <li><strong>Daya Apung (Buoyancy):</strong> Membantu tumbuhan mengapung di permukaan air atau menjaga bagian-bagian tertentu tetap tegak di air, memungkinkan daun menjangkau cahaya matahari untuk fotosintesis.</li>
+                    <li><strong>Penyediaan Oksigen:</strong> Mengalirkan oksigen yang dihasilkan dari fotosintesis di bagian atas tumbuhan (misalnya daun) ke bagian yang terendam air (seperti akar dan rizoma), yang seringkali berada di lingkungan anaerobik atau hipoksik (minim oksigen). Ini memastikan respirasi seluler tetap berlangsung di seluruh bagian tumbuhan.</li>
+                </ul>
+                <p>Modifikasi parenkim menjadi aerenkim adalah contoh adaptasi morfologi yang cemerlang, memungkinkan tumbuhan untuk mengatasi tantangan unik dari lingkungan akuatik dan menunjukkan bagaimana struktur jaringan disesuaikan untuk mendukung fungsi vital.</p>
+            </div>
+        </section>
+
+        <section id="percobaan-air-berwarna">
+            <h2>Mengamati Mekanisme Transpor: Demonstrasi Air Berwarna</h2>
+            <div class="thought-bubble">
+                <p>"Pernahkah Kalian terpesona melihat bagaimana tanaman seledri atau bunga putih yang direndam dalam air berwarna bisa berubah warna di bagian batang atau kelopak daunnya? Fenomena sederhana ini adalah jendela visual yang menakjubkan ke dalam sistem transpor internal tumbuhan!"</p>
+            </div>
+            <p>Percobaan merendam bagian bawah batang atau tangkai tanaman (misalnya, seledri, sawi putih, atau bunga anyelir putih) dalam air yang telah diberi pewarna makanan adalah cara yang efektif untuk mendemonstrasikan transpor air dalam tumbuhan. Dalam beberapa jam atau hari, kalian akan melihat warna air tersebut merambat naik ke urat-urat daun, atau bahkan mewarnai kelopak bunga.</p>
+            <h3>Bagaimana Proses Ini Terjadi?</h3>
+            <p>Fenomena ini adalah bukti nyata kerja keras sistem pembuluh pengangkut tumbuhan, khususnya <strong>xilem</strong>. Air berwarna diserap oleh ujung batang yang terpotong (atau akar, jika utuh) dan ditarik ke atas melalui pembuluh xilem. Proses pengangkutan ini didorong oleh kombinasi beberapa faktor:</p>
+            <ul>
+                <li><strong>Transpirasi:</strong> Ini adalah kekuatan pendorong utama. Penguapan air dari permukaan daun melalui stomata menciptakan tekanan negatif atau "tarikan transpirasi" di dalam xilem. Tarikan ini menarik kolom air ke atas, mirip dengan cara sedotan bekerja.</li>
+                <li><strong>Gaya Kohesi dan Adhesi:</strong> Molekul air memiliki sifat kohesi (gaya tarik-menarik antar molekul air) dan adhesi (gaya tarik-menarik antara molekul air dan dinding pembuluh xilem). Sifat-sifat ini memastikan bahwa kolom air di dalam xilem tetap kontinu dan tidak terputus saat ditarik ke atas.</li>
+                <li><strong>Tekanan Akar (Root Pressure):</strong> Meskipun kontribusinya lebih kecil dibandingkan transpirasi, penyerapan air secara aktif oleh akar menciptakan tekanan positif yang mendorong air ke atas xilem, terutama pada malam hari saat transpirasi rendah.</li>
+            </ul>
+            <p>Pewarna makanan, yang larut dalam air, ikut terbawa bersama aliran air ini, sehingga kita dapat mengamati jalur pergerakan air secara visual. Percobaan ini menegaskan efisiensi luar biasa dari sistem transpor air tumbuhan.</p>
+        </section>
+
+        <section id="jaringan-pengangkut-utama">
+            <h2>Jaringan Pengangkut Utama: Xilem dan Floem</h2>
+            <p>Tumbuhan vaskular memiliki dua jenis jaringan pengangkut utama yang bekerja sama untuk mendistribusikan air, mineral, dan makanan ke seluruh tubuh:</p>
+            <div class="activity-box">
+                <h3>Aktivitas 3.6: Menyelami Dunia Mikroskopis Xilem dan Floem</h3>
+                <p>Untuk benar-benar memahami bagaimana transpor terjadi, kita perlu melihat struktur sel-sel yang terlibat. Bayangkan kalian mengamati potongan melintang batang bayam atau preparat awetan xilem dan floem di bawah mikroskop. Apa yang akan terungkap? Bentuk dan susunan sel-sel ini adalah kunci untuk memahami fungsi spesifik mereka.</p>
+            </div>
+
+            <h3>1. Xilem (Pembuluh Kayu)</h3>
+            <p>Xilem adalah jaringan pengangkut yang bertanggung jawab utama untuk <strong>mengangkut air dan mineral terlarut</strong> dari akar ke bagian-bagian atas tumbuhan (batang, daun, bunga, buah). Selain itu, xilem juga memberikan dukungan mekanis atau kekuatan pada tumbuhan.</p>
+            <h4>Komponen Utama Xilem:</h4>
+            <ul>
+                <li><strong>Trakeid:</strong> Sel-sel panjang, ramping, dan berbentuk jarum dengan ujung runcing. Air bergerak dari satu trakeid ke trakeid lain melalui pori-pori (pit) di dinding selnya.</li>
+                <li><strong>Unsur Pembuluh (Vessel Elements):</strong> Sel-sel yang lebih lebar dan lebih pendek dibandingkan trakeid. Mereka tersusun ujung ke ujung membentuk tabung kontinu yang disebut pembuluh xilem. Ujung selnya seringkali terbuka atau memiliki pelat perforasi (lubang besar), memungkinkan aliran air yang sangat efisien.</li>
+                <li><strong>Parenkim Xilem:</strong> Sel-sel parenkim hidup yang berfungsi untuk penyimpanan cadangan makanan dan transpor lateral (ke samping) air dan zat terlarut.</li>
+                <li><strong>Serabut Xilem:</strong> Sel-sel sklerenkim yang menebal dan berfungsi memberikan kekuatan struktural dan dukungan mekanis pada tumbuhan.</li>
+            </ul>
+            <h4>Ciri Khas & Adaptasi Fungsi (Mengapa Bentuknya Demikian?):</h4>
+            <ul>
+                <li>Sebagian besar sel-sel fungsional xilem (trakeid dan unsur pembuluh) adalah <strong>sel mati</strong> saat dewasa. Ini berarti mereka adalah tabung kosong yang tidak memiliki sitoplasma atau organel, yang memaksimalkan ruang untuk aliran air.</li>
+                <li>Dinding sel sekunder mereka sangat tebal dan diperkuat dengan <strong>lignin</strong>. Lignin adalah polimer kuat yang memberikan kekakuan dan mencegah pembuluh kolaps di bawah tekanan hisap transpirasi yang besar. Ini seperti pipa air yang diperkuat untuk menahan tekanan tinggi.</li>
+                <li>Struktur tabung yang kontinu dan diperkuat memungkinkan pengangkutan air dalam jumlah besar ke ketinggian yang signifikan melawan gravitasi, sekaligus memberikan dukungan struktural yang kokoh bagi tumbuhan.</li>
+            </ul>
+
+            <h3>2. Floem (Pembuluh Tapis)</h3>
+            <p>Floem adalah jaringan pengangkut yang bertugas <strong>mengangkut hasil fotosintesis (terutama gula, dalam bentuk sukrosa)</strong> dari daun (tempat gula diproduksi) ke seluruh bagian tumbuhan yang membutuhkan energi atau untuk penyimpanan, seperti akar, tunas yang sedang tumbuh, bunga, dan buah.</p>
+            <h4>Komponen Utama Floem:</h4>
+            <ul>
+                <li><strong>Unsur Pembuluh Tapis (Sieve Tube Elements):</strong> Ini adalah sel-sel utama dalam floem yang berfungsi mengangkut gula. Mereka memanjang dan tersusun ujung ke ujung membentuk tabung. Ciri khasnya adalah adanya <strong>pelat tapis</strong> di ujung-ujungnya, yaitu dinding sel yang berlubang-lubang menyerupai saringan (tapis) untuk memungkinkan aliran larutan gula. Unsur pembuluh tapis adalah sel hidup, namun saat dewasa mereka kehilangan nukleus dan sebagian besar organelnya untuk memaksimalkan ruang aliran.</li>
+                <li><strong>Sel Pengiring (Companion Cells):</strong> Sel-sel hidup yang berasosiasi erat dengan unsur pembuluh tapis. Sel pengiring memiliki nukleus dan organel lengkap, dan secara metabolik mereka sangat aktif. Mereka memainkan peran penting dalam membantu memuat (loading) dan membongkar (unloading) gula ke dan dari unsur pembuluh tapis, serta menyediakan energi (ATP) dan mengontrol aktivitas unsur pembuluh tapis yang kekurangan organel.</li>
+                <li><strong>Parenkim Floem:</strong> Berfungsi dalam penyimpanan makanan dan transpor lateral.</li>
+                <li><strong>Serabut Floem:</strong> Memberikan dukungan struktural.</li>
+            </ul>
+            <h4>Ciri Khas & Adaptasi Fungsi (Mengapa Bentuknya Demikian?):</h4>
+            <ul>
+                <li>Floem adalah sistem transpor <strong>dua arah (bidirectional)</strong>, artinya gula dapat bergerak dari sumber (misalnya daun) ke segala arah menuju daerah yang membutuhkan (pengguna) atau menyimpan (penyimpan), tergantung pada kebutuhan metabolisme tumbuhan.</li>
+                <li>Adanya pelat tapis memungkinkan pergerakan massa larutan gula yang kental, sementara kehilangan organel pada unsur pembuluh tapis menyediakan jalur aliran yang minim hambatan.</li>
+                <li><strong>Hubungan simbiosis antara unsur pembuluh tapis dan sel pengiring</strong> adalah kunci. Sel pengiring menyediakan semua fungsi metabolisme dan kontrol genetik yang diperlukan oleh unsur pembuluh tapis yang kurang organel. Mereka berkomunikasi melalui plasmodesmata, memastikan transportasi gula berjalan efisien dan terkontrol.</li>
+            </ul>
+            <p>Baik xilem maupun floem menunjukkan spesialisasi seluler yang luar biasa, memungkinkan tumbuhan untuk mengatasi tantangan lingkungan dan mendistribusikan sumber daya penting secara efisien ke seluruh tubuhnya, mulai dari akar terdalam hingga pucuk tertinggi.</p>
+        </section>
+
+        <footer>
+            <p>
+                &copy; Hak Cipta Dilindungi Undang-Undang. Materi ini disajikan untuk tujuan pendidikan Biologi Kelas XI.
+                <br>Sumber inspirasi materi dari kurikulum Biologi SMA/MA.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,300 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisika Kelas 11: Jenis-Jenis Gaya</title>
+    <style>
+        /* Color variables based on the lightMode theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Reset & Body Styling */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.7; /* Slightly increased line height for readability */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 960px; /* Standard maximum width for content */
+            margin: 40px auto; /* Center the container with vertical margin */
+            padding: 25px; /* Internal padding */
+            background-color: var(--background-canvas);
+            border-radius: 10px; /* Slightly more rounded corners */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* More prominent, soft shadow */
+            transition: box-shadow 0.3s ease; /* Smooth transition for hover effects if any */
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--accent-green); /* Main title uses accent green */
+            border-bottom: 4px solid var(--accent-green);
+            padding-bottom: 15px;
+            margin-top: 20px;
+            letter-spacing: -0.02em; /* Slightly tighter letter spacing for titles */
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-top: 50px; /* More space above new sections */
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            margin-top: 35px;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        /* Paragraphs and Text Elements */
+        p {
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            font-size: 1.05em; /* Slightly larger base font size */
+        }
+
+        strong {
+            color: var(--primary-blue); /* Bold text in primary blue */
+            font-weight: 600; /* Medium bold */
+        }
+
+        em {
+            color: var(--text-tertiary);
+            font-style: italic; /* Keep italic for emphasis */
+        }
+
+        .highlight {
+            background-color: rgba(255, 179, 0, 0.15); /* Slightly darker amber background for highlights */
+            padding: 3px 7px;
+            border-radius: 4px;
+            color: var(--secondary-accent-amber);
+            font-weight: 500;
+        }
+
+        /* Special Boxes for Formulas and Information */
+        .formula-box {
+            background-color: #FDFDFD; /* Very light background for formulas */
+            border: 1px solid var(--border-divider);
+            border-left: 6px solid var(--primary-blue); /* Thicker left border */
+            padding: 20px 25px;
+            margin: 25px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1.2em;
+            color: var(--text-primary);
+            overflow-x: auto;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center; /* Center the formula */
+            align-items: center;
+        }
+
+        .formula-box code {
+            display: block;
+            white-space: pre-wrap;
+            text-align: center;
+        }
+
+        .info-box {
+            background-color: rgba(33, 150, 243, 0.1); /* Light blue background for info */
+            border-left: 6px solid var(--semantic-info);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 1.0em;
+        }
+        .info-box ul {
+            list-style: disc; /* Default disc for lists within info-box */
+            padding-left: 25px;
+            margin-top: 10px;
+        }
+        .info-box li {
+            margin-bottom: 8px;
+        }
+
+
+        /* Definitions and Lists */
+        .definition {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-left: 20px;
+            border-left: 4px solid var(--primary-blue); /* Definition highlight */
+            padding-left: 15px;
+            background-color: rgba(25, 118, 210, 0.05); /* Very light blue background for definitions */
+            border-radius: 4px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        ul {
+            list-style: square; /* Custom list style */
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.9em;
+            }
+            h3 {
+                font-size: 1.5em;
+            }
+            .formula-box, .info-box {
+                padding: 15px 20px;
+                font-size: 1.05em;
+            }
+            p, ul li {
+                font-size: 1.0em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 15px;
+                border-radius: 0; /* Full width on small screens */
+                box-shadow: none; /* No shadow on very small screens */
+            }
+            h1 {
+                font-size: 1.8em;
+                padding-bottom: 10px;
+            }
+            h2 {
+                font-size: 1.6em;
+                margin-top: 40px;
+            }
+            h3 {
+                font-size: 1.3em;
+                margin-top: 25px;
+            }
+            p, ul li {
+                font-size: 0.95em;
+                margin-bottom: 15px;
+            }
+            .formula-box, .info-box {
+                padding: 12px 15px;
+                font-size: 0.95em;
+                margin: 20px 0;
+            }
+            .definition {
+                margin-left: 10px;
+                padding-left: 10px;
+            }
+            ul {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Jenis-Jenis Gaya</h1>
+        <p>Dalam cabang ilmu fisika <strong>Dinamika Gerak Partikel</strong>, kita mendalami bagaimana gaya memengaruhi gerakan benda. Gaya adalah interaksi yang dapat mengubah kecepatan suatu objek atau menyebabkan deformasi. Di dunia nyata, berbagai jenis gaya bekerja secara simultan, menciptakan fenomena yang kompleks namun menarik untuk dipelajari. Bagian ini akan menguraikan beberapa jenis gaya fundamental yang sering kita jumpai dan analisis dalam fisika.</p>
+
+        <section id="gaya-berat">
+            <h2>1. Gaya Berat (Weight)</h2>
+            <p>Konsep "berat" sering disalahpahami dalam percakapan sehari-hari. Dalam fisika, <strong>gaya berat</strong> memiliki definisi yang sangat spesifik dan berbeda dari <em>massa</em>.</p>
+            <p class="definition">
+                <strong>Gaya Berat (<span class="highlight">w</span>)</strong> adalah gaya gravitasi yang bekerja pada suatu benda, disebabkan oleh interaksi massa benda tersebut dengan medan gravitasi dari benda langit yang lebih besar (misalnya, Bumi). Arah gaya berat selalu menuju pusat massa benda langit tersebut (vertikal ke bawah).
+            </p>
+            <p>Secara matematis, besar gaya berat (<span class="highlight">w</span>) dapat dihitung dengan mengalikan <strong>massa (<span class="highlight">m</span>)</strong> benda dengan <strong>percepatan gravitasi (<span class="highlight">g</span>)</strong> di lokasi tersebut:</p>
+
+            <div class="formula-box">
+                <code>w = m &times; g</code>
+            </div>
+
+            <ul>
+                <li><p><strong><span class="highlight">w</span></strong>: Merupakan <strong>Gaya Berat</strong>, dan satuan standarnya dalam Sistem Internasional (SI) adalah <strong>Newton (N)</strong>.</p></li>
+                <li><p><strong><span class="highlight">m</span></strong>: Merupakan <strong>Massa Benda</strong>, dengan satuan SI <strong>kilogram (kg)</strong>. Massa adalah ukuran kuantitas materi dalam suatu objek dan merupakan besaran skalar (hanya memiliki nilai, tidak memiliki arah).</p></li>
+                <li><p><strong><span class="highlight">g</span></strong>: Merupakan <strong>Percepatan Gravitasi</strong>, dengan satuan SI <strong>meter per detik kuadrat (m/s²)</strong>. Nilai rata-rata percepatan gravitasi di permukaan Bumi adalah sekitar <strong>9,8 m/s²</strong>. Untuk penyederhanaan perhitungan dalam banyak soal, nilai ini sering dibulatkan menjadi <strong>10 m/s²</strong>.</p></li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>Perbedaan Mendasar antara Massa dan Berat:</strong></p>
+                <p>Meskipun sering digunakan secara bergantian, <strong>massa</strong> dan <strong>berat</strong> adalah dua konsep fisika yang berbeda.</p>
+                <ul>
+                    <li><strong>Massa</strong>: Properti intrinsik suatu benda yang mengukur inersianya (resistensi terhadap perubahan gerak) dan jumlah materi yang dikandungnya. Massa Anda akan tetap sama di mana pun Anda berada di alam semesta.</li>
+                    <li><strong>Berat</strong>: Gaya yang bergantung pada medan gravitasi. Berat Anda akan bervariasi jika Anda berpindah dari Bumi ke Bulan atau Mars, karena percepatan gravitasi di tempat-tempat tersebut berbeda.</li>
+                </ul>
+                <p>Secara konsep, <strong>massa kelembaman</strong> (yang menentukan resistensi terhadap percepatan) dan <strong>massa gravitasi</strong> (yang menentukan kekuatan tarik gravitasi) terbukti setara, sehingga dalam fisika kita cukup menyebutnya sebagai "massa benda" untuk kebanyakan aplikasi.</p>
+            </div>
+        </section>
+
+        <section id="gaya-normal">
+            <h2>2. Gaya Normal (Normal Force)</h2>
+            <p>Pernahkah Anda bertanya mengapa sebuah buku yang diletakkan di atas meja tidak jatuh menembus meja? Meskipun gaya berat menarik buku ke bawah, ada gaya lain yang menyeimbangkannya. Inilah yang kita sebut <strong>Gaya Normal</strong>.</p>
+            <p class="definition">
+                <strong>Gaya Normal (<span class="highlight">N</span>)</strong> adalah gaya kontak yang bekerja tegak lurus (normal) terhadap permukaan tempat benda bersentuhan, dan arahnya selalu menjauhi permukaan. Gaya ini muncul sebagai reaksi permukaan terhadap gaya yang menekan permukaan tersebut.
+            </p>
+            <ul>
+                <li>
+                    <p><strong>Arah Tegak Lurus:</strong> Ciri paling khas dari gaya normal adalah arahnya yang selalu <strong>tegak lurus terhadap permukaan kontak</strong>, tidak peduli apakah permukaannya horizontal, vertikal, atau miring.</p>
+                </li>
+                <li>
+                    <p><strong>Gaya Penopang:</strong> Gaya normal adalah representasi dari kemampuan material suatu permukaan untuk menopang beban. Sebagai contoh, meja yang kokoh dapat memberikan gaya normal yang besar untuk menopang benda berat, sementara kue tart mungkin tidak mampu dan akan hancur.</p>
+                </li>
+                <li>
+                    <p><strong>Pasangan Aksi-Reaksi (Hukum III Newton):</strong> Gaya normal selalu merupakan bagian dari pasangan aksi-reaksi. Ketika sebuah benda memberikan gaya tekan pada suatu permukaan (aksi), permukaan tersebut akan memberikan gaya normal yang sama besar namun berlawanan arah kepada benda tersebut (reaksi). Ini menjelaskan mengapa meja tidak hancur saat buku diletakkan di atasnya, karena meja memberikan gaya penopang yang setara kembali ke buku.</p>
+                </li>
+            </ul>
+            <p>Penting untuk diingat bahwa besar gaya normal <strong>tidak selalu sama dengan besar gaya berat</strong>. Gaya normal akan sama dengan gaya berat hanya jika benda berada di permukaan horizontal tanpa ada gaya vertikal lain yang bekerja. Jika ada gaya eksternal yang menekan atau mengangkat benda, atau jika benda berada di permukaan miring, besar gaya normal akan dihitung berdasarkan komponen gaya yang tegak lurus terhadap permukaan.</p>
+
+            <div class="info-box">
+                <p><strong>Ilustrasi Konsep Gaya Normal:</strong></p>
+                <ul>
+                    <li>Ketika Anda berdiri di lantai, lantai memberikan gaya normal ke atas yang menopang berat badan Anda.</li>
+                    <li>Jika Anda mendorong lemari ke dinding, dinding memberikan gaya normal yang menahan dorongan Anda.</li>
+                    <li>Ketika sebuah mobil berada di tanjakan, gaya normal yang diberikan jalan ke mobil akan lebih kecil dari berat mobil, karena beratnya memiliki komponen yang sejajar dengan lereng.</li>
+                </ul>
+            </div>
+        </section>
+
+        <p>Pemahaman yang kuat tentang gaya berat dan gaya normal merupakan dasar fundamental dalam analisis dinamika. Dengan mengidentifikasi dan menghitung gaya-gaya ini, kita dapat memprediksi dan menjelaskan bagaimana benda-benda akan bergerak dalam berbagai kondisi.</p>
+    </div>
+</body>
+</html>
+```

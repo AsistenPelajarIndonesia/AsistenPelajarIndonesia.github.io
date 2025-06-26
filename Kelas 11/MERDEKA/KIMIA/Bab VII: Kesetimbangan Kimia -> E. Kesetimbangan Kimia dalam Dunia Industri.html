@@ -1,0 +1,336 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesetimbangan Kimia dalam Dunia Industri - Proses Haber-Bosch</title>
+    <style>
+        /* Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fcfcfc; /* Slightly off-white to differentiate from canvas */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            color: var(--text-primary); /* Primary for main title */
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            margin-top: 30px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        ul, ol {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            color: var(--text-primary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-blue {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .highlight-green {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .highlight-amber {
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+        }
+
+        .section-box {
+            background-color: #f8f8f8; /* Slightly lighter than container */
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+        }
+
+        .section-box h3 {
+            color: var(--primary-blue);
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .equation {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.2em;
+            font-family: 'Consolas', 'Monaco', monospace;
+            overflow-x: auto; /* For responsiveness */
+        }
+        .equation strong {
+            color: var(--secondary-accent-amber); /* Highlight Delta H */
+        }
+
+
+        .note {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .core-summary {
+            background-color: #e3f2fd; /* Light blue from semantic_info */
+            border-left: 5px solid var(--semantic-info);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 6px;
+        }
+        .core-summary h3 {
+            color: var(--semantic-info);
+            margin-top: 0;
+            border: none;
+            padding-bottom: 0;
+        }
+
+        .data-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        .data-list li {
+            background-color: #f0f0f0;
+            border: 1px solid var(--border-divider);
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .data-list li span:first-child {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        .data-list li span:last-child {
+            color: var(--accent-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .equation {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            ul, ol {
+                padding-left: 20px;
+            }
+            .data-list li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab VII: Kesetimbangan Kimia</h1>
+        <h2>E. Kesetimbangan Kimia dalam Dunia Industri</h2>
+
+        <p>Prinsip <span class="highlight-blue">kesetimbangan kimia</span> bukanlah sekadar teori di buku pelajaran, melainkan sebuah konsep fundamental yang sangat penting dan banyak diaplikasikan dalam berbagai sektor industri. Salah satu contoh paling menonjol dari penerapan prinsip ini adalah dalam <span class="highlight-green">pembuatan amonia</span> melalui <span class="highlight-blue">proses Haber-Bosch</span>, sebuah inovasi revolusioner yang telah mengubah dunia pertanian dan industri.</p>
+
+        <section class="section-box">
+            <h3>Pentingnya Amonia</h3>
+            <p>Sejak zaman dahulu, pupuk telah menjadi kunci dalam meningkatkan hasil pertanian. Para ahli sepakat bahwa tiga unsur utama yang esensial untuk pertumbuhan tanaman adalah <span class="highlight-green">kalium (K), fosfor (P), dan nitrogen (N)</span>. Dengan pesatnya pertumbuhan populasi manusia, kebutuhan akan pupuk pun terus meningkat secara drastis.</p>
+            <p>Uniknya, meskipun nitrogen adalah unsur paling melimpah di atmosfer bumi (sekitar 78%), tumbuhan tidak dapat menyerapnya langsung dalam bentuk gas (N₂). Oleh karena itu, para ilmuwan berupaya mencari cara agar nitrogen dapat diberikan kepada tanaman dalam bentuk yang bisa diserap. Salah satu solusi paling efektif adalah melalui pupuk yang mengandung nitrogen, dan <span class="highlight-green">amonia (NH₃)</span> menjadi bahan baku utama untuk produksi pupuk berbasis nitrogen, seperti urea. Mayoritas produksi amonia di seluruh dunia memang diperuntukkan bagi industri pupuk.</p>
+        </section>
+
+        <section class="section-box">
+            <h3>Bagaimana Amonia Dibuat? Proses Haber-Bosch</h3>
+            <p>Proses pembuatan amonia skala industri yang paling umum dikenal adalah <span class="highlight-blue">proses Haber</span>, yang diperkenalkan oleh ilmuwan Jerman <span class="highlight-blue">Fritz Haber</span> pada tahun 1913. Kemudian, <span class="highlight-blue">Karl Bosch</span> mengembangkan peralatan yang memungkinkan proses ini berjalan pada skala industri yang besar, sehingga sering disebut sebagai <span class="highlight-blue">proses Haber-Bosch</span>.</p>
+            <p>Dalam proses Haber-Bosch, amonia disintesis dari <span class="highlight-green">gas hidrogen (H₂)</span>, yang biasanya diperoleh dari gas alam, dan <span class="highlight-green">gas nitrogen (N₂)</span>, yang diambil dari udara bebas. Proses ini berlangsung dalam sistem tertutup dengan kondisi yang sangat spesifik untuk mengoptimalkan hasil reaksi:</p>
+            <ul>
+                <li><span class="highlight-amber">Temperatur Tinggi:</span> Sekitar <span class="highlight-blue">400–500°C</span>.</li>
+                <li><span class="highlight-amber">Tekanan Tinggi:</span> Mencapai <span class="highlight-blue">200 atmosfer (atm)</span>.</li>
+            </ul>
+
+            <h4>Tahapan Proses Haber-Bosch:</h4>
+            <ol>
+                <li>
+                    <strong>Pencampuran dan Pembersihan Bahan Baku:</strong>
+                    Pembuatan amonia dimulai dengan mencampurkan gas nitrogen (N₂) yang berasal dari udara dengan gas hidrogen (H₂) yang umumnya diperoleh dari gas metana (CH₄) melalui reaksi reformasi uap. Campuran gas ini kemudian dibersihkan dari berbagai pengotor untuk memastikan kemurnian reaktan.
+                </li>
+                <li>
+                    <strong>Kompresi (Pemampatan):</strong>
+                    Campuran gas hidrogen dan nitrogen yang sudah murni dimampatkan (ditekan) hingga mencapai tekanan yang sangat tinggi, yaitu sekitar <span class="highlight-blue">200 atmosfer</span>. Tekanan tinggi ini sangat krusial untuk menggeser kesetimbangan ke arah produk, sesuai dengan Prinsip Le Chatelier.
+                </li>
+                <li>
+                    <strong>Reaksi di Reaktor Katalitik:</strong>
+                    Gas yang telah dimampatkan kemudian dialirkan ke dalam tangki reaktor bundar. Di dalam reaktor ini terdapat <span class="highlight-green">katalis besi (Fe)</span>, seringkali ditambahkan promotor seperti kalium oksida (K₂O) atau aluminium oksida (Al₂O₃) untuk meningkatkan efisiensi katalis. Reaksi berlangsung pada suhu tinggi, sekitar <span class="highlight-blue">450°C</span>.
+                    <div class="equation">
+                        N₂(g) + 3H₂(g) &#x21CC; 2NH₃(g) &nbsp;&nbsp;&nbsp; <strong>ΔH = −92 kJ</strong>
+                    </div>
+                    Ini adalah reaksi eksotermik (melepaskan panas), dan meskipun suhu tinggi cenderung menggeser kesetimbangan ke reaktan, suhu 450°C dipilih sebagai <span class="highlight-amber">suhu optimum</span> karena pada suhu ini, kecepatan reaksi cukup tinggi tanpa mengorbankan terlalu banyak hasil amonia. Katalis membantu mempercepat pencapaian kesetimbangan.
+                </li>
+                <li>
+                    <strong>Pendinginan dan Kondensasi:</strong>
+                    Campuran gas yang keluar dari reaktor, yang terdiri dari amonia (NH₃) yang terbentuk serta sisa nitrogen (N₂) dan hidrogen (H₂) yang tidak bereaksi, kemudian didinginkan. Amonia akan mengembun menjadi <span class="highlight-blue">cairan</span> karena titik didihnya yang relatif lebih tinggi dibandingkan N₂ dan H₂. Gas nitrogen dan hidrogen yang tidak bereaksi akan tetap dalam fase gas.
+                </li>
+                <li>
+                    <strong>Daur Ulang dan Penyimpanan:</strong>
+                    Amonia cair yang telah terkondensasi dipisahkan dan dialirkan ke tangki penyimpanan amonia cair. Sementara itu, gas nitrogen dan hidrogen yang tidak bereaksi (yang masih dalam fase gas) akan didaur ulang kembali ke awal proses untuk dimampatkan dan dialirkan kembali ke reaktor. Proses ini berulang secara terus-menerus, memastikan pemanfaatan bahan baku yang efisien dan produksi amonia yang berkelanjutan.
+                </li>
+            </ol>
+        </section>
+
+        <section class="section-box">
+            <h3>Penerapan Prinsip Le Chatelier dalam Proses Haber-Bosch</h3>
+            <p>Untuk mengoptimalkan keuntungan dari produksi amonia, para insinyur menerapkan Prinsip Le Chatelier, yang menyatakan bahwa jika suatu sistem kesetimbangan mengalami gangguan, sistem akan bergeser untuk meminimalkan gangguan tersebut.</p>
+            <p>Mari kita lihat bagaimana Prinsip Le Chatelier diterapkan pada reaksi <span class="highlight-green">N₂(g) + 3H₂(g) &#x21CC; 2NH₃(g) &nbsp; ΔH = −92 kJ</span>:</p>
+            <ul>
+                <li>
+                    <strong>Pengaruh Suhu:</strong>
+                    Reaksi pembentukan amonia adalah reaksi <span class="highlight-blue">eksotermik (ΔH negatif)</span>. Menurut Le Chatelier, untuk menghasilkan lebih banyak produk (NH₃), suhu sistem harus <span class="highlight-green">diturunkan</span>. Namun, penurunan suhu juga akan memperlambat laju reaksi. Oleh karena itu, suhu <span class="highlight-blue">400-500°C</span> dipilih sebagai kompromi optimal: cukup tinggi untuk menjaga laju reaksi yang cepat, namun tidak terlalu tinggi sehingga menggeser kesetimbangan terlalu jauh ke arah reaktan.
+                </li>
+                <li>
+                    <strong>Pengaruh Tekanan:</strong>
+                    Pada sisi reaktan, terdapat 1 mol N₂ + 3 mol H₂ = <span class="highlight-blue">4 mol gas</span>. Pada sisi produk, terdapat <span class="highlight-blue">2 mol gas</span> NH₃. Karena jumlah mol gas produk lebih kecil dari reaktan, <span class="highlight-green">peningkatan tekanan</span> akan menggeser kesetimbangan ke arah yang memiliki jumlah mol gas lebih sedikit, yaitu ke arah pembentukan amonia. Ini menjelaskan mengapa proses Haber-Bosch dijalankan pada tekanan yang sangat tinggi (200 atm).
+                </li>
+                <li>
+                    <strong>Pengaruh Konsentrasi:</strong>
+                    <ul>
+                        <li><span class="highlight-green">Penambahan reaktan (N₂ atau H₂):</span> Jika konsentrasi N₂ atau H₂ ditingkatkan, kesetimbangan akan bergeser ke kanan, menghasilkan lebih banyak NH₃.</li>
+                        <li><span class="highlight-green">Penghilangan produk (NH₃):</span> Dengan secara terus-menerus menghilangkan amonia yang terbentuk (melalui pendinginan dan kondensasi menjadi cairan), kesetimbangan akan terus bergeser ke kanan untuk menggantikan amonia yang hilang, sehingga produksi amonia menjadi maksimal. Sistem daur ulang gas yang tidak bereaksi juga merupakan bentuk manipulasi konsentrasi yang efisien.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Pengaruh Katalis (Besi):</strong>
+                    Katalis <span class="highlight-green">mempercepat laju reaksi</span>, baik reaksi maju maupun reaksi balik, sehingga kesetimbangan dapat dicapai lebih cepat. Namun, katalis <span class="highlight-error">tidak mengubah posisi kesetimbangan</span> atau hasil akhir amonia yang dapat diperoleh; ia hanya mempercepat proses pencapaian kondisi kesetimbangan tersebut.
+                </li>
+            </ul>
+        </section>
+
+        <section class="section-box">
+            <h3>Pengayaan: Amonia di Indonesia dan Dunia</h3>
+            <p>Amonia dikenal dengan baunya yang menyengat dan khas. Seperti yang telah disebutkan, kegunaan utamanya adalah sebagai bahan baku untuk pembuatan pupuk urea. Mengingat Indonesia adalah negara agraris dengan sektor pertanian yang luas, produksi amonia di Indonesia termasuk yang tertinggi di dunia.</p>
+            <p>Berdasarkan data dari statista.com, pada tahun 2021, Indonesia menempati peringkat <span class="highlight-blue">kelima</span> sebagai produsen amonia terbesar di dunia. Berikut adalah daftar beberapa produsen amonia terkemuka beserta perkiraan produksinya dalam 1.000 metrik ton:</p>
+            <ul class="data-list">
+                <li><span>Tiongkok</span><span>39,000</span></li>
+                <li><span>Rusia</span><span>16,000</span></li>
+                <li><span>Amerika Serikat</span><span>14,000</span></li>
+                <li><span>India</span><span>12,000</span></li>
+                <li><span>Indonesia</span><span>5,900</span></li>
+                <li><span>Arab Saudi</span><span>4,300</span></li>
+                <li><span>Mesir</span><span>4,200</span></li>
+                <li><span>Trinidad dan Tobago</span><span>4,200</span></li>
+            </ul>
+            <p class="note"><em>Data menunjukkan peran vital Indonesia dalam rantai pasok global untuk bahan baku pupuk, mendukung ketahanan pangan.</em></p>
+        </section>
+
+        <section class="core-summary">
+            <h3>Inti Sari Kesetimbangan Kimia</h3>
+            <p>Reaksi kimia dapat bersifat <span class="highlight-blue">satu arah (irreversible)</span>, di mana produk yang terbentuk tidak dapat kembali menjadi reaktan, atau <span class="highlight-blue">dua arah (reversible)</span>, di mana reaktan membentuk produk dan produk dapat kembali membentuk reaktan. Dalam reaksi dua arah, suatu kondisi <span class="highlight-green">kesetimbangan dinamis</span> tercapai ketika laju pembentukan produk sama dengan laju pembentukan reaktan, artinya konsentrasi bersih dari reaktan dan produk tidak berubah seiring waktu meskipun reaksi terus berlangsung.</p>
+            <p>Apabila kesetimbangan dinamis ini diganggu, sistem akan berupaya untuk meminimalisasi gangguan tersebut, sesuai dengan <span class="highlight-blue">Prinsip Le Chatelier</span>. Ada tiga jenis gangguan utama yang dapat mengubah arah kesetimbangan:</p>
+            <ul>
+                <li><span class="highlight-amber">Perubahan Konsentrasi:</span> Penambahan reaktan atau penghilangan produk akan menggeser kesetimbangan ke arah produk, dan sebaliknya.</li>
+                <li><span class="highlight-amber">Perubahan Suhu:</span> Untuk reaksi eksotermik, penurunan suhu menggeser ke produk; untuk endotermik, peningkatan suhu menggeser ke produk.</li>
+                <li><span class="highlight-amber">Perubahan Tekanan/Volume:</span> Perubahan ini hanya signifikan untuk reaksi yang melibatkan gas. Peningkatan tekanan (penurunan volume) menggeser kesetimbangan ke sisi dengan jumlah mol gas lebih sedikit, dan sebaliknya.</li>
+            </ul>
+            <p>Hubungan konsentrasi dan tekanan zat-zat dalam sistem kesetimbangan dapat dinyatakan dalam bentuk <span class="highlight-blue">tetapan kesetimbangan (K<sub>c</sub> dan K<sub>p</sub>)</span>. Konsep kesetimbangan kimia ini sangat fundamental dan luas penerapannya di dunia industri, dengan <span class="highlight-green">proses Haber-Bosch</span> untuk produksi amonia menjadi salah satu contoh paling sukses dan penting.</p>
+        </section>
+
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,727 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teori Atom Mekanika Kuantum - Kimia Kelas XI</title>
+    <style>
+        /* Define CSS Variables for Theming */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-canvas);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: var(--bg-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--bg-canvas);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cards for sections */
+        .section-card {
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Quantum Number Specific Styling */
+        .quantum-number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .quantum-number-card {
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quantum-number-card h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quantum-number-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        /* Spin Diagram */
+        .spin-diagram-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .spin-orbital {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spin-orbital::before, .spin-orbital::after {
+            content: '';
+            position: absolute;
+            background-color: var(--accent-green);
+        }
+
+        .spin-orbital.up::before { /* Arrow body */
+            width: 2px;
+            height: 30px;
+            top: 15px;
+        }
+        .spin-orbital.up::after { /* Arrow head */
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 8px solid var(--accent-green);
+            top: 8px;
+        }
+
+        .spin-orbital.down::before { /* Arrow body */
+            width: 2px;
+            height: 30px;
+            bottom: 15px;
+        }
+        .spin-orbital.down::after { /* Arrow head */
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid var(--semantic-error);
+            bottom: 8px;
+        }
+
+        .spin-orbital.down::before {
+            background-color: var(--semantic-error);
+        }
+
+        /* Orbital Diagrams (Pauli/Hund) */
+        .orbital-box-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .orbital-set {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #F8F8F8;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .orbital-set p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            text-align: center;
+        }
+
+        .orbital-boxes {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .orbital-box {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .electron-arrow {
+            position: absolute;
+            width: 2px;
+            background-color: var(--accent-green);
+        }
+
+        .electron-arrow.up {
+            height: 25px;
+            top: 5px;
+        }
+
+        .electron-arrow.up::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 6px solid var(--accent-green);
+            top: -6px;
+            left: -3px;
+        }
+
+        .electron-arrow.down {
+            height: 25px;
+            bottom: 5px;
+            background-color: var(--semantic-error);
+        }
+
+        .electron-arrow.down::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 6px solid var(--semantic-error);
+            bottom: -6px;
+            left: -3px;
+        }
+
+        .orbital-status {
+            margin-top: 0.8rem;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .status-forbidden {
+            color: var(--semantic-error);
+        }
+
+        .status-allowed {
+            color: var(--semantic-success);
+        }
+
+        .status-less-stable {
+            color: var(--semantic-warning);
+        }
+
+        .status-more-stable {
+            color: var(--semantic-success);
+        }
+
+        /* Aufbau Diagram */
+        .aufbau-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: #F8F8F8;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.1em;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .aufbau-row {
+            display: flex;
+            gap: 1.5rem;
+            white-space: nowrap;
+        }
+
+        .orbital-type {
+            min-width: 60px; /* Ensure alignment */
+            text-align: right;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .aufbau-note {
+            margin-top: 1rem;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+        }
+
+        /* Example Section */
+        .example-block {
+            background-color: #F0F7FA;
+            border: 1px solid var(--semantic-info);
+            border-left: 6px solid var(--semantic-info);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .example-block h3 {
+            color: var(--semantic-info);
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .example-block ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        .example-block li {
+            margin-bottom: 0.3rem;
+            padding-left: 1em;
+            text-indent: -1em;
+        }
+
+        .example-block li strong {
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            header {
+                padding: 1.5rem 1rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .quantum-number-grid {
+                grid-template-columns: 1fr;
+            }
+            .spin-diagram-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .orbital-box-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .aufbau-diagram {
+                font-size: 0.95em;
+            }
+            .aufbau-row {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .orbital-type {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+            .orbital-box {
+                width: 35px;
+                height: 35px;
+            }
+            .electron-arrow.up, .electron-arrow.down {
+                height: 20px;
+                top: 5px; /* Adjust for smaller box */
+            }
+            .electron-arrow.up::before, .electron-arrow.down::before {
+                border-left-width: 3px;
+                border-right-width: 3px;
+                border-bottom-width: 5px;
+                border-top-width: 5px;
+                left: -2.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Teori Atom Mekanika Kuantum</h1>
+        <p>Pengembangan Model Atom untuk Memahami Dunia Subatomik</p>
+    </header>
+
+    <main class="container">
+
+        <section class="section-card">
+            <h2>Akar Teori Atom Modern: Mekanika Kuantum</h2>
+            <p>Model atom modern merupakan evolusi signifikan dari model atom Bohr, yang pada masanya telah merevolusi pemahaman kita tentang struktur atom. Namun, model Bohr memiliki keterbatasan, seperti ketidakmampuannya menjelaskan efek Zeeman (pembelahan garis spektrum atom dalam medan magnet) atau spektrum atom-atom yang lebih kompleks daripada hidrogen.</p>
+            <p>Untuk mengatasi keterbatasan ini, sebuah teori yang lebih komprehensif dikembangkan, dikenal sebagai <strong>Teori Atom Mekanika Kuantum</strong>. Teori ini merupakan hasil kerja keras beberapa ilmuwan terkemuka:</p>
+            <ul>
+                <li><strong>Louis de Broglie</strong> (1924): Mengemukakan konsep dualisme partikel-gelombang.</li>
+                <li><strong>Erwin Schrödinger</strong>: Mengembangkan persamaan gelombang yang mendeskripsikan perilaku elektron dalam atom.</li>
+                <li><strong>Werner Heisenberg</strong>: Mengusulkan prinsip ketidakpastian.</li>
+                <li><strong>Wolfgang Pauli</strong>: Merumuskan asas larangan Pauli.</li>
+            </ul>
+
+            <h3>Dualisme Partikel Gelombang oleh Louis de Broglie</h3>
+            <p>Pada tahun 1924, Louis de Broglie mengajukan hipotesis revolusioner bahwa partikel-partikel kecil, seperti elektron, tidak hanya memiliki sifat materi (partikel) tetapi juga sifat gelombang. Artinya, mereka dapat berperilaku seperti gelombang, mirip dengan cahaya yang juga memiliki dualisme ini. Konsep ini menjadi fondasi penting bagi model atom mekanika kuantum, karena menjelaskan mengapa elektron tidak beredar dalam lintasan stasioner yang pasti seperti yang dibayangkan Bohr.</p>
+        </section>
+
+        <section class="section-card">
+            <h2>Pilar Model Atom Mekanika Kuantum</h2>
+            <p>Model atom mekanika kuantum memberikan gambaran yang lebih akurat dan kompleks tentang bagaimana elektron ada di dalam atom. Berikut adalah kriteria utamanya:</p>
+            <ol>
+                <li><strong>Lintasan Elektron Tidak Stasioner:</strong> Berbeda dengan model Bohr yang menggambarkan elektron bergerak dalam lintasan melingkar yang pasti (orbit), model mekanika kuantum menyatakan bahwa lintasan elektron tidak stasioner. Ini adalah konsekuensi langsung dari sifat gelombang elektron; kita tidak dapat menentukan posisi dan momentum elektron secara pasti pada waktu yang bersamaan (Prinsip Ketidakpastian Heisenberg).</li>
+                <li><strong>Bentuk dan Ukuran Orbital Bergantung pada Bilangan Kuantum:</strong> Konsep "orbital" diperkenalkan. Orbital bukanlah lintasan pasti, melainkan suatu <strong>ruang di sekitar inti atom dengan peluang tertinggi untuk menemukan elektron</strong>. Bentuk, ukuran, dan orientasi orbital ini sepenuhnya ditentukan oleh serangkaian nilai yang disebut <strong>bilangan kuantum</strong>.</li>
+                <li><strong>Posisi Elektron adalah Probabilistik:</strong> Alih-alih mengatakan bahwa elektron berada pada jarak tertentu dari inti (seperti 0,529 angstrom untuk hidrogen dalam model Bohr), model mekanika kuantum menyatakan bahwa jarak tersebut hanyalah <strong>probabilitas tertinggi</strong> untuk menemukan elektron. Elektron dapat berada di mana saja di dalam orbitalnya, namun kemungkinan terbesarnya adalah di daerah tertentu dalam orbital tersebut.</li>
+            </ol>
+        </section>
+
+        <section class="section-card">
+            <h2>Bilangan Kuantum: Menentukan "Alamat" Elektron</h2>
+            <p>Dalam model atom mekanika kuantum, posisi dan energi elektron dalam atom tidak lagi dijelaskan dengan orbit sederhana, melainkan dengan menggunakan empat jenis bilangan kuantum. Keempat bilangan kuantum ini bersama-sama memberikan "alamat" unik untuk setiap elektron dalam atom.</p>
+
+            <div class="quantum-number-grid">
+                <div class="quantum-number-card">
+                    <h4>1. Bilangan Kuantum Utama (n)</h4>
+                    <p>Bilangan kuantum utama (simbol: <code>n</code>) mendeskripsikan <strong>tingkat energi utama</strong> tempat elektron berada, atau sering disebut sebagai "kulit" atom. Semakin besar nilai <code>n</code>, semakin tinggi tingkat energi elektron dan semakin jauh rata-rata jarak elektron dari inti.</p>
+                    <ul>
+                        <li><code>n = 1</code>: Kulit K (tingkat energi pertama)</li>
+                        <li><code>n = 2</code>: Kulit L (tingkat energi kedua)</li>
+                        <li><code>n = 3</code>: Kulit M (tingkat energi ketiga)</li>
+                        <li>dan seterusnya...</li>
+                    </ul>
+                </div>
+
+                <div class="quantum-number-card">
+                    <h4>2. Bilangan Kuantum Azimut (l)</h4>
+                    <p>Bilangan kuantum azimut (simbol: <code>l</code>), juga dikenal sebagai bilangan kuantum momentum sudut, menentukan <strong>bentuk subkulit atau orbital</strong> dan juga sedikit mempengaruhi energi elektron. Nilai <code>l</code> bergantung pada nilai <code>n</code>, di mana <code>l</code> dapat bernilai dari <code>0</code> hingga <code>(n - 1)</code>.</p>
+                    <ul>
+                        <li><code>l = 0</code>: subkulit s (bentuk bola)</li>
+                        <li><code>l = 1</code>: subkulit p (bentuk <em>dumbbell</em>)</li>
+                        <li><code>l = 2</code>: subkulit d (bentuk lebih kompleks)</li>
+                        <li><code>l = 3</code>: subkulit f (bentuk sangat kompleks)</li>
+                    </ul>
+                </div>
+
+                <div class="quantum-number-card">
+                    <h4>3. Bilangan Kuantum Magnetik (m)</h4>
+                    <p>Bilangan kuantum magnetik (simbol: <code>m</code>) mendeskripsikan <strong>orientasi orbital di ruang tiga dimensi</strong>. Nilai <code>m</code> bergantung pada nilai <code>l</code>, di mana <code>m</code> dapat bernilai dari <code>-l</code> hingga <code>+l</code>, termasuk nol. Setiap nilai <code>m</code> mewakili satu orientasi orbital.</p>
+                    <ul>
+                        <li>Jika <code>l = 0</code> (subkulit s), maka <code>m = 0</code> (hanya 1 orbital s)</li>
+                        <li>Jika <code>l = 1</code> (subkulit p), maka <code>m = -1, 0, +1</code> (ada 3 orbital p: p<sub>x</sub>, p<sub>y</sub>, p<sub>z</sub>)</li>
+                        <li>Jika <code>l = 2</code> (subkulit d), maka <code>m = -2, -1, 0, +1, +2</code> (ada 5 orbital d)</li>
+                        <li>Jika <code>l = 3</code> (subkulit f), maka <code>m = -3, -2, -1, 0, +1, +2, +3</code> (ada 7 orbital f)</li>
+                    </ul>
+                </div>
+
+                <div class="quantum-number-card">
+                    <h4>4. Bilangan Kuantum Spin (s)</h4>
+                    <p>Bilangan kuantum spin (simbol: <code>s</code>) mendeskripsikan <strong>arah putar intrinsik elektron</strong> pada porosnya sendiri saat elektron mengelilingi inti. Elektron dapat berputar searah jarum jam atau berlawanan arah jarum jam.</p>
+                    <p>Nilai <code>s</code> hanya ada dua:</p>
+                    <ul>
+                        <li><code>s = +½</code> (spin ke atas, searah jarum jam)</li>
+                        <li><code>s = -½</code> (spin ke bawah, berlawanan arah jarum jam)</li>
+                    </ul>
+                    <div class="spin-diagram-container">
+                        <div class="spin-orbital up"></div>
+                        <div class="spin-orbital down"></div>
+                    </div>
+                    <p class="spin-note" style="text-align: center; font-size: 0.9em; color: var(--text-tertiary);">Diagram arah putar elektron.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>Konfigurasi Elektron: Mengisi Orbital dengan Tertib</h2>
+            <p>Konfigurasi elektron adalah distribusi elektron atom dalam orbital atom. Berdasarkan model atom mekanika kuantum, penempatan elektron mengikuti tiga aturan utama untuk mencapai keadaan energi paling stabil:</p>
+
+            <div class="rule-card">
+                <h3>a. Asas Larangan Pauli</h3>
+                <p>Dikemukakan oleh Wolfgang Pauli pada tahun 1926, asas ini menyatakan bahwa: <strong>"Tidak ada dua elektron dalam satu atom yang dapat memiliki keempat bilangan kuantum (<code>n, l, m, s</code>) yang sama."</strong></p>
+                <p>Implikasinya adalah bahwa setiap orbital hanya dapat ditempati oleh <strong>maksimum dua elektron</strong>, dan kedua elektron tersebut harus memiliki arah spin yang berlawanan (satu +½ dan satu -½). Jika ada dua elektron dalam orbital yang sama, mereka akan memiliki <code>n, l, m</code> yang sama, sehingga <code>s</code>-nya harus berbeda.</p>
+                <h4>Contoh Penerapan Asas Larangan Pauli:</h4>
+                <div class="orbital-box-grid">
+                    <div class="orbital-set">
+                        <div class="orbital-boxes">
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                                <span class="electron-arrow up" style="left: 60%;"></span>
+                            </div>
+                        </div>
+                        <p class="orbital-status status-forbidden">Tidak diizinkan (spin sama)</p>
+                    </div>
+
+                    <div class="orbital-set">
+                        <div class="orbital-boxes">
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                                <span class="electron-arrow down"></span>
+                            </div>
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                                <span class="electron-arrow up" style="left: 60%;"></span>
+                            </div>
+                        </div>
+                        <p class="orbital-status status-forbidden">Tidak diizinkan (orbital kedua melanggar Pauli)</p>
+                    </div>
+
+                    <div class="orbital-set">
+                        <div class="orbital-boxes">
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                                <span class="electron-arrow down"></span>
+                            </div>
+                        </div>
+                        <p class="orbital-status status-allowed">Diizinkan (spin berlawanan)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <h3>b. Aturan Aufbau</h3>
+                <p>Aturan Aufbau (dari bahasa Jerman, berarti "membangun") menyatakan bahwa <strong>elektron-elektron mengisi orbital dimulai dari tingkat energi yang paling rendah terlebih dahulu, kemudian berlanjut ke tingkat energi yang lebih tinggi setelah orbital sebelumnya penuh.</strong></p>
+                <p>Urutan pengisian orbital berdasarkan tingkat energinya dapat digambarkan sebagai berikut:</p>
+                <div class="aufbau-diagram">
+                    <div class="aufbau-row">
+                        <span class="orbital-type">1s</span>
+                    </div>
+                    <div class="aufbau-row">
+                        <span class="orbital-type" style="margin-left: 20px;">2s</span> <span class="orbital-type">2p</span>
+                    </div>
+                    <div class="aufbau-row">
+                        <span class="orbital-type" style="margin-left: 40px;">3s</span> <span class="orbital-type">3p</span> <span class="orbital-type">3d</span>
+                    </div>
+                    <div class="aufbau-row">
+                        <span class="orbital-type" style="margin-left: 60px;">4s</span> <span class="orbital-type">4p</span> <span class="orbital-type">4d</span> <span class="orbital-type">4f</span>
+                    </div>
+                    <div class="aufbau-row">
+                        <span class="orbital-type" style="margin-left: 80px;">5s</span> <span class="orbital-type">5p</span> <span class="orbital-type">5d</span> <span class="orbital-type">5f</span>...
+                    </div>
+                    <div class="aufbau-row">
+                        <span class="orbital-type" style="margin-left: 100px;">6s</span> <span class="orbital-type">6p</span> <span class="orbital-type">6d</span>...
+                    </div>
+                    <p class="aufbau-note">Urutan pengisian energi: 1s &rarr; 2s &rarr; 2p &rarr; 3s &rarr; 3p &rarr; 4s &rarr; 3d &rarr; 4p &rarr; 5s &rarr; 4d &rarr; 5p &rarr; 6s &rarr; 4f &rarr; 5d &rarr; 6p &rarr; 7s &rarr; 5f &rarr; 6d &rarr; 7p</p>
+                </div>
+                <h4>Contoh Konfigurasi Elektron:</h4>
+                <ul>
+                    <li><strong><sub>23</sub>V (Vanadium):</strong> <code>1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d³</code></li>
+                    <li><strong><sub>33</sub>As (Arsenik):</strong> <code>1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p³</code></li>
+                </ul>
+            </div>
+
+            <div class="rule-card">
+                <h3>c. Kaidah Hund</h3>
+                <p>Friedrich Hund pada tahun 1927 merumuskan kaidah ini: <strong>"Ketika elektron mengisi orbital-orbital yang memiliki energi yang sama (orbital degenerat), elektron akan menempati setiap orbital secara individual terlebih dahulu dengan spin paralel (searah), sebelum mulai berpasangan dengan spin yang berlawanan."</strong></p>
+                <p>Tujuannya adalah untuk memaksimalkan jumlah elektron dengan spin yang sama, yang menghasilkan konfigurasi yang lebih stabil.</p>
+                <h4>Contoh untuk Nitrogen (<sub>7</sub>N):</h4>
+                <p>Konfigurasi elektron Nitrogen adalah <code>1s² 2s² 2p³</code>. Elektron valensi berada pada orbital <code>2s² 2p³</code>.</p>
+                <div class="orbital-box-grid">
+                    <div class="orbital-set">
+                        <p>2s²</p>
+                        <div class="orbital-boxes">
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                                <span class="electron-arrow down"></span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 1rem;">2p³ (contoh yang kurang stabil)</p>
+                        <div class="orbital-boxes">
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                                <span class="electron-arrow down"></span>
+                            </div>
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                            </div>
+                            <div class="orbital-box"></div>
+                        </div>
+                        <p class="orbital-status status-less-stable">Kurang Stabil (melanggar Kaidah Hund)</p>
+                    </div>
+
+                    <div class="orbital-set">
+                        <p>2s²</p>
+                        <div class="orbital-boxes">
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                                <span class="electron-arrow down"></span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 1rem;">2p³ (contoh yang lebih stabil)</p>
+                        <div class="orbital-boxes">
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                            </div>
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                            </div>
+                            <div class="orbital-box">
+                                <span class="electron-arrow up"></span>
+                            </div>
+                        </div>
+                        <p class="orbital-status status-more-stable">Lebih Stabil (mengikuti Kaidah Hund)</p>
+                    </div>
+                </div>
+                <p style="font-size: 0.9em; color: var(--text-tertiary); text-align: center; margin-top: 1rem;">Pada contoh Nitrogen, konfigurasi yang lebih stabil adalah ketika elektron pada subkulit 2p mengisi orbital 2px, 2py, dan 2pz masing-masing satu elektron dengan spin paralel, sebelum ada yang berpasangan.</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>Menerapkan Bilangan Kuantum: Menentukan Elektron Terakhir</h2>
+            <p>Memahami konfigurasi elektron dan bilangan kuantum memungkinkan kita untuk menentukan "alamat" setiap elektron dalam atom, terutama elektron terakhir yang seringkali menentukan sifat kimia suatu unsur.</p>
+
+            <div class="example-block">
+                <h3>Contoh 1: Elektron Terakhir Unsur <sub>3</sub>Li (Litium)</h3>
+                <p><strong>Konfigurasi Elektron <sub>3</sub>Li:</strong> <code>1s² 2s¹</code></p>
+                <p>Elektron terakhir berada pada <strong>orbital 2s¹</strong>. Mari kita tentukan keempat bilangan kuantumnya:</p>
+                <ul>
+                    <li><strong><code>n</code> (Bilangan Kuantum Utama):</strong> Elektron berada pada kulit kedua, jadi <code>n = 2</code>.</li>
+                    <li><strong><code>l</code> (Bilangan Kuantum Azimut):</strong> Elektron berada pada subkulit 's', jadi <code>l = 0</code>.</li>
+                    <li><strong><code>m</code> (Bilangan Kuantum Magnetik):</strong> Untuk subkulit 's' (<code>l=0</code>), hanya ada satu orientasi, jadi <code>m = 0</code>.</li>
+                    <li><strong><code>s</code> (Bilangan Kuantum Spin):</strong> Karena ini adalah elektron tunggal pertama dalam orbital 2s, secara konvensi kita asumsikan spinnya ke atas, jadi <code>s = +½</code>.</li>
+                </ul>
+                <p>Jadi, bilangan kuantum elektron terakhir Li adalah <code>(2, 0, 0, +½)</code>.</p>
+            </div>
+
+            <div class="example-block">
+                <h3>Contoh 2: Elektron Terakhir Unsur <sub>9</sub>F (Fluorin)</h3>
+                <p><strong>Konfigurasi Elektron <sub>9</sub>F:</strong> <code>1s² 2s² 2p⁵</code></p>
+                <p>Elektron terakhir berada pada <strong>orbital 2p⁵</strong>. Mari kita tentukan keempat bilangan kuantumnya:</p>
+                <p>Orbital 2p memiliki 3 orientasi (m = -1, 0, +1). Dengan 5 elektron, pengisiannya adalah:</p>
+                <ul>
+                    <li>1. Elektron ke-1: 2p(-1) spin up</li>
+                    <li>2. Elektron ke-2: 2p(0) spin up</li>
+                    <li>3. Elektron ke-3: 2p(+1) spin up (mengikuti Kaidah Hund)</li>
+                    <li>4. Elektron ke-4: 2p(-1) spin down</li>
+                    <li><strong>5. Elektron ke-5: 2p(0) spin down</strong> (Ini adalah elektron terakhir)</li>
+                </ul>
+                <p>Berdasarkan analisis ini, bilangan kuantum elektron terakhir adalah:</p>
+                <ul>
+                    <li><strong><code>n</code> (Bilangan Kuantum Utama):</strong> Elektron berada pada kulit kedua, jadi <code>n = 2</code>.</li>
+                    <li><strong><code>l</code> (Bilangan Kuantum Azimut):</strong> Elektron berada pada subkulit 'p', jadi <code>l = 1</code>.</li>
+                    <li><strong><code>m</code> (Bilangan Kuantum Magnetik):</strong> Elektron terakhir masuk ke orbital <code>m = 0</code>.</li>
+                    <li><strong><code>s</code> (Bilangan Kuantum Spin):</strong> Elektron ini adalah elektron kedua yang masuk ke orbital tersebut, dengan spin berlawanan, jadi <code>s = -½</code>.</li>
+                </ul>
+                <p>Jadi, bilangan kuantum elektron terakhir F adalah <code>(2, 1, 0, -½)</code>.</p>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
+```

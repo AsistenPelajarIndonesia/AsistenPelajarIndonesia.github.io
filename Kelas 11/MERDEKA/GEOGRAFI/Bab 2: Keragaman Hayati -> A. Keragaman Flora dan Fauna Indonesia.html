@@ -1,0 +1,499 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keragaman Flora dan Fauna Indonesia</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background_canvas);
+            color: var(--text_primary);
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background_canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            border: 1px solid var(--border_divider);
+        }
+
+        /* Headings */
+        h1 {
+            color: var(--primary_blue);
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary_blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--text_primary);
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border_divider);
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        h2::before {
+            content: '♦'; /* Simple decorative icon */
+            color: var(--accent_green);
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+
+        h3 {
+            color: var(--text_secondary);
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid var(--secondary_accent_amber);
+            font-weight: 600;
+        }
+
+        h4 {
+            color: var(--accent_green);
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 15px;
+            color: var(--text_primary);
+            text-align: justify;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            color: var(--text_secondary);
+        }
+
+        ul li::before {
+            content: '•'; /* Custom bullet point */
+            position: absolute;
+            left: 0;
+            color: var(--primary_blue);
+            font-weight: bold;
+            font-size: 1.2em;
+            top: -2px;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            background-color: #fcfcfc;
+            border: 1px solid var(--border_divider);
+            border-left: 5px solid var(--accent_green); /* Default for data/info */
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Specific border color for info box */
+        .info-box {
+            border-left: 5px solid var(--semantic_info);
+        }
+
+        /* Data List Display (for species numbers) */
+        .data-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .data-item {
+            background-color: var(--background_canvas);
+            border: 1px solid var(--border_divider);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary_blue);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .data-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-item span:first-child {
+            display: block;
+            font-size: 1.1em;
+            color: var(--text_primary);
+            margin-bottom: 5px;
+        }
+        .data-item span:last-child {
+            font-size: 1.4em;
+            color: var(--accent_green);
+        }
+
+        /* Details/Summary for Collapsible Sections */
+        details {
+            background-color: #fcfcfc;
+            border: 1px solid var(--border_divider);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden; /* Ensures border-radius applies to content */
+        }
+
+        summary {
+            padding: 20px 25px;
+            background-color: var(--primary_blue);
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none; /* Remove outline on click */
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        summary:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        /* Hide default marker and add custom one */
+        summary::marker {
+            content: '';
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::after {
+            content: '▼'; /* Custom arrow icon */
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .details-content {
+            padding: 20px 25px;
+            border-top: 1px solid var(--border_divider);
+            background-color: var(--background_canvas);
+        }
+
+        /* Text Emphasis and Semantic Colors */
+        .text-emphasis {
+            font-weight: bold;
+            color: var(--primary_blue);
+        }
+
+        .accent-green {
+            color: var(--accent_green);
+            font-weight: bold;
+        }
+
+        .warning-text {
+            color: var(--semantic_warning);
+            font-weight: bold;
+        }
+
+        .error-text {
+            color: var(--semantic_error);
+            font-weight: bold;
+        }
+
+        a {
+            color: var(--primary_blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0D47A1; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+                margin-bottom: 30px;
+                padding-bottom: 10px;
+            }
+            h2 {
+                font-size: 1.5em;
+                flex-direction: column; /* Stack icon and text */
+                align-items: flex-start;
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+            h2::before {
+                margin-bottom: 5px;
+            }
+            h3 {
+                font-size: 1.2em;
+                margin-top: 25px;
+                margin-bottom: 10px;
+            }
+            summary {
+                font-size: 1.3em;
+                padding: 15px 20px;
+            }
+            .details-content {
+                padding: 15px 20px;
+            }
+            .data-list {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 1.2em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+            h3 {
+                font-size: 1em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                padding-left: 8px;
+            }
+            summary {
+                font-size: 1.1em;
+                padding: 12px 15px;
+            }
+            .details-content {
+                padding: 12px 15px;
+            }
+            .data-list {
+                grid-template-columns: 1fr; /* Single column for very small screens */
+            }
+            .data-item {
+                padding: 12px;
+            }
+            .data-item span:first-child {
+                font-size: 1em;
+            }
+            .data-item span:last-child {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>A. Keragaman Flora dan Fauna Indonesia</h1>
+
+        <p>Kita patut berbangga sebagai warga negara Indonesia. Salah satu kebanggaan terbesar adalah kekayaan <span class="text-emphasis">flora dan fauna</span> yang melimpah, menjadikan Indonesia salah satu negara <span class="text-emphasis">terkaya di dunia</span> dalam hal keanekaragaman hayati.</p>
+
+        <details open>
+            <summary>1. Pengertian Flora dan Fauna</summary>
+            <div class="details-content">
+                <p>Untuk memahami kekayaan ini, penting bagi kita untuk mengetahui definisi dasar dari flora dan fauna, serta konsep endemisme yang melekat pada keduanya:</p>
+                <h3>Pengertian Flora</h3>
+                <ul>
+                    <li>Berasal dari bahasa Latin yang berarti <span class="text-emphasis">"alam tumbuhan"</span>.</li>
+                    <li>Dapat diartikan sebagai <span class="text-emphasis">sekelompok tanaman atau tumbuhan</span>.</li>
+                    <li>Terdapat konsep <span class="text-emphasis">Flora Endemik</span>, yaitu jenis tumbuhan yang <span class="accent-green">hanya hidup di daerah tertentu</span> dan tidak ditemukan di wilayah lain.</li>
+                    <li>Keunikan flora endemik ini disebabkan oleh <span class="text-emphasis">ciri-ciri wilayah tertentu</span>, seperti iklim, cuaca, dan tanah yang berbeda yang membedakannya dengan wilayah lain.</li>
+                    <li><span class="text-emphasis">Contoh:</span> Bunga Melati adalah salah satu flora endemik yang secara khusus dijumpai di Jawa.</li>
+                </ul>
+
+                <h3>Pengertian Fauna</h3>
+                <ul>
+                    <li>Berasal dari bahasa Latin yang berarti <span class="text-emphasis">"alam hewan"</span>.</li>
+                    <li>Secara sederhana diartikan sebagai <span class="text-emphasis">hewan</span>, sedangkan pengertian umumnya adalah <span class="text-emphasis">segala jenis hewan yang hidup di dunia</span>.</li>
+                    <li>Sama seperti flora, ada juga <span class="text-emphasis">Fauna Endemik</span>, yaitu hewan yang <span class="accent-green">hanya ditemukan di wilayah tertentu</span> secara alami, tanpa campur tangan manusia yang memindahkannya.</li>
+                    <li><span class="text-emphasis">Contoh:</span> Burung Cendrawasih merupakan fauna endemik asli Papua, sedangkan Badak Bercula Satu adalah endemik Ujung Kulon, Pulau Jawa. Jenis-jenis ini tidak ditemukan di daerah lain.</li>
+                    <li>Dalam penyebutan jenis fauna, pada umumnya diberi imbuhan secara geografis, seperti hewan Asia, hewan Australia, dan hewan peralihan.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>2. Arti Penting Flora dan Fauna Bagi Kehidupan</summary>
+            <div class="details-content">
+                <p>Dalam kehidupan sehari-hari, manusia tidak dapat terlepas dari ketersediaan tumbuhan dan hewan. Keberadaan keduanya sangat penting bagi keberlangsungan hidup manusia, memberikan berbagai manfaat esensial di berbagai bidang:</p>
+
+                <h3>a. Sumber Bahan Makanan</h3>
+                <ul>
+                    <li><span class="text-emphasis">Padi (Beras):</span> Merupakan makanan pokok utama bagi sebagian besar masyarakat Indonesia. Padi cocok dibudidayakan di iklim tropis Indonesia, mampu beradaptasi di berbagai lingkungan dari dataran rendah hingga tinggi. Sentra produksi utama tersebar di Jawa Barat, Jawa Tengah, Jawa Timur, Sumatra, Sulawesi Selatan, dan Sulawesi Utara.</li>
+                    <li><span class="text-emphasis">Sagu (Metroxylon sagu):</span> Menjadi makanan pokok di daerah Indonesia bagian timur, seperti Nusa Tenggara, Maluku, dan Papua. Sagu juga dapat tumbuh di wilayah lain seperti Maluku, Sulawesi, Kalimantan, Sumatra, Kepulauan Riau, dan Kepulauan Mentawai. Berdasarkan data 2014, Indonesia memiliki pohon sagu seluas <span class="accent-green">5,5 juta hektar</span>, dengan <span class="accent-green">5,2 juta hektar</span> di antaranya berada di Papua dan Papua Barat.</li>
+                    <li><span class="text-emphasis">Makanan Pokok Alternatif:</span> Selain beras, beberapa masyarakat lokal juga mengonsumsi jagung, singkong (ketela pohon), ubi jalar, dan kentang sebagai makanan pokok atau tambahan. Tanaman-tanaman ini banyak ditanam di pulau Jawa, Sulawesi, dan Papua.</li>
+                </ul>
+
+                <h3>b. Sumber dan Penopang Bagi Kesehatan</h3>
+                <ul>
+                    <li>Berbagai jenis tumbuhan dan hewan di alam dapat menjadi <span class="text-emphasis">sumber obat-obatan</span>.</li>
+                    <li>Menurut WHO, sekitar <span class="accent-green">20.000 spesies tumbuhan</span> dipergunakan oleh penduduk dunia sebagai obat. Indonesia sendiri memiliki sekitar <span class="accent-green">1.260 spesies tumbuhan</span> yang secara pasti diketahui berkhasiat sebagai obat.</li>
+                    <li>Masyarakat juga banyak membudidayakan <span class="text-emphasis">TOGA (Tanaman Obat Keluarga)</span> untuk obat keluarga.</li>
+                    <li>Indonesia tercatat sebagai salah satu <span class="text-emphasis">pusat Vavilov</span>, yaitu pusat sebaran keanekaragaman genetik tumbuhan budi daya.</li>
+                    <li><span class="text-emphasis">Contoh:</span> Eucalyptus adalah salah satu jenis tanaman terkenal yang dimanfaatkan untuk kesehatan, menjadi bahan utama minyak kayu putih.</li>
+                </ul>
+
+                <h3>c. Sumber Daya Ekonomi</h3>
+                <ul>
+                    <li>Keanekaragaman hayati Indonesia telah dimanfaatkan secara luas sebagai <span class="text-emphasis">sumber ekonomi</span>.</li>
+                    <li><span class="text-emphasis">Kayu:</span> Beragam jenis kayu menjadi ciri khas Indonesia, seperti jati, mahoni, gaharu, dan lain sebagainya.</li>
+                    <li><span class="text-emphasis">Kayu Jati:</span> Banyak ditemukan di pulau Jawa dan Kalimantan. Meskipun dapat tumbuh di Kalimantan dan Sumatra, namun tidak tumbuh maksimal karena kondisi tanah (tingkat keasaman tinggi) tidak mendukung. Kayu jati sangat diandalkan dalam industri mebel sebagai kayu premium untuk perabotan rumah. Harga kayu jati menjadi mahal karena membutuhkan usia puluhan tahun untuk siap panen.</li>
+                </ul>
+
+                <h3>d. Keseimbangan Ekosistem</h3>
+                <ul>
+                    <li>Flora dan fauna di suatu daerah memiliki peran krusial dalam menjaga <span class="text-emphasis">keberlangsungan ekosistem</span>. Salah satu bentuknya adalah sebagai elemen <span class="text-emphasis">rantai makanan</span>.</li>
+                    <li>Setiap hewan dan tumbuhan memiliki peran masing-masing: produsen, konsumen, predator, dan pengurai.</li>
+                    <li><span class="text-emphasis">Contoh:</span> Harimau merupakan predator karnivora yang memburu hewan herbivora (pemakan tumbuhan). Peran harimau penting sebagai pengontrol jumlah populasi hewan pemakan tumbuhan.</li>
+                    <li><span class="warning-text">Dampak Ketidakseimbangan Ekosistem:</span>
+                        <ul>
+                            <li>Jika populasi hewan pemakan tumbuhan meningkat drastis, kebutuhan makanan dari tumbuhan juga meningkat, menyebabkan tumbuhan cepat habis dan mengganggu regenerasinya.</li>
+                            <li>Berkurangnya tumbuhan akan menyebabkan berkurangnya produksi oksigen yang vital bagi manusia.</li>
+                            <li>Ledakan populasi herbivora juga meningkatkan persaingan makanan dengan hewan ternak, berpotensi mengakibatkan hilangnya pakan dan bahkan kepunahan hewan ternak yang dibudidayakan.</li>
+                        </ul>
+                    </li>
+                    <li>Keadaan ini tidak kita kehendaki, karena akan menimbulkan gangguan serius pada kehidupan manusia.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>3. Ragam dan Dinamika Jenis Flora dan Fauna Indonesia dan Permasalahannya</summary>
+            <div class="details-content">
+                <h3>a. Ragam Flora dan Fauna</h3>
+                <p>Indonesia merupakan negara kepulauan yang luas, beriklim tropis, dan topografi yang bervariasi. Kombinasi faktor-faktor ini memengaruhi dan meningkatkan <span class="text-emphasis">keragaman flora dan fauna</span>. Keragaman di Indonesia jauh lebih tinggi dibanding wilayah tropis di Amerika Selatan dan Afrika.</p>
+                <ul>
+                    <li><span class="text-emphasis">Luas Wilayah:</span> Sekitar <span class="accent-green">9 juta km²</span>, terdiri dari lebih dari <span class="accent-green">17 ribu pulau</span> dengan garis pantai hingga <span class="accent-green">95.181 km</span>. Luas daratan mencapai <span class="accent-green">2 juta km²</span> dan luas perairan mencapai <span class="accent_green">7 juta km²</span>.</li>
+                    <li><span class="text-emphasis">Posisi Geografis:</span> Terletak di antara dua benua (Asia dan Australia) serta dua samudra (Hindia dan Pasifik).</li>
+                    <li><span class="text-emphasis">Iklim Tropis:</span> Dengan curah hujan dan suhu yang bervariasi. Wilayah barat umumnya beriklim basah (curah hujan tinggi), sedangkan wilayah timur bercurah hujan lebih rendah dan beriklim lebih kering.</li>
+                    <li><span class="text-emphasis">Topografi Bervariasi:</span> Dari dasar laut yang curam, dataran rendah, dataran tinggi, hingga pegunungan (aktif maupun tidak aktif). Kompleksitas topografi ini menciptakan variasi suhu udara.</li>
+                    <li><span class="text-emphasis">Keragaman Flora:</span> Indonesia memiliki lebih dari <span class="accent-green">10% jenis tumbuhan di seluruh dunia</span>. Hutan hujan tropis Indonesia kaya akan beragam tumbuhan seperti pohon, perdu, rumput, dan tumbuhan anggrek (Orchidaceae).</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Jumlah Spesies Tanaman di Indonesia (Data LIPI 2014)</h4>
+                    <div class="data-list">
+                        <div class="data-item"><span>Paku pakuan</span><span>4000</span></div>
+                        <div class="data-item"><span>Rotan</span><span>322</span></div>
+                        <div class="data-item"><span>Spesies Pohon Meranti</span><span>400</span></div>
+                        <div class="data-item"><span>Jenis Pohon Bambu</span><span>122</span></div>
+                        <div class="data-item"><span>Jenis Tanaman Anggrek</span><span>4000</span></div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Jumlah Jenis Fauna di Indonesia (Data LIPI 2014)</h4>
+                    <div class="data-list">
+                        <div class="data-item"><span>Pisces (Ikan)</span><span>4000</span></div>
+                        <div class="data-item"><span>Aves (Burung)</span><span>1600</span></div>
+                        <div class="data-item"><span>Mamalia</span><span>500</span></div>
+                        <div class="data-item"><span>Reptilia dan Amphibi</span><span>1000</span></div>
+                        <div class="data-item"><span>Insecta (Serangga)</span><span>200.000</span></div>
+                    </div>
+                </div>
+
+                <h3>b. Permasalahan Flora dan Fauna di Indonesia</h3>
+                <p>Meskipun memiliki kekayaan yang luar biasa, keberadaan sebagian tumbuhan dan hewan di Indonesia mengalami kemerosotan, bahkan jenis flora dan fauna tertentu <span class="error-text">nyaris punah</span>. Hal ini menimbulkan berbagai permasalahan yang mengancam keanekaragaman hayati:</p>
+
+                <h4>1) Eksploitasi Berlebihan (Over-exploitation)</h4>
+                <ul>
+                    <li>Definisi: Proses pengambilan sumber daya terbarukan hingga sumber daya tersebut <span class="error-text">berkurang secara drastis</span>.</li>
+                    <li>Contoh: Pengambilan tanaman obat liar, pemanfaatan padang rumput, cadangan ikan, hutan, dan cadangan air secara berlebihan.</li>
+                    <li>Dalam ekologi, eksploitasi berlebihan adalah salah satu dari lima kegiatan utama yang mengancam keanekaragaman hayati global. Jika populasi dipanen hingga titik keberlanjutannya terganggu, dapat berakibat pada <span class="error-text">kepunahan di tingkat populasi dan spesies</span>.</li>
+                    <li>Banyak jenis tumbuhan dan hewan memiliki nilai estetika dan ekonomi yang tinggi, yang mendorong banyak kolektor untuk memburu hewan demi keuntungan pribadi tanpa memperhatikan keberlangsungan ekosistem alam.</li>
+                    <li><span class="text-emphasis">Contoh kasus:</span> Penyelundupan 24 ekor burung Kakatua Jambul Kuning berhasil digagalkan dalam perjalanan dari Papua ke Surabaya. Hewan-hewan ini ditemukan dalam kondisi dimasukkan ke dalam botol air mineral.</li>
+                </ul>
+
+                <h4>2) Kepunahan Flora dan Fauna</h4>
+                <ul>
+                    <li>Jumlah flora dan fauna di Indonesia terus <span class="error-text">menyusut</span> dari tahun ke tahun, terutama disebabkan oleh pertumbuhan penduduk yang cepat.</li>
+                    <li>Manusia cenderung memanfaatkan flora dan fauna <span class="warning-text">tanpa kendali</span> demi pemuasan kebutuhan hidup, yang merusak habitat alam.</li>
+                    <li>Pembangunan permukiman dan pengembangan industri yang merusak lingkungan juga mengurangi lahan komunitas flora fauna.</li>
+                    <li><span class="text-emphasis">Contoh:</span> Penebangan pohon di hutan tanpa perhitungan mengakibatkan banyak hutan menjadi gundul atau rusak, padahal hutan merupakan habitat bagi flora dan fauna, termasuk yang dilindungi.</li>
+                    <li>Kurangnya kepedulian masyarakat terhadap kelestarian lingkungan memperparah kondisi ini.</li>
+                    <li><span class="text-emphasis">Flora Terancam Punah:</span> Sebanyak <span class="accent-green">1.252 jenis tumbuhan Indonesia</span> masuk dalam daftar merah (kritis, genting, rawan, hampir terancam, dan kurang mendapatkan perhatian). Contoh jenis tanaman kritis yang akan habis antara lain tengkawang, plajlar, dan ulir.</li>
+                    <li><span class="text-emphasis">Fauna Terancam Punah:</span> Kelangkaan berbagai jenis hewan terutama terjadi karena sikap manusia yang memburu dan memanfaatkannya tanpa memperhatikan kelestarian habitatnya.</li>
+                    <li><span class="text-emphasis">Contoh:</span> Populasi Harimau Sumatra diperkirakan <span class="error-text">kurang dari 400 ekor</span>. Setiap bulannya, tidak kurang dari <span class="error-text">14 ekor</span> mati terbunuh oleh pemburu yang mencari keuntungan dari penjualan kulit harimau yang mahal. Jika dibiarkan, harimau Sumatra berisiko punah dan hanya akan menjadi cerita bagi generasi mendatang.</li>
+                </ul>
+            </div>
+        </details>
+
+        <div class="highlight-box info-box">
+            <h4>Informasi Tambahan: Tautan & Sumber</h4>
+            <p style="font-size: 0.95em;">Untuk menambah wawasan kalian tentang potensi flora dan fauna di Indonesia, kalian dapat mencari informasi lebih lanjut dari sumber-sumber yang relevan, seperti yang disebutkan dalam buku ini:</p>
+            <ul>
+                <li><strong>Sumber Data Flora & Fauna (2014):</strong> Lembaga Ilmu Pengetahuan Indonesia (LIPI)</li>
+                <li><strong>Sumber Data Produksi Pangan (2021):</strong> Kementerian PUPR</li>
+                <li><strong>Sumber Referensi Lainnya:</strong> faunadanflora.com, saniter.co.id, freepik.com, eatingasia.typepad.com, DLHK DIY.</li>
+                <li><span class="text-emphasis">Tautan Video Terkait (berdasarkan buku):</span> <a href="https://www.youtube.com/watch?v=acARUAbv5no" target="_blank" style="color: var(--semantic_info); text-decoration: none;">Video: Potensi Flora dan Fauna di Indonesia</a></li>
+            </ul>
+            <p style="font-size: 0.8em; color: var(--text_tertiary);"><em>Catatan: Sesuai instruksi, tidak ada gambar yang digunakan dalam penjelasan ini, termasuk representasi QR code.</em></p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

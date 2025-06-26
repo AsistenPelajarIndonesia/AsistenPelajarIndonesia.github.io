@@ -1,0 +1,354 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biologi Kelas 11 - Iritabilitas pada Tumbuhan</title>
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 960px;
+            margin: 20px;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--accent-green);
+            margin-top: 40px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--primary-blue);
+            margin-top: 30px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style: decimal;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue background for emphasis */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .sub-section {
+            padding-left: 20px;
+            border-left: 2px solid var(--border-divider);
+            margin-top: 20px;
+        }
+
+        .activity-box {
+            background-color: #fffde7; /* Light amber for activities */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .recall-box {
+            background-color: #e8f5e9; /* Light green for recall */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .exam-box {
+            background-color: #fce4ec; /* Light pink/red for exam-like section */
+            border-left: 5px solid var(--semantic-error);
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .enrichment-box {
+            background-color: #e0f2f7; /* Light cyan for enrichment */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        b {
+            color: var(--primary-blue);
+        }
+
+        i {
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .sub-section {
+                padding-left: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            h3 {
+                font-size: 1em;
+            }
+
+            ul, ol {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Proses Pengaturan pada Tumbuhan</h1>
+        <h2>D. Iritabilitas pada Tumbuhan</h2>
+
+        <p>Sama seperti manusia yang dapat merespons sentuhan geli dengan tawa, <b>tumbuhan juga memiliki kemampuan luar biasa untuk mendeteksi dan merespons berbagai rangsangan dari lingkungan atau dari dalam dirinya sendiri.</b> Kemampuan ini dikenal sebagai <b>iritabilitas</b>. Respons yang diberikan oleh tumbuhan sangat spesifik, bergantung pada jenis rangsangan yang diterimanya, dan merupakan kunci bagi kelangsungan hidup dan adaptasinya.</p>
+
+        <section>
+            <h3>1. Respons Tumbuhan terhadap Perubahan Internal</h3>
+            <p>Tumbuhan secara konstan memantau kondisi internalnya, terutama ketersediaan nutrisi. Nutrisi adalah bahan bakar esensial yang diperlukan untuk seluruh proses metabolisme, pertumbuhan, dan perkembangan tumbuhan.</p>
+
+            <div class="highlight-box">
+                <h4>Peran Krusial Nutrisi dan Pengelolaan Pupuk</h4>
+                <p>Nutrisi bagi tumbuhan umumnya diserap dari tanah. Seiring waktu, jumlah nutrisi dalam tanah dapat berkurang akibat penyerapan oleh tanaman atau pencucian oleh air hujan. Untuk mengoptimalkan pertumbuhan dan hasil panen, petani seringkali melakukan <b>pemupukan</b>, yaitu penambahan nutrisi ke tanah dalam bentuk pupuk.</p>
+                <p>Namun, pemberian pupuk harus dilakukan dengan cermat dan dalam dosis yang tepat. Baik <b>kekurangan maupun kelebihan nutrisi dapat memberikan dampak negatif</b> pada tumbuhan:</p>
+                <ul>
+                    <li><b>Kekurangan Nutrisi:</b> Jika nutrisi esensial tidak tersedia dalam jumlah yang cukup, tumbuhan akan menunjukkan gejala defisiensi, seperti pertumbuhan terhambat, daun menguning (klorosis, seringkali karena kekurangan Nitrogen atau Besi), atau perubahan warna lainnya. Pada kasus parah, defisiensi nutrisi dapat menyebabkan layu dan kematian tanaman.</li>
+                    <li><b>Kelebihan Nutrisi/Pupuk:</b> Konsentrasi nutrisi yang terlalu tinggi di tanah (terutama pupuk kimia berlebihan) dapat menyebabkan kondisi yang disebut "kekeringan fisiologis". Dalam kondisi ini, konsentrasi zat terlarut di larutan tanah menjadi lebih tinggi daripada di dalam sel akar tumbuhan. Akibatnya, air cenderung berpindah keluar dari sel-sel akar menuju tanah melalui osmosis, bukan masuk ke dalam akar. Hal ini membuat tumbuhan kesulitan menyerap air meskipun tanah terlihat basah, menyebabkan gejala seperti daun gosong, layu, atau bahkan kematian akibat "keracunan" atau dehidrasi sel. Selain itu, kelebihan nutrisi tertentu dapat menghambat penyerapan nutrisi lain.</li>
+                </ul>
+            </div>
+
+            <div class="activity-box">
+                <h4>Memahami Keterkaitan Nutrisi dan Respons Tumbuhan</h4>
+                <p>Respons tumbuhan terhadap kadar nutrisi dalam tanah adalah proses yang kompleks dan vital. Setiap jenis nutrisi makro (seperti Nitrogen, Fosfor, Kalium) dan mikro (seperti Besi, Seng, Mangan) memiliki peran spesifik dan dapat memicu respons berbeda:</p>
+                <ul>
+                    <li><b>Nitrogen (N):</b> Berperan penting dalam pembentukan protein, enzim, dan klorofil. <i>Respons terhadap kekurangan N</i>: Daun tua menguning merata (klorosis), pertumbuhan terhambat, tanaman kurus. <i>Respons terhadap kelebihan N</i>: Pertumbuhan vegetatif berlebihan (daun rimbun), batang lemah, rentan roboh dan serangan hama/penyakit, penundaan pembungaan.</li>
+                    <li><b>Fosfor (P):</b> Penting untuk transfer energi (ATP), pembentukan DNA/RNA, dan perkembangan akar, bunga, serta buah. <i>Respons terhadap kekurangan P</i>: Daun tampak ungu atau kemerahan (terutama pada bagian bawah), pertumbuhan akar terhambat, pembungaan dan pembuahan kurang.</li>
+                    <li><b>Kalium (K):</b> Mengatur keseimbangan air, fotosintesis, aktivasi enzim, dan ketahanan terhadap stres. <i>Respons terhadap kekurangan K</i>: Tepi daun tua menguning atau gosong (nekrosis), batang lemah, rentan penyakit.</li>
+                </ul>
+                <p>Respons ini menunjukkan kemampuan tumbuhan untuk menyesuaikan diri dengan kondisi internal, memprioritaskan fungsi vitalnya, dan mencoba bertahan hidup dalam kondisi suboptimal.</p>
+            </div>
+        </section>
+
+        <section>
+            <h3>2. Respons Tumbuhan terhadap Perubahan Eksternal</h3>
+            <p>Lingkungan eksternal adalah sumber rangsangan utama yang memicu respons adaptif pada tumbuhan. Ini membantu tumbuhan tumbuh ke arah yang menguntungkan dan menghindari kondisi yang merugikan.</p>
+
+            <div class="recall-box">
+                <h4>Mengenali Kembali Faktor Eksternal dan Respons Tumbuhan</h4>
+                <p>Berbagai faktor lingkungan memengaruhi arah dan pola pertumbuhan tumbuhan. Berikut adalah beberapa contoh penting:</p>
+                <ol>
+                    <li><b>Cahaya:</b> Merupakan rangsangan paling vital karena diperlukan untuk fotosintesis.</li>
+                    <ul>
+                        <li><b>Fototropisme (Respons Pertumbuhan Terhadap Arah Cahaya):</b>
+                            <ul>
+                                <li><b>Pada Tanaman Dewasa:</b> Batang dan daun tumbuhan dewasa akan tumbuh membengkok ke arah sumber cahaya. Ini adalah <i>fototropisme positif</i>. Mekanismenya melibatkan hormon auksin yang bermigrasi ke sisi batang yang tidak terkena cahaya, memicu pemanjangan sel di sisi tersebut, sehingga batang membengkok ke arah cahaya.</li>
+                                <li><b>Pada Bibit Tanaman:</b> Bibit yang tumbuh di tempat gelap akan menunjukkan etiolasi (batang memanjang cepat, tipis, dan pucat) untuk "mencari" cahaya. Begitu terpapar cahaya, etiolasi akan berhenti, daun berkembang, dan batang akan membengkok ke arah cahaya.</li>
+                            </ul>
+                        </li>
+                        <li><b>Fotoperiodisme (Respons terhadap Panjang Siang-Malam):</b> Panjang relatif periode terang dan gelap dalam 24 jam memicu respons fisiologis penting seperti pembungaan, dormansi, atau pengguguran daun.</li>
+                    </ul>
+                    <li><b>Sentuhan (Mekanis):</b> Beberapa tumbuhan menunjukkan respons terhadap sentuhan atau kontak fisik.</li>
+                    <ul>
+                        <li><b>Tigmonasti (Gerak Nasti karena Sentuhan):</b> Contoh klasik adalah putri malu (<i>Mimosa pudica</i>) yang daunnya segera mengatup saat disentuh, diguncang, atau dipanaskan. Gerakan ini cepat dan tidak tergantung arah rangsangan, melibatkan perubahan tekanan turgor pada sel-sel motor di pangkal tangkai daun.</li>
+                        <li><b>Tigmotropisme (Gerak Tropisme karena Sentuhan):</b> Terjadi pada tumbuhan pemanjat seperti kacang panjang atau labu. Sulur-sulur tanaman ini akan melilit benda yang disentuhnya (tiang, tanaman lain). Gerakan ini melibatkan pertumbuhan diferensial, di mana sel-sel di sisi yang menyentuh objek tumbuh lebih lambat dibandingkan sisi yang tidak menyentuh, menyebabkan sulur melilit.</li>
+                    </ul>
+                    <li><b>Gravitasi:</b> Gaya tarik bumi adalah rangsangan penting yang memandu pertumbuhan akar dan batang.</li>
+                    <ul>
+                        <li><b>Gravitropisme (Geotropisme):</b>
+                            <ul>
+                                <li><b>Akar:</b> Menunjukkan <i>gravitropisme positif</i>, yaitu tumbuh ke bawah searah gaya gravitasi, membantu tanaman menambatkan diri dan mencari air serta nutrisi di dalam tanah.</li>
+                                <li><b>Batang:</b> Menunjukkan <i>gravitropisme negatif</i>, yaitu tumbuh ke atas berlawanan arah gaya gravitasi, membantu daun terpapar cahaya matahari secara optimal.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <li><b>Suhu:</b> Perubahan suhu lingkungan dapat memicu respons adaptif.</li>
+                    <ul>
+                        <li><b>Termonasti:</b> Gerakan nasti yang dipicu oleh perubahan suhu. Contohnya adalah mekarnya bunga tulip atau <i>Crocus</i> pada suhu hangat dan menutupnya pada suhu dingin.</li>
+                    </ul>
+                </ol>
+                <p>Memahami respons ini membantu kita mengerti bagaimana tumbuhan bertahan hidup dan berkembang biak dalam berbagai kondisi lingkungan.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Uji Kompetensi: Sistem Hidroponik</h2>
+            <p><b>Hidroponik</b> adalah metode budidaya tanaman tanpa menggunakan tanah. Tanaman ditanam dalam media inert (seperti kerikil, perlit, rockwool, atau sabut kelapa) yang berfungsi sebagai penopang fisik, sementara kebutuhan nutrisi dan air dipasok melalui larutan nutrisi yang terlarut dalam air.</p>
+
+            <div class="exam-box">
+                <h4>Desain dan Efisiensi Air dalam Sistem Hidroponik</h4>
+                <p>Dalam sistem hidroponik sederhana, tanaman ditempatkan di atas media tanam berpori besar yang memungkinkan akar menembus dan air bersirkulasi. Larutan nutrisi disimpan dalam tangki di bawahnya. Sebuah pompa akan mengalirkan air berulang kali (misalnya, 4 hingga 6 kali sehari) ke area perakaran. Ketika pompa berhenti, kelebihan air yang tidak diserap tanaman akan kembali mengalir dan terkumpul di tangki penyimpanan air, siap untuk disirkulasikan kembali.</p>
+
+                <p><b>Mengapa Tanaman Hidroponik Menggunakan Air Lebih Sedikit Dibandingkan Tanaman yang Ditanam di Atas Tanah?</b></p>
+                <p>Kunci efisiensi air dalam sistem hidroponik terletak pada <b>desain sistem sirkulasi tertutup</b> dan <b>pengendalian kehilangan air</b>:</p>
+                <ul>
+                    <li><b>Sirkulasi Ulang Air:</b> Air dan nutrisi yang tidak diserap oleh tanaman segera dikumpulkan kembali ke tangki penyimpanan untuk digunakan kembali. Ini secara drastis mengurangi kehilangan air akibat perkolasi (meresap ke lapisan tanah yang lebih dalam) yang umum terjadi pada pertanian tanah.</li>
+                    <li><b>Minimalisasi Penguapan:</b> Dalam sistem hidroponik yang dirancang baik, permukaan air dan media tanam seringkali tertutup atau berada di dalam wadah, mengurangi penguapan langsung dari permukaan tanah (yang tidak ada) dan dari permukaan air itu sendiri. Bandingkan dengan tanah terbuka yang luas, di mana penguapan dapat sangat tinggi.</li>
+                    <li><b>Pasokan Air Tepat Sasaran:</b> Air dialirkan langsung ke zona akar tanaman, memastikan penyerapan yang efisien dan meminimalkan air yang terbuang tidak pada tempatnya.</li>
+                </ul>
+
+                <p><b>Beberapa Pertimbangan Penting dalam Hidroponik:</b></p>
+                <ul>
+                    <li>Meskipun daun berperan utama dalam fotosintesis, keberhasilan hidroponik juga sangat bergantung pada <b>kesehatan akar</b> dan <b>ketersediaan nutrisi dan oksigen dalam larutan</b>. Sistem hidroponik memungkinkan pengiriman nutrisi yang terkontrol dan optimal langsung ke akar.</li>
+                    <li>Pemompaan air yang terlalu sering atau sirkulasi yang buruk dalam sistem hidroponik yang tidak teroksigenasi dengan baik dapat menyebabkan akar terendam air terus-menerus tanpa cukup oksigen. Kondisi ini disebut <b>anoksia</b>, yang dapat menyebabkan <b>akar busuk</b>. Desain sistem hidroponik yang efisien harus memastikan aerasi yang memadai (misalnya, dengan pompa udara atau siklus basah-kering).</li>
+                    <li><b>Material padat seperti tanah liat murni tidak cocok untuk hidroponik</b> karena cenderung padat, menahan air berlebihan, dan kurang memiliki pori-pori besar untuk aerasi akar yang baik. Sebaliknya, media seperti kerikil, perlit, rockwool, atau arang sekam digunakan karena sifatnya yang inert, berpori besar, ringan, dan mampu menopang tanaman sambil memungkinkan aliran air dan oksigen yang optimal.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Pengayaan: Respon Padi terhadap Cekaman Kekeringan</h2>
+            <p>Padi adalah salah satu komoditas pertanian terpenting di dunia. Namun, produksi padi sangat rentan terhadap kondisi lingkungan ekstrem, salah satunya adalah <b>cekaman kekeringan</b>. Fenomena kekeringan, yang diperparah oleh perubahan iklim global, merupakan tantangan serius bagi ketahanan pangan global.</p>
+
+            <div class="enrichment-box">
+                <h4>Mekanisme Respon Tanaman Padi terhadap Kekeringan</h4>
+                <p>Studi ilmiah telah menunjukkan bahwa tanaman padi memiliki mekanisme adaptasi yang kompleks terhadap cekaman kekeringan, yang melibatkan respons pada tingkat fisiologis dan morfologis. Memahami respons ini krusial untuk mengembangkan varietas padi yang lebih tangguh.</p>
+
+                <h5>1. Respons Fisiologis Padi terhadap Kekeringan:</h5>
+                <p>Ketika pasokan air berkurang, padi segera menginisiasi perubahan fisiologis untuk bertahan hidup:</p>
+                <ul>
+                    <li><b>Penutupan Stomata:</b> Daun memiliki pori-pori kecil bernama stomata yang mengatur pertukaran gas dan transpirasi (penguapan air). Saat kekeringan, stomata akan menutup untuk mengurangi kehilangan air melalui transpirasi.</li>
+                    <li><b>Penurunan Laju Transpirasi:</b> Akibat penutupan stomata, laju penguapan air dari daun sangat berkurang. Ini adalah mekanisme pertahanan utama untuk menghemat air.</li>
+                    <li><b>Penggulungan Daun:</b> Daun dapat menggulung ke dalam untuk mengurangi luas permukaan yang terpapar langsung ke sinar matahari, sehingga mengurangi kehilangan air akibat penguapan.</li>
+                    <li><b>Penurunan Pertukaran Gas:</b> Penutupan stomata juga berarti berkurangnya masuknya karbon dioksida (CO₂) ke dalam daun, serta berkurangnya keluarnya oksigen (O₂).</li>
+                    <li><b>Hambatan Fotosintesis:</b> Karena kekurangan CO₂ dan kemungkinan berkurangnya penyerapan radiasi matahari (akibat daun menggulung), laju fotosintesis—proses produksi makanan utama tanaman—menurun drastis.</li>
+                </ul>
+
+                <h5>2. Perubahan Morfologis Padi (Sebagai Dampak Respons Fisiologis):</h5>
+                <p>Respons fisiologis yang berkepanjangan akan memicu perubahan nyata pada struktur fisik tanaman:</p>
+                <ul>
+                    <li><b>Pengurangan Ukuran Kanopi:</b> Jumlah daun yang lebih sedikit dan luas permukaan daun per rumpun yang berkurang, menyebabkan kanopi tanaman menjadi lebih kecil dan kurang rimbun.</li>
+                    <li><b>Penurunan Jumlah Anakan:</b> Tanaman padi menghasilkan anakan (tunas baru dari pangkal batang). Kekeringan menghambat pembentukan anakan, baik anakan total maupun anakan produktif yang menghasilkan gabah.</li>
+                    <li><b>Penundaan Pembungaan dan Pematangan Gabah:</b> Siklus perkembangan tanaman terganggu, menyebabkan pembungaan dan pematangan gabah menjadi lebih lambat, atau bahkan tidak terjadi sama sekali.</li>
+                    <li><b>Penurunan Berat Biomassa dan Hasil Gabah:</b> Akibat semua perubahan di atas, pertumbuhan tanaman terhambat, biomassa total (berat kering tanaman) menurun, dan yang paling krusial, komponen hasil seperti jumlah gabah per malai dan berat gabah secara keseluruhan berkurang drastis.</li>
+                </ul>
+
+                <p><b>Dampak Keseluruhan dan Upaya Mitigasi:</b></p>
+                <p>Dampak kumulatif dari respons fisiologis dan morfologis ini adalah <b>penurunan signifikan dalam pertumbuhan, perkembangan, dan produksi padi.</b> Tingkat keparahan dampaknya sangat bergantung pada tingkat keparahan kekeringan serta varietas padi yang ditanam, karena beberapa genotipe padi memiliki mekanisme adaptasi dan toleransi yang lebih baik terhadap kekeringan.</p>
+                <p>Untuk meminimalkan dampak cekaman kekeringan pada tanaman padi, berbagai upaya dapat dilakukan, antara lain:</p>
+                <ul>
+                    <li><b>Pengembangan Varietas Unggul:</b> Menseleksi dan memuliakan varietas padi yang secara genetik lebih toleran terhadap kekeringan.</li>
+                    <li><b>Manajemen Irigasi yang Efisien:</b> Menggunakan teknik irigasi hemat air seperti irigasi berselang (Alternate Wetting and Drying/AWD) yang menghemat air tanpa mengurangi hasil.</li>
+                    <li><b>Praktik Agronomi Adaptif:</b> Meliputi penyesuaian jadwal tanam, penggunaan mulsa untuk menjaga kelembaban tanah, dan peningkatan bahan organik tanah untuk meningkatkan kapasitas penyimpanan air.</li>
+                    <li><b>Sistem Peringatan Dini:</b> Implementasi teknologi untuk memprediksi dan memantau kondisi kekeringan agar petani dapat mengambil tindakan pencegahan.</li>
+                    <li><b>Penelitian dan Inovasi Berkelanjutan:</b> Mendalami pemahaman tentang respons molekuler dan genetik padi terhadap kekeringan untuk menemukan solusi jangka panjang.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Refleksi</h2>
+            <p>Setelah mempelajari topik iritabilitas pada tumbuhan ini, mari kita luangkan waktu sejenak untuk merefleksikan pemahaman kita:</p>
+            <ol>
+                <li><b>Apa yang sudah dipelajari dan seberapa dalam pemahaman Anda atas pembelajaran pada bab ini?</b> Apakah Anda dapat menjelaskan konsep iritabilitas, perbedaan respons terhadap stimulus internal (nutrisi) dan eksternal (cahaya, sentuhan, suhu, panjang siang-malam), serta implikasinya dalam kehidupan sehari-hari (misalnya, hidroponik atau cekaman kekeringan)?</li>
+                <li><b>Bagian mana materi yang belum Anda pahami sepenuhnya?</b> Apakah ada jenis respons tertentu yang masih membingungkan, atau mekanisme di baliknya (misalnya, peran hormon atau perubahan tekanan turgor) yang perlu pendalaman lebih lanjut?</li>
+                <li><b>Apa yang akan Anda lakukan untuk meningkatkan pemahaman Anda tentang materi ini?</b> Apakah Anda akan mengulang membaca materi, mencari sumber belajar tambahan (video, artikel ilmiah), berdiskusi dengan teman atau guru, atau bahkan mencoba melakukan pengamatan sederhana pada tumbuhan di sekitar Anda?</li>
+            </ol>
+            <p>Kemampuan tumbuhan untuk merespons lingkungannya adalah bukti keajaiban alam dan kompleksitas kehidupan. Pemahaman akan iritabilitas membuka wawasan kita tentang adaptasi organisme dan pentingnya menjaga keseimbangan ekosistem.</p>
+        </section>
+
+    </div>
+</body>
+</html>
+```

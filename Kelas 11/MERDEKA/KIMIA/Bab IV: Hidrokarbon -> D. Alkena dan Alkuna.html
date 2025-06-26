@@ -1,0 +1,542 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alkena dan Alkuna - Kimia Hidrokarbon</title>
+    <style>
+        /* --- Light Mode Theme Colors --- */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Headings --- */
+        h1, h2, h3, h4 {
+            margin-top: 20px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--primary-blue); /* Changed from text-primary for emphasis */
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--primary-blue);
+        }
+        
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        /* --- Paragraphs & Lists --- */
+        p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul li, ol li {
+            margin-bottom: 8px;
+        }
+
+        /* --- Card Components --- */
+        .card {
+            background-color: #fcfcfc; /* Slightly off-white for subtle depth */
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-header {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        /* --- Table Styling --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners apply to content */
+        }
+
+        table thead {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+        }
+
+        table th, table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-divider);
+            color: var(--text-primary);
+        }
+
+        table th {
+            font-weight: bold;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        table tbody tr:hover {
+            background-color: #e8e8e8;
+            transition: background-color 0.2s ease;
+        }
+
+        /* --- Specific Content Styling --- */
+        .highlight {
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .code-block {
+            background-color: #eceff1; /* Light grey */
+            color: var(--text-primary);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'monospace';
+            overflow-x: auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-divider);
+            display: inline-block; /* Make it fit content width */
+            white-space: nowrap; /* Prevent breaking lines inside the code block */
+        }
+
+        /* --- Example Section Styling --- */
+        .example-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .example-item {
+            flex: 1 1 calc(50% - 25px); /* Two columns, with gap */
+            min-width: 320px; /* Minimum width before wrapping */
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            padding: 25px;
+            background-color: #fff;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .example-item h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .structure {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'monospace';
+            white-space: pre-wrap; /* Allows breaking lines for long structures */
+            line-height: 1.4;
+            padding: 15px;
+            background-color: #e0f7fa; /* Very light cyan */
+            border-radius: 6px;
+            margin-bottom: 20px;
+            overflow-x: auto; /* For very long single lines */
+            color: var(--text-primary);
+            font-size: 0.95em;
+            border: 1px solid #b2ebf2; /* A slightly darker border for structure */
+        }
+
+        .structure .label {
+            color: var(--text-tertiary);
+            font-size: 0.85em;
+            display: block;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .explanation {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            flex-grow: 1; /* Allows explanation to fill remaining space */
+        }
+
+        .explanation ol {
+            margin-left: 15px; /* Adjust list indentation within explanation */
+        }
+        .explanation ol li {
+            margin-bottom: 10px;
+        }
+        .explanation .highlight {
+            color: var(--primary-blue); /* Use primary blue for final answer highlights */
+        }
+        .explanation strong {
+            color: var(--accent-green);
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+            
+            .card-header {
+                font-size: 1.2em;
+            }
+
+            table th, table td {
+                padding: 10px 12px;
+                font-size: 0.85em;
+            }
+
+            .example-item {
+                flex: 1 1 100%; /* Single column on smaller screens */
+                min-width: unset; /* Remove min-width restriction */
+            }
+
+            .code-block {
+                display: block; /* Force block display for better readability on small screens */
+                width: calc(100% - 30px); /* Adjust width for padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            .card {
+                padding: 15px;
+            }
+            table th, table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab IV: Hidrokarbon - D. Alkena dan Alkuna</h1>
+
+        <div class="card">
+            <div class="card-header">Pengenalan Senyawa Alkena dan Alkuna</div>
+            <p>
+                Dalam kimia organik, kita akan mempelajari beragam jenis senyawa yang membentuk dasar kehidupan dan berbagai material di sekitar kita. Di antara mereka, terdapat senyawa hidrokarbon tak jenuh yang dikenal sebagai <span class="highlight">Alkena</span> dan <span class="highlight">Alkuna</span>. Keduanya tergolong sebagai senyawa alifatik, yang berarti memiliki struktur rantai terbuka atau siklis sederhana, bukan cincin aromatik.
+            </p>
+            <p>
+                Ciri khas utama alkena dan alkuna yang membedakannya dari alkana adalah keberadaan <span class="highlight">ikatan rangkap</span> antara atom-atom karbon. Kehadiran ikatan rangkap ini menjadikan mereka "tak jenuh", menunjukkan bahwa mereka memiliki potensi untuk mengikat lebih banyak atom hidrogen jika ikatan rangkap tersebut putus.
+            </p>
+            <ul>
+                <li>
+                    <span class="highlight">Alkena:</span> Merupakan senyawa hidrokarbon yang mengandung setidaknya satu <span class="highlight">ikatan rangkap dua (C=C)</span> antara dua atom karbon. Ikatan rangkap dua ini tersusun dari satu ikatan sigma (σ) dan satu ikatan pi (π).
+                </li>
+                <li>
+                    <span class="highlight">Alkuna:</span> Merupakan senyawa hidrokarbon yang mengandung setidaknya satu <span class="highlight">ikatan rangkap tiga (C≡C)</span> antara dua atom karbon. Ikatan rangkap tiga ini terdiri dari satu ikatan sigma (σ) dan dua ikatan pi (π).
+                </li>
+            </ul>
+            <p>
+                Untuk dapat membentuk ikatan rangkap dua atau tiga, diperlukan setidaknya <span class="highlight">dua atom karbon</span>. Oleh karena itu, jumlah atom karbon minimal pada alkena dan alkuna adalah dua.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Rumus Umum Senyawa Alkena dan Alkuna</div>
+            <p>
+                Untuk memudahkan dalam mengidentifikasi dan memahami komposisi senyawa alkena dan alkuna, kita menggunakan rumus umum yang menghubungkan jumlah atom karbon (n) dengan jumlah atom hidrogen.
+            </p>
+            <ul>
+                <li>
+                    Untuk <span class="highlight">Alkena</span> dengan satu ikatan rangkap dua, rumus umumnya adalah:
+                    <div class="code-block">C<sub>n</sub>H<sub>2n</sub></div>
+                    Ini berarti bahwa untuk setiap atom karbon, ada dua atom hidrogen. Misalnya, jika n=2 (etena), maka H = 2 * 2 = 4 (C₂H₄).
+                </li>
+                <li>
+                    Untuk <span class="highlight">Alkuna</span> dengan satu ikatan rangkap tiga, rumus umumnya adalah:
+                    <div class="code-block">C<sub>n</sub>H<sub>2n-2</sub></div>
+                    Jumlah hidrogen berkurang dua dibandingkan alkena karena adanya satu ikatan rangkap tambahan. Misalnya, jika n=2 (etuna), maka H = (2 * 2) - 2 = 2 (C₂H₂).
+                </li>
+            </ul>
+            <p>
+                Perlu diingat bahwa rumus umum ini berlaku untuk senyawa dengan hanya satu ikatan rangkap (baik rangkap dua atau tiga). Untuk senyawa dengan lebih dari satu ikatan rangkap (misalnya diena, triena, diuna, dsb.), rumusnya akan sedikit berbeda.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Tabel Senyawa Alkena dan Alkuna Sederhana</div>
+            <p>Berikut adalah contoh-contoh senyawa alkena dan alkuna paling sederhana, beserta rumus molekul dan nama sistematis (IUPAC) yang diberikan berdasarkan jumlah atom karbonnya:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rumus Alkena</th>
+                        <th>Nama Alkena</th>
+                        <th>Rumus Alkuna</th>
+                        <th>Nama Alkuna</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>C₂H₄</td><td>Etena</td><td>C₂H₂</td><td>Etuna</td></tr>
+                    <tr><td>C₃H₆</td><td>Propena</td><td>C₃H₄</td><td>Propuna</td></tr>
+                    <tr><td>C₄H₈</td><td>Butena</td><td>C₄H₆</td><td>Butuna</td></tr>
+                    <tr><td>C₅H₁₀</td><td>Pentena</td><td>C₅H₈</td><td>Pentuna</td></tr>
+                    <tr><td>C₆H₁₂</td><td>Heksena</td><td>C₆H₁₀</td><td>Heksuna</td></tr>
+                    <tr><td>C₇H₁₄</td><td>Heptena</td><td>C₇H₁₂</td><td>Heptuna</td></tr>
+                    <tr><td>C₈H₁₆</td><td>Oktena</td><td>C₈H₁₄</td><td>Oktuna</td></tr>
+                    <tr><td>C₉H₁₈</td><td>Nonena</td><td>C₉H₁₆</td><td>Nonuna</td></tr>
+                    <tr><td>C₁₀H₂₀</td><td>Dekena</td><td>C₁₀H₁₈</td><td>Dekuna</td></tr>
+                </tbody>
+            </table>
+            <p>Dari tabel di atas, terlihat jelas pola penamaan yang digunakan: nama alkena selalu diakhiri dengan sufiks <span class="highlight">"-ena"</span>, sedangkan nama alkuna diakhiri dengan sufiks <span class="highlight">"-una"</span>. Awalan (seperti "met-", "et-", "prop-", dst.) menunjukkan jumlah atom karbon dalam rantai utama, mirip seperti pada alkana.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Aturan Tata Nama IUPAC untuk Alkena dan Alkuna</div>
+            <p>
+                Sistematisasi penamaan senyawa organik sangat penting agar setiap senyawa memiliki nama yang unik dan mudah dikenali di seluruh dunia. Tata nama IUPAC (International Union of Pure and Applied Chemistry) memberikan panduan yang jelas. Meskipun ada kemiripan dengan alkana, penamaan alkena dan alkuna memiliki prioritas dan aturan tambahan karena keberadaan ikatan rangkap.
+            </p>
+            <ol>
+                <li>
+                    <h3>Menentukan Rantai Utama</h3>
+                    <p>
+                        Langkah pertama adalah mengidentifikasi <span class="highlight">rantai karbon terpanjang yang WAJIB mengandung ikatan rangkap</span> (baik itu ikatan rangkap dua untuk alkena atau ikatan rangkap tiga untuk alkuna).
+                    </p>
+                    <ul>
+                        <li>Jika senyawa memiliki ikatan rangkap dua, rantai utama diberi nama alkena (akhiran "-ena").</li>
+                        <li>Jika senyawa memiliki ikatan rangkap tiga, rantai utama diberi nama alkuna (akhiran "-una").</li>
+                        <li>Dalam kasus senyawa yang memiliki ikatan rangkap dua dan tiga sekaligus, rantai utama harus mengandung keduanya, dan prioritas penomoran akan diberikan pada ikatan rangkap yang pertama ditemui, namun nama utamanya akan menjadi "enuna" (misalnya, pentenuna).</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Menentukan Cabang (Gugus Alkil)</h3>
+                    <p>
+                        Setelah rantai utama ditentukan, setiap gugus karbon yang melekat pada rantai utama tetapi bukan bagian dari rantai tersebut dianggap sebagai <span class="highlight">cabang</span>. Cabang-cabang ini diberi nama sesuai dengan nama gugus alkil yang sesuai (misalnya, metil, etil, propil, dll.).
+                    </p>
+                </li>
+                <li>
+                    <h3>Penomoran Rantai Utama</h3>
+                    <p>
+                        Rantai utama harus diberi nomor dari salah satu ujung sedemikian rupa sehingga <span class="highlight">ikatan rangkap mendapatkan nomor posisi terendah</span> (terkecil). Ini adalah prioritas utama dalam penomoran.
+                    </p>
+                    <ul>
+                        <li>Jika ada lebih dari satu ikatan rangkap, nomorilah dari ujung yang memberikan nomor terendah pada ikatan rangkap pertama yang ditemui.</li>
+                        <li>Jika ikatan rangkap memiliki posisi yang sama dari kedua ujung, maka penomoran dilakukan agar cabang mendapatkan nomor terendah.</li>
+                        <li>Jika masih sama, urutan abjad cabang menentukan penomoran.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>
+                Setelah ketiga poin penting di atas terpenuhi, sisa tahapan tata nama, seperti penyusunan nama cabang berdasarkan abjad (jika lebih dari satu), penggunaan awalan di-, tri-, tetra- untuk cabang atau ikatan rangkap yang sama, dan penulisan nomor posisi, akan mengikuti aturan yang sama seperti pada penamaan alkana.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Nama Trivial (Nama Populer/Dagang)</div>
+            <p>
+                Selain sistematisasi IUPAC yang ketat, beberapa senyawa alkena dan alkuna juga dikenal luas dengan nama-nama non-sistematis atau populer, yang disebut <span class="highlight">nama trivial</span> atau nama dagang. Nama-nama ini sering kali lebih pendek dan lebih sering digunakan dalam percakapan sehari-hari atau di industri.
+            </p>
+            <ul>
+                <li>
+                    Senyawa <span class="code-block">C₂H₄</span>, yang secara IUPAC disebut "Etena", memiliki nama trivial yang sangat umum: <span class="highlight">Etilena</span>. Etilena adalah bahan baku penting dalam industri polimer (pembuatan polietilena).
+                </li>
+                <li>
+                    Senyawa <span class="code-block">C₂H₂</span>, yang secara IUPAC disebut "Etuna", dikenal luas dengan nama trivial <span class="highlight">Asetilena</span>. Asetilena digunakan secara luas dalam pengelasan (obor oksi-asetilena) dan sebagai bahan baku sintesis organik.
+                </li>
+            </ul>
+            <p>Meskipun IUPAC mendorong penggunaan nama sistematis untuk kejelasan ilmiah, mengenali nama-nama trivial ini juga penting karena sering muncul dalam berbagai konteks.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Analisis Contoh Penamaan Senyawa</div>
+            <p>Mari kita aplikasikan aturan tata nama IUPAC yang telah kita pelajari pada dua contoh senyawa yang sering ditemukan:</p>
+
+            <div class="example-box">
+                <div class="example-item">
+                    <h4>Contoh 1: Senyawa Alkena - 3,3-dimetil-1-butena</h4>
+                    <div class="structure">
+<span class="label">Struktur Kimia:</span>
+      CH₃
+      |
+H₃C - C - CH = CH₂
+      |
+      CH₃
+                    </div>
+                    <div class="explanation">
+                        <p><strong>Langkah-langkah Penamaan:</strong></p>
+                        <ol>
+                            <li>
+                                <p><strong>Menentukan Rantai Utama:</strong></p>
+                                <p>Cari rantai karbon terpanjang yang mengandung ikatan rangkap dua (C=C).</p>
+                                <div class="structure">
+<span class="label">Identifikasi Rantai Utama (4 karbon):</span>
+         CH₃
+         |
+    H₃C - C - CH = CH₂
+         |
+         CH₃
+    (Rantai lurus 4 karbon: C-C-C=C)
+                                </div>
+                                <p>Rantai ini memiliki 4 atom karbon dan satu ikatan rangkap dua, sehingga nama dasarnya adalah "Butena".</p>
+                            </li>
+                            <li>
+                                <p><strong>Penomoran Rantai Utama:</strong></p>
+                                <p>Nomorilah rantai dari ujung yang terdekat dengan ikatan rangkap. Dalam hal ini, ikatan rangkap berada di ujung kanan.</p>
+                                <div class="structure">
+<span class="label">Penomoran yang Benar:</span>
+         CH₃
+         |
+⁴H₃C - ³C - ²CH = ¹CH₂
+         |
+         CH₃
+                                </div>
+                                <p>Ikatan rangkap terletak pada karbon nomor 1. Oleh karena itu, namanya menjadi "1-butena".</p>
+                            </li>
+                            <li>
+                                <p><strong>Menentukan Cabang dan Posisinya:</strong></p>
+                                <p>Terdapat dua gugus metil (-CH₃) yang melekat pada atom karbon nomor 3.</p>
+                                <p>Nama cabang: "3,3-dimetil". (Di- karena ada dua gugus metil).</p>
+                            </li>
+                            <li>
+                                <p><strong>Gabungkan Semua Bagian Nama:</strong></p>
+                                <p>Gabungkan nama cabang, posisinya, dan nama rantai utama beserta posisi ikatan rangkap.</p>
+                                <p class="highlight"><strong>Nama IUPAC: 3,3-dimetil-1-butena</strong></p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="example-item">
+                    <h4>Contoh 2: Senyawa Alkuna - 4-metil-2-pentuna</h4>
+                    <div class="structure">
+<span class="label">Struktur Kimia:</span>
+                  CH₃
+                  |
+H₃C - CH - C ≡ C - CH₃
+                    </div>
+                    <div class="explanation">
+                        <p><strong>Langkah-langkah Penamaan:</strong></p>
+                        <ol>
+                            <li>
+                                <p><strong>Menentukan Rantai Utama:</strong></p>
+                                <p>Cari rantai karbon terpanjang yang mengandung ikatan rangkap tiga (C≡C).</p>
+                                <div class="structure">
+<span class="label">Identifikasi Rantai Utama (5 karbon):</span>
+                  CH₃
+                  |
+    H₃C - CH - C ≡ C - CH₃
+    (Rantai lurus 5 karbon: C-C-C≡C-C)
+                                </div>
+                                <p>Rantai ini memiliki 5 atom karbon dan satu ikatan rangkap tiga, sehingga nama dasarnya adalah "Pentuna".</p>
+                            </li>
+                            <li>
+                                <p><strong>Penomoran Rantai Utama:</strong></p>
+                                <p>Nomorilah rantai dari ujung yang terdekat dengan ikatan rangkap. Mari kita coba dari kedua sisi:</p>
+                                <div class="structure">
+<span class="label">Penomoran dari Kiri:</span>
+¹H₃C - ²CH - ³C ≡ ⁴C - ⁵CH₃  (Ikatan rangkap pada C3)
+       |
+       CH₃
+
+<span class="label">Penomoran dari Kanan:</span>
+⁵H₃C - ⁴CH - ³C ≡ ²C - ¹CH₃  (Ikatan rangkap pada C2)
+       |
+       CH₃
+                                </div>
+                                <p>Karena penomoran dari kanan memberikan nomor ikatan rangkap yang lebih kecil (2 vs 3), maka penomoran dari kanan adalah yang benar. Ikatan rangkap terletak pada karbon nomor 2. Oleh karena itu, namanya menjadi "2-pentuna".</p>
+                            </li>
+                            <li>
+                                <p><strong>Menentukan Cabang dan Posisinya:</strong></p>
+                                <p>Terdapat satu gugus metil (-CH₃) yang melekat pada atom karbon nomor 4 (berdasarkan penomoran yang benar).</p>
+                                <p>Nama cabang: "4-metil".</p>
+                            </li>
+                            <li>
+                                <p><strong>Gabungkan Semua Bagian Nama:</strong></p>
+                                <p>Gabungkan nama cabang, posisinya, dan nama rantai utama beserta posisi ikatan rangkap.</p>
+                                <p class="highlight"><strong>Nama IUPAC: 4-metil-2-pentuna</strong></p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```

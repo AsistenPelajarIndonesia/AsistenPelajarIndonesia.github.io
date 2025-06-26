@@ -1,0 +1,558 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Kelainan pada Pertukaran dan Transpor Zat - Biologi Kelas XI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background_canvas);
+            color: var(--text_primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text_primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 { 
+            font-size: 2.5em; 
+            border-bottom: 2px solid var(--border_divider); 
+            padding-bottom: 10px; 
+            color: var(--primary_blue);
+        }
+        h2 { 
+            font-size: 2em; 
+            color: var(--primary_blue); 
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border_divider);
+        }
+        h3 { 
+            font-size: 1.5em; 
+            color: var(--text_secondary); 
+        }
+        h4 { 
+            font-size: 1.2em; 
+            color: var(--text_tertiary); 
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text_secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: var(--text_secondary);
+        }
+        ul li {
+            margin-bottom: 0.5em;
+        }
+
+        a {
+            color: var(--primary_blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: var(--text_primary);
+        }
+
+        /* Section Styling */
+        .section {
+            background-color: var(--background_canvas);
+            border: 1px solid var(--border_divider);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Accordion Styling */
+        .accordion-item {
+            border: 1px solid var(--border_divider);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fcfcfc; /* Slightly off-white for accordions */
+        }
+
+        .accordion-header {
+            background-color: var(--primary_blue);
+            color: var(--background_canvas);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        .accordion-content {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border_divider);
+            display: none; /* Hidden by default */
+            color: var(--text_secondary);
+        }
+
+        .accordion-header .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .icon {
+            transform: rotate(180deg);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            border: 1px solid var(--border_divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary_blue);
+            color: var(--background_canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f5f5; /* Light grey for alternating rows */
+        }
+
+        tr:hover {
+            background-color: #e8e8e8; /* Slightly darker grey on hover */
+        }
+
+        /* Tooltip Styling */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            border-bottom: 1px dashed var(--primary_blue); /* Indicate it's clickable */
+            color: var(--primary_blue);
+            font-weight: 600;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            background-color: var(--text_secondary);
+            color: var(--background_canvas);
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the text */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            white-space: normal; /* Allow text to wrap */
+            min-width: 150px;
+            max-width: 250px;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--text_secondary) transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Activity Box Styling */
+        .activity-box {
+            background-color: #E3F2FD; /* Light blue */
+            border: 1px solid var(--primary_blue);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: var(--text_primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .activity-box h3 {
+            color: var(--primary_blue);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        .activity-box h3::before {
+            content: '💡'; /* Lightbulb icon */
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+
+        /* Reflection Box Styling */
+        .reflection-box {
+            background-color: #FFFDE7; /* Light yellow */
+            border: 1px solid var(--secondary_accent_amber);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: var(--text_primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .reflection-box h3 {
+            color: var(--secondary_accent_amber);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        .reflection-box h3::before {
+            content: '🧠'; /* Brain icon */
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+        .reflection-question {
+            font-weight: bold;
+            margin-top: 10px;
+            color: var(--text_primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px auto;
+                padding: 0 15px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+            h3 { font-size: 1.3em; }
+            th, td { padding: 8px 10px; }
+            .accordion-header { padding: 12px 15px; font-size: 1em; }
+            .accordion-content { padding: 12px 15px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            table { font-size: 0.85em; }
+            .activity-box, .reflection-box { padding: 15px; }
+            .tooltip-text {
+                left: 0;
+                transform: translateX(0);
+                min-width: unset;
+                max-width: 180px;
+                white-space: wrap;
+            }
+            .tooltip-text::after {
+                left: 20px; /* Adjust arrow position */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 4: Transpor dan Pertukaran Zat pada Manusia</h1>
+        <h2>C. Kelainan pada Pertukaran dan Transpor Zat</h2>
+
+        <div class="section">
+            <p>Kondisi tubuh yang sehat adalah cerminan dari proses fisiologi yang berjalan optimal dan seimbang. Namun, tubuh manusia tidak selalu dalam kondisi sempurna. Berbagai gangguan dan kelainan dapat terjadi, memengaruhi efisiensi kerja organ dan sistem.</p>
+            <p>Kelainan ini dapat dipicu oleh dua kategori faktor utama:</p>
+            <ul>
+                <li><strong>Faktor Internal:</strong> Meliputi kondisi bawaan atau genetik, serta penyakit keturunan yang memengaruhi struktur atau fungsi tubuh sejak lahir atau berkembang seiring waktu.</li>
+                <li><strong>Faktor Eksternal:</strong> Meliputi pengaruh dari lingkungan luar, seperti infeksi oleh mikroorganisme (bakteri, virus, jamur), paparan zat berbahaya, atau cedera fisik.</li>
+            </ul>
+            <p>Sangat banyak masalah kesehatan yang secara langsung berkaitan dengan terganggunya proses <strong>pertukaran</strong> dan <strong>transpor zat</strong> di dalam tubuh. Mengingat peran vital kedua proses ini dalam menjaga homeostasis, penting sekali untuk memantau indikator-indikator kondisi tubuh secara berkala, baik dengan metode manual maupun teknologi digital.</p>
+        </div>
+
+        <div class="activity-box">
+            <h3>Aktivitas: Mengenal Aplikasi Pengukur Tubuh</h3>
+            <p>Di era digital ini, perkembangan "startup" di bidang kesehatan telah menghadirkan beragam layanan kesehatan digital yang dapat diakses dengan mudah melalui gawai Anda. Salah satu inovasi yang relevan adalah aplikasi-aplikasi pengukur kondisi tubuh.</p>
+            <p>Melalui sentuhan pada sensor gawai atau pemanfaatan kamera, aplikasi ini dapat memberikan perkiraan pengukuran untuk berbagai parameter fisiologis dasar, seperti:</p>
+            <ul>
+                <li>Suhu tubuh</li>
+                <li>Denyut jantung (melalui deteksi perubahan warna kulit akibat aliran darah)</li>
+                <li>Kadar gula darah (meskipun ini seringkali membutuhkan sensor eksternal tambahan atau hanya perkiraan berdasarkan data yang diinput)</li>
+                <li>Dan indikator lainnya.</li>
+            </ul>
+            <p><strong>Catatan Penting:</strong> Perlu diingat bahwa hasil pengukuran dari aplikasi ini umumnya <strong>tidak dapat digunakan sebagai data medis yang akurat</strong> untuk diagnosis atau penentuan pengobatan. Aplikasi ini lebih berfungsi sebagai alat bantu pemantauan pribadi yang dapat memberikan gambaran umum tentang perubahan kondisi tubuh Anda pada tingkat akurasi dasar.</p>
+            <p>Anda dapat menjelajahi ketersediaan aplikasi semacam ini di <strong>Google Play Store</strong> (untuk perangkat Android) atau <strong>App Store</strong> (untuk perangkat iOS) dengan mencari kata kunci seperti "monitor kesehatan", "pengukur detak jantung", atau "termometer pintar".</p>
+        </div>
+
+        <div class="section">
+            <h2>Peradangan (Inflamasi): Respons Tubuh dan Dampaknya pada Pertukaran Zat</h2>
+            <p>Peradangan, atau inflamasi, adalah reaksi kompleks sistem kekebalan tubuh terhadap stimulus berbahaya seperti patogen, sel yang rusak, atau iritan. Ini adalah gejala umum dari kelainan jaringan yang sering terjadi di berbagai organ tubuh, termasuk yang terlibat dalam pertukaran zat.</p>
+            <p>Tujuan utama peradangan adalah untuk menghilangkan penyebab awal cedera sel dan membuang jaringan serta sel yang rusak, sehingga proses penyembuhan dapat dimulai. Respons ini memfasilitasi peningkatan mobilitas sel darah putih menuju area yang terinfeksi atau cedera.</p>
+
+            <h3>Ciri-ciri Klasik Peradangan:</h3>
+            <p>Peradangan umumnya ditandai oleh empat tanda kardinal (ditemukan oleh Celsus) dan satu tanda tambahan (ditemukan oleh Galen):</p>
+            <ul>
+                <li><span class="tooltip-container"><strong>Pembengkakan (<em>Tumor</em>)</strong><span class="tooltip-text">Pembesaran area yang meradang akibat akumulasi cairan (edema) dan sel-sel imun yang berpindah dari pembuluh darah.</span></span>: Terjadi akibat penumpukan cairan (plasma darah dan sel imun) di ruang interstitial.</li>
+                <li><span class="tooltip-container"><strong>Kemerahan (<em>Rubor</em>)</strong><span class="tooltip-text">Peningkatan aliran darah ke area yang meradang karena pelebaran pembuluh darah (vasodilatasi) yang membawa lebih banyak darah kaya oksigen.</span></span>: Disebabkan oleh pelebaran pembuluh darah (vasodilatasi) yang meningkatkan aliran darah ke area yang meradang.</li>
+                <li><span class="tooltip-container"><strong>Nyeri (<em>Dolor</em>)</strong><span class="tooltip-text">Stimulasi ujung saraf nyeri oleh zat-zat kimia inflamasi (seperti bradikinin, prostaglandin) dan tekanan dari pembengkakan jaringan.</span></span>: Timbul akibat pelepasan zat-zat kimia pro-inflamasi yang menstimulasi ujung saraf, serta tekanan fisik dari pembengkakan.</li>
+                <li><span class="tooltip-container"><strong>Peningkatan Suhu Lokal (<em>Calor</em>)</strong><span class="tooltip-text">Peningkatan suhu di area yang meradang akibat peningkatan aliran darah dan aktivitas metabolik sel imun.</span></span>: Disebabkan oleh peningkatan aliran darah dan peningkatan aktivitas metabolik sel di area yang terinfeksi.</li>
+                <li>Fungsi Menurun (<em>Functio Laesa</em>): Penurunan atau hilangnya fungsi pada jaringan atau organ yang meradang. Kondisi ini secara langsung menyebabkan fungsi jaringan yang mengalami peradangan akan terganggu, termasuk efisiensinya dalam mengatur pertukaran zat.</li>
+            </ul>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Mekanisme Dasar Respons Peradangan <span class="icon">&#9660;</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Meskipun tampak kompleks, respons peradangan mengikuti serangkaian tahapan yang terkoordinasi:</p>
+                    <ol>
+                        <li><strong>Pengenalan Kerusakan atau Patogen:</strong> Ketika ada luka terbuka atau infeksi oleh patogen, sel-sel yang rusak dan sel-sel imun penjaga (seperti makrofag dan mastosit) di area tersebut segera mendeteksi ancaman.</li>
+                        <li><strong>Pelepasan Mediator Kimia:</strong> Sel-sel yang mendeteksi ancaman ini melepaskan berbagai mediator kimia, termasuk <strong>histamin</strong>, bradikinin, dan prostaglandin. Histamin, misalnya, adalah pemicu utama respons peradangan awal.</li>
+                        <li><strong>Vasodilatasi dan Peningkatan Permeabilitas Vaskular:</strong> Mediator kimia ini menyebabkan pembuluh darah di area yang cedera atau terinfeksi mengalami <strong>vasodilatasi (pelebaran)</strong>. Pelebaran ini meningkatkan aliran darah ke lokasi tersebut, menghasilkan <em>rubor</em> (kemerahan) dan <em>calor</em> (peningkatan suhu). Bersamaan dengan itu, dinding kapiler menjadi lebih "bocor" atau permeabel, memungkinkan plasma darah (cairan) dan protein, serta sel darah putih, untuk keluar dari aliran darah dan masuk ke ruang jaringan (ruang interstitial). Ini adalah penyebab utama <em>tumor</em> (pembengkakan).</li>
+                        <li><strong>Migrasi Sel Darah Putih (Leukosit):</strong> Sel darah putih, terutama neutrofil dan makrofag, yang kini dapat melewati dinding pembuluh darah yang lebih permeabel, mulai bermigrasi secara aktif menuju sumber sinyal kimia dari patogen atau jaringan yang rusak. Proses ini disebut kemotaksis.</li>
+                        <li><strong>Fagositosis dan Pembersihan:</strong> Setelah mencapai lokasi infeksi, sel darah putih ini melakukan <strong>fagositosis</strong>, yaitu menelan dan mencerna patogen serta puing-puing sel yang rusak. Proses ini esensial untuk membersihkan area yang terinfeksi dan memulai proses perbaikan jaringan. Nyeri (<em>dolor</em>) dapat intensif selama tahap ini karena tekanan dari pembengkakan dan pelepasan lebih banyak mediator nyeri.</li>
+                    </ol>
+                    <p>Secara esensial, peradangan adalah upaya tubuh untuk mengisolasi, menghancurkan, dan membersihkan agen berbahaya, serta menyiapkan panggung untuk proses penyembuhan dan perbaikan jaringan.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Penyakit Peradangan dengan Gangguan Pertukaran Zat</h2>
+            <p>Banyak penyakit peradangan secara langsung memengaruhi organ-organ yang merupakan situs utama pertukaran zat, seperti usus (pencernaan dan penyerapan), paru-paru (pertukaran gas), dan ginjal (filtrasi dan ekskresi). Ketika organ-organ ini mengalami peradangan, efisiensi pertukaran zatnya dapat sangat terganggu, bahkan terhambat sepenuhnya.</p>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Tabel Penyakit Peradangan dan Dampaknya pada Pertukaran Zat <span class="icon">&#9660;</span>
+                </div>
+                <div class="accordion-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Penyakit</th>
+                                <th>Penyebab Umum</th>
+                                <th>Akibat pada Pertukaran Zat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td><strong>Gastritis</strong></td>
+                                <td>Peningkatan produksi asam lambung, infeksi bakteri <em>Helicobacter pylori</em>, stres, konsumsi alkohol/obat-obatan tertentu.</td>
+                                <td>Peradangan pada lapisan lambung menyebabkan pencernaan makanan menjadi tidak sempurna. Hal ini secara langsung menghambat penyerapan zat makanan esensial karena kerusakan pada sel-sel mukosa lambung yang bertanggung jawab atas proses tersebut.</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td><strong>Pankreatitis</strong></td>
+                                <td>Batu empedu yang menyumbat saluran pankreas, konsumsi alkohol berlebih, cedera abdomen, infeksi.</td>
+                                <td>Peradangan pankreas menurunkan produksi dan pelepasan enzim pencernaan (seperti amilase, lipase, protease) dan hormon (insulin, glukagon). Akibatnya, partikel makanan tidak dapat dipecah dan diserap dengan baik di usus kecil, mengganggu pertukaran nutrisi.</td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td><strong>Colitis</strong></td>
+                                <td>Peradangan kronis atau akut pada dinding usus besar, sering disebabkan oleh infeksi bakteri/virus, penyakit autoimun (misal, Kolitis Ulseratif, Penyakit Crohn).</td>
+                                <td>Peradangan merusak lapisan dalam usus, mengganggu fungsi utama usus besar yaitu penyerapan air dan elektrolit dari sisa makanan. Ini dapat menyebabkan diare, dehidrasi, dan gangguan keseimbangan elektrolit.</td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td><strong>Bronkhitis</strong></td>
+                                <td>Infeksi virus (akut), paparan iritan (asap rokok, polusi udara), kebiasaan merokok kronis, alkohol.</td>
+                                <td>Peradangan pada saluran bronkus menyebabkan pembengkakan dan produksi lendir berlebih, menyempitkan saluran napas. Hal ini menghambat penyaringan udara yang masuk, dan yang lebih penting, volume udara napas yang masuk dan keluar paru-paru berkurang, sehingga efisiensi pertukaran gas (oksigen dan karbon dioksida) di alveoli menurun.</td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td><strong>Tuberkulosis (TBC)</strong></td>
+                                <td>Infeksi bakteri <em>Mycobacterium tuberculosis</em>, terutama menyerang paru-paru.</td>
+                                <td>Bakteri TBC menyebabkan pembentukan granuloma (massa sel imun) dan kerusakan jaringan paru-paru. Batuk yang terus-menerus dan kerusakan struktural paru-paru secara langsung mengganggu area permukaan untuk pertukaran gas, mengurangi kemampuan paru-paru untuk mengambil oksigen dan mengeluarkan karbon dioksida.</td>
+                            </tr>
+                            <tr>
+                                <td>6.</td>
+                                <td><strong>Pneumonia</strong></td>
+                                <td>Infeksi berbagai jenis mikroba (bakteri, virus, jamur) yang menyebabkan peradangan kantung udara di paru-paru (alveoli).</td>
+                                <td>Peradangan menyebabkan alveoli dan saluran napas kecil terisi cairan, nanah, atau debris selular (konsolidasi). Lapisan alveolus yang seharusnya tipis untuk pertukaran gas, kini tertutup oleh cairan, sehingga menghambat difusi oksigen ke darah dan karbon dioksida keluar dari darah.</td>
+                            </tr>
+                            <tr>
+                                <td>7.</td>
+                                <td><strong>Nefritis</strong></td>
+                                <td>Cedera ginjal, infeksi bakteri/virus, reaksi hipersensitivitas imun (glomerulonefritis), penggunaan obat-obatan tertentu.</td>
+                                <td>Peradangan dapat terjadi pada bagian mana pun dari nefron (unit fungsional ginjal), termasuk glomerulus dan tubulus. Hal ini menghambat proses fisiologis utama ginjal seperti filtrasi darah (pembuangan limbah), reabsorpsi zat penting (air, glukosa, garam), dan sekresi zat lainnya. Akibatnya, terjadi penumpukan limbah berbahaya dalam darah dan gangguan keseimbangan cairan/elektrolit.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Pentingnya Gaya Hidup Sehat: Fondasi Pencegahan Gangguan Pertukaran Zat</h2>
+            <p>Mengingat berbagai penyebab dan dampak kelainan pada pertukaran zat, menjaga gaya hidup sehat menjadi sangat krusial. Ini bukan hanya tentang memulai kebiasaan baik, tetapi juga secara aktif menghindari kebiasaan buruk yang dapat memicu masalah kesehatan.</p>
+            <p>Beberapa kebiasaan yang berpotensi merusak organ-organ pertukaran zat meliputi:</p>
+            <ul>
+                <li><strong>Pola Makan Tidak Teratur:</strong> Dapat memicu masalah pencernaan seperti gastritis atau mengganggu metabolisme.</li>
+                <li><strong>Kurang Konsumsi Air Putih:</strong> Membebani ginjal dalam proses filtrasi dan mengganggu keseimbangan cairan tubuh.</li>
+                <li><strong>Merokok:</strong> Merusak paru-paru (bronkhitis, TBC, pneumonia), pembuluh darah, dan organ lainnya, secara langsung memengaruhi pertukaran gas dan transpor zat.</li>
+                <li><strong>Sering Menahan Buang Air Kecil (Urinasi):</strong> Dapat menyebabkan infeksi saluran kemih dan membebani ginjal, berpotensi memicu nefritis.</li>
+            </ul>
+            <p>Masyarakat perlu dilengkapi dengan informasi yang benar dan mudah diakses mengenai penyakit, faktor risiko, dan cara-cara pencegahannya. Edukasi adalah kunci untuk memberdayakan individu dalam membuat pilihan gaya hidup yang mendukung kesehatan.</p>
+
+            <div class="activity-box">
+                <h3>Aktivitas: Merancang Kampanye Edukasi Kesehatan Digital</h3>
+                <p>Bayangkan Anda seorang perancang kampanye kesehatan. Tugas Anda adalah mengembangkan konsep edukasi digital (seperti poster virtual interaktif atau infografis sederhana) untuk meningkatkan kesadaran masyarakat akan pentingnya gaya hidup sehat dalam mencegah gangguan pada sistem pertukaran zat.</p>
+                <ol>
+                    <li><strong>Pilih Fokus:</strong> Pilih satu jenis gangguan atau penyakit yang terkait dengan proses pertukaran zat yang telah kita bahas (misalnya, Bronkhitis Kronis, Nefritis, atau Colitis).</li>
+                    <li><strong>Jelaskan Dampaknya:</strong> Buat deskripsi singkat namun jelas tentang bagaimana penyakit tersebut memengaruhi proses pertukaran zat di dalam tubuh.</li>
+                    <li><strong>Solusi Gaya Hidup Sehat:</strong> Rancang setidaknya 3-5 langkah gaya hidup sehat yang dapat dilakukan untuk mencegah atau mengurangi risiko penyakit tersebut. Sertakan penjelasan singkat mengapa setiap langkah itu penting.</li>
+                    <li><strong>Pesan Kunci:</strong> Rumuskan pesan kunci yang mudah diingat untuk kampanye Anda.</li>
+                    <li><strong>Sajikan Konsep Anda:</strong> Dalam bentuk tulisan, jelaskan konsep "poster virtual" Anda. Bagaimana Anda akan menyajikan informasi tersebut agar menarik dan mudah dipahami oleh audiens umum? (Misalnya, penggunaan ikon, poin-poin singkat, warna yang menarik, dll.).</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="reflection-box">
+            <h3>Refleksi Pembelajaran</h3>
+            <p>Setelah menelaah materi mengenai kelainan pada pertukaran dan transpor zat, mari kita renungkan sejauh mana pemahaman Anda telah berkembang:</p>
+            <ol>
+                <li class="reflection-question"><strong>Pemahaman Konseptual:</strong> Apa saja poin-poin penting atau konsep-konsep utama yang paling berkesan bagi Anda dari pembelajaran ini? (Contoh: Mengapa pertukaran zat itu krusial, bagaimana peradangan memengaruhi fungsi organ, atau pentingnya menjaga gaya hidup).</li>
+                <li class="reflection-question"><strong>Relevansi dalam Kehidupan:</strong> Bagaimana pengetahuan yang Anda peroleh ini dapat Anda terapkan atau gunakan dalam kehidupan sehari-hari? Berikan contoh konkret. (Contoh: Dalam menjaga kesehatan pribadi, memilih makanan, menghindari kebiasaan buruk, atau memahami informasi kesehatan).</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Prinsip Kunci dari Uji Kompetensi: Pemahaman Proses Fisiologi</h2>
+            <p>Untuk menguji pemahaman Anda, mari kita ulas konsep-konsep penting yang sering menjadi fokus dalam soal uji kompetensi, khususnya terkait diagram dan interpretasi data.</p>
+
+            <h3>1. Dinamika Pertukaran Zat di Pembuluh Kapiler dan Sistem Limfatik</h3>
+            <p>Diagram yang menunjukkan struktur pembuluh kapiler, sel jaringan, dan pembuluh getah bening (limfa) adalah representasi kunci dari bagaimana tubuh memfasilitasi pertukaran materi esensial dan mengelola cairan interstisial.</p>
+            <ul>
+                <li><strong>Panah 1 (Dari Kapiler ke Sel Jaringan):</strong> Menggambarkan <strong>difusi zat nutrisi dan gas</strong> dari darah ke sel-sel tubuh. Contohnya adalah <strong>difusi oksigen</strong> (untuk respirasi seluler) dan <strong>difusi glukosa</strong> (sebagai sumber energi). Zat-zat ini bergerak dari area konsentrasi tinggi (di kapiler) ke area konsentrasi rendah (di sel jaringan).</li>
+                <li><strong>Panah 2 (Filtrasi dari Kapiler ke Ruang Interstitial):</strong> Menggambarkan <strong>aliran air dan zat terlarut berukuran kecil</strong> yang terfiltrasi keluar dari kapiler menuju ruang di antara sel-sel jaringan (ruang interstisial). Proses ini didorong oleh tekanan hidrostatik darah. Molekul protein plasma berukuran besar umumnya tidak dapat melewati dinding kapiler yang sehat dan tetap berada di dalam darah.</li>
+                <li><strong>Panah 3 (Dari Sel Jaringan ke Kapiler):</strong> Menggambarkan <strong>difusi produk limbah dan gas buangan</strong> dari sel-sel jaringan kembali ke kapiler. Contoh utamanya adalah <strong>difusi karbon dioksida</strong>, yang merupakan produk sampingan respirasi seluler dan perlu dibuang dari tubuh.</li>
+                <li><strong>Panah 4 (Dari Ruang Interstitial ke Pembuluh Limfa):</strong> Menggambarkan bagaimana sisa <strong>cairan jaringan (cairan interstisial)</strong> yang tidak direabsorpsi kembali ke kapiler, masuk ke dalam pembuluh getah bening (limfa). Sistem limfatik berperan penting dalam mengembalikan kelebihan cairan dan protein dari ruang interstisial kembali ke sirkulasi darah, serta dalam respons imun.</li>
+            </ul>
+            <p>Memahami arah dan jenis zat yang terlibat dalam setiap panah ini sangat penting untuk memahami homeostasis cairan dan nutrisi dalam tubuh.</p>
+
+            <h3>2. Analisis Tren Merokok dan Tingkat Kematian</h3>
+            <p>Menganalisis grafik yang menampilkan data persentase perokok dan tingkat kematian dalam rentang waktu yang panjang (misal, 1950-2000) memerlukan pemahaman tentang hubungan sebab-akibat dan efek jeda (<em>lag effect</em>).</p>
+            <ul>
+                <li><strong>Tren Persentase Perokok:</strong> Seringkali, grafik akan menunjukkan penurunan persentase perokok dari waktu ke waktu, terutama di negara-negara yang telah melakukan kampanye anti-rokok secara intensif. Penurunan ini mungkin lebih signifikan pada kelompok usia yang lebih muda yang tumbuh dengan kesadaran bahaya merokok.</li>
+                <li><strong>Tren Tingkat Kematian:</strong> Sebaliknya, tingkat kematian akibat penyakit terkait merokok mungkin menunjukkan peningkatan atau stabil pada tingkat tinggi, bahkan ketika persentase perokok menurun.</li>
+                <li><strong>Fenomena "Efek Jeda" (<em>Lag Effect</em>):</strong> Ini adalah poin kritis. Penyakit kronis yang berhubungan dengan merokok, seperti kanker paru-paru, penyakit jantung koroner, dan penyakit paru obstruktif kronis (PPOK), membutuhkan waktu bertahun-tahun, bahkan puluhan tahun, untuk berkembang. Jadi, penurunan jumlah perokok yang terjadi pada tahun 1980-an, misalnya, baru akan terlihat dampaknya pada penurunan tingkat kematian yang signifikan pada kelompok usia yang lebih tua di tahun 2000-an atau lebih jauh lagi. Artinya, kematian yang terjadi pada tahun 1990-an atau 2000-an mungkin merupakan konsekuensi dari kebiasaan merokok puluhan tahun sebelumnya.</li>
+            </ul>
+            <p><strong>Implikasi:</strong> Data semacam ini menekankan bahwa kebijakan kesehatan masyarakat yang ditujukan untuk mengurangi kebiasaan merokok adalah investasi jangka panjang. Dampak positifnya pada angka kematian akan terlihat, namun dengan penundaan waktu yang signifikan. Ini juga menunjukkan kompleksitas hubungan antara kebiasaan gaya hidup dan hasil kesehatan jangka panjang.</p>
+        </div>
+
+        <div class="section">
+            <h2>Pengayaan: Dampak Multiorgan COVID-19 pada Pertukaran Zat</h2>
+            <p>Infeksi virus SARS-CoV-2, penyebab penyakit COVID-19, awalnya dikenal sebagai penyakit pernapasan. Namun, data klinis dan penelitian menunjukkan bahwa virus ini tidak hanya terbatas pada paru-paru tetapi juga dapat menyebabkan gangguan pada berbagai organ tubuh lainnya. Hal ini menjelaskan spektrum gejala yang luas dan komplikasi yang dialami pasien COVID-19.</p>
+
+            <h3>Organ Selain Paru-paru yang Memiliki Fungsi Pertukaran Zat dan Rentan Terinfeksi COVID-19:</h3>
+            <p>Virus SARS-CoV-2 menggunakan reseptor ACE2 (Angiotensin-Converting Enzyme 2) untuk masuk ke dalam sel manusia. Reseptor ini banyak ditemukan tidak hanya di paru-paru, tetapi juga di organ-organ lain yang vital dalam pertukaran dan transpor zat:</p>
+            <ul>
+                <li><strong>Ginjal:</strong> Terlibat dalam filtrasi darah untuk membuang limbah dan menjaga keseimbangan cairan/elektrolit. Infeksi dapat menyebabkan cedera ginjal akut (AKI), mengganggu kemampuan ginjal untuk menyaring darah.</li>
+                <li><strong>Usus (Saluran Pencernaan):</strong> Bertanggung jawab untuk penyerapan nutrisi dan air. Virus dapat menginfeksi sel-sel usus, menyebabkan peradangan yang mengganggu penyerapan zat penting dan keseimbangan cairan, mirip dengan gejala kolitis.</li>
+                <li><strong>Hati:</strong> Meskipun bukan organ pertukaran gas atau nutrisi langsung, hati adalah pusat metabolisme dan detoksifikasi, yang melibatkan pertukaran dan transformasi berbagai zat. Disfungsi hati akibat COVID-19 dapat mengganggu proses detoksifikasi dan sintesis protein yang penting untuk transpor.</li>
+                <li><strong>Jantung dan Pembuluh Darah:</strong> Berperan dalam transpor oksigen dan nutrisi ke seluruh tubuh melalui sistem sirkulasi. COVID-19 dapat menyebabkan miokarditis (peradangan otot jantung), aritmia, atau pembentukan gumpalan darah (tromboemboli) yang dapat menghambat aliran darah, mengurangi suplai oksigen ke jaringan, dan memengaruhi pertukaran zat di tingkat seluler.</li>
+                <li><strong>Otak dan Sistem Saraf:</strong> Meskipun bukan organ pertukaran zat dalam pengertian difusi, kerusakan pada otak dapat memengaruhi pusat regulasi pernapasan dan sirkulasi, yang secara tidak langsung mengganggu efisiensi pertukaran gas dan transpor nutrisi ke seluruh tubuh. Virus juga dapat menyebabkan peradangan dan kerusakan pada pembuluh darah otak.</li>
+            </ul>
+
+            <h3>Bagaimana Infeksi Memengaruhi Proses Pertukaran Zat di Organ-organ Ini:</h3>
+            <p>Infeksi SARS-CoV-2 dapat mengganggu pertukaran zat melalui beberapa mekanisme utama:</p>
+            <ol>
+                <li><strong>Kerusakan Sel Langsung:</strong> Virus menginfeksi dan merusak sel-sel yang mengekspresikan ACE2 di organ-organ tersebut. Kerusakan ini mengganggu integritas struktur tempat pertukaran zat berlangsung, seperti membran alveoli di paru-paru atau sel-sel epitel di ginjal dan usus.</li>
+                <li><strong>Respons Inflamasi Berlebihan (Badai Sitokin):</strong> COVID-19 dapat memicu respons imun yang tidak proporsional, yang dikenal sebagai "badai sitokin." Pelepasan sitokin pro-inflamasi dalam jumlah besar menyebabkan peradangan sistemik dan kerusakan jaringan yang meluas. Peradangan ini dapat menyebabkan edema (pembengkakan akibat penumpukan cairan) di organ, yang memperpanjang jarak difusi dan menghambat pertukaran zat.</li>
+                <li><strong>Gangguan Koagulasi (Pembekuan Darah):</strong> Pasien COVID-19 memiliki risiko tinggi mengalami gangguan pembekuan darah, termasuk pembentukan mikrotrombus (gumpalan darah kecil) di pembuluh darah halus (kapiler) berbagai organ. Sumbatan ini menghambat aliran darah, mengurangi suplai oksigen dan nutrisi ke jaringan, serta mengganggu pembuangan produk limbah, sehingga secara drastis memengaruhi pertukaran zat.</li>
+                <li><strong>Kerusakan Endotel Vaskular:</strong> Virus dapat merusak sel-sel endotel yang melapisi pembuluh darah. Kerusakan ini menyebabkan vaskulitis (peradangan pembuluh darah) dan peningkatan kebocoran kapiler, yang tidak hanya mengganggu transpor zat melalui darah tetapi juga memperburuk edema jaringan dan kerusakan organ.</li>
+            </ol>
+            <p>Dengan demikian, dampak COVID-19 melampaui sistem pernapasan, secara signifikan mengganggu efisiensi pertukaran dan transpor zat di berbagai sistem organ, yang berkontribusi pada manifestasi klinis yang kompleks dan keparahan penyakit.</p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Accordion functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.icon');
+
+                    // Close all other accordions
+                    document.querySelectorAll('.accordion-content').forEach(c => {
+                        if (c !== content && c.style.display === 'block') {
+                            c.style.display = 'none';
+                            c.previousElementSibling.classList.remove('active');
+                            c.previousElementSibling.querySelector('.icon').innerHTML = '&#9660;';
+                        }
+                    });
+
+                    // Toggle current accordion
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none';
+                        this.classList.remove('active');
+                        icon.innerHTML = '&#9660;'; // Down arrow
+                    } else {
+                        content.style.display = 'block';
+                        this.classList.add('active');
+                        icon.innerHTML = '&#9650;'; // Up arrow
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```

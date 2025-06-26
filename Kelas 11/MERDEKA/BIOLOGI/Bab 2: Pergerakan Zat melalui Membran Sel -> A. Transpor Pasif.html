@@ -1,0 +1,422 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Pergerakan Zat melalui Membran Sel - Transpor Pasif</title>
+    <style>
+        /* Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        header h2 {
+            font-size: 1.8em;
+            margin: 5px 0 0;
+            font-weight: 500;
+            color: var(--secondary-accent-amber);
+        }
+
+        h3 {
+            color: var(--primary-blue);
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h4 {
+            color: var(--text-secondary);
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Specific text highlights */
+        .highlight-green {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .highlight-blue {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .term-highlight {
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+        }
+
+        /* Semantic boxes */
+        .info-box, .semantic-success, .semantic-error {
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .info-box {
+            background-color: rgba(33, 150, 243, 0.1); /* semantic_info with transparency */
+            border-color: var(--semantic-info);
+        }
+
+        .semantic-success {
+            background-color: rgba(76, 175, 80, 0.1); /* semantic_success with transparency */
+            border-color: var(--semantic-success);
+        }
+
+        .semantic-error {
+            background-color: rgba(211, 47, 47, 0.1); /* semantic_error with transparency */
+            border-color: var(--semantic-error);
+        }
+
+        /* Interactive Details/Summary */
+        details {
+            background-color: #F8F8F8; /* A light neutral background for details */
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        details:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        summary {
+            display: block; /* Ensures proper styling */
+            padding: 15px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--text-primary);
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            user-select: none;
+            background-color: #F0F0F0; /* Slightly darker than details content */
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        summary:hover {
+            background-color: #E8E8E8;
+        }
+
+        summary::marker {
+            display: none; /* Hide default marker */
+        }
+
+        summary::before {
+            content: '+'; /* Custom open/close indicator */
+            position: absolute;
+            right: 20px;
+            font-size: 1.2em;
+            font-weight: normal;
+            color: var(--text-tertiary);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::before {
+            content: '-';
+            transform: rotate(0deg);
+        }
+
+        .details-content {
+            padding: 15px 20px 10px;
+            border-top: 1px dashed var(--border-divider);
+            animation: fadeIn 0.4s ease-out; /* Simple fade-in animation for content */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #F8F8F8;
+            color: var(--text-tertiary);
+            border-top: 1px solid var(--border-divider);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main {
+                margin: 10px auto;
+                padding: 15px;
+            }
+
+            header {
+                padding: 20px 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+                margin-top: 30px;
+            }
+
+            h4 {
+                font-size: 1.1em;
+            }
+
+            summary {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+
+            summary::before {
+                right: 15px;
+            }
+
+            .details-content {
+                padding: 10px 15px 5px;
+            }
+
+            .info-box, .semantic-success, .semantic-error {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header h2 {
+                font-size: 1.2em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            summary {
+                font-size: 0.95em;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bab 2: Pergerakan Zat melalui Membran Sel</h1>
+        <h2>A. Transpor Pasif</h2>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h3>Pendahuluan: Memahami Gerakan Zat Melalui Membran Sel</h3>
+            <p>Membran plasma adalah komponen vital pada setiap sel hidup, bertindak sebagai gerbang yang mengatur keluar masuknya berbagai zat. Struktur membran plasma yang kompleks, dengan komponen-komponennya seperti lipid dan protein, memiliki fungsi spesifik yang memengaruhi proses transpor zat.</p>
+            <p>Secara umum, terdapat dua cara utama bagi zat untuk bergerak melintasi membran plasma: <span class="highlight-green">Transpor Pasif</span> dan <span class="highlight-blue">Transpor Aktif</span>. Perbedaan mendasar di antara keduanya terletak pada penggunaan energi sel. Pada bagian ini, kita akan fokus mendalami konsep <span class="highlight-green">Transpor Pasif</span>, yang merupakan pergerakan zat tanpa memerlukan energi dari sel.</p>
+        </section>
+
+        <section id="passive-transport-overview">
+            <h3>Apa itu Transpor Pasif?</h3>
+            <p>Transpor pasif adalah mekanisme pergerakan zat melintasi membran sel tanpa membutuhkan konsumsi energi metabolisme sel (ATP). Pergerakan ini terjadi secara spontan, didorong oleh perbedaan konsentrasi atau gradien elektrokimia antara dua sisi membran.</p>
+            <p>Pada dasarnya, zat cenderung bergerak dari area di mana konsentrasinya tinggi ke area di mana konsentrasinya rendah, menuju keadaan kesetimbangan. Terdapat beberapa jenis transpor pasif yang akan kita bahas lebih lanjut: <span class="term-highlight">Osmosis</span>, <span class="term-highlight">Difusi Sederhana</span>, dan <span class="term-highlight">Difusi Terfasilitasi</span>.</p>
+        </section>
+
+        <section id="osmosis">
+            <h3>1. Osmosis: Pergerakan Air Melintasi Membran</h3>
+            <details>
+                <summary>Definisi dan Mekanisme Osmosis</summary>
+                <div class="details-content">
+                    <p><strong>Osmosis</strong> adalah peristiwa khusus dari difusi, yaitu pergerakan molekul air (pelarut) melintasi <span class="term-highlight">membran semipermeabel</span> dari daerah dengan konsentrasi air yang tinggi (larutan hipotonik atau encer) ke daerah dengan konsentrasi air yang rendah (larutan hipertonik atau pekat). Tujuan dari pergerakan air ini adalah untuk mencapai keseimbangan konsentrasi zat terlarut di kedua sisi membran.</p>
+                    <p>Membran semipermeabel adalah membran yang memungkinkan molekul air melewatinya tetapi membatasi atau mencegah lewatnya molekul zat terlarut yang lebih besar.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Analogi Pembuatan Manisan Mangga</summary>
+                <div class="details-content">
+                    <p>Pernahkah Kalian bertanya mengapa daging buah mangga muda yang keras menjadi lunak saat diolah menjadi manisan dengan direndam dalam larutan gula? Fenomena ini adalah contoh klasik dari osmosis dalam kehidupan sehari-hari.</p>
+                    <ul>
+                        <li>Ketika potongan mangga direndam dalam <span class="term-highlight">larutan gula pekat (hipertonik)</span>, konsentrasi air di dalam sel-sel mangga (relatif lebih tinggi) akan lebih besar dibandingkan konsentrasi air di luar sel (larutan gula).</li>
+                        <li>Akibatnya, air akan bergerak keluar dari sel-sel mangga menuju larutan gula melalui membran sel.</li>
+                        <li>Keluarnya air dari sel menyebabkan sel-sel mangga kehilangan turgor, menjadi lembek, dan daging buah pun melunak. Selain itu, gula dari larutan juga akan masuk ke dalam sel melalui mekanisme difusi, membuat mangga menjadi manis.</li>
+                    </ul>
+                    <p class="info-box">Fenomena ini menunjukkan bagaimana perbedaan konsentrasi zat terlarut memicu pergerakan air dan mengubah kondisi sel.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Kondisi Larutan dan Dampaknya pada Sel (Tonicity)</summary>
+                <div class="details-content">
+                    <p>Hubungan konsentrasi zat terlarut antara di dalam dan di luar sel sangat penting untuk memahami efek osmosis. Tiga istilah kunci yang digunakan untuk menggambarkan osmolaritas relatif antar larutan adalah:</p>
+                    <ol>
+                        <li>
+                            <h4>Larutan Isotonik</h4>
+                            <p>Kondisi di mana konsentrasi zat terlarut di lingkungan luar sel sama dengan konsentrasi zat terlarut di dalam sel. Tidak ada pergerakan neto air. Sel berada dalam keadaan seimbang.</p>
+                            <ul>
+                                <li><strong>Sel Hewan (misalnya sel darah merah):</strong> Tetap normal. Air masuk dan keluar sel dengan laju yang sama.</li>
+                                <li><strong>Sel Tumbuhan:</strong> Dalam kondisi flaksid (lemas), karena tekanan turgor yang optimal tidak tercapai. Membran plasma tidak menekan dinding sel.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Larutan Hipotonik</h4>
+                            <p>Kondisi di mana konsentrasi zat terlarut di lingkungan luar sel lebih rendah dibandingkan konsentrasi zat terlarut di dalam sel. Ini berarti konsentrasi air di luar sel lebih tinggi.</p>
+                            <ul>
+                                <li><strong>Sel Hewan (misalnya sel darah merah):</strong> Air akan bergerak masuk ke dalam sel. Karena sel hewan tidak memiliki dinding sel, sel akan membengkak dan akhirnya bisa pecah (lisis atau hemolisis pada sel darah merah) akibat tekanan osmotik yang berlebihan.</li>
+                                <li><strong>Sel Tumbuhan:</strong> Air akan bergerak masuk ke dalam sel. Dinding sel yang kaku mencegah sel pecah. Sel akan menjadi <span class="highlight-green">turgid</span> (tegang dan keras) karena membran plasma menekan dinding sel, menciptakan tekanan turgor yang penting untuk mempertahankan bentuk dan kekakuan tumbuhan.</li>
+                            </ul>
+                            <p class="semantic-success">Kondisi turgid pada sel tumbuhan dalam larutan hipotonik adalah kondisi yang optimal.</p>
+                        </li>
+                        <li>
+                            <h4>Larutan Hipertonik</h4>
+                            <p>Kondisi di mana konsentrasi zat terlarut di lingkungan luar sel lebih tinggi dibandingkan konsentrasi zat terlarut di dalam sel. Ini berarti konsentrasi air di luar sel lebih rendah.</p>
+                            <ul>
+                                <li><strong>Sel Hewan (misalnya sel darah merah):</strong> Air akan bergerak keluar dari sel. Sel akan mengerut (krenasi) karena kehilangan air, menjadi keriput dan tidak berfungsi optimal.</li>
+                                <li><strong>Sel Tumbuhan:</strong> Air akan bergerak keluar dari sel. Membran plasma akan mengerut dan menjauhi dinding sel. Fenomena ini disebut <span class="semantic-error">plasmolisis</span>. Dinding sel tetap utuh, tetapi protoplas (bagian hidup sel) menyusut. Tumbuhan akan layu dan bisa mati jika kondisi ini berlanjut.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p class="info-box">Memahami konsep tonisitas ini sangat penting untuk menjelaskan berbagai fenomena biologis, mulai dari pengawetan makanan hingga penyerapan air oleh akar tumbuhan.</p>
+                </div>
+            </details>
+        </section>
+
+        <section id="simple-diffusion">
+            <h3>2. Difusi Sederhana: Gerakan Zat Tanpa Bantuan</h3>
+            <details>
+                <summary>Definisi dan Prinsip Dasar</summary>
+                <div class="details-content">
+                    <p><strong>Difusi Sederhana</strong> adalah pergerakan zat (selain air) melintasi membran sel dari area dengan konsentrasi tinggi ke area dengan konsentrasi rendah, tanpa bantuan protein transpor khusus dan tanpa penggunaan energi. Pergerakan ini terjadi hingga tercapai keadaan kesetimbangan, di mana konsentrasi zat merata di kedua sisi membran.</p>
+                    <p>Zat-zat yang dapat melakukan difusi sederhana umumnya adalah molekul kecil, non-polar, atau molekul gas yang dapat larut dalam lipid, seperti oksigen (O₂), karbon dioksida (CO₂), dan urea. Mereka dapat melewati lapisan ganda fosfolipid membran plasma secara langsung.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Contoh dalam Kehidupan Sehari-hari dan Organisme</summary>
+                <div class="details-content">
+                    <h4>Penyeduhan Teh Celup:</h4>
+                    <p>Saat teh celup dimasukkan ke dalam air panas, pigmen warna dan zat-zat lain dari teh akan menyebar ke seluruh air. Awalnya, konsentrasi zat teh sangat tinggi di dalam kantung teh. Seiring waktu, zat-zat ini akan bergerak keluar dari kantung teh menuju air yang konsentrasinya lebih rendah, menyebabkan air berubah warna hingga mencapai kesetimbangan.</p>
+                    <h4>Pertukaran Gas di Paru-paru Manusia:</h4>
+                    <p>Difusi sederhana adalah prinsip utama di balik pertukaran gas vital di paru-paru:</p>
+                    <ul>
+                        <li><strong>Oksigen (O₂):</strong> Konsentrasi oksigen di dalam alveolus (kantong udara di paru-paru) lebih tinggi daripada di dalam kapiler darah yang mengelilinginya. Oleh karena itu, oksigen akan berdifusi dari alveolus ke sel darah merah dalam kapiler.</li>
+                        <li><strong>Karbon Dioksida (CO₂):</strong> Konsentrasi karbon dioksida di dalam sel darah merah dalam kapiler lebih tinggi (sebagai produk metabolisme) daripada di dalam alveolus. Akibatnya, karbon dioksida akan berdifusi dari kapiler darah ke alveolus untuk kemudian dikeluarkan dari tubuh saat menghembuskan napas.</li>
+                    </ul>
+                    <p class="semantic-info">Gangguan pada proses difusi ini, seperti penebalan dinding alveolus atau kapiler, dapat menyebabkan masalah pernapasan serius karena menghambat pertukaran gas yang efisien.</p>
+                    <p>Contoh lain difusi sederhana dalam organisme meliputi:</p>
+                    <ul>
+                        <li>Penyerapan nutrisi tertentu di usus halus.</li>
+                        <li>Penyebaran hormon steroid (larut lemak) melintasi membran sel target.</li>
+                        <li>Pergerakan alkohol dan obat-obatan tertentu ke dalam sel.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="facilitated-diffusion">
+            <h3>3. Difusi Terfasilitasi: Bantuan Protein Membran</h3>
+            <details>
+                <summary>Definisi dan Mekanisme</summary>
+                <div class="details-content">
+                    <p><strong>Difusi Terfasilitasi (<em>Facilitated Diffusion</em>)</strong> adalah bentuk transpor pasif di mana zat bergerak melintasi membran sel dari area konsentrasi tinggi ke area konsentrasi rendah, tetapi membutuhkan bantuan protein transpor yang terintegrasi di dalam membran. Meskipun melibatkan protein, proses ini tidak memerlukan energi metabolisme (ATP) karena pergerakan masih mengikuti gradien konsentrasi.</p>
+                    <p>Zat-zat yang menggunakan difusi terfasilitasi umumnya adalah molekul yang lebih besar, polar, atau ion yang tidak dapat melewati lapisan ganda fosfolipid secara langsung. Protein transpor yang terlibat dapat berupa:</p>
+                    <ul>
+                        <li><strong>Protein Saluran (<em>Channel Proteins</em>):</strong> Membentuk saluran hidrofilik melalui membran yang memungkinkan lewatnya ion (misalnya, ion Na+, K+, Cl-) atau molekul kecil tertentu. Saluran ini seringkali spesifik untuk jenis ion tertentu dan bisa terbuka atau tertutup (gerbang) sebagai respons terhadap sinyal tertentu.</li>
+                        <li><strong>Protein Pembawa (<em>Carrier Proteins</em>):</strong> Mengikat molekul tertentu di satu sisi membran, mengubah bentuk (konformasi), dan melepaskan molekul tersebut di sisi lain membran. Proses ini lebih lambat dibandingkan protein saluran dan dapat menjadi jenuh jika semua situs pengikat protein pembawa terisi.</li>
+                    </ul>
+                    <p class="info-box">Setiap protein transpor biasanya spesifik untuk jenis molekul tertentu, memastikan bahwa hanya zat yang dibutuhkan yang dapat masuk atau keluar sel dengan efisien.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Contoh: Transpor Glukosa</summary>
+                <div class="details-content">
+                    <p>Salah satu contoh paling penting dari difusi terfasilitasi dalam tubuh manusia adalah transpor glukosa ke dalam sel. Glukosa adalah molekul penting yang berfungsi sebagai sumber energi utama bagi sel. Namun, glukosa memiliki ukuran yang "terlalu besar" dan bersifat polar sehingga tidak dapat langsung melewati membran plasma.</p>
+                    <p>Untuk mengatasi hal ini, sel menggunakan protein pembawa khusus yang disebut <span class="term-highlight">Transporter Glukosa (GLUT)</span>. GLUT akan mengikat molekul glukosa di lingkungan luar sel (misalnya, dari aliran darah yang kaya glukosa), kemudian mengalami perubahan bentuk untuk melepaskan glukosa ke dalam sel di mana konsentrasi glukosa lebih rendah.</p>
+                    <ul>
+                        <li><strong>Peran GLUT:</strong> GLUT berperan penting dalam menjaga homeostasis glukosa tubuh, memastikan sel-sel mendapatkan pasokan energi yang cukup. Konsentrasi glukosa di aliran darah biasanya terus menerus lebih tinggi dibandingkan konsentrasi glukosa dalam sel (kecuali pada kondisi tertentu), sehingga glukosa dapat terus berdifusi ke dalam sel.</li>
+                        <li><strong>Contoh GLUT-2:</strong> Jenis transporter glukosa seperti GLUT-2 ditemukan di pankreas, hati, dan ginjal, yang berperan dalam mengatur kadar glukosa darah.</li>
+                        <li><strong>Gangguan Transpor Glukosa:</strong> Jika terdapat gangguan pada fungsi atau jumlah transporter glukosa (misalnya, resistensi insulin yang memengaruhi GLUT-4 pada otot dan jaringan adiposa, atau kerusakan sel beta pankreas yang memengaruhi produksi insulin), glukosa tidak dapat masuk ke dalam sel dengan efisien, menyebabkan kadar glukosa darah meningkat. Kondisi ini dapat berujung pada penyakit seperti diabetes.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p>Penjelasan ini disusun sebagai panduan belajar untuk Bab 2: Pergerakan Zat melalui Membran Sel - Transpor Pasif dalam mata pelajaran Biologi Kelas XI. Materi ini adalah dasar penting untuk memahami fungsi sel dan organisme hidup.</p>
+    </footer>
+</body>
+</html>
+```

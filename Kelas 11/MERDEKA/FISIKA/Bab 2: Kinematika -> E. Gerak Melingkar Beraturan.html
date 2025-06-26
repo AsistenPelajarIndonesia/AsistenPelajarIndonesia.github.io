@@ -1,0 +1,371 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Kinematika - E. Gerak Melingkar Beraturan</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            color: var(--primary-blue);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            border-bottom: 1px solid var(--primary-blue);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--accent-green);
+        }
+
+        /* Paragraphs and Text */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        em {
+            color: var(--text-tertiary);
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            color: var(--text-secondary);
+            margin-bottom: 1em;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 25px;
+            color: var(--text-secondary);
+            margin-bottom: 1em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Highlight Boxes */
+        .info-box {
+            background-color: rgba(25, 118, 210, 0.05); /* primary_blue with transparency */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .formula-box {
+            background-color: rgba(56, 142, 60, 0.05); /* accent_green with transparency */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+        }
+
+        .example-box {
+            background-color: rgba(255, 179, 0, 0.05); /* secondary_accent_amber with transparency */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        /* Interactive Elements: Details/Summary */
+        details {
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        details:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        summary {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-blue);
+            list-style: none; /* Remove default triangle/arrow */
+            position: relative;
+        }
+
+        summary::before {
+            content: '►'; /* Custom arrow */
+            position: absolute;
+            left: 10px;
+            color: var(--primary-blue);
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        details > div {
+            padding: 10px 20px 15px 20px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            summary {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+            details > div {
+                padding: 8px 15px 12px 15px;
+            }
+            .info-box, .formula-box, .example-box {
+                padding: 12px 15px;
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            p, li {
+                font-size: 0.9em;
+            }
+            .formula-box {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Kinematika &ndash; E. Gerak Melingkar Beraturan</h1>
+
+        <div class="info-box">
+            <p>Selamat datang di pembahasan <strong>Gerak Melingkar Beraturan (GMB)</strong>! Setelah memahami gerak lurus, kini saatnya kita menjelajahi dunia gerak yang lebih dinamis, di mana arah menjadi komponen kunci yang terus berubah.</p>
+        </div>
+
+        <h2>Apa Itu Gerak Melingkar Beraturan?</h2>
+        <p><strong>Gerak Melingkar Beraturan (GMB)</strong> adalah gerak suatu benda yang lintasannya berbentuk lingkaran dengan <strong>kelajuan (besar kecepatan) yang konstan</strong>. Meskipun kelajuannya konstan, perlu diingat bahwa <strong>arah kecepatannya selalu berubah</strong> karena benda terus berbelok mengikuti lintasan melingkar.</p>
+        <p>Bayangkan sebuah titik di ujung jarum jam atau batu yang diikat tali lalu diputar secara horizontal dengan kecepatan stabil. Kedua contoh ini adalah wujud dari GMB.</p>
+
+        <details>
+            <summary>Mengapa "Beraturan" padahal Arahnya Berubah?</summary>
+            <div>
+                <p>Kata "Beraturan" pada GMB mengacu pada <strong>kelajuan (speed)</strong> yang konstan, bukan kecepatan (velocity) secara keseluruhan. Kecepatan adalah besaran vektor yang memiliki besar dan arah. Dalam GMB, besarnya konstan, tetapi arahnya selalu berubah. Perubahan arah kecepatan inilah yang menimbulkan percepatan, meskipun besar kecepatannya tetap.</p>
+            </div>
+        </details>
+
+        <h2>Besaran-Besaran Penting dalam GMB</h2>
+
+        <ol>
+            <li>
+                <h3>Posisi Sudut ($\theta$)</h3>
+                <p>Posisi sudut menggambarkan lokasi benda pada lintasan melingkar relatif terhadap titik acuan. Satuan internasional untuk posisi sudut adalah <strong>radian (rad)</strong>.</p>
+                <div class="formula-box">
+                    <p><strong>Hubungan Derajat dan Radian:</strong><br>
+                    1 putaran penuh = 360&deg; = 2&pi; radian</p>
+                    <p>Maka, 1 radian &asymp; 57.3&deg;</p>
+                </div>
+            </li>
+            <li>
+                <h3>Perpindahan Sudut ($\Delta\theta$)</h3>
+                <p>Perpindahan sudut adalah perubahan posisi sudut benda. Jika benda berpindah dari posisi sudut $\theta_1$ ke $\theta_2$, maka perpindahan sudutnya adalah:</p>
+                <div class="formula-box">
+                    <p>$\Delta\theta = \theta_{akhir} - \theta_{awal}$</p>
+                </div>
+            </li>
+            <li>
+                <h3>Kecepatan Sudut ($\omega$)</h3>
+                <p>Kecepatan sudut adalah laju perubahan posisi sudut. Ini mengukur seberapa cepat sudut yang disapu oleh benda berubah setiap detiknya.</p>
+                <ul>
+                    <li><strong>Definisi:</strong> $\omega = \frac{\Delta\theta}{\Delta t}$</li>
+                    <li>Untuk GMB, karena satu putaran penuh adalah $2\pi$ radian dan waktu yang dibutuhkan adalah periode ($T$), maka:</li>
+                </ul>
+                <div class="formula-box">
+                    <p>$\omega = \frac{2\pi}{T}$</p>
+                    <p>Karena $T = 1/f$ (frekuensi), maka:</p>
+                    <p>$\omega = 2\pi f$</p>
+                </div>
+                <ul>
+                    <li><strong>Satuan:</strong> Radian per detik (rad/s).</li>
+                    <li><strong>Arah:</strong> Mengikuti aturan tangan kanan (vektor aksial, tegak lurus bidang putar).</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Periode (T)</h3>
+                <p>Periode adalah <strong>waktu yang dibutuhkan</strong> untuk melakukan satu putaran penuh pada lintasan melingkar.</p>
+                <ul>
+                    <li><strong>Satuan:</strong> Detik (s).</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Frekuensi (f)</h3>
+                <p>Frekuensi adalah <strong>jumlah putaran</strong> yang dilakukan benda per satuan waktu (biasanya per detik).</p>
+                <ul>
+                    <li><strong>Satuan:</strong> Hertz (Hz) atau putaran per detik.</li>
+                </ul>
+                <div class="formula-box">
+                    <p><strong>Hubungan antara Periode dan Frekuensi:</strong><br>
+                    $T = \frac{1}{f}$ atau $f = \frac{1}{T}$</p>
+                </div>
+            </li>
+            <li>
+                <h3>Kecepatan Linear (v)</h3>
+                <p>Kecepatan linear adalah kecepatan benda pada titik tertentu di lintasan. Arahnya selalu <strong>tangensial</strong> (menyinggung) lintasan lingkaran pada setiap titik.</p>
+                <p>Kecepatan linear terkait erat dengan kecepatan sudut dan jari-jari lintasan ($r$).</p>
+                <div class="formula-box">
+                    <p>$v = \omega \cdot r$</p>
+                    <p>Atau, jika diketahui periode ($T$) atau frekuensi ($f$):</p>
+                    <p>$v = \frac{2\pi r}{T} = 2\pi r f$</p>
+                </div>
+                <ul>
+                    <li><strong>Satuan:</strong> Meter per detik (m/s).</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>Percepatan Sentripetal ($a_s$)</h2>
+        <p>Meskipun kelajuan (besar kecepatan linear) dalam GMB adalah konstan, <strong>arah kecepatan linear selalu berubah</strong>. Perubahan arah ini menunjukkan adanya percepatan.</p>
+        <p>Percepatan ini disebut <strong>percepatan sentripetal</strong>. "Sentripetal" berarti "menuju pusat". Jadi, percepatan ini selalu <strong>mengarah ke pusat lingkaran</strong>.</p>
+        <div class="formula-box">
+            <p><strong>Rumus Percepatan Sentripetal:</strong><br>
+            $a_s = \frac{v^2}{r}$</p>
+            <p>Jika kita substitusikan $v = \omega r$:</p>
+            <p>$a_s = \frac{(\omega r)^2}{r} = \frac{\omega^2 r^2}{r} = \omega^2 r$</p>
+        </div>
+        <p>Percepatan sentripetal ini sangat penting karena inilah yang <strong>mempertahankan benda tetap bergerak melingkar</strong>. Tanpa percepatan ini, benda akan bergerak lurus mengikuti arah tangensialnya (sesuai Hukum Newton I).</p>
+
+        <h2>Gaya Sentripetal ($F_s$)</h2>
+        <p>Menurut Hukum II Newton ($\sum F = ma$), jika ada percepatan ($a_s$), maka harus ada gaya yang menyebabkannya. Gaya inilah yang disebut <strong>gaya sentripetal</strong>.</p>
+        <p>Sama seperti percepatan sentripetal, gaya sentripetal juga selalu <strong>mengarah ke pusat lingkaran</strong>. Penting untuk diingat bahwa gaya sentripetal <em>bukanlah jenis gaya baru</em>, melainkan <strong>peran</strong> yang dimainkan oleh gaya-gaya yang sudah ada (seperti tegangan tali, gaya gesek, gaya gravitasi, gaya normal, dll.) untuk menyebabkan benda bergerak melingkar.</p>
+        <div class="formula-box">
+            <p><strong>Rumus Gaya Sentripetal:</strong><br>
+            $F_s = m \cdot a_s$</p>
+            <p>Substitusikan rumus $a_s$:</p>
+            <p>$F_s = m \frac{v^2}{r}$</p>
+            <p>Atau:</p>
+            <p>$F_s = m \omega^2 r$</p>
+        </div>
+        <ul>
+            <li><strong>Satuan:</strong> Newton (N).</li>
+        </ul>
+
+        <div class="example-box">
+            <h3>Contoh Penerapan Gaya Sentripetal:</h3>
+            <ul>
+                <li><strong>Batu yang Diikat Tali dan Diputar:</strong> Tegangan tali yang menarik batu ke pusat putaran adalah gaya sentripetalnya. Jika tali putus, batu akan terbang lurus tangensial.</li>
+                <li><strong>Mobil Berbelok di Tikungan:</strong> Gaya gesek statis antara ban mobil dan permukaan jalan menyediakan gaya sentripetal yang diperlukan untuk belok. Jika gesekan tidak cukup (misal jalan licin), mobil akan selip keluar lintasan.</li>
+                <li><strong>Satelit Mengelilingi Bumi:</strong> Gaya gravitasi antara satelit dan Bumi berperan sebagai gaya sentripetal yang menjaga satelit tetap pada orbitnya.</li>
+                <li><strong>Elektron Mengelilingi Inti Atom:</strong> Gaya elektrostatik antara elektron bermuatan negatif dan inti atom bermuatan positif bertindak sebagai gaya sentripetal.</li>
+            </ul>
+        </div>
+
+        <h2>Ringkasan Penting GMB</h2>
+        <p>Untuk memahami GMB secara menyeluruh, ingat poin-poin kunci ini:</p>
+        <ul>
+            <li><strong>Kelajuan konstan, kecepatan berubah arah.</strong></li>
+            <li><strong>Kecepatan sudut ($\omega$) konstan.</strong></li>
+            <li>Selalu ada <strong>percepatan sentripetal ($a_s$)</strong> yang mengarah ke pusat.</li>
+            <li>Selalu ada <strong>gaya sentripetal ($F_s$)</strong> yang mengarah ke pusat, yang disediakan oleh gaya-gaya lain.</li>
+            <li>Tanpa gaya sentripetal, tidak ada gerak melingkar, benda akan bergerak lurus.</li>
+        </ul>
+
+        <div class="info-box">
+            <p>Memahami Gerak Melingkar Beraturan adalah fondasi penting untuk mempelajari gerak melingkar tak beraturan, serta aplikasi-aplikasi fisika lainnya yang melibatkan rotasi dan revolusi. Teruslah berlatih dan bereksplorasi!</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,501 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pertahanan Tubuh - Komponen Seluler</title>
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden; /* Clear floats */
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--accent-green);
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-green);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        h3 {
+            font-size: 1.7em;
+            color: var(--text-secondary);
+            margin-top: 1.5em;
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-primary);
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-primary);
+        }
+
+        ol {
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-primary);
+        }
+
+        li {
+            margin-bottom: 0.7em;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        /* Info/Caution Boxes */
+        .info-box, .caution-box {
+            padding: 18px;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+            line-height: 1.5;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-box {
+            background-color: #E3F2FD; /* light blue from primary_blue */
+            border-left: 6px solid var(--primary-blue);
+        }
+
+        .caution-box {
+            background-color: #FFFDE7; /* light yellow from semantic_warning */
+            border-left: 6px solid var(--semantic-warning);
+        }
+
+        .info-box h4, .caution-box h4 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.3em;
+            margin-bottom: 0.8em;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            overflow: hidden; /* Ensures rounded corners are applied to table content */
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 14px 18px;
+            text-align: left;
+            color: var(--text-primary);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F8F8F8; /* Slightly off-white for row striping */
+        }
+
+        /* Check/Cross Marks in Table */
+        .check-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        .check-mark {
+            color: var(--semantic-success);
+        }
+        .cross-mark {
+            color: var(--semantic-error);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 15px;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            h1 {
+                font-size: 2.2em;
+                padding-bottom: 10px;
+                border-bottom-width: 2px;
+            }
+            h2 {
+                font-size: 1.8em;
+                padding-bottom: 8px;
+                border-bottom-width: 1px;
+            }
+            h3 {
+                font-size: 1.4em;
+                padding-left: 8px;
+                border-left-width: 3px;
+            }
+            .info-box, .caution-box {
+                padding: 15px;
+                margin: 20px 0;
+                border-left-width: 4px;
+            }
+            .info-box h4, .caution-box h4 {
+                font-size: 1.2em;
+            }
+
+            /* Responsive Tables */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 15px;
+                border-radius: 6px;
+                overflow: hidden;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:last-child {
+                border-bottom: 0;
+            }
+            td:before {
+                position: absolute;
+                top: 0;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--text-secondary);
+                padding-top: inherit; /* Align with td padding */
+                padding-bottom: inherit; /* Align with td padding */
+                display: flex;
+                align-items: center;
+                height: 100%;
+                box-sizing: border-box;
+            }
+
+            /* Specific labels for each table */
+            .table-phagocyte td:nth-of-type(1):before { content: "Faktor Pembeda"; }
+            .table-phagocyte td:nth-of-type(2):before { content: "Neutrofil"; }
+            .table-phagocyte td:nth-of-type(3):before { content: "Makrofag"; }
+
+            .table-immunoglobin td:nth-of-type(1):before { content: "Tipe"; }
+            .table-immunoglobin td:nth-of-type(2):before { content: "Letak"; }
+            .table-immunoglobin td:nth-of-type(3):before { content: "Fungsi"; }
+
+            .table-lymphocyte-characteristics td:nth-of-type(1):before { content: "Karakteristik"; }
+            .table-lymphocyte-characteristics td:nth-of-type(2):before { content: "Sel B"; }
+            .table-lymphocyte-characteristics td:nth-of-type(3):before { content: "Sel T"; }
+
+            .check-box {
+                justify-content: flex-end; /* Align checkmark to the right for mobile */
+                padding-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Komponen Sistem Pertahanan Tubuh</h1>
+        <p>Sistem pertahanan tubuh kita adalah jaringan kompleks sel, jaringan, dan organ yang bekerja sama untuk melindungi tubuh dari patogen (misalnya bakteri, virus, jamur, parasit) dan zat asing lainnya. Sel darah putih, atau leukosit, adalah komponen seluler utama dari sistem imun ini. Leukosit dapat secara umum dibedakan menjadi dua jenis utama: <strong>fagosit</strong> dan <strong>limfosit</strong>.</p>
+
+        <h2>1. Fagosit</h2>
+        <p>Secara harfiah, "fagosit" berarti <strong>"sel pemakan"</strong>. Sel-sel ini berfungsi dengan menghancurkan patogen melalui proses pencernaan di dalam sel. Fagosit dibentuk di sumsum tulang, khususnya tulang pipa, dan disimpan di sana sebelum didistribusikan ke seluruh tubuh melalui aliran darah dan cairan limfa.</p>
+        <p>Dalam proses perkembangannya, fagosit merupakan hasil diferensiasi dari beberapa tipe sel. Namun, secara umum terdapat dua tipe fagosit yang sering ditemukan dalam respons imun tubuh, yaitu <strong>neutrofil</strong> dan <strong>makrofag</strong>.</p>
+
+        <h3>a. Neutrofil</h3>
+        <p>Neutrofil adalah jenis fagosit yang paling banyak ditemukan dan merupakan sekitar 60% dari komposisi leukosit dalam darah. Mereka dapat berpindah tempat ke seluruh bagian tubuh melalui pembuluh darah.</p>
+        <ul>
+            <li><strong>Diapedesis:</strong> Pada kondisi tertentu, neutrofil seringkali meninggalkan pembuluh darah dengan cara menyusup melalui dinding kapiler untuk 'berpatroli' di jaringan ikat. Kemampuan "menembus" pembuluh darah ini disebut <strong>diapedesis</strong>.</li>
+            <li><strong>Proses Fagositosis:</strong> Neutrofil memulai peran fagositiknya dengan menempel pada patogen. Membran permukaan sel neutrofil akan membentuk kantung vesikula yang membawa patogen (fagosom) masuk ke dalam sel secara <strong>endositosis</strong>. Enzim pencernaan akan disekresikan oleh Badan Golgi ke dalam lisosom. Lisosom kemudian bergabung dengan fagosom membentuk struktur <strong>vakuola fagositik</strong> atau vakuola makanan dan menghancurkan patogen. Secara keseluruhan, proses ini dikenal sebagai <span class="highlight">fagositosis</span>.</li>
+            <li><strong>Masa Hidup dan Pembentukan Nanah:</strong> Meskipun dihasilkan dalam jumlah yang banyak, neutrofil memiliki masa hidup yang singkat. Setelah melawan patogen, sel ini akan mati. Neutrofil yang telah mati biasanya dikumpulkan pada sebuah lokasi infeksi untuk membentuk <span class="highlight">nanah</span>.</li>
+            <li><strong>Respon Terhadap Infeksi (Kemotaksis):</strong> Ketika terjadi infeksi pada jaringan, neutrofil akan dilepaskan dalam jumlah besar dari tempat penyimpanannya di sumsum tulang. Tipe sel lainnya, yaitu basofil dan sel Mast dari jaringan ikat, turut merespons dengan memproduksi <strong>histamin</strong>. Histamin akan memicu pelebaran pembuluh darah dan pembengkakan jaringan, yang mempermudah pergerakan neutrofil. Histamin dan juga zat kimia yang dilepaskan oleh patogen itu sendiri akan menarik respons neutrofil yang lewat ke lokasi infeksi. Jika infeksi bukan yang pertama kali atau disebabkan oleh patogen yang telah dikenali, sejumlah antibodi akan mengenali antigen dan terkonsentrasi di area infeksi, serta dapat “mengundang” neutrofil. Gerakan neutrofil yang dipicu oleh rangsangan kimia ini disebut <span class="highlight">kemotaksis</span>.</li>
+        </ul>
+        <div class="caution-box">
+            <p><strong>Penting Diketahui:</strong> Memencet nanah pada jerawat dapat menyebabkan infeksi. Munculnya jerawat bernanah sebenarnya menunjukkan aktifnya sistem imun dalam mencegah infeksi lebih lanjut. Pastikan untuk selalu menjaga kebersihan kulit.</p>
+        </div>
+
+        <h3>b. Makrofag</h3>
+        <p>Jenis sel fagosit berikutnya adalah makrofag. Makrofag memiliki ukuran lebih besar dibanding neutrofil.</p>
+        <ul>
+            <li><strong>Letak dan Asal:</strong> Daripada beredar di pembuluh darah, makrofag lebih sering menetap pada organ-organ tertentu seperti paru-paru, hati, limpa, ginjal, dan nodus limfa. Setelah dibentuk di dalam sumsum tulang, makrofag akan beredar dalam darah sebagai <strong>monosit</strong>, yang kemudian berkembang menjadi makrofag ketika meninggalkan darah dan menetap dalam organ.</li>
+            <li><strong>Masa Hidup dan Peran dalam Respon Imun Spesifik:</strong> Berbeda dengan neutrofil, makrofag adalah sel yang masa hidupnya cukup panjang dan memiliki peran penting dalam menginisiasi respons imun spesifik lainnya.</li>
+            <li><strong>Sel Penyaji Antigen (Antigen-Presenting Cells/APCs):</strong> Makrofag tidak menghancurkan patogen sepenuhnya, tapi memecahnya menjadi partikel kecil yang dijadikan sampel antigen. Partikel sampel tersebut akan menjadi bagian struktur luar dari membran sel makrofag untuk kemudian dikenali oleh limfosit. Dengan demikian, antigen dapat terus dikenali sekaligus menjadi sinyal ‘membutuhkan bantuan’ yang dapat menstimulasi respon imun spesifik lainnya. Karena kemampuannya dalam menampilkan antigen di bagian permukaan sel ini, makrofag disebut juga sebagai <span class="highlight">sel penyaji antigen (Antigen-Presenting Cells/APCs)</span>.</li>
+            <li><strong>Mekanisme Makrofag sebagai APC:</strong>
+                <ol>
+                    <li>Fagositosis terhadap antigen.</li>
+                    <li>Di dalam lisosom, antigen dicerna menjadi partikel kecil.</li>
+                    <li>Partikel antigen diikat oleh protein pengenal untuk dipaparkan di membran sel.</li>
+                    <li>Protein pengenal di permukaan membran sel dikenali oleh limfosit T.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>Perbandingan Karakteristik Neutrofil dan Makrofag</h3>
+        <p>Berikut adalah perbandingan utama antara neutrofil dan makrofag:</p>
+        <table class="table-phagocyte">
+            <thead>
+                <tr>
+                    <th>Faktor Pembeda</th>
+                    <th>Neutrofil</th>
+                    <th>Makrofag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jumlah</td>
+                    <td>Paling banyak (60% leukosit)</td>
+                    <td>Lebih sedikit (berasal dari monosit)</td>
+                </tr>
+                <tr>
+                    <td>Durasi hidup</td>
+                    <td>Singkat</td>
+                    <td>Panjang</td>
+                </tr>
+                <tr>
+                    <td>Tempat pematangan</td>
+                    <td>Sumsum tulang</td>
+                    <td>Sumsum tulang (sebagai monosit), berdiferensiasi di organ/jaringan</td>
+                </tr>
+                <tr>
+                    <td>Respon terhadap antigen</td>
+                    <td>Fagositosis langsung, respons cepat</td>
+                    <td>Fagositosis, lalu penyajian antigen untuk respon imun spesifik</td>
+                </tr>
+                <tr>
+                    <td>Hasil fagositosis</td>
+                    <td>Menghancurkan patogen sepenuhnya</td>
+                    <td>Memecah patogen menjadi partikel antigen untuk presentasi</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Limfosit dan Respon Imun Spesifik</h2>
+        <p>Limfosit adalah tipe sel darah putih yang berperan penting dalam sistem pertahanan tubuh, khususnya dalam <span class="highlight">respon imun spesifik adaptif</span>. Terdapat dua jenis limfosit, keduanya telah dibentuk sejak sebelum kelahiran di dalam sumsum tulang janin.</p>
+        <ul>
+            <li><strong>Limfosit B (sel B):</strong> Tetap berada dalam sumsum tulang hingga cukup matang, kemudian menyebar ke seluruh tubuh, terutama di nodus limfa dan limpa (organ di sisi kiri lambung).</li>
+            <li><strong>Limfosit T (sel T):</strong> Meninggalkan sumsum tulang dan berkumpul serta menjadi matang di timus. Timus adalah sebuah kelenjar yang terdapat di rongga dada, tepat di bawah tulang dada (sternum). Ukurannya menjadi dua kali lebih besar di masa antara kelahiran dan masa pubertas, tetapi setelah pubertas ukuran timus akan tereduksi.</li>
+        </ul>
+        <p>Dalam proses pematangannya, limfosit B dan T berspesialisasi menjadi tipe limfosit dengan beragam fungsi spesifik. Sel B dan T akan bersirkulasi di dalam pembuluh darah dan limfa. Kondisi ini memastikan bahwa limfosit dapat tersebar ke seluruh bagian tubuh dan meningkatkan peluang untuk mendeteksi keberadaan patogen yang menginfeksi tubuh.</p>
+        <p>Sejumlah sel dari kedua tipe limfosit akan bertahan lama dalam sirkulasi darah dan limfa. Sel berumur panjang ini akan “mengingat” antigen yang pernah dikenali sebelumnya, serta respons yang tepat untuk mengatasinya. Sel ini disebut <span class="highlight">sel memori</span>.</p>
+
+        <div class="info-box">
+            <h4>Nodus Limfa (Kelenjar Getah Bening)</h4>
+            <p>Nodus limfa merupakan bagian penting dalam sistem pertahanan tubuh. Kelenjar ini tersebar di bagian tertentu tubuh, khususnya pada lipatan-lipatan tubuh, dan terhubung dengan pembuluh limfa yang juga menyebar ke seluruh tubuh serta di samping pembuluh darah.</p>
+            <p>Nodus limfa berperan dalam menyaring cairan limfa, cairan tubuh yang membawa sebagian besar limfosit. Pada nodus limfa, limfosit (umumnya limfosit B) akan "tinggal" sementara di dalam kelenjar limfa. Ketika terjadi infeksi pada bagian tubuh tertentu, aktivitas nodus limfa terdekat dengan titik infeksi akan meningkat dan limfosit pada nodus tersebut akan aktif. Kondisi ini biasanya ditandai dengan peningkatan suhu tubuh pada bagian yang terdapat nodus limfa.</p>
+        </div>
+
+        <h3>a. Limfosit B (Sel B) dan Respon Imun Spesifik Humoral</h3>
+        <p>Limfosit B memberikan respons imun dengan membentuk <span class="highlight">antibodi</span>. Setiap sel B yang telah teraktivasi akan membentuk kelompok kecil (klon) berdasarkan jenis antibodi yang dibuatnya.</p>
+        <ul>
+            <li><strong>Mekanisme Kerja:</strong> Pada awalnya molekul antibodi hanya menempel di permukaan membran sel B, hingga kemudian dapat dilepas dan beredar di plasma darah dan limfa. Antibodi beredar di plasma darah dan cairan tubuh lainnya untuk mengenali antigen spesifik yang masuk ke dalam tubuh. Atas dasar ini lah respons limfosit B disebut juga <span class="highlight">respons imun spesifik humoral</span> (<em>humor</em> = cairan tubuh).</li>
+            <li><strong>Diferensiasi dan Respon:</strong> Kehadiran antigen mengaktivasi limfosit B yang berdiferensiasi menjadi dua tipe sel, yaitu <strong>sel plasma</strong> dan <strong>sel B memori</strong>.
+                <ul>
+                    <li><strong>Sel Plasma:</strong> Dapat memproduksi molekul antibodi dengan cepat, hingga mencapai jumlah beberapa ribu dalam 1 detik. Pada infeksi pertama (<span class="highlight">respons primer</span>), sel plasma memulai pengenalan antigen dan membentuk antibodi. Karena memiliki masa hidup yang singkat, respons sel plasma akan dilanjutkan oleh sel memori.</li>
+                    <li><strong>Sel B Memori:</strong> Akan bersirkulasi dalam tubuh dalam waktu lama. Apabila terdapat antigen yang sama dan dikenali kembali (<span class="highlight">respons sekunder</span>), sel memori akan membelah secara cepat dan berkembang menjadi sel plasma dan sel memori yang lebih banyak lagi. Hal ini terjadi berulang dalam setiap kehadiran antigen yang sama, yang berarti infeksi dapat ditanggulangi sebelum terus perkembangan.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Imunoglobulin (Ig) - Tipe Antibodi</h4>
+        <p>Molekul antibodi yang diproduksi sel B berupa protein yang disebut <span class="highlight">immunoglobulin (Ig)</span>. Molekul immunoglobulin berbentuk seperti huruf Y, dengan dua sisi ujung sebagai situs pengikatan dan pengenal antigen. Untuk memungkinkan sistem imun mengenali jutaan antigen yang berbeda, situs pengikatan antigen di kedua ujung immunoglobulin juga memiliki variasi yang sama banyaknya. Terdapat lima tipe antibodi yang banyak ditemukan di dalam tubuh, yaitu IgA, IgD, IgE, IgG, atau IgM.</p>
+        <table class="table-immunoglobin">
+            <thead>
+                <tr>
+                    <th>Tipe</th>
+                    <th>Letak</th>
+                    <th>Fungsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>IgM</strong></td>
+                    <td>Tersebar di seluruh jaringan tubuh</td>
+                    <td>Diproduksi saat terjadi <strong>infeksi pertama kali (respons primer)</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>IgG</strong></td>
+                    <td>Jaringan tubuh dan darah</td>
+                    <td>Paling banyak diproduksi, terutama saat <strong>infeksi sekunder</strong>; dapat ditransfer dari ibu hamil ke janin melalui plasenta.</td>
+                </tr>
+                <tr>
+                    <td><strong>IgA</strong></td>
+                    <td>ASI, air mata, air liur, dan lendir (permukaan jaringan epitel)</td>
+                    <td>Mencegah infeksi pada <strong>permukaan jaringan epitel</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>IgE</strong></td>
+                    <td>Tersebar di seluruh jaringan tubuh</td>
+                    <td>Memicu pengeluaran histamin oleh basofil dan mastosit untuk menimbulkan <strong>respons peradangan (inflamasi)</strong>. Terlibat dalam reaksi alergi.</td>
+                </tr>
+                <tr>
+                    <td><strong>IgD</strong></td>
+                    <td>Permukaan sel B</td>
+                    <td>Sebagai reseptor di permukaan sel B; menstimulasi pembentukan antibodi lainnya oleh sel plasma.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <h4>Memahami Tes Swab Antigen</h4>
+            <p>Uji antigen, seperti tes swab COVID-19, adalah prosedur medis untuk mendeteksi paparan virus SARS-CoV-2. Meskipun akurasinya tidak terlalu tinggi dibandingkan tes PCR, uji ini dianggap efektif sebagai langkah awal deteksi.</p>
+            <ul>
+                <li>Pengujian swab antigen melibatkan deteksi <span class="highlight">antigen</span> (protein spesifik dari virus), bukan antibodi yang dihasilkan oleh tubuh sebagai respons imun.</li>
+                <li>Dalam konteks respons antibodi, <strong>IgM</strong> adalah antibodi yang pertama kali diproduksi tubuh saat infeksi baru atau akut (respons primer). <strong>IgG</strong> diproduksi kemudian dan bertahan lebih lama, sering menandakan infeksi masa lalu atau imunitas yang terbentuk (respons sekunder). Pada tes antibodi (berbeda dengan tes antigen), IgG dan IgM dapat diuji untuk mengetahui fase infeksi.</li>
+                <li>Tes swab antigen dianggap memiliki tingkat akurasi yang lebih rendah dibanding tes lain (misalnya PCR) karena kemampuannya mendeteksi antigen bergantung pada jumlah viral load (konsentrasi virus) di sampel dan waktu pengambilan sampel. Jika viral load rendah atau infeksi masih sangat awal/sudah lewat puncaknya, tes antigen mungkin memberikan hasil negatif palsu. Tes PCR mendeteksi materi genetik virus, yang bisa lebih sensitif.</li>
+            </ul>
+        </div>
+
+        <h3>b. Limfosit T (Sel T) dan Respon Imun Spesifik Seluler</h3>
+        <p>Tipe limfosit kedua adalah limfosit T. Dinamai sel T karena sel ini menjadi matang di timus.</p>
+        <ul>
+            <li><strong>Reseptor Sel T (TCR):</strong> Berbeda dengan sel B yang menghasilkan antibodi sebagai respons imun spesifiknya, sel limfosit T memiliki <span class="highlight">reseptor permukaan sel yang spesifik</span> yang disebut <strong>reseptor sel T</strong>. Reseptor sel T memiliki sifat yang mirip dengan antibodi dalam hal kemampuan mengenali antigen spesifik. Karena respons imun yang diberikan bertumpu pada reseptor permukaan sel, maka respons imun sel T disebut juga <span class="highlight">respons imun spesifik seluler</span>.</li>
+            <li><strong>Pengenalan Sel Terinfeksi:</strong> Sel T aktif tidak hanya mengenali antigen bebas, namun juga mengenali sel-sel tubuh yang terinfeksi. Seperti pada infeksi virus, di mana nukleotida dan protein virus berada di dalam sel inangnya, maka sel T juga akan mengenali sel inang sebagai target yang harus dihancurkan. Pada kasus sel-sel tubuh yang berubah menjadi kanker, sel T akan mengenalinya dan mencegah pertumbuhannya lebih lanjut.</li>
+            <li><strong>Diferensiasi Sel T:</strong> Saat terjadi infeksi patogen, sel T yang memiliki reseptor yang mengenali antigen akan merespons dengan memperbanyak diri. Seperti halnya pada sel B, penambahan jumlah sel T akan melalui tahapan pembentukan dan perbanyakan klon sel. Selain bertambah banyak, sel T juga berdiferensiasi menjadi dua tipe sel, yaitu <strong>sel T pembantu (helper)</strong> dan <strong>sel T pembunuh (Sel T sitotoksik)</strong>. Masing-masing bentuk sel T dapat menjadi sel memori yang bertahan lama untuk diaktivasi kembali saat terjadi infeksi patogen yang sama pada kesempatan berikutnya.</li>
+            <li><strong>Sel T Pembantu (Helper T cells):</strong> Dinamai demikian berdasarkan perannya dalam membantu mengaktifkan respons imun lainnya. Ketika sel T pembantu aktif, mereka akan melepaskan kelompok senyawa kimia yang disebut <span class="highlight">sitokin</span>. Sitokin akan menstimulasi sel B untuk melakukan pembelahan, dan berkembang menjadi sel plasma serta mensekresi antibodi. Beberapa sel T pembantu juga mensekresi sitokin yang menstimulasi makrofag untuk lebih aktif melakukan fagositosis.</li>
+            <li><strong>Sel T Pembunuh (Cytotoxic T cells):</strong> Berperan mencari sel tubuh yang diserang patogen dan menampilkan antigen asing dari patogen pada membran permukaan selnya. Sel T pembunuh akan mengenali antigen, menempelkan diri pada permukaan sel yang terinfeksi, dan mensekresikan substansi beracun seperti <span class="highlight">hidrogen peroksida (H<sub>2</sub>O<sub>2</sub>)</span>, untuk membunuh sel tubuh dan patogen di dalamnya.</li>
+        </ul>
+
+        <h3>Perbandingan Karakteristik Limfosit B dan Limfosit T</h3>
+        <p>Berikut adalah perbandingan karakteristik penting antara Limfosit B (Sel B) dan Limfosit T (Sel T):</p>
+        <table class="table-lymphocyte-characteristics">
+            <thead>
+                <tr>
+                    <th>Karakteristik</th>
+                    <th>Sel B</th>
+                    <th>Sel T</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Membentuk sel sitotoksik</td>
+                    <td class="check-box"><span class="cross-mark">×</span></td>
+                    <td class="check-box"><span class="check-mark">√</span></td>
+                </tr>
+                <tr>
+                    <td>Membentuk sel memori</td>
+                    <td class="check-box"><span class="check-mark">√</span></td>
+                    <td class="check-box"><span class="check-mark">√</span></td>
+                </tr>
+                <tr>
+                    <td>Melakukan fagositosis</td>
+                    <td class="check-box"><span class="cross-mark">×</span></td>
+                    <td class="check-box"><span class="cross-mark">×</span></td>
+                </tr>
+                <tr>
+                    <td>Membentuk antibodi</td>
+                    <td class="check-box"><span class="check-mark">√</span></td>
+                    <td class="check-box"><span class="cross-mark">×</span></td>
+                </tr>
+                <tr>
+                    <td>Menjadi sel penyaji antigen</td>
+                    <td class="check-box"><span class="cross-mark">×</span></td>
+                    <td class="check-box"><span class="cross-mark">×</span></td>
+                </tr>
+                <tr>
+                    <td>Membentuk sel plasma</td>
+                    <td class="check-box"><span class="check-mark">√</span></td>
+                    <td class="check-box"><span class="cross-mark">×</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+```

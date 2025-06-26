@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reformasi Birokrasi dan BUMN di Indonesia Masa Reformasi</title>
+    <title>Reformasi Birokrasi dan BUMN: Sejarah Masa Reformasi</title>
     <style>
+        /* Light Mode Color Theme */
         :root {
             --background-canvas: #FFFFFF;
             --text-primary: #212121;
@@ -15,210 +16,341 @@
             --primary-blue: #1976D2;
             --accent-green: #388E3C;
             --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
         }
 
+        /* Base Styles */
         body {
-            font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--background-canvas);
-            color: var(--text-secondary);
-            margin: 0;
-            padding: 0;
+            color: var(--text-primary);
             line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            scroll-behavior: smooth;
         }
 
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 25px;
             background-color: var(--background-canvas);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-divider);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            overflow-x: hidden; /* Prevent horizontal scroll from box-shadow */
         }
 
-        h1, h2, h3, h4 {
-            color: var(--text-primary);
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            color: var(--primary-blue);
+            margin-top: 1.8em;
+            margin-bottom: 0.7em;
+            font-weight: 600;
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2.8em;
             text-align: center;
-            color: var(--primary-blue);
-            margin-bottom: 1em;
-            border-bottom: 2px solid var(--border-divider);
+            border-bottom: 3px solid var(--border-divider);
             padding-bottom: 15px;
+            margin-bottom: 30px;
+            color: var(--primary-blue); /* Ensure h1 uses primary blue */
         }
 
         h2 {
-            font-size: 2em;
+            font-size: 2.2em;
             color: var(--primary-blue);
-            border-left: 5px solid var(--primary-blue);
-            padding-left: 15px;
-            margin-left: -20px; /* To align with the border-left */
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 2em;
         }
 
         h3 {
-            font-size: 1.6em;
-            color: var(--accent-green);
-            border-bottom: 1px dashed var(--border-divider);
-            padding-bottom: 5px;
+            font-size: 1.7em;
+            color: var(--accent-green); /* Use accent green for main sub-sections */
+            margin-top: 1.5em;
+            margin-bottom: 0.6em;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
         }
 
         p {
+            color: var(--text-primary);
             margin-bottom: 1em;
-            color: var(--text-secondary);
+            text-align: justify;
         }
 
         ul {
             list-style-type: disc;
-            margin-left: 25px;
-            margin-bottom: 1em;
-            color: var(--text-secondary);
+            margin-left: 30px;
+            margin-bottom: 1.5em;
         }
 
         li {
-            margin-bottom: 0.5em;
+            color: var(--text-secondary);
+            margin-bottom: 0.7em;
         }
 
         strong {
-            color: var(--text-primary);
+            color: var(--primary-blue);
         }
 
+        /* Interactive Details/Summary */
+        details {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-in-out;
+        }
+
+        details:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        summary {
+            font-weight: bold;
+            padding: 18px 20px;
+            cursor: pointer;
+            outline: none;
+            color: var(--primary-blue);
+            font-size: 1.15em;
+            display: flex;
+            align-items: center;
+            user-select: none; /* Prevent text selection on summary */
+        }
+
+        summary::marker { /* Hide default arrow in some browsers */
+            display: none;
+        }
+
+        summary::-webkit-details-marker { /* Hide default arrow in WebKit browsers */
+            display: none;
+        }
+
+        summary::before { /* Custom arrow */
+            content: '►';
+            font-size: 0.8em;
+            margin-right: 15px;
+            transform: rotate(0deg);
+            transition: transform 0.2s ease;
+            color: var(--accent-green);
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .details-content {
+            padding: 15px 20px 20px;
+            color: var(--text-secondary);
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .details-content p, .details-content ul {
+            margin-bottom: 0.8em;
+        }
+
+        /* Highlight specific terms */
         .highlight {
             background-color: var(--secondary-accent-amber);
-            padding: 2px 5px;
-            border-radius: 3px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-weight: 600;
+            white-space: nowrap; /* Prevent breaking on small screens */
         }
 
-        .source-info {
-            font-size: 0.85em;
-            color: var(--text-tertiary);
-            margin-top: 20px;
-            text-align: right;
-            border-top: 1px solid var(--border-divider);
-            padding-top: 10px;
-        }
-
-        /* Responsive Design */
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .container {
-                margin: 20px auto;
+            body {
                 padding: 15px;
             }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
             h1 {
-                font-size: 1.8em;
+                font-size: 2.2em;
                 padding-bottom: 10px;
+                margin-bottom: 20px;
             }
             h2 {
-                font-size: 1.5em;
-                padding-left: 10px;
-                margin-left: -15px;
+                font-size: 1.8em;
+                padding-bottom: 8px;
             }
             h3 {
-                font-size: 1.3em;
+                font-size: 1.4em;
             }
-            p, ul, li {
-                font-size: 0.95em;
+            h4 {
+                font-size: 1.1em;
+            }
+            summary {
+                font-size: 1.05em;
+                padding: 15px;
+            }
+            .details-content {
+                padding: 12px 15px 15px;
+            }
+            ul {
+                margin-left: 20px;
             }
         }
 
         @media (max-width: 480px) {
-            .container {
-                margin: 10px auto;
+            body {
                 padding: 10px;
             }
+            .container {
+                padding: 15px;
+                border-radius: 0; /* Simpler look on very small screens */
+                box-shadow: none;
+            }
             h1 {
-                font-size: 1.5em;
+                font-size: 1.8em;
+                padding-bottom: 8px;
+                margin-bottom: 15px;
             }
             h2 {
-                font-size: 1.2em;
+                font-size: 1.5em;
+                padding-bottom: 5px;
             }
             h3 {
-                font-size: 1em;
+                font-size: 1.2em;
             }
-            p, ul, li {
-                font-size: 0.9em;
+            summary {
+                font-size: 1em;
+                padding: 12px;
+            }
+            .details-content {
+                padding: 10px 12px 12px;
+            }
+            ul {
+                margin-left: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Reformasi Birokrasi dan BUMN di Indonesia Masa Reformasi</h1>
+        <h1>Reformasi Birokrasi dan BUMN di Indonesia</h1>
 
-        <section id="intro">
-            <h2>Pengantar Reformasi Birokrasi</h2>
-            <p>Istilah "birokrasi" merujuk pada sebuah sistem pemerintahan yang dijalankan oleh pegawai pemerintah yang terstruktur dalam hierarki dan jenjang jabatan. Menurut Kamus Besar Bahasa Indonesia (KBBI), birokrasi adalah sebuah sistem yang memiliki tatanan organisasi dengan pola hubungan kerja yang jelas, pembagian tugas yang tegas, serta prosedur yang standar.</p>
-            <p>Meskipun sebagai pelajar mungkin pengalaman langsung dengan urusan birokrasi masih terbatas, reformasi birokrasi memiliki dampak yang sangat besar terhadap <strong class="highlight">kualitas pelayanan publik</strong> yang kita nikmati sehari-hari. Seperti yang diungkapkan oleh mantan Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi, Asman Abnur, reformasi birokrasi ini ibaratnya "garam"; tidak terlihat secara langsung, namun menjadi unsur esensial yang memberikan "rasa" pada setiap pelayanan yang disajikan (Humas Kemenpan, 2018).</p>
-            <p>Pada awal pemerintahan Presiden B.J. Habibie, fokus reformasi Kabinet Reformasi Pembangunan mencakup tiga pilar utama: reformasi politik, reformasi hukum, dan reformasi ekonomi. Namun, reformasi birokrasi pada masa itu masih menghadapi tantangan besar karena sulitnya memisahkan birokrasi dari pengaruh kepentingan politik praktis. Hal ini merupakan warisan dari masa Orde Baru, di mana seluruh Pegawai Negeri Sipil (PNS) diwajibkan menjadi anggota Golongan Karya. Meskipun demikian, agenda reformasi birokrasi terus berlanjut di era pemerintahan selanjutnya pasca-Orde Baru.</p>
-        </section>
+        <p>Apakah kalian mengenal istilah <span class="highlight">birokrasi</span>? Menurut KBBI, birokrasi adalah <span class="highlight">sistem pemerintahan yang dijalankan oleh pegawai pemerintah yang berpegang pada hierarki dan jenjang jabatan</span>. Sebagai seorang pelajar, mungkin pengalaman kalian dengan urusan birokrasi masih terbatas. Namun, perlu diketahui bahwa reformasi birokrasi sangat berpengaruh pada kualitas pelayanan publik yang kalian peroleh sehari-hari.</p>
 
-        <section id="asn-recruitment">
-            <h2>1. Penerimaan ASN yang Terbuka</h2>
-            <h3>Langkah Penting Menuju Profesionalisme</h3>
-            <p>Salah satu tonggak penting dalam reformasi birokrasi adalah upaya untuk menciptakan sistem Aparatur Sipil Negara (ASN) yang lebih transparan dan berbasis kompetensi. Pada tahun 2011, Komisi II Dewan Perwakilan Rakyat (DPR) memulai pembahasan Rancangan Undang-Undang Aparatur Sipil Negara (UU ASN). Rancangan ini membawa harapan baru bagi realisasi agenda reformasi birokrasi, khususnya dalam pengelolaan sumber daya manusia (SDM) di pemerintahan.</p>
-            <p>Dua tahun kemudian, tepatnya pada tahun 2013, UU ASN berhasil disahkan dalam sidang Pleno DPR. Pengesahan UU ini menjadi sebuah langkah besar karena secara detail menjabarkan profesi ASN. UU ini juga menjadi dorongan kuat bagi ASN untuk senantiasa melaksanakan reformasi, perbaikan, dan peningkatan pelayanan publik, sekaligus meminimalkan permasalahan yang sering muncul dalam manajemen kepegawaian.</p>
-            <p>UU ASN membawa perubahan mendasar dalam manajemen SDM aparatur negara, meliputi:</p>
-            <ul>
-                <li><strong>Perubahan Paradigma Pengelolaan SDM:</strong> Dari pendekatan yang semula bersifat administrasi kepegawaian yang kaku, beralih menjadi manajemen sumber daya manusia yang lebih <strong class="highlight">humanis dan adaptif</strong>.</li>
-                <li><strong>Sistem Karir Terbuka:</strong> Perubahan dari sistem yang berdasarkan senioritas dan kepangkatan menjadi sistem karir yang <strong class="highlight">terbuka</strong>, di mana kompetisi dan kompetensi menjadi faktor utama penentu jenjang karir. Ini mendorong persaingan sehat dan peningkatan kualitas.</li>
-                <li><strong>Profesionalisme ASN:</strong> Undang-undang ini menegaskan bahwa ASN adalah sebuah profesi yang berpendidikan, memiliki standar pelayanan yang jelas, dan senantiasa menjaga nilai-nilai dasar <strong class="highlight">profesionalitas</strong> dalam menjalankan tugasnya.</li>
-            </ul>
-        </section>
+        <p>Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi Asman Abnur pernah mengibaratkan Reformasi Birokrasi seperti <span class="highlight">garam</span>: tidak terlihat tetapi menjadi unsur penting karena memberi rasa pada masakan yang disajikan (Humas Kemenpan, 2018). Ini menunjukkan betapa krusialnya peran reformasi ini dalam meningkatkan kualitas tata kelola pemerintahan.</p>
 
-        <section id="state-institution-reform">
-            <h2>2. Reformasi Lembaga Negara</h2>
-            <h3>Penataan Ulang Struktur Pemerintahan</h3>
-            <p>Reformasi lembaga pemerintahan secara signifikan terjadi pada masa pemerintahan Presiden Abdurrahman Wahid (Gus Dur). Salah satu kebijakan kontroversial namun penting adalah pembubaran beberapa lembaga, seperti:</p>
-            <ul>
-                <li><strong>Departemen Penerangan:</strong> Lembaga ini dibubarkan karena selama Orde Baru dianggap terlalu kuat dalam <strong class="highlight">mengungkung kebebasan berbicara media massa</strong>, padahal kebebasan berekspresi adalah salah satu tuntutan utama pascareformasi 1998.</li>
-                <li><strong>Departemen Sosial:</strong> Dibubarkan karena dinilai <strong class="highlight">sarat akan penyelewengan hak rakyat atau praktik korupsi</strong>.</li>
-            </ul>
-            <p>Pembubaran Departemen Sosial hanya berlangsung sekitar 20 bulan. Setelah Gus Dur lengser, Presiden Megawati Soekarnoputri mengfungsikan kembali lembaga ini untuk mendukung pemerintah dalam pembangunan kesejahteraan sosial. Selain pembubaran, terjadi pula perubahan istilah dari "departemen" menjadi <strong class="highlight">"kementerian"</strong>, diikuti dengan perubahan nomenklatur (nama) lembaga, seperti Departemen Pekerjaan Umum yang menjadi Kementerian Permukiman dan Prasarana Wilayah.</p>
-            <p>Reformasi lembaga tidak hanya terbatas pada struktur pemerintahan (departemen/kementerian), tetapi juga mencakup <strong class="highlight">perampingan Lembaga Non-Struktural (LNS)</strong>. LNS adalah lembaga yang dibentuk berdasarkan peraturan perundang-undangan khusus untuk menunjang pelaksanaan fungsi pemerintah, dan dapat melibatkan unsur pemerintah, swasta, serta masyarakat sipil.</p>
-            <p>Contoh LNS populer yang lahir di era Reformasi antara lain:</p>
-            <ul>
-                <li>Komisi Pemilihan Umum (KPU)</li>
-                <li>Komisi Pemberantasan Korupsi (KPK)</li>
-                <li>Dewan Pers</li>
-                <li>Badan Amil Zakat Nasional (BAZNAS)</li>
-            </ul>
-            <p>Pemerintah terus melakukan evaluasi dan efisiensi terhadap kinerja dan fungsi LNS. Jumlah LNS yang sempat mencapai 127 lembaga sebelum tahun 2015, kini, pada tahun 2022, telah berkurang menjadi 93 (kompas.com, 21/06/2022). Penurunan jumlah ini menunjukkan komitmen pemerintah dalam memastikan efektivitas dan efisiensi lembaga-lembaga negara.</p>
-        </section>
+        <details>
+            <summary>Fokus Awal Reformasi pada Masa Presiden Habibie</summary>
+            <div class="details-content">
+                <p>Dalam pidato awal pemerintahan Presiden <span class="highlight">B.J. Habibie</span>, Kabinet Reformasi Pembangunan memfokuskan diri pada tiga hal utama:</p>
+                <ul>
+                    <li><strong>Reformasi Politik:</strong> Perubahan sistem politik ke arah yang lebih demokratis.</li>
+                    <li><strong>Reformasi Hukum:</strong> Penegakan hukum dan perubahan sistem peradilan.</li>
+                    <li><strong>Reformasi Ekonomi:</strong> Perbaikan kondisi perekonomian negara.</li>
+                </ul>
+                <p>Menurut Habibie, reformasi birokrasi pada masa ini masih menemui kesulitan karena <span class="highlight">sulit memisahkan birokrasi dengan pengaruh kepentingan politik praktis</span> (Pour, 2014: 140). Hal ini diperparah dengan kondisi pada masa Orde Baru, di mana seluruh Pegawai Negeri Sipil (PNS) diwajibkan menjadi anggota Golongan Karya. Meskipun menghadapi kendala awal, agenda reformasi birokrasi pemerintahan selanjutnya tetap terus berjalan.</p>
+            </div>
+        </details>
 
-        <section id="labor-regulations">
-            <h2>3. Peraturan Ketenagakerjaan yang Lebih Memihak Para Pekerja</h2>
-            <h3>Perlindungan dan Kesejahteraan Buruh</h3>
-            <p>Kisah <strong class="highlight">Marsinah</strong>, seorang aktivis buruh di Porong, Sidoarjo, yang dibunuh secara keji pada tahun 1993, menjadi simbol perjuangan panjang dan ketidakadilan yang dialami pekerja di Indonesia. Marsinah, anggota Serikat Pekerja Seluruh Indonesia (SPSI), adalah sosok vokal yang menyuarakan hak-hak buruh. Pembunuhannya menjadi salah satu kasus pelanggaran HAM berat yang menarik perhatian dunia, menggambarkan betapa tidak berpihaknya sistem kepada pekerja pada masa itu.</p>
-            <p>Di era Reformasi, terdapat perubahan signifikan dalam regulasi ketenagakerjaan. <strong class="highlight">Undang-Undang Ketenagakerjaan Nomor 13 Tahun 2003</strong> disusun dengan semangat yang lebih memihak kepada para pekerja. Pasal 4 UU ini secara eksplisit menyatakan bahwa pemerintah memiliki kewajiban untuk:</p>
-            <ul>
-                <li>Memberdayakan pekerja secara optimal dan manusiawi.</li>
-                <li>Mewujudkan pemerataan kerja.</li>
-                <li>Memberi perlindungan kepada tenaga kerja.</li>
-                <li>Mengusahakan kesejahteraan bagi tenaga kerja dan keluarganya.</li>
-            </ul>
-            <p>Komitmen terhadap peningkatan kesejahteraan pekerja ini semakin direalisasikan pada masa pemerintahan Presiden Susilo Bambang Yudhoyono (SBY) melalui program <strong class="highlight">Sistem Jaminan Sosial Nasional (SJSN)</strong>. Program ini dikelola oleh lembaga Badan Penyelenggara Jaminan Sosial (BPJS), yang mencakup BPJS Kesehatan dan BPJS Ketenagakerjaan. Melalui BPJS Ketenagakerjaan, hak-hak pekerja terkait jaminan sosial, seperti jaminan kecelakaan kerja, jaminan hari tua, dan jaminan pensiun, diupayakan agar lebih terjamin. Ini menunjukkan arah kebijakan yang lebih baik dalam melindungi dan memihak pada hak-hak pekerja di Indonesia.</p>
-        </section>
+        <h2>Contoh Reformasi Birokrasi di Indonesia Pasca-Orde Baru</h2>
 
-        <section id="regional-autonomy">
-            <h2>4. Otonomi Daerah</h2>
-            <h3>Desentralisasi Kekuasaan dan Pembangunan Daerah</h3>
-            <p>Salah satu agenda kunci Reformasi yang memiliki dampak fundamental terhadap tata kelola pemerintahan di Indonesia adalah <strong class="highlight">otonomi daerah</strong>. Otonomi daerah merupakan bentuk perjuangan dan upaya untuk menata serta mengelola sistem pemerintahan daerah agar lebih sesuai dengan tuntutan lokal dan tantangan global. Tujuannya adalah untuk memberikan kewenangan lebih besar kepada daerah dalam mengelola potensi dan kebutuhan mereka sendiri.</p>
-            <p>Dengan disahkannya <strong class="highlight">Undang-Undang Nomor 22 Tahun 1999</strong> tentang Pemerintahan Daerah, daerah otonom diberikan kewenangan dan tanggung jawab yang lebih luas untuk mengatur dan mengurus rumah tangga mereka sendiri. Ini mencakup berbagai aspek seperti:</p>
-            <ul>
-                <li>Pengelolaan sumber daya alam dan potensi ekonomi daerah.</li>
-                <li>Penyediaan pelayanan publik dasar bagi masyarakat, seperti pendidikan dan kesehatan.</li>
-                <li>Pembangunan infrastruktur sesuai dengan kebutuhan lokal.</li>
-                <li>Pengaturan tata ruang dan lingkungan.</li>
-                <li>Pengembangan budaya dan sosial masyarakat daerah.</li>
-            </ul>
-            <p>Otonomi daerah bertujuan untuk mendekatkan pelayanan pemerintah kepada masyarakat, meningkatkan partisipasi lokal dalam pembangunan, serta mendorong pemerataan pembangunan di seluruh wilayah Indonesia. Konsep ini juga diharapkan dapat mengurangi sentralisasi kekuasaan yang dominan pada masa Orde Baru, sehingga daerah memiliki kapasitas untuk berinovasi dan merespons secara lebih efektif terhadap kebutuhan spesifik masyarakatnya.</p>
-        </section>
+        <details>
+            <summary>1. Penerimaan ASN yang Terbuka</summary>
+            <div class="details-content">
+                <p>Salah satu langkah besar dalam reformasi birokrasi di bidang sumber daya manusia adalah lahirnya <span class="highlight">Undang-Undang Aparatur Sipil Negara (ASN)</span>.</p>
+                <ul>
+                    <li>Pada tahun <span class="highlight">2011</span>, Komisi II Dewan Perwakilan Rakyat (DPR) mulai membahas Rancangan Undang-Undang Aparatur Sipil Negara (ASN).</li>
+                    <li>Dua tahun kemudian, pada tahun <span class="highlight">2013</span>, UU tersebut berhasil disahkan dalam sidang Pleno DPR.</li>
+                </ul>
+                <h4>Signifikansi UU ASN:</h4>
+                <p>UU ASN ini merupakan sebuah langkah besar karena sejak saat itu, profesi ASN dijabarkan dengan lebih detail, menjadi penyemangat bagi ASN dalam melaksanakan reformasi, perbaikan, dan peningkatan pelayanan publik, serta meminimalkan permasalahan yang sering timbul dalam manajemen kepegawaian.</p>
+                <h4>Perubahan Mendasar dalam Manajemen SDM ASN:</h4>
+                <ol>
+                    <li>Dari pengelolaan SDM yang bersifat <span class="highlight">administrasi kepegawaian</span> menjadi <span class="highlight">manajemen sumber daya manusia yang lebih humanis</span>.</li>
+                    <li>Perubahan sistem dari yang semula berdasarkan <span class="highlight">senioritas dan kepangkatan</span> menjadi <span class="highlight">sistem karir terbuka</span> yang mengutamakan <span class="highlight">kompetisi dan kompetensi</span>.</li>
+                    <li>UU ini menjadikan ASN sebagai profesi yang <span class="highlight">berpendidikan</span>, memiliki <span class="highlight">standar pelayanan</span>, dan menjaga <span class="highlight">nilai-nilai dasar profesionalitas</span>.</li>
+                </ol>
+            </div>
+        </details>
+
+        <details>
+            <summary>2. Reformasi Lembaga Negara</summary>
+            <div class="details-content">
+                <p>Reformasi lembaga pemerintahan secara signifikan terjadi pada masa pemerintahan Presiden <span class="highlight">Abdurrahman Wahid (Gus Dur)</span>.</p>
+                <h4>Pembubaran dan Perubahan Departemen:</h4>
+                <ul>
+                    <li><strong>Departemen Penerangan:</strong> Dibubarkan karena dianggap terlalu mengungkung hak berbicara media massa, yang menjadi salah satu harapan masyarakat pasca-reformasi 1998.</li>
+                    <li><strong>Departemen Sosial:</strong> Dibubarkan karena dinilai sarat akan penyelewengan hak rakyat atau korupsi (Pour, 2014: 185).</li>
+                </ul>
+                <p>Meskipun demikian, pembubaran Departemen Sosial hanya berlangsung sekitar 20 bulan. Setelah Gus Dur lengser, Presiden <span class="highlight">Megawati Soekarnoputri</span> memfungsikan kembali lembaga ini untuk membantu pemerintah dalam penyelenggaraan pembangunan di bidang kesejahteraan sosial.</p>
+                <p>Selain itu, terjadi perubahan istilah dari <span class="highlight">"Departemen"</span> menjadi <span class="highlight">"Kementerian"</span>. Contohnya, Departemen Pekerjaan Umum diubah namanya menjadi Kementerian Permukiman dan Prasarana Wilayah.</p>
+                <h4>Perampingan Lembaga Non-Struktural (LNS):</h4>
+                <p>Reformasi lembaga pemerintahan tidak hanya menyasar lembaga struktural, tetapi juga <span class="highlight">Lembaga Non-Struktural (LNS)</span>. LNS adalah lembaga yang dibentuk melalui peraturan perundang-undangan tersendiri untuk menunjang pelaksanaan fungsi pemerintah, dan dapat melibatkan unsur pemerintah, swasta, serta masyarakat sipil.</p>
+                <ul>
+                    <li>Beberapa LNS populer yang lahir atau direformasi pada era Reformasi antara lain:
+                        <ul>
+                            <li><span class="highlight">Komisi Pemilihan Umum (KPU)</span></li>
+                            <li><span class="highlight">Komisi Pemberantasan Korupsi (KPK)</span></li>
+                            <li><span class="highlight">Dewan Pers</span></li>
+                            <li><span class="highlight">Badan Amil Zakat Nasional (BAZNAS)</span></li>
+                        </ul>
+                    </li>
+                    <li>Sebelum tahun <span class="highlight">2015</span>, jumlah LNS pernah mencapai <span class="highlight">127 lembaga</span>.</li>
+                    <li>Pada tahun <span class="highlight">2022</span>, jumlah LNS di Indonesia hanya tersisa <span class="highlight">93 lembaga</span> (kompas.com, 21/06/2022). Ini menunjukkan tekad pemerintah untuk senantiasa melakukan evaluasi dan efisiensi terhadap lembaga-lembaganya.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>3. Peraturan Ketenagakerjaan yang Lebih Memihak Para Pekerja</summary>
+            <div class="details-content">
+                <p>Untuk memahami pentingnya reformasi di bidang ketenagakerjaan, penting untuk mengingat kisah <span class="highlight">Marsinah</span>, sang pahlawan buruh. Marsinah adalah seorang aktivis buruh di Porong, Sidoarjo, yang dibunuh secara keji pada tahun <span class="highlight">1993</span>. Ia adalah anggota Serikat Pekerja Seluruh Indonesia (SPSI) yang vokal menyuarakan hak-hak pekerja. Pembunuhan Marsinah menjadi salah satu kasus pelanggaran HAM berat yang mendapat sorotan dunia, merepresentasikan ketidakadilan dan ketidakberpihakan terhadap para pekerja pada masa itu.</p>
+                <h4>UU Ketenagakerjaan No. 13 Tahun 2003:</h4>
+                <p>Pada masa Reformasi, lahirlah <span class="highlight">Undang-Undang Ketenagakerjaan Nomor 13 Tahun 2003</span> yang dirancang agar lebih memihak kepada para pekerja. Pasal 4 UU ini secara eksplisit menyebutkan bahwa pemerintah memiliki kewajiban untuk:</p>
+                <ul>
+                    <li>Memberdayakan pekerja secara optimal dan manusiawi.</li>
+                    <li>Mewujudkan pemerataan kerja.</li>
+                    <li>Memberi perlindungan kepada tenaga kerja.</li>
+                    <li>Mengusahakan kesejahteraan bagi tenaga kerja dan keluarganya.</li>
+                </ul>
+                <p>Realisasi dari agenda ini semakin terlihat pada masa pemerintahan Presiden <span class="highlight">Susilo Bambang Yudhoyono (SBY)</span>, melalui program <span class="highlight">Sistem Jaminan Sosial Nasional (SJSN)</span> yang dikelola oleh lembaga <span class="highlight">Badan Penyelenggara Jaminan Sosial (BPJS)</span>, termasuk <span class="highlight">BPJS Ketenagakerjaan</span>. Dengan adanya program ini, keberpihakan kepada para pekerja telah menunjukkan arah yang lebih baik dan konkret.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>4. Otonomi Daerah</summary>
+            <div class="details-content">
+                <p>Salah satu agenda Reformasi penting lainnya adalah <span class="highlight">otonomi daerah</span>. Agenda ini merupakan bentuk perjuangan untuk menata dan mengelola sistem pemerintahan daerah agar lebih sesuai dengan tuntutan global serta aspirasi masyarakat lokal.</p>
+                <p>Menurut <span class="highlight">Undang-Undang Nomor 22 Tahun 1999</span>, daerah otonom memiliki kewajiban dan hak untuk mengatur serta mengurus urusan pemerintahan dan kepentingan masyarakat setempat berdasarkan prakarsa sendiri berdasarkan aspirasi masyarakat, sesuai dengan peraturan perundang-undangan.</p>
+                <p>Konsep otonomi daerah ini bertujuan untuk mendekatkan pelayanan publik kepada masyarakat, mempercepat pembangunan di daerah, serta meningkatkan partisipasi masyarakat dalam proses pembangunan.</p>
+            </div>
+        </details>
 
         <div class="source-info">
-            <p>Sumber: Diadaptasi dari materi Sejarah Untuk SMA/MA Kelas XII dan sumber terkait.</p>
+            <p><strong>Sumber Materi:</strong> Diadaptasi dari buku Sejarah untuk SMA/MA Kelas XII.</p>
+            <p><strong>Sumber Gambar Ilustrasi:</strong> M Rizal Abdi/Kemdikbudristek (2022) untuk Gambar 4.6.</p>
+            <p><strong>Sumber Informasi Pendukung:</strong></p>
+            <ul>
+                <li>Humas Kemenpan (2018).</li>
+                <li>Pour, J. (2014). <em>Habibie: Biografi Lengkap</em>.</li>
+                <li>Prasojo, Kompas (2013).</li>
+                <li>Thoha, Kompas (2014).</li>
+                <li>kompas.com (21/06/2022).</li>
+            </ul>
         </div>
     </div>
 </body>

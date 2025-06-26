@@ -1,0 +1,451 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikatan Kimia: Dasar-Dasar - Kimia Kelas XI</title>
+    <style>
+        /* Definisi Variabel Warna dari Tema lightMode */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2; /* Biru utama */
+            --accent-green: #388E3C; /* Hijau aksen */
+            --secondary-accent-amber: #FFB300; /* Kuning/Amber aksen sekunder */
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Umum untuk Body dan Kontainer Utama */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh; /* Pastikan body mengambil tinggi penuh viewport */
+        }
+
+        .container {
+            max-width: 900px; /* Lebar maksimum konten */
+            width: 100%; /* Lebar responsif */
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek mendalam */
+            border-radius: 10px; /* Sudut membulat */
+            margin: 20px auto; /* Margin atas/bawah dan auto untuk tengah */
+        }
+
+        /* Gaya Header */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 30px 20px;
+            border-radius: 10px 10px 0 0; /* Sudut membulat hanya di atas */
+            text-align: center;
+            margin: -20px -20px 20px -20px; /* Menutupi margin container untuk efek penuh */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Bayangan bawah header */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        /* Gaya Heading Konten */
+        h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 12px;
+            margin-top: 40px;
+            font-size: 2em;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.05);
+        }
+
+        h3 {
+            color: var(--accent-green);
+            margin-top: 30px;
+            font-size: 1.6em;
+            border-left: 4px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            text-align: justify; /* Teks rata kanan-kiri */
+        }
+
+        ul, ol {
+            margin-bottom: 18px;
+            padding-left: 30px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        /* Gaya Kotak Contoh */
+        .example-box {
+            background-color: #e3f2fd; /* Warna latar yang terang dari primary-blue */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .example-box h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        /* Gaya Kode Inline dan Blok Kode */
+        .inline-code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #f5f5f5;
+            padding: 3px 7px;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+            white-space: nowrap; /* Mencegah pecah baris */
+        }
+
+        .electron-config {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #fafafa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px dashed var(--border-divider);
+            margin: 15px 0;
+            white-space: pre-wrap; /* Mengizinkan teks untuk membungkus */
+            word-break: break-all; /* Memecah kata jika terlalu panjang */
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            line-height: 1.8;
+            overflow-x: auto; /* Mengaktifkan scroll horizontal jika konten terlalu panjang */
+        }
+        .electron-config p {
+            margin: 5px 0;
+            color: var(--text-tertiary); /* Teks dalam electron-config menggunakan warna tersier */
+        }
+
+        /* Visualisasi Atom Neon */
+        .neon-atom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+            min-height: 250px; /* Memastikan ada ruang untuk animasi */
+        }
+
+        .neon-atom .nucleus {
+            width: 90px;
+            height: 90px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--background-canvas);
+            font-weight: bold;
+            font-size: 2em;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3); /* Bayangan untuk efek kedalaman */
+        }
+
+        .neon-atom .electron-shell {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 3px dashed var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            animation: rotateShell 25s linear infinite; /* Animasi putaran */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Memastikan shell di tengah */
+        }
+
+        .neon-atom .electron {
+            width: 18px;
+            height: 18px;
+            background-color: var(--secondary-accent-amber);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--secondary-accent-amber); /* Cahaya pada elektron */
+            position: absolute;
+            /* Posisi elektron akan diatur secara individual */
+        }
+
+        /* Posisi 8 Elektron pada Shell (Distribusi Manual untuk Visualisasi) */
+        .neon-atom .electron:nth-child(1) { top: 10%; left: 50%; transform: translate(-50%, -50%); }
+        .neon-atom .electron:nth-child(2) { top: 50%; left: 90%; transform: translate(-50%, -50%); }
+        .neon-atom .electron:nth-child(3) { top: 90%; left: 50%; transform: translate(-50%, -50%); }
+        .neon-atom .electron:nth-child(4) { top: 50%; left: 10%; transform: translate(-50%, -50%); }
+        .neon-atom .electron:nth-child(5) { top: 25%; left: 75%; transform: translate(-50%, -50%); }
+        .neon-atom .electron:nth-child(6) { top: 75%; left: 75%; transform: translate(-50%, -50%); }
+        .neon-atom .electron:nth-child(7) { top: 75%; left: 25%; transform: translate(-50%, -50%); }
+        .neon-atom .electron:nth-child(8) { top: 25%; left: 25%; transform: translate(-50%, -50%); }
+
+
+        /* Keyframes untuk Animasi Putaran Shell */
+        @keyframes rotateShell {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Penyesuaian Responsif untuk Berbagai Ukuran Layar */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+                border-radius: 8px;
+            }
+            header {
+                padding: 25px 15px;
+                margin: -15px -15px 15px -15px;
+                border-radius: 8px 8px 0 0;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 0.95em;
+            }
+            h2 {
+                font-size: 1.7em;
+                margin-top: 30px;
+                padding-bottom: 8px;
+            }
+            h3 {
+                font-size: 1.4em;
+                margin-top: 25px;
+            }
+            p, ul, ol, li {
+                font-size: 0.95em;
+            }
+            .example-box {
+                padding: 18px 20px;
+                margin: 20px 0;
+            }
+            .neon-atom {
+                min-height: 200px;
+                margin: 30px 0;
+            }
+            .neon-atom .electron-shell {
+                width: 180px;
+                height: 180px;
+            }
+            .neon-atom .nucleus {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8em;
+            }
+            .neon-atom .electron {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            header {
+                padding: 20px 10px;
+                margin: -10px -10px 10px -10px;
+                border-radius: 5px 5px 0 0;
+            }
+            header h1 {
+                font-size: 1.7em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.4em;
+                margin-top: 25px;
+                padding-bottom: 6px;
+            }
+            h3 {
+                font-size: 1.2em;
+                margin-top: 20px;
+                border-left-width: 3px;
+            }
+            p, ul, ol, li {
+                font-size: 0.9em;
+            }
+            .example-box {
+                padding: 15px 18px;
+                margin: 18px 0;
+            }
+            .neon-atom {
+                min-height: 160px;
+                margin: 25px 0;
+            }
+            .neon-atom .electron-shell {
+                width: 140px;
+                height: 140px;
+                border-width: 2px;
+            }
+            .neon-atom .nucleus {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5em;
+            }
+            .neon-atom .electron {
+                width: 12px;
+                height: 12px;
+            }
+            .electron-config {
+                padding: 10px 15px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ikatan Kimia</h1>
+            <p>Memahami Dasar-Dasar Pembentukan Molekul dan Senyawa</p>
+        </header>
+
+        <section id="introduction">
+            <h2>Mengapa Unsur Berbeda Sifatnya?</h2>
+            <p>Mari kita awali pembahasan ikatan kimia dengan sebuah perbandingan yang mungkin familiar bagi Anda: antara <strong>garam dapur (<span class="inline-code">NaCl</span>)</strong> dan <strong>logam natrium (<span class="inline-code">Na</span>)</strong>.</p>
+            <ul>
+                <li><strong>Garam Dapur:</strong> Teksturnya kasar, mudah dihancurkan, dan sangat aman untuk disentuh kulit, bahkan kita mengonsumsinya setiap hari.</li>
+                <li><strong>Logam Natrium:</strong> Kebalikannya, logam natrium memiliki tekstur yang berbeda, sangat reaktif terhadap air (bisa meledak jika kena kulit basah!), tidak mudah dihancurkan namun dapat dipotong dengan pisau.</li>
+            </ul>
+            <p>Kedua zat ini mengandung unsur yang sama, yaitu <strong>natrium</strong>. Namun, mengapa sifat fisika dan kimianya bisa sangat berbeda? Jawabannya terletak pada bagaimana atom-atom tersebut saling terikat. Perbedaan sifat ini adalah bukti nyata peran krusial dari <strong>ikatan kimia</strong> dalam menentukan karakteristik suatu materi.</p>
+        </section>
+
+        <section id="dasar-ikatan-kimia">
+            <h2>A. Dasar Ikatan Kimia</h2>
+            <p>Untuk memahami ikatan kimia, kita perlu terlebih dahulu mengetahui mengapa beberapa unsur dapat ditemukan dalam keadaan "bebas" di alam, sementara yang lain tidak.</p>
+
+            <h3>Kestabilan Unsur: Studi Kasus Helium dan Oksigen</h3>
+            <ul>
+                <li><strong>Gas Helium (He):</strong> Helium adalah contoh sempurna dari unsur yang ditemukan dalam <strong>keadaan bebas</strong> di alam. Ini berarti atom helium dapat berdiri sendiri tanpa harus berikatan dengan atom lain untuk menjadi stabil. Itulah mengapa balon udara bisa diisi dengan gas helium.</li>
+                <li><strong>Gas Oksigen (O):</strong> Berbeda dengan helium, oksigen tidak dapat ditemukan sebagai atom tunggal di alam. Atom oksigen selalu berikatan, entah dengan sesama atom oksigen (<span class="inline-code">O₂</span>, gas yang kita hirup) atau dengan unsur lain, seperti hidrogen untuk membentuk air (<span class="inline-code">H₂O</span>).</li>
+            </ul>
+            <p>Perbedaan mendasar ini membawa kita pada pertanyaan inti: mengapa ada unsur yang stabil sendiri dan ada yang harus berikatan?</p>
+
+            <h3>Kaidah Oktet dan Duplet: Kunci Kestabilan</h3>
+            <p>Unsur-unsur yang berada dalam keadaan bebas dan stabil di alam adalah <strong>gas mulia</strong> (Golongan VIIIA). Kestabilan mereka dijelaskan oleh:</p>
+            <ul>
+                <li><strong>Kaidah Oktet:</strong> Sebagian besar atom gas mulia memiliki <strong>delapan elektron</strong> di kulit terluarnya (kulit valensi). Angka delapan ini dianggap sebagai konfigurasi elektron yang sangat stabil.</li>
+                <li><strong>Kaidah Duplet:</strong> Untuk unsur yang lebih kecil seperti Helium, kestabilan dicapai dengan memiliki <strong>dua elektron</strong> di kulit terluarnya.</li>
+            </ul>
+            <p>Dengan demikian, setiap atom unsur lain berusaha mencapai kestabilan ini. Mereka melakukannya dengan cara melepaskan, menerima, atau berbagi elektron sehingga konfigurasi elektron di kulit terluarnya sama dengan konfigurasi elektron gas mulia terdekat.</p>
+
+            <h3>Postulat Gilbert Lewis: Fondasi Ikatan Kimia</h3>
+            <p>Seorang ilmuwan bernama Gilbert Lewis merumuskan dasar pembentukan ikatan melalui dua postulat sederhana:</p>
+            <ol>
+                <li><strong>Gas mulia</strong> berada dalam bentuk atom tunggal dan stabil karena konfigurasi elektron valensinya sudah memenuhi kaidah oktet (atau duplet). Mereka tidak perlu membentuk ikatan.</li>
+                <li><strong>Unsur-unsur selain gas mulia</strong> akan membentuk ikatan kimia. Tujuannya adalah agar konfigurasi elektron terluar mereka menjadi sama dengan konfigurasi elektron gas mulia terdekat, sehingga mereka mencapai kestabilan.</li>
+            </ol>
+            <p>Interaksi inilah, di mana atom-atom berkontribusi elektron untuk mencapai kestabilan, yang disebut <strong>ikatan kimia</strong>. Hasil dari ikatan kimia adalah pembentukan molekul atau senyawa baru dengan sifat-sifat yang khas.</p>
+        </section>
+
+        <section id="kestabilan-atom-detail">
+            <h2>Kestabilan Atom: Proses Pembentukan Ion</h2>
+            <p>Untuk mencapai kestabilan, atom non-gas mulia akan berusaha mendapatkan konfigurasi elektron duplet (2 elektron valensi) atau oktet (8 elektron valensi). Ini seringkali melibatkan pembentukan ion, yaitu atom yang bermuatan listrik karena kehilangan atau mendapatkan elektron.</p>
+
+            <h3>Mekanisme Kestabilan: Melepas atau Menerima Elektron</h3>
+            <ul>
+                <li><strong>Pembentukan Kation:</strong> Atom dengan energi ionisasi rendah (cenderung melepaskan elektron dengan mudah) akan <strong>melepaskan elektron valensinya</strong>. Dengan hilangnya elektron bermuatan negatif, atom tersebut menjadi ion bermuatan positif, yang disebut <strong>kation</strong>.</li>
+                <li><strong>Pembentukan Anion:</strong> Atom dengan afinitas elektron besar (cenderung menerima elektron dengan mudah) akan <strong>menerima elektron</strong> ke kulit valensinya. Dengan bertambahnya elektron bermuatan negatif, atom tersebut menjadi ion bermuatan negatif, yang disebut <strong>anion</strong>.</li>
+            </ul>
+
+            <h3>Konfigurasi Elektron Gas Mulia (Contoh)</h3>
+            <p>Mari kita lihat kembali konfigurasi elektron dari beberapa unsur gas mulia, yang menjadi model kestabilan:</p>
+            <div class="electron-config">
+                <p><sup>2</sup>He (Helium): &nbsp; 1s² &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (2)</p>
+                <p><sup>10</sup>Ne (Neon): &nbsp; &nbsp; 1s² 2s² 2p⁶ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (2 8)</p>
+                <p><sup>18</sup>Ar (Argon): &nbsp; 1s² 2s² 2p⁶ 3s² 3p⁶ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (2 8 8)</p>
+                <p><sup>36</sup>Kr (Kripton): &nbsp;1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ &nbsp; &nbsp; &nbsp; &nbsp; (2 8 18 8)</p>
+                <p><sup>54</sup>Xe (Xenon): &nbsp; 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ &nbsp; (2 8 18 18 8)</p>
+            </div>
+            <p>Observasi menunjukkan bahwa semua gas mulia memiliki 8 elektron valensi (oktet), kecuali Helium yang hanya memiliki 2 elektron valensi (duplet).</p>
+
+            <h3>Visualisasi Atom Neon</h3>
+            <p>Berikut adalah representasi sederhana atom Neon, yang menunjukkan inti dan elektron-elektronnya dalam kulit terluar yang stabil:</p>
+            <div class="neon-atom">
+                <div class="nucleus">Ne</div>
+                <div class="electron-shell">
+                    <!-- 8 electrons for Neon's outer shell -->
+                    <div class="electron" style="top: 10%; left: 50%;"></div>
+                    <div class="electron" style="top: 50%; left: 90%;"></div>
+                    <div class="electron" style="top: 90%; left: 50%;"></div>
+                    <div class="electron" style="top: 50%; left: 10%;"></div>
+                    <div class="electron" style="top: 25%; left: 75%;"></div>
+                    <div class="electron" style="top: 75%; left: 75%;"></div>
+                    <div class="electron" style="top: 75%; left: 25%;"></div>
+                    <div class="electron" style="top: 25%; left: 25%;"></div>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-tertiary); font-size: 0.9em; margin-top: 10px;">Visualisasi Atom Neon (Ne), menunjukkan konfigurasi elektron 2, 8.</p>
+
+
+            <h3>Contoh Penerapan Konfigurasi Elektron untuk Kestabilan</h3>
+
+            <div class="example-box">
+                <h3>Contoh 1: Atom Kalium (K)</h3>
+                <p>Atom Kalium (K) memiliki nomor atom 19. Konfigurasi elektronnya adalah <span class="inline-code">1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹</span>, atau disederhanakan menjadi <span class="inline-code">(2 8 8 1)</span>.</p>
+                <p>Karena hanya memiliki 1 elektron valensi, Kalium cenderung <strong>melepaskan satu elektron</strong> ini untuk mencapai kestabilan oktet. Melepaskan 1 elektron jauh lebih mudah daripada menerima 7 elektron.</p>
+                <p>Ketika K melepaskan 1 elektron, ia membentuk ion <span class="inline-code">K⁺</span> dengan konfigurasi elektron <span class="inline-code">(2 8 8)</span>, yang persis sama dengan konfigurasi elektron gas mulia Argon (Ar).</p>
+                <div class="electron-config">
+                    <p><sup>19</sup>K &nbsp; &nbsp; → &nbsp; &nbsp; K⁺ &nbsp; &nbsp; + &nbsp; &nbsp; e⁻</p>
+                    <p>(2 8 8 1) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (2 8 8)</p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3>Contoh 2: Atom Fluorin (F)</h3>
+                <p>Atom Fluorin (F) memiliki nomor atom 9. Konfigurasi elektronnya adalah <span class="inline-code">1s² 2s² 2p⁵</span>, atau disederhanakan menjadi <span class="inline-code">(2 7)</span>.</p>
+                <p>Fluorin memiliki 7 elektron valensi. Untuk mencapai kestabilan oktet, atom F cenderung <strong>menerima satu elektron</strong>. Menerima 1 elektron jauh lebih mudah daripada melepaskan 7 elektron.</p>
+                <p>Ketika F menerima 1 elektron, ia membentuk ion <span class="inline-code">F⁻</span> dengan konfigurasi elektron <span class="inline-code">(2 8)</span>, yang persis sama dengan konfigurasi elektron gas mulia Neon (Ne).</p>
+                <div class="electron-config">
+                    <p><sup>9</sup>F &nbsp; &nbsp; + &nbsp; &nbsp; e⁻ &nbsp; &nbsp; → &nbsp; &nbsp; F⁻</p>
+                    <p>(2 7) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (2 8)</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+```

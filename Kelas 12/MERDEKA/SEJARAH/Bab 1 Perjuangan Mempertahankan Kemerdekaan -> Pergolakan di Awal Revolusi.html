@@ -1,0 +1,609 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergolakan di Awal Revolusi - Sejarah Kelas XII</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            word-wrap: break-word; /* Ensure long words break */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 2em;
+            margin-bottom: 0.8em;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-green);
+            padding-bottom: 15px;
+            color: var(--accent-green);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-divider);
+        }
+        h4 {
+             font-size: 1.3em;
+             color: var(--text-secondary);
+             margin-top: 1.5em;
+             margin-bottom: 0.5em;
+             border-bottom: none;
+             padding-bottom: 0;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.6em;
+        }
+
+        .section-intro {
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-bottom: 2em;
+            text-align: center;
+        }
+
+        .card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            font-size: 1.5em;
+        }
+
+        .viva-historia {
+            background-color: #E3F2FD; /* Light blue from primary-blue palette */
+            border-left: 6px solid var(--primary-blue);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+            transition: background-color 0.3s ease;
+        }
+
+        .viva-historia.green {
+            background-color: #E8F5E9; /* Light green */
+            border-left-color: var(--accent-green);
+        }
+        .viva-historia.amber {
+            background-color: #FFFDE7; /* Light amber */
+            border-left-color: var(--secondary-accent-amber);
+        }
+
+        .viva-historia h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            border-bottom: 1px dashed var(--primary-blue);
+            padding-bottom: 10px;
+            font-size: 1.4em;
+        }
+        .viva-historia.green h3 { color: var(--accent-green); border-bottom-color: var(--accent-green); }
+        .viva-historia.amber h3 { color: var(--secondary-accent-amber); border-bottom-color: var(--secondary-accent-amber); }
+
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 25px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--border-divider);
+            border-radius: 2px;
+        }
+
+        .timeline-event {
+            position: relative;
+            padding-left: 70px;
+            margin-bottom: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-event:hover {
+            transform: translateX(5px);
+            background-color: rgba(25, 118, 210, 0.03); /* Very light primary blue */
+            border-radius: 5px;
+        }
+
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            border: 4px solid var(--background-canvas);
+            box-shadow: 0 0 0 2px var(--primary-blue);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .timeline-event:hover::before {
+            background-color: var(--accent-green);
+            box-shadow: 0 0 0 2px var(--accent-green);
+        }
+
+
+        .timeline-event h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 8px;
+            border-bottom: none;
+            font-size: 1.15em;
+        }
+
+        .timeline-event p {
+            font-size: 0.98em;
+            color: var(--text-secondary);
+        }
+
+        /* Collapsible sections for interactivity */
+        details {
+            background-color: #F8F8F8; /* A very light grey for details background */
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        details:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--primary-blue);
+        }
+
+        summary {
+            padding: 18px;
+            cursor: pointer;
+            background-color: #ECEFF1; /* Slightly darker grey for summary header */
+            color: var(--text-primary);
+            font-weight: bold;
+            list-style: none; /* Remove default arrow */
+            position: relative;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 1.1em;
+        }
+
+        summary::marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3em;
+            color: var(--primary-blue);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        details[open] summary::after {
+            content: '-';
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        details[open] summary {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+        }
+        details[open] summary::after {
+            color: var(--background-canvas);
+        }
+
+
+        .details-content {
+            padding: 20px;
+            border-top: 1px dashed var(--border-divider);
+            background-color: var(--background-canvas);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+                padding-bottom: 10px;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            h4 {
+                font-size: 1.1em;
+            }
+            .section-intro {
+                font-size: 1em;
+            }
+            .viva-historia {
+                padding: 18px;
+            }
+            .viva-historia h3 {
+                font-size: 1.2em;
+            }
+            .timeline::before {
+                left: 15px;
+            }
+            .timeline-event {
+                padding-left: 55px;
+            }
+            .timeline-event::before {
+                left: 5px;
+                width: 18px;
+                height: 18px;
+            }
+            summary {
+                padding: 15px;
+                font-size: 1em;
+            }
+            summary::after {
+                right: 15px;
+                font-size: 1.1em;
+            }
+            .details-content {
+                padding: 15px;
+            }
+            .card {
+                padding: 15px;
+            }
+            .card h3 {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.7em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            h4 {
+                font-size: 1em;
+            }
+            .viva-historia {
+                padding: 15px;
+            }
+            .viva-historia h3 {
+                font-size: 1.1em;
+            }
+            .timeline-event {
+                padding-left: 45px;
+            }
+            .timeline-event::before {
+                width: 16px;
+                height: 16px;
+            }
+            summary {
+                padding: 12px;
+            }
+            .details-content {
+                padding: 12px;
+            }
+            .card h3 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Pergolakan di Awal Revolusi</h1>
+        <p class="section-intro">Memahami dinamika kompleks yang terjadi di Indonesia pada periode awal kemerdekaan, di mana perjuangan tidak hanya melawan kekuatan asing tetapi juga melibatkan transformasi sosial internal.</p>
+
+        <p>Pada masa awal kemerdekaan Indonesia, situasi keamanan di berbagai daerah sangatlah kacau, ditandai oleh banyaknya pergolakan, perselisihan, dan pertempuran yang seringkali memakan korban jiwa di kalangan rakyat Indonesia sendiri. Secara garis besar, pergolakan yang terjadi di masa awal revolusi ini dapat dikategorikan menjadi dua jenis utama, yaitu revolusi sosial dan pergolakan yang berfokus pada perlawanan terhadap tentara asing.</p>
+
+        <details>
+            <summary>Memahami Revolusi Sosial di Awal Kemerdekaan</summary>
+            <div class="details-content">
+                <h3>Definisi Revolusi Sosial</h3>
+                <p>Sejarawan <strong>Michael Wood (2005)</strong> mendefinisikan revolusi sosial di awal kemerdekaan Indonesia sebagai serangkaian peristiwa dramatis yang berlangsung antara tahun 1945 hingga 1946. Dalam periode ini, target amukan massa adalah para pemimpin lokal, bangsawan, pemilik perkebunan, serta individu-individu yang dianggap berkolaborasi dengan Jepang atau Belanda. Fenomena ini bukanlah tanpa sebab.</p>
+
+                <h3>Ledakan Kemarahan Rakyat</h3>
+                <p>Menurut sejarawan terkemuka <strong>Sartono Kartodirjo (1981)</strong> dan <strong>M.C. Ricklefs (2005)</strong>, berbagai peristiwa yang terjadi merupakan manifestasi dari ledakan kemarahan kolektif rakyat Indonesia. Kemarahan ini akumulasi dari penindasan dan ketidakadilan yang telah mereka alami di masa-masa sebelumnya di bawah kekuasaan kolonial dan pendudukan.</p>
+                <p>Di masa awal kemerdekaan, pemerintah pusat masih belum stabil dan belum sepenuhnya mampu mengendalikan keamanan di berbagai daerah. Kondisi ini dimanfaatkan oleh sebagian kelompok masyarakat untuk meluapkan amarah mereka dan mengambil alih kekuasaan dari pihak-pihak yang dianggap mewakili tatanan lama. Mereka meyakini bahwa tatanan sosial masyarakat lama sudah tidak lagi sejalan dengan semangat kemerdekaan Indonesia yang baru diproklamasikan. Sayangnya, tindakan-tindakan ini seringkali melibatkan kekerasan yang berujung pada tragedi kemanusiaan yang mendalam. Kita semua tentu berharap kejadian semacam ini tidak terulang di masa kini maupun di masa depan.</p>
+
+                <div class="viva-historia">
+                    <h3>VIVA HISTORIA: Istilah "Masa Bersiap" vs "Revolusi Sosial"</h3>
+                    <p>Masyarakat Belanda, khususnya mereka yang pernah tinggal di Indonesia selama revolusi, seringkali mengenang peristiwa revolusi sosial ini sebagai "Masa Bersiap," sebuah periode yang penuh kekerasan. Banyak warga sipil Belanda dan Indo (peranakan Eropa-Indonesia) menjadi sasaran amukan massa pada periode tersebut.</p>
+                    <p>Namun, sejarawan <strong>Bonnie Triyana</strong> mengemukakan pandangan berbeda. Menurutnya, istilah "Bersiap" memiliki konotasi rasial dan hanya merefleksikan perspektif Belanda. Ia lebih menganjurkan penggunaan istilah "revolusi sosial" karena istilah ini mencerminkan dinamika yang lebih luas, termasuk aspirasi rakyat Indonesia untuk mengubah tatanan sosial yang tidak adil, bukan hanya kekerasan sepihak.</p>
+                    <p>Beberapa contoh daerah di mana revolusi sosial terjadi meliputi:</p>
+                    <ul>
+                        <li><strong>Peristiwa Tiga Daerah</strong></li>
+                        <li><strong>Gedoran di Depok</strong></li>
+                        <li><strong>Revolusi Sosial di Pidie</strong></li>
+                        <li><strong>Revolusi Sosial di Sumatera Timur</strong></li>
+                    </ul>
+                    <p>Peristiwa-peristiwa ini menunjukkan kompleksitas perjuangan di awal kemerdekaan, di mana konflik tidak hanya terjadi melawan penjajah tetapi juga melibatkan transformasi internal masyarakat.</p>
+                </div>
+            </div>
+        </details>
+
+        <h2>Pergolakan Melawan Tentara Asing</h2>
+        <p>Selain pergolakan sosial, periode awal kemerdekaan juga diwarnai oleh berbagai pertempuran dan perlawanan bersenjata terhadap tentara asing, yaitu Jepang yang belum sepenuhnya pergi, serta pasukan Sekutu dan NICA yang mulai berdatangan.</p>
+
+        <details>
+            <summary>1. Perebutan Senjata dan Pengambilalihan Kekuasaan dari Pihak Jepang</summary>
+            <div class="details-content">
+                <h3>Konteks Pasca-Menyerahnya Jepang</h3>
+                <p>Meskipun Jepang telah menyerah kepada Sekutu, pasukannya masih berada di Indonesia. Mereka menerima perintah dari Sekutu untuk menjaga <em>status quo</em>, yang berarti mempertahankan kondisi yang ada sebelum kedatangan Sekutu. Tentara Jepang pada saat itu masih memegang kendali atas persenjataan yang signifikan dan menguasai fasilitas-fasilitas strategis.</p>
+                <p>Menurut <strong>Roeslan Abdulgani (1973)</strong>, seorang tokoh dan pelaku sejarah, muncul kekhawatiran besar di kalangan kelompok nasionalis dan pejuang Indonesia. Mereka mencurigai bahwa pasukan Sekutu yang akan datang ke Indonesia akan melucuti senjata Jepang dan kemudian menyerahkan kembali Indonesia kepada Belanda. Kecurigaan dan ketakutan inilah yang menjadi pemicu utama terjadinya berbagai peristiwa perebutan senjata dan pengambilalihan kekuasaan dari tangan Jepang di berbagai daerah, bahkan sebelum kedatangan pasukan Sekutu secara penuh.</p>
+
+                <h3>Contoh Perebutan Senjata dan Pengambilalihan</h3>
+                <p>Beberapa peristiwa perebutan senjata ini seringkali diawali dengan konflik intens atau pengepungan markas dan gudang senjata Jepang yang bersikeras mempertahankan perintah <em>status quo</em> mereka. Contoh-contoh peristiwa ini antara lain terjadi di:</p>
+                <ul>
+                    <li>Surabaya</li>
+                    <li>Yogyakarta</li>
+                    <li>Bireun</li>
+                    <li>Dan banyak daerah lainnya.</li>
+                </ul>
+                <p>Selain perebutan senjata, terjadi pula konflik bersenjata melawan tentara Jepang secara langsung, seperti:</p>
+                <ul>
+                    <li><strong>Pertempuran 5 Hari di Semarang (15—19 Oktober 1945):</strong> Bermula dari kecurigaan bahwa tentara Jepang telah meracuni sumber air di kota tersebut.</li>
+                </ul>
+                <p>Di berbagai daerah, para pemuda dan tokoh nasionalis Indonesia juga secara aktif melakukan pengambilalihan kekuasaan sipil dan militer dari tangan Jepang. Ini terjadi di:</p>
+                <ul>
+                    <li>Malang (3 Oktober 1945)</li>
+                    <li>Palembang (8 Oktober 1945)</li>
+                    <li>Surakarta (13 Oktober 1945)</li>
+                    <li>Aceh (12 Oktober 1945)</li>
+                    <li>Dan banyak daerah lainnya.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>2. Kedatangan Sekutu dan NICA</summary>
+            <div class="details-content">
+                <h3>Kronologi Kedatangan Sekutu</h3>
+                <p>Ada persepsi umum bahwa tentara Sekutu baru memasuki Indonesia setelah Kaisar Hirohito mengumumkan penyerahan Jepang tanpa syarat pada 15 Agustus 1945. Namun, faktanya kedatangan Sekutu sudah dimulai beberapa bulan sebelumnya di beberapa wilayah Indonesia bagian timur sebagai bagian dari Perang Pasifik.</p>
+                <ul>
+                    <li><strong>Juli 1945:</strong> Pasukan Australia (bagian dari Sekutu) telah mengalahkan Jepang dan menduduki Balikpapan.</li>
+                    <li><strong>Pertengahan 1944:</strong> Pasukan Amerika Serikat bahkan telah berhasil mengalahkan Jepang di Papua.</li>
+                </ul>
+                <p>Meskipun demikian, kedatangan resmi Sekutu untuk melucuti kekuasaan Jepang di seluruh wilayah Indonesia baru terjadi pada <strong>September 1945</strong>, dengan pasukan Inggris sebagai perwakilan utama yang mendarat di Jakarta.</p>
+
+                <h3>Kesalahpahaman Sekutu dan Kesepakatan Civil Affairs Agreements</h3>
+                <p>Sejarawan Inggris <strong>Richard McMillan (2005)</strong> mengemukakan bahwa pada saat itu, pihak Inggris memiliki pemahaman yang kurang tepat tentang perkembangan di Indonesia setelah Jepang menyerah. Informasi intelijen yang mereka terima menyatakan bahwa rakyat Indonesia merasa dieksploitasi oleh Jepang dan akan menyambut kedatangan kembali Belanda dengan dukungan Inggris. Oleh karena itu, pihak Inggris pada awalnya tidak menganggap serius Proklamasi Kemerdekaan Indonesia pada 17 Agustus 1945, bahkan menganggap Sukarno dan Hatta sebagai kolaborator Jepang.</p>
+                <p>Informasi ini sangat jauh dari kenyataan yang terjadi di Indonesia. Pelajaran berharga dari sini adalah pentingnya verifikasi informasi intelijen. Kesulitan pihak Inggris dalam memverifikasi informasi ini menyebabkan mereka terseret dalam konflik yang tidak perlu dengan Republik Indonesia di masa awal kemerdekaan.</p>
+                <p>Tanpa menyadari dinamika yang terjadi di Indonesia, pemerintah Kerajaan Belanda dan Inggris menandatangani <strong>Civil Affairs Agreements</strong> di Chequers, Inggris, pada <strong>24 Agustus 1945</strong>. Persetujuan ini menetapkan bahwa Panglima tentara pendudukan Inggris di wilayah Hindia-Belanda akan memegang kekuasaan atas nama pemerintah Belanda. Urusan pemerintahan sipil akan dijalankan oleh <strong>Netherlands Indies Civil Administration (NICA)</strong> di bawah tanggung jawab South East Asia Command (SEAC). Ini berarti, seluruh kekuasaan di Indonesia akan diserahkan kembali kepada pemerintah Belanda, dan pasukan Belanda akan berada di bawah komando Inggris hingga mereka meninggalkan Indonesia.</p>
+
+                <h3>Propaganda dan Reaksi Rakyat Indonesia</h3>
+                <p>Sejak akhir Agustus 1945, pesawat-pesawat Sekutu mulai menyebarkan pamflet dari udara atas permintaan Belanda. Pamflet-pamflet ini berisi berbagai informasi dan instruksi, termasuk:</p>
+                <ul>
+                    <li>Berita menyerahnya Jepang kepada Sekutu dan instruksi agar tentara Jepang menjaga <em>status quo</em>.</li>
+                    <li>Informasi bahwa Sekutu akan memberikan bantuan kepada orang-orang Eropa tawanan Jepang.</li>
+                    <li>Pesan agar rakyat Indonesia tetap tenang karena Belanda akan kembali memulihkan kondisi seperti sebelum perang.</li>
+                </ul>
+                <p>Penyebaran pamflet ini menunjukkan betapa pihak Belanda dan Sekutu tidak memahami apa yang sebenarnya terjadi di Indonesia. Dalam memoarnya, <strong>Suhario Padmodiwiryo (2015)</strong> menceritakan bahwa banyak rakyat Surabaya yang langsung merobek selebaran itu. Pamflet tersebut justru memicu kemarahan rakyat Surabaya, yang berujung pada amuk massa yang menyasar orang Belanda, Indo, atau siapa pun yang dianggap mendukung Belanda.</p>
+                <p>Dalam situasi politik dan keamanan yang tidak menentu ini, tidak mengherankan jika kemudian terjadi banyak bentrokan antara rakyat Indonesia dengan Sekutu dan NICA. Awalnya, pemerintah Indonesia bersedia menerima kedatangan Sekutu untuk melucuti senjata Jepang dan membebaskan tawanan perang. Namun, setelah menyadari bahwa pihak Sekutu berniat menyerahkan kekuasaan kepada Belanda (NICA), sikap Indonesia berbalik, dan berbagai pertempuran pun tak terelakkan.</p>
+            </div>
+        </details>
+
+        <h2>Beberapa Pertempuran Penting Melawan Sekutu dan NICA</h2>
+
+        <div class="card">
+            <h3>a. Pertempuran Medan Area</h3>
+            <p>Pasukan Inggris, sebagai bagian dari Sekutu, tiba di Medan pada <strong>9 Oktober 1945</strong>. Pemerintah RI pada awalnya mempersilakan mereka untuk mengurus bekas tawanan perang. Namun, situasi memburuk ketika para bekas tawanan perang ini kemudian dipersenjatai oleh pihak Belanda (NICA), yang juga sudah tiba di Medan. Mereka mulai bersikap superior, dan dalam sebuah insiden, lencana merah-putih yang dikenakan pemuda Indonesia diinjak, yang dianggap sebagai penghinaan besar. Insiden ini memicu konflik bersenjata yang dimulai pada <strong>13 Oktober 1945</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h3>b. Bandung Lautan Api</h3>
+            <p>Pertempuran ini diabadikan dalam lagu “Halo-Halo Bandung” karya Ismail Marzuki. Tentara Sekutu, yang diboncengi NICA, mulai tiba di Bandung pada <strong>12 Oktober 1945</strong> dan menuntut agar rakyat Indonesia menyerahkan senjata, serta membebaskan orang-orang Belanda yang ditawan Jepang. Mantan tawanan dan NICA bertindak arogan karena merasa didukung Sekutu. Akibatnya, markas Sekutu di Hotel Savoy Homan diserang oleh orang-orang Indonesia pada <strong>21 November 1945</strong>. Sekutu membalas serangan tersebut. Pertempuran sengit terus berlanjut hingga Kolonel McDonald, komando Sekutu di Bandung, mengeluarkan ultimatum agar pejuang Indonesia meninggalkan Bandung pada <strong>23 Maret 1946</strong>.</p>
+            <details>
+                <summary>Taktik Bumi Hangus</summary>
+                <div class="details-content">
+                    <p>Melihat keterbatasan kekuatan senjata pejuang dibandingkan Sekutu, Perdana Menteri Sjahrir menginstruksikan Tentara Republik Indonesia (TRI) untuk mengosongkan Bandung guna menghindari pertumpahan darah lebih lanjut. Sjahrir juga berupaya berunding dengan Inggris.</p>
+                    <p>Namun, Kolonel Nasution dan beberapa perwira TRI lainnya enggan menyerahkan Bandung begitu saja. Sebagai jalan tengah, mereka memutuskan untuk menerapkan taktik bumi hangus, yaitu membakar Bandung bagian selatan sebelum ditinggalkan, agar fasilitas yang ada tidak dapat dimanfaatkan oleh Sekutu. Perintah Perdana Menteri ditaati, tetapi dengan tambahan tindakan heroik ini.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>c. Palagan Ambarawa</h3>
+            <p>Tentara Sekutu mendarat di Semarang pada <strong>20 Oktober 1945</strong> dan awalnya diterima dengan baik oleh pihak Indonesia. Gubernur Jawa Tengah, Mr. Wongsonegoro, bahkan membantu mereka dalam melucuti senjata Jepang dan membebaskan tawanan perang, dengan janji Sekutu tidak akan mengganggu kedaulatan RI. Namun, sikap Indonesia berubah ketika mengetahui bahwa bekas tawanan perang yang dibebaskan di Magelang dan Ambarawa justru dipersenjatai, dan Sekutu berusaha melucuti senjata tentara Indonesia. Ini memicu bentrokan antara Indonesia melawan Sekutu dan NICA. Pertempuran Ambarawa berlangsung dari <strong>21 November 1945 hingga 15 Desember 1945</strong>. Pasukan Indonesia, terdiri dari TKR dan laskar rakyat, meraih kemenangan gemilang, meskipun harus membayar dengan jumlah korban jiwa yang sangat besar.</p>
+        </div>
+
+        <div class="card">
+            <h3>d. Pertempuran Surabaya</h3>
+            <p>Konflik antara bangsa Indonesia dan Belanda (yang bersekutu dengan Inggris) sudah pecah di Surabaya bahkan sebelum kedatangan Sekutu, ditandai dengan Insiden Bendera di Hotel Yamato (atau Hotel Oranye) pada <strong>19 September 1945</strong>. Setelah insiden ini, serangkaian pertempuran terjadi. Pada <strong>22 Oktober 1945</strong>, K.H. Hasyim Asy'ari menyerukan "resolusi jihad" untuk membela tanah air melawan Sekutu dan NICA, yang kini setiap <strong>22 Oktober diperingati sebagai Hari Santri</strong> untuk mengenang peran ulama dan santri.</p>
+            <p>Pada <strong>25 Oktober 1945</strong>, pasukan Sekutu pimpinan Brigadir Jenderal Mallaby mendarat di Surabaya. Negosiasi awal antara Mallaby dengan Komandan BKR drg. Mustopo dan Gubernur Jawa Timur R.M. Suryo pada <strong>26 Oktober 1945</strong> berjalan lancar dengan kesepakatan saling menghormati dan menjaga keamanan. Namun, situasi memburuk ketika Mayor Jenderal D.C. Hawthorn, tanpa sepengetahuan Mallaby, memerintahkan Angkatan Udara Inggris menyebarkan pamflet ultimatum pada <strong>27 Oktober 1945</strong>, meminta rakyat Surabaya menyerahkan senjata. Pertempuran besar pun pecah.</p>
+            <p>Jenderal Christison, komandan pasukan Sekutu di Indonesia, meminta bantuan Sukarno untuk datang ke Surabaya dan mengusahakan gencatan senjata pada <strong>29 Oktober 1945</strong>. Namun, gencatan senjata ini tidak bertahan lama. Pada <strong>30 Oktober 1945</strong>, pertempuran besar kembali pecah, di mana Brigadir Jenderal Mallaby terbunuh. Kematian Mallaby memicu kemarahan Sekutu, yang mengeluarkan ultimatum pada <strong>9 November 1945</strong>, meminta Indonesia menyerah keesokan harinya. Ultimatum ini diabaikan, berujung pada pertempuran dahsyat <strong>10 November 1945</strong>, yang kini diperingati sebagai Hari Pahlawan.</p>
+            <details>
+                <summary>Misteri Kematian Mallaby</summary>
+                <div class="details-content">
+                    <p>Hingga saat ini, salah satu pertanyaan besar terkait Pertempuran Surabaya adalah: <strong>Siapakah yang membunuh Mallaby? Bagaimana Mallaby terbunuh?</strong> Berbagai sumber sejarah menyajikan narasi yang berbeda mengenai insiden ini, mencerminkan kompleksitas dan berbagai sudut pandang yang ada dalam catatan sejarah.</p>
+                    <p>Memecahkan misteri ini membutuhkan penelaahan kritis terhadap berbagai sumber, mengevaluasi bukti, dan mempertimbangkan konteks yang ada untuk membentuk pemahaman yang lebih komprehensif.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>e. Pertempuran Palembang</h3>
+            <p>Sekutu bersama NICA mendarat di Palembang sejak <strong>Oktober 1945</strong>. Awalnya untuk melucuti tentara Jepang dan mengurus tawanan perang. Namun, provokasi dan penggeledahan rumah warga memicu perlawanan. Pertempuran besar baru terjadi setelah Sekutu meninggalkan Palembang dan menyerahkan kekuasaan kepada Belanda pada <strong>7 November 1946</strong>.</p>
+            <p>Pihak Belanda melancarkan tuntutan tak masuk akal, seperti meminta garis demarkasi yang lebih jauh dan menghalangi kapal-kapal Indonesia ke Singapura, menyebabkan kesulitan ekonomi. Puncaknya, pada <strong>28 Desember 1946</strong>, tentara Belanda melanggar garis demarkasi yang disepakati. Ini memicu perlawanan dan pertempuran dahsyat di Palembang selama <strong>5 hari 5 malam</strong>, dimulai pada <strong>1 Januari 1947</strong> dan diakhiri dengan kesepakatan gencatan senjata.</p>
+        </div>
+
+        <div class="card">
+            <h3>f. Puputan Margarana</h3>
+            <p>Puputan Margarana adalah salah satu konflik bersenjata terbesar di Bali selama Revolusi Nasional. Pasukan Belanda mendarat di Bali pada <strong>2 Maret 1946</strong> untuk melucuti senjata Jepang. Namun, kehadiran Belanda justru membuat situasi tidak aman dan memecah belah rakyat Bali, dengan sebagian berbalik menyerang pasukan pendukung kemerdekaan. Dalam kondisi ini, <strong>I Gusti Ngurah Rai</strong> memimpin perlawanan terhadap Belanda.</p>
+            <p>Pada <strong>19 November 1946</strong>, pasukan Ngurah Rai berhasil merebut senjata prajurit NICA di Tabanan. Belanda kemudian melakukan serangan balik dan mengepung Desa Marga. Pertempuran tak terelakkan, dan I Gusti Ngurah Rai beserta seluruh pasukannya gugur dalam peristiwa tersebut. Mereka bertempur sampai titik darah penghabisan, sebuah tradisi Bali yang dikenal sebagai <strong>puputan</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h3>g. Pertempuran Makassar</h3>
+            <p>Pasukan Sekutu (termasuk tentara Australia dan NICA) mendarat di Makassar sejak akhir <strong>September 1945</strong>. Awalnya tugas mereka adalah melucuti senjata Jepang dan mengurus tawanan perang. Namun, NICA memiliki agenda tersembunyi untuk mengembalikan kekuasaan Belanda di Sulawesi dan mulai mempersenjatai tentara KNIL yang baru dibebaskan dari tahanan Jepang.</p>
+            <p>Melihat arogansi pasukan NICA dan KNIL, para pemuda Makassar, terutama yang tergabung dalam Pusat Pemuda Nasional Indonesia (PPNI), mulai melakukan serangan dan merebut lokasi-lokasi strategis yang dikuasai NICA pada <strong>27 Oktober 1945</strong>. Pertempuran berlanjut keesokan harinya, dengan tentara Australia membantu NICA.</p>
+            <p>Awal <strong>Desember 1945</strong>, satu kompi pasukan KNIL pro-RI dari Morotai bergabung dengan pemuda dan pelajar RI untuk melawan Belanda pada <strong>5—9 Desember 1945</strong>, namun upaya ini digagalkan Sekutu. Meskipun demikian, berbagai perlawanan terus berlangsung di Makassar dan sekitarnya hingga Belanda menurunkan pasukan khusus di bawah pimpinan Kapten Westerling.</p>
+            <details>
+                <summary>Kekejaman Westerling dan Kontroversi Angka Korban</summary>
+                <div class="details-content">
+                    <p>Strategi Kapten Westerling sangat mengerikan dan memakan banyak korban jiwa, sebagian besar adalah warga sipil. Sampai saat ini, terdapat beberapa versi mengenai jumlah korban Westerling di Sulawesi Selatan, yang memicu perdebatan historiografi:</p>
+                    <ul>
+                        <li><strong>40.000 korban jiwa:</strong> Angka yang sering beredar dan digunakan sebagai sumber propaganda oleh pemerintah RI di masa Revolusi Nasional, berdasarkan laporan Kahar Muzakkar. Angka ini seringkali dianggap terlalu besar oleh banyak sejarawan.</li>
+                        <li><strong>600 orang:</strong> Jumlah yang diakui Westerling dalam bukunya.</li>
+                        <li><strong>Sekitar 3.000 orang:</strong> Versi Pemerintah Belanda pada tahun 1969.</li>
+                        <li><strong>Sekitar 1.700 korban:</strong> Disebutkan oleh Alex Kawilarang, mantan perwira TNI, yang juga menyatakan bahwa tidak semuanya dibunuh oleh Westerling dan pasukannya.</li>
+                    </ul>
+                    <p>Adanya perbedaan versi ini menyoroti kompleksitas dalam penulisan sejarah dan pentingnya mempertanyakan sumber serta motif di baliknya.</p>
+                    <p>Pada tahun <strong>2012</strong>, keluarga korban Westerling di Sulawesi Selatan membawa kasusnya ke pengadilan sipil di Den Haag untuk menuntut keadilan. Setelah menunggu sekitar 8 tahun, pada akhirnya mereka memenangkan kasus tersebut, dan pemerintah Belanda diwajibkan membayar kompensasi. Pemerintah Belanda pun secara resmi meminta maaf kepada para keluarga korban.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="viva-historia green">
+            <h3>VIVA HISTORIA: Linimasa Permintaan Maaf Belanda atas Kekerasan di Indonesia (1945–1949)</h3>
+            <div class="timeline">
+                <div class="timeline-event">
+                    <h4>22 Desember 1988</h4>
+                    <p>Lima belas veteran Belanda menyampaikan permintaan maaf atas kekerasan yang mereka lakukan di Indonesia (1945—1949) kepada Atase Militer Kedutaan Besar Republik Indonesia di Belanda.</p>
+                </div>
+                <div class="timeline-event">
+                    <h4>16 Agustus 2005</h4>
+                    <p>Perdana Menteri Bernard Bot menyampaikan penyesalan atas Agresi Militer Belanda I tahun 1947.</p>
+                </div>
+                <div class="timeline-event">
+                    <h4>9 Desember 2011</h4>
+                    <p>Permintaan maaf secara resmi dari pemerintah Belanda yang diwakili oleh Duta Besar Jonkheer Tjeerd de Zwaan kepada keluarga korban peristiwa pembantaian di Rawagede pada 1947.</p>
+                </div>
+                <div class="timeline-event">
+                    <h4>12 September 2013</h4>
+                    <p>Permintaan maaf secara resmi dari pemerintah Belanda yang diwakili oleh Duta Besar Jonkheer Tjeerd de Zwaan kepada keluarga korban peristiwa pembantaian Westerling di Sulawesi Selatan.</p>
+                </div>
+                <div class="timeline-event">
+                    <h4>9 Desember 2019</h4>
+                    <p>Pemerintah Belanda melalui Duta Besar Lambert Grijn kembali menyampaikan permintaan maaf kepada korban kekerasan Belanda di Rawagede pada tahun 1947.</p>
+                </div>
+                <div class="timeline-event">
+                    <h4>10 Maret 2020</h4>
+                    <p>Raja Willem-Alexander menyampaikan penyesalan dan permintaan maaf atas kekerasan yang dilakukan oleh pihak Belanda selama konflik dengan Indonesia dalam periode 1945–1949.</p>
+                </div>
+                <div class="timeline-event">
+                    <h4>17 Februari 2022</h4>
+                    <p>Perdana Menteri Mark Rutte atas nama pemerintahan Belanda memohon maaf atas kekerasan oleh pihak Belanda selama konflik dengan Indonesia dalam periode 1945–1949.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Dinamika Pasca-Bentrokan dan Arah Negosiasi</h2>
+        <p>Seperti yang telah dibahas sebelumnya, kedatangan pasukan Sekutu awalnya memiliki tujuan terbatas: melucuti senjata tentara Jepang, membebaskan tawanan perang, dan menjaga keamanan. Pasukan Inggris dan Australia, yang bernaung di bawah Sekutu, pada dasarnya tidak pernah berniat untuk menduduki Indonesia dalam jangka waktu yang lama. Hal ini selaras dengan <strong>Perjanjian Atlantik</strong> yang mencegah perluasan wilayah setelah Perang Dunia II.</p>
+        <p>Namun, keberadaan <strong>Civil Affair Agreement</strong> antara Kerajaan Belanda dan Inggris menyeret Inggris ke dalam berbagai konflik antara Indonesia dan Belanda. Sikap para perwira Inggris di berbagai daerah pun bervariasi: ada yang ingin melakukan perundingan dan mencari jalan damai, tetapi ada pula yang bersikap keras dan lebih memilih jalur pertempuran.</p>
+        <p>Pasukan Sekutu di bawah pimpinan Inggris menyadari bahwa konflik yang berlarut-larut tidak akan memperbaiki situasi. Mereka tidak ingin pertempuran semakin panjang setelah Perang Dunia II baru saja usai. Sejak akhir 1946, pihak Inggris aktif berupaya menginisiasi pembicaraan damai dan menjembatani perundingan awal antara pihak Indonesia dan Belanda untuk mencari solusi.</p>
+        <p>Atas inisiatif Inggris inilah, para pemimpin RI dan Belanda akhirnya bertemu dalam sebuah perundingan penting di <strong>Linggarjati</strong> pada <strong>November 1946</strong>. Perundingan ini menandai babak baru dalam perjuangan mempertahankan kemerdekaan Indonesia, dari medan pertempuran menuju meja diplomasi.</p>
+
+        <div class="viva-historia amber">
+            <h3>VIVA HISTORIA: Perpindahan Ibu Kota di Masa Revolusi</h3>
+            <p>Situasi di Jakarta pasca-Proklamasi Kemerdekaan Indonesia menjadi tidak aman, memicu pemikiran untuk memindahkan ibu kota Republik Indonesia dari Jakarta ke Yogyakarta. Beberapa faktor penyebab ketidakamanan di Jakarta meliputi:</p>
+            <ul>
+                <li>Gangguan oleh para laskar.</li>
+                <li>Pertempuran sengit antara pihak Indonesia dan NICA yang berambisi menguasai kembali Indonesia.</li>
+                <li>Adanya percobaan pembunuhan terhadap Sutan Sjahrir.</li>
+            </ul>
+            <p>Pemindahan ibu kota ini tidak lepas dari peran penting <strong>Sri Sultan Hamengkubuwono IX</strong> yang menawarkan Yogyakarta sebagai tempat yang lebih aman dan strategis untuk pusat pemerintahan.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,409 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikatan Antarmolekul - Kimia Kelas XI</title>
+    <style>
+        /* Light Mode Theme - Defined Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+
+            /* Primary Blue */
+            --primary-blue-hex: #1976D2;
+            --primary-blue-rgb: 25, 118, 210; /* RGB components for rgba() */
+
+            /* Accent Green */
+            --accent-green-hex: #388E3C;
+            --accent-green-rgb: 56, 142, 60; /* RGB components for rgba() */
+
+            /* Secondary Accent Amber */
+            --secondary-accent-amber-hex: #FFB300;
+            --secondary-accent-amber-rgb: 255, 179, 0; /* RGB components for rgba() */
+
+            /* Semantic Colors */
+            --semantic-success-hex: #4CAF50;
+            --semantic-success-rgb: 76, 175, 80;
+
+            --semantic-warning-hex: #FFC107;
+            --semantic-warning-rgb: 255, 193, 7;
+
+            --semantic-error-hex: #D32F2F;
+            --semantic-error-rgb: 211, 47, 47;
+
+            --semantic-info-hex: #2196F3;
+            --semantic-info-rgb: 33, 150, 243;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: var(--primary-blue-hex);
+            color: var(--background-canvas);
+            padding: 20px 40px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Main Content Area */
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Heading Styles */
+        h2, h3, h4 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--accent-green-hex);
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        h3 {
+            font-size: 1.7em;
+            color: var(--primary-blue-hex);
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        h4 {
+            font-size: 1.4em;
+            color: var(--secondary-accent-amber-hex);
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraph and List Styles */
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style: decimal;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Special Content Boxes */
+        .highlight-box {
+            background-color: rgba(var(--primary-blue-rgb), 0.05);
+            border-left: 5px solid var(--primary-blue-hex);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .example-box {
+            background-color: rgba(var(--accent-green-rgb), 0.05);
+            border-left: 5px solid var(--accent-green-hex);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* Placeholder for Diagrams (no actual images as per request) */
+        .diagram-placeholder {
+            width: 100%;
+            min-height: 100px; /* Adjust height as needed */
+            background-color: var(--border-divider);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-tertiary);
+            font-size: 1.1em;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagram-placeholder p {
+            margin: 5px 0;
+            color: var(--text-tertiary);
+            font-family: 'Courier New', Courier, monospace; /* Monospace for chemical structures */
+            font-size: 0.9em;
+        }
+
+        /* Semantic Text Highlighting */
+        .definition {
+            font-weight: bold;
+            color: var(--primary-blue-hex);
+        }
+        
+        .term {
+            font-weight: bold;
+            color: var(--accent-green-hex); 
+        }
+        
+        .important {
+            font-weight: bold;
+            color: var(--semantic-info-hex);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            main {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+
+            section {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            h4 {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 15px;
+            }
+
+            header h1 {
+                font-size: 1.7em;
+            }
+
+            main {
+                margin: 15px auto;
+                padding: 0 10px;
+            }
+
+            section {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ikatan Antarmolekul</h1>
+        <p>Kimia untuk SMA/MA Kelas XI - Bab II: Ikatan Kimia</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Pengantar Ikatan Antarmolekul</h2>
+            <p>Selain ikatan antaratom yang membentuk suatu molekul (seperti ikatan ion, kovalen, dan logam), terdapat pula gaya yang bekerja <span class="important">antarmolekul</span>. Gaya ini dikenal sebagai <span class="definition">Ikatan Antarmolekul</span> atau sering disebut juga <span class="term">Gaya Antarmolekul</span>.</p>
+            <ul>
+                <li><strong>Asal Mula:</strong> Terjadi karena adanya gaya elektromagnetik antar molekul.</li>
+                <li><strong>Kekuatan Relatif:</strong> Ikatan antarmolekul <span class="important">sangat lemah</span> jika dibandingkan dengan ikatan antaratom (ikatan yang terjadi di dalam satu molekul dan yang menentukan stabilitas molekul itu sendiri).</li>
+                <li><strong>Dampak pada Sifat Fisik:</strong> Karena kekuatannya yang relatif lemah, ikatan antarmolekul berperan penting dalam menentukan sifat-sifat fisik suatu zat, seperti titik didih, titik leleh, viskositas, dan wujud zat (padat, cair, gas) pada suhu dan tekanan tertentu. Semakin kuat gaya antarmolekul, semakin banyak energi yang dibutuhkan untuk memisahkannya, sehingga titik didih dan titik lelehnya cenderung lebih tinggi.</li>
+            </ul>
+            <p>Secara umum, gaya antarmolekul dapat dibedakan menjadi dua jenis utama:</p>
+            <ol>
+                <li>Gaya van der Waals</li>
+                <li>Ikatan Hidrogen</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>1. Gaya van der Waals</h2>
+            <p>Gaya van der Waals adalah istilah umum untuk interaksi lemah yang terjadi antarmolekul, dinamai dari ilmuwan fisika Belanda, Johannes van der Waals. Gaya ini disebabkan oleh adanya interaksi dipol, baik yang bersifat permanen maupun sesaat.</p>
+            <p class="highlight-box">
+                <strong>Mengapa Oksigen (O₂) dapat disimpan dalam wujud cair, padahal pada suhu kamar ia berwujud gas?</strong> Ini adalah pertanyaan kunci yang dapat dijelaskan melalui konsep gaya van der Waals. Meskipun oksigen adalah gas nonpolar pada suhu kamar, gaya van der Waals memungkinkan molekul-molekulnya untuk saling mendekat dan berinteraksi pada kondisi suhu rendah dan/atau tekanan tinggi, sehingga dapat terkondensasi menjadi wujud cair.
+            </p>
+            <p>Gaya van der Waals dapat dibedakan menjadi tiga jenis berdasarkan sifat dipol yang berinteraksi:</p>
+
+            <h3>a. Interaksi Dipol Permanen-Dipol Permanen (Dipol polar-dipol polar)</h3>
+            <p>Jenis interaksi ini terjadi antara molekul-molekul yang secara intrinsik memiliki <span class="term">dipol permanen</span>. Molekul-molekul ini adalah molekul polar, yang memiliki perbedaan keelektronegatifan yang signifikan antara atom-atom penyusunnya, menyebabkan distribusi muatan elektron yang tidak merata. Akibatnya, satu sisi molekul memiliki muatan parsial positif (δ+), sementara sisi lain memiliki muatan parsial negatif (δ-).</p>
+            <div class="diagram-placeholder">
+                <p><strong>Simulasi Interaksi Dipol Permanen (Contoh: HBr)</strong></p>
+                <p>δ+ H — Br δ-  ···  δ+ H — Br δ-  ···  δ+ H — Br δ-</p>
+                <p>(Panah menunjukkan arah tarikan: δ- Br pada satu molekul menarik δ+ H pada molekul tetangga)</p>
+            </div>
+            <p>Dalam interaksi ini, ujung parsial positif dari satu molekul polar akan tertarik pada ujung parsial negatif dari molekul polar lainnya. Tarikan elektrostatik ini terjadi secara terus-menerus, menyebabkan molekul-molekul polar tersebut saling mendekat dan dapat membentuk fasa cair atau bahkan padat pada suhu yang relatif tinggi.</p>
+            <p class="example-box">
+                <strong>Contoh: Molekul HBr.</strong> Atom Bromin (Br) lebih elektronegatif daripada Hidrogen (H). Oleh karena itu, Br menarik elektron ikatan lebih kuat, mendapatkan muatan parsial negatif (δ-), sedangkan H mendapatkan muatan parsial positif (δ+). Molekul HBr yang satu akan menarik molekul HBr lainnya melalui interaksi antara δ+ pada H dan δ- pada Br. Ini adalah alasan mengapa senyawa polar seperti HBr dapat dicairkan.
+            </p>
+            <p>Gaya van der Waals jenis interaksi dipol permanen-dipol permanen ini merupakan <span class="important">yang paling kuat</span> di antara ketiga jenis gaya van der Waals.</p>
+
+            <h3>b. Interaksi Dipol Sesaat-Dipol Sesaat (Dipol nonpolar-dipol nonpolar)</h3>
+            <p>Jenis interaksi ini terjadi antara molekul-molekul nonpolar, yang pada dasarnya tidak memiliki dipol permanen karena distribusi elektronnya merata. Namun, pada suatu waktu tertentu, elektron-elektron dalam molekul dapat secara acak berkumpul di satu sisi molekul, menciptakan <span class="term">dipol sesaat</span> atau <span class="term">dipol instan</span> yang sangat singkat.</p>
+            <p>Dipol sesaat ini kemudian dapat <span class="term">menginduksi</span> (mendorong) pembentukan dipol serupa pada molekul nonpolar di dekatnya, menciptakan tarikan lemah antara keduanya. Gaya ini secara spesifik dikenal sebagai <span class="definition">Gaya Dispersi</span> atau <span class="definition">Gaya London</span>, dinamai dari fisikawan Fritz London.</p>
+            <div class="diagram-placeholder">
+                <p><strong>Simulasi Pembentukan Dipol Sesaat dan Interaksi</strong></p>
+                <p>[Molekul Nonpolar A: Distribusi Elektron Sementara Tidak Merata (δ+ — δ-)]</p>
+                <p> ↓ Induksi</p>
+                <p>[Molekul Nonpolar B: Elektron Terinduksi ke Sisi Lawan (δ+ — δ-)]</p>
+                <p>(Gaya tarik lemah terjadi antara δ- A dan δ+ B)</p>
+            </div>
+            <ul>
+                <li><strong>Karakteristik:</strong> Gaya ini sangat lemah karena sifat dipolnya yang hanya sesaat dan terus-menerus berubah.</li>
+                <li><strong>Faktor Penentu Kekuatan:</strong> Kekuatan gaya London meningkat dengan bertambahnya ukuran molekul, massa molekul, dan jumlah elektron. Molekul yang lebih besar memiliki awan elektron yang lebih "terdispersi" atau mudah dipolarisasi.</li>
+                <li><strong>Dampak:</strong> Meskipun sangat lemah, gaya London adalah satu-satunya gaya antarmolekul yang bekerja pada semua molekul (baik polar maupun nonpolar) dan merupakan gaya dominan pada zat nonpolar. Ini memungkinkan zat nonpolar seperti gas hidrogen (H₂) atau gas mulia (misalnya, Helium atau Xenon) untuk dapat dicairkan pada suhu yang sangat rendah.</li>
+            </ul>
+            <p class="example-box">
+                <strong>Contoh: Hidrogen (H₂).</strong> Gas hidrogen pada suhu kamar adalah nonpolar. Untuk menyimpannya dalam wujud cair di stasiun pengisian bahan bakar, diperlukan pendinginan ekstrem. Gaya London antarmolekul H₂ yang memungkinkan molekul-molekul ini mendekat dan berinteraksi lemah, sehingga dapat terkondensasi menjadi cairan.
+            </p>
+
+            <h3>c. Interaksi Dipol Permanen-Dipol Terimbas (Dipol polar-dipol nonpolar)</h3>
+            <p>Gaya van der Waals jenis ini terjadi antara molekul polar (yang memiliki dipol permanen) dan molekul nonpolar (yang tidak memiliki dipol permanen). Dipol permanen dari molekul polar akan <span class="term">menginduksi</span> atau <span class="term">mempolarisasi</span> awan elektron pada molekul nonpolar yang berdekatan dengannya. Hal ini menyebabkan molekul nonpolar untuk sementara waktu mengembangkan dipol sesaat.</p>
+            <div class="diagram-placeholder">
+                <p><strong>Simulasi Interaksi Dipol Permanen dan Dipol Terimbas</strong></p>
+                <p>Molekul Polar: δ+ — δ-</p>
+                <p>      ↓ (Induksi)</p>
+                <p>Molekul Nonpolar: (Terinduksi) δ+ — δ-</p>
+                <p>(Gaya tarik terjadi antara δ- polar dan δ+ terinduksi, atau sebaliknya)</p>
+            </div>
+            <ul>
+                <li><strong>Nama Lain:</strong> Sering disebut <span class="definition">Dipol Terimbas</span> (Induced Dipole) atau <span class="definition">Gaya Debye</span>.</li>
+                <li><strong>Kekuatan Relatif:</strong> Kekuatannya lebih besar daripada gaya London (dipol sesaat-dipol sesaat) karena melibatkan satu dipol permanen, tetapi <span class="important">tidak sekuat</span> interaksi dipol permanen-dipol permanen.</li>
+                <li><strong>Karakteristik:</strong> Dipol terimbas mudah putus akibat gangguan dari luar seperti perubahan suhu atau tekanan, karena sifatnya yang tidak permanen dan hanya terinduksi.</li>
+            </ul>
+            <p class="example-box">
+                <strong>Contoh: Kelarutan Oksigen (O₂) dalam Air (H₂O).</strong> Air adalah molekul polar (memiliki dipol permanen), sedangkan oksigen adalah molekul nonpolar. Molekul air dapat menginduksi dipol pada molekul oksigen, memungkinkan oksigen terlarut dalam air. Namun, karena sifat ikatannya yang terimbas, oksigen terlarut mudah lepas akibat faktor eksternal seperti peningkatan suhu, keberadaan bakteri, atau penambahan bahan kimia. Oleh karena itu, air minum yang lebih murni dan bersih cenderung memiliki kadar oksigen terlarut yang lebih tinggi.
+            </p>
+        </section>
+
+        <section>
+            <h2>2. Ikatan Hidrogen</h2>
+            <p>Ikatan hidrogen adalah jenis gaya antarmolekul yang <span class="important">paling kuat</span>. Ikatan ini memiliki peran signifikan dalam menentukan sifat-sifat fisik zat, terutama titik didih dan titik lelehnya yang cenderung sangat tinggi secara anomali.</p>
+            <p class="highlight-box">
+                <strong>Fenomena Titik Didih Anomali:</strong> Mengapa H₂O memiliki titik didih yang jauh lebih tinggi (100°C) dibandingkan HF (19.5°C) dan NH₃ (-33°C), padahal unsur O, F, dan N berada dalam periode yang sama dan semuanya dapat membentuk ikatan hidrogen? Jawabannya terletak pada kombinasi kekuatan individual dan jumlah ikatan hidrogen yang terbentuk per molekul.
+            </p>
+            <p>Ikatan hidrogen terbentuk ketika:</p>
+            <ul>
+                <li>Atom hidrogen (H) terikat secara kovalen pada atom yang <span class="term">sangat elektronegatif</span> (yaitu <span class="term">Fluorin (F), Oksigen (O), atau Nitrogen (N)</span>). Atom H ini akan memiliki muatan parsial positif (δ+).</li>
+                <li>Atom hidrogen parsial positif (δ+) dari satu molekul tertarik pada pasangan elektron bebas (<em>lone pair</em>) dari atom yang juga <span class="term">sangat elektronegatif</span> (F, O, atau N) pada molekul lain.</li>
+            </ul>
+            <div class="diagram-placeholder">
+                <p><strong>Visualisasi Ikatan Hidrogen pada Molekul Air (H₂O) dan Hidrogen Fluorida (HF)</strong></p>
+                <p><strong>Untuk H₂O:</strong> δ+H — Oδ- — Hδ+ ··· Oδ- — Hδ+</p>
+                <p> (Setiap Oksigen memiliki 2 lone pair, setiap H memiliki 1 ikatan kovalen)</p>
+                <p><strong>Untuk HF:</strong> δ+H — Fδ- ··· Hδ+ — Fδ-</p>
+                <p> (Setiap Fluorin memiliki 3 lone pair, setiap H memiliki 1 ikatan kovalen)</p>
+                <p><em>(Garis putus-putus mewakili ikatan hidrogen)</em></p>
+            </div>
+            
+            <h3>Faktor-faktor yang Mempengaruhi Kekuatan Ikatan Hidrogen</h3>
+            <p>Kekuatan ikatan hidrogen dipengaruhi oleh beberapa faktor utama:</p>
+            <ul>
+                <li><strong>Perbedaan Keelektronegatifan:</strong> Semakin besar perbedaan keelektronegatifan antara atom hidrogen dan atom yang terikat padanya (F, O, atau N), maka semakin besar muatan parsial pada atom H dan semakin kuat pula ikatan hidrogen yang terbentuk. Fluorin adalah unsur paling elektronegatif, diikuti oleh Oksigen, lalu Nitrogen. Oleh karena itu, ikatan hidrogen pada HF secara individu sangat kuat, namun jumlahnya lebih sedikit.</li>
+                <li><strong>Jumlah Ikatan Hidrogen yang Terbentuk:</strong> Semakin banyak ikatan hidrogen yang dapat dibentuk oleh suatu molekul per unitnya, semakin tinggi titik didih dan titik lelehnya karena dibutuhkan lebih banyak energi untuk memisahkan molekul-molekul tersebut.
+                    <ul>
+                        <li><strong>Molekul H₂O:</strong> Atom O memiliki dua pasangan elektron bebas dan dua atom H yang terikat. Setiap molekul H₂O dapat bertindak sebagai donor ikatan hidrogen melalui kedua H-nya, dan sebagai akseptor melalui kedua pasangan elektron bebasnya. Ini memungkinkan setiap molekul H₂O untuk berpartisipasi dalam <span class="important">hingga empat ikatan hidrogen</span> dengan molekul air tetangga.</li>
+                        <li><strong>Molekul HF:</strong> Atom F memiliki tiga pasangan elektron bebas, tetapi hanya satu atom H yang terikat. Setiap molekul HF hanya dapat bertindak sebagai donor satu ikatan hidrogen dan akseptor satu ikatan hidrogen (sehingga total 2 ikatan hidrogen linier per molekul).</li>
+                        <li><strong>Molekul NH₃:</strong> Atom N memiliki satu pasangan elektron bebas dan tiga atom H yang terikat. Setiap molekul NH₃ dapat bertindak sebagai donor tiga ikatan hidrogen, tetapi hanya sebagai akseptor satu ikatan hidrogen. Ini membatasi jumlah ikatan hidrogen total yang dapat dibentuk per molekul.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p class="example-box">
+                <strong>Analisis Titik Didih Hidrida (Golongan 15, 16, 17):</strong>
+                Grafik tren titik didih senyawa hidrida menunjukkan dengan jelas anomali pada H₂O, HF, dan NH₃. Titik didihnya jauh lebih tinggi dibandingkan hidrida unsur-unsur di bawahnya dalam golongan yang sama (misalnya, H₂O vs H₂S, HF vs HCl, NH₃ vs PH₃). Anomali ini adalah bukti kuat keberadaan dan kekuatan ikatan hidrogen yang unik pada molekul-molekul yang mengandung H yang terikat pada F, O, atau N, dan jumlah ikatan hidrogen yang lebih banyak pada air.
+            </p>
+            <p>Meskipun ikatan hidrogen merupakan ikatan antarmolekul yang paling kuat, penting untuk diingat bahwa kekuatannya <span class="important">tetap di bawah</span> ikatan antaratom (ikatan ion, kovalen, dan logam) yang lebih fundamental dalam pembentukan molekul.</p>
+        </section>
+
+        <section class="highlight-box">
+            <h2>Ringkasan Konsep Kunci Ikatan Antarmolekul</h2>
+            <ul>
+                <li><strong>Gaya Antarmolekul</strong> adalah gaya tarik menarik antara molekul-molekul, bukan di dalam molekul. Gaya ini lebih lemah daripada ikatan antaratom, namun sangat memengaruhi sifat fisik zat.</li>
+                <li><strong>Gaya van der Waals</strong> adalah istilah umum yang mencakup tiga jenis interaksi dipol:
+                    <ol>
+                        <li><strong>Interaksi Dipol Permanen-Dipol Permanen:</strong> Terjadi antara molekul polar. Ini adalah jenis gaya van der Waals terkuat.</li>
+                        <li><strong>Interaksi Dipol Sesaat-Dipol Sesaat (Gaya London/Dispersi):</strong> Terjadi antara molekul nonpolar akibat fluktuasi sementara distribusi elektron. Ini adalah jenis gaya van der Waals terlemah tetapi universal.</li>
+                        <li><strong>Interaksi Dipol Permanen-Dipol Terimbas (Gaya Debye):</strong> Terjadi antara molekul polar dan nonpolar, di mana dipol permanen menginduksi dipol sementara pada molekul nonpolar.</li>
+                    </ol>
+                </li>
+                <li><strong>Ikatan Hidrogen</strong> adalah gaya antarmolekul terkuat. Terjadi ketika atom hidrogen yang terikat pada atom sangat elektronegatif (F, O, atau N) tertarik pada pasangan elektron bebas atom F, O, atau N pada molekul lain.</li>
+                <li><strong>Urutan Kekuatan Gaya Antarmolekul (dari terkuat ke terlemah):</strong>
+                    <p class="important">Ikatan Hidrogen > Interaksi Dipol Permanen > Interaksi Dipol Terimbas > Gaya London/Dispersi</p>
+                </li>
+                <li>Semua gaya antarmolekul <span class="important">jauh lebih lemah</span> dibandingkan dengan ikatan antaratom (ikatan ion, kovalen, dan logam) yang membentuk struktur molekul itu sendiri.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
+```

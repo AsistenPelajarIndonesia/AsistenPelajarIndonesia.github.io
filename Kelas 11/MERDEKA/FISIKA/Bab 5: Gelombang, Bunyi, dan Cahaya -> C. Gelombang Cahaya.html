@@ -1,0 +1,325 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelombang Cahaya - Fisika Kelas XI</title>
+    <!-- Google Fonts for better typography: Segoe UI for general text, Roboto Mono for formulas -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- THEME DEFINITION (Light Mode) --- */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* --- GENERAL STYLES --- */
+        body {
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7; /* Enhanced readability */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box; /* Ensures padding doesn't add to total width */
+        }
+
+        .container {
+            max-width: 960px; /* Max width for content to prevent overly long lines */
+            margin: 0 auto; /* Center the container */
+            padding: 0 15px; /* Horizontal padding for smaller screens */
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue);
+            margin-top: 1.8em;
+            margin-bottom: 0.8em;
+            font-weight: 700; /* Bold headings */
+        }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; }
+        h3 { font-size: 1.6em; }
+
+        p {
+            margin-bottom: 1.2em;
+            text-align: justify; /* Justified text for a cleaner look */
+        }
+
+        /* --- SECTION STYLING --- */
+        .section {
+            background-color: var(--background-canvas); /* Matches canvas background */
+            border: 1px solid var(--border-divider);
+            border-radius: 8px; /* Slightly rounded corners */
+            padding: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+        }
+
+        /* --- HIGHLIGHTS --- */
+        .highlight {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .sub-highlight {
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+        }
+
+        /* --- FORMULA STYLING --- */
+        .formula {
+            background-color: #f8f8f8; /* Slightly off-white background */
+            border-left: 6px solid var(--primary-blue); /* Left border accent */
+            padding: 18px 25px;
+            margin: 25px 0;
+            font-family: 'Roboto Mono', 'Courier New', monospace;
+            font-size: 1.15em;
+            overflow-x: auto; /* Ensures horizontal scrolling for long formulas on small screens */
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+            line-height: 1.4;
+        }
+
+        .formula code {
+            color: var(--text-primary);
+            display: block; /* Ensures each formula line takes full width */
+        }
+
+        /* --- INTERACTIVE DETAILS (EXPANDABLE SECTIONS) --- */
+        details {
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #fdfdfd; /* Very slightly off-white */
+            overflow: hidden; /* Ensures border-radius applies to children */
+        }
+
+        summary {
+            padding: 18px 25px;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas); /* White text on blue background */
+            font-weight: bold;
+            cursor: pointer; /* Indicates interactivity */
+            outline: none; /* Removes default focus outline */
+            transition: background-color 0.2s ease; /* Smooth hover effect */
+            display: block;
+            position: relative; /* For the custom toggle icon */
+        }
+
+        /* Custom toggle icon for details/summary */
+        summary::after {
+            content: '+'; /* Plus sign when closed */
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%); /* Vertically center */
+            font-size: 1.5em;
+            line-height: 1;
+            transition: content 0.2s ease, transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            content: '-'; /* Minus sign when open */
+            transform: translateY(-50%); /* Stay centered */
+        }
+
+        summary:hover {
+            background-color: #1565C0; /* Slightly darker blue on hover */
+        }
+
+        details div { /* Wrapper for the content inside details */
+            padding: 15px 25px 20px 25px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-divider); /* Separator line */
+        }
+
+        /* --- LIST STYLING --- */
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 1.2em;
+            color: var(--text-secondary);
+            padding: 0; /* Reset default padding */
+        }
+
+        ul { list-style-type: square; } /* Square bullet points */
+        ol { list-style-type: decimal; } /* Decimal numbering */
+
+        li {
+            margin-bottom: 0.8em;
+        }
+
+        /* --- EMPHASIS TEXT --- */
+        em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 0 10px;
+            }
+            .section {
+                padding: 20px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+            h3 { font-size: 1.4em; }
+            .formula {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+            summary {
+                padding: 15px 20px;
+            }
+            details div {
+                padding: 10px 20px 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 0 5px;
+            }
+            .section {
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+            h1 { font-size: 1.7em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            .formula {
+                padding: 10px 15px;
+            }
+            summary {
+                padding: 12px 18px;
+            }
+            details div {
+                padding: 8px 18px 12px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>C. Gelombang Cahaya</h1>
+            <p>Selamat datang di pembahasan mengenai <span class="highlight">Gelombang Cahaya</span>, salah satu topik fundamental dalam Fisika. Di sini, kita akan mengulas bagaimana cahaya bekerja, mengapa kita melihat warna, dan bagaimana sifat gelombangnya membentuk berbagai fenomena menakjubkan di sekitar kita. Mari kita telusuri karakteristik dan aplikasi cahaya sebagai gelombang.</p>
+        </header>
+
+        <section class="section">
+            <h2>1. Pengantar Gelombang Cahaya</h2>
+            <p>Cahaya, yang memungkinkan kita melihat dunia, adalah bentuk energi yang merambat sebagai <span class="highlight">gelombang elektromagnetik</span>. Berbeda dengan gelombang bunyi yang membutuhkan medium (seperti udara atau air) untuk merambat, cahaya dapat bergerak melalui ruang hampa sekalipun, seperti cahaya matahari yang sampai ke Bumi.</p>
+            <p>Mata manusia hanya mampu mendeteksi sebagian kecil dari spektrum gelombang elektromagnetik ini, yang kita sebut <span class="sub-highlight">cahaya tampak</span>. Cahaya tampak ini mencakup rentang panjang gelombang yang menghasilkan spektrum warna yang kita kenal, dari merah hingga ungu.</p>
+            
+            <details>
+                <summary>Memahami Spektrum Elektromagnetik</summary>
+                <div>
+                    <p>Spektrum gelombang elektromagnetik sangat luas, jauh melampaui cahaya tampak. Dimulai dari gelombang radio dengan panjang gelombang terpanjang, diikuti oleh gelombang mikro, inframerah, cahaya tampak, ultraviolet, sinar-X, hingga sinar gamma dengan panjang gelombang terpendek.</p>
+                    <ul>
+                        <li><strong>Cahaya Tampak</strong>: Rentang panjang gelombang sekitar 400 nanometer (ungu) hingga 700 nanometer (merah). Setiap warna memiliki panjang gelombang spesifiknya.</li>
+                        <li><strong>Sifat Gelombang</strong>: Banyak fenomena cahaya, seperti pembentukan pelangi, warna pada gelembung sabun, atau cara kerja kacamata, dapat dijelaskan melalui sifat-sifat dasar gelombang cahaya: <span class="sub-highlight">pemantulan (refleksi)</span>, <span class="sub-highlight">pembiasan (refraksi)</span>, <span class="sub-highlight">pelenturan (difraksi)</span>, dan <span class="sub-highlight">perpaduan (interferensi)</span>.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section class="section">
+            <h2>2. Fenomena Alam: Pelangi dan Langit Biru</h2>
+            <p>Dua fenomena visual yang paling memukau di alam adalah pelangi dan langit biru. Keduanya adalah hasil dari interaksi kompleks antara cahaya matahari dan atmosfer Bumi.</p>
+
+            <h3>2.1. Proses Terbentuknya Pelangi</h3>
+            <p>Pelangi adalah bukti nyata dari sifat gelombang cahaya yang disebut <span class="highlight">dispersi</span>. Pelangi terjadi ketika cahaya matahari menembus dan berinteraksi dengan tetesan air di udara setelah hujan. Prosesnya adalah sebagai berikut:</p>
+            <ol>
+                <li><strong>Pembiasan dan Dispersi (Penguraian)</strong>: Cahaya matahari yang bersifat <span class="sub-highlight">polikromatis</span> (cahaya putih yang terdiri dari berbagai warna) memasuki tetesan air. Saat cahaya masuk, ia mengalami pembiasan. Karena setiap warna memiliki panjang gelombang yang sedikit berbeda, ia juga memiliki indeks bias yang sedikit berbeda di dalam air. Ini menyebabkan cahaya terurai menjadi komponen warnanya (merah, jingga, kuning, hijau, biru, nila, ungu), seperti yang terjadi pada prisma.</li>
+                <li><strong>Pemantulan Internal Total</strong>: Setelah diuraikan, cahaya warna-warni ini mencapai bagian belakang tetesan air. Di sini, cahaya mengalami <span class="sub-highlight">pemantulan internal total</span>, yaitu fenomena di mana cahaya sepenuhnya dipantulkan kembali ke dalam tetesan air karena mencapai batas medium pada sudut yang lebih besar dari sudut kritis.</li>
+                <li><strong>Pembiasan Kedua</strong>: Cahaya yang telah dipantulkan dan masih terurai, kemudian keluar dari tetesan air dan mengalami pembiasan sekali lagi saat kembali ke udara menuju mata pengamat.</li>
+            </ol>
+            <p>Setiap tetesan air memecah cahaya, tetapi hanya spektrum warna tertentu dari setiap tetesan yang mencapai mata pengamat pada sudut yang tepat, sehingga membentuk busur warna-warni yang indah di langit.</p>
+
+            <h3>2.2. Mengapa Langit Terlihat Biru?</h3>
+            <p>Warna biru langit adalah hasil dari <span class="highlight">hamburan cahaya</span>, khususnya fenomena yang dikenal sebagai <span class="sub-highlight">hamburan Rayleigh</span>. Atmosfer Bumi tersusun atas berbagai gas, terutama nitrogen dan oksigen, serta partikel-partikel kecil lainnya.</p>
+            <ul>
+                <li><strong>Hamburan Selektif</strong>: Cahaya matahari, yang tampak putih, adalah campuran semua warna. Ketika cahaya ini melewati atmosfer, panjang gelombang cahaya yang lebih pendek (seperti biru dan ungu) dihamburkan atau disebarkan oleh molekul-molekul gas dan partikel kecil di atmosfer secara jauh lebih efisien dibandingkan dengan panjang gelombang cahaya yang lebih panjang (seperti merah dan kuning).</li>
+                <li><strong>Persepsi Warna Biru</strong>: Karena cahaya biru dihamburkan ke segala arah, sebagian besar cahaya biru yang dihamburkan inilah yang mencapai mata kita dari berbagai arah, sehingga membuat langit terlihat berwarna biru di siang hari.</li>
+                <li><strong>Matahari Terbit/Terbenam</strong>: Saat matahari berada dekat horizon (saat terbit atau terbenam), cahaya harus menempuh jarak yang jauh lebih panjang melalui atmosfer. Ini menyebabkan hampir seluruh cahaya biru dan ungu telah dihamburkan, meninggalkan lebih banyak cahaya dengan panjang gelombang yang lebih panjang (merah dan oranye) yang dapat mencapai mata kita secara langsung, menciptakan pemandangan matahari terbit dan terbenam yang indah.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>3. Interferensi Cahaya</h2>
+            <p><span class="highlight">Interferensi cahaya</span> adalah fenomena di mana dua atau lebih gelombang cahaya berpadu (bersuperposisi) untuk menghasilkan pola baru berupa area <span class="sub-highlight">penguatan (terang)</span> atau <span class="sub-highlight">pelemahan (gelap)</span>. Ini adalah salah satu bukti paling fundamental bahwa cahaya memiliki sifat gelombang.</p>
+
+            <h3>3.1. Interferensi pada Selaput Tipis</h3>
+            <p>Contoh paling umum dari interferensi cahaya adalah warna-warni yang terlihat pada <span class="sub-highlight">lapisan tipis</span> seperti gelembung sabun atau lapisan minyak di atas air. Mekanismenya sebagai berikut:</p>
+            <ul>
+                <li>Cahaya yang datang sebagian akan <span class="highlight">dibiaskan</span> saat memasuki selaput tipis dan kemudian <span class="highlight">dipantulkan</span> dari permukaan belakang selaput tersebut.</li>
+                <li>Pada saat yang sama, sebagian cahaya yang datang langsung <span class="highlight">dipantulkan</span> dari permukaan depan selaput.</li>
+                <li>Kedua gelombang cahaya yang dipantulkan (dari permukaan depan dan belakang) ini kemudian <span class="highlight">berinterferensi</span>. Pola terang atau gelap yang terlihat, dan oleh karena itu warna yang dihasilkan, bergantung pada ketebalan selaput, indeks bias material selaput, dan panjang gelombang cahaya. Variasi ketebalan selaput akan menghasilkan warna yang berbeda-beda.</li>
+            </ul>
+
+            <h3>3.2. Percobaan Interferensi Celah Ganda Young</h3>
+            <p>Percobaan yang dilakukan oleh <span class="sub-highlight">Thomas Young</span> (1773-1829) pada awal abad ke-19 adalah demonstrasi paling terkenal dari interferensi cahaya. Dalam percobaan ini, cahaya dilewatkan melalui dua celah sempit yang sangat dekat satu sama lain. Setiap celah bertindak sebagai sumber gelombang yang <span class="highlight">koheren</span> (yaitu, mereka memiliki frekuensi yang sama dan beda fase yang konstan).</p>
+            <p>Gelombang-gelombang dari kedua celah ini kemudian berinterferensi di layar pengamatan, menghasilkan pola khas berupa pita-pita <span class="highlight">terang</span> dan <span class="highlight">gelap</span> secara bergantian. Pola ini disebut <span class="sub-highlight">pola interferensi</span>.</p>
+
+            <details>
+                <summary>Kondisi Interferensi Konstruktif (Pola Terang)</summary>
+                <div>
+                    <p>Pola terang (juga dikenal sebagai pita terang atau frinji terang) terjadi ketika puncak gelombang dari satu celah bertemu dengan puncak gelombang dari celah lainnya, atau lembah bertemu dengan lembah, yang mengakibatkan <span class="sub-highlight">penguatan</span> amplitudo gelombang. Kondisi ini terpenuhi ketika beda lintasan optik antara dua gelombang yang tiba di suatu titik adalah kelipatan bulat dari panjang gelombang (<span class="highlight">0, λ, 2λ, 3λ, ... nλ</span>).</p>
+                    <p>Secara matematis, untuk interferensi konstruktif, hubungan antara jarak antar celah (<code>d</code>), sudut simpangan (<code>θ</code>), orde terang (<code>n</code>), dan panjang gelombang (<code>λ</code>) dinyatakan sebagai:</p>
+                    <div class="formula"><code>d sin θ = nλ</code></div>
+                    <p>Di mana:</p>
+                    <ul>
+                        <li><code>d</code>: jarak antara kedua celah (dalam meter).</li>
+                        <li><code>θ</code>: sudut simpangan dari garis pusat ke pita terang ke-<code>n</code>.</li>
+                        <li><code>n</code>: orde pita terang (<code>0, ±1, ±2, ±3, ...</code>). Orde 0 adalah pita terang pusat.</li>
+                        <li><code>λ</code>: panjang gelombang cahaya yang digunakan (dalam meter).</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Kondisi Interferensi Destruktif (Pola Gelap)</summary>
+                <div>
+                    <p>Pola gelap (pita gelap atau frinji gelap) terjadi ketika puncak gelombang dari satu celah bertemu dengan lembah gelombang dari celah lainnya, yang mengakibatkan <span class="sub-highlight">pelemahan</span> atau penghapusan gelombang (amplitudo nol). Kondisi ini terpenuhi ketika beda lintasan optik antara dua gelombang yang tiba di suatu titik adalah kelipatan ganjil dari setengah panjang gelombang (<span class="highlight">λ/2, 3λ/2, 5λ/2, ... (2n+1)λ/2</span>).</p>
+                    <p>Secara matematis, untuk interferensi destruktif, hubungan antara jarak antar celah (<code>d</code>), sudut simpangan (<code>θ</code>), orde gelap (<code>n</code>), dan panjang gelombang (<code>λ</code>) dinyatakan sebagai:</p>
+                    <div class="formula"><code>d sin θ = (2n + 1)λ / 2</code></div>
+                    <p>Di mana:</p>
+                    <ul>
+                        <li><code>d</code>: jarak antara kedua celah (dalam meter).</li>
+                        <li><code>θ</code>: sudut simpangan dari garis pusat ke pita gelap ke-<code>n</code>.</li>
+                        <li><code>n</code>: orde pita gelap (<code>0, ±1, ±2, ±3, ...</code>). Orde 0 adalah pita gelap pertama di kedua sisi pita terang pusat.</li>
+                        <li><code>λ</code>: panjang gelombang cahaya yang digunakan (dalam meter).</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <footer>
+            <p style="text-align: center; color: var(--text-tertiary); font-size: 0.9em; margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-divider);">
+                &copy; 2023 Materi Fisika Kelas XI | Bab 5: Gelombang, Bunyi, dan Cahaya
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
+```

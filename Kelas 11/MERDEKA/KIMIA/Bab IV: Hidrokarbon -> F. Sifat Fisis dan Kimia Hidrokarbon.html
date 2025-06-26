@@ -1,0 +1,443 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sifat Fisis dan Kimia Hidrokarbon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: var(--background-canvas);
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-in-out;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 3.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        section {
+            margin-bottom: 45px;
+            padding: 25px 30px;
+            border-left: 6px solid var(--accent-green);
+            background-color: #fcfcfc; /* A slightly off-white for sections to break up visual flow */
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-divider);
+            font-weight: 600;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 2em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        h4 {
+            color: var(--text-primary);
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            list-style-type: none; /* Remove default list style */
+            margin-left: 0;
+            padding-left: 25px; /* Add custom padding for indentation */
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        ul li::before {
+            content: "•"; /* Custom bullet point */
+            color: var(--accent-green);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        ol li::before {
+            content: counter(list-item) "."; /* Custom numbered list */
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            margin-left: -1.5em;
+            text-align: right;
+        }
+        ol {
+            counter-reset: list-item;
+        }
+        ol li {
+            counter-increment: list-item;
+        }
+
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        .code-block {
+            background-color: #eceff1; /* Light grey background for code */
+            color: var(--text-primary);
+            padding: 20px;
+            border-left: 5px solid var(--semantic-info);
+            border-radius: 6px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95em;
+            white-space: pre-wrap; /* Allows text to wrap */
+            word-wrap: break-word; /* Ensures long lines break */
+            margin-top: 15px;
+            margin-bottom: 25px;
+            overflow-x: auto; /* For horizontal scrolling on small screens */
+            line-height: 1.5;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-text {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .accent-text {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .warning-text {
+            color: var(--secondary-accent-amber);
+            font-weight: 600;
+        }
+        
+        .note {
+            background-color: #e3f2fd; /* Light blue background for notes */
+            border-left: 4px solid var(--semantic-info);
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            h3 {
+                font-size: 1.6em;
+            }
+
+            h4 {
+                font-size: 1.3em;
+            }
+
+            section {
+                padding: 20px;
+                margin-bottom: 35px;
+            }
+
+            ul, ol {
+                padding-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            h4 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+
+            .code-block {
+                font-size: 0.85em;
+                padding: 15px;
+            }
+
+            section {
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+
+            ul, ol {
+                padding-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sifat Fisis dan Kimia Hidrokarbon</h1>
+            <p>Eksplorasi Mendalam Karakteristik dan Reaksi Senyawa Hidrokarbon</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>1. Sifat Fisis Hidrokarbon</h2>
+                <p>Sifat fisis hidrokarbon adalah karakteristik yang dapat diamati dan diukur tanpa mengubah komposisi kimianya. Properti ini sangat dipengaruhi oleh struktur molekul, termasuk panjang rantai karbon, keberadaan ikatan rangkap, dan bentuk molekul. Sifat fisis yang paling mudah dibandingkan adalah <span class="highlight-text">wujud zat</span> pada suhu ruang (gas, cair, atau padat), <span class="highlight-text">titik didih</span>, dan <span class="highlight-text">titik leleh</span>.</p>
+
+                <ol>
+                    <li>
+                        <h4>Pengaruh Panjang Rantai Utama dan Massa Molekul (M<sub>r</sub>)</h4>
+                        <p>Kuantitas atom karbon dalam rantai utama hidrokarbon memiliki dampak signifikan terhadap sifat fisisnya:</p>
+                        <ul>
+                            <li>Semakin <span class="accent-text">panjang rantai utama</span> suatu hidrokarbon, maka <span class="accent-text">massa molekul relatif (M<sub>r</sub>)</span>-nya akan semakin besar.</li>
+                            <li>Peningkatan massa molekul ini berkorelasi langsung dengan peningkatan kekuatan <span class="highlight-text">gaya antarmolekul</span>, khususnya <span class="highlight-text">gaya van der Waals (gaya dispersi London)</span>. Gaya ini timbul dari fluktuasi dipol sesaat antarmolekul.</li>
+                            <li>Gaya antarmolekul yang lebih kuat membutuhkan <span class="accent-text">lebih banyak energi termal</span> untuk diatasi selama proses perubahan fasa (meleleh atau mendidih).</li>
+                            <li>Akibatnya, <span class="accent-text">titik leleh dan titik didih hidrokarbon akan semakin tinggi</span> seiring bertambahnya panjang rantai karbon.</li>
+                            <li>Pada suhu ruang, hidrokarbon rantai pendek (C₁-C₄) umumnya berwujud <span class="accent-text">gas</span>, rantai menengah (C₅-C₁₇) berwujud <span class="accent-text">cair</span>, dan rantai panjang (C₁₈ ke atas) berwujud <span class="accent-text">padat</span>.</li>
+                            <li>Contoh: Metana (CH₄) adalah gas, heksana (C₆H₁₄) adalah cairan, sedangkan parafin (campuran hidrokarbon rantai panjang) adalah padatan pada suhu kamar.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>Pengaruh Kehadiran Ikatan Rangkap</h4>
+                        <p>Untuk hidrokarbon dengan jumlah atom karbon yang sama (isomer), keberadaan <span class="accent-text">ikatan rangkap (ganda atau tiga)</span> juga memengaruhi titik leleh dan titik didih:</p>
+                        <ul>
+                            <li>Secara umum, senyawa <span class="accent-text">alkuna</span> memiliki titik didih sedikit lebih tinggi daripada <span class="accent-text">alkena</span>, dan alkena lebih tinggi daripada <span class="accent-text">alkana</span> dengan jumlah atom karbon yang sama.</li>
+                            <li>Meskipun demikian, keberadaan ikatan rangkap dapat membatasi rotasi ikatan dan membuat molekul lebih kaku atau planar, yang dapat memungkinkan <span class="highlight-text">interaksi antarmolekul yang lebih efisien</span> dalam beberapa kasus, meningkatkan gaya van der Waals.</li>
+                            <li>Namun, perbandingan ini seringkali kompleks dan dipengaruhi oleh faktor lain seperti isomerisme geometris (cis-trans) pada alkena, yang dapat memengaruhi polaritas dan packing molekul.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>Pengaruh Percabangan Rantai</h4>
+                        <p>Bentuk molekul memainkan peran krusial dalam menentukan kekuatan gaya antarmolekul. Untuk senyawa hidrokarbon dengan <span class="highlight-text">jumlah atom karbon yang sama (isomer)</span>:</p>
+                        <ul>
+                            <li><span class="accent-text">Senyawa hidrokarbon rantai lurus</span> (tidak bercabang) memiliki titik didih lebih tinggi dibandingkan dengan <span class="accent-text">hidrokarbon rantai bercabang</span>.</li>
+                            <li>Hal ini disebabkan oleh <span class="highlight-text">luas permukaan kontak</span> antarmolekul yang lebih besar pada rantai lurus. Molekul-molekul rantai lurus dapat tersusun lebih rapat satu sama lain, memaksimalkan interaksi <span class="highlight-text">gaya van der Waals</span>.</li>
+                            <li>Sebaliknya, percabangan pada rantai karbon menyebabkan molekul menjadi lebih "bulat" atau kompak, yang <span class="accent-text">mengurangi luas permukaan kontak</span> efektif antarmolekul. Ini mengakibatkan gaya van der Waals yang lebih lemah dan, konsekuensinya, titik didih yang lebih rendah.</li>
+                            <li>Contoh: n-pentana (titik didih 36 °C) memiliki titik didih lebih tinggi daripada isopentana (2-metilbutana, titik didih 28 °C) atau neopentana (2,2-dimetilpropana, titik didih 9.5 °C), meskipun ketiganya adalah isomer C₅H₁₂.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>2. Sifat Kimia Hidrokarbon</h2>
+                <p>Sifat kimia hidrokarbon menggambarkan bagaimana senyawa ini bereaksi dengan zat lain, yang melibatkan perubahan dalam struktur dan komposisi kimianya. Reaksi-reaksi ini menentukan kegunaan dan stabilitas berbagai jenis hidrokarbon.</p>
+
+                <h3>a. Reaksi Oksidasi / Pembakaran</h3>
+                <p>Reaksi oksidasi, sering disebut pembakaran, adalah reaksi eksotermik di mana senyawa hidrokarbon bereaksi dengan oksigen (O₂), melepaskan sejumlah besar energi dalam bentuk panas dan cahaya.</p>
+                <ol>
+                    <li>
+                        <h4>Pembakaran Sempurna</h4>
+                        <p>Terjadi ketika <span class="accent-text">pasokan oksigen melimpah atau cukup</span>. Dalam kondisi ini, hidrokarbon terbakar sepenuhnya menghasilkan produk yang paling teroksidasi, yaitu <span class="highlight-text">karbon dioksida (CO₂)</span> dan <span class="highlight-text">uap air (H₂O)</span>. Pembakaran sempurna adalah proses yang bersih dan efisien.</p>
+                        <div class="code-block">
+                            <code>C<sub>x</sub>H<sub>y</sub> + O₂ <span class="warning-text">→</span> CO₂ + H₂O</code><br>
+                            <span class="text-tertiary">(Reaksi harus disetarakan sesuai stoikiometri)</span><br><br>
+                            <code>Contoh: Pembakaran metana (alkana paling sederhana)</code><br>
+                            <code>CH₄(g) + 2O₂(g) <span class="warning-text">→</span> CO₂(g) + 2H₂O(g)</code>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Pembakaran Tidak Sempurna</h4>
+                        <p>Terjadi ketika <span class="accent-text">pasokan oksigen terbatas atau tidak cukup</span> untuk oksidasi sempurna. Karena kekurangan oksigen, hidrokarbon tidak terbakar habis, menghasilkan campuran produk yang kurang teroksidasi dan berpotensi berbahaya:</p>
+                        <ul>
+                            <li><span class="highlight-text">Karbon (C)</span> dalam bentuk jelaga (partikel padat hitam).</li>
+                            <li><span class="highlight-text">Karbon monoksida (CO)</span>, gas yang sangat beracun dan tidak berbau.</li>
+                            <li><span class="highlight-text">Karbon dioksida (CO₂)</span>.</li>
+                            <li><span class="highlight-text">Uap air (H₂O)</span>.</li>
+                        </ul>
+                        <p>Pembakaran tidak sempurna sering ditandai dengan api yang berwarna kuning oranye dan berasap.</p>
+                        <div class="code-block">
+                            <code>C<sub>x</sub>H<sub>y</sub> + O₂ (terbatas) <span class="warning-text">→</span> C + CO + CO₂ + H₂O</code><br>
+                            <span class="text-tertiary">(Produk dan proporsi bervariasi tergantung ketersediaan oksigen)</span>
+                        </div>
+                    </li>
+                </ol>
+
+                <h3>b. Reaksi Substitusi</h3>
+                <p>Reaksi substitusi, atau reaksi penggantian, adalah karakteristik utama dari <span class="highlight-text">alkana</span> dan senyawa hidrokarbon jenuh lainnya. Dalam reaksi ini, <span class="accent-text">satu atau lebih atom hidrogen pada hidrokarbon digantikan oleh atom atau gugus atom lain</span>. Reaksi ini umumnya memerlukan energi tinggi, seperti cahaya ultraviolet (UV) atau pemanasan, untuk memulai mekanisme radikal bebas.</p>
+                <p>Contoh paling umum adalah halogenasi alkana, di mana atom hidrogen digantikan oleh atom halogen (misalnya klorin atau bromin).</p>
+                <div class="code-block">
+                    <code>CH₄ + Cl₂ <span class="warning-text"><sup>UV/Panas</sup>→</span> CH₃Cl + HCl</code><br>
+                    <code>(metana) + (klorin) → (klorometana) + (asam klorida)</code>
+                </div>
+                <p>Reaksi substitusi ini dapat berlanjut secara bertahap, menggantikan hidrogen lain jika halogen masih tersedia:</p>
+                <div class="code-block">
+                    <code>CH₃Cl + Cl₂ <span class="warning-text"><sup>UV/Panas</sup>→</span> CH₂Cl₂ + HCl</code><br>
+                    <code>CH₂Cl₂ + Cl₂ <span class="warning-text"><sup>UV/Panas</sup>→</span> CHCl₃ + HCl</code><br>
+                    <code>CHCl₃ + Cl₂ <span class="warning-text"><sup>UV/Panas</sup>→</span> CCl₄ + HCl</code>
+                </div>
+
+                <h3>c. Reaksi Adisi</h3>
+                <p>Reaksi adisi adalah ciri khas hidrokarbon <span class="highlight-text">tak jenuh</span>, yaitu <span class="highlight-text">alkena</span> (memiliki ikatan ganda) dan <span class="highlight-text">alkuna</span> (memiliki ikatan tiga). Dalam reaksi ini, atom atau gugus atom <span class="accent-text">ditambahkan langsung melintasi ikatan rangkap</span>, yang menyebabkan ikatan rangkap tersebut <span class="accent-text">putus dan berubah menjadi ikatan tunggal</span>, menghasilkan senyawa yang lebih jenuh.</p>
+                <p>Beberapa jenis reaksi adisi:</p>
+                <ol>
+                    <li>
+                        <h4>Adisi Atom Hidrogen / Hidrogenasi</h4>
+                        <p>Penambahan molekul hidrogen (H₂) ke ikatan rangkap. Proses ini biasanya memerlukan <span class="highlight-text">katalis logam</span> seperti nikel (Ni), platina (Pt), atau paladium (Pd) dan seringkali pemanasan. Hidrogenasi mengubah alkena/alkuna menjadi alkana.</p>
+                        <div class="code-block">
+                            <code>CH₂=CH₂ + H₂ <span class="warning-text"><sup>Ni/Pt/Pd</sup>→</span> CH₃–CH₃</code><br>
+                            <code>(etena) + (hidrogen) → (etana)</code><br><br>
+                            <code>CH≡CH + 2H₂ <span class="warning-text"><sup>Ni/Pt/Pd</sup>→</span> CH₃–CH₃</code><br>
+                            <code>(etuna) + (hidrogen) → (etana)</code>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Adisi Atom Halogen / Halogenasi</h4>
+                        <p>Penambahan molekul halogen (X₂, seperti Cl₂ atau Br₂) ke ikatan rangkap. Reaksi ini sering digunakan sebagai uji kualitatif untuk ikatan rangkap; misalnya, air bromin yang berwarna cokelat akan memudar dengan cepat jika ditambahkan ke alkena karena bromin direaksikan.</p>
+                        <div class="code-block">
+                            <code>CH₂=CH₂ + Cl₂ <span class="warning-text">→</span> ClCH₂–CH₂Cl</code><br>
+                            <code>(etena) + (klorin) → (1,2-dikloroetana)</code>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Adisi Asam Halida / Hidrohalogenasi</h4>
+                        <p>Penambahan molekul asam halida (HX, seperti HCl, HBr, HI) ke ikatan rangkap.</p>
+                        <div class="note">
+                            <span class="warning-text">Penting: Reaksi ini sering mengikuti Kaidah Markovnikov!</span>
+                        </div>
+                        <h5>Kaidah Markovnikov:</h5>
+                        <p>Pada adisi HX pada <span class="highlight-text">alkena asimetris</span> (yaitu, atom karbon pada ikatan rangkap memiliki jumlah hidrogen yang berbeda), <span class="accent-text">atom hidrogen (H) dari asam halida akan terikat pada atom karbon ikatan rangkap yang sudah mengikat lebih banyak atom hidrogen</span> (sering disebut karbon yang "kurang tersubstitusi"). Sebaliknya, gugus X (halogen) akan terikat pada atom karbon ikatan rangkap yang mengikat lebih sedikit atom hidrogen (atau "lebih tersubstitusi").</p>
+                        <div class="code-block">
+                            <code>CH₃–CH=CH₂ + HCl <span class="warning-text">→</span> CH₃–CHCl–CH₃</code><br>
+                            <code>(propena) + (asam klorida) → (2-kloropropana)</code><br>
+                            <span class="text-tertiary">(Atom H dari HCl menempel pada C1 yang punya 2 H, Cl menempel pada C2 yang punya 1 H.)</span><br>
+                            <span class="text-tertiary">(Produk yang tidak terbentuk: CH₃–CH₂–CH₂Cl)</span>
+                        </div>
+                        <h5>Aturan Anti-Markovnikov:</h5>
+                        <p>Dalam kondisi tertentu, seperti adanya <span class="highlight-text">sinar ultraviolet (UV)</span> atau <span class="highlight-text">katalis peroksida (misalnya, H₂O₂)</span>, adisi asam halida (khususnya HBr) dapat berlaku sebaliknya (anti-Markovnikov). Dalam kasus ini, <span class="accent-text">atom hidrogen akan terikat pada atom karbon yang memiliki lebih sedikit atom hidrogen</span>.</p>
+                        <div class="code-block">
+                            <code>CH₃–CH=CH₂ + HBr <span class="warning-text"><sup>UV/H₂O₂</sup>→</span> CH₃–CH₂–CH₂Br</code><br>
+                            <code>(propena) + (asam bromida) → (1-bromopropana)</code>
+                        </div>
+                        <p class="note">Kedua aturan (Markovnikov dan Anti-Markovnikov) menghasilkan produk yang lebih stabil yang disesuaikan dengan kondisi reaksi dan mekanisme yang terlibat (misalnya, stabilitas zat antara karbokation atau radikal bebas).</p>
+                    </li>
+                </ol>
+
+                <h3>d. Reaksi Eliminasi</h3>
+                <p>Reaksi eliminasi adalah kebalikan dari reaksi adisi. Dalam reaksi ini, <span class="accent-text">gugus atau atom tertentu dikeluarkan</span> dari molekul hidrokarbon jenuh atau jenuh parsial, yang secara konsekuensi menyebabkan <span class="highlight-text">pembentukan ikatan rangkap</span> (ganda atau tiga). Reaksi eliminasi sering ditandai dengan terlepasnya molekul kecil yang stabil seperti air (H₂O), amonia (NH₃), atau asam halida (HX).</p>
+                <p>Contoh umum reaksi eliminasi meliputi:</p>
+                <ol>
+                    <li>
+                        <h4>Dehidrohalogenasi Alkil Halida</h4>
+                        <p>Penghilangan satu atom hidrogen dan satu atom halogen dari alkil halida untuk membentuk alkena. Reaksi ini umumnya dipromosikan oleh <span class="highlight-text">basa kuat</span> (seperti KOH atau NaOH) dalam pelarut alkohol.</p>
+                        <div class="code-block">
+                            <code>CH₃–CHBr–CH₃ + KOH (alkohol) <span class="warning-text">→</span> CH₃–CH=CH₂ + KBr + H₂O</code><br>
+                            <code>(2-bromopropana) → (propena)</code>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Dehidrasi Alkohol</h4>
+                        <p>Penghilangan molekul air (H₂O) dari molekul alkohol untuk membentuk alkena. Reaksi ini biasanya memerlukan <span class="highlight-text">katalis asam kuat</span> (seperti asam sulfat, H₂SO₄) dan <span class="highlight-text">pemanasan</span>.</p>
+                        <div class="code-block">
+                            <code>CH₃–CH₂–OH <span class="warning-text"><sup>H₂SO₄, Panas</sup>→</span> CH₂=CH₂ + H₂O</code><br>
+                            <code>(etanol) → (etena) + (air)</code>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

@@ -4,415 +4,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sejarah Kelas XII: Indonesia di Tengah Konstelasi Perang Dingin</title>
+    <title>Indonesia di Tengah Konstelasi Perang Dingin (1950-1966)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300,400,500,700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables from theme */
+        /* Theme Variables */
         :root {
-            --background_canvas: #FFFFFF;
-            --text_primary: #212121;
-            --text_secondary: #424242;
-            --text_tertiary: #757575;
-            --border_divider: #E0E0E0;
-            --primary_blue: #1976D2;
-            --accent_green: #388E3C;
-            --secondary_accent_amber: #FFB300;
-            --semantic_success: #4CAF50;
-            --semantic_warning: #FFC107;
-            --semantic_error: #D32F2F;
-            --semantic_info: #2196F3;
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
         }
 
         /* Base Styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background_canvas);
-            color: var(--text_primary);
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
             line-height: 1.6;
-            scroll-behavior: smooth;
+            font-size: 16px; /* Base font size */
         }
 
         .container {
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 20px auto;
+            padding: 0 20px;
         }
 
-        /* Header Styling */
-        header {
-            background-color: var(--primary_blue);
-            color: white;
-            padding: 30px 20px;
+        /* Typography */
+        h1 {
+            font-size: 2.5em; /* Approximately 40px */
+            color: var(--primary-blue);
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 0.05em;
-        }
-
-        header p {
-            font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 10px;
-        }
-
-        /* Section Styling */
-        section {
-            background-color: white;
-            margin-bottom: 25px;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border: 1px solid var(--border_divider);
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-blue);
         }
 
         h2 {
-            color: var(--primary_blue);
-            border-bottom: 2px solid var(--border_divider);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
+            font-size: 1.8em; /* Approximately 29px */
+            color: var(--primary-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
 
         h3 {
-            color: var(--accent_green);
+            font-size: 1.4em; /* Approximately 22px */
+            color: var(--text-primary);
             margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 1.4em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
         }
 
         p {
-            margin-bottom: 15px;
-            color: var(--text_secondary);
+            margin-bottom: 1em;
+            color: var(--text-secondary);
         }
 
         ul {
-            list-style: disc;
+            list-style-type: disc;
             margin-left: 20px;
-            margin-bottom: 15px;
-            color: var(--text_secondary);
-        }
-
-        ol {
-            list-style: decimal;
-            margin-left: 20px;
-            margin-bottom: 15px;
-            color: var(--text_secondary);
+            margin-bottom: 1em;
+            color: var(--text-secondary);
         }
 
         li {
-            margin-bottom: 8px;
+            margin-bottom: 0.5em;
         }
 
-        .highlight {
-            background-color: var(--secondary_accent_amber);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: var(--text_primary);
-            white-space: nowrap; /* Prevents breaking for short phrases */
-        }
-
-        .box {
-            background-color: rgba(var(--primary_blue), 0.05); /* Very light blue */
-            border-left: 5px solid var(--primary_blue);
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-        .box p {
-            margin-bottom: 0;
-            color: var(--text_secondary);
-        }
-
-        /* Specific Section Styles (Viva Historia & Refleksi) */
-        .viva-historia {
-            background-color: var(--semantic_info); /* Blue background for info box */
-            color: white;
+        /* Section Cards */
+        .section-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
             padding: 25px;
-            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Slightly more prominent shadow */
+        }
+
+        .highlight-box {
+            background-color: rgba(var(--primary-blue, 25, 118, 210), 0.08); /* RGB for primary-blue */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Accordion Styles (for Dasa Sila Bandung) */
+        .accordion-container {
             margin-top: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .viva-historia h3 {
-            color: white;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        .viva-historia p, .viva-historia ul, .viva-historia li {
-            color: rgba(255,255,255,0.9);
-        }
-        .viva-historia .highlight {
-            background-color: white; /* White background for highlights in info box */
-            color: var(--semantic_info); /* Text color from info blue */
-        }
-        .viva-historia a {
-            color: var(--semantic_warning); /* Yellow for links */
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .viva-historia a:hover {
-            text-decoration: underline;
         }
 
-        .refleksi {
-            background-color: var(--accent_green); /* Green background for reflection box */
-            color: white;
-            padding: 25px;
+        .accordion-item {
+            border: 1px solid var(--border-divider);
             border-radius: 8px;
-            margin-top: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .refleksi h3 {
-            color: white;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 10px;
             margin-bottom: 15px;
-        }
-        .refleksi p, .refleksi ul, .refleksi li {
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* Collapsible Details (Dasa Sila) */
-        details {
-            margin-top: 20px;
-            border: 1px solid var(--border_divider);
-            border-radius: 8px;
-            overflow: hidden;
+            overflow: hidden; /* Ensures border-radius is respected */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        summary {
-            background-color: var(--primary_blue);
+        .accordion-header {
+            background-color: var(--primary-blue);
             color: white;
             padding: 15px 20px;
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-weight: bold;
-            list-style: none; /* Hide default triangle */
-            position: relative;
+            font-size: 1.1em;
             transition: background-color 0.3s ease;
         }
 
-        summary:hover {
-            background-color: color-mix(in srgb, var(--primary_blue) 85%, black); /* Slightly darker on hover */
+        .accordion-header:hover {
+            background-color: #1565C0; /* Darker shade of primary blue on hover */
         }
 
-        summary::-webkit-details-marker {
-            display: none; /* For Chrome/Safari */
+        .accordion-header.active {
+            background-color: #1565C0; /* Keep darker when active */
         }
 
-        summary::after {
+        .accordion-header::after {
             content: '+';
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
             font-size: 1.5em;
-            line-height: 1;
             transition: transform 0.3s ease;
         }
 
-        details[open] summary::after {
+        .accordion-header.active::after {
             content: '-';
-            transform: translateY(-50%) rotate(0deg); /* No rotation needed for a minus sign */
+            transform: rotate(180deg); /* Rotate for a dynamic feel */
         }
 
-        .details-content {
-            padding: 20px;
-            background-color: rgba(var(--primary_blue), 0.03); /* Very light blue */
-            color: var(--text_secondary);
+        .accordion-content {
+            padding: 15px 20px;
+            background-color: #F8F9FA; /* Light grey background for content */
+            border-top: 1px solid var(--border-divider);
+            display: none; /* Hidden by default */
         }
 
-        .details-content ol li {
+        .accordion-content ul {
+            list-style-type: decimal; /* Numbered list for Dasa Sila */
+            margin-left: 25px;
+            padding-left: 0;
+        }
+
+        .accordion-content li {
             margin-bottom: 10px;
         }
 
-        /* Footer Styling */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: var(--text_tertiary);
-            font-size: 0.9em;
-            border-top: 1px solid var(--border_divider);
+        /* Tabs Styles (for Cold War Blocs) */
+        .tabs-container {
+            margin-top: 30px;
         }
 
-        /* Responsive Adjustments */
+        .tabs-navigation {
+            display: flex;
+            border-bottom: 2px solid var(--border-divider);
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            cursor: pointer;
+            background-color: #f5f5f5;
+            border: 1px solid var(--border-divider);
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            margin-right: 5px;
+            color: var(--text-tertiary);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        .tab-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: translateY(2px); /* Slight lift */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 0 0 8px 8px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            header h1 {
+            h1 {
                 font-size: 2em;
+                margin-bottom: 30px;
             }
             h2 {
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
             h3 {
                 font-size: 1.2em;
             }
-            section {
-                padding: 20px;
+            .container {
+                margin: 15px auto;
+                padding: 0 15px;
             }
-            .viva-historia, .refleksi {
+            .section-card {
                 padding: 20px;
+                margin-bottom: 20px;
+            }
+            .highlight-box {
+                padding: 15px 20px;
+                margin: 20px 0;
+            }
+            .tabs-navigation {
+                flex-wrap: wrap; /* Allow tabs to wrap on small screens */
+                justify-content: center;
+                border-bottom: none; /* Remove bottom border if wrapped */
+            }
+            .tab-button {
+                flex-basis: 48%; /* Two tabs per row */
+                margin: 5px;
+                border-bottom: 1px solid var(--border-divider); /* Add bottom border back */
+                border-radius: 8px; /* Full border radius for wrapped buttons */
+            }
+            .tab-button.active {
+                transform: none; /* Remove lift effect on small screens for better layout */
+            }
+            .tab-content {
+                border-radius: 8px; /* Full border radius */
             }
         }
 
         @media (max-width: 480px) {
-            header h1 {
+            h1 {
                 font-size: 1.8em;
             }
-            header p {
-                font-size: 1em;
-            }
             h2 {
-                font-size: 1.3em;
+                font-size: 1.4em;
             }
             h3 {
                 font-size: 1.1em;
             }
-            section {
-                padding: 15px;
+            body {
+                font-size: 15px;
             }
-            .viva-historia, .refleksi {
-                padding: 15px;
-            }
-            summary {
-                padding: 10px 15px;
-            }
-            .details-content {
-                padding: 15px;
-            }
-            summary::after {
-                right: 15px;
-                font-size: 1.2em;
+            .tab-button {
+                flex-basis: 90%; /* One tab per row on very small screens */
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Indonesia di Tengah Konstelasi Perang Dingin</h1>
-        <p>Sejarah untuk SMA/MA Kelas XII - Bab 2: Demokrasi Liberal hingga Demokrasi Terpimpin (1950-1966)</p>
-    </header>
 
-    <main class="container">
-        <section>
-            <h2>Dampak Global Perang Dunia II dan Lahirnya Bangsa Merdeka</h2>
-            <p>Berakhirnya Perang Dunia II pada tahun 1945 menandai era baru dalam sejarah dunia, membawa dampak yang sangat besar dan mendalam pada tatanan politik dan ekonomi global. Meskipun tidak semua negara terlibat langsung dalam konflik bersenjata ini, efeknya terasa di seluruh penjuru bumi, membentuk lanskap dunia yang kita kenal hingga saat ini.</p>
-            <p>Salah satu konsekuensi paling transformatif dari Perang Dunia II adalah percepatan proses dekolonisasi. Melemahnya kekuatan-kekuatan kolonial tradisional seperti Inggris, Prancis, dan Belanda pasca-perang menciptakan celah yang dimanfaatkan oleh gerakan-gerakan nasionalis di Asia dan Afrika untuk menuntut dan meraih kemerdekaan. Ini menghasilkan gelombang kemerdekaan yang masif, terutama di kedua benua tersebut.</p>
+    <div class="container">
+        <header>
+            <h1>Bab 2: Indonesia di Tengah Konstelasi Perang Dingin (1950-1966)</h1>
+        </header>
 
-            <h3>Piagam PBB dan Piagam Atlantik: Landasan Kemerdekaan Bangsa-Bangsa</h3>
-            <p>Pada dekade 1940-an, kesadaran akan hak menentukan nasib sendiri atau <span class="highlight">self-determination</span> semakin mengemuka. Dua dokumen bersejarah yang menjadi tonggak penting dalam konteks ini adalah <span class="highlight">Piagam Atlantik (Atlantic Charter)</span> yang dirilis pada Agustus 1941, dan <span class="highlight">Piagam Perserikatan Bangsa-Bangsa (PBB)</span> yang resmi ditandatangani pada 24 Oktober 1945.</p>
-            <p>Kedua piagam ini secara eksplisit menegaskan hak setiap bangsa untuk menentukan nasibnya sendiri dan memerintah negerinya. Bagi banyak bangsa yang masih terjajah, dokumen-dokumen ini menjadi rujukan dan legitimasi kuat untuk menuntut kemerdekaan. Meskipun perjuangan kemerdekaan telah dimulai jauh sebelum piagam-piagam ini ada, kehadirannya berfungsi sebagai <span class="highlight">katalisator</span> yang mempercepat gelombang dekolonisasi dan memberikan dukungan moral serta politis bagi bangsa-bangsa terjajah di forum internasional.</p>
-        </section>
-
-        <section>
-            <h2>Perang Dingin: Konfrontasi Dua Adidaya dan Perebutan Pengaruh</h2>
-            <p>Setelah hiruk pikuk Perang Dunia II mereda, dunia segera dihadapkan pada bentuk konflik baru yang berbeda, yaitu <span class="highlight">Perang Dingin</span>. Konflik ini tidak melibatkan perang fisik berskala besar antara dua kekuatan utama, melainkan sebuah persaingan ideologi, politik, ekonomi, dan militer yang intens antara dua kekuatan besar yang muncul sebagai pemenang Perang Dunia II:</p>
-            <ul>
-                <li><span class="highlight">Amerika Serikat (AS)</span>, yang menganut ideologi <span class="highlight">liberalisme dan kapitalisme</span>.</li>
-                <li><span class="highlight">Uni Soviet (USSR)</span>, yang menganut ideologi <span class="highlight">komunisme</span>.</li>
-            </ul>
-            <p>Kedua negara ini memiliki visi dunia yang sangat berbeda dan saling berebut pengaruh di kancah global. Ketegangan antara keduanya tercermin dalam perlombaan senjata nuklir, eksplorasi antariksa, spionase, dan perang proksi di berbagai belahan dunia. Namun, ketegangan ini tidak pernah sampai pada konfrontasi militer langsung antara AS dan Uni Soviet.</p>
-
-            <h3>Strategi Perebutan Pengaruh Global</h3>
-            <p>Untuk memperluas pengaruhnya, baik AS maupun Uni Soviet menggunakan berbagai strategi, termasuk pemberian bantuan ekonomi dan militer kepada negara-negara lain. Tujuan utamanya adalah untuk menarik negara-negara tersebut ke dalam lingkup pengaruh blok masing-masing.</p>
-            <ul>
-                <li><strong>Marshall Plan (Amerika Serikat):</strong> Sejak April 1948 hingga Desember 1951, AS meluncurkan program bantuan pemulihan ekonomi ini kepada 17 negara di Eropa Barat dan Selatan. Tujuannya bukan hanya rekonstruksi, tetapi juga untuk mencegah kemiskinan dan ketidakstabilan ekonomi yang dikhawatirkan dapat menjadi lahan subur bagi penyebaran komunisme.</li>
-                <li><strong>Molotov Plan (Uni Soviet):</strong> Sebagai respons dan tandingan dari Marshall Plan, Uni Soviet juga meluncurkan program serupa yang memberikan bantuan ekonomi kepada negara-negara di Eropa Timur yang berada di bawah pengaruh Blok Timur. Ini bertujuan untuk memperkuat ikatan ekonomi dan politik dalam blok komunis.</li>
-            </ul>
-            <p>Akibatnya, dunia terpecah menjadi dua kubu besar: <span class="highlight">Blok Barat</span> yang dipimpin oleh AS dan <span class="highlight">Blok Timur</span> yang dipimpin oleh Uni Soviet. Namun, penting untuk dicatat bahwa tidak semua negara di dunia memilih untuk memihak salah satu blok. Beberapa negara, seperti Indonesia, India, dan Mesir, memilih jalur <span class="highlight">netralitas</span>.</p>
-            <div class="box">
-                <p><strong>Kondisi Global pada Tahun 1953:</strong> Peta politik dunia pada tahun 1953 dengan jelas menunjukkan pembagian ini. Selain itu, peta juga mengungkap realitas bahwa banyak negara di Asia dan Afrika masih berstatus sebagai jajahan atau koloni dari negara-negara Barat, sebuah fakta yang akan memicu gerakan solidaritas besar di kemudian hari.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Indonesia di Persimpangan Perang Dingin: Lahirnya Politik Bebas Aktif</h2>
-            <p>Indonesia, yang baru saja memproklamasikan kemerdekaannya, tidak luput dari pengaruh dinamika Perang Dingin. Konstelasi kekuatan global ini memiliki implikasi signifikan terhadap perjuangan Indonesia dalam mempertahankan kedaulatan dan menentukan arah kebijakan luar negerinya.</p>
-
-            <h3>Perubahan Sikap Amerika Serikat terhadap Indonesia</h3>
-            <p>Pada awalnya, dukungan Amerika Serikat terhadap kemerdekaan Indonesia cenderung ragu-ragu karena Belanda adalah sekutu penting AS di Eropa. Namun, situasi berubah drastis setelah pemerintah Indonesia berhasil menumpas <span class="highlight">Pemberontakan Komunis di Madiun pada tahun 1948</span>. Keberhasilan ini menunjukkan komitmen Indonesia dalam menekan komunisme, sebuah langkah yang sangat diapresiasi oleh Amerika Serikat.</p>
-            <p>Sejak saat itu, AS mulai memberikan dukungan lebih konkret kepada Republik Indonesia. Salah satu bentuk dukungannya adalah <span class="highlight">ancaman untuk menghentikan bantuan Marshall Plan kepada Belanda</span> jika Belanda tidak mau berunding dan mencari penyelesaian damai atas konflik dengan Indonesia. Tekanan diplomatik ini menjadi faktor penting yang mempercepat pengakuan kedaulatan Indonesia oleh Belanda.</p>
-
-            <h3>Politik Luar Negeri Bebas Aktif: Pilihan Indonesia</h3>
-            <p>Melihat persaingan tajam antara Blok Barat dan Blok Timur, Indonesia menyadari bahwa memihak salah satu blok hanya akan menyeretnya ke dalam konflik yang bukan kepentingannya. Oleh karena itu, Indonesia memilih untuk mengadopsi prinsip <span class="highlight">Politik Luar Negeri Bebas Aktif</span>. Prinsip ini mengandung makna:</p>
-            <ul>
-                <li><span class="highlight">Bebas:</span> Indonesia tidak terikat pada salah satu blok ideologi atau militer mana pun di dunia.</li>
-                <li><span class="highlight">Aktif:</span> Indonesia secara proaktif turut serta dalam upaya menciptakan perdamaian dunia, keadilan sosial, dan kerja sama internasional.</li>
-            </ul>
-            <p>Pilihan politik ini mencerminkan keinginan Indonesia untuk menjaga kedaulatannya, fokus pada pembangunan nasional, dan memainkan peran konstruktif di kancah global tanpa terpengaruh oleh kepentingan negara adidaya.</p>
-        </section>
-
-        <section>
-            <h2>Konferensi Asia-Afrika (KAA) 1955: Puncak Solidaritas Dunia Ketiga</h2>
-            <p>Politik luar negeri bebas aktif Indonesia mencapai puncaknya dengan penyelenggaraan <span class="highlight">Konferensi Asia-Afrika (KAA) di Bandung pada tahun 1955</span>. KAA merupakan respons langsung terhadap situasi politik dunia yang diwarnai Perang Dingin dan keberadaan banyak negara Asia-Afrika yang masih dijajah atau baru merdeka.</p>
-
-            <h3>Latar Belakang dan Tujuan Penyelenggaraan KAA</h3>
-            <p>Negara-negara Asia dan Afrika memiliki kesamaan nasib sebagai korban kolonialisme dan imperialisme, serta kekhawatiran yang sama terhadap dampak Perang Dingin. Solidaritas inilah yang mendorong 29 negara dari kedua benua untuk berkumpul di Bandung. Tujuan utama KAA adalah:</p>
-            <ul>
-                <li>Mendorong kerja sama di bidang sosial, ekonomi, dan budaya antarnegara Asia-Afrika.</li>
-                <li>Mendukung penuh perjuangan kemerdekaan bangsa-bangsa yang masih terjajah.</li>
-                <li>Menjunjung tinggi hak asasi manusia dan kesetaraan semua bangsa.</li>
-                <li>Berperan aktif dalam menciptakan perdamaian dan keamanan dunia di tengah polarisasi Perang Dingin, dengan menolak segala bentuk imperialisme dan kolonialisme baru.</li>
-            </ul>
-
-            <h3>Dasa Sila Bandung: Piagam Perdamaian dan Kerja Sama</h3>
-            <p>Salah satu hasil paling penting dari KAA adalah perumusan <span class="highlight">Dasa Sila Bandung</span>, sepuluh prinsip fundamental yang menjadi pedoman bagi hubungan antarnegara, khususnya bagi bangsa-bangsa yang baru merdeka. Dasa Sila ini mencerminkan semangat anti-kolonialisme, perdamaian, dan kerja sama yang diusung Konferensi:</p>
-            <details>
-                <summary>Klik untuk melihat Dasa Sila Bandung</summary>
-                <div class="details-content">
-                    <ol>
-                        <li>Menghormati hak-hak dasar manusia dan tujuan-tujuan serta asas-asas yang termuat di dalam Piagam PBB (Perserikatan Bangsa-Bangsa).</li>
-                        <li>Menghormati kedaulatan dan integritas teritorial semua bangsa.</li>
-                        <li>Mengakui persamaan semua suku bangsa dan persamaan semua bangsa, besar maupun kecil.</li>
-                        <li>Tidak melakukan intervensi atau campur tangan dalam soalan-soalan dalam negeri negara lain.</li>
-                        <li>Menghormati hak-hak setiap bangsa untuk mempertahankan diri secara sendirian ataupun kolektif yang sesuai dengan Piagam PBB.</li>
-                        <li>Tidak menggunakan peraturan-peraturan dari pertahanan kolektif untuk bertindak bagi kepentingan khusus dari salah satu negara besar dan tidak melakukannya terhadap negara lain.</li>
-                        <li>Tidak melakukan tindakan-tindakan ataupun ancaman agresi maupun penggunaan kekerasan terhadap integritas wilayah maupun kemerdekaan politik suatu negara.</li>
-                        <li>Menyelesaikan segala perselisihan internasional dengan jalan damai, seperti perundingan, persetujuan, arbitrasi, ataupun cara damai lainnya, menurut pilihan pihak-pihak yang bersangkutan sesuai dengan Piagam PBB.</li>
-                        <li>Memajukan kepentingan bersama dan kerja sama.</li>
-                        <li>Menghormati hukum dan kewajiban-kewajiban internasional.</li>
-                    </ol>
+        <main>
+            <section class="section-card">
+                <h2>Dampak Perang Dunia II dan Lahirnya Era Kemerdekaan</h2>
+                <p>Perang Dunia II, yang berakhir pada tahun 1945, tidak hanya meninggalkan kehancuran tetapi juga membawa perubahan mendasar dalam tatanan dunia. Meskipun banyak negara tidak terlibat langsung dalam konflik bersenjata, efeknya terasa secara global, memicu pergeseran signifikan dalam lanskap politik dan ekonomi internasional.</p>
+                <p>Salah satu dampak paling monumental adalah gelombang kemerdekaan yang melanda berbagai bangsa, khususnya di benua Asia dan Afrika. Setelah puluhan bahkan ratusan tahun di bawah cengkeraman kolonialisme, banyak negara memanfaatkan momentum pasca-perang untuk memperjuangkan hak penentuan nasib sendiri.</p>
+                <div class="highlight-box">
+                    <p>
+                        Dokumen-dokumen penting seperti <strong>Piagam Atlantik (Atlantic Charter)</strong> tahun 1941 dan <strong>Piagam Perserikatan Bangsa-Bangsa (PBB)</strong> yang disahkan pada 24 Oktober 1945, menjadi landasan moral dan hukum bagi perjuangan kemerdekaan. Kedua piagam ini secara eksplisit menegaskan hak bangsa-bangsa untuk menentukan nasib dan memerintah diri sendiri. Meskipun perjuangan kemerdekaan sudah berlangsung jauh sebelumnya, Piagam Atlantik dan Piagam PBB berfungsi sebagai katalisator, mempercepat proses dekolonisasi di berbagai belahan dunia.
+                    </p>
                 </div>
-            </details>
+            </section>
 
-            <h3>"Semangat Bandung" dan Gerakan Non-Blok (GNB)</h3>
-            <p>KAA tidak hanya melahirkan prinsip-prinsip, tetapi juga sebuah identitas kolektif yang disebut <span class="highlight">"Semangat Bandung"</span>. Semangat ini, menurut Darwis Khudori (2018), secara kuat diidentifikasi dengan nilai-nilai <span class="highlight">kemerdekaan, solidaritas, dan anti-kolonialisme</span>. Semangat ini kemudian menginspirasi berbagai forum dan gerakan, seperti Konferensi Mahasiswa Asia Afrika (1956), Konferensi Penulis Asia Afrika (1958-1979), dan Konferensi Wanita Asia Afrika (1958).</p>
-            <p>Yang terpenting, KAA dan Semangat Bandung menjadi fondasi bagi pembentukan <span class="highlight">Gerakan Non-Blok (GNB)</span> yang resmi didirikan pada tahun 1961 di Beograd, Yugoslavia. Indonesia adalah salah satu negara pelopor lahirnya GNB. Tujuan utama GNB adalah untuk menjaga netralitas dan tidak memihak salah satu blok kekuatan dalam Perang Dingin, serta mempromosikan perdamaian, keadilan, dan kerja sama global di luar pengaruh blok-blok besar.</p>
-        </section>
+            <section class="section-card">
+                <h2>Munculnya Dua Kekuatan Raksasa: Awal Perang Dingin</h2>
+                <p>Pasca-Perang Dunia II, peta kekuatan dunia berubah drastis dengan munculnya dua kekuatan adidaya yang saling berhadapan: <strong>Amerika Serikat (AS)</strong> dan <strong>Uni Soviet (USSR)</strong>. Keduanya memiliki ideologi yang kontras – liberalisme-kapitalisme di kubu AS dan komunisme di kubu Uni Soviet – yang memicu persaingan sengit dalam memperebutkan pengaruh global.</p>
+                <p>Persaingan ini dikenal sebagai <strong>Perang Dingin</strong>. Meskipun terjadi ketegangan politik yang sangat tinggi, perlombaan senjata (termasuk nuklir), dan persaingan teknologi militer, kedua negara ini tidak pernah terlibat dalam perang fisik secara langsung. Konflik lebih banyak terjadi melalui perang proksi, dukungan terhadap rezim di negara lain, dan propaganda.</p>
 
-        <section class="viva-historia">
-            <h3>VIVA HISTORIA: Arsip dan Museum Konferensi Asia-Afrika</h3>
-            <p>Untuk mendalami pemahaman tentang KAA, terdapat sumber-sumber yang sangat berharga:</p>
-            <ul>
-                <li><strong>Arsip KAA sebagai Warisan Ingatan Dunia:</strong> Arsip Konferensi Asia-Afrika telah diakui oleh <span class="highlight">UNESCO</span> sebagai <span class="highlight">Warisan Ingatan Dunia (Memory of the World)</span> sejak tahun 2015. Pengajuan ini dilakukan oleh negara-negara sponsor KAA, yaitu Indonesia, India, Pakistan, Sri Lanka, dan Myanmar, sejak tahun 2012.</li>
-                <li><strong>Museum Konferensi Asia-Afrika:</strong> Bagi yang ingin mempelajari lebih lanjut tentang peristiwa ini dan pengaruhnya terhadap sejarah Indonesia serta dunia, kalian dapat mengunjungi Museum KAA di Bandung. Museum ini menyimpan berbagai foto, arsip, dan artefak yang menjadi sumber primer sejarah KAA 1955.</li>
-                <li><strong>Kunjungan Virtual:</strong> Kalian juga bisa menjelajahi koleksi museum KAA secara virtual melalui laman <a href="https://museumkaa.iheritage.id/public/" target="_blank">https://museumkaa.iheritage.id/public/</a>.</li>
-            </ul>
-        </section>
+                <h3>Perebutan Pengaruh Melalui Bantuan Ekonomi dan Militer</h3>
+                <p>Untuk memperluas dominasi ideologi dan politik mereka, AS dan Uni Soviet gencar memberikan bantuan ekonomi dan militer kepada negara-negara di Eropa dan benua lainnya. Harapannya, negara penerima bantuan akan memihak salah satu blok.</p>
+                <ul>
+                    <li><strong>Marshall Plan (Amerika Serikat):</strong> Diluncurkan pada April 1948, bantuan pemulihan ekonomi ini disalurkan kepada 17 negara di Eropa Barat dan Selatan hingga Desember 1951. AS khawatir bahwa tanpa bantuan ini, pengangguran dan kemiskinan pasca-perang akan menjadi lahan subur bagi penyebaran komunisme.</li>
+                    <li><strong>Molotov Plan (Uni Soviet):</strong> Sebagai tandingan Marshall Plan, Uni Soviet juga meluncurkan Molotov Plan, menyediakan bantuan ekonomi kepada negara-negara di kawasan Eropa Timur yang berada di bawah pengaruhnya.</li>
+                </ul>
 
-        <section class="refleksi">
-            <h3>REFLEKSI: Relevansi Semangat Bandung di Masa Kini</h3>
-            <p>Perang Dingin telah berakhir, dan sebagian besar negara di Asia dan Afrika telah lama menikmati kemerdekaan mereka. Ini mendorong kita untuk merefleksikan beberapa pertanyaan penting:</p>
-            <ul>
-                <li>Apakah tatanan politik dunia menjadi lebih baik setelah berakhirnya Perang Dingin? Tantangan apa saja yang masih ada?</li>
-                <li>Bagaimanakah relevansi Gerakan Non-Blok (GNB) di masa kini, ketika dunia dihadapkan pada isu-isu global baru seperti perubahan iklim, pandemi, dan ketidaksetaraan ekonomi?</li>
-                <li>Apa yang dapat kita pelajari dari "Semangat Bandung" yang menjunjung tinggi kemerdekaan, solidaritas, dan anti-kolonialisme, dan bagaimana kita dapat menghidupkan kembali nilai-nilai tersebut dalam konteks tantangan global abad ke-21?</li>
-            </ul>
-            <p>Memahami sejarah ini bukan hanya tentang mengenang masa lalu, tetapi juga tentang bagaimana kita dapat menggunakan pelajaran dari sejarah untuk membentuk masa depan yang lebih damai dan adil.</p>
-        </section>
-    </main>
+                <div class="tabs-container cold-war-tabs">
+                    <h3>Peta Kekuatan Dunia saat Perang Dingin (1953)</h3>
+                    <div class="tabs-navigation">
+                        <button class="tab-button" data-target="bloc-barat">Blok Barat (Dipimpin AS)</button>
+                        <button class="tab-button" data-target="bloc-timur">Blok Timur (Dipimpin Uni Soviet)</button>
+                        <button class="tab-button" data-target="non-aligned">Tidak Memihak (Non-Blok)</button>
+                    </div>
 
-    <footer>
-        <p>&copy; 2023 Materi Pembelajaran Sejarah SMA/MA Kelas XII. Hak Cipta Dilindungi Undang-Undang.</p>
-    </footer>
+                    <div id="bloc-barat" class="tab-content">
+                        <h4>Blok Barat: Demokrasi Liberal dan Kapitalisme</h4>
+                        <p>Blok Barat dipimpin oleh Amerika Serikat dan mengusung ideologi demokrasi liberal serta sistem ekonomi kapitalisme. Aliansi militer utamanya adalah <strong>NATO (North Atlantic Treaty Organization)</strong>. Negara-negara yang umumnya termasuk dalam blok ini adalah negara-negara di Eropa Barat (seperti Inggris, Prancis, Jerman Barat, Italia), Kanada, Australia, dan banyak negara di Amerika Latin yang memiliki kedekatan ideologis dan ekonomi dengan AS.</p>
+                        <p>Tujuannya adalah membendung pengaruh komunisme dan mempromosikan nilai-nilai demokrasi serta pasar bebas.</p>
+                    </div>
+
+                    <div id="bloc-timur" class="tab-content">
+                        <h4>Blok Timur: Komunisme dan Sistem Sosialis</h4>
+                        <p>Blok Timur dipimpin oleh Uni Soviet dan menganut ideologi komunisme serta sistem ekonomi terpusat. Aliansi militer utamanya adalah <strong>Pakta Warsawa</strong>. Negara-negara satelit Uni Soviet di Eropa Timur (seperti Polandia, Jerman Timur, Cekoslowakia, Hungaria, Rumania, Bulgaria) serta negara-negara komunis lainnya (seperti Tiongkok, Korea Utara, Vietnam) umumnya menjadi bagian dari blok ini.</p>
+                        <p>Tujuannya adalah menyebarkan komunisme dan menentang dominasi kapitalisme global.</p>
+                    </div>
+
+                    <div id="non-aligned" class="tab-content">
+                        <h4>Negara-negara Non-Blok: Mencari Jalur Sendiri</h4>
+                        <p>Di tengah tarik-menarik pengaruh antara Blok Barat dan Blok Timur, tidak semua negara memilih untuk memihak. Banyak negara yang baru merdeka atau sedang dalam proses menuju kemerdekaan, terutama di Asia dan Afrika, memilih jalur netralitas atau "tidak memihak".</p>
+                        <p>Negara-negara seperti <strong>Indonesia, India, Mesir, dan Yugoslavia</strong> menyadari bahwa memihak salah satu blok dapat mengancam kedaulatan dan menghambat pembangunan nasional mereka. Mereka percaya pada prinsip koeksistensi damai dan penyelesaian konflik melalui dialog, bukan konfrontasi.</p>
+                        <p>Selain itu, pada periode ini, masih terdapat beberapa negara di Asia dan Afrika yang belum sepenuhnya merdeka dan masih menjadi jajahan atau koloni negara-negara Barat.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Pengaruh Perang Dingin terhadap Sejarah Indonesia</h2>
+                <p>Perang Dingin secara langsung memengaruhi perjalanan sejarah Indonesia, terutama dalam perjuangannya mempertahankan kemerdekaan.</p>
+                <p>Salah satu pengaruh awal yang signifikan adalah perubahan sikap Amerika Serikat terhadap Indonesia. Awalnya, AS cenderung netral atau bahkan mendukung sekutunya, Belanda. Namun, setelah pemerintah Indonesia berhasil menumpas pemberontakan kelompok komunis pada tahun 1948 (Peristiwa Madiun), AS melihat Indonesia sebagai negara yang berpotensi menjadi benteng anti-komunis di Asia Tenggara.</p>
+                <p>Dukungan AS kemudian nyata, misalnya dengan mengancam akan menghentikan bantuan Marshall Plan kepada Belanda jika mereka tidak bersedia berunding dan mencari penyelesaian konflik secara damai dengan Republik Indonesia. Ancaman ini menjadi salah satu faktor penting yang mendorong Belanda untuk mengakui kedaulatan Indonesia.</p>
+            </section>
+
+            <section class="section-card">
+                <h2>Konferensi Asia Afrika (KAA) 1955: Suara Dunia Ketiga</h2>
+                <p>Situasi politik dunia yang terpecah dua oleh Perang Dingin, ditambah dengan kesamaan nasib negara-negara di Asia dan Afrika yang baru merdeka atau masih berjuang melawan kolonialisme, menjadi latar belakang utama diselenggarakannya <strong>Konferensi Asia Afrika (KAA)</strong> di Bandung pada tahun 1955.</p>
+
+                <h3>Tujuan dan Spirit KAA:</h3>
+                <ul>
+                    <li><strong>Solidaritas Asia-Afrika:</strong> 29 negara dari Asia dan Afrika berkumpul untuk menyadari kesamaan nasib mereka pasca-Perang Dunia II dan membangun persatuan.</li>
+                    <li><strong>Kerja Sama Multilateral:</strong> Sepakat untuk menjalin kerja sama di bidang sosial, ekonomi, dan budaya demi kemajuan bersama.</li>
+                    <li><strong>Melawan Imperialisme:</strong> Negara-negara peserta saling mendukung dalam perjuangan melawan imperialisme dan menjunjung tinggi hak asasi manusia.</li>
+                    <li><strong>Menciptakan Perdamaian Dunia:</strong> Bertekad untuk berkontribusi aktif dalam menciptakan perdamaian dunia di tengah suasana Perang Dingin yang penuh ketegangan.</li>
+                </ul>
+                <p>Semua prinsip dan tujuan ini dirangkum dalam keputusan penting KAA yang dikenal sebagai <strong>Dasa Sila Bandung</strong>.</p>
+
+                <div class="highlight-box">
+                    <p>
+                        Dalam konteks sejarah dunia, KAA melahirkan <strong>"Semangat Bandung"</strong>. Menurut Darwis Khudori (2018), semangat ini erat kaitannya dengan kemerdekaan, solidaritas, dan anti-kolonialisme. Semangat ini menjadi inspirasi bagi berbagai peristiwa dan gerakan berikutnya, seperti Konferensi Mahasiswa Asia Afrika (Bandung, 1956), Konferensi Penulis Asia Afrika (1958-1979), Konferensi Wanita Asia Afrika (Kolombo, 1958).
+                    </p>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Dasa Sila Bandung: Sepuluh Prinsip Perdamaian Dunia
+                        </div>
+                        <div class="accordion-content">
+                            <p>Dasa Sila Bandung merupakan sepuluh prinsip hasil Konferensi Asia Afrika yang menjadi pedoman bagi hubungan internasional yang damai dan adil. Prinsip-prinsip ini menunjukkan komitmen negara-negara Asia-Afrika untuk menciptakan tatanan dunia yang lebih baik, bebas dari dominasi dan konflik.</p>
+                            <ol>
+                                <li>Menghormati hak-hak dasar manusia dan tujuan-tujuan serta asas-asas yang termuat di dalam Piagam PBB (Perserikatan Bangsa-Bangsa).</li>
+                                <li>Menghormati kedaulatan dan integritas teritorial semua bangsa.</li>
+                                <li>Mengakui persamaan semua suku bangsa dan persamaan semua bangsa, besar maupun kecil.</li>
+                                <li>Tidak melakukan intervensi atau campur tangan dalam soal-soal dalam negeri negara lain.</li>
+                                <li>Menghormati hak-hak setiap bangsa untuk mempertahankan diri secara sendirian ataupun kolektif yang sesuai dengan Piagam PBB.</li>
+                                <li>Tidak menggunakan peraturan-peraturan dari pertahanan kolektif untuk bertindak bagi kepentingan khusus dari salah satu negara besar dan tidak melakukannya terhadap negara lain.</li>
+                                <li>Tidak melakukan tindakan-tindakan ataupun ancaman agresi maupun penggunaan kekerasan terhadap integritas wilayah maupun kemerdekaan politik suatu negara.</li>
+                                <li>Menyelesaikan segala perselisihan internasional dengan jalan damai, seperti perundingan, persetujuan, arbitrasi, ataupun cara damai lainnya, menurut pilihan pihak-pihak yang bersangkutan sesuai dengan Piagam PBB.</li>
+                                <li>Memajukan kepentingan bersama dan kerja sama.</li>
+                                <li>Menghormati hukum dan kewajiban-kewajiban internasional.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Lahirnya Gerakan Non-Blok (GNB)</h2>
+                <p>Salah satu warisan paling penting dari Konferensi Asia Afrika adalah inspirasinya terhadap lahirnya <strong>Gerakan Non-Blok (GNB)</strong>. Didirikan pada tahun 1961 di Beograd, Yugoslavia, GNB merupakan forum bagi negara-negara yang tidak memihak blok Barat maupun blok Timur dalam Perang Dingin.</p>
+                <p>Indonesia merupakan salah satu negara pelopor lahirnya GNB, bersama dengan India, Yugoslavia, Mesir, dan Ghana. GNB secara umum ingin tetap netral dan tidak memihak salah satu blok dalam Perang Dingin, menekankan kemerdekaan, kedaulatan, dan kerja sama antarnegara berdasarkan prinsip-prinsip Dasa Sila Bandung.</p>
+            </section>
+
+            <section class="section-card">
+                <h2>Mengenang Sejarah: Arsip KAA dan Museum KAA</h2>
+                <p>Sebagai pengakuan atas signifikansi sejarahnya, Arsip Konferensi Asia Afrika telah ditetapkan oleh UNESCO sebagai <strong>Warisan Ingatan Dunia (Memory of the World)</strong> pada tahun 2015. Proses pengajuan ini dimulai sejak tahun 2012 oleh negara-negara sponsor KAA, yaitu Indonesia, India, Pakistan, Srilanka, dan Myanmar.</p>
+                <p>Bagi kalian yang ingin mendalami peristiwa KAA dan pengaruhnya terhadap sejarah Indonesia dan dunia, dapat mengunjungi <strong>Museum Konferensi Asia Afrika di Bandung</strong> secara langsung. Di sana, kalian bisa melihat berbagai foto, arsip, dan artefak bersejarah KAA 1955.</p>
+                <p>Selain itu, kunjungan virtual juga tersedia melalui laman resmi Museum KAA: <a href="https://museumkaa.iheritage.id/public/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">https://museumkaa.iheritage.id/public/</a>.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // JavaScript for Accordion Functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.classList.toggle('active');
+                const content = header.nextElementSibling;
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
+        });
+
+        // JavaScript for Tabs Functionality
+        function setupTabs(tabContainerSelector) {
+            const tabContainer = document.querySelector(tabContainerSelector);
+            if (!tabContainer) return;
+
+            const tabButtons = tabContainer.querySelectorAll('.tab-button');
+            const tabContents = tabContainer.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.target;
+
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    button.classList.add('active');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+
+            // Activate the first tab by default
+            if (tabButtons.length > 0) {
+                tabButtons[0].click();
+            }
+        }
+
+        // Initialize tabs after DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            setupTabs('.cold-war-tabs');
+        });
+    </script>
 </body>
 </html>
 ```

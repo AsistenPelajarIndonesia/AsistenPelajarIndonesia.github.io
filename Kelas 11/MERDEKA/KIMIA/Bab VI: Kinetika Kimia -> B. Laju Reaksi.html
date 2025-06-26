@@ -1,0 +1,578 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetika Kimia: B. Laju Reaksi</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; color: var(--accent-green); }
+        h3 { font-size: 1.75em; color: var(--primary-blue); }
+        h4 { font-size: 1.5em; color: var(--text-secondary); }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-primary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--bg-canvas);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--bg-canvas);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Analogies and Special Boxes */
+        .analogy-box {
+            background-color: var(--semantic-info);
+            color: var(--bg-canvas);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .analogy-box h3 {
+            color: var(--bg-canvas);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        .analogy-box p {
+            color: var(--bg-canvas);
+            margin-bottom: 0;
+        }
+        .analogy-box::before {
+            content: '💡'; /* Lightbulb emoji for insight/analogy */
+            font-size: 3em;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--bg-canvas);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden; /* For rounded corners */
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--text-primary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--bg-canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Slightly different background for even rows */
+        }
+
+        /* Code and Formulas */
+        .formula {
+            background-color: #e0f2f7; /* Light blue background */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+            color: var(--text-primary);
+            border-radius: 4px;
+        }
+
+        .formula .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.2;
+            vertical-align: middle;
+            margin: 0 0.5em;
+            font-size: 0.9em; /* Smaller font for fraction parts */
+        }
+        .formula .fraction .numerator {
+            padding-bottom: 2px;
+            border-bottom: 1px solid var(--text-primary);
+            width: 100%; /* Ensure line extends across content */
+            text-align: center;
+        }
+        .formula .fraction .denominator {
+            padding-top: 2px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Important Notes/Keterangan */
+        .notes-box {
+            background-color: var(--semantic-warning);
+            color: var(--text-primary);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .notes-box strong {
+            color: var(--text-primary);
+        }
+        .notes-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .notes-box li {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .notes-box li::before {
+            content: '•';
+            color: var(--text-primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            margin-right: 0.5em;
+        }
+
+        /* Example Boxes for Worked Solutions */
+        .example-solution {
+            background-color: #e8f5e9; /* Light green for solutions */
+            border-left: 5px solid var(--semantic-success);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .example-solution h4 {
+            color: var(--semantic-success);
+            margin-top: 0;
+        }
+        .example-solution p, .example-solution ul {
+            color: var(--text-secondary);
+        }
+        .example-solution pre {
+            background-color: #f0f4f7;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            white-space: pre-wrap; /* Allows line breaks for long lines */
+            word-wrap: break-word; /* Ensures long words break */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.75em; }
+            h3 { font-size: 1.5em; }
+            h4 { font-size: 1.25em; }
+
+            table, th, td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            th {
+                text-align: center;
+                border-bottom: none;
+            }
+
+            td {
+                text-align: center;
+                border-top: none;
+            }
+
+            tr {
+                margin-bottom: 10px;
+                border: 1px solid var(--border-divider);
+                display: block;
+            }
+
+            tr:nth-child(even) {
+                background-color: transparent; /* Reset for mobile block display */
+            }
+
+            tr td:first-child {
+                background-color: #f0f0f0; /* Highlight the first column on mobile */
+                font-weight: bold;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            p { font-size: 0.95em; }
+        }
+
+        /* Diagram descriptions (text-based) */
+        .diagram-description {
+            background-color: #f0f0f0;
+            border: 1px dashed var(--border-divider);
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            border-radius: 6px;
+        }
+
+        .diagram-description strong {
+            color: var(--text-primary);
+        }
+
+        .reaction-equation {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.2em;
+            background-color: #f7f7f7;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--border-divider);
+            display: inline-block; /* To fit content */
+            margin: 10px 0;
+        }
+        .reaction-equation .arrow {
+            font-weight: bold;
+            margin: 0 8px;
+        }
+
+        /* Keterangan list for particle illustration */
+        .particle-legend {
+            background-color: #f8f8f8;
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .particle-legend h4 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+        .particle-legend ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .particle-legend li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+        .particle-legend .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .particle-legend .dot.blue { background-color: var(--semantic-info); }
+        .particle-legend .dot.red { background-color: var(--semantic-error); }
+        .particle-legend .dot.green { background-color: var(--accent-green); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Kinetika Kimia: B. Laju Reaksi</h1>
+            <p>Mempelajari Kecepatan Terjadinya Reaksi Kimia</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Pengertian Laju Reaksi</h2>
+            <p>Dalam ilmu fisika, kalian tentu tidak asing dengan istilah <strong>laju</strong> atau <strong>kecepatan</strong>, yang didefinisikan sebagai perubahan jarak yang ditempuh tiap satuan waktu. Mirip dengan konsep ini, dalam ilmu kimia terdapat istilah <strong>Laju Reaksi</strong>.</p>
+            <p>Laju reaksi adalah <strong>perubahan konsentrasi reaktan atau produk per satuan waktu</strong>. Dengan kata lain, seberapa cepat reaktan habis bereaksi atau seberapa cepat produk terbentuk dalam suatu reaksi kimia.</p>
+
+            <div class="analogy-box">
+                <h3>Analogi Energi Aktivasi dan Laju Reaksi</h3>
+                <p>Sebelum kita mendalami laju reaksi, penting untuk memahami konsep <strong>energi aktivasi (E<sub>a</sub>)</strong>. Bayangkan sebuah mobil mogok yang ingin berpindah dari posisi A ke B, tetapi harus melewati sebuah bukit (Gambar 6.5 dalam buku Anda). Untuk mencapai posisi B, mobil harus didorong hingga mencapai puncak bukit di posisi C. Puncak bukit ini adalah ibarat energi aktivasi.</p>
+                <p>Jika reaksi memiliki energi aktivasi yang tinggi, ia akan lebih lambat karena membutuhkan "dorongan" energi yang lebih besar untuk memulai. Sebaliknya, jika energi aktivasi rendah, reaksi dapat berlangsung lebih cepat.</p>
+                <p>Laju reaksi sendiri adalah tentang seberapa cepat mobil bergerak dari A ke B, setelah ia berhasil melewati bukit C.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Penentuan Laju Reaksi</h2>
+            <p>Laju reaksi dapat ditentukan melalui berbagai parameter yang berubah seiring waktu, seperti perubahan volume gas, perubahan pH, atau perubahan konsentrasi larutan. Berikut adalah beberapa metode umum:</p>
+
+            <h3>1. Melalui Perubahan Volume Gas</h3>
+            <p>Salah satu cara untuk mengamati laju reaksi adalah dengan mengukur volume gas yang dihasilkan atau dikonsumsi selama reaksi. Mari kita lihat contoh percobaan reaksi antara logam seng (Zn) dan asam sulfat (H₂SO₄) yang menghasilkan gas hidrogen (H₂):</p>
+            <p class="reaction-equation">Zn(s) + H₂SO₄(aq) <span class="arrow">&rarr;</span> ZnSO₄(aq) + H₂(g)</p>
+
+            <p>Berikut adalah data hipotetis yang diperoleh dari percobaan tersebut (mirip dengan Tabel 6.1):</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Waktu (detik)</th>
+                        <th>Volume gas H₂ (cm³)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0</td><td>0</td></tr>
+                    <tr><td>30</td><td>10</td></tr>
+                    <tr><td>60</td><td>19</td></tr>
+                    <tr><td>90</td><td>27</td></tr>
+                    <tr><td>120</td><td>33</td></tr>
+                    <tr><td>150</td><td>37</td></tr>
+                    <tr><td>180</td><td>37</td></tr>
+                    <tr><td>210</td><td>37</td></tr>
+                </tbody>
+            </table>
+
+            <div class="diagram-description">
+                <strong>Konsep Grafik Volume Gas terhadap Waktu (mirip Gambar 6.7):</strong>
+                <p>Jika data di atas diplot, sumbu X adalah Waktu (detik) dan sumbu Y adalah Volume gas H₂ (cm³). Grafiknya akan menunjukkan peningkatan volume H₂ seiring waktu, kemudian mendatar saat reaksi selesai (volume H₂ tidak lagi bertambah).</p>
+                <p>Pada grafik ini, kemiringan kurva (gradien) menunjukkan laju reaksi. Kemiringan yang curam berarti laju reaksi cepat, sedangkan kemiringan yang landai atau mendatar menunjukkan laju reaksi yang lambat atau sudah berhenti.</p>
+            </div>
+
+            <h4>Kesimpulan dari Data Volume Gas:</h4>
+            <ul>
+                <li><strong>Laju Reaksi Awal:</strong> Pada 30 detik pertama, dihasilkan 10 ml gas hidrogen. Ini menunjukkan laju reaksi awal sebesar 10 ml/30 detik. Reaksi biasanya berlangsung paling cepat di awal karena konsentrasi reaktan masih tinggi.</li>
+                <li><strong>Reaksi Selesai:</strong> Mulai detik ke-150, volume gas hidrogen tidak berubah (tetap 37 ml). Ini menandakan bahwa reaksi sudah selesai atau salah satu reaktan sudah habis.</li>
+                <li><strong>Laju Reaksi Rata-rata:</strong> Laju reaksi rata-rata keseluruhan dapat dihitung dari total volume gas yang dihasilkan dibagi dengan total waktu yang dibutuhkan hingga reaksi selesai.
+                    <div class="formula">
+                        Laju reaksi rata-rata = <span class="fraction"><span class="numerator">Volume total gas H₂ yang dihasilkan</span><span class="denominator">Waktu total yang digunakan</span></span>
+                        <br>
+                        Laju reaksi rata-rata = <span class="fraction"><span class="numerator">37 ml</span><span class="denominator">210 detik</span></span> &#x2248; 0,176 ml gas hidrogen tiap detik.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>2. Melalui Perubahan Konsentrasi</h3>
+            <p>Metode yang paling umum dan fundamental untuk menentukan laju reaksi adalah melalui perubahan konsentrasi suatu zat (reaktan atau produk) tiap satuan waktu.</p>
+
+            <div class="formula">
+                r = <span class="fraction"><span class="numerator">&Delta;[A]</span><span class="denominator">&Delta;t</span></span>
+            </div>
+
+            <div class="notes-box">
+                <h4>Keterangan:</h4>
+                <ul>
+                    <li><strong>r</strong>: Laju reaksi (satuan umum: mol.L<sup>-1</sup>.detik<sup>-1</sup> atau M.detik<sup>-1</sup>)</li>
+                    <li><strong>&Delta;[A]</strong>: Perubahan konsentrasi zat A (satuan umum: mol.L<sup>-1</sup> atau M). Ini adalah <strong>[A]<sub>akhir</sub> - [A]<sub>awal</sub></strong>.</li>
+                    <li><strong>&Delta;t</strong>: Perubahan waktu (satuan umum: detik). Ini adalah <strong>t<sub>akhir</sub> - t<sub>awal</sub></strong>.</li>
+                </ul>
+                <p><strong>Penting:</strong> Tanda negatif (-) pada rumus digunakan untuk <strong>reaktan</strong> karena konsentrasinya <strong>berkurang</strong> seiring waktu (&Delta;[A] akan bernilai negatif, sehingga laju menjadi positif). Tanda positif (+) digunakan untuk <strong>produk</strong> karena konsentrasinya <strong>bertambah</strong> seiring waktu (&Delta;[A] akan bernilai positif).</p>
+            </div>
+
+            <h4>Contoh Perhitungan Laju Reaksi Berdasarkan Konsentrasi:</h4>
+            <p>Di dalam ruangan tertutup dengan volume 10 liter, direaksikan 1 mol gas N₂ dan 1 mol gas H₂ menghasilkan gas amonia (NH₃) menurut reaksi:</p>
+            <p class="reaction-equation">N₂(g) + 3H₂(g) <span class="arrow">&rarr;</span> 2NH₃(g)</p>
+            <p>Setelah reaksi berlangsung selama 20 detik, tersisa gas N₂ sebanyak 0,8 mol.</p>
+
+            <div class="example-solution">
+                <h4>Pembahasan:</h4>
+                <p>Pertama, kita tentukan mol zat-zat pada kondisi mula-mula, bereaksi, dan sisa (setelah 20 detik) menggunakan stoikiometri:</p>
+                <pre>
+Reaksi:      N₂(g) + 3H₂(g) <span class="arrow">&rarr;</span> 2NH₃(g)
+Mula-mula:   1 mol     1 mol       -
+Bereaksi:   (x)       (3x)        (2x)  (dimana x adalah mol N₂ yang bereaksi)
+Sisa:        0.8 mol   (1-3x) mol  (2x) mol
+
+Dari sisa N₂: Mula-mula N₂ - Bereaksi N₂ = Sisa N₂
+             1 mol - x = 0,8 mol
+             x = 0,2 mol</pre>
+                <p>Jadi, mol yang bereaksi/terbentuk adalah:</p>
+                <pre>
+N₂ bereaksi: 0,2 mol
+H₂ bereaksi: 3 × 0,2 mol = 0,6 mol
+NH₃ terbentuk: 2 × 0,2 mol = 0,4 mol
+
+Setelah 20 detik:
+N₂ sisa: 1 - 0,2 = 0,8 mol
+H₂ sisa: 1 - 0,6 = 0,4 mol
+NH₃ terbentuk: 0,4 mol</pre>
+
+                <p>Sekarang kita hitung laju reaksi untuk tiap zat. Ingat volume wadah adalah 10 liter.</p>
+
+                <p><strong>Laju reaksi terhadap gas N₂ (reaktan):</strong></p>
+                <pre>
+Perubahan mol N₂ = 0,2 mol (yang bereaksi)
+Perubahan konsentrasi N₂ (&Delta;[N₂]) = 0,2 mol / 10 L = 0,02 mol.L⁻¹
+&Delta;t = 20 detik
+
+r<sub>N₂</sub> = - <span class="fraction"><span class="numerator">&Delta;[N₂]</span><span class="denominator">&Delta;t</span></span> = - <span class="fraction"><span class="numerator">(0 - 0,02) mol.L⁻¹</span><span class="denominator">20 detik</span></span>
+r<sub>N₂</sub> = <span class="fraction"><span class="numerator">0,02 mol.L⁻¹</span><span class="denominator">20 detik</span></span> = 0,001 mol.L<sup>-1</sup>.detik<sup>-1</sup></pre>
+                <p><strong>Laju reaksi terhadap gas H₂ (reaktan):</strong></p>
+                <pre>
+Perubahan mol H₂ = 0,6 mol (yang bereaksi)
+Perubahan konsentrasi H₂ (&Delta;[H₂]) = 0,6 mol / 10 L = 0,06 mol.L⁻¹
+&Delta;t = 20 detik
+
+r<sub>H₂</sub> = - <span class="fraction"><span class="numerator">&Delta;[H₂]</span><span class="denominator">&Delta;t</span></span> = - <span class="fraction"><span class="numerator">(0 - 0,06) mol.L⁻¹</span><span class="denominator">20 detik</span></span>
+r<sub>H₂</sub> = <span class="fraction"><span class="numerator">0,06 mol.L⁻¹</span><span class="denominator">20 detik</span></span> = 0,003 mol.L<sup>-1</sup>.detik<sup>-1</sup></pre>
+                <p><strong>Laju reaksi terhadap gas NH₃ (produk):</strong></p>
+                <pre>
+Perubahan mol NH₃ = 0,4 mol (yang terbentuk)
+Perubahan konsentrasi NH₃ (&Delta;[NH₃]) = 0,4 mol / 10 L = 0,04 mol.L⁻¹
+&Delta;t = 20 detik
+
+r<sub>NH₃</sub> = + <span class="fraction"><span class="numerator">&Delta;[NH₃]</span><span class="denominator">&Delta;t</span></span> = + <span class="fraction"><span class="numerator">(0,04 - 0) mol.L⁻¹</span><span class="denominator">20 detik</span></span>
+r<sub>NH₃</sub> = <span class="fraction"><span class="numerator">0,04 mol.L⁻¹</span><span class="denominator">20 detik</span></span> = 0,002 mol.L<sup>-1</sup>.detik<sup>-1</sup></pre>
+                <p>Perhatikan bahwa laju reaksi untuk reaktan (N₂ dan H₂) menunjukkan penurunan konsentrasi, sedangkan untuk produk (NH₃) menunjukkan peningkatan konsentrasi.</p>
+            </div>
+
+            <div class="diagram-description">
+                <strong>Konsep Ilustrasi Jumlah Partikel Sebelum dan Sesudah Reaksi (mirip Gambar 6.8):</strong>
+                <p>Bayangkan wadah reaksi pada waktu t=0 detik memiliki partikel N₂ dan H₂ dalam jumlah tertentu. Setelah 20 detik, jika kita mengamati lagi wadah tersebut, kita akan melihat jumlah partikel N₂ dan H₂ berkurang, sementara partikel NH₃ yang baru terbentuk akan bertambah.</p>
+                <div class="particle-legend">
+                    <h4>Keterangan Partikel:</h4>
+                    <ul>
+                        <li><span class="dot blue"></span> = partikel gas N₂</li>
+                        <li><span class="dot red"></span> = partikel gas H₂</li>
+                        <li><span class="dot green"></span> = partikel gas NH₃</li>
+                    </ul>
+                    <p>Secara visual, ilustrasi akan menunjukkan transisi dari wadah yang didominasi partikel reaktan menjadi wadah yang memiliki lebih banyak partikel produk dan lebih sedikit reaktan.</p>
+                </div>
+            </div>
+
+            <div class="diagram-description">
+                <strong>Konsep Grafik Konsentrasi Zat terhadap Waktu (mirip Gambar 6.9):</strong>
+                <p>Jika kita memplot konsentrasi setiap zat terhadap waktu, grafik akan menunjukkan:</p>
+                <ul>
+                    <li>Garis konsentrasi reaktan (N₂ dan H₂) akan <strong>menurun</strong> seiring waktu.</li>
+                    <li>Garis konsentrasi produk (NH₃) akan <strong>meningkat</strong> seiring waktu.</li>
+                </ul>
+                <p>Pada akhirnya, saat reaksi selesai, garis konsentrasi reaktan yang tersisa (jika ada) dan produk akan mendatar.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Rumus Umum Laju Reaksi</h2>
+            <p>Secara umum, laju reaksi dapat dinyatakan sebagai:</p>
+            <div class="formula">
+                r<sub>reaktan</sub> = - <span class="fraction"><span class="numerator">&Delta;[reaktan]</span><span class="denominator">&Delta;t</span></span>
+                <br><br>
+                r<sub>produk</sub> = + <span class="fraction"><span class="numerator">&Delta;[produk]</span><span class="denominator">&Delta;t</span></span>
+            </div>
+            <p>Tanda negatif (-) untuk reaktan menandakan bahwa konsentrasinya berkurang, sedangkan tanda positif (+) untuk produk menandakan bahwa konsentrasinya bertambah. Laju reaksi itu sendiri selalu bernilai positif.</p>
+        </section>
+
+        <section>
+            <h2>Contoh Perhitungan Laju Reaksi (berdasarkan konsentrasi)</h2>
+            <p>Mari kita lihat contoh lain dari penentuan laju reaksi dengan mengukur konsentrasi produk:</p>
+            <p>Reaksi: Zn(s) + H₂SO₄(aq) <span class="arrow">&rarr;</span> ZnSO₄(aq) + H₂(g)</p>
+            <p>Data konsentrasi H₂ yang diukur tiap 10 detik:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Waktu (detik)</th>
+                        <th>[H₂] (mol.L⁻¹)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0</td><td>0</td></tr>
+                    <tr><td>10</td><td>0,030</td></tr>
+                    <tr><td>20</td><td>0,055</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Tentukan laju reaksi rata-rata pada detik ke-20 pembentukan gas H₂!</strong></p>
+
+            <div class="example-solution">
+                <h4>Pembahasan:</h4>
+                <p>Gas H₂ adalah produk, sehingga konsentrasinya bertambah. Kita akan menggunakan rumus laju reaksi untuk produk.</p>
+                <pre>
+&Delta;[H₂] = [H₂]<sub>akhir</sub> - [H₂]<sub>awal</sub> = 0,055 mol.L⁻¹ - 0 mol.L⁻¹ = 0,055 mol.L⁻¹
+&Delta;t = t<sub>akhir</sub> - t<sub>awal</sub> = 20 detik - 0 detik = 20 detik
+
+r<sub>H₂</sub> = + <span class="fraction"><span class="numerator">&Delta;[H₂]</span><span class="denominator">&Delta;t</span></span>
+r<sub>H₂</sub> = <span class="fraction"><span class="numerator">0,055 mol.L⁻¹</span><span class="denominator">20 detik</span></span>
+r<sub>H₂</sub> = 0,00275 mol.L<sup>-1</sup>.detik<sup>-1</sup> atau 2,75 &times; 10<sup>-3</sup> mol.L<sup>-1</sup>.detik<sup>-1</sup></pre>
+                <p>Jadi, laju reaksi rata-rata pembentukan gas H₂ pada detik ke-20 adalah 2,75 &times; 10<sup>-3</sup> mol.L<sup>-1</sup>.detik<sup>-1</sup>.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container" style="text-align: center; padding: 20px 0; color: var(--text-tertiary);">
+            <p>&copy; 2023 Materi Kimia Kelas XI SMA | Kinetika Kimia</p>
+        </div>
+    </footer>
+</body>
+</html>
+```

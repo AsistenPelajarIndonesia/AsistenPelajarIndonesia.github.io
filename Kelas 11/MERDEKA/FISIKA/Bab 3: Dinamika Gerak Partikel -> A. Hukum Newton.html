@@ -1,0 +1,325 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamika Gerak Partikel: Hukum Newton</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Body Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2.2em;
+            border-left: 6px solid var(--accent-green);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Highlight Boxes / Information Cards */
+        .info-box {
+            background-color: #f0f8ff; /* A lighter blue tint */
+            border-left: 5px solid var(--semantic-info);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .math-equation {
+            background-color: #e0f2f7; /* Even lighter blue */
+            border: 1px dashed var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-family: 'Times New Roman', serif;
+            color: var(--text-primary);
+            border-radius: 5px;
+        }
+
+        .math-equation strong {
+            color: var(--accent-green);
+        }
+
+        .key-term {
+            font-weight: bold;
+            color: var(--accent-green);
+            cursor: help;
+            border-bottom: 1px dotted var(--accent-green);
+            transition: color 0.2s ease;
+        }
+
+        .key-term:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            font-size: 0.9em;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+                box-shadow: none; /* Less shadow on small screens */
+            }
+
+            header {
+                padding: 30px 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                padding-left: 10px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            p, ul, li {
+                font-size: 1em;
+            }
+
+            .info-box {
+                padding: 15px;
+            }
+
+            .math-equation {
+                font-size: 1.3em;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dinamika Gerak Partikel</h1>
+        <p>A. Hukum Newton</p>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Pengantar Hukum Newton</h2>
+            <p>Dalam kehidupan sehari-hari, kita sangat bergantung pada konsep <span class="key-term">gaya</span> dan efeknya, mulai dari berjalan, menulis, hingga bernapas. Pemahaman awal tentang gaya dan gerak sudah ada sejak zaman filsuf seperti <span class="key-term">Plato</span> (427-347 SM) dan <span class="key-term">Aristoteles</span> (384-322 SM). Namun, konsep-konsep mereka cenderung abstrak dan sulit diterapkan dalam perhitungan praktis.</p>
+            <p>Baru pada abad ke-17, <span class="key-term">Sir Isaac Newton</span> (1642-1727) berhasil menyederhanakan konsep gaya ini menjadi persamaan matematis yang kita kenal sebagai <span class="key-term">Hukum Newton</span>. Hukum-hukum ini, yang terdiri dari Hukum I, II, dan III Newton, menjadi dasar penting dalam studi dinamika gerak partikel.</p>
+        </section>
+
+        <section>
+            <h2>Hukum I Newton</h2>
+            <p>Sebelum Newton, filsuf terkenal <span class="key-term">Galileo Galilei</span> (1564–1642) telah memberikan fondasi penting. Ia menunjukkan bahwa benda yang diam dan benda yang bergerak dengan kecepatan konstan sebenarnya berada dalam keadaan yang setara. Bayangkan Anda duduk diam di dalam pesawat yang sedang bergerak dengan kecepatan tetap—Anda akan merasa seperti tidak bergerak, padahal relatif terhadap tanah Anda bergerak sangat cepat.</p>
+            <p>Galileo memperkenalkan konsep <span class="key-term">gaya luar</span> (dorongan, tarikan, gesekan, atau gaya berat) sebagai pembeda utama yang menyebabkan perubahan keadaan gerak suatu sistem. Ide ini kemudian disempurnakan oleh Isaac Newton dalam hukum pertamanya.</p>
+
+            <div class="info-box">
+                <p><strong>Pernyataan Hukum I Newton:</strong></p>
+                <p>"Benda yang diam akan tetap diam dan benda yang bergerak dengan kecepatan tetap akan tetap bergerak dengan kecepatan tetap apabila <span class="key-term">gaya total</span> (resultan gaya) yang bekerja pada benda adalah nol."</p>
+            </div>
+
+            <p>Secara matematis, Hukum I Newton dapat dinyatakan sebagai:</p>
+            <div class="math-equation">
+                <strong>ΣF = 0</strong>
+            </div>
+            <p>Di mana <strong>ΣF</strong> adalah jumlah atau <span class="key-term">resultan gaya</span> yang bekerja pada benda, dengan satuan Newton (N).</p>
+
+            <h3>Konsep Kelembaman (Inersia)</h3>
+            <p>Kecenderungan suatu benda untuk mempertahankan keadaan geraknya (diam tetap diam, bergerak tetap bergerak dengan kecepatan konstan) disebut <span class="key-term">kelembaman</span> atau <span class="key-term">inersia</span>. Semua benda memiliki sifat ini.</p>
+            <ul>
+                <li>Jika kecepatan benda berubah (baik besar maupun arahnya), sifat kelembaman inilah yang akan menghambat perubahan tersebut.</li>
+                <li>Semakin besar <span class="key-term">massa</span> suatu benda, semakin besar pula sifat kelembamannya. Ini berarti semakin sulit untuk mengubah keadaan gerak benda bermassa besar.</li>
+            </ul>
+            <p>Dari Hukum I Newton, kita memahami bahwa gaya adalah penyebab perubahan kecepatan suatu objek. Karena kecepatan adalah besaran vektor (memiliki besar dan arah), gaya dapat memengaruhi baik besar maupun arah kecepatan benda.</p>
+
+            <div class="info-box">
+                <h3>Fenomena Kelembaman dalam Kehidupan Sehari-hari</h3>
+                <p>Pertimbangkan pengalaman ketika Anda berada dalam mobil yang dipercepat atau direm mendadak. Saat mobil dipercepat, tubuh Anda akan terdorong ke belakang (seakan mempertahankan keadaan diamnya). Sebaliknya, saat mobil direm mendadak, tubuh Anda terdorong ke depan (seakan ingin mempertahankan keadaan bergeraknya). Ini adalah manifestasi dari sifat kelembaman tubuh Anda.</p>
+                <p>Sama halnya dengan merasakan berat badan saat menimbang di atas timbangan saat timbangan bergerak ke atas atau ke bawah. Saat timbangan bergerak ke atas dengan percepatan, Anda akan merasa lebih berat karena ada gaya tambahan yang menekan timbangan akibat kelembaman tubuh Anda. Sebaliknya, saat timbangan bergerak ke bawah dengan percepatan, Anda akan merasa lebih ringan.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Massa Kelembaman dan Massa Gravitasi</h2>
+            <p>Dalam fisika, ada dua konsep massa yang penting untuk dibedakan:</p>
+            <ul>
+                <li>
+                    <strong>Massa Gravitasi (m):</strong> Ini adalah ukuran kemampuan suatu benda untuk menghasilkan atau berinteraksi dengan gaya gravitasi. Massa gravitasi biasanya diukur dengan timbangan atau neraca, yaitu dengan membandingkan berat benda dengan massa standar (anak timbangan). <span class="key-term">Berat</span> (w) adalah gaya gravitasi bumi yang bekerja pada suatu benda, yang selalu mengarah vertikal ke bawah (menuju pusat bumi) dan berbanding lurus dengan massa gravitasi benda tersebut.
+                </li>
+                <li>
+                    <strong>Massa Kelembaman (m):</strong> Ini adalah ukuran resistensi suatu benda terhadap perubahan geraknya ketika gaya diterapkan. Semakin besar massa kelembaman, semakin besar gaya yang diperlukan untuk menghasilkan percepatan tertentu pada benda. Konsep ini lebih lanjut dijelaskan dalam Hukum II Newton.
+                </li>
+            </ul>
+            <p>Meskipun memiliki definisi yang berbeda, secara eksperimen, massa gravitasi dan massa kelembaman terbukti memiliki nilai yang sama untuk benda yang sama.</p>
+        </section>
+
+        <section>
+            <h2>Hukum II Newton</h2>
+            <p>Hukum II Newton menjelaskan bagaimana gaya total yang tidak nol memengaruhi gerak suatu benda. Pernahkah Anda berpikir mengapa sebuah bus besar yang bergerak lambat bisa jauh lebih berbahaya dibandingkan bajaj yang bergerak dengan kecepatan yang sama saat terjadi benturan?</p>
+
+            <div class="info-box">
+                <p><strong>Pernyataan Hukum II Newton:</strong></p>
+                <p>"Percepatan sebuah benda berbanding lurus dengan gaya total yang bekerja pada benda dan berbanding terbalik dengan massanya."</p>
+            </div>
+
+            <p>Secara matematis, Hukum II Newton dirumuskan sebagai:</p>
+            <div class="math-equation">
+                <strong>ΣF = m &times; a</strong>
+            </div>
+            <p>Di mana:</p>
+            <ul>
+                <li><strong>ΣF</strong>: adalah <span class="key-term">gaya total</span> (resultan gaya) yang dialami benda, dengan satuan Newton (N). Ini adalah penyebab perubahan gerak.</li>
+                <li><strong>m</strong>: adalah <span class="key-term">massa kelembaman</span> benda, dengan satuan kilogram (kg). Ini adalah ukuran inersia benda.</li>
+                <li><strong>a</strong>: adalah <span class="key-term">percepatan</span> benda, dengan satuan meter per detik kuadrat (m/s²). Ini adalah laju perubahan kecepatan.</li>
+            </ul>
+
+            <p>Dari persamaan ini, kita dapat menarik beberapa kesimpulan penting:</p>
+            <ul>
+                <li>Jika <span class="key-term">gaya total (ΣF)</span> yang bekerja pada benda bertambah, maka <span class="key-term">percepatan (a)</span> benda juga akan bertambah (berbanding lurus), asalkan massanya konstan.</li>
+                <li>Jika <span class="key-term">massa (m)</span> benda bertambah, maka <span class="key-term">percepatan (a)</span> benda akan berkurang untuk gaya total yang sama (berbanding terbalik).</li>
+            </ul>
+            <p>Ini menjelaskan mengapa bus lebih sulit dihentikan dibandingkan bajaj, meskipun kecepatannya sama. Bus memiliki massa yang jauh lebih besar, sehingga kelembamannya juga jauh lebih besar. Untuk menghentikan bus dalam waktu atau jarak yang sama dengan bajaj, diperlukan gaya rem yang jauh lebih besar.</p>
+            <p>Singkatnya, semakin besar massa benda, semakin kecil percepatan yang akan dialaminya jika diberikan gaya eksternal yang sama.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Pembelajaran Fisika SMA/MA Kelas XI. Hak Cipta Dilindungi Undang-Undang.</p>
+        <p>Berdasarkan Kurikulum Merdeka.</p>
+    </footer>
+</body>
+</html>
+```

@@ -1,0 +1,357 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masa Transisi Menuju Orde Baru: Sejarah Indonesia (1966-1967)</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* Paragraphs and Text */
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            list-style-position: inside; /* Ensures bullets/numbers stay inside padding */
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            padding-left: 5px; /* Slight padding for list items */
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background-canvas);
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* Info Boxes */
+        .highlight-box, .alert-box, .info-box {
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+        .highlight-box p, .alert-box p, .info-box p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .alert-box {
+            background-color: rgba(211, 47, 47, 0.05); /* Light semantic error */
+            border-left: 4px solid var(--semantic-error);
+        }
+
+        .info-box {
+            background-color: rgba(76, 175, 80, 0.05); /* Light semantic success */
+            border-left: 4px solid var(--accent-green);
+        }
+        .highlight-box {
+            background-color: rgba(25, 118, 210, 0.05); /* Light primary blue */
+            border-left: 4px solid var(--primary-blue);
+        }
+
+
+        /* Interactive elements: Details/Summary */
+        details {
+            margin-top: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px 20px;
+            background-color: rgba(25, 118, 210, 0.03); /* Lighter primary blue for summary background */
+            color: var(--primary-blue);
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            user-select: none; /* Prevent text selection on summary */
+        }
+
+        summary::marker {
+            display: none; /* Hide default marker */
+        }
+
+        summary::before {
+            content: '+ '; /* Custom marker for closed state */
+            position: absolute;
+            left: 15px;
+            color: var(--primary-blue);
+        }
+
+        details[open] summary::before {
+            content: '- '; /* Custom marker for open state */
+        }
+
+        .details-content {
+            padding: 20px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-divider); /* Separator for content */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+                padding-bottom: 15px;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 1.5em;
+                padding-left: 10px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+            h3 {
+                font-size: 1.2em;
+                margin-top: 25px;
+                margin-bottom: 10px;
+            }
+            section {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            ul, ol {
+                margin-left: 20px; /* Adjust list indent */
+            }
+            summary {
+                padding: 12px 15px;
+            }
+            summary::before {
+                left: 10px;
+            }
+            .details-content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.7em;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.3em;
+                padding-left: 8px;
+                margin-top: 20px;
+                margin-bottom: 15px;
+            }
+            h3 {
+                font-size: 1.1em;
+                margin-top: 20px;
+                margin-bottom: 8px;
+            }
+            ul, ol {
+                margin-left: 15px;
+            }
+            li {
+                margin-bottom: 6px;
+            }
+            .highlight-box, .alert-box, .info-box {
+                padding: 10px 15px;
+                margin: 20px 0;
+            }
+            summary {
+                padding: 10px 12px;
+                font-size: 0.95em;
+            }
+            summary::before {
+                left: 8px;
+            }
+            .details-content {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Masa Transisi Menuju Orde Baru (1966-1967)</h1>
+        <p>Bab ini akan mengulas periode krusial dalam sejarah Indonesia, yaitu masa peralihan kekuasaan dari Presiden Sukarno ke Jenderal Soeharto. Periode ini ditandai dengan gejolak politik, krisis ekonomi, dan perubahan fundamental yang membentuk landasan bagi Orde Baru.</p>
+
+        <section>
+            <h2>Latar Belakang Transisi Kepemimpinan</h2>
+            <p>Setelah lebih dari dua dekade mewarnai dinamika kepemimpinan nasional, Presiden Sukarno menghadapi tantangan besar yang pada akhirnya berujung pada penyerahan tampuk kepemimpinan kepada Letjen Soeharto. Situasi Indonesia saat itu sangatlah kompleks dan penuh ketidakpastian.</p>
+            <p>Kondisi politik nasional pada masa tersebut berada dalam kekacauan pasca-peristiwa Gerakan 30 September 1965 (G30S/PKI). Peristiwa ini menjadi pemicu utama merosotnya kekuasaan Sukarno dan hilangnya kekuatan politik Partai Komunis Indonesia (PKI) dari panggung politik Indonesia.</p>
+            <div class="alert-box">
+                <p><strong>Krisis Ekonomi Parah:</strong> Selain kekacauan politik, kondisi perekonomian negara juga sangat memprihatinkan. Indonesia mengalami hiperinflasi yang mencapai puncaknya hampir <strong>600%</strong>. Angka ini memaksa pemerintah untuk melakukan devaluasi mata uang secara drastis, dari 1.000 rupiah lama menjadi hanya 1 rupiah baru.</p>
+            </div>
+            <p>Situasi ini memicu reaksi dari berbagai elemen masyarakat yang kemudian bersatu dalam gerakan menuntut perubahan. Beberapa organisasi aksi yang terbentuk meliputi:</p>
+            <ul>
+                <li><strong>KAMI</strong> (Kesatuan Aksi Mahasiswa Indonesia)</li>
+                <li><strong>KAPI</strong> (Kesatuan Aksi Pelajar Indonesia)</li>
+                <li><strong>KAPPI</strong> (Kesatuan Aksi Pemuda Pelajar Indonesia)</li>
+                <li><strong>KASI</strong> (Kesatuan Aksi Sarjana Indonesia)</li>
+                <li><strong>KABI</strong> (Kesatuan Aksi Buruh Indonesia)</li>
+                <li><strong>KAWI</strong> (Kesatuan Aksi Wanita Indonesia)</li>
+                <li><strong>KAGI</strong> (Kesatuan Aksi Guru Indonesia)</li>
+            </ul>
+            <p>Organisasi-organisasi ini tergabung dalam satu kesatuan yang dikenal sebagai <strong>Front Pancasila</strong>, yang menyuarakan tuntutan penyelesaian berbagai permasalahan bangsa.</p>
+        </section>
+
+        <section>
+            <h2>Aksi Tiga Tuntutan Rakyat (Tritura)</h2>
+            <p>Berangkat dari situasi politik yang memanas dan kemerosotan ekonomi pada awal tahun 1966, Front Pancasila bersama kelompok masyarakat lainnya mencetuskan sebuah tuntutan yang dikenal sebagai <strong>Tritura</strong> (Tiga Tuntutan Rakyat) pada tanggal 10 Januari 1966.</p>
+            <h3>Isi Tiga Tuntutan Rakyat (Tritura):</h3>
+            <ol>
+                <li><strong>Bubarkan PKI:</strong> Menuntut pembubaran Partai Komunis Indonesia beserta ormas-ormasnya.</li>
+                <li><strong>Pembersihan Kabinet Dwikora:</strong> Menuntut pembersihan kabinet dari unsur-unsur yang terlibat atau terkait dengan G30S/PKI.</li>
+                <li><strong>Perbaikan Ekonomi:</strong> Menuntut penurunan harga barang kebutuhan pokok dan perbaikan kondisi ekonomi secara menyeluruh.</li>
+            </ol>
+            <p>Dalam menyuarakan tuntutan ini, kelompok pengusung Tritura seringkali berhadapan langsung dengan militer. Salah satu insiden tragis terjadi dalam sebuah demonstrasi, di mana bentrokan antara demonstran dan pasukan Cakrabirawa mengakibatkan gugurnya seorang mahasiswa bernama <strong>Arif Rachman Hakim</strong>.</p>
+            <p>Peristiwa ini memicu reaksi keras dari Presiden Sukarno yang kemudian membubarkan KAMI. Namun, tindakan ini justru menyulut gelombang penolakan yang lebih besar dari kalangan mahasiswa dan pelajar. Aksi demonstrasi seringkali berubah menjadi anarkis, seperti penyerbuan kantor Departemen Luar Negeri, Kantor Berita Cina, dan pembakaran kantor PKI. Massa dari berbagai organisasi terus turun ke jalan untuk melancarkan aksi protes kepada pemerintah, menunjukkan ketidakpuasan yang meluas di masyarakat.</p>
+        </section>
+
+        <section>
+            <h2>Surat Perintah Sebelas Maret (Supersemar)</h2>
+            <p>Supersemar adalah salah satu tonggak sejarah terpenting di Indonesia yang menandai peralihan dari era Demokrasi Terpimpin ke Orde Baru. Namun, keberadaannya hingga kini masih menjadi subjek kontroversi karena naskah aslinya belum pernah ditemukan. Sebagian pihak bahkan menganggapnya sebagai alat kudeta, dengan berbagai interpretasi mengenai isinya dan proses penerbitannya.</p>
+
+            <details>
+                <summary>Latar Belakang Lahirnya Supersemar</summary>
+                <div class="details-content">
+                    <p>Pada tanggal <strong>11 Maret 1966</strong>, Presiden Sukarno sedianya akan mengadakan sidang kabinet untuk membahas situasi politik yang semakin memanas. Namun, sidang tersebut diboikot oleh para demonstran, dan beredar rumor tentang kehadiran pasukan tak dikenal di sekitar lokasi sidang. Kondisi ini membuat Presiden Sukarno merasa tidak aman dan akhirnya kembali ke Istana Bogor.</p>
+                    <p>Di Istana Bogor, Presiden Sukarno didampingi oleh Dr. Subandrio, Dr. J. Leimena, dan Dr. Chaerul. Kemudian, datanglah tiga perwira tinggi utusan Letjen Soeharto, yaitu <strong>Mayjen Basuki Rahmat, Brigjen M. Jusuf, dan Brigjen Amir Machmud</strong>. Dalam pertemuan tersebut, Sukarno memerintahkan ketiga perwira itu, bersama Brigjen Sabur (Komandan Resimen Cakrabirawa), untuk membuat konsep surat yang ditujukan kepada Letjen Soeharto.</p>
+                    <p>Surat tersebut dimaksudkan sebagai mandat kepada Soeharto untuk mengambil langkah-langkah yang diperlukan guna memulihkan keamanan dan ketertiban serta kewibawaan pemerintah.</p>
+                </div>
+            </details>
+
+            <div class="info-box">
+                <p><strong>Dampak Supersemar:</strong> Surat yang kemudian dikenal sebagai Supersemar (Surat Perintah Sebelas Maret) ini menjadi dasar hukum bagi Letjen Soeharto untuk melakukan tindakan-tindakan fundamental, antara lain:</p>
+                <ul>
+                    <li><strong>Pembubaran dan Pelarangan PKI:</strong> Soeharto membubarkan dan melarang Partai Komunis Indonesia serta seluruh organisasi yang berafiliasi atau berideologi komunis di seluruh wilayah Indonesia.</li>
+                    <li><strong>Penahanan Anggota Kabinet:</strong> Melakukan penahanan terhadap sejumlah menteri dan anggota kabinet yang dianggap terlibat dalam peristiwa G30S/PKI, memperkuat posisi politiknya.</li>
+                </ul>
+            </div>
+            <p>Supersemar secara efektif mengalihkan wewenang strategis dan operasional dari Presiden Sukarno kepada Letjen Soeharto, yang pada akhirnya menjadi langkah awal bagi transisi kekuasaan.</p>
+        </section>
+
+        <section>
+            <h2>Dualisme Kepemimpinan Nasional</h2>
+            <p>Pada awal tahun 1966, Indonesia mengalami situasi yang disebut sebagai <strong>dualisme kepemimpinan</strong>. Di satu sisi, pamor Presiden Sukarno semakin menurun karena keengganannya untuk memenuhi tuntutan rakyat yang menginginkan perubahan pasca G30S/PKI. Di sisi lain, Letjen Soeharto, yang telah menerima mandat Supersemar sebagai pelaksana pemerintahan, semakin mendapat simpati dan dukungan luas dari berbagai pihak.</p>
+            <p>Dualisme ini diperkuat dengan adanya <strong>Ketetapan MPRS No.IX.MPRS/1966</strong> yang diterbitkan pada 21 Juni 1966. Ketetapan ini mengesahkan dan mengukuhkan Supersemar, secara tidak langsung melanggengkan keberadaan dua pusat kekuasaan di pemerintahan.</p>
+            <p>Berbekal ketetapan MPRS tersebut, Presiden Sukarno kemudian memerintahkan Letjen Soeharto untuk segera membentuk Kabinet Ampera. Sukarno berpandangan bahwa Kabinet Dwikora yang ada saat itu tidak mampu memenuhi tuntutan Tritura. Melalui TAP MPRS No. XIII tahun 1966, <strong>Kabinet Ampera</strong> dibentuk dengan dipimpin oleh Presiden Sukarno bersama dengan Letnan Jenderal Soeharto, menandakan sebuah bentuk kompromi di tengah dualisme.</p>
+            <p>Dualisme kepemimpinan politik ini berlangsung hampir selama satu tahun, memengaruhi jalannya pemerintahan di tingkat kabinet maupun parlemen. Setelah melalui perundingan yang alot dan tekanan dari berbagai pihak, pada tanggal <strong>22 Februari 1967</strong>, Presiden Sukarno akhirnya secara resmi mengumumkan pengunduran dirinya sebagai presiden.</p>
+            <div class="highlight-box">
+                <p><strong>Pengalihan Kekuasaan Formal:</strong> Pasca pengunduran diri Sukarno, Ketua MPRS, Jenderal Abdul Haris Nasution, kemudian melantik Letjen Soeharto sebagai <strong>Pejabat Presiden Republik Indonesia</strong>. Puncak dari transisi ini terjadi setahun kemudian, pada tanggal <strong>27 Maret 1968</strong>, ketika melalui Tap MPRS No. XLIV/MPRS/1968, Soeharto resmi dilantik menjadi Presiden Republik Indonesia untuk masa jabatan 1968-1973 dalam Sidang Umum V MPRS.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Masa Akhir Penuh Gejolak dalam Catatan Sejarah</h2>
+            <p>Periode transisi dari pemerintahan Sukarno ke masa Soeharto merupakan babak yang diwarnai oleh gejolak politik dan sosial yang intens di masyarakat. Gejolak ini terekam dengan baik dalam berbagai sumber sejarah yang ditulis berdasarkan kesaksian dari berbagai pihak yang terlibat dan merasakan langsung masa peralihan tersebut.</p>
+            <p>Mengkaji masa ini sangat penting untuk memahami bagaimana sebuah negara menghadapi perubahan besar dan krisis. Berbagai publikasi dan biografi tokoh-tokoh nasional turut memperkaya pemahaman kita tentang masa-masa penuh gejolak ini, memberikan perspektif beragam mengenai peristiwa-peristiwa penting yang terjadi.</p>
+            <p>Memahami periode transisi ini membantu kita mengapresiasi kompleksitas sejarah dan dampak dari setiap keputusan politik terhadap kehidupan bangsa.</p>
+        </section>
+    </div>
+</body>
+</html>
+```

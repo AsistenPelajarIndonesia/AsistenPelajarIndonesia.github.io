@@ -1,0 +1,421 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Menjelajah Sel - C. Komposisi Sel</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* Explicitly white for content area */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.3em;
+        }
+
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; color: var(--accent-green); }
+        h3 { font-size: 1.4em; color: var(--primary-blue); } /* Sub-sections */
+        h4 { font-size: 1.2em; color: var(--text-secondary); } /* Sub-sub-sections */
+
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            border-radius: 4px;
+            overflow: hidden; /* Ensures rounded corners on table */
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .note {
+            background-color: rgba(var(--semantic-info), 0.1);
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
+            margin: 1.5em 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        /* Responsiveness for table */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                border-radius: 0; /* Remove border-radius on smaller screens */
+                box-shadow: none;
+            }
+
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            h4 { font-size: 1.1em; }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 10px;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%;
+                padding-left: 15px;
+                font-weight: bold;
+                color: var(--primary-blue);
+                text-align: left;
+            }
+
+            td:last-child {
+                border-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1: Menjelajah Sel</h1>
+        <h2 id="komposisi-sel">C. Komposisi Sel</h2>
+        <p>Setiap organisme, baik yang paling sederhana maupun yang kompleks, tersusun atas unit dasar kehidupan yang disebut <span class="highlight">sel</span>. Meskipun bentuk dan ukuran sel dapat bervariasi secara signifikan antarspesies, semua sel memiliki komponen dasar yang memungkinkan mereka menjalankan fungsi vitalnya. Secara umum, semua sel penyusun organisme, dari prokariotik hingga eukariotik, memiliki tiga unit/komponen dasar utama: <span class="highlight">membran plasma</span>, <span class="highlight">sitoplasma</span>, dan <span class="highlight">inti sel (nukleus)</span>.</p>
+        <p>Pemahaman mengenai struktur dan fungsi masing-masing komponen ini sangat krusial untuk memahami bagaimana sel dapat berfungsi sebagai unit fungsional dan struktural kehidupan.</p>
+
+        <h3 id="membran-plasma">1. Membran Plasma</h3>
+        <p>Membran plasma, atau sering juga disebut membran sel, adalah salah satu struktur terpenting dalam sel karena berperan sebagai <span class="highlight">pembatas antara sitoplasma dan lingkungan luar sel</span>. Keberadaannya sangat penting dalam menjaga integritas sel dan mengatur interaksi sel dengan lingkungannya.</p>
+        <p>Struktur membran plasma dijelaskan oleh <span class="highlight">model mosaik cair (Fluid Mosaic Model)</span> yang diajukan oleh Singer dan Nicolson. Model ini menggambarkan membran sel sebagai <span class="highlight">lapisan ganda fosfolipid (bilayer fosfolipid)</span> yang bersifat fluid (cair), di mana protein-protein tersusun secara mozaik (tersebar) dan masing-masing tersisip di antara lapisan fosfolipid tersebut. Fluiditas membran memungkinkan molekul-molekul di dalamnya untuk bergerak secara lateral.</p>
+        <p><strong>Komponen Utama Membran Plasma:</strong></p>
+        <ul>
+            <li><strong>Fosfolipid:</strong> Merupakan molekul amfipatik, yang berarti memiliki bagian kepala yang <span class="highlight">hidrofilik (suka air)</span> dan ekor yang <span class="highlight">hidrofobik (tidak suka air)</span>. Dalam bilayer, kepala hidrofilik menghadap keluar ke lingkungan air (baik di luar sel maupun di dalam sitoplasma), sedangkan ekor hidrofobik saling berhadapan di bagian dalam membran, menjauhi air.</li>
+            <li><strong>Protein:</strong> Terbagi menjadi protein integral (menembus bilayer fosfolipid) dan protein perifer (terikat di permukaan membran). Protein ini memiliki berbagai fungsi, termasuk sebagai kanal atau pompa untuk transportasi zat, reseptor untuk sinyal seluler, dan enzim.</li>
+            <li><strong>Karbohidrat:</strong> Biasanya terikat pada protein (membentuk glikoprotein) atau lipid (membentuk glikolipid) di permukaan luar sel. Mereka berperan penting dalam pengenalan sel (cell recognition) dan perlekatan sel.</li>
+            <li><strong>Kolesterol (pada sel hewan):</strong> Berada di antara fosfolipid dan berperan dalam menjaga fluiditas membran pada berbagai suhu.</li>
+        </ul>
+        <p><strong>Fungsi Utama Membran Plasma:</strong></p>
+        <ul>
+            <li><strong>Pengatur Pergerakan Zat:</strong> Bersifat selektif permeabel, yang berarti hanya zat tertentu yang dapat melintasinya secara bebas. Ini mengontrol masuknya nutrisi dan keluarnya limbah.</li>
+            <li><strong>Komunikasi Antar Sel:</strong> Memiliki reseptor protein yang memungkinkan sel untuk menerima dan merespons sinyal dari lingkungan eksternal atau sel lain.</li>
+            <li><strong>Perlindungan Sel:</strong> Melindungi isi sel dari kerusakan fisik atau kimiawi eksternal.</li>
+            <li><strong>Pengenalan Sel:</strong> Glikoprotein dan glikolipid pada permukaannya berperan dalam identifikasi sel, penting untuk sistem kekebalan tubuh dan pembentukan jaringan.</li>
+        </ul>
+
+        <h3 id="sitoplasma">2. Sitoplasma</h3>
+        <p>Sitoplasma adalah bagian dari protoplasma yang terletak <span class="highlight">di antara membran plasma dan membran inti sel</span>. Ini adalah lingkungan di mana hampir semua aktivitas metabolisme seluler terjadi. Sitoplasma memiliki organisasi yang kompleks, terdiri dari senyawa organik dan anorganik.</p>
+        <p>Komponen utama sitoplasma meliputi <span class="highlight">sitosol</span> (bagian cair) dan berbagai <span class="highlight">organel</span> (struktur terikat membran) yang melayang di dalamnya.</p>
+
+        <h4 id="sitosol">a. Sitosol</h4>
+        <p>Sitosol adalah <span class="highlight">bagian cairan dari sitoplasma</span>, sering juga disebut sebagai matriks sel, sitomatriks, atau matriks sitoplasma. Sitosol adalah medium kental yang mengelilingi organel-organel sel.</p>
+        <p><strong>Karakteristik Sitosol:</strong></p>
+        <ul>
+            <li><strong>Dinamis:</strong> Sitosol memiliki karakteristik yang khas sebagai struktur yang dinamis. Ini dapat berubah konsistensi dari fase cair (sol) menjadi fase gel (lebih kental) dan kemudian kembali lagi. Perubahan ini memungkinkan pergerakan organel atau proses seluler lainnya.</li>
+            <li><strong>Medium Reaksi:</strong> Sitosol berfungsi sebagai lokasi bagi banyak reaksi biokimia penting, seperti glikolisis (langkah awal respirasi seluler) dan sintesis protein bebas.</li>
+        </ul>
+        <p><strong>Fungsi Utama Sitosol:</strong></p>
+        <ul>
+            <li>Sebagai <span class="highlight">medium bagi organel dan molekul</span> untuk bergerak dan berinteraksi.</li>
+            <li>Tempat terjadinya berbagai <span class="highlight">reaksi metabolisme</span> awal yang tidak terikat pada organel spesifik.</li>
+            <li>Berperan dalam <span class="highlight">transpor zat</span> di dalam sel.</li>
+        </ul>
+
+        <h4 id="organel">b. Organel</h4>
+        <p>Organel, yang secara harfiah berarti <span class="highlight">"organ kecil"</span>, adalah struktur terikat membran (kecuali ribosom) yang terdapat di dalam sitoplasma sel eukariotik. Setiap organel memiliki struktur spesifik dan fungsi tertentu yang mendukung keseluruhan fungsi sel.</p>
+        <p>Sebagian besar organel sel tidak dapat diamati dengan mikroskop cahaya karena ukurannya yang sangat kecil. Untuk melihat detail strukturnya, para peneliti menggunakan <span class="highlight">mikroskop elektron</span>. Struktur sel yang dapat diamati menggunakan mikroskop elektron disebut <span class="highlight">ultrastruktur</span>.</p>
+        <p>Berikut adalah beberapa organel penting dan fungsinya:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Struktur Organel</th>
+                    <th>Fungsi Utama Organel</th>
+                    <th>Sel Prokariot (1)</th>
+                    <th>Sel Palisade (Tumbuhan) (2)</th>
+                    <th>Sel Epitel (Hewan) (3)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td data-label="Struktur Organel">Dinding Sel</td>
+                    <td data-label="Fungsi Utama Organel">Perlindungan dan dukungan struktural</td>
+                    <td data-label="Sel Prokariot (1)">&#x221A;</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">-</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td data-label="Struktur Organel">Inti Sel/Nukleus</td>
+                    <td data-label="Fungsi Utama Organel">Mengendalikan aktivitas sel, menyimpan materi genetik</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td data-label="Struktur Organel">Membran Plasma</td>
+                    <td data-label="Fungsi Utama Organel">Mengatur pergerakan zat, komunikasi antar sel</td>
+                    <td data-label="Sel Prokariot (1)">&#x221A;</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td data-label="Struktur Organel">Kloroplas</td>
+                    <td data-label="Fungsi Utama Organel">Melakukan fotosintesis</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">-</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td data-label="Struktur Organel">Komplek Golgi</td>
+                    <td data-label="Fungsi Utama Organel">Mensintesis, memodifikasi, mengemas karbohidrat, protein, dan lipid</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td data-label="Struktur Organel">Lisosom</td>
+                    <td data-label="Fungsi Utama Organel">Menguraikan struktur sel yang sudah tua/rusak, sampah sel</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">-</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td data-label="Struktur Organel">Membran Inti</td>
+                    <td data-label="Fungsi Utama Organel">Mengatur pergerakan zat dari dan ke dalam inti sel</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td data-label="Struktur Organel">Mitokondria</td>
+                    <td data-label="Fungsi Utama Organel">Menghasilkan energi melalui respirasi sel</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td data-label="Struktur Organel">Nukleolus</td>
+                    <td data-label="Fungsi Utama Organel">Mensintesis ribosom</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td data-label="Struktur Organel">Plastida (termasuk Amiloplas, Kromoplas, Kloroplas)</td>
+                    <td data-label="Fungsi Utama Organel">Menyimpan zat makanan dan pigmen (khususnya klorofil untuk fotosintesis)</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">-</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td data-label="Struktur Organel">Retikulum Endoplasma (RE)</td>
+                    <td data-label="Fungsi Utama Organel">Mensintesis lipid dan protein (RE Kasar)</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td data-label="Struktur Organel">Ribosom</td>
+                    <td data-label="Fungsi Utama Organel">Mensintesis protein</td>
+                    <td data-label="Sel Prokariot (1)">&#x221A;</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td data-label="Struktur Organel">Sentriol</td>
+                    <td data-label="Fungsi Utama Organel">Mensintesis mikrotubulus untuk gelendong saat pembelahan sel</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">-</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td data-label="Struktur Organel">Silia dan Flagela</td>
+                    <td data-label="Fungsi Utama Organel">Alat gerak sel</td>
+                    <td data-label="Sel Prokariot (1)">&#x221A;*</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">-</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;*</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td data-label="Struktur Organel">Sitoskeleton</td>
+                    <td data-label="Fungsi Utama Organel">Mendukung struktur sel, pergerakan sel dan organel</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td data-label="Struktur Organel">Vakuola</td>
+                    <td data-label="Fungsi Utama Organel">Menyimpan air, sisa metabolisme, menjaga turgor sel</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">Besar</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">Kecil/Beberapa</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td data-label="Struktur Organel">Vesikel</td>
+                    <td data-label="Fungsi Utama Organel">Mengandung produk yang akan dibuang/diangkut, transportasi zat</td>
+                    <td data-label="Sel Prokariot (1)">-</td>
+                    <td data-label="Sel Palisade (Tumbuhan) (2)">&#x221A;</td>
+                    <td data-label="Sel Epitel (Hewan) (3)">&#x221A;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Keterangan Tabel:</strong></p>
+        <ul>
+            <li>&#x221A;: Ada (umumnya ada pada tipe sel tersebut)</li>
+            <li>-: Tidak Ada (umumnya tidak ada pada tipe sel tersebut)</li>
+            <li>&#x221A;*: Ada (beberapa/tergantung spesies atau kondisi spesifik, umumnya tidak selalu ada atau memiliki bentuk/fungsi yang berbeda dari eukariotik)</li>
+        </ul>
+        <div class="note">
+            <p><strong>Perlu Diketahui:</strong> Meskipun ada organel yang sama-sama dimiliki oleh sel tumbuhan dan sel hewan, ada juga organel yang hanya dimiliki oleh salah satu jenis sel. Misalnya, dinding sel, kloroplas, dan vakuola besar umumnya ditemukan pada sel tumbuhan, sedangkan sentriol dan lisosom lebih sering ditemukan pada sel hewan. Sel prokariotik memiliki struktur sel yang jauh lebih sederhana tanpa inti sejati dan organel terikat membran.</p>
+        </div>
+
+
+        <h3 id="inti-sel">3. Inti Sel (Nukleus)</h3>
+        <p>Inti sel, atau <span class="highlight">nukleus</span>, adalah salah satu organel terbesar dan paling menonjol dalam sel eukariotik. Inti sel pertama kali diamati dan dijelaskan oleh Robert Brown pada tahun 1831 dalam sel tumbuhan.</p>
+        <p><strong>Ciri-ciri Inti Sel pada Sel Eukariotik:</strong></p>
+        <ul>
+            <li>Memiliki <span class="highlight">membran inti</span> (selubung nukleus) yang jelas, memisahkan materi genetik dari sitoplasma. Membran inti ini biasanya terdiri dari dua lapis membran.</li>
+            <li>Mengandung <span class="highlight">materi genetik (DNA)</span> yang terorganisir dalam bentuk kromosom.</li>
+            <li>Di dalamnya terdapat <span class="highlight">anak inti (nukleolus)</span>.</li>
+            <li>Umumnya terletak di bagian tengah sel dan dikelilingi oleh sitoplasma.</li>
+        </ul>
+        <p><strong>Komponen Inti Sel:</strong></p>
+        <ul>
+            <li><strong>Membran Inti:</strong> Selubung ganda yang memiliki pori-pori nukleus. Pori-pori ini mengontrol pergerakan makromolekul (seperti protein dan RNA) antara nukleus dan sitoplasma.</li>
+            <li><strong>Nukleoplasma:</strong> Materi kental seperti gel di dalam nukleus, tempat kromatin dan nukleolus berada.</li>
+            <li><strong>Kromatin:</strong> Kompleks DNA dan protein (histon) yang membentuk kromosom. Saat sel tidak membelah, kromatin terlihat sebagai massa yang tersebar.</li>
+            <li><strong>Nukleolus (Anak Inti):</strong> Struktur padat di dalam nukleus yang berfungsi sebagai <span class="highlight">tempat sintesis ribosom</span>.</li>
+        </ul>
+        <p><strong>Fungsi Utama Inti Sel:</strong></p>
+        <ul>
+            <li><strong>Pengendali Aktivitas Sel:</strong> Inti sel berfungsi sebagai pusat kendali seluruh aktivitas sel karena mengandung instruksi genetik (DNA) yang diperlukan untuk sintesis protein dan regulasi semua proses seluler.</li>
+            <li><strong>Penyimpan Materi Genetik:</strong> DNA yang berisi informasi genetik untuk pewarisan sifat dan fungsi sel disimpan di dalam inti sel.</li>
+            <li><strong>Sintesis Ribosom:</strong> Nukleolus di dalam inti sel bertanggung jawab untuk produksi subunit ribosom, yang kemudian akan keluar ke sitoplasma untuk sintesis protein.</li>
+        </ul>
+        <p>Secara keseluruhan, membran plasma, sitoplasma (termasuk sitosol dan organel), dan inti sel bekerja sama secara terintegrasi untuk menjaga kehidupan dan fungsi seluler yang kompleks.</p>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,527 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pertahanan Tubuh dan Kelainannya - Biologi Kelas XI</title>
+    <style>
+        /* --- Color Theme Definition --- */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2; /* Darker blue for headings */
+            --accent-green: #388E3C; /* Green for key concepts */
+            --secondary-accent-amber: #FFB300; /* Amber for highlights */
+            --semantic-success: #4CAF50; /* Green for success/positive info */
+            --semantic-warning: #FFC107; /* Amber for warnings/notes */
+            --semantic-error: #D32F2F; /* Red for errors/critical info */
+            --semantic-info: #2196F3; /* Blue for general info boxes */
+        }
+
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-divider);
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.8em; font-weight: 700; text-align: center; color: var(--accent-green); border-bottom: 3px solid var(--primary-blue); padding-bottom: 15px; }
+        h2 { font-size: 2.2em; font-weight: 600; color: var(--primary-blue); }
+        h3 { font-size: 1.8em; font-weight: 500; color: var(--accent-green); }
+        h4 { font-size: 1.4em; font-weight: 500; color: var(--text-primary); }
+
+        p {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        em {
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        /* --- Lists --- */
+        ul {
+            list-style: none; /* Remove default bullet */
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px; /* Space for custom bullet */
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        ul li::before {
+            content: '•'; /* Custom bullet */
+            color: var(--accent-green); /* Bullet color */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.5em; /* Position bullet */
+            position: absolute;
+            left: 0;
+        }
+
+        ol {
+            list-style: decimal;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        /* --- Section Styling --- */
+        .section {
+            padding: 25px 0;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        /* --- Special Boxes --- */
+        .info-box, .concept-box, .insight-box {
+            background-color: #f7f9fc; /* Lightest grey-blue */
+            border-left: 6px solid var(--semantic-info);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-box:hover, .concept-box:hover, .insight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box h4 {
+            color: var(--semantic-info);
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 1px dotted var(--semantic-info);
+            padding-bottom: 5px;
+        }
+
+        .concept-box {
+            border-color: var(--accent-green);
+            background-color: #f7fcf7; /* Lightest green */
+        }
+        .concept-box h4 {
+            color: var(--accent-green);
+        }
+
+        .insight-box {
+            border-color: var(--secondary-accent-amber);
+            background-color: #fffaf0; /* Lightest amber */
+        }
+        .insight-box h4 {
+            color: var(--secondary-accent-amber);
+        }
+
+        /* --- Grid Layout for Comparison --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            background-color: #ffffff;
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+        }
+
+        .grid-item:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .grid-item h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        /* --- Table Styling --- */
+        .table-responsive {
+            overflow-x: auto; /* Ensures table is scrollable on small screens */
+            margin: 25px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Minimum width for the table */
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+            color: var(--text-secondary);
+        }
+
+        table thead th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f8f8f8; /* Light stripe effect */
+        }
+
+        table tbody tr:hover {
+            background-color: #eff6ff; /* Hover effect */
+        }
+
+        /* --- Expandable / Collapsible Sections --- */
+        .expandable-header {
+            background-color: #e0f2f7; /* Light blue */
+            color: var(--text-primary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .expandable-header:hover {
+            background-color: #cceeff; /* Slightly darker light blue */
+            transform: translateY(-2px);
+        }
+
+        .expandable-header::after {
+            content: '▼'; /* Down arrow */
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .expandable-header.expanded::after {
+            content: '▲'; /* Up arrow */
+            transform: rotate(0deg); /* No rotation, just change content */
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            padding: 0 20px; /* Start with no vertical padding */
+            background-color: #ffffff;
+            border: 1px solid var(--border-divider);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .expandable-content.active {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            h4 { font-size: 1.2em; }
+
+            .grid-container {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+                gap: 15px;
+            }
+
+            .info-box, .concept-box, .insight-box {
+                padding: 15px;
+            }
+
+            table th, table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistem Pertahanan Tubuh dan Kelainannya</h1>
+
+        <section class="section">
+            <h2>C. Imunitas Tubuh dan Kelainannya</h2>
+            <p>Sistem pertahanan tubuh, atau yang lebih dikenal sebagai <strong>sistem imun</strong>, adalah mekanisme kompleks dalam tubuh yang berfungsi untuk melindungi organisme dari berbagai ancaman, termasuk infeksi patogen seperti bakteri, virus, jamur, dan parasit, serta sel-sel abnormal seperti sel kanker. Kemampuan tubuh untuk melawan dan mengatasi infeksi patogen ini disebut <strong>imunitas</strong> atau kekebalan.</p>
+            <p>Imunitas dapat diperoleh melalui berbagai cara, baik secara alami maupun buatan, dan dibagi menjadi dua kategori besar: imunitas aktif dan imunitas pasif.</p>
+        </section>
+
+        <section class="section">
+            <h2>1. Imunitas Aktif dan Pasif: Memahami Sumber Kekebalan</h2>
+            <p>Tubuh memiliki cara cerdas untuk merespons keberadaan patogen. Saat sehat, pertahanan eksternal non-spesifik (seperti kulit dan mukosa) akan meminimalkan masuknya patogen. Jika patogen berhasil menembus, pertahanan internal spesifik akan diaktifkan. Limfosit B, misalnya, akan mengenali antigen dan memproduksi antibodi, memulai respons imun adaptif.</p>
+
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h4>Imunitas Aktif</h4>
+                    <p>Imunitas aktif terjadi ketika sistem kekebalan tubuh <strong>sendiri memproduksi antibodi</strong> sebagai respons terhadap antigen. Proses ini memerlukan waktu untuk pembentukan memori imun, tetapi memberikan perlindungan jangka panjang.</p>
+                    <ul>
+                        <li>
+                            <strong>Imunitas Aktif Alami:</strong>
+                            <p>Terbentuk ketika seseorang terpapar patogen secara alami dan berhasil pulih dari infeksi. Tubuh kemudian mengembangkan memori imun dan menghasilkan antibodi serta sel-sel memori yang spesifik terhadap patogen tersebut. Contoh: seseorang yang pernah terjangkit cacar air umumnya tidak akan terinfeksi lagi.</p>
+                        </li>
+                        <li>
+                            <strong>Imunitas Aktif Buatan:</strong>
+                            <p>Diinduksi melalui <strong>vaksinasi</strong>. Vaksin mengandung antigen yang dilemahkan atau tidak aktif, atau fragmen antigen dari patogen, yang cukup untuk merangsang sistem imun tanpa menyebabkan penyakit serius. Sistem imun belajar mengenali antigen tersebut dan memproduksi antibodi serta sel memori untuk perlindungan di masa depan. Contoh: vaksin campak, polio, atau vaksin COVID-19.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h4>Imunitas Pasif</h4>
+                    <p>Imunitas pasif terjadi ketika antibodi <strong>diterima dari sumber eksternal</strong>, bukan diproduksi sendiri oleh tubuh. Perlindungan ini bersifat segera namun hanya sementara, karena antibodi yang diterima akan dipecah oleh tubuh seiring waktu dan tidak membentuk memori imun.</p>
+                    <ul>
+                        <li>
+                            <strong>Imunitas Pasif Alami:</strong>
+                            <p>Terjadi secara alami, biasanya dari ibu ke anak. Antibodi dapat ditransfer melalui plasenta dari ibu hamil ke janin (imunitas maternal) atau melalui Air Susu Ibu (ASI), terutama <strong>kolostrum</strong> (ASI pertama setelah melahirkan). Kolostrum kaya akan antibodi (terutama IgA) yang memberikan perlindungan awal bagi bayi yang sistem imunnya belum berkembang sempurna.</p>
+                        </li>
+                        <li>
+                            <strong>Imunitas Pasif Buatan:</strong>
+                            <p>Terjadi ketika antibodi dimasukkan ke dalam tubuh melalui injeksi atau transfusi dari individu lain atau hewan yang telah kebal. Ini sering digunakan dalam kondisi darurat atau ketika tubuh tidak punya waktu untuk membentuk imunitas aktif. Contoh: pemberian antibodi (antiserum) kepada pasien yang tergigit ular berbisa, atau transfusi plasma dari penyintas COVID-19 kepada pasien kritis.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>Tahukah Kalian? Sejarah Vaksinasi</h4>
+                <p>Konsep vaksinasi modern pertama kali dicetuskan oleh dokter Inggris bernama <strong>Edward Jenner</strong> pada akhir abad ke-18. Ia mengamati bahwa pemerah susu yang terpapar virus cacar sapi (cowpox) menjadi kebal terhadap cacar (smallpox) yang jauh lebih mematikan. Jenner kemudian menguji hipotesisnya dengan menyuntikkan materi dari lesi cacar sapi ke seorang anak laki-laki, yang kemudian terbukti tidak terinfeksi cacar setelah terpapar virus cacar asli. Penemuan ini menjadi tonggak sejarah dalam pencegahan penyakit menular dan menyelamatkan jutaan nyawa. Vaksin COVID-19, meskipun menggunakan teknologi modern seperti mRNA atau protein rekombinan, pada dasarnya mengadopsi prinsip yang sama: melatih sistem imun untuk mengenali dan melawan virus tanpa harus terpapar infeksi penuh.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2. Kelainan Sistem Pertahanan dan Indikasinya</h2>
+            <p>Meskipun sistem imun dirancang untuk melindungi, terkadang ia dapat mengalami gangguan yang berdampak serius pada kesehatan. Gangguan ini bisa disebabkan oleh infeksi, faktor genetik, atau kesalahan respons imun itu sendiri. Berikut adalah beberapa jenis kelainan umum:</p>
+
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>a. Alergi</h3>
+                    <p><strong>Definisi:</strong> Alergi adalah respons imun yang berlebihan atau hipersensitif terhadap zat yang sebenarnya tidak berbahaya (disebut <strong>alergen</strong>). Alergen bisa berupa serbuk sari, bulu hewan, makanan tertentu (misalnya kacang, susu), sengatan serangga, atau obat-obatan.</p>
+                    <p><strong>Mekanisme:</strong> Ketika seseorang yang alergi terpapar alergen, sistem imunnya mengidentifikasi alergen sebagai ancaman. Ini memicu pelepasan histamin dan zat kimia lainnya dari sel-sel imun (seperti sel mast dan basofil), yang menyebabkan gejala alergi. Ini berbeda dari respons terhadap infeksi, karena tidak ada patogen yang perlu dilawan.</p>
+                    <p><strong>Gejala:</strong> Gejala alergi bervariasi tergantung pada alergen dan cara paparannya. Contoh umum meliputi:</p>
+                    <ul>
+                        <li>Gatal-gatal, ruam kulit (eksim, biduran).</li>
+                        <li>Bersin, pilek, hidung tersumbat, mata gatal dan berair (rinitis alergi).</li>
+                        <li>Batuk, sesak napas, mengi (asma alergi).</li>
+                        <li>Mual, muntah, diare, kram perut (alergi makanan).</li>
+                        <li>Pada kasus parah, dapat terjadi anafilaksis, reaksi alergi seluruh tubuh yang mengancam jiwa.</li>
+                    </ul>
+                </div>
+
+                <div class="grid-item">
+                    <h3>b. HIV - AIDS</h3>
+                    <p><strong>Definisi:</strong> <strong>HIV (<em>Human Immunodeficiency Virus</em>)</strong> adalah retrovirus yang secara progresif menyerang sistem kekebalan tubuh, khususnya sel <strong>limfosit T helper (CD4+)</strong>. Sel-sel ini sangat penting dalam mengkoordinasikan respons imun. Ketika jumlah sel CD4+ menurun drastis, tubuh menjadi sangat rentan terhadap infeksi oportunistik dan beberapa jenis kanker.</p>
+                    <p><strong>Progresi Penyakit:</strong> Infeksi HIV yang tidak diobati akan berkembang menjadi <strong>AIDS (<em>Acquired Immune Deficiency Syndrome</em>)</strong>. AIDS adalah tahap akhir infeksi HIV, yang ditandai dengan kerusakan parah pada sistem imun. Pada tahap ini, infeksi yang ringan pada individu dengan sistem imun normal bisa menjadi mematikan bagi penderita AIDS.</p>
+                    <p><strong>Dampak:</strong> Penderita AIDS seringkali mengalami berbagai gangguan kesehatan kronis, penurunan berat badan yang drastis, dan rentan terhadap infeksi seperti pneumonia PJP, toksoplasmosis, tuberkulosis, serta beberapa jenis kanker yang langka (misalnya Sarkoma Kaposi).</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>c. Penyakit Autoimun</h4>
+                <p><strong>Definisi:</strong> Penyakit autoimun adalah kondisi di mana sistem pertahanan tubuh seseorang <strong>menyerang sel-sel dan jaringan tubuhnya sendiri</strong>, mengira mereka sebagai zat asing atau patogen berbahaya. Ini terjadi karena adanya kegagalan dalam mekanisme pengenalan diri (<em>self-tolerance</em>) oleh sistem imun spesifik, terutama limfosit T dan B.</p>
+                <p><strong>Mekanisme:</strong> Normalnya, sistem imun dapat membedakan antara sel "diri" (sel tubuh) dan sel "asing" (patogen). Pada penyakit autoimun, kekeliruan ini menyebabkan sel-sel imun (seperti limfosit dan antibodi) menyerang organ atau jaringan tubuh yang sehat.</p>
+                <p><strong>Faktor Pemicu:</strong> Penyebab pasti penyakit autoimun seringkali tidak diketahui, namun diperkirakan melibatkan kombinasi faktor genetik, lingkungan (infeksi, paparan bahan kimia), dan hormonal.</p>
+                <p><strong>Gejala Umum:</strong> Meskipun ada lebih dari 80 jenis penyakit autoimun yang berbeda, banyak di antaranya memiliki gejala umum seperti kelelahan kronis, nyeri sendi atau otot, demam ringan, ruam kulit, dan peradangan. Gejala spesifik tergantung pada organ atau jaringan mana yang diserang.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Penyakit Autoimun</th>
+                                <th>Bagian Tubuh Terdampak</th>
+                                <th>Dampak Utama dari Penyakit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td><strong>Myasthenia Gravis</strong></td>
+                                <td>Sambungan Neuromuskular</td>
+                                <td>Melemahnya otot rangka, menyebabkan kelelahan otot, kesulitan bicara, menelan, dan bernapas.</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td><strong>Multiple Sclerosis (MS)</strong></td>
+                                <td>Sistem Saraf Pusat (otak dan sumsum tulang belakang)</td>
+                                <td>Kerusakan mielin (selubung saraf), mengganggu komunikasi saraf, menyebabkan kelumpuhan, masalah penglihatan, dan gangguan keseimbangan.</td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td><strong>Rheumatoid Arthritis</strong></td>
+                                <td>Persendian (terutama sendi kecil tangan dan kaki)</td>
+                                <td>Peradangan kronis pada lapisan sendi, menyebabkan nyeri, bengkak, kaku, dan deformasi sendi secara bertahap.</td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td><strong>Diabetes Mellitus Tipe 1</strong></td>
+                                <td>Pulau Langerhans Pankreas (sel beta penghasil insulin)</td>
+                                <td>Kerusakan sel beta yang menghancurkan kemampuan tubuh memproduksi insulin, menyebabkan kadar gula darah tinggi.</td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td><strong>Lupus (Systemic Lupus Erythematosus/SLE)</strong></td>
+                                <td>Kulit, ginjal, sendi, otak, jantung, paru-paru, darah (multisistem)</td>
+                                <td>Penyakit multisistemik yang dapat menyebabkan peradangan kronis, nyeri, ruam kupu-kupu di wajah, masalah ginjal, dan kerusakan organ lainnya secara bertahap.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Pengayaan: Memahami Antibodi Monoklonal</h2>
+            <p>Dalam dunia kedokteran modern, pemanfaatan sistem imun telah berkembang pesat, salah satunya melalui pengembangan <strong>antibodi monoklonal</strong>. Ini adalah terobosan penting yang telah merevolusi bidang penelitian, diagnosis, dan terapi penyakit.</p>
+
+            <div class="concept-box">
+                <h4>Apa itu Antibodi Monoklonal?</h4>
+                <p>Antibodi monoklonal adalah antibodi yang sangat spesifik dan identik, artinya semuanya mengenali dan mengikat satu epitop (bagian spesifik dari antigen). Mereka diproduksi dari klon sel B yang sama, memastikan konsistensi dan spesifisitas yang tinggi.</p>
+                <p><strong>Perbedaan dengan Antibodi Poliklonal (Antibodi Biasa):</strong></p>
+                <ul>
+                    <li><strong>Antibodi Poliklonal:</strong> Dihasilkan oleh berbagai klon sel B yang berbeda sebagai respons terhadap satu antigen. Mereka mengenali dan mengikat berbagai epitop yang berbeda pada antigen yang sama. Ini adalah jenis antibodi yang diproduksi secara alami oleh tubuh kita saat terpapar infeksi.</li>
+                    <li><strong>Antibodi Monoklonal:</strong> Dihasilkan oleh satu klon sel B tunggal. Mereka hanya mengikat satu epitop spesifik pada antigen. Keunggulannya adalah presisi dan konsistensinya.</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>Metode Pembuatan Antibodi Monoklonal (Teknik Hibridoma)</h4>
+                <p>Proses produksi antibodi monoklonal secara umum melibatkan langkah-langkah berikut:</p>
+                <ol>
+                    <li><strong>Imunisasi:</strong> Hewan (misalnya tikus) diimunisasi dengan antigen target untuk merangsang produksi sel B yang spesifik terhadap antigen tersebut.</li>
+                    <li><strong>Isolasi Sel B:</strong> Sel B penghasil antibodi (terutama dari limpa) diisolasi dari hewan yang telah diimunisasi.</li>
+                    <li><strong>Fusi Sel:</strong> Sel B normal yang berumur pendek difusikan dengan sel <strong>myeloma</strong> (sel kanker sumsum tulang) yang abadi dan mampu membelah tanpa batas. Fusi ini menghasilkan sel hibrida yang disebut <strong>hibridoma</strong>.</li>
+                    <li><strong>Seleksi Hibridoma:</strong> Sel hibridoma yang berhasil difusi kemudian diseleksi. Hibridoma memiliki dua karakteristik kunci: kemampuan sel B untuk menghasilkan antibodi spesifik dan kemampuan sel myeloma untuk tumbuh dan membelah tanpa batas.</li>
+                    <li><strong>Kloning dan Produksi:</strong> Hibridoma yang diinginkan dikloning dan dikultur dalam jumlah besar. Klon-klon ini akan menghasilkan antibodi monoklonal dalam jumlah besar secara terus-menerus.</li>
+                </ol>
+                <p>Keterkaitan metode ini dengan manfaat medisnya sangat jelas: teknik hibridoma memungkinkan produksi massal antibodi yang sangat spesifik, yang tidak mungkin didapatkan dari respons imun alami tubuh.</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>Manfaat dan Aplikasi Antibodi Monoklonal dalam Tindakan Medis</h4>
+                <p>Antibodi monoklonal memiliki beragam aplikasi yang revolusioner:</p>
+                <ul>
+                    <li>
+                        <strong>Diagnosis Penyakit:</strong> Digunakan dalam tes diagnostik untuk mendeteksi keberadaan antigen (misalnya tes kehamilan, tes HIV, deteksi biomarker kanker, tes COVID-19 cepat) karena kemampuannya mengikat target spesifik.
+                    </li>
+                    <li>
+                        <strong>Terapi Kanker:</strong> Digunakan dalam terapi target di mana antibodi monoklonal dirancang untuk mengikat protein tertentu pada sel kanker, menghambat pertumbuhan sel kanker, atau membawa obat/racun langsung ke sel kanker.
+                    </li>
+                    <li>
+                        <strong>Penanganan Penyakit Autoimun dan Peradangan:</strong> Dapat memblokir molekul pro-inflamasi atau sel imun yang bertanggung jawab atas peradangan berlebihan.
+                    </li>
+                    <li>
+                        <strong>Antiviral (contoh COVID-19):</strong> Untuk COVID-19, antibodi monoklonal yang menargetkan protein S (spike) virus dapat mencegah virus memasuki sel inang. Manfaatnya meliputi:
+                        <ul>
+                            <li>Membantu pemulihan lebih cepat (rata-rata 5 hari lebih cepat bagi pasien).</li>
+                            <li>Meminimalkan terjadinya perburukan kondisi.</li>
+                            <li>Menurunkan risiko rawat inap atau perburukan ke derajat yang lebih berat secara signifikan (misalnya hingga 70%).</li>
+                        </ul>
+                        <p>Pemberiannya biasanya dilakukan satu kali melalui infus, idealnya dalam tujuh hari pertama setelah timbul gejala pada pasien dewasa dengan gejala ringan hingga sedang yang berisiko tinggi mengalami perburukan.</p>
+                    </li>
+                    <li>
+                        <strong>Pencegahan Penolakan Transplantasi Organ:</strong> Memodulasi respons imun untuk mencegah sistem kekebalan tubuh pasien menyerang organ yang ditransplantasikan.
+                    </li>
+                </ul>
+                <p>Dengan kemampuannya untuk mengikat target spesifik dengan presisi tinggi, antibodi monoklonal telah membuka jalan baru dalam pengobatan banyak penyakit yang sebelumnya sulit ditangani.</p>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p>&copy; 2023 Materi Pembelajaran Biologi SMA/MA Kelas XI. Semua hak dilindungi.</p>
+            <p>Dibuat untuk tujuan pendidikan.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const expandableHeaders = document.querySelectorAll('.expandable-header');
+
+            expandableHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                    const content = this.nextElementSibling;
+                    if (content.classList.contains('active')) {
+                        content.style.maxHeight = null;
+                        content.classList.remove('active');
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```

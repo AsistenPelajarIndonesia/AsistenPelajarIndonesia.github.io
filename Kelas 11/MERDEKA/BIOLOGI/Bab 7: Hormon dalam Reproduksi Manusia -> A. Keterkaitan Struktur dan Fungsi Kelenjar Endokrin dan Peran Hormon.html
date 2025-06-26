@@ -1,0 +1,443 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hormon dalam Reproduksi Manusia - Biologi Kelas 11</title>
+    <style>
+        /* Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+
+            /* RGB versions for rgba transparency */
+            --primary-blue-rgb: 25, 118, 210;   /* #1976D2 */
+            --semantic-info-rgb: 33, 150, 243;  /* #2196F3 */
+            --border-divider-rgb: 224, 224, 224;/* #E0E0E0 */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; color: var(--accent-green); border-color: var(--accent-green);}
+        h3 { font-size: 1.5em; color: var(--secondary-accent-amber); border-color: var(--secondary-accent-amber);}
+        h4 { font-size: 1.2em; color: var(--text-secondary); border-color: var(--border-divider);}
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .highlight-box {
+            background-color: rgba(var(--primary-blue-rgb), 0.05); /* Lighter shade of primary blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box {
+            background-color: rgba(var(--semantic-info-rgb), 0.05);
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .section-title {
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: inline-block; /* To make background fit content */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas); /* White text on blue background */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(var(--primary-blue-rgb), 0.02); /* Very subtle blue tint for even rows */
+        }
+
+        tr:hover {
+            background-color: rgba(var(--primary-blue-rgb), 0.1);
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.1em; }
+
+            /* Responsive table behavior */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px; /* Hide table header on small screens */
+            }
+            tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 10px;
+                border-radius: 5px;
+                overflow: hidden; /* Ensures border-radius is visible */
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%; /* Make space for the data-label */
+                text-align: right;
+            }
+            td:last-child {
+                border-bottom: none; /* No border for the last cell in a row */
+            }
+            td:before {
+                position: absolute;
+                top: 12px; /* Adjust top padding */
+                left: 15px; /* Adjust left padding */
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label); /* Use data-label for mobile headers */
+                font-weight: bold;
+                color: var(--text-primary);
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 7: Hormon dalam Reproduksi Manusia</h1>
+        <h2 class="section-title">A. Keterkaitan Struktur dan Fungsi Kelenjar Endokrin dan Peran Hormon dalam Reproduksi</h2>
+
+        <section>
+            <h3>1. Mekanisme Kerja Hormon</h3>
+            <p>Pernahkah Kalian bertanya mengapa terdapat perbedaan fisik yang mencolok antara jantan dan betina dalam satu spesies, misalnya pada manusia? Atau mengapa perempuan mengalami menstruasi dan laki-laki tidak? Fenomena ini, termasuk banyak proses biologis penting lainnya, diatur oleh senyawa kimiawi yang disebut **hormon**.</p>
+
+            <div class="info-box">
+                <h4>Apa itu Hormon?</h4>
+                <p>Hormon adalah senyawa kimiawi yang dikeluarkan ke dalam cairan di luar sel, kemudian beredar dalam darah, dan bertindak sebagai zat pengatur. Mereka mempengaruhi berbagai proses di dalam tubuh. Contohnya, saat Kalian stres, dehidrasi, atau kadar gula darah rendah, hormon akan memicu respons fisiologis untuk menjaga keseimbangan tubuh (Wasserman, et al., 2017).</p>
+            </div>
+
+            <h4>Kelenjar Endokrin Utama pada Manusia</h4>
+            <p>Sistem endokrin adalah sistem organ yang terdiri dari berbagai kelenjar endokrin yang bertanggung jawab mengeluarkan hormon ke dalam sistem peredaran darah. Beberapa kelenjar endokrin utama dalam tubuh manusia meliputi:</p>
+            <ul>
+                <li><strong>Kelenjar Pineal</strong></li>
+                <li><strong>Kelenjar Pituitari (Hipofisis)</strong></li>
+                <li><strong>Kelenjar Tiroid</strong></li>
+                <li><strong>Kelenjar Paratiroid</strong></li>
+                <li><strong>Kelenjar Adrenal</strong></li>
+                <li><strong>Pankreas</strong></li>
+                <li><strong>Ovarium</strong> (pada perempuan)</li>
+                <li><strong>Testis</strong> (pada laki-laki)</li>
+            </ul>
+
+            <h4>Bagaimana Hormon Bekerja?</h4>
+            <p>Organ-organ penghasil hormon akan memproduksi hormon yang bekerja pada organ atau sel target spesifik. Interaksi hormon dengan sel target ini akan menimbulkan efek fisiologis yang sesuai. Semua hormon mempengaruhi sel target dengan mengubah aktivitas metabolisme, entah itu mempercepat atau menghambat proses fisiologi tertentu.</p>
+
+            <div class="highlight-box">
+                <h4>Mekanisme Kerja Hormon Steroid (Ilustrasi Umum)</h4>
+                <p>Proses interaksi hormon dengan sel targetnya dapat digambarkan sebagai berikut:</p>
+                <ol>
+                    <li><strong>Hormon Steroid</strong>, yang berukuran kecil dan larut lemak (lipofilik), dapat dengan mudah melewati membran sel target dan masuk ke dalam <strong>Sitoplasma</strong> sel.</li>
+                    <li>Di dalam sitoplasma, hormon steroid akan berikatan dengan <strong>Reseptor Steroid</strong> spesifik yang berada di dalam sel, membentuk sebuah <strong>Kompleks Hormon-Reseptor</strong>.</li>
+                    <li>Kompleks Hormon-Reseptor ini kemudian bergeser dan masuk ke dalam <strong>Nukleus</strong> (inti sel).</li>
+                    <li>Di dalam nukleus, Kompleks Hormon-Reseptor berikatan dengan bagian tertentu dari <strong>Kromatin (DNA)</strong> sel.</li>
+                    <li>Pengikatan ini akan <strong>mengaktivasi Transkripsi mRNA</strong>, yang berarti sel mulai membuat molekul mRNA berdasarkan cetakan gen di DNA.</li>
+                    <li>mRNA yang terbentuk akan meninggalkan nukleus untuk diterjemahkan menjadi protein tertentu, yang pada akhirnya menghasilkan <strong>Respon Seluler</strong> yang spesifik (misalnya, perubahan fungsi atau perilaku sel).</li>
+                </ol>
+            </div>
+
+            <p>Banyak fungsi fisiologis dalam tubuh dipengaruhi oleh hormon. Misalnya, perasaan jantung berdebar kencang dan berkeringat saat ketakutan adalah respons yang dimediasi oleh hormon. Demikian pula, semua perubahan tubuh yang terjadi selama pubertas sepenuhnya diatur oleh aktivitas hormon.</p>
+
+            <h4>Fungsi Utama Sistem Endokrin Secara Garis Besar:</h4>
+            <p>Sistem endokrin memiliki peran vital dalam menjaga homeostasis dan adaptasi tubuh, meliputi:</p>
+            <ul>
+                <li>Meregulasi metabolisme dan keseimbangan elektrolit tubuh.</li>
+                <li>Mengatur perubahan adaptif pada situasi bahaya atau stres (respon <em>stressfull situation</em>).</li>
+                <li>Membantu proses pertumbuhan dan perkembangan organisme.</li>
+                <li>Mengontrol sistem reproduksi.</li>
+                <li>Meregulasi produksi sel darah merah.</li>
+                <li>Mengontrol sistem peredaran darah dan sistem pencernaan.</li>
+            </ul>
+
+            <p>Sebagai contoh, kelenjar tiroid adalah salah satu kelenjar endokrin yang penting dalam metabolisme. Gangguan pada kelenjar tiroid dapat menyebabkan berbagai masalah kesehatan, termasuk yang berhubungan dengan kadar kolesterol LDL (kolesterol jahat).</p>
+        </section>
+
+        <section>
+            <h3>2. Peran Hormon pada Reproduksi</h3>
+            <p>Perubahan besar yang Kalian alami saat memasuki masa pubertas, seperti perubahan suara yang menjadi lebih berat pada laki-laki atau dimulainya menstruasi pada perempuan, dipicu oleh aktivitas hormonal yang kompleks.</p>
+
+            <div class="info-box">
+                <h4>Inisiasi Pubertas</h4>
+                <p>Pubertas dimulai sebagai akibat dari peningkatan sekresi <strong>Gonadotropin Releasing Hormone (GnRH)</strong> dari hipotalamus. Ini memicu serangkaian perubahan kompleks dalam sistem endokrin yang melibatkan mekanisme umpan balik negatif dan positif (Batubara, 2010).</p>
+            </div>
+
+            <h4>Pubertas pada Laki-laki</h4>
+            <p>Pada laki-laki, pubertas secara hormonal ditandai dengan mulai diproduksinya hormon <strong>Testosteron</strong> oleh testis. Testosteron bertanggung jawab untuk:</p>
+            <ul>
+                <li>Munculnya ciri-ciri kelamin sekunder: tumbuhnya janggut, suara membesar, tumbuhnya rambut di sekitar alat kelamin, dan perubahan bentuk badan yang tampak pada seorang laki-laki yang mencapai masa pubertas.</li>
+                <li>Mencapai kematangan fungsi seksual.</li>
+            </ul>
+
+            <h4>Pubertas pada Perempuan</h4>
+            <p>Pada perempuan, pubertas ditandai dengan munculnya ciri-ciri kelamin sekunder yang dipengaruhi oleh hormon <strong>Estrogen</strong> dan <strong>Progesteron</strong> yang diproduksi di ovarium. Ciri-ciri kelamin sekunder perempuan meliputi:</p>
+            <ul>
+                <li>Payudara membesar.</li>
+                <li>Pinggul melebar.</li>
+                <li>Tumbuhnya rambut di sekitar alat kelamin.</li>
+            </ul>
+            <p>Selain itu, kedua hormon ini berperan penting dalam proses menstruasi, menandai masa kematangan fungsi seksual perempuan.</p>
+
+            <h4>Peran Gonad dalam Reproduksi</h4>
+            <p><strong>Gonad</strong> adalah organ yang menghasilkan sel kelamin (gamet): spermatozoa (sperma) pada laki-laki dan ovum (sel telur) pada perempuan. Selain fungsi reproduksi, gonad juga berfungsi sebagai penghasil hormon.</p>
+            <ul>
+                <li><strong>Ovarium (gonad perempuan):</strong> Menghasilkan estrogen dan progesteron yang bekerja sama dengan <strong>FSH</strong> (Follicle Stimulating Hormone) dan <strong>LH</strong> (Luteinizing Hormone) dari hipofisis anterior. Hormon-hormon ini bertanggung jawab untuk:
+                    <ul>
+                        <li>Proses menstruasi.</li>
+                        <li>Kehamilan.</li>
+                        <li>Fungsi payudara (menyusui, pembesaran payudara).</li>
+                        <li>Pelebaran panggul.</li>
+                        <li>Menjaga karakteristik ciri sekunder perempuan.</li>
+                    </ul>
+                </li>
+                <li>Selama kehamilan, ovarium dan plasenta juga menghasilkan hormon <strong>Relaksin</strong>, yang akan meningkatkan kelenturan tulang rawan panggul dan membantu melebarkan leher rahim untuk mempermudah persalinan.</li>
+            </ul>
+
+            <p>Organ reproduksi primer laki-laki adalah <strong>Testis</strong>, yang merupakan kelenjar oval terletak di dalam skrotum. Hormon utama yang dihasilkan oleh testis adalah <strong>Testosteron</strong>. Fungsinya mengatur produksi sperma, merangsang perkembangan dan pemeliharaan karakteristik kelamin sekunder laki-laki (misalnya pertumbuhan janggut dan suara membesar).</p>
+
+            <h4>a. Pengaturan Hormon pada Reproduksi Perempuan</h4>
+            <p>Reproduksi perempuan melibatkan dua siklus yang terkoordinasi erat: <strong>siklus ovarium</strong> dan <strong>siklus uterus/rahim</strong>. Kedua siklus ini harus bekerja sama dalam menjalankan fungsi reproduksi secara periodik. Ketidakkoordinasian antara keduanya dapat menyebabkan kondisi kemandulan. Contohnya, jika seorang perempuan tidak mengalami ovulasi, kehamilan tidak akan terjadi meskipun kondisi uterusnya normal. Demikian pula, jika ovulasi normal tetapi rahim belum siap menyokong pertumbuhan embrio, kehamilan juga tidak akan terjadi.</p>
+
+            <div class="highlight-box">
+                <h4>Mekanisme Pengaturan Hormon Reproduksi Perempuan (Berdasarkan Gambaran Umum)</h4>
+                <p>Hormon <strong>GnRH</strong> dari hipotalamus adalah pengatur utama fungsi reproduksi perempuan, dengan kadarnya bervariasi sesuai fase siklus ovarium. Pelepasan GnRH menstimulasi pelepasan <strong>FSH</strong> dan pembentukan <strong>LH</strong> dari pituitari anterior.</p>
+                <ol>
+                    <li><strong>Fase Folikular (Awal Siklus Ovarium):</strong>
+                        <ul>
+                            <li>Pelepasan <strong>FSH</strong> menjadi awal dari fase ini. FSH menstimulasi beberapa folikel sekunder untuk berkembang menjadi folikel tersier di ovarium.</li>
+                            <li>Folikel yang berkembang mensekresikan <strong>Estrogen</strong> dan hormon penghambat (<strong>Inhibin</strong>).</li>
+                            <li><strong>Inhibin</strong> berperan menghambat pelepasan FSH dari pituitari anterior (umpan balik negatif).</li>
+                            <li><strong>Estrogen</strong> dalam kadar rendah menghambat <strong>LH</strong>. Namun, seiring perkembangan folikel, kadar estrogen meningkat signifikan, yang justru berdampak pada pelepasan LH dalam jumlah banyak.</li>
+                            <li>Estrogen berfungsi menstimulasi pertumbuhan tulang dan otot, membentuk dan mempertahankan karakteristik sekunder perempuan, serta bekerja sama dengan progesteron untuk menstimulasi pertumbuhan endometrium (dinding rahim).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Lonjakan LH dan Ovulasi (Sekitar Hari ke-14):</strong>
+                        <ul>
+                            <li>Peningkatan kadar estrogen yang drastis menyebabkan lonjakan besar <strong>LH</strong>.</li>
+                            <li>Lonjakan LH ini memicu:
+                                <ol>
+                                    <li>Penuntasan fase meiosis I oosit primer.</li>
+                                    <li>Ovulasi (pecahnya dinding folikel dan pelepasan ovum) sekitar 9 jam setelah lonjakan LH.</li>
+                                    <li>Pembentukan <strong>Korpus Luteum</strong> dari sisa folikel.</li>
+                                </ol>
+                            </li>
+                            <li>Pelepasan LH menandai awal fase sekretori (luteal) pada siklus ovarium.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Fase Luteal (Pasca-Ovulasi):</strong>
+                        <ul>
+                            <li><strong>Korpus Luteum</strong> yang terbentuk akan mensekresikan <strong>Progesteron</strong> dalam jumlah besar.</li>
+                            <li>Progesteron ini akan memicu dan mempertahankan pertumbuhan dinding rahim (endometrium) sebagai persiapan untuk kehamilan.</li>
+                            <li>Setelah ovulasi, kadar progesteron meningkat sementara kadar estrogen menurun.</li>
+                            <li>Peningkatan progesteron dan penurunan estrogen ini menyebabkan penghambatan pelepasan GnRH dari hipotalamus.</li>
+                            <li><strong>Jika tidak terjadi kehamilan:</strong> Korpus luteum akan berdegradasi (mati) sekitar hari ke-12 setelah ovulasi. Akibatnya, kadar progesteron menurun drastis.</li>
+                            <li>Penurunan hormon ini menghilangkan inhibisi pada GnRH, sehingga sekresi GnRH dimulai kembali, dan siklus menstruasi berikutnya akan dimulai.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h4>b. Pengaturan Hormon pada Reproduksi Laki-laki</h4>
+            <p>Perubahan fisik seperti perubahan suara dan tumbuhnya jakun pada laki-laki saat pubertas menunjukkan aktivasi organ reproduksi yang mulai menghasilkan sperma.</p>
+
+            <div class="highlight-box">
+                <h4>Mekanisme Pengaturan Hormon Reproduksi Laki-laki (Berdasarkan Gambaran Umum)</h4>
+                <p>Fungsi reproduksi pria diregulasi oleh interaksi kompleks hormon dari hipotalamus, pituitari anterior, dan testis. Interaksi ini melibatkan umpan balik negatif dan positif untuk menjaga kadar testosteron tetap dalam rentang yang relatif sempit hingga usia tua.</p>
+                <ol>
+                    <li><strong>Peran Hipotalamus dan Pituitari Anterior:</strong>
+                        <ul>
+                            <li>Hipotalamus mensekresikan <strong>GnRH</strong> dengan kecepatan yang relatif stabil.</li>
+                            <li>GnRH merangsang pituitari anterior untuk melepaskan <strong>LH</strong> (Luteinizing Hormone) dan <strong>FSH</strong> (Follicle Stimulating Hormone).</li>
+                            <li><strong>LH</strong> mentargetkan sel interstitial (sel Leydig) di testis, menginduksi sekresi <strong>Testosteron</strong> dan androgen lainnya.</li>
+                            <li><strong>FSH</strong> utamanya menargetkan <strong>sel Sertoli</strong> di tubulus seminiferus.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Peran Testis (Sel Leydig dan Sel Sertoli):</strong>
+                        <ul>
+                            <li><strong>Sel Leydig:</strong> Berespons terhadap LH dengan menghasilkan testosteron.</li>
+                            <li><strong>Sel Sertoli (dibantu FSH dan Testosteron):</strong>
+                                <ol>
+                                    <li>Mendukung proses <strong>spermatogenesis</strong> (pembentukan sperma) dan <strong>spermiogenesis</strong> (pematangan sperma).</li>
+                                    <li>Mensekresikan <strong>Androgen-Binding Protein (ABP)</strong> yang berikatan dengan androgen, meningkatkan kadar androgen lokal di tubulus seminiferus, dan menstimulasi pematangan spermatid.</li>
+                                    <li>Mensekresikan <strong>Inhibin</strong> sebagai respons terhadap kecepatan produksi sperma. Inhibin memberikan umpan balik negatif untuk menekan produksi FSH oleh pituitari dan GnRH oleh hipotalamus.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Efek dan Umpan Balik Testosteron:</strong>
+                        <ul>
+                            <li><strong>Efek perifer Testosteron:</strong>
+                                <ul>
+                                    <li>Mempertahankan libido (hasrat seksual) dan perilaku yang berkaitan.</li>
+                                    <li>Menstimulasi pertumbuhan tulang dan otot.</li>
+                                    <li>Membentuk dan mempertahankan ciri seks sekunder pria (misalnya pertumbuhan janggut, suara berat).</li>
+                                    <li>Mempertahankan fungsi kelenjar aksesoris dan organ sistem reproduksi pria.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Umpan Balik Negatif:</strong> Kadar testosteron yang tinggi akan menghambat sekresi GnRH dari hipotalamus, yang pada gilirannya menyebabkan penurunan sekresi LH dan testosteron, menjaga kadar hormon dalam rentang normal.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h4>Tabel Penting: Hormon pada Sistem Reproduksi dan Fungsinya</h4>
+            <p>Berikut adalah rangkuman hormon-hormon kunci dalam sistem reproduksi, beserta kelenjar penghasil, sel target, dan fungsinya:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-label="Kelenjar">Kelenjar</th>
+                        <th data-label="Hormon">Hormon</th>
+                        <th data-label="Sel Target">Sel Target</th>
+                        <th data-label="Fungsi">Fungsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Kelenjar" rowspan="4">Pituitari anterior</td>
+                        <td data-label="Hormon" rowspan="2">Follicle Stimulating Hormone (FSH)</td>
+                        <td data-label="Sel Target">Perempuan</td>
+                        <td data-label="Fungsi">Menstimulasi pertumbuhan folikel dan sekresi estrogen dan progesteron.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Sel Target">Laki-laki</td>
+                        <td data-label="Fungsi">Menstimulasi produksi sperma.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Hormon" rowspan="2">Luteinizing Hormone (LH)</td>
+                        <td data-label="Sel Target">Perempuan</td>
+                        <td data-label="Fungsi">Menstimulasi ovulasi dan sekresi estrogen dan progesteron.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Sel Target">Laki-laki</td>
+                        <td data-label="Fungsi">Menstimulasi sekresi testosteron.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Kelenjar" rowspan="3">Ovarium</td>
+                        <td data-label="Hormon" rowspan="2">Estrogen</td>
+                        <td data-label="Sel Target">Organ reproduksi</td>
+                        <td data-label="Fungsi">Mengatur pertumbuhan folikel.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Sel Target">Seluruh tubuh</td>
+                        <td data-label="Fungsi">Mengatur pertumbuhan badan (pubertal growth spurt) dan tanda sekunder pubertas.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Hormon">Progesteron</td>
+                        <td data-label="Sel Target">Uterus/rahim</td>
+                        <td data-label="Fungsi">Mempersiapkan kehamilan.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Kelenjar" rowspan="2">Testis</td>
+                        <td data-label="Hormon">Testosteron</td>
+                        <td data-label="Sel Target">Organ reproduksi</td>
+                        <td data-label="Fungsi">Menstimulasi produksi sperma.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Hormon">Testosteron</td>
+                        <td data-label="Sel Target">Seluruh tubuh</td>
+                        <td data-label="Fungsi">Mengatur pertumbuhan badan (pubertal growth spurt) dan tanda sekunder pubertas.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+</body>
+</html>
+```

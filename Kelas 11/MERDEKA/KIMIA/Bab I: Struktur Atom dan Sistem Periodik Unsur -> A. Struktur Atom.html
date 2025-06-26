@@ -1,0 +1,456 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab I: Struktur Atom - Kimia Kelas XI</title>
+    <style>
+        /* CSS Variables based on the provided theme */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            overflow-x: hidden; /* Prevent horizontal scroll from subtle effects */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--bg-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-divider);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 20px;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--accent-green);
+            border-bottom: none;
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        em {
+            color: var(--accent-green);
+        }
+
+        .highlight {
+            background-color: rgba(var(--secondary-accent-amber), 0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .section-card {
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            background-color: var(--bg-canvas);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures border-radius applies to corners */
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(var(--primary-blue), 0.03);
+        }
+
+        tr:hover {
+            background-color: rgba(var(--primary-blue), 0.08);
+        }
+
+        /* Specific section styles for visual cues */
+        .proton-discovery h3, .proton-discovery strong {
+            color: var(--semantic-info);
+        }
+
+        .neutron-discovery h3, .neutron-discovery strong {
+            color: var(--semantic-warning);
+        }
+
+        .notation-atom h3, .notation-atom strong {
+            color: var(--semantic-success);
+        }
+
+        .energy-levels h3, .energy-levels strong {
+            color: var(--semantic-error);
+        }
+        
+        .code-block {
+            background-color: #f4f4f4; /* A light grey for code-like blocks */
+            border: 1px solid #ddd;
+            border-left: 5px solid var(--accent-green); /* Highlight border */
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            color: var(--text-primary);
+            overflow-x: auto; /* Enable horizontal scrolling for long lines */
+            border-radius: 5px;
+        }
+        
+        .equation {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 25px 0;
+            padding: 10px;
+            background-color: rgba(var(--primary-blue), 0.05);
+            border: 1px solid rgba(var(--primary-blue), 0.2);
+            border-radius: 5px;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block; /* Stack table elements */
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px; /* Hide table headers visually */
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 10px;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td:before {
+                content: attr(data-label); /* Use data-label for pseudo-elements */
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--primary-blue);
+            }
+            td:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab I: Struktur Atom dan Sistem Periodik Unsur</h1>
+        <h2>A. Struktur Atom</h2>
+
+        <div class="section-card">
+            <h3>Konsep Awal Atom</h3>
+            <p>Sejarah pemahaman kita tentang atom dimulai dengan ilmuwan seperti <strong>John Dalton</strong>. Pada tahun 1807, Dalton mengajukan teori atom yang menyatakan bahwa atom adalah <span class="highlight">partikel terkecil penyusun materi</span>. Menurut teorinya, atom bersifat:</p>
+            <ul>
+                <li>Tidak dapat dibagi lagi (indivisible).</li>
+                <li>Tidak dapat diciptakan.</li>
+                <li>Tidak dapat dimusnahkan.</li>
+                <li>Atom dari suatu unsur yang sama memiliki sifat yang sama dalam segala hal (ukuran, bentuk, dan massa).</li>
+            </ul>
+            <p>Namun, seiring dengan perkembangan ilmu pengetahuan, teori atom modern menyempurnakan pandangan ini. Atom kini diketahui dapat dipecah lagi menjadi partikel-partikel yang lebih dasar, yang dikenal sebagai <strong>partikel subatomik</strong>. Partikel-partikel dasar ini adalah:</p>
+            <ul>
+                <li><strong>Proton</strong>: Bermuatan positif (+).</li>
+                <li><strong>Elektron</strong>: Bermuatan negatif (-).</li>
+                <li><strong>Neutron</strong>: Tidak bermuatan (netral).</li>
+            </ul>
+        </div>
+
+        <div class="section-card electron-discovery">
+            <h2>1. Elektron</h2>
+            <p>Penemuan elektron merupakan salah satu tonggak penting dalam memahami struktur atom. Keberadaan elektron pertama kali ditunjukkan melalui percobaan menggunakan <strong>tabung katode</strong>, sebuah perangkat yang juga menjadi dasar teknologi televisi awal.</p>
+            
+            <h3>Tabung Katode dan Sinar Katode</h3>
+            <p>Tabung katode adalah tabung hampa dari kaca yang memiliki dua elektrode: <strong>katode</strong> (kutub negatif) dan <strong>anode</strong> (kutub positif). Ketika tegangan tinggi diberikan, terjadi aliran radiasi yang tidak terlihat dari kutub negatif (katode) menuju kutub positif (anode). Radiasi inilah yang disebut <strong>sinar katode</strong>.</p>
+            
+            <p><strong>Karl Braun</strong> adalah ilmuwan yang pertama kali menemukan sinar katode.</p>
+            
+            <h3>Penyempurnaan oleh William Crookes</h3>
+            <p>Pada tahun 1879, <strong>William Crookes</strong> melakukan serangkaian eksperimen yang lebih lanjut dan menemukan sifat-sifat penting dari sinar katode:</p>
+            <ul>
+                <li>Sifat sinar katode <em>tidak dipengaruhi</em> oleh jenis kawat elektrode, jenis gas di dalam tabung, maupun bahan yang digunakan untuk menghasilkan arus listrik. Hal ini menunjukkan bahwa sinar katode adalah partikel universal yang ada di semua materi.</li>
+                <li>Sinar katode <em>merambat lurus</em> dari katode ke anode.</li>
+                <li>Sinar katode <em>dapat dibelokkan</em> oleh medan magnet dan medan listrik. Pembelokan ini mengindikasikan bahwa sinar katode memiliki muatan listrik.</li>
+            </ul>
+
+            <h3>Penemuan Elektron oleh Joseph Thomson</h3>
+            <p>Percobaan Crookes kemudian dikembangkan lebih lanjut oleh <strong>Joseph Thomson</strong>. Thomson berhasil mengukur rasio muatan terhadap massa partikel penyusun sinar katode. Ia menemukan bahwa materi yang membentuk sinar katode ini sangatlah kecil dan memiliki <strong>muatan negatif</strong>.</p>
+            <p>Partikel bermuatan negatif inilah yang kemudian dinamai <strong>elektron</strong>. Karena atom secara keseluruhan bermuatan netral, Thomson berhipotesis bahwa atom harus mengandung partikel bermuatan positif untuk menyeimbangkan muatan negatif elektron.</p>
+            <p>Model atom yang dikemukakan Thomson dikenal sebagai model <strong>"Roti Kismis"</strong> (Plum Pudding Model). Dalam model ini, atom digambarkan sebagai <span class="highlight">bola pejal bermuatan positif</span> dengan <span class="highlight">partikel-partikel negatif (elektron) yang tersebar di dalamnya</span>, seperti kismis dalam roti.</p>
+        </div>
+
+        <div class="section-card proton-discovery">
+            <h2>2. Proton</h2>
+            <p>Penemuan partikel bermuatan positif dalam atom dimulai dengan percobaan yang dilakukan oleh <strong>Eugene Goldstein</strong>. Ia menemukan adanya sinar yang bergerak berlawanan arah dengan sinar katode, yang disebut <strong>sinar kanal</strong> atau <strong>sinar anode</strong>. Sinar kanal ini terbukti bermuatan positif.</p>
+            <p><strong>Wilhelm Wien</strong> kemudian mengkonfirmasi bahwa sinar kanal ini merupakan partikel bermuatan positif.</p>
+
+            <h3>Percobaan Ernest Rutherford</h3>
+            <p>Posisi dan sifat partikel bermuatan positif di dalam atom dijelaskan lebih lanjut melalui percobaan ikonik yang dilakukan oleh <strong>Ernest Rutherford</strong>, yang dikenal sebagai <strong>Percobaan Hamburan Alfa (Gold Foil Experiment)</strong>.</p>
+            <p>Rutherford menembakkan partikel alfa (inti helium, bermuatan positif) ke lembaran tipis emas. Hasil pengamatan yang diperoleh adalah:</p>
+            <ul>
+                <li>Sebagian besar partikel alfa <em>menembus lurus</em> lempeng emas tanpa dibelokkan.</li>
+                <li>Sebagian kecil partikel alfa <em>dibelokkan</em> dengan sudut kecil.</li>
+                <li>Sangat sedikit partikel alfa (sekitar 1 dari 8000) yang <em>dipantulkan kembali</em>.</li>
+            </ul>
+            <p>Berdasarkan hasil ini, Rutherford menyimpulkan bahwa:</p>
+            <ul>
+                <li>Sebagian besar bagian atom adalah <strong>ruang hampa</strong>, bukan bola pejal seperti yang dibayangkan Thomson. Ini menjelaskan mengapa sebagian besar partikel alfa menembus lurus.</li>
+                <li>Di dalam atom terdapat inti yang sangat kecil, padat, dan bermuatan <strong>positif</strong>. Inti ini disebut <strong>inti atom (nukleus)</strong>. Partikel-partikel alfa yang dibelokkan atau dipantulkan adalah yang mendekati atau menumbuk inti atom.</li>
+                <li>Elektron-elektron bermuatan negatif bergerak mengelilingi inti atom.</li>
+            </ul>
+            <p>Partikel bermuatan positif di dalam inti atom ini kemudian dinamakan <strong>proton</strong>.</p>
+        </div>
+
+        <div class="section-card neutron-discovery">
+            <h2>3. Neutron</h2>
+            <p>Setelah penemuan proton dan elektron, <strong>Rutherford</strong> masih meyakini adanya partikel lain di dalam atom. Kecurigaan ini muncul karena adanya perbedaan massa atom yang tidak dapat dijelaskan hanya dengan proton dan elektron.</p>
+            <p>Misalnya, perbandingan massa atom hidrogen dan helium adalah sekitar 1:4, sementara perbandingan jumlah protonnya adalah 1:2. Ada "massa yang hilang" yang tidak bisa dijelaskan oleh proton dan elektron saja.</p>
+            <p>Rutherford melakukan percobaan lain dengan menembakkan partikel alfa ke logam boron. Hasilnya, logam boron menghasilkan radiasi yang <em>tidak dibelokkan oleh medan magnet maupun medan listrik</em>. Ini menunjukkan bahwa radiasi tersebut tidak bermuatan listrik (baik positif maupun negatif).</p>
+            <p>Rutherford menyimpulkan bahwa radiasi tak bermuatan ini adalah partikel penyusun atom yang lain, yang kemudian disebut <strong>neutron</strong>.</p>
+            <p>Dengan demikian, melalui serangkaian penemuan ini, kita mengetahui bahwa atom tersusun atas tiga partikel dasar:</p>
+            <ul>
+                <li><strong>Elektron</strong> (bermuatan negatif, di luar inti)</li>
+                <li><strong>Proton</strong> (bermuatan positif, di dalam inti)</li>
+                <li><strong>Neutron</strong> (tidak bermuatan, di dalam inti)</li>
+            </ul>
+
+            <h3>Karakteristik Partikel Dasar Penyusun Atom</h3>
+            <p>Berikut adalah ringkasan karakteristik dari ketiga partikel dasar penyusun atom:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Partikel Dasar</th>
+                        <th>Massa Sesungguhnya (gram)</th>
+                        <th>Massa Relatif (sma)</th>
+                        <th>Muatan Sesungguhnya (coulomb)</th>
+                        <th>Muatan Relatif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Partikel Dasar">Elektron (e)</td>
+                        <td data-label="Massa Sesungguhnya (gram)">9,1096 × 10<sup>-28</sup></td>
+                        <td data-label="Massa Relatif (sma)">0</td>
+                        <td data-label="Muatan Sesungguhnya (coulomb)">1,6 × 10<sup>-19</sup></td>
+                        <td data-label="Muatan Relatif">-1</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Partikel Dasar">Proton (p)</td>
+                        <td data-label="Massa Sesungguhnya (gram)">1,6726 × 10<sup>-24</sup></td>
+                        <td data-label="Massa Relatif (sma)">1</td>
+                        <td data-label="Muatan Sesungguhnya (coulomb)">1,6 × 10<sup>-19</sup></td>
+                        <td data-label="Muatan Relatif">+1</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Partikel Dasar">Neutron (n)</td>
+                        <td data-label="Massa Sesungguhnya (gram)">1,6750 × 10<sup>-24</sup></td>
+                        <td data-label="Massa Relatif (sma)">1</td>
+                        <td data-label="Muatan Sesungguhnya (coulomb)">0</td>
+                        <td data-label="Muatan Relatif">0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="footnote" style="font-size: 0.9em; color: var(--text-tertiary);">*sma: satuan massa atom</p>
+        </div>
+
+        <div class="section-card notation-atom">
+            <h2>4. Notasi Atom</h2>
+            <p>Notasi atom adalah representasi standar untuk mengidentifikasi sebuah atom, yang membedakannya dari atom unsur lain. Notasi ini sangat penting dalam kimia, bahkan digunakan untuk menentukan umur artefak kuno melalui penanggalan karbon (menggunakan isotop).</p>
+            <p>Notasi atom umumnya ditulis sebagai berikut:</p>
+            <div class="code-block">
+                <p style="font-weight: bold; color: var(--primary-blue);"><span style="font-size: 1.5em; vertical-align: super;">A</span>X<span style="font-size: 1.5em; vertical-align: sub;">Z</span></p>
+                <p>Di mana:</p>
+                <ul>
+                    <li><strong>X</strong>: Lambang unsur (misalnya, C untuk Karbon, O untuk Oksigen)</li>
+                    <li><strong>A</strong>: Nomor Massa (jumlah proton + neutron)</li>
+                    <li><strong>Z</strong>: Nomor Atom (jumlah proton)</li>
+                </ul>
+            </div>
+
+            <h3>Nomor Atom (Z)</h3>
+            <p>Nomor atom adalah jumlah <strong>proton</strong> dalam inti atom. Dalam atom netral, jumlah proton sama dengan jumlah <strong>elektron</strong>. Nomor atom adalah <span class="highlight">identitas unik</span> sebuah unsur; setiap unsur memiliki nomor atom yang berbeda. Misalnya, semua atom karbon memiliki nomor atom 6.</p>
+
+            <h3>Nomor Massa (A)</h3>
+            <p>Nomor massa adalah jumlah total <strong>proton dan neutron</strong> di dalam inti atom. Partikel-partikel di dalam inti atom (proton dan neutron) disebut <strong>nukleon</strong>.</p>
+            <p>Nomor Massa (A) = Jumlah Proton (Z) + Jumlah Neutron (n)</p>
+            <p>Sehingga, jumlah neutron dapat dihitung: Jumlah Neutron (n) = Nomor Massa (A) - Nomor Atom (Z)</p>
+
+            <h3>Isotop, Isobar, dan Isoton</h3>
+            <p>Konsep notasi atom juga memperkenalkan kita pada tiga jenis atom yang memiliki hubungan khusus:</p>
+            <ul>
+                <li>
+                    <strong>Isotop</strong>: Atom-atom dari <span class="highlight">unsur yang sama</span> (memiliki nomor atom Z yang sama), tetapi memiliki <span class="highlight">nomor massa A yang berbeda</span> (karena jumlah neutronnya berbeda).
+                    <p>Contoh: Karbon-12 (<span style="font-size: 1.2em;"><sup>12</sup>C<sub>6</sub></span>) dan Karbon-14 (<span style="font-size: 1.2em;"><sup>14</sup>C<sub>6</sub></span>). Keduanya adalah karbon (Z=6), tetapi Karbon-12 memiliki 6 neutron (12-6), sedangkan Karbon-14 memiliki 8 neutron (14-6). Isotop <sup>14</sup>C sering digunakan dalam penanggalan radiokarbon untuk menentukan umur fosil atau artefak.</p>
+                </li>
+                <li>
+                    <strong>Isobar</strong>: Atom-atom dari <span class="highlight">unsur yang berbeda</span> (memiliki nomor atom Z yang berbeda), tetapi memiliki <span class="highlight">nomor massa A yang sama</span>.
+                    <p>Contoh: Kalium-40 (<span style="font-size: 1.2em;"><sup>40</sup>K<sub>19</sub></span>) dan Argon-40 (<span style="font-size: 1.2em;"><sup>40</sup>Ar<sub>20</sub></span>). Keduanya memiliki nomor massa 40, tetapi Kalium (Z=19) dan Argon (Z=20) adalah unsur yang berbeda.</p>
+                </li>
+                <li>
+                    <strong>Isoton</strong>: Atom-atom dari <span class="highlight">unsur yang berbeda</span> (memiliki nomor atom Z yang berbeda), tetapi memiliki <span class="highlight">jumlah neutron yang sama</span>.
+                    <p>Contoh: Natrium-23 (<span style="font-size: 1.2em;"><sup>23</sup>Na<sub>11</sub></span>) dan Magnesium-24 (<span style="font-size: 1.2em;"><sup>24</sup>Mg<sub>12</sub></span>).
+                    <ul>
+                        <li>Natrium-23: Neutron = 23 - 11 = 12</li>
+                        <li>Magnesium-24: Neutron = 24 - 12 = 12</li>
+                    </ul>
+                    Keduanya memiliki jumlah neutron yang sama, yaitu 12, meskipun merupakan unsur yang berbeda.</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card energy-levels">
+            <h2>5. Tingkat Energi (Model Atom Bohr)</h2>
+            <p>Model atom Rutherford, meskipun revolusioner, memiliki kelemahan dalam menjelaskan mengapa elektron tidak jatuh ke inti dan bagaimana atom memancarkan spektrum garis yang khas. Untuk mengatasi kelemahan ini, <strong>Niels Bohr</strong> pada tahun 1913 mengajukan model atom baru yang menggabungkan teori Rutherford dengan hipotesis kuantum Planck.</p>
+            <p>Bohr mengemukakan empat postulat utama:</p>
+            <ol>
+                <li>
+                    <strong>Elektron dalam Orbit Stabil (Stasioner)</strong>: Elektron mengelilingi inti atom dalam lintasan atau orbit tertentu yang stabil, tanpa memancarkan atau menyerap energi. Orbit-orbit ini disebut sebagai <strong>kulit atom</strong> atau <strong>tingkat energi</strong>, dan diberi nomor bulat (n = 1, 2, 3, ...) dimulai dari yang terdekat dengan inti.
+                </li>
+                <li>
+                    <strong>Energi Elektron Tetap dalam Orbit</strong>: Selama elektron berada dalam satu lintasan (orbit) tertentu, energinya tetap konstan.
+                </li>
+                <li>
+                    <strong>Perpindahan Elektron dan Perubahan Energi</strong>: Elektron hanya dapat berpindah dari satu lintasan ke lintasan lainnya dengan menyerap atau melepaskan sejumlah energi yang terkuantisasi (tertentu).
+                    <ul>
+                        <li>Jika elektron berpindah dari tingkat energi rendah ke tinggi, ia <em>menyerap</em> energi.</li>
+                        <li>Jika elektron berpindah dari tingkat energi tinggi ke rendah, ia <em>melepaskan</em> energi (dalam bentuk foton).</li>
+                    </ul>
+                    Besarnya perubahan energi (ΔE) ini dihubungkan dengan frekuensi (ν) radiasi yang diserap atau dilepaskan melalui <strong>konstanta Planck (h)</strong>:
+                    <div class="equation">
+                        ΔE = h &times; ν
+                    </div>
+                    Di mana:<br>
+                    ΔE = energi (Joule)<br>
+                    h = konstanta Planck (6,63 &times; 10<sup>-34</sup> J·detik<sup>-1</sup>)<br>
+                    ν = frekuensi (Hertz atau detik<sup>-1</sup>)
+                </li>
+                <li>
+                    <strong>Momentum Sudut Elektron</strong>: Lintasan elektron memiliki momentum sudut yang terkuantisasi, artinya hanya nilai-nilai tertentu yang diizinkan.
+                </li>
+            </ol>
+            <p>Model Bohr berhasil menjelaskan spektrum garis atom hidrogen dengan sangat baik, menunjukkan bahwa tingkat energi elektron dalam atom adalah diskrit (tertentu) dan bukan kontinu.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

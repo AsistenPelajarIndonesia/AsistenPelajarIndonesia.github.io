@@ -1,0 +1,491 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerak Parabola (Proyektil) - Fisika Kelas XI</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        section {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-divider);
+            margin-bottom: 20px;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.8em;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            color: var(--text-tertiary);
+        }
+
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--semantic-info);
+            font-size: 0.95em;
+        }
+
+        .equation-block {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.1em;
+            overflow-x: auto; /* For long equations */
+        }
+
+        .equation-block span {
+            display: block;
+            margin: 5px 0;
+            font-family: 'Georgia', serif; /* A bit more formal for equations */
+            color: var(--text-primary);
+        }
+
+        /* Interactive Elements - Details/Summary for Collapsible Sections */
+        details {
+            background-color: #fdfdfd;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            transition: background-color 0.3s ease;
+        }
+
+        details:hover {
+            background-color: #f7f7f7;
+        }
+
+        summary {
+            font-weight: bold;
+            color: var(--primary-blue);
+            cursor: pointer;
+            outline: none; /* Remove default focus outline */
+            padding: 5px 0;
+            font-size: 1.1em;
+            user-select: none; /* Prevent text selection on click */
+        }
+
+        summary::-webkit-details-marker {
+            display: none; /* Hide default arrow */
+        }
+        summary::before {
+            content: '►'; /* Custom arrow */
+            display: inline-block;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+            color: var(--accent-green);
+        }
+        details[open] summary::before {
+            content: '▼';
+            transform: rotate(90deg);
+            color: var(--semantic-error); /* Change color when open */
+        }
+
+        details[open] summary {
+            color: var(--accent-green); /* Text color changes when open */
+        }
+
+        details p, details ul, details ol {
+            padding-left: 20px;
+            border-left: 2px solid var(--border-divider);
+            margin-top: 15px;
+        }
+
+        .note {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p, li {
+                font-size: 0.95em;
+            }
+            .equation-block {
+                padding: 10px;
+                font-size: 1em;
+            }
+            details {
+                padding: 10px;
+            }
+            summary {
+                font-size: 1em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            body {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gerak Parabola (Proyektil)</h1>
+        <p>Bab 2: Kinematika - Fisika Kelas XI</p>
+    </header>
+
+    <main class="container">
+        <section id="introduction">
+            <h2>Pengantar Gerak Parabola</h2>
+            <p>Gerak parabola, sering juga disebut gerak proyektil, adalah kombinasi dari dua jenis gerak yang terjadi secara bersamaan dan saling tegak lurus:</p>
+            <ol>
+                <li><strong>Gerak Lurus Beraturan (GLB)</strong> pada komponen horizontal.</li>
+                <li><strong>Gerak Lurus Beraturan Berubah (GLBB)</strong> pada komponen vertikal, di bawah pengaruh gravitasi.</li>
+            </ol>
+            <p>Gerak ini menghasilkan lintasan berbentuk parabola. Contoh nyata dari gerak parabola adalah lemparan bola basket, tembakan meriam, atau air yang keluar dari selang.</p>
+            <h3>Asumsi dalam Gerak Parabola Ideal</h3>
+            <p>Untuk menyederhanakan analisis, gerak parabola ideal menggunakan beberapa asumsi:</p>
+            <ul>
+                <li><strong>Hambatan Udara Diabaikan:</strong> Pengaruh gesekan udara terhadap benda diasumsikan tidak ada atau sangat kecil sehingga dapat diabaikan.</li>
+                <li><strong>Percepatan Gravitasi Konstan:</strong> Percepatan gravitasi (<code>g</code>) diasumsikan konstan di seluruh lintasan gerak, dan arahnya selalu vertikal ke bawah. Nilai umum yang digunakan adalah <code>9.8 m/s²</code> atau <code>10 m/s²</code> untuk kemudahan perhitungan.</li>
+                <li><strong>Rotasi Bumi Diabaikan:</strong> Pengaruh rotasi bumi terhadap gerak benda diasumsikan tidak ada.</li>
+            </ul>
+        </section>
+
+        <section id="components">
+            <h2>Komponen Gerak</h2>
+            <p>Kunci dalam menganalisis gerak parabola adalah memecah gerak benda menjadi dua komponen yang saling tegak lurus: horizontal (sumbu-X) dan vertikal (sumbu-Y).</p>
+
+            <h3>1. Kecepatan Awal (<code>v₀</code>)</h3>
+            <p>Jika benda diluncurkan dengan kecepatan awal <code>v₀</code> dan membentuk sudut elevasi <code>θ</code> terhadap horizontal, maka kecepatan awal ini dapat diuraikan menjadi komponen horizontal dan vertikal:</p>
+            <ul>
+                <li><strong>Komponen Kecepatan Awal Horizontal (<code>v₀x</code>):</strong><br>
+                    <div class="equation-block">
+                        <span><code>v₀x = v₀ cos(θ)</code></span>
+                    </div>
+                </li>
+                <li><strong>Komponen Kecepatan Awal Vertikal (<code>v₀y</code>):</strong><br>
+                    <div class="equation-block">
+                        <span><code>v₀y = v₀ sin(θ)</code></span>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>2. Gerak Horizontal (Sumbu-X)</h3>
+            <p>Pada arah horizontal, tidak ada gaya eksternal yang bekerja (mengabaikan hambatan udara), sehingga percepatan horizontal adalah nol (<code>ax = 0</code>). Ini berarti gerak pada sumbu-X adalah <strong>Gerak Lurus Beraturan (GLB)</strong>.</p>
+            <ul>
+                <li><strong>Kecepatan Horizontal pada Waktu <code>t</code> (<code>vx</code>):</strong><br>
+                    <div class="equation-block">
+                        <span><code>vx(t) = v₀x = v₀ cos(θ)</code></span>
+                    </div>
+                    <em>Kecepatan horizontal selalu konstan sepanjang lintasan.</em>
+                </li>
+                <li><strong>Posisi Horizontal pada Waktu <code>t</code> (<code>x</code>):</strong><br>
+                    <div class="equation-block">
+                        <span><code>x(t) = x₀ + v₀x ⋅ t</code></span>
+                        <span><em>Jika dimulai dari <code>x₀ = 0</code>, maka <code>x(t) = v₀ cos(θ) ⋅ t</code></em></span>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>3. Gerak Vertikal (Sumbu-Y)</h3>
+            <p>Pada arah vertikal, benda dipengaruhi oleh percepatan gravitasi (<code>g</code>) yang selalu mengarah ke bawah. Ini berarti gerak pada sumbu-Y adalah <strong>Gerak Lurus Beraturan Berubah (GLBB)</strong> dengan percepatan <code>ay = -g</code> (negatif karena arahnya berlawanan dengan arah positif sumbu-Y ke atas).</p>
+            <ul>
+                <li><strong>Kecepatan Vertikal pada Waktu <code>t</code> (<code>vy</code>):</strong><br>
+                    <div class="equation-block">
+                        <span><code>vy(t) = v₀y - g ⋅ t</code></span>
+                        <span><code>vy(t) = v₀ sin(θ) - g ⋅ t</code></span>
+                    </div>
+                </li>
+                <li><strong>Posisi Vertikal pada Waktu <code>t</code> (<code>y</code>):</strong><br>
+                    <div class="equation-block">
+                        <span><code>y(t) = y₀ + v₀y ⋅ t - ½ g ⋅ t²</code></span>
+                        <span><em>Jika dimulai dari <code>y₀ = 0</code>, maka <code>y(t) = v₀ sin(θ) ⋅ t - ½ g ⋅ t²</code></em></span>
+                    </div>
+                </li>
+                <li><strong>Hubungan Kecepatan Vertikal dan Posisi Vertikal (tanpa waktu):</strong><br>
+                    <div class="equation-block">
+                        <span><code>vy² = v₀y² - 2g (y - y₀)</code></span>
+                        <span><em>Jika dimulai dari <code>y₀ = 0</code>, maka <code>vy² = v₀y² - 2gy</code></em></span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="key-points">
+            <h2>Titik-Titik Penting dan Persamaan Khusus</h2>
+
+            <details>
+                <summary>1. Kecepatan pada Titik Tertinggi (Puncak)</summary>
+                <div>
+                    <p>Pada titik tertinggi lintasan (puncak), benda sesaat berhenti bergerak secara vertikal sebelum mulai jatuh kembali. Oleh karena itu, komponen kecepatan vertikalnya adalah nol (<code>vy = 0</code>).</p>
+                    <ul>
+                        <li><strong>Kecepatan Horizontal (<code>vx_puncak</code>):</strong><br>
+                            <div class="equation-block">
+                                <span><code>vx_puncak = v₀x = v₀ cos(θ)</code></span>
+                            </div>
+                            <em>Kecepatan horizontal tetap konstan.</em>
+                        </li>
+                        <li><strong>Kecepatan Vertikal (<code>vy_puncak</code>):</strong><br>
+                            <div class="equation-block">
+                                <span><code>vy_puncak = 0</code></span>
+                            </div>
+                        </li>
+                        <li><strong>Kecepatan Total pada Puncak (<code>v_puncak</code>):</strong><br>
+                            <div class="equation-block">
+                                <span><code>v_puncak = √(vx_puncak² + vy_puncak²) = √( (v₀ cos(θ))² + 0² ) = v₀ cos(θ)</code></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>2. Waktu Mencapai Tinggi Maksimum (<code>t_puncak</code>)</summary>
+                <div>
+                    <p>Waktu yang dibutuhkan benda untuk mencapai titik tertinggi dapat ditemukan dengan mengatur <code>vy = 0</code> dalam persamaan kecepatan vertikal.</p>
+                    <div class="equation-block">
+                        <span><code>vy = v₀y - g ⋅ t_puncak</code></span>
+                        <span><code>0 = v₀ sin(θ) - g ⋅ t_puncak</code></span>
+                        <span><code>t_puncak = (v₀ sin(θ)) / g</code></span>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>3. Tinggi Maksimum (<code>Y_max</code>)</summary>
+                <div>
+                    <p>Tinggi maksimum yang dicapai benda diukur dari titik awal. Ini dapat ditemukan dengan mensubstitusikan <code>t_puncak</code> ke dalam persamaan posisi vertikal, atau menggunakan persamaan <code>vy² = v₀y² - 2gy</code> dengan <code>vy = 0</code>.</p>
+                    <div class="equation-block">
+                        <span><code>Y_max = (v₀y²) / (2g)</code></span>
+                        <span><code>Y_max = (v₀² sin²(θ)) / (2g)</code></span>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>4. Waktu Total di Udara (Waktu Jangkauan, <code>T</code>)</summary>
+                <div>
+                    <p>Waktu total benda berada di udara sebelum kembali ke ketinggian awal (jika dimulai dari permukaan tanah). Karena lintasan parabola simetris (jika titik awal dan akhir pada ketinggian yang sama), waktu naik sama dengan waktu turun.</p>
+                    <div class="equation-block">
+                        <span><code>T = 2 ⋅ t_puncak</code></span>
+                        <span><code>T = (2 ⋅ v₀ sin(θ)) / g</code></span>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>5. Jangkauan Horizontal Maksimum (<code>X_max</code>)</summary>
+                <div>
+                    <p>Jarak horizontal terjauh yang dicapai benda dari titik awal ketika kembali ke ketinggian awal. Ini dihitung dengan mengalikan kecepatan horizontal dengan waktu total di udara.</p>
+                    <div class="equation-block">
+                        <span><code>X_max = v₀x ⋅ T</code></span>
+                        <span><code>X_max = (v₀ cos(θ)) ⋅ (2 ⋅ v₀ sin(θ)) / g</code></span>
+                        <span><code>X_max = (v₀² ⋅ 2 sin(θ) cos(θ)) / g</code></span>
+                        <span><em>Menggunakan identitas trigonometri <code>sin(2θ) = 2 sin(θ) cos(θ)</code>:</em></span>
+                        <span><code>X_max = (v₀² sin(2θ)) / g</code></span>
+                    </div>
+                    <p>Dari persamaan <code>X_max = (v₀² sin(2θ)) / g</code>, kita bisa melihat bahwa jangkauan horizontal akan maksimum ketika <code>sin(2θ)</code> mencapai nilai maksimumnya, yaitu <code>1</code>. Ini terjadi ketika <code>2θ = 90°</code>, atau <code>θ = 45°</code>.</p>
+                </div>
+            </details>
+        </section>
+
+        <section id="summary-equations">
+            <h2>Ringkasan Persamaan Gerak Parabola</h2>
+            <div class="equation-block">
+                <h3>Kecepatan Awal:</h3>
+                <span><code>v₀x = v₀ cos(θ)</code></span>
+                <span><code>v₀y = v₀ sin(θ)</code></span>
+            </div>
+            <div class="equation-block">
+                <h3>Posisi pada Waktu <code>t</code> (jika <code>x₀=0, y₀=0</code>):</h3>
+                <span><code>x(t) = v₀ cos(θ) ⋅ t</code></span>
+                <span><code>y(t) = v₀ sin(θ) ⋅ t - ½ g ⋅ t²</code></span>
+            </div>
+            <div class="equation-block">
+                <h3>Kecepatan pada Waktu <code>t</code>:</h3>
+                <span><code>vx(t) = v₀ cos(θ)</code></span>
+                <span><code>vy(t) = v₀ sin(θ) - g ⋅ t</code></span>
+            </div>
+            <div class="equation-block">
+                <h3>Waktu Mencapai Puncak:</h3>
+                <span><code>t_puncak = (v₀ sin(θ)) / g</code></span>
+            </div>
+            <div class="equation-block">
+                <h3>Tinggi Maksimum:</h3>
+                <span><code>Y_max = (v₀² sin²(θ)) / (2g)</code></span>
+            </div>
+            <div class="equation-block">
+                <h3>Waktu Total di Udara:</h3>
+                <span><code>T = (2 ⋅ v₀ sin(θ)) / g</code></span>
+            </div>
+            <div class="equation-block">
+                <h3>Jangkauan Horizontal Maksimum:</h3>
+                <span><code>X_max = (v₀² sin(2θ)) / g</code></span>
+            </div>
+        </section>
+
+        <section id="special-cases">
+            <h2>Kasus Khusus Gerak Parabola</h2>
+            <p>Beberapa kondisi awal dapat menghasilkan bentuk lintasan yang berbeda namun tetap merupakan bagian dari gerak parabola:</p>
+            <ul>
+                <li>
+                    <h3>Gerak Horizontal dari Ketinggian (<code>θ = 0°</code>)</h3>
+                    <p>Jika benda dilempar mendatar dari ketinggian (misalnya, bola yang dilempar dari meja), maka sudut elevasi <code>θ = 0°</code>. Persamaan akan menjadi:</p>
+                    <ul>
+                        <li><code>v₀x = v₀ cos(0°) = v₀</code></li>
+                        <li><code>v₀y = v₀ sin(0°) = 0</code></li>
+                        <li><code>x(t) = v₀ ⋅ t</code></li>
+                        <li><code>y(t) = y₀ - ½ g ⋅ t²</code> (karena <code>v₀y = 0</code>, dan <code>y₀</code> adalah ketinggian awal)</li>
+                        <li><code>vx(t) = v₀</code></li>
+                        <li><code>vy(t) = -g ⋅ t</code></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Gerak Vertikal (<code>θ = 90°</code>)</h3>
+                    <p>Jika benda dilempar lurus ke atas (gerak vertikal ke atas), maka sudut elevasi <code>θ = 90°</code>. Ini sebenarnya adalah kasus GLBB vertikal, di mana komponen horizontal adalah nol.</p>
+                    <ul>
+                        <li><code>v₀x = v₀ cos(90°) = 0</code></li>
+                        <li><code>v₀y = v₀ sin(90°) = v₀</code></li>
+                        <li><code>x(t) = 0</code> (tidak ada perpindahan horizontal)</li>
+                        <li><code>y(t) = y₀ + v₀ ⋅ t - ½ g ⋅ t²</code></li>
+                        <li><code>vx(t) = 0</code></li>
+                        <li><code>vy(t) = v₀ - g ⋅ t</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="conclusion">
+            <h2>Pentingnya Memahami Gerak Parabola</h2>
+            <p>Memahami gerak parabola sangat fundamental dalam fisika karena penerapannya luas dalam berbagai bidang, mulai dari olahraga (lintasan bola, lompat jauh), rekayasa (desain peluncuran roket, lintasan proyektil), hingga astronomi (lintasan komet). Dengan memecah gerak menjadi komponen-komponen yang lebih sederhana, kita dapat menganalisis dan memprediksi posisi serta kecepatan benda pada setiap saat.</p>
+            <div class="note">
+                <p><strong>Tips Belajar:</strong> Latihlah pemahaman Anda dengan mencoba menyelesaikan masalah-masalah fisika terkait gerak parabola. Pastikan Anda memahami setiap variabel dan konsep yang digunakan, serta bagaimana persamaan diturunkan dan diterapkan dalam berbagai skenario.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Materi Fisika Kelas XI. Dirancang untuk membantu siswa memahami Gerak Parabola.</p>
+    </footer>
+</body>
+</html>
+```

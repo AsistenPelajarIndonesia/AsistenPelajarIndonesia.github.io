@@ -1,0 +1,391 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluida Statis - Fisika Kelas XI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: var(--background-canvas);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        section {
+            background-color: #FFFFFF;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-divider);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .formula {
+            background-color: #f0f8ff;
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: var(--primary-blue);
+            border-radius: 4px;
+            overflow-x: auto; /* For long formulas */
+        }
+
+        .formula span {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .definition-box {
+            background-color: #e3f2fd;
+            border: 1px solid var(--semantic-info);
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+        }
+
+        .definition-box strong {
+            color: var(--semantic-info);
+            font-size: 1.1em;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .concept-card {
+            background-color: #fffde7; /* Secondary accent amber very light */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .concept-card strong {
+            color: var(--secondary-accent-amber);
+        }
+
+        .important-note {
+            background-color: #ffebee; /* Semantic error very light */
+            border-left: 5px solid var(--semantic-error);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .interactive-section {
+            background-color: #f7f7f7;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px dashed var(--border-divider);
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .interactive-section p {
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .formula, .definition-box, .concept-card, .important-note {
+                padding: 10px 15px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 25px 15px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluida Statis</h1>
+            <p>Memahami Perilaku Fluida dalam Keadaan Diam</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Pengantar Fluida Statis</h2>
+                <p>Dalam kajian fisika, materi dapat dikelompokkan menjadi tiga wujud utama: padat, cair, dan gas. Konsep <strong>fluida</strong> merujuk pada zat yang mampu mengalir, mencakup baik zat cair maupun gas. Fluida dapat dibagi menjadi dua kategori besar berdasarkan keadaannya: <strong>Fluida Statis</strong>, yang membahas fluida dalam kondisi diam, dan <strong>Fluida Dinamis</strong>, yang mengkaji fluida dalam kondisi bergerak.</p>
+                <p>Bagian ini akan fokus pada pemahaman perilaku fluida ketika tidak bergerak, menjelajahi konsep-konsep dasar seperti tekanan dan gaya apung yang esensial untuk menjelaskan berbagai fenomena di sekitar kita, dari cara bendungan menahan air hingga mengapa kapal dapat mengapung.</p>
+            </section>
+
+            <section>
+                <h2>Tekanan (Pressure)</h2>
+                <p>Konsep fundamental dalam fluida statis adalah <strong>tekanan</strong>. Tekanan didefinisikan sebagai gaya yang bekerja tegak lurus pada suatu permukaan per satuan luas permukaan tersebut. Ini adalah besaran skalar yang menggambarkan distribusi gaya pada suatu area.</p>
+
+                <div class="definition-box">
+                    <strong>Definisi Tekanan:</strong>
+                    <p>Tekanan (<span style="color: var(--primary-blue);">p</span>) adalah rasio gaya (<span style="color: var(--primary-blue);">F</span>) yang bekerja tegak lurus terhadap suatu permukaan dan luas permukaan (<span style="color: var(--primary-blue);">A</span>) tempat gaya tersebut bekerja.</p>
+                </div>
+
+                <div class="formula">
+                    <p><strong>Rumus Tekanan:</strong></p>
+                    <p>p = F / A</p>
+                    <span>Dengan:</span>
+                    <span><strong>p</strong> = tekanan (Nm⁻² atau Pascal, Pa)</span>
+                    <span><strong>F</strong> = gaya (Newton, N)</span>
+                    <span><strong>A</strong> = luas permukaan (meter², m²)</span>
+                </div>
+
+                <h3>Penerapan Konsep Tekanan</h3>
+                <p>Untuk memahami tekanan lebih dalam, mari kita bayangkan dua skenario yang kontras:</p>
+                <ul>
+                    <li>
+                        <strong>Gajah vs. Sepatu Hak Tinggi:</strong>
+                        <p>Seekor gajah dengan massa beberapa ton berdiri di atas keempat kakinya. Meskipun massanya sangat besar, luas permukaan telapak kakinya yang besar menyebabkan tekanan yang relatif tersebar di tanah. Bandingkan dengan seorang karyawati bermassa 50 kg yang mengenakan sepatu hak tinggi. Seluruh beratnya terkonsentrasi pada area yang sangat kecil (ujung hak sepatu), menghasilkan tekanan yang jauh lebih besar pada tanah dibandingkan tekanan yang dihasilkan oleh satu kaki gajah. Hal ini menunjukkan bahwa tekanan tidak hanya bergantung pada gaya, tetapi juga pada luas area tempat gaya tersebut didistribusikan.</p>
+                    </li>
+                    <li>
+                        <strong>Paku:</strong>
+                        <p>Paku dirancang dengan ujung yang sangat runcing. Ketika paku dipukul, gaya yang diberikan pada kepalanya disalurkan ke ujung yang kecil, menciptakan tekanan yang sangat besar. Tekanan tinggi inilah yang memungkinkan paku menembus benda lain seperti kayu dengan mudah.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Tekanan Hidrostatis</h2>
+                <p><strong>Tekanan hidrostatis</strong> adalah tekanan yang dihasilkan oleh zat cair diam (fluida statis) akibat beratnya sendiri pada suatu kedalaman tertentu. Tekanan ini bekerja ke segala arah pada titik kedalaman yang sama di dalam fluida.</p>
+
+                <h3>Faktor-faktor yang Memengaruhi Tekanan Hidrostatis</h3>
+                <p>Tekanan hidrostatis dipengaruhi oleh tiga faktor utama:</p>
+                <ul>
+                    <li><strong>Massa Jenis Fluida (<span style="color: var(--primary-blue);">ρ</span>):</strong> Semakin besar massa jenis suatu fluida, semakin besar tekanan hidrostatis yang dihasilkannya pada kedalaman yang sama. Fluida yang lebih "berat" (lebih padat) akan memberikan tekanan yang lebih besar.</li>
+                    <li><strong>Percepatan Gravitasi (<span style="color: var(--primary-blue);">g</span>):</strong> Tekanan hidrostatis berbanding lurus dengan percepatan gravitasi. Di Bumi, nilai <em>g</em> umumnya dianggap konstan (sekitar 9.8 m/s² atau 10 m/s² untuk perhitungan praktis).</li>
+                    <li><strong>Kedalaman (<span style="color: var(--primary-blue);">h</span>):</strong> Ini adalah faktor yang paling intuitif. Semakin dalam suatu titik di dalam fluida, semakin besar tekanan hidrostatis yang dialaminya. Ini karena ada lebih banyak volume fluida (dan, karenanya, massa serta berat) di atas titik tersebut.</li>
+                </ul>
+
+                <div class="concept-card">
+                    <strong>Analogi Tekanan Hidrostatis: Tumpukan Barang</strong>
+                    <p>Bayangkan tumpukan buku atau kotak. Buku paling bawah akan merasakan tekanan terbesar karena menopang berat semua buku di atasnya. Semakin tinggi tumpukan (semakin dalam posisi buku), semakin besar tekanan yang dialami buku tersebut. Ini persis analogi dengan tekanan hidrostatis: lapisan fluida di atas memberikan tekanan pada lapisan fluida di bawahnya.</p>
+                </div>
+
+                <h3>Rumus Tekanan Hidrostatis</h3>
+                <p>Tekanan total pada suatu kedalaman <span style="color: var(--primary-blue);">h</span> di dalam fluida di bawah permukaan terbuka tidak hanya mencakup tekanan hidrostatis, tetapi juga <strong>tekanan udara luar (<span style="color: var(--primary-blue);">P₀</span>)</strong> yang bekerja pada permukaan fluida. Oleh karena itu, tekanan total (<span style="color: var(--primary-blue);">P_total</span>) dirumuskan sebagai:</p>
+
+                <div class="formula">
+                    <p><strong>P_total = P₀ + ρgh</strong></p>
+                    <span>Dengan:</span>
+                    <span><strong>P_total</strong> = tekanan total pada kedalaman h (Pa)</span>
+                    <span><strong>P₀</strong> = tekanan udara luar (Pa)</span>
+                    <span><strong>ρ</strong> = massa jenis zat cair (kg/m³)</span>
+                    <span><strong>g</strong> = percepatan gravitasi (m/s²)</span>
+                    <span><strong>h</strong> = kedalaman suatu posisi dari permukaan air (m)</span>
+                </div>
+
+                <h3>Fenomena Gelembung Udara</h3>
+                <p>Pernahkah Anda memperhatikan gelembung udara yang muncul dari dasar kolam akan membesar saat bergerak ke permukaan? Fenomena ini adalah demonstrasi langsung dari tekanan hidrostatis. Saat gelembung naik, kedalamannya berkurang, yang berarti tekanan hidrostatis yang menekan gelembung juga berkurang. Dengan tekanan luar yang lebih rendah, gelembung dapat mengembang dan membesar.</p>
+
+                <h3>Pengukuran Tekanan Udara Luar: Barometer Torricelli</h3>
+                <p>Konsep tekanan hidrostatis juga digunakan untuk mengukur tekanan atmosfer (udara luar) menggunakan <strong>barometer Torricelli</strong>. Barometer sederhana ini terdiri dari tabung kaca tertutup di satu ujung, diisi penuh dengan raksa, dan kemudian dibalik serta dicelupkan ke dalam wadah berisi raksa terbuka ke atmosfer. Raksa di dalam tabung akan turun hingga mencapai ketinggian tertentu (<span style="color: var(--primary-blue);">h</span>) di atas permukaan raksa di wadah.</p>
+                <p>Ruang di atas kolom raksa dalam tabung adalah vakum (tekanan mendekati nol). Tekanan pada permukaan raksa di dalam wadah adalah tekanan udara luar (<span style="color: var(--primary-blue);">P₀</span>). Pada kedalaman yang sama di dalam raksa, tekanan harus sama. Oleh karena itu, tekanan udara luar (<span style="color: var(--primary-blue);">P₀</span>) akan setara dengan tekanan hidrostatis kolom raksa setinggi <span style="color: var(--primary-blue);">h</span>.</p>
+
+                <div class="formula">
+                    <p><strong>P₀ = ρ_raksa · g · h</strong></p>
+                    <span>Dengan:</span>
+                    <span><strong>P₀</strong> = tekanan udara luar (Pa)</span>
+                    <span><strong>ρ_raksa</strong> = massa jenis raksa (sekitar 13600 kg/m³)</span>
+                    <span><strong>g</strong> = percepatan gravitasi (m/s²)</span>
+                    <span><strong>h</strong> = ketinggian kolom raksa (m)</span>
+                </div>
+                <p>Pada kondisi permukaan laut standar, ketinggian kolom raksa (h) yang terukur adalah sekitar 76 cm atau 0.76 m. Dengan nilai <span style="color: var(--primary-blue);">ρ_raksa = 13600 kg/m³</span> dan <span style="color: var(--primary-blue);">g = 9.8 m/s²</span>, kita mendapatkan:</p>
+                <div class="formula">
+                    <p>P₀ = 13600 kg/m³ × 9.8 m/s² × 0.76 m ≈ 1.01 × 10⁵ Pa</p>
+                </div>
+                <p>Nilai ini adalah tekanan udara luar rata-rata di permukaan laut, sering disebut sebagai 1 atmosfer (atm) atau 76 cmHg.</p>
+            </section>
+
+            <section>
+                <h2>Prinsip Archimedes dan Gaya Apung</h2>
+                <p>Mengapa kapal baja yang sangat berat bisa mengapung di air, sementara sebatang paku kecil dari baja yang sama bisa tenggelam? Jawabannya terletak pada <strong>Prinsip Archimedes</strong> dan konsep <strong>Gaya Apung</strong>.</p>
+
+                <h3>Gaya Apung (Buoyant Force)</h3>
+                <p>Ketika suatu benda dicelupkan sebagian atau seluruhnya ke dalam fluida, fluida tersebut akan memberikan gaya dorong ke atas pada benda. Gaya dorong ke atas ini disebut <strong>gaya apung (<span style="color: var(--primary-blue);">F_A</span>)</strong> atau gaya angkat ke atas.</p>
+                <p>Secara intuitif, kita merasakan gaya apung ini saat mengangkat benda di dalam air; benda terasa lebih ringan. Berat benda di dalam fluida (<span style="color: var(--primary-blue);">W_a</span>) akan lebih kecil daripada beratnya di udara (<span style="color: var(--primary-blue);">W_u</span>). Selisih berat inilah yang merupakan gaya apung:</p>
+                <div class="formula">
+                    <p><strong>F_A = W_u - W_a</strong></p>
+                </div>
+
+                <h3>Pernyataan Prinsip Archimedes</h3>
+                <p>Prinsip Archimedes menyatakan bahwa:</p>
+                <div class="definition-box">
+                    <strong>"Gaya ke atas (gaya apung) yang dialami oleh suatu benda yang dicelupkan ke dalam fluida sama dengan berat fluida yang dipindahkan oleh benda tersebut."</strong>
+                </div>
+                <p>Ini berarti, ketika sebuah benda memasuki fluida, ia akan "mengusir" atau "memindahkan" sejumlah volume fluida. Berat dari fluida yang dipindahkan inilah yang menjadi besar gaya apung yang bekerja pada benda.</p>
+
+                <h3>Rumus Gaya Apung Berdasarkan Prinsip Archimedes</h3>
+                <p>Karena berat fluida yang dipindahkan adalah massa fluida yang dipindahkan (<span style="color: var(--primary-blue;">m_f</span>) dikalikan percepatan gravitasi (<span style="color: var(--primary-blue;">g</span>), dan massa fluida yang dipindahkan dapat dihitung dari massa jenis fluida (<span style="color: var(--primary-blue;">ρ_f</span>) dikalikan volume fluida yang dipindahkan (<span style="color: var(--primary-blue);">V_f</span>), maka:</p>
+                <div class="formula">
+                    <p><strong>F_A = W_f = m_f · g</strong></p>
+                    <p>Karena m_f = ρ_f · V_f (dimana V_f adalah volume fluida yang dipindahkan, yang sama dengan volume benda yang tercelup), maka:</p>
+                    <p><strong>F_A = ρ_f · V_tercelup · g</strong></p>
+                    <span>Dengan:</span>
+                    <span><strong>F_A</strong> = gaya apung (N)</span>
+                    <span><strong>ρ_f</strong> = massa jenis fluida (kg/m³)</span>
+                    <span><strong>V_tercelup</strong> = volume benda yang tercelup dalam fluida (m³)</span>
+                    <span><strong>g</strong> = percepatan gravitasi (m/s²)</span>
+                </div>
+
+                <h3>Kondisi Benda dalam Fluida</h3>
+                <p>Bagaimana sebuah benda berperilaku (terapung, melayang, atau tenggelam) di dalam fluida bergantung pada perbandingan antara gaya berat benda (<span style="color: var(--primary-blue);">W</span>) dan gaya apung (<span style="color: var(--primary-blue);">F_A</span>), atau ekuivalennya, perbandingan antara massa jenis benda (<span style="color: var(--primary-blue);">ρ_benda</span>) dan massa jenis fluida (<span style="color: var(--primary-blue);">ρ_fluida</span>).</p>
+
+                <h4>1. Benda Terapung (Floating)</h4>
+                <div class="concept-card">
+                    <p>Benda akan <strong>terapung</strong> jika gaya apung yang dialaminya lebih besar atau sama dengan berat benda (<span style="color: var(--primary-blue);">F_A ≥ W</span>). Dalam kasus ini, hanya sebagian benda yang tercelup dalam fluida.</p>
+                    <p>Secara ekuivalen, benda terapung jika <strong>massa jenis rata-rata benda lebih kecil daripada massa jenis fluida (<span style="color: var(--primary-blue);">ρ_benda < ρ_fluida</span>)</strong>.</p>
+                </div>
+
+                <h4>2. Benda Melayang (Suspending)</h4>
+                <div class="concept-card">
+                    <p>Benda akan <strong>melayang</strong> jika gaya apung yang dialaminya sama persis dengan berat benda (<span style="color: var(--primary-blue);">F_A = W</span>). Benda akan berada pada posisi stabil di dalam fluida, tidak naik atau turun, dan seluruh volumenya tercelup.</p>
+                    <p>Secara ekuivalen, benda melayang jika <strong>massa jenis rata-rata benda sama dengan massa jenis fluida (<span style="color: var(--primary-blue);">ρ_benda = ρ_fluida</span>)</strong>.</p>
+                </div>
+
+                <h4>3. Benda Tenggelam (Sinking)</h4>
+                <div class="concept-card">
+                    <p>Benda akan <strong>tenggelam</strong> jika gaya apung yang dialaminya lebih kecil daripada berat benda (<span style="color: var(--primary-blue);">F_A < W</span>). Benda akan terus bergerak ke dasar fluida.</p>
+                    <p>Secara ekuivalen, benda tenggelam jika <strong>massa jenis rata-rata benda lebih besar daripada massa jenis fluida (<span style="color: var(--primary-blue);">ρ_benda > ρ_fluida</span>)</strong>.</p>
+                </div>
+
+                <p>Pemahaman mengenai fluida statis, tekanan, dan prinsip Archimedes ini sangat penting dalam rekayasa (misalnya desain kapal selam dan kapal laut, sistem hidrolik), meteorologi (tekanan atmosfer), dan bahkan biologi (misalnya dalam memahami bagaimana ikan mengatur kedalaman mereka di air).</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

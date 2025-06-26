@@ -1,0 +1,500 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sifat Periodik Unsur - Kimia SMA Kelas XI</title>
+    <style>
+        /* Definisi Variabel CSS Berdasarkan Tema */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Umum untuk Body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Memastikan body memenuhi tinggi viewport */
+        }
+
+        /* Gaya Header */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--bg-canvas);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            letter-spacing: 1.5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 0.5rem;
+        }
+
+        /* Gaya Main Content Area */
+        main {
+            width: 100%;
+            max-width: 1000px; /* Lebar maksimal konten */
+            padding: 2.5rem 2rem;
+            box-sizing: border-box; /* Padding termasuk dalam lebar */
+        }
+
+        /* Gaya Bagian (Section) */
+        section {
+            background-color: var(--bg-canvas);
+            border-radius: 10px;
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Gaya Heading Utama Bagian */
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-top: 0;
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 60px; /* Panjang garis bawah aksen */
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+
+        /* Gaya Sub-heading */
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Gaya Paragraf */
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Gaya Teks Kuat/Penting */
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Gaya Highlight Istilah Penting */
+        .highlight-term {
+            background-color: var(--secondary-accent-amber);
+            padding: 0.2rem 0.6rem;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Gaya Accordion (Details/Summary) */
+        details {
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        details[open] {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        summary {
+            font-weight: bold;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            outline: none;
+            color: var(--primary-blue);
+            list-style: none; /* Menghilangkan marker default */
+            position: relative;
+            background-color: #f5f5f5; /* Sedikit abu-abu untuk summary */
+            border-bottom: 1px solid var(--border-divider);
+            transition: background-color 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: #eee;
+        }
+
+        summary::marker, /* Untuk browser Webkit */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease, content 0.3s ease;
+            color: var(--text-tertiary);
+        }
+
+        details[open] summary::after {
+            content: '–'; /* Menggunakan karakter min (dash) */
+            transform: translateY(-50%) rotate(0deg); /* Tidak perlu rotasi untuk '-' */
+        }
+
+        .accordion-content {
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            animation: fadeIn 0.5s ease-out; /* Animasi fade-in */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gaya Tabel Data */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.8rem;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 6px;
+            overflow: hidden; /* Untuk membuat border-radius bekerja pada tabel */
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid var(--border-divider);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .data-table th {
+            background-color: var(--primary-blue);
+            color: var(--bg-canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f8f8f8; /* Sedikit off-white untuk baris genap */
+        }
+        .data-table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .data-table td:first-child {
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        /* Gaya List */
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            color: var(--text-secondary);
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+        }
+
+        /* Gaya Kotak Catatan/Info */
+        .note-box {
+            background-color: rgba(25, 118, 210, 0.08); /* Latar belakang biru muda */
+            border-left: 6px solid var(--primary-blue);
+            padding: 1.5rem 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+        }
+        .note-box p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .note-box strong {
+            color: var(--primary-blue);
+        }
+
+        /* Penyesuaian Responsif */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            main {
+                padding: 2rem 1.5rem;
+            }
+            section {
+                padding: 2rem;
+            }
+            h2 {
+                font-size: 1.9rem;
+            }
+            h3 {
+                font-size: 1.4rem;
+            }
+            summary {
+                padding: 1rem 1.2rem;
+            }
+            summary::after {
+                right: 1.2rem;
+            }
+            .accordion-content {
+                padding: 1rem;
+            }
+            .data-table th, .data-table td {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            main {
+                padding: 1.5rem 1rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.6rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .highlight-term {
+                padding: 0.15rem 0.5rem;
+                font-size: 0.9rem;
+            }
+            .data-table th, .data-table td {
+                padding: 0.6rem;
+                font-size: 0.8rem;
+            }
+            ul {
+                margin-left: 20px;
+            }
+            .note-box {
+                padding: 1rem 1.2rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sifat Periodik Unsur</h1>
+        <p>Penjelasan Komprehensif untuk Kimia SMA Kelas XI</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Pendahuluan Sifat Periodik</h2>
+            <p>Penyusunan unsur-unsur dalam sistem periodik modern tidaklah acak, melainkan sangat terikat pada <strong class="highlight-term">sifat-sifat atom</strong> fundamental. Kesamaan sifat-sifat atom maupun perubahan kecenderungannya (tren) dapat dikaitkan secara langsung dengan letak unsur tersebut, baik dalam <strong class="highlight-term">periode</strong> (baris horizontal) maupun <strong class="highlight-term">golongan</strong> (kolom vertikal) di sistem periodik.</p>
+            <p>Memahami sifat-sifat periodik ini adalah kunci untuk memprediksi perilaku kimia suatu unsur dan interaksinya dengan unsur lain. Mari kita selami lebih dalam sifat-sifat atom berdasarkan posisinya dalam sistem periodik unsur.</p>
+        </section>
+
+        <section>
+            <h2>1. Jari-jari Atom</h2>
+            <p><strong class="highlight-term">Jari-jari atom</strong> didefinisikan sebagai jarak dari inti atom ke kulit elektron terluarnya. Sifat ini menjadi penentu utama bagi banyak sifat atomik lainnya dan memainkan peran krusial dalam memahami reaktivitas kimia suatu unsur.</p>
+
+            <details>
+                <summary>Kereaktifan Logam Alkali: Litium, Natrium, dan Kalium</summary>
+                <div class="accordion-content">
+                    <p>Dalam demonstrasi reaksi logam alkali dengan air, Kalium diketahui menghasilkan ledakan yang jauh lebih besar dibandingkan Natrium, apalagi Litium. Fenomena ini secara langsung terkait dengan perbedaan jari-jari atom ketiga unsur tersebut.</p>
+                    <p>Litium (Li), Natrium (Na), dan Kalium (K) adalah unsur-unsur yang berada dalam satu golongan yang sama, yaitu <strong class="highlight-term">golongan alkali (IA)</strong>. Dalam golongan ini, Kalium menempati posisi paling bawah di antara ketiganya.</p>
+
+                    <h3>Kecenderungan Jari-jari Atom dalam Sistem Periodik:</h3>
+                    <ul>
+                        <li><strong>Dalam satu golongan (dari atas ke bawah):</strong> Jari-jari atom cenderung <strong class="accent-green">semakin besar</strong>. Penjelasan utamanya adalah karena adanya penambahan <strong class="highlight-term">kulit elektron</strong> baru pada setiap periode di bawahnya. Setiap kulit tambahan meningkatkan jarak rata-rata antara inti dan elektron valensi.</li>
+                        <li><strong>Dalam satu periode (dari kiri ke kanan):</strong> Jari-jari atom cenderung <strong class="primary-blue">semakin kecil</strong>. Meskipun jumlah kulit elektron tetap sama dalam satu periode, <strong class="highlight-term">jumlah proton (muatan inti)</strong> dalam inti atom semakin bertambah. Peningkatan muatan inti positif ini menghasilkan gaya tarik-menarik yang lebih kuat terhadap elektron-elektron terluar, menyebabkan "penciutan" kulit elektron ke arah inti.</li>
+                    </ul>
+
+                    <p><strong>Perbandingan Jari-jari Atom Li, Na, dan K:</strong></p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Unsur</th>
+                                <th>Jari-jari Atom (pm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Li (Litium)</td><td>156</td></tr>
+                            <tr><td>Na (Natrium)</td><td>191</td></tr>
+                            <tr><td>K (Kalium)</td><td>238</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Dari data di atas, jelas terlihat bahwa Kalium memiliki jari-jari atom yang paling besar di antara ketiganya. Ini menempatkan elektron valensi Kalium pada jarak yang lebih jauh dari inti atomnya. Akibatnya, <strong class="highlight-term">gaya tarik-menarik inti terhadap elektron terluar Kalium menjadi sangat lemah</strong>, membuatnya lebih mudah untuk dilepaskan.</p>
+                    <p class="note-box">
+                        <p>Kemudahan Kalium untuk melepaskan elektron inilah yang menjadikannya <strong class="accent-green">lebih reaktif</strong> dibandingkan Natrium dan Litium saat bereaksi dengan air, menghasilkan reaksi yang lebih dahsyat.</p>
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <h2>2. Energi Ionisasi</h2>
+            <p><strong class="highlight-term">Energi Ionisasi (EI)</strong> adalah energi minimum yang diperlukan untuk melepaskan satu elektron dari satu atom netral dalam fase gas untuk membentuk ion positif (kation). Energi ionisasi dapat bertingkat (pertama, kedua, dan seterusnya).</p>
+
+            <details>
+                <summary>Misteri Warna-warni Kembang Api</summary>
+                <div class="accordion-content">
+                    <p>Perayaan tahun baru sering dihiasi dengan kembang api yang memancarkan warna-warni memukau. Fenomena ini adalah aplikasi langsung dari konsep energi ionisasi.</p>
+                    <p>Warna nyala api berasal dari transisi elektron. Ketika unsur logam dalam kembang api diberikan energi (misalnya dari panas pembakaran), elektronnya akan <strong class="highlight-term">tereksitasi</strong> ke tingkat energi yang lebih tinggi. Elektron yang tidak stabil di tingkat energi tinggi ini akan segera kembali ke tingkat energi asalnya (keadaan dasar), dan saat kembali, mereka <strong class="highlight-term">memancarkan energi dalam bentuk cahaya</strong> dengan panjang gelombang spesifik yang kita interpretasikan sebagai warna.</p>
+                    <p>Setiap unsur memiliki konfigurasi elektron yang unik, sehingga energi yang dibutuhkan untuk mengeksitasi dan melepaskan elektronnya (energi ionisasi) juga unik. Perbedaan energi ini menyebabkan setiap unsur memancarkan cahaya dengan <strong class="highlight-term">spektrum warna yang berbeda</strong>.</p>
+                    <ul>
+                        <li><strong>Energi Ionisasi Pertama (EI1):</strong> Energi yang dibutuhkan untuk melepaskan elektron valensi pertama. <br>Contoh: Li(g) &rarr; Li⁺(g) + e⁻</li>
+                        <li><strong>Energi Ionisasi Kedua (EI2):</strong> Energi yang dibutuhkan untuk melepaskan elektron kedua dari ion bermuatan +1. <br>Contoh: Mg⁺(g) &rarr; Mg²⁺(g) + e⁻</li>
+                    </ul>
+                    <p>Unsur dengan energi ionisasi yang lebih rendah lebih mudah melepaskan elektron dan seringkali memancarkan cahaya pada spektrum tampak pada suhu yang relatif rendah (seperti nyala api Bunsen). Unsur dengan energi ionisasi yang lebih tinggi memerlukan suhu yang lebih ekstrem dan mungkin memancarkan cahaya di spektrum ultraviolet.</p>
+                    <p class="note-box">
+                        <p>Kembang api dirancang dengan mencampurkan berbagai garam logam yang berbeda. Saat dibakar, setiap logam memancarkan cahaya dengan warnanya masing-masing sesuai dengan karakteristik energi ionisasinya, menciptakan efek visual warna-warni yang kita nikmati.</p>
+                    </p>
+                </div>
+            </details>
+
+            <h3>Kecenderungan Energi Ionisasi dalam Sistem Periodik:</h3>
+            <ul>
+                <li><strong>Dalam satu golongan (dari atas ke bawah):</strong> Energi ionisasi cenderung <strong class="semantic-error">semakin kecil (menurun)</strong>. Ini karena jari-jari atom semakin besar. Elektron terluar semakin jauh dari inti, sehingga gaya tarik-menarik inti terhadap elektron tersebut semakin lemah. Akibatnya, elektron lebih mudah dilepaskan.</li>
+                <li><strong>Dalam satu periode (dari kiri ke kanan):</strong> Energi ionisasi cenderung <strong class="accent-green">semakin besar (meningkat)</strong>. Ini karena jari-jari atom semakin kecil. Elektron terluar semakin dekat dengan inti dan merasakan tarikan inti yang lebih kuat. Akibatnya, elektron lebih sulit dilepaskan dan membutuhkan energi yang lebih besar.</li>
+            </ul>
+
+            <p><strong>Pembentukan Kation:</strong></p>
+            <p>Energi ionisasi juga merupakan indikator kuat kecenderungan suatu atom untuk membentuk <strong class="highlight-term">kation (ion positif)</strong>. Semakin kecil energi ionisasinya, semakin mudah suatu atom kehilangan elektron dan membentuk kation.</p>
+            <ul>
+                <li>Secara umum, <strong class="accent-green">unsur logam</strong> memiliki energi ionisasi yang relatif kecil, sehingga mereka sangat cenderung melepaskan elektron dan membentuk kation.</li>
+                <li>Sebaliknya, <strong class="primary-blue">unsur nonlogam</strong> memiliki energi ionisasi yang lebih besar, yang berarti mereka lebih sulit untuk melepaskan elektron.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Afinitas Elektron</h2>
+            <p>Jika energi ionisasi mengukur energi untuk melepaskan elektron, maka <strong class="highlight-term">Afinitas Elektron (AE)</strong> mengukur seberapa mudah suatu atom untuk <strong class="highlight-term">menerima elektron</strong>.</p>
+            <details>
+                <summary>Definisi dan Kecenderungan Afinitas Elektron</summary>
+                <div class="accordion-content">
+                    <p>Afinitas elektron adalah <strong class="highlight-term">perubahan energi yang terjadi saat satu atom dalam keadaan gas menerima satu elektron</strong> untuk membentuk ion negatif (anion).</p>
+                    <p>Secara umum, nilai afinitas elektron yang <strong class="accent-green">semakin besar (lebih negatif)</strong> menunjukkan bahwa energi dilepaskan saat elektron diterima, yang berarti atom tersebut memiliki kecenderungan yang lebih besar untuk menarik dan menerima elektron serta membentuk anion.</p>
+                    <h3>Kecenderungan Afinitas Elektron dalam Sistem Periodik:</h3>
+                    <ul>
+                        <li><strong>Dalam satu golongan (dari atas ke bawah):</strong> Afinitas elektron cenderung <strong class="semantic-error">menurun (kurang negatif)</strong>. Meskipun ada beberapa pengecualian (terutama pada periode 2), tren umumnya adalah atom yang lebih besar memiliki tarikan inti yang lebih lemah pada elektron yang ditambahkan karena elektron valensi berada lebih jauh dari inti dan efek perisai elektron yang meningkat.</li>
+                        <li><strong>Dalam satu periode (dari kiri ke kanan):</strong> Afinitas elektron cenderung <strong class="accent-green">meningkat (lebih negatif)</strong>. Ini karena ukuran atom semakin kecil dan muatan inti efektif yang menarik elektron semakin kuat. Hal ini memudahkan atom untuk menarik elektron tambahan dan membentuk ion negatif.</li>
+                    </ul>
+                    <p class="note-box">
+                        <p>Unsur-unsur dalam <strong class="primary-blue">golongan Halogen (VIIA)</strong> umumnya memiliki nilai afinitas elektron yang sangat besar (sangat negatif) dibandingkan golongan A lainnya. Ini menunjukkan kecenderungan yang sangat kuat bagi mereka untuk menerima satu elektron guna mencapai konfigurasi elektron gas mulia yang stabil (oktet).</p>
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <h2>4. Keelektronegatifan</h2>
+            <p><strong class="highlight-term">Keelektronegatifan</strong> adalah ukuran kemampuan relatif suatu atom untuk menarik elektron ke arah dirinya sendiri <strong class="highlight-term">ketika atom tersebut membentuk ikatan kimia</strong> dengan atom lain.</p>
+            <details>
+                <summary>Klorin sebagai Disinfektan yang Ampuh</summary>
+                <div class="accordion-content">
+                    <p>Dalam upaya menjaga kebersihan dan mencegah penularan penyakit, klorin sering digunakan sebagai bahan aktif dalam disinfektan. Kemampuan klorin untuk menghancurkan virus dan bakteri sangat erat kaitannya dengan sifat keelektronegatifannya yang tinggi.</p>
+                    <h3>Kecenderungan Keelektronegatifan dalam Sistem Periodik (Skala Pauling):</h3>
+                    <ul>
+                        <li><strong>Dalam satu golongan (dari atas ke bawah):</strong> Keelektronegatifan cenderung <strong class="semantic-error">menurun</strong>. Seiring bertambahnya jari-jari atom, jarak antara inti atom dan elektron ikatan semakin jauh. Akibatnya, daya tarik inti terhadap elektron ikatan menjadi lebih lemah.</li>
+                        <li><strong>Dalam satu periode (dari kiri ke kanan):</strong> Keelektronegatifan cenderung <strong class="accent-green">meningkat</strong>. Ukuran atom yang mengecil dan peningkatan muatan inti efektif menyebabkan atom memiliki daya tarik yang lebih kuat terhadap elektron-elektron yang terlibat dalam ikatan kimia.</li>
+                    </ul>
+
+                    <p><strong>Peran Keelektronegatifan Klorin:</strong></p>
+                    <p>Klorin (Cl) adalah anggota <strong class="highlight-term">golongan Halogen (VIIA)</strong>. Golongan ini dikenal memiliki nilai keelektronegatifan yang tinggi (misalnya, Fluorin adalah unsur paling elektronegatif).</p>
+                    <p>Dengan nilai keelektronegatifan yang tinggi, Klorin memiliki kecenderungan yang sangat kuat untuk menarik elektron dari atom lain dalam suatu ikatan. Kemampuan ini menyebabkan Klorin mudah <strong class="highlight-term">tereduksi</strong> (mengalami penurunan bilangan oksidasi, misalnya dari 0 menjadi -1) dan oleh karena itu, bertindak sebagai <strong class="accent-green">oksidator kuat</strong> (zat yang mengoksidasi zat lain).</p>
+                    <p class="note-box">
+                        <p>Sifat oksidator kuat inilah yang memungkinkan Klorin untuk <strong class="accent-green">merebut elektron</strong> dari molekul-molekul penting pada virus dan bakteri. Proses ini mengganggu struktur kimia dan fungsi vital sel atau partikel patogen, menyebabkan kerusakan jaringan, denaturasi protein, dan akhirnya <strong class="primary-blue">kematian atau penghancuran</strong> mereka. Ini menjelaskan efektivitas Klorin sebagai agen disinfektan.</p>
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <h2>Inti Sari: Ringkasan Sifat Periodik Unsur</h2>
+            <p>Memahami sifat-sifat periodik atom adalah fundamental dalam ilmu kimia. Berikut adalah rangkuman kecenderungan utama dari sifat-sifat periodik yang telah kita pelajari:</p>
+            <ul>
+                <li><strong>Jari-jari Atom:</strong>
+                    <ul>
+                        <li><strong class="primary-blue">Dalam satu golongan (dari atas ke bawah):</strong> <span class="accent-green">Meningkat</span> (karena penambahan kulit elektron).</li>
+                        <li><strong class="primary-blue">Dalam satu periode (dari kiri ke kanan):</strong> <span class="semantic-error">Menurun</span> (karena peningkatan muatan inti efektif).</li>
+                    </ul>
+                </li>
+                <li><strong>Energi Ionisasi (EI):</strong>
+                    <ul>
+                        <li><strong class="primary-blue">Dalam satu golongan (dari atas ke bawah):</strong> <span class="semantic-error">Menurun</span> (elektron valensi semakin jauh, tarikan inti lemah).</li>
+                        <li><strong class="primary-blue">Dalam satu periode (dari kiri ke kanan):</strong> <span class="accent-green">Meningkat</span> (elektron valensi semakin dekat, tarikan inti kuat).</li>
+                    </ul>
+                </li>
+                <li><strong>Afinitas Elektron (AE):</strong>
+                    <ul>
+                        <li><strong class="primary-blue">Dalam satu golongan (dari atas ke bawah):</strong> Cenderung <span class="semantic-error">Menurun</span> (kurang negatif).</li>
+                        <li><strong class="primary-blue">Dalam satu periode (dari kiri ke kanan):</strong> Cenderung <span class="accent-green">Meningkat</span> (lebih negatif).</li>
+                    </ul>
+                </li>
+                <li><strong>Keelektronegatifan:</strong>
+                    <ul>
+                        <li><strong class="primary-blue">Dalam satu golongan (dari atas ke bawah):</strong> <span class="semantic-error">Menurun</span>.</li>
+                        <li><strong class="primary-blue">Dalam satu periode (dari kiri ke kanan):</strong> <span class="accent-green">Meningkat</span>.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Kecenderungan sifat-sifat ini secara signifikan memengaruhi <strong class="highlight-term">kereaktifan</strong> suatu unsur. Unsur yang cenderung mudah melepaskan elektron (energi ionisasi rendah) atau mudah menerima elektron (afinitas elektron dan keelektronegatifan tinggi) umumnya memiliki kereaktifan yang besar karena kemudahannya untuk berinteraksi dan membentuk ikatan dengan unsur lain. Pemahaman mendalam tentang sifat-sifat periodik ini adalah fondasi penting dalam mempelajari kimia dan aplikasinya yang luas dalam berbagai aspek kehidupan.</p>
+        </section>
+    </main>
+</body>
+</html>
+```

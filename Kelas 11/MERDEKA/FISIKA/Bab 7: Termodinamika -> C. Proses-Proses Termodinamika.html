@@ -1,0 +1,466 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termodinamika: Proses-Proses Termodinamika</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-color: var(--background-canvas);
+            border-left: 1px solid var(--border-divider);
+            border-right: 1px solid var(--border-divider);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+        }
+
+        h1 { font-size: 2.5rem; color: var(--primary-blue); text-align: center; border-bottom: 3px solid var(--primary-blue); padding-bottom: 1rem; margin-bottom: 2rem; }
+        h2 { font-size: 2rem; color: var(--text-primary); }
+        h3 { font-size: 1.6rem; color: var(--accent-green); }
+        h4 { font-size: 1.3rem; color: var(--text-secondary); }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--accent-green);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .equation-block {
+            background-color: #f0f8ff; /* Light blue */
+            border-left: 4px solid var(--primary-blue);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            overflow-x: auto;
+        }
+
+        .equation-block span {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .note {
+            background-color: #fffacd; /* Lemon Chiffon */
+            border-left: 4px solid var(--secondary-accent-amber);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            color: var(--text-primary);
+        }
+
+        .tip {
+            background-color: #e8f5e9; /* Light green */
+            border-left: 4px solid var(--semantic-success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            color: var(--text-primary);
+        }
+
+        /* Details/Summary for interactivity */
+        details {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 1.2rem 1.5rem;
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: #1565C0; /* Darker primary blue */
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            transform: rotate(0deg);
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            content: '−';
+            transform: rotate(0deg);
+        }
+
+        details[open] summary {
+            background-color: var(--accent-green);
+        }
+
+        details[open] summary:hover {
+            background-color: #2E7D32; /* Darker accent green */
+        }
+
+        details .content {
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .diagram-concept {
+            font-style: italic;
+            color: var(--text-tertiary);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.4rem; }
+            h4 { font-size: 1.2rem; }
+            .equation-block {
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+            details {
+                margin-bottom: 0.8rem;
+            }
+            summary {
+                padding: 1rem 1.2rem;
+                font-size: 0.95rem;
+            }
+            details .content {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.3rem; }
+            h4 { font-size: 1.1rem; }
+            .equation-block {
+                font-size: 0.9rem;
+            }
+            summary {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+            details .content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 7: Termodinamika</h1>
+        <h2>C. Proses-Proses Termodinamika</h2>
+
+        <p>Dalam termodinamika, suatu <strong>proses termodinamika</strong> menggambarkan perubahan keadaan suatu sistem dari satu kondisi kesetimbangan ke kondisi kesetimbangan lainnya. Perubahan ini melibatkan variabel-variabel termodinamika seperti tekanan (P), volume (V), dan suhu (T).</p>
+        <p>Hukum Termodinamika Pertama menyatakan bahwa perubahan energi internal (ΔU) suatu sistem sama dengan kalor (Q) yang ditambahkan ke sistem dikurangi usaha (W) yang dilakukan oleh sistem:</p>
+        <div class="equation-block">
+            <span>ΔU = Q - W</span>
+        </div>
+        <p>Usaha yang dilakukan oleh gas biasanya dinyatakan sebagai:</p>
+        <div class="equation-block">
+            <span>W = ∫ P dV</span>
+        </div>
+        <p>Mari kita jelajahi berbagai jenis proses termodinamika yang penting:</p>
+
+        <details>
+            <summary>1. Proses Isobarik (Tekanan Konstan)</summary>
+            <div class="content">
+                <h3>Apa itu Proses Isobarik?</h3>
+                <p>Proses isobarik adalah proses termodinamika di mana tekanan (P) sistem tetap konstan. Perubahan volume dan suhu terjadi pada tekanan yang tidak berubah.</p>
+                <ul>
+                    <li><strong>Karakteristik:</strong> Tekanan (P) = konstan.</li>
+                    <li><strong>Contoh Sehari-hari:</strong> Pemanasan air dalam panci terbuka di atas kompor (tekanan atmosfer tetap).</li>
+                </ul>
+
+                <h3>Diagram P-V</h3>
+                <p>Pada diagram P-V (tekanan vs. volume), proses isobarik digambarkan sebagai garis horizontal karena tekanan tidak berubah.</p>
+                <p class="diagram-concept">P
+                    <br>↑
+                    <br>|   –––––––––
+                    <br>|   (P konstan)
+                    <br>|
+                    <br>|––––––––––––––––––––––> V</p>
+
+                <h3>Persamaan Penting:</h3>
+                <ul>
+                    <li><strong>Usaha (W) yang Dilakukan oleh Gas:</strong>
+                        <p>Karena tekanan konstan, usaha dapat dihitung dengan mudah:</p>
+                        <div class="equation-block">
+                            <span>W = P ⋅ ΔV = P (V₂ - V₁)</span>
+                        </div>
+                        <p>Di mana P adalah tekanan konstan, V₁ adalah volume awal, dan V₂ adalah volume akhir.</p>
+                    </li>
+                    <li><strong>Perubahan Energi Internal (ΔU):</strong>
+                        <p>Untuk gas ideal, perubahan energi internal hanya bergantung pada perubahan suhu:</p>
+                        <div class="equation-block">
+                            <span>ΔU = n ⋅ Cᵥ ⋅ ΔT</span>
+                        </div>
+                        <p>Di mana n adalah jumlah mol, Cᵥ adalah kapasitas kalor molar pada volume konstan, dan ΔT adalah perubahan suhu.</p>
+                    </li>
+                    <li><strong>Kalor (Q) yang Ditambahkan/Dilepas:</strong>
+                        <p>Menggunakan Hukum Termodinamika Pertama (ΔU = Q - W):</p>
+                        <div class="equation-block">
+                            <span>Q = ΔU + W</span>
+                            <span>Q = n ⋅ Cᵥ ⋅ ΔT + P ⋅ ΔV</span>
+                            <span>Q = n ⋅ Cₚ ⋅ ΔT</span>
+                        </div>
+                        <p>Di mana Cₚ adalah kapasitas kalor molar pada tekanan konstan. Untuk gas ideal, Cₚ = Cᵥ + R.</p>
+                    </li>
+                </ul>
+                <div class="tip">
+                    <p><strong>Ingat!</strong> Dalam proses isobarik, sistem melakukan usaha atau usaha dilakukan pada sistem, dan terjadi pertukaran kalor yang mengubah suhu dan energi internal.</p>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>2. Proses Isokhorik/Isometrik (Volume Konstan)</summary>
+            <div class="content">
+                <h3>Apa itu Proses Isokhorik?</h3>
+                <p>Proses isokhorik (juga disebut isometrik) adalah proses termodinamika di mana volume (V) sistem tetap konstan. Perubahan tekanan dan suhu terjadi tanpa perubahan volume.</p>
+                <ul>
+                    <li><strong>Karakteristik:</strong> Volume (V) = konstan.</li>
+                    <li><strong>Contoh Sehari-hari:</strong> Pemanasan gas dalam wadah tertutup rapat yang kaku (misalnya, panci presto yang sangat kuat atau tabung gas).</li>
+                </ul>
+
+                <h3>Diagram P-V</h3>
+                <p>Pada diagram P-V, proses isokhorik digambarkan sebagai garis vertikal karena volume tidak berubah.</p>
+                <p class="diagram-concept">P
+                    <br>↑
+                    <br>|   ↑
+                    <br>|   | (V konstan)
+                    <br>|   ↓
+                    <br>|––––––––––––––––––––––> V</p>
+
+                <h3>Persamaan Penting:</h3>
+                <ul>
+                    <li><strong>Usaha (W) yang Dilakukan oleh Gas:</strong>
+                        <p>Karena tidak ada perubahan volume (ΔV = 0), tidak ada usaha yang dilakukan oleh atau pada sistem:</p>
+                        <div class="equation-block">
+                            <span>W = P ⋅ ΔV = P ⋅ 0 = 0</span>
+                        </div>
+                    </li>
+                    <li><strong>Perubahan Energi Internal (ΔU):</strong>
+                        <p>Untuk gas ideal, perubahan energi internal bergantung pada perubahan suhu:</p>
+                        <div class="equation-block">
+                            <span>ΔU = n ⋅ Cᵥ ⋅ ΔT</span>
+                        </div>
+                    </li>
+                    <li><strong>Kalor (Q) yang Ditambahkan/Dilepas:</strong>
+                        <p>Menggunakan Hukum Termodinamika Pertama (ΔU = Q - W) dan W = 0:</p>
+                        <div class="equation-block">
+                            <span>Q = ΔU + 0 = ΔU</span>
+                            <span>Q = n ⋅ Cᵥ ⋅ ΔT</span>
+                        </div>
+                        <p>Artinya, semua kalor yang ditambahkan (atau dilepaskan) langsung digunakan untuk mengubah energi internal sistem.</p>
+                    </li>
+                </ul>
+                <div class="tip">
+                    <p><strong>Ingat!</strong> Dalam proses isokhorik, tidak ada usaha yang dilakukan. Kalor yang masuk atau keluar hanya mengubah energi internal dan suhu.</p>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>3. Proses Isotermal (Suhu Konstan)</summary>
+            <div class="content">
+                <h3>Apa itu Proses Isotermal?</h3>
+                <p>Proses isotermal adalah proses termodinamika di mana suhu (T) sistem tetap konstan. Perubahan tekanan dan volume terjadi pada suhu yang tidak berubah.</p>
+                <ul>
+                    <li><strong>Karakteristik:</strong> Suhu (T) = konstan.</li>
+                    <li><strong>Contoh Sehari-hari:</strong> Perubahan fase (misalnya, es mencair pada 0°C), atau kompresi/ekspansi gas yang sangat lambat sehingga ada waktu bagi sistem untuk bertukar kalor dengan lingkungan dan menjaga suhu tetap.</li>
+                </ul>
+
+                <h3>Diagram P-V</h3>
+                <p>Pada diagram P-V, proses isotermal digambarkan sebagai kurva hiperbolik (P berbanding terbalik dengan V, karena PV = nRT dan T konstan, maka PV = konstan).</p>
+                <p class="diagram-concept">P
+                    <br>↑
+                    <br>|     \
+                    <br>|      \  (T konstan)
+                    <br>|       \
+                    <br>|––––––––––––––––––––––> V</p>
+
+                <h3>Persamaan Penting:</h3>
+                <ul>
+                    <li><strong>Perubahan Energi Internal (ΔU):</strong>
+                        <p>Untuk gas ideal, energi internal hanya bergantung pada suhu. Karena suhu konstan (ΔT = 0), maka:</p>
+                        <div class="equation-block">
+                            <span>ΔU = n ⋅ Cᵥ ⋅ ΔT = n ⋅ Cᵥ ⋅ 0 = 0</span>
+                        </div>
+                    </li>
+                    <li><strong>Usaha (W) yang Dilakukan oleh Gas:</strong>
+                        <p>Karena ΔU = 0, berdasarkan Hukum Termodinamika Pertama (ΔU = Q - W), maka Q = W.</p>
+                        <p>Usaha yang dilakukan selama proses isotermal dihitung menggunakan integral:</p>
+                        <div class="equation-block">
+                            <span>W = nRT ln(V₂ / V₁)</span>
+                            <span>atau</span>
+                            <span>W = nRT ln(P₁ / P₂)</span>
+                        </div>
+                        <p>Di mana n adalah jumlah mol, R adalah konstanta gas ideal, T adalah suhu mutlak konstan, V₁/V₂ adalah rasio volume, dan P₁/P₂ adalah rasio tekanan (ingat PV = konstan).</p>
+                    </li>
+                    <li><strong>Kalor (Q) yang Ditambahkan/Dilepas:</strong>
+                        <p>Karena ΔU = 0, semua kalor yang ditambahkan ke sistem diubah menjadi usaha yang dilakukan oleh sistem (Q = W), atau sebaliknya:</p>
+                        <div class="equation-block">
+                            <span>Q = W = nRT ln(V₂ / V₁)</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tip">
+                    <p><strong>Ingat!</strong> Dalam proses isotermal pada gas ideal, tidak ada perubahan energi internal. Semua kalor yang masuk diubah menjadi usaha, dan sebaliknya.</p>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>4. Proses Adiabatik (Tanpa Pertukaran Kalor)</summary>
+            <div class="content">
+                <h3>Apa itu Proses Adiabatik?</h3>
+                <p>Proses adiabatik adalah proses termodinamika di mana tidak ada pertukaran kalor (Q) antara sistem dan lingkungannya. Ini bisa terjadi jika proses berlangsung sangat cepat (sehingga tidak ada waktu untuk pertukaran kalor) atau sistem terisolasi sempurna dari lingkungan.</p>
+                <ul>
+                    <li><strong>Karakteristik:</strong> Kalor (Q) = 0.</li>
+                    <li><strong>Contoh Sehari-hari:</strong> Perambatan suara di udara, kompresi gas sangat cepat pada mesin diesel, atau ekspansi gas dari kaleng semprot.</li>
+                </ul>
+
+                <h3>Diagram P-V</h3>
+                <p>Pada diagram P-V, kurva adiabatik lebih curam dibandingkan kurva isotermal karena suhu berubah selama proses.</p>
+                <p class="diagram-concept">P
+                    <br>↑
+                    <br>|    \
+                    <br>|     \  (lebih curam dari isotermal)
+                    <br>|      \
+                    <br>|––––––––––––––––––––––> V</p>
+
+                <h3>Persamaan Penting:</h3>
+                <ul>
+                    <li><strong>Kalor (Q) yang Ditambahkan/Dilepas:</strong>
+                        <p>Definisi proses adiabatik adalah Q = 0.</p>
+                    </li>
+                    <li><strong>Perubahan Energi Internal (ΔU):</strong>
+                        <p>Menggunakan Hukum Termodinamika Pertama (ΔU = Q - W) dan Q = 0:</p>
+                        <div class="equation-block">
+                            <span>ΔU = -W</span>
+                        </div>
+                        <p>Artinya, usaha yang dilakukan oleh sistem berasal dari perubahan energi internalnya (sistem mendingin saat berekspansi) atau usaha yang dilakukan pada sistem meningkatkan energi internalnya (sistem memanas saat dikompresi).</p>
+                        <div class="equation-block">
+                            <span>ΔU = n ⋅ Cᵥ ⋅ ΔT</span>
+                        </div>
+                    </li>
+                    <li><strong>Usaha (W) yang Dilakukan oleh Gas:</strong>
+                        <div class="equation-block">
+                            <span>W = -ΔU = -n ⋅ Cᵥ ⋅ ΔT</span>
+                            <span>atau</span>
+                            <span>W = (P₁V₁ - P₂V₂) / (γ - 1)</span>
+                        </div>
+                        <p>Di mana γ (gamma) adalah rasio kapasitas kalor spesifik (Cp/Cv). Nilai γ berbeda untuk setiap jenis gas (misalnya, sekitar 1.67 untuk gas monoatomik, 1.4 untuk gas diatomik).</p>
+                    </li>
+                    <li><strong>Hubungan P, V, dan T untuk Proses Adiabatik:</strong>
+                        <p>Untuk gas ideal, hubungan antar variabelnya adalah:</p>
+                        <div class="equation-block">
+                            <span>P ⋅ V<sup>γ</sup> = konstan</span>
+                            <span>T ⋅ V<sup>γ-1</sup> = konstan</span>
+                            <span>T<sup>γ</sup> ⋅ P<sup>1-γ</sup> = konstan</span>
+                            <span>atau (T<sub>1</sub> / T<sub>2</sub>) = (V<sub>2</sub> / V<sub>1</sub>)<sup>γ-1</sup> = (P<sub>1</sub> / P<sub>2</sub>)<sup>(1-γ)/γ</sup></span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="note">
+                    <p><strong>Penting:</strong> Rasio kalor spesifik, γ (gamma), adalah karakteristik penting dalam proses adiabatik. Ini menunjukkan bagaimana energi didistribusikan antara usaha dan energi internal.</p>
+                </div>
+                <div class="tip">
+                    <p><strong>Ingat!</strong> Dalam proses adiabatik, tidak ada panas yang keluar atau masuk sistem. Perubahan energi internal sepenuhnya disebabkan oleh usaha.</p>
+                </div>
+            </div>
+        </details>
+
+        <h3>Rangkuman Perbandingan Proses Termodinamika</h3>
+        <p>Tabel sederhana di bawah ini merangkum karakteristik utama dari keempat proses termodinamika yang telah kita pelajari:</p>
+        <ul>
+            <li><strong>Isobarik:</strong> P = konstan. W = PΔV. ΔU = Q - W. (Sesuai Hukum Charles)</li>
+            <li><strong>Isokhorik:</strong> V = konstan. W = 0. ΔU = Q. (Sesuai Hukum Gay-Lussac)</li>
+            <li><strong>Isotermal:</strong> T = konstan. ΔU = 0. Q = W. (Sesuai Hukum Boyle)</li>
+            <li><strong>Adiabatik:</strong> Q = 0. ΔU = -W. P V<sup>γ</sup> = konstan.</li>
+        </ul>
+
+        <div class="tip">
+            <p>Memahami keempat proses dasar ini adalah kunci untuk menganalisis berbagai sistem termodinamika, mulai dari mesin kendaraan hingga sistem pendingin!</p>
+        </div>
+    </div>
+</body>
+</html>
+```

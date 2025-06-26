@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sejarah Indonesia: Kemelut Pergantian Kekuasaan (1950-1966)</title>
+    <title>Sejarah Indonesia: Demokrasi Liberal hingga Demokrasi Terpimpin (1950-1966) - Kemelut Pergantian Kekuasaan</title>
     <style>
-        /* CSS Variables for theming */
+        /* Global Styles & Theme Variables */
         :root {
             --background-canvas: #FFFFFF;
             --text-primary: #212121;
@@ -22,401 +22,381 @@
             --semantic-info: #2196F3;
         }
 
-        /* Base styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: var(--background-canvas);
             color: var(--text-primary);
-            box-sizing: border-box;
-        }
-
-        *, *::before, *::after {
-            box-sizing: inherit;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: var(--background-canvas);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         header {
             background-color: var(--primary-blue);
             color: var(--background-canvas);
-            padding: 40px 20px;
+            padding: 2rem 1rem;
             text-align: center;
-            border-radius: 8px 8px 0 0;
-            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.8em;
-            letter-spacing: 1px;
+            font-size: 2.5rem;
         }
 
         header p {
-            font-size: 1.2em;
-            margin-top: 10px;
-            color: var(--background-canvas);
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
 
         section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border: 1px solid var(--border-divider);
-            border-radius: 8px;
             background-color: var(--background-canvas);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-divider);
         }
 
         h2 {
             color: var(--primary-blue);
-            font-size: 2em;
-            border-bottom: 2px solid var(--border-divider);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
         h3 {
-            color: var(--text-secondary);
-            font-size: 1.5em;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            border-left: 5px solid var(--primary-blue);
-            padding-left: 10px;
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
         p {
-            margin-bottom: 15px;
-            color: var(--text-primary);
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
         }
 
         ul {
             list-style-type: disc;
             padding-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        ul li {
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .highlight-box {
-            background-color: #e3f2fd; /* Light blue from primary-blue */
-            border-left: 5px solid var(--primary-blue);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            color: var(--text-primary);
-        }
-
-        .highlight-box p {
-            margin: 0;
-            font-style: italic;
-        }
-
-        .theory-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .theory-card {
-            flex: 1 1 calc(33% - 20px); /* Approx 3 cards per row */
-            background-color: var(--background-canvas);
-            border: 1px solid var(--border-divider);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .theory-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .theory-card h4 {
-            color: var(--primary-blue);
-            margin-top: 0;
-            font-size: 1.2em;
-        }
-
-        .theory-card p {
-            font-size: 0.95em;
             color: var(--text-secondary);
         }
 
-        .accordion details {
-            background-color: var(--background-canvas);
-            border: 1px solid var(--border-divider);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        li {
+            margin-bottom: 0.5rem;
         }
 
-        .accordion summary {
-            display: block; /* Allows styling to apply */
-            padding: 18px 25px;
-            cursor: pointer;
-            outline: none;
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: var(--text-primary);
             font-weight: bold;
-            color: var(--primary-blue);
-            font-size: 1.1em;
-            position: relative;
-            user-select: none;
-            transition: background-color 0.2s ease;
         }
 
-        .accordion summary:hover {
-            background-color: #f5f5f5; /* Lighter background on hover */
+        .callout {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Chevron icon for summary */
-        .accordion summary::after {
+        .callout h3 {
+            color: var(--background-canvas);
+            margin-top: 0;
+            border-bottom: none;
+        }
+
+        /* Accordion Styles */
+        .accordion {
+            margin-top: 1.5rem;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--border-divider);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        .accordion-header::after {
             content: '+';
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5em;
-            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
-        .accordion details[open] summary::after {
+        .accordion-header.active::after {
             content: '-';
+            transform: rotate(180deg);
         }
 
         .accordion-content {
-            padding: 0 25px 20px;
-            color: var(--text-primary);
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            max-height: 0;
         }
 
         .accordion-content p {
-            margin-top: 0;
-            padding-top: 10px;
-            border-top: 1px dashed var(--border-divider);
+            margin-bottom: 0.5rem;
         }
 
-        .reflection-box {
-            background-color: #e8f5e9; /* Light green from accent-green */
-            border-left: 5px solid var(--accent-green);
-            padding: 25px;
-            margin: 40px 0 20px;
-            border-radius: 8px;
-        }
-
-        .reflection-box h3 {
-            color: var(--accent-green);
-            border: none;
-            padding-left: 0;
-            margin-top: 0;
-        }
-
-        .reflection-box p {
-            color: var(--text-primary);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-            background-color: var(--primary-blue);
-            color: var(--background-canvas);
-            border-radius: 0 0 8px 8px;
-            font-size: 0.9em;
-        }
-
-        /* Responsive design */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-
-            header {
-                padding: 30px 15px;
-            }
-
             header h1 {
-                font-size: 2em;
+                font-size: 2rem;
             }
 
-            header p {
-                font-size: 1em;
+            main {
+                margin: 1rem auto;
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
             }
 
             h2 {
-                font-size: 1.7em;
+                font-size: 1.7rem;
             }
 
             h3 {
-                font-size: 1.3em;
-            }
-
-            .theory-card {
-                flex: 1 1 100%; /* Stack cards on small screens */
-            }
-
-            .accordion summary {
-                padding: 15px 20px;
-                font-size: 1em;
-            }
-
-            .accordion summary::after {
-                right: 20px;
-            }
-
-            .accordion-content {
-                padding: 0 20px 15px;
+                font-size: 1.3rem;
             }
         }
 
         @media (max-width: 480px) {
-            h2 {
-                font-size: 1.5em;
+            header {
+                padding: 1.5rem 0.5rem;
             }
 
-            h3 {
-                font-size: 1.2em;
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 0 0.5rem;
             }
 
             section {
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .accordion-header {
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+
+            .accordion-content {
                 padding: 15px;
             }
+        }
+
+        footer {
+            background-color: var(--text-primary);
+            color: var(--background-canvas);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Kemelut Pergantian Kekuasaan</h1>
-        <p>Sejarah Indonesia: Demokrasi Liberal hingga Demokrasi Terpimpin (1950-1966)</p>
+        <h1>Sejarah Indonesia Modern</h1>
+        <p>Demokrasi Liberal hingga Demokrasi Terpimpin (1950-1966)</p>
+        <p>Menelusuri Kemelut Pergantian Kekuasaan dan Dinamika Politik-Ekonomi</p>
     </header>
 
-    <main class="container">
-        <section id="introduction">
-            <h2>Pendahuluan: Dinamika Transisi Kekuasaan</h2>
-            <p>Periode 1950 hingga 1966 merupakan babak krusial dalam sejarah Indonesia, ditandai oleh fluktuasi politik, gejolak sosial, dan krisis ekonomi yang berpuncak pada pergantian kekuasaan yang dramatis. Dari sistem Demokrasi Parlementer yang sarat dinamika hingga era Demokrasi Terpimpin yang sentralistik, Indonesia menghadapi berbagai tantangan yang menguji fondasi kebangsaannya. Bab ini akan mengulas kemelut yang terjadi menjelang dan sesudah peristiwa-peristiwa penting, khususnya Gerakan 30 September (G30S) dan dampaknya terhadap arah politik dan sosial Indonesia.</p>
+    <main>
+        <section>
+            <h2>Pengantar Periode Krusial: Gejolak dan Perubahan</h2>
+            <p>Periode antara tahun 1950 hingga 1966 merupakan masa yang penuh dinamika dan pergolakan hebat dalam sejarah Indonesia. Setelah perjuangan merebut kemerdekaan, bangsa ini dihadapkan pada tantangan berat dalam menata sistem pemerintahan, ekonomi, dan sosial.</p>
+            <p>Era ini diawali dengan <span class="highlight">Demokrasi Liberal (1950-1959)</span> yang ditandai oleh sistem parlementer multi-partai dan seringnya pergantian kabinet. Kemudian, bergeser ke <span class="highlight">Demokrasi Terpimpin (1959-1966)</span> di bawah kepemimpinan Presiden Sukarno yang sentralistik, dengan fokus pada gagasan Nasakom (Nasionalisme, Agama, Komunisme).</p>
+            <p>Berbagai peristiwa penting, mulai dari krisis ekonomi yang ditandai antrean panjang penukaran uang, konflik ideologi, hingga pergolakan daerah, mencapai puncaknya pada peristiwa yang sangat kontroversial: Gerakan 30 September (G30S).</p>
         </section>
 
-        <section id="economic-turmoil">
-            <h2>Krisis Ekonomi Menjelang G30S/PKI</h2>
-            <p>Menjelang pertengahan 1960-an, kondisi ekonomi Indonesia berada dalam kemelut serius. Inflasi melambung tinggi, daya beli masyarakat menurun drastis, dan kebijakan moneter pemerintah mengalami kendala besar. Salah satu indikator paling nyata dari krisis ini adalah kejadian pada awal tahun 1966:</p>
+        <section>
+            <h2>Demokrasi Terpimpin dan Politik Nasakom: Sebuah Eksperimen Kepemimpinan</h2>
+            <p>Setelah kegagalan sistem Demokrasi Liberal, Presiden Sukarno memperkenalkan konsep <span class="highlight">Demokrasi Terpimpin</span> sebagai jawaban atas instabilitas politik. Salah satu pilar utamanya adalah konsep <span class="highlight">Nasakom</span>, yang berupaya menyatukan tiga kekuatan politik utama di Indonesia: Nasionalisme, Agama, dan Komunisme.</p>
+            <h3>Kedekatan Sukarno dengan PKI</h3>
+            <p>Dalam perkembangannya, Sukarno semakin dipersepsikan memiliki kedekatan dengan kubu komunis, terutama Partai Komunis Indonesia (PKI). Kedekatan ini menjadi sorotan ketika PKI terlibat dalam perseteruan dengan kabinet dan militer, namun Sukarno cenderung memihak PKI.</p>
+            <h3>Pemberangusan Oposisi</h3>
+            <p>Pemerintah juga mengambil langkah-langkah drastis terhadap partai-partai yang dianggap sebagai pesaing utama PKI. Pada Agustus 1960, Partai Sosialis Indonesia (PSI) dan Masyumi dibubarkan. Pengaruh Partai Nahdlatul Ulama (NU) dan Partai Nasional Indonesia (PNI) juga secara bertahap dilumpuhkan, memperkuat dominasi politik PKI dalam konstelasi politik Demokrasi Terpimpin.</p>
+        </section>
+
+        <section>
+            <h2>Gejolak Agraria dan "Tujuh Setan Desa"</h2>
+            <p>Selain kemelut politik di pusat, persoalan yang tidak kalah kompleks terjadi di daerah, terutama terkait program agraria PKI. PKI, dengan basis massa petani dan buruh, melancarkan aksi-aksi pengambilalihan tanah secara paksa.</p>
+            <p>Target utama aksi ini adalah pihak-pihak yang disebut sebagai <span class="highlight">"Tujuh Setan Desa"</span>, yang mencakup:</p>
             <ul>
-                <li>Pada 13 Januari 1966, uang kertas pecahan Rp10.000,00 dan Rp5.000,00 secara mendadak dinyatakan tidak lagi berlaku sebagai alat pembayaran yang sah.</li>
-                <li>Kebijakan ini memicu kepanikan di masyarakat, ditunjukkan dengan antrean panjang di kantor-kantor Bank Indonesia untuk menukarkan uang lama yang nilainya anjlok drastis.</li>
-                <li>Situasi ini adalah cerminan dari kekacauan ekonomi yang parah dan menjadi salah satu faktor pemicu ketidakpuasan publik terhadap pemerintah saat itu, turut membentuk konteks menjelang pergantian kekuasaan.</li>
+                <li>Tuan tanah jahat (pemilik tanah luas yang menindas)</li>
+                <li>Lintah darat (pemberi pinjaman dengan bunga mencekik)</li>
+                <li>Tukang ijon (pembeli hasil panen di muka dengan harga sangat rendah)</li>
+                <li>Tengkulak jahat (perantara dagang yang merugikan petani)</li>
+                <li>Kapitalis birokrasi desa (pejabat desa yang korup)</li>
+                <li>Pejabat desa jahat (aparat desa yang menyalahgunakan wewenang)</li>
+                <li>Bandit desa (preman atau kelompok kriminal yang meresahkan)</li>
             </ul>
+            <p>Aksi-aksi ini, meskipun bertujuan untuk keadilan agraria, seringkali menimbulkan konflik horizontal yang tajam di tingkat desa, memperparah ketegangan sosial dan politik menjelang puncak pergolakan kekuasaan.</p>
         </section>
 
-        <section id="g30s-context">
-            <h2>G30S/PKI: Peristiwa Krusial yang Sensitif</h2>
-            <p>Peristiwa Gerakan 30 September (G30S/PKI) merupakan titik balik yang paling kontroversial dan paling banyak diperdebatkan dalam sejarah modern Indonesia. Hingga kini, peristiwa ini masih dianggap tabu dan sensitif bagi masyarakat luas. Banyak pertanyaan tak terjawab seputar dalang di baliknya, detail "malam berdarah" yang merenggut nyawa enam jenderal dan seorang perwira, serta efek domino yang meluas ke seluruh sendi kehidupan berbangsa dan bernegara.</p>
-        </section>
-
-        <section id="political-climate">
-            <h2>Latar Belakang Politik Era Demokrasi Terpimpin</h2>
-            <p>Di masa Demokrasi Terpimpin, Presiden Sukarno memperkenalkan dan menerapkan konsep <strong>Nasakom</strong> (Nasionalisme, Agama, Komunisme) sebagai pilar kepemimpinannya. Namun, dalam perkembangannya, kebijakan ini justru memicu polarisasi dan gesekan di antara kekuatan-kekuatan politik:</p>
-            <ul>
-                <li><strong>Kedekatan dengan Komunisme:</strong> Sukarno semakin dipersepsikan dekat dengan kubu komunis, terutama Partai Komunis Indonesia (PKI). Kedekatan ini semakin terlihat ketika Sukarno cenderung berpihak pada PKI dalam perseteruan mereka dengan kabinet dan militer.</li>
-                <li><strong>Pembubaran Partai Pesaing:</strong> Pada Agustus 1960, pemerintah membubarkan Partai Sosialis Indonesia (PSI) dan Masyumi. Kedua partai ini merupakan pesaing utama PKI dalam kancah politik Indonesia.</li>
-                <li><strong>Pelemahan Partai Lain:</strong> Pengaruh partai-partai besar lainnya seperti Nahdlatul Ulama (NU) dan Partai Nasional Indonesia (PNI) juga secara bertahap dilemahkan, menciptakan dominasi politik yang semakin terpusat.</li>
-            </ul>
-        </section>
-
-        <section id="pki-agrarian-actions">
-            <h2>Aksi Agraria PKI dan Konflik di Daerah</h2>
-            <p>Selain dinamika politik di pusat, persoalan yang lebih kompleks terjadi di daerah, terutama terkait program agraria PKI. PKI melancarkan aksi-aksi pengambilalihan tanah secara paksa, yang seringkali dikenal dengan istilah "aksi sepihak". Target utama dari aksi ini adalah tanah-tanah milik kelompok yang disebut PKI sebagai <strong>“Tujuh Setan Desa”</strong>:</p>
-            <ul>
-                <li>Tuan tanah jahat</li>
-                <li>Lintah darat</li>
-                <li>Tukang ijon</li>
-                <li>Tengkulak jahat</li>
-                <li>Kapitalis birokrasi desa</li>
-                <li>Pejabat desa jahat</li>
-                <li>Bandit desa</li>
-            </ul>
-            <p>Aksi ini seringkali memicu konflik dan kekerasan di pedesaan, menambah ketegangan sosial di berbagai wilayah Indonesia.</p>
-        </section>
-
-        <section id="g30s-theories">
-            <h2>Berbagai Teori Mengenai Dalang G30S/PKI</h2>
-            <p>Hingga kini, perdebatan mengenai siapa dalang di balik Gerakan 30 September 1965 masih terus berlangsung. Berbagai teori telah muncul, masing-masing dengan argumen dan bukti yang mendukung. Untuk memahami kemelut seputar peristiwa ini dan pergantian kekuasaan, penting untuk meninjau beberapa teori utama:</p>
+        <section>
+            <h2>G30S/PKI: Peristiwa Berdarah dan Berbagai Interpretasi</h2>
+            <p>Peristiwa Gerakan 30 September (G30S) merupakan salah satu titik balik paling tragis dan kontroversial dalam sejarah Indonesia. Hingga kini, identitas "dalang" di balik peristiwa tersebut masih menjadi subjek perdebatan panjang dan sensitif di kalangan sejarawan maupun masyarakat luas. Berbagai teori telah muncul untuk mencoba menjelaskan siapa atau apa yang menjadi pemicu di balik malam berdarah tersebut dan efek domino yang mengikutinya.</p>
 
             <div class="accordion">
-                <details>
-                    <summary>Teori 1: PKI Sebagai Dalang Utama</summary>
+                <div class="accordion-item">
+                    <div class="accordion-header">Teori 1: Dalang Adalah PKI</div>
                     <div class="accordion-content">
-                        <p>Ini adalah teori paling umum yang disebarkan dan diterima secara luas selama era Orde Baru. Argumen utama teori ini adalah bahwa PKI, dengan ambisi merebut kekuasaan, adalah otak di balik penculikan dan pembunuhan para jenderal Angkatan Darat.</p>
-                        <ul>
-                            <li><strong>Sumber Utama:</strong> Teori ini dikemukakan oleh Nugroho Notosusanto dan Ismail Saleh dalam buku mereka <em>"Tragedi Nasional: Percobaan Kup G30S/PKI di Indonesia"</em>.</li>
-                            <li><strong>Penguatan Narasi:</strong> Keberadaan film besutan Arifin C. Noer, <em>"Penumpasan Pengkhianatan G30S/PKI"</em>, yang wajib ditayangkan di televisi setiap malam 30 September selama Orde Baru, sangat memperkuat argumen ini di benak publik.</li>
-                            <li><strong>Inti Argumen:</strong> PKI dianggap berupaya menggantikan Pancasila dengan ideologi komunis melalui kudeta.</li>
-                        </ul>
+                        <p>Ini adalah teori paling umum dan merupakan narasi resmi selama era Orde Baru. Teori ini menyatakan bahwa Partai Komunis Indonesia (PKI) adalah otak dan pelaku utama di balik G30S, dengan tujuan mengganti Pancasila dengan ideologi komunis.</p>
+                        <p>Pendukung utama teori ini adalah Nugroho Notosusanto dan Ismail Saleh dalam buku mereka <span class="highlight">"Tragedi Nasional: Percobaan Kup G30S/PKI di Indonesia"</span>. Penguatan narasi ini juga dilakukan melalui film <span class="highlight">"Penumpasan Pengkhianatan G30S/PKI"</span> karya Arifin C. Noer, yang wajib ditayangkan di televisi setiap malam 30 September pada masa Orde Baru.</p>
                     </div>
-                </details>
+                </div>
 
-                <details>
-                    <summary>Teori 2: Konflik Internal Angkatan Darat</summary>
+                <div class="accordion-item">
+                    <div class="accordion-header">Teori 2: Dalang Adalah Konflik Internal Angkatan Darat</div>
                     <div class="accordion-content">
-                        <p>Teori ini mengemukakan bahwa G30S/PKI bukanlah kudeta yang sepenuhnya direncanakan oleh PKI, melainkan lebih merupakan produk dari intrik dan perselisihan di kalangan internal Angkatan Darat itu sendiri.</p>
-                        <ul>
-                            <li><strong>Sumber Utama:</strong> Tulisan karya Ben Anderson, dkk., yang berjudul <em>"Preliminary Analysis of the October 1, 1965 Coup in Indonesia"</em> (sering disebut 'Cornell Paper').</li>
-                            <li><strong>Inti Argumen:</strong> Peristiwa G30S adalah puncak dari persaingan dan konflik antara faksi-faksi di dalam tubuh Angkatan Darat, yang kemudian dimanfaatkan atau melibatkan pihak lain.</li>
-                            <li><strong>Fokus:</strong> Lebih menyoroti dinamika kekuasaan dan ketidakpuasan di dalam militer, bukan semata-mata ambisi politik PKI.</li>
-                        </ul>
+                        <p>Teori ini berpendapat bahwa G30S bukan murni ulah PKI, melainkan berasal dari persoalan atau intrik di kalangan internal Angkatan Darat (AD) itu sendiri. Adanya faksi-faksi dan persaingan kekuasaan di dalam tubuh AD disebut-sebut sebagai pemicu.</p>
+                        <p>Salah satu karya yang mendukung pandangan ini adalah <span class="highlight">"Preliminary Analysis of the October 1, 1965 Coup in Indonesia"</span> oleh Ben Anderson, dkk. (sering disebut sebagai "Cornell Paper"). Mereka menganalisis bahwa G30S adalah puncak dari ketegangan dan konflik internal yang sudah ada lama di dalam AD.</p>
                     </div>
-                </details>
+                </div>
 
-                <details>
-                    <summary>Teori 3: Keterlibatan Pihak Internasional dan Pembantaian Massal</summary>
+                <div class="accordion-item">
+                    <div class="accordion-header">Teori 3: Keterlibatan Pihak Internasional (CIA/AS)</div>
                     <div class="accordion-content">
-                        <p>Teori ini menyoroti dimensi yang lebih luas, tidak hanya mencakup dalang peristiwa G30S itu sendiri tetapi juga dampaknya berupa pembantaian massal dan keterlibatan aktor eksternal.</p>
-                        <ul>
-                            <li><strong>Sumber Utama:</strong> Geoffrey Robinson dalam bukunya <em>"The Killing Season: A History of the Indonesian Massacres, 1965-66"</em> (diterjemahkan sebagai <em>"Musim Penjagal: Sejarah Pembunuhan Massal di Indonesia 1965-1966"</em>).</li>
-                            <li><strong>Inti Argumen:</strong> Pasca-G30S/PKI, terjadi pemenjaraan dan pembunuhan massal yang meluas selama periode 1965-1966.</li>
-                            <li><strong>Keterlibatan Asing:</strong> Robinson berargumen bahwa ada keterlibatan pihak internasional yang memberikan bantuan ekonomi, militer, dan logistik untuk membantu melenyapkan paham komunis di Indonesia. Hal ini menunjukkan bahwa peristiwa tersebut memiliki implikasi geopolitik yang lebih besar.</li>
-                        </ul>
+                        <p>Beberapa teori lain menyoroti kemungkinan keterlibatan atau dukungan dari pihak eksternal, khususnya badan intelijen asing seperti CIA Amerika Serikat. Teori ini berargumen bahwa negara-negara Barat memiliki kepentingan untuk menyingkirkan pengaruh komunisme di Indonesia.</p>
+                        <p>Geoffrey Robinson dalam bukunya <span class="highlight">"The Killing Season: A History of the Indonesian Massacres, 1965-66"</span>, meskipun lebih fokus pada pembantaian pasca-G30S, juga menyebutkan bahwa terdapat keterlibatan pihak internasional yang memberikan bantuan ekonomi, militer, dan logistik untuk melenyapkan paham komunis di Indonesia. Hal ini menunjukkan kompleksitas isu dan potensi campur tangan kekuatan global dalam peristiwa tersebut.</p>
                     </div>
-                </details>
+                </div>
             </div>
 
-            <div class="highlight-box">
-                <p>Dalam sejarah, kebenaran bersifat subyektif karena bergantung pada kepentingan dan sudut pandang penulisnya. Oleh karena itu, penting bagi kita untuk menyikapi berbagai teori dan pandangan yang beragam ini dengan melakukan kritik sumber secara cermat, membandingkan berbagai informasi, dan menganalisisnya secara kritis.</p>
+            <div class="callout">
+                <h3>Menyikapi Kontroversi Sejarah</h3>
+                <p>Dalam sejarah, kebenaran seringkali bersifat subjektif, bergantung pada kepentingan, sudut pandang, dan sumber yang digunakan oleh penulisnya. Untuk memahami kemelut seputar peristiwa G30S/PKI dan pergantian kekuasaan, sangat penting untuk:</p>
+                <ul>
+                    <li><span class="highlight">Kritik Sumber:</span> Selalu pertanyakan asal-usul, motivasi, dan konteks dari setiap informasi yang ada.</li>
+                    <li><span class="highlight">Bandingkan Berbagai Sudut Pandang:</span> Jangan terpaku pada satu narasi saja. Bandingkanlah teori-teori dan argumen yang beragam untuk mendapatkan pemahaman yang lebih komprehensif.</li>
+                    <li><span class="highlight">Berpikir Kritis:</span> Analisis informasi secara mendalam, cari bukti pendukung, dan identifikasi bias yang mungkin ada.</li>
+                </ul>
+                <p>Pendekatan ini akan memperkaya pengetahuan dan refleksi kita terhadap masa lalu, serta membantu kita mengambil hikmah dari peristiwa tersebut.</p>
             </div>
         </section>
 
-        <section id="domino-effect">
-            <h2>Efek Domino dan Perubahan Besar Pasca-G30S/PKI</h2>
-            <p>Terlepas dari berbagai teori mengenai dalangnya, peristiwa G30S/PKI membawa perubahan besar dan fundamental dalam sejarah Indonesia, menciptakan efek domino yang signifikan:</p>
-            <ul>
-                <li><strong>Pelemahan Kekuasaan Sukarno:</strong> Secara bertahap, kekuasaan Presiden Sukarno dikurangi hingga habis sama sekali, membuka jalan bagi transisi kepemimpinan ke Orde Baru.</li>
-                <li><strong>Pembubaran dan Pelarangan PKI:</strong> PKI dinyatakan oleh penguasa <em>de facto</em> saat itu sebagai pelaku utama Gerakan 30 September 1965. Akibatnya, PKI dibubarkan dan dinyatakan sebagai organisasi terlarang melalui TAP MPRS No. XXV/MPRS/1966.</li>
-                <li><strong>Pelarangan Ideologi:</strong> Ketetapan tersebut juga secara tegas melarang penyebaran ajaran komunisme, Marxisme, dan Leninisme di seluruh wilayah Indonesia.</li>
-                <li><strong>Diskriminasi dan Penindasan:</strong> Anggota PKI dan berbagai organisasi yang dianggap terkait dengan kelompok komunis mengalami diskriminasi, penangkapan, pemenjaraan, dan penindasan besar-besaran karena dianggap turut bertanggung jawab atas peristiwa malam 30 September 1965.</li>
-                <li><strong>Perubahan Orde Politik:</strong> Peristiwa ini secara efektif mengakhiri era Demokrasi Terpimpin dan menjadi pijakan bagi lahirnya Orde Baru, dengan struktur kekuasaan dan ideologi yang berbeda.</li>
-            </ul>
+        <section>
+            <h2>Dampak dan Efek Domino G30S/PKI: Perubahan Paradigma Politik</h2>
+            <p>Terlepas dari berbagai teori mengenai dalangnya, peristiwa G30S/PKI membawa perubahan besar dan mendalam dalam sejarah Indonesia. Ini memicu serangkaian efek domino yang mengubah lanskap politik, hukum, dan sosial bangsa.</p>
+            <h3>Peredupan Kekuasaan Sukarno</h3>
+            <p>Secara bertahap, kekuasaan Presiden Sukarno mulai dikurangi hingga habis sama sekali. Peristiwa G30S/PKI menjadi momentum bagi kekuatan de facto saat itu untuk mengambil alih kendali dan menuduh PKI sebagai dalang utama.</p>
+            <h3>Pembubaran PKI dan Pelarangan Komunisme</h3>
+            <p>PKI dinyatakan sebagai organisasi terlarang melalui <span class="highlight">TAP MPRS No. XXV/MPRS/1966</span>. Ketetapan ini juga secara tegas melarang penyebaran ajaran komunisme, marxisme, dan leninisme di seluruh wilayah Indonesia. Keputusan ini menandai berakhirnya peran politik komunis di Indonesia dan menjadi dasar bagi kebijakan anti-komunisme yang kuat selama puluhan tahun.</p>
+            <h3>Diskriminasi dan Penindasan Massal</h3>
+            <p>Setelah peristiwa G30S/PKI, anggota PKI dan berbagai organisasi yang terafiliasi atau dianggap terkait dengan kelompok komunis mengalami diskriminasi, penangkapan massal, pemenjaraan, bahkan pembunuhan. Periode 1965-1966 menjadi saksi bisu salah satu pembantaian massal terbesar dalam sejarah modern Indonesia. Tragedi ini menyisakan luka mendalam bagi banyak keluarga dan komunitas.</p>
+            <p>Peristiwa kelam ini menjadi pengingat penting tentang bahaya perpecahan ideologi dan pentingnya menjaga persatuan serta keadilan.</p>
         </section>
 
-        <section class="reflection-box">
-            <h3>Refleksi Sejarah</h3>
-            <p>Dari beragam peristiwa yang terjadi sepanjang periode Demokrasi Parlementer hingga Demokrasi Terpimpin, Indonesia mengalami masa-masa yang berat penuh gejolak dan konflik. Di balik itu semua, Indonesia juga memiliki pencapaian dan kemajuan sebagai negara bangsa dan pembangunan masyarakatnya. Penggalian terhadap narasi sejarah dari berbagai perspektif akan memperkaya pengetahuan dan refleksi kita terhadap masa lalu. Sejatinya, manusia dapat belajar dari sejarah agar tidak mengulangi kesalahan dan mengambil hikmah dari peristiwa masa lalu.</p>
-            <p>Lalu, apa yang bisa kita lakukan agar periode kelam dalam sejarah Indonesia seperti ini tidak terulang kembali? Kritis dalam membaca sumber, berani mempertanyakan narasi tunggal, dan menjaga persatuan bangsa adalah kunci untuk membangun masa depan yang lebih baik.</p>
-        </section>
+        <div class="callout semantic-info">
+            <h3>Refleksi Sejarah: Belajar dari Masa Lalu</h3>
+            <p>Periode 1950 hingga 1966 adalah cerminan dari kompleksitas dalam membangun sebuah bangsa. Indonesia mengalami masa-masa berat yang penuh gejolak, konflik, dan krisis multidimensional. Namun, di balik itu semua, ada juga pelajaran berharga tentang perjuangan, ketahanan, dan pentingnya kemajuan.</p>
+            <p>Sebagai generasi penerus, bagaimana kita harus menyikapi peristiwa-peristiwa tersebut? Menggali narasi sejarah dari berbagai perspektif akan memperkaya pemahaman kita. Sejatinya, manusia dapat belajar dari sejarah agar tidak mengulangi kesalahan yang sama dan mengambil hikmah untuk membangun masa depan yang lebih baik.</p>
+            <p>Mari kita pastikan bahwa periode kelam seperti diskriminasi, kekerasan massal, dan perpecahan ideologis tidak terulang kembali di Indonesia.</p>
+        </div>
+
     </main>
 
     <footer>
-        <p>&copy; 2024 Pembelajaran Sejarah Indonesia. Semua hak dilindungi.</p>
-        <p>Berdasarkan materi Sejarah untuk SMA/MA Kelas XII - Bab 2: Demokrasi Liberal hingga Demokrasi Terpimpin (1950-1966).</p>
+        <p>&copy; 2024 Pembelajaran Sejarah Indonesia. Konten berdasarkan materi Bab 2 Sejarah untuk SMA/MA Kelas XII.</p>
+        <p>Hak cipta dilindungi undang-undang.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+
+                    // Close all other open accordions
+                    accordionHeaders.forEach(otherHeader => {
+                        if (otherHeader !== this && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            otherHeader.nextElementSibling.style.maxHeight = null;
+                            otherHeader.nextElementSibling.style.padding = '0 20px'; /* Reset padding */
+                        }
+                    });
+
+                    // Toggle current accordion
+                    if (isActive) {
+                        this.classList.remove('active');
+                        content.style.maxHeight = null;
+                        content.style.padding = '0 20px'; /* Set padding to 0 when closing */
+                    } else {
+                        this.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.padding = '20px'; /* Set padding when opening */
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 ```

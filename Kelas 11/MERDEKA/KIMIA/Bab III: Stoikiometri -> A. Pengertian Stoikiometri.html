@@ -1,0 +1,411 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimia Kelas XI - Bab III: Stoikiometri - Pengertian</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* For smooth scrolling if navigation were present */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box; /* Include padding in the element's total width and height */
+        }
+
+        h1, h2, h3 {
+            color: var(--text-primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: var(--primary-blue);
+            text-align: center;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            color: var(--accent-green); /* Using accent-green for main section headings */
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-primary);
+            margin-top: 1.2em;
+        }
+
+        p {
+            margin-bottom: 1em;
+            font-size: 1em;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            color: var(--primary-blue);
+            font-style: normal; /* Override default italic for emphasis */
+            font-weight: bold;
+        }
+
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--primary-blue); /* Using primary blue for inline code */
+            font-size: 0.95em;
+        }
+
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            overflow-x: auto; /* Enable horizontal scrolling for long lines */
+            border-radius: 5px;
+            margin-bottom: 1.5em;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--text-primary);
+            font-size: 1em;
+            tab-size: 4; /* Standard tab size */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow for tables */
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #e0e0e0; /* A slightly darker background for headers */
+            color: var(--text-primary); /* Use primary text for table headers */
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        table td {
+            color: var(--text-secondary);
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fcfcfc; /* Slightly different background for even rows */
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue background for info */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08); /* A bit more prominent shadow */
+        }
+
+        .highlight-box h3 {
+            color: var(--semantic-info); /* Heading inside highlight box */
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+        }
+
+        .alert-info {
+            background-color: #e1f5fe;
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+
+            table th, table td {
+                padding: 10px;
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 15px auto;
+                padding: 0 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            pre {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            table {
+                display: block; /* Allows table to scroll horizontally if needed */
+                overflow-x: auto;
+                white-space: nowrap; /* Prevents text wrapping in cells */
+            }
+            table th, table td {
+                min-width: 120px; /* Ensure columns don't become too narrow */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab III: Stoikiometri</h1>
+
+        <h2 id="pengertian-stoikiometri">A. Pengertian Stoikiometri</h2>
+
+        <p>
+            Dalam studi Kimia, kita sering kali berhadapan dengan reaksi-reaksi yang mengubah satu zat menjadi zat lain. Untuk memahami reaksi ini secara kuantitatif—berapa banyak reaktan yang dibutuhkan dan berapa banyak produk yang akan terbentuk—kita memerlukan konsep <strong>Stoikiometri</strong>. Mari kita mulai dengan sebuah analogi yang sederhana untuk memberikan gambaran awal.
+        </p>
+
+        <div class="highlight-box">
+            <h3>Analogi Resep Kue Pancong</h3>
+            <p>Bayangkan Anda sedang membuat kue pancong dan mengikuti sebuah resep. Resep tersebut mungkin memiliki detail seperti ini:</p>
+            <pre>3 g tepung beras + 8 ml santan + 4 g kelapa parut &rarr; 1 buah kue pancong</pre>
+            <p>
+                Dari resep ini, kita bisa mengidentifikasi komponen-komponen utama:
+            </p>
+            <ul>
+                <li><strong>Bahan-bahan awal:</strong> <em>tepung beras</em>, <em>santan</em>, dan <em>kelapa parut</em>. Ini adalah zat-zat yang Anda siapkan sebelum proses memasak dimulai.</li>
+                <li><strong>Hasil akhir:</strong> <em>1 buah kue pancong</em>. Ini adalah zat yang terbentuk setelah proses memasak selesai.</li>
+            </ul>
+            <p>
+                Dalam terminologi kimia, bahan-bahan awal yang bereaksi disebut <strong>reaktan</strong> (atau pereaksi), sedangkan hasil akhir yang terbentuk dari reaksi disebut <strong>produk</strong> (atau hasil reaksi).
+            </p>
+            <p>
+                Perbedaannya adalah, dalam stoikiometri kimia, kita tidak menuliskan nama-nama bahan masakan. Sebaliknya, kita menggunakan <strong>rumus kimia</strong> untuk merepresentasikan reaktan dan produk. Sebagai contoh, alih-alih menulis "air", kita akan menulis "H₂O"; atau "garam dapur" akan ditulis "NaCl".
+            </p>
+            <p>
+                Analogi resep kue pancong ini akan kita gunakan kembali di bagian selanjutnya untuk menjelaskan konsep-konsep seperti pereaksi pembatas dan persen hasil, yang merupakan bagian penting dari stoikiometri.
+            </p>
+        </div>
+
+        <h3 id="definisi-stoikiometri">Apa Itu Stoikiometri?</h3>
+        <p>
+            Istilah "Stoikiometri" berasal dari gabungan dua kata dalam bahasa Yunani:
+        </p>
+        <ul>
+            <li><em><code>stoicheion</code></em> (dibaca: stoy-khee-on) yang berarti <strong>unsur</strong> atau konstituen dasar.</li>
+            <li><em><code>metron</code></em> (dibaca: met-ron) yang berarti <strong>pengukuran</strong>.</li>
+        </ul>
+        <p>
+            Secara etimologis, stoikiometri berarti pengukuran unsur-unsur. Namun, dalam konteks disiplin ilmu Kimia, stoikiometri adalah cabang ilmu yang mempelajari <strong>hubungan kuantitatif</strong> antara reaktan dan produk dalam sebuah reaksi kimia.
+        </p>
+        <div class="alert-info">
+            <p>
+                <strong>Definisi Sederhana:</strong>
+                <strong>Stoikiometri</strong> adalah perhitungan matematis yang memungkinkan kita untuk menentukan jumlah zat (baik itu massa, volume, atau mol) yang terlibat dalam reaksi kimia, baik sebagai reaktan yang dikonsumsi maupun produk yang dihasilkan.
+            </p>
+        </div>
+        <p>
+            Dengan stoikiometri, kita dapat memprediksi berapa banyak produk yang dapat dihasilkan dari sejumlah reaktan tertentu, atau berapa banyak reaktan yang diperlukan untuk menghasilkan jumlah produk yang diinginkan. Ini adalah alat fundamental bagi setiap kimiawan!
+        </p>
+
+        <h3 id="pentingnya-stoikiometri">Pentingnya Stoikiometri dalam Kimia</h3>
+        <p>
+            Kemampuan memahami dan menerapkan stoikiometri sangat krusial dalam berbagai aspek kimia, mulai dari penelitian laboratorium hingga proses industri. Dengan menguasai stoikiometri, Anda dapat:
+        </p>
+        <ul>
+            <li>Menghitung <strong>massa</strong> reaktan yang diperlukan atau produk yang akan terbentuk dalam suatu reaksi.</li>
+            <li>Menentukan <strong>volume</strong> gas yang terlibat dalam reaksi, terutama pada kondisi suhu dan tekanan tertentu.</li>
+            <li>Menghitung <strong>jumlah mol</strong> dari setiap zat yang bereaksi atau dihasilkan.</li>
+            <li>Merencanakan dan mengoptimalkan sintesis kimia dengan memastikan rasio reaktan yang tepat.</li>
+            <li>Menganalisis komposisi sampel atau kemurnian suatu zat.</li>
+        </ul>
+        <p>
+            Semua perhitungan kuantitatif ini didasarkan pada informasi yang diperoleh dari persamaan reaksi kimia yang sudah setara.
+        </p>
+
+        <h3 id="penyetaraan-persamaan-reaksi">Prinsip Penyetaraan Persamaan Reaksi</h3>
+        <p>
+            Sebagai fondasi utama untuk semua perhitungan stoikiometri, Anda harus terampil dalam <strong>menyetarakan persamaan reaksi kimia</strong>. Konsep ini telah Anda pelajari di kelas X dan merupakan manifestasi dari <em>Hukum Kekekalan Massa</em> yang dikemukakan oleh Antoine Lavoisier.
+        </p>
+        <div class="highlight-box">
+            <h3 style="color: var(--accent-green);">Prinsip Dasar Penyetaraan:</h3>
+            <p>
+                Jumlah atom setiap unsur yang ada di sisi <strong>reaktan</strong> (sebelah kiri tanda panah) harus <em>sama</em> dengan jumlah atom unsur yang sama di sisi <strong>produk</strong> (sebelah kanan tanda panah). Massa total reaktan juga harus sama dengan massa total produk.
+            </p>
+        </div>
+
+        <h4>Contoh Penyetaraan Reaksi: Pembentukan Air</h4>
+        <p>Mari kita ambil contoh sederhana, yaitu reaksi pembentukan air dari hidrogen dan oksigen:</p>
+        <pre>H₂(g) + O₂(g) &rarr; H₂O(l)</pre>
+        <p>Apakah persamaan reaksi di atas sudah setara? Untuk mengetahuinya, mari kita hitung jumlah atom setiap unsur di kedua sisi persamaan:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Atom</th>
+                    <th>Jumlah Atom di Sisi Kiri (Reaktan)</th>
+                    <th>Jumlah Atom di Sisi Kanan (Produk)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hidrogen (H)</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Oksigen (O)</td>
+                    <td>2</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Dari tabel di atas, kita dapat melihat bahwa:
+        </p>
+        <ul>
+            <li>Jumlah atom Hidrogen (H) di sisi reaktan (2) sudah sama dengan di sisi produk (2).</li>
+            <li>Namun, jumlah atom Oksigen (O) di sisi reaktan (2) <strong>tidak sama</strong> dengan di sisi produk (1).</li>
+        </ul>
+        <p>
+            Ini berarti, persamaan reaksi tersebut <strong>belum setara</strong> karena tidak mematuhi Hukum Kekekalan Massa untuk atom Oksigen.
+        </p>
+
+        <p>
+            Untuk menyetarakan persamaan reaksi, kita perlu menambahkan angka yang disebut <strong>koefisien</strong> di depan rumus kimia unsur atau senyawa. Penting untuk diingat bahwa penambahan koefisien ini <em>tidak mengubah</em> rumus kimia zat (misalnya, H₂O tetap H₂O, bukan H₄O₂), tetapi hanya menunjukkan rasio mol zat yang bereaksi atau terbentuk.
+        </p>
+        <p>
+            Mari kita setarakan persamaan reaksi pembentukan air:
+        </p>
+        <pre>H₂(g) + O₂(g) &rarr; H₂O(l)</pre>
+        <p>
+            <strong>Langkah 1: Setarakan Oksigen.</strong>
+            Kita memiliki 2 atom O di sisi reaktan (dalam O₂) dan hanya 1 atom O di sisi produk (dalam H₂O). Untuk menyetarakan Oksigen, kita bisa menempatkan koefisien <code>2</code> di depan H₂O:
+        </p>
+        <pre>H₂(g) + O₂(g) &rarr; 2H₂O(l)</pre>
+        <p>
+            Setelah menambahkan koefisien <code>2</code> di depan H₂O, mari kita hitung ulang atom-atomnya:
+        </p>
+        <ul>
+            <li>Di sisi produk, atom Oksigen menjadi <code>2 &times; 1 = 2</code> (sudah setara dengan O₂ di reaktan).</li>
+            <li>Namun, atom Hidrogen di sisi produk sekarang menjadi <code>2 &times; 2 = 4</code>. Sementara di sisi reaktan, Hidrogen masih 2 (dalam H₂).</li>
+        </ul>
+
+        <p>
+            <strong>Langkah 2: Setarakan Hidrogen.</strong>
+            Karena Hidrogen di sisi produk sekarang ada 4, kita perlu membuat atom Hidrogen di sisi reaktan juga menjadi 4. Kita bisa menambahkan koefisien <code>2</code> di depan H₂:
+        </p>
+        <pre>2H₂(g) + O₂(g) &rarr; 2H₂O(l)</pre>
+
+        <p>Sekarang, mari kita cek kembali jumlah atom setiap unsur di sisi reaktan dan produk untuk memastikan semuanya setara:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Atom</th>
+                    <th>Jumlah Atom di Sisi Kiri (Reaktan)</th>
+                    <th>Jumlah Atom di Sisi Kanan (Produk)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hidrogen (H)</td>
+                    <td>2 &times; 2 = 4</td>
+                    <td>2 &times; 2 = 4</td>
+                </tr>
+                <tr>
+                    <td>Oksigen (O)</td>
+                    <td>1 &times; 2 = 2</td>
+                    <td>2 &times; 1 = 2</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Hebat! Sekarang, jumlah atom setiap unsur (Hidrogen dan Oksigen) di sisi reaktan sama dengan di sisi produk. Ini berarti persamaan reaksi <code>2H₂(g) + O₂(g) &rarr; 2H₂O(l)</code> telah <strong>setara</strong>. Koefisien-koefisien (2, 1, dan 2) menunjukkan rasio mol H₂, O₂, dan H₂O yang terlibat dalam reaksi.
+        </p>
+        <p>
+            Menguasai penyetaraan persamaan reaksi adalah fondasi yang kokoh untuk semua perhitungan stoikiometri yang akan Anda pelajari lebih lanjut. Pastikan Anda berlatih dengan berbagai jenis reaksi untuk mengasah keterampilan penting ini!
+        </p>
+    </div>
+</body>
+</html>
+```

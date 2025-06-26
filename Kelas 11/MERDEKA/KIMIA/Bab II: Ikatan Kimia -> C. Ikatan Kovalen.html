@@ -1,0 +1,923 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikatan Kovalen - Kimia Kelas XI</title>
+    <style>
+        /* --- Theme Colors (Light Mode) --- */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2.2em; border-bottom: 2px solid var(--border-divider); padding-bottom: 10px; }
+        h2 { font-size: 1.8em; color: var(--accent-green); }
+        h3 { font-size: 1.5em; color: var(--secondary-accent-amber); }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        b {
+            color: var(--text-primary);
+        }
+
+        /* --- Visual Elements --- */
+        .highlight {
+            background-color: #e0f2f7; /* Lighter blue, inspired by primary-blue */
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .section-divider {
+            border-bottom: 1px solid var(--border-divider);
+            margin: 40px 0;
+        }
+
+        .example-box {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* --- Lewis Structure Visuals --- */
+        .lewis-structure-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .molecule {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 1px dashed var(--border-divider);
+            border-radius: 10px;
+            background-color: #fcfcfc;
+        }
+
+        .atom-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin: 0 10px;
+        }
+
+        .atom-symbol {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--text-primary);
+            line-height: 1;
+            margin: 5px 0;
+        }
+
+        .electron-pair {
+            display: flex;
+            position: absolute;
+            gap: 2px;
+        }
+
+        .electron-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--text-tertiary);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Positioning for electron pairs (example, can be more precise for specific molecules) */
+        .atom-unit .electron-pair.top { top: -10px; }
+        .atom-unit .electron-pair.bottom { bottom: -10px; }
+        .atom-unit .electron-pair.left { left: -15px; top: 50%; transform: translateY(-50%); flex-direction: column;}
+        .atom-unit .electron-pair.right { right: -15px; top: 50%; transform: translateY(-50%); flex-direction: column;}
+
+        /* Bonds */
+        .bond {
+            height: 2px;
+            background-color: var(--text-primary);
+            margin: 0 5px;
+        }
+        .bond.single { width: 30px; }
+        .bond.double { width: 30px; display: flex; flex-direction: column; gap: 4px; }
+        .bond.double::before, .bond.double::after { content: ''; display: block; height: 2px; width: 100%; background-color: var(--text-primary); }
+        .bond.triple { width: 30px; display: flex; flex-direction: column; gap: 2px; }
+        .bond.triple::before, .bond.triple::after { content: ''; display: block; height: 2px; width: 100%; background-color: var(--text-primary); }
+        .bond.triple::before { margin-bottom: 4px; } /* Adjust gap for triple bond */
+
+        .bond-text {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        /* Polar bond visualization */
+        .polar-bond-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px dashed var(--semantic-info);
+            border-radius: 8px;
+            background-color: #e3f2fd; /* Light blue background */
+        }
+        .delta-charge {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--semantic-info);
+        }
+        .arrow {
+            font-size: 2em;
+            color: var(--semantic-info);
+        }
+        .atom-label-polar {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        /* Coordinate Covalent Bond Arrow */
+        .coordinate-bond-arrow {
+            display: inline-block;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        
+        .lewis-element-symbols {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px dashed var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        .element-symbol-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .element-symbol-box .atom-symbol {
+            font-size: 1.8em;
+        }
+
+        /* Specific Lewis symbol dot positioning */
+        .element-symbol-box .electron-dot {
+            width: 5px;
+            height: 5px;
+        }
+
+        .element-symbol-box .electron-pair {
+            position: absolute;
+        }
+
+        /* Example positioning for general elements, needs fine-tuning for specific valence */
+        .element-symbol-box .dots-top { top: 5px; display: flex; gap: 3px; }
+        .element-symbol-box .dots-bottom { bottom: 5px; display: flex; gap: 3px; }
+        .element-symbol-box .dots-left { left: 5px; top: 50%; transform: translateY(-50%); flex-direction: column; gap: 3px; }
+        .element-symbol-box .dots-right { right: 5px; top: 50%; transform: translateY(-50%); flex-direction: column; gap: 3px; }
+
+        /* More precise positioning for a few common examples */
+        .element-symbol-box.H .dots-right { right: 5px; top: 50%; transform: translateY(-50%); }
+        .element-symbol-box.He .dots-right { right: 5px; top: 50%; transform: translateY(-50%); }
+        .element-symbol-box.Li .dots-left { left: 5px; top: 50%; transform: translateY(-50%); }
+        .element-symbol-box.N .dots-top { top: 5px; display: flex; gap: 3px; }
+        .element-symbol-box.N .dots-right { right: 5px; top: 50%; transform: translateY(-50%); }
+        .element-symbol-box.N .dots-bottom { bottom: 5px; display: flex; gap: 3px; }
+        .element-symbol-box.O .dots-top { top: 5px; display: flex; gap: 3px; }
+        .element-symbol-box.O .dots-bottom { bottom: 5px; display: flex; gap: 3px; }
+        .element-symbol-box.O .dots-right { right: 5px; top: 50%; transform: translateY(-50%); }
+        .element-symbol-box.Cl .dots-top { top: 5px; display: flex; gap: 3px; }
+        .element-symbol-box.Cl .dots-bottom { bottom: 5px; display: flex; gap: 3px; }
+        .element-symbol-box.Cl .dots-right { right: 5px; top: 50%; transform: translateY(-50%); }
+
+        /* General Lewis element dots, manually positioned for clarity */
+        .lewis-dot {
+            width: 5px;
+            height: 5px;
+            background-color: var(--text-tertiary);
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 1px;
+        }
+        .lewis-symbol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 15px;
+            padding: 15px;
+            border: 1px dashed var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+            margin-top: 20px;
+        }
+        .lewis-element {
+            display: flex;
+            flex-direction: column; /* To stack electron pairs visually if needed */
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 10px;
+        }
+        .lewis-element .atom-label {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+        .lewis-dots-group {
+            position: absolute;
+            display: flex;
+            gap: 3px; /* Space between individual dots */
+        }
+        .lewis-dots-group.top { top: 0; }
+        .lewis-dots-group.bottom { bottom: 0; }
+        .lewis-dots-group.left { left: 0; flex-direction: column; }
+        .lewis-dots-group.right { right: 0; flex-direction: column; }
+
+        /* Specific styling for Lewis elements based on their dot configurations */
+        .lewis-element.H .lewis-dots-group.right { right: -10px; top: 50%; transform: translateY(-50%); flex-direction: row; }
+        .lewis-element.He .lewis-dots-group.right { right: -15px; top: 50%; transform: translateY(-50%); flex-direction: row; }
+        .lewis-element.Li .lewis-dots-group.right { right: -10px; top: 50%; transform: translateY(-50%); flex-direction: row; }
+        /* Generic for showing 1-8 dots around a central symbol */
+        .dots-1 .lewis-dots-group.right { right: -10px; top: 50%; transform: translateY(-50%); }
+        .dots-2 .lewis-dots-group.right { right: -15px; top: 50%; transform: translateY(-50%); } /* for duplet */
+        .dots-3 .lewis-dots-group.top { top: -5px; } .dots-3 .lewis-dots-group.right { right: -15px; top: 50%; transform: translateY(-50%); }
+        .dots-4 .lewis-dots-group.top { top: -5px; } .dots-4 .lewis-dots-group.bottom { bottom: -5px; }
+        .dots-5 .lewis-dots-group.top { top: -5px; } .dots-5 .lewis-dots-group.bottom { bottom: -5px; } .dots-5 .lewis-dots-group.left { left: -10px; top: 50%; transform: translateY(-50%); }
+        .dots-6 .lewis-dots-group.top { top: -5px; } .dots-6 .lewis-dots-group.bottom { bottom: -5px; } .dots-6 .lewis-dots-group.left { left: -10px; top: 50%; transform: translateY(-50%); } .dots-6 .lewis-dots-group.right { right: -10px; top: 50%; transform: translateY(-50%); }
+        /* Simpler generic Lewis symbols based on the provided image */
+        .lewis-dot-symbol {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 10px;
+            min-width: 60px;
+        }
+
+        .lewis-dot-symbol .atom-symbol {
+            font-size: 1.8em;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+        .lewis-dot-symbol .dots-set {
+            position: absolute;
+            display: flex;
+            gap: 2px;
+            color: var(--text-tertiary);
+        }
+        .lewis-dot-symbol .dots-set.top { top: 0px; }
+        .lewis-dot-symbol .dots-set.bottom { bottom: 0px; }
+        .lewis-dot-symbol .dots-set.left { left: 0px; flex-direction: column; }
+        .lewis-dot-symbol .dots-set.right { right: 0px; flex-direction: column; }
+        .lewis-dot-symbol .dot {
+            width: 4px;
+            height: 4px;
+            background-color: currentColor;
+            border-radius: 50%;
+        }
+
+
+        /* Lewis Structure for Exceptions (BF3, PF5) */
+        .exception-structure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px dashed var(--semantic-warning);
+            border-radius: 8px;
+            background-color: #fffde7; /* Light amber background */
+        }
+        .exception-structure .molecule {
+            border: none; /* No extra border */
+            background-color: transparent;
+            margin-bottom: 20px;
+        }
+        .exception-structure .atom-unit {
+            position: relative;
+        }
+        .exception-structure .atom-symbol {
+            font-size: 2.5em;
+        }
+        .exception-structure .electron-dot {
+            background-color: var(--text-tertiary); /* Different color for lone pairs */
+        }
+        .exception-structure .bond-line {
+            background-color: var(--text-primary);
+            height: 3px;
+        }
+        .exception-structure .bond-line.single { width: 40px; }
+
+
+        /* Specific layout for BF3 (trigonal planar) */
+        .bf3-structure, .pf5-structure {
+            display: flex;
+            flex-direction: column; /* For vertical stacking of atom + its branches */
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .bf3-central {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px; /* Space for the top F */
+        }
+        .bf3-arms {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            position: absolute;
+            top: 60%; /* Adjust based on central atom size */
+            left: 0;
+            right: 0;
+        }
+        .bf3-arm-left, .bf3-arm-right {
+            display: flex;
+            align-items: center;
+            transform: rotate(-30deg); /* Approximate angle */
+            transform-origin: right center; /* Rotate around the bond end */
+            position: absolute;
+            left: 25%; /* Positioning relative to central B */
+        }
+        .bf3-arm-right {
+            transform: rotate(30deg);
+            transform-origin: left center;
+            right: 25%;
+            left: auto;
+        }
+
+        /* Simplified BF3/PF5 representation using flex for atoms and lines */
+        .molecular-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            border: 1px dashed var(--border-divider);
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        .molecular-diagram .bond-representation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 1.2em; /* For atom symbols */
+        }
+        .molecular-diagram .bond-representation .atom {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+        .molecular-diagram .bond-representation .bond-line-visual {
+            width: 20px;
+            height: 2px;
+            background-color: var(--text-primary);
+            margin: 0 5px;
+        }
+        .molecular-diagram .electron-pair-visual {
+            display: flex;
+            gap: 2px;
+            margin-right: 5px;
+            vertical-align: middle;
+            position: relative; /* For exact positioning if needed */
+        }
+        .molecular-diagram .electron-pair-visual .dot {
+            width: 5px;
+            height: 5px;
+            background-color: var(--text-tertiary);
+            border-radius: 50%;
+        }
+
+        /* For BF3 and PF5 specifically */
+        .bf3-viz {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .bf3-top-f {
+            display: flex;
+            align-items: center;
+            margin-bottom: -15px; /* Pull F closer to B */
+            position: relative;
+        }
+        .bf3-top-f .dots-set.top { top: -10px; }
+        .bf3-top-f .dots-set.right { right: -10px; top: 50%; transform: translateY(-50%); }
+        .bf3-top-f .dots-set.left { left: -10px; top: 50%; transform: translateY(-50%); }
+
+        .bf3-central-b {
+            font-size: 2.5em; /* Larger B */
+            font-weight: bold;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1; /* Ensure B is above bond lines */
+        }
+        .bf3-bond-lines {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none; /* Don't block clicks */
+        }
+        .bf3-bond-line {
+            height: 2px;
+            background-color: var(--text-primary);
+            position: absolute;
+            transform-origin: center left;
+        }
+        .bf3-bond-line.top { width: 50px; top: -15px; left: 50%; transform: translateX(-50%) rotate(-90deg); } /* Points up */
+        .bf3-bond-line.bottom-left { width: 50px; transform: rotate(-30deg); left: 15%; top: 40%; }
+        .bf3-bond-line.bottom-right { width: 50px; transform: rotate(30deg); right: 15%; top: 40%; }
+
+
+        .bf3-f-side {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+        }
+        .bf3-f-side .atom-unit {
+            font-size: 1.2em;
+        }
+        .bf3-f-side .atom-symbol {
+            font-size: 2em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+
+            .container {
+                padding: 15px;
+            }
+
+            .lewis-structure-container, .lewis-element-symbols {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .molecule {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .atom-unit {
+                margin: 10px 0;
+            }
+
+            .atom-symbol {
+                font-size: 1.8em;
+            }
+
+            .bond.single, .bond.double, .bond.triple {
+                width: 25px; /* Smaller bonds */
+            }
+
+            .polar-bond-diagram {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .lewis-symbol-grid {
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+                gap: 10px;
+                padding: 10px;
+            }
+            .lewis-element .atom-label {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C. Ikatan Kovalen</h1>
+
+        <p>Setelah memahami ikatan ion yang melibatkan transfer elektron antara atom logam dan nonlogam, mari kita selami jenis ikatan kimia lain yang sangat penting: <span class="highlight">Ikatan Kovalen</span>. Ikatan ini mendasari pembentukan sebagian besar molekul di sekitar kita, termasuk air yang kita minum setiap hari.</p>
+
+        <div class="example-box">
+            <h2>Pembentukan Molekul Air (H₂O)</h2>
+            <p>Air tersusun atas molekul-molekul H₂O. Molekul ini terbentuk akibat adanya interaksi antara atom hidrogen (H) dan atom oksigen (O). Baik hidrogen maupun oksigen adalah <span class="highlight">unsur nonlogam</span>. Keduanya memiliki energi ionisasi dan afinitas elektron yang tinggi, yang berarti mereka cenderung tidak melepaskan atau menerima elektron secara penuh seperti pada pembentukan ikatan ion.</p>
+            <p>Alih-alih mentransfer elektron, satu elektron dari atom hidrogen akan berpasangan dengan satu elektron dari atom oksigen. Proses ini membentuk ikatan di mana <span class="highlight">pasangan elektron digunakan secara bersama-sama oleh kedua atom</span>. Ikatan inilah yang disebut <span class="highlight">ikatan kovalen</span>.</p>
+            <p>Jadi, ikatan kovalen adalah ikatan antaratom nonlogam yang terbentuk karena <b>pemakaian bersama pasangan elektron</b>.</p>
+
+            <div class="lewis-structure-container">
+                <div class="molecule">
+                    <div class="atom-unit">
+                        <div class="atom-symbol">H</div>
+                        <div class="electron-pair right"><span class="electron-dot"></span></div>
+                    </div>
+                    <div class="atom-symbol" style="font-size: 1.5em;">+</div>
+                    <div class="atom-unit">
+                        <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair right"><span class="electron-dot"></span></div>
+                        <div class="electron-pair left"><span class="electron-dot"></span></div>
+                        <div class="atom-symbol">O</div>
+                    </div>
+                    <div class="atom-symbol" style="font-size: 1.5em;">+</div>
+                    <div class="atom-unit">
+                        <div class="atom-symbol">H</div>
+                        <div class="electron-pair left"><span class="electron-dot"></span></div>
+                    </div>
+                </div>
+                <div class="molecule">
+                    <div class="atom-unit">
+                        <div class="atom-symbol">H</div>
+                        <div class="bond single"></div>
+                    </div>
+                    <div class="atom-unit">
+                        <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="atom-symbol">O</div>
+                        <div class="bond single"></div>
+                    </div>
+                    <div class="atom-unit">
+                        <div class="atom-symbol">H</div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-tertiary);">Diagram sederhana pembentukan ikatan kovalen pada H₂O.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2>Jenis Ikatan Kovalen Berdasarkan Jumlah Pasangan Elektron</h2>
+        <p>Ikatan kovalen dapat diklasifikasikan berdasarkan jumlah pasangan elektron yang dibagi bersama antara dua atom. Ini menghasilkan ikatan kovalen tunggal, rangkap dua, dan rangkap tiga.</p>
+
+        <div class="lewis-structure-container">
+            <div class="molecule">
+                <div class="atom-unit">
+                    <div class="atom-symbol">H</div>
+                </div>
+                <div class="bond single"></div>
+                <div class="atom-unit">
+                    <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="electron-pair right"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="atom-symbol">Cl</div>
+                </div>
+                <div class="bond-text">Ikatan kovalen tunggal (HCl)</div>
+            </div>
+
+            <div class="molecule">
+                <div class="atom-unit">
+                    <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="atom-symbol">O</div>
+                </div>
+                <div class="bond double"><div></div><div></div></div>
+                <div class="atom-unit">
+                    <div class="atom-symbol">C</div>
+                </div>
+                <div class="bond double"><div></div><div></div></div>
+                <div class="atom-unit">
+                    <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="atom-symbol">O</div>
+                </div>
+                <div class="bond-text">Ikatan kovalen rangkap dua (CO₂)</div>
+            </div>
+
+            <div class="molecule">
+                <div class="atom-unit">
+                    <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="atom-symbol">N</div>
+                </div>
+                <div class="bond triple"><div></div><div></div><div></div></div>
+                <div class="atom-unit">
+                    <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    <div class="atom-symbol">N</div>
+                </div>
+                <div class="bond-text">Ikatan kovalen rangkap tiga (N₂)</div>
+            </div>
+        </div>
+        <ul>
+            <li><b>Ikatan Kovalen Tunggal:</b> Terbentuk ketika dua atom berbagi <span class="highlight">satu</span> pasangan elektron. Contohnya adalah HCl, di mana atom H dan Cl berbagi satu pasang elektron. Atom Cl juga memiliki tiga pasang elektron bebas (<i>lone pairs</i>) yang tidak digunakan untuk berikatan, memenuhi kaidah oktet (delapan elektron valensi).</li>
+            <li><b>Ikatan Kovalen Rangkap Dua:</b> Terbentuk ketika dua atom berbagi <span class="highlight">dua</span> pasangan elektron. Contohnya CO₂, di mana atom C berikatan rangkap dua dengan masing-masing atom O. Setiap atom O juga memiliki dua pasang elektron bebas, sehingga baik atom C maupun O memenuhi kaidah oktet.</li>
+            <li><b>Ikatan Kovalen Rangkap Tiga:</b> Terbentuk ketika dua atom berbagi <span class="highlight">tiga</span> pasangan elektron. Contohnya N₂, di mana dua atom N berbagi tiga pasang elektron. Setiap atom N juga memiliki satu pasang elektron bebas untuk memenuhi kaidah oktet.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>1. Ikatan Kovalen Polar dan Nonpolar</h2>
+        <p>Ikatan kovalen dapat dibagi berdasarkan <span class="highlight">kepolarannya</span>, yaitu seberapa merata atau tidak meratanya pembagian elektron dalam ikatan tersebut.</p>
+
+        <h3>Ikatan Kovalen Polar</h3>
+        <p>Ikatan kovalen polar terbentuk antara atom-atom yang memiliki <span class="highlight">perbedaan keelektronegatifan</span> yang signifikan. Keelektronegatifan adalah kemampuan suatu atom untuk menarik pasangan elektron ikatan ke arah dirinya. Contoh klasik adalah molekul Asam Klorida (HCl):</p>
+        <ul>
+            <li>Atom Hidrogen (H) memiliki keelektronegatifan sekitar 2,1.</li>
+            <li>Atom Klorin (Cl) memiliki keelektronegatifan sekitar 3,0.</li>
+        </ul>
+        <p>Karena Cl lebih elektronegatif, pasangan elektron yang dibagi dalam ikatan H-Cl akan tertarik lebih kuat ke arah atom Cl. Hal ini menyebabkan:</p>
+        <ul>
+            <li>Atom Cl menjadi sedikit bermuatan negatif (<span class="delta-charge">&delta;<sup>-</sup></span>)</li>
+            <li>Atom H menjadi sedikit bermuatan positif (<span class="delta-charge">&delta;<sup>+</sup></span>)</li>
+        </ul>
+        <p>Kondisi ini disebut <span class="highlight">polarisasi</span>, di mana molekul memiliki dua kutub muatan (positif parsial dan negatif parsial). Senyawa kovalen polar, ketika dilarutkan dalam pelarut polar seperti air, dapat menghantarkan arus listrik (mirip dengan senyawa ion).</p>
+        <div class="polar-bond-diagram">
+            <span class="delta-charge">&delta;<sup>+</sup></span>
+            <span class="atom-label-polar">H</span>
+            <span class="arrow">&rarr;</span>
+            <span class="atom-label-polar">Cl</span>
+            <span class="delta-charge">&delta;<sup>-</sup></span>
+        </div>
+        <p style="text-align: center; color: var(--text-tertiary);">Pergeseran kerapatan elektron dalam ikatan kovalen polar HCl.</p>
+
+        <h3>Ikatan Kovalen Nonpolar</h3>
+        <p>Ikatan kovalen nonpolar terbentuk antara atom-atom nonlogam yang <span class="highlight">sejenis</span> atau yang memiliki <span class="highlight">perbedaan keelektronegatifan yang sangat kecil</span>. Dalam ikatan ini, pasangan elektron dibagi secara merata di antara kedua atom, sehingga tidak ada pembentukan kutub muatan parsial. Contohnya adalah molekul diatomik seperti N₂, O₂, Cl₂, atau CH₄ (meskipun CH₄ memiliki perbedaan keelektronegatifan kecil, simetri molekulnya membuatnya nonpolar secara keseluruhan).</p>
+
+        <div class="section-divider"></div>
+
+        <h2>2. Ikatan Kovalen Koordinasi</h2>
+        <p>Selain berbagi elektron secara "adil" (masing-masing atom menyumbang satu elektron untuk pasangan ikatan), ada juga kasus di mana <span class="highlight">satu atom menyumbangkan kedua elektron</span> yang akan digunakan bersama, sementara atom pasangannya tidak menyumbangkan elektron sama sekali. Ikatan ini dikenal sebagai <span class="highlight">ikatan kovalen koordinasi</span> (atau ikatan datif).</p>
+        <p>Atom penyumbang elektron harus memiliki <span class="highlight">pasangan elektron bebas</span> (<i>lone pair</i>), sedangkan atom penerima harus memiliki <span class="highlight">orbital kosong</span> yang dapat menampung pasangan elektron tersebut. Ikatan ini sering ditunjukkan dengan panah (<span class="coordinate-bond-arrow">&rarr;</span>) yang menunjuk dari atom penyumbang ke atom penerima.</p>
+
+        <div class="example-box">
+            <h3>Contoh: Pembentukan NH₃BF₃</h3>
+            <p>Molekul NH₃ (amonia) memiliki atom N dengan satu pasangan elektron bebas. Molekul BF₃ (boron trifluorida) memiliki atom B yang hanya mengikat tiga atom F, sehingga atom B memiliki orbital kosong (tidak mencapai oktet). Atom N dapat menyumbangkan pasangan elektron bebasnya ke orbital kosong atom B, membentuk ikatan kovalen koordinasi.</p>
+            <div class="lewis-structure-container">
+                <div class="molecule">
+                    <div class="atom-unit">
+                        <div class="atom-symbol">H</div>
+                    </div>
+                    <div class="atom-unit">
+                        <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="atom-symbol">N</div>
+                        <div class="bond single"></div>
+                        <div class="atom-symbol">H</div>
+                    </div>
+                    <div class="atom-symbol" style="font-size: 1.5em;">+</div>
+                    <div class="atom-unit">
+                        <div class="atom-symbol">B</div>
+                        <div class="bond single"></div>
+                        <div class="atom-symbol">F</div>
+                    </div>
+                </div>
+                <div class="molecule">
+                    <div class="atom-unit">
+                        <div class="atom-symbol">H</div>
+                    </div>
+                    <div class="atom-unit">
+                        <div class="atom-symbol">N</div>
+                        <span class="coordinate-bond-arrow" style="margin-left: 5px;">→</span>
+                        <div class="atom-symbol">B</div>
+                        <div class="bond single"></div>
+                        <div class="atom-symbol">F</div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-tertiary);">Diagram sederhana ikatan kovalen koordinasi pada NH₃BF₃.</p>
+            <p>Hasilnya, baik atom N maupun B sama-sama mencapai konfigurasi oktet yang stabil.</p>
+
+            <h3>Contoh Lain: HNO₃ dan SO₃</h3>
+            <p>Pada molekul HNO₃, atom N sudah mengikat dua atom O dengan ikatan kovalen tunggal dan rangkap. Untuk mencapai oktet dan menstabilkan molekul, sepasang elektron bebas yang tersisa pada atom N dapat membentuk ikatan kovalen koordinasi dengan atom O ketiga. Atom O ketiga ini pada awalnya tidak memiliki cukup elektron untuk membentuk ikatan kovalen biasa.</p>
+            <p>Demikian pula pada molekul SO₃, atom S (yang dapat memperluas oktetnya) menyumbangkan pasangan elektronnya untuk membentuk dua ikatan kovalen koordinasi dengan dua atom O yang tersisa, memastikan semua atom (S dan O) memenuhi kaidah oktet atau memiliki konfigurasi stabil.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2>3. Struktur Lewis pada Ikatan Kovalen</h2>
+        <p>Penulisan <span class="highlight">Struktur Lewis</span> adalah alat visual yang sangat penting untuk memahami ikatan kovalen, khususnya dalam menentukan apakah atom-atom telah mencapai kaidah oktet dan untuk memprediksi kepolaran molekul. Struktur Lewis dimulai dengan menggambar elektron valensi dari masing-masing atom sebagai titik di sekitar simbol atom (disebut <i>Lewis electron-dot symbol</i> atau simbol Lewis).</p>
+
+        <h3>Simbol Titik-Elektron Lewis</h3>
+        <p>Berikut adalah contoh simbol Lewis untuk beberapa unsur:</p>
+        <div class="lewis-symbol-grid">
+            <div class="lewis-dot-symbol H">
+                <span class="atom-symbol">H</span>
+                <div class="dots-set right"><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol He">
+                <span class="atom-symbol">He</span>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Li">
+                <span class="atom-symbol">Li</span>
+                <div class="dots-set right"><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Be">
+                <span class="atom-symbol">Be</span>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol B">
+                <span class="atom-symbol">B</span>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol C">
+                <span class="atom-symbol">C</span>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol N">
+                <span class="atom-symbol">N</span>
+                <div class="dots-set top"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol O">
+                <span class="atom-symbol">O</span>
+                <div class="dots-set top"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol F">
+                <span class="atom-symbol">F</span>
+                <div class="dots-set top"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set bottom"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Ne">
+                <span class="atom-symbol">Ne</span>
+                <div class="dots-set top"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set bottom"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set left"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Na">
+                <span class="atom-symbol">Na</span>
+                <div class="dots-set right"><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Mg">
+                <span class="atom-symbol">Mg</span>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Al">
+                <span class="atom-symbol">Al</span>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Si">
+                <span class="atom-symbol">Si</span>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol P">
+                <span class="atom-symbol">P</span>
+                <div class="dots-set top"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol S">
+                <span class="atom-symbol">S</span>
+                <div class="dots-set top"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Cl">
+                <span class="atom-symbol">Cl</span>
+                <div class="dots-set top"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set bottom"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="lewis-dot-symbol Ar">
+                <span class="atom-symbol">Ar</span>
+                <div class="dots-set top"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set bottom"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set left"><span class="dot"></span><span class="dot"></span></div>
+                <div class="dots-set right"><span class="dot"></span><span class="dot"></span></div>
+            </div>
+        </div>
+        <p style="text-align: center; color: var(--text-tertiary);">Contoh simbol titik-elektron Lewis untuk beberapa unsur.</p>
+
+        <h3>Kaidah Oktet dan Duplet</h3>
+        <p>Ketika membentuk ikatan kovalen, atom-atom cenderung untuk mencapai konfigurasi elektron yang stabil. Aturan umum ini dikenal sebagai:</p>
+        <ul>
+            <li><span class="highlight">Kaidah Oktet:</span> Atom cenderung memiliki <span class="highlight">delapan</span> elektron valensi di sekitarnya setelah berikatan, meniru konfigurasi gas mulia terdekat (kecuali Helium).</li>
+            <li><span class="highlight">Kaidah Duplet:</span> Khusus untuk atom hidrogen (H), ia hanya perlu memiliki <span class="highlight">dua</span> elektron valensi di sekitarnya untuk menjadi stabil, meniru konfigurasi Helium.</li>
+        </ul>
+
+        <h3>Penyimpangan Kaidah Oktet</h3>
+        <p>Meskipun kaidah oktet adalah panduan yang sangat berguna, ada beberapa molekul yang stabil namun tidak sepenuhnya mematuhi kaidah ini. Hal ini disebut <span class="highlight">penyimpangan kaidah oktet</span>.</p>
+        <div class="exception-structure">
+            <p style="color: var(--semantic-warning); font-weight: bold; margin-bottom: 15px;">Penyimpangan Kaidah Oktet</p>
+            <div class="lewis-structure-container">
+                <div class="molecule">
+                    <div class="atom-unit">
+                        <div class="atom-symbol">F</div>
+                        <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair right"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    </div>
+                    <div class="bond single"></div>
+                    <div class="atom-unit">
+                        <div class="atom-symbol">B</div>
+                    </div>
+                    <div class="bond single"></div>
+                    <div class="atom-unit">
+                        <div class="atom-symbol">F</div>
+                        <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair left"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    </div>
+                </div>
+                <div class="molecule" style="margin-top: 20px;">
+                    <div class="atom-unit">
+                        <div class="atom-symbol">F</div>
+                        <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair right"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    </div>
+                    <div class="bond single"></div>
+                    <div class="atom-unit">
+                        <div class="atom-symbol">P</div>
+                    </div>
+                    <div class="bond single"></div>
+                    <div class="atom-unit">
+                        <div class="atom-symbol">F</div>
+                        <div class="electron-pair top"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair bottom"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                        <div class="electron-pair left"><span class="electron-dot"></span><span class="electron-dot"></span></div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-tertiary);">Struktur Lewis sederhana BF₃ dan PF₅ (elektron bebas F tidak ditampilkan sepenuhnya untuk PF₅, namun asumsikan ada)</p>
+        </div>
+        <ul>
+            <li><b>BF₃ (Boron Trifluorida):</b> Pada molekul BF₃, atom Boron (B) hanya memiliki <span class="highlight">enam</span> elektron valensi setelah berikatan dengan tiga atom Fluor (F). Ini kurang dari delapan elektron yang dibutuhkan untuk memenuhi kaidah oktet. Meskipun demikian, BF₃ adalah senyawa yang stabil.</li>
+            <li><b>PF₅ (Fosfor Pentaklorida):</b> Pada molekul PF₅, atom Fosfor (P) berikatan dengan lima atom Fluor (F), sehingga memiliki <span class="highlight">sepuluh</span> elektron valensi. Ini melebihi delapan elektron yang dibutuhkan untuk memenuhi kaidah oktet. Meskipun demikian, PF₅ juga merupakan senyawa yang stabil.</li>
+        </ul>
+        <p>Penyimpangan ini menunjukkan bahwa kaidah oktet adalah panduan umum, tetapi bukan aturan yang mutlak bagi semua senyawa, terutama untuk unsur-unsur pada periode ketiga dan seterusnya yang dapat memiliki orbital d kosong untuk menampung lebih dari delapan elektron.</p>
+    </div>
+</body>
+</html>
+```

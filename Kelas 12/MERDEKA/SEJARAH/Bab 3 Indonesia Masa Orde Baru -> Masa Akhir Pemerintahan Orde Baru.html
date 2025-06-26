@@ -1,0 +1,338 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masa Akhir Pemerintahan Orde Baru</title>
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-divider);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9; /* Slightly off-white for sections */
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-size: 1.4em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            color: var(--text-tertiary);
+        }
+
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .speech-box {
+            background-color: #e3f2fd; /* Light blue */
+            border: 1px solid var(--semantic-info);
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .speech-box h2 {
+            color: var(--primary-blue);
+            text-align: center;
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+
+        .speech-box p {
+            font-style: italic;
+            text-align: justify;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .speech-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .callout-box {
+            background-color: #f0f4c3; /* Light green/yellow */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .callout-box strong {
+            color: var(--accent-green);
+        }
+
+        details {
+            background-color: #e8f5e9; /* Very light green */
+            border: 1px solid var(--accent-green);
+            border-radius: 4px;
+            margin-top: 15px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        details summary {
+            font-weight: bold;
+            color: var(--accent-green);
+            padding: 5px 0;
+            outline: none;
+        }
+
+        details[open] {
+            background-color: #dcedc8; /* Slightly darker green when open */
+        }
+
+        details p {
+            padding-top: 10px;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 40px;
+            border-top: 2px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .speech-box {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.9em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            p, ul, li {
+                font-size: 0.95em;
+            }
+
+            section {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Masa Akhir Pemerintahan Orde Baru (1997-1998)</h1>
+            <p>Memahami Krisis Multidimensi yang Mengakhiri Era Soeharto</p>
+        </header>
+
+        <section>
+            <h2>Krisis Ekonomi Asia 1997/1998: Sebuah Awal</h2>
+            <p>Pada akhir masa pemerintahan Orde Baru, Indonesia dihadapkan pada tantangan besar yang belum pernah terjadi sebelumnya: sebuah <strong class="highlight">krisis ekonomi yang parah</strong> yang melanda tidak hanya Indonesia tetapi juga sebagian besar negara di kawasan Asia.</p>
+            <p>Sejarah menunjukkan bahwa Indonesia pernah mengalami resesi ekonomi yang sangat buruk pada tahun 1997/1998. Menariknya, krisis ini datang setelah periode pertumbuhan ekonomi yang sangat pesat dan berlangsung lama, khususnya antara tahun 1980 hingga 1990. Era ini ditandai dengan:</p>
+            <ul>
+                <li>Ekspansi perumahan <em>real estate</em> yang luar biasa.</li>
+                <li>Pertumbuhan pasar saham yang signifikan.</li>
+                <li>Masuknya dana luar negeri jangka pendek secara berlebihan, yang menciptakan apa yang dikenal sebagai <strong class="highlight">"gelembung uang panas"</strong>.</li>
+            </ul>
+
+            <h3>Pemicu dan Dampak Krisis Moneter</h3>
+            <p>Krisis moneter Asia ini berawal di Thailand dengan <strong class="highlight">jatuhnya nilai mata uang Baht</strong> dan pembengkakan utang luar negeri. Efek domino dari krisis ini dengan cepat menjalar ke negara-negara Asia Tenggara lainnya, termasuk Indonesia.</p>
+            <p>Di Indonesia, dampak krisis ini sangat terasa:</p>
+            <ul>
+                <li><strong>Pelemahan Nilai Tukar Rupiah:</strong> Nilai tukar Rupiah melemah drastis dari sekitar Rp2.500,00 per dolar AS menjadi Rp16.000,00. Fenomena ini memicu kepanikan di mana banyak pihak berbondong-bondong membeli dolar AS.</li>
+                <li><strong>Gejolak Sektor Perbankan:</strong> Kelemahan sistem perekonomian dan perbankan di Indonesia, ditambah besarnya utang luar negeri, memperparah kondisi.</li>
+                <li><strong>Kenaikan Harga Barang:</strong> Melemahnya Rupiah terhadap dolar AS secara langsung memicu kenaikan harga-harga barang kebutuhan pokok.</li>
+                <li><strong>Kelesuan Perdagangan Dalam Negeri:</strong> Maraknya produk impor dengan harga murah telah membuat perdagangan domestik lesu.</li>
+                <li><strong>Penarikan Modal Asing dan Kapitalisasi Dana:</strong> Investor asing menarik modalnya dari Indonesia, dan banyak pengusaha Indonesia memindahkan dananya ke luar negeri. Hal ini menyebabkan banyak perusahaan bangkrut.</li>
+                <li><strong>Peningkatan Pengangguran:</strong> Akibat kebangkrutan perusahaan dan lesunya ekonomi, jumlah pengangguran di Indonesia melonjak tajam.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Krisis Pangan dan Kemiskinan</h2>
+            <p>Krisis ekonomi ini tidak berdiri sendiri, melainkan diikuti oleh <strong class="highlight">krisis pangan</strong> yang serius. Meskipun data akhir 1996 menunjukkan produksi beras nasional yang cukup besar (159,8 kg/kapita/tahun, melebihi konsumsi 111,7 kg/kapita/tahun), kelebihan ketersediaan pangan nasional ternyata tidak menjamin ketahanan pangan di tingkat individu maupun rumah tangga.</p>
+            <p>Ini disebabkan oleh beberapa faktor struktural yang memengaruhi akses terhadap pangan:</p>
+            <ul>
+                <li><strong>Harga Pangan:</strong> Kenaikan harga pangan membuat banyak orang kesulitan untuk membeli kebutuhan pokok.</li>
+                <li><strong>Daya Beli dan Pendapatan:</strong> Daya beli masyarakat menurun drastis karena pendapatan yang stagnan atau bahkan berkurang akibat pengangguran.</li>
+                <li><strong>Distribusi Pangan:</strong> Sistem distribusi pangan yang tidak merata memperburuk masalah akses.</li>
+                <li><strong>Kelembagaan Lokal:</strong> Lemahnya institusi dan mekanisme lokal dalam mengelola ketersediaan pangan.</li>
+            </ul>
+            <p>Akibatnya, <strong class="highlight">tingkat kemiskinan di Indonesia melonjak drastis</strong>, mencapai 7,5 juta orang. Selain itu, jumlah anak yang putus sekolah juga meningkat tajam, menunjukkan dampak sosial yang luas dari krisis multidimensi ini.</p>
+        </section>
+
+        <section>
+            <h2>Krisis Kepercayaan dan Gejolak Sosial-Politik</h2>
+            <p>Kompleksitas krisis ekonomi dan sosial yang terjadi pada masa itu menunjukkan adanya <strong class="highlight">kelemahan struktural</strong> dalam kehidupan sosial-politik Indonesia. Ini pada akhirnya menimbulkan <strong class="highlight">krisis kepercayaan masyarakat terhadap pemerintah</strong>.</p>
+            <p>Tahun 1998 menjadi puncak dari akumulasi ketidakpuasan masyarakat, yang termanifestasi dalam berbagai bentuk protes:</p>
+            <ul>
+                <li>Lebih dari <strong class="highlight">2.000 kali demonstrasi mahasiswa</strong> yang menuntut reformasi.</li>
+                <li>Sekitar 1.300 kali aksi unjuk rasa oleh Lembaga Swadaya Masyarakat (LSM).</li>
+                <li>500 pemogokan buruh.</li>
+                <li>50 kali <strong class="highlight">huru-hara</strong> (kerusuhan sosial) yang terjadi di berbagai kota.</li>
+            </ul>
+            <p>Tragedi kerusuhan besar pada tanggal <strong class="highlight">13-14 Mei 1998</strong>, khususnya di Jakarta, menunjukkan bahwa yang terjadi bukan hanya krisis negara, melainkan juga krisis kemanusiaan yang mendalam. Akumulasi dari semua peristiwa krisis ini pada akhirnya berujung pada peristiwa bersejarah: <strong class="highlight">pengunduran diri Presiden Soeharto pada 21 Mei 1998</strong>.</p>
+        </section>
+
+        <div class="speech-box">
+            <h2>Pidato Pengunduran Diri Presiden Soeharto</h2>
+            <p>Pengunduran diri Presiden Soeharto terjadi pada hari <strong class="highlight">Kamis, 21 Mei 1998, pukul 09.00 WIB</strong> di Istana Negara, Jakarta. Dalam pidatonya, Presiden Soeharto menyatakan:</p>
+            <p><em>"Sejak beberapa waktu terakhir, saya mengikuti dengan cermat perkembangan situasi nasional kita, terutama aspirasi rakyat untuk mengadakan reformasi di segala bidang kehidupan berbangsa dan bernegara. Atas dasar pemahaman saya yang mendalam terhadap aspirasi tersebut, dan terdorong oleh keyakinan bahwa reformasi tersebut perlu dilaksanakan secara tertib, damai dan konstitusional demi terpeliharanya persatuan dan kesatuan bangsa serta kelangsungan pembangunan nasional, saya telah menyatakan rencana pembentukan Komite Reformasi dan mengubah susunan Kabinet Pembangunan VII. Namun demikian, kenyataan hingga hari ini menunjukkan Komite Reformasi tersebut tidak dapat terwujud karena tidak adanya tanggapan yang memadai terhadap rencana pembentukan komite tersebut."</em></p>
+            <p><em>"Dalam keinginan untuk melaksanakan reformasi dengan cara yang sebaik-baiknya tadi, saya menilai bahwa dengan tidak dapat diwujudkannya Komite Reformasi maka perubahan susunan Kabinet Pembangunan VII menjadi tidak diperlukan lagi. Dengan memperhatikan keadaan di atas, saya berpendapat sangat sulit bagi saya untuk dapat menjalankan tugas pemerintahan negara dan pembangunan dengan baik. Oleh karena itu dengan memperhatikan ketentuan Pasal 8 UUD 1945, dan setelah dengan sungguh-sungguh memperhatikan pandangan pimpinan Dewan Perwakilan Rakyat dan pimpinan fraksi-fraksi yang ada di dalamnya, saya memutuskan untuk menyatakan berhenti dari jabatan saya sebagai Presiden Republik Indonesia, terhitung sejak saya bacakan pernyataan ini pada hari ini, kamis 21 Mei 1998."</em></p>
+            <p>Soeharto juga mengumumkan bahwa sesuai dengan Pasal 8 UUD 1945, Wakil Presiden Republik Indonesia, Prof. H. BJ Habibie, akan melanjutkan sisa waktu jabatan Presiden Mandataris MPR 1998-2003. Ia mengakhiri pidatonya dengan menyampaikan terima kasih atas bantuan dan dukungan rakyat serta permohonan maaf atas kesalahan dan kekurangannya, berharap bangsa Indonesia tetap jaya dengan Pancasila dan UUD 1945.</p>
+        </div>
+
+        <div class="callout-box">
+            <strong>Fakta Penting:</strong> Pengunduran diri Soeharto menandai berakhirnya 32 tahun kekuasaan Orde Baru dan dimulainya era Reformasi di Indonesia, sebuah babak baru dalam sejarah politik dan sosial bangsa.
+        </div>
+
+        <details>
+            <summary>Mengapa Krisis di Thailand Berpengaruh ke Indonesia?</summary>
+            <p>Krisis ekonomi yang dimulai di Thailand pada tahun 1997, dikenal sebagai "Krisis Keuangan Asia" atau "Krisis Tom Yum Goong", dengan cepat menyebar ke negara-negara tetangga, termasuk Indonesia, karena beberapa alasan:</p>
+            <ul>
+                <li><strong>Ketergantungan Ekonomi Regional:</strong> Negara-negara di Asia Tenggara memiliki keterkaitan ekonomi yang kuat, terutama dalam perdagangan dan investasi. Jika satu negara mengalami kesulitan, dampaknya akan merambat ke negara lain.</li>
+                <li><strong>Arus Modal Spekulatif:</strong> Sebelum krisis, banyak investor asing membanjiri kawasan ini dengan dana jangka pendek (hot money) yang mencari keuntungan cepat. Ketika Thailand mengalami masalah, kepercayaan investor runtuh, dan mereka ramai-ramai menarik modalnya dari seluruh kawasan, termasuk Indonesia.</li>
+                <li><strong>Sistem Nilai Tukar Tetap (Dollar Peg):</strong> Banyak negara di Asia Tenggara, termasuk Indonesia pada awalnya, menggunakan sistem nilai tukar yang dipatok (atau sangat dekat dengan) Dolar AS. Ketika Baht Thailand runtuh, tekanan spekulatif pada mata uang regional lainnya, termasuk Rupiah, meningkat drastis, memaksa bank sentral untuk menguras cadangan devisa atau melepaskan patokannya, yang berujung pada devaluasi besar-besaran.</li>
+                <li><strong>Kelemahan Struktural Serupa:</strong> Banyak negara di Asia Tenggara memiliki kelemahan struktural yang serupa, seperti sistem perbankan yang rapuh, tingginya utang luar negeri korporasi, dan praktik kolusi yang menyebabkan alokasi investasi tidak efisien. Ketika krisis kepercayaan melanda, kelemahan-kelemahan ini terungkap, memperparah krisis di masing-masing negara.</li>
+            </ul>
+            <p>Dengan demikian, krisis di Thailand menjadi pemicu domino yang mengekspos kerentanan ekonomi di seluruh kawasan, termasuk Indonesia, yang akhirnya mengalami dampak terberat.</p>
+        </details>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Pembelajaran Sejarah Indonesia. Hak Cipta Dilindungi Undang-Undang.</p>
+        <p>Sumber: Modifikasi dari buku Sejarah untuk SMA/MA Kelas XII dan berbagai referensi sejarah lainnya.</p>
+    </footer>
+</body>
+</html>
+```

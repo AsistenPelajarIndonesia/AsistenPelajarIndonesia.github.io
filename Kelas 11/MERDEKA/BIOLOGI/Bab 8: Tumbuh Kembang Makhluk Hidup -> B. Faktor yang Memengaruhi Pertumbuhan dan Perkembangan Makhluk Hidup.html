@@ -1,0 +1,487 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 8: Tumbuh Kembang Makhluk Hidup - Faktor-faktor</title>
+    <style>
+        /* CSS Variabel untuk Tema Cahaya */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Umum */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Gaya Judul */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h1 { 
+            font-size: 2.5em; 
+            border-bottom: 3px solid var(--primary-blue); 
+            padding-bottom: 15px; 
+            text-align: center;
+            color: var(--primary-blue);
+        }
+        h2 { 
+            font-size: 2em; 
+            color: var(--accent-green); 
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h3 { 
+            font-size: 1.6em; 
+            color: var(--text-primary); 
+            margin-top: 30px; 
+            border-left: 5px solid var(--accent-green);
+            padding-left: 10px;
+        }
+        h4 { 
+            font-size: 1.3em; 
+            color: var(--text-secondary); 
+            margin-top: 25px; 
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 5px;
+        }
+        h5 {
+            font-size: 1.1em;
+            color: var(--text-primary);
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* Gaya Paragraf dan Daftar */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 30px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.6em;
+            padding-left: 5px;
+        }
+
+        /* Gaya Kotak Informasi */
+        .section-intro {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 1.1em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .content-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-content-box {
+            background-color: #F8F8F8; /* Light grey for sub-sections */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .data-point {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Gaya Tabel ZPT */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-divider);
+            padding: 14px 18px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #F5F5F5;
+        }
+
+        table tbody tr:hover {
+            background-color: #EFEFEF;
+        }
+
+        /* Warna latar belakang untuk sel tabel ZPT */
+        td[style*="background-color"] {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        /* Gaya Diagram Faktor Eksternal (tanpa gambar) */
+        .external-factors-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin: 40px 0;
+            position: relative;
+            padding: 20px;
+            border: 1px dashed var(--border-divider);
+            border-radius: 10px;
+            background-color: #FDFDFD;
+        }
+
+        .factor-bubble {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.15em;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .factor-bubble:hover {
+            transform: scale(1.05);
+            background-color: #2196F3; /* Lighter blue on hover */
+            cursor: pointer;
+        }
+
+        .factor-center {
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+            width: 180px;
+            height: 180px;
+            font-size: 1.4em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            border: 3px solid var(--semantic-success);
+        }
+
+        /* Penyesuaian Responsif */
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            h3 { font-size: 1.4em; }
+            h4 { font-size: 1.15em; }
+            body { padding: 15px; }
+            .container { padding: 15px; }
+            .factor-bubble {
+                width: 100px;
+                height: 100px;
+                font-size: 1em;
+            }
+            .factor-center {
+                width: 140px;
+                height: 140px;
+                font-size: 1.2em;
+            }
+            table th, table td {
+                padding: 10px;
+                font-size: 0.85em;
+            }
+            ul { margin-left: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+            h3 { font-size: 1.2em; }
+            h4 { font-size: 1em; }
+            body { padding: 10px; }
+            .container { padding: 10px; }
+            .factor-bubble, .factor-center {
+                width: 80px;
+                height: 80px;
+                font-size: 0.85em;
+                margin: 5px;
+            }
+            .factor-center {
+                width: 110px;
+                height: 110px;
+                font-size: 1.1em;
+            }
+            .external-factors-diagram {
+                gap: 15px;
+            }
+            table th, table td {
+                padding: 8px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section-intro">
+            <h1>Bab 8: Tumbuh Kembang Makhluk Hidup</h1>
+            <h2>B. Faktor yang Memengaruhi Pertumbuhan dan Perkembangan Makhluk Hidup</h2>
+            <p>Pertumbuhan dan perkembangan pada makhluk hidup adalah proses vital yang memungkinkan organisme untuk bertambah ukuran, berubah bentuk, dan mencapai kematangan fungsional. Proses ini tidak terjadi begitu saja, melainkan dipengaruhi oleh serangkaian faktor yang kompleks, baik yang berasal dari dalam tubuh organisme itu sendiri (internal) maupun dari lingkungan sekitarnya (eksternal).</p>
+        </div>
+
+        <div class="content-card">
+            <h3>1. Faktor yang Memengaruhi Pertumbuhan dan Perkembangan Tumbuhan</h3>
+            <p>Pertumbuhan dan perkembangan tumbuhan meliputi semua proses yang menghasilkan perubahan ireversibel dalam ukuran, massa, dan kompleksitas. Faktor-faktor ini berinteraksi secara dinamis untuk menentukan bagaimana tumbuhan tumbuh dan berkembang.</p>
+
+            <h4>a. Faktor Internal</h4>
+            <p>Faktor internal adalah faktor-faktor genetik dan fisiologis yang melekat pada tumbuhan itu sendiri.</p>
+
+            <div class="sub-content-box">
+                <h5>Gen</h5>
+                <p>Gen merupakan unit dasar pewarisan sifat yang diturunkan dari induk kepada keturunannya. Pada tumbuhan, gen berperan fundamental dalam menentukan:</p>
+                <ul>
+                    <li><strong>Pola Dasar Pertumbuhan:</strong> Mengatur bentuk umum dan struktur arsitektur tumbuhan (misalnya, apakah tumbuhan tumbuh tegak, merambat, atau semak).</li>
+                    <li><strong>Karakteristik Morfologi:</strong> Menentukan warna bunga, bentuk daun, ukuran buah, dan ciri-ciri fisik lainnya.</li>
+                    <li><strong>Metabolisme dan Fisiologi:</strong> Memengaruhi kemampuan tumbuhan dalam menyerap nutrisi, melakukan fotosintesis, dan menjalankan berbagai reaksi biokimia penting lainnya yang mendukung pertumbuhan dan perkembangan.</li>
+                </ul>
+                <p><strong>Contoh: Varietas Mangga di Indonesia</strong><br>
+                Indonesia memiliki keanekaragaman mangga yang kaya, seperti Mangga Harum Manis, Indramayu, Golek, Kweni, Manalagi, dan Gedong Gincu. Perbedaan mencolok dalam ukuran, warna kulit, warna daging, rasa, dan tekstur buah antar varietas ini adalah hasil langsung dari perbedaan komposisi genetik masing-masing. Meskipun demikian, lingkungan juga dapat memengaruhi bagaimana gen-gen ini diekspresikan, misalnya, kualitas buah dapat bervariasi tergantung pada kondisi tanah dan iklim.</p>
+            </div>
+
+            <div class="sub-content-box">
+                <h5>Zat Pengatur Tumbuh (Hormon Tumbuhan)</h5>
+                <p>Hormon tumbuhan, atau fitohormon, adalah senyawa organik yang diproduksi dalam jumlah sangat kecil oleh tumbuhan, namun memiliki efek regulasi yang signifikan terhadap pertumbuhan dan perkembangan. Mereka bertindak sebagai sinyal kimia yang mengoordinasikan berbagai proses seluler.</p>
+                <p><strong>Contoh: Pematangan Buah Mangga</strong><br>
+                Salah satu hormon yang paling dikenal dalam pematangan buah adalah <strong>Etilen</strong>. Etilen adalah senyawa hidrokarbon tidak jenuh yang berbentuk gas pada suhu ruang. Buah-buahan, termasuk mangga, secara alami memproduksi etilen saat mulai matang. Konsentrasi etilen yang lebih tinggi mempercepat proses pematangan, yang ditandai dengan perubahan fisikokimiawi seperti:</p>
+                <ul>
+                    <li><strong>Perubahan Warna:</strong> Misalnya, peningkatan biosintesis karotenoid yang mengubah warna kulit dan daging buah dari hijau menjadi kuning/oranye.</li>
+                    <li><strong>Pelunakan Tekstur:</strong> Penguraian pektin di dinding sel.</li>
+                    <li><strong>Peningkatan Aroma dan Rasa:</strong> Pembentukan senyawa volatil dan gula.</li>
+                </ul>
+                <p>Penyimpanan mangga mentah di tempat tertutup atau dalam beras meningkatkan konsentrasi etilen di sekitarnya, sehingga mempercepat pematangannya.</p>
+
+                <p>Berikut adalah beberapa kelompok hormon tumbuhan utama dan peranannya:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hormon</th>
+                            <th>Perkecambahan</th>
+                            <th>Pertumbuhan Vegetatif (Menuju Dewasa)</th>
+                            <th>Pembungaan</th>
+                            <th>Perkembangan Buah</th>
+                            <th>Absisi (Pengguguran Daun/Buah)</th>
+                            <th>Dormansi Biji</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Giberlin</strong></td>
+                            <td style="background-color: var(--semantic-success);">Mendorong</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong (pemanjangan batang)</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong</td>
+                            <td style="background-color: var(--text-tertiary);">Tidak langsung</td>
+                            <td style="background-color: var(--semantic-error);">Memecah</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Auksin</strong></td>
+                            <td style="background-color: var(--semantic-success);">Mendorong (pada kons. rendah)</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong (pemanjangan sel, dominansi apikal)</td>
+                            <td style="background-color: var(--text-tertiary);">Beragam (tergantung spesies)</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong</td>
+                            <td style="background-color: var(--semantic-error);">Menunda (pada daun muda)</td>
+                            <td style="background-color: var(--text-tertiary);">Tidak langsung</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sitokinin</strong></td>
+                            <td style="background-color: var(--semantic-success);">Mendorong</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong (pembelahan sel, diferensiasi tunas)</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong (pada beberapa spesies)</td>
+                            <td style="background-color: var(--text-tertiary);">Tidak langsung</td>
+                            <td style="background-color: var(--semantic-error);">Menunda penuaan</td>
+                            <td style="background-color: var(--text-tertiary);">Tidak langsung</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Etilen</strong></td>
+                            <td style="background-color: var(--semantic-success);">Mendorong (pada beberapa spesies)</td>
+                            <td style="background-color: var(--text-tertiary);">Menghambat (pemanjangan)</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong (pada beberapa spesies)</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong (pematangan)</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong</td>
+                            <td style="background-color: var(--text-tertiary);">Tidak langsung</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Asam Absisat (ABA)</strong></td>
+                            <td style="background-color: var(--semantic-error);">Menghambat</td>
+                            <td style="background-color: var(--text-tertiary);">Menghambat (saat stres)</td>
+                            <td style="background-color: var(--text-tertiary);">Tidak langsung</td>
+                            <td style="background-color: var(--text-tertiary);">Tidak langsung</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong</td>
+                            <td style="background-color: var(--semantic-success);">Mendorong</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Catatan Penting:</strong> Cahaya matahari juga dapat memengaruhi pertumbuhan dengan merusak hormon auksin. Oleh karena itu, tumbuhan yang tumbuh di tempat gelap cenderung memiliki batang yang lebih panjang dan kurus (fenomena etiolasi) karena auksin tidak terdegradasi oleh cahaya.</p>
+            </div>
+
+            <h4>b. Faktor Eksternal</h4>
+            <p>Faktor eksternal adalah kondisi lingkungan di luar tumbuhan yang secara signifikan memengaruhi pertumbuhannya.</p>
+
+            <div class="sub-content-box">
+                <h5>Nutrisi</h5>
+                <p>Nutrisi, atau unsur hara, adalah bahan kimia yang diserap tumbuhan dari tanah (dan udara) untuk membangun biomassa dan menjalankan fungsi fisiologis. Unsur-unsur ini terbagi menjadi makronutrien (dibutuhkan dalam jumlah besar) dan mikronutrien (dibutuhkan dalam jumlah kecil).</p>
+                <ul>
+                    <li><strong>Peran:</strong> Setiap nutrisi memiliki peran spesifik, misalnya Nitrogen (N) untuk protein dan klorofil, Fosfor (P) untuk energi, Kalium (K) untuk regulasi air, dan Zat Besi (Fe) untuk pembentukan klorofil.</li>
+                    <li><strong>Dampak Kekurangan:</strong> Kekurangan nutrisi esensial dapat menyebabkan gejala defisiensi. Contohnya, kekurangan Fe pada daun pisang kipas menyebabkan daun berwarna putih karena terganggunya sintesis klorofil (zat hijau daun). Tanpa klorofil yang cukup, fotosintesis akan terhambat, dan pertumbuhan tanaman akan terganggu.</li>
+                    <li><strong>Pemenuhan:</strong> Tumbuhan memperoleh nutrisi dari tanah melalui akarnya. Ketersediaan nutrisi dalam tanah dapat ditingkatkan melalui pemberian pupuk.</li>
+                </ul>
+            </div>
+
+            <div class="sub-content-box">
+                <h5>Cahaya Matahari</h5>
+                <p>Cahaya matahari adalah sumber energi utama bagi tumbuhan melalui proses fotosintesis. Namun, cahaya juga memiliki pengaruh langsung pada laju dan arah pertumbuhan.</p>
+                <ul>
+                    <li><strong>Fotosintesis:</strong> Kualitas (spektrum warna), intensitas, dan durasi cahaya matahari memengaruhi laju fotosintesis, yang secara langsung berdampak pada produksi gula (makanan) bagi tumbuhan.</li>
+                    <li><strong>Pertumbuhan dan Arah Tumbuh:</strong> Cahaya dapat menghambat pertumbuhan memanjang batang (etiolasi) karena dapat merusak hormon auksin. Tanaman yang tumbuh di tempat gelap (misalnya, kecambah dalam kardus) akan tumbuh lebih cepat dan lebih panjang namun pucat, karena auksin tidak terurai oleh cahaya dan sel-sel memanjang secara berlebihan untuk mencari sumber cahaya.</li>
+                </ul>
+            </div>
+
+            <div class="sub-content-box">
+                <h5>Air dan Kelembapan</h5>
+                <p>Air merupakan komponen paling melimpah dalam tumbuhan dan lingkungan hidupnya. Keberadaan dan ketersediaan air sangat krusial.</p>
+                <ul>
+                    <li><strong>Dukungan Struktur:</strong> Air mengisi vakuola sel tumbuhan, menciptakan tekanan turgor yang membuat sel kaku dan memberikan kekakuan pada jaringan tumbuhan. Tanpa air yang cukup, sel akan kehilangan turgor, dan tumbuhan akan layu.</li>
+                    <li><strong>Transportasi Nutrisi:</strong> Air berfungsi sebagai pelarut dan media transportasi bagi nutrisi dari akar ke seluruh bagian tumbuhan, serta hasil fotosintesis dari daun ke bagian lain.</li>
+                    <li><strong>Fotosintesis:</strong> Air adalah salah satu reaktan utama yang dibutuhkan dalam fotosintesis.</li>
+                    <li><strong>Kelembapan:</strong> Kelembapan udara memengaruhi laju transpirasi (penguapan air dari daun). Kelembapan tinggi mengurangi transpirasi, membantu tumbuhan mempertahankan air.</li>
+                </ul>
+            </div>
+
+            <div class="sub-content-box">
+                <h5>Suhu</h5>
+                <p>Suhu lingkungan memengaruhi laju reaksi biokimia dalam tumbuhan, termasuk penyerapan air, fotosintesis, penguapan, dan pernapasan.</p>
+                <ul>
+                    <li><strong>Suhu Optimum:</strong> Setiap jenis tumbuhan memiliki rentang suhu optimum di mana proses-proses fisiologisnya berjalan paling efisien. Contohnya, suhu udara optimum untuk fotosintesis umumnya berkisar antara <span class="data-point">10–30°C</span>.</li>
+                    <li><strong>Dampak Suhu Ekstrem:</strong> Suhu di bawah atau di atas rentang optimum dapat menghambat aktivitas enzim, merusak struktur sel, dan mengganggu pertumbuhan. Suhu beku dapat menyebabkan kerusakan jaringan, sementara suhu terlalu tinggi dapat menyebabkan denaturasi protein dan dehidrasi.</li>
+                </ul>
+            </div>
+            <p>Selain faktor-faktor di atas, <span class="data-point">pH tanah</span>, <span class="data-point">aerasi tanah (ketersediaan oksigen di akar)</span>, dan <span class="data-point">populasi mikroorganisme tanah</span> juga dapat memengaruhi pertumbuhan dan perkembangan tumbuhan secara signifikan.</p>
+        </div> <!-- End of Tumbuhan Factors Card -->
+
+        <div class="content-card">
+            <h3>2. Faktor yang Memengaruhi Pertumbuhan dan Perkembangan Hewan dan Manusia</h3>
+            <p>Pertumbuhan dan perkembangan pada hewan dan manusia adalah proses kompleks yang melibatkan peningkatan ukuran (pertumbuhan) dan diferensiasi sel serta organ (perkembangan), hingga mencapai kematangan. Sama seperti tumbuhan, proses ini dikendalikan oleh faktor internal dan eksternal.</p>
+
+            <h4>a. Faktor Internal</h4>
+            <p>Faktor internal adalah elemen-elemen yang berasal dari dalam tubuh individu, seperti gen dan hormon.</p>
+
+            <div class="sub-content-box">
+                <h5>Gen</h5>
+                <p>Gen merupakan cetak biru genetik yang menentukan potensi maksimal pertumbuhan dan pola perkembangan suatu individu. Gen membawa instruksi untuk semua karakteristik fisik atau fenotipe.</p>
+                <ul>
+                    <li><strong>Penentu Pola Dasar:</strong> Gen mengatur ciri-ciri seperti tinggi badan, warna kulit, warna rambut/bulu, bentuk tubuh, dan kecenderungan metabolisme.</li>
+                    <li><strong>Variasi Individu:</strong> Setiap individu memiliki susunan gen yang unik, yang menjelaskan mengapa ada variasi dalam spesies yang sama. Contohnya pada ayam, meskipun semua adalah <em>Gallus gallus sp.</em>, perbedaan genetik menghasilkan varietas seperti ayam Banten, ayam Kate, ayam Bangkok, ayam Pelung, dan ayam Cemani, masing-masing dengan karakteristik fisik yang berbeda.</li>
+                </ul>
+                <p>Meskipun lingkungan juga berperan, pengaruh genetik umumnya sangat kuat dalam menentukan batas-batas potensi pertumbuhan.</p>
+            </div>
+
+            <div class="sub-content-box">
+                <h5>Hormon</h5>
+                <p>Hormon adalah pembawa pesan kimiawi yang diproduksi oleh kelenjar endokrin dalam tubuh. Hormon mengatur berbagai fungsi tubuh, termasuk pertumbuhan dan perkembangan.</p>
+                <ul>
+                    <li><strong>Hormon Pertumbuhan Manusia (HGH):</strong> Pada mamalia, hormon yang paling berpengaruh terhadap pertumbuhan adalah <strong>hormon somatotropin</strong> atau <strong>HGH (Human Growth Hormone)</strong>. HGH merangsang pertumbuhan tulang panjang, otot, dan organ internal, serta memengaruhi metabolisme.</li>
+                    <li><strong>Variasi Tinggi Badan:</strong> Perbedaan tinggi badan antar individu (misalnya, mengapa ada yang sangat tinggi, sangat pendek, atau tinggi rata-rata) sebagian besar dipengaruhi oleh produksi HGH, sensitivitas reseptor terhadap HGH, dan faktor genetik yang mengontrol sistem hormonal ini.</li>
+                </ul>
+                <p><strong>Studi Kasus: Tren Tinggi Badan di Indonesia (1896-1996)</strong><br>
+                Data menunjukkan bahwa rata-rata tinggi badan orang dewasa di Indonesia mengalami peningkatan signifikan selama seabad terakhir. Pria dewasa dengan tahun kelahiran 1896 memiliki rata-rata tinggi sekitar <span class="data-point">162 cm</span>, sedangkan mereka yang lahir pada tahun 1996 mencapai rata-rata <span class="data-point">171 cm</span>. Untuk perempuan, rata-rata tinggi meningkat dari <span class="data-point">151 cm</span> menjadi <span class="data-point">159 cm</span>. Kenaikan ini menunjukkan perbaikan pada faktor eksternal, terutama nutrisi dan kesehatan, yang memungkinkan potensi genetik untuk pertumbuhan maksimal dapat tercapai lebih baik.</p>
+            </div>
+
+            <h4>b. Faktor Eksternal</h4>
+            <p>Faktor eksternal adalah kondisi lingkungan dan gaya hidup yang memengaruhi pertumbuhan dan perkembangan individu.</p>
+
+            <div class="external-factors-diagram">
+                <div class="factor-bubble">Makanan (Nutrisi)</div>
+                <div class="factor-bubble">Air</div>
+                <div class="factor-center">Faktor Eksternal</div>
+                <div class="factor-bubble">Oksigen</div>
+                <div class="factor-bubble">Suhu Lingkungan</div>
+                <div class="factor-bubble">Aktivitas Tubuh</div>
+            </div>
+
+            <ul>
+                <li><strong>Makanan (Nutrisi):</strong> Asupan gizi yang adekuat dan seimbang (protein, karbohidrat, lemak, vitamin, dan mineral) adalah fondasi bagi pertumbuhan dan perkembangan. Kekurangan gizi kronis, seperti pada kasus <strong>stunting</strong> (pertumbuhan terhambat yang menyebabkan tinggi badan di bawah rata-rata untuk usia), dapat menghambat pertumbuhan fisik, perkembangan kognitif, dan menurunkan daya tahan tubuh.</li>
+                <li><strong>Air:</strong> Penting untuk hidrasi sel, transportasi nutrisi, regulasi suhu tubuh, dan semua reaksi biokimia esensial. Kekurangan air (dehidrasi) dapat mengganggu fungsi organ dan menghambat pertumbuhan.</li>
+                <li><strong>Oksigen:</strong> Diperlukan untuk respirasi seluler, yaitu proses menghasilkan energi dari makanan. Pasokan oksigen yang cukup penting untuk metabolisme yang sehat dan pertumbuhan sel.</li>
+                <li><strong>Suhu Lingkungan:</strong> Tubuh hewan dan manusia memiliki kemampuan untuk menjaga suhu inti yang stabil (homeostasis). Namun, suhu lingkungan yang ekstrem (terlalu panas atau terlalu dingin) dapat membebani sistem regulasi suhu tubuh, mengalihkan energi dari pertumbuhan, dan dalam kasus ekstrem, menyebabkan masalah kesehatan serius.</li>
+                <li><strong>Aktivitas Tubuh:</strong> Aktivitas fisik yang teratur dan cukup penting untuk pengembangan tulang, otot, dan sistem kardiovaskular yang sehat. Kurangnya aktivitas fisik dapat menyebabkan berbagai masalah kesehatan dan menghambat pertumbuhan optimal.</li>
+                <li><strong>Kesehatan dan Penyakit:</strong> Infeksi berulang atau penyakit kronis dapat menguras energi tubuh, menghambat penyerapan nutrisi, dan secara langsung memengaruhi pertumbuhan.</li>
+                <li><strong>Lingkungan Sosial dan Psikologis:</strong> Stimulasi, kasih sayang, keamanan, dan lingkungan yang mendukung secara psikologis sangat penting untuk perkembangan kognitif dan emosional, yang juga memengaruhi pertumbuhan fisik secara tidak langsung.</li>
+                <li><strong>Sanitasi dan Kebersihan:</strong> Akses terhadap air bersih dan sanitasi yang baik mencegah penyakit infeksi yang dapat menghambat pertumbuhan.</li>
+            </ul>
+        </div> <!-- End of Hewan & Manusia Factors Card -->
+
+    </div> <!-- End of container -->
+</body>
+</html>
+```

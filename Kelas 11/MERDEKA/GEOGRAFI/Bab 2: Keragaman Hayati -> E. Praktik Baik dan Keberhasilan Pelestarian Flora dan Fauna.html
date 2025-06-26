@@ -1,0 +1,495 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Keragaman Hayati - Praktik Baik Pelestarian Flora dan Fauna</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 25px;
+            line-height: 1.7;
+            box-sizing: border-box;
+            word-wrap: break-word;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 35px;
+            margin-bottom: 25px;
+            color: var(--accent-green);
+            padding-left: 10px;
+            border-left: 5px solid var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        ul {
+            list-style: none; /* Remove default list style */
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            padding-left: 30px; /* Space for custom bullet */
+            position: relative;
+        }
+
+        ul li::before {
+            content: "➤"; /* Custom bullet point */
+            color: var(--accent-green);
+            font-size: 1.1em;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: inherit; /* Align with text line-height */
+        }
+
+        /* Section Layouts */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-block {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .highlight-box {
+            background-color: rgba(var(--secondary-accent-amber), 0.1);
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 18px 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            color: var(--text-primary);
+        }
+
+        .source-text {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            font-style: italic;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        /* Interactive Elements - Details/Summary */
+        details {
+            background-color: #FBFBFB; /* Slightly off-white for details */
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden; /* Ensures border-radius applies to content */
+        }
+
+        summary {
+            padding: 20px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-blue);
+            list-style: none; /* Hide default triangle/arrow */
+            position: relative;
+            background-color: #E8F5FF; /* Light blue background for summary */
+            transition: background-color 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: #DAEEF7;
+        }
+
+        summary::before {
+            content: "+"; /* Custom plus sign for closed state */
+            font-size: 1.5em;
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-green);
+            line-height: 1; /* For proper vertical alignment */
+        }
+
+        details[open] summary::before {
+            content: "−"; /* Custom minus sign for open state */
+        }
+
+        details > div {
+            padding: 15px 25px 25px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Call to Action / Link Box */
+        .call-to-action-box {
+            background-color: #EDF7F6; /* Light greenish background */
+            border-left: 5px solid var(--semantic-info);
+            padding: 25px;
+            margin-top: 35px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .call-to-action-box h3 {
+            color: var(--semantic-info);
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+
+        .call-to-action-box .button-link {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .call-to-action-box .button-link:hover {
+            background-color: #1565C0;
+            transform: translateY(-2px);
+        }
+
+        .qr-placeholder {
+            font-size: 0.8em;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+        }
+
+        /* Collaborative Activity */
+        .activity-section {
+            background-color: #FDFCEE; /* Very light amber */
+            border: 1px solid var(--semantic-warning);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .activity-section h3 {
+            color: var(--semantic-warning);
+            border-bottom: 2px dashed var(--semantic-warning);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .activity-steps ol {
+            list-style: decimal;
+            padding-left: 25px;
+        }
+
+        .activity-steps ol li {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        .activity-steps ol li::marker {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 15px;
+                margin: 0 10px;
+            }
+            h1 {
+                font-size: 2em;
+                padding-bottom: 15px;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 1.6em;
+                margin-top: 25px;
+                margin-bottom: 20px;
+                padding-left: 8px;
+            }
+            h3 {
+                font-size: 1.3em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+            .section-block {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            .highlight-box {
+                padding: 15px 20px;
+                margin: 20px 0;
+            }
+            details {
+                margin-bottom: 15px;
+            }
+            summary {
+                padding: 15px 20px;
+            }
+            summary::before {
+                right: 20px;
+                font-size: 1.3em;
+            }
+            details > div {
+                padding: 10px 20px 20px;
+            }
+            .call-to-action-box {
+                padding: 20px;
+                margin-top: 30px;
+            }
+            .call-to-action-box h3 {
+                font-size: 1.5em;
+            }
+            .activity-section {
+                padding: 20px;
+                margin-top: 30px;
+            }
+            .activity-steps ol li {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.6em;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.4em;
+                margin-top: 20px;
+                margin-bottom: 15px;
+                padding-left: 5px;
+            }
+            h3 {
+                font-size: 1.2em;
+                margin-top: 15px;
+                margin-bottom: 10px;
+            }
+            .section-block {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            .highlight-box {
+                padding: 12px 15px;
+                margin: 15px 0;
+            }
+            ul li {
+                padding-left: 25px;
+            }
+            ul li::before {
+                font-size: 1em;
+            }
+            summary {
+                padding: 12px 15px;
+            }
+            summary::before {
+                right: 15px;
+                font-size: 1.2em;
+            }
+            details > div {
+                padding: 8px 15px 15px;
+            }
+            .call-to-action-box {
+                padding: 15px;
+            }
+            .call-to-action-box h3 {
+                font-size: 1.3em;
+            }
+            .button-link {
+                padding: 10px 20px !important;
+                font-size: 0.9em;
+            }
+            .activity-section {
+                padding: 15px;
+                margin-top: 25px;
+            }
+            .activity-steps ol {
+                padding-left: 20px;
+            }
+            .activity-steps ol li {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Keragaman Hayati</h1>
+        <h2>E. Praktik Baik dan Keberhasilan Dalam Pelestarian Flora dan Fauna</h2>
+
+        <div class="section-block">
+            <h3>3) Kebun Binatang sebagai Konservasi</h3>
+            <details>
+                <summary>Memahami Peran Kebun Binatang</summary>
+                <div>
+                    <p>Kebun Binatang adalah sebuah area konservasi lingkungan yang didesain secara buatan. Fungsinya adalah untuk menciptakan kembali lingkungan yang sangat mirip dengan habitat asli flora dan fauna.</p>
+                    <p>Meskipun demikian, ada perbedaan mendasar: di kebun binatang, setiap spesies dipisahkan dan ditempatkan dalam kandang atau area tersendiri untuk tujuan pengelolaan dan keamanan. Hal ini memungkinkan studi, perlindungan, dan program pengembangbiakan spesies yang terancam punah dalam lingkungan yang terkontrol.</p>
+                    <p class="source-text">(Sumber: Suteja, 2014)</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-block">
+            <h2>Peran Krusial Masyarakat dalam Pelestarian</h2>
+            <p>Masyarakat memiliki peran yang sangat vital dalam upaya pelestarian flora dan fauna di wilayah mereka masing-masing. Kontribusi mereka bukan hanya pelengkap, melainkan inti dari keberhasilan konservasi.</p>
+
+            <details>
+                <summary>Masyarakat Adat dan Lokal sebagai Aktor Utama Konservasi</summary>
+                <div>
+                    <p>Di Indonesia, <span class="highlight-box">Masyarakat Adat dan Masyarakat Lokal</span> adalah salah satu aktor kunci dan pengelola konservasi yang sangat berpengaruh. Mereka mengimplementasikan sistem konservasi berdasarkan <span class="highlight-box">kearifan lokal</span>, yaitu pengetahuan, nilai-nilai, dan praktik-praktik yang telah diturunkan secara turun-temurun dan terbukti efektif dalam menjaga keseimbangan alam.</p>
+                    <p class="source-text">(Sumber: Henri et al., 2018)</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Kontribusi Nyata Masyarakat: AKKM (Areal Konservasi Kelola Masyarakat)</summary>
+                <div>
+                    <p>Kontribusi nyata masyarakat dalam upaya konservasi keanekaragaman hayati terbukti secara langsung di lapangan melalui pembentukan dan pengelolaan <span class="highlight-box">AKKM (Areal Konservasi Kelola Masyarakat)</span>.</p>
+                    <p>AKKM didefinisikan sebagai areal yang secara khusus dikelola oleh masyarakat adat atau masyarakat lokal dengan fungsi utama konservasi. Area ini dipandang sebagai <span class="highlight-box">bagian tak terpisahkan dari ruang hidup masyarakat adat</span>, yang mencakup:</p>
+                    <ul>
+                        <li>Pemukiman mereka.</li>
+                        <li>Area pemenuhan kebutuhan hidup (seperti pertanian, perburuan berkelanjutan, pengumpulan hasil hutan).</li>
+                        <li>Ruang khusus untuk konservasi alam.</li>
+                    </ul>
+                    <p>Semua pengelolaan AKKM ini didasarkan pada prinsip-prinsip dan nilai-nilai <span class="highlight-box">kearifan lokal</span> yang telah teruji waktu.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Pengakuan dan Perlindungan AKKM oleh Negara</summary>
+                <div>
+                    <p>Pemerintah Indonesia menyadari pentingnya peran masyarakat ini dan telah menyediakan <span class="highlight-box">mekanisme pengakuan serta administrasi</span> untuk menjamin dan melindungi keberadaan AKKM.</p>
+                    <p>Perlindungan ini diberikan baik untuk AKKM yang berada di dalam Kawasan Konservasi yang sudah ditetapkan, maupun yang berada di Kawasan Ekosistem Penting lainnya. Pengakuan ini menunjukkan komitmen negara untuk mendukung inisiatif konservasi berbasis masyarakat.</p>
+                    <p class="source-text">(Sumber: Walhi, 2017)</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Keterkaitan Budaya, Alam, dan Kearifan Tradisional</summary>
+                <div>
+                    <p>Hubungan antara budaya masyarakat dan alam sekitarnya sangat erat. Masyarakat adat/masyarakat lokal setempat merupakan kunci utama dalam mempertahankan sistem kearifan tradisional yang telah terbukti efektif dalam upaya konservasi.</p>
+                    <p class="source-text">(Sumber: Suhartini, 2009)</p>
+                    <p>Ketika masyarakat memutuskan untuk menjalankan upaya konservasi di wilayah tertentu yang mereka kelola, penting bagi pemerintah untuk mengakomodasi inisiatif ini melalui mekanisme AKKM. Ini adalah bagian integral dari strategi yang lebih luas untuk menjaga kelestarian ekosistem di seluruh wilayah Indonesia.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="call-to-action-box">
+            <h3>Tautan Menarik: Manfaat Flora dan Fauna</h3>
+            <p>Untuk menambah wawasan kalian tentang betapa pentingnya manfaat flora dan fauna bagi kesejahteraan manusia, jelajahi sumber eksternal berikut:</p>
+            <a href="https://bit.ly/ManfaatFloradanFauna_" target="_blank" class="button-link">
+                Kunjungi Tautan: Manfaat Flora dan Fauna
+            </a>
+            <p class="qr-placeholder">(Simulasi QR Code atau Klik Tautan di Atas)</p>
+        </div>
+
+        <div class="activity-section">
+            <h3>Ayo Berkolaborasi: Proyek Pelestarian Lokal</h3>
+            <p>Setiap daerah, baik kabupaten maupun kota, memiliki karakteristik unik berupa masalah dan potensi keanekaragaman flora dan fauna. Ini adalah konsekuensi langsung dari kondisi iklim, kelembaban udara, curah hujan, dan kondisi tanah di wilayah tersebut.</p>
+
+            <details open>
+                <summary>Tugas Proyek: Mengatasi Masalah atau Mengangkat Potensi</summary>
+                <div>
+                    <p>Berdasarkan permasalahan atau potensi yang ada di daerah tempat tinggal kalian, buatlah sebuah proyek sederhana. Proyek ini bertujuan untuk:</p>
+                    <ul>
+                        <li>Memecahkan masalah yang berkaitan dengan flora dan fauna daerah.</li>
+                        <li>Mengangkat dan mengembangkan potensi flora dan fauna daerah.</li>
+                    </ul>
+                    <p>Sehingga, masalah dapat teratasi atau potensi dapat terangkat dan dimanfaatkan secara optimal.</p>
+                    <p>Produk akhir dari proyek ini bisa beragam, seperti:</p>
+                    <ul>
+                        <li>Laporan tertulis.</li>
+                        <li>Paparan presentasi di kelas.</li>
+                        <li>Konten yang diunggah di media sosial (misalnya, video di YouTube, foto/infografis di Instagram, atau konten singkat di TikTok).</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Langkah-Langkah Melaksanakan Proyek Kolaborasi</summary>
+                <div class="activity-steps">
+                    <p>Untuk mewujudkan proyek tersebut secara efektif, ikuti langkah-langkah berikut:</p>
+                    <ol>
+                        <li><strong>Bentuk Kelompok Kecil:</strong> Bentuklah kelompok kerja dengan anggota maksimal 5 orang.</li>
+                        <li><strong>Identifikasi Masalah/Potensi:</strong> Lakukan diskusi mendalam dalam kelompok untuk mengidentifikasi permasalahan atau potensi yang akan kalian pecahkan atau angkat melalui proyek ini. Selanjutnya, tentukan tindakan konkret yang akan diambil sebagai inti proyek kalian.</li>
+                        <li><strong>Susun Perencanaan Proyek:</strong> Diskusikan dan buatlah perencanaan proyek secara detail, meliputi tujuan, langkah-langkah, alat/bahan yang dibutuhkan, pembagian tugas, dan target waktu.</li>
+                        <li><strong>Laksanakan Perencanaan:</strong> Jalankan semua tahapan perencanaan yang telah kalian susun dengan cermat dan disiplin.</li>
+                        <li><strong>Presentasikan/Publikasikan:</strong> Setelah proyek selesai, presentasikan hasilnya di kelas. Atau, publikasikan proyek kalian melalui media sosial untuk menjangkau audiens yang lebih luas dan memberikan dampak positif.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+    </div>
+</body>
+</html>
+```

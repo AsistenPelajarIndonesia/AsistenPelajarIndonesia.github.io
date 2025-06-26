@@ -1,0 +1,333 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Keterkaitan Struktur dan Fungsi Sel</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background_canvas);
+            color: var(--text_secondary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--background_canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border_divider);
+        }
+
+        h1, h2, h3 {
+            color: var(--text_primary);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            color: var(--primary_blue);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary_blue);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary_blue);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text_primary);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        details {
+            background-color: #F8F8F8;
+            border: 1px solid var(--border_divider);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px 20px;
+            background-color: var(--accent_green); /* Default for "Ayo Bereksplorasi" */
+            color: #FFFFFF;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        summary::before {
+            content: '►'; /* Right-pointing triangle */
+            margin-right: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] > summary::before {
+            content: '▼'; /* Down-pointing triangle */
+            transform: rotate(90deg);
+        }
+
+        details[open] > summary {
+            border-bottom: 1px solid var(--border_divider);
+        }
+
+        .details-content {
+            padding: 20px;
+            background-color: var(--background_canvas);
+        }
+
+        /* Specific styling for "Ayo Mengingat Kembali" */
+        details.recall summary {
+            background-color: var(--secondary_accent_amber);
+            color: var(--text_primary);
+        }
+        details.recall summary::before {
+            color: var(--text_primary);
+        }
+
+        .highlight-box {
+            background-color: #f0f8ff; /* A very light blue */
+            border-left: 5px solid var(--primary_blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .source-info {
+            font-size: 0.9em;
+            color: var(--text_tertiary);
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        a {
+            color: var(--primary_blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #115293; /* Darker blue on hover */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            summary {
+                padding: 12px 15px;
+            }
+            .details-content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            summary {
+                font-size: 0.9em;
+            }
+            ul, ol {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Keterkaitan antara Struktur dan Fungsi Sel</h1>
+
+        <p>Setiap makhluk hidup, termasuk manusia, dapat melakukan berbagai aktivitas sehari-hari seperti membaca, berjalan, atau bahkan hanya bernapas. Pernahkah kalian berpikir bagaimana semua aktivitas ini dapat terjadi? Ambil contoh sederhana seperti membaca. Proses ini melibatkan mata untuk menangkap informasi visual dan otak untuk memproses dan memahami informasi tersebut.</p>
+        <p>Namun, tahukah kalian bahwa di balik fungsi organ-organ kompleks seperti mata dan otak, terdapat kerja keras dari miliaran sel? Setiap organ tersusun dari berbagai jenis sel yang memiliki struktur unik dan menjalankan fungsi spesifik. Pertanyaannya adalah, benarkah aktivitas suatu organ didukung oleh beragam sel dengan struktur yang berbeda? Dan apakah setiap sel tersebut memiliki fungsi yang sama? Mari kita jelajahi lebih lanjut keterkaitan erat antara struktur dan fungsi sel dalam tubuh organisme.</p>
+
+        <details>
+            <summary>Aktivitas 1.7: Memahami Keterkaitan antara Struktur dan Fungsi Sel (Retina Mata)</summary>
+            <div class="details-content">
+                <h3>Retina Mata dan Sel-Sel Penyusunnya</h3>
+                <p>Mata adalah organ indra yang memungkinkan kita untuk melihat dunia. Bagian penting dari mata yang bertanggung jawab langsung dalam menangkap cahaya dan mengubahnya menjadi sinyal saraf adalah retina. Retina terdiri dari beberapa lapisan sel yang bekerja secara terkoordinasi untuk membentuk penglihatan. Setiap jenis sel di retina memiliki struktur dan fungsi yang sangat spesifik, yang menunjukkan bagaimana struktur sel mendukung fungsinya.</p>
+
+                <h4>Jenis-Jenis Sel dalam Retina dan Fungsinya:</h4>
+                <ol>
+                    <li>
+                        <strong>Fotoreseptor (Sel Batang dan Sel Kerucut):</strong>
+                        <ul>
+                            <li><strong>Fungsi:</strong> Merupakan sel pertama yang merespons cahaya. Sel batang bertanggung jawab untuk penglihatan dalam kondisi cahaya redup (malam hari) dan mendeteksi gerakan serta bentuk hitam-putih. Sel kerucut bertanggung jawab untuk penglihatan dalam kondisi cahaya terang, mendeteksi warna, dan memberikan ketajaman penglihatan (detail).</li>
+                            <li><strong>Struktur:</strong> Memiliki segmen luar yang mengandung pigmen peka cahaya (rodopsin pada sel batang, fotopsin pada sel kerucut) yang sangat efisien dalam menangkap foton. Bentuknya yang silindris (batang) atau meruncing (kerucut) disesuaikan dengan fungsi penangkapan cahayanya.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Sel Bipolar:</strong>
+                        <ul>
+                            <li><strong>Fungsi:</strong> Bertindak sebagai penghubung. Mereka menerima sinyal dari fotoreseptor (sel batang dan sel kerucut) dan meneruskannya ke sel ganglion retina.</li>
+                            <li><strong>Struktur:</strong> Sel saraf kecil dengan dua "kutub" (bipolar), satu mengarah ke fotoreseptor dan satu lagi ke sel ganglion, memungkinkan transmisi sinyal langsung.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Sel Ganglion Retina:</strong>
+                        <ul>
+                            <li><strong>Fungsi:</strong> Menerima sinyal dari sel bipolar dan sel amakrin, kemudian mengubahnya menjadi impuls saraf yang akan dikirim ke otak melalui saraf optik. Sel-sel inilah yang membentuk "saluran keluar" informasi visual dari retina.</li>
+                            <li><strong>Struktur:</strong> Memiliki akson panjang yang berkumpul membentuk saraf optik. Panjang akson ini memungkinkan sinyal berjalan dari mata ke otak.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Sel Horizontal:</strong>
+                        <ul>
+                            <li><strong>Fungsi:</strong> Mengatur dan memodulasi sinyal yang muncul dari beberapa sel batang dan sel kerucut. Mereka berperan dalam proses lateral inhibisi, yang meningkatkan kontras dan ketajaman visual.</li>
+                            <li><strong>Struktur:</strong> Menghubungkan secara lateral fotoreseptor dan sel bipolar, memungkinkan integrasi sinyal dari area yang luas.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Sel Amakrin:</strong>
+                        <ul>
+                            <li><strong>Fungsi:</strong> Mirip dengan sel horizontal, mereka mengatur sinyal yang diarahkan ke sel ganglion retina, tetapi mereka berinteraksi pada tingkat sel bipolar dan ganglion. Mereka terlibat dalam deteksi gerakan dan respons temporal.</li>
+                            <li><strong>Struktur:</strong> Berlokasi di lapisan pleksiform bagian dalam, membuat koneksi lateral antara sel bipolar dan sel ganglion.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Epitel Pigmen Retina (RPE):</strong>
+                        <ul>
+                            <li><strong>Fungsi:</strong> Ini adalah lapisan sel epitel yang terletak di bawah fotoreseptor. Fungsi utamanya adalah membentuk penghalang pembuluh darah dari koroid (bagian mata yang kaya darah) dan membersihkan zat berbahaya yang dilepaskan oleh fotoreseptor sebagai respons terhadap cahaya. Mereka juga berperan dalam daur ulang pigmen visual.</li>
+                            <li><strong>Struktur:</strong> Lapisan sel-sel kuboid yang mengandung pigmen melanin, yang membantu menyerap cahaya berlebih dan mencegah pantulan yang tidak diinginkan.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p>Dari penjelasan di atas, jelas terlihat bahwa setiap jenis sel di retina memiliki struktur yang khas dan unik yang dirancang secara sempurna untuk menjalankan fungsi spesifiknya dalam proses penglihatan. Perbedaan struktur ini memungkinkan mereka untuk bekerja sama secara harmonis, memungkinkan kita untuk melihat dunia dengan jelas dan berwarna.</p>
+            </div>
+        </details>
+
+        <details class="recall">
+            <summary>Ayo Mengingat Kembali: Spesialisasi Sel</summary>
+            <div class="details-content">
+                <p>Spesialisasi sel adalah proses di mana sel-sel muda (belum terdiferensiasi) berkembang menjadi sel-sel matang dengan struktur dan fungsi khusus. Proses ini sangat penting bagi organisme multiseluler karena memungkinkan pembagian kerja antar sel, sehingga organisme dapat menjalankan fungsi-fungsi kompleks secara efisien.</p>
+                <p>Mari kita ingat beberapa contoh spesialisasi sel yang mungkin sudah kalian pelajari di SMP:</p>
+                <ul>
+                    <li><strong>Sel Saraf (Neuron):</strong> Memiliki juluran panjang (akson dan dendrit) untuk menghantarkan impuls listrik ke seluruh tubuh. Strukturnya yang memanjang dan bercabang sangat ideal untuk komunikasi jarak jauh.</li>
+                    <li><strong>Sel Darah Merah (Eritrosit):</strong> Berbentuk bikonkaf (cekung di kedua sisi) dan tidak memiliki inti sel atau organel lain (pada mamalia dewasa), memungkinkan lebih banyak ruang untuk hemoglobin. Fungsinya adalah mengangkut oksigen, dan bentuknya yang fleksibel memudahkan mereka melewati kapiler sempit.</li>
+                    <li><strong>Sel Stomata (Sel Penjaga):</strong> Pada tumbuhan, sel penjaga ini berbentuk seperti ginjal dan berpasangan mengelilingi pori (stoma). Struktur ini memungkinkan mereka membuka dan menutup stoma, mengatur pertukaran gas dan transpirasi.</li>
+                    <li><strong>Sel Akar Rambut:</strong> Memiliki perpanjangan sitoplasma seperti rambut yang luas. Struktur ini meningkatkan luas permukaan untuk penyerapan air dan mineral dari tanah.</li>
+                </ul>
+                <p>Dari contoh-contoh ini, kita dapat menyimpulkan bahwa <strong>struktur sel sangat erat kaitannya dengan fungsinya</strong>. Sel yang mengalami spesialisasi akan memiliki struktur yang khas untuk menunjang fungsi spesifiknya.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Aktivitas 1.8: Peran Mitokondria dalam Sel Otot Jantung</summary>
+            <div class="details-content">
+                <h3>Intisari Penelitian: Peran Mitokondria dalam Sel Otot Jantung</h3>
+                <p>Jantung adalah organ vital dalam sistem peredaran darah yang berfungsi memompa darah ke seluruh tubuh, sehingga sangat penting dalam menjaga homeostasis. Fungsi krusial ini didukung oleh sel-sel otot jantung (kardiomiosit) yang bekerja tanpa henti sepanjang hidup kita.</p>
+                <p>Fokus utama penelitian ini adalah memahami peran spesifik salah satu organel sel otot jantung, yaitu <strong>mitokondria</strong>. Mitokondria dikenal sebagai "pembangkit tenaga" sel karena merupakan organel utama penghasil energi dalam bentuk Adenosin Trifosfat (ATP). Energi ini dihasilkan melalui proses respirasi aerobik, yang paling efisien pada tahap fosforilasi oksidatif atau transpor membran elektron.</p>
+
+                <h4>Mengapa Mitokondria Sangat Penting bagi Jantung?</h4>
+                <ol>
+                    <li>
+                        <strong>Sumber Energi Utama:</strong> Jaringan jantung adalah salah satu jaringan yang paling aktif secara metabolisme dalam tubuh. Ia membutuhkan pasokan energi yang sangat besar dan konstan untuk kontraksi yang terus-menerus. Mitokondria bertanggung jawab untuk menghasilkan lebih dari 90% ATP yang dibutuhkan oleh jaringan jantung. Tanpa ATP yang cukup, sel-sel otot jantung tidak dapat berkontraksi dengan baik, yang dapat menyebabkan gagal jantung.
+                    </li>
+                    <li>
+                        <strong>Kaitan Struktur dan Fungsi:</strong> Sel-sel otot jantung diketahui memiliki jumlah mitokondria yang sangat banyak. Jumlah mitokondria yang melimpah ini merupakan adaptasi struktural untuk memenuhi kebutuhan energi yang sangat tinggi dari organ jantung. Semakin banyak mitokondria, semakin banyak ATP yang dapat diproduksi, mendukung fungsi pemompaan jantung yang tak pernah berhenti.
+                    </li>
+                    <li>
+                        <strong>Dampak Disfungsi Mitokondria:</strong> Gangguan pada fungsi mitokondria, seperti produksi spesies oksigen reaktif (ROS) yang berlebihan, penurunan produksi energi, atau akumulasi mitokondria abnormal, dapat secara serius mengganggu fungsi jantung dan berkontribusi pada perkembangan penyakit kardiovaskular. Oleh karena itu, kontrol kualitas biogenesis mitokondria (pembentukan mitokondria baru) sangat penting untuk menjaga kesehatan jantung.
+                    </li>
+                </ol>
+                <p>Informasi ini secara kuat memperkuat dugaan bahwa mitokondria yang terkandung dalam sel-sel jantung memiliki fungsi yang sangat penting, dibuktikan dari jumlahnya yang melimpah dan dampaknya yang signifikan terhadap kesehatan jantung jika terjadi disfungsi.</p>
+                <p class="source-info">Sumber referensi: Tahrir, F.G., Langford, D., Amini, S., Ahooyi, T.M., and Kamel, K. (2019). Mitochondrial Quality Control in Cardiac Cells: Mechanisms and Role in Cardiac Cell Injury and Disease. J.Cell Physiol. 234(6): 8122–8133. <a href="https://doi.org/10.1002/jcp.27597" target="_blank">doi:10.1002/jcp.27597</a>. Artikel asli dapat ditelusuri di: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6395499/" target="_blank">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6395499/</a></p>
+            </div>
+        </details>
+
+        <h2>Struktur dan Fungsi Sel Sperma</h2>
+        <p>Selain contoh di atas, sel sperma juga merupakan contoh klasik bagaimana struktur sel sangat beradaptasi dengan fungsinya. Sel sperma dirancang khusus untuk mencapai dan membuahi sel telur.</p>
+        <p><strong>Struktur Sel Sperma:</strong></p>
+        <ul>
+            <li><strong>Kepala:</strong> Berisi inti sel yang haploid, mengandung materi genetik (DNA) yang akan disumbangkan ke zigot. Bagian depan kepala dilapisi oleh akrosom, organel berisi enzim yang penting untuk menembus lapisan pelindung sel telur.</li>
+            <li><strong>Leher:</strong> Menghubungkan kepala dengan ekor.</li>
+            <li><strong>Ekor (Flagelum):</strong> Merupakan bagian terpanjang dari sel sperma, memanjang dan ramping. Ekor ini terdiri dari filamen protein yang disebut aksonema, yang bertanggung jawab untuk gerakan. Yang menarik, di sekeliling aksonema pada bagian tengah ekor, terdapat banyak sekali <strong>mitokondria</strong>.</li>
+        </ul>
+        <p><strong>Keterkaitan Struktur dan Fungsi:</strong></p>
+        <p>Fungsi utama sel sperma adalah bergerak aktif untuk mencapai dan membuahi sel telur. Pergerakan ini membutuhkan energi yang sangat besar. Di sinilah peran mitokondria menjadi krusial. Mitokondria yang melimpah di bagian tengah ekor menyediakan suplai ATP yang konstan dan tinggi. ATP ini merupakan bahan bakar bagi gerakan aksonema pada ekor, yang memungkinkan sel sperma berenang dengan cepat dan efisien menuju sel telur.</p>
+        <p>Jadi, bentuk memanjang dan adanya ekor yang digerakkan oleh energi dari mitokondria yang terkonsentrasi adalah adaptasi struktural yang sempurna untuk fungsi motilitas sel sperma.</p>
+
+        <h2>C. Komposisi Sel</h2>
+        <p>Setelah memahami bagaimana struktur sel mendukung fungsinya melalui berbagai contoh, kita akan kembali ke dasar. Semua sel, baik sel hewan maupun tumbuhan, memiliki tiga komponen dasar yang sama:</p>
+        <ol>
+            <li><strong>Membran Plasma:</strong> Lapisan terluar yang membungkus sel, berfungsi sebagai batas yang selektif dan mengatur keluar masuknya zat.</li>
+            <li><strong>Sitoplasma:</strong> Bagian sel yang mengisi ruang antara membran plasma dan inti sel. Terdiri dari sitosol (cairan) dan berbagai organel sel.</li>
+            <li><strong>Inti Sel (Nukleus):</strong> Pusat kontrol sel yang mengandung materi genetik (DNA) dan mengatur sebagian besar aktivitas sel.</li>
+        </ol>
+        <p>Setiap komponen ini memiliki struktur dan fungsi spesifik yang esensial untuk kelangsungan hidup sel. Untuk mengingatkan kembali struktur dan fungsi dari ketiga unit/komponen dasar struktur sel tersebut, mari kita pelajari kembali di bagian selanjutnya.</p>
+    </div>
+</body>
+</html>
+```

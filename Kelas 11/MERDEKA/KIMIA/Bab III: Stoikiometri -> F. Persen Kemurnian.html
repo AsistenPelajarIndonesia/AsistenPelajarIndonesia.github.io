@@ -1,0 +1,295 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoikiometri: Persen Kemurnian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+
+        section {
+            background-color: var(--background-canvas);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-divider);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* A lighter shade of primary-blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .formula {
+            font-family: 'Roboto Mono', monospace; /* Monospace for formulas */
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px dashed var(--border-divider);
+            margin: 25px 0;
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-primary);
+        }
+        .formula strong {
+            color: var(--semantic-info);
+        }
+        
+        .code-block {
+            background-color: #eceff1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Roboto Mono', monospace;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-primary);
+            margin: 15px 0;
+        }
+
+        ol, ul {
+            color: var(--text-secondary);
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ol li, ul li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .step-title {
+            color: var(--accent-green);
+            font-weight: 500;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            section {
+                padding: 20px;
+            }
+            .container {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+                padding: 20px 10px;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Stoikiometri: Persen Kemurnian</h1>
+            <p>Memahami Kualitas Bahan dalam Reaksi Kimia</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Mengapa Persen Kemurnian Penting?</h2>
+            <p>Dalam dunia nyata, terutama di laboratorium atau industri, bahan kimia yang kita gunakan jarang sekali 100% murni. Bahan kimia seringkali mengandung zat pengotor atau impuritas. Keberadaan impuritas ini memiliki dampak signifikan terhadap hasil reaksi kimia.</p>
+            <p>Salah satu alasan mengapa jumlah produk reaksi yang dihasilkan di laboratorium seringkali lebih rendah dari perkiraan teoritis adalah karena ketidakmurnian bahan baku. Jika bahan kimia yang kita gunakan tidak murni, maka hanya sebagian dari massa bahan tersebut yang benar-benar bereaksi, sementara sisanya adalah pengotor yang tidak berkontribusi pada reaksi.</p>
+            <div class="highlight-box">
+                <p><strong>Persen kemurnian</strong> adalah parameter yang sangat krusial. Ini memberitahu kita seberapa besar persentase komponen murni dalam suatu sampel bahan kimia. Dengan mengetahui persen kemurnian, kita dapat menghitung secara akurat jumlah pereaksi murni yang sebenarnya terlibat dalam reaksi, sehingga hasil teoritis yang kita perkirakan menjadi lebih realistis.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Definisi dan Rumus Persen Kemurnian</h2>
+            <p>Persen kemurnian menyatakan perbandingan antara massa komponen murni (senyawa yang diinginkan) dalam suatu sampel terhadap massa total sampel (yang tidak murni), kemudian dikalikan 100%.</p>
+            <div class="formula">
+                <strong>Persen Kemurnian = </strong>
+                <div style="font-size: 0.8em; line-height: 1.2;">
+                    ( massa senyawa dalam sampel tidak murni <br> &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; ) × 100% <br>
+                    massa sampel
+                </div>
+            </div>
+            <p>Singkatnya, rumus ini membantu kita mengetahui seberapa "baik" atau "bersih" suatu sampel bahan kimia yang akan kita gunakan untuk reaksi.</p>
+        </section>
+
+        <section>
+            <h2>Contoh Perhitungan Persen Kemurnian</h2>
+            <p>Mari kita pelajari contoh kasus untuk memahami bagaimana persen kemurnian dihitung dalam praktik.</p>
+            <h3>Skenario Kasus: Reaksi Tembaga dengan Oksigen</h3>
+            <p>Anda memiliki sampel tembaga yang tidak murni seberat <strong>6,4 gram</strong>. Sampel ini dipanaskan dengan adanya oksigen dan bereaksi sempurna, menghasilkan <strong>6,8 gram</strong> tembaga(II) oksida (CuO) yang berwarna hitam.</p>
+            <p>Pertanyaannya: Berapakah persen kemurnian tembaga dalam sampel awal?</p>
+
+            <h3>Langkah-langkah Penyelesaian:</h3>
+
+            <div class="step-title">Langkah 1: Tulis dan Setarakan Persamaan Reaksi Kimia</div>
+            <p>Reaksi pembentukan tembaga(II) oksida dari tembaga dan oksigen adalah sebagai berikut:</p>
+            <div class="code-block">
+                2Cu(s) + O₂(g) &rarr; 2CuO(s)
+            </div>
+            <p>Dari persamaan yang sudah setara, kita tahu bahwa perbandingan mol Cu : O₂ : CuO adalah <strong>2 : 1 : 2</strong>. Ini berarti 2 mol tembaga bereaksi dengan 1 mol oksigen untuk menghasilkan 2 mol tembaga(II) oksida.</p>
+            <p><strong>Informasi Penting:</strong> Dari koefisien, mol Cu yang bereaksi akan sama dengan mol CuO yang terbentuk (karena perbandingannya 2:2 atau 1:1).</p>
+
+            <div class="step-title">Langkah 2: Hitung Mol Produk (CuO) yang Dihasilkan</div>
+            <p>Kita diberikan massa produk CuO yang dihasilkan, yaitu 6,8 gram. Untuk menggunakannya dalam stoikiometri, kita perlu mengubahnya ke dalam mol.</p>
+            <ul>
+                <li>Massa CuO yang dihasilkan = <strong>6,8 gram</strong></li>
+                <li>Massa Molar (Mr) CuO:
+                    <ul>
+                        <li>Ar Cu = 63,5 g/mol</li>
+                        <li>Ar O = 16,0 g/mol</li>
+                        <li>Mr CuO = 63,5 + 16,0 = <strong>79,5 g/mol</strong></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="formula" style="font-size: 1em; text-align: left;">
+                Mol CuO = ( Massa CuO ) / ( Massa Molar CuO ) <br>
+                Mol CuO = ( 6,8 g ) / ( 79,5 g/mol ) <br>
+                Mol CuO &approx; <strong>0,085 mol</strong>
+            </div>
+
+            <div class="step-title">Langkah 3: Hitung Mol dan Massa Tembaga Murni (Cu) yang Bereaksi</div>
+            <p>Berdasarkan perbandingan stoikiometri dari persamaan reaksi (2Cu : 2CuO), jumlah mol Cu yang bereaksi harus sama dengan jumlah mol CuO yang dihasilkan.</p>
+            <ul>
+                <li>Mol Cu = Mol CuO</li>
+                <li>Mol Cu = <strong>0,085 mol</strong></li>
+            </ul>
+            <p>Sekarang, kita bisa menghitung massa tembaga murni yang bereaksi, yang merupakan massa tembaga murni dalam sampel awal:</p>
+            <ul>
+                <li>Mol Cu = 0,085 mol</li>
+                <li>Massa Molar (Ar) Cu = <strong>63,5 g/mol</strong></li>
+            </ul>
+            <div class="formula" style="font-size: 1em; text-align: left;">
+                Massa Cu = Mol Cu &times; Massa Molar Cu <br>
+                Massa Cu = 0,085 mol &times; 63,5 g/mol <br>
+                Massa Cu &approx; <strong>5,34 g</strong>
+            </div>
+            <p>Ini adalah massa tembaga murni yang sebenarnya ada dalam sampel 6,4 gram tersebut.</p>
+
+            <div class="step-title">Langkah 4: Hitung Persen Kemurnian Tembaga</div>
+            <p>Kita memiliki semua informasi yang dibutuhkan untuk menghitung persen kemurnian:</p>
+            <ul>
+                <li>Massa tembaga murni (Cu) dalam sampel = <strong>5,34 gram</strong></li>
+                <li>Massa sampel tembaga tidak murni = <strong>6,4 gram</strong></li>
+            </ul>
+            <div class="formula">
+                <strong>Persen Kemurnian Cu = </strong>
+                <div style="font-size: 0.8em; line-height: 1.2;">
+                    ( massa Cu murni <br> &mdash;&mdash;&mdash;&mdash;&mdash;&mdash; ) × 100% <br>
+                    massa sampel
+                </div>
+                <br>
+                Persen Kemurnian Cu = ( 5,34 g / 6,4 g ) &times; 100% <br>
+                Persen Kemurnian Cu &approx; <strong>83,44%</strong>
+            </div>
+            <p>Jadi, sampel tembaga yang Anda miliki memiliki kemurnian sekitar <strong>83%</strong>.</p>
+        </section>
+
+        <section>
+            <h2>Poin Penting untuk Diingat</h2>
+            <ul>
+                <li>Persen kemurnian selalu dihitung berdasarkan <strong>massa zat murni</strong> yang benar-benar bereaksi atau ada, dibandingkan dengan <strong>massa total sampel</strong> (yang mungkin mengandung pengotor).</li>
+                <li>Perhitungan stoikiometri (menggunakan mol dan perbandingan koefisien) adalah kunci untuk menentukan massa zat murni yang bereaksi dari produk yang dihasilkan atau reaktan yang dikonsumsi.</li>
+                <li>Kemurnian bahan baku sangat mempengaruhi hasil aktual yang diperoleh dalam suatu reaksi. Bahan baku yang lebih murni akan menghasilkan produk yang mendekati hasil teoritis.</li>
+                <li>Konsep persen kemurnian sangat relevan dalam industri kimia untuk mengontrol kualitas bahan mentah dan mengoptimalkan proses produksi.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
+```

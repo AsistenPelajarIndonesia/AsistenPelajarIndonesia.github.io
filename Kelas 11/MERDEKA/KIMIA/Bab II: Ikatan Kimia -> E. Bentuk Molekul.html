@@ -1,0 +1,617 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E. Bentuk Molekul - Kimia SMA Kelas XI</title>
+    <style>
+        /* Definisi Variabel Warna Sesuai Tema */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2; /* Biru utama */
+            --accent-green: #388E3C; /* Hijau aksen */
+            --secondary-accent-amber: #FFB300; /* Kuning/Amber aksen sekunder */
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Dasar Halaman */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Untuk transisi halus saat navigasi internal */
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sedikit bayangan untuk kedalaman */
+            border: 1px solid var(--border-divider); /* Garis batas tipis */
+        }
+
+        /* Gaya Judul */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 2px solid var(--border-divider); /* Garis bawah untuk judul utama */
+            padding-bottom: 8px;
+        }
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; color: var(--accent-green); border-bottom: 1px solid var(--border-divider); }
+        h3 { font-size: 1.6em; color: var(--secondary-accent-amber); border-bottom: 1px dashed var(--border-divider); }
+        h4 { font-size: 1.3em; color: var(--text-secondary); border-bottom: none; }
+
+        /* Gaya Paragraf dan Teks */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+        strong {
+            color: var(--primary-blue); /* Penekanan teks dengan warna biru utama */
+        }
+        em {
+            color: var(--accent-green); /* Penekanan teks lainnya dengan warna hijau aksen */
+        }
+
+        /* Gaya Daftar */
+        ul, ol {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+        ol {
+            list-style-type: decimal;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Kotak Penekanan / Informasi */
+        .highlight-box {
+            background-color: #e3f2fd; /* Warna biru muda dari primary_blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        /* Kotak Contoh */
+        .example-box {
+            background-color: #f1f8e9; /* Warna hijau muda dari accent_green */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        /* Kotak Teori */
+        .theory-box {
+            background-color: #fffde7; /* Warna kuning muda dari secondary_accent_amber */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        /* Gaya Tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Menghilangkan spasi antar sel */
+            margin: 20px 0;
+            background-color: var(--background-canvas);
+        }
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+        }
+        /* Warna latar baris genap */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* Efek hover pada baris tabel */
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Gaya Diagram Orbital (teks) */
+        .orbital-diagram {
+            font-family: monospace; /* Font monospasi untuk keselarasan */
+            white-space: pre; /* Mempertahankan spasi dan baris baru */
+            background-color: #f8f8f8;
+            border: 1px dashed var(--border-divider);
+            padding: 10px;
+            margin: 15px 0;
+            overflow-x: auto; /* Untuk scrol jika terlalu panjang */
+            color: var(--text-primary);
+            border-radius: 4px;
+        }
+        .orbital-diagram .electron { color: var(--primary-blue); font-weight: bold; }
+        .orbital-diagram .lone-pair { color: var(--accent-green); font-weight: bold; }
+        .orbital-diagram .hybrid { color: var(--secondary-accent-amber); font-weight: bold; }
+        .orbital-diagram .bond { color: var(--semantic-info); font-weight: bold; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+            h3 { font-size: 1.4em; }
+            h4 { font-size: 1.2em; }
+
+            /* Tabel responsif: kolom menjadi baris */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px; /* Sembunyikan header tabel asli */
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 15px;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%; /* Ruang untuk label */
+                text-align: right;
+                padding: 10px 15px;
+            }
+            td::before {
+                content: attr(data-label); /* Menggunakan data-label sebagai "header" */
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+                color: var(--primary-blue);
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>E. Bentuk Molekul</h1>
+
+        <p>Kalian tentu pernah minum obat, bukan? Mengapa obat yang kalian minum dapat mengurangi, bahkan menghilangkan rasa sakit? Proses reaksi penghilangan rasa sakit ketika meminum obat ternyata sangat dipengaruhi oleh <strong>bentuk molekul</strong> obat tersebut. Proses penghantaran sinyal pada tubuh manusia saat meminum obat ditentukan oleh kecocokan bentuk molekul obat yang diminum dengan bentuk molekul penerima obat (reseptor). Ibarat kunci dan gembok, hanya kunci dengan bentuk yang tepatlah yang dapat membuka gemboknya dan menghasilkan efek yang diinginkan.</p>
+
+        <div class="highlight-box">
+            <h4>Pentingnya Bentuk Molekul dalam Kehidupan</h4>
+            <p>Bentuk molekul adalah karakteristik tiga dimensi yang menggambarkan susunan spasial atom-atom dalam suatu molekul. Ini sangat penting karena memengaruhi sifat-sifat fisik (seperti titik didih, titik leleh, viskositas), sifat kimia (reaktivitas, kepolaran), dan fungsi biologis molekul (seperti interaksi enzim-substrat atau obat-reseptor). Perubahan kecil pada bentuk molekul dapat secara drastis mengubah fungsinya.</p>
+        </div>
+
+        <h2>Apakah Itu Bentuk Molekul?</h2>
+        <p>Bentuk molekul secara fundamental adalah representasi <strong>posisi atom-atom yang terikat dalam satu molekul dalam ruang tiga dimensi</strong>. Namun, definisi ini melampaui sekadar posisi; ia juga mencakup aspek-aspek penting seperti:</p>
+        <ul>
+            <li><strong>Sudut Ikatan:</strong> Sudut geometris yang terbentuk antara dua ikatan kovalen yang berpusat pada atom yang sama. Sudut ini sangat spesifik untuk setiap bentuk molekul dan memengaruhi stabilitas serta reaktivitas.</li>
+            <li><strong>Orbital-orbital yang Bersatu:</strong> Konsep ini menjelaskan bagaimana orbital atom (tempat elektron berada) tumpang tindih dan berinteraksi untuk membentuk ikatan kimia. Teori hibridisasi secara khusus membahas hal ini.</li>
+            <li><strong>Pasangan Elektron Bebas (PEB):</strong> Elektron valensi pada atom pusat yang tidak terlibat dalam pembentukan ikatan. Meskipun tidak "terlihat" sebagai bagian dari ikatan, PEB memiliki pengaruh besar terhadap bentuk molekul karena sifat tolak-menolaknya.</li>
+        </ul>
+        <p>Memahami dan memprediksi bentuk molekul adalah pondasi penting dalam kimia. Dua teori utama yang digunakan untuk mencapai pemahaman ini adalah <strong>Teori Tolakan Pasangan Elektron Kulit Valensi (VSEPR)</strong> dan <strong>Teori Hibridisasi</strong>.</p>
+
+        <h2 id="vsepr-theory">1. Teori Tolakan Pasangan Elektron Kulit Valensi (VSEPR)</h2>
+        <div class="theory-box">
+            <p><strong>Teori VSEPR (Valence Shell Electron Pair Repulsion)</strong> adalah model sederhana yang digunakan untuk memprediksi geometri molekul dari sekumpulan pasangan elektron di sekitar atom pusat. Prinsip inti VSEPR adalah bahwa <strong>pasangan elektron di kulit valensi atom pusat (baik yang berikatan maupun yang bebas) akan menata diri sejauh mungkin satu sama lain untuk meminimalkan tolakan elektrostatik</strong>. Penataan ini menghasilkan geometri yang paling stabil dan memiliki energi terendah.</p>
+        </div>
+
+        <h3>Pengaruh Pasangan Elektron Bebas (PEB) terhadap Sudut Ikatan</h3>
+        <p>Meskipun semua pasangan elektron saling tolak-menolak, kekuatan tolakan mereka tidak sama. Urutan kekuatan tolakan adalah sebagai berikut:</p>
+        <p><strong>Pasangan Elektron Bebas - Pasangan Elektron Bebas (PEB-PEB) > Pasangan Elektron Bebas - Pasangan Elektron Ikatan (PEB-PEI) > Pasangan Elektron Ikatan - Pasangan Elektron Ikatan (PEI-PEI)</strong></p>
+        <p>Pasangan elektron bebas memiliki gaya tolak yang lebih besar karena mereka hanya ditarik oleh satu inti atom (atom pusat) dan menempati ruang yang lebih luas. Sementara itu, pasangan elektron ikatan ditarik oleh dua inti atom (atom pusat dan atom terikat), sehingga ruang yang ditempatinya lebih sempit. Tolakan yang lebih besar dari PEB ini akan menyebabkan pasangan elektron ikatan terdorong mendekat satu sama lain, sehingga <strong>mengurangi sudut ikatan</strong> dari nilai ideal yang seharusnya.</p>
+
+        <h3>Tahapan Memprediksi Bentuk Molekul dengan Teori VSEPR:</h3>
+        <ol>
+            <li><strong>Menentukan Jumlah Semua Pasangan Elektron pada Atom Pusat:</strong>
+                *   Mulailah dengan menggambar struktur Lewis molekul untuk mengidentifikasi atom pusat dan menghitung jumlah elektron valensi dari atom pusat dan atom yang terikat.
+                *   Tentukan jumlah total pasangan elektron (PEI + PEB) di sekitar atom pusat. Pasangan elektron ganda atau rangkap tiga dihitung sebagai satu "kelompok" pasangan elektron.</li>
+            <li><strong>Menentukan Geometri Pasangan Elektron:</strong>
+                *   Berdasarkan jumlah total pasangan elektron di sekitar atom pusat, tentukan geometri dasarnya. Ini adalah susunan ideal pasangan elektron untuk meminimalkan tolakan.
+                <br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Jumlah Pasangan Elektron</th>
+                            <th>Geometri Pasangan Elektron</th>
+                            <th>Sudut Ikatan Ideal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="No.">1.</td>
+                            <td data-label="Jumlah Pasangan Elektron">2</td>
+                            <td data-label="Geometri Pasangan Elektron">Linear</td>
+                            <td data-label="Sudut Ikatan Ideal">180°</td>
+                        </tr>
+                        <tr>
+                            <td data-label="No.">2.</td>
+                            <td data-label="Jumlah Pasangan Elektron">3</td>
+                            <td data-label="Geometri Pasangan Elektron">Segitiga Datar (Trigonal Planar)</td>
+                            <td data-label="Sudut Ikatan Ideal">120°</td>
+                        </tr>
+                        <tr>
+                            <td data-label="No.">3.</td>
+                            <td data-label="Jumlah Pasangan Elektron">4</td>
+                            <td data-label="Geometri Pasangan Elektron">Tetrahedral</td>
+                            <td data-label="Sudut Ikatan Ideal">109.5°</td>
+                        </tr>
+                        <tr>
+                            <td data-label="No.">4.</td>
+                            <td data-label="Jumlah Pasangan Elektron">5</td>
+                            <td data-label="Geometri Pasangan Elektron">Trigonal Bipiramida</td>
+                            <td data-label="Sudut Ikatan Ideal">120° (ekuatorial), 90° (aksial)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="No.">5.</td>
+                            <td data-label="Jumlah Pasangan Elektron">6</td>
+                            <td data-label="Geometri Pasangan Elektron">Oktahedral</td>
+                            <td data-label="Sudut Ikatan Ideal">90°</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li><strong>Menentukan Geometri Molekul (Bentuk Molekul):</strong>
+                <ul>
+                    <li><strong>a. Jika Tidak Ada Pasangan Elektron Bebas (PEB):</strong> Geometri molekul akan sama persis dengan geometri pasangan elektronnya.</li>
+                    <li><strong>b. Jika Ada Pasangan Elektron Bebas (PEB):</strong> PEB akan mendistorsi geometri molekul. Meskipun PEB tetap dihitung dalam menentukan geometri pasangan elektron, bentuk molekul yang diamati hanya mengacu pada posisi atom-atom yang terikat (PEI). Pengaruh tolakan PEB yang lebih besar akan mengubah sudut ikatan dan menghasilkan bentuk molekul yang berbeda dari geometri pasangan elektron idealnya.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>Notasi VSEPR: AX<sub>m</sub>E<sub>n</sub></h3>
+        <p>Untuk menyederhanakan representasi, bentuk molekul sering dinotasikan dengan <strong>AX<sub>m</sub>E<sub>n</sub></strong>, di mana:</p>
+        <ul>
+            <li><strong>A:</strong> Mewakili atom pusat.</li>
+            <li><strong>X:</strong> Mewakili jumlah <strong>pasangan elektron ikatan (PEI)</strong> atau jumlah atom yang terikat pada atom pusat (m).</li>
+            <li><strong>E:</strong> Mewakili jumlah <strong>pasangan elektron bebas (PEB)</strong> pada atom pusat (n).</li>
+        </ul>
+
+        <h3>Contoh Aplikasi Teori VSEPR</h3>
+
+        <div class="example-box">
+            <h4>1. Molekul CH₄ (Metana)</h4>
+            <ul>
+                <li>Atom Pusat: Karbon (C), Elektron Valensi = 4</li>
+                <li>Atom Terikat: 4 Hidrogen (H), masing-masing menyumbang 1 elektron.</li>
+                <li>Total elektron di kulit valensi atom pusat: 4 (dari C) + 4 (dari 4 H) = 8 elektron.</li>
+                <li>Jumlah pasangan elektron total: 8 / 2 = <strong>4 pasang</strong>.</li>
+                <li>Pasangan Elektron Ikatan (PEI): 4 (C mengikat 4 H).</li>
+                <li>Pasangan Elektron Bebas (PEB): 4 (total pasangan) - 4 (PEI) = <strong>0 pasang</strong>.</li>
+                <li>Notasi VSEPR: <strong>AX₄</strong></li>
+            </ul>
+            <p>Dengan 4 pasangan elektron total dan 0 PEB, geometri pasangan elektron adalah <strong>tetrahedral</strong>, dan bentuk molekulnya juga <strong>tetrahedral</strong>. Sudut ikatan H-C-H adalah <strong>109.5°</strong>.</p>
+        </div>
+
+        <div class="example-box">
+            <h4>2. Molekul NH₃ (Amonia)</h4>
+            <ul>
+                <li>Atom Pusat: Nitrogen (N), Elektron Valensi = 5</li>
+                <li>Atom Terikat: 3 Hidrogen (H), masing-masing menyumbang 1 elektron.</li>
+                <li>Total elektron di kulit valensi atom pusat: 5 (dari N) + 3 (dari 3 H) = 8 elektron.</li>
+                <li>Jumlah pasangan elektron total: 8 / 2 = <strong>4 pasang</strong>.</li>
+                <li>Pasangan Elektron Ikatan (PEI): 3 (N mengikat 3 H).</li>
+                <li>Pasangan Elektron Bebas (PEB): 4 (total pasangan) - 3 (PEI) = <strong>1 pasang</strong>.</li>
+                <li>Notasi VSEPR: <strong>AX₃E₁</strong></li>
+            </ul>
+            <p>Geometri pasangan elektron totalnya adalah <strong>tetrahedral</strong> (karena 4 pasang). Namun, keberadaan satu PEB menyebabkan distorsi. PEB menempati ruang yang lebih besar dan menekan ketiga ikatan N-H. Akibatnya, bentuk molekul yang diamati adalah <strong>piramida trigonal</strong> (atau piramidal), dengan sudut ikatan H-N-H mengecil menjadi sekitar <strong>107°</strong>, lebih kecil dari 109.5°.</p>
+        </div>
+
+        <div class="example-box">
+            <h4>3. Molekul H₂O (Air)</h4>
+            <ul>
+                <li>Atom Pusat: Oksigen (O), Elektron Valensi = 6</li>
+                <li>Atom Terikat: 2 Hidrogen (H), masing-masing menyumbang 1 elektron.</li>
+                <li>Total elektron di kulit valensi atom pusat: 6 (dari O) + 2 (dari 2 H) = 8 elektron.</li>
+                <li>Jumlah pasangan elektron total: 8 / 2 = <strong>4 pasang</strong>.</li>
+                <li>Pasangan Elektron Ikatan (PEI): 2 (O mengikat 2 H).</li>
+                <li>Pasangan Elektron Bebas (PEB): 4 (total pasangan) - 2 (PEI) = <strong>2 pasang</strong>.</li>
+                <li>Notasi VSEPR: <strong>AX₂E₂</strong></li>
+            </ul>
+            <p>Geometri pasangan elektron totalnya adalah <strong>tetrahedral</strong> (karena 4 pasang). Dengan dua PEB, tolakan PEB-PEB dan PEB-PEI sangat kuat, mendesak ikatan O-H lebih dekat lagi. Bentuk molekul yang dihasilkan adalah <strong>bengkok (V-shape atau sudut)</strong>, dengan sudut ikatan H-O-H sekitar <strong>104.5°</strong>, yang paling kecil di antara ketiga contoh ini.</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>Ringkasan Bentuk Molekul Dasar (VSEPR)</h4>
+            <p>Berikut adalah tabel yang merangkum berbagai bentuk molekul yang dapat diprediksi oleh teori VSEPR, termasuk pengaruh pasangan elektron bebas:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total Pasangan Elektron</th>
+                        <th>PEI</th>
+                        <th>PEB</th>
+                        <th>Geometri Pasangan Elektron</th>
+                        <th>Bentuk Molekul (Geometri Molekul)</th>
+                        <th>Sudut Ikatan (Perkiraan)</th>
+                        <th>Notasi VSEPR</th>
+                        <th>Contoh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">2</td>
+                        <td data-label="PEI">2</td>
+                        <td data-label="PEB">0</td>
+                        <td data-label="Geometri Pasangan Elektron">Linear</td>
+                        <td data-label="Bentuk Molekul">Linear</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">180°</td>
+                        <td data-label="Notasi VSEPR">AX₂</td>
+                        <td data-label="Contoh">BeCl₂, CO₂</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">3</td>
+                        <td data-label="PEI">3</td>
+                        <td data-label="PEB">0</td>
+                        <td data-label="Geometri Pasangan Elektron">Trigonal Planar</td>
+                        <td data-label="Bentuk Molekul">Trigonal Planar</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">120°</td>
+                        <td data-label="Notasi VSEPR">AX₃</td>
+                        <td data-label="Contoh">BF₃, SO₃</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">3</td>
+                        <td data-label="PEI">2</td>
+                        <td data-label="PEB">1</td>
+                        <td data-label="Geometri Pasangan Elektron">Trigonal Planar</td>
+                        <td data-label="Bentuk Molekul">Bengkok (V-shape)</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">< 120°</td>
+                        <td data-label="Notasi VSEPR">AX₂E₁</td>
+                        <td data-label="Contoh">SO₂, O₃</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">4</td>
+                        <td data-label="PEI">4</td>
+                        <td data-label="PEB">0</td>
+                        <td data-label="Geometri Pasangan Elektron">Tetrahedral</td>
+                        <td data-label="Bentuk Molekul">Tetrahedral</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">109.5°</td>
+                        <td data-label="Notasi VSEPR">AX₄</td>
+                        <td data-label="Contoh">CH₄, CCl₄</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">4</td>
+                        <td data-label="PEI">3</td>
+                        <td data-label="PEB">1</td>
+                        <td data-label="Geometri Pasangan Elektron">Tetrahedral</td>
+                        <td data-label="Bentuk Molekul">Piramida Trigonal</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">107°</td>
+                        <td data-label="Notasi VSEPR">AX₃E₁</td>
+                        <td data-label="Contoh">NH₃, PCl₃</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">4</td>
+                        <td data-label="PEI">2</td>
+                        <td data-label="PEB">2</td>
+                        <td data-label="Geometri Pasangan Elektron">Tetrahedral</td>
+                        <td data-label="Bentuk Molekul">Bengkok (V-shape)</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">104.5°</td>
+                        <td data-label="Notasi VSEPR">AX₂E₂</td>
+                        <td data-label="Contoh">H₂O, H₂S</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">5</td>
+                        <td data-label="PEI">5</td>
+                        <td data-label="PEB">0</td>
+                        <td data-label="Geometri Pasangan Elektron">Trigonal Bipiramida</td>
+                        <td data-label="Bentuk Molekul">Trigonal Bipiramida</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">120°, 90°</td>
+                        <td data-label="Notasi VSEPR">AX₅</td>
+                        <td data-label="Contoh">PCl₅, AsF₅</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">5</td>
+                        <td data-label="PEI">4</td>
+                        <td data-label="PEB">1</td>
+                        <td data-label="Geometri Pasangan Elektron">Trigonal Bipiramida</td>
+                        <td data-label="Bentuk Molekul">Jungkat-Jungkit (Seesaw)</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">~175°, ~101°</td>
+                        <td data-label="Notasi VSEPR">AX₄E₁</td>
+                        <td data-label="Contoh">SF₄, TeCl₄</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">5</td>
+                        <td data-label="PEI">3</td>
+                        <td data-label="PEB">2</td>
+                        <td data-label="Geometri Pasangan Elektron">Trigonal Bipiramida</td>
+                        <td data-label="Bentuk Molekul">Bentuk T</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">90°</td>
+                        <td data-label="Notasi VSEPR">AX₃E₂</td>
+                        <td data-label="Contoh">ClF₃, BrF₃</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">5</td>
+                        <td data-label="PEI">2</td>
+                        <td data-label="PEB">3</td>
+                        <td data-label="Geometri Pasangan Elektron">Trigonal Bipiramida</td>
+                        <td data-label="Bentuk Molekul">Linear</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">180°</td>
+                        <td data-label="Notasi VSEPR">AX₂E₃</td>
+                        <td data-label="Contoh">XeF₂, I₃⁻</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">6</td>
+                        <td data-label="PEI">6</td>
+                        <td data-label="PEB">0</td>
+                        <td data-label="Geometri Pasangan Elektron">Oktahedral</td>
+                        <td data-label="Bentuk Molekul">Oktahedral</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">90°</td>
+                        <td data-label="Notasi VSEPR">AX₆</td>
+                        <td data-label="Contoh">SF₆, TeF₆</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">6</td>
+                        <td data-label="PEI">5</td>
+                        <td data-label="PEB">1</td>
+                        <td data-label="Geometri Pasangan Elektron">Oktahedral</td>
+                        <td data-label="Bentuk Molekul">Piramida Segiempat (Square Pyramidal)</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">~90°</td>
+                        <td data-label="Notasi VSEPR">AX₅E₁</td>
+                        <td data-label="Contoh">BrF₅, IF₅</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Total Pasangan Elektron">6</td>
+                        <td data-label="PEI">4</td>
+                        <td data-label="PEB">2</td>
+                        <td data-label="Geometri Pasangan Elektron">Oktahedral</td>
+                        <td data-label="Bentuk Molekul">Segiempat Datar (Square Planar)</td>
+                        <td data-label="Sudut Ikatan (Perkiraan)">90°</td>
+                        <td data-label="Notasi VSEPR">AX₄E₂</td>
+                        <td data-label="Contoh">XeF₄, ICl₄⁻</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Kaitan Bentuk Molekul dengan Kepolaran Senyawa</h3>
+        <p>Kepolaran suatu senyawa adalah sifat penting yang memengaruhi kelarutan, titik didih, dan interaksinya dengan molekul lain. Kepolaran ditentukan oleh dua faktor utama:</p>
+        <ol>
+            <li><strong>Perbedaan Keelektronegatifan Antar Atom:</strong> Jika terdapat perbedaan keelektronegatifan (ΔEN) antara atom-atom yang berikatan, ikatan tersebut akan bersifat polar, menciptakan momen dipol (μ) pada ikatan tersebut (satu ujung menjadi parsial positif, yang lain parsial negatif).</li>
+            <li><strong>Bentuk Molekul (Geometri Molekul):</strong> Bahkan jika ikatan dalam molekul bersifat polar, molekul keseluruhan bisa tetap nonpolar jika momen dipol dari semua ikatan tersebut saling meniadakan karena bentuk molekul yang simetris. Sebaliknya, bentuk molekul yang asimetris dengan ikatan polar akan menghasilkan momen dipol netto, menjadikan molekul tersebut polar.</li>
+        </ol>
+        <div class="example-box">
+            <h4>Contoh Analisis Kepolaran: H₂O vs. CO₂</h4>
+            <ul>
+                <li><strong>H₂O (Air):</strong> Ikatan O-H adalah polar karena O lebih elektronegatif dari H. Bentuk molekul H₂O adalah <strong>bengkok (V-shape)</strong> akibat adanya dua PEB pada atom O. Bentuk yang asimetris ini menyebabkan momen dipol ikatan tidak saling meniadakan. Oleh karena itu, H₂O bersifat <strong>polar</strong>.</li>
+                <li><strong>CO₂ (Karbon Dioksida):</strong> Ikatan C=O adalah polar karena O lebih elektronegatif dari C. Namun, bentuk molekul CO₂ adalah <strong>linear</strong>. Kedua momen dipol ikatan C=O, meskipun ada, saling meniadakan karena arahnya berlawanan dan ukurannya sama. Akibatnya, CO₂ bersifat <strong>nonpolar</strong> secara keseluruhan.</li>
+            </ul>
+        </div>
+
+        <h2 id="hybridization-theory">2. Teori Hibridisasi</h2>
+        <div class="theory-box">
+            <p><strong>Teori Hibridisasi</strong> menjelaskan bagaimana orbital-orbital atom yang berbeda (misalnya, orbital <em>s</em> dan <em>p</em>) dari satu atom dapat <strong>bergabung atau bercampur</strong> (berhibridisasi) untuk membentuk seperangkat orbital baru yang setara, yang disebut <strong>orbital hibrida</strong>. Orbital hibrida ini memiliki bentuk dan energi yang berbeda dari orbital atom aslinya. Arah orbital hibrida diatur sedemikian rupa untuk meminimalkan tolakan antarpasangan elektron, persis seperti yang diprediksi oleh teori VSEPR. Hibridisasi sangat penting untuk menjelaskan ikatan kovalen, terutama ketika atom pusat membentuk lebih dari satu ikatan dan menunjukkan geometri tertentu.</p>
+        </div>
+
+        <h3>Jenis-jenis Hibridisasi dan Hubungannya dengan Geometri</h3>
+        <p>Tipe hibridisasi ditentukan oleh jumlah total kelompok elektron (PEI + PEB) di sekitar atom pusat. Setiap jenis hibridisasi berkaitan langsung dengan geometri pasangan elektron yang telah dibahas dalam VSEPR:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hibridisasi</th>
+                    <th>Jumlah Orbital Hibrida</th>
+                    <th>Geometri Pasangan Elektron</th>
+                    <th>Sudut Ikatan Ideal</th>
+                    <th>Contoh</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Hibridisasi">sp</td>
+                    <td data-label="Jumlah Orbital Hibrida">2</td>
+                    <td data-label="Geometri Pasangan Elektron">Linear</td>
+                    <td data-label="Sudut Ikatan Ideal">180°</td>
+                    <td data-label="Contoh">BeCl₂, C₂H₂</td>
+                </tr>
+                <tr>
+                    <td data-label="Hibridisasi">sp²</td>
+                    <td data-label="Jumlah Orbital Hibrida">3</td>
+                    <td data-label="Geometri Pasangan Elektron">Trigonal Planar</td>
+                    <td data-label="Sudut Ikatan Ideal">120°</td>
+                    <td data-label="Contoh">BF₃, C₂H₄</td>
+                </tr>
+                <tr>
+                    <td data-label="Hibridisasi">sp³</td>
+                    <td data-label="Jumlah Orbital Hibrida">4</td>
+                    <td data-label="Geometri Pasangan Elektron">Tetrahedral</td>
+                    <td data-label="Sudut Ikatan Ideal">109.5°</td>
+                    <td data-label="Contoh">CH₄, NH₃, H₂O</td>
+                </tr>
+                <tr>
+                    <td data-label="Hibridisasi">sp³d</td>
+                    <td data-label="Jumlah Orbital Hibrida">5</td>
+                    <td data-label="Geometri Pasangan Elektron">Trigonal Bipiramida</td>
+                    <td data-label="Sudut Ikatan Ideal">120° &amp; 90°</td>
+                    <td data-label="Contoh">PCl₅, SF₄</td>
+                </tr>
+                <tr>
+                    <td data-label="Hibridisasi">sp³d²</td>
+                    <td data-label="Jumlah Orbital Hibrida">6</td>
+                    <td data-label="Geometri Pasangan Elektron">Oktahedral</td>
+                    <td data-label="Sudut Ikatan Ideal">90°</td>
+                    <td data-label="Contoh">SF₆, XeF₄</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Contoh Penentuan Hibridisasi Molekul Kovalen</h3>
+
+        <div class="example-box">
+            <h4>1. Hibridisasi pada NH₃ (Amonia)</h4>
+            <p>Atom pusat Nitrogen (N) memiliki nomor atom 7, sehingga konfigurasi elektronnya adalah 1s² 2s² 2p³. Elektron valensi N berada pada kulit kedua: 2s² 2p³.</p>
+            <p><strong>Diagram Orbital N (Keadaan Dasar):</strong></p>
+            <div class="orbital-diagram">
+                N:  (2s) <span class="electron">↑↓</span>   (2p) <span class="electron">↑</span> <span class="electron">↑</span> <span class="electron">↑</span>
+            </div>
+            <p>Atom N berikatan dengan tiga atom H. Masing-masing atom H menyediakan satu elektron untuk membentuk ikatan. Agar N dapat membentuk tiga ikatan kovalen sigma (σ) dan memiliki satu pasangan elektron bebas, N harus menyediakan tiga orbital yang siap berikatan dan satu orbital untuk PEB.</p>
+            <p>Satu orbital 2s dan tiga orbital 2p dari atom N akan bercampur (berhibridisasi) membentuk empat orbital hibrida baru yang setara, yang disebut orbital <strong>sp³</strong>.</p>
+            <p><strong>Diagram Orbital N (setelah Hibridisasi sp³):</strong></p>
+            <div class="orbital-diagram">
+                N:  (sp³ hibrida) <span class="lone-pair">↑↓</span> <span class="bond">↑</span> <span class="bond">↑</span> <span class="bond">↑</span>
+            </div>
+            <p>Empat orbital hibrida sp³ ini akan mengarah ke empat sudut tetrahedral. Satu orbital sp³ ditempati oleh pasangan elektron bebas N, sementara tiga orbital sp³ lainnya masing-masing tumpang tindih dengan orbital 1s dari tiga atom H untuk membentuk ikatan N-H. Kehadiran PEB ini (seperti yang dijelaskan VSEPR) mendistorsi bentuk tetrahedral ideal menjadi <strong>piramida trigonal</strong>.</p>
+        </div>
+
+        <div class="example-box">
+            <h4>2. Hibridisasi pada XeF₂ (Xenon Difluorida)</h4>
+            <p>Atom pusat Xenon (Xe) adalah gas mulia periode 5, dengan konfigurasi elektron valensi 5s² 5p⁶. Karena Xe berada pada periode 5, ia memiliki orbital 5d kosong yang dapat digunakan untuk oktet ekspansi.</p>
+            <p><strong>Diagram Orbital Xe (Keadaan Dasar):</strong></p>
+            <div class="orbital-diagram">
+                Xe: (5s) <span class="electron">↑↓</span>  (5p) <span class="electron">↑↓</span> <span class="electron">↑↓</span> <span class="electron">↑↓</span>  (5d) <span class="electron">_</span> <span class="electron">_</span> <span class="electron">_</span> <span class="electron">_</span> <span class="electron">_</span>
+            </div>
+            <p>Untuk berikatan dengan dua atom F, Xe perlu memiliki dua elektron tidak berpasangan. Ini dicapai melalui proses <strong>eksitasi</strong> elektron dari orbital 5p ke orbital 5d yang kosong.</p>
+            <p><strong>Diagram Orbital Xe (Keadaan Tereksitasi):</strong></p>
+            <div class="orbital-diagram">
+                Xe: (5s) <span class="electron">↑↓</span>  (5p) <span class="electron">↑↓</span> <span class="electron">↑↓</span> <span class="electron">↑</span>  (5d) <span class="electron">↑</span> <span class="electron">_</span> <span class="electron">_</span> <span class="electron">_</span> <span class="electron">_</span>
+            </div>
+            <p>Sekarang, Xe memiliki dua elektron tidak berpasangan yang siap untuk berikatan. Namun, untuk mengakomodasi dua pasangan ikatan dan tiga pasangan elektron bebas (total 5 kelompok elektron), diperlukan lima orbital hibrida. Oleh karena itu, satu orbital 5s, tiga orbital 5p, dan satu orbital 5d akan berhibridisasi membentuk lima orbital hibrida <strong>sp³d</strong>.</p>
+            <p><strong>Diagram Orbital Xe (setelah Hibridisasi sp³d):</strong></p>
+            <div class="orbital-diagram">
+                Xe: (sp³d hibrida) <span class="lone-pair">↑↓</span> <span class="lone-pair">↑↓</span> <span class="lone-pair">↑↓</span> <span class="bond">↑</span> <span class="bond">↑</span>
+            </div>
+            <p>Tiga dari lima orbital hibrida sp³d ini akan ditempati oleh pasangan elektron bebas (PEB), sementara dua orbital hibrida lainnya akan tumpang tindih dengan orbital 2p dari atom F untuk membentuk ikatan Xe-F. Sesuai dengan VSEPR, lima kelompok elektron ini akan menata diri dalam geometri trigonal bipiramida. Dengan 3 PEB yang menempati posisi ekuatorial, bentuk molekul XeF₂ adalah <strong>linear</strong>.</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>Sinergi antara VSEPR dan Hibridisasi</h4>
+            <p>Meskipun VSEPR dan Hibridisasi adalah dua teori terpisah, mereka saling melengkapi. Teori VSEPR memberikan prediksi tentang geometri molekul berdasarkan tolakan pasangan elektron, sementara teori hibridisasi memberikan penjelasan yang lebih mendalam tentang bagaimana orbital-orbital atom bercampur untuk membentuk orbital-orbital baru yang sesuai dengan geometri yang diprediksi oleh VSEPR. Bersama-sama, mereka memberikan pemahaman yang komprehensif tentang struktur dan ikatan dalam molekul.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

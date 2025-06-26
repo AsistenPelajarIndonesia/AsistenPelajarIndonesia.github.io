@@ -1,0 +1,582 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kebebasan Politik dan Berekspresi - Indonesia Masa Reformasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Light Mode Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+        h4 { font-size: 1.4em; }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1565C0; /* A darker shade of primary-blue */
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--background-canvas);
+            margin-bottom: 10px;
+            font-size: 3.5em;
+        }
+
+        .header p {
+            color: var(--background-canvas);
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-top: 5px solid var(--primary-blue);
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Sub-section / Article Styling */
+        article {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 4px solid var(--accent-green);
+            background-color: #f9f9f9; /* Slightly off-white for sub-sections */
+            border-radius: 4px;
+        }
+
+        article h3 {
+            color: var(--accent-green);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners apply to content */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-divider);
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f4f4f4; /* Subtle stripe for readability */
+        }
+
+        tr:hover {
+            background-color: #e9e9e9;
+            transition: background-color 0.2s ease;
+        }
+
+        /* Callout/Info Box */
+        .info-box {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-box .icon {
+            font-size: 2em;
+            margin-right: 15px;
+            line-height: 1;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: var(--background-canvas);
+        }
+
+        .info-box h4 {
+            color: var(--background-canvas);
+            margin-bottom: 10px;
+        }
+
+        .info-box .highlight {
+            background-color: rgba(255, 255, 255, 0.2); /* Highlight for dark background */
+        }
+
+
+        /* Specific elements from original text that can be highlighted */
+        .highlight {
+            background-color: rgba(25, 118, 210, 0.1); /* Lighter blue highlight using primary-blue rgba */
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .citation {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        /* QR Code Placeholder (since no images allowed) */
+        .qr-placeholder {
+            background-color: var(--border-divider);
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+            text-align: center;
+            color: var(--text-tertiary);
+            border: 1px dashed var(--text-tertiary);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            margin-left: auto; 
+            margin-right: 0;
+            float: right; 
+            shape-outside: rect(0, 120px, 120px, 0); 
+            shape-margin: 10px;
+        }
+
+        /* Clearfix for floats */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Simple Card for Political Parties */
+        .party-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .party-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .party-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .party-card .party-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .party-card .party-name {
+            font-size: 1em;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .party-card .party-slogan {
+            font-size: 0.8em;
+            color: var(--text-tertiary);
+            margin-top: 5px;
+        }
+
+        /* Jurnalisme Warga Infographic style */
+        .citizen-journalism-principles {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            gap: 20px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f8ff; /* Light blue background for this section */
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 8px;
+        }
+
+        .cj-definition, .cj-principles-list {
+            flex: 1 1 calc(50% - 10px); /* Distribute evenly, accounting for gap */
+            min-width: 280px; /* Minimum width before wrapping */
+            padding: 15px;
+            background-color: var(--background-canvas);
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .cj-definition h4, .cj-principles-list h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        .cj-principles-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cj-principles-list ul li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+
+        .cj-principles-list ul li::before {
+            content: "•";
+            color: var(--accent-green);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            margin-right: 0.5em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            h4 { font-size: 1.2em; }
+
+            .header {
+                padding: 30px 15px;
+            }
+
+            .header h1 {
+                font-size: 2.8em;
+            }
+
+            .info-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .info-box .icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .qr-placeholder {
+                float: none;
+                margin: 20px auto;
+            }
+
+            .cj-definition, .cj-principles-list {
+                flex: 1 1 100%; /* Stack on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.1em; }
+            section { padding: 20px; }
+            article { padding: 15px; }
+            th, td { padding: 10px; font-size: 0.9em; }
+            .party-card .party-name { font-size: 0.9em; }
+            .party-card .party-slogan { font-size: 0.7em; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Indonesia Masa Reformasi</h1>
+            <p>Kebebasan Politik dan Berekspresi</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="kebebasan-politik-ekspresi">
+            <h2>D. Kebebasan Politik dan Berekspresi</h2>
+            <p>Masa Reformasi di Indonesia adalah periode transformatif yang secara fundamental mengubah wajah politik dan sosial negara. Salah satu pilar utama perubahan ini adalah <span class="highlight">peningkatan signifikan dalam kebebasan politik dan berekspresi</span> bagi warga negara. Setelah puluhan tahun di bawah rezim yang cenderung membatasi, reformasi membuka pintu bagi partisipasi publik yang lebih luas dan ekspresi individu yang lebih bebas. Mari kita selami lebih dalam bagaimana kebebasan ini terwujud dalam berbagai aspek kehidupan berbangsa dan bernegara.</p>
+
+            <article id="menyatakan-pendapat">
+                <h3>1. Kebebasan Menyatakan Pendapat dan Aspirasi Politik</h3>
+                <p>Di era Reformasi, masyarakat Indonesia mengalami perubahan paradigma yang mendasar. Kini, setiap golongan, dari individu hingga kelompok masyarakat, dapat dengan bebas menyatakan pendapat dan mengungkapkan aspirasi politik mereka. Realitas ini merupakan <span class="highlight">hasil langsung dari gerakan Reformasi 1998</span>, yang membawa serta semangat demokrasi terbuka dan penghormatan terhadap kebebasan sebagai nilai inti.</p>
+                <p>Fondasi hukum untuk kebebasan berpendapat ini telah ada dalam konstitusi kita. <span class="highlight">Undang-Undang Dasar 1945 Pasal 28 dan Pasal 28E Ayat 3</span> secara eksplisit menjamin hak setiap warga negara untuk berserikat, berkumpul, dan mengeluarkan pikiran dengan lisan maupun tulisan. Namun, pada masa Reformasi, jaminan konstitusional ini diperkuat dengan regulasi yang lebih spesifik dan implementasi yang lebih terbuka.</p>
+                <p>Langkah konkret dalam mewujudkan kebebasan ini diambil oleh Presiden B.J. Habibie dengan mengeluarkan <span class="highlight">Undang-Undang No. 9 Tahun 1998 tentang Kemerdekaan Menyampaikan Pendapat di Muka Umum</span>. Undang-undang ini menjadi pijakan penting yang memungkinkan demonstrasi, petisi, dan bentuk-bentuk ekspresi publik lainnya dilakukan secara sah dan terorganisir, menghilangkan bayang-bayang ketakutan yang sering menyelimuti aksi semacam itu di masa sebelumnya.</p>
+                <p>Salah satu manifestasi terbesar dari komitmen Presiden B.J. Habibie terhadap hak penentuan nasib sendiri dan kebebasan berpendapat adalah kebijakannya terkait masa depan Timor Timur.</p>
+
+                <div class="info-box">
+                    <span class="icon">&#9432;</span>
+                    <div>
+                        <h4>Referendum dan Nasib Para Eks Pengungsi Timor Timur</h4>
+                        <p>Setelah menjadi bagian dari NKRI sejak 17 Juli 1976, Timor Timur mencapai persimpangan sejarah pada masa Reformasi. Untuk pertama kalinya dalam 22 tahun, pemerintah Indonesia di bawah Presiden B.J. Habibie menawarkan opsi <span class="highlight">referendum</span> kepada rakyat Timor Timur. Referendum ini memberikan dua pilihan fundamental: diberikan status otonomi khusus di bawah NKRI, atau melepaskan diri dari Indonesia.</p>
+                        <p>Pelaksanaan referendum pada <span class="highlight">30 Agustus 1999</span> berlangsung dalam suasana yang relatif tenang dan damai. Kondisi ini kontras jauh dengan situasi konflik saat Portugis meninggalkan Timor Timur sebelumnya. Suasana demokratis ini menjadi bukti nyata adanya kebebasan politik dan berekspresi yang diizinkan, bahkan kaum milisi pro-Indonesia pun tidak mengganggu jalannya pemungutan suara.</p>
+                        <p>Total suara masuk mencapai <span class="highlight">446.953</span>. Hasilnya, mayoritas <span class="highlight">78,5% suara menginginkan Timor Timur merdeka</span>, sementara sisanya memilih otonomi khusus dalam NKRI. Setelah melalui proses transisi yang panjang dan kompleks, termasuk gelombang eksodus besar-besaran masyarakat pro-integrasi ke wilayah Indonesia (khususnya Nusa Tenggara Timur), Timor Timur secara resmi diakui sebagai negara merdeka oleh dunia internasional pada <span class="highlight">20 Mei 2002</span> dan berganti nama menjadi <span class="highlight">Timor Leste</span>. Peristiwa ini menggarisbawahi sejauh mana kebebasan politik dan penentuan nasib sendiri telah menjadi inti dari semangat Reformasi.</p>
+                        <p class="citation"><em>Referensi: Ferizaldi (2016), Firman (2019), dan BBC News Indonesia.</em></p>
+                    </div>
+                </div>
+            </article>
+
+            <article id="partai-politik">
+                <h3>2. Berkembangnya Partai Politik</h3>
+                <p>Kontras mencolok dengan era Orde Baru yang hanya mengakui tiga partai politik (Golkar, PDI, dan PPP), pembukaan keran reformasi pada awal 1998 memicu <span class="highlight">ledakan jumlah partai politik baru</span>. Fenomena ini menunjukkan antusiasme masyarakat dan berbagai kelompok kepentingan untuk berpartisipasi dalam sistem politik multipartai yang lebih inklusif dan representatif. Dalam waktu singkat, jumlah partai yang berdiri mencapai ratusan.</p>
+                <p>Setiap pemilihan umum di era Reformasi menjadi ajang bagi berbagai partai untuk bersaing, dengan dinamika peserta yang terus berubah. Berikut adalah gambaran umum jumlah partai yang berpartisipasi dalam pemilu dan yang berhasil lolos verifikasi:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Periode Pemilu</th>
+                            <th>Jumlah Partai Peserta</th>
+                            <th>Lolos Verifikasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Pemilu 1999</td><td>184</td><td>48</td></tr>
+                        <tr><td>Pemilu 2004</td><td>200</td><td>24</td></tr>
+                        <tr><td>Pemilu 2009</td><td>132</td><td>38</td></tr>
+                        <tr><td>Pemilu 2014</td><td>34</td><td>12</td></tr>
+                        <tr><td>Pemilu 2019</td><td>34</td><td>16</td></tr>
+                    </tbody>
+                </table>
+                <p class="citation"><em>Data historis dari penyelenggaraan pemilu di Indonesia.</em></p>
+
+                <div class="clearfix">
+                    <div class="qr-placeholder" aria-label="QR code placeholder for external link">
+                        Scan untuk sejarah pemilu
+                    </div>
+                    <p>Sebagai generasi muda yang kelak akan menjadi pemilih, sangat penting untuk memahami hak dan kewajiban kalian dalam proses pemilihan umum. Mengetahui sejarah penyelenggaraan pemilu akan memberikan kalian pemahaman mendalam tentang bagaimana sistem demokrasi kita berkembang dan bagaimana setiap suara memiliki peran krusial dalam membentuk masa depan bangsa.</p>
+                    <p>Untuk menelusuri lebih jauh sejarah pemilu dan peran warga negara, kalian bisa mengakses berbagai sumber daring resmi. Misalnya, referensi dari pusat data kepresidenan dan arsip nasional dapat memberikan wawasan yang kaya.</p>
+                    <p class="citation"><em>Contoh sumber: <a href="https://kepustakaan-presiden.perpusnas.go.id/election/home/" target="_blank">kepustakaan-presiden.perpusnas.go.id/election/home/</a></em></p>
+                </div>
+
+                <h4>Gambaran Partai-partai Nasional Peserta Pemilu 2019</h4>
+                <p>Untuk memberikan gambaran konkret, berikut adalah beberapa partai politik yang menjadi peserta dan memiliki nomor urut dalam Pemilu 2019:</p>
+                <div class="party-grid">
+                    <div class="party-card">
+                        <div class="party-number">1</div><div class="party-name">PKB</div><div class="party-slogan">Partai Kebangkitan Bangsa</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">2</div><div class="party-name">GERINDRA</div><div class="party-slogan">Partai Gerakan Indonesia Raya</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">3</div><div class="party-name">PDIP</div><div class="party-slogan">PDI Perjuangan</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">4</div><div class="party-name">GOLKAR</div><div class="party-slogan">Partai Golongan Karya</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">5</div><div class="party-name">NASDEM</div><div class="party-slogan">Partai Nasional Demokrat</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">6</div><div class="party-name">GARUDA</div><div class="party-slogan">Partai Garuda</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">7</div><div class="party-name">BERKARYA</div><div class="party-slogan">Partai Berkarya</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">8</div><div class="party-name">PKS</div><div class="party-slogan">Partai Keadilan Sejahtera</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">9</div><div class="party-name">PERINDO</div><div class="party-slogan">Partai Persatuan Indonesia</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">10</div><div class="party-name">PPP</div><div class="party-slogan">Partai Persatuan Pembangunan</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">11</div><div class="party-name">PSI</div><div class="party-slogan">Partai Solidaritas Indonesia</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">12</div><div class="party-name">PAN</div><div class="party-slogan">Partai Amanat Nasional</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">13</div><div class="party-name">HANURA</div><div class="party-slogan">Partai Hati Nurani Rakyat</div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-number">14</div><div class="party-name">DEMOKRAT</div><div class="party-slogan">Partai Demokrat</div>
+                    </div>
+                </div>
+                <p class="citation" style="text-align: right; margin-top: 10px;"><em>Sumber: kompas.com (2018)</em></p>
+            </article>
+
+            <article id="pemilu-langsung">
+                <h3>3. Pemilu Langsung</h3>
+                <p>Salah satu inovasi terbesar dalam sistem demokrasi Indonesia di era Reformasi adalah pengenalan <span class="highlight">pemilihan umum langsung</span> untuk jabatan-jabatan publik, termasuk Presiden dan Wakil Presiden, serta kepala daerah. Sebelum Reformasi, pemilihan presiden dilakukan oleh Majelis Permusyawaratan Rakyat (MPR), bukan langsung oleh rakyat. Tahukah kalian kapan transformasi krusial ini terjadi?</p>
+                <p>Pemilihan umum langsung untuk Presiden dan Wakil Presiden pertama kali diselenggarakan pada <span class="highlight">tahun 2004</span>. Perubahan ini membawa sejumlah keuntungan dan tujuan strategis:</p>
+                <ul>
+                    <li><span class="highlight">Memperkuat Legitimasi:</span> Pemimpin yang dipilih langsung oleh rakyat akan memiliki legitimasi yang lebih kuat, karena mandat kekuasaan mereka berasal langsung dari kehendak publik, bukan melalui perwakilan tidak langsung.</li>
+                    <li><span class="highlight">Mengurangi Politik Uang:</span> Proses pemilihan langsung yang transparan dan melibatkan partisipasi massal diharapkan dapat meminimalisir praktik politik uang dan korupsi dalam proses pemilihan.</li>
+                    <li><span class="highlight">Meningkatkan Akuntabilitas:</span> Pemimpin yang dipilih langsung akan merasa lebih bertanggung jawab kepada rakyat pemilihnya, sehingga diharapkan dapat meningkatkan akuntabilitas pemerintahan.</li>
+                </ul>
+                <p>Kerangka hukum untuk pemilu langsung ini diatur melalui serangkaian revisi undang-undang, dimulai dari <span class="highlight">revisi UU No. 22 Tahun 1999 tentang Pemerintah Daerah</span>, kemudian diselaraskan dengan Undang-undang Pemilu, Undang-undang Pemilihan Presiden, serta Undang-undang Susunan dan Kedudukan Majelis Permusyawaratan Rakyat (MPR). Ini menunjukkan keseriusan dan komitmen penuh terhadap demokratisasi struktural.</p>
+                <p>Pada Pemilu 2004, antusiasme masyarakat terlihat dari banyaknya pasangan calon yang mendaftar. Terdapat lima pasang calon kepala negara yang bersaing:</p>
+                <ol>
+                    <li>Megawati Soekarnoputri & Hasyim Muzadi</li>
+                    <li>Wiranto & Salahuddin Wahid</li>
+                    <li>Susilo Bambang Yudhoyono & Jusuf Kalla</li>
+                    <li>Amien Rais & Siswono Yudo Husodo</li>
+                    <li>Hamzah Haz & Agum Gumelar</li>
+                </ol>
+                <p>Pemilu bersejarah ini berlangsung dalam dua putaran. Dua pasangan dengan perolehan suara terbanyak, yaitu <span class="highlight">Susilo Bambang Yudhoyono-Jusuf Kalla</span> dan Megawati Soekarno Putri-Hasyim Muzadi, melaju ke putaran kedua. Pada akhirnya, pasangan Susilo Bambang Yudhoyono dan Jusuf Kalla berhasil memenangkan pertarungan dan menjadi presiden serta wakil presiden pertama yang dipilih langsung oleh rakyat Indonesia. Sejak saat itu, pemilihan presiden dan wakil presiden, serta kepala daerah, secara konsisten dilaksanakan melalui mekanisme langsung ini, menandai kematangan demokrasi Indonesia.</p>
+                <p class="citation"><em>Referensi: Bur, Kompas (22/07/2003).</em></p>
+            </article>
+
+            <article id="kebebasan-pers-jurnalisme">
+                <h3>4. Kebebasan Pers dan Jurnalisme Warga</h3>
+                <p>Reformasi 1998 secara fundamental menjadi <span class="highlight">titik tolak kebangkitan kebebasan pers</span> di Indonesia. Di bawah kepemimpinan Presiden B.J. Habibie, "keran" kebebasan berekspresi dan menyatakan pendapat dibuka lebar, termasuk dalam ranah media massa. Ini merupakan kontras yang tajam dengan era Orde Baru, di mana pers seringkali menghadapi pembredelan dan kontrol ketat dari pemerintah.</p>
+                <p>Data menunjukkan lonjakan drastis dalam jumlah media. Pada masa Orde Baru, tercatat hanya ada <span class="highlight">289 media cetak dan 96 stasiun radio swasta</span>. Setelah Reformasi, angka ini meroket secara signifikan, mencapai <span class="highlight">1.398 media cetak dan 74 stasiun radio</span>. Peningkatan ini mencerminkan lingkungan yang lebih permisif dan subur bagi pertumbuhan industri media.</p>
+                <p>Jaminan hukum terhadap kebebasan pers juga diperkuat dengan diterbitkannya <span class="highlight">Undang-Undang No. 40 Tahun 1999 tentang Pers</span>. UU ini secara khusus memberikan jaminan hukum kepada wartawan untuk menjalankan profesinya secara independen, melindungi hak-hak mereka, dan menegaskan peran pers sebagai pilar demokrasi.</p>
+                <p>Pada masa pemerintahan Presiden Abdurrahman Wahid (Gus Dur), kontribusi penting terhadap kebebasan pers ditunjukkan melalui langkah berani <span class="highlight">pembubaran Departemen Penerangan</span>. Gus Dur secara tegas menyatakan bahwa departemen tersebut selama ini berperan sebagai instrumen yang mengekang kebebasan berbicara pers. Pembubaran ini menjadi simbol kuat komitmen pemerintah untuk tidak lagi mengintervensi atau mengendalikan media massa, membiarkan pers menjalankan perannya sebagai pengawas dan penyampai informasi kepada publik.</p>
+                <p class="citation"><em>Referensi: Pour, 2014: 152-153.</em></p>
+
+                <h4>Jurnalisme Warga di Era Digital</h4>
+                <p>Dengan masuknya era digital dan perkembangan internet, konsep kebebasan informasi meluas ke dunia maya atau siber. Regulasi terkait kebebasan berekspresi di ranah digital mulai digagas pada masa pemerintahan Abdurrahman Wahid dan Megawati Soekarno Putri. Namun, regulasi tersebut baru dapat diundangkan sebagai <span class="highlight">Undang-Undang No. 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik (UU ITE)</span> pada tanggal 21 April 2008.</p>
+                <p>UU ITE ini telah mengalami beberapa kali revisi, yaitu pada <span class="highlight">tahun 2016 dan 2021</span>. Revisi ini dilakukan untuk terus menyesuaikan diri dengan dinamika teknologi dan masyarakat, memastikan bahwa semua rakyat Indonesia memiliki akses untuk menyebarluaskan informasi, sekaligus mengatur batasan-batasan hukum agar tidak terjadi penyalahgunaan. Melalui platform digital, masyarakat kini dapat berpartisipasi aktif dalam kegiatan pengumpulan, pelaporan, analisis, serta penyampaian informasi dan berita.</p>
+                <p>Fenomena ini dikenal luas sebagai <span class="highlight">citizen journalism</span> atau <span class="highlight">jurnalisme warga</span>. Ini adalah pergeseran signifikan di mana peran sebagai penyampai berita tidak lagi eksklusif milik jurnalis profesional, melainkan dapat diemban oleh siapa saja dengan perangkat dan akses internet.</p>
+
+                <div class="citizen-journalism-principles">
+                    <div class="cj-definition">
+                        <h4>Definisi Jurnalisme Warga</h4>
+                        <p>Jurnalisme yang dilakukan oleh orang-orang yang <span class="highlight">bukan jurnalis profesional</span>, melainkan oleh <span class="highlight">warga</span> yang menyebarluaskan informasi melalui situs web, blog, dan media sosial mereka sendiri.</p>
+                    </div>
+                    <div class="cj-principles-list">
+                        <h4>5 Prinsip Dasar Jurnalisme Warga</h4>
+                        <ul>
+                            <li>Akurasi</li>
+                            <li>Kecermatan</li>
+                            <li>Transparansi</li>
+                            <li>Kejujuran</li>
+                            <li>Independensi</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="citation" style="text-align: right; margin-top: 10px;"><em>Sumber: M Rizalabdi/Kemendikbudristek (2022)</em></p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Materi Pembelajaran Sejarah Indonesia Masa Reformasi.</p>
+            <p>Dirancang untuk siswa SMA/MA Kelas XII.</p>
+        </div>
+    </footer>
+</body>
+</html>
+```

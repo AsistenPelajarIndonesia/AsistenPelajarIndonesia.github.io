@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peran Rakyat dalam Revolusi Nasional - Sejarah Kelas XII</title>
     <style>
-        /* CSS Variables for Theme */
+        /* CSS Variables based on lightMode theme */
         :root {
             --background-canvas: #FFFFFF;
             --text-primary: #212121;
@@ -22,248 +22,256 @@
             --semantic-info: #2196F3;
         }
 
-        /* Base Body Styles */
+        /* Base styles */
         body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--background-canvas);
-            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            line-height: 1.7; /* Enhanced readability */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
-
-        /* Main Container for Content */
-        .container {
-            max-width: 1000px; /* Optimal width for reading */
-            margin: 0 auto; /* Center the container */
-            padding: 30px;
+            padding: 0;
             background-color: var(--background-canvas);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-            border-radius: 10px; /* Rounded corners */
-            border: 1px solid var(--border-divider); /* Subtle border */
+            color: var(--text-secondary);
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* Heading Styles */
+        /* Container for content */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+        }
+
+        /* Typography */
         h1, h2, h3, h4 {
-            font-weight: 600; /* Semi-bold for headings */
+            color: var(--text-primary);
             margin-top: 2em;
             margin-bottom: 0.8em;
+            padding-bottom: 0.3em;
         }
 
         h1 {
             font-size: 2.8em;
             text-align: center;
             color: var(--primary-blue);
-            border-bottom: 3px solid var(--primary-blue); /* Strong emphasis */
-            padding-bottom: 20px;
-            margin-bottom: 50px;
-            letter-spacing: 0.05em; /* Slightly spaced letters */
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 15px;
+            margin-bottom: 1.5em;
+            letter-spacing: 0.05em;
         }
 
         h2 {
-            font-size: 2.2em;
+            font-size: 2em;
             color: var(--accent-green);
-            margin-top: 1.5em;
-            border-bottom: 1px solid var(--border-divider); /* Subtler divider */
-            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-divider);
         }
 
         h3 {
-            font-size: 1.8em;
+            font-size: 1.6em;
             color: var(--primary-blue);
-            margin-top: 1.2em;
+            border-bottom: none; /* Sub-headings within sections don't need borders */
+            padding-bottom: 0;
         }
 
         h4 {
-            font-size: 1.4em;
-            color: var(--text-secondary);
-            margin-top: 1em;
+            font-size: 1.3em;
+            color: var(--text-primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
         }
 
-        /* Paragraph Styles */
         p {
-            margin-bottom: 1.2em;
+            margin-bottom: 1em;
             color: var(--text-secondary);
+            text-align: justify; /* Justify text for a cleaner, academic look */
         }
 
-        /* List Styles */
         ul {
-            list-style-type: '👉 '; /* Custom bullet point for engagement */
-            margin-left: 30px;
-            margin-bottom: 1.5em;
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
             color: var(--text-secondary);
         }
 
         li {
-            margin-bottom: 0.8em;
+            margin-bottom: 0.6em;
         }
 
-        /* Accordion (Details/Summary) Styling for Interactivity */
-        details {
-            background-color: var(--background-canvas);
-            border: 1px solid var(--border-divider);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            overflow: hidden; /* Ensures content stays within rounded corners */
-            transition: all 0.4s ease-in-out; /* Smooth transition for open/close */
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
         }
 
-        details[open] {
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18); /* Deeper shadow when open */
-            border-color: var(--primary-blue); /* Highlight border when open */
+        a:hover {
+            text-decoration: underline;
         }
 
-        summary {
-            cursor: pointer;
-            padding: 18px 25px;
-            background-color: var(--primary-blue);
-            color: var(--background-canvas); /* White text on blue background */
-            font-weight: bold;
-            font-size: 1.3em;
-            outline: none; /* Remove default outline on focus */
-            display: block; /* Make summary take full width */
-            position: relative; /* For custom indicator positioning */
-            transition: background-color 0.3s ease, border-radius 0.3s ease;
-            user-select: none; /* Prevent text selection on click */
-            border-bottom: 1px solid transparent; /* Prepare for border when open */
+        /* Special content boxes */
+        .highlight-box {
+            background-color: rgba(25, 118, 210, 0.08); /* primary_blue with transparency */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
-
-        details[open] summary {
-            border-bottom: 1px solid var(--border-divider); /* Separator when open */
-            border-radius: 8px 8px 0 0; /* Keep top corners rounded, square bottom */
-            background-color: #1565C0; /* Slightly darker blue when open */
-        }
-
-        summary::-webkit-details-marker {
-            display: none; /* Hide default triangle icon */
-        }
-
-        summary:hover {
-            background-color: #1565C0; /* Darker blue on hover for interactive feedback */
-        }
-
-        summary::after {
-            content: '+'; /* Custom plus icon */
-            position: absolute;
-            right: 25px;
-            font-size: 1.8em;
-            line-height: 1;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: transform 0.3s ease, content 0.3s ease;
-            font-weight: normal; /* Ensure icon is not bold */
-        }
-
-        details[open] summary::after {
-            content: '−'; /* Change to minus sign when open */
-            transform: translateY(-50%) rotate(0deg); /* No rotation needed for minus */
-        }
-
-        .details-content {
-            padding: 20px 25px;
+        .highlight-box p {
+            margin: 0;
             color: var(--text-secondary);
-            animation: fadeIn 0.6s ease-out forwards; /* Fade-in animation for content */
+            font-size: 1.1em;
+            line-height: 1.8;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Specific Text Styles for Emphasis */
-        .key-concept {
-            color: var(--accent-green);
-            font-weight: bold;
-        }
-
-        .example-item {
-            font-style: italic;
+        .highlight-box strong {
             color: var(--primary-blue);
         }
 
-        .quote {
-            background-color: #F8F8F8; /* Light background for quotes */
-            border-left: 4px solid var(--secondary-accent-amber); /* Amber left border */
-            padding: 15px 20px;
-            margin: 20px 0;
+        .section-intro {
             font-style: italic;
-            color: var(--text-secondary);
+            color: var(--text-tertiary);
+            margin-bottom: 2.5em;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Interactive details/summary sections */
+        .details-summary {
+            background-color: #F8F8F8; /* A very light grey for contrast */
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 18px;
+            padding: 15px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .details-summary:hover {
+            background-color: #F0F0F0; /* Slightly darker on hover */
+        }
+
+        .details-summary summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--primary-blue);
+            outline: none; /* Remove outline on click */
+            padding: 5px 0;
+            font-size: 1.2em;
+            user-select: none; /* Prevent text selection on summary */
+            display: flex;
+            align-items: center;
+        }
+
+        .details-summary summary::-webkit-details-marker {
+            display: none; /* Hide default marker */
+        }
+        .details-summary summary::before {
+            content: '►'; /* Custom marker for closed state */
+            margin-right: 10px;
+            font-size: 0.8em;
+            transition: transform 0.2s ease;
+            color: var(--accent-green);
+        }
+        .details-summary[open] summary::before {
+            content: '▼'; /* Custom marker for open state */
+            transform: rotate(0deg); /* No rotation needed if content is '▼' */
+        }
+
+        .details-content {
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-divider);
+            margin-top: 15px;
+        }
+        .details-content p, .details-content ul {
+            font-size: 0.95em;
+            line-height: 1.7;
         }
 
         .note {
-            background-color: #E3F2FD; /* Light blue for notes/tips */
-            border-left: 4px solid var(--semantic-info); /* Info blue left border */
-            padding: 15px 20px;
+            background-color: rgba(33, 150, 243, 0.08); /* semantic_info with transparency */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
             margin: 20px 0;
-            color: var(--semantic-info);
-            border-radius: 4px;
+            border-radius: 5px;
+            color: var(--text-secondary);
+        }
+        .note p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-tertiary);
         }
 
-        /* Responsive Adjustments */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                margin: 15px;
+                padding: 15px;
             }
             h1 {
                 font-size: 2.2em;
-                margin-bottom: 30px;
             }
             h2 {
-                font-size: 1.8em;
+                font-size: 1.7em;
             }
             h3 {
-                font-size: 1.5em;
+                font-size: 1.4em;
             }
-            summary {
+            h4 {
                 font-size: 1.1em;
-                padding: 15px 20px;
             }
-            .details-content {
-                padding: 15px 20px;
-            }
-            summary::after {
-                font-size: 1.5em;
-                right: 20px;
+            p, li {
+                font-size: 0.95em;
             }
             ul {
                 margin-left: 20px;
             }
+            .highlight-box, .details-summary {
+                padding: 15px;
+            }
+            .section-intro {
+                font-size: 1em;
+            }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
             .container {
-                padding: 15px;
-                border-radius: 5px;
+                margin: 10px;
+                padding: 10px;
             }
             h1 {
                 font-size: 1.8em;
-                padding-bottom: 15px;
-                margin-bottom: 25px;
+                padding-bottom: 10px;
+                margin-bottom: 1em;
             }
             h2 {
-                font-size: 1.5em;
+                font-size: 1.4em;
+                margin-top: 1.5em;
             }
             h3 {
                 font-size: 1.2em;
             }
-            summary {
+            h4 {
                 font-size: 1em;
-                padding: 12px 15px;
             }
-            .details-content {
-                padding: 12px 15px;
-            }
-            summary::after {
-                font-size: 1.2em;
-                right: 15px;
+            p, li {
+                font-size: 0.88em;
+                line-height: 1.5;
             }
             ul {
                 margin-left: 15px;
-                list-style-type: '- '; /* Simpler bullet on small screens */
+            }
+            .highlight-box, .details-summary, .note {
+                padding: 10px;
+                margin: 15px 0;
+            }
+            .details-summary summary {
+                font-size: 1.1em;
+            }
+            .section-intro {
+                font-size: 0.9em;
             }
         }
     </style>
@@ -271,188 +279,154 @@
 <body>
     <div class="container">
         <h1>Peran Rakyat dalam Revolusi Nasional</h1>
+        <p class="section-intro">Perjuangan mempertahankan kemerdekaan Indonesia bukanlah tugas eksklusif yang diemban oleh para elite politik atau kekuatan militer semata. Sejatinya, keberhasilan meraih dan mempertahankan kedaulatan bangsa ini terwujud berkat partisipasi aktif dan pengorbanan tanpa pamrih dari seluruh lapisan masyarakat Indonesia. Dengan semboyan gigih "Merdeka atau Mati", rakyat dari berbagai latar belakang, profesi, dan usia, bahu-membahu menopang dan menegakkan Republik Indonesia. Mari kita selami lebih dalam beragam peran fundamental yang dimainkan oleh masyarakat Indonesia selama periode genting Revolusi Nasional.</p>
 
-        <p class="secondary-text">
-            Perjuangan mempertahankan kemerdekaan Indonesia bukanlah tugas eksklusif para elite negara atau kalangan militer semata. Melainkan, ini adalah sebuah epik kolektif yang melibatkan <span class="key-concept">seluruh lapisan rakyat Indonesia</span>. Dengan semangat membara dan semboyan legendaris <span class="quote">“Merdeka atau Mati”</span>, setiap individu, tanpa memandang latar belakang, siap mempertaruhkan nyawa dan bahu-membahu demi kedaulatan bangsa. Keterlibatan massa ini menjadi fondasi kekuatan yang tak terlihat namun sangat esensial dalam menghadapi berbagai agresi dan tantangan dari pihak asing, menunjukkan bahwa kemerdekaan sejati adalah hasil dari perjuangan kolektif.
-        </p>
+        <section id="peran-perempuan">
+            <h2>1. Peran Perempuan dalam Revolusi</h2>
+            <p>Kaum perempuan Indonesia tampil sebagai garda terdepan maupun pilar vital di garis belakang perjuangan revolusi. Setelah proklamasi kemerdekaan, pemerintah Republik Indonesia secara strategis mendorong para perempuan yang sebelumnya tergabung dalam organisasi Fujinkai (organisasi wanita bentukan Jepang) untuk mengintegrasikan diri ke dalam berbagai wadah organisasi perempuan Indonesia yang baru. Langkah ini membuka jalan bagi mereka untuk menyalurkan energi, keterampilan, dan dedikasi mereka demi kepentingan perjuangan, khususnya di berbagai bidang sosial dan non-militer yang tak kalah penting. Menarik untuk dicermati, meskipun mayoritas dari mereka tidak secara langsung memanggul senjata di medan perang, kontribusi perempuan seringkali sangat sentral sebagai informan kunci dan penyalur kebutuhan vital bagi para pejuang.</p>
 
-        <h2>1. Peran Perempuan</h2>
-        <p>
-            Kaum perempuan Indonesia memainkan peran yang tak kalah vital dan seringkali menjadi tulang punggung perjuangan di garis belakang maupun tersembunyi. Dari panggung politik hingga dapur umum, kontribusi mereka sangatlah esensial dalam menjaga roda revolusi tetap berputar, membuktikan bahwa perjuangan adalah tugas bersama.
-        </p>
-
-        <details>
-            <summary>Kontribusi Umum dan Organisasi Perempuan</summary>
-            <div class="details-content">
-                <p>
-                    Pasca-proklamasi kemerdekaan, Pemerintah Republik Indonesia secara aktif mendorong para perempuan, termasuk mereka yang sebelumnya tergabung dalam organisasi <span class="key-concept">Fujinkai</span> (organisasi wanita bentukan Jepang), untuk bergabung dalam berbagai wadah organisasi perempuan nasional. Inisiatif ini bertujuan agar energi dan potensi kaum perempuan dapat tersalurkan secara efektif untuk kepentingan perjuangan bangsa, khususnya dalam bidang sosial kemasyarakatan yang seringkali terabaikan di tengah konflik bersenjata.
-                </p>
-                <p>
-                    Meskipun sebagian besar perempuan tidak terlibat langsung dalam pertempuran fisik dengan memanggul senjata, peran mereka sangat strategis. Mereka seringkali berada di garis depan sebagai <span class="key-concept">informan</span> penting yang mengumpulkan dan menyampaikan informasi intelijen, serta sebagai <span class="key-concept">penyalur kebutuhan logistik</span> krusial bagi para pejuang. Peran ini menunjukkan betapa kompleks dan multidimensionalnya perjuangan revolusi, di mana setiap kontribusi, sekecil apapun, memiliki dampak besar.
-                </p>
-            </div>
-        </details>
-
-        <details>
-            <summary>a. Peran Medis dan Kesehatan</summary>
-            <div class="details-content">
-                <p>
-                    Dalam situasi perang yang penuh risiko dan rentan menimbulkan korban jiwa maupun luka, bidang medis dan kesehatan menjadi salah satu pilar penunjang yang sangat krusial. Perempuan Indonesia aktif terlibat dalam menjaga kesehatan para pejuang dan masyarakat sipil, menunjukkan dedikasi tanpa batas:
-                </p>
-                <ul>
-                    <li>Di <span class="key-concept">Aceh</span>, perempuan anggota Palang Merah Indonesia membentuk satuan tugas khusus yang selalu siaga untuk diberangkatkan ke medan perang guna menolong korban. Kecepatan dan kesiapan mereka sangat vital dalam menyelamatkan nyawa.</li>
-                    <li>Di <span class="key-concept">Sulawesi Utara</span>, para perempuan berulang kali menunjukkan keberanian luar biasa dengan menerobos blokade dan pertahanan Belanda demi mencari serta menyalurkan obat-obatan yang saat itu sangat langka. Upaya ini seringkali berisiko tinggi namun esensial untuk kelangsungan perjuangan.</li>
-                    <li>Anggota Palang Merah perempuan di <span class="key-concept">Bali</span> juga menjalin kontak rahasia dengan rekan-rekan di perkotaan untuk menyalurkan bantuan vital ke desa-desa dan daerah gerilya. Mereka bahkan menunjukkan kreativitas dengan meramu berbagai tanaman obat tradisional untuk mengatasi keterbatasan suplai obat modern, sebuah inovasi di tengah keterbatasan.</li>
-                    <li>Di <span class="key-concept">Indonesia Timur</span>, khususnya perempuan <span class="key-concept">Maluku</span>, berperan aktif sebagai tenaga sukarela perawat di berbagai rumah sakit. Kontribusi mereka meluas hingga Jawa, di mana pada masa Agresi Militer Belanda, banyak tenaga medis perempuan Maluku bertugas memeriksa para pengungsi yang berdatangan ke Yogyakarta, memastikan kesehatan para pengungsi terjamin di tengah pengungsian massal.</li>
-                </ul>
-            </div>
-        </details>
-
-        <details>
-            <summary>b. Pendidikan</summary>
-            <div class="details-content">
-                <p>
-                    Meski di tengah gejolak perang, pendidikan terhadap generasi penerus bangsa tetap dipandang sebagai investasi masa depan yang tidak boleh terabaikan. Perempuan turut serta dalam upaya mencerdaskan bangsa, menunjukkan visi jangka panjang di tengah krisis:
-                </p>
-                <ul>
-                    <li>Di <span class="key-concept">Aceh</span>, setelah kemerdekaan, pelajar putri diberikan pelatihan kepanduan yang fokus pada pengembangan kemampuan intelijen, fisik, semangat, dan cinta tanah air. Saat Revolusi fisik pecah, banyak perempuan Aceh menjadi <span class="key-concept">guru sukarela</span> yang mendidik anak-anak serta memberantas buta huruf di Sekolah Rendah. Ini adalah upaya krusial dalam menjaga literasi dan kesadaran nasional.</li>
-                    <li>Di <span class="key-concept">Tondano</span>, perempuan pejuang mendirikan <span class="example-item">Yayasan Pendidikan Bangsa</span> pada November 1945, yang kemudian mendirikan <span class="example-item">Sekolah Menengah Rendah Kebangsaan (SMRK)</span>. Sekolah ini secara cerdik menyisipkan semangat kemerdekaan dan kebangsaan dalam setiap pembelajarannya, meskipun harus dilakukan secara sembunyi-sembunyi dari pengawasan pihak musuh, menunjukkan kecerdasan taktis dalam mendidik.</li>
-                </ul>
-            </div>
-        </details>
-
-        <details>
-            <summary>c. Dapur Umum dan Logistik</summary>
-            <div class="details-content">
-                <p>
-                    Kelangsungan perjuangan sangat bergantung pada ketersediaan logistik, terutama makanan, yang menjadi bahan bakar bagi para pejuang. <span class="key-concept">Dapur umum</span> yang dikelola oleh perempuan menjadi pusat vital bagi para pejuang, seringkali menjadi jantung operasional markas-markas perjuangan:
-                </p>
-                <ul>
-                    <li>Di <span class="key-concept">Maluku</span>, para istri dan remaja putri dari Barisan Pejuang Indonesia secara proaktif mendirikan dapur umum. Mereka tidak hanya menyediakan makanan, tetapi juga tempat tinggal bagi para pejuang dan pengungsi, menciptakan lingkungan yang mendukung moral dan fisik. Para istri ini seringkali menjadi tulang punggung keluarga, mencari nafkah saat suami mereka berjuang di garis depan, menanggung beban ganda yang luar biasa.</li>
-                    <li>Di <span class="key-concept">Aceh</span>, selain menyediakan dapur umum untuk gerilyawan, para perempuan Aceh menunjukkan patriotisme luar biasa dengan secara spontan dan sukarela <span class="key-concept">menggalang dana</span>. Mereka menyumbangkan perhiasan dan barang berharga lainnya, menunjukkan pengorbanan personal yang mendalam demi bangsa. Salah satu hasil dari penggalangan dana ini adalah pembelian pesawat pertama milik Republik Indonesia, <span class="example-item">Dakota RI-001 Seulawah</span>, yang menjadi simbol kemandirian bangsa dan tekad untuk memiliki kekuatan udara sendiri.</li>
-                </ul>
-                <div class="note">
-                    <p>Contoh nyata pengorbanan di dapur umum adalah kisah Ibu Ruswo yang namanya diabadikan menjadi jalan di Yogyakarta. Ini menunjukkan bahwa kontribusi non-militer sama pentingnya dan diakui dalam sejarah perjuangan bangsa, seringkali menjadi fondasi keberhasilan di medan perang.</p>
-                </div>
-            </div>
-        </details>
-
-        <h2>2. Peran Seniman dan Sastrawan</h2>
-        <p>
-            Meskipun seringkali kurang terekspos dibandingkan politisi dan militer, peran seniman dan sastrawan dalam revolusi kemerdekaan sangatlah signifikan. Karya-karya mereka menjadi <span class="key-concept">medium ekspresi diri dan alat propaganda</span> yang membangkitkan semangat juang rakyat, mengukir kisah perjuangan dalam bentuk yang abadi.
-        </p>
-
-        <details>
-            <summary>Seni Rupa dan Propaganda Visual</summary>
-            <div class="details-content">
-                <p>
-                    Seniman rupa berperan penting dalam menyebarkan semangat perlawanan dan mendokumentasikan realitas revolusi. Mereka menggunakan berbagai medium sederhana seperti tembok, selebaran, ilustrasi, dan karikatur di surat kabar. Peristiwa revolusi juga membentuk karakter seniman lukis Indonesia, dengan banyak maestro yang merekam situasi perjuangan:
-                </p>
-                <ul>
-                    <li><span class="key-concept">S. Sudjojono</span>: Lukisan <span class="example-item">Kawan-Kawan Revolusi (1947)</span> menggambarkan potret berbagai figur (bocah, seniman, tentara) yang merupakan rekan-rekan seniman sendiri, merefleksikan kebersamaan dalam revolusi fisik dan keberagaman pejuang.</li>
-                    <li><span class="key-concept">Affandi</span>: Karyanya <span class="example-item">Laskar Rakjat Mengatoer Siasat (1946)</span> menunjukkan empat laskar yang sedang mengamati peta, melambangkan perencanaan strategis dan koordinasi dalam perjuangan gerilya. Affandi juga berkolaborasi dalam poster monumental <span class="example-item">"Boeng, Ajo Boeng"</span>, dengan Dullah sebagai model dan Chairil Anwar menyumbangkan teks. Poster ini menjadi seruan ikonik untuk perjuangan, memotivasi rakyat untuk turut serta.</li>
-                    <li><span class="key-concept">Dullah</span>: Lukisannya <span class="example-item">Persiapan Gerilja (1949)</span> menangkap suasana pejuang sebelum berangkat bergerilya, menggambarkan aktivitas persiapan yang penuh ketegangan namun juga semangat. Lukisan ini bahkan menjadi sampul buku <span class="example-item">Di Bawah Bendera Revolusi Jilid 1</span> karya Sukarno, menunjukkan pengakuan atas karya seni sebagai bagian dari narasi perjuangan.</li>
-                    <li><span class="key-concept">Hendra Gunawan</span>: Lukisan <span class="example-item">Pengantin Revolusi (1955)</span> menceritakan peristiwa yang dialaminya sendiri selama revolusi, kini menjadi benda cagar budaya nasional, menggambarkan bagaimana pengalaman personal seniman menjadi bagian dari sejarah kolektif bangsa.</li>
-                </ul>
-                <div class="note">
-                    <p>Poster "Boeng, Ajo Boeng" adalah contoh sempurna bagaimana seni visual, sastra, dan semangat nasional bersatu untuk memobilisasi massa, menciptakan ikon perjuangan yang mudah diingat dan menginspirasi.</p>
-                </div>
-            </div>
-        </details>
-
-        <details>
-            <summary>Seni Pertunjukan (Teater dan Sandiwara)</summary>
-            <div class="details-content">
-                <p>
-                    Seni peran juga mengambil bagian penting dalam revolusi, berfungsi sebagai cermin sosial dan sarana hiburan. Perpindahan ibu kota ke Yogyakarta menjadi titik penting perkembangan seni peran, karena kota ini menjadi pusat kegiatan budaya dan intelektual. Seniman teater dan sandiwara seringkali mengungsi bersama rakyat, dan pengalaman hidup mereka yang pahit namun penuh harapan dituangkan dalam pementasan sebagai refleksi sekaligus hiburan yang mengobarkan semangat.
-                </p>
-                <p>Beberapa contoh pementasan dan seniman ternama yang menginspirasi rakyat:</p>
-                <ul>
-                    <li>Drama <span class="example-item">"Semarang"</span> yang menggambarkan kondisi kota pada masa revolusi.</li>
-                    <li><span class="example-item">"Awan Berarak"</span> disutradarai oleh <span class="key-concept">Murtono</span>, seringkali menampilkan alegori perjuangan.</li>
-                    <li><span class="example-item">"Mutiara dari Nusa Laut"</span> karya <span class="key-concept">Usmar Ismail, Sri Murtono, dan Djayakusuma</span>, mengangkat kisah-kisah heroik dari daerah terpencil.</li>
-                    <li><span class="example-item">"Kisah Pendudukan Yogya"</span> disutradarai oleh <span class="key-concept">Dr. Huyung</span>, sebuah catatan dramatis tentang pengalaman pendudukan.</li>
-                    <li><span class="key-concept">Sri Murtono</span> adalah seniman peran produktif dengan karya-karya lain seperti <span class="example-item">“Di belakang Kedok Jelita”</span>, <span class="example-item">“Revolusi”</span>, <span class="example-item">“Di Depan Pintu Bharatayuda”</span>, dan <span class="example-item">“Tidurlah Anakku”</span>, yang semuanya mengandung pesan patriotisme dan semangat juang.</li>
-                </ul>
-            </div>
-        </details>
-
-        <details>
-            <summary>Seni Musik</summary>
-            <div class="details-content">
-                <p>
-                    Lagu-lagu propaganda berperan sebagai pembakar semangat dan pemicu patriotisme. Lirik dan melodi yang kuat mampu menyatukan hati rakyat dan pejuang, memberikan dorongan moral yang tak ternilai. Musik menjadi sarana komunikasi massa yang efektif dalam menggalang persatuan:
-                </p>
-                <ul>
-                    <li>Lagu-lagu seperti <span class="example-item">“Maju Tak Gentar”</span> dan <span class="example-item">“Sorak-Sorak Bergembira”</span>, diciptakan oleh <span class="key-concept">Cornel Simanjuntak</span>, lahir dari konteks pertempuran sengit dan tidak seimbang antara pemuda Indonesia melawan Belanda dan sekutu. Lagu-lagu ini memotivasi perjuangan dalam membela tanah air dengan keberanian.</li>
-                    <li><span class="example-item">“Bagimu Negeri”</span> juga menjadi lagu yang membangkitkan semangat kebangsaan dan pengabdian, mengingatkan setiap individu akan tanggung jawabnya terhadap negara.</li>
-                    <li>Lagu-lagu perjuangan juga berfungsi sebagai pengingat peristiwa sejarah, contohnya <span class="example-item">“Halo-Halo Bandung”</span> karya <span class="key-concept">Ismail Marzuki</span>, yang secara lugas merekam peristiwa heroik <span class="key-concept">Bandung Lautan Api</span>, menjadikannya abadi dalam ingatan kolektif bangsa.</li>
-                </ul>
-            </div>
-        </details>
-
-        <details>
-            <summary>Sastra</summary>
-            <div class="details-content">
-                <p>
-                    Para sastrawan berkontribusi dengan karya-karya yang memperkaya pengalaman, menanamkan kesadaran, dan menumbuhkan kepekaan terhadap kondisi sosial dan politik. Mereka mengabadikan dinamika revolusi melalui narasi yang kuat, memungkinkan pembaca memahami gejolak batin dan perjuangan fisik.
-                </p>
-                <ul>
-                    <li><span class="key-concept">Pramoedya Ananta Toer</span> adalah salah satu pengarang paling produktif pada masa Revolusi (1947-1957). Ia menghasilkan enam novel dan beberapa kumpulan cerpen berlatar masa revolusi, yang secara detail menggambarkan kehidupan rakyat di tengah pergolakan:
+            <div class="details-summary">
+                <details>
+                    <summary>A. Peran Medis dan Kesehatan</summary>
+                    <div class="details-content">
+                        <p>Dalam situasi perang yang bergejolak dan rentan menimbulkan banyak korban, bidang medis dan kesehatan menjadi faktor penunjang esensial yang menopang keberlangsungan perjuangan kemerdekaan. Perempuan Indonesia mengisi kekosongan tenaga dan sumber daya dengan inisiatif luar biasa:</p>
                         <ul>
-                            <li><span class="example-item">Sepoeloeh Kepala Nica (1946)</span></li>
-                            <li><span class="example-item">Keluarga Gerilya (1950)</span></li>
-                            <li><span class="example-item">Dia yang Menyerah (1951)</span></li>
-                            <li><span class="example-item">Bukan Pasar Malam (1951)</span></li>
+                            <li><strong>Aceh:</strong> Anggota Palang Merah Indonesia yang beranggotakan perempuan membentuk satuan tugas khusus. Mereka selalu siaga untuk dikirim dan diberangkatkan ke medan laga guna memberikan pertolongan medis kepada korban perang.</li>
+                            <li><strong>Sulawesi Utara:</strong> Para perempuan di wilayah ini berulang kali melancarkan upaya berani untuk menerobos blokade dan pertahanan Belanda. Tujuan mereka adalah mencari pasokan obat-obatan yang pada masa itu sangat sulit diperoleh.</li>
+                            <li><strong>Bali:</strong> Anggota Palang Merah perempuan di Bali tidak hanya mengorganisir diri, tetapi juga menjalin kontak rahasia dengan rekan-rekan di kota-kota besar untuk menyalurkan bantuan vital ke desa-desa dan daerah gerilya. Dengan kecerdikan dan keterampilan mereka, para perempuan Bali ini bahkan meramu berbagai tanaman obat tradisional untuk mengatasi kelangkaan dan kekurangan obat-obatan modern.</li>
+                            <li><strong>Indonesia Timur (Maluku):</strong> Para perempuan Maluku berperan aktif sebagai tenaga sukarela di berbagai rumah sakit, mengemban tugas sebagai perawat. Lebih dari itu, tidak sedikit dari mereka yang turut serta membantu perjuangan di Jawa, bahkan tercatat bertugas memeriksa kondisi para pengungsi yang berpindah dan datang ke Yogyakarta pada masa Agresi Militer Belanda.</li>
                         </ul>
-                    </li>
-                    <li><span class="key-concept">Idrus</span> juga menulis karya penting seperti <span class="example-item">Dari Ave Maria Ke Jalan Lain Ke Roma (1948)</span>, yang merupakan kumpulan kisah-kisah dari periode pendudukan Jepang hingga revolusi fisik, termasuk cerita berjudul <span class="example-item">“Surabaya”</span> (menggambarkan pertempuran sengit), <span class="example-item">“Dari Ave Maria”</span> (kisah pribadi di tengah perang), dan <span class="example-item">“Jalan Lain ke Roma”</span>.</li>
-                </ul>
+                    </div>
+                </details>
             </div>
-        </details>
 
-        <h2>3. Peran Pelajar dan Mahasiswa</h2>
-        <p>
-            Kelompok pelajar dan mahasiswa, sebagai agen perubahan dan intelektual muda, menunjukkan komitmen kuat untuk mempertahankan kemerdekaan. Mereka tidak hanya belajar, tetapi juga berjuang aktif di medan pertempuran dan di belakang layar, membuktikan bahwa pendidikan dan keberanian dapat bersinergi.
-        </p>
-
-        <details>
-            <summary>Konsolidasi dan Pembentukan Organisasi</summary>
-            <div class="details-content">
-                <p>
-                    Keinginan Belanda untuk kembali menguasai Indonesia memicu pelajar dan mahasiswa untuk bersatu, menyadari bahwa masa depan bangsa ada di tangan mereka. Konsolidasi ini mengarah pada pembentukan berbagai organisasi:
-                </p>
-                <ul>
-                    <li>Pada <span class="key-concept">Juli 1945</span>, pelajar setingkat SMP dan SMA di Surabaya berikrar untuk berjuang mempertahankan kemerdekaan. Ini menunjukkan inisiatif lokal yang kuat.</li>
-                    <li>Pada <span class="key-concept">25 September 1945</span>, rapat umum besar diselenggarakan di Yogyakarta, dihadiri oleh pemuda dan pelajar dari Jawa dan Madura, menunjukkan gelombang patriotisme yang meluas dan mendalam.</li>
-                    <li>Pelajar Magelang membentuk Gabungan Sekolah Menengah pada <span class="key-concept">September 1945</span>, yang kemudian melebur menjadi <span class="example-item">Ikatan Pelajar Indonesia Kedu</span>.</li>
-                    <li>Semangat inilah yang menjadi latar belakang lahirnya organisasi nasional <span class="key-concept">Ikatan Pelajar Indonesia (IPI)</span>, yang menyatukan berbagai perkumpulan pelajar di seluruh Indonesia, menciptakan kekuatan terorganisir dari kaum muda.</li>
-                </ul>
+            <div class="details-summary">
+                <details>
+                    <summary>B. Peran dalam Pendidikan</summary>
+                    <div class="details-content">
+                        <p>Meskipun di tengah kondisi perang yang penuh ketidakpastian, pendidikan bagi generasi penerus bangsa tetap harus dilaksanakan sebagai investasi masa depan. Kaum perempuan mengambil peran sentral dalam menjaga dan meneruskan roda pendidikan:</p>
+                        <ul>
+                            <li><strong>Aceh:</strong> Setelah kemerdekaan, pelajar putri di Aceh diberikan pelatihan kepanduan yang komprehensif. Pelatihan ini dirancang untuk melatih kemampuan intelijen, mengembangkan fisik yang tangguh, menumbuhkan semangat juang, serta memupuk cinta tanah air yang mendalam. Ketika Revolusi pecah, banyak perempuan di Aceh secara sukarela menjadi guru untuk mendidik anak-anak bangsa dan memberantas buta huruf di Sekolah Rendah.</li>
+                            <li><strong>Tondano:</strong> Di Tondano, para perempuan pejuang berinisiatif mendirikan Yayasan Pendidikan Bangsa pada November 1945. Yayasan ini kemudian berhasil mendirikan Sekolah Menengah Rendah Kebangsaan (SMRK). Sekolah ini memiliki peran strategis dalam menyisipkan semangat kemerdekaan dan kebangsaan secara sembunyi-sembunyi di setiap pembelajaran, memastikan nilai-nilai perjuangan tertanam pada generasi muda.</li>
+                        </ul>
+                    </div>
+                </details>
             </div>
-        </details>
 
-        <details>
-            <summary>Pembentukan Tentara Pelajar (TP)</summary>
-            <div class="details-content">
-                <p>
-                    Ketika pusat pemerintahan pindah ke Yogyakarta, pengurus IPI juga ikut mengungsi dan menyadari perlunya kontribusi militer langsung. Mereka tidak ingin menjadi penonton, melainkan pelaku utama dalam perjuangan:
-                </p>
-                <ul>
-                    <li>IPI kemudian membentuk <span class="key-concept">Markas Pertahanan Pelajar (MPP)</span> sebagai cabang pertahanan. MPP memiliki tiga resimen yang tersebar di Jawa Timur, Jawa Tengah, dan Jawa Barat, menunjukkan struktur organisasi militer yang terencana.</li>
-                    <li>Pada <span class="key-concept">17 Juli 1946</span>, di Lapangan Pingit Yogyakarta, Mayor Jenderal dr. Moestopo secara resmi melantik dan mengukuhkan pasukan pelajar ini sebagai <span class="key-concept">Tentara Pelajar (TP)</span>. Ini adalah pengakuan resmi atas peran militer mereka.</li>
-                    <li>Selain latihan rutin militer, Tentara Pelajar juga tetap menjalankan peran akademis mereka. Namun, dalam situasi genting, mereka segera beralih peran menjadi pejuang bersenjata, menunjukkan fleksibilitas dan dedikasi luar biasa.</li>
-                    <li>Pada masa <span class="key-concept">Agresi Militer Belanda II</span>, Tentara Pelajar Indonesia diintegrasikan ke dalam jajaran <span class="key-concept">Brigade 17 TNI</span> di bawah kendali Markas Besar Komando Djawa (MBKD), menunjukkan pentingnya peran strategis mereka dalam garis depan dan koordinasi dengan militer reguler.</li>
-                </ul>
-                <p class="secondary-text">
-                    Meskipun Tentara Pelajar secara resmi dibubarkan pada awal 1951, semangat dan peran aktif pelajar sebagai generasi penerus dalam mempertahankan dan mengisi kemerdekaan tetap relevan sepanjang zaman. Mereka adalah bukti bahwa kekuatan intelektual dan keberanian dapat bersatu demi kedaulatan bangsa, menjadi teladan bagi generasi berikutnya.
-                </p>
+            <div class="details-summary">
+                <details>
+                    <summary>C. Dapur Umum dan Logistik</summary>
+                    <div class="details-content">
+                        <p>Keberlangsungan perjuangan mempertahankan kemerdekaan akan sangat terhambat jika tidak ada asupan makanan yang memadai dan dukungan logistik yang memadai. Oleh karena itu, keberadaan dapur umum yang dikelola oleh para perempuan memiliki peran yang sangat krusial dan strategis dalam perjuangan. Tak heran, keberadaan markas para pejuang seringkali diiringi dengan adanya dapur umum di dekatnya:</p>
+                        <ul>
+                            <li><strong>Maluku:</strong> Para istri dan remaja putri yang tergabung dalam Barisan Pejuang Indonesia secara aktif mendirikan dapur umum. Fungsi utamanya adalah menyediakan makanan serta tempat tinggal yang aman bagi para pejuang dan pengungsi. Para istri ini juga memikul tanggung jawab ganda sebagai tulang punggung keluarga, menafkahi dan mengurus anak-anak di saat suami mereka harus berperang di garis depan.</li>
+                            <li><strong>Aceh:</strong> Selain mengelola dapur umum untuk mendukung gerilyawan, para perempuan Aceh juga menunjukkan semangat patriotisme yang luar biasa dengan secara spontan dan sukarela menggalang dana. Mereka melakukannya dengan cara menyumbangkan perhiasan pribadi dan barang-barang berharga lainnya. Salah satu hasil dari penggalangan dana ini adalah kontribusi untuk pembelian pesawat Dakora RI-001 Seulawah, yang tercatat sebagai pesawat pertama yang dimiliki oleh Republik Indonesia.</li>
+                            <li><strong>Ibu Ruswo:</strong> Salah satu figur pahlawan logistik adalah Ibu Ruswo. Berkat dedikasi dan perjuangannya di dapur umum, beliau tidak hanya menerima medali penghargaan dari pemerintah RI, tetapi namanya juga diabadikan sebagai nama jalan di Yogyakarta. Kisah Ibu Ruswo menjadi simbol bagaimana peran dukungan logistik, meskipun seringkali di balik layar, adalah fondasi vital bagi keberhasilan revolusi.</li>
+                        </ul>
+                    </div>
+                </details>
             </div>
-        </details>
+        </section>
 
-        <div class="note">
-            <p><strong>Kesimpulan Umum:</strong> Peran rakyat dalam Revolusi Nasional sangat kompleks dan mencakup berbagai dimensi, dari militer hingga sosial-budaya. Setiap lapisan masyarakat, termasuk perempuan, seniman, sastrawan, pelajar, dan mahasiswa, memberikan kontribusi unik yang tak ternilai dalam menjaga dan mempertahankan kemerdekaan Indonesia. Kolektivitas perjuangan ini adalah kunci keberhasilan bangsa dalam mencapai kedaulatan penuh.</p>
+        <section id="peran-seniman-sastrawan">
+            <h2>2. Peran Seniman dan Sastrawan</h2>
+            <p>Dibandingkan dengan peran politisi dan militer yang seringkali mendominasi narasi sejarah, peran para seniman dan sastrawan dalam catatan sejarah revolusi mungkin tampak kurang menonjol. Namun, kontribusi mereka dalam perjuangan kemerdekaan sesungguhnya sangat penting dan dampaknya masih dapat kita rasakan hingga kini. Sebagai bentuk ekspresi diri dan perlawanan, karya-karya para seniman di masa kemerdekaan berhasil membangkitkan semangat juang dan menggerakkan massa rakyat untuk melawan penjajah. Mereka menuangkan kreativitasnya melalui berbagai medium, mulai dari tembok dan selebaran, hingga ilustrasi atau karikatur di surat kabar. Meskipun beroperasi dengan alat dan media yang sangat sederhana, keterbatasan ini tidak pernah menghalangi para seniman untuk terus menyebarkan semangat perjuangan dan nasionalisme.</p>
+
+            <div class="details-summary">
+                <details>
+                    <summary>A. Seniman Lukis dan Visual</summary>
+                    <div class="details-content">
+                        <p>Peristiwa perang kemerdekaan dan masa revolusi fisik secara signifikan membentuk dan mengasah karakter seniman lukis Indonesia. Seniman yang melewati masa revolusi mengabadikan situasi kehidupan pada masa perjuangan fisik melalui karya-karya mereka. Beberapa maestro lukis Indonesia yang karyanya menjadi saksi bisu era tersebut meliputi:</p>
+                        <ul>
+                            <li><strong>S. Sudjojono:</strong> Karyanya "Kawan-Kawan Revolusi" (1947) menggambarkan potret kepala berbagai figur, dari bocah hingga tentara, yang sebagian besar adalah wajah rekan sesama seniman, merekam dinamika revolusi fisik.</li>
+                            <li><strong>Affandi:</strong> Melalui "Laskar Rakjat Mengatoer Siasat" (1946), Affandi menggambarkan empat laskar yang sedang mengamati sebuah peta, merepresentasikan perencanaan strategis perjuangan.</li>
+                            <li><strong>Dullah:</strong> Dalam "Persiapan Gerilja" (1949), Dullah melukiskan suasana para pejuang dengan berbagai aktivitasnya sebelum mereka berangkat bergerilya. Lukisan ini bahkan menjadi sampul buku <em>Di Bawah Bendera Revolusi Jilid 1</em> oleh Sukarno.</li>
+                            <li><strong>Hendra Gunawan:</strong> Lukisan "Pengantin Revolusi" (1955) menceritakan peristiwa yang ia alami sendiri selama revolusi. Karya ini kini diakui sebagai benda cagar budaya nasional.</li>
+                            <li><strong>Poster "Boeng, Ajo Boeng":</strong> Ini adalah salah satu karya seni paling terkenal dan monumental dari era revolusi. Merupakan kolaborasi apik antara pelukis Affandi (yang menggarap gambar model Dullah) dan penyair besar Chairil Anwar (yang menyumbangkan teksnya yang membakar semangat). Poster ini menjadi simbol agitasi dan semangat perlawanan rakyat.</li>
+                        </ul>
+                        <p class="note">Karya-karya ini tidak hanya memperindah, tetapi juga berfungsi sebagai alat propaganda dan penyemangat, sering ditemukan di tembok-tembok kota dan selebaran.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="details-summary">
+                <details>
+                    <summary>B. Seni Peran dan Teater</summary>
+                    <div class="details-content">
+                        <p>Di bidang seni peran, para seniman juga mengambil bagian dalam perjuangan. Perpindahan ibu kota Indonesia ke Yogyakarta, sebagaimana ditengarai oleh Prihatini (2015), menjadi titik penting perkembangan seni peran di masa revolusi. Para seniman seringkali mengungsi bersama rakyat dan pejuang lainnya, dan pengalaman inilah yang mereka tuangkan melalui pementasan sandiwara dan seni teater. Karya-karya ini tidak hanya berfungsi sebagai bahan refleksi atas kondisi sosial politik, tetapi juga sebagai hiburan yang sangat dibutuhkan oleh rakyat di tengah kerasnya perjuangan:</p>
+                        <ul>
+                            <li>Beberapa contoh cerita yang populer dipentaskan antara lain “Semarang”, “Awan Berarak” (disutradarai oleh Murtono), “Mutiara dari Nusa Laut” (karya Usmar Ismail, Sri Murtono, dan Djayakusuma), serta “Kisah Pendudukan Yogya" (disutradarai oleh Dr. Huyung).</li>
+                            <li>Salah satu seniman peran yang sangat produktif adalah Sri Murtono, dengan deretan karyanya yang terkenal seperti “Di belakang Kedok Jelita”, “Revolusi”, “Di Depan Pintu Bharatayuda”, dan “Tidurlah Anakku”.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="details-summary">
+                <details>
+                    <summary>C. Seni Musik</summary>
+                    <div class="details-content">
+                        <p>Di bidang seni musik, lagu-lagu perjuangan dan propaganda menjadi instrumen ampuh untuk membakar semangat rakyat dan para pejuang. Musik tidak hanya menghibur, tetapi juga memobilisasi emosi dan ideologi:</p>
+                        <ul>
+                            <li>Lagu <strong>“Maju Tak Gentar”</strong> dan <strong>“Sorak-Sorak Bergembira”</strong>, yang diciptakan oleh Cornel Simanjuntak pada awal masa revolusi, lahir dalam konteks pertempuran yang tidak seimbang antara pemuda Indonesia melawan Belanda dan sekutu. Lagu-lagu ini berupaya memotivasi perjuangan pemuda Indonesia dalam membela tanah air dengan gigih.</li>
+                            <li>Lagu-lagu perjuangan juga berfungsi sebagai pengingat peristiwa revolusi, contohnya lagu <strong>“Halo-Halo Bandung”</strong> karya Ismail Marzuki yang secara indah merekam peristiwa heroik Bandung Lautan Api.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="details-summary">
+                <details>
+                    <summary>D. Sastra</summary>
+                    <div class="details-content">
+                        <p>Pada masa revolusi, para sastrawan turut berjuang dengan pena mereka, menghasilkan karya-karya yang mampu memperkaya pengalaman, menanamkan kesadaran, dan menumbuhkan kepekaan sosial serta nasionalisme:</p>
+                        <ul>
+                            <li><strong>Pramoedya Ananta Toer:</strong> Merupakan salah satu pengarang paling produktif di masa Revolusi. Antara tahun 1947 hingga 1957, ia telah melahirkan enam novel dan beberapa kumpulan cerpen yang berlatar belakang masa Revolusi. Beberapa karyanya yang terkenal meliputi <em>Sepoeloeh Kepala Nica</em> (1946), <em>Keluarga Gerilya</em> (1950), <em>Dia yang Menyerah</em> (1951), dan <em>Bukan Pasar Malam</em> (1951).</li>
+                            <li><strong>Idrus:</strong> Selain Pramoedya, Idrus juga dikenal dengan karya berjudul <em>Dari Ave Maria Ke Jalan Lain Ke Roma</em> (1948). Buku ini merupakan kumpulan kisah-kisah yang mencakup periode dari zaman pendudukan Jepang hingga puncak revolusi fisik, dengan judul-judul seperti “Surabaya”, “Dari Ave Maria”, dan “Jalan Lain ke Roma” yang merekam dinamika sosial dan psikologis pada masa tersebut.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section id="peran-pelajar-mahasiswa">
+            <h2>3. Peran Pelajar dan Mahasiswa</h2>
+            <p>Keinginan Belanda untuk kembali menguasai Indonesia memicu komitmen yang kuat dari seluruh elemen masyarakat untuk mempertahankan kemerdekaan yang telah diproklamasikan, termasuk kelompok pelajar dan mahasiswa. Mereka menyadari bahwa sebagai generasi penerus bangsa, mereka memiliki tanggung jawab ganda: belajar untuk masa depan dan berjuang untuk masa kini. Peran mereka melampaui batas-batas akademik, mencakup aksi-aksi nyata di lapangan baik secara intelektual maupun fisik.</p>
+
+            <div class="details-summary">
+                <details>
+                    <summary>A. Inisiatif dan Pembentukan Organisasi Pelajar</summary>
+                    <div class="details-content">
+                        <ul>
+                            <li><strong>Ikrar Pelajar Surabaya (Juli 1945):</strong> Jauh sebelum kemerdekaan sepenuhnya terkonsolidasi, para pelajar setingkat SMP dan SMA di Surabaya telah berikrar untuk berjuang mati-matian mempertahankan kemerdekaan Indonesia. Ini menunjukkan inisiatif awal dari kalangan muda.</li>
+                            <li><strong>Rapat Umum Pelajar Yogyakarta (25 September 1945):</strong> Sebuah rapat umum besar diselenggarakan di Yogyakarta yang dihadiri oleh para pemuda dan pelajar dari berbagai wilayah di Jawa dan Madura. Acara ini memanifestasikan gelora semangat patriotisme yang membara di kalangan pelajar.</li>
+                            <li><strong>Pembentukan Organisasi Lokal:</strong> Pada September 1945, para pelajar Magelang proaktif membentuk Gabungan Sekolah Menengah yang kemudian melebur dengan Ikatan Pelajar Indonesia Kedu. Pembentukan perkumpulan-perkumpulan pelajar di berbagai wilayah di Indonesia ini menjadi indikasi kuat tumbuhnya rasa patriotisme dan kesadaran akan peran penting pelajar.</li>
+                            <li><strong>Ikatan Pelajar Indonesia (IPI):</strong> Semangat patriotisme yang tersebar luas inilah yang kemudian menjadi latar belakang utama lahirnya organisasi nasional Ikatan Pelajar Indonesia (IPI), yang menyatukan kekuatan pelajar di seluruh negeri.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="details-summary">
+                <details>
+                    <summary>B. Markas Pertahanan Pelajar (MPP) dan Pembentukan Tentara Pelajar</summary>
+                    <div class="details-content">
+                        <p>Para pengurus IPI, terutama ketika pusat pemerintahan pindah ke Yogyakarta, melihat kebutuhan mendesak akan adanya pasukan tempur yang berasal dari kelompok pelajar. Oleh karena itu:</p>
+                        <ul>
+                            <li>IPI membentuk <strong>Markas Pertahanan Pelajar (MPP)</strong>, yang difungsikan sebagai cabang di bagian pertahanan. MPP mengorganisir tiga resimen yang tersebar di wilayah strategis: Jawa Timur, Jawa Tengah, dan Jawa Barat.</li>
+                            <li>Pada tanggal <strong>17 Juli 1946</strong>, di Lapangan Pingit, Yogyakarta, pasukan pelajar ini secara resmi dilantik dan dikukuhkan oleh Mayor Jenderal dr. Moestopo sebagai <strong>Tentara Pelajar</strong>. Ini menandai formalisasi peran militer pelajar.</li>
+                            <li>Selain menjalani latihan rutin baris-berbaris dan bela negara, Tentara Pelajar juga tetap aktif menjalankan perannya sebagai pelajar, menunjukkan bahwa mereka tidak meninggalkan pendidikan. Namun, ketika keadaan genting dan tugas negara memanggil, para pasukan intelektual ini segera bertransformasi menjadi prajurit.</li>
+                            <li>Saat terjadi <strong>Agresi Militer Belanda II</strong>, Tentara Pelajar Indonesia menunjukkan keberaniannya dengan masuk ke dalam jajaran Brigade 17 TNI, yang beroperasi di bawah kendali Markas Besar Komando Djawa (MBKD), membuktikan kemampuan mereka sebagai pejuang sejati di garis depan.</li>
+                        </ul>
+                        <p class="note">Meskipun keberadaan Tentara Pelajar secara resmi dibubarkan pada awal 1951, peran aktif pelajar sebagai generasi penerus dalam mempertahankan dan mengisi kemerdekaan senantiasa tidak lekang oleh zaman. Semangat dan kontribusi mereka tetap menjadi inspirasi berharga bagi bangsa.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <div class="highlight-box">
+            <p><strong>Refleksi Akhir:</strong> Sejarah Revolusi Nasional Indonesia adalah sebuah kanvas besar yang dilukis dengan kontribusi tak terhingga dari setiap elemen masyarakat. Dari kaum perempuan yang gigih di dapur umum dan medan kesehatan, para seniman dan sastrawan yang membakar semangat dengan karya-karya abadi, hingga pelajar dan mahasiswa yang meninggalkan bangku sekolah untuk terjun langsung ke medan perjuangan, semuanya adalah pahlawan. Peran rakyat secara kolektif inilah yang menegaskan bahwa kemerdekaan Indonesia bukanlah hadiah, melainkan hasil perjuangan panjang yang melibatkan seluruh jiwa raga bangsa. Semangat gotong royong dan pantang menyerah ini menjadi fondasi kokoh yang terus menginspirasi generasi selanjutnya.</p>
         </div>
-
     </div>
 </body>
 </html>

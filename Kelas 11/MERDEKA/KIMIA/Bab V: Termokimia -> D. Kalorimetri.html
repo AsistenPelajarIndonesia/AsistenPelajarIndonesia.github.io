@@ -1,0 +1,280 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab V: Termokimia - Kalorimetri</title>
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Body and Container Styles */
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Heading Styles */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h1 { font-size: 2.2em; text-align: center; margin-top: 20px; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; color: var(--text-primary); border-bottom: none; }
+        h4 { font-size: 1.2em; color: var(--text-primary); margin-top: 25px; margin-bottom: 10px; }
+
+        /* Paragraph and Text Emphasis */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Code and Equation Styles */
+        code {
+            background-color: #f0f4f8; /* Lighter background for inline code */
+            color: var(--primary-blue);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95em;
+        }
+
+        .equation-block {
+            background-color: #e3f2fd; /* Light blue background for equations */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            overflow-x: auto; /* Ensures responsiveness for long equations */
+        }
+
+        .equation-block code {
+            background-color: transparent; /* No background for code inside equation block */
+            font-size: 1.3em;
+            color: var(--primary-blue);
+            display: block; /* Ensures code block occupies full width */
+            white-space: nowrap; /* Prevents line breaks within equations */
+        }
+
+        /* List Styles */
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            color: var(--text-secondary);
+            margin-bottom: 1em;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            color: var(--text-secondary);
+            margin-bottom: 1em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Special Boxes (Highlight, Definition, Info) */
+        .highlight {
+            background-color: var(--secondary-accent-amber);
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        .definition {
+            border-left: 4px solid var(--accent-green);
+            padding-left: 15px;
+            margin: 15px 0;
+            background-color: #e8f5e9; /* Light green for definitions */
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background-color: #e1f5fe; /* Light blue for info boxes */
+            border-left: 4px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .info-box strong {
+            color: var(--semantic-info);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            h4 { font-size: 1.1em; }
+            .equation-block { font-size: 1em; padding: 10px 15px; }
+            .equation-block code { font-size: 1.2em; }
+            ul, ol { margin-left: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            h1 { font-size: 1.5em; }
+            h2 { font-size: 1.3em; }
+            h3 { font-size: 1.1em; }
+            h4 { font-size: 1em; }
+            .equation-block code { font-size: 1.1em; }
+            ul, ol { margin-left: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab V: Termokimia</h1>
+        <h2>D. Kalorimetri: Mengukur Pertukaran Kalor</h2>
+
+        <p>Dalam studi termokimia, memahami bagaimana energi berpindah adalah kunci fundamental. Pertukaran kalor yang terjadi selama proses fisika ataupun kimia merupakan fenomena penting yang dapat kita ukur dan kuantifikasi. Bidang ilmu yang secara khusus mempelajari pengukuran perubahan kalor ini disebut <strong>kalorimetri</strong>, dan alat yang digunakan untuk melakukan pengukuran tersebut dinamakan <strong>kalorimeter</strong>.</p>
+
+        <section>
+            <h3>Prinsip Dasar Kalorimetri</h3>
+            <p>Konsep inti dari kalorimetri berakar kuat pada <strong>Hukum Kekekalan Energi</strong>. Hukum ini menyatakan bahwa energi tidak dapat diciptakan maupun dimusnahkan, melainkan hanya dapat berubah bentuk atau berpindah dari satu sistem ke sistem lainnya. Dalam konteks pertukaran kalor:</p>
+            <ul>
+                <li>Kalor yang dilepaskan oleh suatu sistem (misalnya, sebuah reaksi eksotermik) akan sepenuhnya diserap oleh lingkungannya (termasuk kalorimeter itu sendiri).</li>
+                <li>Sebaliknya, kalor yang diserap oleh suatu sistem (misalnya, sebuah reaksi endotermik) akan diambil dari lingkungannya.</li>
+            </ul>
+            <p>Penting untuk dipahami bahwa kalor itu sendiri tidak dapat diukur secara langsung dengan alat. Namun, dampak dari penyerapan atau pelepasan kalor, yaitu <strong>perubahan suhu</strong>, dapat diukur dengan mudah dan akurat menggunakan <span class="highlight">termometer</span>. Dari perubahan suhu inilah kita dapat menghitung besarnya kalor yang terlibat dalam suatu proses.</p>
+        </section>
+
+        <section>
+            <h3>Jenis-Jenis Kalorimeter</h3>
+            <p>Ada berbagai jenis kalorimeter yang dirancang untuk mengukur perubahan kalor dalam kondisi dan tujuan yang berbeda. Dua jenis yang paling umum ditemui dalam pembahasan termokimia adalah:</p>
+
+            <h4>1. Kalorimeter Bom</h4>
+            <div class="info-box">
+                <p><strong>Tahukah Anda?</strong> Kalorimeter bom sering digunakan oleh para ahli kimia pangan untuk menentukan kandungan kalori yang terdapat dalam berbagai bahan makanan. Alasan di baliknya adalah karena keadaan awal dan akhir metabolisme tubuh manusia, yang melibatkan pelepasan energi dari makanan, memiliki kemiripan prinsip dengan apa yang terjadi di dalam kalorimeter bom, yaitu mengukur total energi yang dilepaskan dalam kondisi volume yang konstan.</p>
+            </div>
+            <p><strong>Kalorimeter bom</strong> adalah alat yang dirancang secara khusus untuk mengukur perubahan kalor (umumnya untuk reaksi pembakaran) dalam kondisi volume yang konstan. Desainnya sangat kokoh dan terisolasi untuk memastikan bahwa tidak ada kalor yang keluar atau masuk sistem dari atau ke lingkungan luar, sehingga sistem dianggap terisolasi secara adianatik (tanpa pertukaran kalor dengan luar).</p>
+            <p>Prinsip kerja kalorimeter bom didasarkan pada asumsi bahwa semua kalor yang dihasilkan atau diserap oleh reaksi akan sepenuhnya berpindah ke kalorimeter dan isinya (seringkali air yang mengelilingi ruang reaksi). Oleh karena itu, hubungan antara kalor reaksi dan kalor yang diserap oleh kalorimeter adalah:</p>
+            <div class="equation-block">
+                <code>q<sub>reaksi</sub> = -q<sub>kalorimeter</sub></code>
+            </div>
+            <p>Penjelasan simbol:</p>
+            <ul>
+                <li><code>q<sub>reaksi</sub></code>: Kalor yang dilepaskan atau diserap oleh reaksi kimia yang sedang berlangsung (dalam Joule, J).</li>
+                <li><code>q<sub>kalorimeter</sub></code>: Kalor yang diserap oleh kalorimeter (termasuk air dan komponen internalnya) (dalam Joule, J).</li>
+                <li>Tanda negatif (<code>-</code>) di depan <code>q<sub>kalorimeter</sub></code> sangat penting. Ini menunjukkan bahwa jika reaksi melepaskan kalor (<code>q<sub>reaksi</sub></code> bernilai negatif, menandakan eksotermik), maka kalorimeter akan menyerap kalor (<code>q<sub>kalorimeter</sub></code> bernilai positif, karena suhunya naik), dan sebaliknya jika reaksi endotermik.</li>
+            </ul>
+
+            <h4>2. Kalorimeter Sederhana (Kalorimeter Tekanan Konstan)</h4>
+            <p><strong>Kalorimeter sederhana</strong>, yang seringkali dibuat dari bahan isolator seperti Styrofoam (misalnya, cangkir kopi Styrofoam), digunakan untuk mengukur perubahan kalor pada kondisi tekanan konstan (misalnya, dalam bejana terbuka di laboratorium). Meskipun tidak seisolasi dan seketat kalorimeter bom, alat ini cukup efektif dan sering digunakan untuk mengukur kalor reaksi dalam larutan yang tidak melibatkan perubahan volume gas yang signifikan.</p>
+            <p>Prinsipnya serupa dengan kalorimeter bom, di mana kalor yang dilepaskan atau diserap oleh reaksi akan berpindah ke larutan dan kalorimeter itu sendiri. Namun, karena tidak seisolasi kalorimeter bom, seringkali ada asumsi bahwa kalor yang diserap oleh dinding kalorimeter sederhana dapat diabaikan atau perlu dikoreksi.</p>
+        </section>
+
+        <section>
+            <h3>Konsep Penting dalam Perhitungan Kalorimetri</h3>
+
+            <h4>1. Kapasitas Kalor (C)</h4>
+            <div class="definition">
+                <p><strong>Kapasitas kalor</strong> (simbol <code>C</code>) adalah jumlah total energi kalor yang diperlukan untuk menaikkan suhu suatu benda atau seluruh sistem sebesar 1 derajat Celsius (°C) atau 1 Kelvin (K). Satuan dari kapasitas kalor adalah Joule per derajat Celsius (J/°C) atau Joule per Kelvin (J/K).</p>
+            </div>
+            <p>Kapasitas kalor merupakan properti ekstensif, yang berarti nilainya bergantung pada massa dan jenis zat penyusun sistem. Hubungan antara kalor yang diserap/dilepaskan (<code>q</code>), kapasitas kalor (<code>C</code>), dan perubahan suhu (<code>ΔT</code>) dinyatakan dengan persamaan:</p>
+            <div class="equation-block">
+                <code>q = C &middot; ΔT</code>
+            </div>
+            <p>Di mana:</p>
+            <ul>
+                <li><code>q</code>: Kalor yang dilepaskan atau diserap (dalam Joule, J).</li>
+                <li><code>C</code>: Kapasitas kalor dari sistem yang menyerap/melepaskan kalor (dalam J/°C atau J/K). Dalam praktiknya, ini bisa jadi kapasitas kalor air dalam kalorimeter ditambah kapasitas kalor dari kalorimeter itu sendiri.</li>
+                <li><code>ΔT</code>: Perubahan suhu (dalam °C atau K). Dihitung sebagai suhu akhir dikurangi suhu awal (<code>T<sub>akhir</sub> - T<sub>awal</sub></code>).</li>
+            </ul>
+
+            <h4>2. Kalor Jenis (c)</h4>
+            <div class="definition">
+                <p><strong>Kalor jenis</strong> (simbol <code>c</code>) adalah jumlah energi kalor yang diperlukan untuk menaikkan suhu <strong>1 gram</strong> suatu zat tertentu sebesar 1 derajat Celsius (°C) atau 1 Kelvin (K). Satuan dari kalor jenis adalah Joule per gram per derajat Celsius (J/g°C) atau Joule per gram per Kelvin (J/gK).</p>
+            </div>
+            <p>Berbeda dengan kapasitas kalor yang berlaku untuk suatu sistem atau benda secara keseluruhan, kalor jenis adalah sifat intrinsik yang spesifik untuk setiap zat per satuan massanya. Jika kita ingin menghitung kalor yang diserap atau dilepaskan oleh suatu zat berdasarkan massanya, kita menggunakan persamaan berikut:</p>
+            <div class="equation-block">
+                <code>q = m &middot; c &middot; ΔT</code>
+            </div>
+            <p>Di mana:</p>
+            <ul>
+                <li><code>q</code>: Kalor yang dilepaskan atau diserap (dalam Joule, J).</li>
+                <li><code>m</code>: Massa zat (dalam gram, g).</li>
+                <li><code>c</code>: Kalor jenis zat (dalam J/g°C atau J/gK). Nilai ini berbeda untuk setiap zat (misalnya, kalor jenis air adalah sekitar 4.18 J/g°C).</li>
+                <li><code>ΔT</code>: Perubahan suhu (dalam °C atau K).</li>
+            </ul>
+            <p>Penting untuk membedakan secara jelas antara kapasitas kalor (<code>C</code>) dan kalor jenis (<code>c</code>). Kapasitas kalor (<code>C</code>) bergantung pada massa dan jenis zat, sedangkan kalor jenis (<code>c</code>) adalah properti spesifik per satuan massa untuk suatu zat tertentu, tidak bergantung pada jumlah zatnya.</p>
+        </section>
+
+        <section>
+            <h3>Ringkasan Umum Proses Pengukuran Kalor</h3>
+            <p>Secara umum, proses pengukuran kalor dalam kalorimetri melibatkan langkah-langkah sistematis berikut:</p>
+            <ol>
+                <li><strong>Identifikasi Sistem dan Lingkungan:</strong> Tentukan apa yang menjadi "sistem" (misalnya, reaksi kimia yang diamati) dan apa yang menjadi "lingkungan" (kalorimeter, air di dalamnya, dll.) yang akan menyerap atau melepaskan kalor dari/ke sistem.</li>
+                <li><strong>Pengukuran Suhu Awal:</strong> Catat suhu awal sistem dan lingkungan secara akurat sebelum reaksi atau proses fisika dimulai.</li>
+                <li><strong>Inisiasi Proses/Reaksi:</strong> Biarkan reaksi atau proses fisika berlangsung di dalam kalorimeter, pastikan pengukuran dilakukan dalam kondisi yang terkontrol (volume konstan atau tekanan konstan).</li>
+                <li><strong>Pengukuran Suhu Akhir:</strong> Catat suhu akhir setelah reaksi selesai dan sistem telah mencapai kesetimbangan termal dengan lingkungannya (suhu stabil).</li>
+                <li><strong>Perhitungan Perubahan Suhu (<code>ΔT</code>):</strong> Hitung perbedaan suhu, <code>ΔT = T<sub>akhir</sub> - T<sub>awal</sub></code>. Perhatikan tanda <code>ΔT</code>: positif jika suhu naik (kalor diserap), negatif jika suhu turun (kalor dilepaskan).</li>
+                <li><strong>Perhitungan Kalor yang Diserap/Dilepaskan oleh Kalorimeter/Lingkungan:</strong> Gunakan persamaan yang sesuai:
+                    <ul>
+                        <li>Jika kapasitas kalor total kalorimeter diketahui: <code>q<sub>kalorimeter</sub> = C<sub>kalorimeter</sub> &middot; ΔT</code>.</li>
+                        <li>Jika massa dan kalor jenis lingkungan (misalnya air) diketahui: <code>q<sub>lingkungan</sub> = m<sub>lingkungan</sub> &middot; c<sub>lingkungan</sub> &middot; ΔT</code>.</li>
+                    </ul>
+                </li>
+                <li><strong>Penentuan Kalor Reaksi (<code>q<sub>reaksi</sub></code>):</strong> Berdasarkan hukum kekekalan energi, kalor yang dilepaskan atau diserap oleh reaksi adalah kebalikan dari kalor yang diserap atau dilepaskan oleh kalorimeter/lingkungan. Oleh karena itu, <code>q<sub>reaksi</sub> = -q<sub>kalorimeter</sub></code> atau <code>q<sub>reaksi</sub> = -q<sub>lingkungan</sub></code>. Tanda negatif ini adalah kunci untuk menentukan apakah reaksi bersifat eksotermik (<code>q<sub>reaksi</sub></code> negatif) atau endotermik (<code>q<sub>reaksi</sub></code> positif).</li>
+            </ol>
+            <p>Dengan demikian, kalorimetri memberikan metode yang kuat dan esensial untuk mengkuantifikasi energi termal yang terlibat dalam berbagai proses kimia dan fisika, memberikan wawasan fundamental tentang termodinamika sistem dan perubahan energi di dalamnya.</p>
+        </section>
+    </div>
+</body>
+</html>
+```

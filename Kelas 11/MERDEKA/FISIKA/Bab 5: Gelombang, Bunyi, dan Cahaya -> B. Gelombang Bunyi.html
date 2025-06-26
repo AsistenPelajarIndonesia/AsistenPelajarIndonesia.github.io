@@ -1,0 +1,397 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 5: Gelombang Bunyi</title>
+    <style>
+        :root {
+            /* Light Mode Theme Colors */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--primary-blue);
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        .formula-block {
+            background-color: #f8f8f8; /* A very light grey, almost white */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1.1em;
+            color: var(--text-primary);
+        }
+
+        .formula-block strong {
+            color: var(--primary-blue);
+        }
+
+        .formula-block .variables {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+            text-align: left;
+        }
+
+        table thead tr {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+            border: 1px solid var(--border-divider);
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3; /* A slightly darker background for even rows */
+        }
+
+        table tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            table {
+                font-size: 0.85em;
+            }
+            table th, table td {
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula-block {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+            .formula-block .variables {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 5: Gelombang, Bunyi, dan Cahaya</h1>
+        <h2>B. Gelombang Bunyi</h2>
+
+        <p>
+            Kita semua akrab dengan suara di sekitar kita, mulai dari musik yang merdu hingga percakapan sehari-hari. Suara atau bunyi adalah salah satu bentuk gelombang yang esensial dalam kehidupan. Gelombang bunyi merupakan <span class="highlight">gelombang mekanik</span> yang memerlukan medium untuk merambat, dan dihasilkan dari getaran suatu benda. Keras lemahnya suatu bunyi bergantung pada <span class="highlight">amplitudo</span> getarannya, sedangkan tinggi rendahnya bunyi (nada) bergantung pada <span class="highlight">frekuensi</span> getarannya.
+        </p>
+
+        <h3>1. Cepat Rambat Bunyi</h3>
+        <p>
+            Bunyi dapat merambat melalui berbagai medium, baik padat, cair, maupun gas. Rambatan bunyi terjadi melalui proses rapatan dan regangan molekul-molekul medium. Kecepatan rambat bunyi sangat dipengaruhi oleh sifat medium tempat rambatannya, termasuk faktor seperti tekanan dan suhu pada medium gas.
+        </p>
+
+        <h4>Tabel 5.1. Cepat Rambat Bunyi pada Beberapa Medium</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Medium</th>
+                    <th>Kecepatan Rambat Bunyi (m/s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Udara (0° C)</td><td>331</td></tr>
+                <tr><td>Udara (100° C)</td><td>386</td></tr>
+                <tr><td>Air</td><td>1490</td></tr>
+                <tr><td>Air Laut</td><td>1530</td></tr>
+                <tr><td>Alumunium</td><td>5100</td></tr>
+                <tr><td>Besi</td><td>5130</td></tr>
+            </tbody>
+        </table>
+        <p>
+            Cepat rambat bunyi utamanya bergantung pada <span class="highlight">sifat elastisitas</span> material (kemampuan material untuk kembali ke bentuk semula setelah mengalami deformasi) dan <span class="highlight">massa jenisnya</span>. Kedua besaran ini menentukan seberapa cepat energi getaran dapat ditransfer melalui medium.
+        </p>
+
+        <h4>a. Cepat Rambat Bunyi pada Zat Padat</h4>
+        <p>
+            Pada benda padat, cepat rambat bunyi dihitung dengan membandingkan modulus elastisitas (E) bahan terhadap massa jenis (ρ) bahan tersebut.
+        </p>
+        <div class="formula-block">
+            <strong>v = &radic;(E / &rho;)</strong>
+            <div class="variables">
+                Dengan:<br>
+                <strong>v</strong> = cepat rambat bunyi (m/s)<br>
+                <strong>E</strong> = modulus elastisitas (N/m²)<br>
+                <strong>&rho;</strong> = massa jenis bahan (kg/m³)
+            </div>
+        </div>
+
+        <h4>b. Cepat Rambat Bunyi pada Benda Cair</h4>
+        <p>
+            Pada benda cair, cepat rambat bunyi dipengaruhi oleh modulus Bulk (B) dan massa jenis (ρ) benda. Modulus Bulk mengukur ketahanan suatu zat terhadap kompresi.
+        </p>
+        <div class="formula-block">
+            <strong>v = &radic;(B / &rho;)</strong>
+            <div class="variables">
+                Dengan:<br>
+                <strong>v</strong> = cepat rambat bunyi (m/s)<br>
+                <strong>B</strong> = modulus Bulk (N/m²)<br>
+                <strong>&rho;</strong> = massa jenis zat cair (kg/m³)
+            </div>
+        </div>
+
+        <h4>c. Cepat Rambat Bunyi pada Gas</h4>
+        <p>
+            Pada gas, kecepatan molekul sangat dipengaruhi oleh suhu. Semakin cepat molekul bergerak, semakin cepat pula bunyi dirambatkan. Modulus Bulk pada udara (gas) bergantung pada tekanan (P) dan konstanta Laplace (γ), yang diturunkan dari persamaan gas ideal.
+        </p>
+        <div class="formula-block">
+            <strong>B = &gamma;P</strong>
+            <div class="variables">
+                Dengan:<br>
+                <strong>&gamma;</strong> = konstanta Laplace (rasio kalor spesifik pada tekanan konstan terhadap volume konstan)<br>
+                <strong>P</strong> = tekanan gas (N/m²)
+            </div>
+        </div>
+        <p>
+            Substitusi modulus Bulk ini ke persamaan cepat rambat bunyi pada benda cair, serta menggunakan hubungan dari persamaan gas ideal (pM=ρRT), maka cepat rambat bunyi pada gas dapat dinyatakan sebagai:
+        </p>
+        <div class="formula-block">
+            <strong>v = &radic;((&gamma;RT) / M)</strong>
+            <div class="variables">
+                Dengan:<br>
+                <strong>v</strong> = cepat rambat bunyi (m/s)<br>
+                <strong>&gamma;</strong> = konstanta Laplace<br>
+                <strong>R</strong> = tetapan gas umum (8.31 J/mol.K)<br>
+                <strong>T</strong> = suhu gas (Kelvin)<br>
+                <strong>M</strong> = massa molar gas (kg/mol)
+            </div>
+        </div>
+
+        <h3>2. Sumber Bunyi</h3>
+        <p>
+            Sumber bunyi adalah benda yang bergetar dan menghasilkan gelombang bunyi. Banyak alat musik bekerja berdasarkan prinsip getaran ini, di mana perubahan frekuensi dan amplitudo getaran menghasilkan berbagai nada dan volume suara. Sumber bunyi pada alat musik dapat berupa dawai/senar, kolom udara (pipa organa), kulit, maupun logam.
+        </p>
+
+        <h4>a. Sumber Bunyi Dawai/Senar</h4>
+        <p>
+            Ketika dawai atau senar dipetik, ia bergetar dan menghasilkan gelombang stasioner. Gelombang stasioner ini terbentuk karena superposisi gelombang yang merambat bolak-balik di sepanjang dawai. Frekuensi getaran dawai ini akan beresonansi dengan udara di sekitarnya, menghasilkan suara yang kita dengar.
+        </p>
+        <p>
+            Pada dawai, terdapat titik-titik yang tidak bergetar (simpul) dan titik-titik yang bergetar dengan amplitudo maksimum (perut).
+            <ul>
+                <li><strong>Nada Dasar (Harmonik Pertama, n=1):</strong> Terbentuk satu perut di tengah dan dua simpul di ujung. Panjang dawai (L) sama dengan setengah panjang gelombang (&frac12;&lambda;).</li>
+                <li><strong>Nada Atas Pertama (Harmonik Kedua, n=2):</strong> Terbentuk dua perut dan tiga simpul. Panjang dawai (L) sama dengan satu panjang gelombang (&lambda;).</li>
+                <li>Dan seterusnya...</li>
+            </ul>
+        </p>
+        <p>
+            Frekuensi nada ke-n (f<sub>n</sub>) pada dawai dapat dinyatakan dengan persamaan:
+        </p>
+        <div class="formula-block">
+            <strong>f<sub>n</sub> = (n &middot; v) / (2L)</strong>
+            <div class="variables">
+                Dengan:<br>
+                <strong>f<sub>n</sub></strong> = frekuensi nada ke-n (Hz)<br>
+                <strong>n</strong> = 1 (nada dasar), 2 (nada atas pertama), 3 (nada atas kedua), dst.<br>
+                <strong>v</strong> = cepat rambat gelombang bunyi pada dawai (m/s)<br>
+                <strong>L</strong> = panjang dawai (m)
+            </div>
+        </div>
+        <p>
+            Cepat rambat gelombang (v) pada dawai itu sendiri bergantung pada tegangan dawai (F) dan massa per satuan panjang dawai (µ = m/L).
+        </p>
+        <div class="formula-block">
+            <strong>v = &radic;(F / &mu;)</strong> atau <strong>v = &radic;((F &middot; L) / m)</strong>
+            <div class="variables">
+                Dengan:<br>
+                <strong>v</strong> = cepat rambat gelombang pada dawai (m/s)<br>
+                <strong>F</strong> = tegangan dawai (N)<br>
+                <strong>&mu;</strong> = massa per satuan panjang dawai (kg/m)<br>
+                <strong>L</strong> = panjang dawai (m)<br>
+                <strong>m</strong> = massa dawai (kg)
+            </div>
+        </div>
+        <p>Contoh alat musik dawai meliputi gitar, biola, cello, dan harpa.</p>
+
+        <h4>b. Sumber Bunyi Pipa Organa</h4>
+        <p>
+            Pipa organa adalah kolom udara yang menghasilkan bunyi ketika udara ditiupkan ke dalamnya. Terdapat dua jenis pipa organa:
+        </p>
+
+        <h5>1) Pipa Organa Terbuka</h5>
+        <p>
+            Pipa organa terbuka memiliki kedua ujungnya terbuka. Gelombang stasioner yang terbentuk pada pipa organa terbuka selalu memiliki <span class="highlight">perut</span> gelombang di kedua ujungnya yang terbuka, karena molekul udara dapat bergerak bebas di sana.
+            <ul>
+                <li><strong>Nada Dasar (Harmonik Pertama, n=1):</strong> Terbentuk satu perut di setiap ujung dan satu simpul di tengah. Panjang kolom udara (L) sama dengan setengah panjang gelombang (&frac12;&lambda;).</li>
+                <li><strong>Nada Atas Pertama (Harmonik Kedua, n=2):</strong> Terbentuk dua perut dan tiga simpul. Panjang kolom udara (L) sama dengan satu panjang gelombang (&lambda;).</li>
+                <li>Dan seterusnya...</li>
+            </ul>
+        </p>
+        <p>
+            Frekuensi nada ke-n (f<sub>n</sub>) pada pipa organa terbuka sama dengan persamaan dawai:
+        </p>
+        <div class="formula-block">
+            <strong>f<sub>n</sub> = (n &middot; v) / (2L)</strong>
+            <div class="variables">
+                Dengan:<br>
+                <strong>f<sub>n</sub></strong> = frekuensi nada ke-n (Hz)<br>
+                <strong>n</strong> = 1 (nada dasar), 2 (nada atas pertama), 3 (nada atas kedua), dst.<br>
+                <strong>v</strong> = cepat rambat bunyi di udara (m/s)<br>
+                <strong>L</strong> = panjang kolom pipa organa (m)
+            </div>
+        </div>
+        <p>Contoh alat musik pipa organa terbuka adalah seruling dan terompet.</p>
+
+        <h5>2) Pipa Organa Tertutup</h5>
+        <p>
+            Pipa organa tertutup memiliki satu ujung tertutup dan satu ujung terbuka. Pada ujung yang tertutup akan selalu terbentuk <span class="highlight">simpul</span> gelombang (karena molekul udara tidak dapat bergerak bebas), dan pada ujung yang terbuka akan selalu terbentuk <span class="highlight">perut</span> gelombang.
+            <ul>
+                <li><strong>Nada Dasar (Harmonik Pertama, n=1):</strong> Terbentuk satu perut di ujung terbuka dan satu simpul di ujung tertutup. Panjang kolom udara (L) sama dengan seperempat panjang gelombang (&frac14;&lambda;).</li>
+                <li><strong>Nada Atas Pertama (Harmonik Kedua, n=2):</strong> Terbentuk dua perut dan dua simpul. Panjang kolom udara (L) sama dengan tiga perempat panjang gelombang (&frac34;&lambda;).</li>
+                <li>Dan seterusnya... Perhatikan bahwa pipa organa tertutup hanya menghasilkan nada-nada ganjil (harmonik ganjil). Dalam konteks ini, n pada rumus di bawah merujuk pada urutan harmonik ganjil (n=1 untuk harmonik pertama/nada dasar, n=2 untuk harmonik ketiga/nada atas pertama, dst.).</li>
+            </ul>
+        </p>
+        <p>
+            Frekuensi nada ke-n (f<sub>n</sub>) pada pipa organa tertutup dapat ditunjukkan dengan persamaan:
+        </p>
+        <div class="formula-block">
+            <strong>f<sub>n</sub> = ((2n - 1) &middot; v) / (4L)</strong>
+            <div class="variables">
+                Dengan:<br>
+                <strong>f<sub>n</sub></strong> = frekuensi nada ke-n (Hz)<br>
+                <strong>n</strong> = 1 (nada dasar), 2 (nada atas pertama), 3 (nada atas kedua), dst. (mengacu pada urutan harmonik ganjil)<br>
+                <strong>v</strong> = cepat rambat bunyi di udara (m/s)<br>
+                <strong>L</strong> = panjang kolom pipa organa (m)
+            </div>
+        </div>
+        <p>Contoh alat musik pipa organa tertutup adalah klarinet dan oboe (meskipun oboe lebih kompleks).</p>
+
+        <h3>3. Efek Doppler</h3>
+        <p>
+            Efek Doppler adalah fenomena perubahan frekuensi atau panjang gelombang suatu gelombang yang diterima oleh pengamat karena adanya <span class="highlight">gerak relatif</span> antara sumber gelombang dan pengamat.
+        </p>
+        <p>
+            Misalnya, ketika sebuah ambulans mendekat, frekuensi suara sirene yang kita dengar akan terdengar lebih tinggi (nada lebih tinggi) dibandingkan saat ambulans diam. Sebaliknya, ketika ambulans menjauh, frekuensi suara sirene akan terdengar lebih rendah (nada lebih rendah).
+        </p>
+        <p>
+            Fenomena ini terjadi karena ketika sumber bergerak, gelombang yang dipancarkan akan "tertekan" di arah gerak sumber (mengakibatkan panjang gelombang lebih pendek dan frekuensi lebih tinggi) dan "tertarik" di arah berlawanan gerak sumber (mengakibatkan panjang gelombang lebih panjang dan frekuensi lebih rendah). Efek Doppler tidak hanya terjadi pada gelombang bunyi, tetapi juga pada gelombang cahaya, yang memiliki aplikasi penting dalam astronomi (misalnya, pergeseran merah/biru galaksi).
+        </p>
+    </div>
+</body>
+</html>
+```

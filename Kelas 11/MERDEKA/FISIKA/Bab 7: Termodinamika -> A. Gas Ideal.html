@@ -1,0 +1,371 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termodinamika & Gas Ideal - Fisika Kelas XI</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Resets & Body Styling */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content Container */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        section h3 {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        section h4 {
+            color: var(--text-secondary);
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        ul {
+            list-style: none; /* Remove default bullet */
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        ul li::before {
+            content: '•'; /* Custom bullet point */
+            color: var(--accent-green);
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ol li {
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Highlight box for key info or definitions */
+        .info-box {
+            background-color: #E3F2FD; /* Light blue background */
+            border-left: 5px solid var(--semantic-info);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+        .info-box p {
+            margin-bottom: 0;
+            color: var(--text-primary);
+        }
+
+        /* Custom Table-like display for Material Data */
+        .data-table {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px; /* To show border lines */
+            border: 1px solid var(--border-divider);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+
+        .data-table .header-row {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+        }
+
+        .data-table .data-row:nth-child(even) {
+            background-color: #F5F5F5; /* Light gray for alternating rows */
+        }
+
+        .data-table div {
+            padding: 0.8rem 1rem;
+            text-align: center;
+            border-right: 1px solid var(--border-divider);
+            border-bottom: 1px solid var(--border-divider);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+        .data-table .header-row div {
+            color: var(--background-canvas);
+            border-bottom: 1px solid var(--background-canvas);
+        }
+
+        .data-table div:last-child {
+            border-right: none;
+        }
+        .data-table .data-row:last-of-type div {
+            border-bottom: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+            section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            section h3 {
+                font-size: 1.5rem;
+            }
+            section h4 {
+                font-size: 1.2rem;
+            }
+            p, ul li, ol li {
+                font-size: 0.95rem;
+            }
+            .data-table {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+                border: none;
+            }
+            .data-table div {
+                border: 1px solid var(--border-divider);
+                margin-bottom: -1px; /* Overlap borders for cleaner look */
+            }
+            .data-table .header-row {
+                display: none; /* Hide header on very small screens if stacked */
+            }
+            /* More detailed responsive table behavior for small screens */
+            .data-table .data-row {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 0.5rem;
+                padding: 1rem;
+                border: 1px solid var(--border-divider);
+                margin-bottom: 0.5rem;
+                border-radius: 4px;
+                background-color: var(--background-canvas);
+            }
+            .data-table .data-row:nth-child(even) {
+                background-color: #FBFBFB;
+            }
+            .data-table .data-row div {
+                border: none; /* Remove individual cell borders */
+                padding: 0;
+                text-align: left;
+                justify-content: start;
+            }
+            .data-table .data-row div:first-child {
+                font-weight: bold;
+                color: var(--primary-blue);
+            }
+            .data-table .data-row div:not(:first-child) {
+                text-align: right;
+            }
+        }
+        /* Further adjust for the "table" on small screens to show labels */
+        @media (max-width: 768px) {
+            .data-table .data-row div:nth-child(1)::before { content: "Materi: "; font-weight: normal; color: var(--text-tertiary); }
+            .data-table .data-row div:nth-child(2)::before { content: "Wujud: "; font-weight: normal; color: var(--text-tertiary); }
+            .data-table .data-row div:nth-child(3)::before { content: "Koefisien Muai Volume (/°C): "; font-weight: normal; color: var(--text-tertiary); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bab 7: Termodinamika</h1>
+        <p>Memahami Interaksi Energi dan Materi</p>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Pengantar Termodinamika</h2>
+            <p>Termodinamika adalah cabang ilmu fisika yang mempelajari tentang hubungan antara panas, kerja, dan energi dalam suatu sistem, serta bagaimana energi dapat ditransformasikan dari satu bentuk ke bentuk lain dan dipindahkan antar sistem dan lingkungan.</p>
+            <p>Penerapan hukum-hukum termodinamika dapat kita temukan dalam berbagai aspek kehidupan sehari-hari dan teknologi, seperti:</p>
+            <ul>
+                <li><strong>Metabolisme Tubuh Manusia:</strong> Proses pengubahan energi kimia dari makanan menjadi energi mekanik (usaha) dan panas.</li>
+                <li><strong>Lemari Es dan Pendingin Ruangan (AC):</strong> Sistem yang bekerja untuk memindahkan panas dari ruang dingin ke lingkungan yang lebih hangat.</li>
+                <li><strong>Mesin Kendaraan Bermotor:</strong> Mengubah energi panas hasil pembakaran bahan bakar menjadi energi mekanik untuk menggerakkan kendaraan.</li>
+                <li><strong>Pembangkit Listrik:</strong> Transformasi energi dari bahan bakar (misalnya batu bara, gas, nuklir) menjadi energi listrik melalui proses termal.</li>
+            </ul>
+
+            <h3>Konsep Kunci dalam Termodinamika</h3>
+            <p>Untuk memahami termodinamika, beberapa konsep dasar perlu dipahami:</p>
+            <ul>
+                <li><strong>Sistem:</strong> Bagian dari alam semesta yang menjadi objek studi (misalnya, gas dalam silinder, mesin, tubuh manusia).</li>
+                <li><strong>Lingkungan:</strong> Segala sesuatu di luar sistem yang dapat berinteraksi dengannya.</li>
+                <li><strong>Gas Ideal:</strong> Model gas teoretis yang sangat berguna untuk menyederhanakan perhitungan dalam termodinamika.</li>
+                <li><strong>Energi Dalam (U):</strong> Total energi kinetik dan potensial molekul-molekul dalam sistem.</li>
+                <li><strong>Kalor (Q):</strong> Transfer energi termal akibat perbedaan suhu.</li>
+                <li><strong>Usaha (W):</strong> Transfer energi yang terkait dengan gaya dan perpindahan.</li>
+                <li><strong>Entropi (S):</strong> Ukuran ketidakteraturan atau keacakan suatu sistem. Sistem cenderung bergerak ke arah entropi yang lebih tinggi secara spontan. Contohnya, kayu terbakar memiliki entropi lebih tinggi daripada kayu utuh karena molekulnya tersebar lebih acak.</li>
+                <li><strong>Proses Termodinamika:</strong> Perubahan keadaan sistem yang melibatkan perubahan variabel-variabel termodinamika seperti tekanan, volume, dan suhu.</li>
+                <li><strong>Siklus Termodinamika:</strong> Serangkaian proses termodinamika yang mengembalikan sistem ke keadaan awalnya.</li>
+                <li><strong>Variabel Keadaan:</strong> Properti yang menggambarkan keadaan sistem pada suatu waktu tertentu (misalnya tekanan, volume, suhu).</li>
+                <li><strong>Persamaan Keadaan:</strong> Hubungan matematika antara variabel-variabel keadaan.</li>
+                <li><strong>Diagram p-V:</strong> Grafik yang menunjukkan hubungan antara tekanan (p) dan volume (V) selama proses termodinamika.</li>
+            </ul>
+
+            <h3>Hukum-Hukum Termodinamika</h3>
+            <p>Termodinamika didasarkan pada beberapa hukum fundamental:</p>
+            <ul>
+                <li><strong>Hukum Nol Termodinamika:</strong> Jika dua sistem berada dalam kesetimbangan termal dengan sistem ketiga, maka ketiganya berada dalam kesetimbangan termal satu sama lain. Dasar bagi konsep suhu.</li>
+                <li><strong>Hukum Pertama Termodinamika:</strong> Prinsip kekekalan energi. Perubahan energi dalam suatu sistem sama dengan kalor yang ditambahkan ke sistem dikurangi usaha yang dilakukan oleh sistem (ΔU = Q - W).</li>
+                <li><strong>Hukum Kedua Termodinamika:</strong> Menjelaskan arah alami dari proses termodinamika dan batasan efisiensi mesin kalor. Proses spontan cenderung meningkatkan entropi total alam semesta.</li>
+            </ul>
+        </section>
+
+        <section id="gas-ideal">
+            <h2>A. Gas Ideal</h2>
+            <p>Model gas ideal merupakan konsep penting dalam termodinamika karena menyederhanakan analisis perilaku gas. Meskipun tidak ada gas yang "ideal" sempurna di alam, model ini memberikan pendekatan yang sangat baik untuk gas nyata pada tekanan rendah dan suhu tinggi.</p>
+
+            <h3>1. Pengertian Gas</h3>
+            <p>Gas memiliki karakteristik unik dibandingkan padatan dan cairan. Molekul-molekul gas bergerak bebas dan acak, tidak terikat satu sama lain, dan cenderung menyebar mengisi seluruh volume wadah tempat mereka berada. Perhatikan perbedaan perilaku gas dengan zat lain, terutama dalam hal pemuaian volume.</p>
+
+            <h4>Koefisien Muai Volume Beberapa Materi</h4>
+            <div class="data-table">
+                <div class="header-row">
+                    <div>Materi</div>
+                    <div>Wujud</div>
+                    <div>Koefisien Muai Volume (/°C)</div>
+                </div>
+                <div class="data-row">
+                    <div>Besi</div>
+                    <div>Padat</div>
+                    <div>35 × 10<sup>-6</sup></div>
+                </div>
+                <div class="data-row">
+                    <div>Air</div>
+                    <div>Cair</div>
+                    <div>210 × 10<sup>-6</sup></div>
+                </div>
+                <div class="data-row">
+                    <div>Udara</div>
+                    <div>Gas</div>
+                    <div>3400 × 10<sup>-6</sup></div>
+                </div>
+            </div>
+            <p>Dari tabel di atas, kita dapat melihat keistimewaan gas, khususnya udara. Koefisien muai volume udara (gas) jauh lebih besar dibandingkan dengan padatan (besi) dan cairan (air). Ini menunjukkan bahwa gas memuai dan menempati ruang dengan sangat cepat dan signifikan bahkan dengan perubahan suhu yang relatif kecil.</p>
+
+            <h3>2. Teori Kinetik Gas</h3>
+            <p>Teori kinetik gas adalah model yang menjelaskan sifat-sifat makroskopik gas (seperti tekanan, suhu, volume) berdasarkan perilaku mikroskopik molekul-molekul gas. Asumsi-asumsi dasar teori ini adalah sebagai berikut:</p>
+            <ol>
+                <li><strong>Gerak Acak Molekul:</strong> Molekul-molekul gas bergerak secara acak dan terus-menerus ke segala arah.</li>
+                <li><strong>Gaya Antarmolekul Diabaikan:</strong> Gaya tarik-menarik atau tolak-menolak antar molekul gas dianggap dapat diabaikan, kecuali selama tumbukan.</li>
+                <li><strong>Volume Molekul Diabaikan:</strong> Ukuran molekul gas sangat kecil dibandingkan dengan jarak antar molekul dan volume wadah, sehingga volume total semua molekul gas dapat diabaikan terhadap volume wadah.</li>
+                <li><strong>Tumbukan Elastis:</strong> Tumbukan antara molekul dengan molekul lain, maupun antara molekul dengan dinding wadah, bersifat elastis sempurna. Ini berarti tidak ada energi kinetik yang hilang selama tumbukan.</li>
+            </ol>
+
+            <h4>Implikasi Teori Kinetik Gas</h4>
+            <p>Berdasarkan asumsi-asumsi di atas, teori kinetik gas memberikan pemahaman fundamental tentang sifat-sifat gas:</p>
+            <ul>
+                <li><strong>Tekanan Gas:</strong> Tekanan yang diberikan oleh gas pada dinding wadah disebabkan oleh gaya yang dihasilkan dari tumbukan molekul-molekul gas dengan dinding tersebut. Semakin sering dan semakin kuat tumbukannya, semakin besar tekanan gas.</li>
+                <li><strong>Suhu Gas:</strong> Suhu mutlak gas adalah ukuran langsung dari energi kinetik rata-rata translasi molekul-molekul gas. Artinya, semakin tinggi suhu gas, semakin cepat molekul-molekulnya bergerak secara acak.</li>
+            </ul>
+            <div class="info-box">
+                <p>Singkatnya, gas ideal adalah model yang sangat disederhanakan namun kuat untuk memahami bagaimana gas berperilaku, terutama dalam konteks perubahan energi dan kerja yang terkait dengan volume, tekanan, dan suhu.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+```

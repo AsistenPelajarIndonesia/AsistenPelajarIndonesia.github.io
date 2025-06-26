@@ -1,0 +1,303 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Kinematika - Gerak Lurus</title>
+    <style>
+        /* Definisi variabel warna untuk tema terang */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya dasar untuk seluruh halaman */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        /* Kontainer utama untuk konten */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Gaya untuk judul dan subjudul */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; color: var(--accent-green); }
+        h3 { font-size: 1.6em; color: var(--secondary-accent-amber); }
+        h4 { font-size: 1.3em; color: var(--text-secondary); }
+
+        /* Gaya untuk paragraf */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-primary);
+        }
+
+        /* Penekanan teks */
+        strong {
+            color: var(--primary-blue);
+        }
+
+        em {
+            color: var(--text-secondary);
+        }
+
+        /* Kotak bagian untuk memisahkan topik */
+        .section-box {
+            background-color: #F8F8F8; /* Sedikit off-white untuk pembeda */
+            border: 1px solid var(--border-divider);
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        /* Kotak khusus untuk menampilkan rumus */
+        .formula-box {
+            background-color: #EEF7FC; /* Biru muda untuk rumus */
+            border: 1px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+            color: var(--primary-blue);
+            text-align: center;
+        }
+
+        .formula-box .variables {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        /* Sorotan konsep penting */
+        .concept-highlight {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Gaya untuk daftar */
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: var(--text-primary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Catatan atau informasi tambahan */
+        .note {
+            background-color: #FFFDE7; /* Kuning muda untuk catatan */
+            border: 1px solid var(--semantic-warning);
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            color: var(--text-secondary);
+        }
+
+        /* Penyesuaian responsif untuk layar yang lebih kecil */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+            h3 { font-size: 1.4em; }
+            h4 { font-size: 1.1em; }
+            .container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            h4 { font-size: 1em; }
+            .container {
+                padding: 10px;
+                box-shadow: none; /* Hilangkan bayangan pada layar kecil */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Kinematika - Gerak Lurus</h1>
+        <p>Kinematika adalah cabang fisika yang mempelajari gerak benda tanpa memperhitungkan penyebab gerak tersebut (gaya). Dalam bagian ini, kita akan mendalami <strong>Gerak Lurus</strong>, yaitu gerak benda yang lintasannya selalu berupa garis lurus.</p>
+
+        <div class="section-box">
+            <h2>Konsep Dasar Gerak Relatif</h2>
+            <p>Gerak selalu bersifat <strong>relatif</strong>. Ini berarti deskripsi gerak suatu benda bergantung pada <strong>kerangka acuan</strong> tempat pengamatan dilakukan. Sebagai contoh, kecepatan sebuah pesawat diukur berbeda jika acuannya adalah udara di sekitarnya dibandingkan dengan acuannya adalah tanah di bawahnya.</p>
+            <p>Kecepatan suatu benda relatif terhadap kerangka acuan yang berbeda sebenarnya merupakan hasil dari penjumlahan vektor kecepatan. Konsep ini dapat dirumuskan sebagai:</p>
+            <div class="formula-box">
+                <p><strong>V<sub>pt</sub> = V<sub>pu</sub> + V<sub>ut</sub></strong></p>
+                <div class="variables">
+                    <p>V<sub>pt</sub> = kecepatan pesawat terhadap tanah</p>
+                    <p>V<sub>pu</sub> = kecepatan pesawat terhadap udara</p>
+                    <p>V<sub>ut</sub> = kecepatan udara terhadap tanah</p>
+                </div>
+            </div>
+            <p class="note">Secara umum, jika kecepatan sebuah benda disebutkan tanpa penjelasan tambahan mengenai kerangka acuan, maka diasumsikan kecepatan tersebut diukur terhadap kerangka acuan tanah.</p>
+        </div>
+
+        <div class="section-box">
+            <h2>Kecepatan dan Kelajuan Sesaat</h2>
+            <p>Meskipun sering digunakan secara bergantian, "kecepatan" dan "kelajuan" memiliki makna yang berbeda dalam fisika, terutama ketika berbicara tentang nilai "sesaat":</p>
+            <ul>
+                <li><strong>Kelajuan Sesaat:</strong> Merujuk pada kelajuan (magnitudo kecepatan) benda pada momen waktu tertentu atau di titik spesifik pada lintasan geraknya. Contoh paling nyata adalah pembacaan pada speedometer kendaraan.</li>
+                <li><strong>Kecepatan Sesaat:</strong> Merujuk pada kecepatan benda pada momen waktu tertentu, yang mencakup baik besar maupun arah geraknya.</li>
+            </ul>
+            <p>Alat seperti <em>radar gun</em> yang digunakan polisi untuk mendeteksi kelajuan mobil adalah contoh pengukuran kelajuan sesaat.</p>
+        </div>
+
+        <div class="section-box">
+            <h2>Kecepatan Rata-Rata dan Kelajuan Rata-Rata</h2>
+            <p>Untuk menganalisis gerak dalam selang waktu yang lebih panjang, kita menggunakan konsep rata-rata:</p>
+
+            <h3>Kecepatan Rata-Rata (Average Velocity)</h3>
+            <p>Kecepatan rata-rata didefinisikan sebagai <strong>perpindahan</strong> yang dialami benda dibagi dengan <strong>selang waktu</strong> yang dibutuhkan untuk perpindahan tersebut.</p>
+            <div class="formula-box">
+                <p><strong>v̄ = Perpindahan / Selang waktu</strong></p>
+                <p>v̄ = Δx / Δt = (x<sub>akhir</sub> - x<sub>awal</sub>) / (t<sub>akhir</sub> - t<sub>awal</sub>)</p>
+                <div class="variables">
+                    <p>v̄ = kecepatan rata-rata (m/s)</p>
+                    <p>Δx = perpindahan (m), yaitu perubahan posisi dari titik awal ke titik akhir.</p>
+                    <p>Δt = selang waktu (s)</p>
+                </div>
+            </div>
+            <p>Karena perpindahan adalah besaran vektor (memiliki arah), maka kecepatan rata-rata juga merupakan besaran vektor. Tanda negatif pada hasil perhitungan dapat menunjukkan arah gerak yang berlawanan dengan arah positif yang telah disepakati.</p>
+
+            <h3>Kelajuan Rata-Rata (Average Speed)</h3>
+            <p>Kelajuan rata-rata didefinisikan sebagai <strong>jarak total</strong> yang ditempuh benda dibagi dengan <strong>selang waktu</strong> total perjalanan.</p>
+            <div class="formula-box">
+                <p><strong>v̄ = Jarak total / Selang waktu</strong></p>
+                <p>v̄ = X / t</p>
+                <div class="variables">
+                    <p>v̄ = kelajuan rata-rata (m/s)</p>
+                    <p>X = jarak total (m), yaitu panjang lintasan yang sebenarnya ditempuh.</p>
+                    <p>t = selang waktu (s)</p>
+                </div>
+            </div>
+            <p>Jarak total adalah besaran skalar (hanya memiliki besar, tanpa arah), sehingga kelajuan rata-rata juga merupakan besaran skalar.</p>
+        </div>
+
+        <div class="section-box">
+            <h2>Percepatan (Acceleration)</h2>
+            <p>Percepatan adalah ukuran seberapa cepat kecepatan suatu benda berubah. Secara formal, percepatan didefinisikan sebagai perubahan kecepatan (selisih antara kecepatan akhir dan kecepatan awal) yang terjadi dalam suatu selang waktu tertentu.</p>
+            <div class="formula-box">
+                <p><strong>ā = Δv / Δt = (v<sub>t</sub> - v<sub>0</sub>) / Δt</strong></p>
+                <div class="variables">
+                    <p>ā = percepatan (m/s²)</p>
+                    <p>v<sub>0</sub> = kecepatan awal (m/s)</p>
+                    <p>v<sub>t</sub> = kecepatan akhir (m/s)</p>
+                    <p>Δt = selang waktu (s)</p>
+                </div>
+            </div>
+            <p>Percepatan juga merupakan besaran vektor. Arah percepatan sangat krusial dalam menentukan efeknya pada kecepatan benda:</p>
+            <ul>
+                <li>Jika arah <strong>percepatan searah dengan kecepatan</strong> benda, maka benda akan bergerak <strong>semakin cepat (dipercepat)</strong>.</li>
+                <li>Jika arah <strong>percepatan berlawanan arah dengan kecepatan</strong> benda, maka benda akan bergerak <strong>semakin lambat (diperlambat)</strong>.</li>
+            </ul>
+            <p class="note">Penting untuk diingat bahwa sebuah benda dapat mengalami percepatan meskipun kelajuannya konstan, jika arah geraknya berubah (misalnya, gerak melingkar).</p>
+        </div>
+
+        <div class="section-box">
+            <h2>Jenis-jenis Gerak Lurus</h2>
+            <p>Berdasarkan karakteristik perubahan kecepatannya, gerak lurus dapat diklasifikasikan menjadi dua jenis utama:</p>
+
+            <h3>1. Gerak Lurus Beraturan (GLB)</h3>
+            <p class="concept-highlight">Gerak Lurus Beraturan (GLB) adalah gerak suatu benda yang memiliki <strong>kecepatan yang konstan</strong>, baik besar (nilai) maupun arahnya.</p>
+            <p>Dalam GLB, benda menempuh jarak yang sama dalam selang waktu yang sama. Kondisi ini mengindikasikan bahwa tidak ada percepatan yang bekerja pada benda dalam GLB (percepatan = 0).</p>
+            <h4>Karakteristik Utama GLB:</h4>
+            <ul>
+                <li><strong>Kecepatan konstan:</strong> Kecepatan sesaat selalu memiliki nilai yang sama dengan kecepatan rata-rata.</li>
+                <li><strong>Percepatan nol:</strong> Tidak ada perubahan kecepatan, sehingga percepatan adalah nol.</li>
+            </ul>
+            <h4>Persamaan Gerak untuk GLB:</h4>
+            <div class="formula-box">
+                <p><strong>Δx = v ⋅ Δt</strong></p>
+                <p>Jika posisi awal benda adalah x<sub>0</sub> pada waktu t=0, maka posisi akhir x pada waktu t dapat ditulis sebagai:</p>
+                <p><strong>x = x<sub>0</sub> + v ⋅ t</strong></p>
+                <div class="variables">
+                    <p>x = posisi akhir benda (m)</p>
+                    <p>x<sub>0</sub> = posisi awal benda (m)</p>
+                    <p>v = kecepatan benda (m/s)</p>
+                    <p>t = selang waktu (s)</p>
+                </div>
+            </div>
+            <h4>Interpretasi Grafis GLB:</h4>
+            <ul>
+                <li><strong>Grafik Kecepatan terhadap Waktu (v-t):</strong> Ditampilkan sebagai garis lurus horizontal. Ini merepresentasikan bahwa nilai kecepatan (v) tetap konstan sepanjang waktu (t). Luas area di bawah kurva v-t pada GLB menunjukkan nilai perpindahan (atau jarak, jika gerak hanya dalam satu arah).</li>
+                <li><strong>Grafik Posisi terhadap Waktu (x-t):</strong> Berupa garis lurus miring dengan kemiringan (gradien) yang konstan. Kemiringan garis ini secara langsung menyatakan besar kecepatan benda. Semakin curam kemiringannya, semakin besar nilai kecepatan benda.
+                <div class="formula-box">
+                    <p><strong>Kemiringan grafik x-t = v = Δx / Δt</strong></p>
+                </div>
+                </li>
+            </ul>
+            <p>Dalam eksperimen menggunakan <em>ticker timer</em>, GLB akan menghasilkan pola cetakan titik-titik yang berjarak sama, menegaskan bahwa kecepatan benda tidak berubah.</p>
+
+            <h3>2. Gerak Lurus Berubah Beraturan (GLBB)</h3>
+            <p class="concept-highlight">Gerak Lurus Berubah Beraturan (GLBB) adalah gerak suatu benda yang memiliki <strong>percepatan yang konstan</strong>.</p>
+            <p>Ini berarti kecepatan benda berubah secara teratur sepanjang waktu. Perubahan kecepatan yang teratur ini bisa berupa peningkatan (GLBB dipercepat) atau penurunan (GLBB diperlambat) kecepatan, asalkan laju perubahannya (percepatan) tetap konstan.</p>
+            <h4>Karakteristik Utama GLBB:</h4>
+            <ul>
+                <li><strong>Percepatan konstan:</strong> Percepatan rata-rata selalu sama dengan percepatan sesaat.</li>
+                <li><strong>Kecepatan berubah secara linier:</strong> Nilai kecepatan benda berbanding lurus dengan waktu.</li>
+            </ul>
+            <h4>Interpretasi Grafis GLBB (Grafik v-t):</h4>
+            <ul>
+                <li><strong>Grafik Kecepatan terhadap Waktu (v-t):</strong> Ditampilkan sebagai garis lurus yang miring (tidak horizontal).
+                    <ul>
+                        <li>Jika garis miring ke atas (kemiringan positif), ini menunjukkan bahwa kecepatan benda bertambah secara teratur, yang berarti GLBB dipercepat.</li>
+                        <li>Jika garis miring ke bawah (kemiringan negatif), ini menunjukkan bahwa kecepatan benda berkurang secara teratur, yang berarti GLBB diperlambat.</li>
+                    </ul>
+                </li>
+                <li>Kemiringan (gradien) grafik v-t pada GLBB menyatakan besar percepatan benda.</li>
+            </ul>
+            <p>Dalam studi lebih lanjut, akan ada beberapa persamaan penting yang menghubungkan kecepatan awal, kecepatan akhir, percepatan, perpindahan, dan waktu dalam GLBB.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

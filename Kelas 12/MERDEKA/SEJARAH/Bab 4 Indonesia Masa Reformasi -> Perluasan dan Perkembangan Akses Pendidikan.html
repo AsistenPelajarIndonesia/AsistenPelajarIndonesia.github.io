@@ -1,0 +1,419 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perluasan dan Perkembangan Akses Pendidikan - Sejarah Indonesia</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300; /* Not directly used in this content, but available */
+            --semantic-success: #4CAF50; /* Not directly used in this content, but available */
+            --semantic-warning: #FFC107; /* Not directly used in this content, but available */
+            --semantic-error: #D32F2F; /* Not directly used in this content, but available */
+            --semantic-info: #2196F3; /* Not directly used in this content, but available */
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for potential anchor links */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+            border: 1px solid var(--border-divider);
+        }
+
+        h1, h2, h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600; /* Slightly bolder headings */
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.75rem;
+            color: var(--text-primary);
+            position: relative; /* For decorative underline */
+            padding-left: 10px;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px; /* Position under the border */
+            width: 50px; /* Short accent line */
+            height: 4px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            color: var(--accent-green); /* Accent color for sub-sections (Presidents) */
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        ul {
+            list-style: none; /* Remove default bullet */
+            padding-left: 20px; /* Indent list items */
+            margin-bottom: 1rem;
+        }
+
+        ul li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            padding-left: 25px; /* Space for custom bullet */
+        }
+
+        ul li::before {
+            content: '•'; /* Custom bullet point */
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue); /* Color for custom bullet */
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* Interactive Element: Highlight Term */
+        .highlight-term {
+            color: var(--primary-blue);
+            font-weight: bold;
+            cursor: help;
+            border-bottom: 1px dotted var(--primary-blue); /* Dotted underline to indicate hoverable */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+
+        .highlight-term:hover {
+            background-color: rgba(25, 118, 210, 0.1); /* Light blue background on hover */
+            color: var(--primary-blue);
+        }
+
+        /* Interactive Element: Accordion (Collapsible Sections) */
+        .accordion {
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 18px 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: 0.4s;
+            border-bottom: 1px solid var(--border-divider);
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px; /* Slightly rounded corners */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03); /* Subtle shadow */
+        }
+
+        .accordion.active, .accordion:hover {
+            background-color: #F8F8F8; /* Lighter shade on hover/active */
+            color: var(--primary-blue);
+        }
+
+        .accordion-content {
+            padding: 0 20px;
+            background-color: var(--background-canvas);
+            max-height: 0; /* Hidden by default */
+            overflow: hidden;
+            transition: max-height 0.6s ease-out; /* Smooth transition */
+            border-bottom: 1px solid var(--border-divider);
+            margin-bottom: 1rem;
+            border-radius: 0 0 8px 8px; /* Bottom rounded corners */
+        }
+
+        .accordion-content p, .accordion-content ul {
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        /* Plus/Minus Icon for Accordion */
+        .accordion::after {
+            content: '\002B'; /* Plus sign */
+            font-size: 1.2em;
+            color: var(--text-tertiary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.active::after {
+            content: '\2212'; /* Minus sign */
+            transform: rotate(0deg); /* No rotation needed for simple plus/minus */
+        }
+
+        /* Visual Timeline Effect */
+        .timeline-section {
+            position: relative;
+            padding-left: 40px; /* Space for the vertical line */
+            margin-bottom: 3rem;
+            margin-top: 2rem;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            left: 20px; /* Position of the vertical line */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border-divider);
+            z-index: 0; /* Ensure line is behind items */
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px; /* Adjust to align with the line */
+            top: 25px; /* Vertical position of the dot */
+            width: 16px;
+            height: 16px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            border: 3px solid var(--primary-blue);
+            z-index: 1; /* Ensure dot is on top of the line */
+            transform: translateY(-50%); /* Center vertically relative to top */
+        }
+
+        .timeline-item .accordion {
+            margin-top: 0; /* Remove top margin as it's part of the flow */
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.2rem;
+                margin-bottom: 2rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+                margin-top: 2.5rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .accordion {
+                font-size: 1.1rem;
+                padding: 15px 18px;
+            }
+            .accordion-content {
+                padding: 0 18px;
+            }
+            .timeline-section {
+                padding-left: 30px;
+            }
+            .timeline-section::before {
+                left: 15px;
+            }
+            .timeline-item::before {
+                left: -15px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+                margin-top: 2rem;
+            }
+            h3 {
+                font-size: 1.1rem;
+            }
+            .accordion {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+            .accordion-content {
+                padding: 0 15px;
+            }
+            .timeline-section {
+                padding-left: 20px;
+            }
+            .timeline-section::before {
+                left: 10px;
+            }
+            .timeline-item::before {
+                left: -10px;
+                width: 12px;
+                height: 12px;
+            }
+            ul {
+                padding-left: 15px;
+            }
+            ul li {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Perluasan dan Perkembangan Akses Pendidikan</h1>
+
+        <p>Tahukah kalian bahwa akses pendidikan di Indonesia telah mengalami perkembangan yang cukup menggembirakan dari waktu ke waktu? Sepanjang sejarah kepemimpinan di Indonesia, aspek pendidikan selalu menjadi prioritas utama dan mendapat perhatian khusus. Sebagai generasi terpelajar, penting bagi kita untuk memahami bagaimana perluasan dan perkembangan akses pendidikan ini diwujudkan melalui berbagai kebijakan transformatif.</p>
+        <p>Bagian ini akan menguraikan secara mendalam kebijakan pendidikan yang telah ditetapkan sepanjang masa Reformasi, dimulai dari era Presiden B.J. Habibie hingga Presiden Joko Widodo. Mari kita telusuri perjalanan panjang upaya Indonesia dalam memastikan setiap warga negara memiliki kesempatan yang setara untuk memperoleh pendidikan berkualitas.</p>
+
+        <div class="timeline-section">
+            <h2>Perjalanan Kebijakan Pendidikan Masa Reformasi</h2>
+
+            <div class="timeline-item">
+                <button class="accordion">Presiden B.J. Habibie (1998-1999)</button>
+                <div class="accordion-content">
+                    <p>Meskipun masa pemerintahan Presiden B.J. Habibie terbilang singkat, komitmen terhadap sektor pendidikan tetap menjadi prioritas. Kebijakan pendidikan pada era ini umumnya <span class="highlight-term" title="Melanjutkan dan menguatkan fondasi yang telah diletakkan pada periode sebelumnya, khususnya terkait program wajib belajar.">melanjutkan kebijakan pada masa Presiden Soeharto</span>.</p>
+                    <p>Fokus utama adalah menyukseskan program <span class="highlight-term" title="Program pemerintah yang mewajibkan setiap warga negara Indonesia untuk menempuh pendidikan minimal sembilan tahun, yaitu dari tingkat sekolah dasar hingga sekolah menengah pertama.">Wajib Belajar 9 Tahun</span>. Untuk memperluas akses dan mengurangi hambatan finansial, pemerintah Habibie berupaya <span class="highlight-term" title="Peningkatan jumlah alokasi dana bantuan pendidikan yang diberikan kepada siswa berprestasi atau yang berasal dari keluarga kurang mampu.">menambah kuota beasiswa</span> kepada siswa sekolah. Ini merupakan langkah krusial untuk memastikan lebih banyak anak dapat bersekolah tanpa terbebani biaya.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <button class="accordion">Presiden Abdurrahman Wahid (1999-2001)</button>
+                <div class="accordion-content">
+                    <p>Pada masa pemerintahan Presiden Abdurrahman Wahid (Gus Dur), terjadi reformasi pendidikan yang menekankan pada pendekatan yang lebih desentralistik dan responsif terhadap kebutuhan lokal. Kebijakan utamanya meliputi:</p>
+                    <ul>
+                        <li><span class="highlight-term" title="Pemberian wewenang yang lebih besar kepada pihak sekolah dalam mengelola kurikulum, anggaran, sumber daya manusia, dan operasional lainnya sesuai kebutuhan dan karakteristik lokal.">Otonomi sekolah</span>: Memberikan kemandirian lebih kepada sekolah dalam pengambilan keputusan, diharapkan mampu meningkatkan relevansi dan kualitas pendidikan di tingkat akar rumput.</li>
+                        <li><span class="highlight-term" title="Proses sistematis untuk mengidentifikasi, mendefinisikan, dan membagi tanggung jawab serta wewenang antara berbagai tingkatan dan lembaga dalam sistem pendidikan.">Pemetaan tugas yang komprehensif</span>: Dilakukan untuk memperjelas kewenangan pengaturan dunia pendidikan antara pemerintah pusat, daerah, dan lembaga terkait.</li>
+                    </ul>
+                    <p>Visi reformasi pendidikan ini kemudian dituangkan dalam bentuk <span class="highlight-term" title="Rencana dasar atau panduan komprehensif untuk pengembangan pendidikan di masa depan, yang menekankan pada pemberdayaan sekolah dan akses universal.">cetak biru pendidikan berbasis sekolah dan pendidikan universal</span>. Fondasi hukumnya diperkuat melalui <span class="highlight-term" title="Undang-Undang yang mengatur program pembangunan nasional, termasuk sektor pendidikan, yang menjadi panduan bagi kebijakan dan anggaran.">UU No. 25 Tahun 2000 Program Pembangunan Nasional</span>, khususnya Bidang Pendidikan. Kebijakan ini menegaskan komitmen negara terhadap pendidikan yang merata dan dapat diakses oleh semua lapisan masyarakat.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <button class="accordion">Presiden Megawati Sukarnoputri (2001-2004)</button>
+                <div class="accordion-content">
+                    <p>Masa pemerintahan Presiden Megawati Sukarnoputri mencatatkan sejarah penting dengan disahkannya <span class="highlight-term" title="Undang-Undang yang menjadi dasar hukum utama bagi penyelenggaraan dan pengembangan seluruh sistem pendidikan nasional di Indonesia.">Undang-Undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional</span>. UU ini menjadi payung hukum fundamental yang mengatur berbagai aspek pendidikan di Indonesia.</p>
+                    <p>Salah satu muatan paling krusial dalam UU tersebut adalah <span class="highlight-term" title="Kewajiban pemerintah untuk mengalokasikan anggaran minimal 20% dari Anggaran Pendapatan dan Belanja Negara (APBN) dan Anggaran Pendapatan dan Belanja Daerah (APBD) untuk pembangunan sektor pendidikan.">kewajiban negara menyediakan minimal 20% dari APBN dan APBD untuk pembangunan dunia pendidikan</span>. Ketentuan ini merupakan komitmen anggaran yang sangat besar, dirancang untuk menjamin ketersediaan dana yang memadai bagi pengembangan pendidikan secara berkelanjutan. Meskipun ketentuan ini disahkan pada masa Megawati, realisasi penuh dari inisiatif kebijakan anggaran ini baru terlaksana pada masa pemerintahan selanjutnya.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <button class="accordion">Presiden Susilo Bambang Yudhoyono (2004-2014)</button>
+                <div class="accordion-content">
+                    <p>Era pemerintahan Presiden Susilo Bambang Yudhoyono (SBY) ditandai dengan realisasi nyata dari komitmen anggaran pendidikan 20%. Pada tahun 2008, Presiden SBY secara khusus meminta Menteri Keuangan Sri Mulyani untuk memastikan <span class="highlight-term" title="Pelaksanaan alokasi anggaran pendidikan sebesar 20% dari APBN secara nyata, dengan batas waktu implementasi paling lambat tahun 2009.">realisasi 20% APBN untuk anggaran pendidikan</span> dapat dilakukan paling lambat tahun 2009.</p>
+                    <p>Alokasi anggaran ini ditujukan untuk beberapa tujuan strategis:</p>
+                    <ul>
+                        <li><span class="highlight-term" title="Upaya untuk mempermudah dan memperbanyak kesempatan bagi seluruh lapisan masyarakat untuk dapat mengikuti atau memperoleh pendidikan.">Kemudahan dan keluasan akses pendidikan</span>: Memastikan pendidikan dapat dijangkau oleh semua lapisan masyarakat, tanpa terkecuali.</li>
+                        <li><span class="highlight-term" title="Pembangunan dan perbaikan fasilitas fisik serta sarana pendukung proses belajar-mengajar, seperti gedung sekolah, laboratorium, perpustakaan, dan teknologi informasi.">Peningkatan infrastruktur pendidikan</span>: Membangun dan memperbaiki fasilitas yang mendukung proses belajar-mengajar agar lebih layak dan modern.</li>
+                        <li><span class="highlight-term" title="Upaya untuk meningkatkan kualitas hidup dan kondisi kerja bagi para pendidik, termasuk gaji, tunjangan, serta pengembangan profesionalisme guru dan dosen.">Peningkatan kesejahteraan guru dan dosen</span>: Memberikan dukungan finansial dan non-finansial agar para pendidik dapat fokus pada tugas mulia mereka.</li>
+                    </ul>
+                    <p>Dalam rangka meningkatkan <span class="highlight-term" title="Prinsip bahwa pendidikan harus dapat diakses dan dinikmati oleh semua individu tanpa hambatan geografis, ekonomi, atau sosial, serta kualitasnya harus merata di seluruh wilayah.">keterjangkauan dan pemerataan</span> bagi seluruh peserta didik, pemerintahan SBY juga menjalankan beberapa program unggulan:</p>
+                    <ul>
+                        <li><span class="highlight-term" title="Bantuan Operasional Sekolah (BOS): Dana bantuan dari pemerintah untuk membiayai kegiatan operasional non-personalia sekolah secara rutin.">Bantuan Operasional Sekolah (BOS)</span>: Memberikan dana langsung ke sekolah untuk biaya operasional sehari-hari, mengurangi beban pungutan dari siswa.</li>
+                        <li><span class="highlight-term" title="Bantuan Siswa Miskin (BSM): Bantuan finansial langsung yang diberikan kepada siswa dari keluarga kurang mampu untuk mendukung biaya pendidikan mereka.">Bantuan Siswa Miskin (BSM)</span>: Memberikan bantuan finansial langsung kepada siswa dari keluarga prasejahtera agar dapat melanjutkan sekolah.</li>
+                        <li><span class="highlight-term" title="Bidikmisi: Program beasiswa penuh dari pemerintah yang ditujukan bagi mahasiswa berprestasi namun memiliki keterbatasan ekonomi untuk melanjutkan pendidikan tinggi.">Bidikmisi</span>: Memberikan beasiswa penuh kepada mahasiswa berprestasi namun kurang mampu untuk melanjutkan pendidikan tinggi, membuka pintu akses ke perguruan tinggi.</li>
+                    </ul>
+                    <p>Selain itu, pada masa ini diberlakukan pula kebijakan <span class="highlight-term" title="Program pemerintah yang membebaskan siswa dari pembayaran Sumbangan Pembinaan Pendidikan (SPP) dan biaya peminjaman buku perpustakaan di sekolah negeri maupun swasta yang memenuhi kriteria, dari jenjang SD hingga SMP.">sekolah gratis dari SD hingga SMP</span>, yang berlaku baik di sekolah negeri maupun swasta. Kebijakan ini secara signifikan membebaskan siswa dari pembayaran SPP dan biaya peminjaman buku perpustakaan, memberikan dampak besar dalam mengurangi beban finansial orang tua dan meningkatkan partisipasi sekolah.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <button class="accordion">Presiden Joko Widodo (2014-2019 dan selanjutnya)</button>
+                <div class="accordion-content">
+                    <p>Pemerintahan Presiden Joko Widodo (Jokowi) bersama Jusuf Kalla menjadikan <span class="highlight-term" title="Sembilan program prioritas yang menjadi acuan pembangunan nasional pada masa pemerintahan Joko Widodo-Jusuf Kalla, termasuk di sektor pendidikan.">Nawacita</span> sebagai penuntun bagi kebijakan pembangunan nasional, termasuk di sektor pendidikan. Beberapa butir Nawacita secara langsung menekankan pada penerapan kebijakan pendidikan yang progresif. Perwujudan dari kebijakan tersebut antara lain:</p>
+                    <ul>
+                        <li><span class="highlight-term" title="Program bantuan pendidikan bagi siswa dari keluarga tidak mampu melalui pemberian Kartu Indonesia Pintar (KIP), dengan target wajib belajar hingga 12 tahun tanpa biaya.">Program Indonesia Pintar (PIP)</span>: Program ini berfokus pada <span class="highlight-term" title="Program pemerintah yang mewajibkan setiap warga negara Indonesia untuk menempuh pendidikan minimal dua belas tahun, yaitu dari tingkat sekolah dasar hingga sekolah menengah atas/kejuruan, tanpa dipungut biaya.">wajib belajar 12 tahun bebas pungutan</span>, memastikan pendidikan menengah atas juga terjangkau bagi semua lapisan masyarakat.</li>
+                        <li><span class="highlight-term" title="Upaya komprehensif untuk meningkatkan kualitas, relevansi, dan daya saing lulusan Sekolah Menengah Kejuruan (SMK) agar sesuai dengan kebutuhan industri dan pasar kerja.">Peningkatan produktivitas SMK</span>: Fokus pada pengembangan pendidikan kejuruan agar lulusannya memiliki keterampilan yang relevan dan siap kerja, menjawab kebutuhan industri.</li>
+                        <li><span class="highlight-term" title="Gerakan nasional untuk membentuk karakter peserta didik yang kuat, berintegritas, dan menjunjung nilai-nilai Pancasila, melalui kebijakan dan implementasi kurikulum nasional.">Revolusi karakter bangsa</span>: Dilakukan melalui kebijakan kurikulum nasional, yang bertujuan membentuk karakter siswa yang berlandaskan nilai-nilai moral, etika, dan kebangsaan, menciptakan generasi yang tidak hanya cerdas secara intelektual tetapi juga berakhlak mulia.</li>
+                    </ul>
+                    <p>Kebijakan-kebijakan ini menunjukkan komitmen untuk tidak hanya memperluas akses kuantitas pendidikan, tetapi juga secara fundamental meningkatkan kualitas dan relevansi pendidikan agar mampu menghasilkan generasi yang berdaya saing global dan memiliki karakter yang kuat.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Kesimpulan</h2>
+        <p>Perjalanan perluasan dan perkembangan akses pendidikan di Indonesia selama masa Reformasi mencerminkan komitmen kuat dan berkelanjutan dari setiap kepemimpinan untuk menjadikan pendidikan sebagai pilar utama pembangunan bangsa. Dari penyediaan beasiswa, alokasi anggaran yang signifikan, hingga program-program pro-rakyat seperti sekolah gratis dan beasiswa kuliah, berbagai upaya terus dilakukan untuk memastikan bahwa setiap warga negara Indonesia memiliki kesempatan yang sama untuk mengakses pendidikan yang berkualitas.</p>
+        <p>Transformasi kebijakan pendidikan ini telah menjadi fondasi penting bagi kemajuan Indonesia di masa depan, membuka pintu kesempatan bagi jutaan anak bangsa untuk meraih cita-cita dan berkontribusi pada kemajuan peradaban. Proses ini adalah bukti nyata bahwa pendidikan selalu menjadi investasi terbaik untuk masa depan suatu bangsa.</p>
+    </div>
+
+    <script>
+        // JavaScript for Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            var accordions = document.querySelectorAll(".accordion");
+
+            accordions.forEach(function(accordion) {
+                accordion.addEventListener("click", function() {
+                    this.classList.toggle("active"); // Toggle 'active' class on button
+
+                    var content = this.nextElementSibling; // Get the content panel
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null; // Collapse content
+                    } else {
+                        // Set max-height to scrollHeight to open content fully
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+
+                    // Optional: Close other open accordions when one is opened
+                    accordions.forEach(function(otherAccordion) {
+                        if (otherAccordion !== accordion && otherAccordion.classList.contains('active')) {
+                            otherAccordion.classList.remove('active');
+                            otherAccordion.nextElementSibling.style.maxHeight = null;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```

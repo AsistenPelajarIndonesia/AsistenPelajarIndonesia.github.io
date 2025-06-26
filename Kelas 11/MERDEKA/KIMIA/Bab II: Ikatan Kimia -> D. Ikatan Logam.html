@@ -1,0 +1,290 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab II: Ikatan Kimia - Ikatan Logam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables based on lightMode theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --primary-blue-rgb: 25, 118, 210; /* RGB components for rgba() */
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Body Styles */
+        body {
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main Container for Content */
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: var(--accent-green);
+            text-align: center;
+            border-bottom: 3px solid var(--accent-green);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--text-secondary);
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        h4 {
+            font-size: 1.4em;
+            color: var(--text-tertiary);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: none;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 1.2em;
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 30px;
+            margin-bottom: 1.5em;
+            color: var(--text-primary);
+        }
+
+        ul li {
+            margin-bottom: 0.8em;
+            line-height: 1.6;
+        }
+
+        /* Text Emphasis */
+        strong {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        em {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Highlight Boxes / Callouts */
+        .info-box {
+            background-color: rgba(var(--primary-blue-rgb), 0.07);
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+        }
+
+        .info-box h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        /* Special Section for Metallic Bonding Model */
+        .bonding-model-section {
+            background-color: rgba(var(--accent-green-rgb, 56, 142, 60), 0.05); /* Assuming green RGB for highlight */
+            border: 1px solid var(--accent-green);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        /* Define accent-green-rgb if not already defined for rgba usage */
+        :root {
+            /* ... existing variables ... */
+            --accent-green-rgb: 56, 142, 60; /* RGB components of #388E3C */
+        }
+
+
+        .bonding-model-section h3 {
+            color: var(--accent-green);
+            text-align: center;
+            border-bottom: 1px solid var(--accent-green);
+        }
+
+        .key-concept {
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block; /* Ensures it starts on a new line */
+            margin-top: 1em;
+            font-size: 1.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 18px;
+            }
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            h4 { font-size: 1.2em; }
+            p, ul, li { font-size: 0.95em; }
+            ul { margin-left: 20px; }
+            .info-box, .bonding-model-section {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.1em; }
+            p, ul, li { font-size: 0.9em; }
+            ul { margin-left: 15px; }
+            .info-box, .bonding-model-section {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab II: Ikatan Kimia</h1>
+        <h2>D. Ikatan Logam</h2>
+
+        <p>Selamat datang di pembahasan mengenai <strong>Ikatan Logam</strong>, salah satu jenis ikatan kimia yang sangat penting dalam memahami sifat-sifat material di sekitar kita, terutama yang terkait dengan logam.</p>
+
+        <div class="info-box">
+            <h4>Memulai dengan Logam di Sekitar Kita</h4>
+            <p>Cobalah perhatikan benda-benda logam yang ada di rumah kalian. Apakah wujudnya padat, cair, atau gas? Kebanyakan logam yang kita temui sehari-hari, seperti pada teralis besi, peralatan masak, atau perhiasan, berwujud <strong>padat</strong>. Meskipun terasa sangat keras, logam memiliki sifat unik karena dapat ditempa dan dibentuk, memungkinkan kita membuat beragam desain seperti teralis besi.</p>
+        </div>
+
+        <h3>Karakteristik Umum Unsur Logam</h3>
+        <p>Unsur-unsur logam umumnya menempati area tertentu dalam tabel periodik. Mereka kebanyakan ditemukan pada:</p>
+        <ul>
+            <li><strong>Golongan Transisi (Golongan B)</strong></li>
+            <li><strong>Golongan Alkali (IA)</strong></li>
+            <li><strong>Golongan Alkali Tanah (IIA)</strong></li>
+            <li>Serta beberapa unsur dari <strong>Golongan IIIA dan IVA</strong>.</li>
+        </ul>
+        <p>Secara umum, logam memiliki sifat-sifat fisik yang khas:</p>
+        <ul>
+            <li>Berwujud <strong>padat</strong> pada suhu kamar (kecuali merkuri).</li>
+            <li>Memiliki permukaan yang <strong>mengilat</strong> atau berkilau.</li>
+            <li>Bersifat <strong>ulet (ductile)</strong>, yaitu dapat ditarik menjadi kawat.</li>
+            <li>Bersifat <strong>mudah ditempa (malleable)</strong>, yaitu dapat dibentuk menjadi lembaran tipis atau berbagai bentuk lain tanpa patah atau retak.</li>
+        </ul>
+
+        <div class="bonding-model-section">
+            <h3>Memahami Ikatan Logam: Konsep "Lautan Elektron"</h3>
+            <p>Bagaimana logam dapat memiliki sifat-sifat unik tersebut? Jawabannya terletak pada jenis ikatan kimianya, yaitu <strong>Ikatan Logam</strong>.</p>
+            <p>Model yang paling umum untuk menjelaskan ikatan logam adalah <strong>model lautan elektron</strong>. Bayangkan logam sebagai kumpulan ion-ion positif yang dikelilingi oleh "lautan" elektron yang bergerak bebas.</p>
+            <p class="key-concept">Dalam ikatan logam:</p>
+            <ul>
+                <li><strong>Ion-ion positif</strong> terbentuk dari atom logam yang telah melepaskan elektron valensinya. Ion-ion ini tersusun secara teratur dalam kisi kristal.</li>
+                <li><strong>Elektron valensi</strong> dari setiap atom logam tidak lagi terikat pada satu atom tertentu. Sebaliknya, mereka <strong>terdelokalisasi</strong> (bergerak bebas) di seluruh struktur logam, membentuk semacam "lautan" atau "awan" elektron yang menyelimuti semua ion positif.</li>
+                <li>Elektron-elektron yang bergerak bebas ini <em>saling bertumpang tindih</em> dan menjadi milik bersama dari semua atom logam dalam struktur tersebut.</li>
+            </ul>
+        </div>
+
+        <h3>Sifat Logam yang Dijelaskan oleh Ikatan Logam</h3>
+        <p>Konsep lautan elektron ini berhasil menjelaskan banyak sifat khas logam:</p>
+
+        <h4>1. Daya Hantar Listrik yang Tinggi</h4>
+        <ul>
+            <li>Karena adanya <strong>elektron valensi yang bergerak bebas</strong> dan terdelokalisasi, logam memiliki kemampuan yang sangat baik untuk menghantarkan arus listrik. Elektron-elektron ini dapat dengan mudah bergerak sebagai pembawa muatan ketika ada perbedaan potensial (tegangan) yang diterapkan.</li>
+        </ul>
+
+        <h4>2. Kemampuan Ditempa (Malleability) dan Ditarik (Ductility)</h4>
+        <ul>
+            <li>Meskipun logam sangat keras karena ikatan antar atomnya kuat, logam tidak mudah patah, retak, atau hancur saat dipukul (ditempa) atau ditarik.</li>
+            <li>Ini disebabkan oleh sifat <strong>fleksibilitas lautan elektron</strong>. Ketika tekanan diberikan pada logam, ion-ion positif dapat bergeser posisinya relatif satu sama lain. Namun, "lautan" elektron yang mengelilingi mereka juga ikut bergeser dan terus mengikat ion-ion tersebut.</li>
+            <li>Ikatan tidak putus karena elektron-elektron selalu ada untuk menstabilkan posisi ion-ion yang bergeser, menjaga struktur logam tetap utuh meskipun bentuknya berubah.</li>
+        </ul>
+
+        <h4>3. Wujud Padat pada Suhu Kamar</h4>
+        <ul>
+            <li>Ikatan yang kuat antara ion-ion positif dan lautan elektron menyebabkan jarak antaratom dalam logam menjadi sangat dekat. Hal ini menghasilkan gaya tarik-menarik yang kuat, yang pada akhirnya membuat logam umumnya ditemukan dalam wujud padat pada suhu kamar (dengan pengecualian Merkuri, Hg, yang cair).</li>
+        </ul>
+
+        <h4>4. Mengkilap (Luster)</h4>
+        <ul>
+            <li>Meskipun tidak dijelaskan secara rinci dalam teks asli mengapa mengkilap, sifat ini juga dapat dijelaskan oleh lautan elektron. Elektron-elektron bebas ini dapat menyerap dan memancarkan kembali cahaya pada berbagai panjang gelombang, menyebabkan permukaan logam tampak berkilau atau mengkilap.</li>
+        </ul>
+
+        <h3>Jenis-jenis Ikatan Logam</h3>
+        <p>Ikatan logam dapat terbentuk antara atom-atom logam, baik yang sejenis maupun berbeda jenis:</p>
+        <ul>
+            <li><strong>Antaratom Logam Sejenis (Logam Murni):</strong>
+                <ul>
+                    <li>Contoh: <strong>Emas 24 karat</strong> (terdiri atas atom Au murni).</li>
+                    <li>Contoh: <strong>Tembaga murni (Cu)</strong> yang sering digunakan sebagai penghantar arus listrik.</li>
+                </ul>
+            </li>
+            <li><strong>Antaratom Logam Berbeda Jenis (Paduan Logam atau Aloi):</strong>
+                <p>Ketika dua atau lebih jenis logam dicampur dan melebur, mereka membentuk paduan logam (alloy), di mana ikatan logam juga terbentuk antara atom-atom yang berbeda jenis.</p>
+                <ul>
+                    <li>Contoh: <strong>Perunggu</strong>, yang merupakan paduan dari <strong>timah (Sn)</strong> dan <strong>tembaga (Cu)</strong>.</li>
+                    <li>Contoh: <strong>Kuningan</strong>, yang merupakan paduan dari <strong>tembaga (Cu)</strong> dan <strong>seng (Zn)</strong>.</li>
+                    <p>Paduan logam seringkali memiliki sifat yang lebih unggul dibandingkan logam murni penyusunnya, seperti peningkatan kekuatan atau ketahanan terhadap korosi.</p>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="info-box">
+            <h4>Kesimpulan Penting</h4>
+            <p>Ikatan logam adalah gaya tarik-menarik yang kuat antara <strong>ion-ion logam positif</strong> dengan <strong>elektron valensi yang terdelokalisasi (bergerak bebas)</strong>. Model "lautan elektron" ini menjadi kunci untuk memahami mengapa logam memiliki karakteristik unik seperti konduktivitas listrik dan panas yang tinggi, kemampuan ditempa dan ditarik, serta kilau metalik.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

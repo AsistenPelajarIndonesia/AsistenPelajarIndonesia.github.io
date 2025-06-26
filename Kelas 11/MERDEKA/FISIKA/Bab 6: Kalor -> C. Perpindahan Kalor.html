@@ -1,0 +1,328 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisika Kelas 11 - Bab 6: Kalor - Perpindahan Kalor</title>
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575; /* Not used for main text, reserved for tertiary elements */
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107; /* Not explicitly used, but available */
+            --semantic-error: #D32F2F; /* Not explicitly used, but available */
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden; /* Ensures borders/shadows are contained */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 50px;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-green);
+            margin-top: 2em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.7em;
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.6em;
+            font-size: 1em;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            background-color: var(--background-canvas);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .intro {
+            background-color: #E3F2FD; /* Lighter blue for intro */
+            border-left: 6px solid var(--semantic-info);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            font-size: 1.15em;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background-color: #E8F5E9; /* Light green for important notes */
+            border-left: 6px solid var(--semantic-success);
+            padding: 20px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        .example-box {
+            background-color: #FFF8E1; /* Light amber for examples */
+            border-left: 6px solid var(--secondary-accent-amber);
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-style: italic;
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        b {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        em {
+            color: var(--accent-green);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 2.2em;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 1.8em;
+                margin-top: 1.5em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            .intro, .section, .highlight-box, .example-box {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            p {
+                font-size: 1em;
+            }
+            ul, ol {
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .intro, .section, .highlight-box, .example-box {
+                padding: 15px;
+            }
+            p {
+                font-size: 0.95em;
+            }
+            ul, ol {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 6: Kalor - Perpindahan Kalor</h1>
+
+        <div class="intro">
+            <p>Dalam ilmu fisika, <b>kalor</b> adalah bentuk energi yang berpindah dari satu sistem ke sistem lain karena adanya perbedaan suhu. Fenomena perpindahan kalor sangat fundamental dalam kehidupan sehari-hari dan teknologi, mulai dari cara kita memasak makanan hingga sistem pendingin modern. Memahami bagaimana kalor berpindah adalah kunci untuk mengendalikan suhu dan energi.</p>
+            <p>Secara umum, perpindahan kalor dapat terjadi melalui tiga mekanisme utama yang berbeda dalam cara partikel dan energi bergerak. Ketiga mekanisme ini adalah <b>Konduksi</b>, <b>Konveksi</b>, dan <b>Radiasi</b>. Mari kita selami setiap metode ini untuk memahami prinsip-prinsip dasarnya.</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Konduksi (Hantaran)</h2>
+            <p><b>Konduksi</b> adalah mekanisme perpindahan kalor yang terjadi melalui kontak langsung antara partikel-partikel suatu zat, tanpa disertai perpindahan massa dari zat tersebut. Ini paling sering terjadi pada zat padat, di mana partikel-partikel terikat dalam suatu struktur (seperti kisi kristal) tetapi dapat bergetar dan mentransfer energi ke partikel di sebelahnya.</p>
+
+            <h3>Mekanisme Konduksi:</h3>
+            <ul>
+                <li>Pada <b>logam</b>, konduksi adalah metode perpindahan kalor yang sangat efisien. Hal ini karena adanya <em>elektron-elektron bebas</em> yang bergerak secara acak dan bertumbukan dengan atom-atom, membawa energi termal dari daerah yang lebih panas ke daerah yang lebih dingin dengan cepat. Inilah sebabnya mengapa logam seperti tembaga atau aluminium terasa cepat panas saat disentuh atau dipanaskan.</li>
+                <li>Pada <b>non-logam (isolator)</b>, seperti kayu, kaca, atau plastik, konduksi terjadi melalui getaran atom atau molekul yang saling bertumbukan. Karena tidak ada elektron bebas yang bergerak leluasa, laju perpindahan kalornya jauh lebih lambat dibandingkan logam. Oleh karena itu, bahan-bahan ini disebut <em>isolator kalor</em> atau penghambat kalor.</li>
+            </ul>
+
+            <h3>Konduktor dan Isolator Kalor:</h3>
+            <ul>
+                <li><b>Konduktor Kalor</b>: Zat yang mudah menghantarkan kalor. Contohnya adalah sebagian besar logam seperti tembaga, aluminium, besi, serta perak dan emas yang merupakan konduktor sangat baik.</li>
+                <li><b>Isolator Kalor</b>: Zat yang sulit menghantarkan kalor. Contohnya termasuk kayu, plastik, udara (terutama udara diam), gabus, kaca, dan wol. Sifat isolator ini dimanfaatkan dalam pembuatan termos atau pakaian hangat.</li>
+            </ul>
+
+            <div class="example-box">
+                <b>Contoh Konduksi dalam Kehidupan Sehari-hari:</b>
+                <ul>
+                    <li>Saat Anda mengaduk kopi panas dengan sendok logam, ujung sendok yang tidak tercelup ke dalam kopi akan ikut terasa panas. Kalor berpindah dari kopi ke sendok, dan kemudian merambat sepanjang sendok melalui konduksi.</li>
+                    <li>Bagian bawah panci yang diletakkan di atas kompor menjadi panas dan kemudian panas tersebut menyebar ke seluruh bagian panci.</li>
+                    <li>Ketika Anda memegang es batu, tangan Anda terasa dingin karena kalor dari tangan Anda berpindah ke es batu melalui konduksi, menyebabkan es meleleh.</li>
+                </ul>
+            </div>
+            <p>Laju perpindahan kalor melalui konduksi bergantung pada beberapa faktor: perbedaan suhu antara dua titik, luas penampang bahan, panjang bahan, dan jenis bahan (koefisien konduktivitas termal).</p>
+        </div>
+
+        <div class="section">
+            <h2>2. Konveksi (Aliran)</h2>
+            <p><b>Konveksi</b> adalah perpindahan kalor yang terjadi melalui pergerakan fluida (zat cair atau gas). Berbeda dengan konduksi, di sini partikel-partikel zat itu sendiri yang bergerak, membawa serta energi kalor dari satu tempat ke tempat lain.</p>
+
+            <h3>Mekanisme Konveksi:</h3>
+            <ul>
+                <li>Ketika suatu bagian fluida dipanaskan, partikel-partikelnya akan mendapatkan energi, bergerak lebih cepat, dan jarak antarpartikel akan membesar. Ini menyebabkan volume fluida memuai dan massa jenisnya berkurang.</li>
+                <li>Fluida yang lebih ringan (kurang padat) ini akan naik, sementara fluida yang lebih dingin (lebih padat) akan turun untuk menggantikan posisinya.</li>
+                <li>Proses naik-turunnya fluida ini menciptakan <em>arus konveksi</em>, yang secara efektif memindahkan kalor ke seluruh fluida.</li>
+            </ul>
+
+            <h3>Jenis Konveksi:</h3>
+            <ul>
+                <li><b>Konveksi Alamiah (Bebas)</b>: Terjadi secara spontan karena adanya perbedaan massa jenis fluida yang disebabkan oleh pemanasan. Contoh klasik adalah air mendidih dalam panci.</li>
+                <li><b>Konveksi Paksa</b>: Terjadi ketika aliran fluida didorong atau dipaksa oleh suatu alat eksternal, seperti kipas angin, pompa, atau pengaduk. Ini meningkatkan efisiensi perpindahan kalor. Contohnya adalah sistem pendingin pada mobil atau sistem pendingin udara (AC).</li>
+            </ul>
+
+            <div class="example-box">
+                <b>Contoh Konveksi dalam Kehidupan Sehari-hari:</b>
+                <ul>
+                    <li>Saat merebus air, air di dasar panci yang panas akan naik, sementara air dingin di permukaan akan turun. Proses ini berulang hingga seluruh air panas.</li>
+                    <li>Terjadinya <em>angin laut dan angin darat</em>. Pada siang hari, daratan lebih cepat panas daripada laut, menyebabkan udara di atas daratan memuai dan naik. Udara dingin dari laut bergerak ke daratan, menciptakan angin laut. Sebaliknya terjadi pada malam hari, menciptakan angin darat.</li>
+                    <li>Sistem pemanas ruangan seringkali diletakkan di bagian bawah ruangan. Udara panas akan naik, sementara udara dingin turun, menciptakan sirkulasi yang menghangatkan seluruh ruangan.</li>
+                    <li>Asap yang keluar dari cerobong asap akan selalu bergerak ke atas karena udara panas yang membawa asap memiliki massa jenis yang lebih rendah.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. Radiasi (Pancaran)</h2>
+            <p><b>Radiasi</b> adalah perpindahan kalor yang terjadi dalam bentuk gelombang elektromagnetik. Metode ini unik karena tidak memerlukan medium perantara sama sekali, sehingga dapat terjadi bahkan di ruang hampa udara.</p>
+
+            <h3>Mekanisme Radiasi:</h3>
+            <ul>
+                <li>Semua benda yang memiliki suhu di atas nol mutlak (0 Kelvin atau -273.15°C) secara terus-menerus memancarkan energi dalam bentuk radiasi elektromagnetik. Radiasi ini bisa berupa inframerah, cahaya tampak, atau jenis gelombang EM lainnya, tergantung pada suhu benda.</li>
+                <li>Intensitas dan jenis radiasi yang dipancarkan sangat bergantung pada <em>suhu benda</em> dan <em>sifat permukaannya</em>. Semakin tinggi suhu benda, semakin besar energi radiasi yang dipancarkan.</li>
+                <li>Permukaan yang gelap dan kusam cenderung menyerap dan memancarkan radiasi lebih baik dibandingkan permukaan yang terang dan mengkilap. Permukaan yang mengkilap justru memantulkan radiasi, sehingga kurang menyerap dan memancarkan.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><b>Hukum Stefan-Boltzmann:</b> Hukum ini menyatakan bahwa energi radiasi total yang dipancarkan per satuan luas per satuan waktu oleh benda hitam ideal (penyerap dan pemancar radiasi sempurna) adalah sebanding dengan pangkat empat suhu mutlaknya (T<sup>4</sup>). Ini menunjukkan bahwa sedikit peningkatan suhu dapat menyebabkan peningkatan signifikan dalam energi radiasi yang dipancarkan.</p>
+            </div>
+
+            <div class="example-box">
+                <b>Contoh Radiasi dalam Kehidupan Sehari-hari:</b>
+                <ul>
+                    <li>Panas dari <em>Matahari</em> yang sampai ke Bumi adalah contoh paling jelas dari radiasi. Energi ini menempuh jarak jutaan kilometer melalui ruang hampa.</li>
+                    <li>Rasa hangat yang Anda rasakan saat berdiri di dekat api unggun atau perapian, bahkan tanpa menyentuh api atau asapnya. Panas ini datang langsung dari pancaran api.</li>
+                    <li>Penggunaan <em>termos air panas</em>. Dinding bagian dalam termos biasanya dilapisi perak atau material mengkilap untuk meminimalkan perpindahan kalor secara radiasi. Vakum di antara dinding ganda juga mengurangi konduksi dan konveksi.</li>
+                    <li>Pakaian berwarna gelap terasa lebih panas saat dikenakan di bawah terik matahari dibandingkan pakaian berwarna terang, karena warna gelap menyerap lebih banyak radiasi matahari.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Interaksi Metode Perpindahan Kalor</h2>
+            <p>Dalam banyak skenario kehidupan nyata, ketiga metode perpindahan kalor (konduksi, konveksi, dan radiasi) seringkali terjadi secara bersamaan atau saling melengkapi. Jarang sekali perpindahan kalor hanya melibatkan satu mekanisme saja. Memahami bagaimana masing-masing metode bekerja dan berinteraksi sangat penting untuk menganalisis dan merancang sistem termal yang efisien, mulai dari isolasi bangunan hingga pendinginan komponen elektronik.</p>
+            <p>Sebagai contoh, saat kita menuangkan kopi panas ke dalam cangkir dan meletakkannya di meja:</p>
+            <ul>
+                <li>Kalor dari kopi ke dinding cangkir akan berpindah melalui <b>konduksi</b>.</li>
+                <li>Dari permukaan kopi ke udara di atasnya, kalor akan berpindah melalui <b>konveksi</b> (uap air yang naik membawa energi).</li>
+                <li>Cangkir yang panas dan kopi di dalamnya juga akan memancarkan kalor ke lingkungan sekitar (meja, udara, dan Anda) melalui <b>radiasi</b>.</li>
+            </ul>
+            <p>Dengan demikian, menguasai konsep perpindahan kalor tidak hanya memperkaya pemahaman kita tentang fisika, tetapi juga memberikan wawasan praktis untuk berbagai aplikasi dalam kehidupan sehari-hari dan industri.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

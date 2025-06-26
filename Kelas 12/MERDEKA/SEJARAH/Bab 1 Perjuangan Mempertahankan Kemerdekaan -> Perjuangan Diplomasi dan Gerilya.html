@@ -1,0 +1,424 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perjuangan Diplomasi dan Gerilya: Mempertahankan Kemerdekaan Indonesia</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for potential anchor links */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 12px; /* Softer rounded corners */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* More prominent shadow */
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 3px solid var(--primary-blue); /* Thicker border */
+            margin-bottom: 35px;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.8em; /* Larger main title */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* More distinct text shadow */
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            font-weight: 300; /* Lighter font weight for subtitle */
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 45px; /* Increased margin between sections */
+            padding: 25px;
+            border: 1px solid var(--border-divider);
+            border-radius: 10px; /* Rounded corners for sections */
+            background-color: #fcfdfe; /* Very slight off-white for sections */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+        }
+
+        section:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Heading Styles */
+        h2 {
+            color: var(--accent-green);
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 18px;
+            border-bottom: 2px solid var(--border-divider); /* Solid border for H2 */
+            padding-bottom: 12px;
+            position: relative; /* For decorative elements if desired */
+        }
+
+        h3 {
+            color: var(--secondary-accent-amber);
+            font-size: 1.6em;
+            margin-top: 30px; /* More space above H3 */
+            margin-bottom: 12px;
+            border-left: 5px solid var(--secondary-accent-amber); /* Left border for H3 */
+            padding-left: 10px;
+        }
+
+        /* Paragraph and List Styles */
+        p {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 30px; /* Increased indent */
+            padding: 0;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 10px; /* Space between list items */
+        }
+
+        /* Highlighted Text */
+        .highlight-date {
+            font-weight: 600; /* Slightly bolder */
+            color: var(--primary-blue);
+        }
+
+        .highlight-name {
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        .important-term {
+            font-style: normal; /* Remove italic */
+            font-weight: 600; /* Make it bold */
+            color: var(--secondary-accent-amber);
+            background-color: rgba(255, 179, 0, 0.1); /* Light amber background */
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Specific Box Styles */
+        .note-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 18px 25px;
+            border-radius: 8px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-size: 0.98em;
+            border-left: 8px solid var(--primary-blue); /* Thicker left border */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .note-box strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        .resolution-list {
+            list-style-type: decimal;
+            margin-left: 30px;
+            padding: 0;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        .resolution-list li {
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+        .resolution-list li strong {
+            color: var(--semantic-error); /* To make the point stand out */
+            font-weight: 700;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding-top: 25px;
+            margin-top: 40px;
+            border-top: 1px dashed var(--border-divider); /* Dashed border for footer */
+            color: var(--text-tertiary);
+            font-size: 0.95em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            section {
+                padding: 18px;
+                margin-bottom: 30px;
+                border-radius: 8px;
+            }
+
+            h2 {
+                font-size: 1.7em;
+                margin-bottom: 15px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+                margin-top: 25px;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            ul, .resolution-list {
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+                border-radius: 6px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.9em;
+            }
+
+            section {
+                padding: 12px;
+                margin-bottom: 25px;
+                border-radius: 6px;
+            }
+
+            h2 {
+                font-size: 1.4em;
+                padding-bottom: 8px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-top: 20px;
+                padding-left: 8px;
+                border-left-width: 3px;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+
+            ul, .resolution-list {
+                margin-left: 15px;
+            }
+
+            .note-box {
+                padding: 15px;
+                border-left-width: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Perjuangan Mempertahankan Kemerdekaan</h1>
+            <p>Bab 1, Bagian C: Perjuangan Diplomasi dan Gerilya</p>
+        </header>
+
+        <main>
+            <section id="intro-diplomasi">
+                <h2>Arti Penting Diplomasi</h2>
+                <p>Diplomasi memegang peranan krusial bagi sebuah negara dalam mencapai dan mempertahankan tujuan nasionalnya di kancah internasional. Melalui diplomasi, sebuah bangsa dapat memperoleh <span class="important-term">pengakuan internasional</span> atas eksistensi dan kedaulatannya. Lebih dari itu, diplomasi juga menjadi gerbang utama untuk menjalin <span class="important-term">kerja sama bilateral maupun multilateral</span>, yang esensial dalam mengatasi krisis global dan mewujudkan pertumbuhan ekonomi yang kuat.</p>
+                <p>Sebagai contoh nyata dari signifikansi diplomasi Indonesia di mata dunia, dapat kita lihat dari peran Indonesia sebagai negara presidensi dan tuan rumah kegiatan <span class="highlight-name">G20</span> yang berhasil diselenggarakan di Bali pada <span class="highlight-date">Oktober 2022</span>. Peran ini secara jelas menunjukkan tingkat pengakuan dan kepercayaan komunitas internasional terhadap posisi strategis serta kapasitas Indonesia dalam kancah pergaulan dan kerja sama antarnegara di dunia.</p>
+                <p>Dalam konteks sejarah perjuangan bangsa, khususnya dalam upaya mempertahankan proklamasi kemerdekaan, diplomasi bukan sekadar pelengkap, melainkan elemen vital yang beriringan dengan perjuangan fisik atau gerilya. Pembahasan selanjutnya akan mengupas tuntas bagaimana strategi diplomasi dijalankan Indonesia untuk keluar dari kondisi krisis pascakemerdekaan.</p>
+            </section>
+
+            <section id="linggarjati">
+                <h2>Perundingan Linggarjati</h2>
+                <p>Upaya diplomasi melalui perundingan politik pertama pascakemerdekaan Republik Indonesia dimulai dengan <span class="important-term">Perundingan Linggarjati</span>. Peristiwa bersejarah ini diselenggarakan pada <span class="highlight-date">10 November 1946</span> dan bertempat di Linggarjati, sebuah daerah di kaki Gunung Ciremai, Cirebon.</p>
+                <h3>Delegasi dan Penengah</h3>
+                <ul>
+                    <li><strong>Delegasi Republik Indonesia:</strong> Dipimpin oleh <span class="highlight-name">Perdana Menteri Sutan Sjahrir</span>, didampingi oleh <span class="highlight-name">Mr. A.K. Pringgodigdo</span>, <span class="highlight-name">Dr. Leimena</span>, <span class="highlight-name">Dr. A.K. Gani</span>, <span class="highlight-name">Mr. Moh. Roem</span>, <span class="highlight-name">Mr. Amir Syarifuddin</span>, <span class="highlight-name">Mr. Susanto Tirtoprodjo</span>, <span class="highlight-name">Dr. Soedarsono</span>, dan <span class="highlight-name">Mr. Ali Budiardjo</span>.</li>
+                    <li><strong>Delegasi Belanda:</strong> Diwakili oleh <span class="highlight-name">Dr. H.J. van Mook</span>, <span class="highlight-name">M. van Pool</span>, <span class="highlight-name">F. de Boer</span>, dan <span class="highlight-name">Prof. Schermerhorn</span>.</li>
+                    <li><strong>Penengah:</strong> Pihak Inggris menunjuk <span class="highlight-name">Lord Killearn</span> sebagai mediator dalam perundingan ini.</li>
+                </ul>
+                <h3>Isi Kesepakatan Perjanjian Linggarjati</h3>
+                <p>Setelah lima hari berunding, tercapai beberapa kesepakatan penting, yang dikenal sebagai Perjanjian Linggarjati:</p>
+                <ol class="resolution-list">
+                    <li>Belanda mengakui secara <span class="important-term"><em>de facto</em></span> kedaulatan Republik Indonesia atas wilayah <span class="important-term">Pulau Jawa, Madura, dan Sumatera</span>.</li>
+                    <li>Republik Indonesia dan Belanda akan bekerja sama untuk membentuk sebuah negara federal bernama <span class="important-term">Republik Indonesia Serikat (RIS)</span>, di mana Republik Indonesia akan menjadi salah satu bagian konstituennya.</li>
+                    <li>Republik Indonesia Serikat dan Belanda akan membentuk sebuah ikatan perserikatan yang disebut <span class="important-term">Uni Indonesia-Belanda</span>, dengan Ratu Belanda diakui sebagai pemimpin Uni.</li>
+                </ol>
+            </section>
+
+            <section id="agresi-militer-1">
+                <h2>Agresi Militer Pertama (20 Juli 1947)</h2>
+                <p>Namun, harapan akan perdamaian tak bertahan lama. Setelah perundingan Linggarjati disepakati, pemerintah Belanda justru menunjukkan itikad buruk dengan ingkar janji. Merasa telah mengetahui peta kekuatan militer RI, pada <span class="highlight-date">20 Juli 1947</span>, pemerintah Belanda secara resmi memberikan kuasa penuh kepada Van Mook untuk melancarkan operasi militer besar-besaran. Tindakan ini, yang oleh Belanda disebut sebagai <span class="important-term">“aksi polisionil”</span>, dikenal dalam narasi sejarah Indonesia sebagai <span class="important-term">Agresi Militer Pertama</span>. Perlawanan sengit pun meletus di berbagai wilayah.</p>
+                <div class="note-box">
+                    <strong>Intervensi PBB dan Pembentukan KTN:</strong> Konflik yang kembali pecah di Indonesia ini segera menjadi perhatian <span class="important-term">Dewan Keamanan (DK) PBB</span>. Setelah beberapa kali bersidang, pada <span class="highlight-date">27 Agustus 1947</span>, DK PBB membentuk <span class="important-term">Komisi Tiga Negara (KTN)</span> (atau dikenal juga sebagai <span class="important-term">Good Offices Committee - GOC</span>) untuk menengahi konflik. KTN terdiri dari Australia (pilihan Indonesia), Belgia (pilihan Belanda), dan Amerika Serikat (pilihan bersama kedua negara).
+                </div>
+            </section>
+
+            <section id="renville">
+                <h2>Perundingan Renville</h2>
+                <p>Atas inisiatif KTN, perundingan antara Indonesia dan Belanda kembali digelar, yang dikenal sebagai <span class="important-term">Perundingan Renville</span>. Perundingan ini dimulai pada <span class="highlight-date">8 Desember 1947</span>, bertempat di atas kapal perang USS Renville yang berlabuh di Teluk Jakarta.</p>
+                <h3>Delegasi dan Lokasi Lanjutan</h3>
+                <ul>
+                    <li><strong>Delegasi Republik Indonesia:</strong> Dipimpin oleh <span class="highlight-name">Mr. Amir Syarifuddin</span>.</li>
+                    <li><strong>Delegasi Belanda:</strong> Diwakilkan oleh <span class="highlight-name">R. Abdulkadir Widjojoatmodjo</span>.</li>
+                </ul>
+                <p>Kelanjutan perundingan dilaksanakan di Kaliurang, Yogyakarta, pada <span class="highlight-date">13 Januari 1948</span>. Pertemuan ini dikenal dengan nama <span class="important-term">Notulen Kaliurang</span>, yang dihadiri oleh tokoh-tokoh penting seperti <span class="highlight-name">Sukarno</span>, <span class="highlight-name">Moh. Hatta</span>, <span class="highlight-name">Sutan Sjahrir</span>, dan <span class="highlight-name">Jenderal Soedirman</span>. Perjanjian Renville akhirnya ditandatangani pada <span class="highlight-date">17 Januari 1948</span>.</p>
+                <h3>Isi Perjanjian Renville</h3>
+                <ol class="resolution-list">
+                    <li>Terbentuknya <span class="important-term">Republik Indonesia Serikat (RIS)</span>.</li>
+                    <li>Republik Indonesia akan menjadi bagian konstituen dari RIS.</li>
+                    <li>Wilayah Republik Indonesia yang diakui oleh Belanda adalah <span class="important-term">Jawa Tengah, Yogyakarta, dan Sumatra</span>.</li>
+                    <li>Garis pemisah wilayah antara daerah kekuasaan Indonesia dan Belanda dikenal dengan nama <span class="important-term">“Garis Van Mook”</span>.</li>
+                </ol>
+                <h3>Konsekuensi Perjanjian Renville</h3>
+                <p>Perjanjian Renville membawa dampak yang sangat besar bagi Indonesia. Wilayah Republik Indonesia menjadi semakin sempit. Dari segi militer, sebagai bentuk kepatuhan kepada politik negara, <span class="highlight-name">Jenderal Soedirman</span> memerintahkan gencatan senjata kepada angkatan perang RI dan melakukan strategi <span class="important-term">hijrah</span>. Tentara Indonesia yang berada di Jawa Barat melakukan perjalanan ke daerah Jawa Tengah, yang dikenal sebagai peristiwa <span class="important-term">Long March Siliwangi</span>, melibatkan sekitar 30.000 pasukan Siliwangi.</p>
+                <p>Konsekuensi ini memunculkan banyak kekecewaan dan memicu perlawanan di berbagai daerah. Akibat dianggap gagal dalam mempertahankan kedaulatan wilayah, <span class="highlight-name">Perdana Menteri Amir Syarifuddin</span> mundur dari jabatannya pada <span class="highlight-date">23 Januari 1948</span>.</p>
+            </section>
+
+            <section id="gejolak-madiun">
+                <h2>Gejolak Politik dan Peristiwa Madiun 1948</h2>
+                <p>Hasil Perjanjian Renville menyebabkan kekecewaan di sebagian pihak dan menimbulkan gejolak politik internal di Indonesia. Faksi sosialis di parlemen, kecuali kelompok Sjahrir, menentang hasil perjanjian tersebut dan membentuk <span class="important-term">Front Demokrasi Rakyat (FDR)</span>. Setelah <span class="highlight-name">Musso</span>, salah satu pimpinan Partai Komunis Indonesia (PKI), kembali dari Moskow, FDR mendapatkan pemimpin baru dan PKI pun mendominasi kelompok ini.</p>
+                <p>Secara sepihak, FDR/PKI mendeklarasikan pembentukan pemerintahan Front Nasional di Madiun pada <span class="highlight-date">19 September 1948</span> pagi. Pemerintah RI langsung bereaksi tegas. Pada malam yang sama, <span class="highlight-name">Presiden Sukarno</span> menyerukan kepada rakyat untuk membantu pemerintah menumpas pemberontakan tersebut, meminta rakyat memilih antara Sukarno-Hatta atau Musso. Pemerintah RI segera melancarkan operasi militer untuk menumpas pemberontakan ini.</p>
+                <p>Keberhasilan RI dalam menumpas pemberontakan ini menjadi salah satu alasan penting bagi <span class="important-term">Amerika Serikat (AS)</span> untuk akhirnya membantu RI dalam menekan Belanda di meja perundingan. Bagi AS, tindakan tegas RI terhadap komunisme menunjukkan bahwa Indonesia tidak berpihak pada ideologi komunis, yang saat itu sedang diperangi oleh AS dalam konteks <span class="important-term">Perang Dingin</span>.</p>
+            </section>
+
+            <section id="agresi-militer-2">
+                <h2>Agresi Militer Kedua (19 Desember 1948)</h2>
+                <p>Tidak lama setelah RI berhasil mengatasi Peristiwa Madiun 1948, Belanda secara tiba-tiba membatalkan Persetujuan Renville. Pada <span class="highlight-date">18 Desember 1948</span>, <span class="highlight-name">Dr. Beel</span> memberitahukan kepada Delegasi Republik Indonesia dan KTN bahwa Belanda tidak mengakui dan tidak lagi terikat dengan persetujuan tersebut.</p>
+                <p>Keesokan harinya, pada <span class="highlight-date">Minggu pagi, 19 Desember 1948</span>, sekitar pukul 05.30, pesawat-pesawat pengebom milik Belanda jenis Mitchell B-25 dan Mustang mulai menyerang lapangan terbang Maguwo dan kemudian menguasai ibu kota Yogyakarta. Ini adalah <span class="important-term">Agresi Militer Kedua</span>. Kedaulatan Indonesia terancam karena Belanda akhirnya menangkap <span class="highlight-name">Presiden Sukarno</span> dan <span class="highlight-name">Wakil Presiden Moh. Hatta</span>.</p>
+                <h3>Pemerintahan Darurat Republik Indonesia (PDRI)</h3>
+                <p>Meskipun dalam situasi yang sangat genting, Belanda tidak bisa sepenuhnya menguasai Indonesia. Sebelum Belanda di bawah pimpinan <span class="highlight-name">Kolonel Van Langen</span> mencapai Gedung Agung dan menangkap pimpinan negara, kabinet telah memberikan mandat penting:</p>
+                <ul>
+                    <li>Mandat kepada <span class="highlight-name">Menteri Kemakmuran Syafruddin Prawiranegara</span> yang saat itu berada di Bukittinggi untuk membentuk <span class="important-term">Pemerintahan Darurat Republik Indonesia (PDRI)</span>.</li>
+                    <li>Mandat juga diberikan kepada <span class="highlight-name">A.A. Maramis</span> yang sedang berada di New Delhi untuk membentuk Pemerintahan Republik Indonesia di pengasingan.</li>
+                </ul>
+                <p><span class="highlight-name">Panglima Jenderal Soedirman</span> juga memerintahkan tentara Indonesia untuk melakukan penyusupan dan melancarkan serangan balik melalui <span class="important-term">perang gerilya</span>.</p>
+                <h3>Serangan Umum 1 Maret 1949</h3>
+                <p>Salah satu peristiwa penting lain pasca-penangkapan Presiden dan Wakil Presiden RI di Yogyakarta adalah <span class="important-term">Serangan Umum 1 Maret 1949</span>. Serangan ini dilancarkan untuk membuktikan kepada dunia internasional bahwa <span class="important-term">TNI sebagai badan negara masih aktif dan berdaya</span>. Hal ini terbukti dengan keberhasilan merebut Yogyakarta dari tangan Belanda selama 6 jam. Setelah melancarkan serangan singkat, pasukan TNI kemudian mundur dan kembali ke kantung-kantung gerilya mereka.</p>
+            </section>
+
+            <section id="roem-royen">
+                <h2>Dukungan Internasional dan Perundingan Roem-Royen</h2>
+                <p>Di tengah Agresi Militer Kedua, <span class="highlight-name">Menteri Luar Negeri PDRI A.A. Maramis</span>, yang berada di New Delhi, India, secara aktif menggalang solidaritas dengan negara-negara lain. <span class="highlight-name">Perdana Menteri India Pandit Jawaharlal Nehru</span> memprakarsai <span class="important-term">Konferensi Inter-Asia</span> sebagai bentuk solidaritas terhadap Republik Indonesia. Konferensi ini berlangsung hingga <span class="highlight-date">23 Januari 1949</span> dan dihadiri 19 perwakilan negara, termasuk Afganistan, Filipina, Burma, Sri Lanka, Mesir, Ethiopia, India, Irak, Libanon, Pakistan, Saudi Arabia, Suriah, dan Yaman. Konferensi ini menghasilkan beberapa usul resolusi kepada DK PBB untuk mendesak Belanda menghentikan seluruh operasi militernya serta mengadakan sidang khusus terkait pemecahan persoalan Indonesia-Belanda.</p>
+                <p>Berdasarkan Resolusi DK PBB, <span class="important-term">KTN diubah menjadi United Nations Commission for Indonesia (UNCI)</span> dengan kekuasaan yang lebih besar dan hak yang lebih mengikat.</p>
+                <h3>Persetujuan Roem-Royen (7 Mei 1949)</h3>
+                <p>UNCI menginisiasi perundingan RI-Belanda yang dikenal sebagai <span class="important-term">Persetujuan Roem-Royen</span>. Perundingan ini dipimpin oleh <span class="highlight-name">Mark Cochran (Amerika Serikat)</span> dan berlangsung di Hotel Des-Indies, Jakarta, menghasilkan persetujuan pada <span class="highlight-date">7 Mei 1949</span>.</p>
+                <h4>Delegasi</h4>
+                <ul>
+                    <li><strong>Delegasi Indonesia:</strong> Dipimpin oleh <span class="highlight-name">Mr. M. Roem</span>, didampingi <span class="highlight-name">Mr. Ali Sastroamidjojo</span>, <span class="highlight-name">Dr. Leimena</span>, <span class="highlight-name">Ir. Juanda</span>, <span class="highlight-name">Prof. Dr. Soepomo</span>, dan <span class="highlight-name">Mr. Latuharhary</span>, serta lima penasihat.</li>
+                    <li><strong>Delegasi Belanda:</strong> Dipimpin oleh <span class="highlight-name">Dr. J.H. van Royen</span>, didampingi <span class="highlight-name">Mr. N.S. Blom</span>, <span class="highlight-name">Mr. A.S. Jacob</span>, <span class="highlight-name">Dr. J. van Dervelde</span>, dan empat penasihat.</li>
+                </ul>
+                <h4>Poin-Poin Persetujuan Roem-Royen</h4>
+                <ol class="resolution-list">
+                    <li>Tentara Indonesia menghentikan segala <span class="semantic-error">perang gerilya</span>.</li>
+                    <li>Pihak Indonesia dan Belanda bekerjasama dalam mengembalikan <span class="semantic-error">perdamaian dan menjaga keamanan</span> serta ketertiban.</li>
+                    <li>Republik Indonesia turut serta dalam <span class="semantic-error">Konferensi Meja Bundar</span> di Belanda untuk mempercepat penyerahan kedaulatan yang sungguh dan utuh kepada Republik Indonesia Serikat tanpa syarat.</li>
+                </ol>
+            </section>
+
+            <section id="inter-indonesia">
+                <h2>Konferensi Inter-Indonesia</h2>
+                <p>Selain Konferensi Inter-Asia, di dalam negeri juga diadakan <span class="important-term">Konferensi Inter-Indonesia</span>. Konferensi ini menjadi momen penting bagi bangsa Indonesia sebagai simbol bersatunya kembali bangsa. Tujuannya adalah menyatukan visi dan misi bangsa Indonesia (Delegasi Republik dan Delegasi BFO) sebelum mengikuti Konferensi Meja Bundar.</p>
+                <ul>
+                    <li><strong>Tahap I:</strong> Digelar pada <span class="highlight-date">19 – 22 Juli 1949</span> di Hotel Tugu, Yogyakarta.</li>
+                    <li><strong>Tahap II:</strong> Digelar pada <span class="highlight-date">31 Juli – 2 Agustus 1949</span> di Jakarta.</li>
+                </ul>
+                <p>Pada sidang konferensi pertama, Ketua Sidang <span class="highlight-name">Moh. Hatta</span> menyampaikan bahwa Konferensi Inter-Indonesia ini adalah simbol persatuan dan kemauan rakyat Indonesia untuk melaksanakan cita-cita yang telah diperjuangkan berpuluh-puluh tahun, yaitu: Indonesia yang satu, yang tidak terpisah-pisah.</p>
+            </section>
+
+            <section id="kmb">
+                <h2>Konferensi Meja Bundar (KMB)</h2>
+                <p>Puncak dari perjuangan diplomasi pengakuan kedaulatan RI terjadi pada <span class="important-term">Konferensi Meja Bundar (KMB)</span> yang diselenggarakan di Den Haag, Belanda. Pelaksanaan KMB berlangsung dari <span class="highlight-date">23 Agustus sampai 2 November 1949</span>.</p>
+                <h3>Dampak Penting Penyelenggaraan KMB</h3>
+                <ol class="resolution-list">
+                    <li>Bentuk negara Indonesia berubah menjadi <span class="semantic-error">Republik Indonesia Serikat (RIS)</span>.</li>
+                    <li>Belanda mengakui kedaulatan Indonesia dalam bentuk RIS, penyerahannya akan dilakukan pada <span class="semantic-error">27 Desember 1949</span>.</li>
+                    <li>Kekuasaan atas <span class="semantic-error">Irian Barat</span> ditentukan setahun kemudian setelah pengakuan kedaulatan.</li>
+                    <li>Indonesia harus mengambil alih <span class="semantic-error">utang Belanda sebesar 4,3 miliar gulden</span>.</li>
+                    <li>Dalam hubungan kenegaraan, RIS dan Belanda sepakat akan membentuk <span class="semantic-error">Uni Indonesia-Belanda</span>.</li>
+                </ol>
+            </section>
+
+            <section id="pbb-diplomasi">
+                <h2>Dukungan Internasional Melalui PBB</h2>
+                <p>Upaya bangsa Indonesia untuk mendapatkan pengakuan kedaulatan secara penuh juga dilakukan melalui diplomasi dan perjuangan di PBB. Masalah Indonesia pertama kali dibahas di DK PBB pada <span class="highlight-date">25 Januari 1946</span> oleh delegasi Ukraina yang menuduh Inggris menggunakan pasukannya (termasuk tentara Gurkha dari India) untuk menekan gerakan demokrasi di Indonesia.</p>
+                <p>Pada <span class="highlight-date">14 Agustus 1947</span>, <span class="highlight-name">Sutan Sjahrir</span> menyampaikan pidatonya di DK PBB mengenai serangan militer Belanda dan menuntut penarikan pasukan Belanda. Ia meminta DK PBB membentuk komisi pengawas pelaksanaan resolusi. Meskipun ditentang perwakilan Belanda dan pendukungnya, pada <span class="highlight-date">25 Agustus 1947</span>, DK PBB menyetujui resolusi Australia dan Cina untuk membentuk <span class="important-term">Komisi Konsuler</span> di Jakarta, yang kemudian berkembang menjadi <span class="important-term">Komisi Tiga Negara (KTN)</span>.</p>
+                <p>Pada <span class="highlight-date">Oktober 1947</span>, <span class="highlight-name">Nico Palar</span> menyerahkan posisinya sebagai ketua delegasi Indonesia di PBB. Delegasi Indonesia dan Belanda kerap berhadapan di DK PBB, termasuk dalam pembahasan Agresi Militer II pada <span class="highlight-date">Desember 1948</span>. Agresi ini justru menjadi titik balik bagi Belanda, menyebabkan negara-negara yang tadinya mendukung Belanda berbalik arah, seperti Prancis yang mengutuk agresi dan meminta pembebasan tahanan politik RI.</p>
+                <p>DK PBB akhirnya mengeluarkan <span class="important-term">resolusi pada 28 Januari 1949</span> yang pada dasarnya meminta gencatan senjata dan penghentian pertempuran. KTN berganti nama menjadi <span class="important-term">United Nations Commission for Indonesia (UNCI)</span> yang bertugas mengawasi pelaksanaan resolusi, memediasi perundingan, dan memastikan bahwa Indonesia dan Belanda mematuhinya.</p>
+                <h3>Isi Resolusi DK PBB 28 Januari 1949 (S/1234)</h3>
+                <ol class="resolution-list">
+                    <li>Belanda diperintahkan untuk <span class="semantic-error">membebaskan para pimpinan RI</span> yang ditangkap selama Agresi Militer II dan mengembalikan mereka ke Yogyakarta.</li>
+                    <li>Merekomendasikan pembentukan <span class="semantic-error">Republik Indonesia Serikat (RIS)</span> yang bersifat federal, merdeka, dan berdaulat secepatnya.</li>
+                    <li>Belanda harus menyerahkan kedaulatan atas Indonesia kepada RIS sebelum <span class="semantic-error">1 Januari 1950</span>, atau selambat-lambatnya <span class="semantic-error">1 Juli 1950</span>.</li>
+                </ol>
+                <p>Perundingan antara Indonesia dan Belanda terus digelar sepanjang tahun 1949 di bawah pengawasan UNCI. Pada <span class="highlight-date">27 Desember 1949</span>, Belanda pada akhirnya "menyerahkan" kedaulatannya kepada RIS. Dalam perspektif Indonesia, peristiwa ini sering disebut sebagai <span class="important-term">pengakuan kedaulatan</span>.</p>
+                <p>Pada <span class="highlight-date">September 1950</span>, <span class="highlight-name">Nico Palar</span> memimpin upacara pengibaran bendera yang menandai Indonesia masuk ke Majelis Umum PBB sebagai <span class="important-term">negara anggota ke-60</span>. Republik Indonesia bukanlah bekas koloni Eropa pertama yang memperoleh kemerdekaan setelah Perang Dunia II, melainkan merupakan yang pertama menggunakan DK PBB sebagai platform dan alat untuk kampanye kemerdekaannya.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Sejarah untuk SMA/MA Kelas XII. Materi ini disarikan dan disajikan untuk tujuan pembelajaran.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

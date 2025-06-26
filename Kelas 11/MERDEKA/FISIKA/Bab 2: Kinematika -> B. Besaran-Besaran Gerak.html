@@ -1,0 +1,530 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisika Kelas XI - Bab 2: Kinematika - Besaran-Besaran Gerak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Mode Theme Colors */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            overflow: hidden; /* Ensures border-radius applies correctly to children */
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+            margin-bottom: 25px;
+            box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        section {
+            margin-bottom: 45px;
+            padding: 0 25px; /* Adjust padding for inner sections */
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            border-left: 8px solid var(--accent-green);
+            padding-left: 20px;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-primary);
+            font-size: 1.9em;
+            margin-top: 35px;
+            margin-bottom: 18px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        .concept-box {
+            background-color: #F7F9FC; /* A very light blue-grey for distinction */
+            border: 1px solid var(--border-divider);
+            border-left: 6px solid var(--semantic-info);
+            padding: 20px 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .concept-box strong {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .concept-box h4 {
+            color: var(--semantic-info);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .formula-box {
+            background-color: #E3F2FD; /* Light blue */
+            border: 1px solid var(--semantic-info);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 500;
+            color: var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+            position: relative; /* For the formula number */
+        }
+
+        .formula-box .numerator, .formula-box .denominator {
+            display: block;
+            padding: 5px 0;
+        }
+
+        .formula-box .fraction-line {
+            display: block;
+            border-top: 2px solid var(--primary-blue);
+            width: 70%;
+            margin: 8px auto;
+        }
+        .formula-box .equation-number {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+        }
+
+
+        .key-points {
+            background-color: #F1F8E9; /* Very light green */
+            border: 1px solid var(--accent-green);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 35px;
+        }
+
+        .key-points h4 {
+            color: var(--accent-green);
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 1px dashed var(--accent-green);
+            padding-bottom: 10px;
+        }
+
+        .key-points ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .key-points ul li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        .key-points ul li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+        }
+
+        .example-illustration {
+            background-color: #FFFDE7; /* Very light amber */
+            border: 1px solid var(--secondary-accent-amber);
+            border-left: 6px solid var(--secondary-accent-amber);
+            padding: 20px 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .example-illustration h4 {
+            color: var(--secondary-accent-amber);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .example-illustration ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+        .example-illustration ul li {
+            margin-bottom: 10px;
+        }
+
+
+        .graph-description {
+            background-color: #F0F4C3; /* Pale yellow-green */
+            border: 1px solid var(--accent-green);
+            padding: 20px 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        .graph-description h4 {
+            color: var(--accent-green);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .graph-description ul {
+            list-style-type: decimal;
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+        .graph-description ul li {
+            margin-bottom: 8px;
+        }
+        .graph-description code {
+            background-color: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Roboto Mono', monospace;
+            color: var(--text-primary);
+            font-size: 0.95em;
+            white-space: nowrap;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 45px;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-divider);
+            background-color: #F8F8F8; /* Light background for footer */
+            border-radius: 0 0 16px 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                padding: 10px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            header {
+                padding: 25px 15px;
+                border-radius: 0;
+                margin-bottom: 15px;
+            }
+
+            header h1 {
+                font-size: 2.4em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            section {
+                padding: 0 15px;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 2em;
+                padding-left: 15px;
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                font-size: 1.6em;
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+
+            .concept-box, .formula-box, .key-points, .example-illustration, .graph-description {
+                padding: 18px 20px;
+                margin: 20px 0;
+            }
+
+            .concept-box h4, .example-illustration h4, .graph-description h4, .key-points h4 {
+                font-size: 1.3em;
+                margin-bottom: 12px;
+            }
+
+            .formula-box {
+                font-size: 1.1em;
+                padding: 20px;
+            }
+
+            .key-points ul li {
+                padding-left: 25px;
+                font-size: 1em;
+            }
+
+            footer {
+                padding: 15px;
+                margin-top: 30px;
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+                letter-spacing: 1px;
+            }
+            h2 {
+                font-size: 1.7em;
+                padding-left: 10px;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+            .concept-box, .formula-box, .key-points, .example-illustration, .graph-description {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            .formula-box {
+                font-size: 1em;
+            }
+            .formula-box .equation-number {
+                bottom: 5px;
+                right: 10px;
+                font-size: 0.8em;
+            }
+            .key-points ul li {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BAB 2: KINEMATIKA</h1>
+            <p>Memahami Gerak Tanpa Memperhatikan Penyebabnya</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>B. Besaran-Besaran Gerak</h2>
+                <p>Dalam bab kinematika, kita akan mendalami bagaimana objek bergerak tanpa terlalu fokus pada mengapa mereka bergerak. Untuk itu, penting untuk mengerti besaran-besaran fisis yang digunakan untuk mendeskripsikan pergerakan. Besaran-besaran ini adalah fondasi untuk menganalisis dan memodelkan berbagai jenis gerak.</p>
+
+                <h3>3. Perpindahan dan Jarak</h3>
+                <p>Meskipun dalam percakapan sehari-hari istilah "jarak" dan "perpindahan" sering digunakan secara bergantian, dalam fisika keduanya adalah konsep yang sangat berbeda dan krusial untuk dipahami.</p>
+
+                <div class="concept-box">
+                    <h4>Mengenal <strong>Jarak</strong></h4>
+                    <p><strong>Jarak</strong> adalah <strong>panjang total lintasan yang ditempuh</strong> oleh suatu benda selama bergerak, tanpa memperhatikan arah pergerakannya. Jarak selalu merupakan nilai positif atau nol. Ini adalah besaran <strong>skalar</strong>, yang berarti hanya memiliki besar (nilai numerik) tanpa arah.</p>
+                    <p><em>Contoh sederhana:</em> Jika Anda berjalan 10 meter ke depan, lalu berbalik dan berjalan 5 meter ke belakang, total jarak yang Anda tempuh adalah 10 meter + 5 meter = 15 meter.</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>Mengenal <strong>Perpindahan</strong></h4>
+                    <p><strong>Perpindahan</strong> adalah <strong>perubahan posisi suatu benda dari posisi awal ke posisi akhirnya</strong>. Perpindahan diukur sebagai garis lurus terpendek dari titik awal ke titik akhir, dan arahnya sangat penting. Ini adalah besaran <strong>vektor</strong>, yang berarti memiliki besar dan juga arah.</p>
+                    <p><em>Contoh sederhana:</em> Mengacu pada contoh di atas, jika Anda berjalan 10 meter ke depan (positif) lalu 5 meter ke belakang (negatif), perpindahan Anda adalah +10 meter + (-5 meter) = +5 meter dari posisi awal (yaitu, 5 meter ke depan dari titik awal). Jika Anda berjalan dalam lingkaran dan kembali ke titik awal, perpindahan Anda adalah nol, meskipun Anda telah menempuh jarak tertentu.</p>
+                    <p style="font-style: italic; color: var(--text-tertiary);">Kutipan kunci: “Perpindahan adalah perubahan posisi awal dan posisi akhir. Jarak adalah panjang lintasan yang ditempuh.”</p>
+                </div>
+
+                <div class="example-illustration">
+                    <h4>Ilustrasi: Semut Menjelajahi Lantai</h4>
+                    <p>Bayangkan seekor semut di lantai ingin mencapai sebutir gula. Semut mungkin berjalan melingkar, berbelok-belok, atau menaiki rintangan untuk mencapainya. Lintasan berkelok-kelok yang dilalui semut ini adalah <strong>jarak</strong> yang ia tempuh.</p>
+                    <p>Namun, jika kita tarik garis lurus dari titik awal semut (tempat ia mulai) langsung ke posisi gula (titik akhir), garis lurus inilah yang disebut <strong>perpindahan</strong>. Perpindahan hanya fokus pada posisi awal dan akhir, tidak pada jalur yang diambil.</p>
+                    <p style="font-size: 0.95em; color: var(--text-tertiary);">Ini menunjukkan bahwa jarak bisa lebih besar dari perpindahan, dan perpindahan bisa nol meskipun jarak tidak nol.</p>
+                </div>
+
+                <div class="graph-description">
+                    <h4>Menganalisis Gerak dengan Grafik Posisi terhadap Waktu</h4>
+                    <p>Grafik posisi terhadap waktu adalah representasi visual yang sangat berguna untuk memahami gerak suatu benda. Sumbu vertikal mewakili posisi benda (<code>x</code>) dan sumbu horizontal mewakili waktu (<code>t</code>).</p>
+                    <ul>
+                        <li><strong>Gerak ke Arah Positif (e.g., Timur):</strong> Ditunjukkan oleh kemiringan (gradien) positif pada grafik. Ini berarti posisi benda bertambah seiring waktu.</li>
+                        <li><strong>Gerak ke Arah Negatif (e.g., Barat):</strong> Ditunjukkan oleh kemiringan (gradien) negatif pada grafik. Ini berarti posisi benda berkurang seiring waktu.</li>
+                        <li><strong>Benda Diam (Tidak Bergerak):</strong> Ditunjukkan oleh garis horizontal (gradien nol) pada grafik. Posisi benda tidak berubah seiring waktu.</li>
+                        <li><strong>Perubahan Arah Gerak:</strong> Terjadi pada titik puncak atau lembah pada grafik. Di titik ini, gradien grafik berubah tanda (dari positif ke negatif atau sebaliknya), menunjukkan bahwa benda berhenti sesaat dan kemudian bergerak ke arah yang berlawanan.</li>
+                    </ul>
+                    <p><strong>Menentukan Jarak dan Perpindahan dari Grafik:</strong></p>
+                    <ul>
+                        <li>Untuk <strong>Jarak Total</strong>: Jumlahkan nilai absolut dari setiap perubahan posisi di setiap segmen waktu. Jika posisi berubah dari <code>x1</code> ke <code>x2</code>, jarak yang ditempuh adalah <code>|x2 - x1|</code>. Lakukan ini untuk semua segmen dan jumlahkan.</li>
+                        <li>Untuk <strong>Perpindahan Total</strong>: Cukup cari posisi akhir total (<code>x_akhir</code>) dan kurangi dengan posisi awal total (<code>x_awal</code>), yaitu <code>&Delta;x = x_akhir - x_awal</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="key-points">
+                    <h4>Ringkasan Jarak & Perpindahan:</h4>
+                    <ul>
+                        <li>Jarak adalah skalar (hanya besar), selalu positif.</li>
+                        <li>Perpindahan adalah vektor (besar dan arah), bisa positif, negatif, atau nol.</li>
+                        <li>Perpindahan nol berarti benda kembali ke titik awal.</li>
+                        <li>Besar perpindahan &le; Jarak.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>4. Kecepatan dan Kelajuan</h3>
+                <p>Setelah memahami "seberapa jauh" benda bergerak (jarak dan perpindahan), kini kita akan membahas "seberapa cepat" benda bergerak, yang diuraikan oleh kecepatan dan kelajuan.</p>
+
+                <div class="concept-box">
+                    <h4>Mengenal <strong>Kelajuan</strong></h4>
+                    <p><strong>Kelajuan</strong> (<em>speed</em>) adalah ukuran seberapa cepat suatu benda bergerak, diukur sebagai <strong>jarak yang ditempuh per satuan waktu</strong>. Kelajuan adalah besaran <strong>skalar</strong>. Kelajuan rata-rata dihitung dari total jarak dibagi dengan total waktu yang dibutuhkan.</p>
+                    <div class="formula-box">
+                        Kelajuan rata-rata =
+                        <span class="numerator">Jarak Total</span>
+                        <span class="fraction-line"></span>
+                        <span class="denominator">Selang Waktu Total</span>
+                    </div>
+                    <p>Satuan SI untuk kelajuan adalah meter per detik (m/s), meskipun km/jam juga sering digunakan.</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>Mengenal <strong>Kecepatan</strong></h4>
+                    <p><strong>Kecepatan</strong> (<em>velocity</em>) adalah ukuran seberapa cepat suatu benda bergerak <strong>dan ke arah mana</strong> ia bergerak. Kecepatan didefinisikan sebagai <strong>perpindahan per satuan waktu</strong>. Kecepatan adalah besaran <strong>vektor</strong>.</p>
+                    <div class="formula-box">
+                        Kecepatan rata-rata =
+                        <span class="numerator">Perpindahan (&Delta;x)</span>
+                        <span class="fraction-line"></span>
+                        <span class="denominator">Selang Waktu (&Delta;t)</span>
+                        <span class="equation-number">(2.1)</span>
+                    </div>
+                    <p>Satuan SI untuk kecepatan juga meter per detik (m/s). Arah kecepatan sama dengan arah perpindahan.</p>
+                </div>
+
+                <div class="key-points">
+                    <h4>Perbedaan Krusial: Kecepatan & Kelajuan:</h4>
+                    <ul>
+                        <li><strong>Kelajuan</strong> hanya fokus pada "seberapa cepat" (misal: "Mobil melaju 80 km/jam").</li>
+                        <li><strong>Kecepatan</strong> fokus pada "seberapa cepat DAN ke arah mana" (misal: "Mobil bergerak 80 km/jam ke utara").</li>
+                        <li>Kecepatan dapat bernilai positif atau negatif (menunjukkan arah), sedangkan kelajuan selalu positif.</li>
+                        <li>Jika suatu objek bergerak dan kembali ke titik awal, kelajuan rata-ratanya bisa tinggi, tetapi kecepatan rata-ratanya adalah nol (karena perpindahan totalnya nol).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>5. Gerak Relatif</h3>
+                <p>Seringkali kita menganggap gerak itu mutlak, namun dalam fisika, gerak sejatinya bersifat <strong>relatif</strong>. Ini berarti bahwa deskripsi gerak suatu benda sangat tergantung pada sudut pandang atau <strong>kerangka acuan</strong> dari mana pengamatan dilakukan.</p>
+
+                <div class="concept-box">
+                    <h4>Definisi <strong>Kerangka Acuan</strong></h4>
+                    <p><strong>Kerangka acuan</strong> adalah titik atau sistem referensi yang digunakan untuk mengukur posisi dan pergerakan suatu benda. Tanpa kerangka acuan, mendefinisikan gerak menjadi tidak bermakna. Pilihan kerangka acuan akan secara langsung mempengaruhi bagaimana kita mengamati dan mengukur gerak.</p>
+                    <p style="font-style: italic; color: var(--text-tertiary);">Kutipan kunci: “Patokan disebut sebagai kerangka acuan.”</p>
+                </div>
+
+                <div class="example-illustration">
+                    <h4>Ilustrasi Gerak Relatif: Pengamat yang Berbeda</h4>
+                    <p>Pertimbangkan situasi berikut: Sebuah motor bergerak 45 km/jam ke barat, dan sebuah bus bergerak 50 km/jam ke barat. Seorang ibu dibonceng di motor, dan sang bapak mengendarai motor tersebut.</p>
+                    <ul>
+                        <li><strong>Menurut Bapak yang Mengendarai Motor (Kerangka Acuan: Motor):</strong> Ibu yang dibonceng terlihat <strong>diam atau tidak bergerak</strong> relatif terhadap bapaknya. Ini karena posisi ibu tidak berubah relatif terhadap bapak yang berada dalam kerangka acuan yang sama.</li>
+                        <li><strong>Menurut Supir Bus (Kerangka Acuan: Bus):</strong> Ibu yang dibonceng di motor akan terlihat <strong>bergerak</strong>. Karena motor bergerak lebih lambat dari bus ke arah yang sama, supir bus akan melihat ibu bergerak menjauh (atau bus bergerak maju lebih cepat dari motor) dengan kecepatan relatif sebesar 50 km/jam - 45 km/jam = 5 km/jam. Artinya, ibu terlihat bergerak 5 km/jam ke timur relatif terhadap bus.</li>
+                        <li><strong>Menurut Pengamat di Pinggir Jalan (Kerangka Acuan: Jalan):</strong> Baik motor, bus, ibu, maupun bapak, semuanya terlihat <strong>bergerak</strong> dengan kecepatan masing-masing yang diberikan (45 km/jam dan 50 km/jam ke barat).</li>
+                    </ul>
+                    <p style="font-style: italic; color: var(--text-tertiary);">Kutipan kunci: “Gerak bersifat relatif karena ditentukan oleh kerangka acuan yang mengamati fenomena tersebut.”</p>
+                </div>
+
+                <div class="key-points">
+                    <h4>Konsep Penting Gerak Relatif:</h4>
+                    <ul>
+                        <li>Tidak ada "gerak absolut"; semua gerak diukur relatif terhadap sesuatu.</li>
+                        <li>Perubahan kerangka acuan akan mengubah deskripsi kecepatan dan posisi suatu benda.</li>
+                        <li>Penting untuk selalu jelas tentang kerangka acuan yang digunakan saat menganalisis gerak.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Materi Fisika Kelas XI | Disesuaikan dari Kurikulum Merdeka</p>
+            <p style="font-size: 0.85em; color: var(--text-tertiary);">Referensi Utama: KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI REPUBLIK INDONESIA, 2022. Fisika untuk SMA/MA Kelas XI. Penulis: Marianna Magdalena Radjawane, Alvius Tinambunan, Lim Suntar Jono.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

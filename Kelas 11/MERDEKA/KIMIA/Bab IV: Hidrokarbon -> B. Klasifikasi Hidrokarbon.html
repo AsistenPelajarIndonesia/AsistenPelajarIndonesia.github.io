@@ -1,0 +1,351 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B. Klasifikasi Hidrokarbon - Kimia Kelas XI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--text-primary);
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-green);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-left: 5px solid var(--accent-green);
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            font-size: 1.5em;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Section Styling */
+        .section-card {
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-box {
+            background-color: #F0F8FF; /* Light blue background */
+            border-left: 6px solid var(--semantic-info);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+        }
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+        .highlight-box strong {
+            color: var(--text-primary);
+        }
+
+        /* Classification Cards */
+        .classification-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .classification-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 550px;
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .classification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .classification-card.aliphatic::before {
+            background: linear-gradient(90deg, var(--semantic-info), var(--primary-blue));
+        }
+
+        .classification-card.aromatic::before {
+            background: linear-gradient(90deg, var(--accent-green), var(--secondary-accent-amber));
+        }
+
+        .classification-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .classification-card h4 {
+            margin-top: 15px; /* Space after the colored bar */
+            font-size: 1.7em;
+            color: var(--primary-blue);
+        }
+        .classification-card p {
+            font-size: 1.05em;
+            color: var(--text-secondary);
+        }
+
+        /* Footer or concluding remarks */
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.5em;
+            }
+            h4 {
+                font-size: 1.3em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .classification-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .classification-card {
+                min-width: unset;
+                width: 90%;
+                padding: 25px;
+            }
+            .section-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            h4 {
+                font-size: 1.1em;
+            }
+            .section-card {
+                padding: 15px;
+            }
+            .classification-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab IV: Hidrokarbon</h1>
+        <h2>B. Klasifikasi Hidrokarbon</h2>
+
+        <div class="section-card">
+            <h3>Apa Itu Hidrokarbon?</h3>
+            <p>
+                Dalam dunia kimia organik, <strong>hidrokarbon</strong> adalah kelompok senyawa organik paling fundamental dan sederhana. Dinamakan demikian karena senyawa ini hanya tersusun dari dua jenis atom: <strong>hidrogen (H)</strong> dan <strong>karbon (C)</strong>. Meskipun komposisinya terlihat sederhana, keragaman struktur dan sifat hidrokarbon di alam sangatlah luas, menjadikannya tulang punggung bagi jutaan senyawa organik lainnya.
+            </p>
+            <p>
+                Keunikan atom karbon untuk membentuk ikatan dengan empat atom lain (baik karbon maupun atom lainnya) serta kemampuannya untuk berikatan sesama karbon dalam rantai panjang, rantai bercabang, maupun cincin, adalah alasan utama di balik keragaman ini. Ikatan antar atom karbon bisa berupa ikatan tunggal, rangkap dua, atau rangkap tiga, yang semakin menambah variasi struktur.
+            </p>
+            <div class="highlight-box">
+                <p><strong>Contoh Kehidupan Sehari-hari:</strong></p>
+                <ul>
+                    <li><strong>Bahan Bakar:</strong> Bensin, solar, gas alam, LPG (campuran alkana).</li>
+                    <li><strong>Asetilena (Gas Karbit):</strong> Digunakan dalam pengelasan dan sebagai bahan bakar lampu karbit.</li>
+                    <li><strong>Lilin:</strong> Sebagian besar tersusun dari hidrokarbon rantai panjang (parafin).</li>
+                    <li><strong>Styrofoam:</strong> Polimer yang terbuat dari stirena, yaitu hidrokarbon aromatik.</li>
+                    <li><strong>Karet Alam:</strong> Merupakan polimer dari isoprena, unit hidrokarbon tak jenuh.</li>
+                    <li><strong>Berbagai Plastik:</strong> Banyak plastik seperti polietena dan polipropena adalah polimer dari hidrokarbon.</li>
+                </ul>
+                <p>
+                    Dari energi yang menggerakkan kendaraan hingga bahan kemasan dan mainan, hidrokarbon memainkan peran vital dalam kehidupan modern kita.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h3>Penggolongan Utama Hidrokarbon</h3>
+            <p>
+                Untuk memudahkan studi dan pemahaman sifat-sifatnya, hidrokarbon secara umum diklasifikasikan menjadi dua golongan besar berdasarkan struktur dan sifat kimianya: <strong>Hidrokarbon Alifatik</strong> dan <strong>Hidrokarbon Aromatik</strong>.
+            </p>
+
+            <div class="classification-grid">
+                <div class="classification-card aliphatic">
+                    <h4>Hidrokarbon Alifatik</h4>
+                    <p>
+                        Hidrokarbon alifatik adalah senyawa hidrokarbon yang memiliki <strong>rantai karbon terbuka (asiklik)</strong>, atau jika rantainya tertutup membentuk cincin, maka cincin tersebut <strong>tidak memiliki sifat aromatisitas</strong>. Golongan ini sangat luas dan mencakup sebagian besar hidrokarbon yang kita kenal.
+                    </p>
+                    <ul>
+                        <li><strong>Rantai Terbuka (Asiklik):</strong>
+                            <ul>
+                                <li><strong>Alkana:</strong> Hidrokarbon jenuh dengan hanya ikatan tunggal C-C (misal: metana, etana, propana).</li>
+                                <li><strong>Alkena:</strong> Hidrokarbon tak jenuh dengan setidaknya satu ikatan rangkap dua C=C (misal: etena, propena).</li>
+                                <li><strong>Alkuna:</strong> Hidrokarbon tak jenuh dengan setidaknya satu ikatan rangkap tiga C≡C (misal: etuna, propuna).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rantai Tertutup (Siklik) non-Aromatik:</strong>
+                            <ul>
+                                <li><strong>Sikloalkana:</strong> Hidrokarbon jenuh membentuk cincin (misal: siklopropana, sikloheksana).</li>
+                                <li><strong>Sikloalkena/Sikloalkuna:</strong> Hidrokarbon tak jenuh membentuk cincin (misal: sikloheksena).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>
+                        Sifat kimia hidrokarbon alifatik sangat bervariasi tergantung pada jenis ikatan (tunggal, rangkap, rangkap tiga) yang ada dalam strukturnya.
+                    </p>
+                </div>
+
+                <div class="classification-card aromatic">
+                    <h4>Hidrokarbon Aromatik</h4>
+                    <p>
+                        Hidrokarbon aromatik adalah senyawa hidrokarbon yang memiliki <strong>struktur cincin yang stabil dan memenuhi aturan aromatisitas</strong>. Konsep aromatisitas ini lebih dari sekadar memiliki cincin; ia melibatkan konjugasi ikatan rangkap dan aturan jumlah elektron pi (Aturan Hückel, 4n+2 elektron pi).
+                    </p>
+                    <ul>
+                        <li><strong>Cincin Benzena:</strong> Contoh paling umum adalah benzena (C₆H₆) dengan cincin beranggota enam atom karbon yang terkonjugasi secara penuh.</li>
+                        <li><strong>Derivat Benzena:</strong> Senyawa yang memiliki satu atau lebih cincin benzena atau cincin aromatik lainnya.</li>
+                        <li><strong>Sifat Khas:</strong> Hidrokarbon aromatik memiliki stabilitas yang luar biasa karena delokalisasi elektron pi di seluruh cincin. Hal ini membuat mereka memiliki reaktivitas yang berbeda dari hidrokarbon tak jenuh alifatik.</li>
+                    </ul>
+                    <div class="highlight-box" style="background-color: #FFF3E0; border-left-color: var(--secondary-accent-amber);">
+                        <p><strong>Catatan Penting:</strong> Pembahasan lebih mendalam mengenai konsep aromatisitas dan Aturan Hückel akan dibahas di bagian berikutnya atau bab yang lebih lanjut. Untuk saat ini, penting untuk memahami bahwa hidrokarbon aromatik adalah kategori khusus yang dibedakan oleh karakteristik cincinnya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>Materi ini merupakan bagian dari Bab IV: Hidrokarbon untuk Kimia Kelas XI SMA.</p>
+            <p>&copy; 2024 Pembelajaran Kimia Interaktif. Hak Cipta Dilindungi Undang-Undang.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

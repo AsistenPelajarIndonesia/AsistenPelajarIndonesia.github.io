@@ -1,0 +1,405 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab V: Termokimia - Persamaan Termokimia</title>
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --primary-blue-rgb: 25, 118, 210; /* RGB values for primary-blue */
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Main Container for content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--accent-green);
+            border-bottom: 3px solid var(--accent-green);
+            padding-bottom: 0.5em;
+            margin-bottom: 1.5em;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        /* Key Terms & Highlights */
+        .key-term {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .highlight-positive {
+            font-weight: bold;
+            color: var(--semantic-success);
+        }
+
+        .highlight-negative {
+            font-weight: bold;
+            color: var(--semantic-error);
+        }
+
+        /* Info Boxes / Callouts */
+        .info-box {
+            background-color: rgba(var(--primary-blue-rgb), 0.05); /* Light tint of primary blue */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07);
+        }
+        .info-box p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+        .info-box strong {
+            color: var(--primary-blue);
+        }
+
+        /* Examples Section */
+        .example-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .example-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .example-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .example-card .reaction {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background-color: #f0f0f0; /* Light gray for code block */
+            padding: 15px;
+            border-radius: 7px;
+            margin-bottom: 20px;
+            word-break: break-all;
+            color: var(--text-primary);
+            font-size: 1.1em;
+            overflow-x: auto; /* For long equations on small screens */
+        }
+
+        .example-card .delta-h {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: var(--primary-blue);
+        }
+
+        .example-card .delta-h.positive {
+            color: var(--semantic-success);
+        }
+
+        .example-card .delta-h.negative {
+            color: var(--semantic-error);
+        }
+
+        .example-card p {
+            font-size: 0.98em;
+            color: var(--text-secondary);
+            margin-top: 15px;
+        }
+
+        /* Details/Summary for interactivity */
+        details {
+            margin-bottom: 20px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fefefe;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        summary {
+            padding: 18px 25px;
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+            transition: background-color 0.2s ease-in-out;
+            position: relative;
+            font-size: 1.1em;
+        }
+
+        summary:hover {
+            background-color: var(--semantic-info);
+        }
+
+        /* Custom disclosure triangle */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::after {
+            content: '\25B6'; /* Right-pointing triangle */
+            position: absolute;
+            right: 25px;
+            font-size: 1.2em;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(90deg); /* Down-pointing triangle when open */
+        }
+        details > div {
+            padding: 20px 25px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-divider);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 15px;
+                box-shadow: none; /* Lighter on small screens */
+            }
+            h1 {
+                font-size: 2.2em;
+                padding-bottom: 0.4em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            .example-section {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+                gap: 20px;
+            }
+            .example-card {
+                padding: 20px;
+            }
+            summary {
+                padding: 15px 20px;
+                font-size: 1em;
+            }
+            summary::after {
+                right: 20px;
+            }
+            details > div {
+                padding: 15px 20px;
+            }
+            .info-box {
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+                padding-bottom: 0.3em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .example-card .reaction {
+                font-size: 1em;
+                padding: 10px;
+            }
+            .example-card p {
+                font-size: 0.9em;
+            }
+            summary {
+                padding: 12px 15px;
+            }
+            summary::after {
+                right: 15px;
+                font-size: 1em;
+            }
+            details > div {
+                padding: 12px 15px;
+            }
+            .info-box {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>F. Persamaan Termokimia</h1>
+
+        <p>Dalam studi kimia, khususnya cabang termokimia, kita tidak hanya menelusuri bagaimana zat-zat bereaksi dan berubah, tetapi juga bagaimana energi berperilaku selama proses tersebut. Inilah mengapa konsep <span class="key-term">Persamaan Termokimia</span> menjadi sangat fundamental.</p>
+
+        <div class="info-box">
+            <p><strong>Definisi:</strong> <span class="key-term">Persamaan termokimia</span> adalah representasi lengkap dari suatu reaksi kimia yang tidak hanya menunjukkan reaktan dan produk, tetapi juga secara eksplisit menyertakan <span class="key-term">jumlah kalor (energi) yang terlibat</span> dalam reaksi. Jumlah kalor ini secara spesifik dilambangkan dengan <span class="key-term">ΔH (Perubahan Entalpi)</span>, yang memiliki satuan energi per mol (misalnya kJ/mol).</p>
+        </div>
+
+        <h2>Memahami Perubahan Entalpi (ΔH)</h2>
+        <p>Nilai ΔH adalah indikator kunci yang mengungkapkan apakah suatu reaksi melepaskan energi ke lingkungan atau justru menyerap energi dari lingkungan. Tanda (positif atau negatif) pada nilai ΔH memiliki makna yang sangat penting:</p>
+
+        <details>
+            <summary>Reaksi Eksotermik: Melepaskan Kalor (ΔH Negatif)</summary>
+            <div>
+                <p>Ketika suatu reaksi kimia <span class="highlight-negative">melepaskan kalor</span> dari sistem (yaitu, zat-zat yang bereaksi) ke lingkungan sekitarnya, reaksi tersebut diklasifikasikan sebagai <span class="key-term">reaksi eksotermik</span>. Dalam proses ini, energi total produk lebih rendah dibandingkan energi total reaktan, dan selisih energi ini dilepaskan sebagai panas.</p>
+                <p><strong>Ciri utama:</strong> Nilai ΔH untuk reaksi eksotermik selalu <span class="highlight-negative">negatif</span> (ΔH < 0). Contoh umum adalah proses pembakaran, di mana panas dihasilkan dan dirasakan oleh kita.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Reaksi Endotermik: Menyerap Kalor (ΔH Positif)</summary>
+            <div>
+                <p>Sebaliknya, jika suatu reaksi kimia <span class="highlight-positive">menyerap kalor</span> dari lingkungan ke dalam sistem, reaksi ini disebut <span class="key-term">reaksi endotermik</span>. Dalam kasus ini, energi total produk lebih tinggi daripada energi total reaktan, dan energi tambahan yang diperlukan diserap dari lingkungan.</p>
+                <p><strong>Ciri utama:</strong> Nilai ΔH untuk reaksi endotermik selalu <span class="highlight-positive">positif</span> (ΔH > 0). Contohnya adalah peleburan es atau fotosintesis, yang membutuhkan penyerapan energi (panas atau cahaya) dari lingkungan.</p>
+            </div>
+        </details>
+
+        <h2>Prinsip-Prinsip Persamaan Termokimia</h2>
+
+        <p>Selain menunjukkan reaktan, produk, dan ΔH, ada beberapa aturan penting yang mengatur penulisan dan interpretasi persamaan termokimia:</p>
+
+        <div class="info-box">
+            <h3>1. Koefisien Reaksi dan Jumlah Mol</h3>
+            <p>Dalam persamaan termokimia, koefisien stoikiometri tidak hanya menunjukkan perbandingan molar antar zat, tetapi juga secara langsung merepresentasikan <span class="key-term">jumlah mol</span> zat yang terlibat dalam perubahan entalpi yang dicantumkan. Oleh karena itu, koefisien dalam persamaan termokimia <span class="key-term">diperbolehkan berupa pecahan</span> (misalnya 1/2, 3/2), karena energi selalu berkaitan dengan jumlah spesifik zat.</p>
+        </div>
+        <div class="info-box">
+            <h3>2. Pembalikan Reaksi Mengubah Tanda ΔH</h3>
+            <p>Jika arah suatu reaksi dibalik—artinya produk menjadi reaktan dan reaktan menjadi produk—maka nilai numerik ΔH tetap sama, tetapi <span class="key-term">tandanya harus dibalik</span>. Misalnya, jika pembentukan zat A dari B adalah eksotermik (ΔH negatif), maka dekomposisi A kembali menjadi B akan menjadi endotermik (ΔH positif) dengan besaran yang sama.</p>
+        </div>
+        <div class="info-box">
+            <h3>3. Skala Koefisien Mempengaruhi Nilai ΔH Secara Proporsional</h3>
+            <p>Perubahan entalpi (ΔH) adalah besaran ekstensif, yang berarti nilainya bergantung pada jumlah zat yang bereaksi. Jika koefisien stoikiometri dalam persamaan termokimia dikalikan dengan suatu faktor (misalnya 2 atau 0.5), maka <span class="key-term">nilai ΔH juga harus dikalikan dengan faktor yang sama</span>.</p>
+        </div>
+
+        <h2>Contoh Persamaan Termokimia yang Umum</h2>
+        <p>Untuk lebih memperjelas konsep di atas, mari kita telaah beberapa contoh persamaan termokimia dari buku Anda:</p>
+
+        <div class="example-section">
+            <div class="example-card">
+                <h4>Reaksi 1: Pembentukan Fosfor Bromida</h4>
+                <div class="reaction">2P(s) + 3Br₂(l) &rarr; 2PBr₃(g)</div>
+                <span class="delta-h negative">ΔH = &minus;242 kJ</span>
+                <p><strong>Penjelasan:</strong> Reaksi antara <span class="key-term">2 mol</span> fosforus padat (P(s)) dengan <span class="key-term">3 mol</span> bromin cair (Br₂(l)) menghasilkan <span class="key-term">2 mol</span> fosfor tribromida gas (PBr₃(g)). Dalam proses ini, sistem <span class="highlight-negative">melepaskan kalor sebesar 242 kJ</span> ke lingkungan. Tanda negatif menunjukkan bahwa ini adalah reaksi eksotermik.</p>
+            </div>
+
+            <div class="example-card">
+                <h4>Reaksi 2: Skala Reaksi Fosfor Bromida</h4>
+                <div class="reaction">P(s) + &frac32;Br₂(l) &rarr; PBr₃(g)</div>
+                <span class="delta-h negative">ΔH = &minus;121 kJ</span>
+                <p><strong>Penjelasan:</strong> Perhatikan bahwa persamaan ini adalah <span class="key-term">setengah</span> dari reaksi pertama (semua koefisien dibagi 2). Sesuai prinsip skala, nilai ΔH juga menjadi <span class="key-term">setengah</span> dari &minus;242 kJ, yaitu <span class="highlight-negative">&minus;121 kJ</span>. Ini menegaskan bahwa ΔH bersifat proporsional terhadap jumlah mol zat yang terlibat.</p>
+            </div>
+
+            <div class="example-card">
+                <h4>Reaksi 3: Penguapan Air (Endotermik)</h4>
+                <div class="reaction">H₂O(l) &rarr; H₂O(g)</div>
+                <span class="delta-h positive">ΔH = +40,7 kJ.mol⁻¹</span>
+                <p><strong>Penjelasan:</strong> Proses <span class="key-term">penguapan 1 mol air</span> dari fase cair menjadi gas membutuhkan (menyerap) kalor sebesar <span class="highlight-positive">40,7 kJ</span>. Tanda positif (+) dengan jelas menunjukkan bahwa ini adalah proses endotermik, di mana energi diserap dari lingkungan untuk mengubah fase air.</p>
+            </div>
+
+            <div class="example-card">
+                <h4>Reaksi 4: Kondensasi Air (Eksotermik)</h4>
+                <div class="reaction">H₂O(g) &rarr; H₂O(l)</div>
+                <span class="delta-h negative">ΔH = &minus;40,7 kJ.mol⁻¹</span>
+                <p><strong>Penjelasan:</strong> Ini adalah <span class="key-term">kebalikan</span> dari reaksi penguapan air di atas. Ketika <span class="key-term">1 mol uap air mengembun</span> (berkondensasi) menjadi air cair, kalor <span class="highlight-negative">dilepaskan</span>. Nilai ΔH memiliki besaran yang sama dengan reaksi kebalikannya, tetapi tandanya berubah menjadi negatif (&minus;), mencerminkan sifat eksotermik dari proses kondensasi.</p>
+            </div>
+        </div>
+
+        <p>Dengan menguasai konsep persamaan termokimia, Anda akan mampu menganalisis dan memprediksi perubahan energi yang terjadi dalam berbagai reaksi kimia, yang merupakan dasar penting dalam studi termodinamika.</p>
+    </div>
+</body>
+</html>
+```

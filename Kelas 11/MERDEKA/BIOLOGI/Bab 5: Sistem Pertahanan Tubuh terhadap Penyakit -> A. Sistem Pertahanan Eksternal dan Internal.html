@@ -1,0 +1,477 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pertahanan Tubuh terhadap Penyakit: Eksternal dan Internal</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            border-left: 5px solid var(--accent-green);
+            padding-left: 0.8rem;
+            margin-left: 0;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            color: var(--text-tertiary);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            color: var(--text-tertiary);
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        .callout {
+            background-color: #e3f2fd; /* Light blue from primary_blue family */
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .callout-icon {
+            font-size: 1.8rem;
+            margin-right: 0.8rem;
+            color: var(--primary-blue);
+            background-color: var(--background-canvas);
+            padding: 0.3rem 0.6rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .callout-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .table-container {
+            margin: 2rem 0;
+            overflow-x: auto; /* For responsive tables */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-divider);
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: #f5f5f5; /* Lighter shade for headers */
+            font-weight: bold;
+            color: var(--text-primary);
+            white-space: nowrap; /* Prevent wrapping in headers for better readability */
+        }
+
+        tr:hover {
+            background-color: #fdfdfd;
+        }
+
+        .note {
+            background-color: #fffde7; /* Light amber for notes */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            color: var(--text-primary);
+            border-radius: 5px;
+        }
+
+        .important-point {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+                padding-bottom: 0.8rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+            h3 {
+                font-size: 1.4rem;
+                padding-left: 0.5rem;
+            }
+            h4 {
+                font-size: 1.2rem;
+            }
+            .callout {
+                padding: 1rem;
+            }
+            .callout-icon {
+                font-size: 1.5rem;
+            }
+            .callout-title {
+                font-size: 1.2rem;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+            .container {
+                padding: 0.8rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+                padding-bottom: 0.6rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+            .callout-icon {
+                font-size: 1.2rem;
+                padding: 0.2rem 0.4rem;
+            }
+            .callout-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistem Pertahanan Tubuh terhadap Penyakit</h1>
+
+        <p>Tubuh manusia adalah sistem yang luar biasa, dilengkapi dengan berbagai mekanisme untuk melindungi diri dari ancaman eksternal, terutama infeksi mikroorganisme. Mikroorganisme penyebab penyakit ini dikenal sebagai <strong class="important-point">patogen</strong>.</p>
+        <p>Mekanisme pertahanan tubuh dapat dibagi menjadi dua kategori utama:</p>
+        <ul>
+            <li>
+                <strong>Pertahanan Eksternal:</strong> Bertujuan untuk mencegah patogen masuk ke dalam jaringan tubuh. Ini adalah lini pertahanan pertama.
+            </li>
+            <li>
+                <strong>Pertahanan Internal:</strong> Bertujuan untuk mengatasi infeksi patogen yang sudah berhasil masuk ke dalam jaringan tubuh.
+            </li>
+        </ul>
+        <p>Kedua jenis pertahanan ini dapat bersifat:</p>
+        <ul>
+            <li>
+                <strong>Bawaan (Innate):</strong> Mekanisme pertahanan yang sudah ada sejak lahir dan selalu siap siaga untuk mengantisipasi potensi penyakit, bahkan sebelum terjadi infeksi.
+            </li>
+            <li>
+                <strong>Adaptif:</strong> Mekanisme pertahanan internal yang secara spesifik hanya akan aktif ketika terjadi infeksi dan mengenali patogen tertentu.
+            </li>
+        </ul>
+
+        <hr style="border-top: 1px solid var(--border-divider); margin: 3rem 0;">
+
+        <h2>1. Pertahanan Eksternal Nonspesifik</h2>
+        <p>Pertahanan eksternal adalah benteng pertama yang mencegah patogen memasuki jaringan tubuh, yang secara signifikan mengurangi risiko gangguan kesehatan. Meskipun tidak dapat sepenuhnya mencegah paparan patogen, keberadaannya sangat krusial bagi kesehatan manusia. Pertahanan ini bersifat <strong class="important-point">nonspesifik</strong>, artinya ia tidak membedakan jenis patogen tertentu dan akan bereaksi secara umum.</p>
+        <p>Bentuk pertahanan eksternal meliputi:</p>
+
+        <h3>a. Pertahanan Fisik</h3>
+        <p>Ini melibatkan adanya lapisan pelindung pada permukaan tubuh yang menjadi pembatas dengan lingkungan luar. Contoh paling utama adalah:</p>
+        <ul>
+            <li>
+                <strong class="important-point">Kulit:</strong> Lapisan terluar tubuh yang menyediakan penghalang fisik yang kuat.
+            </li>
+            <li>
+                <strong class="important-point">Jaringan Epitel:</strong> Melapisi saluran pernapasan, pencernaan, dan organ internal lainnya. Jaringan ini sangat efektif dalam mencegah atau meminimalisir masuknya patogen.
+            </li>
+        </ul>
+
+        <h3>b. Pertahanan Kimiawi</h3>
+        <p>Pertahanan ini melibatkan sekresi berbagai senyawa kimia oleh kelenjar tubuh untuk meminimalisir jumlah patogen yang masuk. Contohnya:</p>
+        <ul>
+            <li>
+                <strong class="important-point">Asam Klorida (HCl) di Lambung:</strong> Asam kuat ini berfungsi mengatasi patogen yang terbawa bersama makanan atau minuman.
+            </li>
+            <li>
+                <strong class="important-point">Lendir di Saluran Pernapasan:</strong> Bertugas menangkap debu dan patogen yang terhirup. Lendir ini kemudian dapat dikeluarkan melalui batuk atau bersin.
+            </li>
+            <li>
+                <strong class="important-point">Lisozim:</strong> Enzim ini memiliki kemampuan merusak dinding sel bakteri dan ditemukan dalam komposisi air mata, air liur, dan keringat.
+            </li>
+        </ul>
+
+        <h3>c. Pertahanan di Tingkat Sel</h3>
+        <p>Beberapa sel khusus berperan dalam menurunkan risiko paparan patogen, terutama melalui mekanisme penutupan luka. Contohnya:</p>
+        <ul>
+            <li>
+                <strong class="important-point">Trombosit (Keping Darah):</strong> Berperan penting dalam proses pembekuan darah dan penutupan luka. Mekanisme ini mencegah patogen masuk melalui jaringan yang terbuka akibat luka.
+            </li>
+        </ul>
+
+        <div class="callout">
+            <div class="callout-header">
+                <span class="callout-icon">&#128064;</span>
+                <span class="callout-title">Kulit, Benteng Pertahanan Tubuh</span>
+            </div>
+            <p>Kulit adalah organ pelindung eksternal yang andal dalam melindungi tubuh dari mikroorganisme. Dengan sifat strukturalnya, kulit dapat melakukan fungsi pelindungnya.</p>
+            <p>Beberapa struktur pada kulit yang mendukung fungsi protektifnya dan contoh cirinya:</p>
+            <ul>
+                <li>
+                    <strong>Pori-pori:</strong> Lubang kecil di sekitar rambut, berfungsi untuk pengeluaran keringat yang mengandung <strong class="important-point">lisozim</strong>, yang dapat merusak bakteri.
+                </li>
+                <li>
+                    <strong>Lapisan Kulit Terluar (Epidermis):</strong> Terdiri dari sel-sel mati yang saling tumpang tindih, membentuk penghalang fisik yang kuat.
+                </li>
+                <li>
+                    <strong>Kelenjar Sebasea:</strong> Menghasilkan sebum (minyak) yang melapisi kulit, menciptakan lingkungan asam yang tidak disukai banyak mikroorganisme.
+                </li>
+            </ul>
+        </div>
+
+        <p>Penting untuk diingat bahwa pertahanan eksternal bersifat umum dan tidak spesifik. Efektivitasnya terbatas jika patogen dapat beradaptasi dengan kondisi yang ada. Oleh karena itu, tubuh memiliki mekanisme pertahanan lanjutan untuk mengatasi patogen yang berhasil masuk.</p>
+
+        <hr style="border-top: 1px solid var(--border-divider); margin: 3rem 0;">
+
+        <h2>2. Pertahanan Internal Spesifik (Antigen-Antibodi)</h2>
+        <p>Sistem pertahanan internal yang bersifat spesifik ditandai oleh kemampuan mengenali patogen tertentu melalui sel darah putih yang disebut <strong class="important-point">leukosit</strong>. Leukosit tertentu dapat membedakan komponen tubuh yang "aman" dari komponen "asing" yang berpotensi membahayakan dan perlu dihancurkan.</p>
+
+        <h3>Antigen: Pemicu Respon Imun</h3>
+        <p>Leukosit akan mengenali partikel khas dari patogen yang disebut <strong class="important-point">antigen</strong>. Antigen dapat berupa:</p>
+        <ul>
+            <li>Protein</li>
+            <li>Glikoprotein</li>
+            <li>Lipid</li>
+            <li>Polisakarida</li>
+            <li>Berbagai zat yang dihasilkan oleh patogen</li>
+        </ul>
+        <p>Antigen dapat ditemukan sebagai bagian dari struktur sel patogen atau sebagai partikel terpisah. Ketika antigen terdeteksi di jaringan tubuh, tubuh akan menciptakan <strong class="important-point">respon imun</strong>.</p>
+        <ul>
+            <li>
+                <strong>Respon Imun Bawaan (Innate):</strong> Berlaku umum untuk semua tipe antigen, seperti demam dan peradangan. Contohnya, infeksi virus sering memicu demam dan peradangan.
+            </li>
+            <li>
+                <strong>Respon Imun Adaptif:</strong> Lebih spesifik, dengan pembentukan <strong class="important-point">antibodi</strong> untuk setiap antigen yang dikenali.
+            </li>
+        </ul>
+
+        <h3>Antibodi: Penanda dan Penangkal Spesifik</h3>
+        <p><strong class="important-point">Antibodi</strong> adalah molekul glikoprotein yang disekresikan oleh leukosit (khususnya limfosit). Fungsi utamanya adalah menandai dan melawan antigen spesifik.</p>
+
+        <div class="callout">
+            <div class="callout-header">
+                <span class="callout-icon">&#x1F9EC;</span>
+                <span class="callout-title">Bagaimana Antibodi Bekerja?</span>
+            </div>
+            <p>Respon antibodi terhadap antigen sangat beragam. Respon-respon ini adalah upaya molekuler dan seluler untuk mengurangi atau menghilangkan patogen atau efek infeksinya. Berikut adalah beberapa mekanisme kerja antibodi:</p>
+            <ol>
+                <li>
+                    <strong>Netralisasi:</strong> Antibodi bergabung dengan virus atau racun bakteri, mencegahnya masuk atau merusak sel inang. Ini seperti antibodi "memblokir" kunci patogen sehingga tidak bisa membuka pintu sel.
+                </li>
+                <li>
+                    <strong>Imobilisasi:</strong> Antibodi menempel pada struktur gerak bakteri (seperti flagela), membuat bakteri menjadi kurang aktif bergerak. Bakteri yang lambat atau tidak bergerak lebih mudah ditelan oleh sel-sel fagosit (pemakan sel).
+                </li>
+                <li>
+                    <strong>Opsonisasi:</strong> Antibodi melapisi permukaan bakteri atau patogen lainnya. Lapisan antibodi ini berfungsi sebagai "sinyal" yang membuat patogen lebih mudah dikenali dan ditelan oleh sel-sel fagosit.
+                </li>
+                <li>
+                    <strong>Aglutinasi (Penggumpalan):</strong> Antibodi memiliki beberapa situs pengikatan antigen, memungkinkan mereka mengikat banyak patogen secara bersamaan. Ini menyebabkan patogen (misalnya, bakteri) menggumpal atau "bergumpal-gumpal". Penggumpalan ini mengurangi kemampuan patogen untuk menyebar ke seluruh tubuh dan mempermudah proses pembersihan oleh sel-sel imun.
+                </li>
+            </ol>
+            <p>Respon imun tidak hanya dipicu oleh patogen. Dalam kasus alergi atau imunitas yang hipersensitif, molekul <strong class="important-point">non-patogen</strong> seperti zat kitin, debu, serbuk sari, atau bahkan perubahan kondisi tubuh (misalnya, kedinginan) juga dapat memicu respon imun. Jadi, <strong class="important-point">antigen</strong> dapat diartikan sebagai molekul apa pun yang dapat memicu respon imun, baik dari patogen maupun non-patogen. Jika molekul memicu respon imun, itu dianggap asing dan perlu ditindaklanjuti.</p>
+        </div>
+
+        <hr style="border-top: 1px solid var(--border-divider); margin: 3rem 0;">
+
+        <h2>3. Respon Imun dan Pengenalan Tubuh</h2>
+        <p>Setiap sel manusia memiliki molekul pengenal di permukaan membrannya, yang sering disebut <strong class="important-point">antigen permukaan sel</strong>. Molekul ini unik untuk individu tersebut. Walaupun molekul ini tidak menstimulasi antibodi dalam tubuh sendiri (karena dianggap "diri sendiri"), mereka akan memicu respon imun jika memasuki tubuh orang lain. Artinya, tubuh mengenali dirinya sendiri dan hanya merespons jika ada sel dengan antigen permukaan yang "asing". Mekanisme ini sangat penting dalam proses transfusi darah dan donor organ.</p>
+
+        <h3>Sistem Penggolongan Darah ABO</h3>
+        <p>Pada sistem penggolongan darah ABO, antigen permukaan sel yang penting adalah <strong class="important-point">glikolipid</strong> pada membran sel darah merah (eritrosit), yang disebut <strong class="important-point">aglutinogen</strong>. Tubuh individu akan mengenali darah yang memiliki aglutinogen yang sama dengan miliknya sebagai "darah sendiri".</p>
+        <p>Jika darah dengan aglutinogen asing masuk ke tubuh (misalnya, melalui transfusi), penerima akan mengenali eritrosit tersebut sebagai benda asing dan segera membentuk antibodi di plasma darah. Antibodi ini disebut <strong class="important-point">aglutinin</strong>. Pengenalan aglutinin terhadap aglutinogen asing ini menyebabkan <strong class="important-point-error">penggumpalan darah (aglutinasi)</strong>, yang sangat berbahaya karena dapat menghambat dan merusak sistem sirkulasi tubuh.</p>
+
+        <div class="table-container">
+            <h3>Tabel 5.2 Penggolongan Darah Sistem ABO</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Golongan Darah</th>
+                        <th>Tipe Sel Darah Merah (Karakteristik Aglutinogen)</th>
+                        <th>Antigen di Permukaan Sel Darah Merah (Aglutinogen)</th>
+                        <th>Antibodi di Plasma Darah (Aglutinin)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>A</strong></td>
+                        <td>Memiliki aglutinogen A</td>
+                        <td>Antigen A</td>
+                        <td>Anti B (Aglutinin B)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B</strong></td>
+                        <td>Memiliki aglutinogen B</td>
+                        <td>Antigen B</td>
+                        <td>Anti A (Aglutinin A)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AB</strong></td>
+                        <td>Memiliki aglutinogen A dan B</td>
+                        <td>Antigen A dan B</td>
+                        <td>Tidak ada Antibodi (Aglutinin)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>O (Nol)</strong></td>
+                        <td>Tidak memiliki aglutinogen A atau B</td>
+                        <td>Tidak ada Antigen</td>
+                        <td>Anti A dan B (Aglutinin A dan B)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Sistem Rhesus (Rh)</h3>
+        <p>Selain sistem ABO, sistem Rhesus (Rh) juga sangat penting dalam transfusi darah karena risiko penggumpalan. Darah dikategorikan:</p>
+        <ul>
+            <li>
+                <strong class="important-point">Rhesus Positif (Rh+):</strong> Jika terdapat antigen Rhesus pada membran sel eritrositnya. Orang dengan Rh+ tidak memproduksi antibodi Rhesus.
+            </li>
+            <li>
+                <strong class="important-point">Rhesus Negatif (Rh-):</strong> Jika eritrosit tidak memiliki antigen Rhesus. Namun, sel-sel limfosit orang dengan Rh- dapat memproduksi antibodi Rhesus jika terjadi paparan antigen Rhesus (misalnya, dari transfusi darah Rh+).
+            </li>
+        </ul>
+        <p>Oleh karena itu, dalam transfusi darah, jenis Rhesus pendonor maupun penerima haruslah sama untuk mencegah pemicuan penggumpalan darah yang berbahaya.</p>
+
+        <div class="callout">
+            <div class="callout-header">
+                <span class="callout-icon">&#x1F9EE;</span>
+                <span class="callout-title">Prinsip Pengujian Golongan Darah</span>
+            </div>
+            <p>Pengujian golongan darah dalam sistem ABO didasarkan pada ada atau tidak adanya antigen A dan B pada sel darah merah, serta antibodi A dan B pada plasma atau serum (serum anti-A dan anti-B).</p>
+            <p>Prinsipnya:</p>
+            <ul>
+                <li>
+                    Jika darah diberi serum yang mengandung antibodi yang mengenali antigen darah (misalnya, darah golongan A ditetesi serum anti-A), maka akan terjadi <strong class="important-point-error">reaksi penggumpalan (aglutinasi)</strong>.
+                </li>
+                <li>
+                    Jika tidak ada antigen yang dikenali oleh antibodi dalam serum, maka <strong class="important-point-success">tidak terjadi penggumpalan</strong>.
+                </li>
+            </ul>
+            <p>Contohnya:</p>
+            <ul>
+                <li>Darah A + Serum Anti-A &rarr; Menggumpal</li>
+                <li>Darah A + Serum Anti-B &rarr; Tidak menggumpal</li>
+                <li>Darah B + Serum Anti-A &rarr; Tidak menggumpal</li>
+                <li>Darah B + Serum Anti-B &rarr; Menggumpal</li>
+                <li>Darah AB + Serum Anti-A &rarr; Menggumpal</li>
+                <li>Darah AB + Serum Anti-B &rarr; Menggumpal</li>
+                <li>Darah O + Serum Anti-A &rarr; Tidak menggumpal</li>
+                <li>Darah O + Serum Anti-B &rarr; Tidak menggumpal</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+```

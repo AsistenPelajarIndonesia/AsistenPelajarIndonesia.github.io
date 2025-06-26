@@ -1,0 +1,299 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termokimia: Sistem dan Lingkungan - Kimia Kelas XI</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-color: var(--background-canvas);
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.7rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding-left: 1rem;
+            font-weight: 500;
+        }
+
+        /* Paragraphs and Text Emphasis */
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        em {
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        /* List Styles */
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ol li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Specific Content Boxes */
+        .intro-paragraph {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .example-box {
+            background-color: rgba(var(--primary-blue), 0.05); /* Lighter blue tint */
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .example-box h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.25rem;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .concept-definition {
+            background-color: rgba(var(--accent-green), 0.05); /* Lighter green tint */
+            border-left: 5px solid var(--accent-green);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .concept-definition p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Interactive Section */
+        .interactive-section {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 2rem;
+            margin-top: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .interactive-section p {
+            color: var(--text-primary); /* Ensure primary text color for readability on amber */
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .interactive-section ol li {
+            color: var(--text-primary);
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .example-box, .concept-definition, .interactive-section {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+                padding-bottom: 0.5rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+                margin-top: 1.5rem;
+            }
+            h3 {
+                font-size: 1.15rem;
+                padding-left: 0.8rem;
+            }
+            p, ul li, ol li {
+                font-size: 0.95rem;
+            }
+            .example-box, .concept-definition, .interactive-section {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+            .footer-note {
+                margin-top: 2rem;
+                padding-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab V: Termokimia</h1>
+        <h2>B. Sistem dan Lingkungan</h2>
+
+        <p class="intro-paragraph">
+            Dalam dunia <strong>Termokimia</strong>, kita mempelajari bagaimana energi berpindah dan berubah selama reaksi kimia dan proses fisika. Untuk memahami perpindahan energi ini dengan jelas, kita perlu mengidentifikasi dua komponen utama yang saling berinteraksi: <strong>sistem</strong> dan <strong>lingkungan</strong>.
+        </p>
+
+        <div class="example-box">
+            <h4>Menganalisis Pengamatan: Kasus Urea dan Air</h4>
+            <p>Mari kita bayangkan sebuah eksperimen sederhana: Seorang pelajar melarutkan satu sendok urea ke dalam satu gelas air. Saat urea diaduk dengan sendok, suhu air di dalam gelas terasa <strong>dingin</strong>. Pengamatan ini dilakukan di atas sebuah meja.</p>
+            <p>Dari skenario ini, kita dapat memilah komponen-komponennya menjadi sistem dan lingkungan:</p>
+            <ul>
+                <li><strong>Sistem:</strong> Bagian yang sedang menjadi fokus pengamatan, yaitu <strong>urea beserta air</strong> (larutan yang terbentuk setelah urea larut). Di sinilah perubahan suhu (energi) terjadi.</li>
+                <li><strong>Lingkungan:</strong> Segala sesuatu di luar sistem yang dapat berinteraksi dengannya, seperti <strong>gelas</strong> (wadah yang menampung sistem), <strong>sendok</strong> (alat pengaduk), <strong>meja</strong> (tempat gelas diletakkan), dan bahkan <strong>udara di sekitar</strong> gelas.</li>
+            </ul>
+            <p>Contoh ini menunjukkan bagaimana batasan antara sistem dan lingkungan didefinisikan untuk keperluan studi termokimia.</p>
+        </div>
+
+        <h3>Apa itu Sistem dalam Termokimia?</h3>
+        <div class="concept-definition">
+            <p><strong>Sistem</strong> adalah bagian tertentu dari alam semesta yang menjadi objek atau fokus perhatian utama kita untuk diteliti. Ini adalah tempat di mana reaksi kimia atau proses fisika berlangsung, dan di mana kita mengamati perubahan energi yang terjadi. Sistem bisa berupa zat reaktan dan produk, atau bahkan seluruh larutan yang terlibat dalam proses tersebut.</p>
+            <p><em>Singkatnya:</em> Apa yang kita pelajari perubahannya.</p>
+        </div>
+
+        <h3>Apa itu Lingkungan dalam Termokimia?</h3>
+        <div class="concept-definition">
+            <p><strong>Lingkungan</strong> adalah segala sesuatu di luar batas sistem yang dapat berinteraksi langsung atau tidak langsung dengan sistem. Lingkungan berfungsi sebagai "penyedia" atau "penerima" energi dan/atau materi dari sistem. Meskipun alam semesta sangat luas, dalam konteks termokimia, kita hanya mempertimbangkan bagian lingkungan yang relevan dan memiliki potensi interaksi dengan sistem.</p>
+            <p><em>Singkatnya:</em> Segala sesuatu yang berinteraksi dengan apa yang kita pelajari.</p>
+        </div>
+
+        <h3>Interaksi Esensial: Pertukaran Energi dan Materi</h3>
+        <p>Hubungan antara sistem dan lingkungan bersifat dinamis. Mereka selalu melakukan interaksi yang paling mendasar dalam termokimia, yaitu berupa:</p>
+        <ul>
+            <li><strong>Pertukaran Materi:</strong> Perpindahan massa (zat) antara sistem dan lingkungan.</li>
+            <li><strong>Pertukaran Energi:</strong> Perpindahan energi (biasanya dalam bentuk panas atau kerja) antara sistem dan lingkungan.</li>
+        </ul>
+        <p>Pentingnya interaksi ini adalah bahwa perubahan energi total dari sistem (ΔE) adalah jumlah dari panas (q) yang dipertukarkan dan kerja (w) yang dilakukan oleh atau pada sistem. Misalnya, dalam contoh urea dan air yang menjadi dingin, sistem (larutan urea) menyerap panas dari lingkungannya (gelas, udara) sehingga lingkungan terasa dingin.</p>
+        <p>Berdasarkan jenis pertukaran materi dan energi inilah, sistem dalam termokimia dapat diklasifikasikan menjadi tiga jenis yang berbeda. Klasifikasi ini membantu kita memahami lebih dalam perilaku termokimia suatu proses, dan akan dibahas lebih lanjut di bagian berikutnya.</p>
+
+        <div class="interactive-section">
+            <p><strong>Mari Berpikir dan Berdiskusi Lebih Lanjut!</strong></p>
+            <p>Untuk menguatkan pemahaman Anda tentang konsep sistem dan lingkungan, coba identifikasi sistem dan lingkungannya dalam situasi berikut. Diskusikan jawaban Anda dengan guru dan teman-teman sekelas!</p>
+            <ol>
+                <li>Ketika es mencair di dalam segelas air hangat.</li>
+                <li>Ketika sebuah kembang api meledak di langit.</li>
+                <li>Ketika Anda menghirup udara (oksigen) dan menghembuskan karbon dioksida.</li>
+                <li>Ketika sebuah baterai ponsel sedang mengisi daya.</li>
+            </ol>
+            <p>Memahami batasan sistem dan lingkungan adalah langkah pertama yang krusial dalam menganalisis setiap proses termokimia!</p>
+        </div>
+
+        <div class="footer-note">
+            <p>Kimia untuk SMA/MA Kelas XI | Sumber: Halaman 124</p>
+        </div>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,389 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentum dan Impuls - Fisika Kelas XI</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--text-primary);
+            border-bottom: 4px solid var(--primary-blue);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            border-bottom-color: var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            border-bottom-color: var(--secondary-accent-amber);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        em {
+            color: var(--secondary-accent-amber);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .formula-box {
+            background-color: #f0f8ff; /* Light blue background */
+            border-left: 5px solid var(--primary-blue);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            overflow-x: auto; /* For long formulas */
+        }
+
+        .formula-box pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            white-space: pre-wrap; /* Ensures text wraps within the pre tag */
+            word-wrap: break-word; /* Breaks long words */
+        }
+
+        .formula-box code {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .section-divider {
+            border-top: 1px dashed var(--border-divider);
+            margin: 2.5rem 0;
+        }
+
+        .note {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem auto;
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+                padding-bottom: 0.8rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+            .formula-box {
+                padding: 0.8rem 1rem;
+            }
+            .formula-box pre {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 0.5rem auto;
+                padding: 0.8rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+            h3 {
+                font-size: 1.1rem;
+            }
+            .formula-box {
+                padding: 0.6rem 0.8rem;
+            }
+            .formula-box pre {
+                font-size: 0.95rem;
+            }
+            ul, ol {
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Dinamika Gerak Partikel<br>C. Momentum dan Impuls</h1>
+
+        <p>Dalam bab ini, kita akan menjelajahi dua konsep fundamental dalam fisika: <strong>momentum</strong> dan <strong>impuls</strong>. Kedua konsep ini sangat penting untuk memahami bagaimana benda bergerak dan berinteraksi, terutama dalam situasi seperti tumbukan atau ledakan, di mana gaya bekerja dalam waktu singkat namun menghasilkan perubahan gerak yang signifikan.</p>
+
+        <div class="section-divider"></div>
+
+        <h2>1. Momentum (<span style="color: var(--primary-blue);">p</span>)</h2>
+        <p>Momentum adalah besaran fisika yang menggambarkan <em>kesukaran untuk menghentikan gerakan suatu benda</em>. Semakin besar momentum sebuah benda, semakin sulit untuk mengubah kecepatan atau arah geraknya (menghentikannya atau mempercepatnya). Momentum adalah besaran vektor, yang berarti ia memiliki besar dan arah.</p>
+
+        <h3>Definisi dan Rumus Momentum</h3>
+        <p>Momentum sebuah benda didefinisikan sebagai hasil kali massa (m) benda dengan kecepatan (v) benda tersebut.</p>
+        <div class="formula-box">
+            <pre><code>p = m ⋅ v</code></pre>
+        </div>
+        <ul>
+            <li><code>p</code>: Momentum (kg⋅m/s)</li>
+            <li><code>m</code>: Massa benda (kg)</li>
+            <li><code>v</code>: Kecepatan benda (m/s)</li>
+        </ul>
+        <p><strong>Arah Momentum:</strong> Arah momentum selalu sama dengan arah kecepatan benda.</p>
+        <p><strong>Satuan Momentum:</strong> Dalam Sistem Internasional (SI), satuan momentum adalah kilogram meter per detik (kg⋅m/s). Satuan ini juga ekuivalen dengan Newton sekon (N⋅s), yang akan kita lihat nanti saat membahas impuls.</p>
+
+        <h3>Pentingnya Momentum</h3>
+        <p>Konsep momentum memungkinkan kita menganalisis interaksi antar benda, seperti tumbukan atau ledakan, tanpa perlu mengetahui detail gaya yang sangat kompleks dan seringkali berubah-ubah selama interaksi tersebut. Momentum juga merupakan kunci untuk memahami Hukum Kekekalan Momentum.</p>
+
+        <div class="section-divider"></div>
+
+        <h2>2. Impuls (<span style="color: var(--primary-blue);">I</span>)</h2>
+        <p>Impuls adalah besaran fisika yang menggambarkan <em>ukuran seberapa besar perubahan momentum yang dialami oleh suatu benda akibat gaya yang bekerja padanya dalam selang waktu tertentu</em>. Biasanya, impuls dikaitkan dengan gaya yang bekerja sangat singkat namun kuat, seperti dalam tumbukan atau tendangan.</p>
+
+        <h3>Definisi dan Rumus Impuls</h3>
+        <p>Impuls didefinisikan sebagai hasil kali gaya (F) yang bekerja pada benda dengan selang waktu (Δt) gaya itu bekerja.</p>
+        <div class="formula-box">
+            <pre><code>I = F ⋅ Δt</code></pre>
+        </div>
+        <ul>
+            <li><code>I</code>: Impuls (N⋅s atau kg⋅m/s)</li>
+            <li><code>F</code>: Gaya rata-rata yang bekerja pada benda (Newton, N)</li>
+            <li><code>Δt</code>: Selang waktu gaya bekerja (sekon, s)</li>
+        </ul>
+        <p><strong>Arah Impuls:</strong> Arah impuls selalu sama dengan arah gaya yang bekerja.</p>
+        <p><strong>Satuan Impuls:</strong> Dalam Sistem Internasional (SI), satuan impuls adalah Newton sekon (N⋅s). Karena 1 N = 1 kg⋅m/s², maka 1 N⋅s = 1 kg⋅m/s² ⋅ s = 1 kg⋅m/s. Ini menegaskan bahwa impuls memiliki dimensi yang sama dengan momentum.</p>
+
+        <h3>Impuls dari Gaya yang Berubah-ubah</h3>
+        <p>Jika gaya yang bekerja tidak konstan, impuls dapat dihitung sebagai luas area di bawah kurva grafik gaya versus waktu (F-t).</p>
+        <p><code>I = ∫ F dt</code> (Integral gaya terhadap waktu)</p>
+
+        <div class="section-divider"></div>
+
+        <h2>3. Hubungan Impuls dan Momentum (Teorema Impuls-Momentum)</h2>
+        <p>Hubungan antara impuls dan momentum adalah salah satu teorema paling penting dalam mekanika, dikenal sebagai Teorema Impuls-Momentum. Teorema ini menyatakan bahwa <strong>impuls total yang bekerja pada suatu benda sama dengan perubahan momentum benda tersebut.</strong></p>
+
+        <h3>Penurunan Rumus</h3>
+        <p>Dari Hukum Kedua Newton, kita tahu bahwa gaya neto yang bekerja pada suatu benda adalah laju perubahan momentum benda:</p>
+        <div class="formula-box">
+            <pre><code>F_net = Δp / Δt</code></pre>
+        </div>
+        <p>Jika kita susun ulang persamaan ini, kita mendapatkan:</p>
+        <div class="formula-box">
+            <pre><code>F_net ⋅ Δt = Δp</code></pre>
+        </div>
+        <p>Karena <code>F_net ⋅ Δt</code> adalah definisi impuls (<code>I</code>), maka:</p>
+        <div class="formula-box">
+            <pre><code>I = Δp</code></pre>
+            <pre><code>I = p_akhir - p_awal</code></pre>
+            <pre><code>I = m ⋅ v_akhir - m ⋅ v_awal</code></pre>
+        </div>
+        <ul>
+            <li><code>Δp</code>: Perubahan momentum (kg⋅m/s)</li>
+            <li><code>p_akhir</code>: Momentum akhir (kg⋅m/s)</li>
+            <li><code>p_awal</code>: Momentum awal (kg⋅m/s)</li>
+            <li><code>v_akhir</code>: Kecepatan akhir (m/s)</li>
+            <li><code>v_awal</code>: Kecepatan awal (m/s)</li>
+        </ul>
+
+        <h3>Signifikansi Teorema Impuls-Momentum</h3>
+        <p>Teorema ini sangat berguna karena menghubungkan gaya dan waktu dengan perubahan gerak. Misalnya:</p>
+        <ul>
+            <li><strong>Meningkatkan Impuls:</strong> Untuk mendapatkan perubahan momentum yang besar (misalnya, membuat bola golf melaju sangat cepat), kita bisa menggunakan gaya yang besar atau memperpanjang waktu kontak. Contohnya, pegolf mengayunkan stik dengan kuat untuk waktu yang singkat.</li>
+            <li><strong>Mengurangi Gaya Impulsif:</strong> Untuk mengurangi gaya yang bekerja saat tumbukan (misalnya, saat pendaratan), kita perlu memperpanjang waktu interaksi. Contoh: bantal udara pada mobil, matras atlet, atau melipat lutut saat mendarat dari lompatan. Ini mengurangi gaya rata-rata yang dialami tubuh, meskipun perubahan momentumnya sama.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>4. Hukum Kekekalan Momentum</h2>
+        <p>Hukum Kekekalan Momentum adalah salah satu hukum fundamental dalam fisika yang menyatakan bahwa: <strong>"Dalam sistem terisolasi (sistem yang tidak dikenai gaya eksternal neto), total momentum sebelum interaksi (tumbukan atau ledakan) sama dengan total momentum setelah interaksi."</strong></p>
+
+        <h3>Sistem Terisolasi</h3>
+        <p>Sistem terisolasi adalah kumpulan benda-benda yang saling berinteraksi, namun tidak ada gaya eksternal signifikan yang bekerja pada sistem tersebut. Atau, jika ada gaya eksternal, gaya-gaya tersebut saling meniadakan sehingga gaya neto eksternalnya nol. Dalam praktiknya, selama waktu yang sangat singkat dari tumbukan atau ledakan, gaya-gaya internal (antar benda dalam sistem) jauh lebih besar daripada gaya eksternal (seperti gravitasi atau gesekan), sehingga sistem dapat dianggap terisolasi.</p>
+
+        <h3>Rumus Hukum Kekekalan Momentum</h3>
+        <p>Untuk dua benda yang saling bertumbukan atau berinteraksi:</p>
+        <div class="formula-box">
+            <pre><code>Σp_awal = Σp_akhir</code></pre>
+            <pre><code>m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'</code></pre>
+        </div>
+        <ul>
+            <li><code>m₁</code>, <code>m₂</code>: Massa benda 1 dan benda 2 (kg)</li>
+            <li><code>v₁</code>, <code>v₂</code>: Kecepatan benda 1 dan benda 2 sebelum interaksi (m/s)</li>
+            <li><code>v₁'</code>, <code>v₂'</code>: Kecepatan benda 1 dan benda 2 setelah interaksi (m/s)</li>
+        </ul>
+        <p><strong>Penting:</strong> Karena momentum adalah besaran vektor, arah kecepatan (positif atau negatif) harus diperhatikan saat menerapkan rumus ini.</p>
+
+        <h3>Aplikasi Hukum Kekekalan Momentum</h3>
+        <p>Hukum kekekalan momentum banyak diaplikasikan dalam berbagai fenomena fisika, seperti:</p>
+        <ul>
+            <li><strong>Tumbukan:</strong> Tabrakan antar mobil, bola biliar, atau partikel subatomik.</li>
+            <li><strong>Ledakan:</strong> Peluru yang ditembakkan dari senapan, roket yang diluncurkan, atau pecahan granat.</li>
+            <li><strong>Gaya Dorong (Thrust):</strong> Prinsip kerja mesin jet atau roket.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2>5. Jenis-jenis Tumbukan</h2>
+        <p>Tumbukan (atau tabrakan) adalah interaksi antara dua benda atau lebih yang berlangsung dalam waktu singkat dan melibatkan gaya yang besar. Berdasarkan kekekalan energi kinetik, tumbukan dapat dibagi menjadi tiga jenis utama:</p>
+
+        <h3>A. Tumbukan Lenting Sempurna (Perfectly Elastic Collision)</h3>
+        <ul>
+            <li><strong>Definisi:</strong> Tumbukan di mana <strong>momentum total dan energi kinetik total sistem keduanya kekal</strong>. Tidak ada kehilangan energi kinetik yang berubah menjadi bentuk energi lain (panas, suara, deformasi).</li>
+            <li><strong>Ciri-ciri:</strong>
+                <ul>
+                    <li><code>Σp_awal = Σp_akhir</code> (Kekekalan Momentum)</li>
+                    <li><code>ΣEk_awal = ΣEk_akhir</code> (Kekekalan Energi Kinetik)</li>
+                    <li>Koefisien Restitusi (e) = 1.</li>
+                </ul>
+            </li>
+            <li><strong>Contoh ideal:</strong> Tumbukan antar atom atau partikel subatomik, atau idealisasi tumbukan bola biliar yang sangat keras.</li>
+        </ul>
+
+        <h3>B. Tumbukan Lenting Sebagian (Partially Elastic Collision)</h3>
+        <ul>
+            <li><strong>Definisi:</strong> Tumbukan di mana <strong>momentum total sistem kekal, tetapi energi kinetik total sistem tidak kekal</strong>. Sebagian energi kinetik berubah menjadi bentuk energi lain (panas, suara, deformasi permanen). Ini adalah jenis tumbukan yang paling umum di dunia nyata.</li>
+            <li><strong>Ciri-ciri:</strong>
+                <ul>
+                    <li><code>Σp_awal = Σp_akhir</code> (Kekekalan Momentum)</li>
+                    <li><code>ΣEk_awal > ΣEk_akhir</code> (Energi kinetik berkurang)</li>
+                    <li>Koefisien Restitusi (e) berada di antara 0 dan 1 (<code>0 &lt; e &lt; 1</code>).</li>
+                </ul>
+            </li>
+            <li><strong>Contoh:</strong> Sebagian besar tumbukan dalam kehidupan sehari-hari, seperti bola basket yang memantul, tabrakan mobil (tanpa benda menyatu).</li>
+        </ul>
+
+        <h3>C. Tumbukan Tidak Lenting Sempurna (Perfectly Inelastic Collision)</h3>
+        <ul>
+            <li><strong>Definisi:</strong> Tumbukan di mana <strong>momentum total sistem kekal, dan benda-benda yang bertumbukan bersatu dan bergerak bersama setelah tumbukan</strong>. Ini menghasilkan kehilangan energi kinetik yang maksimal.</li>
+            <li><strong>Ciri-ciri:</strong>
+                <ul>
+                    <li><code>Σp_awal = Σp_akhir</code> (Kekekalan Momentum)</li>
+                    <li><code>v₁' = v₂' = v'</code> (Kecepatan setelah tumbukan sama)</li>
+                    <li><code>ΣEk_awal > ΣEk_akhir</code> (Kehilangan energi kinetik maksimal)</li>
+                    <li>Koefisien Restitusi (e) = 0.</li>
+                </ul>
+            </li>
+            <li><strong>Rumus untuk kecepatan akhir (v'):</strong>
+                <div class="formula-box">
+                    <pre><code>m₁v₁ + m₂v₂ = (m₁ + m₂)v'</code></pre>
+                </div>
+            </li>
+            <li><strong>Contoh:</strong> Peluru menancap pada balok kayu dan bergerak bersamanya, mobil yang bertabrakan dan saling menempel.</li>
+        </ul>
+
+        <h3>D. Koefisien Restitusi (<span style="color: var(--primary-blue);">e</span>)</h3>
+        <p>Koefisien restitusi adalah parameter yang menggambarkan seberapa "lenting" suatu tumbukan. Ini didefinisikan sebagai rasio negatif dari kecepatan relatif benda setelah tumbukan terhadap kecepatan relatif benda sebelum tumbukan.</p>
+        <div class="formula-box">
+            <pre><code>e = - (v₂' - v₁') / (v₂ - v₁)</code></pre>
+        </div>
+        <ul>
+            <li><code>v₁</code>, <code>v₂</code>: Kecepatan benda 1 dan 2 sebelum tumbukan.</li>
+            <li><code>v₁'</code>, <code>v₂'</code>: Kecepatan benda 1 dan 2 setelah tumbukan.</li>
+            <li>Tanda negatif digunakan agar nilai <code>e</code> selalu positif.</li>
+        </ul>
+        <p><strong>Nilai <code>e</code> menunjukkan jenis tumbukan:</strong></p>
+        <ul>
+            <li><code>e = 1</code>: Tumbukan Lenting Sempurna</li>
+            <li><code>0 &lt; e &lt; 1</code>: Tumbukan Lenting Sebagian</li>
+            <li><code>e = 0</code>: Tumbukan Tidak Lenting Sempurna</li>
+        </ul>
+        <p>Untuk kasus khusus benda yang dijatuhkan dan memantul dari permukaan:</p>
+        <div class="formula-box">
+            <pre><code>e = √(h' / h)</code></pre>
+        </div>
+        <ul>
+            <li><code>h</code>: Ketinggian awal benda dijatuhkan.</li>
+            <li><code>h'</code>: Ketinggian pantulan benda.</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <p class="note">Memahami momentum dan impuls, serta hukum kekekalan momentum dan jenis-jenis tumbukan, adalah fondasi penting untuk menganalisis berbagai fenomena fisika dalam kehidupan sehari-hari maupun aplikasi teknologi.</p>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,358 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOLOGI: Bab 2 - Transpor Aktif</title>
+    <style>
+        /* Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--background-canvas);
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-divider);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        header h1 {
+            font-size: 3.2em;
+            color: var(--primary-blue);
+            margin: 0;
+            letter-spacing: -0.5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-green);
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 8px;
+            position: relative;
+            animation: fadeInRight 0.8s ease-out;
+        }
+        h2::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            margin-top: 2em;
+            margin-bottom: 0.8em;
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding-left: 15px;
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .key-concept {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 3px 9px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        .key-concept:hover {
+            background-color: var(--semantic-info);
+        }
+
+        ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 25px;
+            margin-bottom: 1.5em;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            position: relative;
+            margin-bottom: 0.8em;
+            padding-left: 10px;
+        }
+        ul li::before {
+            content: "•";
+            color: var(--accent-green);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            padding-left: 0;
+            margin-bottom: 1.5em;
+            color: var(--text-secondary);
+        }
+
+        ol li {
+            margin-bottom: 0.8em;
+        }
+
+        .info-box {
+            background-color: var(--border-divider);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 6px solid var(--secondary-accent-amber);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .info-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+        .info-box strong {
+            color: var(--primary-blue);
+        }
+
+        details {
+            background-color: var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border: 1px solid var(--border-divider);
+            transition: background-color 0.3s ease;
+        }
+        details:hover {
+            background-color: #EAEAEA;
+        }
+
+        summary {
+            font-weight: bold;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 5px 0;
+            outline: none;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::before {
+            content: "► ";
+            display: inline-block;
+            transition: transform 0.2s ease;
+            color: var(--accent-green);
+            margin-right: 5px;
+        }
+        details[open] summary::before {
+            content: "▼ ";
+            transform: rotate(90deg);
+        }
+        details p {
+            margin-top: 10px;
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2.5em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            ul, ol {
+                margin-left: 15px;
+                padding-left: 15px;
+            }
+            ul li::before {
+                left: 0;
+            }
+            .info-box {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 5px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            ul, ol {
+                margin-left: 10px;
+                padding-left: 10px;
+            }
+            .key-concept {
+                padding: 2px 6px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Transpor Aktif</h1>
+            <p>Mekanisme Pergerakan Zat yang Membutuhkan Energi</p>
+        </header>
+
+        <section>
+            <h2>Pengantar Transpor Aktif</h2>
+            <p>Setelah memahami bagaimana zat-zat dapat berpindah melintasi membran sel secara pasif—yaitu tanpa membutuhkan energi—kini kita akan mendalami mekanisme <span class="key-concept">Transpor Aktif</span>. Ini adalah proses vital yang memungkinkan sel untuk mengontrol komposisi internalnya secara presisi, bahkan ketika kondisi di luar sel tidak mendukung.</p>
+            <p>Transpor aktif adalah mekanisme pergerakan zat melalui membran sel yang <strong class="highlight">membutuhkan energi metabolik</strong>. Energi ini biasanya disediakan dalam bentuk <strong class="key-concept">Adenosin Trifosfat (ATP)</strong>. Berbeda dengan transpor pasif, transpor aktif mampu memindahkan zat <strong class="highlight">melawan gradien konsentrasinya</strong>, yaitu dari area konsentrasi rendah ke area konsentrasi tinggi. Ini ibarat mendayung perahu melawan arus, yang tentu membutuhkan tenaga.</p>
+
+            <h3>Karakteristik Utama Transpor Aktif</h3>
+            <ul>
+                <li>Membutuhkan energi: Energi disediakan oleh hidrolisis ATP, yang memecah ikatan fosfat berenergi tinggi dalam molekul ATP untuk melepaskan energi.</li>
+                <li>Melawan gradien konsentrasi: Zat bergerak dari konsentrasi rendah ke konsentrasi tinggi. Ini sangat penting untuk mengakumulasi zat-zat yang dibutuhkan sel atau membuang zat-zat berbahaya.</li>
+                <li>Melibatkan protein pembawa spesifik: Transpor aktif tidak dapat terjadi secara langsung melalui lapisan ganda lipid membran sel. Ia memerlukan bantuan protein transmembran yang bertindak sebagai "pompa" atau "pembawa" untuk memindahkan zat. Protein ini bersifat sangat spesifik, hanya mengikat dan memindahkan jenis zat tertentu.</li>
+                <li>Saturasi: Karena melibatkan protein pembawa, laju transpor aktif dapat mencapai titik jenuh (saturasi) jika semua protein pembawa sudah terisi oleh molekul zat yang akan diangkut.</li>
+            </ul>
+        </section>
+
+        <div class="info-box">
+            <p><strong>Ayo Berpikir Kritis!</strong></p>
+            <p>Pergerakan zat dalam transpor aktif yang <strong class="primary-blue">melawan gradien konsentrasi</strong> merupakan perbedaan fundamental dibandingkan difusi sederhana dan difusi terfasilitasi yang bergerak <strong class="accent-green">menuruni gradien konsentrasi</strong>.</p>
+        </div>
+
+        <section>
+            <h2>Pompa Natrium-Kalium (Na+/K+ ATPase): Contoh Transpor Aktif Primer</h2>
+            <p>Salah satu contoh paling klasik dan vital dari transpor aktif dalam sel hewan adalah kerja <span class="key-concept">Pompa Natrium-Kalium</span>, yang juga dikenal sebagai Na+/K+ ATPase. Ini adalah protein transmembran yang berfungsi sangat penting dalam menjaga potensial membran, yang krusial untuk fungsi saraf, otot, dan osmoregulasi.</p>
+
+            <h3>Mekanisme Kerja Pompa Na+/K+ ATPase</h3>
+            <p>Pompa ini bekerja dengan mekanisme yang sangat terkoordinasi dan membutuhkan energi dari ATP:</p>
+            <ol>
+                <li><strong>Pengikatan Natrium (Na+)</strong>: Protein pompa, yang awalnya terbuka ke arah sitoplasma (ruang dalam sel), memiliki afinitas tinggi terhadap ion natrium (Na+). Tiga ion Na+ dari dalam sel akan berikatan dengan situs pengikat pada pompa.</li>
+                <li><strong>Hidrolisis ATP</strong>: Setelah Na+ terikat, pompa akan mengaktivasi hidrolisis molekul <strong class="highlight">ATP</strong>. Hidrolisis ATP berarti pemecahan ATP menjadi <strong class="key-concept">Adenosin Difosfat (ADP)</strong> dan <strong class="key-concept">Gugus Fosfat Anorganik (Pi)</strong>. Energi yang dilepaskan dari pemecahan ikatan fosfat ini menyebabkan perubahan konformasi (bentuk) pada protein pompa.</li>
+                <li><strong>Pelepasan Natrium (Na+)</strong>: Perubahan konformasi ini menyebabkan pompa membuka ke arah luar sel dan melepaskan ketiga ion Na+ ke ruang ekstraseluler, di mana konsentrasi Na+ sudah tinggi. Ini jelas merupakan pergerakan melawan gradien konsentrasi.</li>
+                <li><strong>Pengikatan Kalium (K+)</strong>: Dengan bentuk barunya, pompa kini memiliki afinitas tinggi terhadap ion kalium (K+). Dua ion K+ dari ruang luar sel akan berikatan dengan situs pengikat pada pompa.</li>
+                <li><strong>Pelepasan Fosfat dan Perubahan Konformasi</strong>: Pengikatan K+ memicu pelepasan gugus fosfat yang sebelumnya terikat pada pompa. Pelepasan fosfat ini menyebabkan pompa kembali ke konformasi aslinya, yaitu terbuka ke arah dalam sel.</li>
+                <li><strong>Pelepasan Kalium (K+)</strong>: Dengan kembali ke konformasi awal, afinitas pompa terhadap K+ menurun, sehingga dua ion K+ dilepaskan ke dalam sitoplasma, di mana konsentrasi K+ sudah tinggi.</li>
+            </ol>
+            <p>Proses ini terus berulang, secara efisien memompa 3 ion Na+ keluar dan 2 ion K+ masuk ke dalam sel. Karena pompa ini secara langsung menggunakan energi dari hidrolisis ATP, ia diklasifikasikan sebagai <span class="key-concept">Transpor Aktif Primer</span>.</p>
+
+            <details>
+                <summary>Apa itu ATP dan Mengapa Penting?</summary>
+                <p><strong>ATP (Adenosin Trifosfat)</strong> adalah "mata uang energi" utama sel. Molekul ini terdiri dari adenin, ribosa, dan tiga gugus fosfat. Energi tinggi tersimpan dalam ikatan fosfat terakhir. Ketika ikatan ini dipecah melalui proses <strong class="highlight">hidrolisis</strong> (penambahan molekul air), energi dilepaskan dan dapat digunakan untuk berbagai aktivitas seluler, termasuk transpor aktif. Proses hidrolisis ATP menjadi ADP (Adenosin Difosfat) dan Pi (Gugus Fosfat Anorganik) adalah cara sel melepaskan dan memanfaatkan energi yang tersimpan.</p>
+            </details>
+        </section>
+
+        <section>
+            <h2>Transpor Aktif pada Sel Akar Rambut Tanaman: Penyerapan Nutrisi</h2>
+            <p>Transpor aktif tidak hanya terjadi pada sel hewan, tetapi juga sangat penting dalam proses fisiologis tumbuhan, terutama dalam penyerapan nutrisi dari tanah. Salah satu contoh yang sangat relevan adalah mekanisme penyerapan ion oleh <strong class="key-concept">sel akar rambut tanaman</strong>.</p>
+
+            <h3>Mekanisme Penyerapan Ion di Akar Tanaman</h3>
+            <p>Tanaman memerlukan berbagai ion mineral dari tanah untuk pertumbuhannya, seperti NH₄⁺ (amonium), HPO₄²⁻ (fosfat), dan K⁺ (kalium). Konsentrasi ion-ion ini di dalam sel akar biasanya lebih tinggi daripada di tanah sekitarnya. Oleh karena itu, penyerapan ion-ion ini memerlukan transpor aktif:</p>
+            <ul>
+                <li><strong>Pompa Proton (H+ ATPase)</strong>: Sel akar rambut memiliki pompa proton (H+ ATPase) di membran plasmanya. Pompa ini secara aktif memompa ion hidrogen (H+) keluar dari sel menuju tanah. Proses ini juga menggunakan energi dari ATP.</li>
+                <li><strong>Pembentukan Gradien Elektrokimia</strong>: Pemompaan H+ keluar menciptakan dua jenis gradien:
+                    <ol>
+                        <li><strong class="highlight">Gradien konsentrasi H+</strong>: Konsentrasi H+ di luar sel menjadi lebih tinggi.</li>
+                        <li><strong class="highlight">Potensial listrik membran</strong>: Bagian luar sel menjadi lebih positif dibandingkan bagian dalam.</li>
+                    </ol>
+                    Kedua gradien ini secara kolektif disebut <strong class="key-concept">gradien elektrokimia</strong>.</li>
+                <li><strong>Kotranspor Ion</strong>: Gradien elektrokimia ini kemudian dimanfaatkan untuk mengangkut ion-ion lain ke dalam sel melalui proses yang disebut kotranspor (seringkali symport atau antiport). Misalnya, ion K⁺ dapat masuk ke dalam sel melalui saluran yang bergerak menuruni gradien elektrokimia yang diciptakan oleh pompa proton. Ion-ion seperti NH₄⁺ dan HPO₄²⁻ juga dapat masuk melalui kotransporter yang memanfaatkan masuknya H+ kembali ke dalam sel secara pasif menuruni gradiennya.</li>
+            </ul>
+            <p>Meskipun beberapa ion masuk melalui saluran yang bergerak menuruni gradien (yang terlihat pasif), pendorong utama bagi pergerakan ini adalah pompa proton yang merupakan transpor aktif primer. Jadi, secara keseluruhan, penyerapan nutrisi esensial ini adalah proses yang bergantung pada energi dan merupakan contoh penting dari transpor aktif dalam organisme hidup.</p>
+        </section>
+
+        <div class="info-box">
+            <p><strong>Refleksi Pembelajaran</strong></p>
+            <p>Setelah mempelajari transpor aktif, kita dapat melihat betapa kompleks dan efisiennya sel dalam mengatur lingkungan internalnya. Kemampuan sel untuk memindahkan zat melawan gradien konsentrasi adalah kunci untuk mempertahankan homeostatis, mengalirkan impuls saraf, menyerap nutrisi, dan banyak fungsi vital lainnya.</p>
+            <p>Memahami mekanisme ini membantu kita mengerti bagaimana obat-obatan diserap, bagaimana gangguan transpor menyebabkan penyakit, dan bagaimana tanaman mendapatkan nutrisi. Ini adalah fondasi penting dalam studi Biologi sel.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

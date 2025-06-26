@@ -1,0 +1,460 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Sebaran Flora dan Fauna Dunia - Keragaman Hayati</title>
+    <style>
+        /* Global CSS Variables for Theme */
+        :root {
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
+        }
+
+        /* Base Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background_canvas);
+            color: var(--text_secondary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Main Container for Content */
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background_canvas);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Headings Styles */
+        h1, h2, h3, h4 {
+            color: var(--text_primary);
+            margin-bottom: 15px;
+        }
+
+        h1 { 
+            font-size: 2.5em; 
+            border-bottom: 3px solid var(--primary_blue); 
+            padding-bottom: 15px; 
+            text-align: center;
+        }
+        h2 { 
+            font-size: 2em; 
+            color: var(--primary_blue); 
+            margin-top: 40px; 
+            border-bottom: 1px solid var(--border_divider); 
+            padding-bottom: 5px;
+        }
+        h3 { 
+            font-size: 1.6em; 
+            color: var(--accent_green); 
+            margin-top: 30px;
+        }
+        h4 { 
+            font-size: 1.3em; 
+            color: var(--text_primary); 
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraph and List Styles */
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text_secondary);
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        strong {
+            color: var(--text_primary);
+        }
+
+        /* Accordion Component Styles */
+        .accordion {
+            background-color: var(--background_canvas);
+            color: var(--text_primary);
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2em;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            border-bottom: 1px solid var(--border_divider);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .accordion:hover {
+            background-color: #F5F5F5; /* Lighter hover for normal state */
+        }
+
+        .accordion.active {
+            background-color: var(--primary_blue);
+            color: #fff;
+            border-radius: 5px 5px 0 0; /* Rounded top, flat bottom when active */
+        }
+
+        .accordion.active:hover {
+            background-color: #1565C0; /* Darker blue on hover for active state */
+        }
+
+        /* Plus/Minus Icon for Accordion */
+        .accordion:after {
+            content: '\02795'; /* Plus sign */
+            font-size: 0.8em;
+            color: var(--primary_blue); /* Blue for inactive */
+            float: right;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.active:after {
+            content: "\2796"; /* Minus sign */
+            color: #fff; /* White for active */
+            transform: rotate(0deg);
+        }
+
+        /* Panel Content for Accordion */
+        .panel {
+            padding: 0 18px;
+            background-color: #F9F9F9; /* Slightly off-white for panel background */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            border: 1px solid var(--border_divider);
+            border-top: none;
+            border-radius: 0 0 5px 5px; /* Flat top, rounded bottom when open */
+            margin-bottom: 15px; /* Space after closed panel */
+        }
+
+        .panel p, .panel ul {
+            padding-top: 15px;
+            padding-bottom: 10px;
+            margin: 0; /* Remove default margins to control spacing */
+        }
+        .panel ul {
+            padding-bottom: 15px;
+        }
+
+        /* Specific Callout/Info Box */
+        .callout {
+            background-color: #E3F2FD; /* Light blue */
+            border-left: 5px solid var(--semantic_info);
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            color: var(--text_primary);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        .callout strong {
+            color: var(--primary_blue);
+        }
+
+        /* Responsive Design Adjustments */
+        @media screen and (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 { font-size: 2em; padding-bottom: 10px; }
+            h2 { font-size: 1.7em; margin-top: 30px; }
+            h3 { font-size: 1.4em; margin-top: 25px; }
+            h4 { font-size: 1.1em; margin-top: 15px; }
+            .accordion { font-size: 1.1em; padding: 15px; }
+            .panel { padding: 0 15px; }
+            .callout { padding: 12px 15px; margin: 20px 0; }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 10px;
+                border-radius: 0; /* No border-radius on very small screens */
+                box-shadow: none; /* No shadow */
+            }
+            h1 { font-size: 1.7em; padding-bottom: 8px; border-bottom: 2px solid var(--primary_blue); }
+            h2 { font-size: 1.4em; margin-top: 25px; }
+            h3 { font-size: 1.2em; margin-top: 20px; }
+            h4 { font-size: 1em; margin-top: 10px; }
+            .accordion { font-size: 1em; padding: 12px; border-radius: 3px; }
+            .panel { padding: 0 12px; border-radius: 0 0 3px 3px; }
+            ul { margin-left: 15px; }
+            .callout { padding: 10px 12px; margin: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Keragaman Hayati - Sebaran Flora dan Fauna Dunia</h1>
+
+        <p>Keragaman hayati, atau biodiversitas, adalah kekayaan bentuk kehidupan di Bumi. Indonesia, sebagai negara dengan keanekaragaman hayati yang sangat tinggi (megabiodiversitas), memiliki peranan penting dalam menjaga kelestarian ini. Namun, banyak spesies flora dan fauna di seluruh dunia menghadapi ancaman kepunahan akibat berbagai faktor seperti hilangnya habitat dan perburuan. Memahami pola persebaran dan faktor penyebabnya menjadi kunci dalam upaya konservasi dan pelestarian.</p>
+
+        <h2>1. Persebaran Sistem Bioma</h2>
+        <p>Pola persebaran flora di dunia dapat dipahami melalui sistem bioma. Bioma adalah ekosistem besar yang diklasifikasikan berdasarkan <strong>vegetasi dominan</strong> di suatu wilayah regional yang luas. Tiga parameter utama yang memengaruhi pembentukan bioma meliputi <strong>kondisi iklim</strong> (suhu dan curah hujan), <strong>jenis tanah</strong>, dan <strong>kondisi geologi</strong> setempat. Berikut adalah penjelasan mengenai beberapa zona vegetasi (bioma) utama:</p>
+
+        <!-- Accordion for Bioma Types -->
+        <button class="accordion">a. Padang Rumput</button>
+        <div class="panel">
+            <h4>Karakteristik Umum</h4>
+            <ul>
+                <li><strong>Lokasi:</strong> Terbentang dari daerah tropika hingga subtropika.</li>
+                <li><strong>Curah Hujan:</strong> Umumnya antara 250-500 mm/tahun. Pada beberapa daerah, curah hujan bisa mencapai 1.000 mm, namun turunnya hujan tidak teratur.</li>
+                <li><strong>Adaptasi Tumbuhan:</strong> Hujan yang tidak teratur dan porositas tanah yang rendah mengakibatkan tumbuhan sulit mengambil air, sehingga rumput menjadi vegetasi dominan. Di daerah basah, rumput bisa mencapai tiga meter (misalnya <em>bluestem</em> dan <em>indian grasses</em>), sedangkan di daerah kering rumputnya pendek (misalnya <em>Buffalo grasses</em> dan <em>Rumput Grama</em>).</li>
+            </ul>
+            <h4>Jenis-jenis Padang Rumput</h4>
+            <ul>
+                <li><strong>Prairie:</strong> Terdapat di daerah dengan curah hujan berimbang dan musim panas. Rumput di prairie lebih tinggi dibandingkan rumput tundra.</li>
+                <li><strong>Stepa:</strong> Terdapat di daerah dengan curah hujan tinggi, umumnya terdiri atas rumput-rumput pendek dan diselingi semak belukar. Tumbuhan di stepa tahan terhadap kelembaban rendah.</li>
+                <li><strong>Savana/Sabana:</strong> Memiliki kesamaan dengan stepa, namun tercipta dari kondisi tanah yang tidak basah dan biasanya kering saat musim kemarau. Vegetasi dominan adalah rumput dan akasia, diselingi dengan pohon tinggi.</li>
+            </ul>
+        </div>
+
+        <button class="accordion">b. Flora Gurun</button>
+        <div class="panel">
+            <h4>Karakteristik Tumbuhan</h4>
+            <ul>
+                <li><strong>Daun:</strong> Umumnya berdaun kecil seperti duri, atau bahkan tidak berdaun sama sekali.</li>
+                <li><strong>Akar:</strong> Panjang untuk menjangkau air di kedalaman, atau mampu menyimpan air dalam jaringan spons.</li>
+                <li><strong>Pertumbuhan Cepat:</strong> Tumbuhan menahun beradaptasi dengan kekurangan air dan penguapan cepat. Apabila hujan turun, tumbuhan semusim dapat tumbuh, berbunga, dan berbuah dengan cepat dalam beberapa hari, menghasilkan biji untuk berkembang di musim berikutnya.</li>
+            </ul>
+            <h4>Kondisi Lingkungan</h4>
+            <ul>
+                <li><strong>Lokasi:</strong> Banyak terdapat di daerah tropis dan berbatasan dengan padang rumput.</li>
+                <li><strong>Curah Hujan:</strong> Sangat rendah, sekitar 250 mm/tahun atau kurang. Hujan lebat jarang dan tidak teratur.</li>
+                <li><strong>Suhu:</strong> Pancaran matahari sangat terik dan penguapan tinggi. Suhu siang hari sangat panas (dapat mencapai lebih dari 40°C), sementara malam hari amat dingin (amplitudo harian tinggi).</li>
+            </ul>
+        </div>
+
+        <button class="accordion">c. Tundra</button>
+        <div class="panel">
+            <h4>Karakteristik Umum</h4>
+            <ul>
+                <li><strong>Lokasi:</strong> Hanya terdapat di belahan bumi utara, kebanyakan di lingkungan kutub utara.</li>
+                <li><strong>Musim:</strong> Memiliki musim dingin yang panjang dan gelap, serta musim panas yang panjang dan terang terus-menerus. Daerah tundra di kutub dapat mengalami gelap berbulan-bulan.</li>
+                <li><strong>Vegetasi:</strong> Tidak ada pohon tinggi, didominasi tumbuhan pendek seperti semak, serta lumut (terutama <em>sphagnum</em>) dan lumut kerak (<em>lichenes</em>). Tumbuhan semusim biasanya berbunga dengan warna menyolok dan waktu pertumbuhan sangat pendek.</li>
+            </ul>
+            <h4>Karakteristik Fauna</h4>
+            <ul>
+                <li>Jumlah spesies makhluk hidup sangat sedikit, bahkan lebih sedikit daripada gurun.</li>
+                <li>Hewan yang dapat hidup di daerah ini telah beradaptasi dengan suhu dingin:
+                    <ul>
+                        <li>Memiliki bulu atau rambut tebal, seperti walrus, anjing laut (seal), penguin, beruang kutub, kelinci kutub, lemur, dan rusa kutub.</li>
+                        <li>Mengalami perubahan warna menjadi putih pada musim dingin sebagai perlindungan di atas salju dan mengurangi kehilangan panas oleh radiasi matahari.</li>
+                    </ul>
+                </li>
+                <li>Beberapa jenis serangga, seperti lalat, memiliki telur yang tahan dingin dan menetas pada musim panas.</li>
+            </ul>
+        </div>
+
+        <button class="accordion">d. Hutan Tropis</button>
+        <div class="panel">
+            <h4>Karakteristik Umum</h4>
+            <ul>
+                <li><strong>Biodiversitas:</strong> Sangat kaya akan ribuan spesies tumbuhan, mungkin berbeda dengan daerah lain.</li>
+                <li><strong>Kondisi Lingkungan:</strong> Sepanjang tahun cukup air dan keadaan alamnya memungkinkan terjadinya pertumbuhan yang lama sehingga komunitas hutan sangat kompleks. Kelembaban tinggi dan suhu rata-rata 25°C.</li>
+                <li><strong>Struktur Vegetasi:</strong> Pohon utama memiliki ketinggian antara 20-40 meter dengan cabang-cabang berdaun lebat yang membentuk tudung (kanopi), mengakibatkan dasar hutan menjadi gelap.</li>
+                <li><strong>Tumbuhan Khas:</strong> Terdapat liana (misalnya rotan, banyak tumbuh di hutan Kalimantan) dan epifit (misalnya anggrek).</li>
+            </ul>
+        </div>
+
+        <button class="accordion">e. Hutan Gugur</button>
+        <div class="panel">
+            <h4>Karakteristik Umum</h4>
+            <ul>
+                <li><strong>Lokasi:</strong> Daerah beriklim sedang.</li>
+                <li><strong>Curah Hujan:</strong> Cukup rendah, antara 750 sampai 1.000 mm/tahun.</li>
+                <li><strong>Musim:</strong> Memiliki empat musim yang jelas: musim semi, panas, gugur (dedaunan gugur), dan dingin.</li>
+                <li><strong>Vegetasi:</strong> Tumbuhan menahun pertumbuhan terhenti sejak musim gugur hingga musim semi, lalu gugur daun. Tumbuhan semusim mati pada musim dingin, hanya menyisakan bijinya yang akan berkecambah menjelang musim panas.</li>
+            </ul>
+        </div>
+
+        <button class="accordion">f. Taiga</button>
+        <div class="panel">
+            <h4>Karakteristik Umum</h4>
+            <ul>
+                <li><strong>Definisi:</strong> Merupakan hutan pohon pinus yang daunnya berbentuk seperti jarum (hutan konifer).</li>
+                <li><strong>Lokasi:</strong> Bioma yang didominasi oleh satu spesies pohon. Kebanyakan terdapat di belahan bumi bagian utara (Siberia Utara, Rusia, Kanada Tengah dan Utara).</li>
+                <li><strong>Vegetasi Khas:</strong> Tumbuhan konifer seperti pohon <em>spruce (Picea)</em>, <em>alder (Alnus)</em>, <em>birch (Betula)</em>, dan <em>juniper (Juniperus)</em>.</li>
+                <li><strong>Musim Tumbuh:</strong> Masa pertumbuhan pada musim panas berlangsung antara 3 sampai 6 bulan.</li>
+            </ul>
+        </div>
+
+        <div class="callout">
+            <p><strong>Perluasan Wawasan:</strong> Persebaran bioma sangat terkait dengan pola iklim global. Perbedaan suhu, curah hujan, dan musim menciptakan kondisi unik yang mendukung jenis vegetasi dan fauna tertentu di setiap wilayah.</p>
+        </div>
+
+        <h2>2. Persebaran Flora dan Fauna di Dunia Menurut Alfred Russel Wallace</h2>
+        <p>Pada tahun 1876, Alfred Russel Wallace, seorang naturalis dan ahli biogeografi terkemuka, membagi wilayah persebaran fauna di dunia menjadi 8 wilayah utama. Pembagian ini dibuat untuk menunjukkan perbedaan karakteristik hewan di setiap wilayah, dengan menggunakan garis khayal sebagai batas. Wilayah-wilayah tersebut adalah <strong>Ethiopian, Palearktik, Oriental, Australian, Neotropical, Neartik, Oceanik,</strong> dan <strong>Antartik</strong>. Berikut penjelasan lebih lanjut mengenai beberapa wilayah utama:</p>
+
+        <!-- Accordion for Wallace Regions -->
+        <button class="accordion">a. Wilayah Ethiopian</button>
+        <div class="panel">
+            <h4>Cakupan Geografis</h4>
+            <ul>
+                <li>Meliputi keseluruhan benua Afrika, Pulau Madagaskar, dan juga sebagian daratan Arab terutama di bagian selatan.</li>
+                <li>Gurun Sahara di utara menjadi pembatas alami antara wilayah Ethiopian dengan wilayah Paleartik (persebaran hewan di Benua Eropa).</li>
+            </ul>
+            <h4>Fauna Khas</h4>
+            <ul>
+                <li><strong>Fauna Khas Afrika:</strong> Gajah Afrika, singa, citah, hyena, badak Afrika, gorila, babun, simpanse, dan jerapah.</li>
+                <li><strong>Mamalia Padang Rumput:</strong> Zebra, antilope, kijang, harimau (jenis tertentu), dan trenggiling (mamalia pemakan serangga).</li>
+                <li><strong>Fauna Endemik Madagaskar:</strong> Lemur dan kuda nil kecil.</li>
+                <li><strong>Fauna Endemik Sungai Nil:</strong> Kuda Nil.</li>
+                <li>Beberapa fauna di wilayah ini memiliki kemiripan dengan fauna di wilayah Oriental (seperti babun, gorila, simpanse), mengindikasikan kemungkinan koneksi daratan di masa lampau.</li>
+            </ul>
+        </div>
+
+        <button class="accordion">b. Wilayah Paleartik</button>
+        <div class="panel">
+            <h4>Cakupan Geografis</h4>
+            <ul>
+                <li>Merupakan zona dengan kawasan paling luas di antara zona lainnya.</li>
+                <li>Meliputi hampir seluruh benua Eropa, Rusia, daerah dekat Kutub Utara, Pegunungan Himalaya, Kepulauan Inggris di Eropa Barat sampai Jepang, Selat Bering di pantai Pasifik, dan benua Afrika paling Utara.</li>
+                <li>Kondisi lingkungan wilayah ini sangat bervariasi, mulai dari perbedaan suhu, curah hujan, sampai kondisi permukaan tanahnya, menyebabkan jenis fauna di Paleartik juga sangat beragam.</li>
+            </ul>
+            <h4>Fauna Khas</h4>
+            <ul>
+                <li><strong>Fauna yang tetap bertahan di lingkungan aslinya:</strong> Panda (di Cina), unta (di Afrika Utara), serta binatang kutub seperti rusa kutub, kucing kutub, dan beruang kutub.</li>
+                <li><strong>Binatang yang berasal dari wilayah ini:</strong> Kelinci, sejenis tikus, berbagai spesies anjing, kelelawar, bajing (tupai), dan kijang.</li>
+                <li><strong>Jenis Hewan Lain:</strong> Lynx, landak, bison, kambing gunung, serigala, kelinci kutub, dan burung pelatuk.</li>
+            </ul>
+        </div>
+
+        <button class="accordion">c. Wilayah Neartik</button>
+        <div class="panel">
+            <h4>Cakupan Geografis</h4>
+            <ul>
+                <li>Meliputi kawasan Amerika Serikat, Amerika Utara dekat kutub utara, dan Greenland.</li>
+                <li>Memiliki berbagai macam jenis bioma:
+                    <ul>
+                        <li><strong>Amerika Utara bagian utara:</strong> Didominasi bioma taiga dengan hutan konifer yang luas.</li>
+                        <li><strong>Amerika Utara bagian tengah:</strong> Termasuk ke dalam bioma padang rumput.</li>
+                        <li><strong>Amerika Utara bagian timur:</strong> Banyak ditumbuhi vegetasi hutan gugur.</li>
+                        <li><strong>Greenland:</strong> Sebagian besar ditutupi oleh salju dengan ketebalan yang bervariasi.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h4>Fauna Khas</h4>
+            <ul>
+                <li>Ayam kalkun liar, tikus berkantung (di Gurun Pasifik Timur), bison, muskox, karibu, dan domba gunung.</li>
+                <li>Beberapa jenis hewan yang ada di wilayah Paleartik juga ditemukan di sini: Anjing, kelinci, kelelawar, kucing, dan bajing.</li>
+                <li><strong>Jenis Hewan Lain:</strong> Beruang coklat, berang-berang, tupai salamander, bison, karibu, kalkun, kungkang (sloth), dan rakun.</li>
+            </ul>
+            <div class="callout">
+                <p><strong>Tentang Rakun:</strong> Rakun adalah mamalia omnivora yang banyak ditemukan di Amerika Utara. Tubuhnya ditumbuhi rambut abu-abu tebal sebagai mantel alami di cuaca dingin. Rakun dikenal sangat pintar; sebuah studi bahkan mengatakan mereka dapat mengingat solusi permasalahan hingga 3 tahun lamanya.</p>
+            </div>
+        </div>
+
+        <button class="accordion">d. Wilayah Neotropikal</button>
+        <div class="panel">
+            <h4>Cakupan Geografis</h4>
+            <ul>
+                <li>Meliputi Amerika Tengah, Amerika Selatan, dan sebagian besar Meksiko.</li>
+                <li>Wilayah ini sebagian besar beriklim tropis, dan bagian selatan beriklim sedang.</li>
+            </ul>
+            <h4>Fauna Khas</h4>
+            <ul>
+                <li>Sangat terkenal sebagai wilayah fauna vertebrata karena jenisnya yang sangat beranekaragam dan spesifik.</li>
+                <li><strong>Hewan Endemik:</strong> Ikan piranha dan belut listrik (Sungai Amazon), llama (sejenis unta di padang pasir Atacama, Peru), tapir, dan kera hidung merah.</li>
+                <li><strong>Jenis Hewan Lain:</strong> Kukang, armadillo, kelelawar penghisap darah, siamang, trenggiling, anaconda, kura-kura galapagos.</li>
+            </ul>
+            <div class="callout">
+                <p><strong>Fakta Menarik Piranha:</strong> Meskipun sering digambarkan sebagai predator ganas dalam fiksi, penelitian ilmiah pada tahun 2003 menunjukkan bahwa sangat sedikit kasus manusia yang dimakan oleh ikan piranha. Piranha umumnya lebih suka memakan ikan atau bangkai yang membusuk, dan sebagian besar kematian yang dikaitkan dengan piranha disebabkan oleh faktor lain seperti tenggelam atau gagal jantung.</p>
+            </div>
+        </div>
+
+        <button class="accordion">e. Wilayah Oriental</button>
+        <div class="panel">
+            <h4>Cakupan Geografis</h4>
+            <ul>
+                <li>Tersebar di kawasan Asia, terutama Asia Selatan dan Asia Tenggara.</li>
+                <li>Fauna Indonesia yang masuk wilayah ini hanya di Indonesia bagian barat.</li>
+                <li>Meliputi wilayah India, Indochina (Kamboja, Laos, Vietnam), serta Indomalayan (Malaysia, Sumatra, Jawa, Kalimantan, dan Filipina).</li>
+            </ul>
+            <h4>Fauna Khas</h4>
+            <ul>
+                <li>Harimau, orang utan, gibbon, rusa, banteng, dan badak bercula satu.</li>
+                <li><strong>Jenis Hewan Lain:</strong> Badak bercula dua, gajah, beruang, antilop, berbagai jenis reptil, dan ikan.</li>
+                <li><strong>Hewan Endemik Indonesia di Wilayah Oriental:</strong> Komodo (hanya ditemukan di Pulau Komodo dan sekitarnya), serta anoa (Sulawesi).</li>
+                <li>Adanya jenis hewan yang hampir sama dengan wilayah Ethiopian menunjukkan bahwa Asia Selatan dan Asia Tenggara pernah menjadi satu daratan dengan Afrika.</li>
+            </ul>
+        </div>
+
+        <button class="accordion">f. Wilayah Australian</button>
+        <div class="panel">
+            <h4>Cakupan Geografis</h4>
+            <ul>
+                <li>Mencakup kawasan Australia, Selandia Baru, Papua, Maluku, Sulawesi, dan pulau-pulau sekitarnya.</li>
+                <li>Sebagian besar kondisi lingkungannya beriklim tropis, dan sebagian lagi beriklim sedang.</li>
+                <li>Kondisi lingkungan di wilayah Australia sangat mencolok disebabkan oleh letaknya yang terpisah jauh dari benua lainnya (isolasi geografis).</li>
+            </ul>
+            <h4>Fauna Khas</h4>
+            <ul>
+                <li>Kanguru, burung kiwi, koala, dan platipus (hewan monotremata yang bertelur).</li>
+                <li><strong>Jenis Burung Khas:</strong> Burung cendrawasih, kasuari, kakaktua, dan betet.</li>
+                <li><strong>Kelompok Reptil:</strong> Buaya, kura-kura, ular piton, dan lain sebagainya.</li>
+                <li>Banyak hewan di wilayah ini merupakan marsupialia (mamalia berkantung) dan monotremata, yang unik karena evolusi terpisah akibat isolasi geografis.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        // JavaScript for Accordion Functionality
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                // Toggle the 'active' class on the clicked button
+                this.classList.toggle("active");
+
+                // Get the panel (content) that is next to the button
+                var panel = this.nextElementSibling;
+
+                // Toggle the max-height to show/hide the panel with smooth transition
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null; // Collapse the panel
+                } else {
+                    // Set max-height to scrollHeight to expand it fully
+                    // Adding a slight buffer (e.g., +20px) can prevent content cutoff if inner margins are tricky
+                    panel.style.maxHeight = panel.scrollHeight + 20 + "px"; 
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+```

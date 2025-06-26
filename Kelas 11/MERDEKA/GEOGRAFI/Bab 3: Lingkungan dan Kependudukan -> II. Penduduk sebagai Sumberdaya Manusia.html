@@ -1,0 +1,797 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penduduk sebagai Sumber Daya Manusia - Geografi Kelas XI</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            margin: 20px 10px;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.2rem; border-bottom: 2px solid var(--border-divider); padding-bottom: 10px; }
+        h2 { font-size: 1.8rem; color: var(--accent-green); }
+        h3 { font-size: 1.5rem; color: var(--primary-blue); }
+        h4 { font-size: 1.3rem; color: var(--text-secondary); }
+        h5 { font-size: 1.1rem; color: var(--text-tertiary); }
+
+        p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        ul ul {
+            list-style-type: circle;
+            margin-left: 20px;
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .box {
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .kamus-geografi {
+            background-color: #E3F2FD; /* Light blue, lighter than primary_blue */
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .info-math {
+            background-color: #FFFDE7; /* Light yellow, lighter than secondary_accent_amber */
+            border: 1px solid var(--secondary-accent-amber);
+            color: var(--secondary-accent-amber);
+        }
+        .info-math strong {
+            color: var(--secondary-accent-amber);
+        }
+        .info-math p {
+            color: var(--text-primary);
+        }
+
+
+        .ayo-berpikir-kreatif, .ayo-berpikir-kritis {
+            background-color: #E8F5E9; /* Light green, lighter than accent_green */
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+        }
+        .ayo-berpikir-kreatif p, .ayo-berpikir-kritis p {
+            color: var(--text-secondary);
+        }
+
+        .tautan-box {
+            background-color: #F3E5F5; /* Light purple */
+            border: 1px solid #9C27B0; /* Purple accent */
+            color: #9C27B0;
+            text-align: center;
+        }
+        .tautan-box a {
+            color: #9C27B0;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background-color: #F5F5F5; /* Light grey */
+            border: 1px dashed var(--border-divider);
+            padding: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: var(--background-canvas);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+        }
+        
+        .note {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.3rem; }
+            h4 { font-size: 1.1rem; }
+            .box { padding: 10px; }
+            th, td { padding: 8px; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                margin: 5px;
+            }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            h3 { font-size: 1.1rem; }
+            p, li, table { font-size: 0.95em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>II. Penduduk Sebagai Sumberdaya Manusia</h1>
+
+        <section id="dinamika-kependudukan">
+            <h2>A. Dinamika Kependudukan</h2>
+            <h3>1. Pengertian Penduduk</h3>
+            <p>Kependudukan adalah faktor penting yang memengaruhi keberlangsungan lingkungan di suatu wilayah. Dinamika penduduk sangat berpengaruh pada pertumbuhan dan perubahan lingkungan yang cepat.</p>
+            <p>Perencanaan pembangunan sangat membutuhkan data kependudukan untuk proyeksi pertumbuhan penduduk di masa depan.</p>
+            <p>Perkembangan jumlah penduduk memiliki dampak berbeda antara negara berkembang dan negara maju terhadap kemiskinan, ekonomi, kesehatan, jasa sosial, dan lingkungan. Negara berkembang cenderung memiliki tingkat fertilitas, morbiditas, dan mortalitas yang tinggi, namun harapan hidup rendah. Sebaliknya, negara maju dan berpenghasilan menengah memiliki fertilitas rendah, populasi stabil atau menurun, dan mengalami penyusutan usia kerja serta penuaan populasi yang cepat.</p>
+
+            <div class="box kamus-geografi">
+                <h4>Kamus Geografi</h4>
+                <p><strong>Penduduk</strong> adalah seseorang atau sekelompok orang yang bertempat tinggal di suatu daerah selama enam bulan atau lebih, atau kurang dari enam bulan dan bertujuan untuk menetap.</p>
+            </div>
+
+            <div class="box kamus-geografi">
+                <h4>Bappenas, 2013</h4>
+                <p><strong>Dinamika penduduk</strong> adalah kondisi disaat struktur penduduk, jumlah dan persebarannya mengalami perubahan akibat terjadinya proses demografi yaitu kelahiran, kematian, dan perpindahan.</p>
+            </div>
+            <p>Dinamika penduduk terlihat dari pertumbuhan penduduk, yang merupakan keseimbangan dinamis antara faktor penambah (kelahiran) dan faktor pengurang (kematian, perpindahan/migrasi).</p>
+
+            <div class="box tautan-box">
+                <p>Untuk menambah wawasan kalian tentang Kependudukan dan Lingkungan Hidup, silahkan klik tautan di bawah ini:</p>
+                <p><a href="#">http://bit.ly/KependudukandanLingkunganHidup (Simulasi Tautan)</a></p>
+            </div>
+
+            <h3>2. Pertambahan Penduduk Dunia dan Indonesia dari Waktu ke Waktu</h3>
+            <h4>a. Pertumbuhan Penduduk Dunia</h4>
+            <p>Dinamika populasi adalah bagian dari ekologi yang berhubungan dengan variasi waktu dan ruang dari ukuran dan kepadatan populasi untuk satu atau lebih spesies (Begon, 1990). Data kependudukan bersifat dinamis dan terus berubah.</p>
+            <p>Meskipun ada perubahan signifikan dalam jumlah kelahiran, populasi global masih tumbuh lebih dari 80 juta per tahun dan kemungkinan akan terus bertambah (Population Matters, 2021).</p>
+            <p>Proyeksi terbaru PBB memperkirakan populasi dunia akan mencapai 9,7 miliar pada tahun 2050 dan 10,9 miliar pada tahun 2100, dengan berbagai proyeksi berdasarkan asumsi berbeda.</p>
+            <p>Dalam rentang kepastian 95%, perbedaan proyeksi populasi tahun 2100 antara tertinggi dan terendah bisa mencapai hampir 4 miliar orang, lebih dari setengah populasi saat ini. Sejak Perang Dunia Kedua, populasi global bertambah satu miliar jiwa setiap 12-15 tahun, dan populasi saat ini dua kali lipat dibandingkan tahun 1970.</p>
+            <p>Pertumbuhan penduduk yang cepat menjadi hambatan utama pembangunan berkelanjutan, menyebabkan kesulitan mengatasi masalah sosial seperti kelaparan, kemiskinan, kesetaraan gender, kesehatan, dan pendidikan.</p>
+            <p>Kemiskinan adalah pendorong dan prediktor pertumbuhan penduduk yang signifikan. Total populasi di negara-negara tertinggal diproyeksikan meningkat dari lebih dari 1 miliar pada 2020 menjadi 1,76 miliar pada 2050.</p>
+            <p>Lebih dari separuh populasi dunia selama sisa abad ini akan berada di Afrika sub-Sahara. Meskipun tingkat kesuburan menurun, tetap tinggi di sebagian besar negara Afrika, menyebabkan populasi yang sangat muda (60% di bawah 25 tahun). Peningkatan akses kesehatan juga meningkatkan harapan hidup dan menurunkan kematian anak, sehingga lebih banyak generasi hidup bersamaan.</p>
+
+            <h5>Data Pertumbuhan Populasi per Benua (2020-2100, dalam Juta Jiwa):</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Benua</th>
+                        <th>2020 (Juta)</th>
+                        <th>2050 (Juta)</th>
+                        <th>2100 (Juta)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Afrika</td>
+                        <td>~1300</td>
+                        <td>~2500</td>
+                        <td>~4000</td>
+                    </tr>
+                    <tr>
+                        <td>Asia</td>
+                        <td>~4600</td>
+                        <td>~5300</td>
+                        <td>~4700</td>
+                    </tr>
+                    <tr>
+                        <td>Eropa</td>
+                        <td>~750</td>
+                        <td>~700</td>
+                        <td>~600</td>
+                    </tr>
+                    <tr>
+                        <td>Amerika Latin & Karibia</td>
+                        <td>~650</td>
+                        <td>~750</td>
+                        <td>~680</td>
+                    </tr>
+                    <tr>
+                        <td>Amerika Utara</td>
+                        <td>~370</td>
+                        <td>~430</td>
+                        <td>~450</td>
+                    </tr>
+                    <tr>
+                        <td>Oseania</td>
+                        <td>~40</td>
+                        <td>~55</td>
+                        <td>~60</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note"><em>(Estimasi data berdasarkan tren visual dari Gambar 3.14 Perkiraan Populasi Penduduk)</em></p>
+
+            <div class="box tautan-box">
+                <p>Untuk memperdalam dan menambah wawasan kalian tentang Dinamika Populasi, silahkan klik tautan di bawah ini:</p>
+                <p><a href="#">http://bit.ly/DinamikaPopulasi (Simulasi Tautan)</a></p>
+            </div>
+
+            <h4>b. Pertumbuhan Penduduk di Indonesia</h4>
+            <p>Jumlah penduduk di Indonesia terus meningkat setiap tahun. Badan Pusat Statistik (BPS) mencatat jumlah penduduk:</p>
+            <ul>
+                <li>Tahun 2010: 237,63 juta jiwa.</li>
+                <li>Tahun 2020: 270,20 juta jiwa.</li>
+            </ul>
+            <p>Peningkatan ini menunjukkan penambahan 32,56 juta jiwa (rata-rata 3,26 juta setiap tahun) atau kenaikan rata-rata keseluruhan hampir 20% setiap 10 tahun (Data BPS, 2021).</p>
+            <p>Laju pertumbuhan penduduk Indonesia adalah 1,49% (sekitar empat juta jiwa per tahun), termasuk kategori sedang (1-2% per tahun). Target pertumbuhan penduduk Indonesia adalah 1,19% (sekitar satu sampai dua juta per tahun) (Data BPS, 2021).</p>
+            <p>Jumlah penduduk Indonesia yang besar membutuhkan perhatian pemerintah untuk pemenuhan kebutuhan. Angka pertumbuhan penduduk berbeda di setiap wilayah, dipengaruhi oleh tingginya angka kelahiran dan rendahnya angka kematian.</p>
+            <p>Besarnya jumlah penduduk, terutama di perkotaan, menimbulkan masalah serius. Pertambahan penduduk harus diimbangi dengan penambahan sarana dan prasarana seperti sekolah, perumahan, dan alat transportasi.</p>
+            <p>Pemerintah perlu mengendalikan jumlah penduduk untuk perencanaan pembangunan yang baik, dimulai dengan mengetahui jumlah dan pertumbuhan penduduk.</p>
+
+            <div class="box tautan-box">
+                <p>Untuk menambah wawasan kalian tentang jumlah Kependudukan, silahkan klik tautan di bawah ini:</p>
+                <p><a href="#">http://bit.ly/JumlahPendudukBPS (Simulasi Tautan)</a></p>
+            </div>
+
+            <h3>3. Pertumbuhan Penduduk dan Cara Menghitungnya</h3>
+            <h4>a. Pertumbuhan penduduk alami</h4>
+            <p>Pertumbuhan penduduk alami adalah cara paling sederhana dalam pengamatan dinamika kependudukan. Ini diukur dari selisih angka kelahiran dan angka kematian dalam satu tahun, dinyatakan dalam per seribu (sumber.belajar.kemdikbud.go.id).</p>
+
+            <div class="box info-math">
+                <h4>Info Math</h4>
+                <p><strong>Pertumbuhan Penduduk Alami</strong></p>
+                <p><strong>P = L - M</strong></p>
+                <p><strong>Keterangan:</strong></p>
+                <ul>
+                    <li><strong>P</strong>: Pertumbuhan penduduk</li>
+                    <li><strong>L</strong>: Lahir</li>
+                    <li><strong>M</strong>: Mati</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Contoh Perhitungan Pertumbuhan Penduduk Alami Kota Malang:</h5>
+                <p>Data Sensus Penduduk 2020 Kota Malang:</p>
+                <ul>
+                    <li>Jumlah penduduk: 843.810 jiwa</li>
+                    <li>Jumlah kelahiran (L): 1521 jiwa</li>
+                    <li>Jumlah meninggal (M): 1333 jiwa</li>
+                </ul>
+                <p><strong>Perhitungan:</strong></p>
+                <p>P = L - M</p>
+                <p>P = 1521 - 1333 = 188 jiwa</p>
+                <p>Jadi, pertumbuhan penduduk alami Kota Malang adalah:</p>
+                <p>188 : 843.810 × 100% = 0,02%.</p>
+                <p>Hasil ini menunjukkan bahwa pertumbuhan penduduk alami Kota Malang tergolong rendah. Faktor-faktor penyebabnya antara lain:</p>
+                <ol>
+                    <li>Tingkat kelahiran bayi yang rendah.</li>
+                    <li>Tingkat kematian yang rendah.</li>
+                    <li>Tingkat kesehatan penduduk kota relatif baik.</li>
+                </ol>
+            </div>
+
+            <h4>b. Pertumbuhan Penduduk Non Alami</h4>
+            <p>Pertumbuhan penduduk non alami diperoleh dari selisih antara penduduk pendatang (imigran) dengan penduduk emigrasi (migrasi keluar). Ini juga disebut pertumbuhan penduduk akibat perpindahan penduduk atau migrasi (sumber.belajar.kemdikbud.go.id).</p>
+            <p><strong>Imigrasi</strong> adalah perpindahan penduduk dari luar daerah dengan tujuan menetap, sedangkan <strong>emigrasi</strong> adalah perpindahan penduduk keluar daerah dengan tujuan menetap.</p>
+
+            <div class="box info-math">
+                <h4>Info Math</h4>
+                <p><strong>Pertumbuhan Penduduk Non Alami</strong></p>
+                <p><strong>P = I - E</strong></p>
+                <p><strong>Keterangan:</strong></p>
+                <ul>
+                    <li><strong>P</strong>: Pertumbuhan penduduk</li>
+                    <li><strong>I</strong>: Imigrasi</li>
+                    <li><strong>E</strong>: Emigrasi</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Contoh Perhitungan Pertumbuhan Penduduk Non Alami Kota Malang:</h5>
+                <p>Data Sensus Penduduk 2020 Kota Malang:</p>
+                <ul>
+                    <li>Jumlah penduduk: 843.810 jiwa</li>
+                    <li>Jumlah penduduk datang/imigrasi (I): 5423 jiwa</li>
+                    <li>Jumlah penduduk keluar/emigrasi (E): 3274 jiwa</li>
+                </ul>
+                <p><strong>Perhitungan:</strong></p>
+                <p>P = I - E</p>
+                <p>P = 5423 - 3274 = 2149 jiwa</p>
+                <p>Jadi, pertumbuhan penduduk non alami Kota Malang adalah:</p>
+                <p>2149 : 843.810 × 100% = 0,25%.</p>
+                <p>Hasil ini menunjukkan bahwa pertumbuhan penduduk non alami juga sedang berlangsung di Kota Malang. Beberapa faktor penyebabnya:</p>
+                <ol>
+                    <li>Daya tarik Kota Malang sebagai kota pendidikan.</li>
+                    <li>Wilayah Kota Malang yang nyaman untuk tempat tinggal.</li>
+                    <li>Lapangan kerja yang relatif terbuka, terutama di sektor kuliner.</li>
+                </ol>
+            </div>
+
+            <h4>c. Pertumbuhan Penduduk Total</h4>
+            <p>Pertumbuhan penduduk total menggambarkan laju pertumbuhan penduduk suatu wilayah selama periode tertentu, dengan mempertimbangkan kelahiran (natalitas), kematian (mortalitas), dan perpindahan penduduk (migrasi). Dihitung dari selisih kelahiran dan kematian, ditambah selisih dari pertumbuhan penduduk non alami (sumber.belajar.kemdikbud.go.id).</p>
+
+            <div class="box info-math">
+                <h4>Info Math</h4>
+                <p><strong>Pertumbuhan Penduduk Total</strong></p>
+                <p><strong>P = (L - M) + (I - E)</strong></p>
+                <p><strong>Keterangan:</strong></p>
+                <ul>
+                    <li><strong>P</strong>: Jumlah pertumbuhan penduduk dalam setahun</li>
+                    <li><strong>L</strong>: Jumlah kelahiran dalam setahun</li>
+                    <li><strong>M</strong>: Jumlah kematian dalam setahun</li>
+                    <li><strong>I</strong>: Imigrasi</li>
+                    <li><strong>E</strong>: Emigrasi</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Contoh Perhitungan Pertumbuhan Penduduk Total Kota Malang:</h5>
+                <p>Data Sensus Penduduk 2020 Kota Malang:</p>
+                <ul>
+                    <li>Jumlah penduduk: 843.810 jiwa</li>
+                    <li>Jumlah kelahiran (L): 1521 jiwa</li>
+                    <li>Jumlah kematian (M): 1333 jiwa</li>
+                    <li>Jumlah penduduk datang/imigrasi (I): 5423 jiwa</li>
+                    <li>Jumlah penduduk keluar/emigrasi (E): 3274 jiwa</li>
+                </ul>
+                <p><strong>Perhitungan:</strong></p>
+                <p>P = (L - M) + (I - E)</p>
+                <p>P = (1521 - 1333) + (5423 - 3274)</p>
+                <p>P = 188 + 2149 = 2337 Jiwa</p>
+                <p>Jadi, pertumbuhan penduduk tiap tahun Kota Malang adalah:</p>
+                <p>2337 : 843.810 × 100% = 0,27%.</p>
+                <p>Hasil perhitungan ini menunjukkan bahwa pertumbuhan penduduk total Kota Malang tergolong rendah, karena kurang dari 1%.</p>
+            </div>
+
+            <h5>Kriteria Laju Pertumbuhan Penduduk:</h5>
+            <ul>
+                <li>Jika P > 2%: tinggi</li>
+                <li>Jika P = 1% - 2%: sedang</li>
+                <li>Jika P &lt; 1%: rendah</li>
+            </ul>
+            <p>Rendahnya pertumbuhan penduduk total di Kota Malang dipengaruhi faktor alamiah dan non alamiah, antara lain:</p>
+            <ol>
+                <li>Kesadaran penduduk terhadap keluarga kecil yang relatif tinggi.</li>
+                <li>Tingkat kesehatan penduduk yang relatif tinggi.</li>
+                <li>Tingkat pendidikan penduduk yang relatif tinggi.</li>
+            </ol>
+            <p>Pertumbuhan penduduk yang rendah ini adalah hasil positif dari pembangunan secara keseluruhan.</p>
+
+            <h3>4. Data Kependudukan</h3>
+            <p>Sumber data jumlah dan distribusi penduduk sangat penting bagi suatu negara sebagai bahan perencanaan pembangunan. Tanpa mempertimbangkan data ini, pembangunan tidak akan berjalan lancar.</p>
+            <p>Pengumpulan data kependudukan harus terstruktur dan sistematis, melalui sensus, survei, dan registrasi penduduk.</p>
+
+            <h4>a. Sensus Penduduk</h4>
+            <p>Jumlah penduduk Indonesia selalu berubah. Hasil sensus digunakan untuk mengetahui pertumbuhan, komposisi, distribusi, dan karakteristik penduduk (Data BPS, 2021). Tujuannya adalah untuk merumuskan, melaksanakan, dan memantau kebijakan pembangunan sosial ekonomi dan kelestarian lingkungan, serta untuk pengukuran Sustainable Development Goals.</p>
+            <p>Pencatatan data kependudukan berfungsi sebagai parameter demografi dan proyeksi penduduk. Informasi yang dikumpulkan tergantung pada kebutuhan negara, kondisi keuangan, kemampuan teknis pelaksanaan, dan kesepakatan internasional untuk perbandingan.</p>
+
+            <div class="box kamus-geografi">
+                <h4>Kamus Geografi</h4>
+                <p><strong>Sensus penduduk</strong> adalah keseluruhan proses perencanaan, pengolahan, dan publikasi data kependudukan, ekonomi, dan sosial secara menyeluruh dalam suatu negara pada jangka waktu tertentu.</p>
+            </div>
+            <p>Sensus penduduk dilakukan dengan dua cara:</p>
+            <ol>
+                <li><strong>Sensus de facto</strong>: pencacahan penduduk terhadap semua orang yang ditemui petugas saat sensus.</li>
+                <li><strong>Sensus de jure</strong>: pencacahan penduduk terhadap semua orang yang tercatat dan bertempat tinggal di suatu wilayah (sesuai KTP).</li>
+            </ol>
+            <p>Metode pengisian sensus penduduk juga dilakukan dengan dua cara:</p>
+            <ol>
+                <li><strong>Metode canvasser</strong>: petugas mendatangi tempat tinggal dan mengisi daftar pertanyaan. Keunggulan: data lengkap dan sulit dipalsukan. Kekurangan: waktu lama karena wilayah luas. (Budjianto, 2012)</li>
+                <li><strong>Metode householder</strong>: penduduk mengisi daftar pertanyaan sendiri. Kelebihan: lebih cepat. Kekurangan: kebenaran data kurang terjamin. (Budjianto, 2012)</li>
+            </ol>
+            <p>Sensus penduduk adalah amanat UU No. 16 Tahun 1997 tentang Statistik, dilaksanakan setiap sepuluh tahun sekali (decennial census), pada tahun-tahun yang berakhiran angka nol. Indonesia telah melakukan sensus pada tahun 1961, 1971, 1980, 1990, 2000, 2010, dan 2020.</p>
+            <p>Sensus penduduk pertama hingga keenam menggunakan metode tradisional. Pada sensus 2020, untuk pertama kalinya digunakan metode kombinasi, yaitu memanfaatkan data administrasi kependudukan dari Ditjen Dukcapil Kementerian Dalam Negeri sebagai data dasar (Data BPS, 2021).</p>
+
+            <h5>Data Sensus Penduduk Indonesia (1961-2020):</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tahun Sensus</th>
+                        <th>Jumlah Penduduk (Juta Jiwa)</th>
+                        <th>Laju Pertumbuhan Penduduk (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1961</td><td>97.02</td><td>N/A</td></tr>
+                    <tr><td>1971</td><td>119.21</td><td>2.31</td></tr>
+                    <tr><td>1980</td><td>147.49</td><td>2.10</td></tr>
+                    <tr><td>1990</td><td>179.38</td><td>1.98</td></tr>
+                    <tr><td>2000</td><td>206.26</td><td>1.44</td></tr>
+                    <tr><td>2010</td><td>237.63</td><td>1.49</td></tr>
+                    <tr><td>2020</td><td>270.20</td><td>1.25</td></tr>
+                </tbody>
+            </table>
+            <p class="note"><em>(Data berdasarkan Gambar 3.15 Grafik Peningkatan Jumlah Penduduk)</em></p>
+            <p>Hasil sensus penduduk menunjukkan bahwa jumlah penduduk di Indonesia terus meningkat. Indonesia merupakan negara yang sangat padat penduduknya, terdiri dari ribuan pulau, beragam budaya, ratusan suku, dan bahasa daerah, yang menjadi keunggulan Indonesia dalam segi jumlah kependudukannya.</p>
+
+            <div class="box ayo-berpikir-kreatif">
+                <h4>Info Sensus Penduduk</h4>
+                <p>Penggunaan metode tradisional pada sensus penduduk dari tahun 1961 sampai 2010 dialihkan menggunakan metode kombinasi. Alasan pengalihan tersebut karena biaya mahal, perubahan komunitas yang sangat cepat, meningkatnya beban respons (response burden), kesulitan dalam pencacahan langsung (mobilitas penduduk tinggi, kelompok sulit dijangkau), dan kualitas data register yang semakin baik.</p>
+                <p>Kesibukan penduduk di perkotaan menjadi salah satu alasan diterapkannya sensus penduduk online. Solusinya adalah menggunakan dan mengkombinasikan formulir pendek dan panjang (short form dan long form), melakukan sensus bergulir (rolling census), menggunakan sensus berbasis internet (internet based self enumeration), dan beralih ke sensus berbasis registrasi (register based census).</p>
+                <p>Pengumpulan data dilakukan dengan berbagai metode:</p>
+                <ol>
+                    <li>CAWI (Computer Assisted Web Interviewing): penduduk berpartisipasi dalam sensus penduduk online.</li>
+                    <li>CAPI (Computer Assisted Personal Interviewing)</li>
+                    <li>PAPI (Pencil and Paper Interviewing)</li>
+                </ol>
+            </div>
+
+            <h4>b. Registrasi penduduk</h4>
+            <p>Registrasi penduduk adalah pencatatan identitas, status, dan kondisi penduduk yang dilaksanakan secara terus menerus oleh pemerintah dari tingkat desa/kelurahan. Data hasil registrasi menghasilkan laporan monografi desa tentang kependudukan yang berisi data kelahiran, kematian, perkawinan, perceraian, pengangkatan anak, dan perpindahan penduduk (Said Rusli dalam Budjianto, 2012).</p>
+
+            <div class="box kamus-geografi">
+                <h4>Kamus Geografi</h4>
+                <p><strong>Registrasi penduduk</strong> yaitu kegiatan mengumpulkan informasi tentang peristiwa kependudukan yang terjadi setiap hari, dan peristiwa lain yang mengubah status kependudukan seseorang di suatu wilayah.</p>
+            </div>
+            <p>Secara teoritis, data registrasi penduduk lebih lengkap daripada sumber data lain karena kecilnya kemungkinan tercecernya pencatatan peristiwa vital. Registrasi ini mencatat peristiwa penting yang berhubungan dengan kehidupan, sehingga disebut registrasi vital dan hasilnya disebut statistik vital.</p>
+            <p>Namun, di negara berkembang seperti Indonesia, data kependudukan dari registrasi sering kurang lengkap karena banyak kejadian vital yang tidak dicatatkan akibat berbagai faktor eksternal.</p>
+            <div class="box kamus-geografi">
+                <h4>Kamus Geografi (Tambahan)</h4>
+                <p>Registrasi penduduk dilakukan sewaktu-waktu mengikuti peristiwa dan perubahan kependudukan, seperti kelahiran, kematian, perpindahan, perkawinan, dan perceraian.</p>
+            </div>
+            <p>Registrasi berlangsung terus-menerus, memberikan gambaran perubahan yang berkelanjutan, berbeda dengan sensus dan survei yang hanya menggambarkan karakteristik pada waktu tertentu. Karena mencatat berbagai peristiwa, pencatatan ini dilakukan oleh berbagai badan.</p>
+
+            <h4>c. Survei penduduk</h4>
+            <p>Sensus penduduk dan registrasi penduduk memiliki keterbatasan, hanya menyediakan data statistik dan kurang informasi tentang sifat serta perilaku penduduk.</p>
+            <p>Untuk mengatasi keterbatasan ini, dilakukan survei penduduk yang sifatnya lebih terbatas namun informasinya lebih luas dan mendalam. Survei penduduk adalah metode menjaring data penduduk dalam peristiwa demografi atau ekonomi tanpa menghitung seluruh responden, melainkan menggunakan sampel yang mewakili karakteristik negara (Budjianto, 2012).</p>
+
+            <div class="box kamus-geografi">
+                <h4>Kamus Geografi</h4>
+                <p><strong>Survei penduduk</strong> adalah proses pencacahan terhadap penduduk yang pada dasarnya sama dengan sensus penduduk, hanya pada survei penduduk ini dilakukan pada beberapa daerah yang dijadikan sampel (contoh) dari perhitungan penduduk tersebut. Biasanya pada survei penduduk ini dilakukan karena pertimbangan waktu, biaya, dan tenaga pelaksana survei.</p>
+            </div>
+            <p>Hasil survei melengkapi informasi dari sensus dan registrasi. Survei penduduk juga digunakan industri untuk melihat perilaku konsumen. Badan Pusat Statistik telah mengadakan survei kependudukan seperti Survei Ekonomi Nasional, Survei Angkatan Kerja Nasional (SAKERNAS), dan Survei Penduduk Antar Sensus (SUPAS).</p>
+        </section>
+
+        <section id="sdm-pembangunan">
+            <h2>B. Penduduk Sebagai Sumberdaya Pembangunan</h2>
+            <h3>1. Pengertian Sumber Daya Manusia</h3>
+            <p>Sumber daya manusia (SDM) dapat dibagi menjadi dua pengertian:</p>
+            <ul>
+                <li><strong>SDM secara mikro</strong>: individu yang bekerja dan menjadi anggota suatu perusahaan atau institusi (pegawai, buruh, karyawan, pekerja, tenaga kerja).</li>
+                <li><strong>SDM secara makro</strong>: penduduk suatu negara yang sudah memasuki usia angkatan kerja, baik yang belum bekerja maupun yang sudah bekerja.</li>
+            </ul>
+
+            <div class="box kamus-geografi">
+                <h4>Kamus Geografi</h4>
+                <p><strong>Sumber daya manusia</strong> adalah segala potensi dan kemampuan yang ada di dalam diri manusia yang dapat dimanfaatkan bagi kepentingan dan kelangsungan hidup manusia itu sendiri.</p>
+            </div>
+            <p>SDM adalah faktor yang sangat penting dan tidak terpisahkan dari sebuah organisasi, menjadi kunci penentu perkembangan perusahaan. Pada hakikatnya, SDM berupa manusia yang dipekerjakan sebagai penggerak, pemikir, dan perencana untuk mencapai tujuan organisasi.</p>
+
+            <h3>2. Kuantitas dan Kualitas Sumber Daya Manusia</h3>
+            <p>Kuantitas dan kualitas sumber daya manusia memiliki peran masing-masing dalam perkembangannya. Kuantitas menyangkut jumlah SDM, sementara kualitas menyangkut mutu SDM dalam kemampuan fisik dan non-fisik.</p>
+            <p>Dalam pembangunan bangsa, kualitas SDM lebih penting dibandingkan kuantitasnya. Kuantitas SDM tanpa kualitas akan menjadi beban pembangunan. Oleh karena itu, untuk percepatan pembangunan, suatu negara menjadikan kualitas SDM sebagai persyaratan utama.</p>
+
+            <div class="box kamus-geografi">
+                <h4>Kamus Geografi</h4>
+                <p><strong>Kuantitas sumber daya manusia</strong> menyangkut jumlah.</p>
+                <p><strong>Kualitas sumber daya manusia</strong> merupakan mutu dari sumber daya manusia yang menyangkut kemampuan non fisik (kecerdasan dan mental) dan fisik (kesehatan dan gizi).</p>
+            </div>
+            <p>Kualitas SDM dapat dinyatakan dalam kemampuan bekerja, berpikir, dan keterampilan. Kualitas terbagi dua aspek utama:</p>
+            <ul>
+                <li><strong>Fisik</strong>: ditinjau dari kesehatan dan gizi masyarakat.</li>
+                <li><strong>Non fisik</strong>: berupa kecerdasan dan mental.</li>
+            </ul>
+            <p>Untuk meningkatkan kualitas SDM yang baik, pemerintah harus menempatkan pendidikan sebagai prioritas utama pembangunan.</p>
+
+            <div class="box ayo-berpikir-kreatif">
+                <h4>Ayo Berpikir Kreatif</h4>
+                <p>Indeks pembangunan manusia Indonesia masih tertinggal dibandingkan negara-negara tetangga di kawasan Asia Tenggara. Pemerintah berusaha meningkatkan kualitas sumber daya manusia (SDM), salah satunya lewat pendidikan. Indonesia berada pada ranking 36 dari 114 negara. Pemerintah mengupayakan peningkatan peringkat Indonesia dalam indeks pembangunan manusia melalui perbaikan pendidikan SDM.</p>
+            </div>
+
+            <div class="box ayo-berpikir-kreatif">
+                <h4>Ayo Berpikir Kreatif</h4>
+                <p>Program beasiswa Bidik Misi telah membiayai 300.000 anak. Pada tahun 2019, Kementerian Keuangan menganggarkan dana Rp 66 triliun untuk LPDP. Pemerintah juga menargetkan penerima Kartu Indonesia Pintar dapat melanjutkan pendidikan ke jenjang yang lebih tinggi, dengan 400.000 penerima KIP ditargetkan untuk perguruan tinggi pada tahun 2020.</p>
+            </div>
+        </section>
+
+        <section id="kuantitas-penduduk">
+            <h2>C. Kuantitas Penduduk</h2>
+            <h3>1. Distribusi Penduduk/Migrasi</h3>
+            <p>Luas daratan Indonesia adalah 1,92 juta kilometer persegi. Kepadatan penduduk Indonesia pada tahun 2020 adalah 141 jiwa per kilometer persegi. Terjadi penurunan kepadatan dari 124 jiwa/km persegi pada 2010 menjadi 107 jiwa/km persegi pada 2020 (Data BPS, 2020).</p>
+            <p>Distribusi penduduk di Indonesia tidak merata. Pulau Jawa, meskipun hanya mencakup sekitar tujuh persen luas wilayah geografis Indonesia, adalah rumah bagi 151,59 juta jiwa atau 56,10% dari total penduduk Indonesia. Pulau Jawa memiliki tingkat kepadatan penduduk tertinggi dibandingkan pulau lainnya.</p>
+            <p>Sebaran penduduk terbesar kedua adalah Pulau Sumatra, dengan 58,56 juta jiwa atau 21,68% dari penduduk Indonesia. Wilayah lain seperti Sulawesi (7,36%), Kalimantan (6,15%), Bali dan Nusa Tenggara (5,54%), serta Maluku dan Papua (3,17%) memiliki proporsi penduduk yang lebih kecil.</p>
+            <p>Distribusi penduduk yang tidak merata menyebabkan dampak positif dan negatif pada bidang ekonomi, sosial, politik, maupun lingkungan.</p>
+
+            <h5>Sebaran Penduduk Indonesia Menurut Wilayah (Tahun 2020):</h5>
+            <ul>
+                <li>Jawa: 56,10%</li>
+                <li>Sumatera: 21,68%</li>
+                <li>Sulawesi: 7,36%</li>
+                <li>Kalimantan: 6,15%</li>
+                <li>Bali & Nusa Tenggara: 5,54%</li>
+                <li>Maluku & Papua: 3,17%</li>
+            </ul>
+
+            <h3>2. Komposisi Penduduk</h3>
+            <h4>a. Penduduk berdasarkan generasi</h4>
+            <p>Struktur penduduk dengan jumlah usia produktif yang lebih besar dari usia non-produktif adalah modal pembangunan. Hasil sensus penduduk 2020 menunjukkan mayoritas penduduk Indonesia termasuk Generasi Z dan Milenial.</p>
+            <ul>
+                <li>Proporsi Generasi Z: 27,94% dari total populasi.</li>
+                <li>Proporsi Milenial: 25,87% dari total populasi.</li>
+            </ul>
+            <p>Generasi Z dan Milenial termasuk dalam usia produktif, yang berpotensi mempercepat pertumbuhan perekonomian (Data BPS, 2021).</p>
+            
+            <h5>Komposisi Penduduk Indonesia Menurut Generasi (2020):</h5>
+            <ul>
+                <li><strong>Pre-Boomer</strong>: Lahir sebelum 1945 (Usia 75+ tahun), 1,87% (5,03 juta jiwa).</li>
+                <li><strong>Baby Boomer</strong>: Lahir 1946-1964 (Usia 56-74 tahun), 11,56% (31,01 juta jiwa).</li>
+                <li><strong>Generasi X</strong>: Lahir 1965-1980 (Usia 40-55 tahun), 21,88% (58,65 juta jiwa).</li>
+                <li><strong>Milenial</strong>: Lahir 1981-1996 (Usia 24-39 tahun), 25,87% (69,38 juta jiwa).</li>
+                <li><strong>Generasi Z</strong>: Lahir 1997-2012 (Usia 8-23 tahun), 27,94% (74,93 juta jiwa).</li>
+                <li><strong>Post Generasi Z</strong>: Lahir 2013 dst (Usia s.d. 7 tahun), 1,87% (5,03 juta jiwa).</li>
+            </ul>
+            <p>Secara demografi, Generasi X dan Milenial merupakan kelompok usia produktif pada 2020. Generasi Z mencakup penduduk usia belum produktif dan produktif. Dalam waktu sekitar tujuh tahun ke depan, semua Generasi Z akan berada dalam kelompok usia produktif. Hal ini menjadi peluang sekaligus tantangan bagi pembangunan masa depan Indonesia.</p>
+
+            <h4>b. Komposisi penduduk berdasarkan kelompok umur</h4>
+            <p>Proporsi penduduk Indonesia berdasarkan usia produktif (15–64 tahun) terus meningkat sejak 1971. Dari 53,39% pada 1971, menjadi 70,72% pada 2020. Persentase penduduk usia produktif yang lebih tinggi dibandingkan usia non-produktif (0-14 tahun dan 65 tahun ke atas) menunjukkan bahwa Indonesia berada dalam masa era bonus demografi.</p>
+            
+            <h5>Komposisi Penduduk Menurut Kelompok Umur (1971–2020):</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>0-14 tahun (%)</th>
+                        <th>15-64 tahun (%)</th>
+                        <th>65+ tahun (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1971</td><td>44.12</td><td>53.39</td><td>2.49</td></tr>
+                    <tr><td>1980</td><td>40.91</td><td>55.84</td><td>3.25</td></tr>
+                    <tr><td>1990</td><td>36.65</td><td>59.58</td><td>3.77</td></tr>
+                    <tr><td>2000</td><td>30.44</td><td>65.03</td><td>4.53</td></tr>
+                    <tr><td>2010</td><td>28.87</td><td>66.09</td><td>5.04</td></tr>
+                    <tr><td>2020</td><td>23.33</td><td>70.72</td><td>5.95</td></tr>
+                </tbody>
+            </table>
+            <p class="note"><em>(Data berdasarkan Gambar 3.18 Komposisi Penduduk Menurut Kelompok Umur)</em></p>
+            <p>Pembangunan di Indonesia telah meningkatkan kualitas hidup penduduk, tercermin dari meningkatnya usia harapan hidup. Konsekuensinya adalah peningkatan proporsi penduduk lanjut usia (60 tahun ke atas).</p>
+            <ul>
+                <li>Proporsi penduduk lanjut usia: 7,59% pada 2010 menjadi 9,87% pada 2020.</li>
+            </ul>
+            <p>Situasi ini menunjukkan Indonesia sedang dalam transisi menuju era <em>aging population</em>, ditandai dengan persentase penduduk usia 60 tahun ke atas mencapai lebih dari 10%.</p>
+
+            <h4>c. Rasio jenis kelamin</h4>
+            <p>Berdasarkan sensus penduduk 2020:</p>
+            <ul>
+                <li>Laki-laki: 136,66 juta jiwa (50,58%).</li>
+                <li>Perempuan: 133,54 juta jiwa (49,42%).</li>
+            </ul>
+            <p>Rasio jenis kelamin penduduk Indonesia adalah 102. Artinya, terdapat 102 laki-laki untuk setiap 100 perempuan (Data BPS, 2021).</p>
+            <p>Secara umum, rasio jenis kelamin menunjukkan pola penurunan seiring bertambahnya usia. Rasio tertinggi pada kelompok usia 0–9 tahun (107) dan terendah pada kelompok usia 75+ tahun (79).</p>
+            <p>Rasio 75+ tahun sebesar 79 menandakan bahwa jumlah penduduk lanjut usia perempuan lebih banyak daripada laki-laki.</p>
+            <p>Hasil sensus penduduk 2020 menunjukkan rasio jenis kelamin provinsi selaras dengan nasional, yaitu jumlah laki-laki lebih banyak. Namun, terdapat dua provinsi (Sulawesi Selatan dan DI Yogyakarta) yang memiliki jumlah laki-laki lebih sedikit dibandingkan perempuan.</p>
+            
+            <h5>Struktur Penduduk Indonesia Menurut Kelompok Umur dan Jenis Kelamin (2019) - Piramida Penduduk:</h5>
+            <p>Piramida penduduk menunjukkan komposisi penduduk berdasarkan usia dan jenis kelamin. Sisi kiri piramida mewakili laki-laki dan sisi kanan mewakili perempuan, dengan kelompok usia tersusun dari bawah ke atas (termuda ke tertua). Struktur ini penting untuk memahami potensi demografi suatu negara.</p>
+            <p class="note"><em>(Berdasarkan Gambar 3.20 Piramida Penduduk)</em></p>
+
+            <div class="box tautan-box">
+                <p>Untuk mempelajari lebih lanjut tentang jenis-jenis piramida penduduk, silahkan klik tautan di bawah ini:</p>
+                <p><a href="#">http://bit.ly/JenisPiramidaPenduduk (Simulasi Tautan)</a></p>
+            </div>
+        </section>
+
+        <section id="kualitas-kependudukan">
+            <h2>D. Kualitas Kependudukan</h2>
+            <p>Kualitas kependudukan atau sumber daya manusia adalah faktor yang menunjukkan tingkat kesejahteraan penduduk suatu negara. Di Indonesia, kualitas penduduk diistilahkan dengan Indeks Pembangunan Manusia (IPM).</p>
+            <p>Kebijakan peningkatan kualitas hidup sumber daya manusia antara lain:</p>
+            <ol>
+                <li>Pada aspek pembangunan kesehatan: penyebaran budaya hidup sehat dan perluasan jangkauan pelayanan kesehatan, terutama di daerah terpencil.</li>
+                <li>Pembangunan pendidikan: lebih memperhatikan arah pembangunan ekonomi di masa mendatang.</li>
+                <li>Peningkatan kualitas penduduk miskin: memberikan keterampilan praktis, mendorong sikap kerja produktif, dan semangat kemandirian.</li>
+            </ol>
+            <p>Menurut UU Republik Indonesia No 52 Tahun 2009 tentang Perkembangan Kependudukan dan Pembangunan Keluarga, kualitas penduduk adalah kondisi penduduk dalam aspek fisik dan non fisik yang meliputi derajat kesehatan, pendidikan, pekerjaan, produktivitas, tingkat sosial, ketahanan, kemandirian, kecerdasan, sebagai ukuran dasar untuk mengembangkan kemampuan dan menikmati kehidupan sebagai manusia yang bertakwa, berbudaya, berkepribadian, berkebangsaan dan hidup layak.</p>
+            <p>Berdasarkan definisi tersebut, kesehatan dan pendidikan merupakan aspek penting dalam penentu kualitas penduduk.</p>
+
+            <h3>1. Kesehatan</h3>
+            <p>Menurut Organisasi Kesehatan Dunia (WHO), kesehatan adalah suatu keadaan fisik, mental, dan sosial kesejahteraan, bukan hanya ketiadaan penyakit atau kelemahan. Menurut Undang-Undang Republik Indonesia Nomor 36 Tahun 2009, kesehatan adalah kondisi sehat fisik, mental, spiritual, maupun sosial yang memungkinkan setiap orang untuk hidup produktif secara sosial dan ekonomis.</p>
+            <p>Angka kesehatan manusia menjadi salah satu tolak ukur kualitas kependudukan, yang dapat dilihat dari angka harapan hidupnya. Kesehatan adalah prasyarat bagi peningkatan produktivitas, yang penting bagi pembangunan negara.</p>
+            <p><strong>Angka Harapan Hidup (AHH)</strong> adalah jumlah rata-rata perkiraan tahun yang dapat ditempuh seseorang selama hidupnya. AHH digunakan sebagai indikator pengukuran kesehatan penduduk di suatu daerah, dihitung menggunakan pendekatan tidak langsung (indirect estimation).</p>
+
+            <h3>2. Pendidikan</h3>
+            <p>Pendidikan adalah aspek penting bagi peningkatan kualitas sumber daya manusia. Pendidikan berguna sebagai langkah utama untuk meningkatkan produktivitas dan memasuki dunia kerja. Melalui pendidikan, manusia akan menyadari kelebihannya.</p>
+            <p>Pendidikan berkontribusi besar bagi kemajuan negara dan menggambarkan karakter bangsa (nation character building). Pendidikan adalah hak dan kewajiban setiap warga negara Indonesia, sehingga harus menjadi prioritas utama pembangunan nasional.</p>
+            <p>Peningkatan kualitas manajemen pendidikan dilakukan melalui upaya peningkatan efektivitas dan efisiensi penyelenggaraan pendidikan.</p>
+            <p>Upaya pengembangan sumber daya manusia untuk mencapai kualitas SDM yang baik meliputi pendidikan formal (tingkat dasar, menengah, dan tinggi).</p>
+            <p>Manfaat pendidikan bagi pembangunan ekonomi suatu negara adalah:</p>
+            <ol type="a">
+                <li>Menciptakan tenaga kerja yang lebih produktif karena bertambahnya pengetahuan dan keahlian.</li>
+                <li>Tersedianya kesempatan kerja yang lebih luas.</li>
+                <li>Membentuk kelompok pemimpin yang terdidik untuk menduduki posisi penting dalam bisnis dan pemerintahan.</li>
+                <li>Tersedianya berbagai macam program pendidikan dan pelatihan, sehingga dapat meningkatkan keahlian dan menurunkan angka buta huruf.</li>
+            </ol>
+
+            <div class="box tautan-box">
+                <p>Untuk mempelajari lebih lanjut tentang aspek lainnya, yaitu Kesejahteraan Penduduk, silahkan klik tautan di bawah ini:</p>
+                <p><a href="#">http://bit.ly/KesejahteraanPenduduk (Simulasi Tautan)</a></p>
+            </div>
+
+            <div class="box ayo-berpikir-kreatif">
+                <h4>Perbaiki Kualitas SDM Indonesia</h4>
+                <p>Permasalahan kualitas sumber daya manusia (human capital resources) Indonesia harus diperbaiki. Kebijakan pemerintah antara lain:</p>
+                <ul>
+                    <li>Menganggarkan alokasi 20% untuk pendidikan.</li>
+                    <li>Meningkatkan kualitas guru, manajemen sekolah, dan proses belajar mengajar.</li>
+                    <li>Memberikan perhatian pada pendidikan vokasi untuk menghadapi revolusi industri 4.0, teknologi informasi, dan partisipasi sektor swasta.</li>
+                </ul>
+                <p>Untuk menyongsong pembangunan digital, pemerintah memperbaiki kurikulum pendidikan, memperkuat kompetensi melalui pelatihan vokasi dan program magang, serta pelaksanaan sertifikasi profesi di seluruh institusi. Khusus sektor kesehatan, pemerintah akan terus mengoptimalisasi capaian atas alokasi 5% anggaran untuk meningkatkan kualitas dan akses layanan kesehatan, pemenuhan gizi, pengurangan stunting, peningkatan kompetensi tenaga kesehatan, dan memperkuat sistem jaminan kesehatan nasional.</p>
+                <p>Selain kesehatan, momentum perbaikan skor Indeks Sumber Daya Manusia Indonesia perlu ditindaklanjuti dengan penguatan sistem pendidikan agar lebih siap menghadapi tantangan global.</p>
+            </div>
+        </section>
+
+        <section id="pengembangan-sdm">
+            <h2>E. Pengembangan Sumber Daya Manusia</h2>
+            <p>Jumlah penduduk Indonesia yang besar adalah potensi sekaligus tantangan. Penduduk berperan sebagai subjek (penggerak) dan objek (penikmat) pembangunan. Dengan demikian, penduduk adalah pelaku dan tujuan akhir dari pembangunan itu sendiri.</p>
+            <p>Beberapa manfaat dalam pengembangan kualitas sumber daya manusia:</p>
+            <ol>
+                <li><strong>Meminimalkan kinerja yang buruk</strong>: Meningkatkan kinerja pegawai yang kurang produktif untuk mencapai efektivitas kerja yang diharapkan.</li>
+                <li><strong>Meningkatkan produktivitas</strong>: Pegawai memperoleh keterampilan dan pengetahuan baru, yang secara tidak langsung meningkatkan produktivitas kerja.</li>
+                <li><strong>Meningkatkan fleksibilitas angkatan kerja</strong>: Dengan beragamnya keterampilan, pegawai menjadi lebih fleksibel dan mudah beradaptasi dengan perubahan lingkungan organisasi, mengurangi kebutuhan untuk menambah pegawai baru.</li>
+                <li><strong>Meningkatkan komitmen pegawai</strong>: Pegawai memiliki persepsi baik terhadap organisasi, meningkatkan keterkaitan, dan termotivasi untuk kinerja baik.</li>
+                <li><strong>Mengurangi turnover dan ketidakhadiran</strong>: Semakin besar komitmen pegawai, semakin rendah tingkat turnover (pergantian pegawai) dan ketidakhadiran, sehingga meningkatkan produktivitas organisasi.</li>
+            </ol>
+        </section>
+
+        <section id="masalah-kependudukan">
+            <h2>F. Masalah-Masalah Kependudukan</h2>
+            <p>Berdasarkan data Worldometers, Indonesia memiliki jumlah penduduk 270,20 juta jiwa (3,49% populasi dunia), menempati urutan keempat terbanyak setelah Tiongkok, India, dan Amerika Serikat. Permasalahan kependudukan yang mengiringi jumlah penduduk yang besar di Indonesia antara lain jumlah penduduk yang besar, pertumbuhan penduduk yang cepat, persebaran yang tidak merata, dan kualitas penduduk yang belum tinggi.</p>
+            <p>Masalah kependudukan dapat disebut masalah sosial karena terjadi di lingkungan sosial atau masyarakat, akibat ketimpangan antara pertumbuhan penduduk dan peningkatan kualitas sumber daya manusia.</p>
+
+            <h3>1. Jumlah penduduk yang besar</h3>
+            <p>Jumlah penduduk di suatu wilayah tidak bersifat tetap, selalu berubah akibat dinamika kelahiran, kematian, dan migrasi. Penduduk suatu negara adalah faktor terpenting dalam pembangunan. Meskipun jumlah penduduk yang banyak memiliki potensi besar dalam penyediaan SDM, permasalahan yang ditimbulkan jauh lebih besar.</p>
+            <p>Permasalahan utama jumlah penduduk yang besar adalah sulitnya memenuhi kebutuhan hidup rakyat, contohnya terbatasnya lapangan kerja, sarana dan prasarana kesehatan, fasilitas umum, bahan pangan, dan lahan.</p>
+
+            <h3>2. Pertumbuhan Penduduk yang Cepat</h3>
+            <p>Jika pertumbuhan penduduk yang cepat tidak diimbangi dengan daya dukung lingkungan, berbagai permasalahan lingkungan hidup, ekonomi, dan sosial akan muncul.</p>
+
+            <h5>Tabel Laju Pertumbuhan Penduduk Indonesia:</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Laju Pertumbuhan Penduduk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1961 - 1971</td><td>2,10%</td></tr>
+                    <tr><td>1971 - 1980</td><td>2,31%</td></tr>
+                    <tr><td>1980 - 1990</td><td>1,98%</td></tr>
+                    <tr><td>1990 - 2000</td><td>1,44%</td></tr>
+                    <tr><td>2000 - 2010</td><td>1,49%</td></tr>
+                    <tr><td>2010 - 2020</td><td>1,25%</td></tr>
+                </tbody>
+            </table>
+            <p>Sejak tahun 1971, laju pertumbuhan penduduk Indonesia mengalami penurunan. Meski begitu, laju pertumbuhan masih tinggi dibandingkan negara maju seperti Belanda (0,3%), Inggris (0,1%), dan Finlandia (0,2%). Tingginya laju pertumbuhan penduduk dapat menimbulkan permasalahan lain seperti kelaparan, kejahatan, dan pengangguran.</p>
+
+            <h3>3. Persebaran yang tidak Merata</h3>
+            <p>Banyaknya penduduk di Indonesia tidak diimbangi dengan pemerataan penduduknya. Contohnya, Pulau Jawa lebih padat penduduknya. Ketidakmerataan ini menyebabkan lahan pertanian di Jawa semakin sempit karena dialihfungsikan untuk permukiman dan industri. Sebaliknya, pulau lain belum dimanfaatkan maksimal karena kurangnya SDM.</p>
+            <p>Daya dukung lingkungan Pulau Jawa lebih tinggi, namun ada batas kemampuan wilayah dalam mendukung kehidupan.</p>
+
+            <h3>4. Kualitas Penduduk yang Belum Tinggi</h3>
+            <p>Salah satu penyebab pertumbuhan penduduk yang tinggi adalah banyaknya remaja yang sudah menikah. Ketidaktahuan dan ketidaksiapan pasangan saat menikah menimbulkan banyak risiko kesehatan bagi ibu dan bayi yang dilahirkan, serta menurunkan kemampuan pasangan muda menghasilkan generasi unggul dan berkualitas.</p>
+            <p>Di Indonesia, satu dari sembilan anak perempuan berusia 20-24 tahun sudah menikah sebelum mencapai usia 18 tahun. Saat ini, ada 1,2 juta kasus perkawinan anak, menempatkan Indonesia di urutan ke-8 di dunia. Banyak di antaranya tidak paham masalah mengatur jarak aman kelahiran agar anak lahir sehat dan tidak stunting (gagal tumbuh).</p>
+            <p>Undang-Undang Nomor 16 Tahun 2019 tentang Perkawinan telah mengubah batas usia minimal menikah bagi laki-laki dan perempuan menjadi 19 tahun. Namun, seseorang tetap bisa menikah di bawah usia tersebut jika mengantongi surat dispensasi kawin dari pengadilan agama.</p>
+            <p>Anak yang menikah di bawah 18 tahun memiliki kerentanan lebih besar dalam mengakses pendidikan dan kesehatan, berpotensi melanggengkan kemiskinan antargenerasi, serta berpotensi mengalami kekerasan.</p>
+
+            <div class="box ayo-berpikir-kritis">
+                <h4>Ayo Berpikir Kritis</h4>
+                <p>Jumlah penduduk Negara Indonesia sangatlah besar, yaitu 270,20 juta jiwa. Besarnya jumlah penduduk menimbulkan berbagai dampak. Pemerintah Indonesia telah mengambil tindakan untuk mengatasi masalah tersebut, salah satunya adalah program transmigrasi untuk memindahkan kelompok penduduk dari satu tempat ke tempat lain agar kepadatan penduduk tidak memusat pada suatu wilayah tertentu.</p>
+            </div>
+        </section>
+
+        <section id="upaya-mengatasi-masalah">
+            <h2>G. Upaya-Upaya Mengatasi Masalah Kependudukan</h2>
+            <p>Untuk mengatasi permasalahan kependudukan seperti jumlah penduduk yang besar, pertumbuhan penduduk yang cepat, persebaran yang tidak merata, dan kualitas penduduk yang belum tinggi, diperlukan berbagai upaya agar permasalahan dapat diminimalkan.</p>
+            <p>Adapun upaya mengatasi permasalahan kependudukan adalah sebagai berikut:</p>
+            <h3>1. Melaksanakan Program Keluarga Berencana</h3>
+            <p>Laju pertumbuhan penduduk yang besar akan mengakibatkan berbagai permasalahan (lingkungan hidup, ekonomi, sosial). Oleh sebab itu, pertumbuhan penduduk harus ditekan semaksimal mungkin, salah satunya melalui program Keluarga Berencana.</p>
+            <p>Program Keluarga Berencana mengajak penduduk untuk merencanakan keluarga, yang berdampak pada pengendalian kelahiran, pertumbuhan penduduk, dan peningkatan kesejahteraan ibu dan anak untuk mewujudkan keluarga bahagia. Usaha ini terintegrasi dengan program pembangunan lainnya.</p>
+
+            <h3>2. Pelayanan Sektor Kesehatan</h3>
+            <p>Pembangunan kesehatan diarahkan untuk mempertinggi derajat kesehatan, gizi masyarakat, kualitas hidup, kecerdasan, dan kesejahteraan rakyat. Perlu dikembangkan sistem kesehatan nasional terpadu yang mendorong partisipasi masyarakat dan swasta.</p>
+            <p>Upaya pembangunan kesehatan perlu ditingkatkan untuk memperluas dan mendekatkan pelayanan kepada masyarakat dengan mutu yang lebih baik dan biaya terjangkau, terutama bagi masyarakat berpenghasilan rendah. Upaya peningkatan kesehatan ini meliputi:</p>
+            <ul>
+                <li>Pemberantasan penyakit menular.</li>
+                <li>Perbaikan gizi.</li>
+                <li>Penyediaan air bersih.</li>
+                <li>Menjaga kebersihan dan kesehatan lingkungan.</li>
+                <li>Meningkatkan pelayanan kesehatan untuk ibu dan anak.</li>
+                <li>Perhatian khusus pada polusi, limbah industri, bahaya narkotika dan penyalahgunaan obat, serta peningkatan pengawasan kesehatan lingkungan, obat, makanan, dan minuman.</li>
+            </ul>
+
+            <h3>3. Transmigrasi</h3>
+            <p>Transmigrasi sebagai sarana penyebaran penduduk berperan sebagai pemerataan penduduk. Tujuannya adalah meningkatkan kesejahteraan, pemerataan pembangunan, memperluas lapangan kerja, serta memperkokoh persatuan dan kesatuan bangsa.</p>
+            <p>Saat ini, dikembangkan pusat-pusat permukiman baru dan pembukaan serta pengembangan produksi. Transmigrasi merupakan usaha penataan kembali penggunaan, penguasaan, dan pemilikan tanah, baik di daerah asal maupun tujuan.</p>
+            <p>Transmigrasi harus memperhatikan pemeliharaan kelestarian, kemampuan alam dan lingkungan hidup, serta kondisi dan pengembangan nilai-nilai sosial budaya masyarakat. Pelaksanaannya memerlukan koordinasi dan keterpaduan antar sektor, daerah, maupun nasional, dari tahap perencanaan hingga pengawasan.</p>
+            <p>Dalam lima tahun terakhir, 637.943 kepala keluarga berhasil dipindahkan dan ditempatkan di lokasi permukiman, terdiri dari 251.755 kepala keluarga transmigran umum dan 386.188 kepala keluarga transmigrasi swakarsa. Transmigrasi swakarsa lebih besar (53,40%) dari transmigrasi umum, sehingga perlu terus dikembangkan dengan penyuluhan kepada masyarakat, khususnya berpenghasilan rendah, agar mereka sukarela bertransmigrasi.</p>
+
+            <h3>4. Meningkatkan Mutu Pendidikan dan Keterampilan</h3>
+            <p>Salah satu tujuan nasional adalah "mencerdaskan kehidupan bangsa". Oleh karena itu, mutu pendidikan harus terus ditingkatkan dengan mengerahkan tenaga, pikiran, dan penyediaan sarana.</p>
+            <p>Pendidikan dan keterampilan sebaiknya diprogramkan secara luas oleh pemerintah maupun lembaga swasta, sehingga dapat menyiapkan tenaga terampil dan mampu. Hal ini menciptakan wiraswasta baru yang dapat menciptakan lapangan kerja dan mengembangkan sektor industri kecil.</p>
+
+            <h3>5. Meningkatkan Produksi Pertanian</h3>
+            <p>Peningkatan hasil pertanian dilakukan melalui intensifikasi, ekstensifikasi, dan diversifikasi. Pelaksanaannya adalah tanggung jawab seluruh masyarakat karena ketergantungan pangan dari luar negeri akan membahayakan pembangunan. Usaha-usaha ini telah membuahkan hasil dengan terpenuhinya swasembada pangan.</p>
+            <p>Pembangunan pertanian bertujuan untuk memantapkan swasembada pangan, meningkatkan ekspor, pendapatan dan taraf hidup petani, serta memperluas kesempatan kerja.</p>
+            <p>Upaya peningkatan produksi pangan ditekankan pada diversifikasi tanaman pangan, didukung peningkatan penyediaan benih, penyuluhan efisiensi pengelolaan air irigasi, serta pengapuran lahan dengan keasaman tinggi. Kebijakan pokok untuk meningkatkan produksi palawija dan hortikultura adalah meningkatkan mutu benih, intensifikasi, diversifikasi, ekstensifikasi, serta perbaikan pemasarannya. Kebijakan ini diharapkan meningkatkan hasil pertanian dan pendapatan masyarakat berpenghasilan rendah.</p>
+        </section>
+    </div>
+</body>
+</html>
+```

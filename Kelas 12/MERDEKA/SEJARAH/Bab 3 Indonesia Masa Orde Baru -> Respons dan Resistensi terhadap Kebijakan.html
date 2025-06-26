@@ -1,0 +1,307 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respons dan Resistensi Orde Baru - Sejarah SMA Kelas XII</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tema Warna yang Disesuaikan (Light Mode) */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Dasar */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        /* Kontainer Utama */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Tipografi */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue); /* Judul utama menggunakan warna biru primer */
+            margin-bottom: 15px;
+            line-height: 1.2;
+            font-weight: 700; /* Tebal untuk judul */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            padding: 30px 0;
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Gaya Bagian (Section) */
+        section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sedikit bayangan untuk kedalaman */
+            transition: transform 0.2s ease-in-out; /* Efek transisi saat hover */
+        }
+
+        section:hover {
+            transform: translateY(-5px); /* Sedikit naik saat di-hover */
+        }
+
+        /* Kotak Sorotan (Highlight Box) */
+        .highlight-box {
+            background-color: #E3F2FD; /* Warna biru muda dari palet primary-blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+            font-style: italic; /* Gaya teks miring */
+        }
+
+        .highlight-box strong {
+            color: var(--primary-blue);
+        }
+
+        /* Daftar Poin Penting */
+        .key-points {
+            list-style-type: disc; /* Bullet point disk */
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .key-points li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .key-points li strong {
+            color: var(--accent-green); /* Teks penting dalam daftar menggunakan warna hijau */
+        }
+
+        /* Kotak Catatan Penting (Callout) */
+        .callout {
+            background-color: #FFFDE7; /* Warna kuning muda dari palet secondary-accent-amber */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+        }
+
+        .callout strong {
+            color: var(--secondary-accent-amber);
+        }
+
+        /* Desain Responsif */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                padding: 20px 0;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+                margin-top: 25px;
+                margin-bottom: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .highlight-box, .callout {
+                padding: 18px;
+                margin: 22px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+                padding: 15px 0;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .highlight-box, .callout {
+                padding: 15px;
+                margin: 20px 0;
+            }
+
+            .key-points {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Respons dan Resistensi terhadap Kebijakan Ekonomi dan Politik Pemerintahan Soeharto</h1>
+
+        <section>
+            <h2>Prinsip Aksi-Reaksi dalam Dinamika Orde Baru</h2>
+            <div class="highlight-box">
+                <blockquote>
+                    <p><strong>"Untuk setiap aksi, selalu ada reaksi yang sama besar dan berlawanan arah."</strong></p>
+                    <cite>— Hukum III Newton</cite>
+                </blockquote>
+                <p>Meskipun Hukum Ketiga Newton adalah pilar dalam ilmu fisika, prinsip fundamentalnya—bahwa setiap tindakan memicu respons—secara akurat merefleksikan dinamika sosial dan politik yang terjadi selama era Orde Baru di Indonesia. Pemerintah Soeharto, melalui kebijakan-kebijakan ekonomi dan politiknya, seringkali memunculkan berbagai bentuk respons dan resistensi dari masyarakat. Ini bukan sekadar penolakan pasif, melainkan sebuah manifestasi dari aspirasi yang tidak terwadahi, ketidakpuasan, dan keinginan untuk perubahan.</p>
+                <p>Bagian ini akan menjelajahi beberapa peristiwa penting yang menjadi bukti nyata dari "reaksi" publik terhadap "aksi" kebijakan pemerintah Orde Baru. Kajian ini penting untuk memahami kompleksitas sejarah, bahwa kekuasaan, sekuat apa pun, selalu berhadapan dengan kekuatan kontrol dan oposisi dari rakyat.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Peristiwa Malapetaka 15 Januari (Malari) 1974: Ledakan Protes Mahasiswa</h2>
+            <p>Peristiwa Malari yang terjadi pada tanggal 15 Januari 1974 merupakan puncak dari gelombang pergerakan mahasiswa yang telah dimulai sejak awal tahun 1970-an. Kelompok terpelajar ini, dengan semangat idealisme mereka, secara konsisten menyuarakan kritik terhadap kebijakan pemerintah yang dianggap tidak pro-rakyat atau justru menguntungkan kelompok tertentu.</p>
+
+            <h3>Latar Belakang dan Eskalasi Aksi</h3>
+            <p>Pada awalnya, pemerintah Orde Baru cenderung menunjukkan sikap toleransi terhadap demonstrasi mahasiswa. Pendekatan ini mungkin ditujukan untuk meredam potensi konflik yang lebih besar atau sebagai pengakuan terbatas atas hak bersuara. Namun, ketika aspirasi dan tuntutan mahasiswa tidak kunjung direspons dengan kebijakan konkret, situasi mulai memanas dan memicu ketidakpuasan yang lebih dalam.</p>
+            <p>Titik didih terjadi bertepatan dengan kunjungan kenegaraan Perdana Menteri Jepang, <strong>Kakuei Tanaka</strong>, yang berlangsung pada tanggal <strong>14—17 Januari 1974</strong>. Mahasiswa mengambil momentum ini untuk menyelenggarakan aksi unjuk rasa berskala besar, memfokuskan kritik mereka pada masuknya modal asing yang dinilai terlalu dominan dan merugikan ekonomi nasional, serta praktik korupsi yang merajalela.</p>
+
+            <h3>Dampak dan Signifikansi Historis Malari</h3>
+            <ul class="key-points">
+                <li><strong>Penolakan Keras terhadap Modal Asing:</strong> Protes Malari secara eksplisit menyuarakan keprihatinan atas hegemoni modal asing, khususnya dari Jepang, yang dianggap tidak memberikan manfaat substansial bagi kesejahteraan rakyat jelata dan hanya memperkaya segelintir elite.</li>
+                <li><strong>Respons Pemerintah yang Represif:</strong> Aksi yang semula berupa protes damai dengan cepat berujung pada kerusuhan massal, mengakibatkan kerusakan infrastruktur dan jatuhnya korban. Pemerintah menanggapi dengan sangat keras, melakukan penumpasan demonstrasi, dan menangkap banyak tokoh yang dituduh sebagai provokator.</li>
+                <li><strong>"Tonggak Kekerasan" Orde Baru:</strong> Beberapa sejarawan, termasuk Jazimah (2013), mengategorikan Malari sebagai <strong>"tonggak sejarah kekerasan"</strong> pada era Orde Baru. Peristiwa ini menandai pergeseran signifikan dalam cara pemerintah menangani kritik dan oposisi, beralih dari toleransi terbatas menuju pendekatan yang lebih represif, otoriter, dan seringkali menggunakan kekuatan militeristik.</li>
+                <li><strong>Implikasi Politik Jangka Pendek:</strong> Malari juga memicu perombakan kabinet dan restrukturisasi lembaga pemerintahan, menunjukkan betapa krusialnya dampak insiden ini terhadap stabilitas politik internal rezim Soeharto.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Gelombang Resistensi Meluas: Suara Tokoh Nasional dan Petisi 50</h2>
+            <p>Kritik dan respons terhadap kebijakan Orde Baru tidak terbatas pada lingkup mahasiswa. Seiring berjalannya waktu, gelombang resistensi juga tumbuh dari berbagai elemen masyarakat lainnya, termasuk figur-figur nasional yang memiliki rekam jejak perjuangan panjang, serta mantan pejabat negara yang merasa prihatin atas penyimpangan arah pemerintahan.</p>
+
+            <h3>Profil Tokoh-Tokoh Pelopor Kritik</h3>
+            <p>Beberapa nama besar yang berani tampil ke permukaan dan menjadi bagian integral dari gerakan resistensi ini, mencerminkan keragaman latar belakang dan pemikiran, antara lain:</p>
+            <ul class="key-points">
+                <li><strong>Moh. Hatta:</strong> Sang proklamator kemerdekaan dan Wakil Presiden pertama, yang teguh pada prinsip-prinsip ekonomi kerakyatan dan keadilan sosial.</li>
+                <li><strong>Mohammad Natsir:</strong> Pemimpin karismatik Masyumi dan mantan Perdana Menteri, dikenal karena konsistensinya dalam memperjuangkan nilai-nilai Islam dan kebangsaan.</li>
+                <li><strong>Ali Sadikin:</strong> Mantan Gubernur DKI Jakarta yang sangat populer dan dihormati karena integritas serta keberaniannya dalam mengelola kota.</li>
+                <li><strong>Jenderal Polisi Hoegeng Iman Santoso:</strong> Mantan Kapolri yang menjadi teladan kejujuran dan antikorupsi, meskipun harus menghadapi tekanan politik.</li>
+                <li><strong>S.K. Trimurti:</strong> Tokoh pejuang wanita, jurnalis, dan aktivis yang gigih.</li>
+                <li><strong>Syafruddin Prawiranegara:</strong> Tokoh sentral dalam sejarah ekonomi Indonesia dan pemimpin Pemerintahan Darurat Republik Indonesia (PDRI).</li>
+            </ul>
+            <p>Para tokoh ini, meskipun berasal dari spektrum politik yang berbeda, disatukan oleh keprihatinan mendalam terhadap penyimpangan kebijakan Orde Baru dari cita-cita luhur kemerdekaan dan Pancasila.</p>
+
+            <h3>Petisi 50: Tonggak Keberanian Intelektual dan Politik</h3>
+            <div class="callout">
+                <p>Salah satu peristiwa yang paling mencolok dalam sejarah resistensi tokoh nasional adalah <strong>Petisi 50</strong>. Petisi ini adalah sebuah deklarasi sikap yang ditandatangani oleh lebih dari 50 tokoh nasional terkemuka pada tanggal <strong>5 Mei 1980</strong>, menjadi manifestasi terbuka dari oposisi intelektual terhadap rezim Soeharto.</p>
+                <p><strong>Substansi Kritik Petisi 50:</strong> Para penandatangan secara tegas mengkritik Presiden Soeharto yang mereka nilai telah <strong>"menodai serta menyalahgunakan filosofi bangsa yaitu Pancasila"</strong>. Mereka menuding bahwa Soeharto telah menjadikan Pancasila sebagai instrumen politik untuk menyingkirkan lawan-lawan politiknya dan membenarkan tindakan otoriter, alih-alih sebagai dasar negara yang mempersatukan seluruh elemen bangsa.</p>
+                <p><strong>Reaksi Represif Pemerintah:</strong> Pemerintah Orde Baru merespons Petisi 50 dengan kebijakan tangan besi yang ketat. Para tokoh yang menandatangani petisi ini menghadapi berbagai bentuk sanksi dan pemboikotan, meliputi:</p>
+                <ul class="key-points">
+                    <li><strong>Pembatasan Mobilitas:</strong> Mereka dilarang keras untuk bepergian ke luar negeri.</li>
+                    <li><strong>Pembekuan Ekonomi:</strong> Usaha dan aktivitas bisnis mereka seringkali dipersulit atau bahkan dibekukan, menyebabkan kesulitan ekonomi.</li>
+                    <li><strong>Isolasi Sosial dan Media:</strong> Mereka dikucilkan dari lingkaran kekuasaan dan media massa diinstruksikan untuk tidak meliput kegiatan atau pernyataan mereka, menciptakan efek pengucilan publik.</li>
+                </ul>
+                <p>Meskipun Petisi 50 tidak secara langsung berhasil menggulingkan kekuasaan Orde Baru, namun ia memiliki <strong>signifikansi historis yang tak terbantahkan</strong>:</p>
+                <ul class="key-points">
+                    <li><strong>Dokumen Oposisi Penting:</strong> Petisi ini menjadi bukti otentik dan catatan berharga tentang eksistensi oposisi yang berani menyuarakan kebenaran di tengah cengkeraman kekuasaan otoriter.</li>
+                    <li><strong>Nyala Api Demokrasi:</strong> Petisi 50 adalah simbol dari upaya heroik para tokoh bangsa untuk menjaga dan menghidupkan kembali semangat demokrasi, kebebasan berekspresi, dan prinsip kontrol terhadap kekuasaan, meskipun dalam kondisi yang penuh tekanan dan ancaman. Ia menunjukkan bahwa di balik tirai kekuasaan absolut, selalu ada benih-benih perlawanan dan harapan akan kebebasan.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>D. Masa Akhir Pemerintahan Orde Baru: Menuju Gerbang Krisis 1997/1998</h2>
+            <p>Sejarah seringkali menunjukkan pola yang berulang. Banyak dari kita mungkin familiar dengan resesi ekonomi global yang terjadi selama pandemi Covid-19. Namun, apakah kalian menyadari bahwa Indonesia pernah menghadapi krisis ekonomi yang jauh lebih parah, yang tidak hanya mengguncang sektor ekonomi tetapi juga seluruh sendi kehidupan berbangsa?</p>
+
+            <h3>Krisis Moneter Asia 1997/1998: Katalisator Perubahan</h3>
+            <p>Pada tahun <strong>1997/1998</strong>, Indonesia, bersama dengan beberapa negara Asia lainnya (fenomena ini dikenal sebagai Krisis Moneter Asia atau Krismon), terjebak dalam pusaran krisis ekonomi yang dahsyat. Krisis ini bukanlah sekadar kemunduran ekonomi biasa, melainkan sebuah krisis multifaset yang menciptakan <strong>efek domino</strong> luas, merambat dari sektor keuangan hingga ke ranah politik dan sosial.</p>
+
+            <ul class="key-points">
+                <li><strong>Dampak Multidimensional Krisis:</strong>
+                    <ul>
+                        <li><strong>Aspek Ekonomi:</strong> Nilai tukar Rupiah anjlok drastis terhadap dolar AS, tingkat inflasi melonjak tak terkendali, banyak perusahaan besar maupun kecil mengalami kebangkrutan, dan angka pengangguran melonjak tajam.</li>
+                        <li><strong>Aspek Politik:</strong> Ketidakpuasan publik terhadap pemerintah meningkat tajam, menciptakan krisis legitimasi kepemimpinan yang berkuasa selama puluhan tahun.</li>
+                        <li><strong>Aspek Sosial:</strong> Lonjakan angka kemiskinan menjadi sangat signifikan, diikuti oleh kerusuhan sosial di berbagai daerah dan potensi disintegrasi masyarakat akibat tekanan ekonomi yang ekstrem.</li>
+                        <li><strong>Aspek Kepemimpinan:</strong> Puncak dari krisis ini adalah krisis kepercayaan terhadap kepemimpinan Soeharto, yang pada akhirnya memicu gelombang demonstrasi besar-besaran dan berujung pada kejatuhan rezim Orde Baru yang telah berkuasa selama 32 tahun.</li>
+                    </ul>
+                </li>
+                <li><strong>Paradoks Pertumbuhan Ekonomi:</strong> Hal yang ironis dan tragis dari krisis 1997/1998 adalah bahwa ia terjadi setelah periode panjang pertumbuhan ekonomi yang sangat pesat. Sejak awal tahun <strong>1980-an</strong>, Indonesia menikmati era pertumbuhan ekonomi yang stabil dan bahkan disebut sebagai salah satu "macan Asia". Namun, pertumbuhan yang cepat ini ternyata dibangun di atas fondasi yang rapuh, dicirikan oleh tingginya utang luar negeri, praktik korupsi, kolusi, dan nepotisme (KKN) yang merajalela, serta ketergantungan yang tidak terkontrol pada investasi dan modal asing. Ketika gejolak ekonomi global muncul, fondasi yang rapuh ini runtuh, menyeret Indonesia ke salah satu periode paling gelap dalam sejarah kontemporernya.</li>
+            </ul>
+            <p>Krisis ini tidak hanya menandai berakhirnya dominasi ekonomi Orde Baru, tetapi juga menjadi katalisator utama bagi perubahan politik fundamental, membuka jalan menuju era Reformasi yang menjanjikan transparansi, akuntabilitas, dan demokratisasi.</p>
+        </section>
+    </div>
+</body>
+</html>
+```

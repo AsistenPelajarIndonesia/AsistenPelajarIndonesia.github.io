@@ -1,0 +1,450 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perubahan dari RIS Menuju NKRI - Sejarah Kelas XII</title>
+    <style>
+        /* CSS Variables for Theming - Based on provided lightMode palette */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 2.5rem auto;
+            padding: 2rem;
+            background-color: var(--background-canvas);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            color: var(--primary-blue);
+            border-bottom: 4px solid var(--border-divider);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--accent-green);
+            margin-top: 2.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 100%;
+            background-color: var(--accent-green);
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: none; /* Remove default bullet */
+            margin-left: 0;
+            padding-left: 1.5rem; /* Indent list items */
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            position: relative;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        li::before {
+            content: '•'; /* Custom bullet point */
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.5em;
+            position: absolute;
+        }
+
+        strong {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        .section-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Viva Historia Section */
+        .viva-historia {
+            background-color: #fffaf0; /* Softer yellow from secondary-accent-amber */
+            border: 3px solid var(--secondary-accent-amber);
+            padding: 2.5rem;
+            margin-top: 4rem;
+            margin-bottom: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .viva-historia h2 {
+            color: var(--secondary-accent-amber);
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .viva-historia h2::before,
+        .viva-historia h2::after {
+            content: '';
+            flex-grow: 1;
+            height: 3px;
+            background-color: var(--secondary-accent-amber);
+            margin: 0 1.5rem;
+            border-radius: 2px;
+        }
+
+        .viva-historia h3 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .viva-historia .highlight-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin: 2rem auto;
+            max-width: 650px;
+            text-align: left;
+        }
+
+        .viva-historia .highlight-card p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .viva-historia .link-card {
+            background-color: #e8f5e9; /* Light green from accent */
+            border: 1px solid var(--accent-green);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .qr-placeholder {
+            width: 100px;
+            height: 100px;
+            background-color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .qr-text {
+            flex-grow: 1;
+            color: var(--text-secondary);
+        }
+
+        .qr-text p {
+            margin-bottom: 0.8rem;
+        }
+
+        .qr-text a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: bold;
+            word-break: break-all; /* Ensures long URLs break correctly */
+            display: block; /* Ensures it takes up full width for better clicking */
+        }
+
+        .qr-text a:hover {
+            text-decoration: underline;
+            color: var(--semantic-info);
+        }
+
+        /* Footer */
+        .footer-note {
+            text-align: right;
+            font-size: 0.95rem;
+            color: var(--text-tertiary);
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-divider);
+            font-style: italic;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+            .container {
+                margin: 1.5rem;
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+                padding-bottom: 1rem;
+                margin-bottom: 2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+                padding-left: 1rem;
+            }
+            h2::before {
+                width: 6px;
+            }
+            h3 {
+                font-size: 1.4rem;
+            }
+            .section-header {
+                padding: 0.8rem 1.5rem;
+                font-size: 1.2rem;
+            }
+            .viva-historia {
+                padding: 1.5rem;
+            }
+            .viva-historia h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            .viva-historia h2::before,
+            .viva-historia h2::after {
+                margin: 0 0.8rem;
+                height: 2px;
+            }
+            .viva-historia h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+            .viva-historia .link-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+            .qr-placeholder {
+                margin-bottom: 1rem;
+                width: 80px;
+                height: 80px;
+            }
+            .qr-text {
+                text-align: center;
+            }
+            .qr-text p {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+                padding-bottom: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+                padding-left: 0.8rem;
+            }
+            h2::before {
+                width: 5px;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            section {
+                padding: 1rem;
+            }
+            .section-header {
+                font-size: 1.1rem;
+                padding: 0.7rem 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .viva-historia {
+                padding: 1rem;
+            }
+            .viva-historia h2 {
+                font-size: 1.7rem;
+                margin-bottom: 0.8rem;
+            }
+            .viva-historia h3 {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
+            .viva-historia .highlight-card,
+            .viva-historia .link-card {
+                padding: 1rem;
+            }
+            .qr-placeholder {
+                width: 70px;
+                height: 70px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Perubahan dari RIS Menuju Negara Kesatuan Republik Indonesia (NKRI)</h1>
+
+        <section>
+            <div class="section-header">Latar Belakang Pembentukan Republik Indonesia Serikat (RIS)</div>
+            <p>Pembentukan Republik Indonesia Serikat (RIS) adalah sebuah inisiatif yang digagas oleh <strong>Dr. H. J. van Mook</strong>, yang kala itu menjabat sebagai Wakil Gubernur Jenderal Hindia Belanda. Tujuan utama dari pembentukan RIS ini adalah sebagai strategi Belanda untuk <strong>tetap menancapkan pengaruhnya</strong> di bumi Indonesia setelah proklamasi kemerdekaan. Struktur pemerintahan pada periode ini terbagi menjadi dua entitas utama:</p>
+            <ul>
+                <li><strong>Pemerintahan RIS</strong> yang berkedudukan di <strong>Jakarta</strong>.</li>
+                <li><strong>Pemerintahan Republik Indonesia (RI)</strong> yang berkedudukan di <strong>Yogyakarta</strong>.</li>
+            </ul>
+            <p>Pemerintahan RIS dipimpin oleh <strong>Presiden Sukarno</strong>, yang dibantu oleh <strong>Perdana Menteri Mohammad Hatta</strong>. RIS menganut sistem pemerintahan <strong>demokrasi parlementer</strong> dengan konstitusi negara yang dikenal sebagai <strong>Undang-Undang Republik Indonesia Serikat</strong>. Meskipun secara geografis dan administratif wilayah RI berada di dalam lingkup pemerintahan RIS, status RI pada waktu itu adalah <strong>otonom</strong> dan tidak sepenuhnya bergantung pada RIS.</p>
+        </section>
+
+        <section>
+            <div class="section-header">Gelombang Aspirasi Menuju Negara Kesatuan Republik Indonesia (NKRI)</div>
+            <p>Meskipun skema RIS telah diterapkan, keinginan kuat untuk kembali ke bentuk negara kesatuan telah menyelimuti sebagian besar masyarakat Indonesia. Mayoritas rakyat, didukung oleh tokoh-tokoh nasional, <strong>menginginkan Indonesia kembali menjadi negara kesatuan</strong>, meninggalkan struktur federal RIS. Munculnya gerakan-gerakan persatuan untuk mewujudkan <strong>Negara Kesatuan Republik Indonesia (NKRI)</strong> menjadi bukti nyata penolakan terhadap konsep negara federal.</p>
+            <p>Dukungan untuk NKRI tidak hanya datang dari pusat pemerintahan RI di Yogyakarta, tetapi juga meluas ke masyarakat di <strong>mayoritas negara bagian RIS</strong>, yang juga menyuarakan aspirasi untuk bersatu dalam satu wadah kesatuan.</p>
+        </section>
+
+        <section>
+            <div class="section-header">Proses Integrasi Negara-Negara Bagian ke dalam RI</div>
+            <p>Proses kembalinya Indonesia ke bentuk negara kesatuan dimulai secara bertahap dengan bergabungnya sejumlah negara bagian RIS ke dalam Republik Indonesia:</p>
+            <ul>
+                <li><strong>Negara bagian Sumatera Selatan</strong> menjadi pionir dalam gerakan ini, bergabung dengan Pemerintah RI pada tanggal <strong>10 Februari 1950</strong>.</li>
+                <li>Menyusul Sumatera Selatan, <strong>Negara Pasundan</strong> juga menyatakan keinginannya untuk bergabung. Keputusan ini didorong oleh tantangan Pasundan dalam memelihara keamanan dan ketertiban di wilayahnya. Pasundan secara resmi berintegrasi ke dalam RI sebagaimana tercantum dalam <strong>Surat Keputusan RIS No 113 tanggal 11 Maret 1950</strong>.</li>
+            </ul>
+            <p>Pemerintah RIS menunjukkan sikap akomodatif terhadap gelombang penggabungan ini, bahkan tidak menentang aksi penyatuan dengan RI. Mereka justru mengikuti kemauan <strong>Majelis Permusyawaratan</strong>. Untuk mempercepat proses ini, Pemerintah RIS kemudian mengeluarkan <strong>undang-undang darurat pada 7 Maret 1950</strong>. Undang-undang ini mengatur mengenai <strong>pembubaran negara-negara bagian</strong> dan penggabungan mereka ke dalam RI.</p>
+            <p>Pada akhir Maret 1950, upaya integrasi ini telah mengurangi jumlah negara bagian secara signifikan, dengan hanya menyisakan empat entitas yang masih berdiri di Indonesia, yaitu:</p>
+            <ul>
+                <li>Kalimantan Barat</li>
+                <li>Negara Sumatera Timur</li>
+                <li>Negara Indonesia Timur</li>
+                <li>Republik Indonesia (RI)</li>
+            </ul>
+            <p>Melihat perkembangan ini, <strong>Mohammad Natsir</strong> mengambil inisiatif krusial. Beliau menyampaikan usulan agar RI dan negara-negara bagian RIS yang tersisa dapat berbaur dalam satu kesatuan <strong>NKRI</strong>. Usulan yang disampaikan dalam rapat parlemen pada <strong>3 April 1950</strong> ini kemudian dikenal luas sebagai <strong>Mosi Integral Natsir</strong>. Berkat kepiawaian Natsir dalam lobi politik, mosi ini membuahkan hasil positif. <strong>Kalimantan Barat</strong> menjadi negara bagian berikutnya yang resmi masuk ke dalam RI setelah sidang Majelis Permusyawaratan pada tanggal <strong>22 April 1950</strong>, menandai langkah besar menuju pembentukan NKRI sepenuhnya.</p>
+        </section>
+
+        <div class="viva-historia">
+            <h2>VIVA HISTORIA</h2>
+            <h3>Moh. Natsir, Sang Pelopor Wacana Kembalinya NKRI</h3>
+            <div class="highlight-card">
+                <p><strong>Mohammad Natsir</strong> merupakan salah satu tokoh sentral dalam sejarah Indonesia pada dekade 1950-an. Kontribusi terbesarnya adalah dengan menyampaikan <strong>Mosi Integral Natsir</strong> dalam sebuah sidang parlemen pada <strong>3 April 1950</strong>. Melalui mosi ini, Moh. Natsir berhasil menunjukkan kepiawaiannya dalam melobi berbagai fraksi politik, meyakinkan mereka untuk bersepakat kembali pada bentuk <strong>Negara Kesatuan Republik Indonesia (NKRI)</strong>, setelah sebelumnya Indonesia terpecah belah dalam kerangka Negara Republik Indonesia Serikat (RIS).</p>
+                <p>Sebagai seorang yang pernah menjabat sebagai perdana menteri, Natsir dikenal luas karena <strong>karismanya</strong> dan sikapnya yang <strong>sederhana</strong>. Keteguhan dan visi persatuan yang beliau miliki menjadikannya salah satu figur yang sangat dihormati dalam sejarah perjuangan bangsa.</p>
+            </div>
+            <div class="link-card">
+                <div class="qr-placeholder">
+                    QR Code<br>(Tautan Video)
+                </div>
+                <div class="qr-text">
+                    <p>Ingin tahu lebih lanjut tentang dokumentasi sejarah dan kepribadian Mohammad Natsir?</p>
+                    <p>Kalian bisa mengunjungi tautan berikut untuk melihat dokumentasi sejarahnya:</p>
+                    <a href="https://www.youtube.com/watch?v=0jP7dlprfAo" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=0jP7dlprfAo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Bab 1: Perjuangan Mempertahankan Kemerdekaan | Halaman 51-52
+        </div>
+    </div>
+</body>
+</html>
+```

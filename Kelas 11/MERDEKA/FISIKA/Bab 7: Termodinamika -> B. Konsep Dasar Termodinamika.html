@@ -1,0 +1,515 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termodinamika: Hukum-Hukum Gas Ideal | Fisika Kelas XI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for navigation if added later */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            padding: 20px;
+            -webkit-font-smoothing: antialiased; /* Better font rendering */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden; /* Ensures border-radius applies cleanly */
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--accent-green);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+        }
+
+        header h1 {
+            font-size: 3.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-divider);
+            position: relative;
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-size: 2.4em;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            border-left: 7px solid var(--accent-green);
+            padding-left: 20px;
+            line-height: 1.3;
+            font-weight: 600;
+            position: relative;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 0;
+            bottom: 0;
+            width: 7px;
+            background-color: var(--accent-green);
+            border-radius: 0 4px 4px 0;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            margin-top: 35px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        ul li::before {
+            content: '✓'; /* Checkmark for list items */
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.3em;
+            line-height: 1;
+            top: 2px;
+        }
+
+        .formula-box {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formula-box::before {
+            content: '💡'; /* Lightbulb icon */
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        .formula-box span {
+            font-weight: 700;
+            display: block;
+            margin-top: 5px;
+            line-height: 1.2;
+        }
+
+        .formula-box p {
+            font-size: 0.7em;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 10px;
+        }
+
+        .key-concept {
+            background-color: #e8f5e9; /* Light green shade (rgba(var(--accent-green), 0.1) replacement) */
+            border-left: 7px solid var(--accent-green);
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .key-concept p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .key-concept strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .highlight-text {
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .bio-note {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.95em;
+            margin-top: -10px;
+            margin-bottom: 25px;
+            border-bottom: 1px dotted var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            header {
+                padding: 35px 15px;
+                border-radius: 0;
+            }
+
+            header h1 {
+                font-size: 2.4em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            main {
+                padding: 25px;
+            }
+
+            section {
+                margin-bottom: 40px;
+                padding-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 2em;
+                padding-left: 15px;
+                margin-bottom: 20px;
+                border-left-width: 5px;
+            }
+
+            h3 {
+                font-size: 1.5em;
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+
+            ul li {
+                font-size: 1em;
+                padding-left: 25px;
+                margin-bottom: 8px;
+            }
+
+            ul li::before {
+                font-size: 1.1em;
+                top: 0px;
+            }
+
+            .formula-box {
+                font-size: 1.4em;
+                padding: 20px;
+                margin: 25px 0;
+            }
+            .formula-box p {
+                font-size: 0.6em;
+            }
+
+            .key-concept {
+                padding: 18px 20px;
+                margin: 25px 0;
+                border-left-width: 5px;
+            }
+
+            .bio-note {
+                font-size: 0.9em;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.6em;
+                padding-left: 10px;
+                border-left-width: 4px;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .formula-box {
+                font-size: 1.1em;
+                padding: 15px;
+                margin: 20px 0;
+            }
+            p, ul li, .bio-note {
+                font-size: 0.9em;
+            }
+            ul li {
+                padding-left: 22px;
+            }
+            ul li::before {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Termodinamika: Hukum-Hukum Gas</h1>
+            <p>Eksplorasi Konsep Dasar Perilaku Gas Ideal dalam Fisika Kelas XI</p>
+        </header>
+
+        <main>
+            <section id="intro">
+                <h2>Pengantar Perilaku Gas</h2>
+                <p>
+                    Perilaku gas dalam berbagai kondisi merupakan fondasi penting dalam studi termodinamika. Gas adalah fase materi di mana partikel-partikelnya bergerak bebas dan mengisi seluruh volume wadah. Untuk memahami bagaimana gas bereaksi terhadap perubahan lingkungan, para ilmuwan telah merumuskan beberapa hukum dasar yang dikenal sebagai hukum-hukum gas. Hukum-hukum ini menjelaskan hubungan antara empat properti utama gas:
+                </p>
+                <ul>
+                    <li><span class="highlight-text">Tekanan (p)</span>: Merupakan gaya yang diberikan oleh molekul gas saat bertumbukan dengan dinding wadah per satuan luas.</li>
+                    <li><span class="highlight-text">Volume (V)</span>: Adalah ruang total yang ditempati oleh gas. Dalam konteks gas, ini adalah volume wadah.</li>
+                    <li><span class="highlight-text">Suhu (T)</span>: Indikator energi kinetik rata-rata partikel gas. Penting untuk menggunakan skala suhu mutlak (Kelvin) dalam perhitungan hukum gas.</li>
+                    <li><span class="highlight-text">Jumlah Mol (n)</span>: Mengukur kuantitas gas berdasarkan jumlah partikelnya (1 mol = 6.022 × 10²³ partikel).</li>
+                </ul>
+                <p>
+                    Dengan memahami interaksi antara properti-properti ini, kita dapat memprediksi dan menjelaskan berbagai fenomena terkait gas dalam kehidupan sehari-hari maupun aplikasi industri. Mari kita bahas secara mendalam tiga hukum gas fundamental.
+                </p>
+            </section>
+
+            <section id="boyle">
+                <h2>1. Hukum Boyle</h2>
+                <p class="bio-note">
+                    Diformulasikan oleh <strong>Robert Boyle</strong> (1627–1691), seorang fisikawan dan kimiawan asal Irlandia, yang melakukan penelitian mendalam tentang sifat-sifat gas.
+                </p>
+                <p>
+                    Hukum Boyle menjelaskan hubungan terbalik antara <span class="highlight-text">tekanan (p)</span> dan <span class="highlight-text">volume (V)</span> dari suatu gas. Hukum ini berlaku ketika <span class="highlight-text">suhu (T)</span> dan <span class="highlight-text">jumlah mol (n)</span> gas dijaga tetap (konstan). Dalam eksperimennya, Boyle mengamati bahwa jika gas dimampatkan (volumenya dikurangi), tekanannya akan meningkat, dan sebaliknya.
+                </p>
+                <p>
+                    Fenomena ini terjadi karena ketika volume wadah berkurang, partikel-partikel gas memiliki ruang yang lebih sempit untuk bergerak. Ini meningkatkan frekuensi tumbukan antara partikel gas dengan dinding wadah, yang pada gilirannya meningkatkan tekanan yang diberikan oleh gas.
+                </p>
+
+                <h3>Formulasi Matematis Hukum Boyle:</h3>
+                <div class="formula-box">
+                    <span>pV = konstan</span>
+                    <p>(berlaku untuk suhu dan jumlah mol gas yang tetap)</p>
+                </div>
+                <p>
+                    Untuk membandingkan dua keadaan yang berbeda (keadaan awal '1' dan keadaan akhir '2') dari gas yang sama dengan suhu dan jumlah mol yang konstan, Hukum Boyle dapat dituliskan sebagai:
+                </p>
+                <div class="formula-box">
+                    <span>p₁V₁ = p₂V₂</span>
+                </div>
+                <ul>
+                    <li><span class="highlight-text">p₁</span>: Tekanan gas pada kondisi awal (misalnya, dalam atm, Pa, N/m², cmHg)</li>
+                    <li><span class="highlight-text">V₁</span>: Volume gas pada kondisi awal (misalnya, dalam m³, cm³)</li>
+                    <li><span class="highlight-text">p₂</span>: Tekanan gas pada kondisi akhir</li>
+                    <li><span class="highlight-text">V₂</span>: Volume gas pada kondisi akhir</li>
+                </ul>
+
+                <div class="key-concept">
+                    <p>
+                        <strong>Inti Hukum Boyle:</strong> Pada suhu dan jumlah partikel yang konstan, <span class="highlight-text">tekanan gas berbanding terbalik dengan volumenya</span>. Jika satu parameter meningkat, parameter lainnya akan menurun secara proporsional.
+                    </p>
+                </div>
+
+                <h3>Aplikasi Hukum Boyle dalam Kehidupan:</h3>
+                <ul>
+                    <li><span class="highlight-text">Pompa Sepeda:</span> Ketika pegangan pompa ditekan ke bawah, volume udara di dalam pompa berkurang, sehingga tekanan udara meningkat drastis dan mampu mendorong udara ke dalam ban.</li>
+                    <li><span class="highlight-text">Mekanisme Pernapasan Manusia:</span> Saat kita menarik napas (inspirasi), diafragma bergerak ke bawah, memperbesar volume rongga dada. Ini menyebabkan tekanan di dalam paru-paru lebih rendah dari tekanan atmosfer, sehingga udara dari luar mengalir masuk. Sebaliknya, saat menghembuskan napas (ekspirasi), volume rongga dada mengecil, tekanan di paru-paru meningkat, dan udara terdorong keluar.</li>
+                    <li><span class="highlight-text">Penyelam Laut Dalam:</span> Penyelam harus berhati-hati saat naik ke permukaan karena tekanan di dalam paru-paru mereka (akibat tekanan tinggi di kedalaman) akan meningkat jika mereka naik terlalu cepat, yang dapat menyebabkan kerusakan paru-paru.</li>
+                </ul>
+            </section>
+
+            <section id="charles">
+                <h2>2. Hukum Charles</h2>
+                <p class="bio-note">
+                    Dicetuskan oleh <strong>Jacques Alexandre César Charles</strong> (1746–1823), seorang fisikawan dan penemu terkemuka dari Prancis.
+                </p>
+                <p>
+                    Hukum Charles mengkaji hubungan langsung antara <span class="highlight-text">volume (V)</span> dan <span class="highlight-text">suhu mutlak (T)</span> gas. Hukum ini berlaku ketika <span class="highlight-text">tekanan (p)</span> dan <span class="highlight-text">jumlah mol (n)</span> gas dijaga konstan. Penting untuk diingat bahwa suhu dalam perhitungan ini harus selalu dinyatakan dalam skala Kelvin (suhu mutlak), bukan Celcius atau Fahrenheit.
+                </p>
+                <p>
+                    Charles menemukan bahwa jika gas dipanaskan (suhunya dinaikkan), volumenya akan memuai (bertambah), dan sebaliknya. Ini terjadi karena peningkatan suhu meningkatkan energi kinetik rata-rata molekul gas, menyebabkan mereka bergerak lebih cepat dan menumbuk dinding wadah dengan lebih banyak energi, sehingga gas membutuhkan volume yang lebih besar untuk mempertahankan tekanan yang sama.
+                </p>
+
+                <h3>Formulasi Matematis Hukum Charles:</h3>
+                <div class="formula-box">
+                    <span>V/T = konstan</span>
+                    <p>(berlaku untuk tekanan dan jumlah mol gas yang tetap)</p>
+                </div>
+                <p>
+                    Untuk membandingkan dua keadaan yang berbeda (keadaan awal '1' dan keadaan akhir '2') dari gas yang sama dengan tekanan dan jumlah mol yang konstan, Hukum Charles dapat dituliskan sebagai:
+                </p>
+                <div class="formula-box">
+                    <span>V₁/T₁ = V₂/T₂</span>
+                </div>
+                <ul>
+                    <li><span class="highlight-text">V₁</span>: Volume gas pada kondisi awal</li>
+                    <li><span class="highlight-text">T₁</span>: Suhu mutlak gas pada kondisi awal (<strong>harus dalam Kelvin</strong>)</li>
+                    <li><span class="highlight-text">V₂</span>: Volume gas pada kondisi akhir</li>
+                    <li><span class="highlight-text">T₂</span>: Suhu mutlak gas pada kondisi akhir (<strong>harus dalam Kelvin</strong>)</li>
+                </ul>
+
+                <div class="key-concept">
+                    <p>
+                        <strong>Inti Hukum Charles:</strong> Pada tekanan dan jumlah partikel yang konstan, <span class="highlight-text">volume gas berbanding lurus dengan suhu mutlaknya</span>. Gas akan mengembang saat dipanaskan dan menyusut saat didinginkan.
+                    </p>
+                </div>
+
+                <h3>Aplikasi Hukum Charles dalam Kehidupan:</h3>
+                <ul>
+                    <li><span class="highlight-text">Balon Udara Panas:</span> Udara di dalam balon dipanaskan, menyebabkan volumenya memuai dan densitasnya berkurang dibandingkan udara di sekitarnya. Udara panas yang lebih ringan inilah yang membuat balon dapat terbang.</li>
+                    <li><span class="highlight-text">Ban Kendaraan di Cuaca Dingin:</span> Saat suhu udara menurun, volume udara di dalam ban kendaraan akan menyusut, membuat ban terlihat sedikit kempes. Tekanan ban juga akan menurun.</li>
+                    <li><span class="highlight-text">Bola Ping-Pong Penyok:</span> Jika bola ping-pong penyok direndam dalam air panas, udara di dalamnya akan memuai sesuai Hukum Charles, mendorong kembali bagian yang penyok dan mengembalikan bentuk bola.</li>
+                </ul>
+            </section>
+
+            <section id="gay-lussac">
+                <h2>3. Hukum Gay-Lussac</h2>
+                <p class="bio-note">
+                    Ditemukan oleh <strong>Joseph Louis Gay-Lussac</strong> (1778–1850), seorang fisikawan dan kimiawan Prancis yang terkenal dengan kontribusinya pada sifat-sifat gas.
+                </p>
+                <p>
+                    Hukum Gay-Lussac menjelaskan hubungan langsung antara <span class="highlight-text">tekanan (p)</span> dan <span class="highlight-text">suhu mutlak (T)</span> dari suatu gas. Hukum ini berlaku ketika <span class="highlight-text">volume (V)</span> dan <span class="highlight-text">jumlah mol (n)</span> gas dijaga tetap (konstan). Sama seperti Hukum Charles, suhu harus dalam skala Kelvin.
+                </p>
+                <p>
+                    Gay-Lussac menemukan bahwa jika gas dalam wadah tertutup dipanaskan (suhunya dinaikkan), tekanannya akan meningkat, dan sebaliknya. Peningkatan suhu meningkatkan energi kinetik molekul gas, menyebabkan mereka bergerak lebih cepat dan menumbuk dinding wadah dengan frekuensi dan kekuatan yang lebih besar, yang menghasilkan peningkatan tekanan.
+                </p>
+
+                <h3>Formulasi Matematis Hukum Gay-Lussac:</h3>
+                <div class="formula-box">
+                    <span>p/T = konstan</span>
+                    <p>(berlaku untuk volume dan jumlah mol gas yang tetap)</p>
+                </div>
+                <p>
+                    Untuk membandingkan dua keadaan yang berbeda (keadaan awal '1' dan keadaan akhir '2') dari gas yang sama dengan volume dan jumlah mol yang konstan, Hukum Gay-Lussac dapat dituliskan sebagai:
+                </p>
+                <div class="formula-box">
+                    <span>p₁/T₁ = p₂/T₂</span>
+                </div>
+                <ul>
+                    <li><span class="highlight-text">p₁</span>: Tekanan gas pada kondisi awal</li>
+                    <li><span class="highlight-text">T₁</span>: Suhu mutlak gas pada kondisi awal (<strong>harus dalam Kelvin</strong>)</li>
+                    <li><span class="highlight-text">p₂</span>: Tekanan gas pada kondisi akhir</li>
+                    <li><span class="highlight-text">T₂</span>: Suhu mutlak gas pada kondisi akhir (<strong>harus dalam Kelvin</strong>)</li>
+                </ul>
+
+                <div class="key-concept">
+                    <p>
+                        <strong>Inti Hukum Gay-Lussac:</strong> Pada volume dan jumlah partikel yang konstan, <span class="highlight-text">tekanan gas berbanding lurus dengan suhu mutlaknya</span>. Memanaskan gas dalam wadah tertutup akan meningkatkan tekanannya.
+                    </p>
+                </div>
+
+                <h3>Aplikasi Hukum Gay-Lussac dalam Kehidupan:</h3>
+                <ul>
+                    <li><span class="highlight-text">Panci Presto (Pressure Cooker):</span> Saat makanan dimasak dalam panci presto, uap air terperangkap dalam volume konstan. Pemanasan meningkatkan suhu dan secara drastis meningkatkan tekanan di dalamnya, memungkinkan makanan matang lebih cepat pada suhu yang lebih tinggi dari titik didih normal air.</li>
+                    <li><span class="highlight-text">Kaleng Aerosol:</span> Peringatan pada kaleng semprot (aerosol) untuk tidak disimpan di tempat panas atau dibakar adalah karena kenaikan suhu akan meningkatkan tekanan gas di dalamnya secara signifikan, berpotensi menyebabkan ledakan.</li>
+                    <li><span class="highlight-text">Ban Mobil Setelah Perjalanan Jauh:</span> Setelah melaju dengan kecepatan tinggi dalam waktu lama, ban mobil menjadi panas karena gesekan. Kenaikan suhu ini menyebabkan tekanan udara di dalam ban meningkat, sesuai Hukum Gay-Lussac.</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

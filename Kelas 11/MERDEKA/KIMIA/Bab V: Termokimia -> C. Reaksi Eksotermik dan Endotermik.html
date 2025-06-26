@@ -1,0 +1,509 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termokimia: Reaksi Eksotermik & Endotermik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 0.5em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-tertiary);
+            margin-bottom: 2em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 1.5em;
+        }
+
+        h2.section-title {
+            color: var(--primary-blue);
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: var(--border-divider);
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        code.math-formula {
+            background-color: transparent;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 20px 0;
+            border-top: 1px solid var(--border-divider);
+            margin-top: 30px;
+        }
+
+        section:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #E3F2FD; /* Lighter shade of --semantic-info */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #1A237E; /* Darker blue for contrast */
+            transition: box-shadow 0.3s ease;
+        }
+        .info-box:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        .info-box p {
+            margin: 0;
+        }
+        .info-box strong {
+            color: #1A237E;
+        }
+
+        /* Reaction Type Sections */
+        .reaction-type {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .reaction-type .content-box {
+            background-color: #F8F8F8; /* Light grey for content box */
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.3s ease;
+        }
+        .reaction-type .content-box:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .exothermic .section-title {
+            color: var(--accent-green);
+        }
+        .exothermic .key-point ul {
+            list-style-type: none; /* Remove default bullet */
+            padding-left: 0;
+        }
+        .exothermic .key-point ul li:before {
+            content: '✓';
+            color: var(--semantic-success);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.2em;
+            margin-left: -1.2em;
+        }
+
+        .endothermic .section-title {
+            color: var(--semantic-error); /* Using error color for heat absorption, indicating a "loss" from environment */
+        }
+        .endothermic .key-point ul {
+            list-style-type: none; /* Remove default bullet */
+            padding-left: 0;
+        }
+        .endothermic .key-point ul li:before {
+            content: '↵'; /* or '↓' for absorption */
+            color: var(--semantic-info); /* Using info blue for absorption */
+            font-weight: bold;
+            display: inline-block;
+            width: 1.2em;
+            margin-left: -1.2em;
+        }
+
+        .key-point {
+            background-color: #F0F0F0; /* Slightly different background for key points */
+            border-left: 4px solid var(--border-divider);
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            transition: box-shadow 0.3s ease;
+        }
+        .key-point:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        }
+        .key-point h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .code-block {
+            background-color: #ECEFF1; /* Light grey blue for code blocks */
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            overflow-x: auto; /* For long code lines */
+            border: 1px dashed #B0BEC5; /* Lighter border */
+            transition: box-shadow 0.3s ease;
+        }
+        .code-block:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .code-block code {
+            display: block; /* Make code block take full width */
+            white-space: pre-wrap; /* Wrap long lines */
+            background-color: transparent;
+            padding: 0;
+            color: var(--text-primary);
+        }
+
+        .visual-concept {
+            background-color: #FFFDE7; /* Light amber background */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #616161;
+            transition: box-shadow 0.3s ease;
+        }
+        .visual-concept:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        .visual-concept h4 {
+            margin-top: 0;
+            color: var(--secondary-accent-amber);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            margin-top: 30px;
+            overflow-x: auto; /* Ensures responsiveness for tables */
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            min-width: 600px; /* Ensures table is not too narrow on small screens */
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: var(--border-divider);
+            color: var(--text-primary);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #F5F5F5; /* Slightly darker for even rows */
+        }
+
+        .comparison-table td strong {
+            color: var(--text-primary);
+        }
+
+        /* Key Terms Section */
+        .term-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .term-item {
+            background-color: #F8F8F8;
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .term-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .term-item .term {
+            display: block;
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .term-item .definition {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .term-list {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table table {
+                min-width: unset; /* Allow table to shrink on very small screens, let overflow-x handle it */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            .comparison-table th, .comparison-table td {
+                padding: 10px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reaksi Eksotermik dan Endotermik</h1>
+            <p class="subtitle">Memahami Transfer Energi dalam Reaksi Kimia</p>
+        </header>
+
+        <section class="intro-section">
+            <h2>Pengantar Kalor dan Sistem</h2>
+            <p>Dalam ilmu termokimia, kita mengkaji bagaimana energi, khususnya dalam bentuk <strong>kalor</strong> (panas), berpindah selama reaksi kimia berlangsung. Kalor adalah bentuk energi yang selalu mengalir dari objek atau area dengan suhu lebih tinggi ke objek atau area dengan suhu yang lebih rendah. Dalam konteks reaksi kimia, perpindahan kalor ini terjadi antara <strong>sistem</strong> dan <strong>lingkungan</strong>.</p>
+            <div class="info-box">
+                <p><strong>Sistem</strong> adalah bagian spesifik dari alam semesta yang menjadi fokus studi kita. Ini bisa berupa reaktan dan produk dalam sebuah wadah reaksi. Sementara itu, <strong>lingkungan</strong> adalah segala sesuatu di luar sistem yang dapat berinteraksi dan bertukar energi atau materi dengannya, seperti wadah reaksi itu sendiri, udara di sekitarnya, atau bahkan tubuh kita yang merasakan perubahan suhu.</p>
+            </div>
+        </section>
+
+        <section class="reaction-type exothermic">
+            <h2 class="section-title">1. Reaksi Eksotermik</h2>
+            <div class="content-box">
+                <p><strong>Reaksi eksotermik</strong> adalah jenis reaksi kimia yang ditandai dengan <strong>pelepasan kalor</strong> dari sistem ke lingkungan. Reaksi ini secara alami akan memancarkan energi (dalam bentuk panas, dan kadang cahaya) sehingga lingkungan di sekitarnya akan mengalami peningkatan suhu.</p>
+                <div class="key-point">
+                    <h3>Ciri-ciri Utama Reaksi Eksotermik:</h3>
+                    <ul>
+                        <li><strong>Pelepasan Kalor:</strong> Sistem mengeluarkan energi (kalor) bersih ke lingkungan.</li>
+                        <li><strong>Penurunan Energi Sistem:</strong> Energi internal total sistem (produk) menjadi lebih rendah dibandingkan dengan energi internal total reaktan. Jika <code class="math-formula">E₂</code> adalah energi produk dan <code class="math-formula">E₁</code> adalah energi reaktan, maka <code class="math-formula">E₂ < E₁</code>.</li>
+                        <li><strong>Perubahan Energi (ΔE) Negatif:</strong> Perubahan energi (<code class="math-formula">ΔE</code>), yang didefinisikan sebagai <code class="math-formula">ΔE = E₂ - E₁</code>, akan memiliki nilai negatif (<code class="math-formula">ΔE < 0</code>). Tanda negatif ini mengindikasikan pelepasan energi dari sistem.</li>
+                        <li><strong>Peningkatan Suhu Lingkungan:</strong> Akibat pelepasan kalor, suhu lingkungan di sekitar sistem akan meningkat, dan kita akan merasakannya menjadi lebih hangat atau panas.</li>
+                        <li><strong>Diagram Energi:</strong> Pada diagram tingkat energi, reaktan berada pada tingkat energi yang lebih tinggi daripada produk. Reaksi "turun" ke tingkat energi yang lebih rendah, melepaskan selisih energinya sebagai kalor.</li>
+                    </ul>
+                </div>
+                <h3>Contoh Reaksi Eksotermik:</h3>
+                <p>Salah satu contoh paling umum yang sering kita jumpai adalah reaksi <strong>pembakaran</strong>. Misalnya, pembakaran gas propana (<code class="math-formula">C₃H₈</code>) yang digunakan dalam kompor gas atau pemanas.</p>
+                <div class="code-block">
+                    <p><code>C₃H₈(g) + 5O₂(g) → 3CO₂(g) + 4H₂O(l) + panas</code></p>
+                </div>
+                <p>Dalam reaksi ini, propana bereaksi dengan oksigen menghasilkan karbon dioksida dan air, disertai dengan pelepasan sejumlah besar energi dalam bentuk panas dan cahaya. Inilah yang menyebabkan nyala api dan rasa panas saat kita menyalakan kompor.</p>
+                <div class="visual-concept">
+                    <h4>Konsep Visual: Aliran Energi Eksotermik</h4>
+                    <p>Bayangkan sebuah sistem yang memiliki energi berlebih. Sistem ini "membuang" energi tersebut ke lingkungannya, seperti seseorang yang melepaskan panas dari tubuhnya setelah berolahraga. Panah energi akan digambarkan keluar dari sistem, menuju lingkungan.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reaction-type endothermic">
+            <h2 class="section-title">2. Reaksi Endotermik</h2>
+            <div class="content-box">
+                <p><strong>Reaksi endotermik</strong> adalah jenis reaksi kimia yang <strong>menyerap kalor</strong> dari lingkungan ke sistem. Ini berarti reaksi ini membutuhkan masukan energi dari luar agar dapat berlangsung, dan energi produknya lebih tinggi daripada energi reaktan.</p>
+                <div class="key-point">
+                    <h3>Ciri-ciri Utama Reaksi Endotermik:</h3>
+                    <ul>
+                        <li><strong>Penyerapan Kalor:</strong> Sistem menarik atau menyerap energi (kalor) dari lingkungan.</li>
+                        <li><strong>Peningkatan Energi Sistem:</strong> Energi internal total sistem (produk) menjadi lebih tinggi dibandingkan dengan energi internal total reaktan. Maka, <code class="math-formula">E₂ > E₁</code>.</li>
+                        <li><strong>Perubahan Energi (ΔE) Positif:</strong> Perubahan energi (<code class="math-formula">ΔE = E₂ - E₁</code>) akan memiliki nilai positif (<code class="math-formula">ΔE > 0</code>). Tanda positif ini menunjukkan penyerapan energi oleh sistem.</li>
+                        <li><strong>Penurunan Suhu Lingkungan:</strong> Karena kalor diserap dari lingkungan, suhu lingkungan di sekitar sistem akan menurun, dan kita akan merasakannya menjadi lebih dingin.</li>
+                        <li><strong>Diagram Energi:</strong> Pada diagram tingkat energi, reaktan berada pada tingkat energi yang lebih rendah daripada produk. Reaksi "naik" ke tingkat energi yang lebih tinggi, menyerap energi dari lingkungan.</li>
+                    </ul>
+                </div>
+                <h3>Contoh Reaksi Endotermik:</h3>
+                <p>Contoh klasik dari reaksi endotermik adalah <strong>fotosintesis</strong>, proses vital yang dilakukan oleh tumbuhan hijau untuk menghasilkan makanan.</p>
+                <div class="code-block">
+                    <p><code>6CO₂(g) + 6H₂O(l) + cahaya matahari → C₆H₁₂O₆(s) + 6O₂(g)</code></p>
+                </div>
+                <p>Dalam proses fotosintesis, tumbuhan menyerap energi cahaya matahari (yang merupakan bentuk energi) untuk mengubah karbon dioksida dan air menjadi glukosa (sejenis gula, <code class="math-formula">C₆H₁₂O₆</code>) dan oksigen. Reaksi ini tidak akan dapat berlangsung tanpa pasokan energi dari lingkungan (dalam hal ini, cahaya matahari).</p>
+                <div class="visual-concept">
+                    <h4>Konsep Visual: Aliran Energi Endotermik</h4>
+                    <p>Bayangkan sebuah sistem yang "lapar" energi. Sistem ini "menarik" energi dari lingkungannya, seperti spons yang menyerap air. Panah energi akan digambarkan masuk ke dalam sistem, dari lingkungan.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="summary-section">
+            <h2 class="section-title">Perbandingan Reaksi Eksotermik dan Endotermik</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Karakteristik</th>
+                            <th>Reaksi Eksotermik</th>
+                            <th>Reaksi Endotermik</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Arah Perpindahan Kalor</strong></td>
+                            <td>Dilepaskan dari sistem ke lingkungan</td>
+                            <td>Diserap dari lingkungan ke sistem</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Perubahan Energi Sistem (<code class="math-formula">E₂</code> vs <code class="math-formula">E₁</code>)</strong></td>
+                            <td>Menurun (<code class="math-formula">E₂ < E₁</code>)</td>
+                            <td>Meningkat (<code class="math-formula">E₂ > E₁</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nilai Perubahan Energi (ΔE)</strong></td>
+                            <td>Negatif (<code class="math-formula">ΔE < 0</code>)</td>
+                            <td>Positif (<code class="math-formula">ΔE > 0</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Efek pada Suhu Lingkungan</strong></td>
+                            <td>Meningkat (terasa panas)</td>
+                            <td>Menurun (terasa dingin)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kebutuhan Energi Awal</strong></td>
+                            <td>Seringkali memerlukan energi aktivasi awal, namun melepaskan energi bersih setelahnya.</td>
+                            <td>Membutuhkan masukan energi terus-menerus untuk menjaga reaksi berlangsung.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contoh Umum</strong></td>
+                            <td>Pembakaran, netralisasi asam-basa, perkaratan besi, reaksi ledakan.</td>
+                            <td>Fotosintesis, peleburan es, dekomposisi termal, larutan amonium nitrat dalam air dingin.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="key-terms-section">
+            <h2 class="section-title">Istilah Penting dalam Termokimia</h2>
+            <div class="term-list">
+                <div class="term-item">
+                    <span class="term">Sistem</span>
+                    <span class="definition">Bagian spesifik dari alam semesta yang menjadi fokus kajian termodinamika, biasanya meliputi reaktan dan produk reaksi.</span>
+                </div>
+                <div class="term-item">
+                    <span class="term">Lingkungan</span>
+                    <span class="definition">Segala sesuatu di luar sistem yang dapat berinteraksi dan bertukar energi atau materi dengan sistem.</span>
+                </div>
+                <div class="term-item">
+                    <span class="term">Kalor (Panas)</span>
+                    <span class="definition">Energi yang berpindah akibat adanya perbedaan suhu antara sistem dan lingkungan.</span>
+                </div>
+                <div class="term-item">
+                    <span class="term">Perubahan Energi (ΔE)</span>
+                    <span class="definition">Perbedaan total energi internal antara produk akhir dan reaktan awal dalam suatu reaksi kimia.</span>
+                </div>
+                <div class="term-item">
+                    <span class="term">Reaksi Kimia</span>
+                    <span class="definition">Proses yang mengubah satu atau lebih zat (reaktan) menjadi zat baru (produk).</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
+```

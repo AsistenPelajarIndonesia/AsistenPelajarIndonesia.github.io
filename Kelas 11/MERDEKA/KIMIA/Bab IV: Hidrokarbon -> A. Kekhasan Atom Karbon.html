@@ -1,0 +1,444 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab IV: Hidrokarbon - A. Kekhasan Atom Karbon</title>
+    <style>
+        /* Definisi variabel CSS untuk tema lightMode */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Pengaturan ulang dasar dan gaya body */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Tipografi */
+        h1 {
+            font-size: 2.5em;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--accent-green);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--secondary-accent-amber);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .note {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            margin-top: 10px;
+            padding-left: 10px;
+            border-left: 3px solid var(--border-divider);
+        }
+
+        /* Bagian dan Kartu Fitur */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Contoh Kode / Struktur Kimia */
+        .code-example {
+            background-color: #f9f9f9; /* Latar belakang lebih terang untuk kode */
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto; /* Untuk baris yang sangat panjang */
+        }
+
+        pre {
+            font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+            color: var(--text-primary);
+            white-space: pre-wrap; /* Memungkinkan pemisah baris */
+            word-wrap: break-word; /* Memastikan kata panjang pecah */
+        }
+
+        /* Penandaan jenis atom karbon */
+        .carbon-type-label {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Tata letak untuk contoh (Flexbox untuk responsivitas) */
+        .chain-examples, .representation-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .example-box, .rep-box {
+            flex: 1 1 calc(33.33% - 20px); /* 3 kotak per baris, dikurangi gap */
+            min-width: 280px; /* Lebar minimum sebelum pindah baris */
+            background-color: #fcfcfc;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .example-box:hover, .rep-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .representation-types .rep-box {
+            flex: 1 1 calc(33.33% - 20px);
+        }
+
+        /* Daftar Jenis Karbon */
+        .carbon-types li {
+            font-weight: normal;
+        }
+        .carbon-types li strong {
+            color: var(--primary-blue);
+        }
+
+        /* Penyesuaian responsif */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            .chain-examples, .representation-types {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .example-box, .rep-box {
+                min-width: unset; /* Hapus min-width untuk tumpukan */
+                flex-basis: 100%; /* Ambil lebar penuh */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab IV: Hidrokarbon - A. Kekhasan Atom Karbon</h1>
+        </header>
+        <main>
+            <section class="intro">
+                <h2>Pendahuluan</h2>
+                <p>Pada bab ini, kita akan mempelajari lebih dalam tentang hidrokarbon, kelompok senyawa organik yang mendominasi dunia kimia dan kehidupan. Pembelajaran akan mencakup berbagai aspek, dimulai dengan memahami sifat-sifat unik atom karbon yang membuatnya begitu istimewa.</p>
+                <p>Sebelumnya, kalian telah mengenal konfigurasi elektron dan posisi unsur dalam tabel periodik. Atom karbon (C), dengan nomor atom 6, memiliki konfigurasi elektron <strong>2 4</strong> atau <strong>1s² 2s² 2p²</strong>. Ia terletak di <strong>Golongan IVA (Golongan 14)</strong> dan <strong>Periode 2</strong>. Karbon adalah unsur yang sangat familiar bagi kita, karena menjadi komponen esensial dalam setiap makhluk hidup di Bumi.</p>
+            </section>
+
+            <section class="aktivitas">
+                <h2>Memahami Keberadaan Karbon di Sekitar Kita</h2>
+                <p>Untuk lebih menghayati kehadiran unsur karbon dalam keseharian, mari kita ingat kembali hasil dari aktivitas sederhana seperti membakar beberapa material yang sering kita jumpai:</p>
+                <ol>
+                    <li>Membakar kertas</li>
+                    <li>Membakar sampah plastik</li>
+                    <li>Membakar sate</li>
+                    <li>Membakar kayu</li>
+                </ol>
+                <p>Dari semua kegiatan pembakaran tersebut, kita akan mengamati adanya sisa pembakaran yang berbentuk padatan berwarna hitam. Padatan inilah yang kita kenal sebagai <strong>arang</strong>. Tahukah kalian zat utama yang terkandung dalam arang? Ya, arang tersusun sebagian besar dari unsur <strong>karbon</strong>. Hal ini menegaskan betapa integralnya karbon dalam berbagai materi di sekitar kita.</p>
+            </section>
+
+            <section class="kekhasan">
+                <h2>Kekhasan Atom Karbon</h2>
+                <p>Unsur karbon memiliki beberapa kekhasan fundamental yang menjadi alasan utama melimpahnya senyawa karbon dan keragamannya di alam. Kekhasan-kekhasan ini terkait erat dengan sifat-sifat atom karbon itu sendiri:</p>
+
+                <div class="feature-card">
+                    <h3>1. Kemampuan Membentuk Empat Ikatan Kovalen yang Kuat</h3>
+                    <p>Atom karbon memiliki <strong>empat elektron valensi</strong>. Untuk mencapai konfigurasi elektron yang stabil seperti gas mulia (yaitu, memenuhi aturan oktet dengan 8 elektron di kulit terluar), atom karbon sangat cenderung membentuk <strong>empat ikatan kovalen</strong>. Ikatan ini dapat terbentuk dengan atom nonlogam lain maupun sesama atom karbon.</p>
+                    <p>Kekuatan ikatan kovalen yang dibentuk oleh karbon sangat tinggi. Hal ini disebabkan oleh <strong>ukuran atom karbon yang relatif kecil</strong>, memungkinkan inti atom menarik elektron valensi dengan daya tarik yang kuat, sehingga menghasilkan ikatan yang stabil dan energi ikat yang tinggi.</p>
+                    <p>Sebagai ilustrasi, satu atom karbon dapat berikatan dengan empat atom hidrogen untuk membentuk molekul metana, CH₄:</p>
+                    <div class="code-example">
+                        <h4>Representasi Pembentukan Molekul Metana (CH₄)</h4>
+                        <pre>
+    // Atom Karbon (C) memiliki 4 elektron valensi.
+    // Atom Hidrogen (H) memiliki 1 elektron valensi.
+    
+    // Pembentukan Ikatan Kovalen:
+          H
+          |
+    H --- C --- H
+          |
+          H
+    
+    // Setiap garis mewakili sepasang elektron yang dipakai bersama (ikatan kovalen).
+    // Atom Karbon berbagi 4 pasang elektron, memenuhi aturan oktet.
+    // Setiap Atom Hidrogen berbagi 1 pasang elektron, memenuhi aturan duplet.
+                        </pre>
+                        <p class="note">Ini adalah struktur terurai sederhana dari metana, menunjukkan empat ikatan kovalen tunggal yang dibentuk oleh atom karbon.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3>2. Kemampuan Membentuk Rantai Karbon yang Beragam</h3>
+                    <p>Selain berikatan dengan atom lain, atom karbon memiliki kemampuan unik dan istimewa untuk membentuk ikatan kovalen yang kuat dengan sesama atom karbon. Kemampuan ini disebut <strong>katenasi</strong>, dan merupakan kunci utama melimpahnya jumlah serta keragaman senyawa organik di alam.</p>
+                    <p>Karbon dapat membentuk rantai yang sangat panjang, bercabang, atau bahkan siklik (cincin). Bandingkan dengan unsur-unsur lain dalam golongan IVA: silikon hanya bisa membentuk rantai hingga 8 atom, germanium 5 atom, timah 2 atom, dan timbal hanya 1 atom. Ini menunjukkan keunggulan karbon dalam katenasi.</p>
+
+                    <h4>Jenis-jenis Ikatan Kovalen Antar Atom Karbon:</h4>
+                    <ul>
+                        <li><strong>Ikatan Tunggal (C-C):</strong> Hanya berbagi satu pasang elektron di antara dua atom karbon.</li>
+                        <li><strong>Ikatan Rangkap Dua (C=C):</strong> Berbagi dua pasang elektron di antara dua atom karbon.</li>
+                        <li><strong>Ikatan Rangkap Tiga (C≡C):</strong> Berbagi tiga pasang elektron di antara dua atom karbon.</li>
+                    </ul>
+
+                    <h4>Bentuk Rantai Karbon yang Dapat Terbentuk:</h4>
+                    <div class="chain-examples">
+                        <div class="example-box">
+                            <h5>Rantai Lurus - Etana (C₂H₆)</h5>
+                            <pre>
+  H   H
+  |   |
+H-C - C-H
+  |   |
+  H   H
+                            </pre>
+                            <p class="note">Rantai karbon lurus dengan ikatan tunggal.</p>
+                        </div>
+                        <div class="example-box">
+                            <h5>Rantai Tak Jenuh (Rangkap Dua) - Etena (C₂H₄)</h5>
+                            <pre>
+  H   H
+   \ /
+    C=C
+   / \
+  H   H
+                            </pre>
+                            <p class="note">Rantai karbon lurus dengan ikatan rangkap dua.</p>
+                        </div>
+                        <div class="example-box">
+                            <h5>Rantai Tak Jenuh (Rangkap Tiga) - Etuna (C₂H₂)</h5>
+                            <pre>
+H-C≡C-H
+                            </pre>
+                            <p class="note">Rantai karbon lurus dengan ikatan rangkap tiga.</p>
+                        </div>
+                        <div class="example-box">
+                            <h5>Rantai Bercabang - 2-Metilpropana (C₄H₁₀)</h5>
+                            <pre>
+    CH₃
+    |
+H₃C-CH-CH₃
+                            </pre>
+                            <p class="note">Rantai karbon yang memiliki cabang.</p>
+                        </div>
+                        <div class="example-box">
+                            <h5>Rantai Siklis - Siklobutana (C₄H₈)</h5>
+                            <pre>
+    H₂C-CH₂
+    |    |
+    H₂C-CH₂
+                            </pre>
+                            <p class="note">Rantai karbon membentuk cincin beranggota empat.</p>
+                        </div>
+                        <div class="example-box">
+                            <h5>Rantai Siklis - Sikloheksana (C₆H₁₂)</h5>
+                            <pre>
+   H₂C-CH₂
+  /      \
+H₂C      CH₂
+|          |
+H₂C      CH₂
+  \      /
+   H₂C-CH₂
+                            </pre>
+                            <p class="note">Rantai karbon membentuk cincin beranggota enam.</p>
+                        </div>
+                    </div>
+
+                    <h4>Jenis Atom Karbon Berdasarkan Posisinya dalam Rantai:</h4>
+                    <p>Dalam suatu rantai karbon, atom karbon dapat diklasifikasikan berdasarkan jumlah atom karbon lain yang terikat langsung padanya:</p>
+                    <ul class="carbon-types">
+                        <li><strong><span class="carbon-type-label">Primer (1°)</span>:</strong> Atom karbon yang hanya mengikat <strong>satu</strong> atom karbon lainnya.</li>
+                        <li><strong><span class="carbon-type-label">Sekunder (2°)</span>:</strong> Atom karbon yang mengikat <strong>dua</strong> atom karbon lainnya.</li>
+                        <li><strong><span class="carbon-type-label">Tersier (3°)</span>:</strong> Atom karbon yang mengikat <strong>tiga</strong> atom karbon lainnya.</li>
+                        <li><strong><span class="carbon-type-label">Kuartener (4°)</span>:</strong> Atom karbon yang mengikat <strong>empat</strong> atom karbon lainnya.</li>
+                    </ul>
+
+                    <div class="code-example">
+                        <h5>Contoh: Identifikasi Jenis Atom Karbon pada Neoheksana (2,2-Dimetilbutana)</h5>
+                        <p>Mari kita identifikasi jenis atom karbon pada struktur neoheksana (2,2-dimetilbutana) berikut:</p>
+                        <pre>
+      <span class="carbon-type-label">1°</span>CH₃
+      |
+    <span class="carbon-type-label">1°</span>CH₃ - <span class="carbon-type-label">4°</span>C - <span class="carbon-type-label">2°</span>CH₂ - <span class="carbon-type-label">1°</span>CH₃
+      |
+      <span class="carbon-type-label">1°</span>CH₃
+                        </pre>
+                        <p class="note">
+                            <strong>Analisis:</strong><br>
+                            - Terdapat <strong>4</strong> atom <span class="carbon-type-label">Karbon Primer (1°)</span>: (tiga gugus CH₃ yang menempel pada C kuartener dan satu gugus CH₃ di ujung rantai utama).<br>
+                            - Terdapat <strong>1</strong> atom <span class="carbon-type-label">Karbon Sekunder (2°)</span>: (gugus CH₂).<br>
+                            - Terdapat <strong>0</strong> atom <span class="carbon-type-label">Karbon Tersier (3°)</span>.<br>
+                            - Terdapat <strong>1</strong> atom <span class="carbon-type-label">Karbon Kuartener (4°)</span>: (atom karbon pusat yang terikat pada empat atom karbon lainnya).
+                        </p>
+                    </div>
+
+                    <h4>Berbagai Cara Representasi Struktur Senyawa Karbon:</h4>
+                    <p>Dalam kimia organik, ikatan antara atom karbon dengan hidrogen tidak selalu digambarkan secara eksplisit dalam bentuk garis. Ada beberapa metode umum untuk menggambarkan struktur rantai karbon, masing-masing dengan tingkat detail yang berbeda dan kegunaan praktisnya:</p>
+                    <div class="representation-types">
+                        <div class="rep-box">
+                            <h5>1. Struktur Terurai (Expanded Structure)</h5>
+                            <p>Menunjukkan semua atom (karbon dan hidrogen) dan semua ikatan (baik ikatan C-C maupun C-H) secara eksplisit. Representasi ini memberikan gambaran paling lengkap tentang konektivitas antaratom.</p>
+                            <pre>
+    H H CH₃ H H
+    | |  |  | |
+  H-C-C--C--C-C-H
+    | |  |  | |
+    H H  H  H H
+                            </pre>
+                            <p class="note">Contoh untuk 3-metilpentana: Setiap atom dan ikatan terlihat secara jelas.</p>
+                        </div>
+                        <div class="rep-box">
+                            <h5>2. Struktur Termampatkan (Condensed Structure)</h5>
+                            <p>Mengelompokkan atom hidrogen yang terikat pada atom karbon tertentu. Ikatan C-H sering tidak digambarkan. Ikatan C-C bisa digambarkan atau dihilangkan jika urutannya jelas. Ini adalah cara yang lebih ringkas untuk menuliskan rumus bangun.</p>
+                            <pre>
+CH₃CH₂CH(CH₃)CH₂CH₃
+atau
+C₂H₅CH(CH₃)C₂H₅
+                            </pre>
+                            <p class="note">Contoh untuk 3-metilpentana: Sangat ringkas dan sering digunakan dalam teks.</p>
+                        </div>
+                        <div class="rep-box">
+                            <h5>3. Struktur Garis/Kerangka (Skeletal/Line-Angle Structure)</h5>
+                            <p>Merupakan representasi yang paling sederhana dan ringkas. Hanya ikatan C-C yang digambarkan sebagai garis zig-zag. Setiap ujung garis dan setiap belokan (sudut) diasumsikan sebagai satu atom karbon. Atom hidrogen yang terikat pada karbon (untuk memenuhi valensi) tidak dituliskan, kecuali jika terikat pada atom lain selain C (misalnya gugus -OH, -NH₂). Ikatan pada ujung rantai jenuh selalu diasumsikan sebagai gugus CH₃.</p>
+                            <pre>
+    // Konsep representasi garis untuk rantai karbon:
+    //  ---'---
+    //      |
+    //      '
+    //
+    // Representasi Garis untuk 3-metilpentana:
+    //      /\
+    //     /  \
+    //    /    \
+    //   /______\
+    //      |
+    //      '
+                            </pre>
+                            <p class="note">Contoh untuk 3-metilpentana: Setiap sudut dan ujung garis mewakili atom karbon, sementara hidrogen diasumsikan.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

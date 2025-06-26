@@ -1,0 +1,335 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Kalor - Penjelasan Komprehensif</title>
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Resets */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-divider);
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.6em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight-box {
+            background-color: rgba(var(--secondary-accent-amber), 0.1); /* Slightly transparent amber */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 18px 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        .formula-block {
+            background-color: var(--border-divider);
+            padding: 20px;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .formula-block strong {
+            color: var(--primary-blue);
+        }
+
+        .definition-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+
+        .definition-list dt {
+            font-weight: bold;
+            color: var(--accent-green);
+            margin-top: 10px;
+        }
+
+        .definition-list dd {
+            margin-left: 20px;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            header {
+                padding: 25px 15px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            .highlight-box {
+                padding: 15px 20px;
+            }
+
+            .formula-block {
+                font-size: 1em;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bab 6: Kalor</h1>
+        <p>Memahami Konsep Energi Panas dan Perubahannya</p>
+    </header>
+
+    <main>
+        <section id="pengertian-kalor">
+            <h2>1. Pengertian Kalor</h2>
+            <p>Dalam ilmu fisika, <strong>kalor</strong> didefinisikan sebagai energi yang berpindah dari satu benda ke benda lain atau dari satu sistem ke sistem lain karena adanya perbedaan suhu. Perpindahan energi ini terjadi hingga kedua benda atau sistem mencapai kesetimbangan termal, yaitu kondisi di mana tidak ada lagi perpindahan energi neto antara keduanya.</p>
+
+            <div class="highlight-box">
+                <p>Saat sendok dingin dimasukkan ke dalam air teh panas, sendok akan menjadi hangat dan air teh akan sedikit mendingin. Ini adalah contoh klasik perpindahan kalor dari air teh yang bersuhu tinggi ke sendok yang bersuhu rendah.</p>
+            </div>
+
+            <h3>Kalor sebagai Bentuk Energi</h3>
+            <p>Konsep bahwa kalor adalah salah satu bentuk energi dibuktikan secara eksperimental oleh fisikawan James Prescott Joule. Dalam percobaannya yang terkenal, Joule menggunakan sistem mekanis di mana beban yang jatuh memutar baling-baling di dalam wadah berisi air. Gesekan antara baling-baling dengan air menyebabkan suhu air meningkat.</p>
+            <p>Melalui eksperimen ini, Joule menunjukkan bahwa energi mekanik (dari jatuhnya beban) dapat diubah menjadi energi panas (kalor) yang menaikkan suhu air. Hal ini mengukuhkan prinsip kekekalan energi, bahwa energi tidak dapat diciptakan atau dimusnahkan, melainkan hanya dapat berubah bentuk.</p>
+            <p>Berdasarkan hasil percobaannya, Joule menemukan kesetaraan antara energi mekanik dan kalor: untuk menaikkan suhu 1 gram air sebesar 1°C, dibutuhkan energi sebesar 4,2 joule. Nilai ini kemudian dikenal sebagai 1 kalori (kal). Oleh karena itu, 1 kalori setara dengan 4,2 joule, atau sebaliknya, 1 joule setara dengan 0,24 kalori.</p>
+        </section>
+
+        <section id="pengaruh-kalor-perubahan-suhu">
+            <h2>2. Pengaruh Kalor terhadap Perubahan Suhu</h2>
+            <p>Ketika suatu benda menerima atau melepaskan kalor, ada beberapa kemungkinan yang terjadi, salah satunya adalah perubahan suhu benda tersebut. Namun, besarnya perubahan suhu ini tidak selalu sama untuk setiap materi, meskipun jumlah kalor yang diberikan sama. Hal ini bergantung pada beberapa faktor karakteristik materi.</p>
+
+            <h3>Kalor Jenis (Specific Heat Capacity)</h3>
+            <p><strong>Kalor jenis (c)</strong> adalah besaran yang menunjukkan kemampuan suatu materi untuk menyerap kalor sehingga suhunya naik. Secara spesifik, kalor jenis didefinisikan sebagai jumlah kalor yang diperlukan untuk menaikkan suhu 1 kilogram suatu zat sebesar 1°C (atau 1 Kelvin).</p>
+            <p>Semakin besar nilai kalor jenis suatu benda, berarti benda tersebut memerlukan lebih banyak kalor untuk mengalami kenaikan suhu yang sama. Sebaliknya, benda dengan kalor jenis kecil akan lebih cepat panas (atau dingin) dengan sedikit kalor.</p>
+            <p>Hubungan antara kalor (Q), massa (m), kalor jenis (c), dan perubahan suhu (&Delta;T) dinyatakan dengan persamaan:</p>
+            <div class="formula-block">
+                <p><strong>Q = m &sdot; c &sdot; &Delta;T</strong></p>
+            </div>
+            <dl class="definition-list">
+                <dt>Keterangan:</dt>
+                <dd><strong>Q</strong> = Kalor yang diserap atau dilepaskan (Joule)</dd>
+                <dd><strong>m</strong> = Massa benda (kilogram)</dd>
+                <dd><strong>c</strong> = Kalor jenis (Joule/kilogram &sdot; °C atau Joule/kilogram &sdot; K)</dd>
+                <dd><strong>&Delta;T</strong> = Perubahan suhu (°C atau K)</dd>
+            </dl>
+            <p>Sebagai contoh, air memiliki kalor jenis yang relatif tinggi (sekitar 4180 J/kg°C) dibandingkan dengan logam seperti besi (sekitar 450 J/kg°C) atau aluminium (sekitar 900 J/kg°C). Ini menjelaskan mengapa air membutuhkan waktu lebih lama untuk panas, tetapi juga lebih lama untuk dingin, menjadikannya zat pendingin atau penyimpan panas yang baik.</p>
+
+            <h3>Kapasitas Kalor (Heat Capacity)</h3>
+            <p>Selain kalor jenis, ada juga besaran lain yang disebut <strong>kapasitas kalor (C)</strong>. Kapasitas kalor adalah jumlah kalor yang diperlukan untuk menaikkan suhu suatu benda (bukan per satuan massa) sebesar 1°C atau 1 Kelvin. Kapasitas kalor merupakan besaran total untuk suatu benda tertentu.</p>
+            <p>Kapasitas kalor dapat dihitung dari massa benda (m) dan kalor jenisnya (c):</p>
+            <div class="formula-block">
+                <p><strong>C = m &sdot; c</strong></p>
+            </div>
+            <p>Atau dapat juga dirumuskan dari kalor yang diserap atau dilepaskan (Q) dan perubahan suhunya (&Delta;T):</p>
+            <div class="formula-block">
+                <p><strong>C = Q / &Delta;T</strong></p>
+            </div>
+            <dl class="definition-list">
+                <dt>Keterangan:</dt>
+                <dd><strong>C</strong> = Kapasitas kalor (Joule/°C atau Joule/K)</dd>
+                <dd><strong>m</strong> = Massa benda (kilogram)</dd>
+                <dd><strong>c</strong> = Kalor jenis (Joule/kilogram &sdot; °C)</dd>
+                <dd><strong>Q</strong> = Kalor (Joule)</dd>
+                <dd><strong>&Delta;T</strong> = Perubahan suhu (°C atau K)</dd>
+            </dl>
+            <div class="highlight-box">
+                <p>Perbedaan suhu yang ekstrem antara siang dan malam di gurun pasir dapat dijelaskan oleh konsep kapasitas kalor. Pasir memiliki kapasitas kalor yang rendah. Ini berarti pasir cepat menyerap panas di siang hari dan cepat melepaskannya di malam hari, menyebabkan fluktuasi suhu yang besar.</p>
+            </div>
+
+            <h3>Asas Black (Black's Principle)</h3>
+            <p><strong>Asas Black</strong> adalah prinsip dalam termodinamika yang menyatakan bahwa dalam sistem tertutup, jika dua zat atau lebih dengan suhu berbeda dicampurkan, maka kalor yang dilepaskan oleh zat bersuhu tinggi akan sama dengan kalor yang diterima oleh zat bersuhu rendah, hingga tercapai kesetimbangan termal. Ini adalah aplikasi dari hukum kekekalan energi.</p>
+            <p>Secara matematis, Asas Black dapat ditulis sebagai:</p>
+            <div class="formula-block">
+                <p><strong>Q<sub>lepas</sub> = Q<sub>terima</sub></strong></p>
+                <p>atau</p>
+                <p><strong>m<sub>1</sub> &sdot; c<sub>1</sub> &sdot; &Delta;T<sub>1</sub> = m<sub>2</sub> &sdot; c<sub>2</sub> &sdot; &Delta;T<sub>2</sub></strong></p>
+            </div>
+            <p>Di mana indeks 1 mewakili zat yang melepaskan kalor (suhu awal lebih tinggi) dan indeks 2 mewakili zat yang menerima kalor (suhu awal lebih rendah). Perubahan suhu (&Delta;T) dihitung sebagai selisih antara suhu akhir (suhu campuran) dan suhu awal masing-masing zat.</p>
+            <div class="highlight-box">
+                <p>Prinsip ini sangat penting dalam berbagai aplikasi, seperti perhitungan suhu akhir campuran air panas dan dingin, atau dalam perancangan sistem pertukaran panas.</p>
+            </div>
+        </section>
+
+        <section id="pengaruh-kalor-perubahan-wujud">
+            <h2>3. Pengaruh Kalor pada Perubahan Wujud</h2>
+            <p>Selain menyebabkan perubahan suhu, kalor juga dapat menyebabkan perubahan wujud zat tanpa disertai perubahan suhu. Perubahan wujud adalah proses fisik di mana materi berpindah dari satu fase ke fase lain, seperti dari padat ke cair, cair ke gas, atau sebaliknya.</p>
+            <p>Tiga wujud dasar zat adalah padat, cair, dan gas. Ketika zat menerima atau melepaskan kalor, mereka bisa mengalami:</p>
+            <ul>
+                <li><strong>Melebur (Mencair):</strong> Padat menjadi cair (membutuhkan kalor). Contoh: es batu mencair.</li>
+                <li><strong>Membeku:</strong> Cair menjadi padat (melepaskan kalor). Contoh: air menjadi es.</li>
+                <li><strong>Menguap:</strong> Cair menjadi gas (membutuhkan kalor). Contoh: air mendidih menjadi uap.</li>
+                <li><strong>Mengembun:</strong> Gas menjadi cair (melepaskan kalor). Contoh: uap air menjadi titik-titik air.</li>
+                <li><strong>Menyublim:</strong> Padat menjadi gas (membutuhkan kalor). Contoh: kapur barus mengecil.</li>
+                <li><strong>Mengkristal (Deposisi):</strong> Gas menjadi padat (melepaskan kalor). Contoh: terbentuknya salju dari uap air.</li>
+            </ul>
+            <p>Selama proses perubahan wujud ini, suhu zat tetap konstan. Kalor yang diserap atau dilepaskan digunakan sepenuhnya untuk mengubah ikatan antarmolekul, bukan untuk meningkatkan energi kinetik rata-rata partikel (yang berkaitan dengan suhu).</p>
+
+            <h3>Kalor Laten (Latent Heat)</h3>
+            <p><strong>Kalor laten (L)</strong> adalah jumlah kalor yang diperlukan atau dilepaskan tiap satuan massa zat saat terjadi perubahan wujud pada suhu dan tekanan konstan. Satuan kalor laten adalah Joule per kilogram (J/kg).</p>
+            <p>Persamaan untuk menghitung kalor yang terlibat dalam perubahan wujud adalah:</p>
+            <div class="formula-block">
+                <p><strong>Q = m &sdot; L</strong></p>
+            </div>
+            <dl class="definition-list">
+                <dt>Keterangan:</dt>
+                <dd><strong>Q</strong> = Kalor yang diserap atau dilepaskan selama perubahan wujud (Joule)</dd>
+                <dd><strong>m</strong> = Massa zat (kilogram)</dd>
+                <dd><strong>L</strong> = Kalor laten (Joule/kilogram)</dd>
+            </dl>
+            <p>Ada dua jenis kalor laten utama:</p>
+            <ol>
+                <li><strong>Kalor Lebur (L<sub>f</sub>):</strong> Kalor yang diperlukan untuk mengubah 1 kg zat padat menjadi cair pada titik leburnya. Ini juga sama dengan kalor yang dilepaskan saat 1 kg zat cair membeku. Untuk air, kalor lebur sekitar 336.000 J/kg.</li>
+                <li><strong>Kalor Uap (L<sub>v</sub>):</strong> Kalor yang diperlukan untuk mengubah 1 kg zat cair menjadi gas pada titik didihnya. Ini juga sama dengan kalor yang dilepaskan saat 1 kg zat gas mengembun. Untuk air, kalor uap sekitar 2.260.000 J/kg.</li>
+            </ol>
+            <div class="highlight-box">
+                <p>Contoh nyata dari kalor laten adalah ketika es mencair di dalam minuman. Es akan menyerap kalor dari minuman tanpa mengubah suhunya, sehingga minuman tetap dingin selama es masih ada. Begitu pula saat air mendidih, suhu air tidak akan melebihi 100°C (pada tekanan standar) meskipun terus dipanaskan, karena kalor tambahan digunakan untuk mengubah air menjadi uap.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+```

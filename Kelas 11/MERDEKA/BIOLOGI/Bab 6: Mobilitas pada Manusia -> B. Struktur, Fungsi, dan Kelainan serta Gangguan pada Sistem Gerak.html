@@ -1,0 +1,452 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Mobilitas pada Manusia - Sistem Gerak</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 960px; /* Standard web content width */
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-green);
+            margin-bottom: 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: var(--background-canvas);
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.6em;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            color: var(--secondary-accent-amber);
+            font-size: 1.2em;
+            margin-top: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-weight: bold;
+        }
+
+        .activity-box {
+            background-color: var(--semantic-warning);
+            color: var(--text-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 2px solid var(--secondary-accent-amber);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-box h3 {
+            color: var(--text-primary);
+            margin-top: 0;
+        }
+
+        .activity-box p {
+            color: var(--text-primary);
+        }
+
+        .callout {
+            background-color: rgba(25, 118, 210, 0.08); /* primary-blue with transparency */
+            border-left: 5px solid var(--primary-blue);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            h4 {
+                font-size: 1.1em;
+            }
+            .container {
+                padding: 1rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            h4 {
+                font-size: 1em;
+            }
+            .container {
+                padding: 0.8rem;
+            }
+            section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistem Gerak Manusia</h1>
+        <p>Struktur, Fungsi, Kelainan, dan Gangguan pada Sistem Gerak</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>1. Rangka Manusia sebagai Alat Gerak</h2>
+            <p>Sistem rangka adalah pondasi tubuh manusia yang memberikan bentuk, dukungan, dan perlindungan bagi organ-organ vital. Selain itu, rangka juga berfungsi sebagai tempat melekatnya otot dan memungkinkan pergerakan.</p>
+
+            <h3>a. Tulang Penyusun Rangka</h3>
+            <p>Tubuh orang dewasa memiliki <strong>206 tulang</strong>, sedangkan bayi memiliki lebih banyak, sekitar 300-340 tulang. Perbedaan jumlah ini disebabkan oleh proses penyatuan beberapa tulang yang terpisah pada bayi saat tubuh tumbuh menjadi satu tulang pada saat dewasa.</p>
+            <p>Tulang tersusun dari jaringan ikat khusus yang disebut <strong>matriks tulang</strong>. Matriks ini kaya akan garam-garam organik yang mengalami mineralisasi. Komponen utama tulang meliputi:</p>
+            <ul>
+                <li><strong>25% Air:</strong> Menjaga hidrasi dan elastisitas.</li>
+                <li><strong>30% Zat Organik (Serabut):</strong> Terutama kolagen, memberikan fleksibilitas dan kekuatan tarik.</li>
+                <li><strong>45% Zat Mineral:</strong> Terdiri dari kalsium fosfat dan garam magnesium, memberikan kekerasan dan kekuatan tekan.</li>
+            </ul>
+            <p>Tulang memiliki kemampuan regenerasi yang tinggi, sehingga mampu pulih dari infeksi atau cedera.</p>
+
+            <h3>b. Bentuk Tulang</h3>
+            <p>Berdasarkan bentuknya, tulang dibedakan menjadi empat jenis utama, namun yang paling berperan dalam mobilitas adalah tulang pipa.</p>
+            <h4>Tulang Pipa:</h4>
+            <p>Tulang pipa berbentuk silindris seperti pipa dengan kedua ujungnya yang bulat. Struktur tulang pipa terdiri atas:</p>
+            <ul>
+                <li><strong>Epifise:</strong> Bagian ujung tulang yang berbentuk bulat dan tersusun atas tulang rawan. Ini adalah area persendian.</li>
+                <li><strong>Diafise:</strong> Bagian tengah tulang pipa yang berbentuk silindris dan berongga.</li>
+                <li><strong>Metafise:</strong> Bagian di antara epifise dan diafise, juga tersusun atas tulang rawan. Pada metafise terdapat <strong>cakra epifise</strong>, yang berperan penting dalam pertumbuhan memanjang tulang.</li>
+            </ul>
+
+            <h3>c. Macam-macam Rangka</h3>
+            <p>Rangka tubuh manusia dibagi menjadi dua kelompok besar:</p>
+            <ol>
+                <li>
+                    <h4>Rangka Aksial (Rangka Sumbu)</h4>
+                    <p>Rangka aksial membentuk sumbu utama tubuh dan berfungsi melindungi organ vital. Rangka aksial terdiri atas:</p>
+                    <ul>
+                        <li><strong>Tengkorak (29 tulang):</strong> Melindungi otak dan organ indera.</li>
+                        <li><strong>Tulang Dada (Sternum):</strong> Tulang pipih di tengah dada.</li>
+                        <li><strong>Tulang Rusuk (Costa):</strong> Melindungi paru-paru dan jantung.</li>
+                        <li><strong>Tulang Belakang (Vertebrae - 26 tulang):</strong> Memberikan dukungan tubuh dan melindungi sumsum tulang belakang.</li>
+                    </ul>
+                    <p><strong>Kelainan pada Rangka Aksial (khususnya tulang belakang):</strong></p>
+                    <p>Kelainan ini terjadi akibat perubahan posisi atau kelengkungan batang tulang belakang:</p>
+                    <ul>
+                        <li><strong>Skoliosis:</strong> Tulang belakang melengkung ke arah samping (membentuk huruf S atau C).</li>
+                        <li><strong>Kifosis:</strong> Tulang belakang melengkung ke arah belakang secara berlebihan, menyebabkan punggung bungkuk (bongkok).</li>
+                        <li><strong>Lordosis:</strong> Tulang belakang di daerah pinggang melengkung berlebihan ke arah depan, menyebabkan kepala tertarik ke belakang.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Rangka Apendikular (Rangka Anggota Badan)</h4>
+                    <p>Rangka apendikular berhubungan langsung dengan sistem gerak, memungkinkan mobilitas tubuh. Terdiri dari tulang anggota gerak atas dan bawah.</p>
+                    <p><strong>Tulang Anggota Gerak Atas (60 tulang):</strong></p>
+                    <ul>
+                        <li><strong>Tulang Bahu (Pectoralis):</strong> Terdiri dari tulang selangka (clavicula) dan tulang belikat (scapula).</li>
+                        <li><strong>Tulang Lengan Atas (Humerus).</strong></li>
+                        <li><strong>Tulang Lengan Bawah:</strong> Terdiri dari tulang pengumpil (radius) dan tulang hasta (ulna).</li>
+                        <li><strong>Tulang Pergelangan Tangan (Carpal).</strong></li>
+                        <li><strong>Tulang Telapak Tangan (Metacarpal).</strong></li>
+                        <li><strong>Tulang Jari Tangan (Falang).</strong></li>
+                    </ul>
+                    <p><strong>Tulang Anggota Gerak Bawah (60 tulang):</strong></p>
+                    <ul>
+                        <li><strong>Tulang Panggul (Pelvis):</strong> Terdiri dari tulang duduk (ischium), tulang usus (illium), dan tulang kemaluan (pubis). Terdapat lekukan <strong>asetabulum</strong> sebagai tempat melekatnya tulang paha.</li>
+                        <li><strong>Tulang Paha (Femur).</strong></li>
+                        <li><strong>Tulang Tempurung Lutut (Patella).</strong></li>
+                        <li><strong>Tulang Kering (Tibia).</strong></li>
+                        <li><strong>Tulang Betis (Fibula).</strong></li>
+                        <li><strong>Tulang Pangkal Kaki (Tarsal).</strong></li>
+                        <li><strong>Tulang Telapak Kaki (Metatarsal).</strong></li>
+                        <li><strong>Tulang Jari Kaki (Falang).</strong></li>
+                    </ul>
+                    <p><strong>Gangguan pada Rangka Apendikular:</strong></p>
+                    <p>Salah satu gangguan umum adalah <strong>Fraktura (patah tulang)</strong>.</p>
+                    <ul>
+                        <li><strong>Fraktura Sederhana:</strong> Patah tulang tanpa melukai otot di sekitarnya.</li>
+                        <li><strong>Fraktura Kompleks:</strong> Patah tulang yang melukai otot atau bahkan organ di sekitarnya.</li>
+                    </ul>
+                    <div class="activity-box">
+                        <h3>Ayo Berpikir Kritis - Aktivitas 6.10</h3>
+                        <p>Bayangkan seorang pasien X tidak dapat menggerakkan kakinya setelah kecelakaan, dan hasil rontgen menunjukkan adanya patah tulang. Apa hipotesis yang dapat Kalian buat mengenai hubungan antara hasil rontgen ini dengan terganggunya fungsi gerak dan proses pemulihan pasien X?</p>
+                        <p><strong>Petunjuk:</strong> Pertimbangkan bagaimana integritas tulang memengaruhi kemampuan sendi untuk bergerak dan bagaimana tubuh merespons cedera tersebut untuk memicu proses penyembuhan.</p>
+                    </div>
+                </li>
+            </ol>
+
+            <h3>d. Hubungan Antar Tulang (Artikulasi/Sendi)</h3>
+            <p>Hubungan antar tulang disebut artikulasi atau sendi. Berdasarkan sifat geraknya, sendi dibedakan menjadi tiga jenis:</p>
+            <ol>
+                <li>
+                    <h4>Sinartrosis (Sendi Mati)</h4>
+                    <p>Hubungan antara dua ujung tulang yang direkatkan oleh jaringan ikat dan mengalami osifikasi (penulangan), sehingga tidak memungkinkan adanya gerakan sama sekali.</p>
+                    <ul>
+                        <li><strong>Sinkondrosis:</strong> Dihubungkan oleh kartilago hialin (contoh: hubungan tulang rusuk pertama dengan tulang dada).</li>
+                        <li><strong>Sutura:</strong> Dihubungkan oleh jaringan ikat serabut padat (contoh: hubungan antar tulang tengkorak).</li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Amfiartrosis (Sendi Kaku)</h4>
+                    <p>Hubungan antara dua ujung tulang yang dihubungkan oleh jaringan kartilago (tulang rawan), memungkinkan sedikit gerakan. Contohnya adalah sendi pada tulang belakang dan sendi simfisis pubis. Gerakan terbatas ini penting untuk mengatur volume rongga dada saat bernapas.</p>
+                </li>
+                <li>
+                    <h4>Diartrosis (Sendi Gerak)</h4>
+                    <p>Hubungan antara tulang yang memungkinkan gerakan bebas karena tidak dihubungkan langsung oleh jaringan. Sendi ini memiliki struktur khusus untuk mendukung gerakan, seperti:</p>
+                    <ul>
+                        <li><strong>Ligamen:</strong> Jaringan ikat yang menghubungkan tulang ke tulang, menstabilkan sendi.</li>
+                        <li><strong>Kapsul Sendi:</strong> Selubung fibrosa yang mengelilingi sendi.</li>
+                        <li><strong>Cairan Sinovial:</strong> Pelumas dalam sendi yang mengurangi gesekan.</li>
+                        <li><strong>Membran Sinovial:</strong> Melapisi kapsul sendi dan menghasilkan cairan sinovial.</li>
+                        <li><strong>Rawan Hialin:</strong> Melapisi permukaan tulang di sendi, mengurangi gesekan dan menyerap guncangan.</li>
+                    </ul>
+                    <p><strong>Contoh Diartrosis:</strong></p>
+                    <ul>
+                        <li><strong>Sendi Peluru (Ball and Socket):</strong> Gerakan ke segala arah (contoh: bahu, panggul).</li>
+                        <li><strong>Sendi Engsel (Hinge):</strong> Gerakan satu arah seperti engsel pintu (contoh: siku, lutut).</li>
+                        <li><strong>Sendi Pelana (Saddle):</strong> Gerakan dua arah, seperti orang menunggang kuda (contoh: ibu jari).</li>
+                        <li><strong>Sendi Putar (Pivot):</strong> Gerakan memutar (contoh: antara atlas dan aksis di leher).</li>
+                        <li><strong>Sendi Luncur (Gliding):</strong> Gerakan bergeser (contoh: pergelangan tangan dan kaki).</li>
+                        <li><strong>Sendi Kondiloid (Condyloid):</strong> Gerakan ke samping dan maju mundur, tidak memutar (contoh: antara tulang telapak tangan dan jari).</li>
+                    </ul>
+                    <p><strong>Gangguan pada Persendian:</strong></p>
+                    <ul>
+                        <li><strong>Dislokasi:</strong> Pergeseran tulang penyusun sendi dari posisi normalnya.</li>
+                        <li><strong>Terkilir:</strong> Tarikan atau robekan pada ligamen sendi akibat gerakan tiba-tiba.</li>
+                        <li><strong>Artritis (Peradangan Sendi):</strong>
+                            <ul>
+                                <li><strong>Reumatoid Artritis:</strong> Peradangan sendi yang menyerang anggota gerak, disebabkan oleh sistem imun yang menyerang jaringannya sendiri.</li>
+                                <li><strong>Osteoartritis:</strong> Peradangan sendi atau kerusakan pada tulang rawan sendi akibat usia atau penggunaan berlebihan.</li>
+                                <li><strong>Gout Artritis (Asam Urat):</strong> Disebabkan oleh metabolisme purin abnormal yang meningkatkan kadar asam urat dalam darah, menyebabkan penumpukan kristal di sendi.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>2. Struktur Otot Lurik</h2>
+            <p>Otot adalah alat gerak aktif yang memungkinkan manusia melakukan berbagai aktivitas, mulai dari mengangkat beban hingga mempertahankan postur tubuh. Tubuh manusia memiliki lebih dari 600 otot, sebagian besar melekat pada tulang melalui <strong>tendon</strong>, sementara sebagian kecil melekat di bawah permukaan kulit. Otot memiliki kemampuan khusus untuk berkontraksi.</p>
+            <p><strong>Fungsi Otot:</strong></p>
+            <ul>
+                <li><strong>Pergerakan:</strong> Menggerakkan bagian-bagian tubuh.</li>
+                <li><strong>Penopang Tubuh:</strong> Memberikan dukungan dan stabilitas.</li>
+                <li><strong>Mempertahankan Postur:</strong> Menjaga posisi tubuh.</li>
+                <li><strong>Memproduksi Panas:</strong> Hasil samping dari kontraksi otot.</li>
+            </ul>
+
+            <h3>Otot Rangka (Otot Lurik)</h3>
+            <p>Otot rangka adalah otot volunter (bekerja di bawah kesadaran) yang melekat pada rangka, memiliki ciri-ciri:</p>
+            <ul>
+                <li>Tersusun oleh kumpulan <strong>serabut otot (miofiber)</strong> berbentuk silinder panjang, paralel.</li>
+                <li>Setiap miofiber sesungguhnya adalah sel dengan banyak nukleus di tepinya.</li>
+                <li><strong>Sarkoplasma:</strong> Sitoplasma sel otot yang dipenuhi organel, terutama <strong>miofibril</strong>.</li>
+                <li><strong>Miofibril:</strong> Tersusun oleh <strong>miofilamen</strong>.
+                    <ul>
+                        <li><strong>Miofilamen Tebal:</strong> Terdiri dari protein <strong>miosin</strong>.</li>
+                        <li><strong>Miofilamen Tipis:</strong> Terdiri dari protein <strong>aktin</strong>, troponin, dan tropomiosin.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Tendon</h4>
+            <p>Tendon adalah jaringan ikat yang menghubungkan otot ke tulang. Berdasarkan cara melekatnya pada tulang, tendon dibagi menjadi dua:</p>
+            <ul>
+                <li><strong>Origo:</strong> Tendon yang melekat pada tulang yang tidak berubah kedudukannya saat otot berkontraksi (titik asal otot).</li>
+                <li><strong>Insersio:</strong> Tendon yang melekat pada tulang yang bergerak saat otot berkontraksi (titik penyisipan otot).</li>
+            </ul>
+
+            <p><strong>Adaptasi Otot:</strong></p>
+            <ul>
+                <li><strong>Hipertrofi:</strong> Pembesaran volume otot akibat latihan terus-menerus (contoh: binaragawan).</li>
+                <li><strong>Atrofi:</strong> Pengecilan otot akibat tidak digunakan atau kurangnya stimulasi.</li>
+            </ul>
+
+            <h3>a. Sifat Kerja Otot: Antagonis</h3>
+            <p>Kerja otot yang kontraksinya menimbulkan efek gerak berlawanan.</p>
+            <ul>
+                <li><strong>Ekstensor (meluruskan) vs. Fleksor (membengkokkan):</strong> Contoh: otot trisep (ekstensor) dan otot bisep (fleksor) pada lengan.</li>
+                <li><strong>Abduktor (menjauhi badan) vs. Adduktor (mendekati badan):</strong> Contoh: gerakan tangan sejajar bahu (abduktor) dan sikap sempurna (adduktor).</li>
+                <li><strong>Depresor (ke bawah) vs. Elevator (ke atas):</strong> Contoh: gerakan kepala merunduk (depresor) dan menengadah (elevator).</li>
+                <li><strong>Supinator (menengadah) vs. Pronator (menelungkup):</strong> Contoh: gerakan telapak tangan menengadah (supinator) dan menelungkup (pronator).</li>
+            </ul>
+
+            <h3>b. Sifat Kerja Otot: Sinergis</h3>
+            <p>Kerja otot yang kontraksinya menimbulkan gerak searah. Contoh: otot pronator teres dan pronator kuadratus yang bekerja sama untuk menelungkupkan telapak tangan.</p>
+        </section>
+
+        <section>
+            <h2>3. Mekanisme Gerak Otot</h2>
+            <p>Mekanisme gerak otot melibatkan interaksi antara filamen aktin dan miosin, yang dikenal sebagai <strong>teori filamen bergeser (sliding filament theory)</strong>. Kontraksi otot dipicu oleh rangsangan saraf yang melepaskan asetilkolin, menyebabkan aktomiosin mengerut.</p>
+
+            <h3>Sumber Energi Kontraksi Otot:</h3>
+            <p>Kontraksi otot memerlukan energi, yang diperoleh dari beberapa sumber secara berurutan:</p>
+            <ol>
+                <li><strong>ATP (Adenosin Trifosfat):</strong> Energi langsung yang tersedia di otot, cukup untuk sekitar 5 detik aktivitas.</li>
+                <li><strong>Kreatin Fosfat:</strong> Senyawa berenergi tinggi yang menyimpan fosfat untuk regenerasi ATP, cukup untuk sekitar 15 detik aktivitas.</li>
+                <li><strong>Glikogen Otot:</strong> Jika kreatin fosfat habis, energi diperoleh dari pemecahan glikogen yang tersimpan di otot.</li>
+                <li><strong>Glukosa Darah:</strong> Jika glikogen otot menipis, glukosa dari darah menjadi sumber energi.</li>
+            </ol>
+            <p>Jika pasokan oksigen tidak mencukupi (kondisi anaerob), glikolisis dipercepat dan menghasilkan <strong>asam laktat</strong>. Penimbunan asam laktat inilah yang menyebabkan rasa pegal dan nyeri setelah berolahraga. Setelah aktivitas selesai, asam laktat akan diuraikan menjadi karbon dioksida dan air melalui proses yang memerlukan oksigen.</p>
+
+            <h3>Proses Kontraksi Otot (Teori Filamen Bergeser):</h3>
+            <ol>
+                <li><strong>Rangsangan:</strong> Sinyal saraf tiba di otot, memicu pelepasan ion kalsium.</li>
+                <li><strong>Pembentukan Jembatan Silang:</strong> Ion kalsium memungkinkan kepala miosin (pada filamen tebal) berikatan dengan aktin (pada filamen tipis), membentuk jembatan silang.</li>
+                <li><strong>Power Stroke:</strong> ATP dihidrolisis menjadi ADP + Pi pada kepala miosin, memberikan energi untuk "menarik" filamen aktin ke arah pusat sarkomer. Ini menyebabkan zona H (daerah terang di antara dua pita gelap) memendek, dan sarkomer (unit fungsional otot) ikut memendek. Pita A (pita gelap) tetap panjang, sedangkan pita I (pita terang) memendek.</li>
+                <li><strong>Pelepasan & Reattachment:</strong> ATP baru berikatan dengan kepala miosin, menyebabkan kepala miosin melepaskan diri dari aktin. Kepala miosin kemudian siap untuk berikatan kembali pada titik aktin yang baru, memulai siklus berikutnya.</li>
+            </ol>
+
+            <h3>Relaksasi Otot:</h3>
+            <p>Relaksasi terjadi ketika rangsangan berhenti, ion kalsium dipompa kembali ke retikulum sarkoplasma, dan kepala miosin melepaskan diri dari aktin. Sarkomer kembali memanjang.</p>
+
+            <h3>Kelainan dan Gangguan pada Otot:</h3>
+            <p>Sama seperti tulang, otot juga dapat mengalami berbagai gangguan:</p>
+            <ul>
+                <li><strong>Trofi:</strong> Keadaan otot mengecil dan kehilangan kemampuan berkontraksi, sering menyebabkan kelumpuhan.</li>
+                <li><strong>Distrofi Otot:</strong> Mirip atrofi, otot mengecil dan tidak berfungsi normal, namun disebabkan oleh kelainan genetik sejak lahir.</li>
+                <li><strong>Supertrofi:</strong> Volume otot membesar secara tidak wajar karena latihan berlebihan.</li>
+                <li><strong>Kelelahan Otot/Kram:</strong> Kontraksi otot terus-menerus tanpa relaksasi yang cukup, menyebabkan kejang dan nyeri. Terjadi karena penumpukan asam laktat atau gangguan elektrolit.</li>
+            </ul>
+
+            <div class="activity-box">
+                <h3>Ayo Bereksplorasi - Aktivitas 6.11</h3>
+                <h4>Kegiatan 1: Teknologi Bantuan Mobilitas</h4>
+                <p>Dalam memahami mobilitas pada manusia, teknologi modern seperti eksoskeleton sangat membantu penderita kelumpuhan. Silakan cari dan tonton video dari DW Indonesia mengenai eksoskeleton untuk membantu penderita lumpuh berjalan lagi (jika tautan yang diberikan tidak berfungsi, cari dengan kata kunci "DW Indonesia exoskeleton").</p>
+                <p>Setelah mencermati, coba berikan dua usul modifikasi teknologi inovatif yang Kalian pikirkan untuk antisipasi atau pertolongan bagi penderita lumpuh agar dapat berjalan kembali.</p>
+
+                <h4>Kegiatan 2: Simulasi Virtual Neurofisiologi Otot</h4>
+                <p>Untuk mendalami hubungan antara sistem saraf dan pergerakan otot, lakukan simulasi virtual laboratorium neurofisiologi dan neurotoksik. Kunjungi tautan berikut (jika tautan yang diberikan tidak berfungsi, cari dengan kata kunci "labxchange neurophysiology simulation"):</p>
+                <p><strong>s.id/1rOUJ</strong> (tautan lengkap: www.labxchange.org/library/items/lb:Labxchange:71d4b3e8:lx_simulation:1)</p>
+                <p>Setelah melakukan simulasi, tuliskan seluruh pengamatan Kalian dan diskusikan dengan teman atau guru.</p>
+            </div>
+
+            <div class="callout">
+                <h3>Ini Lebih dari Penyakit Kejang Mulut/Lockjaw - Aktivitas 6.12</h3>
+                <p>Bakteri <em>Clostridium tetani</em> yang menyebabkan Tetanus sering dikaitkan dengan paku berkarat. Bakteri ini berkembang di lingkungan rendah oksigen, seperti luka tusukan yang dalam. Toksin yang dilepaskan bakteri ini sangat memengaruhi sistem saraf pusat, khususnya neuron motorik yang mengontrol otot rangka.</p>
+                <p>Toksin Tetanus menekan mekanisme penghambatan aktivitas neuron motorik, sehingga menyebabkan kontraksi otot rangka seluruh tubuh yang berkelanjutan dan kuat, dikenal sebagai "lockjaw" karena sulitnya membuka mulut.</p>
+                <p>Dari artikel di atas, <strong>apa yang dapat Kalian jelaskan keterkaitannya antara kelainan atau gangguan pada sistem saraf dan sistem gerak?</strong></p>
+                <p><strong>Petunjuk:</strong> Pikirkan bagaimana sinyal dari sistem saraf memengaruhi kontraksi otot dan apa yang terjadi jika sinyal tersebut terganggu atau tidak terkendali.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,271 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Fluida - Fluida Dinamis</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-secondary);
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding-left: 10px;
+            margin-left: 5px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-primary);
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        em {
+            color: var(--accent-green);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+            color: var(--text-secondary);
+        }
+
+        /* Highlight Boxes / Interactive Sections */
+        .concept-box {
+            background-color: #F8F8F8; /* A very light grey for subtle distinction */
+            border-left: 6px solid var(--semantic-info);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .concept-box h3 {
+            color: var(--semantic-info);
+            border-left: none;
+            margin-top: 0;
+            padding-left: 0;
+        }
+
+        .formula {
+            background-color: #f0f8ff; /* Lighter blue */
+            border: 1px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.3em;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: var(--text-primary);
+        }
+
+        .formula span {
+            display: block;
+            margin: 5px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .container {
+                margin: 10px auto;
+                padding: 0 15px;
+            }
+            .formula {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .concept-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 4: Fluida - Fluida Dinamis</h1>
+        </header>
+
+        <main>
+            <section id="introduction">
+                <h2>Pengantar Fluida Dinamis</h2>
+                <p>Setelah memahami perilaku fluida dalam kondisi statis, yaitu fluida yang tidak bergerak, mari kita selami dunia <strong>fluida dinamis</strong>. Fluida dinamis mempelajari sifat-sifat fluida ketika ia <em>bergerak atau mengalir</em>. Gerakan fluida adalah fenomena yang sangat kompleks dan seringkali sulit untuk dianalisis secara matematis secara penuh. Untuk menyederhanakan studi ini, kita seringkali membuat beberapa asumsi penting tentang sifat fluida yang disebut sebagai <strong>fluida ideal</strong>.</p>
+            </section>
+
+            <section id="ideal-fluid">
+                <h2>Fluida Ideal</h2>
+                <p>Konsep fluida ideal adalah model penyederhanaan yang digunakan untuk menganalisis perilaku fluida dalam berbagai kondisi. Meskipun fluida ideal tidak ada dalam kenyataan, asumsi-asumsi ini memungkinkan kita untuk mengembangkan prinsip-prinsip dasar yang dapat diterapkan pada banyak situasi dunia nyata dengan tingkat akurasi yang memadai. Berikut adalah karakteristik utama dari fluida ideal:</p>
+
+                <h3>1. Fluida Inkompresibel</h3>
+                <p>Asumsi pertama dari fluida ideal adalah bahwa ia bersifat <strong>inkompresibel</strong>. Ini berarti bahwa volume fluida tidak akan berubah meskipun mengalami perubahan tekanan yang signifikan. Dengan kata lain, massa jenis (densitas) fluida dianggap konstan, tidak peduli seberapa besar tekanan yang diberikan padanya. Air, dalam banyak aplikasi sehari-hari, dapat dianggap inkompresibel karena perubahan densitasnya sangat kecil bahkan di bawah tekanan tinggi. Asumsi ini sangat menyederhanakan perhitungan karena kita tidak perlu khawatir tentang perubahan volume atau densitas sepanjang aliran.</p>
+
+                <h3>2. Aliran Irotasional</h3>
+                <p>Karakteristik kedua adalah <strong>aliran irotasional</strong>. Ini berarti bahwa fluida mengalir tanpa membentuk pusaran atau rotasi di dalamnya. Jika suatu objek kecil ditempatkan di dalam fluida yang mengalir secara irotasional, objek tersebut akan bergerak lurus tanpa berputar pada sumbunya. Aliran ini juga dikenal sebagai aliran <em>irrotational</em>. Dalam aliran irotasional, setiap partikel fluida mengikuti jalur yang mulus dan tidak berputar, sehingga tidak ada transfer momentum sudut ke partikel di sekitarnya. Hal ini menghilangkan kompleksitas yang ditimbulkan oleh turbulensi dan vortisitas.</p>
+
+                <h3>3. Aliran Tunak (Steady Flow)</h3>
+                <p>Asumsi <strong>aliran tunak</strong> (atau aliran stasioner/steady flow) berarti bahwa kecepatan, tekanan, dan massa jenis fluida pada setiap titik tertentu dalam aliran tidak berubah seiring waktu. Meskipun partikel fluida itu sendiri terus bergerak, kondisi aliran (seperti kelajuan dan arah) di lokasi tertentu dalam pipa atau saluran tetap konstan. Jika kita melihat titik yang sama di saluran aliran pada waktu yang berbeda, kita akan mengamati kondisi fluida yang sama. Ini berlawanan dengan aliran <em>tak-tunak (unsteady flow)</em> di mana kondisi dapat berfluktuasi seiring waktu. Aliran tunak seringkali diasosiasikan dengan kelajuan fluida yang rendah; pada kelajuan tinggi, aliran cenderung menjadi turbulen dan tidak tunak.</p>
+
+                <h3>4. Fluida Non-Viskos (Inviscid Flow)</h3>
+                <p>Asumsi terakhir adalah bahwa fluida bersifat <strong>non-viskos</strong> atau <strong>inviscid</strong>. Ini berarti bahwa fluida tidak memiliki viskositas (kekentalan), yaitu tidak ada gesekan internal antar lapisan fluida yang bergerak atau antara fluida dengan dinding wadah. Dalam fluida non-viskos, tidak ada energi yang hilang akibat gesekan internal yang diubah menjadi panas. Ini adalah penyederhanaan yang signifikan karena viskositas adalah sifat nyata dari semua fluida. Namun, untuk banyak perhitungan teoritis, mengabaikan viskositas memungkinkan kita untuk fokus pada efek tekanan dan kecepatan tanpa komplikasi yang ditimbulkan oleh gaya gesek.</p>
+            </section>
+
+            <section id="continuity-principle">
+                <h2>Asas Kontinuitas</h2>
+                <p>Salah satu prinsip fundamental dalam fluida dinamis adalah <strong>Asas Kontinuitas</strong>. Asas ini menyatakan bahwa massa fluida yang mengalir melalui suatu penampang dalam selang waktu tertentu akan selalu sama dengan massa fluida yang keluar dari penampang lain dalam selang waktu yang sama, asalkan aliran tersebut tunak dan fluida bersifat inkompresibel. Ini adalah manifestasi dari hukum kekekalan massa dalam konteks aliran fluida.</p>
+
+                <h3>1. Konsep Debit Aliran (Q)</h3>
+                <p>Untuk memahami Asas Kontinuitas, kita perlu memahami konsep <strong>debit aliran (Q)</strong>. Debit adalah ukuran volume fluida yang mengalir melalui suatu penampang per satuan waktu. Ini dapat diartikan sebagai "seberapa banyak" fluida yang lewat dalam rentang waktu tertentu.</p>
+                <div class="formula">
+                    <span>Q = Volume / Waktu</span>
+                    <span>Q = V / t</span>
+                </div>
+                <p>Di mana:</p>
+                <ul>
+                    <li><strong>Q</strong> adalah debit aliran (satuan SI: m³/s)</li>
+                    <li><strong>V</strong> adalah volume fluida (satuan SI: m³)</li>
+                    <li><strong>t</strong> adalah selang waktu (satuan SI: s)</li>
+                </ul>
+
+                <h3>2. Hubungan Debit dengan Luas Penampang dan Kecepatan</h3>
+                <p>Bayangkan fluida mengalir melalui sebuah pipa. Dalam selang waktu singkat Δt, volume fluida yang melewati suatu penampang dengan luas A akan membentuk sebuah silinder dengan panjang ΔS. Volume silinder ini adalah:</p>
+                <div class="formula">
+                    <span>Volume (V) = Luas Penampang (A) × Panjang (ΔS)</span>
+                    <span>V = A ⋅ ΔS</span>
+                </div>
+                <p>Jika fluida bergerak dengan kelajuan (kecepatan) v, maka panjang ΔS yang ditempuh fluida dalam waktu Δt adalah:</p>
+                <div class="formula">
+                    <span>Panjang (ΔS) = Kelajuan (v) × Selang Waktu (Δt)</span>
+                    <span>ΔS = v ⋅ Δt</span>
+                </div>
+                <p>Substitusikan ΔS ke dalam rumus volume, kita dapatkan:</p>
+                <div class="formula">
+                    <span>V = A ⋅ (v ⋅ Δt)</span>
+                </div>
+                <p>Sekarang, masukkan ekspresi volume ini ke dalam rumus debit Q = V/Δt:</p>
+                <div class="formula">
+                    <span>Q = (A ⋅ v ⋅ Δt) / Δt</span>
+                    <span>Q = A ⋅ v</span>
+                </div>
+                <p>Ini adalah bentuk penting dari rumus debit, yang menunjukkan bahwa <strong>debit aliran adalah hasil kali dari luas penampang (A) dan kelajuan aliran fluida (v)</strong>.</p>
+                <ul>
+                    <li><strong>A</strong> adalah luas penampang (satuan SI: m²)</li>
+                    <li><strong>v</strong> adalah kelajuan fluida (satuan SI: m/s)</li>
+                </ul>
+
+                <h3>3. Persamaan Kontinuitas</h3>
+                <p>Berdasarkan prinsip kekekalan massa dan asumsi fluida inkompresibel serta aliran tunak, total massa fluida yang masuk ke dalam suatu sistem harus sama dengan total massa fluida yang keluar dari sistem tersebut dalam selang waktu yang sama. Ini berarti bahwa <strong>debit aliran (Q) di setiap titik sepanjang aliran harus konstan</strong>.</p>
+                <p>Jika kita memiliki pipa dengan dua penampang yang berbeda, yaitu penampang 1 (luas A₁) dan penampang 2 (luas A₂), maka debit yang masuk ke penampang 1 harus sama dengan debit yang keluar dari penampang 2.</p>
+                <div class="formula">
+                    <span>Q₁ = Q₂</span>
+                    <span>A₁ ⋅ v₁ = A₂ ⋅ v₂</span>
+                </div>
+                <p>Ini adalah <strong>Persamaan Kontinuitas</strong>. Persamaan ini sangat penting karena menunjukkan hubungan terbalik antara luas penampang dan kelajuan aliran fluida: <em>jika luas penampang mengecil, kelajuan fluida akan meningkat, dan sebaliknya</em>.</p>
+                <div class="concept-box">
+                    <h3>Penerapan Asas Kontinuitas</h3>
+                    <p>Contoh paling umum dari penerapan asas kontinuitas adalah saat Anda menyiram tanaman dengan selang air. Jika Anda menekan ujung selang sehingga luas penampangnya mengecil (A₂ &lt; A₁), maka air akan menyemprot keluar dengan kelajuan yang lebih tinggi (v₂ &gt; v₁). Hal ini sesuai dengan persamaan kontinuitas: untuk menjaga debit tetap konstan, pengurangan luas penampang harus diimbangi dengan peningkatan kelajuan.</p>
+                    <p>Fenomena ini juga terlihat pada aliran air dari keran yang semakin mengecil ketika posisinya makin ke bawah. Ini disebabkan oleh percepatan gravitasi yang menarik air, meningkatkan kelajuan aliran. Sesuai asas kontinuitas, jika kelajuan meningkat, luas penampang aliran harus mengecil untuk menjaga debit tetap konstan.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Penjelasan Materi Fisika. Hak Cipta Dilindungi Undang-Undang.</p>
+            <p>Dibuat untuk tujuan pembelajaran siswa kelas XI.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

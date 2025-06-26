@@ -1,0 +1,383 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Reformasi - Awal Demokrasi Politik yang Terbuka</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-bottom: 5px solid var(--accent-green);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        section {
+            background-color: var(--background-canvas);
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding: 0;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        .image-description {
+            background-color: #f0f8ff; /* A slightly lighter blue-ish background for visual separation */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .viva-historia {
+            background-color: #e8f5e9; /* Light green background */
+            border-left: 5px solid var(--accent-green);
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .viva-historia h2 {
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .activity-info {
+            background-color: #fffde7; /* Light yellow background */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .activity-info h2 {
+            color: var(--secondary-accent-amber);
+            border-color: var(--secondary-accent-amber);
+        }
+
+        .activity-info ul {
+            list-style: none; /* Remove default list style for more controlled bullet points */
+            margin-left: 0;
+        }
+
+        .activity-info ul li::before {
+            content: '• '; /* Custom bullet point */
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid var(--border-divider);
+                margin-bottom: 15px;
+                display: block;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--text-primary);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            td::before {
+                width: 40%;
+                padding-right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bab 4: Indonesia Masa Reformasi</h1>
+        <p>Reformasi: Awal Demokrasi Politik yang Terbuka</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Pengantar</h2>
+            <p>
+                Bagian ini akan menjelaskan mengenai era Reformasi di Indonesia, sebuah periode penting yang menandai awal mula demokrasi politik yang lebih terbuka setelah berakhirnya masa Orde Baru. Kita akan memahami konteks perubahan besar yang terjadi, serta perbedaan mendasar antara revolusi dan reformasi.
+            </p>
+            <div class="image-description">
+                <p><strong>Gambaran Peristiwa Penting:</strong> Mahasiswa mengibarkan bendera merah putih di atas gedung MPR saat unjuk rasa menuntut reformasi dan Presiden Soeharto turun dari jabatannya, Mei 1998. Kejadian ini menggambarkan puncak ketidakpuasan rakyat terhadap rezim Orde Baru dan aspirasi kuat untuk perubahan, yang menjadi salah satu pemicu utama datangnya era Reformasi.</p>
+            </div>
+            <p>
+                Apakah kalian mengetahui perbedaan pengertian revolusi dan reformasi? Keduanya mengandung persamaan yakni terkait dengan kondisi tertentu yang menyebabkan perubahan signifikan dalam kehidupan bernegara dan bermasyarakat. Akan tetapi secara pengertian keduanya memiliki perbedaan. Sebelum menjabarkan mengenai detik-detik jelang reformasi di Indonesia, akan diberikan terlebih dahulu pengertian Revolusi dan Reformasi agar kalian dapat memahami perbedaan di antara keduanya.
+            </p>
+        </section>
+
+        <section>
+            <h2>1. Pengertian Revolusi dan Reformasi</h2>
+            <p>Revolusi dan reformasi memiliki pengertian yang berbeda, meskipun keduanya merujuk pada perubahan besar.</p>
+
+            <h3>Revolusi</h3>
+            <ul>
+                <li><strong>Definisi:</strong> Revolusi merupakan perubahan ketatanegaraan atau suatu bidang yang dilakukan dalam jangka waktu cepat.</li>
+                <li><strong>Mekanisme:</strong> Perubahan sistem politik yang berlangsung dengan cepat dan total melalui mekanisme di luar aturan konstitusi.</li>
+                <li><strong>Penyebab:</strong> Menurut Jonathan Steele (dalam Kuncahyono, 2002), terjadinya revolusi sangat terkait dengan masalah kekuasaan dan kemiskinan.</li>
+                <li><strong>Dampak:</strong> Jika suatu negara terjadi revolusi, maka otoritas lama akan runtuh, kekuasaan dan kekayaan elite yang lama kemudian dibagikan kepada pelaku baru.</li>
+                <li><strong>Pelaku:</strong> Kelompok pengusung revolusi ini merupakan kelompok yang mencerminkan ketidakpuasan masyarakat secara umum.</li>
+            </ul>
+
+            <h3>Reformasi</h3>
+            <ul>
+                <li><strong>Definisi:</strong> Reformasi merupakan suatu bentuk perubahan dalam sistem politik (demokrasi) yang terjadi baik secara cepat maupun berangsur-angsur melalui mekanisme lembaga pemerintahan yang ada.</li>
+                <li><strong>Kondisi Terjadi:</strong> Reformasi terjadi apabila terdapat aliansi kelompok yang mendukung adanya perubahan di dalam pemerintahan dan kalangan moderat. Aliansi kelompok ini mengalahkan elite garis keras maupun kelompok radikal di kalangan oposisi (Kuncahyono, 2000).</li>
+                <li><strong>Sasaran Perubahan:</strong> Aspek-aspek yang menjadi sasaran perubahan dalam reformasi di antaranya:
+                    <ul>
+                        <li>Reformasi pendidikan.</li>
+                        <li>Reformasi birokrasi.</li>
+                        <li>Kebebasan berpolitik dan berekspresi.</li>
+                        <li>Reformasi ekonomi dalam rangka pengembangan infrastruktur.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Detik-Detik Menuju Reformasi</h2>
+            <p>Sejarah mencatat, pada periode akhir pemerintahan Presiden Soeharto Indonesia mengalami berbagai krisis yang kompleks dan rumit.</p>
+            <ul>
+                <li><strong>Krisis Ekonomi:</strong> Terjadi karena utang jangka pendek yang bernilai cukup besar dalam bentuk dolar Amerika. Pada 1997, jumlah utang tersebut mencapai 30—40 miliar USD.</li>
+                <li><strong>Krisis Lingkungan:</strong> Cuaca di sekitar wilayah Indonesia saat itu tidak bersahabat dan tidak menentu. Sepanjang tahun 1997 sampai 1998 terjadi badai kekeringan El Nino yang mengakibatkan produksi beras berkurang 10% dari produksi tahun sebelumnya. Dampak buruk kebakaran hutan di Sumatra dan Kalimantan juga mengakibatkan krisis polusi udara di Indonesia yang meluas hingga negara-negara Asia Tenggara lainnya.</li>
+                <li><strong>Tekanan Internasional:</strong> Pada awal 1998, ketika krisis ekonomi semakin buruk, Presiden Soeharto menerima panggilan dari Presiden AS Bill Clinton dan Goh Chok Tong dari Singapura yang mendesaknya untuk menerima proposal dari IMF. IMF menunda bantuan apabila Indonesia tidak melakukan reformasi yang realistis (Ricklefs, 2008: 686-689).</li>
+                <li><strong>Tuntutan Masyarakat:</strong> Akibat semakin memburuknya krisis ekonomi, tuntutan masyarakat untuk melakukan reformasi pun kian meningkat. Masyarakat menilai rezim Orde Baru tidak mampu mereformasi dirinya.</li>
+            </ul>
+
+            <h3>Puncak Peristiwa Mei 1998</h3>
+            <p>Mei 1998 merupakan bulan penuh arti penting dalam sejarah Reformasi di Indonesia. Serangkaian peristiwa penting terjadi setiap hari sejak awal Mei. Puncaknya terjadi pada 21 Mei 1998 ketika Presiden Soeharto mengumumkan pengunduran dirinya. Setelah pengumuman tersebut, Wakil Presiden B.J. Habibie langsung dilantik menjadi Presiden Republik Indonesia.</p>
+
+            <h3>Kepemimpinan B.J. Habibie</h3>
+            <p>Bacharuddin Jusuf Habibie menjabat sebagai presiden ke-3 Indonesia pada tahun 1998-1999. Sebagai presiden yang menjabat selama 17 bulan, Habibie sangat berjasa kepada masyarakat karena telah memperkenalkan Reformasi yang lebih demokratis, terbuka dan adil (Ricklefs, 2008: 693). Setelah mengucapkan sumpah sebagai presiden, B.J. Habibie segera menyusun Kabinet Reformasi Pembangunan. Gerak cepat ini merupakan langkah dalam menjawab tantangan reformasi. Ciri khas dari gerakan dan aspirasi reformasi ialah perkembangannya yang serba cepat. Cendekiawan Nurcholish Madjid melukiskannya sebagai "hitung detik". Reformasi ini memang dibentuk dalam situasi yang tidak normal ketika Indonesia masih mengalami krisis (Kompas, 23 Mei 1998).</p>
+        </section>
+
+        <section class="viva-historia">
+            <h2>VIVA HISTORIA: Presiden dan Wakil Presiden Masa Reformasi</h2>
+            <p>Berikut ini adalah urutan presiden dan wakil presiden Indonesia pada masa Reformasi:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Presiden</th>
+                        <th>Wakil Presiden</th>
+                        <th>Masa Jabatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Presiden">Bacharuddin Jusuf Habibie</td>
+                        <td data-label="Wakil Presiden">-</td>
+                        <td data-label="Masa Jabatan">21 Mei 1998 – 20 Oktober 1999</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Presiden">Abdurrahman Wahid</td>
+                        <td data-label="Wakil Presiden">Megawati Soekarnoputri</td>
+                        <td data-label="Masa Jabatan">20 Oktober 1999 – 23 Juli 2001</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Presiden">Megawati Soekarnoputri</td>
+                        <td data-label="Wakil Presiden">Hamzah Haz</td>
+                        <td data-label="Masa Jabatan">23 Juli 2001 – 20 Oktober 2004</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Presiden">Susilo Bambang Yudhoyono</td>
+                        <td data-label="Wakil Presiden">Muhammad Jusuf Kalla</td>
+                        <td data-label="Masa Jabatan">20 Oktober 2004 – 20 Oktober 2009</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Presiden">Susilo Bambang Yudhoyono</td>
+                        <td data-label="Wakil Presiden">Boediono</td>
+                        <td data-label="Masa Jabatan">20 Oktober 2009 – 20 Oktober 2014</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Presiden">Joko Widodo</td>
+                        <td data-label="Wakil Presiden">Muhammad Jusuf Kalla</td>
+                        <td data-label="Masa Jabatan">20 Oktober 2014 – 20 Oktober 2019</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Presiden">Joko Widodo</td>
+                        <td data-label="Wakil Presiden">Ma'ruf Amin</td>
+                        <td data-label="Masa Jabatan">20 Oktober 2019 – sekarang</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="activity-info">
+            <h2>Sumber Informasi Tambahan</h2>
+            <p>Untuk mendapatkan informasi dan mengenal lebih jauh presiden dan wakil presiden pada masa Reformasi kalian dapat mencari dan membaca tulisan biografi atau otobiografi berikut ini:</p>
+            <ul>
+                <li>ANRI, Kepustakaan Presiden-Presiden Republik Indonesia, dapat diakses pada <a href="https://kepustakaan-presiden.perpusnas.go.id/home/" target="_blank">https://kepustakaan-presiden.perpusnas.go.id/home/</a></li>
+                <li>A. Makmur Makka, 2021, <em>Saya Baharuddin Jusuf Habibie</em>, Jakarta: Penerbit Republika.</li>
+                <li>Baharuddin Jusuf Habibie, 2006, <em>Detik-detik yang Menentukan: Jalan Panjang Indonesia Menuju Demokrasi</em>, Jakarta: THC. Mandiri.</li>
+                <li>Greg Barton dkk, 2010, <em>Biografi Gus Dur: The authorized biography of Abdurrahman Wahid</em>, Yogyakarta: LKIS.</li>
+                <li>Ade Ma'ruf, <em>Megawati Soekarnoputri: Riwayat Pribadi dan Politik Putri Bung Karno</em>, Yogyakarta: Ar-ruz Media.</li>
+                <li>Garda Maeswara, 2010, <em>Biografi Politik Susilo Bambang Yudhoyono</em>, Pustaka Narasi.</li>
+                <li>Dino Patti Djalal, 2008, <em>Harus Bisa!: Seni Memimpin ala SBY</em>, Jakarta: Red & White Publisher.</li>
+                <li>Punto Ali Fahmi, 2019, <em>Jokowi: Kisah, Perjuangan dan Inspirasi</em>, Yogyakarta: Checklist.</li>
+                <li>Widjiono Wasis, 2019, <em>Jokowi Dulu, Kini dan Nanti</em>, Jakarta: Wanna Be Production.</li>
+            </ul>
+
+            <h3>Materi Pendukung Video</h3>
+            <p>Rentetan peristiwa menjelang detik-detik pengunduran diri Presiden Soeharto yang telah memimpin Indonesia selama 32 tahun dapat kalian simak pada artikel Erik Prasetya yang merangkumnya dalam tulisan dan seri foto berjudul “Hari-Hari Jelang Reformasi" melalui tautan ini: <a href="https://www.bbc.com/indonesia/indonesia-44192970" target="_blank">https://www.bbc.com/indonesia/indonesia-44192970</a>.</p>
+            <p>Selain itu, tayangan tentang peralihan jabatan Presiden juga dapat kalian saksikan pada kanal YouTube CNN Indonesia, 22 Mei 2018, bertajuk "Detik-detik Lengsernya Soeharto dari Presiden RI" melalui <a href="https://www.youtube.com/watch?v=naB1dO801WQ" target="_blank">https://www.youtube.com/watch?v=naB1dO801WQ</a>.</p>
+        </section>
+    </div>
+</body>
+</html>
+```

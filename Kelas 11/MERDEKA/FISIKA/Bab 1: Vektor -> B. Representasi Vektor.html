@@ -1,0 +1,767 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Vektor - Representasi Vektor Fisika Kelas 11</title>
+    <style>
+        /* Definisi Warna Berdasarkan Tema lightMode */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Dasar Halaman */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            box-sizing: border-box; /* Memastikan padding dan border tidak menambah lebar elemen */
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--background-canvas);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Sedikit bayangan untuk kesan mendalam */
+        }
+
+        /* Gaya Judul */
+        h1, h2, h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            border-left: 6px solid var(--primary-blue);
+            padding-left: 15px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            background-color: rgba(var(--primary-blue-rgb, 25, 118, 210), 0.05); /* Sedikit latar belakang biru */
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 1.7em;
+            color: var(--text-secondary);
+            margin-top: 35px;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        /* Gaya Paragraf dan Daftar */
+        p {
+            margin-bottom: 1.2em;
+            color: var(--text-primary);
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1.5em;
+            color: var(--text-primary);
+            font-size: 1.05em;
+        }
+
+        li {
+            margin-bottom: 0.8em;
+        }
+
+        strong {
+            color: var(--accent-green); /* Penekanan pada istilah kunci */
+            font-weight: bolder;
+        }
+
+        /* Sorotan Teks */
+        .highlight {
+            background-color: rgba(var(--primary-blue-rgb, 25, 118, 210), 0.1);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Blockquote untuk Definisi */
+        blockquote {
+            background-color: var(--border-divider);
+            border-left: 6px solid var(--semantic-info); /* Menggunakan warna info untuk definisi */
+            margin: 25px 0;
+            padding: 20px 25px;
+            font-style: italic;
+            color: var(--text-secondary);
+            border-radius: 8px;
+            font-size: 1.15em;
+            line-height: 1.7;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* --- Gaya Visualisasi Vektor (Menggunakan CSS Murni) --- */
+
+        .vector-representation, .vector-comparison-diagram, .vector-notation-example {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            padding: 25px;
+            background-color: #fcfcfc;
+            border: 1px solid var(--border-divider);
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.03); /* Sedikit bayangan di dalam */
+        }
+
+        .vector-diagram, .comparison-grid {
+            position: relative;
+            width: 350px;
+            height: 200px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-divider);
+            margin-bottom: 25px;
+            overflow: hidden; /* Memastikan panah tidak keluar batas */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Garis Sumbu (Untuk Konteks Diagram) */
+        .vector-diagram::before, .vector-diagram::after {
+            content: '';
+            position: absolute;
+            background-color: var(--text-tertiary);
+            opacity: 0.7;
+        }
+        .vector-diagram::before { /* Sumbu Horizontal */
+            width: 100%;
+            height: 1px;
+            top: 50%;
+            left: 0;
+        }
+        .vector-diagram::after { /* Sumbu Vertikal */
+            width: 1px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+        }
+
+        /* Pusat Koordinat */
+        .vector-diagram .origin, .comparison-grid .origin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        /* Gaya Panah Vektor Umum */
+        .vector-arrow, .comparison-vector, .part-arrow, .notation-line {
+            position: absolute;
+            height: 4px; /* Ketebalan garis vektor */
+            background-color: var(--primary-blue);
+            transform-origin: 0% 50%; /* Default rotation origin at tail */
+            box-shadow: 0 0 8px rgba(0,0,0,0.1); /* Sedikit glow pada vektor */
+            z-index: 5;
+        }
+
+        /* Gaya Ujung Panah (Arrowhead) */
+        .vector-arrow::after, .comparison-vector::after, .part-arrow::after, .notation-line::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 0 6px 10px; /* Ukuran arrowhead */
+            border-color: transparent transparent transparent var(--primary-blue); /* Warna arrowhead sama dengan garis */
+            right: -10px; /* Posisi di ujung garis */
+            top: -4px; /* Pusatkan secara vertikal */
+            z-index: 6;
+        }
+
+        /* Label Vektor pada Diagram */
+        .vector-label {
+            position: absolute;
+            color: var(--text-secondary);
+            font-weight: bold;
+            font-size: 1em;
+            white-space: nowrap;
+            background-color: rgba(255,255,255,0.8);
+            padding: 2px 5px;
+            border-radius: 3px;
+            border: 1px solid var(--border-divider);
+            z-index: 7;
+        }
+
+        /* Posisi Vektor Contoh */
+        .vector-arrow.P { width: 120px; left: 50px; top: 100px; transform: rotate(0deg); }
+        .vector-label.P { top: 80px; left: 175px; color: var(--accent-green); }
+
+        .vector-arrow.Q { width: 120px; left: 175px; top: 150px; transform: rotate(-90deg); transform-origin: 0% 100%; }
+        .vector-label.Q { top: 30px; left: 165px; color: var(--secondary-accent-amber); }
+
+        .vector-arrow.R { width: 120px; left: 220px; top: 75px; transform: rotate(225deg); }
+        .vector-label.R { top: 150px; left: 170px; color: var(--semantic-info); }
+
+        /* Bagian-Bagian Vektor Diagram */
+        .part-arrow {
+            position: relative;
+            width: 200px;
+            height: 4px;
+            background-color: var(--accent-green);
+            margin: 30px 0;
+            transform: rotate(15deg);
+        }
+        .part-arrow::before {
+            content: 'Pangkal';
+            position: absolute;
+            left: -50px;
+            top: 10px; /* Di bawah pangkal */
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            transform: rotate(-15deg);
+            white-space: nowrap;
+        }
+        .part-arrow .label-ujung {
+            position: absolute;
+            right: -30px;
+            top: 10px; /* Di bawah ujung */
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            transform: rotate(-15deg);
+            white-space: nowrap;
+        }
+        .part-arrow .label-arah {
+            position: absolute;
+            right: 80px; /* Dekat ujung */
+            top: -25px; /* Di atas panah */
+            color: var(--primary-blue);
+            font-size: 0.9em;
+            transform: rotate(-15deg);
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        .part-arrow .label-nilai {
+            position: absolute;
+            left: 50px; /* Di tengah garis */
+            top: 10px; /* Di bawah garis */
+            color: var(--secondary-accent-amber);
+            font-size: 0.9em;
+            transform: rotate(-15deg);
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        /* Notasi Vektor */
+        .notation-line {
+            width: 200px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .notation-line .label-a, .notation-line .label-b {
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.3em;
+            color: var(--primary-blue);
+            top: -25px;
+        }
+        .notation-line .label-a { left: -10px; }
+        .notation-line .label-b { right: -10px; }
+
+        .notation-vector-label {
+            font-style: italic;
+            font-weight: bold;
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+            font-size: 1.4em;
+            margin: 0 10px; /* Spasi antar contoh notasi */
+        }
+        /* Panah di atas notasi */
+        .notation-vector-label.arrow-top::before {
+            content: '\2192'; /* Unicode right arrow */
+            position: absolute;
+            top: -1em;
+            left: 0;
+            font-size: 0.7em;
+            color: var(--accent-green);
+            width: 100%;
+            text-align: center;
+        }
+        /* Bar di atas notasi */
+        .notation-vector-label.bar-top::before {
+            content: '';
+            position: absolute;
+            top: -0.6em;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+        .notation-vector-label.bold {
+            font-weight: bolder;
+            color: var(--accent-green); /* Contoh huruf tebal */
+        }
+        .notation-example-text {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Notasi Magnitudo (Besar) */
+        .magnitude-notation {
+            font-family: 'Times New Roman', serif; /* Font klasik untuk notasi matematis */
+            font-size: 1.3em;
+            font-style: normal;
+            color: var(--primary-blue);
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            padding: 0 5px;
+        }
+        .magnitude-notation::before, .magnitude-notation::after {
+            content: '|';
+            font-weight: normal;
+            color: var(--text-secondary);
+            font-size: 1.2em; /* Agar tanda | sedikit lebih besar */
+            position: relative;
+            top: 0.05em; /* Penyesuaian vertikal */
+        }
+
+        /* Diagram Perbandingan Vektor */
+        .comparison-vector.A, .comparison-vector.B {
+            width: 180px;
+            background-color: var(--primary-blue);
+            transform: rotate(25deg);
+        }
+        .comparison-vector.A { top: 60px; left: 30px; }
+        .comparison-vector.B { top: 140px; left: 100px; }
+        .comparison-vector.A::after, .comparison-vector.B::after {
+             border-color: transparent transparent transparent var(--primary-blue);
+        }
+        .comparison-vector.label-A, .comparison-vector.label-B {
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: var(--primary-blue);
+            background-color: rgba(255,255,255,0.8);
+            padding: 2px 5px;
+            border-radius: 3px;
+            border: 1px solid var(--border-divider);
+            z-index: 7;
+        }
+        .comparison-vector.label-A { top: 40px; left: 190px; }
+        .comparison-vector.label-B { top: 120px; left: 260px; }
+
+        /* Vektor Negatif */
+        .comparison-vector.NegA {
+            width: 150px;
+            top: 70px;
+            left: 50px;
+            background-color: var(--accent-green); /* Warna berbeda untuk vektor asli */
+            transform: rotate(0deg);
+        }
+        .comparison-vector.NegA::after {
+            border-color: transparent transparent transparent var(--accent-green);
+        }
+        .comparison-vector.label-NegA {
+            position: absolute;
+            top: 50px;
+            left: 200px;
+            color: var(--accent-green);
+            font-weight: bold;
+            background-color: rgba(255,255,255,0.8);
+            padding: 2px 5px;
+            border-radius: 3px;
+            border: 1px solid var(--border-divider);
+            z-index: 7;
+        }
+
+        .comparison-vector.NegANeg {
+            width: 150px;
+            top: 130px;
+            left: 200px; /* Mulai dari kanan */
+            background-color: var(--semantic-error); /* Warna untuk vektor negatif */
+            transform: rotate(180deg); /* Arah berlawanan */
+            transform-origin: 100% 50%; /* Putar dari ujung panah */
+        }
+        .comparison-vector.NegANeg::after {
+            border-color: transparent transparent transparent var(--semantic-error);
+            transform: rotate(180deg); /* Rotate arrowhead itself */
+            right: -10px; /* Posisi arrowhead */
+        }
+        .comparison-vector.label-NegANeg {
+            position: absolute;
+            top: 110px;
+            left: 140px; /* Posisi label untuk -A */
+            color: var(--semantic-error);
+            font-weight: bold;
+            background-color: rgba(255,255,255,0.8);
+            padding: 2px 5px;
+            border-radius: 3px;
+            border: 1px solid var(--border-divider);
+            z-index: 7;
+        }
+        .neg-vector-notation {
+            font-style: italic;
+            font-weight: bold;
+            color: var(--semantic-error);
+            position: relative;
+            display: inline-block;
+            font-size: 1.2em;
+        }
+        .neg-vector-notation::before {
+            content: '\2192'; /* Arrow */
+            position: absolute;
+            top: -0.8em;
+            left: 0;
+            font-size: 0.7em;
+            color: var(--semantic-error);
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Gaya Penutup */
+        section#penutup {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px dashed var(--border-divider);
+            text-align: center;
+        }
+        section#penutup p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+        }
+
+        /* --- Responsif (Media Queries) --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.2em;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 1.8em;
+                margin-top: 40px;
+            }
+            h3 {
+                font-size: 1.4em;
+                margin-top: 25px;
+            }
+            p {
+                font-size: 1em;
+            }
+            ul {
+                margin-left: 20px;
+            }
+            blockquote {
+                padding: 15px 20px;
+                font-size: 1.05em;
+            }
+
+            .vector-diagram, .comparison-grid {
+                width: 100%; /* Lebar penuh */
+                height: 180px; /* Sesuaikan tinggi */
+            }
+            .vector-arrow.P, .vector-arrow.Q, .vector-arrow.R {
+                width: 100px; /* Panjang panah lebih pendek */
+            }
+            .vector-label.P { top: 70px; left: 120px; }
+            .vector-label.Q { top: 20px; left: 100px; }
+            .vector-label.R { top: 130px; left: 100px; }
+
+            .part-arrow { width: 150px; }
+            .part-arrow::before, .part-arrow .label-ujung, .part-arrow .label-arah, .part-arrow .label-nilai {
+                font-size: 0.8em;
+            }
+            .notation-line { width: 150px; }
+            .notation-line .label-a, .notation-line .label-b { font-size: 1.1em; }
+            .notation-vector-label { font-size: 1.2em; }
+            .magnitude-notation { font-size: 1.1em; }
+
+            .comparison-vector.A, .comparison-vector.B, .comparison-vector.NegA, .comparison-vector.NegANeg {
+                width: 120px; /* Panah perbandingan lebih pendek */
+            }
+            .comparison-vector.label-A { top: 40px; left: 140px; }
+            .comparison-vector.label-B { top: 120px; left: 180px; }
+            .comparison-vector.label-NegA { top: 50px; left: 160px; }
+            .comparison-vector.label-NegANeg { top: 110px; left: 100px; }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+            ul {
+                margin-left: 15px;
+            }
+            blockquote {
+                padding: 10px 15px;
+                font-size: 1em;
+            }
+            .vector-diagram, .comparison-grid {
+                height: 150px;
+            }
+            .vector-arrow.P, .vector-arrow.Q, .vector-arrow.R {
+                width: 80px;
+            }
+            .vector-label.P { top: 60px; left: 100px; font-size: 0.9em; }
+            .vector-label.Q { top: 10px; left: 80px; font-size: 0.9em; }
+            .vector-label.R { top: 110px; left: 80px; font-size: 0.9em; }
+
+            .part-arrow { width: 120px; }
+            .notation-line { width: 120px; }
+            .notation-line .label-a, .notation-line .label-b { font-size: 1em; }
+            .notation-vector-label { font-size: 1.1em; }
+            .magnitude-notation { font-size: 1em; }
+
+            .comparison-vector.A, .comparison-vector.B, .comparison-vector.NegA, .comparison-vector.NegANeg {
+                width: 100px;
+            }
+            .comparison-vector.label-A { top: 40px; left: 110px; font-size: 0.9em; }
+            .comparison-vector.label-B { top: 100px; left: 130px; font-size: 0.9em; }
+            .comparison-vector.label-NegA { top: 40px; left: 130px; font-size: 0.9em; }
+            .comparison-vector.label-NegANeg { top: 90px; left: 80px; font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1: Vektor &mdash; Representasi Vektor</h1>
+
+        <section id="pengenalan-vektor">
+            <h2>1. Pengantar: Vektor dan Skalar</h2>
+            <p>Dalam dunia fisika, semua besaran yang kita ukur dapat dikategorikan menjadi dua jenis utama, yaitu <strong>besaran skalar</strong> dan <strong>besaran vektor</strong>. Pemahaman tentang perbedaan keduanya sangat krusial untuk menganalisis fenomena fisika dengan tepat.</p>
+            <ul>
+                <li><strong>Besaran Skalar</strong>: Ini adalah besaran yang hanya memiliki <strong>nilai</strong> atau <strong>besar (magnitudo)</strong> saja. Tidak ada informasi arah yang menyertainya. Contoh-contoh umum dari besaran skalar meliputi:
+                    <ul>
+                        <li><strong>Massa</strong>: Misalnya, 5 kilogram apel.</li>
+                        <li><strong>Waktu</strong>: Misalnya, 10 detik.</li>
+                        <li><strong>Suhu</strong>: Misalnya, 30 derajat Celcius.</li>
+                        <li><strong>Volume</strong>: Misalnya, 2 liter air.</li>
+                        <li><strong>Jarak</strong>: Misalnya, menempuh jarak 100 meter.</li>
+                    </ul>
+                    Untuk menjelaskan besaran skalar, kita hanya perlu angka dan satuannya.
+                </li>
+                <li><strong>Besaran Vektor</strong>: Berbeda dengan skalar, besaran vektor memiliki informasi <strong>nilai (besar)</strong> dan juga <strong>arah</strong>. Keduanya harus diketahui untuk mendeskripsikan vektor secara lengkap. Jika arah tidak disebutkan, deskripsi vektor menjadi tidak lengkap atau ambigu. Contoh-contoh penting dari besaran vektor meliputi:
+                    <ul>
+                        <li><strong>Gaya</strong>: Misalnya, mendorong meja dengan gaya 50 Newton ke arah timur.</li>
+                        <li><strong>Kecepatan</strong>: Misalnya, mobil bergerak 80 km/jam ke arah utara.</li>
+                        <li><strong>Percepatan</strong>: Misalnya, percepatan gravitasi 9.8 m/s² ke bawah.</li>
+                        <li><strong>Perpindahan</strong>: Misalnya, bergerak 5 meter ke depan.</li>
+                        <li><strong>Momentum</strong>: Misalnya, momentum bola 20 kg·m/s ke arah barat laut.</li>
+                    </ul>
+                    Besaran vektor adalah fondasi untuk menganalisis gerakan, interaksi gaya, dan medan dalam fisika.
+                </li>
+            </ul>
+
+            <h3>Representasi Visual: Anak Panah Vektor</h3>
+            <p>Untuk memudahkan pemahaman dan analisis, vektor digambarkan secara grafis menggunakan sebuah <strong>anak panah</strong>. Setiap bagian dari anak panah ini memiliki makna fisik:</p>
+            <div class="vector-representation">
+                <h3>Bagian-Bagian Vektor pada Anak Panah</h3>
+                <div class="part-arrow">
+                    <span class="label-ujung">Ujung (Head)</span>
+                    <span class="label-arah">Arah</span>
+                    <span class="label-nilai">Besar / Nilai (Magnitude)</span>
+                    <span style="position: absolute; left: -50px; top: -25px; color: var(--text-secondary); font-size: 0.9em; transform: rotate(-15deg); white-space: nowrap;">Pangkal (Tail)</span>
+                </div>
+                <p class="text-tertiary"><em>(Visualisasi sederhana yang menunjukkan Pangkal, Ujung, Nilai/Besar, dan Arah sebuah Vektor)</em></p>
+                <ul>
+                    <li><strong>Panjang Anak Panah</strong>: Merepresentasikan <strong>besar (magnitudo)</strong> atau <strong>nilai</strong> dari vektor. Semakin panjang anak panah, semakin besar nilai vektor tersebut. Skala tertentu biasanya digunakan (misalnya, 1 cm = 10 Newton).</li>
+                    <li><strong>Arah Anak Panah (Ujung)</strong>: Menunjukkan <strong>arah</strong> dari vektor. Arah ini bisa ditentukan relatif terhadap sumbu koordinat atau titik referensi lainnya.</li>
+                    <li><strong>Pangkal Anak Panah (Tail)</strong>: Menunjukkan titik awal atau titik tangkap dari vektor.</li>
+                    <li><strong>Ujung Anak Panah (Head)</strong>: Menunjukkan titik akhir atau arah tujuan dari vektor.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="notasi-vektor">
+            <h2>2. Notasi dan Simbol Vektor</h2>
+            <p>Dalam penulisan matematis dan ilmiah, vektor dinotasikan dengan simbol khusus untuk membedakannya dari besaran skalar. Ada beberapa cara umum untuk menotasikan vektor:</p>
+            <ul>
+                <li><strong>Menggunakan Dua Huruf Kapital (Titik Awal dan Akhir):</strong>
+                    <p>Ketika titik awal (pangkal) dan titik akhir (ujung) vektor diketahui, notasi ini sering digunakan. Misalnya, vektor yang bergerak dari titik A ke titik B dapat dinotasikan sebagai:</p>
+                    <div class="vector-notation-example">
+                        <div class="notation-line">
+                            <span class="label-a">A</span>
+                            <span class="label-b">B</span>
+                        </div>
+                        <p class="notation-example-text">
+                            <span class="notation-vector-label arrow-top">AB</span> &nbsp; atau &nbsp; <span class="notation-vector-label bar-top">AB</span>
+                        </p>
+                    </div>
+                    Tanda panah atau garis di atas huruf menunjukkan bahwa AB adalah vektor, bukan sekadar garis biasa.
+                </li>
+                <li><strong>Menggunakan Satu Huruf (Umumnya Huruf Kecil):</strong>
+                    <p>Untuk vektor yang tidak perlu merujuk pada titik awal dan akhir spesifik, atau ketika kita ingin menyatakan suatu jenis vektor umum (misalnya, vektor kecepatan, vektor gaya), kita dapat menggunakan satu huruf. Notasi ini bisa berupa:</p>
+                    <div class="vector-notation-example">
+                        <p class="notation-example-text">
+                            <span class="notation-vector-label arrow-top">a</span> &nbsp; atau &nbsp; <span class="notation-vector-label bar-top">a</span> &nbsp; atau &nbsp; <span class="notation-vector-label bold">a</span>
+                        </p>
+                    </div>
+                    Di buku-buku cetak, huruf tebal (misalnya, <span class="notation-vector-label bold">a</span>) sering digunakan untuk menandakan vektor. Namun, dalam tulisan tangan, tanda panah atau garis di atas lebih praktis.
+                </li>
+            </ul>
+
+            <h3>Notasi Besar (Magnitudo) Vektor</h3>
+            <p><strong>Besar</strong> atau <strong>panjang</strong> dari sebuah vektor, yang merupakan nilai numeriknya, dinotasikan dengan menggunakan tanda nilai mutlak (garis vertikal) di sekeliling simbol vektor, atau dengan hanya menulis huruf tanpa panah/garis (jika vektor aslinya huruf tebal).</p>
+            <p>Contoh:</p>
+            <ul>
+                <li>Besar dari vektor <span class="notation-vector-label arrow-top">AB</span> ditulis sebagai <span class="magnitude-notation">AB</span>.</li>
+                <li>Besar dari vektor <span class="notation-vector-label arrow-top">a</span> ditulis sebagai <span class="magnitude-notation">a</span>.</li>
+            </ul>
+            <p>Penting untuk diingat bahwa besar atau panjang vektor <strong>selalu bernilai positif atau nol</strong>. Vektor dengan besar nol disebut <strong>vektor nol</strong>, dan akan kita bahas lebih lanjut.</p>
+        </section>
+
+        <section id="menggambar-vektor">
+            <h2>3. Menggambar Vektor</h2>
+            <p>Menggambar vektor adalah keterampilan dasar dalam fisika yang memungkinkan kita memvisualisasikan dan menganalisis masalah. Ada dua aspek utama dalam menggambar vektor: skalanya dan arahnya.</p>
+            <ul>
+                <li><strong>Menentukan Skala (Panjang Vektor):</strong>
+                    Panjang fisik anak panah pada kertas harus merepresentasikan besar vektor dalam satuan aslinya. Misalnya, jika Anda ingin menggambar gaya 50 Newton:
+                    <ul>
+                        <li>Anda bisa menetapkan skala 1 cm = 10 Newton. Maka, anak panah yang Anda gambar harus sepanjang 5 cm.</li>
+                        <li>Atau, 1 cm = 5 Newton, sehingga anak panah akan sepanjang 10 cm.</li>
+                    </ul>
+                    Pilihan skala tergantung pada besar vektor dan ruang yang tersedia.
+                </li>
+                <li><strong>Menentukan Arah Vektor:</strong>
+                    Arah vektor biasanya ditentukan oleh <strong>sudut</strong> yang dibentuknya dengan sumbu referensi, umumnya sumbu horizontal positif (arah kanan). Sudut ini diukur <strong>berlawanan arah jarum jam</strong> dari sumbu horizontal positif.
+                </li>
+            </ul>
+
+            <h3>Contoh Penggambaran Arah Vektor</h3>
+            <p>Mari kita lihat beberapa contoh vektor dengan arah yang berbeda pada sebuah sistem koordinat:</p>
+            <div class="vector-representation">
+                <div class="vector-diagram">
+                    <div class="origin"></div> <!-- Pusat koordinat -->
+                    <div class="vector-arrow P"></div>
+                    <span class="vector-label P">P (0°)</span>
+
+                    <div class="vector-arrow Q"></div>
+                    <span class="vector-label Q">Q (90°)</span>
+
+                    <div class="vector-arrow R"></div>
+                    <span class="vector-label R">R (225°)</span>
+                </div>
+                <p class="text-tertiary"><em>(Visualisasi sederhana arah vektor. Sudut diukur berlawanan arah jarum jam dari sumbu horizontal positif.)</em></p>
+                <ul>
+                    <li>Vektor <strong>P</strong>: Arahnya adalah 0° (sepanjang sumbu horizontal positif).</li>
+                    <li>Vektor <strong>Q</strong>: Arahnya adalah 90° (sepanjang sumbu vertikal positif, ke atas).</li>
+                    <li>Vektor <strong>R</strong>: Arahnya adalah 225° (berada di kuadran ketiga, 45° di bawah sumbu horizontal negatif).</li>
+                </ul>
+                <p>Dalam praktiknya, busur derajat digunakan untuk mengukur sudut dan penggaris untuk mengukur panjang anak panah sesuai skala.</p>
+            </div>
+        </section>
+
+        <section id="sifat-sifat-vektor">
+            <h2>4. Sifat-Sifat Penting Vektor</h2>
+            <p>Vektor memiliki beberapa sifat dasar yang membedakannya dari skalar dan menjadi kunci dalam operasi-operasi vektor.</p>
+
+            <h3>a. Vektor yang Sama (Vektor Ekuivalen)</h3>
+            <blockquote>
+                “Dua vektor dikatakan sama jika keduanya mempunyai <strong>besar yang sama</strong> dan <strong>arah yang sama</strong>."
+            </blockquote>
+            <p>Ini adalah definisi yang sangat penting. Vektor tidak bergantung pada posisi mutlaknya dalam ruang. Sebuah vektor dapat digeser (dipindahkan) ke lokasi mana pun selama besar dan arahnya tidak berubah, dan vektor tersebut akan tetap dianggap sama. Ini disebut sebagai <strong>vektor bebas</strong>.</p>
+            <div class="vector-comparison-diagram">
+                <h3>Kesamaan Vektor: Vektor A = Vektor B</h3>
+                <div class="comparison-grid">
+                    <div class="origin"></div>
+                    <div class="comparison-vector A"></div>
+                    <span class="comparison-vector label-A">A</span>
+                    <div class="comparison-vector B"></div>
+                    <span class="comparison-vector label-B">B</span>
+                </div>
+                <p class="text-tertiary"><em>(Vektor A dan B memiliki panjang dan arah yang identik, meskipun posisi awalnya berbeda. Maka, A = B.)</em></p>
+            </div>
+
+            <h3>b. Vektor Negatif</h3>
+            <blockquote>
+                “Vektor negatif adalah vektor yang memiliki <strong>besar yang sama</strong> tetapi <strong>arah yang berlawanan</strong> dengan suatu vektor."
+            </blockquote>
+            <p>Jika kita memiliki sebuah vektor <span class="notation-vector-label arrow-top">A</span>, maka vektor negatifnya dinotasikan sebagai <span class="neg-vector-notation">-A</span>. Vektor <span class="neg-vector-notation">-A</span> akan memiliki panjang yang persis sama dengan <span class="notation-vector-label arrow-top">A</span>, tetapi arahnya akan berbalik 180° dari arah <span class="notation-vector-label arrow-top">A</span>.</p>
+            <p>Konsep vektor negatif sangat relevan dalam Hukum III Newton tentang Aksi-Reaksi, di mana gaya aksi dan gaya reaksi selalu sama besar dan berlawanan arah.</p>
+            <div class="vector-comparison-diagram">
+                <h3>Vektor A dan Vektor -A</h3>
+                <div class="comparison-grid">
+                    <div class="origin"></div>
+                    <div class="comparison-vector NegA"></div>
+                    <span class="comparison-vector label-NegA">A</span>
+                    <div class="comparison-vector NegANeg"></div>
+                    <span class="comparison-vector label-NegANeg">-A</span>
+                </div>
+                <p class="text-tertiary"><em>(Vektor A dan Vektor -A: memiliki panjang yang sama, tetapi arahnya saling berlawanan.)</em></p>
+            </div>
+
+            <h3>c. Vektor Nol</h3>
+            <p>Vektor nol adalah vektor istimewa yang memiliki <strong>besar (magnitudo) sama dengan nol</strong>. Karena besarnya nol, vektor nol tidak memiliki arah yang spesifik dan seringkali dilambangkan dengan <span class="notation-vector-label arrow-top">0</span> atau <span class="notation-vector-label bold">0</span>. Meskipun tidak memiliki arah, keberadaannya penting dalam operasi vektor, terutama dalam penjumlahan dan pengurangan vektor. Misalnya, jika Anda mengurangi sebuah vektor dengan dirinya sendiri (<span class="notation-vector-label arrow-top">A</span> - <span class="notation-vector-label arrow-top">A</span>), hasilnya adalah vektor nol.</p>
+
+            <h3>d. Vektor Satuan</h3>
+            <p>Vektor satuan adalah vektor yang memiliki <strong>besar (magnitudo) sama dengan satu (1)</strong> dan memiliki arah tertentu. Fungsi utama vektor satuan adalah untuk <strong>menunjukkan arah</strong> dari suatu vektor tanpa mengubah besarnya. Mereka sangat berguna dalam memecah vektor ke dalam komponen-komponennya (misalnya, di sepanjang sumbu x, y, dan z).</p>
+            <p>Misalnya, vektor satuan <span class="notation-vector-label arrow-top">i</span> biasanya menunjuk ke arah sumbu x positif, <span class="notation-vector-label arrow-top">j</span> ke arah sumbu y positif, dan <span class="notation-vector-label arrow-top">k</span> ke arah sumbu z positif. Ini akan dibahas lebih rinci ketika kita mempelajari komponen vektor.</p>
+        </section>
+
+        <section id="penutup">
+            <h2>Kesimpulan Representasi Vektor</h2>
+            <p>Representasi vektor, baik secara grafis dengan anak panah maupun secara matematis dengan notasi, adalah fondasi untuk memahami seluruh konsep vektor dalam fisika. Dengan memahami bagian-bagian vektor (pangkal, ujung, besar, arah), berbagai cara menotasikannya, dan sifat-sifat dasarnya (kesamaan, negatif, nol, satuan), Anda telah membangun dasar yang kokoh untuk mempelajari operasi vektor yang lebih kompleks dan penerapannya dalam berbagai fenomena fisik.</p>
+        </section>
+    </div>
+</body>
+</html>
+```

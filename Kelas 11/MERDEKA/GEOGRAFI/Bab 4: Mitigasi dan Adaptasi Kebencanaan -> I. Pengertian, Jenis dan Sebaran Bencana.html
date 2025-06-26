@@ -1,0 +1,583 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Mitigasi dan Adaptasi Kebencanaan - Pengertian, Jenis, dan Sebaran Bencana</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 25px 40px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-green);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            letter-spacing: 0.5px;
+        }
+
+        .content-section {
+            padding: 30px 40px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .content-section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.8em;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: var(--secondary-accent-amber);
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        dl {
+            margin-bottom: 15px;
+        }
+
+        dt {
+            font-weight: bold;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+        dd {
+            margin-left: 20px;
+            margin-bottom: 5px;
+        }
+
+        .key-points {
+            background-color: rgba(255, 179, 0, 0.1); /* secondary_accent_amber with transparency */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .key-points strong {
+            color: var(--text-primary);
+        }
+
+        .info-box {
+            background-color: rgba(25, 118, 210, 0.08); /* primary_blue with transparency */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .info-box strong {
+            color: var(--text-primary);
+        }
+
+        .note {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-divider);
+        }
+
+        .highlight-text {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .section-intro {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                font-size: 15px;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            .content-section {
+                padding: 20px 25px;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            h4 {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                font-size: 14px;
+            }
+            header {
+                padding: 20px 15px;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+            .content-section {
+                padding: 15px 20px;
+            }
+            ul, ol {
+                margin-left: 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 4: Mitigasi dan Adaptasi Kebencanaan</h1>
+            <p>I. Pengertian, Jenis, dan Sebaran Bencana</p>
+        </header>
+
+        <div class="content-section">
+            <h2>A. Pengertian Bencana</h2>
+            <p class="section-intro">Bencana adalah suatu peristiwa atau rangkaian peristiwa yang mengganggu dan mengancam kehidupan manusia, baik dari faktor alam, non-alam, maupun sosial, yang mengakibatkan kerugian besar, termasuk korban jiwa, harta benda, kerusakan lingkungan, dan dampak psikologis.</p>
+
+            <h3>Dampak Bencana</h3>
+            <p>Dampak bencana tidak hanya terbatas pada kerugian fisik dan lingkungan, tetapi juga mencakup dampak psikologis yang mendalam dan hilangnya nyawa. Kerugian ini dapat sangat masif dan memengaruhi berbagai aspek kehidupan masyarakat.</p>
+
+            <h3>Penyebab Bencana</h3>
+            <dl>
+                <dt>Faktor Alam (<span class="highlight-text">Natural Disaster</span>)</dt>
+                <dd>Disebabkan oleh fenomena alam yang mengganggu keseimbangan ekosistem tanpa campur tangan manusia. Contoh: gempa bumi, tsunami, letusan gunung berapi.</dd>
+
+                <dt>Faktor Manusia atau Sosial (<span class="highlight-text">Man-Made Disaster</span>)</dt>
+                <dd>Disebabkan oleh tindakan atau kelalaian manusia. Contoh: konflik sosial, terorisme, kebakaran hutan akibat pembukaan lahan.</dd>
+
+                <dt>Faktor Non-Alam (<span class="highlight-text">Non-Natural Disaster</span>)</dt>
+                <dd>Disebabkan oleh hal-hal di luar peristiwa alam atau perbuatan manusia, seperti kegagalan teknologi, kegagalan modernisasi, epidemi, dan wabah penyakit.</dd>
+            </dl>
+
+            <h3>Dinamika Bencana: Integrasi Tiga Aspek</h3>
+            <p>Besar dan kecilnya dampak bencana sangat dipengaruhi oleh interaksi tiga aspek utama:</p>
+            <dl>
+                <dt>1. Kerentanan (<span class="highlight-text">Vulnerability</span>)</dt>
+                <dd>Keadaan manusia atau sistem yang menyebabkan ketidakmampuan dalam merespon ancaman. Manusia seringkali menjadi faktor penting dalam peningkatan kerentanan. Kerentanan dibagi menjadi:</dd>
+                <ul>
+                    <li><strong>Kerentanan Sosial:</strong> Kondisi kerapuhan sosial dalam merespon bencana (contoh: kepadatan penduduk, pertumbuhan penduduk, persentase penduduk usia tua dan anak-anak yang memerlukan bantuan khusus).</li>
+                    <li><strong>Kerentanan Alam:</strong> Sifat struktur fisik yang menentukan potensi kerusakan terhadap bencana (contoh: kualitas bangunan, jenis material).</li>
+                    <li><strong>Kerentanan Ekonomi:</strong> Kondisi kerapuhan ekonomi dalam merespon bencana (contoh: persentase rumah tangga yang bekerja di sektor rentan, rumah tangga dengan ekonomi rendah).</li>
+                </ul>
+
+                <dt>2. Ancaman (<span class="highlight-text">Threat</span>)</dt>
+                <dd>Peristiwa yang berpotensi mengakibatkan kerugian, kerusakan lingkungan, dan korban jiwa. Ancaman bisa berasal dari teknologi, manusia, lingkungan, atau alam. Suatu ancaman akan menjadi bencana jika manusia tidak memiliki kapasitas untuk mengatasinya dan berada dalam kondisi rentan.</dd>
+                <div class="info-box">
+                    <p><strong>Contoh:</strong> Penduduk pesisir rawan tsunami, penduduk lereng gunung rawan erupsi, penduduk daerah lereng rawan tanah longsor.</p>
+                </div>
+
+                <dt>3. Kapasitas (<span class="highlight-text">Capacity</span>)</dt>
+                <dd>Penguasaan sumber daya dan kemampuan yang dimiliki masyarakat untuk mempersiapkan diri dalam mencegah, menanggulangi, meredam, dan memulihkan kondisi pasca-bencana. Kapasitas dapat ditingkatkan melalui pencegahan, pengurangan kekuatan ancaman, dan pengurangan kerentanan. Kapasitas dapat bervariasi antar wilayah (urban vs. sub-urban).</dd>
+                <div class="info-box">
+                    <p><strong>Contoh Peningkatan Kapasitas:</strong> Data banjir di Desa Sitiarjo menunjukkan kerugian yang lebih sedikit pada 2017 dibanding 2013, menandakan peningkatan kemampuan masyarakat meminimalkan dampak.</p>
+                </div>
+            </dl>
+            <p>Respon manusia terhadap bencana seringkali menunjukkan kurangnya kemauan dan ketidakmampuan dalam mencegah, mengurangi, dan menanggulangi bencana, serta meningkatkan kerentanan akibat minimnya pengetahuan terkait potensi bencana.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>B. Jenis-Jenis Bencana</h2>
+            <p class="section-intro">Berdasarkan UU No. 24/2007, bencana di Indonesia dikategorikan menjadi tiga jenis utama: bencana alam, bencana non-alam, dan bencana sosial.</p>
+
+            <h3>1. Bencana Alam</h3>
+            <p>Indonesia memiliki kerawanan bencana alam yang tinggi karena posisinya di pertemuan tiga lempeng besar dunia, curah hujan tinggi, berada di cincin api pasifik, dan dikelilingi lautan.</p>
+
+            <h4>a. Gempa Bumi</h4>
+            <p>Fenomena bergetarnya bumi akibat sesar (patahan), tumbukan lempeng, aktivitas vulkanik, jatuhnya benda langit, atau runtuhan. Gempa bumi bersifat merusak, berjangka waktu singkat, dan tidak dapat diprediksi atau dicegah, namun dampaknya dapat diminimalisir.</p>
+            <ul>
+                <li><strong>Penyebab:</strong> Pergerakan lempeng Eurasia, Pasifik, dan Indo-Australia yang bertemu di wilayah Indonesia.</li>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Lombok (5 Agustus 2018):</strong> Magnitudo 7,0, kedalaman 15 km, kerusakan berat.</li>
+                        <li><strong>Palu (28 September 2018):</strong> Kekuatan 7,4 SR, diikuti likuifaksi dan tsunami (6 meter), lebih dari 2.000 jenazah.</li>
+                        <li><strong>Aceh (26 Desember 2004):</strong> Pusat gempa 250 km tenggara Banda Aceh, diikuti tsunami dahsyat, 227.900 korban jiwa.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>b. Tsunami</h4>
+            <p>Gelombang laut besar yang menghantam pesisir dengan kecepatan tinggi (>900 km/jam). Dipicu oleh letusan gunung api di laut, runtuhan dasar laut, atau gempa bumi akibat pergerakan lempeng di dasar laut. Kecepatan menurun dan ketinggian meningkat saat mendekati pantai atau teluk.</p>
+            <ul>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Palu (28 September 2018):</strong> Dipicu gempa 7,4 SR, tsunami 6 meter, lebih dari 2.000 jenazah.</li>
+                        <li><strong>Banyuwangi (3 Juni 1994):</strong> Tsunami 7 meter, dipicu gempa 5,9 SR, 264 korban tewas, 213 rumah hancur.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>c. Gunung Meletus</h4>
+            <p>Proses keluarnya magma dari dalam bumi berupa material cair dan padat ke permukaan bumi (lahar, bom, awan panas, debu vulkanik, lapili). Indonesia rentan karena berada di cincin api Pasifik, membentuk deretan gunung api (volcanic arc) dari Sumatra hingga Papua.</p>
+            <ul>
+                <li><strong>Tanda-tanda Awal:</strong> Getaran gempa kecil, peningkatan suhu, tumbuhan layu, binatang bermigrasi, mata air kering, suara gemuruh.</li>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Gunung Merapi:</strong> Korban jiwa besar pada 1930 (1.367 jiwa) dan 2010 (341 tewas, 61.154 mengungsi).</li>
+                        <li><strong>Gunung Semeru (Desember 2021):</strong> Dipicu guguran kubah lava akibat hujan, 22 jiwa meninggal, 5205 jiwa terdampak, 2004 jiwa mengungsi, kerusakan rumah dan lahan pertanian.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>d. Tanah Longsor</h4>
+            <p>Peristiwa pergerakan massa tanah atau batuan secara cepat. Sering terjadi saat musim penghujan akibat pengikisan tanah yang cepat.</p>
+            <ul>
+                <li><strong>Penyebab:</strong> Kombinasi lereng terjal, curah hujan tinggi, pengikisan tanah tinggi, getaran, tutupan vegetasi berkurang, tanah kurang padat/tebal.</li>
+                <li><strong>Dampak:</strong> Menimbun material, keterbatasan waktu evakuasi mandiri.</li>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Cihanjuang, Sumedang (9 Januari 2021):</strong> Akibat hujan deras.</li>
+                        <li><strong>Cisolok, Sukabumi (1 Januari 2019):</strong> Daerah rawan bencana.</li>
+                        <li><strong>Madiun (2 April 2021):</strong> Akibat hujan deras 7 jam di Kab. Madiun dan lereng Gunung Wilis.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>e. Banjir</h4>
+            <p>Peristiwa tergenangnya air dalam jangka waktu tertentu pada wilayah yang mulanya tidak tergenang air. Lebih berisiko di dataran rendah.</p>
+            <ul>
+                <li><strong>Penyebab:</strong> Curah hujan lebat, danau/sungai/drainase meluap, hutan gundul, hunian di bantaran sungai, alih fungsi lahan, pembuangan sampah sembarangan, kurangnya daerah resapan air, waduk kurang maksimal, normalisasi sungai rendah.</li>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Jakarta (1 Januari 2020):</strong> Melanda Tangerang, Bogor, Depok, DKI Jakarta, Bekasi akibat pengelolaan hulu yang gegabah.</li>
+                        <li><strong>Sentani, Jayapura (16–17 Maret 2019):</strong> Banjir bandang disertai longsor akibat hujan tinggi dan gundulnya pegunungan Cycloops.</li>
+                        <li><strong>Kalimantan Selatan (9–29 Januari 2021):</strong> Akibat anomali cuaca dan curah hujan tinggi.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>f. Kekeringan</h4>
+            <p>Keadaan kelangkaan air dari sumber hujan pada periode tertentu, menyebabkan kekurangan air di berbagai kegiatan, lingkungan, atau masyarakat. Berlangsung perlahan, lama, dan berdampak luas lintas sektor.</p>
+            <ul>
+                <li><strong>Penyebab:</strong> Anomali cuaca, pembalakan hutan, pertambangan non-berkelanjutan, intensitas pembangunan gedung, alih fungsi lahan pegunungan/perbukitan.</li>
+                <li><strong>Dampak:</strong> Gagal panen jutaan hektar, kematian spesies tumbuhan, penurunan debit waduk, sumur kering.</li>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Kabupaten Dompu, NTB (Agustus 2020):</strong> Ratusan hektar pertanian gagal panen.</li>
+                        <li><strong>Aceh Utara (Maret 2021):</strong> 90 hektar sawah di Desa Paya Beunot gagal panen.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>g. Kebakaran Hutan dan Lahan (<span class="highlight-text">Karhutla</span>)</h4>
+            <p>Kondisi hutan dan lahan rusak karena api, merugikan di berbagai sektor. Terjadi saat musim kemarau.</p>
+            <ul>
+                <li><strong>Penyebab:</strong> Fenomena El Nino (curah hujan berkurang, suhu panas, angin), aktivitas tebas bakar (slash and burn) untuk lahan pertanian/perkebunan.</li>
+                <li><strong>Dampak:</strong> Penyakit pernapasan (ISPA), kematian flora fauna, rusaknya ekosistem, gangguan transportasi (penerbangan), pemanasan global.</li>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Provinsi Riau (1 Januari 2019):</strong> Kebakaran 6.425,39 hektar dalam 8 bulan, status siaga darurat.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>h. Angin Puting Beliung</h4>
+            <p>Intensitas fenomena hidrometeorologis meningkat saat musim pancaroba (peralihan). Angin ini merupakan bagian pertumbuhan awan cumulonimbus akibat pemanasan intensif. Sulit diprediksi.</p>
+            <ul>
+                <li><strong>Penyebab:</strong> Pertemuan udara dingin dan panas, kuatnya arus udara naik ke atas dalam awan membentuk awan Cb.</li>
+                <li><strong>Ciri-ciri:</strong> Sering terjadi siang hari, di dataran rendah, tiba-tiba (5-10 menit), skala lokal, pusaran seperti belalai gajah, merusak lintasan yang dilalui.</li>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Desa Panguragan, Cirebon (30 Desember 2018).</strong></li>
+                        <li><strong>Desa Selangit, Lampung (2 Januari 2021).</strong></li>
+                        <li><strong>Kabupaten Lampung Timur (7 September 2021):</strong> Rumah warga rusak ringan hingga berat.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>2. Bencana Non Alam</h3>
+            <p>Bencana yang diakibatkan oleh peristiwa non-alam, seperti kegagalan teknologi, kegagalan modernisasi, dan epidemi atau wabah penyakit.</p>
+
+            <h4>a. Kegagalan Teknologi</h4>
+            <p>Semua kejadian bencana yang diakibatkan oleh kesalahan desain, pengoperasian, kelalaian, atau kesengajaan manusia dalam penggunaan teknologi dan/atau industri.</p>
+            <ul>
+                <li><strong>Kelompok Bencana Teknologi:</strong>
+                    <ol>
+                        <li><strong>Kecelakaan Industri:</strong> Tumpahan bahan kimia, runtuhnya infrastruktur, ledakan, kebocoran gas, keracunan.</li>
+                        <li><strong>Kecelakaan Transportasi:</strong> Kecelakaan udara, jalan, atau air terkait alat transportasi.</li>
+                        <li><strong>Kecelakaan Lainnya:</strong> Runtuhnya domestik (bangunan).</li>
+                    </ol>
+                </li>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Jatuhnya Pesawat Adam Air KI 574 (1 Januari 2007):</strong> Selain cuaca buruk, disebabkan kerusakan alat bantu navigasi (IRS) dan kegagalan kinerja pilot.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>b. Kegagalan Modernisasi</h4>
+            <p>Kegagalan masyarakat dalam mengejar ketertinggalan dari masyarakat paling maju dalam lingkup global, yang bertujuan menyamai standar modern.</p>
+            <ul>
+                <li><strong>Contoh:</strong> Kemiskinan.</li>
+                <li><strong>Statistik Kemiskinan di Indonesia:</strong> Papua (26,8%), Papua Barat (21,7%), NTT (21,21%). Ketertinggalan pembangunan di berbagai sektor menyebabkan daerah mengalami kemiskinan.</li>
+            </ul>
+
+            <h4>c. Epidemi atau Wabah Penyakit</h4>
+            <p>Penyakit yang menyebar cepat ke wilayah atau negara tertentu dan memengaruhi populasi penduduk. Frekuensi meningkat di tengah anomali iklim.</p>
+            <ul>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Flu Burung (H5N1) (2012).</strong></li>
+                        <li><strong>Pandemi COVID-19:</strong> Wabah global yang meluas.</li>
+                    </ul>
+                </li>
+                <li><strong>Statistik COVID-19 (global dan Indonesia, data hingga 2021):</strong>
+                    <ul>
+                        <li>Global: 226 negara terdampak, 248.467.363 terkontaminasi, 5.027.183 meninggal.</li>
+                        <li>Indonesia: 4.247.320 positif, 4.092.586 sembuh, 143.519 meninggal.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>3. Bencana Sosial</h3>
+            <p>Bencana yang diakibatkan oleh peristiwa atau serangkaian peristiwa yang disebabkan oleh manusia, meliputi kerusuhan atau konflik sosial antar kelompok maupun teror.</p>
+
+            <h4>a. Kerusuhan atau Konflik Sosial</h4>
+            <p>Kondisi huru-hara, kerusuhan, perang, atau keadaan tidak aman di suatu daerah yang melibatkan lapisan masyarakat, golongan, suku, atau organisasi. Terjadi jika perbedaan pendapat/keinginan tidak menemukan jalan tengah atau ada kesalahpahaman, persaingan, dan perebutan sumber daya.</p>
+            <ul>
+                <li>Indonesia memiliki keragaman sosial yang luas; jika tidak dikelola dengan baik, dapat menjadi sumber konflik.</li>
+                <li>Pemerintah, tokoh masyarakat, dan aparat keamanan berperan penting dalam integrasi sosial dan penanganan konflik.</li>
+            </ul>
+
+            <h4>b. Aksi Teror</h4>
+            <p>Semua tindakan yang menyebabkan keresahan masyarakat, kerusakan bangunan, dan mengancam atau membahayakan jiwa seseorang/banyak orang oleh seseorang atau golongan tertentu yang tidak bertanggung jawab. Terjadi secara tiba-tiba dan singkat, sulit diperkirakan.</p>
+            <ul>
+                <li><strong>Contoh Kejadian di Indonesia:</strong>
+                    <ul>
+                        <li><strong>Bom Bali (2002):</strong> Salah satu sejarah terorisme terbesar.</li>
+                        <li><strong>Bom Surabaya (2018):</strong> Rangkaian ledakan bom di tiga tempat.</li>
+                        <li><strong>Pengeboman Makassar (28 Maret 2021):</strong> Ledakan bom di depan Gereja Katedral Makassar.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>C. Dampak Kebencanaan Terhadap Kehidupan</h2>
+            <p class="section-intro">Bencana memiliki dampak positif dan negatif yang memengaruhi aktivitas dan kehidupan sehari-hari manusia.</p>
+
+            <h3>1. Letusan Gunung Berapi</h3>
+            <dl>
+                <dt>Dampak Negatif:</dt>
+                <dd>Pencemaran udara (gas beracun, abu vulkanik), kelumpuhan aktivitas manusia, kerusakan ekosistem dan bangunan, penyakit pernapasan (ISPA).</dd>
+                <dt>Dampak Positif:</dt>
+                <dd>Tanah menjadi subur (kaya mineral primer), tercipta mata pencarian baru (penambang pasir), geyser (sumber air panas baik untuk kulit).</dd>
+            </dl>
+
+            <h3>2. Tanah Longsor</h3>
+            <dl>
+                <dt>Dampak Negatif:</dt>
+                <dd>Sanitasi lingkungan buruk, harga jual tanah menurun, infrastruktur rusak (jalan, transportasi terputus), perekonomian tersendat.</dd>
+                <dt>Dampak Positif:</dt>
+                <dd>Kondisi tanah kembali gembur, perubahan tekstur tanah, mempercepat peleburan batu, masyarakat sadar pentingnya menjaga lingkungan, munculnya penelitian tentang penyebab dan pencegahan longsor.</dd>
+            </dl>
+
+            <h3>3. Gempa Bumi</h3>
+            <dl>
+                <dt>Dampak Negatif:</dt>
+                <dd>Jaringan transportasi dan komunikasi terganggu, banyak bangunan rusak, munculnya rekahan/longsoran, perubahan air bawah tanah, pemicu tsunami jika di laut dangkal.</dd>
+                <dt>Dampak Positif:</dt>
+                <dd>Memberikan gambaran struktur bawah tanah (efisiensi ekstraksi minyak/gas), informasi ruang magma (memonitor gunung berapi), informasi struktur internal Bumi (pemetaan melalui gelombang seismik).</dd>
+            </dl>
+
+            <h3>4. Kekeringan</h3>
+            <dl>
+                <dt>Dampak Negatif:</dt>
+                <dd>Banyak tanaman mati (kecuali jati/kaktus), peningkatan polusi (tanaman berkurang sebagai agen CO2), sumber air bersih berkurang, tanah bercocok tanam gersang.</dd>
+                <dt>Dampak Positif:</dt>
+                <dd>Mempercepat panen garam, meningkatkan kualitas buah, mempercepat penjemuran ikan asin, peluang menanam palawija, potensi energi surya, sanitasi membaik (penyakit diare menurun), jalur transportasi laut lancar.</dd>
+            </dl>
+
+            <h3>5. Banjir</h3>
+            <dl>
+                <dt>Dampak Negatif:</dt>
+                <dd>Kerusakan jalan raya, bangunan, jembatan, sistem selokan, masalah kesehatan (wabah penyakit), kesulitan air bersih, kerugian pertanian (gagal panen), kerusakan spesies, kelangkaan barang (kenaikan harga).</dd>
+                <dt>Dampak Positif:</dt>
+                <dd>Lapang kerja baru di bidang transportasi air, mempermudah sosialisasi penghijauan dan kepedulian lingkungan.</dd>
+            </dl>
+
+            <h3>6. Kebakaran Hutan</h3>
+            <dl>
+                <dt>Dampak Negatif:</dt>
+                <dd>Rusaknya ekosistem hutan, musnahnya flora fauna, gangguan transportasi penerbangan, pemanasan global/perubahan iklim, penyakit pernapasan (ISPA, asma, iritasi mata/tenggorokan).</dd>
+                <dt>Dampak Positif:</dt>
+                <dd>Lahan subur pasca kebakaran, pengurangan/penurunan keasaman lahan gambut, pembunuhan penyakit tanaman, pembersihan fondasi tanah, membantu perkembangbiakan biji tanaman tertentu (contoh: manzanita, chamise).</dd>
+            </dl>
+
+            <h3>7. Tsunami</h3>
+            <dl>
+                <dt>Dampak Negatif:</dt>
+                <dd>Kerusakan sarana prasarana, tumbuhan, korban jiwa, gagal panen, genangan air, pencemaran air asin pada tanah/air bersih.</dd>
+                <dt>Dampak Positif:</dt>
+                <dd>Pengetahuan tentang kekuatan/kelemahan konstruksi bangunan, gambaran aktivitas bawah laut/vulkanik, motivasi penelitian geologi tentang aktivitas vulkanik dan hubungannya dengan tsunami.</dd>
+            </dl>
+        </div>
+
+        <div class="content-section">
+            <h2>D. Persebaran Bencana di Indonesia</h2>
+            <p class="section-intro">Posisi geografis Indonesia yang unik menyebabkan kerawanan bencana yang tinggi. Pemetaan daerah rawan bencana penting untuk mengurangi risiko dan dampak dengan meningkatkan kesiapsiagaan masyarakat.</p>
+
+            <h3>1. Gempa Bumi</h3>
+            <p>Indonesia berada di pertemuan lempeng tektonik, menyebabkan banyak patahan dan ancaman gempa tinggi.</p>
+            <ul>
+                <li><strong>Risiko Tinggi:</strong> Sumatra bagian selatan, Jawa bagian selatan, Nusa Tenggara, Sulawesi bagian utara, Maluku, Papua bagian utara.</li>
+                <li><strong>Risiko Sedang:</strong> Jawa bagian tengah, Maluku, Sumatra bagian tengah.</li>
+                <li><strong>Risiko Rendah:</strong> Pulau Kalimantan (jauh dari perbatasan lempeng).</li>
+                <li><strong>Patahan Utama:</strong> Sesar Semangko (Sumatra), Cimandiri, Opak, dan Grindulu (Jawa).</li>
+            </ul>
+
+            <h3>2. Letusan Gunung Berapi</h3>
+            <p>Terdapat banyak gunung berapi di Indonesia, terutama di zona subduksi lempeng.</p>
+            <ul>
+                <li><strong>Wilayah dengan Gunung Berapi:</strong> Sumatra, Jawa, Nusa Tenggara, Maluku, dan Sulawesi.</li>
+                <li><strong>Wilayah Tanpa Gunung Berapi:</strong> Pulau Papua dan Kalimantan.</li>
+                <li><strong>Tingkat Aktivitas (ESDM 2017):</strong>
+                    <ul>
+                        <li><strong>Awas (Level IV):</strong> G. Sinabung.</li>
+                        <li><strong>Waspada (Level II):</strong> 15 gunungapi (contoh: G. Kerinci, G. Lokon, G. Semeru, G. Merapi).</li>
+                        <li><strong>Normal (Level I):</strong> Kondisi tanpa aktivitas vulkanik atau korban jiwa.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>3. Tsunami</h3>
+            <p>Wilayah pesisir Indonesia rentan terhadap tsunami, dengan tanda-tanda alam seperti tanah bergetar, suara ombak, dan air laut surut.</p>
+            <ul>
+                <li><strong>Risiko Tinggi:</strong> Sumatra bagian selatan, Kepulauan Maluku, Papua bagian utara.</li>
+                <li><strong>Risiko Rendah:</strong> Jawa, pegunungan Sumatra, Kalimantan.</li>
+                <li><strong>Contoh Kejadian:</strong> Tsunami Pangandaran (2006) dipicu gempa 6,8 SR di dasar laut.</li>
+            </ul>
+
+            <h3>4. Banjir</h3>
+            <p>Sering terjadi saat curah hujan tinggi, terutama di dataran rendah. Dipicu oleh faktor alam dan aktivitas manusia.</p>
+            <ul>
+                <li><strong>Potensi Tinggi:</strong> Mayoritas wilayah Indonesia, terutama di daerah dengan curah hujan tinggi dan rawa-rawa (contoh: Papua bagian selatan).</li>
+                <li><strong>Faktor Manusia Pemicu:</strong> Pembangunan di ruang terbuka hijau, kurangnya resapan air, sistem drainase buruk, pemanfaatan waduk kurang maksimal, normalisasi sungai rendah.</li>
+                <li><strong>Contoh Kejadian:</strong> Banjir Bogor dan Kapuas Hulu (2021) menyebabkan kerusakan luas.</li>
+            </ul>
+
+            <h3>5. Kekeringan</h3>
+            <p>Musim kemarau yang panjang dapat menyebabkan kelangkaan air dan gagal panen.</p>
+            <ul>
+                <li><strong>Ancaman Tinggi:</strong> Sumatra, Jawa, Kalimantan, dan Papua.</li>
+                <li><strong>Area Rentan:</strong> Daerah gardu luar, area irigasi golongan, pertanian tadah hujan, dan titik endemik kekeringan.</li>
+                <li><strong>Penyebab:</strong> Anomali cuaca, iklim kering, kemampuan tanah meloloskan air, fenomena El Nino, pembalakan hutan, pertambangan, pembangunan gedung, alih fungsi lahan.</li>
+                <li><strong>Contoh Wilayah Terdampak:</strong> Kebumen, Wonogiri, Tasikmalaya, Bekasi, Ciamis, Cianjur, Mojokerto, Trenggalek, Ponorogo.</li>
+            </ul>
+
+            <h3>6. Tanah Longsor</h3>
+            <p>Bencana yang kerap terjadi, dipengaruhi oleh topografi, curah hujan, dan jenis tanah.</p>
+            <ul>
+                <li><strong>Potensi Tinggi:</strong> Kabupaten Bogor, Cianjur, Bandung, Purwakarta, Sukabumi, Tegal, Purbalingga, Sumedang.</li>
+                <li><strong>Faktor Pemicu:</strong> Wilayah bergunung-gunung/berbukit, lereng terjal, dataran tinggi, curah hujan tinggi/ekstrem, endapan tanah remah.</li>
+                <li><strong>Contoh Kejadian:</strong> Purworejo (2016) dan Ponorogo (2017) dengan korban jiwa.</li>
+            </ul>
+
+            <h3>7. Kebakaran Hutan</h3>
+            <p>Terutama terjadi saat musim kemarau, menyebabkan kabut asap dan kerusakan lingkungan.</p>
+            <ul>
+                <li><strong>Titik Api Terbanyak:</strong> Kalimantan dan Sumatra.</li>
+                <li><strong>Penyebab Utama:</strong> Pembakaran lahan yang tidak terkendali dan tidak berkelanjutan oleh masyarakat atau perusahaan (metode tebas bakar).</li>
+            </ul>
+
+            <h3>8. Angin Puting Beliung</h3>
+            <p>Terjadi saat musim pancaroba, sulit diprediksi, dan dapat menyebabkan kerusakan bangunan.</p>
+            <ul>
+                <li><strong>Ancaman Relatif Rendah:</strong> Umumnya di Indonesia, namun Jawa memiliki ancaman sedang hingga tinggi.</li>
+                <li><strong>Pembentukan:</strong> Dari awan Cumulonimbus (Cb) saat musim penghujan, akibat pertemuan udara dingin dan panas serta arus udara naik yang kuat.</li>
+                <li><strong>Ciri-ciri:</strong> Sering siang hari, di dataran rendah, tiba-tiba (5-10 menit), berbentuk belalai gajah, merusak lintasan.</li>
+            </ul>
+        </div>
+        <div class="note">
+            <p>Materi ini adalah bagian dari Bab 4: Mitigasi dan Adaptasi Kebencanaan. Pemahaman mendalam tentang pengertian, jenis, dan sebaran bencana sangat penting untuk kesiapsiagaan dan pengurangan risiko bencana di Indonesia.</p>
+        </div>
+    </div>
+</body>
+</html>
+```

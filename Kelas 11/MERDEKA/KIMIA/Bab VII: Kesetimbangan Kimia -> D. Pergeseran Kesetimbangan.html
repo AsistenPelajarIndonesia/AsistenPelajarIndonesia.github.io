@@ -1,0 +1,475 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab VII: D. Pergeseran Kesetimbangan Kimia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Mode Theme */
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--accent-green);
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .intro-paragraph {
+            font-size: 1.1em;
+            color: var(--text-tertiary);
+            margin-bottom: 30px;
+        }
+
+        .principle-card {
+            background-color: #fcfcfc; /* Slightly off-white for cards */
+            border: 1px solid var(--border-divider);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .principle-card h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--primary-blue);
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+        .principle-card h3::before {
+            content: '♦'; /* Diamond bullet point */
+            color: var(--accent-green);
+            font-size: 1.1em;
+        }
+
+        .example-box {
+            background-color: var(--background-canvas); /* White background for examples */
+            border: 1px dashed var(--border-divider);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 25px;
+            color: var(--text-tertiary);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.03);
+        }
+        .example-box::before {
+            content: "Contoh Kasus";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            font-weight: 500;
+            font-style: normal;
+            padding: 5px 10px;
+            border-bottom-right-radius: 8px;
+            font-size: 0.9em;
+        }
+        .example-box p {
+            margin-top: 25px; /* Adjust for "Contoh" label */
+            color: var(--text-secondary);
+            font-style: normal;
+        }
+        .example-box code {
+            display: block;
+            background-color: #f0f0f0;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Roboto Mono', monospace;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .equation {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #e3f2fd; /* Light blue for equations */
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 8px 0;
+            font-weight: 500;
+            color: var(--primary-blue);
+            font-size: 1.05em;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .equation-block {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .equation-block .equation {
+            display: block;
+            padding: 18px;
+            font-size: 1.2em;
+        }
+
+        .key-takeaway {
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            font-size: 1.1em;
+        }
+        .key-takeaway::before {
+            content: "💡";
+            font-size: 2em;
+            line-height: 1; /* Align vertically */
+        }
+        .key-takeaway p {
+            margin: 0;
+            color: var(--background-canvas);
+            text-align: left;
+        }
+
+        .summary-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+        .summary-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+        .summary-list li::before {
+            content: '✔'; /* Checkmark icon */
+            position: absolute;
+            left: 0;
+            color: var(--semantic-success);
+            font-weight: bold;
+            font-size: 1.3em;
+            top: 0; /* Align with text top */
+        }
+
+        .label {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-right: 8px;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+        .label.endotermik {
+            background-color: #E3F2FD; /* Light blue */
+            color: var(--semantic-info);
+            border: 1px solid var(--semantic-info);
+        }
+        .label.eksotermik {
+            background-color: #FFEBEE; /* Light red */
+            color: var(--semantic-error);
+            border: 1px solid var(--semantic-error);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .principle-card h3 {
+                font-size: 1.4em;
+                flex-direction: column; /* Stack heading and icon */
+                text-align: center;
+            }
+            .principle-card h3::before {
+                margin-bottom: 5px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .principle-card {
+                padding: 20px;
+            }
+            .example-box {
+                padding: 10px;
+            }
+            .key-takeaway {
+                padding: 18px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .key-takeaway::before {
+                margin-bottom: 10px;
+            }
+            .summary-list li {
+                padding-left: 25px;
+            }
+            .summary-list li::before {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .principle-card h3 {
+                font-size: 1.2em;
+            }
+            .intro-paragraph {
+                font-size: 0.95em;
+            }
+            .principle-card {
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+            .example-box::before {
+                font-size: 0.8em;
+                padding: 4px 8px;
+            }
+            .equation-block .equation {
+                font-size: 1em;
+                padding: 15px;
+            }
+            .key-takeaway {
+                font-size: 0.95em;
+                padding: 15px;
+            }
+            .key-takeaway::before {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>D. Pergeseran Kesetimbangan Kimia</h1>
+
+        <p class="intro-paragraph">
+            Kalian mungkin sering mendengar nasihat "kita harus menjaga bumi dan lingkungan untuk anak cucu kita". Betul sekali, bumi ini tidak hanya untuk kalian, melainkan kelak anak cucu kalian yang akan menempati. Oleh karena itu, kalian harus menjaga bumi ini dan senantiasa mengembangkan perilaku-perilaku yang ramah terhadap lingkungan.
+        </p>
+        <p class="intro-paragraph">
+            Coba perhatikan keadaan bumi saat ini. Sampah plastik menumpuk, polusi udara cukup tinggi, berkurangnya keanekaragaman hayati, pemanasan global, dan banyak kerusakan alam lainnya. Hal ini tentu berpengaruh terhadap <strong>kesetimbangan alam semesta</strong>. Kesetimbangan alam menjadi terganggu akibat gangguan dari luar, yaitu ulah manusia yang merusak alam.
+        </p>
+        <p class="intro-paragraph">
+            Begitu juga dengan <strong>kesetimbangan kimia</strong>. Ahli kimia berkebangsaan Prancis, <strong>Henri Louis Le Chatelier</strong>, menyatakan apabila sistem kesetimbangan kimia mendapatkan gangguan (aksi) dari luar, maka posisi kesetimbangan akan <strong>bergeser untuk melawan perubahan tersebut</strong> dan membangun kembali sistem kesetimbangan baru. Prinsip ini dikenal sebagai <strong>Prinsip Le Chatelier</strong>. Mari kita pelajari lebih lanjut faktor-faktor apa saja yang dapat memengaruhi pergeseran kesetimbangan.
+        </p>
+
+        <section class="principle-card">
+            <h3>1. Pengaruh Perubahan Konsentrasi pada Kesetimbangan</h3>
+            <p>
+                Perubahan konsentrasi salah satu komponen dalam sistem kesetimbangan akan memicu respons dari sistem untuk meminimalkan dampak perubahan tersebut. Sistem akan bergeser untuk mengonsumsi zat yang ditambahkan atau menghasilkan zat yang dikurangi.
+            </p>
+            <ul class="summary-list">
+                <li>Jika <strong>konsentrasi reaktan ditambah</strong>, kesetimbangan akan bergeser ke arah <strong>produk</strong> (arah kanan) untuk mengonsumsi reaktan yang berlebihan.</li>
+                <li>Jika <strong>konsentrasi reaktan dikurangi</strong>, kesetimbangan akan bergeser ke arah <strong>reaktan</strong> (arah kiri) untuk menghasilkan lebih banyak reaktan.</li>
+                <li>Jika <strong>konsentrasi produk ditambah</strong>, kesetimbangan akan bergeser ke arah <strong>reaktan</strong> (arah kiri) untuk mengonsumsi produk yang berlebihan.</li>
+                <li>Jika <strong>konsentrasi produk dikurangi</strong>, kesetimbangan akan bergeser ke arah <strong>produk</strong> (arah kanan) untuk menghasilkan lebih banyak produk.</li>
+            </ul>
+
+            <div class="example-box">
+                <p>
+                    Pertimbangkan reaksi kesetimbangan antara ion besi(III) (Fe³⁺) dan ion tiosianat (SCN⁻) yang menghasilkan ion kompleks besi(III) tiosianat (Fe(SCN)²⁺):
+                </p>
+                <div class="equation-block">
+                    <span class="equation">Fe³⁺(aq) <span style="color: #FFB300;">(kuning)</span> + SCN⁻(aq) <span style="color: #757575;">(bening)</span> ⇌ Fe(SCN)²⁺(aq) <span style="color: #D32F2F;">(merah darah)</span></span>
+                </div>
+                <p>
+                    Ketika larutan besi(III) nitrat (yang merupakan sumber ion Fe³⁺) ditambahkan ke dalam sistem kesetimbangan ini, warna larutan akan menjadi <strong>lebih pekat</strong> (semakin merah). Ini menandakan bahwa konsentrasi Fe(SCN)²⁺, yang berwarna merah darah, telah meningkat. Ini adalah bukti bahwa penambahan Fe³⁺ (sebuah reaktan) telah menggeser kesetimbangan ke arah <strong>pembentukan produk</strong>. Sebaliknya, jika Anda menambahkan SCN⁻, efek serupa juga akan terjadi.
+                </p>
+            </div>
+
+            <div class="key-takeaway">
+                <p>
+                    <strong>Prinsip Le Chatelier untuk Konsentrasi:</strong> Sistem kesetimbangan akan bergeser untuk mengurangi efek dari perubahan konsentrasi. Artinya, menambah konsentrasi akan menggeser ke sisi yang mengonsumsi zat tersebut, dan mengurangi konsentrasi akan menggeser ke sisi yang menghasilkan zat tersebut.
+                </p>
+            </div>
+        </section>
+
+        <section class="principle-card">
+            <h3>2. Pengaruh Perubahan Suhu pada Kesetimbangan</h3>
+            <p>
+                Perubahan suhu memiliki dampak unik pada kesetimbangan karena suhu dapat diperlakukan sebagai komponen reaksi (seperti reaktan atau produk) dalam bentuk energi. Untuk memahami pengaruhnya, kita perlu mengidentifikasi apakah reaksi bersifat endotermik atau eksotermik.
+            </p>
+            <ul class="summary-list">
+                <li>Reaksi <strong>Endotermik</strong>: Reaksi yang <strong>menyerap panas</strong> dari lingkungan. Nilai entalpi (<span class="equation" style="display:inline;">ΔH</span>) positif. Panas dapat dianggap sebagai reaktan: <span class="equation">Reaktan + Panas ⇌ Produk</span></li>
+                <li>Reaksi <strong>Eksotermik</strong>: Reaksi yang <strong>melepaskan panas</strong> ke lingkungan. Nilai entalpi (<span class="equation" style="display:inline;">ΔH</span>) negatif. Panas dapat dianggap sebagai produk: <span class="equation">Reaktan ⇌ Produk + Panas</span></li>
+            </ul>
+            <p>
+                Berdasarkan prinsip Le Chatelier:
+            </p>
+            <ul class="summary-list">
+                <li>Jika <strong>suhu dinaikkan</strong> (yaitu, panas ditambahkan ke sistem), kesetimbangan akan bergeser ke arah yang <strong>menyerap panas</strong>, yaitu arah reaksi <span class="label endotermik">endotermik</span>.</li>
+                <li>Jika <strong>suhu diturunkan</strong> (yaitu, panas diambil dari sistem), kesetimbangan akan bergeser ke arah yang <strong>melepaskan panas</strong>, yaitu arah reaksi <span class="label eksotermik">eksotermik</span>.</li>
+            </ul>
+
+            <div class="example-box">
+                <p>
+                    Mari kita lihat reaksi dekomposisi tembaga(II) sulfat pentahidrat (biru) menjadi tembaga(II) sulfat anhidrat (putih) dan air:
+                </p>
+                <div class="equation-block">
+                    <span class="equation">CuSO₄·5H₂O(s) <span style="color: #1976D2;">(biru)</span> ⇌ CuSO₄(s) <span style="color: #424242;">(putih)</span> + 5H₂O(l) &nbsp;&nbsp; ΔH = +78,2 kJ</span>
+                </div>
+                <p>
+                    Karena nilai <span class="equation" style="display:inline;">ΔH</span> positif, reaksi ke arah produk (pembentukan CuSO₄ dan H₂O) adalah <span class="label endotermik">endotermik</span> (membutuhkan panas). Sebaliknya, reaksi ke arah balik (pembentukan CuSO₄·5H₂O dari CuSO₄ dan air) adalah <span class="label eksotermik">eksotermik</span> (melepaskan panas).
+                </p>
+                <p>
+                    Ketika suhu sistem dinaikkan, kesetimbangan akan bergeser ke arah reaksi <span class="label endotermik">endotermik</span>, yaitu ke arah pembentukan CuSO₄ (putih) dan H₂O. Pergeseran ini akan terlihat dari perubahan warna serbuk tembaga(II) sulfat yang semakin memutih.
+                </p>
+            </div>
+
+            <div class="key-takeaway">
+                <p>
+                    <strong>Prinsip Le Chatelier untuk Suhu:</strong> Peningkatan suhu selalu menggeser kesetimbangan ke arah reaksi endotermik. Penurunan suhu selalu menggeser kesetimbangan ke arah reaksi eksotermik. Perubahan suhu adalah satu-satunya faktor yang juga dapat mengubah nilai konstanta kesetimbangan (K).
+                </p>
+            </div>
+        </section>
+
+        <section class="principle-card">
+            <h3>3. Pengaruh Perubahan Tekanan dan Volume pada Kesetimbangan</h3>
+            <p>
+                Perubahan tekanan dan volume sangat berkaitan erat satu sama lain (peningkatan tekanan berarti penurunan volume, dan sebaliknya, untuk jumlah gas tertentu). Pengaruh ini <strong>hanya berlaku untuk reaksi yang melibatkan zat dalam fase gas</strong> dan memiliki jumlah mol gas yang berbeda di kedua sisi persamaan reaksi.
+            </p>
+            <p>
+                Sistem akan berespons terhadap perubahan tekanan dengan bergeser ke arah yang dapat mengurangi atau menambah jumlah molekul gas untuk menetralkan tekanan.
+            </p>
+            <ul class="summary-list">
+                <li>Jika <strong>tekanan diperbesar</strong> (volume diperkecil), kesetimbangan akan bergeser ke arah yang memiliki <strong>jumlah mol gas lebih sedikit</strong>. Sistem berusaha mengurangi tekanan dengan mengurangi jumlah total molekul gas.</li>
+                <li>Jika <strong>tekanan diperkecil</strong> (volume diperbesar), kesetimbangan akan bergeser ke arah yang memiliki <strong>jumlah mol gas lebih banyak</strong>. Sistem berusaha meningkatkan tekanan dengan menambah jumlah total molekul gas.</li>
+                <li>Jika <strong>jumlah mol gas di kedua sisi reaksi sama</strong> (Δn_gas = 0), perubahan tekanan atau volume <strong>tidak akan memengaruhi</strong> posisi kesetimbangan (meskipun konsentrasi semua gas akan berubah secara proporsional).</li>
+            </ul>
+
+            <div class="example-box">
+                <p>
+                    Perhatikan reaksi kesetimbangan antara dinitrogen tetraoksida (N₂O₄) yang tidak berwarna dan nitrogen dioksida (NO₂) yang berwarna cokelat:
+                </p>
+                <div class="equation-block">
+                    <span class="equation">N₂O₄(g) <span style="color: #757575;">(tak berwarna)</span> ⇌ 2NO₂(g) <span style="color: #8D6E63;">(cokelat)</span></span>
+                </div>
+                <p>
+                    Pada sisi reaktan, terdapat <strong>1 mol gas</strong> N₂O₄. Pada sisi produk, terdapat <strong>2 mol gas</strong> NO₂.
+                </p>
+                <ul class="summary-list">
+                    <li>Jika <strong>tekanan diperbesar</strong> (dengan memperkecil volume), kesetimbangan akan bergeser ke arah <strong>kiri</strong> (pembentukan N₂O₄) karena sisi kiri memiliki jumlah mol gas yang lebih sedikit (1 mol < 2 mol). Ini akan mengurangi tekanan total dalam sistem. Secara visual, gas NO₂ yang berwarna cokelat akan memudar karena sebagian besar berubah menjadi N₂O₄ yang tidak berwarna.</li>
+                    <li>Jika <strong>tekanan diperkecil</strong> (dengan memperbesar volume), kesetimbangan akan bergeser ke arah <strong>kanan</strong> (pembentukan NO₂) karena sisi kanan memiliki jumlah mol gas yang lebih banyak. Ini akan meningkatkan tekanan total dalam sistem. Warna cokelat akan semakin pekat.</li>
+                </ul>
+                <p>
+                    <strong>Catatan Penting:</strong> Penambahan gas inert (gas yang tidak bereaksi) pada <strong>volume konstan</strong> tidak memengaruhi pergeseran kesetimbangan karena tekanan parsial gas-gas yang bereaksi tidak berubah. Namun, jika gas inert ditambahkan pada <strong>tekanan konstan</strong> (yang akan menyebabkan volume membesar), ini akan memengaruhi kesetimbangan seperti halnya penurunan tekanan total.
+                </p>
+            </div>
+
+            <div class="key-takeaway">
+                <p>
+                    <strong>Prinsip Le Chatelier untuk Tekanan/Volume:</strong> Peningkatan tekanan (penurunan volume) menggeser kesetimbangan ke sisi dengan jumlah mol gas yang lebih sedikit. Penurunan tekanan (peningkatan volume) menggeser kesetimbangan ke sisi dengan jumlah mol gas yang lebih banyak.
+                </p>
+            </div>
+        </section>
+
+        <section class="principle-card">
+            <h3>4. Pengaruh Katalis pada Kesetimbangan</h3>
+            <p>
+                Meskipun sering dibahas dalam konteks kesetimbangan, katalis memiliki peran yang berbeda dibandingkan faktor-faktor di atas.
+            </p>
+            <p>
+                <strong>Katalis</strong> adalah zat yang mempercepat laju reaksi dengan menyediakan jalur reaksi alternatif yang memiliki energi aktivasi lebih rendah. Namun, katalis <strong>tidak memengaruhi posisi kesetimbangan</strong> atau jumlah produk yang terbentuk pada saat kesetimbangan tercapai.
+            </p>
+            <ul class="summary-list">
+                <li>Katalis mempercepat laju reaksi maju dan laju reaksi balik <strong>secara proporsional</strong>.</li>
+                <li>Artinya, sistem kesetimbangan akan <strong>mencapai kondisi setimbang lebih cepat</strong>, tetapi rasio reaktan dan produk pada saat setimbang akan <strong>tetap sama</strong> seperti tanpa katalis.</li>
+                <li>Katalis <strong>tidak mengubah nilai konstanta kesetimbangan (K)</strong> karena K hanya dipengaruhi oleh suhu.</li>
+            </ul>
+            <div class="key-takeaway">
+                <p>
+                    <strong>Katalis:</strong> Mempercepat pencapaian kesetimbangan (meningkatkan laju reaksi), tetapi <strong>tidak menggeser posisi kesetimbangan</strong> dan tidak mengubah nilai konstanta kesetimbangan.
+                </p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
+```

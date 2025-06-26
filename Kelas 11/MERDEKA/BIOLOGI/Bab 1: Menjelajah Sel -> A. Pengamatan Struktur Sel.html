@@ -1,0 +1,382 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Menjelajah Sel - B. Keterkaitan antara Struktur dan Fungsi Sel</title>
+    <style>
+        /* Light Mode Theme Colors */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            color: var(--secondary-accent-amber); /* Using amber for main title as in the book */
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .section-box {
+            background-color: #f9f9f9; /* Slightly off-white for sections */
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .exploration-box {
+            background-color: #fffaf0; /* Softer background for activity box */
+            border: 2px solid var(--secondary-accent-amber);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .exploration-box h3 {
+            color: var(--secondary-accent-amber);
+            margin-top: 0;
+            border-bottom: none;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5em;
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active::after {
+            content: '-';
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+
+        .accordion-content.active {
+            max-height: 500px; /* Adjust as needed for content length */
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .concept-highlight {
+            background-color: #e3f2fd; /* Light blue background */
+            padding: 10px 15px;
+            border-left: 5px solid var(--semantic-info);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .section-header-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: var(--text-primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: var(--primary-blue); /* Consistent blue */
+            color: var(--background-canvas);
+            margin-bottom: 20px;
+        }
+        .section-header-icon.amber {
+            background-color: var(--secondary-accent-amber);
+        }
+        .section-header-icon.purple {
+            background-color: #673AB7; /* A bit different for 'Ayo Bereksplorasi' */
+        }
+        .section-header-icon svg {
+            fill: var(--background-canvas);
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .accordion-header {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+            .accordion-content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .accordion-header {
+                font-size: 0.95em;
+                padding: 10px 12px;
+            }
+            .accordion-content {
+                padding: 10px;
+            }
+            .exploration-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Keterkaitan antara Struktur dan Fungsi Sel</h1>
+
+        <div class="section-box">
+            <p>
+                Ketika Anda membaca teks ini, berbagai organ vital dalam tubuh Anda bekerja secara harmonis. Misalnya, mata Anda berfungsi untuk menerima stimulus visual dari halaman ini, mengubahnya menjadi sinyal, dan mengirimkannya ke otak. Pada saat yang sama, otak Anda memproses sinyal-sinyal tersebut, memahami setiap kata, menyusun kalimat, dan membentuk pemahaman keseluruhan.
+            </p>
+            <p>
+                Aktivitas sederhana seperti membaca ternyata melibatkan kerja sama kompleks dari banyak bagian tubuh. Namun, pernahkah Anda berpikir, apa sebenarnya yang memungkinkan mata Anda melihat dan otak Anda berpikir? Jawabannya ada pada tingkat yang lebih fundamental: <strong>sel-sel</strong>.
+            </p>
+            <p class="concept-highlight">
+                Setiap organ tubuh, seperti mata dan otak, tidak berfungsi sebagai satu kesatuan homogen. Sebaliknya, mereka terdiri dari miliaran sel, masing-masing dengan bentuk dan peran yang sangat spesifik. Ini membawa kita pada pertanyaan mendasar dalam biologi:
+                <br><br>
+                <em>"Benarkah aktivitas suatu organ didukung oleh beragam sel dengan struktur yang berbeda? Apakah setiap sel tersebut memiliki fungsi yang sama?"</em>
+            </p>
+            <p>
+                Untuk memahami lebih dalam bagaimana struktur sel berkaitan erat dengan fungsinya dalam mendukung aktivitas organ, mari kita jelajahi salah satu contoh konkret melalui eksplorasi berikut.
+            </p>
+        </div>
+
+        <div class="exploration-box">
+            <div class="section-header-icon purple">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                </svg>
+                Ayo Bereksplorasi
+            </div>
+            <div class="section-header-icon amber">
+                Aktivitas 1.7
+            </div>
+            <h3>Memahami Keterkaitan antara Struktur dan Fungsi Sel</h3>
+
+            <p>
+                Mari kita fokus pada salah satu bagian mata yang sangat krusial dalam proses penglihatan: <strong>retina</strong>. Meskipun kita tidak memiliki Gambar 1.6 di sini, bayangkan sebuah diagram penampang mata yang menunjukkan bagian-bagiannya, termasuk retina yang terletak di bagian belakang mata.
+            </p>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Apa itu Retina Mata?
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Retina adalah lapisan jaringan peka cahaya yang terletak di bagian belakang mata Anda. Fungsinya seperti 'layar' bioskop kecil tempat gambar yang Anda lihat diproyeksikan. Namun, tidak seperti layar biasa, retina adalah bagian aktif yang mengubah cahaya menjadi sinyal listrik yang dapat dipahami oleh otak.
+                    </p>
+                    <p>
+                        Untuk melakukan tugas luar biasa ini, retina tersusun dari berbagai jenis sel yang bekerja sama dalam sebuah jaringan kompleks. Sel-sel ini tidak hanya menerima cahaya tetapi juga mulai memproses informasi visual sebelum mengirimkannya ke otak.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Terdiri dari Sel Apa Retina Mata?
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Retina bukanlah kumpulan sel yang seragam. Ia terdiri dari beberapa lapisan sel saraf yang sangat terspesialisasi. Dua jenis sel fotoreseptor utama yang bertanggung jawab untuk mendeteksi cahaya adalah:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Sel Batang (Rods):</strong> Bentuknya silindris atau menyerupai batang. Sel-sel ini sangat sensitif terhadap cahaya redup dan bertanggung jawab untuk penglihatan malam atau dalam kondisi minim cahaya (penglihatan skotopik). Mereka tidak dapat membedakan warna dan hanya menghasilkan citra hitam dan putih atau abu-abu.
+                        </li>
+                        <li>
+                            <strong>Sel Kerucut (Cones):</strong> Bentuknya menyerupai kerucut. Sel-sel ini kurang sensitif terhadap cahaya redup tetapi bertanggung jawab untuk penglihatan siang hari dan penglihatan warna (penglihatan fotopik). Ada tiga jenis sel kerucut, masing-masing peka terhadap panjang gelombang cahaya yang berbeda (merah, hijau, dan biru), memungkinkan kita melihat spektrum warna yang luas.
+                        </li>
+                    </ul>
+                    <p>
+                        Selain sel batang dan kerucut, retina juga memiliki sel-sel saraf lain seperti sel bipolar, sel ganglion, sel horizontal, dan sel amakrin, yang berfungsi untuk memproses dan mengirimkan sinyal visual dari fotoreseptor ke saraf optik, yang kemudian menuju otak.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Apakah Fungsi Sel Penyusun Retina Mata Sama atau Berbeda?
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Jelas, fungsi sel-sel penyusun retina <strong>berbeda</strong>. Meskipun semua berkontribusi pada penglihatan, spesialisasi mereka memungkinkan mata melakukan berbagai tugas:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Sel Batang</strong> berfungsi dalam deteksi gerakan dan penglihatan periferal, serta penglihatan dalam kondisi cahaya rendah. Struktur silindrisnya yang panjang dan mengandung pigmen rhodopsin memungkinkan penangkapan foton cahaya tunggal.
+                        </li>
+                        <li>
+                            <strong>Sel Kerucut</strong> berfungsi dalam deteksi warna, detail halus, dan penglihatan sentral (area makula dan fovea). Bentuk kerucut dan pigmen fotopsinnya (masing-masing untuk merah, hijau, biru) memungkinkan mereka merespons berbagai panjang gelombang cahaya secara spesifik, memberikan kita persepsi warna.
+                        </li>
+                    </ul>
+                    <p>
+                        Perbedaan dalam <strong>struktur</strong> (bentuk, jenis pigmen fotoreseptor) dari sel batang dan kerucut ini secara langsung mendukung perbedaan dalam <strong>fungsi</strong> mereka. Ini adalah contoh klasik dari prinsip <strong>keterkaitan antara struktur dan fungsi</strong> dalam biologi: bentuk suatu komponen biologis (dalam hal ini, sel) seringkali sangat disesuaikan untuk melakukan tugas spesifiknya secara efisien.
+                    </p>
+                    <p>
+                        Sel-sel saraf lain di retina juga memiliki struktur dan fungsi yang berbeda untuk memproses dan mengirimkan sinyal, memastikan bahwa informasi visual yang kompleks dapat diubah menjadi format yang dapat diinterpretasikan oleh otak. Tanpa keragaman seluler ini, penglihatan kita tidak akan sekompleks dan sekaya yang kita alami.
+                    </p>
+                </div>
+            </div>
+            <p>
+                Dari eksplorasi retina ini, kita dapat menyimpulkan bahwa keanekaragaman struktur seluler dalam suatu organ adalah kunci untuk memungkinkannya menjalankan berbagai fungsi kompleks. Ini adalah konsep fundamental dalam studi sel dan biologi secara keseluruhan!
+            </p>
+        </div>
+
+        <p class="note">
+            Bab 1 | Menjelajah Sel | Halaman 13
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+
+                    // Close all other open accordions
+                    accordionHeaders.forEach(otherHeader => {
+                        if (otherHeader !== this && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            otherHeader.nextElementSibling.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current accordion
+                    this.classList.toggle('active');
+                    content.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```

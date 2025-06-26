@@ -1,0 +1,354 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikatan Ion - Bab II Kimia SMA Kelas XI</title>
+    <style>
+        /* CSS Variables for Light Mode Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #ffffff; /* Explicitly white for content area */
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--text-primary); /* Main title usually not primary blue */
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2.0em;
+            border-left: 6px solid var(--primary-blue);
+            padding-left: 15px;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 1.2em;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 1.2em;
+            padding-left: 30px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.8em;
+        }
+
+        /* Specific Content Styling */
+        .highlight-box {
+            background-color: #e8f5e9; /* A light green tint for success/info */
+            border-left: 6px solid var(--semantic-success);
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .process-step {
+            background-color: #f5f5f5; /* Light gray for process steps */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .process-step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-number {
+            font-weight: bold;
+            color: white;
+            font-size: 1.4em;
+            flex-shrink: 0;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.05em;
+        }
+
+        .term {
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .equation {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: #eceff1; /* Light gray for code/equations */
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            display: block;
+            overflow-x: auto;
+            color: var(--text-primary);
+            font-size: 1.1em;
+            border: 1px dashed var(--border-divider);
+        }
+
+        .note {
+            font-style: italic;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            margin-top: 15px;
+            border-top: 1px dotted var(--border-divider);
+            padding-top: 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+                box-shadow: none; /* Less prominent shadow on small screens */
+                border: none;
+            }
+            h1 {
+                font-size: 2.2em;
+                padding-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.7em;
+                border-left-width: 4px;
+                padding-left: 10px;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            .process-step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 15px;
+            }
+            .step-number {
+                margin-bottom: 10px;
+            }
+            .step-content h3 {
+                margin-top: 0.5rem;
+            }
+            .highlight-box {
+                padding: 15px 20px;
+                margin: 20px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p, ul, ol {
+                font-size: 0.95em;
+            }
+            .step-number {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2em;
+            }
+            .equation {
+                font-size: 1em;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Ikatan Ion</h1>
+
+        <section id="introduction">
+            <h2>Pengantar Ikatan Ion</h2>
+            <p>Pernahkah kalian mengamati proses pembuatan garam dari air laut, seperti yang terjadi di area penggaraman tradisional? Air laut dijemur di bawah sinar matahari hingga mengering, meninggalkan butiran-butiran kristal putih. Kristal putih ini adalah garam dapur, yang secara kimia dikenal sebagai <span class="term">natrium klorida (NaCl)</span>. NaCl merupakan salah satu contoh senyawa yang terbentuk melalui <span class="term">ikatan ion</span>.</p>
+            <p>Lalu, bagaimana sebenarnya prinsip kerja pembentukan senyawa ion NaCl hingga dapat berwujud padat dan stabil seperti yang kita kenal?</p>
+        </section>
+
+        <section id="core-concept">
+            <h2>Memahami Ikatan Ion</h2>
+            <p>Pada intinya, <span class="term">ikatan ion</span> adalah jenis ikatan kimia yang terbentuk karena <span class="term">perpindahan elektron</span> secara total dari satu atom ke atom lain. Perpindahan ini menghasilkan ion-ion yang bermuatan berlawanan (positif dan negatif) yang kemudian saling tarik-menarik kuat melalui <span class="term">gaya elektrostatik</span>.</p>
+            <div class="highlight-box">
+                <p>Ikatan ion umumnya terbentuk antara <span class="term">atom logam</span>, yang cenderung melepaskan elektron untuk mencapai kestabilan, dan <span class="term">atom nonlogam</span>, yang cenderung menerima elektron untuk mencapai kestabilan.</p>
+            </div>
+            <p>Sebagai contoh, dalam pembentukan NaCl, unsur natrium (Na) adalah logam dan unsur klorin (Cl) adalah nonlogam. Mari kita telusuri prosesnya langkah demi langkah.</p>
+        </section>
+
+        <section id="formation-process">
+            <h2>Tahapan Pembentukan Senyawa Ion NaCl</h2>
+            <p>Pembentukan ikatan ion melibatkan serangkaian proses yang memengaruhi fase dan energi atom-atom yang terlibat. Proses pembentukan NaCl dapat dijelaskan dalam tahapan-tahapan berikut:</p>
+
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Sublimasi Logam Natrium</h3>
+                    <p>Logam natrium (<span class="term">Na</span>) awalnya berwujud padat (<span class="term">Na(s)</span>). Agar atom natrium siap untuk melepaskan elektronnya, ia perlu berada dalam fase gas.</p>
+                    <span class="equation">Na(s) &rarr; Na(g) &nbsp;&nbsp;&nbsp;&nbsp; (Proses Sublimasi)</span>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Ionilasi Natrium (Pelepasan Elektron)</h3>
+                    <p>Natrium adalah unsur logam alkali (Golongan IA) yang memiliki <span class="term">energi ionisasi</span> yang sangat rendah. Ini berarti atom natrium gas (<span class="term">Na(g)</span>) sangat mudah melepaskan satu elektron valensinya untuk mencapai konfigurasi elektron gas mulia (oktet/duplet) yang stabil.</p>
+                    <span class="equation">Na(g) &rarr; Na<sup>+</sup>(g) + e<sup>-</sup> &nbsp;&nbsp;&nbsp;&nbsp; (Pelepasan elektron valensi)</span>
+                    <p>Dengan kehilangan satu elektron, atom natrium berubah menjadi <span class="term">kation natrium</span> (<span class="term">Na<sup>+</sup></span>) yang bermuatan positif dan stabil.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Disosiasi Molekul Klorin</h3>
+                    <p>Klorin (<span class="term">Cl</span>) pada suhu dan tekanan standar berwujud molekul dwiatom (<span class="term">Cl<sub>2</sub>(g)</span>). Agar atom klorin dapat menerima elektron, molekul Cl<sub>2</sub> harus terlebih dahulu terurai (berdisosiasi) menjadi atom-atom klorin tunggal.</p>
+                    <span class="equation">Cl<sub>2</sub>(g) &rarr; 2Cl(g) &nbsp;&nbsp;&nbsp;&nbsp; (Proses Disosiasi)</span>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Pembentukan Ion Klorida (Penerimaan Elektron)</h3>
+                    <p>Atom klorin gas (<span class="term">Cl(g)</span>) adalah unsur nonlogam golongan VIIA yang memiliki <span class="term">afinitas elektron</span> tinggi. Ini berarti atom klorin sangat mudah menerima satu elektron yang dilepaskan oleh natrium untuk mencapai konfigurasi elektron gas mulia yang stabil.</p>
+                    <span class="equation">Cl(g) + e<sup>-</sup> &rarr; Cl<sup>-</sup>(g) &nbsp;&nbsp;&nbsp;&nbsp; (Penerimaan elektron)</span>
+                    <p>Setelah menerima elektron, atom klorin berubah menjadi <span class="term">anion klorida</span> (<span class="term">Cl<sup>-</sup></span>) yang bermuatan negatif dan stabil.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Pembentukan Senyawa Ion (Ikatan Ion Sejati)</h3>
+                    <p>Kation natrium (Na<sup>+</sup>) yang bermuatan positif dan anion klorida (Cl<sup>-</sup>) yang bermuatan negatif saling tarik-menarik kuat. Tarikan <span class="term">elektrostatik</span> ini membentuk <span class="term">ikatan ion</span>, menghasilkan senyawa ion natrium klorida padat (<span class="term">NaCl(s)</span>).</p>
+                    <span class="equation">Na<sup>+</sup>(g) + Cl<sup>-</sup>(g) &rarr; NaCl(s) &nbsp;&nbsp;&nbsp;&nbsp; (Membentuk ikatan ion dan kisi kristal)</span>
+                    <p>Energi yang dilepaskan saat ion-ion gas berkumpul membentuk struktur kristal padat disebut <span class="term">energi kisi</span>. Energi inilah yang sangat besar dan membuat senyawa ion seperti NaCl memiliki titik leleh tinggi serta berwujud padat.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Ringkasan Transfer Elektron:</strong></p>
+                <p>Atom Na (konfigurasi 2.8.1) <span class="term">memberikan</span> 1 elektron kepada atom Cl (konfigurasi 2.8.7). Setelah transfer, Na menjadi ion Na<sup>+</sup> (konfigurasi 2.8, stabil seperti Ne) dan Cl menjadi ion Cl<sup>-</sup> (konfigurasi 2.8.8, stabil seperti Ar). Ion-ion yang terbentuk ini kemudian saling menyusun diri dalam pola teratur membentuk kisi kristal NaCl padat.</p>
+            </div>
+        </section>
+
+        <section id="factors-to-consider">
+            <h2>Faktor-faktor Penting dalam Penulisan Pembentukan Ikatan Ion</h2>
+            <p>Ketika mempelajari atau menuliskan reaksi pembentukan ikatan ion, ada beberapa kaidah yang perlu diperhatikan untuk menjaga akurasi representasi kimia:</p>
+            <ol>
+                <li>
+                    <p><span class="term">Keseimbangan Jumlah Elektron:</span> Jumlah total elektron yang <span class="term">dilepaskan</span> oleh atom logam harus selalu <span class="term">setara</span> dengan jumlah total elektron yang <span class="term">diterima</span> oleh atom nonlogam. Ini memastikan bahwa senyawa ion yang terbentuk bersifat netral secara keseluruhan.</p>
+                </li>
+                <li>
+                    <p><span class="term">Bentuk Unsur Logam:</span> Unsur-unsur logam seperti Natrium (Na), Kalium (K), Litium (Li), atau Magnesium (Mg) umumnya ditulis dalam bentuk <span class="term">monoatom</span> (satu atom) setelah proses sublimasi menjadi fase gas saat melepaskan elektron.</p>
+                </li>
+                <li>
+                    <p><span class="term">Bentuk Unsur Nonlogam:</span> Sebagian besar unsur nonlogam yang umum bereaksi (misalnya Klorin (Cl), Fluorin (F), Bromin (Br), Oksigen (O)) pada awalnya ditulis dalam bentuk <span class="term">dwiatom</span> (molekul yang terdiri dari dua atom, seperti Cl<sub>2</sub>, F<sub>2</sub>, Br<sub>2</sub>, O<sub>2</sub>). Mereka harus mengalami disosiasi menjadi atom tunggal sebelum dapat menerima elektron. Namun, ada pengecualian seperti Karbon (C), Belerang (S), dan Fosfor (P<sub>4</sub>) yang dapat ditulis dalam bentuk atom tunggal atau molekul yang berbeda tergantung pada reaksinya.</p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="conclusion">
+            <h2>Kesimpulan</h2>
+            <p>Ikatan ion adalah konsep fundamental dalam kimia yang menjelaskan bagaimana banyak senyawa padat, seperti garam dapur, terbentuk. Prosesnya melibatkan transfer elektron lengkap dari logam ke nonlogam, menghasilkan ion-ion yang stabil dan kemudian saling tarik-menarik membentuk struktur kristal yang kuat. Pemahaman ini sangat penting untuk memprediksi sifat-sifat fisika dan kimia dari berbagai senyawa ion.</p>
+        </section>
+    </div>
+</body>
+</html>
+```

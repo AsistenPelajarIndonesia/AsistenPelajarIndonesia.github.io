@@ -1,0 +1,463 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pereaksi Pembatas - Stoikiometri Kimia Kelas XI</title>
+    <style>
+        /* Define color variables based on the lightMode theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.5em;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            color: var(--accent-green);
+            font-style: normal;
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid var(--semantic-info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .example-step {
+            background-color: #f5f5f5; /* Lighter grey */
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            border: 1px dashed var(--border-divider);
+        }
+
+        .example-step strong {
+            color: var(--primary-blue);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: var(--background-canvas);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            font-weight: bold;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        /* Specific styling for the ratio value to highlight it */
+        .ratio-value {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .conclusion {
+            background-color: var(--semantic-success);
+            color: var(--background-canvas);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .industrial-insight {
+            background-color: #fffde7; /* Light amber */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .industrial-insight h3 {
+            color: var(--secondary-accent-amber);
+            margin-top: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            background-color: var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            main {
+                margin: 1rem auto;
+                padding: 0 1rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1.5rem 0.5rem;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            main {
+                margin: 0.5rem auto;
+                padding: 0 0.8rem;
+            }
+            section {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pereaksi Pembatas</h1>
+        <p>Memahami Konsep Reaksi Kimia yang Tidak Selalu Sempurna</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Apa itu Pereaksi Pembatas?</h2>
+            <p>Dalam dunia nyata, tidak semua reaktan dalam suatu reaksi kimia akan habis secara bersamaan. Seringkali, salah satu reaktan akan habis terlebih dahulu, sementara reaktan lainnya masih tersisa. Reaktan yang habis ini disebut sebagai <strong>pereaksi pembatas</strong> (<em>limiting reactant</em>).</p>
+            <div class="highlight-box">
+                <p><strong>Definisi:</strong> <em>Pereaksi pembatas</em> adalah reaktan yang <em>habis terlebih dahulu</em> dalam suatu reaksi kimia dan <em>membatasi</em> jumlah produk yang dapat terbentuk. Reaktan yang tersisa disebut <em>pereaksi berlebih</em>.</p>
+            </div>
+            <p>Konsep ini sangat penting untuk memprediksi hasil suatu reaksi dan mengoptimalkan penggunaan bahan baku dalam skala industri.</p>
+        </section>
+
+        <section>
+            <h2>Analogi Resep Kue Pancong</h2>
+            <p>Mari kita pahami konsep pereaksi pembatas ini melalui analogi yang lebih sederhana: membuat kue pancong.</p>
+            <h3>Resep dan Bahan Tersedia</h3>
+            <p>Misalkan resep kue pancong membutuhkan rasio bahan sebagai berikut untuk 100 buah kue:</p>
+            <ul>
+                <li><strong>Tepung beras:</strong> 300 g</li>
+                <li><strong>Santan:</strong> 800 ml</li>
+                <li><strong>Kelapa parut:</strong> 400 g</li>
+            </ul>
+            <p>Namun, di rumah, Anda hanya memiliki bahan-bahan sebagai berikut:</p>
+            <ul>
+                <li><strong>Tepung beras tersedia:</strong> 500 g</li>
+                <li><strong>Santan tersedia:</strong> 1 liter (1000 ml)</li>
+                <li><strong>Kelapa parut tersedia:</strong> 600 g</li>
+            </ul>
+
+            <h3>Langkah-langkah Menentukan "Pereaksi Pembatas" (Bahan Pembatas)</h3>
+            <p>Untuk mengetahui bahan mana yang akan habis terlebih dahulu, kita bisa membandingkan jumlah bahan yang tersedia dengan jumlah yang dibutuhkan berdasarkan resep, atau dengan menghitung "rasio ketersediaan terhadap kebutuhan resep" untuk setiap bahan.</p>
+
+            <div class="example-step">
+                <strong>1. Hitung rasio untuk setiap bahan:</strong>
+                <ul>
+                    <li><strong>Tepung beras:</strong> (500 g tersedia / 300 g resep) = <span class="ratio-value">1,67</span></li>
+                    <li><strong>Santan:</strong> (1000 ml tersedia / 800 ml resep) = <span class="ratio-value">1,25</span></li>
+                    <li><strong>Kelapa parut:</strong> (600 g tersedia / 400 g resep) = <span class="ratio-value">1,50</span></li>
+                </ul>
+            </div>
+
+            <p>Tabel perbandingan ketersediaan dan kebutuhan resep:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reaktan (Bahan)</th>
+                        <th>Perbandingan Ketersediaan dan Kebutuhan Resep</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tepung beras</td>
+                        <td>500 g / 300 g = <span class="ratio-value">1,67</span></td>
+                    </tr>
+                    <tr>
+                        <td>Santan</td>
+                        <td>1000 ml / 800 ml = <span class="ratio-value">1,25</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kelapa parut</td>
+                        <td>600 g / 400 g = <span class="ratio-value">1,50</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="conclusion">
+                <p>Dari perhitungan di atas, terlihat bahwa <strong>santan</strong> memiliki rasio perbandingan ketersediaan terhadap kebutuhan resep yang <strong>terkecil</strong> (1,25). Ini berarti santan adalah "bahan pembatas" atau <em>pereaksi pembatas</em>. Santan akan habis terlebih dahulu, dan ketika santan habis, produksi kue pancong akan berhenti, meskipun tepung beras dan kelapa parut masih ada sisa.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Pereaksi Pembatas dalam Reaksi Kimia</h2>
+            <p>Konsep yang sama berlaku untuk reaksi kimia. Bedanya, kita tidak menggunakan gram atau liter secara langsung dalam rasio, melainkan <strong>jumlah mol</strong> reaktan dan <strong>koefisien stoikiometri</strong> dari persamaan reaksi yang setara.</p>
+
+            <h3>Langkah-langkah Menentukan Pereaksi Pembatas dalam Reaksi Kimia:</h3>
+            <ol>
+                <li><strong>Setarakan Persamaan Reaksi:</strong> Pastikan jumlah atom setiap unsur di sisi reaktan sama dengan di sisi produk.</li>
+                <li><strong>Hitung Mol Awal (Mol Tersedia) Setiap Reaktan:</strong> Konversi massa reaktan yang diketahui ke mol menggunakan rumus: `mol = massa / massa molar (Mr)`.</li>
+                <li><strong>Hitung Rasio Mol/Koefisien Setiap Reaktan:</strong> Bagi mol yang tersedia dari setiap reaktan dengan koefisien stoikiometrinya dalam persamaan reaksi yang setara.</li>
+                <li><strong>Identifikasi Pereaksi Pembatas:</strong> Reaktan yang memiliki nilai rasio mol/koefisien <em>terkecil</em> adalah pereaksi pembatas.</li>
+                <li><strong>Gunakan Pereaksi Pembatas:</strong> Semua perhitungan selanjutnya (misalnya, berapa banyak produk yang terbentuk atau berapa banyak reaktan berlebih yang tersisa) harus didasarkan pada jumlah mol pereaksi pembatas, karena dialah yang menentukan seberapa jauh reaksi dapat berlangsung.</li>
+            </ol>
+
+            <h3>Contoh 1: Reaksi Aluminium dengan Klorin</h3>
+            <p>Sebanyak 5,4 gram aluminium (Al) direaksikan dengan 7,1 gram gas klorin (Cl₂) menurut reaksi:</p>
+            <p style="text-align: center; font-weight: bold; font-size: 1.1em; color: var(--primary-blue);">2Al(s) + 3Cl₂(g) → 2AlCl₃(s)</p>
+            <p><em>(Diketahui Ar Al = 27 g/mol, Ar Cl = 35.5 g/mol, sehingga Mr Cl₂ = 71 g/mol)</em></p>
+
+            <div class="example-step">
+                <strong>1. Persamaan Reaksi Sudah Setara:</strong>
+                <p><code>2Al(s) + 3Cl₂(g) → 2AlCl₃(s)</code></p>
+            </div>
+            <div class="example-step">
+                <strong>2. Hitung Mol Awal Setiap Reaktan:</strong>
+                <ul>
+                    <li>Mol Al = Massa Al / Mr Al = 5,4 g / 27 g/mol = <strong>0,2 mol</strong></li>
+                    <li>Mol Cl₂ = Massa Cl₂ / Mr Cl₂ = 7,1 g / 71 g/mol = <strong>0,1 mol</strong></li>
+                </ul>
+            </div>
+            <div class="example-step">
+                <strong>3. Hitung Rasio Mol/Koefisien Setiap Reaktan:</strong>
+                <ul>
+                    <li>Al: Mol Al / Koefisien Al = 0,2 mol / 2 = <span class="ratio-value">0,1</span></li>
+                    <li>Cl₂: Mol Cl₂ / Koefisien Cl₂ = 0,1 mol / 3 = <span class="ratio-value">0,033</span></li>
+                </ul>
+            </div>
+
+            <p>Tabel Perbandingan Ketersediaan Mol dan Koefisien Reaksi:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reaktan</th>
+                        <th>Mol Tersedia</th>
+                        <th>Koefisien Reaksi</th>
+                        <th>Rasio Mol/Koefisien</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aluminium (Al)</td>
+                        <td>0,2 mol</td>
+                        <td>2</td>
+                        <td>0,2 / 2 = <span class="ratio-value">0,1</span></td>
+                    </tr>
+                    <tr>
+                        <td>Gas Klorin (Cl₂)</td>
+                        <td>0,1 mol</td>
+                        <td>3</td>
+                        <td>0,1 / 3 = <span class="ratio-value">0,033</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="conclusion">
+                <p>Dengan membandingkan rasio mol/koefisien, nilai <span class="ratio-value">0,033</span> (untuk Cl₂) adalah yang <strong>terkecil</strong>. Oleh karena itu, <strong>gas klorin (Cl₂)</strong> adalah <strong>pereaksi pembatas</strong>.</p>
+            </div>
+
+            <h3>Contoh 2: Reaksi Metana dengan Oksigen</h3>
+            <p>Gas metana (CH₄) direaksikan dengan gas oksigen (O₂) menurut reaksi:</p>
+            <p style="text-align: center; font-weight: bold; font-size: 1.1em; color: var(--primary-blue);">CH₄(g) + O₂(g) → CO₂(g) + H₂O(g)</p>
+            <p>Jika tersedia 8 gram CH₄ dan 16 gram O₂, tentukan pereaksi pembatasnya.</p>
+            <p><em>(Diketahui Ar C = 12, H = 1, O = 16. Maka Mr CH₄ = 16 g/mol, Mr O₂ = 32 g/mol)</em></p>
+
+            <div class="example-step">
+                <strong>1. Setarakan Persamaan Reaksi:</strong>
+                <p>Reaksi asli belum setara. Untuk menyetarakannya:</p>
+                <p style="text-align: center; font-weight: bold;"><code>CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g)</code></p>
+            </div>
+            <div class="example-step">
+                <strong>2. Hitung Mol Awal Setiap Reaktan:</strong>
+                <ul>
+                    <li>Mol CH₄ = Massa CH₄ / Mr CH₄ = 8 g / 16 g/mol = <strong>0,5 mol</strong></li>
+                    <li>Mol O₂ = Massa O₂ / Mr O₂ = 16 g / 32 g/mol = <strong>0,5 mol</strong></li>
+                </ul>
+            </div>
+            <div class="example-step">
+                <strong>3. Hitung Rasio Mol/Koefisien Setiap Reaktan:</strong>
+                <ul>
+                    <li>CH₄: Mol CH₄ / Koefisien CH₄ = 0,5 mol / 1 = <span class="ratio-value">0,5</span></li>
+                    <li>O₂: Mol O₂ / Koefisien O₂ = 0,5 mol / 2 = <span class="ratio-value">0,25</span></li>
+                </ul>
+            </div>
+
+            <p>Tabel Perbandingan Ketersediaan Mol dan Koefisien Reaksi:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gas</th>
+                        <th>Mol Tersedia</th>
+                        <th>Koefisien Reaksi</th>
+                        <th>Rasio Mol/Koefisien</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CH₄</td>
+                        <td>0,5 mol</td>
+                        <td>1</td>
+                        <td>0,5 / 1 = <span class="ratio-value">0,5</span></td>
+                    </tr>
+                    <tr>
+                        <td>O₂</td>
+                        <td>0,5 mol</td>
+                        <td>2</td>
+                        <td>0,5 / 2 = <span class="ratio-value">0,25</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="conclusion">
+                <p>Karena rasio mol/koefisien untuk O₂ (<span class="ratio-value">0,25</span>) lebih kecil dari CH₄ (<span class="ratio-value">0,5</span>), maka <strong>gas oksigen (O₂)</strong> adalah <strong>pereaksi pembatas</strong>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Pentingnya Pereaksi Pembatas dalam Industri</h2>
+            <div class="industrial-insight">
+                <h3>Optimalisasi dan Efisiensi</h3>
+                <p>Dalam skala industri, konsep pereaksi pembatas sangat krusial. Produsen perlu memaksimalkan jumlah produk yang dihasilkan sambil meminimalkan biaya bahan baku dan limbah.</p>
+                <ul>
+                    <li><strong>Pengurangan Biaya:</strong> Dengan mengidentifikasi pereaksi pembatas, perusahaan dapat memastikan bahwa bahan baku yang lebih mahal habis terpakai sepenuhnya, sehingga tidak ada pemborosan. Bahan yang lebih murah dapat sengaja disediakan dalam jumlah berlebih.</li>
+                    <li><strong>Meningkatkan Rendemen Produk:</strong> Mengetahui pereaksi pembatas memungkinkan perhitungan akurat tentang jumlah maksimum produk yang dapat terbentuk, membantu dalam perencanaan produksi.</li>
+                    <li><strong>Pengelolaan Limbah:</strong> Mengurangi jumlah bahan yang tersisa sebagai limbah, yang pada gilirannya mengurangi biaya pengolahan limbah dan dampak lingkungan.</li>
+                </ul>
+                <p>Singkatnya, pereaksi pembatas adalah kunci untuk mencapai efisiensi dan profitabilitas dalam proses kimia industri.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Pembelajaran Kimia SMA. Semua Hak Dilindungi.</p>
+    </footer>
+</body>
+</html>
+```

@@ -4,282 +4,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perkembangan Sosial, Ekonomi, dan Budaya pada Masa Sukarno (1950-1966)</title>
+    <title>Perkembangan Sosial, Ekonomi, dan Budaya pada Masa Sukarno</title>
     <style>
-        /* Global Styles & Reset */
+        /* Color Variables based on the provided theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Reset & Body Styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #FFFFFF; /* background_canvas */
-            color: #212121; /* text_primary */
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
             line-height: 1.6;
-            scroll-behavior: smooth;
+            min-height: 100vh; /* Ensures body takes full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically if it's short */
         }
 
         .container {
-            max-width: 1000px;
-            margin: 20px auto;
+            max-width: 960px;
+            width: 95%; /* Adjust width for smaller screens */
+            margin: 40px auto;
             padding: 20px;
-            background-color: #FFFFFF; /* background_canvas */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background-color: var(--background-canvas);
             border-radius: 8px;
-            border: 1px solid #E0E0E0; /* border_divider */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Slightly more prominent shadow */
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            color: #212121; /* text_primary */
-            margin-top: 25px;
+        h1, h2, h3 {
             margin-bottom: 15px;
-            font-weight: 600;
+            color: var(--primary-blue); /* Default heading color */
         }
 
-        h1 { font-size: 2.2em; text-align: center; color: #1976D2; /* primary_blue */ }
-        h2 { font-size: 1.8em; border-bottom: 2px solid #E0E0E0; /* border_divider */ padding-bottom: 8px; color: #1976D2; /* primary_blue */ }
-        h3 { font-size: 1.4em; color: #388E3C; /* accent_green */ }
-        h4 { font-size: 1.2em; color: #424242; /* text_secondary */ }
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-primary); /* Main title slightly different */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            color: var(--primary-blue);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
 
         p {
-            margin-bottom: 1em;
-            color: #424242; /* text_secondary */
+            margin-bottom: 15px;
+            color: var(--text-primary);
         }
 
         ul {
             list-style-type: disc;
-            margin-left: 25px;
-            padding-left: 0;
-            color: #424242; /* text_secondary */
-        }
-
-        ul li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: #212121; /* text_primary */
-        }
-
-        /* Interactive Details/Summary */
-        details {
-            background-color: #F9F9F9;
-            border: 1px solid #E0E0E0; /* border_divider */
-            border-radius: 6px;
+            margin-left: 25px; /* Slightly increased indent */
             margin-bottom: 15px;
-            padding: 10px 15px;
-            transition: all 0.3s ease;
+            color: var(--text-primary);
         }
 
-        details[open] {
-            background-color: #F0F4F8; /* A light blueish tint */
-            border-color: #1976D2; /* primary_blue */
+        li {
+            margin-bottom: 8px;
+            padding-left: 5px; /* Small padding for list items */
+        }
+
+        /* Interactive Accordion Styling */
+        details {
+            background-color: #fcfcfc; /* Slightly off-white for accordion background */
+            border: 1px solid var(--border-divider);
+            border-radius: 8px; /* Slightly more rounded corners */
+            margin-bottom: 18px; /* More space between accordions */
+            overflow: hidden; /* Ensures content stays within rounded borders */
+            transition: box-shadow 0.3s ease;
+        }
+
+        details:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Lift effect on hover */
         }
 
         summary {
-            font-weight: bold;
+            display: block; /* Makes summary full width clickable */
+            padding: 18px 25px;
+            background-color: var(--primary-blue);
+            color: var(--background-canvas); /* White text for blue background */
             cursor: pointer;
-            padding: 5px 0;
-            color: #1976D2; /* primary_blue */
-            outline: none; /* Remove outline on click */
+            font-weight: bold;
+            font-size: 1.25em; /* Slightly larger font */
+            position: relative;
+            user-select: none; /* Prevent text selection on click */
+            transition: background-color 0.3s ease, border-radius 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.2); /* Subtle internal divider */
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        details:not([open]) summary {
+             border-bottom-left-radius: 8px;
+             border-bottom-right-radius: 8px;
         }
 
         summary:hover {
-            color: #1565C0; /* Darker blue on hover */
+            background-color: #1565C0; /* Darker blue on hover */
         }
 
-        details ul {
-            margin-top: 10px;
-            margin-bottom: 5px;
-            border-top: 1px dashed #E0E0E0; /* border_divider */
-            padding-top: 10px;
-            list-style-type: circle;
+        summary::-webkit-details-marker,
+        summary::marker {
+            display: none; /* Hide default triangle/arrow icon */
         }
 
-        details ul li {
-            margin-bottom: 5px;
+        summary::after {
+            content: '+'; /* Custom expand icon */
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.8em; /* Larger icon */
+            line-height: 1; /* Ensure icon is vertically centered */
+            transition: transform 0.3s ease;
         }
 
-        /* Highlight box for key terms/info */
-        .highlight-box {
-            background-color: #FFFDE7; /* A very light amber */
-            border-left: 5px solid #FFB300; /* secondary_accent_amber */
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-            color: #424242; /* text_secondary */
+        details[open] summary::after {
+            content: '-'; /* Custom collapse icon */
+            transform: translateY(-50%) rotate(0deg); /* No rotation needed for - */
         }
 
-        .highlight-box strong {
-            color: #212121; /* text_primary */
+        .details-content {
+            padding: 20px 25px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            border-top: 1px solid var(--border-divider);
+            animation: fadeIn 0.4s ease-in-out; /* Smooth fade-in for content */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Semantic highlighting */
+        .highlight {
+            color: var(--semantic-info);
+            font-weight: bold;
+            background-color: rgba(33, 150, 243, 0.08); /* Light background for highlight */
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .warning {
+            color: var(--semantic-warning);
+            font-weight: bold;
+            background-color: rgba(255, 193, 7, 0.08); /* Light background for warning */
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .key-point {
+            font-weight: bold;
+            color: var(--accent-green);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                margin: 10px;
+                margin: 20px auto;
                 padding: 15px;
+                width: 98%; /* More width on medium screens */
             }
-            h1 { font-size: 1.8em; }
-            h2 { font-size: 1.5em; }
-            h3 { font-size: 1.2em; }
-            h4 { font-size: 1.1em; }
-            ul { margin-left: 20px; }
-            details { padding: 8px 12px; }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.6em;
+                margin-top: 25px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-top: 20px;
+            }
+
+            summary {
+                font-size: 1.1em;
+                padding: 15px 20px;
+            }
+
+            summary::after {
+                font-size: 1.5em;
+                right: 20px;
+            }
+
+            .details-content {
+                padding: 15px 20px;
+            }
         }
 
         @media (max-width: 480px) {
             .container {
-                margin: 5px;
+                margin: 10px auto;
                 padding: 10px;
+                width: calc(100% - 20px); /* Full width with small padding */
             }
-            h1 { font-size: 1.6em; }
-            h2 { font-size: 1.3em; }
-            h3 { font-size: 1.1em; }
-            p { font-size: 0.9em; }
-            ul { font-size: 0.9em; margin-left: 15px; }
-            details { padding: 6px 10px; }
+
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 1.3em;
+                margin-top: 20px;
+            }
+
+            h3 {
+                font-size: 1em;
+                margin-top: 15px;
+            }
+
+            summary {
+                font-size: 0.95em;
+                padding: 12px 15px;
+            }
+
+            summary::after {
+                font-size: 1.3em;
+                right: 15px;
+            }
+
+            .details-content {
+                padding: 12px 15px;
+            }
+
+            ul {
+                margin-left: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Perkembangan Sosial, Ekonomi, dan Budaya Masyarakat pada Masa Sukarno (1950-1966)</h1>
-        <p>Masa pemerintahan Presiden Sukarno, terutama pada dekade 1950-an hingga 1960-an, merupakan periode krusial bagi fondasi sosial, ekonomi, dan budaya Indonesia. Berbagai kebijakan dan inisiatif diambil untuk mewujudkan cita-cita kemerdekaan dan membangun identitas bangsa yang kuat. Berikut adalah uraian mendalam mengenai perubahan signifikan yang terjadi:</p>
 
-        <section id="asian-games-ganefo">
-            <h2>1. Asian Games ke-4 dan Penyelenggaraan GANEFO</h2>
-            <p>Tahukah kalian bahwa olahraga tidak hanya sekadar kompetisi, tetapi juga merupakan salah satu alat diplomasi paling efektif? Pada masa Demokrasi Terpimpin, Indonesia menunjukkan kepiawaiannya dalam diplomasi olahraga dengan menjadi tuan rumah perhelatan besar dan menggagas sebuah konsep baru.</p>
+        <p>Masa pemerintahan Presiden Sukarno, terutama pada dekade 1950-an hingga 1960-an, merupakan periode krusial bagi Indonesia dalam membangun fondasi negara pasca-kemerdekaan. Berbagai upaya pembangunan dilakukan di berbagai sektor untuk mewujudkan cita-cita bangsa. Berikut adalah uraian beberapa perubahan signifikan yang terjadi dalam aspek sosial, ekonomi, dan budaya pada era tersebut.</p>
 
-            <details>
-                <summary>Asian Games ke-4 (1962)</summary>
+        <details>
+            <summary>1. Asian Games ke-4 dan Penyelenggaraan GANEFO</summary>
+            <div class="details-content">
+                <p>Olah raga di masa Sukarno bukan hanya sekadar kompetisi, melainkan juga <span class="highlight">alat diplomasi yang strategis</span> untuk menunjukkan eksistensi Indonesia di kancah internasional.</p>
+                <h3>Asian Games ke-4 (1962)</h3>
                 <ul>
-                    <li><strong>Tuan Rumah:</strong> Indonesia didaulat menjadi tuan rumah Asian Games ke-4 pada tahun 1962.</li>
-                    <li><strong>Peserta:</strong> Acara ini dihadiri oleh 1.460 atlet dari 17 negara.</li>
-                    <li><strong>Persiapan Infrastruktur:</strong> Persiapan besar-besaran dimulai sejak tahun 1958, termasuk pembangunan Stadion Utama Senayan yang diresmikan oleh Sukarno pada 8 Februari 1960. Pembangunan stadion ini merupakan wujud kerja sama antara Indonesia dengan Uni Soviet.</li>
-                    <li><strong>Kontroversi dan Penarikan Diri dari IOC:</strong>
-                        <ul>
-                            <li>Terjadi permasalahan saat Asian Games berlangsung karena Indonesia tidak mengundang delegasi dari Taiwan dan Israel untuk menjadi peserta.</li>
-                            <li>Keputusan ini menyebabkan renggangnya hubungan Indonesia dengan Komite Olimpiade Internasional (IOC).</li>
-                            <li>Sebagai respons, Indonesia memilih untuk mundur dari keanggotaan IOC.</li>
-                        </ul>
-                    </li>
+                    <li>Indonesia dipercaya menjadi <span class="key-point">tuan rumah Asian Games ke-4 pada tahun 1962</span>.</li>
+                    <li>Perhelatan ini diikuti oleh <span class="key-point">1.460 atlet dari 17 negara</span>.</li>
+                    <li>Persiapan infrastruktur, termasuk pembangunan stadion utama Senayan, sudah dimulai sejak 1958 dan diresmikan pada 8 Februari 1960. Pembangunan stadion ini merupakan <span class="highlight">hasil kerja sama dengan Uni Soviet</span>.</li>
+                    <li>Terjadi <span class="warning">permasalahan diplomatik</span> saat Indonesia tidak mengundang Taiwan dan Israel, yang menyebabkan renggangnya hubungan dengan <span class="warning">International Olympic Committee (IOC)</span>. Akibatnya, Indonesia memilih <span class="warning">mundur dari keanggotaan IOC</span>.</li>
                 </ul>
-            </details>
-
-            <details>
-                <summary>GANEFO (Games of the New Emerging Forces)</summary>
-                <p>Pasca-Asian Games, Sukarno dan jajaran pemerintah, khususnya Maladi (Menteri Olahraga), bertekad untuk menciptakan wadah baru yang lebih sesuai dengan visi politik luar negeri Indonesia, yaitu solidaritas antarnegara "New Emerging Forces."</p>
+                <h3>GANEFO (Games of the New Emerging Forces)</h3>
                 <ul>
-                    <li><strong>Soekarno Cup (1963):</strong> Sebagai langkah awal, Sukarno menyelenggarakan kompetisi sepak bola internasional bertajuk Soekarno Cup pada tahun 1963, bertepatan dengan minggu Konferensi Olimpiade. Perhelatan ini sukses besar dan semakin mempererat hubungan baik antarpejabat negara-negara Asia-Afrika.</li>
-                    <li><strong>Penyelenggaraan GANEFO I:</strong>
-                        <ul>
-                            <li><strong>Waktu dan Lokasi:</strong> GANEFO diadakan di Jakarta pada 10—22 November 1963.</li>
-                            <li><strong>Peserta:</strong> Diikuti oleh 2.700 atlet dari 51 negara.</li>
-                            <li><strong>Filosofi:</strong> GANEFO menyimbolkan rasa solidaritas dan persatuan antarnegara-negara "New Emerging Forces" (kekuatan-kekuatan baru yang sedang bangkit).</li>
-                            <li><strong>Dampak:</strong> GANEFO membuktikan kepada dunia, khususnya IOC, bahwa Indonesia memiliki kapasitas untuk menyelenggarakan pesta olahraga berskala internasional layaknya Olimpiade, sekaligus menjadi platform revolusi diplomasi olahraga yang mengedepankan solidaritas negara-negara berkembang.</li>
-                        </ul>
-                    </li>
+                    <li>Sebagai respons atas masalah dengan IOC, Sukarno menggagas <span class="key-point">Soekarno Cup</span> (kompetisi sepak bola internasional) pada tahun 1963.</li>
+                    <li>Kesuksesan Soekarno Cup mendorong optimisme untuk menyelenggarakan <span class="key-point">GANEFO</span>.</li>
+                    <li><span class="key-point">GANEFO pertama</span> diselenggarakan di Jakarta pada <span class="key-point">10—22 November 1963</span>.</li>
+                    <li>Diikuti oleh <span class="key-point">2.700 atlet dari 51 negara</span>, GANEFO menjadi simbol <span class="highlight">solidaritas antarnegara New Emerging Forces</span>.</li>
+                    <li>GANEFO membuktikan kemampuan Indonesia dalam menyelenggarakan pesta olahraga setara Olimpiade, sekaligus menjadi <span class="highlight">revolusi dalam diplomasi olahraga</span> Indonesia.</li>
                 </ul>
-            </details>
-        </section>
-
-        <section id="proyek-mercusuar">
-            <h2>2. Pembangunan Proyek Mercusuar</h2>
-            <p>Pada masa pemerintahan Sukarno, pembangunan infrastruktur besar-besaran, yang dikenal sebagai "Proyek Mercusuar," menjadi fokus utama. Proyek-proyek ini didanai salah satunya dari pampasan perang Jepang, dengan tujuan menunjukkan kemajuan dan kemegahan Indonesia di mata dunia.</p>
-
-            <details>
-                <summary>Dana Pampasan Perang Jepang</summary>
-                <ul>
-                    <li><strong>Kesepakatan:</strong> Pada 20 Januari 1958, Indonesia menyepakati hasil pampasan perang senilai 80.308,8 juta yen atau setara 223,08 juta USD.</li>
-                    <li><strong>Bentuk Pembayaran:</strong> Dana ini dibayarkan selama 12 tahun dalam bentuk modal, barang, dan jasa.</li>
-                    <li><strong>Tujuan:</strong> Sebagai bentuk kompensasi atas 3,5 tahun penjajahan Jepang di Indonesia.</li>
-                </ul>
-            </details>
-
-            <details>
-                <summary>Contoh Proyek-Proyek Mercusuar</summary>
-                <ul>
-                    <li><strong>Proyek 3K (Karangkates, Konto, dan Kanan):</strong>
-                        <ul>
-                            <li>Ini adalah proyek bendungan komprehensif yang dialokasikan sebesar 28,35 juta USD.</li>
-                            <li>Namun, proyek ini tidak dapat diselesaikan sesuai rencana awal, sehingga pemerintah Jepang memberikan tambahan pinjaman dalam bentuk mata uang yen.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Pembangunan Hotel-Hotel Internasional:</strong>
-                        <ul>
-                            <li><strong>Hotel Indonesia:</strong> Menjadi salah satu sumber devisa negara hingga tahun 1969 karena semua tamu diwajibkan membayar menggunakan mata uang dolar Amerika.</li>
-                            <li><strong>Hotel Bali Beach</strong></li>
-                            <li><strong>Hotel Samudera Beach</strong></li>
-                        </ul>
-                    </li>
-                    <li><strong>Toserba Sarinah:</strong> Sebuah pusat perbelanjaan yang menjual barang-barang mewah dengan harga tinggi pada masa itu, mencerminkan gaya hidup modern dan prestise.</li>
-                </ul>
-            </details>
-
-            <div class="highlight-box">
-                <p><strong>Komite Pampasan Pemerintah Indonesia (1958-1965):</strong> Untuk mengelola dana pampasan perang yang sangat besar ini, dibentuklah sebuah komite. Namun, sayangnya, banyak anggota komite ini terlibat skandal dengan pihak Jepang, mengakibatkan kurangnya transparansi dalam pembayaran dan pengeluaran dana tersebut.</p>
             </div>
-        </section>
+        </details>
 
-        <section id="kebijakan-kesehatan">
-            <h2>3. Kebijakan Kesehatan</h2>
-            <p>Aspek kesehatan menjadi prioritas penting dalam pembangunan Indonesia pada dekade awal kemerdekaan. Tujuannya adalah mewujudkan pengobatan dan pelayanan kesehatan yang dapat dijangkau oleh seluruh lapisan masyarakat.</p>
-
-            <details>
-                <summary>Bandung Plan</summary>
+        <details>
+            <summary>2. Pembangunan Proyek Mercusuar</summary>
+            <div class="details-content">
+                <p>Pembangunan proyek-proyek besar di era Sukarno banyak dibiayai dari <span class="highlight">dana pampasan perang</span> yang disepakati dengan Jepang pada 20 Januari 1958. Dana sebesar <span class="key-point">80.308,8 juta yen atau setara 223,08 juta USD</span> ini dibayarkan selama 12 tahun dalam bentuk modal, barang, dan jasa, sebagai kompensasi atas penjajahan Jepang di Indonesia.</p>
+                <h3>Proyek-proyek Utama:</h3>
                 <ul>
-                    <li><strong>Penggagas:</strong> Dirumuskan oleh dr. Johannes Leimena dan Abdoel Patah.</li>
-                    <li><strong>Konsep Utama:</strong> Menyatakan bahwa pelayanan kesehatan, baik pada aspek preventif (pencegahan) maupun kuratif (pengobatan), tidak boleh dipisahkan. Konsep ini berlaku untuk pelayanan di rumah sakit maupun di pos-pos kesehatan.</li>
-                    <li><strong>Implementasi:</strong>
+                    <li><strong>Proyek 3K (Karangkates, Konto, dan Kanan):</strong> Ini adalah proyek bendungan komprehensif yang menelan biaya <span class="key-point">28,35 juta USD</span>. Namun, proyek ini <span class="warning">tidak dapat diselesaikan sepenuhnya</span> dan membutuhkan pinjaman tambahan dari Jepang.</li>
+                    <li><strong>Hotel-Hotel Berstandar Internasional:</strong>
                         <ul>
-                            <li>Diterapkan dalam pendidikan kedokteran mulai tahun 1952.</li>
-                            <li>Mulai diintegrasikan di pusat-pusat kesehatan masyarakat.</li>
+                            <li><span class="key-point">Hotel Indonesia</span> menjadi ikon penting dan sumber devisa negara hingga 1969, karena semua tamu diharuskan membayar menggunakan <span class="key-point">dolar Amerika</span>.</li>
+                            <li><span class="key-point">Hotel Bali Beach</span>.</li>
+                            <li><span class="key-point">Hotel Samudera Beach</span>.</li>
                         </ul>
                     </li>
-                    <li><strong>Wujud Integrasi:</strong> Salah satu wujud nyata dari integrasi ini adalah keberadaan <strong>Pos Pelayanan Terpadu (Posyandu)</strong>, yang masih berfungsi hingga saat ini.</li>
+                    <li><strong>Toserba Sarinah:</strong> Pusat perbelanjaan yang menjual <span class="key-point">barang-barang mewah</span> dengan harga tinggi pada masanya.</li>
                 </ul>
-            </details>
-        </section>
-
-        <section id="kebijakan-pendidikan">
-            <h2>4. Kebijakan Pendidikan</h2>
-            <p>Pendidikan juga mengalami reformasi signifikan untuk membangun sumber daya manusia yang berkualitas dan sesuai dengan semangat nasionalisme.</p>
-
-            <details>
-                <summary>Undang-Undang Nomor 4 Tahun 1950</summary>
-                <p>UU ini ditetapkan oleh Menteri Pendidikan, Pengajaran, dan Kebudayaan, Mr. Wongsonegoro, serta Menteri Agama, H. Wahid Hasyim, membawa perubahan fundamental dalam sistem pendidikan:</p>
-                <ul>
-                    <li><strong>Pendidikan Agama:</strong> Diberikan pada Sekolah Rendah (umum) dan Lanjutan (Kejuruan), dimulai dari siswa kelas 4, dengan alokasi maksimal 2 jam per minggu.</li>
-                    <li><strong>Penggunaan Bahasa Daerah:</strong> Digunakan sebagai pendamping bahasa Indonesia pada siswa kelas 1, 2, dan 3 Sekolah Rakyat.</li>
-                    <li><strong>Penggunaan Bahasa Indonesia:</strong> Diterapkan secara menyeluruh sejak kelas 1 Sekolah Rakyat sampai ke perguruan tinggi.</li>
-                    <li><strong>Penghapusan Bahasa Belanda:</strong> Bahasa Belanda dihapuskan dari sistem pendidikan di Indonesia.</li>
-                    <li><strong>Penyesuaian Sistem Lama:</strong> Beberapa sekolah yang masih menganut sistem lama warisan Belanda diwajibkan untuk mengikuti sistem baru sejak tahun 1951.</li>
-                </ul>
-            </details>
-
-            <details>
-                <summary>Kurikulum dan Program Pendidikan</summary>
-                <ul>
-                    <li><strong>Rentjana Pelajaran Terurai 1952:</strong> Kurikulum ini merupakan penyempurnaan dari Kurikulum 1947, dengan pendekatan sistem pendidikan nasional yang mengintegrasikan materi pelajaran sesuai dengan kehidupan sehari-hari.</li>
-                    <li><strong>Kebijakan Demokrasi Pendidikan dan Wajib Belajar 6 Tahun:</strong>
-                        <ul>
-                            <li>Diterapkan kepada seluruh warga negara yang sudah berumur 8 tahun.</li>
-                            <li>Pemerintah Indonesia berupaya keras mengurangi tingginya angka buta huruf dan meningkatkan kualitas sumber daya manusia.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Jalur Pendidikan Non-Formal:</strong> Pendidikan masyarakat melalui jalur di luar sekolah formal juga digalakkan melalui program:
-                        <ul>
-                            <li><strong>Kursus Pemberantasan Buta Huruf (PBH)</strong></li>
-                            <li><strong>Kursus Pendidikan Umum A (KPU/A)</strong> setara SD</li>
-                            <li><strong>Kursus Pendidikan Umum B (KPU/B)</strong> setara SMP</li>
-                        </ul>
-                    </li>
-                </ul>
-            </details>
-
-            <div class="highlight-box" style="border-left-color: #D32F2F; /* semantic_error */ background-color: #FFEBEE; /* Light red */">
-                <p><strong>Tantangan dalam Pendidikan (1959-1967):</strong> Perkembangan politik dan ekonomi pada periode 1959—1967 menghadapi masa sulit. Terjadi inflasi hingga 600% yang menyebabkan alokasi anggaran untuk pendidikan semakin mengecil. Akibatnya, kebijakan wajib belajar tidak dapat terlaksana dengan baik seiring dengan kegagalan bidang ekonomi dan politik.</p>
+                <p>Untuk mengelola dana pampasan perang yang besar ini, dibentuk <span class="key-point">Komite Pampasan Pemerintah Indonesia (1958-1965)</span>. Namun, sayangnya, banyak anggota komite <span class="warning">terlibat skandal</span> yang menyebabkan <span class="warning">kurangnya transparansi</span> dalam pembayaran dan pengeluaran dana tersebut.</p>
             </div>
-        </section>
+        </details>
+
+        <details>
+            <summary>3. Kebijakan Kesehatan</summary>
+            <div class="details-content">
+                <p>Aspek kesehatan mendapatkan perhatian serius pada dekade pertama kedaulatan RI. Untuk mewujudkan pelayanan kesehatan yang merata dan terjangkau, <span class="key-point">dr. Johannes Leimena</span> dan Abdoel Patah merumuskan program yang dikenal sebagai <span class="highlight">Bandung Plan</span>.</p>
+                <h3>Konsep Bandung Plan:</h3>
+                <ul>
+                    <li>Menyatakan bahwa pelayanan kesehatan, baik pada aspek <span class="key-point">preventif (pencegahan)</span> maupun <span class="key-point">kuratif (pengobatan)</span>, tidak boleh dipisahkan.</li>
+                    <li>Pelayanan kesehatan harus mencakup baik yang berada di <span class="key-point">rumah sakit</span> maupun di <span class="key-point">pos-pos kesehatan masyarakat</span>.</li>
+                    <li>Konsep ini mulai diterapkan pada <span class="key-point">pendidikan kedokteran sejak tahun 1952</span> dan secara bertahap diintegrasikan ke pusat-pusat kesehatan masyarakat.</li>
+                    <li>Salah satu wujud nyata dari integrasi ini di kemudian hari adalah keberadaan <span class="key-point">pos pelayanan terpadu (posyandu)</span>.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>4. Kebijakan Pendidikan</summary>
+            <div class="details-content">
+                <p>Sistem pendidikan di Indonesia mengalami perubahan signifikan di bawah kepemimpinan Menteri Pendidikan, Pengajaran, dan Kebudayaan <span class="key-point">Mr. Wongsonegoro</span> dan Menteri Agama <span class="key-point">H. Wahid Hasyim</span>, dengan penetapan <span class="highlight">Undang-Undang No. 4 Tahun 1950</span>.</p>
+                <h3>Perubahan Utama dalam Sistem Pendidikan (UU No. 4 Tahun 1950):</h3>
+                <ul>
+                    <li><span class="key-point">Pelajaran pendidikan agama</span> diwajibkan pada Sekolah Rendah (umum) dan Lanjutan (Kejuruan) mulai kelas 4, dengan maksimal 2 jam per minggu.</li>
+                    <li>Pada siswa kelas 1, 2, dan 3 Sekolah Rakyat, <span class="key-point">bahasa daerah digunakan sebagai pendamping bahasa Indonesia</span>.</li>
+                    <li><span class="key-point">Bahasa Indonesia</span> diterapkan sebagai bahasa pengantar sejak kelas 1 Sekolah Rakyat sampai ke perguruan tinggi.</li>
+                    <li><span class="warning">Bahasa Belanda dihapuskan</span> dari sistem pendidikan.</li>
+                    <li>Sekolah-sekolah yang masih menganut sistem lama warisan Belanda diwajibkan mengikuti sistem baru sejak 1951.</li>
+                </ul>
+                <h3>Penyempurnaan Kurikulum dan Program Wajib Belajar:</h3>
+                <ul>
+                    <li>Pada tahun 1952, kurikulum disempurnakan menjadi <span class="key-point">Rentjana Pelajaran Terurai 1952</span>, yang mengintegrasikan materi pelajaran dengan kehidupan sehari-hari, mengarah pada sistem pendidikan nasional.</li>
+                    <li>Kebijakan <span class="key-point">demokrasi pendidikan</span> dan <span class="key-point">program wajib belajar 6 tahun</span> diterapkan untuk seluruh warga negara berusia 8 tahun ke atas.</li>
+                    <li>Pemerintah berupaya mengurangi tingkat <span class="key-point">buta huruf</span> dan meningkatkan <span class="key-point">kualitas sumber daya manusia</span>.</li>
+                    <li>Pendidikan non-formal juga digalakkan melalui program seperti <span class="key-point">Pemberantasan Buta Huruf (PBH)</span>, <span class="key-point">Kursus Pendidikan Umum A (KPU/A setara SD)</span>, dan <span class="key-point">Kursus Pendidikan Umum B (KPU/B setara SMP)</span>.</li>
+                </ul>
+                <p>Meskipun demikian, periode <span class="warning">1959—1967</span> mengalami masa sulit di bidang ekonomi. Terjadi <span class="warning">inflasi hingga 600%</span> yang mengakibatkan alokasi anggaran untuk pendidikan <span class="warning">semakin mengecil</span>. Akibatnya, kebijakan wajib belajar tidak dapat terlaksana dengan optimal seiring dengan <span class="warning">kegagalan ekonomi dan politik</span> saat itu.</p>
+            </div>
+        </details>
+
+        <p>Dengan berbagai upaya dan tantangan, masa pemerintahan Sukarno telah meletakkan dasar penting bagi pembangunan sosial, ekonomi, dan budaya Indonesia, mencerminkan semangat juang dan visi untuk menjadi bangsa yang berdaulat dan berdikari.</p>
     </div>
 </body>
 </html>

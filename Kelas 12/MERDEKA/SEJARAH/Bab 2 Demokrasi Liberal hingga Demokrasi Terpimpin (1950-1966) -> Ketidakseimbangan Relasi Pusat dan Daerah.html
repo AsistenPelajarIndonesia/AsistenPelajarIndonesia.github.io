@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bab 2: Ketidakseimbangan Relasi Pusat dan Daerah (1950-1966)</title>
+    <title>Sejarah Indonesia: Demokrasi Liberal hingga Terpimpin (1950-1966)</title>
     <style>
+        /* CSS Variables based on the provided theme */
         :root {
-            /* Light Mode Colors */
-            --bg-canvas: #FFFFFF;
+            --background-canvas: #FFFFFF;
             --text-primary: #212121;
             --text-secondary: #424242;
             --text-tertiary: #757575;
@@ -22,334 +22,337 @@
             --semantic-info: #2196F3;
         }
 
+        /* Base Styles */
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-canvas);
+            background-color: var(--background-canvas);
             color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for potential anchor links */
         }
 
+        /* Container for content */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 20px;
-        }
-
-        header {
-            background-color: var(--primary-blue);
-            color: var(--bg-canvas);
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        header p {
-            margin: 5px 0 0;
-            font-size: 1.1em;
-            color: var(--border-divider); /* Lighter text for secondary info */
-        }
-
-        main {
-            padding: 20px 0;
-        }
-
-        section {
-            background-color: var(--bg-canvas);
+            background-color: var(--background-canvas);
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            margin-bottom: 25px;
-            padding: 25px;
-            border-left: 5px solid var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
         }
 
-        section h2 {
+        /* Headings */
+        h1, h2, h3 {
+            color: var(--text-primary);
+            margin-top: 2em;
+            margin-bottom: 0.8em;
+            font-weight: 600; /* Slightly bolder headings */
+        }
+
+        h1 {
+            font-size: 2.8em; /* Larger main title */
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue); /* Stronger border for main title */
+            padding-bottom: 15px;
             color: var(--primary-blue);
-            border-bottom: 2px solid var(--border-divider);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-green); /* Green accent for major sections */
+            border-bottom: 1px solid var(--border-divider);
             padding-bottom: 10px;
-            margin-top: 0;
-            font-size: 1.8em;
+            margin-top: 2.5em; /* More space above major sections */
         }
 
-        section p {
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-        }
-
-        .subsection-title {
-            color: var(--accent-green);
-            font-size: 1.4em;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            border-bottom: 1px dashed var(--border-divider);
+        h3 {
+            font-size: 1.7em;
+            color: var(--text-secondary); /* Secondary text color for subsections */
+            margin-top: 2em;
+            border-bottom: 1px dashed var(--border-divider); /* Dashed border for sub-sections */
             padding-bottom: 5px;
         }
 
-        /* Interactive Details/Summary Styling */
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 1em;
+            font-size: 1.1em;
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style-type: disc; /* Standard disc bullets */
+            margin-left: 30px;
+            margin-bottom: 1em;
+            color: var(--text-primary);
+        }
+
+        li {
+            margin-bottom: 0.7em;
+            font-size: 1.1em;
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            border-top: 4px solid var(--border-divider); /* Thicker divider */
+            margin: 50px 0;
+            opacity: 0.7; /* Slightly transparent */
+        }
+
+        /* Highlight Boxes (for callouts or important notes) */
+        .highlight-box {
+            background-color: rgba(25, 118, 210, 0.08); /* primary_blue with transparency */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 6px;
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+        }
+
+        .note-box {
+            background-color: rgba(56, 142, 60, 0.08); /* accent_green with transparency */
+            border-left: 6px solid var(--accent-green);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 6px;
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Interactive Elements (Details/Summary for expandable content) */
         details {
-            background-color: var(--bg-canvas);
+            background-color: var(--background-canvas);
             border: 1px solid var(--border-divider);
             border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            margin-bottom: 1.5em; /* More space between details blocks */
+            padding: 18px 25px; /* More padding */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.3s ease-in-out; /* Smooth transition */
         }
 
         details[open] {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Deeper shadow when open */
         }
 
         summary {
-            padding: 18px 25px;
-            cursor: pointer;
             font-weight: bold;
-            font-size: 1.15em;
-            color: var(--text-primary);
-            background-color: var(--border-divider); /* Slightly different background for summary */
-            list-style: none; /* Remove default marker */
-            position: relative;
-            user-select: none;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
+            padding: 5px 0;
+            font-size: 1.25em; /* Slightly larger summary text */
+            color: var(--primary-blue);
+            outline: none; /* Remove default focus outline */
+            display: flex; /* For alignment of content */
+            align-items: center;
         }
 
-        summary:hover {
-            background-color: var(--border-divider); /* Make it lighter on hover */
-            opacity: 0.9;
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
+        summary::marker {
+            content: ''; /* Hide default marker */
         }
 
         summary::before {
-            content: '►';
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%) rotate(0deg);
-            transition: transform 0.3s ease;
-            color: var(--primary-blue);
+            content: '►'; /* Custom arrow icon */
+            display: inline-block;
+            margin-right: 15px;
+            transition: transform 0.2s ease-in-out;
+            color: var(--accent-green); /* Green arrow */
         }
 
         details[open] summary::before {
-            transform: translateY(-50%) rotate(90deg);
+            transform: rotate(90deg); /* Rotate arrow when open */
         }
 
-        .details-content {
-            padding: 20px 25px;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border-divider);
+        summary:hover {
+            color: var(--primary-blue);
+            text-decoration: underline; /* Underline on hover */
         }
 
-        .details-content ul {
-            list-style-type: disc;
-            padding-left: 25px;
-            margin-top: 10px;
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+            margin-bottom: 15px; /* More space below summary when open */
+            padding-bottom: 10px;
         }
 
-        .details-content ul li {
-            margin-bottom: 8px;
-            color: var(--text-secondary);
+        details p, details ul {
+            padding-left: 20px; /* Indent content inside details */
+            margin-top: 15px;
         }
 
-        .note {
-            background-color: rgba(255, 179, 0, 0.1); /* secondary_accent_amber with transparency */
-            border-left: 5px solid var(--secondary-accent-amber);
-            padding: 15px 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            color: var(--text-secondary);
-        }
-
-        .note strong {
-            color: var(--secondary-accent-amber);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 30px;
-            background-color: var(--primary-blue);
-            color: var(--bg-canvas);
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Responsive Design */
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
+            .container {
+                margin: 15px;
+                padding: 18px;
             }
-
-            header p {
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            p, li, summary {
                 font-size: 1em;
             }
-
-            section {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-
-            section h2 {
-                font-size: 1.5em;
-            }
-
-            summary {
+            .highlight-box, .note-box {
                 padding: 15px 20px;
-                font-size: 1.05em;
+                margin: 20px 0;
             }
-
+            details {
+                padding: 15px 20px;
+            }
             summary::before {
-                right: 15px;
-            }
-
-            .details-content {
-                padding: 15px 20px;
+                margin-right: 10px;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 10px;
+                margin: 10px;
+                padding: 15px;
             }
-
-            header h1 {
+            h1 {
                 font-size: 1.8em;
+                padding-bottom: 10px;
             }
-
-            header p {
-                font-size: 0.9em;
+            h2 {
+                font-size: 1.5em;
+                margin-top: 2em;
             }
-
-            section {
-                padding: 10px;
+            h3 {
+                font-size: 1.2em;
+                margin-top: 1.5em;
             }
-
-            section h2 {
-                font-size: 1.3em;
+            p, li, summary {
+                font-size: 0.95em;
             }
-
-            summary {
-                padding: 12px 15px;
-                font-size: 1em;
+            ul {
+                margin-left: 20px;
             }
-
-            summary::before {
-                right: 10px;
-            }
-
-            .details-content {
-                padding: 12px 15px;
+            details p, details ul {
+                padding-left: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Sejarah Indonesia: Tantangan Integrasi</h1>
-            <p>Bab 2: Demokrasi Liberal hingga Demokrasi Terpimpin (1950-1966)</p>
-            <p>Ketidakseimbangan Relasi Pusat dan Daerah serta Ancaman Disintegrasi</p>
-        </div>
-    </header>
+    <div class="container">
+        <h1>Dinamika Pusat dan Daerah: Era Demokrasi Liberal hingga Terpimpin (1950-1966)</h1>
+        <p>Periode antara tahun 1950 hingga 1966 merupakan babak krusial dalam sejarah Republik Indonesia, di mana bangsa ini melalui transisi fundamental dari sistem Demokrasi Liberal yang bersifat parlementer menuju Demokrasi Terpimpin yang lebih otoriter di bawah kepemimpinan Presiden Sukarno. Dalam kurun waktu ini, Indonesia tidak hanya berupaya membangun fondasi negaranya, tetapi juga dihadapkan pada serangkaian gejolak internal yang mengancam keutuhan dan stabilitas nasional. Isu utama yang menonjol adalah ketidakseimbangan relasi antara pemerintah pusat di Jakarta dengan daerah-daerah, yang seringkali memicu ketidakpuasan dan berujung pada ancaman disintegrasi. Memahami kompleksitas tantangan ini adalah kunci untuk menguraikan perjuangan bangsa dalam mempertahankan persatuan di tengah perbedaan ideologi dan kepentingan.</p>
 
-    <main class="container">
-        <section>
-            <h2>Pengantar: Gejolak Pasca-Kemerdekaan</h2>
-            <p>Periode 1950 hingga 1966 adalah fase krusial dalam pembentukan identitas dan stabilitas Republik Indonesia. Meskipun telah meraih kemerdekaan dari penjajahan, Indonesia dihadapkan pada tantangan internal yang tak kalah serius: ketidakseimbangan relasi antara pemerintah pusat dan daerah. Isu-isu seperti distribusi kekuasaan, alokasi sumber daya, dan perbedaan ideologi seringkali memicu ketidakpuasan di berbagai daerah, yang pada puncaknya menjelma menjadi gerakan-gerakan separatis dan pemberontakan. Ancaman disintegrasi ini menjadi ujian berat bagi persatuan nasional yang baru saja terbentuk.</p>
-            <p>Kebijakan pemerintah pusat yang dianggap sentralistik dan kurang memerhatikan aspirasi daerah, ditambah dengan dinamika politik yang kompleks termasuk perebutan pengaruh ideologi, menciptakan lahan subur bagi munculnya konflik. Kondisi ini diperparah dengan situasi ekonomi yang belum stabil dan warisan struktural dari masa revolusi kemerdekaan.</p>
-        </section>
+        <div class="section-divider"></div>
 
-        <section>
-            <h2>Gerakan Disintegrasi Utama (1950-1966)</h2>
-            <p>Sejumlah gerakan bersenjata dan politik muncul sebagai ekspresi ketidakpuasan terhadap pemerintah pusat. Mereka memiliki latar belakang dan tujuan yang beragam, namun semuanya berpotensi mengancam keutuhan Negara Kesatuan Republik Indonesia (NKRI).</p>
+        <h2>Konsep Nasakom dan Gejolak Politik Nasional</h2>
+        <p>Pada masa Demokrasi Terpimpin, Presiden Sukarno menginisiasi dan secara masif menerapkan konsep <strong>Nasakom</strong>, akronim dari Nasionalisme, Agama, dan Komunisme. Ideologi ini dirancang sebagai upaya untuk menyatukan tiga pilar kekuatan ideologis dan politik terbesar di Indonesia, dengan tujuan menciptakan stabilitas politik yang solid dan menghindarkan bangsa dari perpecahan akibat perbedaan pandangan.</p>
 
-            <details>
-                <summary>1. Gerakan Darul Islam/Tentara Islam Indonesia (DI/TII)</summary>
-                <div class="details-content">
-                    <p>Gerakan DI/TII merupakan salah satu ancaman disintegrasi paling signifikan yang dihadapi Indonesia pasca-kemerdekaan. Gerakan ini berakar dari ketidakpuasan terhadap kebijakan pemerintah pusat dan cita-cita mendirikan negara berdasarkan syariat Islam.</p>
-                    <ul>
-                        <li><strong>Asal Mula di Jawa Barat:</strong>
-                            <p>DI/TII berawal dari ketidakpuasan Sekarmaji Marijan Kartosuwiryo terhadap hasil Perjanjian Renville (8 Desember 1947 – 17 Januari 1948). Ia menilai perjanjian tersebut merugikan Indonesia karena harus mengakui kekuasaan Belanda atas Yogyakarta, Jawa Tengah, dan Sumatra, yang seharusnya menjadi wilayah Republik Indonesia. Kartosuwiryo, seorang pemimpin laskar Hizbullah dan Sabilillah yang turut berjuang mempertahankan kemerdekaan, memanfaatkan situasi kacau pasca-Agresi Militer II Belanda (Desember 1948) untuk memproklamasikan berdirinya Negara Islam Indonesia (NII) pada 7 Agustus 1949. Gerakan ini terus melakukan perlawanan bahkan ketika TNI Divisi Siliwangi kembali ke Jawa Barat pada awal 1949, sehingga terjadi bentrokan antara DI/TII dan pihak RI. Untuk memberantas DI/TII di Jawa Barat, TNI melancarkan operasi "Pagar Betis" di sekitar Gunung Geber. Setelah pengejaran panjang, Kartosuwiryo akhirnya ditangkap pada 4 Juni 1962.</p>
-                        </li>
-                        <li><strong>Perluasan Pengaruh DI/TII di Berbagai Daerah:</strong>
-                            <p>Ideologi dan gerakan DI/TII menyebar dan menemukan resonansi di beberapa daerah lain, seringkali dipicu oleh kekecewaan lokal terhadap kebijakan pusat atau isu-isu regional.</p>
-                            <ul>
-                                <li><strong>Jawa Tengah (Amir Fatah):</strong> Di Jawa Tengah, Amir Fatah, mantan komandan Hizbullah, juga memproklamasikan diri menjadi bagian dari NII.</li>
-                                <li><strong>Aceh (Daud Beureuh):</strong> Mantan gubernur militer Aceh, Daud Beureuh, memproklamasikan Aceh sebagai bagian dari NII pada 21 September 1953. Aksi ini dipicu oleh kekecewaannya atas penurunan status Aceh dari Daerah Istimewa menjadi Daerah Karesidenan di bawah Provinsi Sumatera Utara. Pemberontakan di Aceh diatasi melalui operasi militer dan musyawarah dengan rakyat Aceh, yang berpuncak pada Musyawarah Kerukunan Rakyat Aceh pada 17-18 Desember 1962, mengakhiri konflik secara damai.</li>
-                                <li><strong>Sulawesi Selatan (Kahar Muzakar):</strong> Kahar Muzakar ingin pasukannya, laskar rakyat Sulawesi Selatan, diintegrasikan sebagai kesatuan yang berdiri sendiri di dalam APRIS (Angkatan Perang Republik Indonesia Serikat). Ketika RIS dibubarkan dan kembali menjadi NKRI, ia menyatakan Sulawesi Selatan sebagai bagian dari NII pada tahun 1952. Pemberontakannya berhasil diredam oleh TNI pada tahun 1965.</li>
-                                <li><strong>Kalimantan Selatan (Ibnu Hajar):</strong> Ibnu Hajar juga ikut bergabung dengan NII dan diangkat sebagai panglima tertinggi Tentara Islam Indonesia di wilayah Kalimantan Selatan. Pemberontakannya juga berhasil diredam pada tahun 1965.</li>
-                            </ul>
-                        </li>
-                        <div class="note">
-                            <strong>Catatan:</strong> Pemberontakan DI/TII merugikan perjuangan RI dalam menghadapi Belanda dan menguras sumber daya nasional yang seharusnya digunakan untuk pembangunan dan konsolidasi. Gerakan ini menunjukkan kompleksitas tantangan yang dihadapi negara muda dalam menyatukan berbagai faksi dan ideologi.
-                        </div>
-                    </ul>
-                </div>
-            </details>
+        <details>
+            <summary>Latar Belakang dan Penerapan Konsep Nasakom</summary>
+            <p>Gagasan Nasakom muncul dari pemikiran Sukarno yang merasa bahwa sistem demokrasi parlementer pasca-kemerdekaan tidak efektif dan cenderung menimbulkan instabilitas politik karena seringnya pergantian kabinet dan pertentangan antarpartai. Ia berpendapat bahwa demokrasi parlementer justru melindungi sistem kapitalisme dan lebih mengedepankan kepentingan kaum borjuis, mengabaikan kesejahteraan rakyat.</p>
+            <p>Oleh karena itu, Sukarno berusaha mencari sintesis ideologis yang dapat merangkul seluruh elemen bangsa. Nasionalisme diwakili oleh golongan nasionalis (misalnya PNI), Agama oleh kelompok-kelompok religius (seperti NU dan organisasi Islam lainnya), dan Komunisme oleh Partai Komunis Indonesia (PKI). Dengan menyatukan ketiganya di bawah kepemimpinan sentral, Sukarno berharap dapat membangun kekuatan revolusioner yang tak tergoyahkan untuk mencapai cita-cita kemerdekaan sejati dan pembangunan nasional.</p>
+        </details>
 
-            <details>
-                <summary>2. Pemberontakan PRRI/Permesta</summary>
-                <div class="details-content">
-                    <p>PRRI (Pemerintah Revolusioner Republik Indonesia) dan Permesta (Perjuangan Rakyat Semesta) adalah gerakan yang muncul sebagai protes terhadap kebijakan pemerintah pusat yang dianggap tidak adil dan sentralistik, khususnya dalam hal alokasi anggaran pembangunan dan otonomi daerah. Ketidakpuasan ini umumnya dirasakan oleh daerah-daerah di luar Pulau Jawa yang merasa dikesampingkan.</p>
-                    <ul>
-                        <li><strong>Latar Belakang dan Pembentukan:</strong>
-                            <p>PRRI dibentuk pada 15 Februari 1958 di Padang, Sumatera Barat. Sementara itu, Permesta berdiri pada 2 Maret 1957 di Makassar, Sulawesi Selatan, sebelum kemudian berpindah ke Manado, Sulawesi Utara. Gerakan ini merupakan manifestasi dari ketidakpuasan para pemimpin militer dan sipil daerah terhadap Jakarta yang dianggap terlalu memusatkan kekuasaan dan sumber daya.</p>
-                        </li>
-                        <li><strong>Tujuan dan Aksi:</strong>
-                            <p>PRRI/Permesta menuntut adanya desentralisasi kekuasaan dan pemerataan pembangunan. Mereka memprotes berbagai ketidakadilan yang dialami daerah-daerah di luar Jawa. Dalam aksinya, Permesta mencetuskan proklamasi lengkap dengan program-programnya yang dikeluarkan di Manado pada 2 dan 4 Maret 1957. Meskipun pada awalnya gerakan ini lebih bersifat korektif terhadap pemerintah pusat, namun kemudian berkembang menjadi pemberontakan bersenjata yang didukung oleh beberapa kekuatan asing.</p>
-                        </li>
-                        <div class="note">
-                            <strong>Dampak:</strong> Pemberontakan PRRI/Permesta menyebabkan konflik bersenjata yang cukup besar di Sumatera dan Sulawesi, merenggut banyak korban jiwa, dan mengganggu stabilitas ekonomi serta politik nasional. Pemerintah pusat merespon dengan operasi militer besar-besaran untuk menumpas pemberontakan ini, yang pada akhirnya berhasil mengembalikan kontrol pusat atas wilayah-wilayah tersebut.
-                        </div>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary>3. Peristiwa AUI di Kebumen (Somalangu)</summary>
-                <div class="details-content">
-                    <p>Peristiwa Somalangu, yang melibatkan Angkatan Umat Islam (AUI) di Kabupaten Kebumen, Jawa Tengah, merupakan contoh lain dari gejolak daerah pasca-kemerdekaan yang menunjukkan ketegangan antara kelompok-kelompok bersenjata rakyat dan aparat negara.</p>
-                    <ul>
-                        <li><strong>Kronologi Kejadian:</strong>
-                            <p>Pada 30 Juli 1950, seorang anggota AUI dicurigai oleh anggota Corps Polisi Militer (CPM) karena membawa senjata di jalan Stasiun Kebumen. Anggota AUI tersebut ditangkap dan dalam perjalanan menuju markas, ia mengamuk sehingga ditembak mati. Kabar kematiannya dengan cepat menyebar dan memicu kemarahan di kalangan AUI.</p>
-                        </li>
-                        <li><strong>Reaksi AUI dan Konflik:</strong>
-                            <p>Sebagai balasan, pada 1 Agustus 1950, pasukan AUI melancarkan serangan terhadap pasukan APRIS (Angkatan Perang Republik Indonesia Serikat) yang berjaga di Stasiun Kebumen. Selain melakukan penembakan, pasukan AUI juga merazia dan menyandera pegawai-pegawai pemerintah. Peristiwa ini kemudian dikenal sebagai pemberontakan versi pemerintah.</p>
-                        </li>
-                        <div class="note">
-                            <strong>Konsekuensi:</strong> Meskipun skalanya lebih kecil dibandingkan DI/TII atau PRRI/Permesta, Peristiwa Somalangu menyoroti tantangan pemerintah dalam mengintegrasikan berbagai laskar perjuangan rakyat ke dalam struktur militer dan sipil yang teratur. Kejadian ini juga menunjukkan betapa rentannya stabilitas keamanan di daerah-daerah akibat gesekan antara berbagai kekuatan bersenjata yang ada saat itu.
-                        </div>
-                    </ul>
-                </div>
-            </details>
-        </section>
-
-        <section>
-            <h2>Dampak dan Pembelajaran</h2>
-            <p>Serangkaian pemberontakan dan gejolak daerah yang terjadi selama periode Demokrasi Liberal hingga Demokrasi Terpimpin memberikan pelajaran berharga bagi pembangunan bangsa Indonesia. Ancaman disintegrasi ini menunjukkan pentingnya:</p>
+        <details>
+            <summary>Penolakan dan Dampaknya</summary>
+            <p>Meskipun Nasakom digencarkan, penerapannya tidak berjalan mulus dan menuai resistensi signifikan dari berbagai pihak. Salah satu penentang paling vokal adalah Mohammad Hatta, Wakil Presiden pertama Indonesia dan dwitunggal proklamator. Hatta menolak konsep Demokrasi Terpimpin dan Nasakom karena dianggap menyimpang dari prinsip-prinsip demokrasi konstitusional dan Pancasila, serta berpotensi membuka pintu bagi dominasi salah satu ideologi.</p>
             <ul>
-                <li><strong>Konsolidasi Nasional:</strong> Memperkuat persatuan dan kesatuan di tengah keberagaman ideologi dan kepentingan daerah.</li>
-                <li><strong>Pemerataan Pembangunan:</strong> Pentingnya kebijakan yang adil dan merata untuk mencegah kesenjangan ekonomi dan sosial antar daerah.</li>
-                <li><strong>Hubungan Pusat-Daerah yang Harmonis:</strong> Membangun komunikasi yang efektif dan mekanisme penyelesaian konflik yang adil antara pemerintah pusat dan daerah.</li>
-                <li><strong>Penguatan Institusi Negara:</strong> Membangun lembaga-lembaga negara yang kuat dan profesional, termasuk militer, untuk menjaga keamanan dan ketertiban.</li>
+                <li><strong>Perpisahan Dwitunggal:</strong> Perbedaan pandangan yang mendalam ini pada akhirnya menyebabkan perpisahan antara Sukarno dan Hatta, sebuah momen penting yang menandai berakhirnya era dwitunggal proklamator dalam memimpin bangsa.</li>
+                <li><strong>Kampanye Internasional:</strong> Dengan absennya Hatta, Sukarno semakin leluasa mengonsolidasikan kekuasaannya dan mengampanyekan konsep Nasakom, bahkan hingga ke panggung internasional. Salah satu manifestasinya adalah pidato monumental Sukarno di Sidang Umum PBB di New York pada <strong>30 September 1960</strong>, yang berjudul <em>“To Build The World a New”</em>. Pidato ini menegaskan visi Indonesia tentang tatanan dunia baru yang lebih adil, yang sejalan dengan semangat anti-kolonialisme dan anti-imperialisme yang juga menjadi bagian dari semangat Nasakom.</li>
             </ul>
-            <p>Berbagai gerakan ini, meskipun berhasil ditumpas, meninggalkan jejak dalam sejarah sebagai pengingat akan kompleksitas membangun dan mempertahankan sebuah negara bangsa yang besar dan beragam seperti Indonesia.</p>
-        </section>
-    </main>
+        </details>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Sejarah Indonesia Kelas XII. Hak Cipta Dilindungi.</p>
-            <p>Dirancang untuk Pembelajaran Siswa.</p>
+        <details>
+            <summary>Keruntuhan Ideologi Nasakom</summary>
+            <p>Meskipun telah menjadi pilar utama Demokrasi Terpimpin, ideologi Nasakom akhirnya runtuh secara dramatis. Keruntuhan ini tidak terlepas dari peristiwa Gerakan 30 September 1965 (G30S/PKI). Insiden tersebut, yang melibatkan dugaan kuat keterlibatan Partai Komunis Indonesia, secara fundamental mengubah lanskap politik Indonesia. Peristiwa ini memicu reaksi keras terhadap komunisme dan menjadi pemicu berakhirnya era Demokrasi Terpimpin serta konsep Nasakom, membuka jalan bagi lahirnya Orde Baru yang berlandaskan anti-komunisme.</p>
+        </details>
+
+        <div class="section-divider"></div>
+
+        <h2>Ketidakseimbangan Relasi Pusat dan Daerah: Ancaman Disintegrasi</h2>
+        <p>Setelah pengakuan kedaulatan, Indonesia dihadapkan pada fase baru perjuangan, yaitu mempertahankan keutuhan wilayahnya dari ancaman disintegrasi. Ironisnya, ancaman ini seringkali datang dari kalangan pejuang yang sebelumnya turut merebut kemerdekaan, namun merasa tidak puas dengan arah dan kebijakan pemerintah pusat. Ketidakpuasan ini berakar pada berbagai isu, mulai dari ketidakadilan ekonomi, pembagian kekuasaan, hingga perbedaan ideologi. Berikut adalah beberapa gerakan daerah yang signifikan yang mengancam keutuhan NKRI pada periode 1950-an hingga 1960-an:</p>
+
+        <h3>1. Gerakan Darul Islam/Tentara Islam Indonesia (DI/TII)</h3>
+        <p>DI/TII merupakan gerakan bersenjata yang bertujuan mendirikan Negara Islam Indonesia (NII) dan menyebar di berbagai wilayah. Gerakan ini dipimpin oleh tokoh-tokoh lokal dengan motivasi yang sedikit berbeda namun memiliki visi ideologis yang serupa.</p>
+
+        <details>
+            <summary>DI/TII di Jawa Barat (S.M. Kartosuwiryo)</summary>
+            <p>Cikal bakal gerakan DI/TII bermula dari ketidakpuasan Sekarmaji Marijan Kartosuwiryo, seorang pemimpin laskar Sabilillah dan Hizbullah, terhadap Perjanjian Renville (8 Desember 1947 - 17 Januari 1948). Ia menganggap perjanjian tersebut merugikan Indonesia karena wilayah-wilayah strategis seperti Yogyakarta, Jawa Tengah, dan Sumatra harus diakui sebagai wilayah kekuasaan Belanda.</p>
+            <ul>
+                <li><strong>Proklamasi NII:</strong> Kartosuwiryo memanfaatkan kekacauan pasca-Agresi Militer II Belanda pada Desember 1948. Mengira Republik Indonesia telah hancur, ia memproklamasikan berdirinya Negara Islam Indonesia (NII) pada <strong>7 Agustus 1949</strong>. Sejak saat itu, DI/TII di Jawa Barat terlibat dalam konflik bersenjata ganda, melawan Belanda dan kemudian pemerintah RI.</li>
+                <li><strong>Konflik dengan TNI Siliwangi:</strong> Ketika Divisi Siliwangi TNI melakukan <em>long march</em> dari Yogyakarta kembali ke Jawa Barat pada awal 1949, mereka justru berhadapan dengan pasukan DI/TII yang telah menguasai beberapa daerah, menyebabkan konflik internal yang merugikan perjuangan bangsa.</li>
+                <li><strong>Penumpasan:</strong> Pemberontakan DI/TII Jawa Barat menjadi salah satu yang paling sulit ditumpas dan berlangsung hingga masa Demokrasi Terpimpin. TNI melancarkan Operasi Pagar Betis di sekitar Gunung Geber untuk mengepung dan memberantas pasukan DI/TII. Setelah pengejaran yang panjang, S.M. Kartosuwiryo akhirnya berhasil ditangkap pada <strong>4 Juni 1962</strong>, menandai berakhirnya gerakan DI/TII di Jawa Barat.</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>DI/TII di Jawa Tengah (Amir Fatah)</summary>
+            <p>Di wilayah Jawa Tengah, gerakan DI/TII dipimpin oleh Amir Fatah, seorang mantan komandan laskar Hizbullah. Sama seperti Kartosuwiryo, Amir Fatah juga memproklamasikan dirinya dan pasukannya sebagai bagian dari Negara Islam Indonesia, menunjukkan penyebaran ideologi ini di Pulau Jawa.</p>
+        </details>
+
+        <details>
+            <summary>DI/TII di Aceh (Daud Beureuh)</summary>
+            <p>Pemberontakan DI/TII di Aceh dipimpin oleh Daud Beureuh, mantan gubernur militer Aceh. Motivasi utamanya adalah kekecewaan mendalam atas keputusan pemerintah pusat yang menurunkan status Aceh dari Daerah Istimewa menjadi hanya Daerah Karesidenan di bawah Provinsi Sumatera Utara. Daud Beureuh merasa status baru ini mengabaikan peran besar Aceh dalam perjuangan kemerdekaan dan kekhasan daerahnya.</p>
+            <ul>
+                <li><strong>Proklamasi:</strong> Daud Beureuh memproklamasikan Aceh sebagai bagian dari Negara Islam Indonesia pada <strong>21 September 1953</strong>.</li>
+                <li><strong>Penyelesaian:</strong> Pemerintah RI menanggapi pemberontakan ini tidak hanya dengan operasi militer, tetapi juga dengan pendekatan musyawarah. Melalui <strong>Musyawarah Kerukunan Rakyat Aceh pada 17-18 Desember 1962</strong>, konflik berhasil diselesaikan secara damai, dengan Aceh kembali diberikan status istimewa.</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>DI/TII di Sulawesi Selatan (Kahar Muzakar)</summary>
+            <p>Di Sulawesi Selatan, Kahar Muzakar memimpin laskar rakyat yang semula ingin bergabung dengan Angkatan Perang Republik Indonesia Serikat (APRIS) di bawah kepemimpinannya sendiri. Namun, ketika RIS dibubarkan dan NKRI kembali ditegakkan, ia menyatakan ketidakpuasan. Pada <strong>1952</strong>, Kahar Muzakar menyatakan Sulawesi Selatan sebagai bagian dari Negara Islam Indonesia. Pemberontakan Kahar Muzakar berlangsung cukup lama dan menimbulkan ketidakstabilan di wilayah tersebut.</p>
+            <ul>
+                <li><strong>Penumpasan:</strong> Pemberontakan Kahar Muzakar akhirnya berhasil diredam oleh TNI pada <strong>1965</strong>, setelah melalui serangkaian operasi militer yang intensif.</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>DI/TII di Kalimantan Selatan (Ibnu Hajar)</summary>
+            <p>Serupa dengan di Sulawesi Selatan, di Kalimantan Selatan, Ibnu Hajar juga memimpin pasukannya untuk bergabung dengan Negara Islam Indonesia. Ia bahkan ditunjuk sebagai panglima tertinggi Tentara Islam Indonesia di wilayah tersebut. Gerakan ini juga menimbulkan ancaman keamanan yang signifikan di Kalimantan Selatan.</p>
+            <ul>
+                <li><strong>Penumpasan:</strong> Pemberontakan Ibnu Hajar di Kalimantan Selatan berhasil diredam oleh TNI pada <strong>1965</strong>, sejalan dengan penumpasan gerakan DI/TII lainnya di berbagai daerah.</li>
+            </ul>
+        </details>
+
+        <div class="section-divider"></div>
+
+        <h3>2. PRRI/Permesta</h3>
+        <p>Gerakan PRRI (Pemerintah Revolusioner Republik Indonesia) dan Permesta (Perjuangan Semesta) adalah dua pemberontakan daerah yang lebih menonjolkan tuntutan otonomi, keadilan ekonomi, dan pemerataan pembangunan, daripada ideologi keagamaan.</p>
+
+        <details>
+            <summary>Latar Belakang dan Deklarasi</summary>
+            <p>PRRI/Permesta muncul sebagai reaksi terhadap kebijakan sentralistik pemerintah pusat yang dianggap mengabaikan kepentingan dan kebutuhan daerah-daerah di luar Pulau Jawa. Banyak tokoh militer dan sipil di daerah merasa bahwa sumber daya mereka dieksploitasi tanpa imbalan yang setara dalam bentuk pembangunan atau alokasi anggaran.</p>
+            <ul>
+                <li><strong>PRRI:</strong> Dideklarasikan pada <strong>15 Februari 1958</strong> di Padang, Sumatera Barat, oleh beberapa perwira militer dan tokoh sipil yang tidak puas.</li>
+                <li><strong>Permesta:</strong> Bermula pada <strong>2 Maret 1957</strong> di Makassar, Sulawesi Selatan, kemudian basisnya berpindah ke Manado, Sulawesi Utara.</li>
+            </ul>
+            <p>Dalam aksinya, Permesta mengeluarkan proklamasi yang lengkap dengan program-programnya di Manado pada <strong>2 dan 4 Maret 1957</strong>. Tuntutan utama mereka meliputi otonomi yang lebih luas bagi daerah, keadilan dalam pembagian hasil bumi, dan perombakan kabinet pusat.</p>
+            <p>Pemerintah pusat menanggapi PRRI/Permesta sebagai gerakan separatis yang mengancam keutuhan NKRI dan melancarkan operasi militer besar-besaran untuk menumpasnya, meskipun pada akhirnya banyak pemimpin gerakan ini yang diberikan amnesti.</p>
+        </details>
+
+        <div class="section-divider"></div>
+
+        <h3>3. Peristiwa Somalangu (Angkatan Umat Islam - AUI) di Kebumen</h3>
+        <p>Selain gerakan-gerakan besar berskala regional, ketidakstabilan juga terlihat dalam insiden-insiden lokal yang mencerminkan ketegangan antara berbagai kelompok bersenjata pasca-revolusi dengan aparat negara. Peristiwa di Somalangu, Kebumen, adalah salah satu contohnya.</p>
+
+        <details>
+            <summary>Detail Insiden Somalangu</summary>
+            <p>Peristiwa ini terjadi di Sumolangu, Kabupaten Kebumen, Jawa Tengah, pada <strong>30 Juli 1950</strong>. Seorang anggota Angkatan Umat Islam (AUI) berjalan mondar-mandir di jalan Stasiun Kebumen sambil membawa senjata. Ia dicurigai oleh anggota Corps Polisi Militer (CPM) dan ditangkap untuk dibawa ke markas.</p>
+            <p>Di tengah perjalanan, anggota AUI tersebut mengamuk dan akhirnya ditembak hingga tewas. Kabar ini dengan cepat menyebar dan memicu kemarahan di kalangan AUI. Sebagai respons, pada <strong>1 Agustus 1950</strong>, pasukan AUI melancarkan serangan balasan, menembaki pasukan APRIS (Angkatan Perang Republik Indonesia Serikat) yang berjaga di Stasiun Kebumen. Selain itu, mereka juga merazia dan menyandera beberapa pegawai pemerintah.</p>
+            <p>Insiden ini, yang dikenal sebagai "pemberontakan versi pemerintah", menggambarkan betapa rapuhnya situasi keamanan di awal kemerdekaan dan bagaimana konflik lokal, meskipun berskala kecil, dapat memicu ketegangan yang serius antara berbagai faksi dan pemerintah pusat.</p>
+        </details>
+
+        <div class="note-box">
+            <p>Periode 1950-1966 merupakan masa yang penuh gejolak bagi Indonesia. Dinamika politik yang kompleks, seperti penerapan Nasakom, dan berbagai ancaman disintegrasi dari daerah, seperti DI/TII, PRRI/Permesta, dan insiden-insiden lokal lainnya, menguji ketahanan bangsa. Meskipun diwarnai konflik, periode ini juga menunjukkan ketangguhan pemerintah dan rakyat Indonesia dalam mempertahankan Negara Kesatuan Republik Indonesia, meskipun dengan biaya yang tidak sedikit. Pelajaran dari periode ini adalah pentingnya menjaga keseimbangan dan keadilan dalam relasi pusat-daerah untuk mencegah perpecahan internal di masa depan.</p>
         </div>
-    </footer>
+
+    </div>
 </body>
 </html>
 ```

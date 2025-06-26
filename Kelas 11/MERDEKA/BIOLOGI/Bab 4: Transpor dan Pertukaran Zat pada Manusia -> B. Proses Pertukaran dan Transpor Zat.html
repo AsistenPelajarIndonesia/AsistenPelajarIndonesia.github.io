@@ -1,0 +1,511 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Transpor dan Pertukaran Zat pada Manusia - Proses Pertukaran dan Transpor Zat</title>
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+            border-radius: 8px; /* Rounded corners for modern look */
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--primary-blue);
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Highlight Colors */
+        .highlight-blue {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .highlight-green {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .highlight-amber {
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas); /* White text on blue header */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8f8f8; /* A slightly off-white for even rows */
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1; /* Light hover effect */
+        }
+
+        /* Information/Concept Boxes */
+        .info-box {
+            background-color: rgba(33, 150, 243, 0.05); /* Semantic info blue with transparency */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .activity-box {
+            background-color: rgba(255, 179, 0, 0.05); /* Secondary accent amber with transparency */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .concept-box {
+            background-color: rgba(56, 142, 60, 0.05); /* Accent green with transparency */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Details/Summary for Interactivity */
+        details {
+            background-color: #f9f9f9; /* Slightly off-white for details sections */
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--primary-blue);
+            list-style: none; /* Hide default triangle icon */
+            position: relative;
+        }
+        
+        summary::before {
+            content: "+ "; /* Custom icon for closed state */
+            margin-right: 5px;
+            color: var(--primary-blue);
+        }
+
+        details[open] summary::before {
+            content: "- "; /* Custom icon for open state */
+        }
+
+        details > div {
+            padding: 15px;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            table th, table td {
+                padding: 8px 10px;
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            /* Make tables scrollable horizontally on small screens */
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>B. Proses Pertukaran dan Transpor Zat</h1>
+
+        <p>
+            Meningkatnya aktivitas fisik, seperti saat berolahraga, berarti meningkat pula laju <strong class="highlight-green">metabolisme sel-sel tubuh</strong>.
+            Oleh karena itu, proses <strong class="highlight-blue">pertukaran zat</strong> untuk memenuhi kebutuhan tubuh terhadap zat makanan, gas, dan pengeluaran sisa metabolisme
+            juga turut meningkat. Pemenuhan kebutuhan akan makanan, oksigen, dan pengaturan pengeluaran sisa metabolisme secara terus-menerus dilakukan oleh tubuh.
+        </p>
+        <p>
+            Sebelumnya, kita telah mempelajari bagaimana dukungan struktur organ, khususnya usus halus, paru-paru, dan ginjal, dalam memastikan proses pertukaran zat
+            di masing-masing organ dapat berjalan dengan baik. Sekarang, kita akan mendalami bagaimana proses pertukaran zat tersebut terjadi pada masing-masing organ terkait.
+        </p>
+
+        <section id="penyerapan-makanan">
+            <h2>1. Proses Penyerapan Zat Makanan</h2>
+            <p>
+                Proses penyerapan zat makanan di usus halus bukanlah proses yang berdiri sendiri. Sebelum dapat diserap, makanan yang umumnya berupa molekul besar,
+                seperti karbohidrat, protein, dan lemak, akan dipecah secara <strong class="highlight-green">mekanik</strong> (dengan dikunyah) dan <strong class="highlight-green">kimiawi</strong> (dihidrolisis oleh enzim).
+                Pemecahan ini disebut proses <strong class="highlight-blue">pencernaan</strong>. Adapun bahan makanan yang lebih kecil partikelnya (mineral dan air) dapat langsung diserap
+                tanpa melalui proses pencernaan.
+            </p>
+            <p>
+                Reaksi oleh <strong class="highlight-blue">enzim</strong> merupakan tahap akhir dalam pemecahan makanan sebelum diserap. Oleh karena itu, penting sekali peran enzim pencernaan
+                dalam menyiapkan penyerapan makanan.
+            </p>
+
+            <details>
+                <summary>Enzim-enzim Penting dalam Pencernaan Kimiawi</summary>
+                <div>
+                    <p>Terdapat banyak jenis enzim pemecah makanan khususnya di lambung dan usus halus. Berikut adalah beberapa contoh enzim beserta fungsinya:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Organ</th>
+                                <th>Enzim</th>
+                                <th>Pencernaan Kimiawi (Perubahan)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mulut</td>
+                                <td><strong class="highlight-blue">Ptialin (Amilase)</strong></td>
+                                <td>Amilum &rarr; Maltosa</td>
+                            </tr>
+                            <tr>
+                                <td>Lambung</td>
+                                <td><strong class="highlight-blue">Pepsin</strong></td>
+                                <td>Protein &rarr; Pepton</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">Usus Halus</td>
+                                <td><strong class="highlight-blue">Amilase</strong></td>
+                                <td>Amilum &rarr; Glukosa</td>
+                            </tr>
+                            <tr>
+                                <td><strong class="highlight-blue">Maltase</strong></td>
+                                <td>Maltosa &rarr; Glukosa</td>
+                            </tr>
+                            <tr>
+                                <td><strong class="highlight-blue">Sukrase</strong></td>
+                                <td>Sukrosa &rarr; Glukosa</td>
+                            </tr>
+                            <tr>
+                                <td><strong class="highlight-blue">Tripsin</strong></td>
+                                <td>Protein &rarr; Asam Amino</td>
+                            </tr>
+                            <tr>
+                                <td><strong class="highlight-blue">Lipase</strong></td>
+                                <td>Lemak &rarr; Asam Lemak + Gliserol</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <h3>Mekanisme Penyerapan Zat Makanan</h3>
+            <p>
+                Setelah menjadi partikel yang lebih kecil, zat makanan akan diserap di sepanjang dinding usus halus. Metode penyerapan ini berbeda-beda sesuai dengan jenis molekul makanannya:
+            </p>
+            <div class="concept-box">
+                <h4>Molekul Larut Air (Hidrofilik)</h4>
+                <p>
+                    Contoh: <strong class="highlight-blue">Glukosa</strong> dan <strong class="highlight-blue">Asam Amino</strong>.
+                    <ul>
+                        <li>Diserap oleh sel epitel baik secara <strong class="highlight-green">pasif</strong> (difusi berfasilitas) maupun <strong class="highlight-green">aktif</strong> (ko-transport menggunakan energi).</li>
+                        <li>Zat makanan hidrofilik ini kemudian <strong class="highlight-blue">ditransfer ke pembuluh darah</strong> untuk diedarkan ke seluruh tubuh.</li>
+                    </ul>
+                </p>
+                <h4>Molekul Tidak Larut Air (Hidrofobik)</h4>
+                <p>
+                    Khususnya <strong class="highlight-blue">lipid</strong> dan turunannya, seperti <strong class="highlight-blue">Asam Lemak</strong> dan <strong class="highlight-blue">Gliserol</strong>.
+                    <ul>
+                        <li>Dapat dengan mudah diserap oleh sel epitel usus karena membran sel sebagian besar disusun oleh molekul lipid (fosfolipid).</li>
+                        <li>Diserap secara <strong class="highlight-green">difusi</strong> ke dalam sel epitel usus.</li>
+                        <li>Kemudian <strong class="highlight-blue">ditransfer ke pembuluh limfa</strong> (bukan pembuluh darah langsung).</li>
+                    </ul>
+                </p>
+            </div>
+
+            <details>
+                <summary>Visualisasi Konseptual Proses Penyerapan Nutrisi</summary>
+                <div>
+                    <p>Bayangkan dinding usus halus sebagai lapisan epitel dengan banyak lipatan (vili dan mikrovili) untuk memperluas permukaan penyerapan. Di bawah lapisan epitel ini terdapat pembuluh darah (kapiler) dan pembuluh limfa (lakteal).</p>
+                    <ul>
+                        <li><strong>Protein</strong>: Dipecah menjadi Polipeptida, lalu menjadi Asam Amino. Asam amino diserap oleh sel epitel melalui protein transport (aktif/berfasilitas) dan masuk ke <strong class="highlight-blue">kapiler darah</strong>.</li>
+                        <li><strong>Karbohidrat</strong>: Dipecah menjadi Polisakarida, lalu Disakarida, dan akhirnya Monosakarida (Glukosa). Glukosa diserap oleh sel epitel melalui protein transport dan masuk ke <strong class="highlight-blue">kapiler darah</strong>.</li>
+                        <li><strong>Lemak</strong>: Lemak diemulsi oleh garam empedu menjadi emulsi lemak, lalu dipecah menjadi Asam Lemak dan Gliserol. Asam lemak dan gliserol diserap secara difusi oleh sel epitel. Di dalam sel epitel, mereka bisa direformasi menjadi trigliserida dan masuk ke <strong class="highlight-blue">pembuluh limfa</strong>.</li>
+                    </ul>
+                    <p>Secara umum: <strong class="highlight-blue">Nutrisi larut air (karbohidrat, protein) masuk ke kapiler darah, sedangkan nutrisi larut lemak (lipid) masuk ke pembuluh limfa.</strong></p>
+                </div>
+            </details>
+
+            <div class="activity-box">
+                <h3>Konsep Aktivitas 4.10: Menyelidiki Makanan Berkarbohidrat</h3>
+                <p>
+                    Untuk memastikan asupan gizi seimbang, penting untuk memahami kandungan nutrisi dalam makanan. Salah satu zat gizi utama adalah karbohidrat, sumber energi utama tubuh.
+                    Mendeteksi keberadaan karbohidrat, khususnya amilum (zat tepung), dapat dilakukan secara kimiawi.
+                </p>
+                <p>
+                    <strong class="highlight-blue">Uji Iodine</strong> adalah metode umum untuk mendeteksi amilum. Larutan iodine yang semula berwarna jingga kecokelatan,
+                    akan berubah menjadi <strong class="highlight-amber">biru gelap kehitaman</strong> ketika bereaksi dengan amilum. Ini menunjukkan bahwa bahan makanan tersebut mengandung karbohidrat jenis amilum.
+                    Konsep ini penting untuk memahami bagaimana kita bisa mengidentifikasi kandungan gizi dalam bahan makanan yang kita konsumsi sehari-hari.
+                </p>
+            </div>
+        </section>
+
+        <section id="pertukaran-gas">
+            <h2>2. Proses Pertukaran Gas di Paru-Paru</h2>
+            <p>
+                Pertukaran gas di dalam paru-paru terjadi secara <strong class="highlight-blue">difusi</strong> sebagai akibat adanya perbedaan konsentrasi gas.
+            </p>
+            <div class="concept-box">
+                <h4>Mekanisme Difusi Gas</h4>
+                <ul>
+                    <li>Di <strong class="highlight-blue">alveolus paru-paru</strong>, konsentrasi <strong class="highlight-green">Oksigen (O₂)</strong> lebih tinggi dibandingkan di pembuluh darah (kapiler alveolus).
+                        Maka, Oksigen berdifusi <strong class="highlight-green">masuk ke darah</strong>.</li>
+                    <li>Sebaliknya, konsentrasi <strong class="highlight-blue">Karbon Dioksida (CO₂)</strong> di pembuluh darah lebih tinggi dibandingkan di alveolus.
+                        Maka, CO₂ berdifusi <strong class="highlight-green">keluar dari darah</strong> menuju alveolus untuk dihembuskan.</li>
+                </ul>
+            </div>
+
+            <h3>Pengangkutan Gas oleh Darah</h3>
+            <p>
+                Pertukaran gas di paru-paru tidak akan terjadi tanpa adanya pengangkutan gas oleh darah. Darah memiliki mekanisme khusus untuk mengikat dan melepaskan gas:
+            </p>
+
+            <details>
+                <summary>Pengangkutan Oksigen (O₂)</summary>
+                <div>
+                    <p>
+                        Sebagian besar gas oksigen diangkut di dalam darah dengan diikat oleh <strong class="highlight-blue">hemoglobin (Hb)</strong>, yang merupakan protein dalam sel darah merah.
+                        Ketika hemoglobin mengikat oksigen, ia membentuk <strong class="highlight-green">oksihemoglobin (HbO₂)</strong>.
+                    </p>
+                    <p>Reaksi: <strong class="highlight-green">Hb + O₂ &harr; HbO₂</strong></p>
+                    <p>
+                        Saat darah mencapai jaringan tubuh yang memiliki kadar oksigen rendah (karena sel-sel menggunakannya untuk metabolisme),
+                        oksihemoglobin akan <strong class="highlight-amber">melepaskan oksigennya</strong>. Oksigen kemudian berdifusi ke dalam sel-sel yang membutuhkan.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Pengangkutan Karbon Dioksida (CO₂)</summary>
+                <div>
+                    <p>Karbon dioksida diangkut dalam darah melalui tiga mekanisme utama:</p>
+                    <ol>
+                        <li>
+                            <strong class="highlight-blue">Sebagai Asam Karbonat (HCO₃⁻)</strong>:
+                            <p>Sebagian besar (sekitar 70%) karbon dioksida diangkut sebagai ion bikarbonat (HCO₃⁻). CO₂ dari jaringan berdifusi ke dalam sel darah merah,
+                                di mana ia bereaksi dengan air (H₂O) membentuk asam karbonat (H₂CO₃). Reaksi ini dikatalis oleh enzim <strong class="highlight-green">karbonat anhidrase</strong>.</p>
+                            <p>Reaksi: <strong class="highlight-green">CO₂ + H₂O <span style="font-size: 0.8em;">(dengan karbonat anhidrase)</span> &harr; H₂CO₃ &harr; H⁺ + HCO₃⁻</strong></p>
+                            <p>Ion bikarbonat (HCO₃⁻) kemudian berdifusi keluar dari sel darah merah ke plasma, digantikan oleh ion klorida (Cl⁻) untuk menjaga keseimbangan muatan (pergeseran klorida).</p>
+                        </li>
+                        <li>
+                            <strong class="highlight-blue">Diikat oleh Hemoglobin (Karbaminohemoglobin)</strong>:
+                            <p>Sebagian kecil (sekitar 20-25%) karbon dioksida berikatan langsung dengan hemoglobin, membentuk <strong class="highlight-green">karbaminohemoglobin (HbCO₂)</strong>.
+                                Ikatan ini terjadi pada gugus amino hemoglobin, bukan pada besi seperti oksigen.</p>
+                            <p>Reaksi: <strong class="highlight-green">Hb + CO₂ &harr; HbCO₂</strong></p>
+                        </li>
+                        <li>
+                            <strong class="highlight-blue">Sebagai Gas Terlarut dalam Plasma Darah</strong>:
+                            <p>Sekitar 5-10% karbon dioksida diangkut dalam bentuk terlarut langsung di dalam plasma darah.</p>
+                        </li>
+                    </ol>
+                </div>
+            </details>
+
+            <div class="activity-box">
+                <h3>Konsep Aktivitas 4.11: Mengukur Laju Pernapasan</h3>
+                <p>
+                    Konsentrasi gas, baik oksigen maupun karbon dioksida, sangat dipengaruhi oleh <strong class="highlight-blue">laju metabolisme tubuh</strong> dan berbagai faktor lainnya.
+                    Laju pernapasan adalah indikator penting dari laju metabolisme.
+                </p>
+                <p>
+                    Laju pernapasan diukur dengan menghitung jumlah frekuensi bernapas (menarik dan mengembuskan udara) dalam satu kurun waktu tertentu (umumnya per menit).
+                    Aktivitas ini bertujuan untuk mengobservasi perubahan laju pernapasan dan menganalisis pengaruh <strong class="highlight-amber">aktivitas fisik</strong> dan <strong class="highlight-amber">jenis kelamin</strong>
+                    terhadap laju pernapasan.
+                </p>
+                <p>
+                    Secara umum, semakin tinggi aktivitas fisik, semakin tinggi kebutuhan energi dan oksigen, sehingga laju pernapasan akan meningkat untuk memenuhi kebutuhan tersebut.
+                    Perbedaan fisiologis antara laki-laki dan perempuan (misalnya massa otot, hormonal) juga dapat menyebabkan perbedaan laju pernapasan basal atau respons terhadap aktivitas.
+                </p>
+            </div>
+        </section>
+
+        <section id="pembentukan-urin">
+            <h2>3. Proses Pembentukan Urin di Ginjal</h2>
+            <p>
+                Proses pertukaran zat di ginjal dapat kita temukan pada tahapan <strong class="highlight-blue">pembentukan urin</strong>. Proses ini secara efektif membuang sampah metabolisme
+                sekaligus mengembalikan zat-zat yang masih diperlukan tubuh. Kedua proses tersebut dapat berlangsung bersamaan karena proses pertukaran zat di ginjal
+                yang adaptif, menyesuaikan dengan perubahan kondisi tubuh terutama kadar air dan zat sisa metabolisme.
+            </p>
+            <p>
+                Secara umum, proses pembentukan urin meliputi tiga tahap utama:
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tahapan</th>
+                        <th>Tempat Utama</th>
+                        <th>Proses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong class="highlight-blue">Filtrasi</strong></td>
+                        <td><strong class="highlight-green">Glomerulus</strong></td>
+                        <td>Penyaringan partikel besar, seperti protein dan sel darah, agar tetap berada di pembuluh darah dan tidak terbawa ke urin. Menghasilkan <strong class="highlight-green">filtrat glomerulus (urin primer)</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong class="highlight-blue">Reabsorpsi</strong></td>
+                        <td>
+                            <p>Berbagai bagian tubulus ginjal:</p>
+                            <ul>
+                                <li><strong class="highlight-green">Tubulus Proksimal</strong></li>
+                                <li><strong class="highlight-green">Lengkung Henle</strong></li>
+                                <li><strong class="highlight-green">Duktus Pengumpul</strong></li>
+                            </ul>
+                        </td>
+                        <td>Penyerapan kembali zat-zat yang masih diperlukan tubuh (misalnya glukosa, asam amino, garam, sebagian air) dari filtrat kembali ke pembuluh darah.
+                            Reabsorpsi air di duktus pengumpul diatur oleh hormon (ADH) sebagai respons terhadap kondisi cairan tubuh. Menghasilkan <strong class="highlight-green">urin sekunder</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong class="highlight-blue">Augmentasi (Sekresi)</strong></td>
+                        <td>
+                            <p>Terutama di:</p>
+                            <ul>
+                                <li><strong class="highlight-green">Tubulus Distal</strong></li>
+                                <li><strong class="highlight-green">Duktus Pengumpul</strong></li>
+                            </ul>
+                        </td>
+                        <td>Penambahan zat sisa metabolisme (misalnya urea, kreatinin), ion berlebih (seperti H⁺, K⁺), dan zat tidak diperlukan lainnya dari kapiler darah ke filtrat untuk dikeluarkan bersama urin. Menghasilkan <strong class="highlight-green">urin sesungguhnya</strong>.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <details>
+                <summary>Visualisasi Konseptual Proses Pembentukan Urin di Ginjal</summary>
+                <div>
+                    <p>Ginjal terdiri dari jutaan unit fungsional yang disebut <strong class="highlight-blue">nefron</strong>. Setiap nefron memiliki bagian-bagian yang berperan dalam setiap tahap pembentukan urin:</p>
+                    <ul>
+                        <li>Darah masuk ke <strong class="highlight-blue">Glomerulus</strong> (jaringan kapiler di dalam Kapsula Bowman) melalui arteriol aferen. Di sini terjadi <strong class="highlight-blue">Filtrasi</strong>, di mana air, garam, glukosa, asam amino, urea, dan zat kecil lainnya disaring membentuk filtrat glomerulus. Protein dan sel darah tetap di dalam darah.</li>
+                        <li>Filtrat bergerak ke <strong class="highlight-blue">Tubulus Proksimal</strong>. Di sini, sebagian besar <strong class="highlight-blue">reabsorpsi</strong> nutrisi penting (glukosa, asam amino), air, dan garam terjadi kembali ke darah.</li>
+                        <li>Filtrat kemudian mengalir ke <strong class="highlight-blue">Lengkung Henle</strong>. Lengkung Henle berperan penting dalam mengatur konsentrasi urin melalui reabsorpsi air (di bagian turun) dan garam (di bagian naik), menciptakan gradien osmotik.</li>
+                        <li>Setelah Lengkung Henle, filtrat masuk ke <strong class="highlight-blue">Tubulus Distal</strong>. Di sini, terjadi reabsorpsi air dan garam lebih lanjut sesuai kebutuhan tubuh, serta proses <strong class="highlight-blue">augmentasi (sekresi)</strong>, di mana zat sisa (misalnya urea, kreatinin) dan ion berlebih (seperti H⁺, K⁺) ditambahkan dari darah ke filtrat.</li>
+                        <li>Terakhir, filtrat (yang kini disebut urin sesungguhnya) mengalir ke <strong class="highlight-blue">Duktus Pengumpul</strong>. Di duktus pengumpul, reabsorpsi air lebih lanjut dapat terjadi (diatur oleh hormon ADH) untuk menghasilkan urin yang lebih pekat jika tubuh dehidrasi.</li>
+                        <li>Urin dari berbagai duktus pengumpul kemudian dikumpulkan dan dialirkan ke kandung kemih untuk dikeluarkan dari tubuh.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <div class="info-box">
+            <p style="color: var(--semantic-info);">
+                <strong>Kesimpulan Penting:</strong> Proses pertukaran dan transpor zat dalam tubuh manusia adalah mekanisme vital yang memastikan sel-sel mendapatkan nutrisi dan oksigen yang dibutuhkan,
+                serta membuang produk limbah metabolisme. Ini melibatkan kerja sama berbagai organ dan sistem yang kompleks, dengan prinsip difusi, transport aktif,
+                dan kerja enzim yang terkoordinasi secara cermat untuk menjaga homeostasis.
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
+```

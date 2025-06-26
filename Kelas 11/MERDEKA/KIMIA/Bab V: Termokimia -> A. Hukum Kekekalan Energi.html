@@ -1,0 +1,373 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimia Kelas XI - Hukum Kekekalan Energi & Termokimia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Color Palette */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-divider);
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fcfcfc;
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            font-weight: 500;
+        }
+
+        section h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .highlight {
+            background-color: rgba(255, 179, 0, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--secondary-accent-amber);
+            font-weight: bold;
+        }
+
+        .equation-box {
+            background-color: #e3f2fd; /* Light blue from primary_blue */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-blue);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .equation-box span {
+            font-family: 'Roboto Mono', monospace; /* Monospace for equations */
+        }
+
+        .key-points {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .key-points li {
+            background-color: #e8f5e9; /* Light green from accent_green */
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            border-left: 4px solid var(--semantic-success);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .key-points li::before {
+            content: '✓';
+            color: var(--semantic-success);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .definition-box {
+            background-color: #f0f4c3; /* Light amber/yellow */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .definition-box p {
+            margin: 0;
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .definition-box strong {
+            color: var(--secondary-accent-amber);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            section {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            section h3 {
+                font-size: 1.3em;
+            }
+
+            .equation-box {
+                font-size: 1.5em;
+                padding: 15px;
+            }
+
+            .key-points li {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.9em;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
+
+            section h3 {
+                font-size: 1.2em;
+            }
+
+            .equation-box {
+                font-size: 1.3em;
+            }
+
+            .key-points li {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>A. Hukum Kekekalan Energi</h1>
+            <p>Memahami Esensi Energi dan Transformasinya dalam Kimia</p>
+        </header>
+
+        <section>
+            <h2>Memahami Konsep Dasar Energi</h2>
+            <p>Di alam semesta ini, segala sesuatu yang ada, baik yang tampak maupun tidak, adalah entitas yang memiliki energi. Energi bukanlah sesuatu yang statis, melainkan dinamis, senantiasa terlibat dalam setiap perubahan atau perpindahan yang terjadi pada suatu benda.</p>
+
+            <p>Secara fundamental, energi yang dimiliki oleh suatu benda dapat dikategorikan menjadi dua bentuk utama:</p>
+            <ul class="key-points">
+                <li>
+                    <strong>Energi Potensial:</strong> Ini adalah energi yang tersimpan dalam suatu benda karena posisinya atau keadaannya. Benda yang diam, misalnya, memiliki energi potensial karena posisinya relatif terhadap medan gaya tertentu (contoh: gravitasi). Semakin tinggi suatu benda di atas permukaan tanah, semakin besar energi potensial gravitasinya.
+                </li>
+                <li>
+                    <strong>Energi Kinetik:</strong> Berbeda dengan energi potensial, energi kinetik adalah energi yang dimiliki suatu benda karena gerakannya. Semakin cepat benda bergerak dan semakin besar massanya, semakin besar pula energi kinetiknya.
+                </li>
+            </ul>
+            <p>Gabungan dari kedua bentuk energi ini, yaitu energi potensial dan energi kinetik total suatu sistem, dikenal sebagai <strong>Energi Dalam (Energi Internal)</strong>. Energi dalam inilah yang menjadi pusat perhatian dalam banyak proses kimia dan fisika, termasuk pemanfaatan untuk mengolah sampah menjadi energi listrik atau panas.</p>
+        </section>
+
+        <section>
+            <h2>Prinsip Fundamental: Hukum Kekekalan Energi</h2>
+            <p>Salah satu pilar utama dalam ilmu pengetahuan adalah <strong>Hukum Kekekalan Energi</strong>. Hukum ini menyatakan sebuah prinsip yang sangat krusial:
+                <br>
+                <div class="definition-box">
+                    <p>Energi tidak dapat <strong>diciptakan</strong> maupun <strong>dimusnahkan</strong>, melainkan hanya dapat <strong>diubah dari satu bentuk ke bentuk lain</strong>.</p>
+                </div>
+            </p>
+            <p>Ini berarti bahwa total energi di alam semesta selalu konstan. Ketika kita melihat suatu perubahan, misalnya lampu menyala, energi listrik tidak hilang begitu saja; ia berubah menjadi energi cahaya dan energi panas. Contoh lain yang sering kita jumpai adalah perubahan energi listrik menjadi energi gerak, seperti pada kipas angin atau motor listrik.</p>
+        </section>
+
+        <section>
+            <h2>Analisis Energi pada Balon Udara: Sebuah Studi Kasus Dinamis</h2>
+            <p>Mari kita telaah lebih dalam bagaimana prinsip kekekalan energi bekerja dalam konteks operasional sebuah balon udara. Proses ini melibatkan serangkaian transformasi energi yang menarik:</p>
+            <ul class="key-points">
+                <li>
+                    <strong>Pengisian Gas Awal:</strong> Balon udara pertama-tama diisi dengan gas (biasanya udara) hingga mengembang. Pada tahap ini, energi potensial dan kinetik molekul gas berada pada tingkat dasar sesuai suhu dan tekanan lingkungan.
+                </li>
+                <li>
+                    <strong>Pemanasan Gas:</strong> Sumber energi utama untuk membuat balon udara terbang adalah pemanasan gas di dalamnya. Pembakar (burner) yang menggunakan propana atau bahan bakar lain mengonversi <strong>energi kimia</strong> yang tersimpan dalam bahan bakar menjadi <strong>energi panas (kalor)</strong> melalui proses pembakaran. Kalor ini kemudian ditransfer ke udara di dalam balon.
+                </li>
+                <li>
+                    <strong>Peningkatan Energi Kinetik Molekul Gas:</strong> Saat gas di dalam balon dipanaskan, suhu gas meningkat secara signifikan. Peningkatan suhu ini merupakan manifestasi dari peningkatan <strong>energi kinetik rata-rata</strong> molekul-molekul gas. Molekul-molekul mulai bergerak lebih cepat dan bertumbukan lebih sering dan lebih kuat.
+                </li>
+                <li>
+                    <strong>Ekspansi Gas dan Penurunan Kerapatan:</strong> Akibat peningkatan energi kinetik, molekul-molekul gas membutuhkan ruang yang lebih besar untuk bergerak, menyebabkan gas di dalam balon <strong>memuai (ekspansi)</strong>. Volume gas bertambah sementara massanya tetap, sehingga kerapatan gas di dalam balon menjadi lebih rendah dibandingkan kerapatan udara dingin di luar balon.
+                </li>
+                <li>
+                    <strong>Gerakan Vertikal Balon:</strong> Prinsip Archimedes bekerja di sini. Karena gas di dalam balon lebih ringan (kurang padat) daripada udara di sekitarnya, balon tersebut menerima gaya apung ke atas yang lebih besar dari berat totalnya. Gaya apung ini mendorong balon untuk bergerak naik. Ini adalah transformasi dari <strong>energi panas (termal)</strong> yang menyebabkan ekspansi gas menjadi <strong>energi kinetik (gerak)</strong> balon secara keseluruhan.
+                </li>
+            </ul>
+            <p>Singkatnya, perubahan energi pada balon udara adalah transformasi dari <strong>energi kimia</strong> (bahan bakar) menjadi <strong>energi panas/termal</strong> (pemanasan udara), yang kemudian berubah menjadi <strong>energi kinetik/mekanik</strong> (gerak naik balon).</p>
+        </section>
+
+        <section>
+            <h2>Mengidentifikasi Transformasi Energi di Sekitar Kita</h2>
+            <p>Konsep perubahan energi tidak hanya terbatas pada balon udara, melainkan ada di setiap aspek kehidupan sehari-hari kita. Mari kita identifikasi beberapa contoh transformasi energi yang fundamental:</p>
+            <ul class="key-points">
+                <li>
+                    <strong>Penggunaan Baterai:</strong> Baterai menyimpan <strong>energi kimia</strong>. Ketika baterai digunakan pada mobil mainan, energi kimia ini diubah menjadi <strong>energi listrik</strong>, yang kemudian diubah lagi menjadi <strong>energi gerak (kinetik)</strong> oleh motor mainan. Jika baterai digunakan pada lampu senter, energi listrik diubah menjadi <strong>energi cahaya</strong> dan sebagian kecil <strong>energi panas</strong>.
+                </li>
+                <li>
+                    <strong>Pembangkit Listrik Tenaga Turbin:</strong> Pada pembangkit listrik, baik tenaga air, uap, atau angin, energi awal (potensial air, panas uap, kinetik angin) diubah menjadi <strong>energi mekanik</strong> yang memutar turbin. Putaran turbin ini kemudian menggerakkan generator untuk menghasilkan <strong>energi listrik</strong>.
+                </li>
+                <li>
+                    <strong>Penggunaan Batu Bara pada Kereta Api Uap:</strong> Batu bara menyimpan <strong>energi kimia</strong> yang sangat besar. Ketika dibakar, energi kimia ini dilepaskan sebagai <strong>energi panas (termal)</strong>. Panas ini digunakan untuk memanaskan air menjadi uap bertekanan tinggi. Uap bertekanan tinggi ini kemudian mendorong piston, mengubah <strong>energi panas</strong> menjadi <strong>energi mekanik (gerak)</strong> yang menggerakkan kereta api.
+                </li>
+            </ul>
+            <p>Dari pengamatan ini, dapat disimpulkan bahwa energi senantiasa mengalami <strong>transformasi</strong> dari satu bentuk ke bentuk lain tanpa pernah diciptakan atau dimusnahkan. Ini adalah inti dari prinsip kekekalan energi.</p>
+        </section>
+
+        <section>
+            <h2>Mengenal Termokimia: Studi Kalor dalam Perubahan Materi</h2>
+            <p>Setelah memahami berbagai bentuk dan transformasi energi, kita akan melangkah ke cabang ilmu kimia yang secara spesifik mempelajari aspek energi ini, yaitu <strong>Termokimia</strong>.</p>
+            <div class="definition-box">
+                <p><strong>Termokimia</strong> adalah bagian dari ilmu kimia yang fokus pada studi tentang <strong>kalor (panas)</strong> yang menyertai setiap perubahan materi, baik itu perubahan fisis maupun perubahan kimia.</p>
+            </div>
+            <p><strong>Kalor</strong> sendiri merupakan salah satu bentuk energi yang dapat dipindahkan antara sistem dan lingkungannya. Kalor dapat <strong>diserap</strong> oleh suatu materi (proses endotermik) atau <strong>dilepaskan</strong> oleh suatu materi (proses eksotermik).</p>
+
+            <h3>Memahami Persamaan Fundamental: ΔE = q + w</h3>
+            <p>Dalam termodinamika kimia, hubungan antara energi, kalor, dan kerja dapat dijelaskan melalui persamaan Hukum Pertama Termodinamika, yang merupakan aplikasi dari Hukum Kekekalan Energi:</p>
+            <div class="equation-box">
+                <span>ΔE = q + w</span>
+            </div>
+            <p>Mari kita bedah setiap komponen dalam persamaan ini:</p>
+            <ul class="key-points">
+                <li>
+                    <strong>ΔE (Perubahan Energi Dalam Sistem):</strong>
+                    <br>
+                    Dilambangkan dalam satuan Joule (J). ΔE menunjukkan perubahan total energi internal sistem (jumlah energi kinetik dan potensial molekul-molekul sistem). Nilai positif (+) berarti energi dalam sistem bertambah, sedangkan nilai negatif (-) berarti energi dalam sistem berkurang.
+                </li>
+                <li>
+                    <strong>q (Jumlah Kalor):</strong>
+                    <br>
+                    Juga dilambangkan dalam satuan Joule (J). 'q' merepresentasikan jumlah kalor yang ditransfer antara sistem dan lingkungannya.
+                    <ul>
+                        <li><span class="highlight">q bernilai positif (+) jika sistem <strong>menyerap</strong> kalor (kalor masuk ke sistem),</span> ini adalah proses <strong>endotermik</strong> (q &gt; 0).</li>
+                        <li><span class="highlight">q bernilai negatif (-) jika sistem <strong>melepas</strong> kalor (kalor keluar dari sistem),</span> ini adalah proses <strong>eksotermik</strong> (q &lt; 0).</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>w (Kerja):</strong>
+                    <br>
+                    Dilambangkan dalam satuan Joule (J). 'w' merepresentasikan kerja yang dilakukan. Dalam konteks termodinamika, kerja seringkali terkait dengan perubahan volume (kerja tekanan-volume).
+                    <ul>
+                        <li><span class="highlight">w bernilai positif (+) jika kerja <strong>dilakukan pada sistem</strong></span> (misalnya, gas dikompresi oleh lingkungan, sehingga energi masuk ke sistem).</li>
+                        <li><span class="highlight">w bernilai negatif (-) jika kerja <strong>dilakukan oleh sistem</strong></span> (misalnya, gas berekspansi melawan tekanan lingkungan, sehingga energi keluar dari sistem).</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Persamaan ΔE = q + w ini adalah fondasi untuk memahami bagaimana energi bertransformasi dalam reaksi kimia dan proses fisis, menjadikannya kunci utama dalam studi termokimia.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Kimia untuk SMA/MA Kelas XI. Hak Cipta Dilindungi.</p>
+            <p>Dibuat untuk tujuan edukasi berdasarkan kurikulum.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

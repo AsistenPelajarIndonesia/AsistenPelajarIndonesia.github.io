@@ -1,0 +1,443 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab IV: Hidrokarbon - Dampak Pembakaran Hidrokarbon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background_canvas);
+            color: var(--text_secondary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for potential anchor links */
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--background_canvas);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Headings */
+        h1 {
+            color: var(--primary_blue);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.8em;
+            font-weight: 700;
+            border-bottom: 3px solid var(--border_divider);
+            padding-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            color: var(--text_primary);
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 6px solid var(--accent_green);
+            padding-left: 15px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: var(--text_primary);
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: none; /* Removed default bullet for custom styling */
+            margin-left: 0;
+            margin-bottom: 20px;
+            padding: 0;
+        }
+
+        li {
+            position: relative;
+            margin-bottom: 12px;
+            padding-left: 30px; /* Space for custom bullet */
+            font-size: 1em;
+        }
+
+        li::before {
+            content: '•'; /* Custom bullet point */
+            color: var(--accent_green);
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+            line-height: 1;
+            top: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background-color: #e8f5e9; /* Lighter shade of green for info */
+            border-left: 6px solid var(--semantic_info);
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            color: var(--text_secondary);
+            font-style: italic;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .highlight-box strong {
+            color: var(--primary_blue);
+        }
+
+        /* Greenhouse Comparison Section */
+        .greenhouse-comparison {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap; /* Allows stacking on smaller screens */
+            justify-content: center;
+        }
+
+        .greenhouse-card {
+            flex: 1;
+            min-width: 320px; /* Minimum width before wrapping */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--background_canvas);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border_divider);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .greenhouse-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .greenhouse-card h3 {
+            color: var(--primary_blue);
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border_divider);
+            width: 100%;
+            font-size: 1.5em;
+        }
+
+        /* Visual Area within Cards */
+        .greenhouse-card .visual-area {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Adjust height for visual elements */
+            margin-top: 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .sun {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, var(--secondary_accent_amber) 0%, #FFD700 70%, transparent 100%);
+            border-radius: 50%;
+            top: 0;
+            left: 20px;
+            box-shadow: 0 0 20px var(--secondary_accent_amber);
+            z-index: 2;
+        }
+
+        .atmosphere {
+            position: absolute;
+            width: 85%;
+            height: 120px;
+            border: 3px solid var(--primary_blue);
+            border-radius: 50%;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text_tertiary);
+            font-size: 0.9em;
+            background-color: rgba(var(--primary_blue), 0.05);
+        }
+
+        .atmosphere span {
+            position: absolute;
+            bottom: 15px;
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        .heat-arrow {
+            position: absolute;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FF5722; /* Orange-red for heat */
+            z-index: 3;
+            animation: pulse 1.5s infinite alternate; /* Simple animation for dynamism */
+        }
+
+        /* Heat Arrow Positioning and Color */
+        .incoming-heat {
+            top: 60px;
+            left: 100px;
+            transform: rotate(-30deg);
+        }
+        .outgoing-heat-normal {
+            top: 30px;
+            right: 30px;
+            transform: rotate(30deg);
+            color: var(--accent_green); /* Green for successful exit */
+        }
+        .trapped-heat-normal {
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--semantic_warning); /* Amber for some trapped heat */
+        }
+        .outgoing-heat-excess {
+            top: 30px;
+            right: 30px;
+            transform: rotate(30deg);
+            color: var(--semantic_error); /* Red for less successful exit */
+        }
+        .trapped-heat-excess {
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--semantic_error); /* Deep red for more trapped heat */
+        }
+
+        /* Custom description list within cards */
+        .description-list {
+            text-align: left;
+            width: 100%;
+            margin-top: 20px;
+            list-style: none;
+            padding-left: 0;
+        }
+        .description-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        .description-list li::before {
+            content: '•';
+            color: var(--accent_green);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+        .excess-co2 .description-list li::before {
+             color: var(--semantic_error); /* Red bullet for excess */
+        }
+
+        /* Keyframes for animation */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .greenhouse-comparison {
+                flex-direction: column;
+                align-items: center;
+            }
+            .greenhouse-card {
+                width: 95%; /* Take more width on smaller screens */
+                min-width: unset; /* Remove min-width constraint */
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 1.7em;
+                margin-top: 30px;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 25px 15px;
+            }
+            .heat-arrow {
+                font-size: 1.5em;
+            }
+            .sun {
+                width: 60px;
+                height: 60px;
+            }
+            .atmosphere {
+                height: 100px;
+            }
+            li {
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .greenhouse-card {
+                padding: 15px;
+            }
+            .description-list li {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab IV: Hidrokarbon - H. Dampak Pembakaran Hidrokarbon</h1>
+
+        <section id="pembakaran-hidrokarbon">
+            <h2>Pembakaran Hidrokarbon: Sumber Energi dan Emisi CO<sub>2</sub></h2>
+            <p>
+                Hidrokarbon, yang merupakan komponen utama dalam bahan bakar fosil seperti minyak bumi, gas alam, dan batu bara, memegang peran sentral dalam penyediaan energi global. Ketika hidrokarbon terbakar sempurna dalam reaksi dengan oksigen (O<sub>2</sub>), ia menghasilkan karbon dioksida (CO<sub>2</sub>), uap air (H<sub>2</sub>O), dan pelepasan energi panas yang signifikan. Energi inilah yang kita manfaatkan untuk menggerakkan kendaraan, menghasilkan listrik, dan berbagai kebutuhan industri serta rumah tangga.
+            </p>
+            <div class="highlight-box">
+                <p><strong>Info Penting!</strong> Analisis mendalam mengenai jumlah energi yang dihasilkan dari berbagai proses kimia, termasuk pembakaran hidrokarbon, adalah topik utama dalam studi Termokimia. Konsep ini akan Anda pelajari lebih lanjut pada bab berikutnya di Kimia kelas XII.</p>
+            </div>
+            <p>
+                Sayangnya, seiring dengan peningkatan pesat konsumsi energi global, penggunaan bahan bakar hidrokarbon juga meningkat secara masif. Hal ini berbanding lurus dengan peningkatan produksi karbon dioksida ke atmosfer. Akumulasi CO<sub>2</sub> ini, meskipun tidak beracun secara langsung, memiliki dampak lingkungan yang luas dan signifikan.
+            </p>
+        </section>
+
+        <section id="efek-rumah-kaca">
+            <h2>Dampak Peningkatan CO<sub>2</sub>: Memahami Efek Rumah Kaca dan Pemanasan Global</h2>
+            <p>
+                Peningkatan konsentrasi karbon dioksida di atmosfer berkontribusi besar pada fenomena polusi udara dan, yang lebih penting, memicu penumpukan gas rumah kaca. Secara alami, gas rumah kaca adalah bagian integral dari sistem Bumi yang menjaga suhu planet tetap hangat dan stabil, memungkinkannya untuk menopang kehidupan. Mereka bekerja dengan memerangkap sebagian panas yang dipantulkan dari permukaan Bumi, mencegahnya lepas seluruhnya ke luar angkasa.
+            </p>
+            <p>
+                Namun, penggunaan bahan bakar fosil yang berlebihan telah mengganggu keseimbangan alami ini. Jumlah gas rumah kaca, khususnya CO<sub>2</sub>, yang dilepaskan ke atmosfer telah meningkat jauh melampaui kapasitas alami Bumi untuk mengelolanya. Akibatnya, lebih banyak panas terperangkap, menyebabkan suhu rata-rata Bumi meningkat. Fenomena inilah yang dikenal sebagai <strong>Pemanasan Global</strong>, yang secara drastis mengubah iklim planet kita.
+            </p>
+
+            <div class="greenhouse-comparison">
+                <div class="greenhouse-card normal-co2">
+                    <h3>CO<sub>2</sub> dalam Jumlah Normal (Kondisi Alami)</h3>
+                    <div class="visual-area">
+                        <div class="sun"></div>
+                        <div class="atmosphere">
+                            <span>Atmosfer</span>
+                            <span class="heat-arrow incoming-heat">☀️➡️🌡️</span> <!-- Sun to Heat -->
+                            <span class="heat-arrow trapped-heat-normal">🌍🌡️🔒</span> <!-- Earth Traps Heat -->
+                            <span class="heat-arrow outgoing-heat-normal">🌡️⬆️🌌</span> <!-- Heat to Space -->
+                        </div>
+                    </div>
+                    <ul class="description-list">
+                        <li><strong>Radiasi Matahari:</strong> Energi dari matahari diserap oleh Bumi, memanaskan permukaannya.</li>
+                        <li><strong>Panas Dipantulkan:</strong> Sebagian besar radiasi panas dipantulkan kembali menuju luar angkasa.</li>
+                        <li><strong>Pemerangkapan Alami:</strong> Sejumlah kecil panas terjebak oleh gas rumah kaca alami, menjaga suhu Bumi tetap nyaman untuk kehidupan.</li>
+                        <li><strong>Keseimbangan Optimal:</strong> Banyak panas berhasil dilepaskan, menjaga iklim global seimbang.</li>
+                    </ul>
+                </div>
+
+                <div class="greenhouse-card excess-co2">
+                    <h3>CO<sub>2</sub> dalam Jumlah Berlebihan (Dampak Manusia)</h3>
+                    <div class="visual-area">
+                        <div class="sun"></div>
+                        <div class="atmosphere">
+                            <span>Atmosfer</span>
+                            <span class="heat-arrow incoming-heat">☀️➡️🌡️</span> <!-- Sun to Heat -->
+                            <span class="heat-arrow trapped-heat-excess">🌍🌡️🔒🔒</span> <!-- Earth Traps MORE Heat -->
+                            <span class="heat-arrow outgoing-heat-excess">🌡️⬆️❌</span> <!-- Heat BLOCKED from Space -->
+                        </div>
+                    </div>
+                    <ul class="description-list">
+                        <li><strong>Radiasi Matahari:</strong> Tetap masuk dan memanaskan Bumi seperti biasa.</li>
+                        <li><strong>Peningkatan GRK:</strong> Kadar CO<sub>2</sub> yang tinggi membentuk lapisan tebal yang memerangkap panas.</li>
+                        <li><strong>Pemerangkapan Panas Berlebih:</strong> Lebih banyak radiasi panas yang seharusnya lepas ke angkasa kini terperangkap di atmosfer.</li>
+                        <li><strong>Pemanasan Global:</strong> Hanya sedikit panas yang dapat dilepas, menyebabkan peningkatan suhu rata-rata permukaan Bumi secara signifikan.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Konsekuensi Pemanasan Global bagi Bumi:</h3>
+            <ul>
+                <li><strong>Pencairan Es dan Gletser:</strong> Peningkatan suhu global menyebabkan pencairan cepat pada lapisan es di kutub dan gletser di pegunungan, yang berkontribusi pada perubahan hidrologi global.</li>
+                <li><strong>Kenaikan Permukaan Laut:</strong> Air yang berasal dari es yang mencair mengalir ke laut, menyebabkan kenaikan signifikan pada permukaan air laut. Ancaman ini serius bagi kota-kota pesisir dan negara-negara pulau rendah yang berisiko tenggelam.</li>
+                <li><strong>Gangguan Ekosistem Laut:</strong> Peningkatan suhu air laut, serta perubahan kimia laut (misalnya, pengasaman laut akibat penyerapan CO<sub>2</sub>), berdampak negatif pada kehidupan laut. Ini menyebabkan pemutihan terumbu karang, penurunan populasi spesies ikan tertentu, dan gangguan rantai makanan di ekosistem perairan.</li>
+                <li><strong>Cuaca Ekstrem:</strong> Pemanasan global juga dikaitkan dengan peningkatan frekuensi dan intensitas peristiwa cuaca ekstrem seperti gelombang panas, kekeringan berkepanjangan, badai yang lebih kuat, dan banjir.</li>
+            </ul>
+        </section>
+
+        <section id="solusi-mitigasi">
+            <h2>Tindakan Mitigasi dan Solusi untuk Masa Depan Bumi</h2>
+            <p>
+                Mengingat urgensi dan skala dampak pemanasan global, tindakan nyata dan kolektif sangat esensial untuk melindungi planet kita. Fondasi dari solusi ini adalah pengurangan drastis ketergantungan dan penggunaan bahan bakar fosil. Transisi menuju sumber energi terbarukan dan praktik yang lebih berkelanjutan adalah kunci.
+            </p>
+            <p>Sebagai individu, kita juga memiliki peran penting. Beberapa tindakan sederhana yang dapat kita integrasikan dalam kehidupan sehari-hari untuk mengurangi jejak karbon kita meliputi:</p>
+            <ul>
+                <li><strong>Mengutamakan Transportasi Publik:</strong> Untuk perjalanan jarak jauh, beralih ke bus, kereta, atau moda transportasi umum lainnya dapat secara signifikan mengurangi emisi karbon per individu dibandingkan dengan kendaraan pribadi.</li>
+                <li><strong>Bersepeda atau Berjalan Kaki:</strong> Untuk jarak dekat, memilih sepeda atau berjalan kaki tidak hanya ramah lingkungan tetapi juga mendukung kesehatan fisik.</li>
+                <li><strong>Mengurangi Penggunaan Plastik Sekali Pakai:</strong> Produksi plastik membutuhkan energi dan pembakarannya melepaskan gas rumah kaca. Mengurangi, menggunakan kembali, dan mendaur ulang plastik dapat meminimalkan dampak ini.</li>
+                <li><strong>Menghemat Penggunaan Listrik:</strong> Sebagian besar listrik di dunia masih dihasilkan dari pembakaran bahan bakar fosil. Menghemat listrik di rumah dan kantor berarti mengurangi permintaan akan energi yang berasal dari sumber tidak terbarukan.</li>
+                <li><strong>Mendukung Produk Lokal dan Berkelanjutan:</strong> Memilih produk yang diproduksi secara lokal dan dengan metode berkelanjutan mengurangi jejak karbon yang terkait dengan transportasi dan produksi massal.</li>
+            </ul>
+            <p>
+                Setiap langkah kecil, ketika dilakukan oleh jutaan orang, dapat menciptakan perubahan besar. Melalui kesadaran dan tindakan nyata, kita dapat berkontribusi pada upaya global untuk menciptakan masa depan yang lebih hijau dan berkelanjutan bagi semua.
+            </p>
+        </section>
+    </div>
+</body>
+</html>
+```

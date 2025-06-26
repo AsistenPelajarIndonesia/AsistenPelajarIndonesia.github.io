@@ -1,0 +1,385 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesetimbangan Kimia - Konsep Dasar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            border-left: 6px solid var(--primary-blue);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            margin-top: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Paragraphs and Text */
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .highlight {
+            background-color: rgba(var(--secondary-accent-amber), 0.1);
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Activity Box */
+        .activity-box {
+            background-color: var(--background-canvas);
+            border: 2px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .activity-box::before {
+            content: 'Aktivitas 7.1';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .activity-box h3 {
+            margin-top: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .activity-box ol li {
+            font-size: 0.95rem;
+        }
+
+        /* Key Concept Box */
+        .key-concept-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+        }
+
+        .key-concept-box strong {
+            color: white;
+        }
+
+        /* Chemical Equations */
+        .chemical-equation {
+            background-color: var(--border-divider);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            overflow-x: auto;
+            white-space: nowrap;
+            color: var(--text-primary);
+        }
+
+        .chemical-equation sup {
+            vertical-align: super;
+            font-size: 0.7em;
+        }
+
+        .chemical-equation sub {
+            vertical-align: sub;
+            font-size: 0.7em;
+        }
+
+        .reaction-arrow {
+            display: inline-block;
+            margin: 0 10px;
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        /* Two-column layout for types of equilibrium */
+        .equilibrium-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .equilibrium-type-card {
+            flex: 1 1 calc(50% - 20px); /* Two columns, with gap */
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            box-sizing: border-box;
+            min-width: 300px; /* Minimum width for each card before wrapping */
+        }
+
+        .equilibrium-type-card h4 {
+            color: var(--semantic-success);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .equilibrium-type-card.hetero h4 {
+            color: var(--semantic-warning);
+        }
+
+        /* Footer/Source information - not explicitly requested but good practice */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .container {
+                margin: 1rem auto;
+                padding: 1rem;
+            }
+            .activity-box {
+                padding: 1rem;
+            }
+            .activity-box::before {
+                top: -12px;
+                font-size: 0.8rem;
+            }
+            .equilibrium-types {
+                flex-direction: column;
+            }
+            .equilibrium-type-card {
+                flex: 1 1 100%; /* Stack columns on small screens */
+            }
+            .chemical-equation {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .container {
+                padding: 0.8rem;
+                margin: 0.5rem auto;
+                border-radius: 0;
+                box-shadow: none; /* Less emphasis on small screens */
+            }
+            body {
+                padding-bottom: 2rem; /* Give some space at the bottom */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kesetimbangan Kimia: Konsep Dasar</h1>
+
+        <p>Dalam kehidupan sehari-hari, kita seringkali menyaksikan berbagai fenomena alam yang melibatkan reaksi kimia. Salah satu contoh yang paling umum adalah <span class="highlight">proses perkaratan</span>, di mana besi bereaksi dengan oksigen dan air membentuk besi(III) oksida hidrat, atau yang kita kenal sebagai karat. Reaksi ini bersifat <span class="highlight">satu arah</span> atau <span class="highlight">irreversible</span>, artinya produk (karat) tidak dapat kembali menjadi reaktan asalnya (besi murni).</p>
+        <p>Namun, tidak semua reaksi kimia berlangsung satu arah. Ada pula reaksi yang dapat berlangsung <span class="highlight">dua arah</span> atau <span class="highlight">reversible</span>. Konsep inilah yang akan kita selami lebih dalam melalui aktivitas dan penjelasan berikut.</p>
+
+        <h2>Membuktikan Reaksi Dua Arah</h2>
+
+        <div class="activity-box">
+            <h3>Membuktikan Reaksi Dua Arah</h3>
+            <h4>Alat dan bahan:</h4>
+            <ul>
+                <li>Kristal tembaga sulfat pentahidrat (CuSO<sub>4</sub>·5H<sub>2</sub>O)</li>
+                <li>Pembakar spritus</li>
+                <li>Kaki tiga</li>
+                <li>Cawan porselen</li>
+                <li>Akuades</li>
+            </ul>
+
+            <h4>Langkah kerja:</h4>
+            <ol>
+                <li>Masukkan 1 gram tembaga sulfat pentahidrat ke dalam cawan porselen. Kristal ini biasanya berwarna biru cerah.</li>
+                <li>Panaskan cawan porselen tersebut di atas pembakar spritus. Amati perubahan warna yang terjadi. Kalian akan melihat kristal biru perlahan berubah menjadi putih. Perubahan ini menunjukkan pelepasan molekul air dari struktur kristal.</li>
+                <li>Setelah kristal tembaga sulfat tersebut berubah menjadi putih seluruhnya, biarkan dingin sebentar. Kemudian, tambahkan akuades (air murni) setetes demi setetes ke atas bubuk putih tersebut. Amati apa yang terjadi. Kalian akan melihat bubuk putih kembali berubah menjadi biru.</li>
+            </ol>
+            <p><strong>Apa yang bisa kalian simpulkan dari aktivitas ini?</strong></p>
+            <p>Dari percobaan ini, kita bisa menyimpulkan bahwa perubahan yang terjadi pada tembaga sulfat pentahidrat adalah reaksi yang bisa <span class="highlight">berlangsung bolak-balik</span>. Pemanasan menghilangkan air (menjadi putih), dan penambahan air mengembalikan air (menjadi biru kembali).</p>
+        </div>
+
+        <h2>A. Konsep Kesetimbangan Kimia</h2>
+        <p>Aktivitas di atas membuktikan bahwa reaksi kimia tidak selalu bersifat satu arah. Banyak reaksi yang dapat berlangsung ke arah pembentukan produk sekaligus ke arah pembentukan reaktan. Ini adalah inti dari konsep <span class="highlight">kesetimbangan kimia</span>.</p>
+
+        <h3>Pemanasan dan Penambahan Air pada Tembaga Sulfat</h3>
+        <p>Mari kita tuliskan reaksi yang terjadi pada percobaan di atas:</p>
+        <p><strong>Reaksi Maju (Pemanasan):</strong> Pemanasan tembaga sulfat pentahidrat akan menghasilkan tembaga sulfat anhidrat (tanpa air) dan uap air.</p>
+        <div class="chemical-equation">
+            CuSO<sub>4</sub>·5H<sub>2</sub>O(s) <span class="reaction-arrow">&rarr;</span> CuSO<sub>4</sub>(s) + 5H<sub>2</sub>O(g)
+        </div>
+        <p class="text-tertiary"><em>(Warna biru berubah menjadi putih)</em></p>
+
+        <p><strong>Reaksi Balik (Penambahan Air):</strong> Penambahan air ke dalam bubuk tembaga sulfat anhidrat akan mengembalikannya menjadi tembaga sulfat pentahidrat.</p>
+        <div class="chemical-equation">
+            CuSO<sub>4</sub>(s) + 5H<sub>2</sub>O(l) <span class="reaction-arrow">&rarr;</span> CuSO<sub>4</sub>·5H<sub>2</sub>O(s)
+        </div>
+        <p class="text-tertiary"><em>(Warna putih berubah kembali menjadi biru)</em></p>
+
+        <p>Karena reaksi ini dapat berlangsung dua arah, dalam kimia kita tidak menggunakan tanda panah satu arah, melainkan <span class="highlight">tanda panah bolak-balik</span> (⇌ atau &#8646;) untuk menunjukkan bahwa reaksi bersifat <span class="highlight">reversible</span> atau dapat mencapai kesetimbangan. Jadi, reaksi di atas dapat ditulis sebagai:</p>
+        <div class="chemical-equation">
+            CuSO<sub>4</sub>·5H<sub>2</sub>O(s) <span class="reaction-arrow">&#8646;</span> CuSO<sub>4</sub>(s) + 5H<sub>2</sub>O(l)
+        </div>
+
+        <h3>Kesetimbangan Dinamis</h3>
+        <p>Penting untuk dipahami bahwa kesetimbangan kimia tidak berarti reaksi telah berhenti. Sebaliknya, pada kondisi kesetimbangan, reaksi ke arah produk dan reaksi ke arah reaktan terus berlangsung. Yang terjadi adalah <span class="highlight">laju reaksi maju sama dengan laju reaksi balik</span>.</p>
+        <p>Orang kimia menyebut keadaan ini sebagai <span class="highlight">kesetimbangan dinamis</span>. Ini seperti dua orang yang berlari di treadmill dengan kecepatan yang sama namun berlawanan arah; posisi mereka relatif stabil, tetapi mereka terus bergerak.</p>
+        <p>Sebagai contoh, perhatikan reaksi dekomposisi dinitrogen tetroksida (N<sub>2</sub>O<sub>4</sub>) menjadi nitrogen dioksida (NO<sub>2</sub>):</p>
+        <div class="chemical-equation">
+            N<sub>2</sub>O<sub>4</sub>(g) <span class="reaction-arrow">&#8646;</span> 2NO<sub>2</sub>(g)
+        </div>
+        <p>N<sub>2</sub>O<sub>4</sub> adalah gas tak berwarna atau kuning pucat, sedangkan NO<sub>2</sub> adalah gas berwarna cokelat kemerahan. Jika kita memulai dengan N<sub>2</sub>O<sub>4</sub> murni, akan terbentuk NO<sub>2</sub> dan warna cokelat akan muncul. Sebaliknya, jika kita memulai dengan NO<sub>2</sub> murni, sebagian NO<sub>2</sub> akan berdimerisasi membentuk N<sub>2</sub>O<sub>4</sub>, dan warna cokelat akan memudar. Pada kesetimbangan, kedua gas ini ada dan warnanya akan stabil, menunjukkan bahwa laju N<sub>2</sub>O<sub>4</sub> yang terurai menjadi NO<sub>2</sub> sama dengan laju NO<sub>2</sub> yang bergabung kembali menjadi N<sub>2</sub>O<sub>4</sub>.</p>
+
+        <div class="key-concept-box">
+            Pada saat <strong>kesetimbangan dinamis</strong>, reaksi kimia terus berlangsung ke arah produk dan juga ke arah reaktan secara simultan. Laju pembentukan produk sama dengan laju pembentukan reaktan, sehingga konsentrasi bersih dari reaktan dan produk tidak berubah seiring waktu.
+        </div>
+
+        <h3>Jenis-jenis Kesetimbangan Dinamis</h3>
+        <p>Kesetimbangan dinamis dapat dibagi menjadi dua jenis utama berdasarkan fase zat-zat yang terlibat dalam reaksi:</p>
+
+        <div class="equilibrium-types">
+            <div class="equilibrium-type-card">
+                <h4>Kesetimbangan Homogen</h4>
+                <p>Kesetimbangan homogen adalah keadaan kesetimbangan dinamis di mana <span class="highlight">semua reaktan dan produk berada dalam fase yang sama</span>. Fase tersebut bisa berupa gas atau larutan.</p>
+                <p><strong>Contoh:</strong> Reaksi pembentukan amonia dari gas nitrogen dan hidrogen (Proses Haber-Bosch), di mana semua zat berwujud gas:</p>
+                <div class="chemical-equation">
+                    N<sub>2</sub>(g) + 3H<sub>2</sub>(g) <span class="reaction-arrow">&#8646;</span> 2NH<sub>3</sub>(g)
+                </div>
+                <p>Dalam reaksi ini, nitrogen, hidrogen, dan amonia semuanya berada dalam fase gas. Karena semua zat memiliki fase yang sama, maka ini disebut kesetimbangan homogen.</p>
+            </div>
+
+            <div class="equilibrium-type-card hetero">
+                <h4>Kesetimbangan Heterogen</h4>
+                <p>Kesetimbangan heterogen adalah keadaan kesetimbangan di mana <span class="highlight">reaktan atau produk berada dalam fase yang tidak sama</span>. Artinya, ada lebih dari satu fase yang terlibat dalam sistem kesetimbangan.</p>
+                <p><strong>Contoh:</strong> Penguraian kalsium karbonat padat menjadi kalsium oksida padat dan gas karbon dioksida.</p>
+                <div class="chemical-equation">
+                    CaCO<sub>3</sub>(s) <span class="reaction-arrow">&#8646;</span> CaO(s) + CO<sub>2</sub>(g)
+                </div>
+                <p>Di sini, kalsium karbonat (CaCO<sub>3</sub>) dan kalsium oksida (CaO) berada dalam fase padat (s), sedangkan karbon dioksida (CO<sub>2</sub>) berada dalam fase gas (g). Karena fase zat yang terlibat berbeda (padat dan gas), kesetimbangan ini disebut kesetimbangan heterogen.</p>
+            </div>
+        </div>
+
+        <p>Memahami konsep kesetimbangan kimia, baik homogen maupun heterogen, adalah fondasi penting untuk mempelajari lebih lanjut tentang bagaimana sistem kimia mencapai stabilitas dan faktor-faktor apa saja yang dapat mempengaruhinya.</p>
+
+    </div>
+    <div class="footer">
+        Kimia untuk SMA/MA Kelas XI | Bab VII: Kesetimbangan Kimia
+    </div>
+</body>
+</html>
+```

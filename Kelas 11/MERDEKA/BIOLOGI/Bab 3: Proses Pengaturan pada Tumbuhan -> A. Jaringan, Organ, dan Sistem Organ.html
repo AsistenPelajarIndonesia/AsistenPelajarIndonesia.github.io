@@ -1,0 +1,328 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biologi Kelas XI: Proses Pengaturan pada Tumbuhan - Jaringan, Organ, dan Sistem Organ</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header h2 {
+            color: var(--text-secondary);
+            font-size: 1.5em;
+            font-weight: normal;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f9f9f9; /* A slightly lighter background for sections */
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h3 {
+            color: var(--accent-green);
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            color: var(--primary-blue);
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        ul li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li strong {
+            color: var(--primary-blue);
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue */
+            border-left: 5px solid var(--semantic-info);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            color: var(--text-primary);
+        }
+
+        .organ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .organ-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .organ-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .organ-card h4 {
+            color: var(--accent-green);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .organ-card p {
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header h2 {
+                font-size: 1.2em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+            }
+
+            .organ-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header h2 {
+                font-size: 1em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            h4 {
+                font-size: 1em;
+            }
+
+            .organ-grid {
+                grid-template-columns: 1fr; /* Stack on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 3: Proses Pengaturan pada Tumbuhan</h1>
+            <h2>A. Jaringan, Organ, dan Sistem Organ</h2>
+        </header>
+
+        <section>
+            <h3>Pendahuluan: Misteri Regulasi Tumbuhan</h3>
+            <p>Pohon Eucalyptus, atau yang kita kenal sebagai pohon kayu putih, adalah salah satu contoh menakjubkan dari kemampuan adaptasi tumbuhan di hutan hujan tropis Indonesia. Salah satu fenomena menariknya adalah pengelupasan kulit batang yang berubah warna dari hijau segar menjadi jingga, ungu, atau biru dengan garis merah-jingga.</p>
+            <p>Fenomena ini bukan sekadar keindahan visual, melainkan bagian dari sebuah mekanisme kompleks yang memungkinkan tumbuhan bertahan hidup dan beradaptasi dengan lingkungannya. Semua fungsi vital tumbuhan, mulai dari pertumbuhan, respons terhadap perubahan musim, hingga perbaikan kerusakan, diatur oleh sebuah sistem yang disebut <strong>Sistem Regulasi</strong>.</p>
+            <div class="highlight-box">
+                <p><strong>Tahukah Kamu?</strong> Sistem regulasi pada tumbuhan melibatkan koordinasi antar berbagai struktur mulai dari tingkat seluler, jaringan, hingga organ untuk menjalankan fungsi spesifik dan menjaga kelangsungan hidupnya. Mari kita selami lebih dalam bagaimana tubuh tumbuhan tersusun dan bekerja secara harmonis.</p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Organ-Organ Tumbuhan: Pondasi Kehidupan</h3>
+            <p>Tubuh tumbuhan adalah struktur yang terorganisir dengan sangat baik, dimulai dari unit terkecilnya, yaitu <strong>sel</strong>. Sel-sel ini mengalami proses <strong>diferensiasi</strong>, di mana mereka berkembang menjadi bentuk dan fungsi khusus, lalu berkelompok membentuk <strong>jaringan</strong>. Jaringan-jaringan ini kemudian bersatu untuk membentuk <strong>organ</strong>, yang masing-masing menjalankan peran vital.</p>
+            <p>Organ-organ utama pada tumbuhan yang kita kenal meliputi:</p>
+            <div class="organ-grid">
+                <div class="organ-card">
+                    <h4>Akar</h4>
+                    <p>Bagian tumbuhan yang umumnya berada di dalam tanah, berfungsi menyerap air dan nutrisi, serta menopang tumbuhan.</p>
+                </div>
+                <div class="organ-card">
+                    <h4>Batang</h4>
+                    <p>Struktur utama yang menopang daun, bunga, dan buah, serta menjadi jalur transportasi air dan nutrisi.</p>
+                 fungicide               </div>
+                <div class="organ-card">
+                    <h4>Daun</h4>
+                    <p>Tempat utama fotosintesis, berfungsi mengubah energi cahaya menjadi energi kimia.</p>
+                </div>
+                <div class="organ-card">
+                    <h4>Bunga</h4>
+                    <p>Organ reproduksi pada tumbuhan, tempat terjadinya penyerbukan dan pembuahan.</p>
+                </div>
+                <div class="organ-card">
+                    <h4>Buah</h4>
+                    <p>Struktur yang berkembang dari ovarium bunga, melindungi biji dan membantu penyebaran biji.</p>
+                </div>
+                <div class="organ-card">
+                    <h4>Biji</h4>
+                    <p>Struktur reproduktif yang mengandung embrio tumbuhan baru, siap untuk berkecambah.</p>
+                </div>
+            </div>
+            <p>Setiap organ ini memiliki bentuk dan struktur internal yang spesifik, yang secara langsung berkaitan dengan fungsinya. Misalnya, bentuk pipih daun memaksimalkan penyerapan cahaya, sementara akar memiliki struktur yang luas untuk penyerapan.</p>
+        </section>
+
+        <section>
+            <h3>Jaringan Tumbuhan: Arsitektur Mikroskopis</h3>
+            <p>Untuk memahami bagaimana organ-organ ini bekerja, kita perlu melihat lebih dekat pada penyusunnya: jaringan. Jaringan tumbuhan dapat dikelompokkan berdasarkan fungsi dan karakteristik sel penyusunnya. Berikut adalah jaringan-jaringan utama yang ditemukan pada tumbuhan:</p>
+
+            <ul>
+                <li>
+                    <h4>1. Jaringan Meristem (Jaringan Embrional)</h4>
+                    <p><strong>Ciri-ciri:</strong> Tersusun dari kumpulan sel-sel muda yang aktif melakukan pembelahan diri (mitosis) secara terus-menerus. Sel-selnya bersifat embrional (belum terdiferensiasi) dan memiliki potensi tak terbatas untuk berkembang menjadi jenis sel lain. Memiliki dinding sel tipis, sitoplasma padat, dan vakuola kecil.</p>
+                    <p><strong>Fungsi:</strong> Bertanggung jawab untuk pertumbuhan primer (memanjang) dan pertumbuhan sekunder (melebar) tumbuhan. Pembentukan sel-sel baru yang akan berdiferensiasi menjadi jaringan lain dimulai dari meristem.</p>
+                    <p><strong>Lokasi:</strong> Ditemukan di bagian-bagian tumbuhan yang aktif tumbuh, seperti ujung akar (meristem apikal akar), ujung batang (meristem apikal batang), dan kambium (meristem lateral).</p>
+                </li>
+                <li>
+                    <h4>2. Jaringan Epidermis</h4>
+                    <p><strong>Ciri-ciri:</strong> Merupakan lapisan sel terluar yang menutupi seluruh permukaan organ tumbuhan seperti akar, batang, dan daun. Sel-selnya rapat, biasanya tanpa ruang antarsel, dan seringkali dilapisi oleh kutikula untuk mengurangi penguapan.</p>
+                    <p><strong>Fungsi:</strong> Melindungi organ tumbuhan dari kehilangan air berlebihan, serangan patogen, kerusakan fisik, dan perubahan suhu ekstrem. Pada akar, epidermis disebut <strong>epiblem</strong> atau <strong>rhizodermis</strong>, yang berfungsi menyerap air dan mineral.</p>
+                    <p><strong>Variasi:</strong> Bentuk dan fungsinya dapat bervariasi tergantung pada organ dan adaptasinya. Misalnya, pada daun terdapat stomata untuk pertukaran gas, dan pada akar terdapat rambut akar untuk perluasan permukaan serap.</p>
+                </li>
+                <li>
+                    <h4>3. Jaringan Parenkim (Jaringan Dasar)</h4>
+                    <p><strong>Ciri-ciri:</strong> Terbentuk dari jaringan meristem dasar. Tersusun atas sel-sel hidup yang umumnya berdinding tipis, memiliki vakuola besar, dan ruang antarsel yang cukup banyak. Sel-selnya belum terspesialisasi penuh sehingga dapat mengalami dediferensiasi (kembali menjadi meristematis) dan membelah.</p>
+                    <p><strong>Fungsi:</strong> Menjalankan berbagai fungsi dasar tumbuhan seperti fotosintesis (pada parenkim palisade dan spons daun), penyimpanan cadangan makanan (pada akar dan batang), transportasi, dan sekresi. Kemampuannya membelah penting untuk perbaikan bagian tumbuhan yang rusak.</p>
+                </li>
+                <li>
+                    <h4>4. Jaringan Kolenkim</h4>
+                    <p><strong>Ciri-ciri:</strong> Merupakan jaringan penguat hidup yang berdinding sel tebal tidak merata, terutama di bagian sudut-sudut sel. Sel-selnya hidup dan masih dapat memanjang seiring pertumbuhan organ.</p>
+                    <p><strong>Fungsi:</strong> Memberikan dukungan mekanis dan kekuatan pada organ tumbuhan yang masih muda dan sedang tumbuh, serta pada bagian yang lebih tua namun masih fleksibel seperti tangkai daun dan batang muda. Menjaga fleksibilitas organ.</p>
+                    <p><strong>Lokasi:</strong> Umumnya ditemukan di bawah epidermis pada batang, tangkai daun, tangkai bunga, dan beberapa bagian akar. Penting untuk dicatat bahwa jaringan kolenkim <strong>tidak ditemukan pada tumbuhan monokotil</strong>.</p>
+                </li>
+                <li>
+                    <h4>5. Jaringan Sklerenkim</h4>
+                    <p><strong>Ciri-ciri:</strong> Jaringan penunjang yang tersusun dari sel-sel mati dengan dinding sel yang sangat tebal, kuat, dan berlignin (mengandung zat kayu). Sel-sel ini tidak lagi dapat memanjang dan memberikan dukungan yang kaku.</p>
+                    <p><strong>Fungsi:</strong> Memberikan kekuatan mekanis dan kekakuan pada bagian tumbuhan yang telah dewasa dan berhenti tumbuh. Melindungi bagian-bagian lunak tumbuhan dari tekanan dan kerusakan.</p>
+                    <p><strong>Tipe:</strong> Dibedakan menjadi dua kelompok utama:
+                        <ul>
+                            <li><strong>Serabut (Fiber):</strong> Sel-sel panjang dan ramping, sering berkelompok membentuk untaian (misalnya pada serat rami atau kapas).</li>
+                            <li><strong>Sklereid (Sel Batu):</strong> Sel-sel yang bervariasi bentuknya (bulat, bercabang, bintang), ditemukan di berbagai tempat seperti kulit biji, buah keras (misalnya pada buah pir atau tempurung kelapa).</li>
+                        </ul>
+                    </p>
+                </li>
+                <li>
+                    <h4>6. Jaringan Pengangkut (Jaringan Vaskuler)</h4>
+                    <p><strong>Ciri-ciri:</strong> Terdiri atas dua komponen utama, yaitu Xilem dan Floem, yang secara bersama-sama membentuk berkas vaskuler (berkas pembuluh pengangkut). Jaringan ini sangat kompleks dengan struktur sel yang beragam untuk fungsi spesifik.</p>
+                    <p><strong>a. Xilem:</strong>
+                        <p><strong>Fungsi:</strong> Mengangkut air dan mineral yang diserap dari tanah oleh akar, menuju ke seluruh bagian tumbuhan, terutama daun untuk fotosintesis.</p>
+                        <p><strong>Ciri-ciri:</strong> Tersusun dari sel-sel mati seperti trakeid dan unsur pembuluh (vessel element) yang membentuk saluran kontinu, serta sel parenkim xilem dan serabut xilem.</p>
+                    </p>
+                    <p><strong>b. Floem:</strong>
+                        <p><strong>Fungsi:</strong> Mengangkut hasil fotosintesis (gula atau zat makanan organik) dari daun ke seluruh bagian tumbuhan yang membutuhkan energi, termasuk akar dan bagian yang sedang tumbuh.</p>
+                        <p><strong>Ciri-ciri:</strong> Tersusun dari sel-sel hidup seperti sel tapis (sieve element), sel pengiring (companion cell), parenkim floem, dan serabut floem. Sel tapis memiliki lempeng tapis (sieve plate) dengan pori-pori untuk aliran bahan.</p>
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Perbedaan Struktur Tumbuhan Monokotil dan Dikotil</h3>
+            <p>Meskipun organ dan jaringan utama pada tumbuhan adalah sama, terdapat perbedaan signifikan dalam pola dan susunan jaringan antara tumbuhan <strong>monokotil</strong> dan <strong>dikotil</strong> pada bagian akar, batang, dan daun. Perbedaan ini mencerminkan adaptasi evolusioner dan menjadi salah satu ciri khas untuk mengidentifikasi kelompok tumbuhan tersebut.</p>
+            <p>Sebagai contoh, pada batang dikotil, berkas pengangkut (xilem dan floem) tersusun rapi dalam lingkaran dengan kambium di antaranya, memungkinkan pertumbuhan sekunder. Sementara itu, pada monokotil, berkas pengangkut tersebar acak tanpa kambium, sehingga tidak ada pertumbuhan sekunder sejati. Demikian pula perbedaan dapat ditemukan pada pola tulang daun dan sistem perakaran.</p>
+        </section>
+
+        <footer>
+            <p style="text-align: center; color: var(--text-tertiary); font-size: 0.85em; margin-top: 50px;">
+                © 2023 Materi Biologi untuk SMA/MA Kelas XI. Hak Cipta Dilindungi Undang-Undang.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
+```

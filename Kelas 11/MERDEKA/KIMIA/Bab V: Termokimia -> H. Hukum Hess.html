@@ -1,0 +1,640 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hukum Hess - Kimia Termokimia (Kelas XI)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset & Box Sizing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Color Variables based on lightMode theme */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--bg-canvas);
+            padding: 20px 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 1.5em;
+            color: var(--text-primary); /* Main title slightly darker */
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 0.5em;
+            margin-top: 2em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 1.5em;
+        }
+        
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-top: 1em;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-primary);
+        }
+
+        ul, ol {
+            margin-bottom: 1em;
+            margin-left: 25px;
+            color: var(--text-primary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        strong {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Special Boxes & Elements */
+        .header-chapter {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-tertiary);
+            margin-bottom: 2em;
+            padding-bottom: 1em;
+            border-bottom: 1px dashed var(--border-divider);
+        }
+
+        .quote-box {
+            background-color: #f0f8ff; /* A lighter blue tint for quotes */
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5em;
+            margin: 2em 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            border-radius: 4px;
+        }
+
+        .code-block {
+            background-color: #f5f5f5;
+            border: 1px solid var(--border-divider);
+            padding: 1em;
+            margin: 1.5em 0;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        .reaction-equation {
+            display: block;
+            margin: 0.8em 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.0em;
+            color: var(--text-primary);
+            background-color: #f9f9f9;
+            padding: 0.6em 1em;
+            border-radius: 4px;
+            border: 1px solid var(--border-divider);
+            word-wrap: break-word;
+        }
+        .reaction-equation .delta-h {
+            color: var(--semantic-error); /* Negative delta H often shown in red */
+            font-weight: bold;
+        }
+        .reaction-equation .delta-h.positive {
+            color: var(--accent-green); /* Positive delta H in green */
+        }
+        .reaction-equation strong {
+            color: inherit; /* Maintain color of the equation */
+        }
+
+        .explanation-box {
+            background-color: #e3f2fd; /* Light blue info box */
+            border: 1px solid var(--semantic-info);
+            padding: 1em 1.5em;
+            margin: 1.5em 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+        }
+        .explanation-box p {
+            margin-bottom: 0.5em;
+        }
+
+        /* Diagram Styling (Text-based, conceptual) */
+        .diagram-section {
+            margin: 2em 0;
+            border: 1px dashed var(--border-divider);
+            padding: 1.5em;
+            border-radius: 8px;
+            background-color: #fefefe;
+        }
+
+        .diagram-section h4 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1em;
+        }
+
+        .diagram-path {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1em;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .diagram-box {
+            border: 1px solid var(--primary-blue);
+            padding: 0.8em 1.2em;
+            margin: 0.5em;
+            background-color: #e0f2f7; /* Lighter blue for boxes */
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            white-space: nowrap; /* Prevent breaking lines inside boxes */
+        }
+
+        .diagram-arrow-label {
+            margin: 0 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            text-align: center;
+        }
+        .diagram-arrow-label span {
+            display: block; /* Make delta H and arrow stack */
+            color: var(--semantic-error);
+        }
+
+        .diagram-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2em 0;
+            border: 1px solid var(--border-divider);
+            padding: 1.5em;
+            border-radius: 8px;
+            background-color: #fefefe;
+        }
+
+        .energy-level-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            margin: 0.5em 0;
+            position: relative;
+        }
+
+        .energy-level-value {
+            min-width: 80px;
+            text-align: right;
+            padding-right: 15px;
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        .energy-level-state {
+            flex-grow: 1;
+            border: 1px solid var(--primary-blue);
+            padding: 0.7em 1em;
+            background-color: #e0f2f7;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .energy-level-item.higher .energy-level-state {
+            background-color: #c8e6c9; /* Greenish for higher energy/start */
+            border-color: var(--accent-green);
+        }
+
+        .energy-transition-vertical {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 60px; /* Space for the arrow and label */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .energy-transition-vertical::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--text-tertiary);
+            z-index: 0;
+        }
+        .energy-transition-vertical .arrow-head {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid var(--text-tertiary);
+            border-right: 2px solid var(--text-tertiary);
+            z-index: 1;
+        }
+        .energy-transition-vertical .label {
+            background-color: var(--bg-canvas);
+            padding: 0 5px;
+            position: relative;
+            z-index: 2;
+            font-weight: bold;
+            color: var(--semantic-error);
+        }
+        .energy-transition-vertical .label.positive {
+            color: var(--accent-green);
+        }
+
+        .summation-block {
+            background-color: #f5f5f5;
+            border: 1px dashed var(--border-divider);
+            padding: 1.5em;
+            margin-top: 2em;
+            border-radius: 8px;
+        }
+        .summation-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5em;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            color: var(--text-primary);
+        }
+        .summation-line .reaction {
+            flex-grow: 1;
+        }
+        .summation-line .delta-h {
+            width: 150px;
+            text-align: right;
+            font-weight: bold;
+            color: var(--semantic-error);
+        }
+        .summation-operator {
+            text-align: right;
+            padding-right: 150px; /* Align with delta H column */
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+        .summation-result {
+            border-top: 2px solid var(--text-primary);
+            padding-top: 1em;
+            margin-top: 1em;
+            font-weight: bold;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            .quote-box { padding: 1em; }
+            .diagram-path {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .diagram-arrow-label {
+                margin: 0.5em 0;
+                width: 100%;
+                text-align: left;
+            }
+            .diagram-box {
+                margin: 0.5em 0;
+                width: 100%;
+            }
+            .energy-level-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .energy-level-value {
+                width: 100%;
+                text-align: left;
+                padding-right: 0;
+                margin-bottom: 5px;
+            }
+            .energy-level-state {
+                width: 100%;
+            }
+            .summation-line {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .summation-line .delta-h {
+                width: 100%;
+                text-align: left;
+                margin-top: 5px;
+            }
+            .summation-operator {
+                padding-right: 0;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-chapter">Bab V: Termokimia &rarr; H. Hukum Hess</div>
+            <h1>Memahami Hukum Hess: Entalpi Sebagai Fungsi Keadaan</h1>
+        </header>
+
+        <main>
+            <p>Dalam studi termokimia, perubahan entalpi (ΔH) suatu reaksi adalah salah satu besaran yang paling penting untuk dipahami. Hukum Hess memberikan fondasi yang kuat dalam perhitungan perubahan entalpi, terutama untuk reaksi yang tidak dapat diukur secara langsung.</p>
+
+            <section>
+                <h2>1. Definisi dan Prinsip Dasar Hukum Hess</h2>
+                <p>Hukum Hess, yang dicetuskan oleh Germain Henri Hess pada tahun 1840, merupakan prinsip fundamental dalam termokimia yang menyatakan bahwa:</p>
+                <div class="quote-box">
+                    <p>“Apabila sebuah reaksi berlangsung dalam dua tahap reaksi atau lebih, maka perubahan entalpi terhadap reaksi tersebut akan bernilai sama dengan jumlah perubahan entalpi dari seluruh tahapan yang terjadi.”</p>
+                    <p style="text-align: right; font-size: 0.9em; color: var(--text-tertiary); margin-top: 1em;">— Germain Henri Hess</p>
+                </div>
+                <p>Prinsip ini didasari oleh fakta bahwa **entalpi adalah suatu fungsi keadaan**. Artinya, nilai entalpi hanya bergantung pada kondisi awal (reaktan) dan kondisi akhir (produk) suatu sistem, tanpa memedulikan jalur atau tahapan reaksi yang dilalui untuk mencapai kondisi tersebut. Ini serupa dengan ketinggian gunung; Anda bisa mencapai puncak melalui berbagai jalur, tetapi perubahan ketinggian dari kaki ke puncak akan selalu sama, terlepas dari jalur mana yang Anda pilih.</p>
+                <p>Oleh karena itu, jika suatu reaksi dapat ditulis sebagai penjumlahan dari beberapa reaksi lain, maka perubahan entalpi untuk reaksi keseluruhan adalah jumlah dari perubahan entalpi untuk setiap reaksi individual.</p>
+            </section>
+
+            <section>
+                <h2>2. Aplikasi Hukum Hess: Contoh Pembakaran Karbon</h2>
+                <p>Untuk lebih memahami konsep ini, mari kita perhatikan contoh reaksi pembakaran karbon (grafit) menjadi karbon dioksida.</p>
+
+                <h3>2.1. Reaksi Langsung</h3>
+                <p>Reaksi pembakaran karbon menjadi karbon dioksida dapat berlangsung secara langsung:</p>
+                <div class="reaction-equation">
+                    C(s) + O₂(g) &rarr; CO₂(g) <span class="delta-h">ΔH = -393,5 kJ</span>
+                </div>
+                <p>Nilai ΔH ini adalah perubahan entalpi untuk pembentukan 1 mol CO₂ dari unsur-unsurnya dalam keadaan standar (entalpi pembentukan standar, ΔH°f).</p>
+
+                <h3>2.2. Reaksi Melalui Beberapa Tahap</h3>
+                <p>Namun, reaksi yang sama juga dapat berlangsung dalam dua tahap, melibatkan pembentukan karbon monoksida (CO) sebagai zat antara:</p>
+                <div class="reaction-equation">
+                    <strong>Tahap 1:</strong> C(s) + ½O₂(g) &rarr; CO(g) <span class="delta-h">ΔH₁ = -110,5 kJ</span>
+                </div>
+                <div class="reaction-equation">
+                    <strong>Tahap 2:</strong> CO(g) + ½O₂(g) &rarr; CO₂(g) <span class="delta-h">ΔH₂ = -283,0 kJ</span>
+                </div>
+                <p>Menurut Hukum Hess, jika kita menjumlahkan kedua tahap reaksi ini, kita akan mendapatkan reaksi keseluruhan, dan jumlah dari ΔH masing-masing tahap harus sama dengan ΔH reaksi langsung:</p>
+                <div class="code-block">
+                    C(s) + ½O₂(g) &rarr; CO(g) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ΔH₁ = -110,5 kJ<br>
+                    CO(g) + ½O₂(g) &rarr; CO₂(g) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ΔH₂ = -283,0 kJ<br>
+                    --------------------------------------------------- (+)<br>
+                    C(s) + O₂(g) &rarr; CO₂(g) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ΔH_total = -393,5 kJ
+                </div>
+                <p>Di sini, zat antara CO(g) saling menghilangkan karena muncul di sisi produk Tahap 1 dan di sisi reaktan Tahap 2. Perhatikan bahwa ½O₂(g) dari Tahap 1 dan ½O₂(g) dari Tahap 2 total menjadi 1O₂(g) di reaksi keseluruhan.</p>
+
+                <div class="explanation-box">
+                    <p>Dari contoh ini, kita dapat melihat bahwa:</p>
+                    <p>ΔH_total = ΔH₁ + ΔH₂</p>
+                    <p>-393,5 kJ = -110,5 kJ + (-283,0 kJ)</p>
+                    <p>-393,5 kJ = -393,5 kJ</p>
+                    <p>Ini membuktikan Hukum Hess: perubahan entalpi total adalah sama, tidak peduli jalannya reaksi.</p>
+                </div>
+
+                <h3>2.3. Representasi Diagram Siklus (Konseptual)</h3>
+                <p>Diagram siklus membantu memvisualisasikan bagaimana Hukum Hess bekerja. Meskipun tidak dapat direpresentasikan secara grafis tanpa gambar, konsepnya adalah bahwa Anda dapat "berputar" dalam siklus reaksi dan total perubahan entalpi akan nol jika Anda kembali ke keadaan awal, atau jumlah entalpi akan sama jika Anda mencapai keadaan akhir yang sama melalui jalur berbeda.</p>
+                <div class="diagram-section">
+                    <h4>Diagram Siklus Pembentukan CO₂</h4>
+                    <p style="text-align: center; color: var(--text-secondary); font-size: 0.9em; margin-bottom: 1em;">(Representasi Konseptual Tanpa Gambar)</p>
+                    <div class="diagram-path">
+                        <div class="diagram-box">C(s) + O₂(g)</div>
+                        <div class="diagram-arrow-label"><span>&rarr;</span><span>ΔH₃ = –393,5 kJ</span></div>
+                        <div class="diagram-box">CO₂(g)</div>
+                    </div>
+                    <div style="text-align: center; margin: 1em 0; font-weight: bold; color: var(--text-tertiary);">ATAU MELALUI JALUR BERTINGKAT:</div>
+                    <div class="diagram-path">
+                        <div class="diagram-box">C(s) + O₂(g)</div>
+                        <div class="diagram-arrow-label"><span>&darr;</span><span>ΔH₁ = -110,5 kJ</span></div>
+                        <div class="diagram-box">CO(g) + ½O₂(g)</div>
+                        <div class="diagram-arrow-label"><span>&rarr;</span><span>ΔH₂ = –283,0 kJ</span></div>
+                        <div class="diagram-box">CO₂(g)</div>
+                    </div>
+                    <p style="text-align: center; margin-top: 1.5em; font-style: italic; color: var(--text-secondary);">Kedua jalur (langsung atau bertahap) menghasilkan produk akhir yang sama, <code>CO₂(g)</code>, dari reaktan awal yang sama, <code>C(s) + O₂(g)</code>, dengan total perubahan entalpi yang identik.</p>
+                </div>
+
+                <h3>2.4. Representasi Diagram Tingkat Energi (Konseptual)</h3>
+                <p>Diagram tingkat energi menunjukkan entalpi relatif dari reaktan, produk, dan zat antara. Penurunan atau kenaikan energi ditunjukkan oleh panah ke bawah (eksotermik) atau ke atas (endotermik).</p>
+                <div class="diagram-flow">
+                    <h4>Diagram Tingkat Energi Pembentukan CO₂</h4>
+                    <p style="text-align: center; color: var(--text-secondary); font-size: 0.9em; margin-bottom: 1em;">(Representasi Konseptual Tanpa Gambar)</p>
+                    
+                    <div class="energy-level-item higher">
+                        <div class="energy-level-value">0 kJ</div>
+                        <div class="energy-level-state">C(s) + O₂(g)</div>
+                    </div>
+
+                    <div class="energy-transition-vertical">
+                        <div class="label">ΔH₁ = -110,5 kJ</div>
+                        <div class="arrow-head"></div>
+                    </div>
+
+                    <div class="energy-level-item">
+                        <div class="energy-level-value">-110,5 kJ</div>
+                        <div class="energy-level-state">CO(g) + ½O₂(g)</div>
+                    </div>
+
+                    <div class="energy-transition-vertical">
+                        <div class="label">ΔH₂ = -283,0 kJ</div>
+                        <div class="arrow-head"></div>
+                    </div>
+
+                    <div class="energy-level-item">
+                        <div class="energy-level-value">-393,5 kJ</div>
+                        <div class="energy-level-state">CO₂(g)</div>
+                    </div>
+
+                    <div class="explanation-box" style="margin-top: 2em; max-width: 600px;">
+                        <p>Dari kondisi awal <code>C(s) + O₂(g)</code> (diasumsikan 0 kJ):</p>
+                        <ol>
+                            <li>Jalur langsung ke <code>CO₂(g)</code> menunjukkan total penurunan energi sebesar <code>ΔH₃ = -393,5 kJ</code>.</li>
+                            <li>Jalur dua tahap menunjukkan penurunan energi <code>ΔH₁ = -110,5 kJ</code> dari <code>C(s) + O₂(g)</code> ke <code>CO(g) + ½O₂(g)</code>.</li>
+                            <li>Kemudian, penurunan energi lebih lanjut <code>ΔH₂ = -283,0 kJ</code> dari <code>CO(g) + ½O₂(g)</code> ke <code>CO₂(g)</code>.</li>
+                        </ol>
+                        <p>Total penurunan energi melalui jalur bertahap (ΔH₁ + ΔH₂) adalah <code>-110,5 kJ + (-283,0 kJ) = -393,5 kJ</code>, yang identik dengan jalur langsung (ΔH₃).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. Aturan Manipulasi Reaksi dalam Hukum Hess</h2>
+                <p>Dalam menerapkan Hukum Hess, seringkali kita perlu memanipulasi reaksi-reaksi yang diketahui ΔH-nya agar sesuai dengan reaksi target. Ada beberapa aturan yang harus diikuti:</p>
+                <ul>
+                    <li><strong>Jika suatu reaksi dibalik (arahnya),</strong> tanda ΔH-nya juga harus dibalik (dari positif menjadi negatif, atau sebaliknya).</li>
+                    <li><strong>Jika koefisien stoikiometri suatu reaksi dikalikan dengan faktor tertentu (misalnya, n),</strong> maka ΔH reaksi tersebut juga harus dikalikan dengan faktor yang sama (n).</li>
+                    <li><strong>Jika beberapa reaksi dijumlahkan,</strong> maka ΔH total adalah jumlah ΔH masing-masing reaksi. Zat yang muncul sebagai produk di satu reaksi dan sebagai reaktan di reaksi lain akan saling menghilangkan.</li>
+                </ul>
+
+                <h3>3.1. Contoh Penerapan: Pembentukan Belerang Trioksida</h3>
+                <p>Mari kita tentukan ΔH untuk reaksi pembentukan belerang trioksida (SO₃) dari belerang (S) dan oksigen (O₂):</p>
+                <div class="reaction-equation">
+                    <strong>Reaksi Target:</strong> 2S(s) + 3O₂(g) &rarr; 2SO₃(g)
+                </div>
+                <p>Diberikan dua reaksi berikut beserta ΔH-nya:</p>
+                <div class="reaction-equation">
+                    <strong>Tahap A:</strong> S(s) + O₂(g) &rarr; SO₂(g) <span class="delta-h">ΔH_A = -296,8 kJ</span>
+                </div>
+                <div class="reaction-equation">
+                    <strong>Tahap B:</strong> 2SO₂(g) + O₂(g) &rarr; 2SO₃(g) <span class="delta-h">ΔH_B = -197,8 kJ</span>
+                </div>
+
+                <h4>Langkah-langkah Manipulasi:</h4>
+                <ol>
+                    <li>
+                        <p><strong>Fokus pada S(s):</strong> Pada reaksi target, kita memiliki 2 mol S(s) di sisi reaktan. Pada Tahap A, kita memiliki 1 mol S(s) di sisi reaktan. Untuk mencocokkan reaksi target, kita harus **mengalikan Tahap A dengan 2**:</p>
+                        <div class="reaction-equation">
+                            <strong>2 &times; (Tahap A):</strong> 2S(s) + 2O₂(g) &rarr; 2SO₂(g) <span class="delta-h">ΔH_A' = 2 &times; (-296,8 kJ) = -593,6 kJ</span>
+                        </div>
+                    </li>
+                    <li>
+                        <p><strong>Fokus pada SO₃(g):</strong> Pada reaksi target, kita memiliki 2 mol SO₃(g) di sisi produk. Pada Tahap B, kita sudah memiliki 2 mol SO₃(g) di sisi produk. Jadi, **Tahap B tetap tidak berubah**:</p>
+                        <div class="reaction-equation">
+                            <strong>Tahap B:</strong> 2SO₂(g) + O₂(g) &rarr; 2SO₃(g) <span class="delta-h">ΔH_B = -197,8 kJ</span>
+                        </div>
+                    </li>
+                    <li>
+                        <p><strong>Jumlahkan Reaksi yang Dimanipulasi:</strong> Sekarang, kita jumlahkan reaksi 2 &times; (Tahap A) dan Tahap B:</p>
+                        <div class="summation-block">
+                            <div class="summation-line">
+                                <span class="reaction">2S(s) + 2O₂(g) &rarr; 2SO₂(g)</span>
+                                <span class="delta-h">ΔH = -593,6 kJ</span>
+                            </div>
+                            <div class="summation-line">
+                                <span class="reaction">2SO₂(g) + O₂(g) &rarr; 2SO₃(g)</span>
+                                <span class="delta-h">ΔH = -197,8 kJ</span>
+                            </div>
+                            <div class="summation-operator">+</div>
+                            <div class="summation-line summation-result">
+                                <span class="reaction">2S(s) + 3O₂(g) &rarr; 2SO₃(g)</span>
+                                <span class="delta-h">ΔH = -791,4 kJ</span>
+                            </div>
+                            <p style="margin-top: 1em; font-size: 0.9em; color: var(--text-secondary);">Perhatikan bahwa <code>2SO₂(g)</code> yang merupakan produk dari reaksi pertama dan reaktan dari reaksi kedua saling menghilangkan. Juga, <code>2O₂(g) + O₂(g)</code> digabungkan menjadi <code>3O₂(g)</code>.</p>
+                        </div>
+                    </li>
+                </ol>
+                <p>Jadi, perubahan entalpi untuk reaksi 2S(s) + 3O₂(g) &rarr; 2SO₃(g) adalah <strong>-791,4 kJ</strong>.</p>
+
+                <h3>3.2. Representasi Diagram Siklus (Konseptual) untuk SO₃</h3>
+                <p>Mirip dengan contoh karbon, pembentukan SO₃ juga dapat divisualisasikan sebagai siklus, di mana total ΔH dari jalur bertahap sama dengan ΔH jalur langsung.</p>
+                <div class="diagram-section">
+                    <h4>Diagram Siklus Pembentukan SO₃</h4>
+                    <p style="text-align: center; color: var(--text-secondary); font-size: 0.9em; margin-bottom: 1em;">(Representasi Konseptual Tanpa Gambar)</p>
+                    <div class="diagram-path">
+                        <div class="diagram-box">2S(s) + 3O₂(g)</div>
+                        <div class="diagram-arrow-label"><span>&rarr;</span><span>ΔH_total = –791,4 kJ</span></div>
+                        <div class="diagram-box">2SO₃(g)</div>
+                    </div>
+                    <div style="text-align: center; margin: 1em 0; font-weight: bold; color: var(--text-tertiary);">ATAU MELALUI JALUR BERTINGKAT:</div>
+                    <div class="diagram-path">
+                        <div class="diagram-box">2S(s) + 3O₂(g)</div>
+                        <div class="diagram-arrow-label"><span>&darr;</span><span>ΔH_A' = -593,6 kJ</span></div>
+                        <div class="diagram-box">2SO₂(g) + O₂(g)</div>
+                        <div class="diagram-arrow-label"><span>&rarr;</span><span>ΔH_B = –197,8 kJ</span></div>
+                        <div class="diagram-box">2SO₃(g)</div>
+                    </div>
+                    <p style="text-align: center; margin-top: 1.5em; font-style: italic; color: var(--text-secondary);">Kedua jalur (langsung atau bertahap) mengarah ke produk akhir yang sama dengan total perubahan entalpi yang identik.</p>
+                </div>
+
+                <h3>3.3. Representasi Diagram Tingkat Energi (Konseptual) untuk SO₃</h3>
+                <div class="diagram-flow">
+                    <h4>Diagram Tingkat Energi Pembentukan SO₃</h4>
+                    <p style="text-align: center; color: var(--text-secondary); font-size: 0.9em; margin-bottom: 1em;">(Representasi Konseptual Tanpa Gambar)</p>
+                    
+                    <div class="energy-level-item higher">
+                        <div class="energy-level-value">0 kJ</div>
+                        <div class="energy-level-state">2S(s) + 3O₂(g)</div>
+                    </div>
+
+                    <div class="energy-transition-vertical">
+                        <div class="label">ΔH_A' = -593,6 kJ</div>
+                        <div class="arrow-head"></div>
+                    </div>
+
+                    <div class="energy-level-item">
+                        <div class="energy-level-value">-593,6 kJ</div>
+                        <div class="energy-level-state">2SO₂(g) + O₂(g)</div>
+                    </div>
+
+                    <div class="energy-transition-vertical">
+                        <div class="label">ΔH_B = -197,8 kJ</div>
+                        <div class="arrow-head"></div>
+                    </div>
+
+                    <div class="energy-level-item">
+                        <div class="energy-level-value">-791,4 kJ</div>
+                        <div class="energy-level-state">2SO₃(g)</div>
+                    </div>
+
+                    <div class="explanation-box" style="margin-top: 2em; max-width: 600px;">
+                        <p>Dari reaktan awal <code>2S(s) + 3O₂(g)</code> (diasumsikan 0 kJ):</p>
+                        <ol>
+                            <li>Penurunan energi pada tahap pertama (ΔH_A') adalah <code>-593,6 kJ</code>, menghasilkan zat antara <code>2SO₂(g) + O₂(g)</code>.</li>
+                            <li>Penurunan energi pada tahap kedua (ΔH_B) adalah <code>-197,8 kJ</code>, menghasilkan produk akhir <code>2SO₃(g)</code>.</li>
+                        </ol>
+                        <p>Total penurunan energi melalui jalur bertahap adalah <code>-593,6 kJ + (-197,8 kJ) = -791,4 kJ</code>, yang merupakan ΔH reaksi keseluruhan. Ini menggarisbawahi bahwa posisi energi akhir produk relatif terhadap reaktan awal tidak berubah, terlepas dari langkah-langkah yang dilalui.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+```

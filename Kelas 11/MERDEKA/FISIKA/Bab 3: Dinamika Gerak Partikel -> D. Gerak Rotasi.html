@@ -1,0 +1,407 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Dinamika Gerak Partikel - Gerak Rotasi</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: #FFFFFF;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--accent-green);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--secondary-accent-amber);
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            color: var(--text-tertiary);
+        }
+
+        .formula {
+            background-color: #F8F8F8;
+            border: 1px solid var(--border-divider);
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            overflow-x: auto; /* For horizontal scrolling if formula is too long */
+        }
+
+        .formula-text {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1.1em;
+            color: var(--text-primary);
+            display: block; /* Ensures it takes full width for better display */
+            text-align: center;
+        }
+
+        .analogy {
+            background-color: #E3F2FD; /* Lighter blue, similar to info */
+            border: 1px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-style: italic;
+            color: var(--semantic-info);
+        }
+
+        details {
+            background-color: #f0f0f0;
+            border: 1px solid var(--border-divider);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        summary {
+            padding: 15px;
+            outline: none;
+            font-weight: bold;
+            color: var(--primary-blue);
+            user-select: none; /* Prevent text selection */
+        }
+
+        details > p {
+            padding: 0 15px 15px 15px;
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .highlight-term {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula-text {
+                font-size: 1em;
+            }
+            ul {
+                margin-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+                border-radius: 0; /* Less rounded corners for small screens */
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .formula-text {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Basic MathML-like display for formulas */
+        .formula-text span.variable { font-style: italic; }
+        .formula-text span.symbol { font-weight: bold; }
+        .formula-text sup, .formula-text sub {
+            vertical-align: super;
+            font-size: 0.7em;
+        }
+        .formula-text sub {
+            vertical-align: sub;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Dinamika Gerak Partikel - Gerak Rotasi</h1>
+        <p>Setelah memahami gerak translasi (gerak lurus) dan konsep momentum, kini kita akan memperdalam pemahaman kita tentang jenis gerak lain yang sangat umum terjadi di alam semesta: <strong class="highlight-term">Gerak Rotasi</strong>. Gerak rotasi adalah gerak benda yang berputar mengelilingi suatu sumbu atau titik pusat tertentu. Konsep ini sangat fundamental, dari perputaran planet hingga roda kendaraan.</p>
+
+        <section id="kinematika-rotasi">
+            <h2>1. Kinematika Rotasi</h2>
+            <p>Sama seperti gerak translasi, gerak rotasi juga memiliki besaran-besaran kinematika yang menggambarkan posisi, kecepatan, dan percepatannya, tetapi dalam konteks sudut.</p>
+
+            <h3>a. Posisi, Perpindahan, Kecepatan, dan Percepatan Sudut</h3>
+            <ul>
+                <li>
+                    <strong>Posisi Sudut (<span class="variable">&theta;</span>):</strong> Menggambarkan lokasi suatu titik pada benda yang berotasi relatif terhadap sumbu putar dan titik acuan. Satuan internasionalnya adalah <strong class="highlight-term">radian (rad)</strong>. Satu lingkaran penuh adalah 2&pi; radian.
+                </li>
+                <li>
+                    <strong>Perpindahan Sudut (<span class="symbol">&Delta;&theta;</span>):</strong> Perubahan posisi sudut dari suatu benda. <span class="formula-text"><span class="symbol">&Delta;&theta;</span> = <span class="variable">&theta;</span><sub>akhir</sub> - <span class="variable">&theta;</span><sub>awal</sub></span>.
+                </li>
+                <li>
+                    <strong>Kecepatan Sudut (<span class="variable">&omega;</span>):</strong> Mengukur seberapa cepat posisi sudut suatu benda berubah.
+                    <ul>
+                        <li><strong class="highlight-term">Kecepatan Sudut Rata-rata (<span class="variable">&omega;</span><sub>avg</sub>):</strong> Perpindahan sudut dibagi dengan selang waktu.
+                            <div class="formula"><span class="formula-text"><span class="variable">&omega;</span><sub>avg</sub> = <span class="symbol">&Delta;&theta;</span> / <span class="symbol">&Delta;t</span></span></div>
+                        </li>
+                        <li><strong class="highlight-term">Kecepatan Sudut Sesaat (<span class="variable">&omega;</span>):</strong> Turunan pertama dari posisi sudut terhadap waktu.
+                            <div class="formula"><span class="formula-text"><span class="variable">&omega;</span> = d<span class="variable">&theta;</span> / d<span class="symbol">t</span></span></div>
+                        </li>
+                    </ul>
+                    Satuan internasional untuk kecepatan sudut adalah <strong class="highlight-term">radian per detik (rad/s)</strong>.
+                </li>
+                <li>
+                    <strong>Percepatan Sudut (<span class="variable">&alpha;</span>):</strong> Mengukur seberapa cepat kecepatan sudut suatu benda berubah.
+                    <ul>
+                        <li><strong class="highlight-term">Percepatan Sudut Rata-rata (<span class="variable">&alpha;</span><sub>avg</sub>):</strong> Perubahan kecepatan sudut dibagi dengan selang waktu.
+                            <div class="formula"><span class="formula-text"><span class="variable">&alpha;</span><sub>avg</sub> = <span class="symbol">&Delta;&omega;</span> / <span class="symbol">&Delta;t</span></span></div>
+                        </li>
+                        <li><strong class="highlight-term">Percepatan Sudut Sesaat (<span class="variable">&alpha;</span>):</strong> Turunan pertama dari kecepatan sudut terhadap waktu, atau turunan kedua dari posisi sudut terhadap waktu.
+                            <div class="formula"><span class="formula-text"><span class="variable">&alpha;</span> = d<span class="variable">&omega;</span> / d<span class="symbol">t</span> = d<sup>2</sup><span class="variable">&theta;</span> / d<span class="symbol">t</span><sup>2</sup></span></div>
+                        </li>
+                    </ul>
+                    Satuan internasional untuk percepatan sudut adalah <strong class="highlight-term">radian per detik kuadrat (rad/s²)</strong>.
+                </li>
+            </ul>
+
+            <h3>b. Persamaan Gerak Rotasi dengan Percepatan Sudut Konstan</h3>
+            <p>Jika percepatan sudut (<span class="variable">&alpha;</span>) adalah konstan, maka terdapat persamaan-persamaan kinematika yang analog dengan gerak lurus berubah beraturan:</p>
+            <ul>
+                <li><strong class="highlight-term">Kecepatan Sudut Akhir:</strong>
+                    <div class="formula"><span class="formula-text"><span class="variable">&omega;</span> = <span class="variable">&omega;</span><sub>0</sub> + <span class="variable">&alpha;t</span></span></div>
+                </li>
+                <li><strong class="highlight-term">Perpindahan Sudut:</strong>
+                    <div class="formula"><span class="formula-text"><span class="variable">&Delta;&theta;</span> = <span class="variable">&omega;</span><sub>0</sub><span class="symbol">t</span> + &frac12;<span class="variable">&alpha;t</span><sup>2</sup></span></div>
+                </li>
+                <li><strong class="highlight-term">Hubungan Kecepatan dan Perpindahan Sudut (tanpa waktu):</strong>
+                    <div class="formula"><span class="formula-text"><span class="variable">&omega;</span><sup>2</sup> = <span class="variable">&omega;</span><sub>0</sub><sup>2</sup> + 2<span class="variable">&alpha;&Delta;&theta;</span></span></div>
+                </li>
+            </ul>
+            <p>Di mana <span class="variable">&omega;</span><sub>0</sub> adalah kecepatan sudut awal dan <span class="variable">&theta;</span><sub>0</sub> adalah posisi sudut awal.</p>
+        </section>
+
+        <section id="hubungan-linier-rotasi">
+            <h2>2. Hubungan Antara Gerak Linier dan Gerak Rotasi</h2>
+            <p>Untuk titik-titik pada benda yang berotasi, terdapat hubungan langsung antara besaran linier (tangensial) dan besaran sudut, dengan jari-jari (<span class="variable">r</span>) sebagai penghubungnya.</p>
+            <ul>
+                <li>
+                    <strong>Jarak Linier (Panjang Busur) (<span class="variable">s</span>):</strong>
+                    <div class="formula"><span class="formula-text"><span class="variable">s</span> = <span class="variable">r&theta;</span></span></div>
+                </li>
+                <li>
+                    <strong>Kecepatan Tangensial (<span class="variable">v</span><sub>t</sub>):</strong> Kecepatan linier suatu titik pada lintasan lingkaran, tegak lurus terhadap jari-jari.
+                    <div class="formula"><span class="formula-text"><span class="variable">v</span><sub>t</sub> = <span class="variable">r&omega;</span></span></div>
+                </li>
+                <li>
+                    <strong>Percepatan Tangensial (<span class="variable">a</span><sub>t</sub>):</strong> Komponen percepatan yang mengubah besar kecepatan tangensial.
+                    <div class="formula"><span class="formula-text"><span class="variable">a</span><sub>t</sub> = <span class="variable">r&alpha;</span></span></div>
+                </li>
+                <li>
+                    <strong>Percepatan Sentripetal (<span class="variable">a</span><sub>c</sub>):</strong> Komponen percepatan yang selalu mengarah ke pusat lingkaran, menyebabkan perubahan arah kecepatan.
+                    <div class="formula"><span class="formula-text"><span class="variable">a</span><sub>c</sub> = <span class="variable">v</span><sub>t</sub><sup>2</sup> / <span class="variable">r</span> = <span class="variable">r&omega;</span><sup>2</sup></span></div>
+                </li>
+            </ul>
+            <p>Percepatan total suatu titik pada benda yang berotasi adalah resultan vektor dari percepatan tangensial dan sentripetal.</p>
+        </section>
+
+        <section id="dinamika-rotasi">
+            <h2>3. Dinamika Rotasi</h2>
+            <p>Dinamika rotasi mempelajari hubungan antara gaya, momen inersia, dan percepatan sudut. Mirip dengan bagaimana gaya menyebabkan percepatan dalam gerak translasi, dalam gerak rotasi, <strong class="highlight-term">momen gaya (torsi)</strong> menyebabkan percepatan sudut.</p>
+
+            <h3>a. Momen Gaya (Torsi, <span class="variable">&tau;</span>)</h3>
+            <p>Momen gaya, atau sering disebut torsi, adalah ukuran kecenderungan suatu gaya untuk memutar suatu objek di sekitar poros atau sumbu. Ini adalah analogi rotasi dari gaya.
+            </p>
+            <ul>
+                <li>
+                    <strong>Definisi:</strong> Hasil kali antara besar gaya, jarak dari titik tumpu ke titik aplikasi gaya (lengan momen), dan sinus sudut antara vektor gaya dan lengan momen.
+                    <div class="formula"><span class="formula-text"><span class="variable">&tau;</span> = <span class="variable">rF</span> sin<span class="variable">&theta;</span></span></div>
+                    Di mana <span class="variable">r</span> adalah vektor posisi dari sumbu putar ke titik aplikasi gaya, <span class="variable">F</span> adalah vektor gaya, dan <span class="variable">&theta;</span> adalah sudut antara <span class="variable">r</span> dan <span class="variable">F</span>.
+                </li>
+                <li>
+                    <strong>Satuan:</strong> <strong class="highlight-term">Newton meter (Nm)</strong>.
+                </li>
+                <li>
+                    <strong>Arah:</strong> Mengikuti kaidah tangan kanan. Jika jari-jari melengkung mengikuti arah putaran yang diakibatkan torsi, maka ibu jari menunjukkan arah torsi (keluar atau masuk bidang).
+                </li>
+            </ul>
+
+            <h3>b. Momen Inersia (<span class="variable">I</span>)</h3>
+            <p>Momen inersia adalah ukuran keengganan suatu objek untuk mengubah keadaan gerak rotasinya (yaitu, untuk mempercepat atau memperlambat rotasi). Ini adalah analogi rotasi dari massa dalam gerak translasi.</p>
+            <ul>
+                <li>
+                    <strong>Untuk Partikel Titik:</strong> Untuk massa titik (<span class="variable">m</span>) yang berputar pada jari-jari (<span class="variable">r</span>) dari sumbu putar:
+                    <div class="formula"><span class="formula-text"><span class="variable">I</span> = <span class="variable">mr</span><sup>2</sup></span></div>
+                </li>
+                <li>
+                    <strong>Untuk Benda Tegar:</strong> Untuk benda tegar, momen inersia adalah jumlah momen inersia semua partikel penyusunnya. Secara umum, nilai <span class="variable">I</span> tergantung pada massa total benda dan bagaimana massa tersebut terdistribusi relatif terhadap sumbu putar.
+                </li>
+                <li>
+                    <strong>Satuan:</strong> <strong class="highlight-term">Kilogram meter kuadrat (kg m²)</strong>.
+                </li>
+                <li>
+                    <strong class="highlight-term">Teorema Sumbu Sejajar:</strong> Jika momen inersia suatu benda terhadap sumbu yang melewati pusat massanya (<span class="variable">I</span><sub>CM</sub>) diketahui, maka momen inersia terhadap sumbu lain yang sejajar dan berjarak (<span class="variable">d</span>) dari pusat massa adalah:
+                    <div class="formula"><span class="formula-text"><span class="variable">I</span> = <span class="variable">I</span><sub>CM</sub> + <span class="variable">Md</span><sup>2</sup></span></div>
+                    Di mana <span class="variable">M</span> adalah massa total benda.
+                </li>
+            </ul>
+            <div class="analogy">
+                <p><strong>Analogi Penting:</strong></p>
+                <ul>
+                    <li>Gaya (<span class="variable">F</span>) <strong class="highlight-term">analog</strong> dengan Momen Gaya (<span class="variable">&tau;</span>)</li>
+                    <li>Massa (<span class="variable">m</span>) <strong class="highlight-term">analog</strong> dengan Momen Inersia (<span class="variable">I</span>)</li>
+                    <li>Percepatan Linier (<span class="variable">a</span>) <strong class="highlight-term">analog</strong> dengan Percepatan Sudut (<span class="variable">&alpha;</span>)</li>
+                </ul>
+            </div>
+
+            <h3>c. Hukum II Newton untuk Gerak Rotasi</h3>
+            <p>Analog dengan Hukum II Newton (<span class="variable">F</span><sub>net</sub> = <span class="variable">ma</span>), untuk gerak rotasi, total momen gaya yang bekerja pada suatu benda sama dengan hasil kali momen inersia benda tersebut dengan percepatan sudut yang dihasilkannya.</p>
+            <div class="formula"><span class="formula-text"><span class="variable">&Sigma;&tau;</span> = <span class="variable">I&alpha;</span></span></div>
+            <p>Ini adalah persamaan fundamental dalam dinamika rotasi.</p>
+        </section>
+
+        <section id="energi-momentum-rotasi">
+            <h2>4. Energi dan Momentum dalam Gerak Rotasi</h2>
+            <p>Konsep energi dan momentum juga memiliki analogi dalam gerak rotasi, yang sangat berguna untuk menganalisis sistem yang melibatkan rotasi.</p>
+
+            <h3>a. Energi Kinetik Rotasi (<span class="variable">K</span><sub>rot</sub>)</h3>
+            <p>Benda yang berotasi memiliki energi kinetik karena gerakannya. Energi kinetik rotasi adalah bagian dari energi kinetik total suatu benda yang disebabkan oleh rotasinya.</p>
+            <div class="formula"><span class="formula-text"><span class="variable">K</span><sub>rot</sub> = &frac12;<span class="variable">I&omega;</span><sup>2</sup></span></div>
+            <p>Satuan energi kinetik rotasi sama dengan energi kinetik translasi, yaitu <strong class="highlight-term">Joule (J)</strong>.</p>
+            <details>
+                <summary>Klik untuk memahami lebih lanjut: Energi Kinetik Total Benda Menggelinding</summary>
+                <p>Ketika suatu benda melakukan gerak menggelinding (misalnya roda yang bergerak di jalan tanpa slip), ia memiliki dua jenis energi kinetik: energi kinetik translasi pusat massa dan energi kinetik rotasi terhadap pusat massa.</p>
+                <p>Total Energi Kinetik = <span class="variable">K</span><sub>translasi</sub> + <span class="variable">K</span><sub>rotasi</sub></p>
+                <div class="formula"><span class="formula-text"><span class="variable">K</span><sub>total</sub> = &frac12;<span class="variable">Mv</span><sub>CM</sub><sup>2</sup> + &frac12;<span class="variable">I</span><sub>CM</sub><span class="variable">&omega;</span><sup>2</sup></span></div>
+                <p>Di mana <span class="variable">M</span> adalah massa total benda, <span class="variable">v</span><sub>CM</sub> adalah kecepatan pusat massa, dan <span class="variable">I</span><sub>CM</sub> adalah momen inersia terhadap sumbu yang melewati pusat massa.</p>
+            </details>
+
+            <h3>b. Momentum Sudut (<span class="variable">L</span>)</h3>
+            <p>Momentum sudut adalah analogi rotasi dari momentum linier. Ini adalah ukuran "kuantitas gerak putar" suatu benda.</p>
+            <ul>
+                <li>
+                    <strong>Untuk Partikel Titik:</strong> Momentum sudut (<span class="variable">L</span>) suatu partikel titik dengan momentum linier (<span class="variable">p</span>) yang berjarak (<span class="variable">r</span>) dari titik asal adalah hasil kali silang dari vektor posisi dan vektor momentum linier.
+                    <div class="formula"><span class="formula-text"><span class="variable">L</span> = <span class="variable">r &times; p</span> = <span class="variable">r(&text{m}v)</span> sin<span class="variable">&theta;</span></span></div>
+                </li>
+                <li>
+                    <strong>Untuk Benda Tegar Berotasi:</strong> Untuk benda tegar yang berotasi terhadap sumbu tetap dengan momen inersia (<span class="variable">I</span>) dan kecepatan sudut (<span class="variable">&omega;</span>):
+                    <div class="formula"><span class="formula-text"><span class="variable">L</span> = <span class="variable">I&omega;</span></span></div>
+                </li>
+                <li>
+                    <strong>Satuan:</strong> <strong class="highlight-term">Kilogram meter kuadrat per detik (kg m²/s)</strong>.
+                </li>
+            </ul>
+
+            <h3>c. Hukum Kekekalan Momentum Sudut</h3>
+            <p>Salah satu prinsip paling penting dalam fisika, analog dengan hukum kekekalan momentum linier. Hukum ini menyatakan bahwa:</p>
+            <p>"Jika <strong class="highlight-term">total momen gaya eksternal</strong> yang bekerja pada suatu sistem adalah nol, maka <strong class="highlight-term">momentum sudut total</strong> sistem tersebut akan tetap konstan (kekal)."</p>
+            <div class="formula"><span class="formula-text">Jika <span class="variable">&Sigma;&tau;</span><sub>eksternal</sub> = 0, maka <span class="variable">L</span><sub>sistem</sub> = konstan</span></div>
+            <p>Artinya, <span class="variable">I</span><sub>awal</sub><span class="variable">&omega;</span><sub>awal</sub> = <span class="variable">I</span><sub>akhir</sub><span class="variable">&omega;</span><sub>akhir</sub>. Ini menjelaskan mengapa seorang penari balet mempercepat putarannya saat merapatkan tangan ke tubuh (mengurangi <span class="variable">I</span>, sehingga <span class="variable">&omega;</span> meningkat) atau melambat saat merentangkan tangan (meningkatkan <span class="variable">I</span>, sehingga <span class="variable">&omega;</span> menurun).</p>
+        </section>
+
+        <section id="gerak-menggelinding">
+            <h2>5. Gerak Menggelinding</h2>
+            <p>Gerak menggelinding adalah kombinasi dari gerak translasi (gerak lurus) dan gerak rotasi. Contoh paling umum adalah roda kendaraan atau bola yang menggelinding di permukaan.</p>
+            <ul>
+                <li>
+                    <strong>Kondisi Menggelinding Murni (tanpa slip):</strong> Untuk gerak menggelinding murni, titik kontak antara benda dan permukaan tidak bergerak relatif terhadap permukaan. Ini berarti kecepatan tangensial di titik kontak sama dengan kecepatan permukaan. Jika permukaan diam, maka kecepatan tangensial di titik kontak adalah nol.
+                    <div class="formula"><span class="formula-text"><span class="variable">v</span><sub>CM</sub> = <span class="variable">R&omega;</span></span></div>
+                    Di mana <span class="variable">v</span><sub>CM</sub> adalah kecepatan pusat massa benda dan <span class="variable">R</span> adalah jari-jari benda.
+                </li>
+                <li>
+                    <strong>Energi Kinetik Total:</strong> Seperti yang sudah disebutkan sebelumnya, energi kinetik total benda yang menggelinding adalah jumlah energi kinetik translasi pusat massa dan energi kinetik rotasi terhadap pusat massa.
+                </li>
+            </ul>
+        </section>
+
+        <p class="summary-text" style="text-align: center; margin-top: 40px; color: var(--text-tertiary);">
+            Memahami dinamika gerak rotasi memberikan wawasan mendalam tentang bagaimana benda berputar dan berinteraksi dalam dunia nyata. Konsep-konsep seperti torsi, momen inersia, dan momentum sudut adalah kunci untuk menganalisis berbagai fenomena fisika.
+        </p>
+    </div>
+</body>
+</html>
+```

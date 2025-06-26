@@ -1,0 +1,497 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Kinematika - A. Pengertian Gerak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Definisi Variabel CSS berdasarkan tema lightMode */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya Umum Body */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Mencegah scroll horizontal */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* Container untuk Konten */
+        .container {
+            max-width: 960px;
+            margin: 40px 20px;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            border: 1px solid var(--border-divider);
+            width: 100%;
+        }
+
+        /* Gaya Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), #42a5f5);
+            color: var(--background-canvas);
+            padding: 35px 25px;
+            text-align: center;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            margin: -20px -20px 30px -20px; /* Menyesuaikan dengan container */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+
+        /* Gaya Bagian (Section) */
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-left: 6px solid var(--primary-blue);
+            background-color: #fcfcfc; /* Warna sedikit off-white untuk bagian */
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            font-size: 2.4em;
+            margin-top: 0;
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        section h3 {
+            color: var(--text-secondary);
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        /* Gaya Teks */
+        p {
+            color: var(--text-primary);
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style: none; /* Menghilangkan bullet default */
+            margin-left: 0;
+            padding-left: 25px; /* Memberikan padding untuk ikon kustom */
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            position: relative; /* Untuk posisi ikon */
+        }
+
+        ul li::before {
+            content: '•'; /* Menggunakan bullet kustom */
+            color: var(--accent-green);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        ol {
+            list-style: decimal;
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        ol li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        em {
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        /* Blok Info/Penting */
+        .info-box {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-style: italic;
+            border-left: 10px solid var(--primary-blue);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            animation: fadeIn 0.5s ease-out;
+        }
+        .info-box p {
+            color: var(--background-canvas);
+            margin: 0;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        /* Daftar Definisi (Definition List) */
+        dl {
+            margin-top: 25px;
+            border-top: 2px solid var(--border-divider);
+            padding-top: 20px;
+        }
+
+        dt {
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-top: 20px;
+            font-size: 1.3em;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        dd {
+            margin-left: 30px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            padding-top: 10px;
+        }
+
+        /* Gaya Formula */
+        .formula {
+            background-color: #e8f5e9; /* Latar belakang hijau muda */
+            border-left: 6px solid var(--accent-green);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.2em;
+            color: var(--text-primary);
+            overflow-x: auto; /* Untuk formula panjang */
+            line-height: 1.8;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .formula strong {
+            color: var(--accent-green);
+        }
+        .formula small {
+            font-size: 0.8em;
+            vertical-align: sub;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.95em;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Desain Responsif */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px 15px;
+                padding: 15px;
+            }
+
+            header {
+                padding: 25px 15px;
+                margin: -15px -15px 25px -15px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            section {
+                padding: 20px;
+                border-left-width: 4px;
+            }
+
+            section h2 {
+                font-size: 2em;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+
+            section h3 {
+                font-size: 1.5em;
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+
+            ul, ol, dl {
+                margin-left: 15px;
+            }
+
+            .info-box {
+                padding: 15px 20px;
+                border-left-width: 8px;
+            }
+            .info-box p {
+                font-size: 1em;
+            }
+
+            .formula {
+                font-size: 1.1em;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px 10px;
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            header {
+                padding: 20px 10px;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                margin: -10px -10px 20px -10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.9em;
+            }
+
+            section {
+                padding: 15px;
+                border-left-width: 3px;
+                border-radius: 5px;
+                margin-bottom: 30px;
+            }
+
+            section h2 {
+                font-size: 1.7em;
+                padding-bottom: 8px;
+                margin-bottom: 15px;
+            }
+
+            section h3 {
+                font-size: 1.3em;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            ul, ol, dl {
+                margin-left: 10px;
+                padding-left: 20px;
+            }
+            ul li::before {
+                font-size: 1em;
+            }
+
+            dt {
+                font-size: 1.1em;
+                margin-top: 15px;
+            }
+            dd {
+                margin-left: 20px;
+                padding-top: 5px;
+            }
+
+            .info-box {
+                padding: 10px 15px;
+                border-left-width: 6px;
+                margin: 15px 0;
+            }
+            .info-box p {
+                font-size: 0.95em;
+            }
+
+            .formula {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bab 2: Kinematika</h1>
+            <p>A. Pengertian Gerak</p>
+        </header>
+
+        <section id="pengertian-gerak">
+            <h2>Apa Itu Gerak?</h2>
+            <p>Dalam ilmu fisika, <strong>gerak</strong> didefinisikan sebagai perubahan posisi suatu benda dari satu titik ke titik lain dalam selang waktu tertentu. Ini adalah konsep fundamental yang menjelaskan bagaimana benda-benda di alam semesta berpindah tempat. Gerak merupakan bagian dari studi <strong>mekanika</strong>, yang mengkaji gaya, gerak, dan efeknya pada benda.</p>
+            <p>Penting untuk memahami bahwa konsep gerak bersifat <strong>relatif</strong>. Ini berarti bahwa kita tidak bisa menyatakan suatu benda bergerak atau diam tanpa adanya <strong>kerangka acuan</strong>. Gerak suatu benda selalu diamati dan diukur relatif terhadap sesuatu yang lain.</p>
+            <div class="info-box">
+                <p><strong>Contoh Relativitas Gerak:</strong> Bayangkan Anda sedang duduk diam di dalam bus yang melaju kencang. Relatif terhadap tempat duduk Anda di dalam bus, Anda tidak bergerak. Namun, relatif terhadap pohon di tepi jalan yang dilewati bus, Anda dan bus tersebut sedang bergerak dengan kecepatan tertentu. Kedua pernyataan ini benar, tergantung pada kerangka acuan yang dipilih.</p>
+            </div>
+        </section>
+
+        <section id="kerangka-acuan">
+            <h2>Kerangka Acuan</h2>
+            <p><strong>Kerangka acuan</strong> adalah titik atau sistem koordinat yang kita anggap diam atau tetap, yang digunakan sebagai referensi untuk mengamati dan mengukur posisi, kecepatan, atau percepatan suatu objek. Pemilihan kerangka acuan sangat menentukan bagaimana kita mendeskripsikan gerak.</p>
+            <ul>
+                <li>Ketika Anda melihat sebuah pesawat terbang di langit, Anda (yang berdiri di permukaan Bumi) adalah kerangka acuannya. Pesawat tersebut bergerak relatif terhadap Anda.</li>
+                <li>Ketika seorang astronot berada di Stasiun Luar Angkasa Internasional (ISS) yang mengorbit Bumi, ia mungkin merasa diam relatif terhadap interior ISS. Namun, relatif terhadap Bumi, ia bergerak sangat cepat bersama ISS.</li>
+            </ul>
+            <p>Dalam sebagian besar kasus fisika di tingkat dasar, kita sering mengasumsikan permukaan Bumi atau laboratorium sebagai kerangka acuan yang "diam", meskipun kita tahu Bumi sendiri bergerak mengelilingi Matahari dan berotasi pada porosnya. Asumsi ini dibuat untuk menyederhanakan analisis masalah.</p>
+        </section>
+
+        <section id="besaran-gerak">
+            <h2>Besaran-besaran Penting dalam Gerak</h2>
+            <p>Untuk menggambarkan gerak secara kuantitatif dan akurat, kita menggunakan beberapa besaran fisika. Ingat kembali perbedaan antara besaran <strong>skalar</strong> (hanya memiliki besar) dan besaran <strong>vektor</strong> (memiliki besar dan arah) yang telah dibahas di Bab 1.</p>
+
+            <h3>1. Posisi</h3>
+            <p><strong>Posisi</strong> adalah lokasi spesifik suatu benda dalam ruang pada waktu tertentu, diukur dari titik asal (titik nol) dalam kerangka acuan yang dipilih. Posisi bisa dinyatakan dalam koordinat (misalnya, x, y, z).</p>
+            <ul>
+                <li>Dalam gerak satu dimensi (misalnya, sepanjang garis lurus), posisi hanya memerlukan satu koordinat, seperti 'x'. Nilai positif atau negatif menunjukkan arah dari titik asal.</li>
+                <li>Dalam gerak dua atau tiga dimensi, posisi dinyatakan menggunakan vektor posisi, yang menunjukkan besar (jarak dari asal) dan arah.</li>
+            </ul>
+
+            <h3>2. Jarak dan Perpindahan</h3>
+            <p>Meskipun dalam percakapan sehari-hari kedua istilah ini sering digunakan secara bergantian, dalam fisika mereka memiliki arti yang sangat berbeda.</p>
+            <dl>
+                <dt>Jarak (Distance)</dt>
+                <dd>
+                    <p><strong>Jarak</strong> adalah panjang total lintasan yang ditempuh oleh suatu benda, tanpa mempertimbangkan arah geraknya. Jarak adalah besaran <strong>skalar</strong>, yang berarti nilainya selalu positif dan hanya menunjukkan seberapa jauh benda telah bergerak.</p>
+                    <div class="formula">
+                        <strong>Satuan SI:</strong> meter (m)
+                    </div>
+                    <p><em>Contoh:</em> Anda berjalan 100 meter ke timur, kemudian berbalik dan berjalan 50 meter ke barat. Total jarak yang Anda tempuh adalah 100 m + 50 m = 150 m.</p>
+                </dd>
+
+                <dt>Perpindahan (Displacement)</dt>
+                <dd>
+                    <p><strong>Perpindahan</strong> adalah perubahan posisi suatu benda dari posisi awal ke posisi akhir, diukur sebagai garis lurus terpendek dari titik awal ke titik akhir, beserta arahnya. Perpindahan adalah besaran <strong>vektor</strong>.</p>
+                    <div class="formula">
+                        <strong>Simbol:</strong> &Delta;x (untuk 1D), &Delta;r (untuk 2D/3D)<br>
+                        <strong>Rumus:</strong> &Delta;x = x<small>akhir</small> - x<small>awal</small><br>
+                        <strong>Satuan SI:</strong> meter (m)
+                    </div>
+                    <p><em>Contoh:</em> Menggunakan contoh di atas, jika Anda berjalan 100 meter ke timur (kita anggap positif) dan kemudian 50 meter ke barat (negatif), maka perpindahan Anda adalah +100 m + (-50 m) = +50 m. Ini berarti Anda berada 50 meter di sebelah timur dari posisi awal Anda.</p>
+                    <div class="info-box">
+                        <p>Perbedaan kunci: Jarak peduli pada seluruh lintasan, sedangkan perpindahan hanya peduli pada posisi awal dan akhir.</p>
+                    </div>
+                </dd>
+            </dl>
+
+            <h3>3. Kelajuan dan Kecepatan</h3>
+            <p>Sama seperti jarak dan perpindahan, kelajuan dan kecepatan juga memiliki definisi yang berbeda dalam fisika.</p>
+            <dl>
+                <dt>Kelajuan (Speed)</dt>
+                <dd>
+                    <p><strong>Kelajuan</strong> adalah seberapa cepat suatu benda bergerak, diukur sebagai perbandingan antara jarak total yang ditempuh dengan selang waktu yang dibutuhkan untuk menempuh jarak tersebut. Kelajuan adalah besaran <strong>skalar</strong>.</p>
+                    <div class="formula">
+                        <strong>Kelajuan Rata-rata:</strong> Kelajuan = Jarak Total / Waktu Total<br>
+                        <strong>Satuan SI:</strong> meter per detik (m/s)
+                    </div>
+                    <p>Kelajuan sesaat adalah kelajuan pada suatu momen waktu tertentu, seperti yang ditunjukkan oleh speedometer pada kendaraan Anda.</p>
+                </dd>
+
+                <dt>Kecepatan (Velocity)</dt>
+                <dd>
+                    <p><strong>Kecepatan</strong> adalah laju perubahan posisi suatu benda, diukur sebagai perbandingan antara perpindahan dengan selang waktu yang dibutuhkan. Kecepatan adalah besaran <strong>vektor</strong>, sehingga ia memiliki besar (nilai numerik) dan arah.</p>
+                    <div class="formula">
+                        <strong>Kecepatan Rata-rata:</strong> &vec;v<small>rata-rata</small> = Perpindahan / Waktu = &Delta;&vec;x / &Delta;t<br>
+                        <strong>Satuan SI:</strong> meter per detik (m/s)
+                    </div>
+                    <p>Kecepatan sesaat adalah kecepatan pada suatu momen waktu tertentu. Misalnya, jika sebuah mobil bergerak dengan kecepatan 60 km/jam ke arah utara, maka 60 km/jam adalah besar kecepatannya dan utara adalah arahnya.</p>
+                    <div class="info-box">
+                        <p><strong>Perhatikan:</strong> Sebuah benda bisa memiliki kelajuan yang konstan (misalnya, bergerak dalam lingkaran) tetapi kecepatannya berubah karena arahnya terus berubah.</p>
+                    </div>
+                </dd>
+            </dl>
+
+            <h3>4. Percepatan (Acceleration)</h3>
+            <p><strong>Percepatan</strong> adalah laju perubahan kecepatan suatu benda per satuan waktu. Karena kecepatan adalah besaran vektor, percepatan juga merupakan besaran <strong>vektor</strong>. Perubahan kecepatan dapat terjadi karena:</p>
+            <ul>
+                <li>Besar kecepatan berubah (misalnya, mobil melaju lebih cepat atau melambat).</li>
+                <li>Arah kecepatan berubah (misalnya, mobil berbelok di tikungan).</li>
+                <li>Keduanya (besar dan arah kecepatan berubah).</li>
+            </ul>
+            <div class="formula">
+                <strong>Percepatan Rata-rata:</strong> &vec;a<small>rata-rata</small> = Perubahan Kecepatan / Waktu = &Delta;&vec;v / &Delta;t<br>
+                <strong>Satuan SI:</strong> meter per detik kuadrat (m/s&sup2;)
+            </div>
+            <p>Ketika suatu benda memiliki percepatan:</p>
+            <ul>
+                <li>Jika arah percepatan searah dengan arah kecepatan, benda akan mengalami <strong>percepatan positif</strong> (kecepatan bertambah).</li>
+                <li>Jika arah percepatan berlawanan dengan arah kecepatan, benda akan mengalami <strong>perlambatan</strong> atau <strong>deselerasi</strong> (kecepatan berkurang).</li>
+                <li>Jika arah percepatan tegak lurus terhadap arah kecepatan (seperti pada gerak melingkar beraturan), benda akan terus berubah arahnya meskipun besar kecepatannya mungkin tetap konstan.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Fisika untuk SMA/MA Kelas XI - Kinematika Dasar</p>
+            <p>&copy; 2024. Semua Hak Cipta Dilindungi.</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

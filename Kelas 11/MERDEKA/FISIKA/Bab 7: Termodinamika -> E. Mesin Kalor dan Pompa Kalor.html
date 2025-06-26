@@ -1,0 +1,344 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termodinamika: Mesin Kalor dan Pompa Kalor</title>
+    <style>
+        /* Color Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196D3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 5px;
+        }
+
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.5em; color: var(--accent-green); border-bottom: none;}
+        h4 { font-size: 1.2em; color: var(--text-secondary); }
+
+        p {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        em {
+            color: var(--text-secondary);
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            border: 1px solid var(--border-divider);
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue, slightly different from primary-blue */
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .secondary-highlight-box {
+            background-color: #e8f5e9; /* Light green */
+            border-left: 5px solid var(--accent-green);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        /* Equations and Code Blocks */
+        .equation {
+            background-color: #f5f5f5;
+            border: 1px solid var(--border-divider);
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+            color: var(--text-primary);
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+
+        .equation strong {
+            color: var(--semantic-error); /* Use a distinct color for key variables in equations */
+        }
+
+        /* Table-like layout for processes */
+        .process-table-header, .process-table-row {
+            display: flex;
+            background-color: #e0e0e0;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-divider);
+        }
+
+        .process-table-row {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            color: var(--text-secondary);
+        }
+
+        .process-table-header div {
+            padding: 10px 15px;
+            font-weight: bold;
+            color: var(--text-primary);
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid var(--border-divider);
+        }
+
+        .process-table-row div {
+            padding: 10px 15px;
+            flex: 1;
+            border-right: 1px solid var(--border-divider);
+        }
+
+        .process-table-header div:last-child,
+        .process-table-row div:last-child {
+            border-right: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+
+            .process-table-header, .process-table-row {
+                flex-direction: column;
+            }
+
+            .process-table-header div, .process-table-row div {
+                border-right: none;
+                border-bottom: 1px solid var(--border-divider);
+            }
+            .process-table-row div:last-child {
+                border-bottom: none;
+            }
+        }
+
+        /* Details/Summary for interactivity */
+        details {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 15px;
+            color: var(--text-primary);
+        }
+
+        summary {
+            font-weight: bold;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 10px 0;
+            outline: none;
+        }
+
+        summary:hover {
+            color: var(--accent-green);
+        }
+
+        details p {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 7: Termodinamika</h1>
+        <h2>E. Mesin Kalor dan Pompa Kalor</h2>
+
+        <section>
+            <h3>1. Mesin Kalor</h3>
+            <p>
+                Dalam termodinamika, konsep <strong style="color: var(--accent-green);">mesin kalor</strong> adalah inti dari upaya mengubah energi termal menjadi energi mekanik (usaha). Secara alami, energi mekanik dapat diperoleh langsung dari sumber seperti air (melalui turbin air) atau angin (melalui kincir angin). Namun, dalam skala industri dan teknologi modern, sebagian besar energi mekanik dihasilkan secara tidak langsung.
+            </p>
+            <p>
+                Proses ini melibatkan pembakaran <strong style="color: var(--primary-blue);">bahan bakar fosil</strong> (seperti bensin, solar, batu bara) untuk menghasilkan energi termal. Energi termal inilah yang kemudian dimanfaatkan oleh mesin kalor untuk melakukan usaha. Penting untuk dipahami bahwa mesin kalor beroperasi dalam suatu <strong style="color: var(--primary-blue);">siklus</strong>. Ini berarti bahwa setelah serangkaian proses, sistem kembali ke keadaan awalnya, memungkinkan mesin untuk bekerja secara kontinu.
+            </p>
+            <p>
+                Contoh umum dari mesin yang bekerja dalam siklus dan memanfaatkan prinsip mesin kalor meliputi:
+            </p>
+            <ul>
+                <li><strong style="color: var(--text-secondary);">Mesin Piston:</strong> Ditemukan pada kendaraan bermotor (seperti mesin mobil), di mana pembakaran bahan bakar menggerakkan piston untuk menghasilkan gerakan rotasi roda.</li>
+                <li><strong style="color: var(--text-secondary);">Turbin:</strong> Digunakan di pembangkit listrik, di mana uap panas atau gas bertekanan tinggi memutar bilah turbin untuk menghasilkan listrik.</li>
+            </ul>
+            <p>
+                Mesin mobil adalah contoh klasik dari mesin kalor. Mesin ini mengambil energi dari pembakaran bahan bakar, mengubah sebagian menjadi kerja mekanik untuk menggerakkan mobil, dan sebagian lainnya dibuang sebagai kalor sisa. Hukum I dan II Termodinamika memberikan batasan fundamental tentang seberapa efisien mesin kalor dapat beroperasi.
+            </p>
+        </section>
+
+        <section>
+            <h3>a. Mesin Carnot</h3>
+            <p>
+                Nicolas Léonard Sadi Carnot (1796 – 1832), seorang fisikawan terkemuka dari Prancis, pada tahun 1824 mengemukakan sebuah model <strong style="color: var(--accent-green);">mesin kalor ideal</strong> yang kemudian dikenal sebagai <strong style="color: var(--accent-green);">Mesin Carnot</strong>. Mesin ini bersifat teoritis dan menjadi patokan untuk efisiensi semua mesin kalor lainnya.
+            </p>
+            <div class="highlight-box">
+                <p>Menurut Carnot, <em style="color: var(--primary-blue);">“tidak mungkin ada mesin yang beroperasi di antara dua reservoir termal yang lebih efisien daripada sebuah mesin kalor yang beroperasi secara reversibel pada dua reservoir yang sama.”</em></p>
+                <p>Ini menegaskan bahwa Mesin Carnot adalah <strong style="color: var(--accent-green);">mesin yang paling efisien</strong> yang mungkin ada antara dua suhu tertentu, karena ia beroperasi secara <strong style="color: var(--primary-blue);">reversibel</strong>.</p>
+            </div>
+
+            <h4>Siklus Carnot</h4>
+            <p>
+                Mesin Carnot beroperasi berdasarkan suatu <strong style="color: var(--primary-blue);">siklus termodinamika</strong> khusus yang disebut <strong style="color: var(--accent-green);">Siklus Carnot</strong>. Siklus ini unik karena hanya melibatkan dua jenis proses termodinamika yang ideal:
+            </p>
+            <ul>
+                <li><strong style="color: var(--text-secondary);">Proses Isotermal:</strong> Proses di mana suhu sistem tetap konstan. Ini terjadi ketika sistem berada dalam kontak termal dengan reservoir panas atau dingin.</li>
+                <li><strong style="color: var(--text-secondary);">Proses Adiabatik:</strong> Proses di mana tidak ada pertukaran kalor antara sistem dan lingkungannya. Ini terjadi ketika sistem terisolasi secara termal.</li>
+            </ul>
+            <p>
+                Siklus Carnot berlangsung antara dua reservoir termal:
+            </p>
+            <ul>
+                <li><strong style="color: var(--text-secondary);">Reservoir bersuhu tinggi (T<sub>h</sub>):</strong> Tempat kalor (Q<sub>h</sub>) diserap oleh sistem.</li>
+                <li><strong style="color: var(--text-secondary);">Reservoir bersuhu rendah (T<sub>c</sub>):</strong> Tempat kalor (Q<sub>c</sub>) dilepaskan oleh sistem.</li>
+            </ul>
+            <p>
+                Diagram P-V (Tekanan-Volume) untuk siklus Carnot menunjukkan empat tahapan yang membentuk siklus tertutup:
+            </p>
+
+            <details>
+                <summary>Penjelasan Tahapan Siklus Carnot (A→B→C→D→A)</summary>
+                <p>
+                    <strong>1. Ekspansi Isotermal (A ke B):</strong>
+                    Pada tahap ini, gas menyerap kalor Q<sub>h</sub> dari reservoir panas (T<sub>h</sub>) dan berekspansi, melakukan usaha. Karena prosesnya isotermal, suhu sistem tetap T<sub>h</sub>.
+                </p>
+                <div class="equation">
+                    Q<sub>AB</sub> = W<sub>AB</sub> = nRT<sub>h</sub> ln(V<sub>B</sub> / V<sub>A</sub>)<br>
+                    ΔU<sub>AB</sub> = 0
+                </div>
+
+                <p>
+                    <strong>2. Ekspansi Adiabatik (B ke C):</strong>
+                    Gas terus berekspansi, tetapi kali ini tanpa pertukaran kalor (Q = 0) dengan lingkungan. Suhu gas menurun dari T<sub>h</sub> ke T<sub>c</sub>. Gas masih melakukan usaha.
+                </p>
+                <div class="equation">
+                    W<sub>BC</sub> = nC<sub>V</sub> (T<sub>c</sub> - T<sub>h</sub>)<br>
+                    Q<sub>BC</sub> = 0
+                </div>
+
+                <p>
+                    <strong>3. Kompresi Isotermal (C ke D):</strong>
+                    Gas dikompresi pada suhu konstan T<sub>c</sub>, melepaskan kalor Q<sub>c</sub> ke reservoir dingin (T<sub>c</sub>). Usaha dilakukan pada gas.
+                </p>
+                <div class="equation">
+                    Q<sub>CD</sub> = W<sub>CD</sub> = nRT<sub>c</sub> ln(V<sub>D</sub> / V<sub>C</sub>)<br>
+                    ΔU<sub>CD</sub> = 0
+                </div>
+                <p style="font-size: 0.9em; color: var(--text-tertiary);"><em>Catatan: Karena V<sub>D</sub> &lt; V<sub>C</sub>, maka ln(V<sub>D</sub>/V<sub>C</sub>) bernilai negatif, menunjukkan kalor keluar dan usaha dilakukan pada sistem.</em></p>
+
+                <p>
+                    <strong>4. Kompresi Adiabatik (D ke A):</strong>
+                    Gas terus dikompresi tanpa pertukaran kalor (Q = 0). Suhu gas meningkat kembali dari T<sub>c</sub> ke T<sub>h</sub>, mengembalikan sistem ke keadaan awalnya. Usaha dilakukan pada gas.
+                </p>
+                <div class="equation">
+                    W<sub>DA</sub> = nC<sub>V</sub> (T<sub>h</sub> - T<sub>c</sub>)<br>
+                    Q<sub>DA</sub> = 0
+                </div>
+            </details>
+
+            <h4>Usaha Total dan Efisiensi Mesin Carnot</h4>
+            <p>
+                Usaha total (W) yang dilakukan oleh gas selama satu siklus Carnot adalah selisih antara kalor yang diserap (Q<sub>h</sub>) dan kalor yang dilepaskan (Q<sub>c</sub>). Ini adalah prinsip konservasi energi dalam konteks mesin kalor:
+            </p>
+            <div class="equation">
+                W = Q<sub>h</sub> - Q<sub>c</sub>
+                <p style="font-size: 0.9em; color: var(--text-tertiary);">(Persamaan 7.19)</p>
+            </div>
+            <p>
+                <strong style="color: var(--accent-green);">Efisiensi (η)</strong> mesin kalor Carnot didefinisikan sebagai perbandingan antara usaha total yang dilakukan oleh sistem terhadap kalor yang diserap dari reservoir panas. Karena Mesin Carnot adalah yang paling efisien, efisiensinya adalah batas atas untuk semua mesin kalor:
+            </p>
+            <div class="equation">
+                η = (W / Q<sub>h</sub>) × 100%<br>
+                η = ( (Q<sub>h</sub> - Q<sub>c</sub>) / Q<sub>h</sub> ) × 100%<br>
+                η = (1 - Q<sub>c</sub> / Q<sub>h</sub>) × 100%
+                <p style="font-size: 0.9em; color: var(--text-tertiary);">(Persamaan 7.20)</p>
+            </div>
+            <p>
+                Karena untuk siklus Carnot yang reversibel berlaku hubungan Q<sub>c</sub>/Q<sub>h</sub> = T<sub>c</sub>/T<sub>h</sub>, maka efisiensi Mesin Carnot juga dapat dinyatakan dalam suhu reservoir:
+            </p>
+            <div class="equation">
+                η = (1 - T<sub>c</sub> / T<sub>h</sub>) × 100%
+            </div>
+            <p style="font-size: 0.9em; color: var(--text-tertiary);"><em>Catatan: Suhu (T) harus dalam skala Kelvin (K).</em></p>
+
+            <div class="secondary-highlight-box">
+                <p>
+                    Efisiensi Mesin Carnot menunjukkan bahwa tidak ada mesin yang dapat mengubah 100% kalor menjadi usaha. Selalu ada sebagian kalor (Q<sub>c</sub>) yang harus dibuang ke reservoir dingin. Efisiensi ini akan 100% hanya jika suhu reservoir dingin (T<sub>c</sub>) adalah nol Kelvin, yang secara praktis tidak mungkin dicapai. Ini adalah konsekuensi fundamental dari Hukum II Termodinamika.
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+```

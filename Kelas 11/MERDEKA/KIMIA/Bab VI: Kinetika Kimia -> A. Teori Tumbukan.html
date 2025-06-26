@@ -1,0 +1,682 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetika Kimia: Teori Tumbukan (Kelas XI)</title>
+    <style>
+        /* Theme Variables */
+        :root {
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background_canvas);
+            color: var(--text_primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary_blue);
+            color: var(--background_canvas);
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 0 25px;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--background_canvas);
+            border: 1px solid var(--border_divider);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            padding: 35px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Headings */
+        h2 {
+            color: var(--primary_blue);
+            border-bottom: 3px solid var(--border_divider);
+            padding-bottom: 15px;
+            margin-top: 0;
+            font-size: 2.2em;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        h3 {
+            color: var(--accent_green);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.7em;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: var(--primary_blue);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        /* Paragraphs and Text Emphasis */
+        p {
+            color: var(--text_secondary);
+            margin-bottom: 18px;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--accent_green);
+            background-color: rgba(56, 142, 60, 0.05);
+            padding: 3px 6px;
+            border-radius: 4px;
+            display: inline-block; /* For proper padding and background */
+        }
+
+        .emphasis-blue {
+            font-weight: bold;
+            color: var(--primary_blue);
+        }
+
+        .emphasis-amber {
+            font-weight: bold;
+            color: var(--secondary_accent_amber);
+        }
+
+        /* List Styling */
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            color: var(--text_secondary);
+            font-size: 1.05em;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent_green);
+            font-size: 1.5em;
+            line-height: 1;
+        }
+
+        /* Example Boxes */
+        .example-box {
+            background-color: rgba(25, 118, 210, 0.05); /* Light blue accent */
+            border-left: 6px solid var(--semantic_info);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .example-box p {
+            margin: 0;
+            color: var(--text_primary);
+            font-size: 1.05em;
+        }
+
+        /* Interactive Elements - Collision Demonstration (Conceptual) */
+        .collision-demonstration {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px dashed var(--border_divider);
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .particle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .particle {
+            width: 70px;
+            height: 70px;
+            background-color: var(--semantic_info);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--background_canvas);
+            font-weight: bold;
+            font-size: 1.5em;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+            cursor: pointer;
+        }
+
+        .particle:nth-child(even) {
+            background-color: var(--accent_green);
+        }
+
+        .particle:hover {
+            transform: scale(1.1);
+        }
+
+        .collision-text {
+            font-size: 1.1em;
+            color: var(--text_tertiary);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Interactive Concept Cards */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .concept-card {
+            background-color: #fcfcfc;
+            border: 1px solid var(--border_divider);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .concept-card h4 {
+            color: var(--primary_blue);
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+        }
+
+        .concept-card p {
+            color: var(--text_secondary);
+            font-size: 0.98em;
+        }
+
+        /* Activation Energy Diagram (Conceptual Visualization) */
+        .energy-diagram {
+            background-color: #fafafa;
+            border: 1px solid var(--border_divider);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 350px; /* Ensure space for diagram elements */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .energy-diagram h4 {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            color: var(--primary_blue);
+            font-size: 1.6em;
+        }
+
+        .diagram-container {
+            width: 90%;
+            height: 250px; /* Fixed height for the main diagram area */
+            position: relative;
+            margin-top: 60px; /* Space for the title */
+        }
+
+        .y-axis-label {
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: rotate(-90deg) translateY(50%);
+            font-weight: bold;
+            color: var(--text_primary);
+            font-size: 1em;
+            white-space: nowrap;
+        }
+
+        .x-axis-label {
+            position: absolute;
+            bottom: -20px;
+            right: 50%;
+            transform: translateX(50%);
+            font-weight: bold;
+            color: var(--text_primary);
+            font-size: 1em;
+            white-space: nowrap;
+        }
+
+        .diagram-line-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-left: 2px solid var(--text_tertiary);
+            border-bottom: 2px solid var(--text_tertiary);
+        }
+
+        .energy-level-line {
+            position: absolute;
+            width: 30%; /* Shorter line for a level */
+            height: 3px;
+            background-color: var(--semantic_info);
+            border-radius: 2px;
+            box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+        }
+
+        .reactants-line {
+            bottom: 60px;
+            left: 5%;
+        }
+
+        .products-line {
+            bottom: 20px;
+            right: 5%;
+            background-color: var(--accent_green); /* Products can be different color */
+        }
+
+        .peak-representation {
+            position: absolute;
+            top: 10px; /* Relative to diagram-container */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            background-color: var(--semantic_error);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(211, 47, 47, 0.6);
+            z-index: 2;
+        }
+
+        .activation-energy-arrow {
+            position: absolute;
+            top: 10px;
+            left: 60%;
+            width: 0;
+            height: 120px; /* Height of the arrow */
+            border-left: 2px dashed var(--semantic_warning);
+        }
+
+        .activation-energy-arrow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -5px;
+            border: solid var(--semantic_warning);
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            transform: rotate(-45deg);
+        }
+
+        .ea-label-diagram {
+            position: absolute;
+            top: 50px;
+            left: 68%;
+            color: var(--semantic_warning);
+            font-weight: bold;
+            font-size: 1em;
+            white-space: nowrap;
+        }
+
+        .reactants-label-diagram,
+        .products-label-diagram {
+            position: absolute;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .reactants-label-diagram {
+            bottom: 70px;
+            left: 15%;
+            color: var(--semantic_info);
+        }
+
+        .products-label-diagram {
+            bottom: 30px;
+            right: 15%;
+            color: var(--accent_green);
+        }
+
+        .transition-state-label-diagram {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: var(--semantic_error);
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            background-color: var(--primary_blue);
+            color: var(--background_canvas);
+            font-size: 0.9em;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .container {
+                margin: 15px auto;
+                padding: 0 15px;
+            }
+            section {
+                padding: 25px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.8em;
+                padding-bottom: 10px;
+            }
+            h3 {
+                font-size: 1.4em;
+                margin-top: 25px;
+            }
+            h4 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            ul li {
+                padding-left: 25px;
+                font-size: 1em;
+            }
+            ul li::before {
+                font-size: 1.2em;
+            }
+            .example-box {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            .particle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+            }
+            .collision-text {
+                font-size: 1em;
+            }
+            .concept-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .concept-card {
+                padding: 20px;
+            }
+            .energy-diagram {
+                padding: 20px;
+                min-height: 300px;
+            }
+            .diagram-container {
+                height: 200px;
+                margin-top: 50px;
+            }
+            .y-axis-label, .x-axis-label {
+                font-size: 0.9em;
+            }
+            .peak-representation {
+                width: 20px;
+                height: 20px;
+            }
+            .activation-energy-arrow {
+                height: 90px;
+                left: 65%;
+            }
+            .ea-label-diagram {
+                top: 40px;
+                left: 70%;
+                font-size: 0.85em;
+            }
+            .reactants-label-diagram, .products-label-diagram {
+                font-size: 0.8em;
+            }
+            .transition-state-label-diagram {
+                font-size: 0.8em;
+                top: -15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            .container {
+                padding: 0 10px;
+            }
+            section {
+                padding: 15px;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+            .particle {
+                width: 40px;
+                height: 40px;
+                font-size: 1em;
+            }
+            .energy-diagram {
+                min-height: 250px;
+            }
+            .diagram-container {
+                height: 180px;
+            }
+            .activation-energy-arrow {
+                height: 70px;
+                left: 68%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kinetika Kimia: Teori Tumbukan</h1>
+        <p>Memahami Laju Reaksi Kimia</p>
+    </header>
+
+    <div class="container">
+
+        <section id="introduction">
+            <h2>Pengantar Kinetika Kimia</h2>
+            <p>Pernahkah kalian bertanya, mengapa ada reaksi yang terjadi secepat kilat, sementara yang lain membutuhkan waktu berhari-hari bahkan bertahun-tahun? Pertanyaan inilah yang dipelajari dalam cabang ilmu kimia yang disebut <span class="highlight">Kinetika Kimia</span>.</p>
+            <p>Kinetika Kimia adalah studi yang membahas <span class="emphasis-blue">laju (kecepatan) reaksi kimia</span> dan <span class="emphasis-blue">faktor-faktor yang mempengaruhinya</span>, serta <span class="emphasis-blue">mekanisme (tahapan) reaksi</span> yang terjadi. Memahami kinetika sangat penting, tidak hanya untuk penelitian dasar, tetapi juga untuk mengoptimalkan proses industri, merancang obat-obatan, hingga memahami proses biologis dalam tubuh kita.</p>
+        </section>
+
+        <section id="fast-vs-slow">
+            <h2>Reaksi Cepat vs. Reaksi Lambat</h2>
+            <p>Mari kita amati beberapa contoh reaksi di sekitar kita:</p>
+            <div class="example-box">
+                <p><span class="emphasis-amber"><strong>Reaksi Cepat:</strong></span></p>
+                <ul>
+                    <li><strong>Pembakaran kayu:</strong> Kayu terbakar dengan cepat melepaskan panas dan cahaya. Proses ini berlangsung dalam hitungan menit hingga jam.</li>
+                    <li><strong>Pencernaan makanan dalam tubuh:</strong> Enzim-enzim dalam tubuh kita bekerja sangat cepat untuk memecah makanan menjadi energi, memungkinkan kita bergerak dan berpikir.</li>
+                    <li><strong>Pernapasan:</strong> Proses pertukaran oksigen dan karbon dioksida di paru-paru berlangsung sangat instan, memungkinkan kita bernapas setiap detik.</li>
+                </ul>
+                <p><span class="emphasis-amber"><strong>Reaksi Lambat:</strong></span></p>
+                <ul>
+                    <li><strong>Perkaratan besi:</strong> Besi yang terpapar udara dan air akan berkarat, tetapi proses ini membutuhkan waktu berbulan-bulan bahkan bertahun-tahun untuk terlihat signifikan.</li>
+                    <li><strong>Pembentukan batubara atau minyak bumi:</strong> Proses ini membutuhkan jutaan tahun di bawah tekanan dan suhu tinggi dalam bumi.</li>
+                </ul>
+            </div>
+            <p>Apa yang membedakan reaksi-reaksi ini? Mengapa ada yang begitu cepat dan ada yang begitu lambat? Jawabannya terletak pada bagaimana partikel-partikel pereaksi berinteraksi, yang dijelaskan oleh <span class="highlight">Teori Tumbukan</span>.</p>
+        </section>
+
+        <section id="collision-theory">
+            <h2>A. Teori Tumbukan: Pondasi Laju Reaksi</h2>
+            <p>Teori Tumbukan (Collision Theory) adalah model dasar yang menjelaskan bagaimana reaksi kimia terjadi pada tingkat molekuler. Inti dari teori ini sangat sederhana:</p>
+            <ul>
+                <li><span class="collision-point"><strong>Tumbukan adalah Kunci:</strong></span> Untuk suatu reaksi kimia terjadi, partikel-partikel zat pereaksi (atom, ion, atau molekul) harus saling bertumbukan. Tanpa tumbukan, tidak ada interaksi, sehingga tidak ada reaksi.</li>
+                <li><span class="collision-point"><strong>Tidak Semua Tumbukan Efektif:</strong></span> Namun, tidak setiap tumbukan antar partikel akan menghasilkan reaksi. Hanya tumbukan yang "efektif" yang mampu mengubah pereaksi menjadi produk.</li>
+            </ul>
+
+            <h3>Apa yang Membuat Tumbukan Efektif?</h3>
+            <p>Ada dua kriteria utama yang harus dipenuhi agar suatu tumbukan dapat dianggap efektif dan menghasilkan produk reaksi:</p>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h4>1. Orientasi Tumbukan yang Tepat (Posisi yang Benar)</h4>
+                    <p>Partikel harus bertumbukan dengan <span class="highlight">orientasi atau posisi yang tepat</span>. Ibarat gembok dan kunci, hanya kunci dengan bentuk dan posisi yang benar yang bisa membuka gembok. Demikian pula, hanya jika bagian reaktif dari molekul saling berhadapan saat bertumbukan, ikatan lama bisa putus dan ikatan baru bisa terbentuk.</p>
+                    <div class="collision-demonstration">
+                        <div class="particle-container">
+                            <div class="particle">A</div>
+                            <div class="particle">B</div>
+                        </div>
+                        <span>→</span>
+                        <div class="particle-container">
+                            <div class="particle">C</div>
+                            <div class="particle">D</div>
+                        </div>
+                        <div class="collision-text">
+                            (Klik partikel untuk membayangkan tumbukan) <br/>
+                            <small>Tumbukan efektif: A berhadapan dengan C, B dengan D.</small>
+                        </div>
+                    </div>
+                    <p>Jika orientasinya salah, misalnya molekul bertumbukan pada sisi yang tidak reaktif, mereka hanya akan memantul kembali tanpa membentuk produk baru.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>2. Energi Aktivasi yang Cukup (Energi Minimum)</h4>
+                    <p>Partikel yang bertumbukan harus memiliki <span class="highlight">energi kinetik minimum</span> tertentu yang disebut <span class="emphasis-blue">Energi Aktivasi (Ea)</span>. Energi ini diperlukan untuk mengatasi tolakan antar elektron dan memecah ikatan-ikatan kimia yang ada dalam molekul pereaksi.</p>
+                    <p>Bayangkan mendorong batu ke atas bukit. Batu tersebut membutuhkan energi minimum untuk mencapai puncak bukit agar bisa menggelinding ke sisi lain. Demikian pula, molekul membutuhkan energi untuk mencapai <span class="emphasis-amber">keadaan transisi</span> yang tidak stabil sebelum membentuk produk.</p>
+                    <p>Semakin tinggi suhu, semakin banyak partikel yang memiliki energi kinetik di atas atau sama dengan energi aktivasi, sehingga semakin banyak tumbukan efektif yang terjadi.</p>
+                </div>
+            </div>
+
+            <h3>Faktor Penentu Laju Reaksi Berdasarkan Teori Tumbukan:</h3>
+            <ul>
+                <li><span class="highlight"><strong>Frekuensi Tumbukan:</strong></span> Semakin sering partikel bertumbukan, semakin tinggi kemungkinan terjadinya tumbukan efektif. Faktor-faktor seperti konsentrasi dan tekanan mempengaruhi frekuensi tumbukan.</li>
+                <li><span class="highlight"><strong>Energi Kinetik Partikel:</strong></span> Semakin tinggi energi kinetik rata-rata partikel (dipengaruhi suhu), semakin besar proporsi partikel yang memiliki energi cukup untuk melewati hambatan energi aktivasi.</li>
+            </ul>
+        </section>
+
+        <section id="activation-energy">
+            <h2>Energi Aktivasi (Ea) dan Diagram Energi Potensial</h2>
+            <p><span class="highlight">Energi Aktivasi (Ea)</span> adalah salah satu konsep terpenting dalam kinetika kimia. Ini adalah <span class="emphasis-blue">energi minimum</span> yang harus dimiliki oleh molekul-molekul pereaksi agar dapat menghasilkan reaksi kimia yang efektif dan membentuk produk.</p>
+
+            <h4>Keadaan Transisi (Kompleks Teraktivasi)</h4>
+            <p>Ketika partikel bertumbukan dengan orientasi yang tepat dan energi yang cukup, mereka membentuk struktur sementara yang sangat tidak stabil dan berenergi tinggi, yang disebut <span class="emphasis-amber">keadaan transisi</span> atau <span class="emphasis-amber">kompleks teraktivasi</span>. Ini adalah "titik puncak" dalam jalur reaksi, di mana ikatan lama mulai putus dan ikatan baru mulai terbentuk.</p>
+
+            <div class="energy-diagram">
+                <h4>Diagram Energi Potensial Reaksi</h4>
+                <div class="diagram-container">
+                    <span class="y-axis-label">Energi Potensial (E)</span>
+                    <span class="x-axis-label">Jalur Reaksi</span>
+
+                    <div class="diagram-line-container">
+                        <!-- Reactants Energy Level -->
+                        <div class="energy-level-line reactants-line"></div>
+                        <span class="reactants-label-diagram">H₂(g) + Cl₂(g) (Pereaksi)</span>
+
+                        <!-- Transition State / Peak -->
+                        <div class="peak-representation"></div>
+                        <span class="transition-state-label-diagram">Keadaan Transisi</span>
+
+                        <!-- Activation Energy Arrow -->
+                        <div class="activation-energy-arrow"></div>
+                        <span class="ea-label-diagram">Ea (Energi Aktivasi)</span>
+
+                        <!-- Products Energy Level (Exothermic Example) -->
+                        <div class="energy-level-line products-line"></div>
+                        <span class="products-label-diagram">2HCl(g) (Produk)</span>
+                    </div>
+                </div>
+                <p style="margin-top: 50px; font-size: 0.95em; color: var(--text_tertiary);">
+                    <em>Visualisasi konseptual diagram energi. Reaksi berlangsung dari pereaksi, melewati puncak energi aktivasi (keadaan transisi), lalu membentuk produk.</em>
+                </p>
+            </div>
+            <p>Dari diagram di atas, kita dapat melihat bahwa:</p>
+            <ul>
+                <li>Pereaksi (H₂(g) + Cl₂(g)) memiliki tingkat energi potensial tertentu.</li>
+                <li>Untuk bereaksi, mereka harus "mendaki" bukit energi, yaitu mencapai <span class="emphasis-blue">keadaan transisi</span>. Ketinggian bukit dari tingkat energi pereaksi ke puncak adalah <span class="highlight">Energi Aktivasi (Ea)</span>.</li>
+                <li>Setelah melewati puncak, mereka dapat berubah menjadi produk (2HCl(g)), yang dalam contoh ini memiliki energi potensial lebih rendah (menunjukkan reaksi eksotermik).</li>
+            </ul>
+            <p>Semakin tinggi nilai Ea, semakin besar energi yang dibutuhkan, dan semakin <span class="emphasis-amber">lambat</span> reaksi berlangsung pada suhu tertentu. Sebaliknya, semakin rendah nilai Ea, semakin <span class="emphasis-blue">cepat</span> reaksi terjadi.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Modul Kimia Kelas XI SMA/MA</p>
+        <p>Belajar Kimia Jadi Lebih Mudah dan Menarik!</p>
+    </footer>
+
+</body>
+</html>
+```

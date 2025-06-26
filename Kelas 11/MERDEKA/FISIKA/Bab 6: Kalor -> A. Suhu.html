@@ -1,0 +1,461 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Kalor - Bagian A: Suhu</title>
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            word-wrap: break-word; /* Ensure long words break to prevent horizontal scrolling */
+        }
+
+        .container {
+            max-width: 960px; /* Maximum width for the content area */
+            margin: 30px auto; /* Center the container horizontally with vertical margin */
+            padding: 20px;
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+            border-radius: 8px; /* Rounded corners for a softer look */
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            margin-top: 1.5em; /* Spacing above headings */
+            margin-bottom: 0.8em; /* Spacing below headings */
+            line-height: 1.2; /* Tighter line height for headings */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: var(--primary-blue);
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-divider); /* Separator line */
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--primary-blue);
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--accent-green);
+            margin-top: 30px;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            color: var(--text-primary);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            font-size: 1em;
+        }
+
+        ul {
+            list-style-type: disc; /* Default disc for unordered lists */
+            margin-left: 20px;
+            margin-bottom: 1em;
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-bottom: 1em;
+        }
+
+        li {
+            margin-bottom: 0.5em; /* Spacing between list items */
+        }
+
+        strong {
+            color: var(--text-primary); /* Stronger color for bold text */
+        }
+
+        em {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace; /* Monospaced font for code */
+            background-color: #f5f5f5; /* Light background for inline code */
+            color: var(--primary-blue);
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .code-block {
+            background-color: #f8f8f8; /* Slightly darker background for code blocks */
+            border: 1px solid var(--border-divider);
+            border-left: 4px solid var(--primary-blue); /* Left border as accent */
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto; /* Enable horizontal scrolling for wide code blocks */
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Collapse borders for a cleaner look */
+            margin: 20px 0;
+            background-color: #ffffff;
+            font-size: 0.95em;
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-divider);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f0f0f0; /* Light grey background for table headers */
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fcfcfc; /* Alternate row shading for readability */
+        }
+
+        table tr:hover {
+            background-color: #fafafa; /* Subtle hover effect on table rows */
+        }
+
+        /* Callout/Info Box */
+        .info-box {
+            background-color: #e3f2fd; /* Light blue based on semantic_info */
+            border-left: 5px solid var(--semantic-info); /* Accent border */
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+        }
+
+        .info-box p {
+            margin: 0; /* Remove default paragraph margin inside info box */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px auto;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            h4 {
+                font-size: 1.2em;
+            }
+
+            p, ul, ol, table {
+                font-size: 0.95em;
+            }
+
+            table th, table td {
+                padding: 10px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+            }
+
+            p, ul, ol, table {
+                font-size: 0.9em;
+            }
+
+            table th, table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 6: Kalor dan Suhu</h1>
+
+        <p>Dalam fisika, energi memegang peran sentral dalam menjelaskan berbagai fenomena alam. Salah satu bentuk energi yang sangat sering kita jumpai dalam kehidupan sehari-hari adalah <strong>kalor</strong>. Kalor, atau panas, adalah energi yang berpindah dari satu sistem ke sistem lain karena adanya perbedaan suhu. Konsep ini sangat fundamental dalam berbagai aplikasi teknologi, mulai dari mesin pendingin, pembangkit listrik, hingga sistem pengaturan iklim. Untuk memahami perpindahan energi ini, kita harus terlebih dahulu memahami besaran fisika yang menjadi pemicunya: <strong>suhu</strong>.</p>
+
+        <h2>A. Suhu (Temperature)</h2>
+
+        <h3>1. Pengertian Suhu</h3>
+        <p>Secara intuitif, suhu adalah ukuran seberapa panas atau dingin suatu benda. Kita merasakan suhu setiap hari; air mendidih terasa panas, es terasa dingin. Namun, dalam fisika, definisi suhu lebih presisi dan mendalam:</p>
+        <ul>
+            <li><strong>Suhu sebagai Ukuran Kuantitatif:</strong> Suhu adalah besaran fisika yang menyatakan derajat panas atau dingin suatu benda. Ini adalah parameter makroskopik yang dapat kita ukur menggunakan termometer.</li>
+            <li><strong>Suhu dalam Tingkat Molekuler:</strong> Pada tingkat mikroskopis, suhu suatu benda berbanding lurus dengan <em>energi kinetik rata-rata</em> partikel-partikel penyusun benda tersebut (atom atau molekul). Semakin tinggi suhu suatu benda, semakin cepat dan acak gerakan translasi, rotasi, dan vibrasi partikel-partikelnya, yang berarti energi kinetik rata-rata partikelnya juga semakin tinggi. Sebaliknya, jika partikel-partikel bergerak lebih lambat, suhunya lebih rendah. Ini menjelaskan mengapa benda panas terasa "berenergi" pada sentuhan.</li>
+        </ul>
+        <div class="info-box">
+            <p><strong>Perbedaan Suhu dan Kalor:</strong> Penting untuk membedakan antara suhu dan kalor. <strong>Suhu</strong> adalah <em>ukuran</em> energi kinetik rata-rata partikel dalam suatu sistem, sedangkan <strong>kalor</strong> (panas) adalah <em>energi yang berpindah</em> antara dua sistem atau antara sistem dan lingkungannya karena adanya perbedaan suhu. Kalor mengalir secara spontan dari benda bersuhu tinggi ke benda bersuhu rendah hingga tercapai kesetimbangan termal. Suhu adalah properti intrinsik benda, sementara kalor adalah proses transfer energi.</p>
+        </div>
+
+        <h3>2. Alat Pengukur Suhu: Termometer</h3>
+        <p>Untuk mengukur suhu secara kuantitatif dan objektif, kita menggunakan alat yang disebut <strong>termometer</strong>. Prinsip kerja termometer didasarkan pada sifat-sifat fisik zat yang berubah secara teratur dan dapat diamati seiring perubahan suhu. Sifat-sifat termometrik ini harus sensitif dan linear terhadap perubahan suhu agar pengukuran akurat. Beberapa sifat yang umum dimanfaatkan adalah:</p>
+        <ul>
+            <li><strong>Pemuaian volume:</strong> Umum pada zat cair (seperti raksa, alkohol) atau gas.</li>
+            <li><strong>Perubahan hambatan listrik:</strong> Pada logam (seperti platina pada RTD) atau semikonduktor (termistor).</li>
+            <li><strong>Perubahan warna:</strong> Pada termometer kristal cair yang digunakan untuk dahi.</li>
+            <li><strong>Pembentukan tegangan termoelektrik:</strong> Pada termokopel, di mana beda potensial dihasilkan dari perbedaan suhu antara dua sambungan logam berbeda.</li>
+            <li><strong>Radiasi benda hitam:</strong> Pada pirometer, yang mengukur radiasi inframerah dari objek panas.</li>
+        </ul>
+
+        <h4>Jenis-jenis Termometer Umum:</h4>
+        <ol>
+            <li>
+                <strong>Termometer Cair dalam Gelas (Liquid-in-Glass Thermometer)</strong>
+                <p>Ini adalah jenis termometer yang paling umum dan dikenal. Prinsip kerjanya memanfaatkan fenomena <em>pemuaian termal</em>: zat cair (umumnya raksa atau alkohol) yang ditempatkan dalam tabung kapiler kaca yang tersegel akan memuai (mengembang) ketika suhu naik dan menyusut ketika suhu turun. Skala di samping tabung kemudian dikalibrasi untuk menunjukkan nilai suhu.</p>
+                <ul>
+                    <li><em>Raksa (Merkuri):</em> Keunggulannya adalah rentang suhu yang luas (sekitar -39°C hingga 357°C), tidak membasahi dinding kaca, dan memiliki respon yang cepat terhadap perubahan suhu karena konduktivitas termalnya yang baik. Namun, raksa beracun dan berbahaya jika tabungnya pecah.</li>
+                    <li><em>Alkohol:</em> Sering digunakan untuk mengukur suhu rendah karena titik bekunya yang sangat rendah (sekitar -115°C), jauh lebih rendah dari raksa. Namun, titik didihnya relatif rendah (sekitar 78°C) dan alkohol dapat membasahi kaca, sehingga kadang menyulitkan pembacaan akurat. Biasanya diberi warna agar mudah terlihat.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Termometer Bimetal (Bimetallic Strip Thermometer)</strong>
+                <p>Termometer ini terdiri dari dua strip logam berbeda (misalnya, besi dan tembaga) yang direkatkan bersama. Kedua logam ini dipilih karena memiliki <em>koefisien muai panjang</em> yang berbeda secara signifikan. Ketika suhu berubah, salah satu logam akan memuai atau menyusut lebih banyak daripada yang lain, menyebabkan strip bimetal tersebut melengkung. Lengkungan ini kemudian dihubungkan ke mekanisme penunjuk (jarum) pada skala, atau dapat digunakan untuk mengontrol sakelar termal (misalnya pada termostat).</p>
+            </li>
+            <li>
+                <strong>Termometer Hambatan (Resistance Temperature Detector - RTD)</strong>
+                <p>RTD bekerja berdasarkan prinsip bahwa hambatan listrik beberapa logam murni (seperti platina, nikel, atau tembaga) berubah secara presisi dan dapat diprediksi dengan suhu. Umumnya, hambatan listrik logam meningkat seiring kenaikan suhu. Dengan mengukur perubahan hambatan listrik menggunakan rangkaian jembatan Wheatstone, kita dapat menentukan suhu lingkungan dengan akurasi tinggi. RTD sangat stabil dan akurat, sering digunakan di lingkungan laboratorium dan aplikasi industri yang membutuhkan presisi tinggi.</p>
+            </li>
+            <li>
+                <strong>Termokopel (Thermocouple)</strong>
+                <p>Termokopel terdiri dari dua kawat yang terbuat dari dua jenis logam berbeda (misalnya, konstanta dan kromel) yang disambungkan di salah satu ujungnya (disebut "sambungan panas" atau <em>measuring junction</em>). Ujung lain yang terhubung ke alat ukur tegangan disebut "sambungan dingin" atau <em>reference junction</em>. Ketika ada perbedaan suhu antara kedua sambungan tersebut, sebuah tegangan listrik kecil (yang dikenal sebagai efek Seebeck) dihasilkan, yang besarnya bergantung pada jenis logam dan perbedaan suhu. Termokopel sangat tangguh, relatif murah, dan dapat digunakan untuk mengukur rentang suhu yang sangat luas, dari suhu kriogenik hingga suhu sangat tinggi (lebih dari 1700°C), menjadikannya ideal untuk lingkungan ekstrem.</p>
+            </li>
+            <li>
+                <strong>Pirometer (Pyrometer)</strong>
+                <p>Pirometer adalah jenis termometer non-kontak yang mengukur suhu berdasarkan radiasi termal yang dipancarkan oleh objek. Setiap objek yang memiliki suhu di atas nol absolut akan memancarkan radiasi elektromagnetik (biasanya dalam spektrum inframerah atau cahaya tampak). Pirometer mengukur intensitas radiasi ini dan mengkonversinya menjadi nilai suhu. Pirometer sangat berguna untuk mengukur suhu objek yang sangat panas sehingga kontak fisik tidak memungkinkan atau berbahaya (misalnya, logam cair, tungku peleburan, atau permukaan benda yang bergerak cepat).</p>
+            </li>
+        </ol>
+
+        <h4>Kalibrasi Termometer dan Titik Acuan (Fixed Points)</h4>
+        <p>Agar termometer dapat memberikan pembacaan yang konsisten dan akurat, termometer harus dikalibrasi. Kalibrasi melibatkan penentuan titik-titik acuan yang universal, biasanya menggunakan fenomena alam yang terjadi pada suhu konstan yang dapat direproduksi dengan mudah. Dua titik acuan utama yang secara historis digunakan untuk skala Celsius, Reamur, dan Fahrenheit adalah:</p>
+        <ul>
+            <li><strong>Titik Beku Air (Ice Point):</strong> Suhu di mana air murni membeku menjadi es pada tekanan atmosfer standar (1 atm atau 760 mmHg).</li>
+            <li><strong>Titik Didih Air (Steam Point):</strong> Suhu di mana air murni mendidih menjadi uap pada tekanan atmosfer standar.</li>
+        </ul>
+        <p>Untuk skala Kelvin, titik acuan yang lebih fundamental adalah <strong>titik tiga air</strong> (suhu dan tekanan di mana es, air cair, dan uap air dapat berada dalam kesetimbangan termal), yang didefinisikan sebagai 273.16 K.</p>
+
+        <h3>3. Skala Suhu</h3>
+        <p>Ada beberapa skala suhu yang digunakan di seluruh dunia, masing-masing dengan titik acuan dan intervalnya sendiri. Empat skala utama yang sering kita jumpai dalam fisika adalah Celsius, Reamur, Fahrenheit, dan Kelvin. Memahami dasar dan karakteristik masing-masing skala sangat penting.</p>
+
+        <h4>a. Skala Celcius (°C)</h4>
+        <p>Skala Celcius adalah skala suhu yang paling umum digunakan di sebagian besar negara di dunia untuk keperluan sehari-hari dan ilmiah. Diciptakan oleh astronom Swedia Anders Celsius pada tahun 1742.</p>
+        <ul>
+            <li><strong>Titik Beku Air:</strong> Ditetapkan sebagai 0°C.</li>
+            <li><strong>Titik Didih Air:</strong> Ditetapkan sebagai 100°C.</li>
+            <li>Interval antara titik beku dan titik didih air dibagi menjadi 100 bagian yang sama, yang dikenal sebagai "derajat Celcius".</li>
+        </ul>
+
+        <h4>b. Skala Reamur (°R)</h4>
+        <p>Skala Reamur dinamai dari René Antoine Ferchault de Réaumur, seorang fisikawan Perancis. Skala ini kurang umum digunakan saat ini dibandingkan Celsius atau Fahrenheit, tetapi memiliki signifikansi historis.</p>
+        <ul>
+            <li><strong>Titik Beku Air:</strong> Ditetapkan sebagai 0°R.</li>
+            <li><strong>Titik Didih Air:</strong> Ditetapkan sebagai 80°R.</li>
+            <li>Interval antara titik beku dan didih air dibagi menjadi 80 bagian yang sama.</li>
+        </ul>
+
+        <h4>c. Skala Fahrenheit (°F)</h4>
+        <p>Skala Fahrenheit digunakan secara luas di Amerika Serikat dan beberapa negara lain, terutama untuk pengukuran suhu sehari-hari. Diciptakan oleh fisikawan Jerman Daniel Gabriel Fahrenheit pada tahun 1724.</p>
+        <ul>
+            <li><strong>Titik Beku Air:</strong> Ditetapkan sebagai 32°F.</li>
+            <li><strong>Titik Didih Air:</strong> Ditetapkan sebagai 212°F.</li>
+            <li>Interval antara titik beku dan didih air dibagi menjadi 180 bagian yang sama (212 - 32 = 180).</li>
+        </ul>
+
+        <h4>d. Skala Kelvin (K)</h4>
+        <p>Skala Kelvin adalah skala suhu termodinamika absolut yang merupakan standar internasional (SI) untuk pengukuran suhu. Diberi nama dari fisikawan Irlandia William Thomson, Baron Kelvin. Skala ini fundamental dalam ilmu pengetahuan karena titik nolnya, yang dikenal sebagai "nol absolut", merupakan suhu terendah yang mungkin secara teoritis. Pada 0 K, partikel-partikel suatu zat berhenti bergerak secara fundamental (energi kinetik minimum).</p>
+        <ul>
+            <li><strong>Nol Absolut:</strong> Ditetapkan sebagai 0 K, yang setara dengan -273.15°C atau -459.67°F. Ini adalah titik di mana molekul tidak memiliki energi termal lagi.</li>
+            <li><strong>Titik Tiga Air:</strong> Didefinisikan sebagai 273.16 K. Ini adalah titik acuan yang lebih presisi daripada titik beku/didih karena lebih unik dan mudah direproduksi.</li>
+            <li>Ukuran satu unit Kelvin (1 K) sama persis dengan satu unit Celcius (1°C), artinya perubahan suhu sebesar 1 K sama dengan perubahan suhu sebesar 1°C. Ini membuat konversi antara Celcius dan Kelvin sangat sederhana.</li>
+            <li>Tidak ada simbol "derajat" yang digunakan untuk Kelvin (misalnya, 300 K, bukan 300°K), menandakan sifat absolutnya.</li>
+            <li>Skala Kelvin sangat penting dalam persamaan-persamaan termodinamika, hukum-hukum gas ideal, dan perhitungan ilmiah lainnya karena suhu dalam Kelvin secara langsung berbanding lurus dengan energi kinetik rata-rata partikel, dan tidak memiliki nilai negatif.</li>
+        </ul>
+
+        <h3>4. Konversi Antar Skala Suhu</h3>
+        <p>Kemampuan untuk mengkonversi suhu dari satu skala ke skala lain adalah keterampilan penting dalam fisika dan kehidupan sehari-hari. Hubungan antara skala-skala ini dapat diturunkan dari perbandingan interval titik acuan masing-masing skala. Konversi bergantung pada perbandingan jumlah divisi antara titik beku dan titik didih serta perbedaan titik nol masing-masing skala.</p>
+
+        <div class="info-box">
+            <p><strong>Rumus Umum Konversi Berdasarkan Titik Acuan:</strong><br>
+            Untuk setiap skala suhu, rasio antara suhu yang diukur relatif terhadap titik bekunya dan rentang total antara titik didih dan titik bekunya adalah konstan. Misalkan <code>T_X</code> adalah suhu dalam skala X, <code>T_X,beku</code> adalah titik beku di skala X, dan <code>T_X,didih</code> adalah titik didih di skala X:</p>
+            <div class="code-block">
+                <code>(T_X - T_X,beku) / (T_X,didih - T_X,beku) = Konstan</code>
+            </div>
+            <p>Jika kita menerapkan ini untuk Celcius, Reamur, dan Fahrenheit:</p>
+            <div class="code-block">
+                <code>(C - 0) / (100 - 0) = (R - 0) / (80 - 0) = (F - 32) / (212 - 32)</code><br>
+                <code>C / 100 = R / 80 = (F - 32) / 180</code>
+            </div>
+            <p>Atau dengan menyederhanakan rasio penyebutnya (membagi dengan FPB = 20):</p>
+            <div class="code-block">
+                <code>C / 5 = R / 4 = (F - 32) / 9</code>
+            </div>
+            <p>Untuk Kelvin, karena 1 K = 1°C dan titik nolnya berbeda:</p>
+            <div class="code-block">
+                <code>K = C + 273.15</code>
+            </div>
+        </div>
+
+        <h4>Rumus Konversi Spesifik:</h4>
+        <p>Berikut adalah rumus-rumus konversi yang lebih spesifik untuk memudahkan perhitungan:</p>
+
+        <ul>
+            <li><strong>Konversi dari Celcius (°C):</strong>
+                <ul>
+                    <li>Ke Reamur (°R): <code>R = (4/5) * C</code></li>
+                    <li>Ke Fahrenheit (°F): <code>F = (9/5) * C + 32</code></li>
+                    <li>Ke Kelvin (K): <code>K = C + 273.15</code> (Sering dibulatkan menjadi <code>C + 273</code> untuk perhitungan cepat, tetapi <code>273.15</code> lebih akurat)</li>
+                </ul>
+            </li>
+            <li><strong>Konversi dari Reamur (°R):</strong>
+                <ul>
+                    <li>Ke Celcius (°C): <code>C = (5/4) * R</code></li>
+                    <li>Ke Fahrenheit (°F): <code>F = (9/4) * R + 32</code></li>
+                    <li>Ke Kelvin (K): <code>K = (5/4) * R + 273.15</code></li>
+                </ul>
+            </li>
+            <li><strong>Konversi dari Fahrenheit (°F):</strong>
+                <ul>
+                    <li>Ke Celcius (°C): <code>C = (5/9) * (F - 32)</code></li>
+                    <li>Ke Reamur (°R): <code>R = (4/9) * (F - 32)</code></li>
+                    <li>Ke Kelvin (K): <code>K = (5/9) * (F - 32) + 273.15</code></li>
+                </ul>
+            </li>
+            <li><strong>Konversi dari Kelvin (K):</strong>
+                <ul>
+                    <li>Ke Celcius (°C): <code>C = K - 273.15</code></li>
+                    <li>Ke Reamur (°R): <code>R = (4/5) * (K - 273.15)</code></li>
+                    <li>Ke Fahrenheit (°F): <code>F = (9/5) * (K - 273.15) + 32</code></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Tabel Konversi Suhu Ekuivalen pada Titik Penting:</h4>
+        <p>Tabel berikut menunjukkan nilai suhu yang setara pada titik-titik acuan dan beberapa suhu umum, membantu memvisualisasikan hubungan antar skala:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Deskripsi</th>
+                    <th>Celcius (°C)</th>
+                    <th>Reamur (°R)</th>
+                    <th>Fahrenheit (°F)</th>
+                    <th>Kelvin (K)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Titik Didih Air (Tekanan Standar)</td>
+                    <td>100</td>
+                    <td>80</td>
+                    <td>212</td>
+                    <td>373.15</td>
+                </tr>
+                <tr>
+                    <td>Suhu Tubuh Manusia (Normal)</td>
+                    <td>37</td>
+                    <td>29.6</td>
+                    <td>98.6</td>
+                    <td>310.15</td>
+                </tr>
+                <tr>
+                    <td>Suhu Kamar (Rata-rata)</td>
+                    <td>20 - 25</td>
+                    <td>16 - 20</td>
+                    <td>68 - 77</td>
+                    <td>293.15 - 298.15</td>
+                </tr>
+                <tr>
+                    <td>Titik Beku Air (Tekanan Standar)</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>32</td>
+                    <td>273.15</td>
+                </tr>
+                <tr>
+                    <td>Nol Absolut (Suhu Terendah Mungkin)</td>
+                    <td>-273.15</td>
+                    <td>-218.52</td>
+                    <td>-459.67</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>5. Kesetimbangan Termal (Thermal Equilibrium)</h3>
+        <p>Konsep suhu sangat erat kaitannya dengan perpindahan energi dan keadaan kesetimbangan dalam sistem termal. Ketika dua benda atau lebih yang memiliki suhu berbeda diletakkan dalam kontak termal (yaitu, memungkinkan pertukaran energi panas), energi panas akan mengalir secara spontan dari benda bersuhu lebih tinggi ke benda bersuhu lebih rendah. Proses transfer energi ini akan terus berlangsung hingga semua benda yang berinteraksi mencapai suhu yang sama.</p>
+        <ul>
+            <li><strong>Definisi:</strong> <em>Kesetimbangan termal</em> adalah keadaan di mana tidak ada lagi aliran energi panas bersih antara dua benda atau lebih yang berada dalam kontak termal, karena mereka telah mencapai suhu yang sama. Pada titik ini, energi kinetik rata-rata partikel dalam semua benda yang berinteraksi menjadi setara.</li>
+            <li><strong>Hukum Ke-nol Termodinamika (Zeroth Law of Thermodynamics):</strong> Hukum fundamental ini menyatakan bahwa jika dua sistem masing-masing berada dalam kesetimbangan termal dengan sistem ketiga, maka ketiga sistem tersebut berada dalam kesetimbangan termal satu sama lain. Secara sederhana, jika Sistem A setimbang termal dengan Sistem B, dan Sistem B setimbang termal dengan Sistem C, maka secara otomatis Sistem A juga setimbang termal dengan Sistem C. Hukum ini sangat penting karena menyediakan dasar logis untuk pengukuran suhu menggunakan termometer: termometer (Sistem B) berfungsi sebagai alat ukur yang mencapai kesetimbangan termal dengan benda yang diukur (Sistem A), sehingga pembacaan termometer secara akurat merepresentasikan suhu benda tersebut, dan pada gilirannya, jika benda A dan C memberikan pembacaan yang sama pada termometer B, maka suhu A dan C adalah sama.</li>
+        </ul>
+        <p>Pemahaman yang kuat tentang suhu dan prinsip kesetimbangan termal adalah fondasi esensial untuk mempelajari konsep-konsep termodinamika yang lebih lanjut, seperti kapasitas kalor, kalor laten, perpindahan kalor (konduksi, konveksi, radiasi), dan hukum-hukum termodinamika lainnya. Ini membuka jalan untuk memahami bagaimana energi berperilaku dan dapat dimanfaatkan dalam berbagai sistem fisik dan aplikasi teknologi modern, dari pendingin hingga mesin panas.</p>
+
+        <p class="text-tertiary" style="text-align: center; margin-top: 50px; padding-top: 15px; border-top: 1px solid var(--border-divider);">
+            <em>Ini adalah penjelasan detail dari Bagian A: Suhu, dari Bab 6: Kalor untuk Fisika Kelas XI.</em>
+        </p>
+
+    </div>
+</body>
+</html>
+```

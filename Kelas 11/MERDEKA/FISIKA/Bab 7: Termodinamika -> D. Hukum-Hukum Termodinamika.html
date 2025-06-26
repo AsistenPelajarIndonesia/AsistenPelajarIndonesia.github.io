@@ -1,0 +1,362 @@
+Berikut adalah penjelasan lengkap mengenai Hukum-Hukum Termodinamika, disajikan dalam format HTML yang responsif dan sesuai dengan tema warna yang diminta.
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termodinamika: Hukum-Hukum Termodinamika</title>
+    <style>
+        /* Definisi variabel warna dari tema lightMode */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Gaya dasar untuk body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Gaya untuk kontainer utama */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: var(--background-canvas);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Bayangan yang lebih menonjol */
+        }
+
+        /* Gaya untuk judul H1, H2, H3 */
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-top: 2em;
+            margin-bottom: 0.8em;
+            font-weight: 600; /* Sedikit lebih tebal */
+        }
+
+        h1 {
+            font-size: 2.8em;
+            border-bottom: 3px solid var(--border-divider);
+            padding-bottom: 12px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-green);
+            border-left: 6px solid var(--accent-green); /* Garis vertikal di kiri */
+            padding-left: 15px;
+            margin-left: -15px; /* Sesuaikan margin agar garis di luar padding */
+        }
+
+        h3 {
+            font-size: 1.7em;
+            color: var(--text-primary);
+            border-bottom: 1px dashed var(--border-divider); /* Garis putus-putus */
+            padding-bottom: 5px;
+        }
+
+        /* Gaya untuk paragraf */
+        p {
+            margin-bottom: 1.2em;
+            color: var(--text-secondary);
+        }
+
+        /* Gaya untuk daftar tidak terurut */
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1.5em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.7em;
+        }
+
+        /* Gaya untuk kotak callout/informasi */
+        .callout {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .callout h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Gaya untuk kotak rumus */
+        .formula {
+            background-color: var(--border-divider);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            font-family: 'Consolas', 'Courier New', monospace; /* Font monospace untuk rumus */
+            font-size: 1.3em;
+            color: var(--text-primary);
+            overflow-x: auto; /* Memungkinkan scroll horizontal jika rumus terlalu panjang */
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Bayangan dalam */
+        }
+
+        /* Gaya untuk catatan penting */
+        .important-note {
+            background-color: var(--semantic-warning); /* Latar belakang amber terang */
+            color: var(--text-primary); /* Teks utama untuk keterbacaan */
+            padding: 20px;
+            border-left: 6px solid var(--secondary-accent-amber); /* Garis kiri amber yang lebih gelap */
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        .important-note p {
+            color: var(--text-primary); /* Memastikan teks di dalamnya juga menggunakan warna primer */
+        }
+
+        /* Gaya untuk kotak fakta/informasi tambahan */
+        .fact-box {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .fact-box h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Penyesuaian responsif untuk layar sedang (tablet) */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+        }
+
+        /* Penyesuaian responsif untuk layar kecil (mobile) */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .formula {
+                font-size: 1em;
+                padding: 15px;
+            }
+            .callout, .important-note, .fact-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Termodinamika: Hukum-Hukum Termodinamika</h1>
+
+        <section id="hukum-nol">
+            <h2>1. Hukum ke Nol Termodinamika</h2>
+            <p>Hukum ke Nol Termodinamika adalah prinsip fundamental yang menjadi dasar pengukuran suhu dan konsep kesetimbangan termal. Hukum ini memastikan adanya properti yang dapat kita sebut sebagai suhu. Prinsipnya menyatakan:</p>
+            <div class="callout">
+                <h3>Prinsip Hukum ke Nol Termodinamika</h3>
+                <p>"Jika benda pertama (misalnya, termometer) berada dalam kesetimbangan termal dengan benda kedua, dan benda pertama juga berada dalam kesetimbangan termal dengan benda ketiga, maka benda kedua dan benda ketiga juga berada dalam kesetimbangan termal satu sama lain."</p>
+            </div>
+            <p>Dalam konteks yang lebih praktis, hukum ini menjelaskan mengapa termometer dapat mengukur suhu suatu objek. Ketika sebuah termometer (benda pertama) ditempatkan ke dalam kontak dengan suatu objek (benda kedua) dan mencapai kesetimbangan termal (yang ditunjukkan dengan pembacaan suhu yang stabil), suhu yang ditunjukkan oleh termometer adalah suhu objek tersebut. Jika termometer yang sama kemudian menunjukkan suhu yang sama ketika ditempatkan pada objek lain (benda ketiga), maka kita dapat menyimpulkan bahwa objek kedua dan ketiga memiliki suhu yang sama dan berada dalam kesetimbangan termal satu sama lain.</p>
+        </section>
+
+        <section id="hukum-satu">
+            <h2>2. Hukum 1 Termodinamika (Hukum Kekekalan Energi)</h2>
+            <p>Hukum Pertama Termodinamika adalah pernyataan eksplisit dari prinsip kekekalan energi yang diterapkan pada sistem termodinamika. Hukum ini menegaskan bahwa energi tidak dapat diciptakan atau dimusnahkan, melainkan hanya dapat diubah dari satu bentuk ke bentuk lainnya (misalnya dari usaha menjadi kalor atau sebaliknya).</p>
+
+            <h3>a. Usaha dan Kalor</h3>
+            <p>Hubungan antara usaha dan kalor sebagai bentuk energi yang dapat saling dikonversi pertama kali ditunjukkan secara eksperimental oleh James Prescott Joule. Ia membuktikan bahwa usaha mekanik dapat sepenuhnya diubah menjadi kalor.</p>
+            <ul>
+                <li><strong>Kalor (Q):</strong> Merupakan energi yang ditransfer antara sistem dan lingkungannya karena adanya perbedaan suhu. Contohnya adalah panas yang diserap oleh sepeda dari sinar matahari.</li>
+                <li><strong>Usaha (W):</strong> Merupakan energi yang ditransfer ketika sebuah gaya bekerja melalui suatu jarak. Contohnya, ban sepeda menjadi panas karena menerima usaha saat dipompa.</li>
+            </ul>
+            <p>Baik kalor maupun usaha adalah bentuk energi transit. Artinya, mereka adalah energi yang sedang dalam proses transfer; mereka tidak disimpan <em>dalam</em> sistem. Energi yang disimpan dalam sistem disebut energi dalam.</p>
+
+            <h3>b. Energi Dalam</h3>
+            <p>Energi dalam (&Delta;U) suatu sistem adalah jumlah total dari semua energi mikroskopis yang dimiliki oleh partikel-partikel penyusun sistem tersebut. Ini mencakup energi kinetik translasi, rotasi, dan vibrasi molekul, serta energi potensial yang terkait dengan interaksi antarmolekul.</p>
+            <ul>
+                <li>Ketika Anda menggosokkan kedua tangan, energi mekanik diubah menjadi energi termal akibat gesekan, yang meningkatkan energi kinetik molekul-molekul pada permukaan tangan, sehingga energi dalam tangan Anda bertambah dan Anda merasakan panas.</li>
+                <li>Energi dalam adalah <strong>variabel keadaan</strong>, yang berarti nilainya hanya bergantung pada keadaan sistem pada waktu tertentu (misalnya tekanan, volume, dan suhu), dan tidak bergantung pada jalur atau proses yang menyebabkan sistem mencapai keadaan tersebut.</li>
+                <li>Untuk gas ideal, energi dalam hanya bergantung pada suhu sistem.</li>
+                <li>Secara mikroskopis, energi dalam diasosiasikan dengan:
+                    <ul>
+                        <li>Gerak acak molekul-molekul (komponen energi kinetik).</li>
+                        <li>Gaya interaksi antarmolekul (komponen energi potensial).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>Hukum Pertama Termodinamika dirumuskan secara matematis sebagai:</p>
+            <div class="formula">
+                <p>&Delta;U = Q - W</p>
+            </div>
+            <p>Di mana:</p>
+            <ul>
+                <li><strong>&Delta;U</strong> adalah perubahan energi dalam sistem (dalam Joule atau Kalori).</li>
+                <li><strong>Q</strong> adalah kalor yang ditransfer ke atau dari sistem (dalam Joule atau Kalori).</li>
+                <li><strong>W</strong> adalah usaha yang dilakukan oleh atau pada sistem (dalam Joule atau Kalori).</li>
+            </ul>
+            <p><strong>Konvensi Tanda berdasarkan buku teks ini:</strong></p>
+            <ul>
+                <li>Untuk <strong>Q (kalor)</strong>:
+                    <ul>
+                        <li>Jika kalor <strong>masuk ke sistem</strong>, Q bertanda <strong>positif (+)</strong>.</li>
+                        <li>Jika kalor <strong>keluar dari sistem</strong>, Q bertanda <strong>negatif (-)</strong>.</li>
+                    </ul>
+                </li>
+                <li>Untuk <strong>W (usaha)</strong>:
+                    <ul>
+                        <li>Jika usaha <strong>dilakukan pada sistem</strong> (misalnya, gas dikompresi), W bertanda <strong>positif (+)</strong>.</li>
+                        <li>Jika usaha <strong>dilakukan oleh sistem</strong> (misalnya, gas berekspansi), W bertanda <strong>negatif (-)</strong>.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="important-note">
+                <p><strong>Contoh Penerapan Konvensi Tanda:</strong><br>
+                Misalkan suatu sistem memperoleh kalor sebesar 30.000 J dan usaha sebesar 20.000 J dilakukan pada sistem tersebut. Maka:<br>
+                Q = +30.000 J (kalor masuk)<br>
+                W = +20.000 J (usaha dilakukan pada sistem)<br>
+                Perubahan energi dalam (&Delta;U) dihitung menggunakan rumus &Delta;U = Q - W:<br>
+                &Delta;U = 30.000 J - 20.000 J = 10.000 J.<br>
+                Ini menunjukkan bahwa energi dalam sistem bertambah sebesar 10.000 J.</p>
+            </div>
+        </section>
+
+        <section id="aplikasi-hukum-satu">
+            <h2>3. Aplikasi Hukum I Termodinamika dalam Proses Termodinamika</h2>
+            <p>Hukum Pertama Termodinamika dapat diterapkan pada berbagai proses termodinamika yang berbeda, masing-masing dengan karakteristik unik yang mempengaruhi bagaimana energi ditransfer dan diubah.</p>
+
+            <h3>a. Proses Adiabatis</h3>
+            <p>Proses adiabatis adalah proses di mana <strong>tidak ada perpindahan kalor</strong> (Q = 0) antara sistem dan lingkungannya. Ini bisa terjadi jika sistem terisolasi sempurna atau jika proses berlangsung sangat cepat sehingga tidak ada waktu bagi kalor untuk berpindah.</p>
+            <div class="formula">
+                <p>&Delta;U = Q - W</p>
+                <p>Karena Q = 0, maka:</p>
+                <p>&Delta;U = -W</p>
+            </div>
+            <p>Artinya, semua perubahan energi dalam sistem murni disebabkan oleh usaha yang dilakukan oleh atau pada sistem. Contoh proses adiabatis adalah kompresi atau ekspansi gas yang sangat cepat, seperti yang terjadi pada pembakaran di mesin mobil atau dalam turbin uap.</p>
+
+            <h3>b. Proses Isobarik</h3>
+            <p>Proses isobarik adalah proses termodinamika yang terjadi pada <strong>tekanan tetap (konstan)</strong>. Dalam proses ini, volume sistem biasanya berubah, dan usaha dapat dilakukan oleh atau pada sistem.</p>
+            <div class="formula">
+                <p>&Delta;U = Q - W</p>
+            </div>
+            <p>Usaha (W) dalam proses isobarik dapat dihitung sebagai W = p&Delta;V, di mana p adalah tekanan konstan dan &Delta;V adalah perubahan volume. Contoh klasik adalah air yang mendidih dalam panci terbuka, di mana tekanan tetap pada tekanan atmosfer. Balon udara yang mengembang dan naik juga merupakan contoh proses isobarik.</p>
+
+            <h3>c. Proses Isotermal</h3>
+            <p>Proses isotermal adalah proses termodinamika yang terjadi pada <strong>suhu tetap (konstan)</strong>. Untuk gas ideal, jika suhu tetap, maka perubahan energi dalam (&Delta;U) adalah nol.</p>
+            <div class="formula">
+                <p>&Delta;U = Q - W</p>
+                <p>Karena &Delta;U = 0 (untuk gas ideal pada T konstan), maka:</p>
+                <p>Q = W</p>
+            </div>
+            <p>Ini berarti semua kalor yang ditransfer ke atau dari sistem diubah menjadi usaha yang dilakukan oleh atau pada sistem. Untuk gas ideal, usaha yang dilakukan dalam proses isotermal dapat dihitung dengan rumus:</p>
+            <div class="formula">
+                <p>W = nRT ln(&#x20;V<sub>2</sub>&frasl;V<sub>1</sub>&#x20;)</p>
+            </div>
+            <p>Di mana n adalah jumlah mol gas, R adalah konstanta gas ideal, T adalah suhu mutlak (konstan), dan V<sub>1</sub> serta V<sub>2</sub> adalah volume awal dan akhir.</p>
+
+            <h3>d. Proses Isokhorik</h3>
+            <p>Proses isokhorik adalah proses termodinamika yang terjadi pada <strong>volume tetap (konstan)</strong>. Karena tidak ada perubahan volume (&Delta;V = 0), maka tidak ada usaha (W = 0) yang dilakukan oleh atau pada sistem.</p>
+            <div class="formula">
+                <p>&Delta;U = Q - W</p>
+                <p>Karena W = 0, maka:</p>
+                <p>&Delta;U = Q</p>
+            </div>
+            <p>Dalam proses ini, semua kalor yang ditambahkan atau dikeluarkan dari sistem akan langsung mengubah energi dalamnya. Contohnya adalah pemanasan gas dalam wadah kaku yang volumenya tidak dapat berubah, seperti yang mendekati kondisi dalam pressure cooker.</p>
+        </section>
+
+        <section id="kapasitas-panas">
+            <h2>4. Kapasitas Panas (Kapasitas Kalor)</h2>
+            <p>Kapasitas panas, atau kapasitas kalor, suatu zat adalah ukuran jumlah energi kalor yang dibutuhkan untuk menaikkan suhu zat tersebut sebesar satu Kelvin (1 K) atau satu derajat Celsius (1 &deg;C).</p>
+            <p>Untuk gas, kapasitas panas dibedakan menjadi dua jenis utama, tergantung pada kondisi prosesnya:</p>
+            <ul>
+                <li><strong>Kapasitas Panas pada Volume Tetap (C<sub>v</sub>):</strong>
+                    <p>Ini adalah kalor yang dibutuhkan untuk menaikkan suhu gas sebesar 1 K saat volumenya dijaga konstan. Karena volume konstan, tidak ada usaha yang dilakukan (W=0), sehingga semua kalor yang ditambahkan langsung meningkatkan energi dalam sistem (&Delta;U = Q). Untuk gas monoatomik ideal, C<sub>v</sub> diberikan oleh:</p>
+                    <div class="formula">
+                        <p>C<sub>v</sub> = (<sup>3</sup>&frasl;<sub>2</sub>) nR</p>
+                    </div>
+                    <p>Contoh gas monoatomik yang mendekati nilai ini adalah Helium (He) dan Argon (Ar). Partikel gas monoatomik hanya memiliki derajat kebebasan translasi.</p>
+                </li>
+                <li><strong>Kapasitas Panas pada Tekanan Tetap (C<sub>p</sub>):</strong>
+                    <p>Ini adalah kalor yang dibutuhkan untuk menaikkan suhu gas sebesar 1 K saat tekanannya dijaga konstan. Dalam proses ini, sistem melakukan usaha saat berekspansi, sehingga kalor yang ditambahkan tidak hanya meningkatkan energi dalam tetapi juga digunakan untuk melakukan usaha. Oleh karena itu, C<sub>p</sub> selalu lebih besar dari C<sub>v</sub>. Untuk gas monoatomik ideal, C<sub>p</sub> diberikan oleh:</p>
+                    <div class="formula">
+                        <p>C<sub>p</sub> = C<sub>v</sub> + nR = (<sup>5</sup>&frasl;<sub>2</sub>) nR</p>
+                    </div>
+                    <p>Nilai kapasitas panas molar (kapasitas panas per mol) bergantung pada jenis gas (monoatomik, diatomik, poliatomik) karena perbedaan jumlah derajat kebebasan molekulnya. Misalnya, gas diatomik seperti Nitrogen (N<sub>2</sub>) dan Oksigen (O<sub>2</sub>) memiliki nilai kapasitas kalor molar yang berbeda dari gas monoatomik.</p>
+                </li>
+            </ul>
+            <div class="fact-box">
+                <h3>Fakta Menarik: Penemuan Teflon (PTFE)</h3>
+                <p>Teflon, yang secara kimia dikenal sebagai Polytetrafluoroethylene (PTFE), ditemukan secara tidak sengaja pada tahun 1938 oleh ahli kimia Roy Plunkett. Saat itu, Plunkett sedang melakukan penelitian dengan gas tetrafluoroetilena yang disimpan pada suhu sangat rendah. Ia terkejut ketika mendapati bahwa gas tersebut telah bereaksi membentuk bubuk putih yang melapisi bagian dalam tabung. Penemuan ini merupakan contoh menarik dari bagaimana kondisi termodinamika (seperti suhu rendah yang mempengaruhi tekanan sesuai hukum Gay-Lussac) dapat menyebabkan perubahan fasa atau reaksi kimia yang tak terduga, menghasilkan material dengan sifat-sifat unik.</p>
+            </div>
+        </section>
+
+        <section id="hukum-dua">
+            <h2>5. Hukum II Termodinamika</h2>
+            <p>Meskipun Hukum Pertama Termodinamika menjelaskan prinsip kekekalan energi, ia tidak memberikan informasi mengenai arah spontan suatu proses atau batasan efisiensi konversi energi. Misalnya, gesekan dapat mengubah energi mekanik menjadi kalor (seperti saat mobil direm), namun kalor ini tidak dapat secara spontan dan sepenuhnya dikonversi kembali menjadi energi mekanik. Untuk menjelaskan fenomena ini dan arah proses alami, diperlukan Hukum Kedua Termodinamika.</p>
+            <p>Hukum Kedua Termodinamika dapat dinyatakan dalam beberapa formulasi yang berbeda, namun semuanya mengarah pada kesimpulan yang sama mengenai batasan termodinamika:</p>
+            <ul>
+                <li><strong>Pernyataan Clausius:</strong> "Kalor tidak dapat mengalir secara spontan (dengan sendirinya) dari benda yang lebih dingin ke benda yang lebih panas tanpa adanya usaha dari luar." Pernyataan ini menjadi dasar operasi lemari es atau pendingin udara.</li>
+                <li><strong>Pernyataan Kelvin-Planck:</strong> "Tidak mungkin membangun mesin kalor yang beroperasi dalam suatu siklus yang satu-satunya efeknya adalah menyerap kalor dari sebuah reservoir termal dan mengubahnya seluruhnya menjadi usaha." Pernyataan ini menyiratkan bahwa tidak ada mesin yang 100% efisien.</li>
+                <li><strong>Konsep Entropi:</strong> Hukum Kedua juga sangat erat kaitannya dengan konsep entropi, suatu besaran fisis yang mengukur tingkat ketidakteraturan atau keacakan suatu sistem. Hukum Kedua menyatakan bahwa dalam setiap proses alami yang spontan di alam semesta, entropi total alam semesta (sistem ditambah lingkungan) akan selalu meningkat atau setidaknya tetap konstan. Entropi tidak pernah berkurang dalam proses spontan.</li>
+            </ul>
+            <p>Hukum Kedua Termodinamika sangat penting untuk memahami batasan efisiensi mesin, arah proses-proses alami, dan konsep irreversibilitas (ketidakmungkinan mengembalikan sistem ke keadaan semula secara spontan tanpa jejak di lingkungan).</p>
+        </section>
+    </div>
+</body>
+</html>
+```

@@ -1,0 +1,299 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Proses Pengaturan pada Tumbuhan - Reproduksi</title>
+    <style>
+        /* Color Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            font-size: 16px; /* Base font size */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.6rem; }
+        h4 { font-size: 1.3rem; color: var(--accent-green);}
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section Styling */
+        .section-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Callout Boxes */
+        .callout-box {
+            border-left: 5px solid var(--secondary-accent-amber);
+            background-color: #FFFDE7; /* Lighter amber background */
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .callout-box h4 {
+            color: var(--secondary-accent-amber);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+        
+        .info-box {
+            border-left: 5px solid var(--semantic-info);
+            background-color: #E3F2FD; /* Lighter blue background */
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .info-box h4 {
+            color: var(--semantic-info);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Interactive Elements: Details/Summary */
+        details {
+            background-color: #F8F8F8;
+            border: 1px solid var(--border-divider);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            outline: none;
+            font-weight: bold;
+            color: var(--primary-blue);
+            list-style: none; /* Remove default marker */
+            position: relative;
+        }
+
+        summary::-webkit-details-marker {
+            display: none; /* Remove default marker for webkit browsers */
+        }
+        
+        summary::before {
+            content: '►'; /* Custom marker */
+            position: absolute;
+            left: 1rem;
+            color: var(--text-secondary);
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .details-content {
+            padding: 0 1.5rem 1rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.4rem; }
+            h4 { font-size: 1.2rem; }
+            body { font-size: 15px; }
+            .section-card { padding: 1.5rem; }
+            .callout-box, .info-box { padding: 1rem 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.8rem;
+            }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            h4 { font-size: 1rem; }
+            body { font-size: 14px; }
+            .section-card { padding: 1rem; }
+            .callout-box, .info-box { padding: 0.8rem 1rem; }
+            summary { padding: 0.8rem 1rem; }
+            .details-content { padding: 0 1rem 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 3: Proses Pengaturan pada Tumbuhan</h1>
+        <h2>C. Reproduksi pada Tumbuhan</h2>
+
+        <div class="section-card">
+            <h3>Pengantar Reproduksi Tumbuhan</h3>
+            <p>Tumbuhan, sama seperti organisme hidup lainnya, melakukan reproduksi untuk mempertahankan kelangsungan jenisnya. Reproduksi pada tumbuhan memiliki mekanisme yang unik dan beragam, seringkali melibatkan interaksi dengan lingkungan atau organisme lain.</p>
+            <p>Salah satu contoh interaksi yang menarik adalah antara lebah dan bunga. Lebah hinggap di bunga untuk mengumpulkan nektar sebagai sumber makanannya. Saat lebah berpindah dari satu bunga ke bunga lain, serbuk sari yang menempel pada tubuhnya akan terbawa, membantu proses penyerbukan bunga. Hubungan ini dikenal sebagai <strong>simbiosis mutualisme</strong>, di mana lebah mendapatkan makanan dan bunga mendapatkan bantuan dalam reproduksi. Interaksi ini adalah awal dari banyak proses reproduksi pada tumbuhan berbunga.</p>
+            <p>Namun, tidak semua jenis tumbuhan bereproduksi dengan cara yang sama atau selalu diawali dengan interaksi seperti ini. Keanekaragaman tumbuhan di Bumi menunjukkan berbagai strategi reproduksi yang adaptif terhadap lingkungannya.</p>
+        </div>
+
+        <div class="section-card">
+            <h3>1. Siklus Hidup Tumbuhan (Metagenesis)</h3>
+            <p>Sebagian besar tumbuhan mengalami siklus hidup yang dikenal sebagai <strong>metagenesis</strong> atau pergiliran keturunan, yang melibatkan dua fase utama secara bergantian: fase sporofit dan fase gametofit.</p>
+
+            <details>
+                <summary>Memahami Fase Sporofit dan Gametofit</summary>
+                <div class="details-content">
+                    <ul>
+                        <li><strong>Fase Sporofit:</strong> Ini adalah fase diploid (2n) dalam siklus hidup tumbuhan. Pada fase ini, tumbuhan menghasilkan spora melalui proses meiosis. Sporofit adalah generasi yang dominan pada sebagian besar tumbuhan vaskuler (berpembuluh), seperti paku dan tumbuhan berbiji.</li>
+                        <li><strong>Fase Gametofit:</strong> Ini adalah fase haploid (n) dalam siklus hidup tumbuhan. Gametofit berkembang dari spora dan menghasilkan gamet (sel kelamin) melalui proses mitosis. Gamet jantan (sperma) dan gamet betina (sel telur) akan melebur saat fertilisasi untuk membentuk zigot diploid, yang kemudian akan tumbuh menjadi sporofit baru. Gametofit adalah generasi dominan pada tumbuhan nonvaskuler seperti lumut.</li>
+                    </ul>
+                    <p>Pergiliran siklus antara fase diploid dan haploid ini memungkinkan tumbuhan untuk beradaptasi dengan lingkungan yang berubah, memberikan fleksibilitas genetik dan strategi reproduksi yang efisien.</p>
+                </div>
+            </details>
+
+            <h4>A. Siklus Hidup Lumut (Bryophyta)</h4>
+            <p>Tumbuhan lumut dikenal karena preferensinya terhadap lingkungan yang lembap. Pada lumut, <strong>fase gametofit adalah generasi yang dominan</strong>, artinya fase inilah yang paling menonjol dan berumur panjang. Gametofit lumut adalah bagian yang kita kenal sebagai tumbuhan lumut itu sendiri, yang dapat melakukan fotosintesis.</p>
+            <p>Gametofit menghasilkan organ reproduksi jantan (anteridium) dan betina (arkegonium). Anteridium menghasilkan sperma berflagel yang memerlukan air untuk berenang menuju sel telur di arkegonium. Setelah fertilisasi, terbentuk zigot yang akan tumbuh menjadi sporofit.</p>
+            <details>
+                <summary>Ciri Khas Sporofit Lumut</summary>
+                <div class="details-content">
+                    <p>Sporofit lumut umumnya berukuran kecil, tidak bercabang, dan sepenuhnya bergantung pada gametofit untuk nutrisi. Sporofit ini menempel pada gametofit dan terdiri dari kaki (haustorium), seta (tangkai), dan kapsul (sporangium) yang menghasilkan spora. Setelah spora matang dan dilepaskan, ia akan berkecambah menjadi protonema (struktur filamen awal), yang kemudian berkembang menjadi gametofit baru.</p>
+                </div>
+            </details>
+
+            <h4>B. Siklus Hidup Paku (Pteridophyta)</h4>
+            <p>Berbeda dengan lumut, pada tumbuhan paku, <strong>fase sporofit adalah generasi yang dominan</strong> dan mampu hidup mandiri. Sporofit paku adalah tumbuhan paku yang kita lihat sehari-hari, dengan akar, batang, dan daun sejati, serta mampu melakukan fotosintesis.</p>
+            <p>Sporofit paku menghasilkan spora di dalam sporangium, yang sering terkumpul dalam sorus di bagian bawah daun. Spora yang dilepaskan akan berkecambah menjadi protalium (gametofit). Protalium ini berbentuk hati, berukuran kecil, dan umumnya berumur pendek. Meskipun mampu berfotosintesis, ia tetap memerlukan air untuk fertilisasi.</p>
+            <details>
+                <summary>Peran Penting Air pada Paku</summary>
+                <div class="details-content">
+                    <p>Protalium paku menghasilkan anteridium dan arkegonium. Sperma yang dihasilkan anteridium juga berflagel dan membutuhkan air (embun, hujan) untuk berenang menuju sel telur di arkegonium. Fertilisasi ini menghasilkan zigot, yang kemudian akan tumbuh menjadi sporofit paku muda dan akhirnya menjadi sporofit dewasa.</p>
+                    <p>Dominansi sporofit pada paku dianggap sebagai adaptasi yang lebih baik untuk kehidupan di darat dibandingkan lumut, karena memungkinkan pertumbuhan yang lebih besar dan sistem transportasi air yang lebih efisien.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <h3>2. Reproduksi pada Gymnospermae</h3>
+            <p>Gymnospermae (tumbuhan berbiji terbuka) seperti pinus dan melinjo tidak menghasilkan bunga. Sebagai gantinya, organ reproduksi mereka disebut <strong>strobilus</strong> (atau runjung).</p>
+            
+            <details>
+                <summary>Struktur dan Fungsi Strobilus</summary>
+                <div class="details-content">
+                    <p>Ada dua jenis strobilus pada Gymnospermae:</p>
+                    <ul>
+                        <li><strong>Strobilus Jantan:</strong> Umumnya berukuran lebih kecil, menghasilkan mikrospora yang berkembang menjadi serbuk sari (pollen). Serbuk sari ini mengandung gamet jantan.</li>
+                        <li><strong>Strobilus Betina:</strong> Umumnya berukuran lebih besar, menghasilkan megaspora yang berkembang menjadi ovum (sel telur). Strobilus betina juga merupakan tempat biji akan berkembang setelah fertilisasi.</li>
+                    </ul>
+                    <p>Proses penyerbukan pada Gymnospermae umumnya terjadi melalui angin, di mana serbuk sari terbawa dari strobilus jantan ke strobilus betina. Setelah serbuk sari mencapai ovula di strobilus betina, terjadilah fertilisasi yang menghasilkan zigot diploid. Zigot ini kemudian berkembang menjadi embrio yang akan berada di dalam biji, terlindungi oleh strobilus betina hingga matang.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card">
+            <h3>3. Pembuahan dan Penyebaran Biji pada Angiospermae</h3>
+            <p>Angiospermae (tumbuhan berbiji tertutup) memiliki organ reproduksi yang paling kompleks dan bervariasi: <strong>bunga</strong>. Bunga adalah struktur khusus yang dirancang untuk menarik penyerbuk dan memfasilitasi fertilisasi.</p>
+
+            <h4>A. Proses Pembuahan (Fertilisasi) pada Angiospermae</h4>
+            <p>Proses pembuahan pada Angiospermae diawali dengan <strong>penyerbukan</strong>, yaitu berpindahnya serbuk sari dari kepala sari ke kepala putik. Setelah serbuk sari menempel pada kepala putik, ia akan berkecambah membentuk tabung serbuk sari yang tumbuh menembus tangkai putik menuju bakal biji.</p>
+            <details>
+                <summary>Keunikan Fertilisasi Ganda pada Angiospermae</summary>
+                <div class="details-content">
+                    <p>Angiospermae memiliki proses pembuahan yang sangat khas yang disebut <strong>fertilisasi ganda</strong>. Ini melibatkan dua peristiwa peleburan sel gamet jantan:</p>
+                    <ol>
+                        <li><strong>Peleburan pertama:</strong> Salah satu inti sperma (gamet jantan) melebur dengan sel telur (ovum) untuk membentuk <strong>zigot diploid (2n)</strong>. Zigot ini akan berkembang menjadi embrio (bakal tumbuhan baru).</li>
+                        <li><strong>Peleburan kedua:</strong> Inti sperma yang kedua melebur dengan inti kandung lembaga sekunder (inti polar) untuk membentuk <strong>endosperma triploid (3n)</strong>. Endosperma ini berfungsi sebagai cadangan makanan untuk embrio yang sedang berkembang dalam biji.</li>
+                    </ol>
+                    <p>Proses ganda ini memastikan bahwa cadangan makanan hanya akan terbentuk jika embrio juga terbentuk, sehingga sumber daya tumbuhan menjadi lebih efisien.</p>
+                </div>
+            </details>
+            
+            <div class="info-box">
+                <h4>Perkembangan Setelah Fertilisasi</h4>
+                <p>Setelah fertilisasi ganda, zigot akan berkembang menjadi embrio, dan inti kandung lembaga sekunder yang difertilisasi akan menjadi endosperma. Bakal biji akan berkembang menjadi biji, dan bakal buah (ovarium) akan berkembang menjadi buah. Buah ini berfungsi melindungi biji dan seringkali membantu dalam penyebaran biji.</p>
+            </div>
+
+            <h4>B. Penyebaran Biji</h4>
+            <p>Tidak seperti hewan yang dapat bergerak aktif, tumbuhan tidak dapat berpindah tempat secara mandiri untuk menyebarkan keturunannya. Oleh karena itu, kemampuan tumbuhan untuk menyebarkan bijinya adalah mekanisme krusial untuk menjaga kelestarian spesiesnya dan menduduki habitat baru.</p>
+            <p>Ada berbagai cara tumbuhan menyebarkan bijinya, seringkali dengan adaptasi struktural pada biji atau buah itu sendiri:</p>
+            <ul>
+                <li><strong>Anemokori (Penyebaran oleh Angin):</strong> Biji yang ringan, memiliki sayap, atau struktur seperti bulu halus (misalnya biji dandelion) dapat dengan mudah terbawa angin ke tempat yang jauh.</li>
+                <li><strong>Hidrokori (Penyebaran oleh Air):</strong> Biji yang memiliki rongga udara atau lapisan kedap air (misalnya biji kelapa) dapat mengapung dan terbawa arus air ke lokasi baru.</li>
+                <li><strong>Zookori (Penyebaran oleh Hewan):</strong> Ini adalah metode yang sangat umum dan beragam:
+                    <ul>
+                        <li><strong>Endozoochory:</strong> Biji yang termakan oleh hewan (misalnya buah beri yang manis) dan kemudian dikeluarkan bersama feses di tempat lain, seringkali dengan daya kecambah yang lebih baik karena proses pencernaan.</li>
+                        <li><strong>Epizoochory:</strong> Biji yang memiliki kait, duri, atau lapisan lengket (misalnya bidara upas) yang menempel pada bulu atau kulit hewan dan terbawa tanpa sengaja.</li>
+                        <li><strong>Myrmecochory:</strong> Penyebaran biji oleh semut (misalnya pada beberapa tumbuhan hutan) yang tertarik pada zat khusus pada biji.</li>
+                    </ul>
+                </li>
+                <li><strong>Antropokori (Penyebaran oleh Manusia):</strong> Manusia secara sengaja atau tidak sengaja menyebarkan biji, baik melalui pertanian, perdagangan, atau saat berjalan di alam.</li>
+                <li><strong>Autokori (Penyebaran Mandiri):</strong> Beberapa tumbuhan memiliki mekanisme ledakan pada buahnya yang menyebabkan biji terpental jauh saat matang (misalnya pacar air).</li>
+            </ul>
+            <div class="callout-box">
+                <h4>Mengapa Penyebaran Biji Penting?</h4>
+                <p>Penyebaran biji yang efektif membantu mengurangi persaingan antara induk dan keturunannya, memungkinkan kolonisasi area baru, menghindari akumulasi patogen, dan meningkatkan keragaman genetik populasi tumbuhan.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```

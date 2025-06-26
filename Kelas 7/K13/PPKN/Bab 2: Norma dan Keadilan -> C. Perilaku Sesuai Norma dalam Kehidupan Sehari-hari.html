@@ -1,0 +1,455 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Norma dan Keadilan - Perilaku Sesuai Norma dalam Kehidupan Sehari-hari</title>
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-canvas);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .sub-heading {
+            font-weight: bold;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            display: block;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-left: 5px solid var(--primary-blue);
+            margin: 20px 0;
+            overflow-x: auto;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .emphasis {
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        .section-content {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--border-divider);
+        }
+
+        .definition-box {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid var(--semantic-info);
+        }
+
+        .definition-box strong {
+            color: var(--semantic-info);
+        }
+
+        .interactive-element {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interactive-element:hover {
+            background-color: #1565C0;
+        }
+
+        .list-item-heading {
+            font-weight: bold;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .expandable-section {
+            border: 1px solid var(--border-divider);
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .expandable-header {
+            background-color: var(--border-divider);
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        .expandable-header .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .expandable-content {
+            padding: 15px;
+            display: none;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        .expandable-header.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .visual-separator {
+            height: 10px;
+            background: linear-gradient(to right, var(--primary-blue), var(--accent-green));
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-tertiary);
+            font-size: 0.9em;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-divider);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .expandable-header {
+                padding: 10px 12px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bab 2: Norma dan Keadilan</h1>
+        <h2>C. Perilaku Sesuai Norma dalam Kehidupan Sehari-hari</h2>
+
+        <p>Kehidupan bermasyarakat yang harmonis dan tertib adalah dambaan setiap orang. Namun, untuk mencapai kondisi ideal ini, diperlukan adanya keselarasan dalam bertindak dan berinteraksi antarindividu. Kunci utama dalam mewujudkan keselarasan ini adalah kepatuhan terhadap norma-norma yang berlaku di masyarakat. Norma-norma ini, baik yang berkaitan dengan kesusilaan, kesopanan, maupun hukum, ibarat panduan tak tertulis yang membantu kita bergerak dalam relasi sosial tanpa menimbulkan gesekan yang tidak perlu.</p>
+
+        <div class="definition-box">
+            <strong>Konsep Kunci:</strong> <span class="highlight">Harmoni Sosial Melalui Kepatuhan Norma</span>. Kehidupan yang selaras dan tertib dalam masyarakat sangat bergantung pada kesediaan setiap anggota masyarakat untuk mematuhi serta mengamalkan norma-norma yang ada.
+        </div>
+
+        <p>Sebagai makhluk sosial, kita tidak bisa lepas dari lingkungan masyarakat. Kita hidup, berinteraksi, dan berpartisipasi dalam berbagai tatanan sosial. Dalam setiap tatanan tersebut, pasti ada seperangkat aturan dan norma yang mengatur perilaku anggotanya. Kewajiban kita sebagai anggota masyarakat adalah menaati aturan dan norma tersebut, bukan karena paksaan, melainkan karena kesadaran diri akan pentingnya hal tersebut.</p>
+
+        <h3>1. Dasar Keselarasan: Nilai Ketuhanan</h3>
+        <p>Secara fundamental, norma kesusilaan, kesopanan, dan hukum akan berjalan selaras apabila dilandasi oleh nilai-nilai Ketuhanan Yang Maha Esa. Kepercayaan kepada Tuhan Yang Maha Esa mengajarkan kita tentang kebaikan, kejujuran, kasih sayang, dan tanggung jawab. Nilai-nilai inilah yang menjadi akar kuat bagi kepatuhan terhadap segala bentuk norma. Tanpa landasan spiritual yang kokoh, kepatuhan terhadap norma bisa menjadi sekadar formalitas atau dilakukan karena takut sanksi, bukan dari hati yang tulus.</p>
+
+        <h3>2. Pentingnya Ketaatan pada Norma</h3>
+        <p>Kehidupan bermasyarakat tidak akan berjalan dengan tertib dan harmonis apabila setiap individu mengabaikan norma-norma yang berlaku. Ketaatan pada norma bukan sekadar mengikuti aturan, tetapi lebih dalam lagi adalah bentuk penghargaan terhadap hak dan kewajiban sesama anggota masyarakat. Dengan taat pada norma, kita turut berkontribusi menciptakan lingkungan yang:</p>
+        <ul>
+            <li><span class="list-item-heading">Aman dan Tertib:</span> Norma membantu mencegah kekacauan dan tindakan anarkis.</li>
+            <li><span class="list-item-heading">Penuh Penghargaan:</span> Menghargai privasi, hak, dan martabat orang lain.</li>
+            <li><span class="list-item-heading">Bertanggung Jawab:</span> Menumbuhkan rasa tanggung jawab individu terhadap tindakan dan dampaknya.</li>
+            <li><span class="list-item-heading">Saling Mengasihi:</span> Membangun hubungan sosial yang positif dan penuh empati.</li>
+        </ul>
+
+        <div class="visual-separator"></div>
+
+        <h3>3. Sumber Kepatuhan: Kesadaran Diri</h3>
+        <p>Sikap patuh terhadap aturan seharusnya muncul dari dorongan kesadaran diri, bukan karena keterpaksaan atau ancaman sanksi dari pihak berwenang. Kepatuhan yang lahir dari kesadaran ini lebih bermakna dan berkelanjutan. Kesadaran ini tumbuh ketika seseorang memahami:</p>
+        <ul>
+            <li><span class="list-item-heading">Arti Penting Norma:</span> Mengapa norma itu ada dan perlu ditaati.</li>
+            <li><span class="list-item-heading">Tujuan Norma:</span> Manfaat yang ingin dicapai melalui norma tersebut bagi individu dan masyarakat.</li>
+            <li><span class="list-item-heading">Fungsi Norma:</span> Bagaimana norma berperan dalam mengatur kehidupan bersama.</li>
+        </ul>
+        <p>Proses membangun kesadaran ini perlu dibiasakan sejak dini. Tiga pilar utama yang dapat membina sikap dan budaya patuh sejak dini adalah:</p>
+
+        <div class="expandable-section">
+            <div class="expandable-header">
+                Budaya Malu
+                <span class="icon">+</span>
+            </div>
+            <div class="expandable-content">
+                <p>Budaya malu berarti memiliki rasa ngeri atau sungkan ketika melakukan perbuatan yang melanggar aturan. Misalnya, merasa malu jika datang terlambat ke sekolah, menyontek saat ujian, atau berkata kasar kepada orang lain. Rasa malu ini menjadi filter internal yang mencegah seseorang bertindak di luar batas norma.</p>
+            </div>
+        </div>
+
+        <div class="expandable-section">
+            <div class="expandable-header">
+                Budaya Tertib
+                <span class="icon">+</span>
+            </div>
+            <div class="expandable-content">
+                <p>Budaya tertib adalah kebiasaan untuk bersikap rapi, teratur, dan tidak membuat kegaduhan di mana pun berada. Contohnya adalah antre dengan sabar sesuai urutan, menjaga kebersihan lingkungan, menaati jadwal, dan menghormati fasilitas umum. Ketertiban ini menciptakan kenyamanan dan efisiensi dalam kehidupan sehari-hari.</p>
+            </div>
+        </div>
+
+        <div class="expandable-section">
+            <div class="expandable-header">
+                Budaya Bersih
+                <span class="icon">+</span>
+            </div>
+            <div class="expandable-content">
+                <p>Budaya bersih mencakup kejujuran, keterusterangan, dan sikap bersih dari segala tindakan kotor atau tercela. Ini berarti tidak berbohong, tidak korupsi, tidak mengambil hak orang lain, dan selalu berintegritas. Bersih juga berarti menjaga kebersihan fisik dan mental.</p>
+            </div>
+        </div>
+
+        <p class="emphasis">Anda dapat menciptakan slogan-slogan menarik terkait ketiga budaya ini dan menempelkannya di tempat-tempat strategis di lingkungan sekolah untuk membangkitkan kesadaran teman-teman Anda.</p>
+
+        <div class="visual-separator"></div>
+
+        <h3>4. Tantangan dalam Membangun Kepatuhan</h3>
+        <p>Meskipun penting, masih banyak ditemukan perilaku yang tidak patuh terhadap norma dalam kehidupan sehari-hari. Rendahnya kesadaran akan kepatuhan ini bisa disebabkan oleh beberapa faktor:</p>
+
+        <div class="expandable-section">
+            <div class="expandable-header">
+                Faktor Pribadi
+                <span class="icon">+</span>
+            </div>
+            <div class="expandable-content">
+                <p>Faktor ini berkaitan dengan karakter, sifat, dan kesadaran diri individu itu sendiri. Seseorang mungkin belum sepenuhnya memahami pentingnya aturan atau belum terbentuk kesadaran kuat untuk mematuhinya. Kurangnya pemahaman tentang nilai-nilai luhur juga bisa menjadi penyebabnya.</p>
+            </div>
+        </div>
+
+        <div class="expandable-section">
+            <div class="expandable-header">
+                Faktor Lingkungan
+                <span class="icon">+</span>
+            </div>
+            <div class="expandable-content">
+                <p>Lingkungan tempat seseorang tumbuh dan berinteraksi memiliki pengaruh besar. Lingkungan keluarga yang kurang memberikan teladan atau pengawasan, pergaulan dengan teman sebaya yang cenderung melanggar aturan, atau tinggal di lingkungan masyarakat yang kurang teratur dan kumuh, semuanya dapat melemahkan pembentukan watak patuh pada aturan.</p>
+            </div>
+        </div>
+
+        <p class="emphasis">Penting untuk diingat bahwa penegakan aturan dan norma, baik yang ditetapkan oleh tokoh adat, kesepakatan bersama, maupun negara, memerlukan proses sosialisasi agar dapat diterima dan ditaati oleh masyarakat. Proses ini meliputi pengenalan aturan, penerimaan sebagai bagian dari kehidupan, penghargaan terhadap tujuan dan manfaatnya, hingga akhirnya kepatuhan yang lahir dari kesadaran.</p>
+
+        <div class="visual-separator"></div>
+
+        <h3>5. Dinamika Penetapan dan Penerimaan Norma</h3>
+        <p>Norma dalam masyarakat tidak muncul begitu saja. Ada proses di balik penetapannya:</p>
+        <ul>
+            <li><span class="list-item-heading">Tokoh Adat/Pemimpin:</span> Di beberapa komunitas, norma bisa ditetapkan oleh tokoh adat atau pemimpin yang memiliki pengaruh besar. Contohnya adalah penetapan aturan adat dalam masyarakat suku Baduy yang tetap memegang teguh tradisi sebagai kearifan lokal.</li>
+            <li><span class="list-item-heading">Kesepakatan Bersama (Konsensus):</span> Banyak norma juga lahir dari musyawarah atau kesepakatan bersama seluruh anggota masyarakat. Proses ini memastikan bahwa aturan yang dibuat mewakili kehendak banyak pihak.</li>
+        </ul>
+        <p>Agar norma menjadi aturan yang hidup dan ditaati, ia harus melalui proses sosialisasi yang efektif:</p>
+        <ol>
+            <li><span class="list-item-heading">Pemberitahuan & Penyuluhan:</span> Aturan harus dikomunikasikan dengan jelas kepada seluruh anggota masyarakat melalui berbagai media (media massa, penyuluhan, internet, dll.).</li>
+            <li><span class="list-item-heading">Pengakuan dan Ikatan:</span> Masyarakat harus merasa bahwa aturan tersebut adalah miliknya dan mengikat diri mereka.</li>
+            <li><span class="list-item-heading">Penghargaan:</span> Aturan dihargai ketika masyarakat memahami tujuan dan manfaatnya bagi kehidupan bersama.</li>
+        </ol>
+
+        <p>Diskusi mendalam dengan teman sekelas mengenai aturan yang berlaku di lingkungan sekitar Anda, termasuk alasan mengapa aturan tersebut ada, bagaimana cara penerapannya, dan mengapa masyarakat mematuhinya, dapat memberikan pemahaman yang lebih kaya. Laporan hasil diskusi tersebut dapat menjadi bahan evaluasi pemahaman Anda.</p>
+
+        <div class="code-block">
+            <strong>Contoh Aktivitas Kelas (Aktivitas 2.7):</strong>
+            <br>
+            <p>Mari kita melakukan kajian mendalam mengenai peraturan yang berlaku di lingkungan kita:</p>
+            <ol>
+                <li><strong>Observasi Perilaku:</strong> Amati dan catat perilaku yang mentaati maupun melanggar norma di sekolah, lingkungan pergaulan, masyarakat, bahkan di tingkat bangsa dan negara. Pilih beberapa tema yang umum, misalnya kebersihan lingkungan (membuang sampah), kedisiplinan (berpakaian seragam, memakai helm).</li>
+                <li><strong>Riset Informasi:</strong> Lakukan wawancara atau cari informasi dari berbagai sumber (koran, majalah, internet) untuk menggali lebih dalam:
+                    <ul>
+                        <li>Mengapa orang taat atau melanggar peraturan tersebut?</li>
+                        <li>Apa akibat dari ketaatan atau pelanggaran tersebut?</li>
+                        <li>Bagaimana upaya agar peraturan ditaati dan pelanggaran tidak terulang?</li>
+                    </ul>
+                    Buatlah kesimpulan dari temuan Anda.
+                </li>
+                <li><strong>Presentasi Hasil:</strong> Susun laporan tertulis dari hasil kajian Anda, dan sajikan di depan kelas. Tambahkan elemen visual seperti gambar atau rekaman video agar presentasi lebih menarik dan kreatif.</li>
+            </ol>
+            <p>Tabel berikut dapat membantu Anda mengorganisir data hasil kajian Anda:</p>
+        </div>
+
+        <div class="table-responsive">
+            <p class="sub-heading">Tabel 2.4 Hasil Telaah Ketaatan terhadap Norma yang Berlaku</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Perbuatan</th>
+                        <th>Alasan</th>
+                        <th>Akibat</th>
+                        <th>Upaya</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="emphasis">Kesimpulan: ..................................................................................................................................................................</p>
+        </div>
+
+        <div class="visual-separator"></div>
+
+        <h3>Refleksi Diri</h3>
+        <p>Setelah mempelajari dan merefleksikan tentang norma dan kepatuhan, coba renungkan:</p>
+        <ul>
+            <li>Pengetahuan baru apa yang Anda peroleh mengenai norma dan ketaatan?</li>
+            <li>Apa manfaat terbesar dari pembelajaran ini bagi Anda?</li>
+            <li>Sikap atau perilaku positif apa yang patut Anda teladani dari materi ini?</li>
+            <li>Tindakan nyata apa yang akan Anda lakukan dalam kehidupan sehari-hari sebagai bentuk penerapan pemahaman Anda?</li>
+        </ul>
+        <p>Ungkapkan pemikiran Anda ini dalam tulisan pribadi. Kumpulkan tulisan refleksi Anda kepada guru tepat waktu.</p>
+
+        <div class="footer">
+            Pendidikan Pancasila dan Kewarganegaraan
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.expandable-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+                header.classList.toggle('active');
+                const icon = header.querySelector('.icon');
+                if (content.classList.contains('active')) {
+                    icon.innerHTML = '-';
+                } else {
+                    icon.innerHTML = '+';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```

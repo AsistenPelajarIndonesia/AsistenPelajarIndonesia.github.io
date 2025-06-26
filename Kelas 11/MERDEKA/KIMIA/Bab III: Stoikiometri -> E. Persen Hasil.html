@@ -1,0 +1,465 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persen Hasil - Stoikiometri Kimia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        section {
+            background-color: var(--background-canvas);
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-divider);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+        }
+
+        .analogy-box {
+            background-color: var(--semantic-info);
+            color: var(--background-canvas);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .analogy-box::before {
+            content: '💡'; /* Lightbulb icon */
+            font-size: 2.5rem;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            opacity: 0.8;
+        }
+
+        .analogy-box h3 {
+            color: var(--background-canvas);
+            margin-top: 0;
+            margin-left: 60px; /* Offset for icon */
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .analogy-box p {
+            color: var(--background-canvas);
+            margin-left: 60px; /* Offset for icon */
+        }
+
+        .key-terms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .term-card {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            min-width: 280px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .term-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .term-card h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--border-divider);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .term-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .formula-box {
+            background-color: var(--accent-green);
+            color: var(--background-canvas);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .formula-box h3 {
+            color: var(--background-canvas);
+            margin-top: 0;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .formula-box .formula-text {
+            font-family: 'Times New Roman', serif;
+            font-size: 2.2rem;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: inline-flex; /* Use flexbox for vertical alignment */
+            flex-direction: row;
+            align-items: center; /* Vertically center the entire formula string */
+            gap: 15px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .formula-box .formula-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1; /* Reduce line height for compact fraction */
+            gap: 5px; /* Space between numerator, line, and denominator */
+        }
+
+        .formula-box .formula-fraction .numerator,
+        .formula-box .formula-fraction .denominator {
+            font-size: 1.8rem; /* Smaller font for fraction parts */
+        }
+
+        .formula-box .formula-fraction .fraction-line {
+            width: 100%;
+            height: 3px;
+            background-color: var(--background-canvas);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-left: 20px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .example-steps ol {
+            list-style: decimal;
+            padding-left: 25px;
+        }
+
+        .example-steps ol li {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .example-steps ol li strong {
+            color: var(--primary-blue);
+        }
+
+        footer {
+            background-color: var(--text-secondary);
+            color: var(--background-canvas);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-divider);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .key-terms {
+                flex-direction: column;
+            }
+
+            .term-card {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .analogy-box::before {
+                font-size: 2rem;
+                left: 15px;
+                top: 15px;
+            }
+
+            .analogy-box h3, .analogy-box p {
+                margin-left: 50px;
+            }
+
+            .formula-box .formula-text {
+                font-size: 1.8rem;
+                padding: 10px 20px;
+                flex-direction: column; /* Stack elements vertically on smaller screens */
+                gap: 10px;
+            }
+            .formula-box .formula-fraction .numerator,
+            .formula-box .formula-fraction .denominator {
+                font-size: 1.5rem; /* Adjust fraction font size */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            p, ul li, .term-card p, .example-steps ol li {
+                font-size: 0.95rem;
+            }
+
+            .formula-box .formula-text {
+                font-size: 1.5rem;
+                padding: 10px 15px;
+            }
+
+            .formula-box .formula-fraction .numerator,
+            .formula-box .formula-fraction .denominator {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Memahami Persen Hasil dalam Stoikiometri</h1>
+            <p>Seberapa efisien reaksi kimia menghasilkan produk yang kita inginkan?</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="introduction">
+            <h2>Pengantar: Hasil Reaksi dalam Dunia Nyata</h2>
+            <div class="analogy-box">
+                <h3>Analogi Kue Pancong</h3>
+                <p>Pernahkah kalian membuat kue berdasarkan resep? Misalnya, sebuah resep kue pancong seharusnya menghasilkan 100 buah kue. Namun, setelah selesai memasak, kalian hanya mendapatkan 96 buah kue. Mengapa bisa begitu?</p>
+                <p>Dalam kimia, hal serupa juga sering terjadi. Reaksi kimia yang kita prediksi berdasarkan persamaan stoikiometri seringkali tidak menghasilkan produk sebanyak yang diharapkan secara "teoretis" (sesuai resep). Jumlah produk yang benar-benar didapatkan dari percobaan di laboratorium dikenal sebagai <strong>Hasil Aktual</strong>, sedangkan jumlah yang seharusnya dihasilkan berdasarkan perhitungan stoikiometri adalah <strong>Hasil Teoretis</strong>.</p>
+                <p>Dengan membandingkan Hasil Aktual dengan Hasil Teoretis, kita dapat menghitung <strong>Persen Hasil</strong>, yang menunjukkan seberapa efisien suatu reaksi berlangsung.</p>
+            </div>
+        </section>
+
+        <section id="definitions">
+            <h2>Mengenal Istilah Kunci</h2>
+            <div class="key-terms">
+                <div class="term-card">
+                    <h4>Hasil Aktual (Actual Yield)</h4>
+                    <p>Merujuk pada jumlah produk yang <strong>benar-benar diperoleh</strong> dari suatu reaksi kimia di laboratorium atau dalam kondisi nyata. Jumlah ini biasanya lebih kecil dari hasil teoretis karena berbagai faktor.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Hasil Teoretis (Theoretical Yield)</h4>
+                    <p>Adalah jumlah produk maksimum yang <strong>seharusnya dapat dihasilkan</strong> dari sejumlah reaktan tertentu, berdasarkan perhitungan stoikiometri pada persamaan reaksi yang setara. Ini adalah nilai ideal yang diasumsikan reaksi berlangsung sempurna tanpa kehilangan.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Persen Hasil (Percentage Yield)</h4>
+                    <p>Adalah ukuran efisiensi suatu reaksi kimia, dinyatakan dalam persentase. Ini membandingkan hasil aktual yang diperoleh dengan hasil teoretis yang seharusnya. Semakin tinggi persen hasilnya, semakin efisien reaksinya.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="formula">
+            <h2>Rumus Perhitungan Persen Hasil</h2>
+            <p>Untuk menghitung seberapa baik suatu reaksi berjalan, kita menggunakan rumus persen hasil sebagai berikut:</p>
+            <div class="formula-box">
+                <h3>Rumus Persen Hasil</h3>
+                <div class="formula-text">
+                    <span class="formula-fraction">
+                        <span class="numerator">Hasil Aktual</span>
+                        <span class="fraction-line"></span>
+                        <span class="denominator">Hasil Teoretis</span>
+                    </span>
+                    &times; 100%
+                </div>
+                <p style="margin-top: 25px; font-size: 1.1rem;">Pastikan satuan massa (gram) atau mol untuk Hasil Aktual dan Hasil Teoretis sudah sama sebelum melakukan perhitungan!</p>
+            </div>
+        </section>
+
+        <section id="factors">
+            <h2>Mengapa Hasil Aktual Berbeda dari Hasil Teoretis?</h2>
+            <p>Seperti analogi kue pancong, dalam praktiknya sangat jarang sekali reaksi kimia menghasilkan produk 100% dan murni. Ada banyak aspek yang menyebabkan produk yang diperoleh tidak sesuai jumlahnya dengan perhitungan secara matematis. Faktor-faktor ini meliputi:</p>
+            <ul>
+                <li>Reaksi yang terjadi belum sepenuhnya selesai atau tidak mencapai kesetimbangan.</li>
+                <li>Adanya kesalahan dalam penimbangan dan pengukuran bahan reaktan.</li>
+                <li>Kehilangan produk selama proses pemindahan, penyaringan, atau pemurnian.</li>
+                <li>Bahan kimia yang digunakan mungkin tidak 100% murni, sehingga ada pengotor yang ikut bereaksi atau tidak bereaksi.</li>
+                <li>Terbentuknya produk samping (<em>by-products</em>) yang tidak diinginkan, yang "mencuri" sebagian reaktan.</li>
+                <li>Adanya pengotor yang menempel pada produk akhir, sehingga massa produk terlihat lebih besar dari seharusnya (meskipun ini tidak mengurangi efisiensi reaksi, tapi mempengaruhi akurasi pengukuran aktual).</li>
+                <li>Kondisi eksperimen (suhu, tekanan) yang tidak optimal atau tidak stabil.</li>
+            </ul>
+        </section>
+
+        <section id="example-walkthrough" class="example-steps">
+            <h2>Langkah Menentukan Persen Hasil (Contoh Konseptual)</h2>
+            <p>Mari kita lihat bagaimana konsep ini diterapkan dalam contoh kimia. Misalkan kalian mereaksikan Seng (Zn) dengan Belerang (S) untuk membentuk Seng Sulfida (ZnS).</p>
+            <p style="font-style: italic; color: var(--text-secondary);">Reaksi: Zn + S &rarr; ZnS</p>
+            <p>Jika kalian mereaksikan sejumlah tertentu Zn dan S, dan setelah reaksi selesai, kalian mendapatkan sejumlah ZnS. Bagaimana cara menghitung persen hasilnya?</p>
+
+            <ol>
+                <li><strong>Pastikan Persamaan Reaksi Setara:</strong>
+                    Periksa koefisien dan jumlah atom di kedua sisi persamaan. Untuk Zn + S &rarr; ZnS, reaksi ini sudah setara karena setiap atom Zn dan S di reaktan menghasilkan satu molekul ZnS di produk.
+                </li>
+                <li><strong>Identifikasi Pereaksi Pembatas:</strong>
+                    Tentukan reaktan mana yang akan habis duluan. Ini penting karena jumlah produk yang dapat terbentuk dibatasi oleh pereaksi pembatas. Misalnya, jika kalian memiliki 1 mol Zn dan 1 mol S, maka keduanya akan habis bersamaan.
+                </li>
+                <li><strong>Hitung Hasil Teoretis:</strong>
+                    Berdasarkan jumlah pereaksi pembatas, hitung massa maksimum produk (ZnS) yang <strong>seharusnya</strong> terbentuk menggunakan perhitungan stoikiometri (konversi mol ke massa dengan massa molar).
+                    <p style="margin-top: 10px; font-style: italic; color: var(--text-secondary);">Contoh: Jika pereaksi pembatas menghasilkan 1 mol ZnS, dan massa molar ZnS sekitar 97.47 g/mol, maka hasil teoretisnya adalah 97.47 gram.</p>
+                </li>
+                <li><strong>Dapatkan Hasil Aktual:</strong>
+                    Ini adalah massa produk ZnS yang <strong>benar-benar kalian peroleh</strong> dari percobaan di laboratorium. Angka ini diberikan dari data eksperimen.
+                    <p style="margin-top: 10px; font-style: italic; color: var(--text-secondary);">Contoh: Diketahui dari percobaan, massa ZnS yang diperoleh adalah 90 gram.</p>
+                </li>
+                <li><strong>Hitung Persen Hasil:</strong>
+                    Gunakan rumus persen hasil dengan membagi Hasil Aktual dengan Hasil Teoretis, lalu kalikan 100%.
+                    <p style="margin-top: 10px; font-style: italic; color: var(--text-secondary);">Persen Hasil = (90 gram / 97.47 gram) &times; 100% ≈ 92.34%</p>
+                </li>
+            </ol>
+            <p>Jadi, dalam contoh ini, efisiensi reaksi pembentukan Seng Sulfida adalah sekitar 92.34%.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Materi Pembelajaran Kimia. Hak Cipta Dilindungi Undang-undang.</p>
+            <p>Dibuat untuk membantu siswa memahami Stoikiometri.</p>
+        </div>
+    </footer>
+</body>
+</html>
+```

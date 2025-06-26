@@ -1,0 +1,415 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manfaat Flora dan Fauna untuk Kesejahteraan - Geografi Kelas 11</title>
+    <style>
+        /* Light Mode Theme Variables */
+        :root {
+            --background-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Basic Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-canvas);
+            color: var(--text-primary);
+        }
+
+        /* Main Container for Content */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #fefefe; /* Slightly off-white to distinguish from canvas */
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Heading Styles */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 4px solid var(--border-divider);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            color: var(--accent-green); /* Main title distinctive color */
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: var(--text-primary);
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraph and List Styles */
+        p {
+            margin-bottom: 1.2em;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 30px;
+            margin-bottom: 1.2em;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 30px;
+            margin-bottom: 1.2em;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.8em;
+            line-height: 1.5;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        em {
+            color: var(--text-tertiary);
+        }
+
+        /* Accordion Styles for Interactivity */
+        .accordion-item {
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .accordion-header {
+            background-color: var(--primary-blue);
+            color: #fff;
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        .accordion-header .icon {
+            font-size: 1.3em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .icon {
+            transform: rotate(90deg); /* Rotate icon when active */
+        }
+
+        .accordion-content {
+            padding: 0 25px;
+            background-color: #ffffff;
+            max-height: 0; /* Initially hidden */
+            overflow: hidden;
+            transition: max-height 0.7s ease-out, padding 0.7s ease-out; /* Smooth transition */
+            color: var(--text-secondary);
+        }
+
+        .accordion-content.open {
+            max-height: 2000px; /* Large enough to accommodate most content */
+            padding: 20px 25px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            h4 {
+                font-size: 1.1em;
+            }
+            .accordion-header {
+                padding: 15px 20px;
+                font-size: 1.1em;
+            }
+            .accordion-content.open {
+                padding: 15px 20px;
+            }
+            ul, ol {
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 5px;
+            }
+            h1 {
+                font-size: 1.6em;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            h4 {
+                font-size: 1em;
+            }
+            .accordion-header {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+            .accordion-content.open {
+                padding: 12px 15px;
+            }
+            ul, ol {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 2: Keragaman Hayati</h1>
+        <h2>D. Manfaat Flora dan Fauna untuk Kesejahteraan</h2>
+
+        <p>Indonesia adalah negara yang diberkahi dengan kekayaan alam yang luar biasa, tercermin dari keragaman flora (tumbuhan) dan fauna (hewan) nya. Keanekaragaman hayati ini, yang mencakup semua makhluk hidup dari daratan, lautan, hingga ekosistem perairan, serta kompleks ekologi yang terkait, bukan hanya sekadar keindahan, tetapi juga aset vital yang memberikan beragam manfaat bagi kesejahteraan manusia dan keberlanjutan lingkungan.</p>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Kekayaan Keanekaragaman Hayati Indonesia</span>
+                <span class="icon">&#9654;</span>
+            </div>
+            <div class="accordion-content">
+                <p>Indonesia merupakan salah satu negara dengan kekayaan jenis flora dan fauna tertinggi di dunia. Kekayaan ini menempatkan Indonesia pada posisi istimewa dalam konteks keanekaragaman hayati global. Beberapa poin penting mengenai kekayaan ini meliputi:</p>
+                <ul>
+                    <li><strong>Flora:</strong> Indonesia menduduki urutan ketujuh dalam kekayaan flora berbunga secara global, dengan jumlah spesies mencapai lebih dari 25 ribu jenis. Selain itu, negara ini kaya akan jenis-jenis kayu komersial penting di Asia Tenggara, seperti kayu dipterocarp yang berjumlah lebih dari 400 jenis, serta berbagai jenis palem terbesar di dunia.</li>
+                    <li><strong>Fauna:</strong> Kekayaan fauna Indonesia juga sangat melimpah. Indonesia dikenal sebagai negara dengan jenis mamalia dan kupu-kupu swallowtail terbanyak di dunia. Data menunjukkan bahwa terdapat 1.519 jenis burung, lebih dari 270 jenis amfibi, dan lebih dari 600 jenis reptil yang mendiami wilayah Indonesia.</li>
+                </ul>
+                <p>Kekayaan flora dan fauna ini menjadi inti dari keanekaragaman hayati Indonesia yang terus menjadi perhatian global.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Manfaat Ekonomi Flora dan Fauna</span>
+                <span class="icon">&#9654;</span>
+            </div>
+            <div class="accordion-content">
+                <p>Keragaman flora dan fauna adalah sumber daya penting bagi pembangunan dan memiliki nilai ekonomis yang signifikan bagi masyarakat. Kekayaan ini memengaruhi sektor perekonomian nasional, baik secara langsung maupun tidak langsung, karena sifatnya yang <strong><em>renewable</em></strong> (dapat diperbarui) sehingga dapat dimanfaatkan secara berkelanjutan.</p>
+                <ul>
+                    <li><strong>Penopang Perekonomian Negara:</strong> Sektor pertanian dan perikanan, yang sangat bergantung pada keanekaragaman hayati, menjadi tulang punggung perekonomian. Di beberapa negara berkembang, kontribusi keanekaragaman flora dan fauna bahkan mencapai sekitar 32% dari Produk Domestik Bruto (GDP) mereka.</li>
+                    <li><strong>Komoditi Pariwisata Alam:</strong> Keanekaragaman hayati juga merupakan daya tarik utama dalam pariwisata alam. Potensi pendapatan negara dari sektor ini berkisar antara 2 hingga 12 miliar dolar per tahun, menunjukkan nilai ekonomis yang sangat besar.</li>
+                    <li><strong>Nilai Perdagangan Produk Pertanian:</strong> Pada tahun 1989, nilai perdagangan produk pertanian global mencapai 3 triliun dolar, menegaskan bahwa tanaman hasil pertanian memiliki nilai penting secara nasional maupun global.</li>
+                    <li><strong>Penyedia Kebutuhan Dasar Harian:</strong> Lebih dari 600 jenis tumbuhan dan hewan dimanfaatkan oleh masyarakat untuk memenuhi berbagai kebutuhan harian, termasuk sandang (bahan pakaian), pangan (sumber makanan), obat-obatan, energi, papan (bahan bangunan tempat tinggal), dan berbagai peralatan rumah tangga atau industri.</li>
+                    <li><strong>Sumber Protein:</strong> Sekitar 7.000 jenis ikan laut dan ikan tawar di Indonesia menjadi sumber protein utama bagi masyarakat, mendukung ketahanan pangan dan gizi.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Manfaat Kesehatan Flora dan Fauna</span>
+                <span class="icon">&#9654;</span>
+            </div>
+            <div class="accordion-content">
+                <p>Selain manfaat ekonomi, keanekaragaman hayati juga memegang peranan besar dalam bidang kesehatan, baik melalui praktik tradisional maupun pengembangan medis modern.</p>
+                <ul>
+                    <li><strong>Obat-obatan Tradisional:</strong> Banyak masyarakat memanfaatkan tumbuhan dan hewan dari alam sebagai bahan dasar obat-obatan tradisional yang telah digunakan secara turun-temurun.</li>
+                    <li><strong>Pengembangan Obat Modern:</strong> Di berbagai negara maju seperti Amerika Serikat, tumbuhan dan hewan diekstraksi untuk dijadikan media pengobatan modern. Contohnya, lebih dari 3.000 jenis antibiotik, seperti penisilin dan tetrasiklin, diperoleh dari mikroorganisme.</li>
+                    <li><strong>Penemuan Revolusioner dalam Medis:</strong> Penemuan siklosporin, yang dikembangkan dari kapang tanah, merupakan terobosan revolusioner yang memungkinkan transplantasi jaringan manusia seperti jantung dan ginjal.</li>
+                    <li><strong>Sumber Vitamin dan Suplemen:</strong> Pada tahun 1929, Christian Eijkman menemukan kulit ari beras sebagai sumber anti beri-beri yang kini dikenal sebagai vitamin B1. Industri vitamin dan suplemen lainnya saat ini telah menjadi bisnis bernilai miliaran dolar, banyak di antaranya berasal dari bahan alami.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Manfaat Sosial dan Ekologis Flora dan Fauna</span>
+                <span class="icon">&#9654;</span>
+            </div>
+            <div class="accordion-content">
+                <p>Keanekaragaman flora dan fauna tidak hanya berdampak pada ekonomi dan kesehatan, tetapi juga memiliki fungsi sosial dan ekologis yang krusial bagi kehidupan dan keberlanjutan bumi.</p>
+                <h3>Manfaat Sosial:</h3>
+                <ul>
+                    <li><strong>Penyedia Lapangan Pekerjaan:</strong> Keanekaragaman hayati secara langsung menciptakan berbagai mata pencarian dan lapangan pekerjaan bagi masyarakat, terutama di sektor pertanian, perikanan, pariwisata, dan industri kreatif berbasis sumber daya alam.</li>
+                    <li><strong>Pembentuk Budaya dan Jati Diri:</strong> Interaksi manusia dengan flora dan fauna di sekitarnya turut membentuk budaya setempat, tradisi, dan jati diri masyarakat. Pengetahuan lokal tentang alam seringkali terkait erat dengan praktik budaya.</li>
+                    <li><strong>Peningkatan Kemampuan Adaptasi:</strong> Adanya keanekaragaman hayati memungkinkan masyarakat untuk meningkatkan kemampuan adaptasi dan memperkaya aspirasi mereka dalam menghadapi peningkatan kebutuhan hidup serta perubahan lingkungan.</li>
+                </ul>
+                <h3>Manfaat Ekologis:</h3>
+                <ul>
+                    <li><strong>Produksi Oksigen:</strong> Tumbuhan adalah produsen utama oksigen melalui fotosintesis, yang esensial bagi pernapasan seluruh makhluk hidup di bumi. Ketersediaan oksigen adalah fondasi bagi kehidupan.</li>
+                    <li><strong>Penyaring Polutan Udara:</strong> Tumbuhan memiliki kemampuan alami untuk menyaring polutan udara, sehingga menghasilkan mutu udara yang lebih bersih dan sehat untuk proses pernapasan.</li>
+                    <li><strong>Kesehatan dan Kesuburan Tanah:</strong> Keberadaan mikroorganisme dalam tanah sangat vital untuk fungsi ekologis. Mereka berperan dalam memperbaiki struktur tanah, meningkatkan kesuburan tanah, memengaruhi kondisi kimiawi dan biologis tanah, serta pada akhirnya memberikan kualitas kehidupan yang lebih baik bagi manusia melalui ekosistem yang sehat.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Pentingnya Pengelolaan dan Pelestarian Keanekaragaman Hayati</span>
+                <span class="icon">&#9654;</span>
+            </div>
+            <div class="accordion-content">
+                <p>Dari berbagai manfaat yang telah dijelaskan, jelas bahwa keanekaragaman flora dan fauna memiliki peranan yang sangat penting dalam menjamin kehidupan dan kesejahteraan manusia. Ini mencakup pemenuhan kebutuhan dasar hingga menjaga berbagai mutu lingkungan seperti air, udara, dan tanah. Oleh sebab itu, untuk menjaga keberadaannya, diperlukan proses <strong>pengelolaan berkelanjutan yang baik dan benar</strong> terhadap keanekaragaman flora dan fauna.</p>
+                <h3>Strategi Nasional Pengelolaan Keanekaragaman Hayati:</h3>
+                <p>Pengelolaan keanekaragaman hayati di Indonesia perlu menggunakan strategi nasional agar semua pihak dapat ikut melaksanakan dan mengupayakan perlindungan, pengawetan, dan pemanfaatan berkelanjutan. Strategi nasional ini berasaskan pada beberapa prinsip utama:</p>
+                <ul>
+                    <li>Pemanfaatan ilmu pengetahuan dan teknologi.</li>
+                    <li>Diversifikasi atau penganekaragaman sumber daya.</li>
+                    <li>Pemanfaatan yang terintegrasi.</li>
+                    <li>Pengelolaan yang terpadu.</li>
+                </ul>
+                <p>Dalam konteks ini, pemerintah memiliki kewajiban untuk melaksanakan peraturan terkait pemanfaatan dan pelestarian keanekaragaman hayati, serta menyelaraskan tugas dan kewajiban semua pihak. Strategi nasional juga mendorong pemerintah untuk melaksanakan kerja sama internasional dalam bidang pengelolaan keanekaragaman hayati sebagai sumber daya terbarukan.</p>
+                <h3>Konsep Pengelolaan Berbasis Bioregional:</h3>
+                <p>Salah satu pendekatan pengelolaan keanekaragaman hayati yang dapat dilakukan adalah pengelolaan berbasis bioregional. Kawasan bioregional merupakan kawasan daratan dan perairan yang batasannya didasarkan pada batas geografis kelompok masyarakat dan sistem ekologis tertentu, serta memiliki keunggulan ekologi, ekonomi, dan sosial budaya yang jelas. Konsep pembangunan kawasan bioregional tergambarkan dalam delapan elemen:</p>
+                <ol>
+                    <li><strong>Rencana Pengembangan Bioregional (Bioregional Development Plan):</strong> Berpusat pada kawasan-kawasan lindung atau kawasan konservasi yang sudah ada sebagai inti dari bioregion, di dalamnya terdapat fungsi-fungsi ekologis dan pengawetan keanekaragaman hayati.</li>
+                    <li><strong>Daerah Aliran Sungai (DAS):</strong> Dikelola sebagai daerah yang mencakup mata air di pegunungan hingga menuju laut, melintasi berbagai tata guna lahan dari wilayah hutan lindung hingga wilayah perikanan tambak di muara sungai.</li>
+                    <li><strong>Rehabilitasi Lahan Kritis:</strong> Dijadikan sebagai daerah konservasi untuk memulihkan fungsi ekologisnya.</li>
+                    <li><strong>Kawasan Pesisir dan Lautan:</strong> Dikelola untuk kegiatan konservasi berbagai keanekaragaman hayati di kawasan tersebut, mengingat pentingnya ekosistem pesisir dan laut.</li>
+                    <li><strong>Dataran Penggembalaan:</strong> Dikelola untuk mendukung pemeliharaan flora dan fauna asli, serta pengembangan ternak untuk menjamin kebutuhan hidup masyarakat.</li>
+                    <li><strong>Lahan Pertanian:</strong> Dikelola untuk mengoptimalkan hasil pertanian jangka panjang serta pelestarian keanekaragaman hayati, misalnya melalui pengurangan penggunaan pupuk berbahan kimia sintetis dan pengembangan sistem <em>agroforestry</em>.</li>
+                    <li><strong>Rangkaian Kelembagaan Berbasis Masyarakat:</strong> Mendukung kegiatan konservasi seperti penyimpanan benih, pelayanan penyuluhan pertanian, pusat penelitian, inventarisasi, serta pengembangan pemantauan keanekaragaman hayati dalam bioregion tertentu.</li>
+                    <li><strong>Kawasan Perkotaan Besar:</strong> Berperan sebagai penyedia lembaga pendukung seperti kebun binatang, kebun raya, sekolah, tempat ibadah, dan media massa guna meningkatkan kesadaran dan kepedulian masyarakat terhadap keanekaragaman hayati.</li>
+                </ol>
+                <h3>Pemanfaatan Optimal dan Berkelanjutan:</h3>
+                <p>Pemanfaatan keanekaragaman hayati secara optimal dengan tetap mempertahankan ketersediaannya dapat dilakukan dengan dua cara utama:</p>
+                <ol>
+                    <li><strong>Prioritaskan Investasi Nasional:</strong> Dalam pemanfaatan dan pengelolaan biodiversitas, misalnya melalui pengembangan ekowisata berbasis sains dan bioprospeksi (dalam upaya penemuan obat dan energi), serta eksplorasi laut dalam.</li>
+                    <li><strong>Pengembangan Sains dan Teknologi:</strong> Untuk biodiversitas Indonesia. Hal ini dilakukan dengan cara memahami sifat-sifat dasar megabiodiversitas melalui observasi, meningkatkan partisipasi masyarakat dalam mengelola biodiversitas yang produktif dan berkelanjutan, serta meningkatkan pemanfaatan dan nilai ekonomi dari keunggulan biodiversitas.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Pelestarian Flora dan Fauna untuk Kesejahteraan Manusia: Metode Konservasi</span>
+                <span class="icon">&#9654;</span>
+            </div>
+            <div class="accordion-content">
+                <p>Kalian sudah mempelajari berbagai manfaat dari flora dan fauna, mulai dari kesehatan, ekonomi, hingga pelestarian lingkungan yang esensial bagi kesejahteraan manusia. Meskipun demikian, berbagai masalah ekonomi, budaya, dan hukum yang terjadi dapat mengancam keberlangsungan flora dan fauna, bahkan mendorongnya menuju kepunahan. Oleh karena itu, diperlukan suatu usaha konkret untuk mencegah kepunahan, salah satunya melalui <strong>metode konservasi</strong>.</p>
+                <h3>Definisi Konservasi:</h3>
+                <p>Menurut <strong>Undang-Undang No. 5 Tahun 1990</strong>, konservasi adalah upaya pelestarian sumber daya alam hayati secara berkelanjutan agar terpelihara, mampu mewujudkan keseimbangan ekosistem, dan sumber daya alam hayati. Secara garis besar, konservasi dapat diartikan sebagai pengelolaan biosfer secara aktif dengan tujuan menjaga keanekaragaman flora dan fauna.</p>
+                <h3>Tiga Tujuan Utama Konservasi:</h3>
+                <ul>
+                    <li>Menjamin kelestarian fungsi ekosistem sebagai penyangga kehidupan.</li>
+                    <li>Mencegah kepunahan spesies yang disebabkan oleh kerusakan habitat dan pemanfaatan yang tidak terkendali.</li>
+                    <li>Menyediakan sumber plasma nutfah atau keanekaragaman genetika.</li>
+                </ul>
+
+                <h3>Metode Pelestarian Flora dan Fauna:</h3>
+                <p>Untuk melaksanakan konservasi secara efektif dan efisien, ada dua metode utama yang banyak dilakukan selama ini:</p>
+
+                <h4>a. Metode In Situ</h4>
+                <p><strong>Definisi:</strong> Metode in situ adalah upaya pelestarian keanekaragaman hayati yang dilakukan langsung di habitat asli flora dan fauna yang bersangkutan (Samedi, 2015). Ini adalah salah satu strategi pelestarian jangka panjang bagi keanekaragaman hayati di Indonesia (Christanto, 2014) karena mampu melindungi populasi dan komunitas alami di habitat aslinya.</p>
+                <p><strong>Bentuk-bentuk Pelestarian In Situ:</strong></p>
+                <ul>
+                    <li><strong>Cagar Alam:</strong> Kawasan alam yang memiliki sifat khas dan keunikan flora dan fauna di dalamnya yang dilindungi secara ketat.
+                        <br/><em>Contoh: Cagar Alam Maninjau, Kebun Raya Cibodas, Pulau Sempu.</em></li>
+                    <li><strong>Taman Nasional:</strong> Suatu tempat yang luas, baik di darat maupun di laut, yang mendapatkan perlindungan pemerintah untuk tujuan penelitian, pendidikan, pelestarian, dan pariwisata.
+                        <br/><em>Contoh: Taman Nasional Komodo, Taman Nasional Ujung Kulon, Taman Nasional Kerinci, Taman Nasional Tengger.</em></li>
+                    <li><strong>Hutan Lindung:</strong> Hutan yang ditetapkan oleh pemerintah untuk dilindungi karena ekosistem di dalamnya berperan penting dalam keseimbangan lingkungan.
+                        <br/><em>Contoh: Hutan Lindung Taman Raya Bung Hatta, Sungai Wain, Gunung Louser.</em></li>
+                    <li><strong>Suaka Margasatwa:</strong> Kawasan hutan yang memiliki keunikan jenis satwa yang dilindungi.</li>
+                </ul>
+
+                <h4>b. Metode Ex Situ</h4>
+                <p><strong>Definisi:</strong> Metode ex situ merupakan upaya pelestarian keanekaragaman hayati yang dilakukan di luar habitat asli flora dan fauna. Metode ini dilakukan saat habitat asli flora dan fauna mengalami kerusakan yang parah (Widjaja et al., 2014). Tantangan terbesarnya adalah membuat lingkungan buatan yang persis atau mirip dengan tempat habitat flora dan fauna asal.</p>
+                <p><strong>Bentuk-bentuk Pelestarian Ex Situ:</strong></p>
+                <ul>
+                    <li><strong>Taman Hutan Raya:</strong> Kawasan pelestarian hutan yang digunakan untuk mengoleksi flora dan fauna asli atau berasal dari tempat lain. Selain itu, taman hutan raya dapat dimanfaatkan sebagai tujuan penelitian dan pendidikan (PP No 28/2011; Perda Sumatra Utara No 9/2013).
+                        <br/><em>Contoh: Taman Hutan Raya Cut Nyak Dien, Taman Hutan Raya Bukit Barisan.</em></li>
+                    <li><strong>Taman Safari:</strong> Salah satu upaya menjaga keanekaragaman hayati dengan membuat lingkungan buatan yang persis/mirip dengan tempat flora dan fauna tersebut berasal. Taman Safari Indonesia menjadi tempat wisata yang berwawasan lingkungan dan berorientasi habitat satwa pada alam bebas. Selain untuk berwisata, taman safari juga dimanfaatkan sebagai sarana edukasi tentang keanekaragaman fauna di Indonesia.
+                        <br/><em>Contoh: Taman Safari Bogor Jawa Barat, Taman Safari Prigen Jawa Timur.</em></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling; // The content div is the next sibling
+                    const icon = this.querySelector('.icon'); // The icon inside the header
+
+                    // Toggle 'active' class on the header and icon for styling and rotation
+                    this.classList.toggle('active');
+                    icon.classList.toggle('active');
+
+                    // Toggle 'open' class on the content for expanding/collapsing
+                    content.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```
