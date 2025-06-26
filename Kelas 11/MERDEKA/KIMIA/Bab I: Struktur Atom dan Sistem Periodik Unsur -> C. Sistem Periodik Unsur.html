@@ -1,13 +1,12 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Periodik Unsur - Kimia SMA Kelas XI</title>
+    <title>Sistem Periodik Unsur - Kimia Kelas XI</title>
     <style>
-        /* CSS Variables for Theme */
         :root {
+            /* Light Mode Theme */
             --background-canvas: #FFFFFF;
             --text-primary: #212121;
             --text-secondary: #424242;
@@ -15,385 +14,505 @@
             --border-divider: #E0E0E0;
             --primary-blue: #1976D2;
             --accent-green: #388E3C;
-            --secondary-accent-amber: #FFB300; /* Not explicitly used but available */
-            --semantic-success: #4CAF50; /* Not explicitly used but available */
-            --semantic-warning: #FFC107; /* Not explicitly used but available */
-            --semantic-error: #D32F2F; /* Not explicitly used but available */
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
             --semantic-info: #2196F3;
         }
 
-        /* Base Styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--background-canvas);
-            color: var(--text-secondary);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
-        /* Container for content */
         .container {
             max-width: 960px;
-            margin: 2rem auto;
-            padding: 1.5rem;
+            margin: 40px auto;
+            padding: 20px;
             background-color: var(--background-canvas);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-divider);
         }
 
-        /* Headings */
         h1, h2, h3, h4 {
-            color: var(--text-primary);
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
+            color: var(--primary-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
         }
 
         h1 {
-            color: var(--primary-blue);
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 1em;
+            font-size: 2.2rem;
             border-bottom: 2px solid var(--border-divider);
-            padding-bottom: 0.5em;
+            padding-bottom: 10px;
+            text-align: center;
         }
 
         h2 {
-            color: var(--primary-blue);
-            font-size: 1.8em;
-            border-bottom: 1px solid var(--border-divider);
-            padding-bottom: 0.3em;
-        }
-
-        h3 {
-            color: var(--text-primary);
-            font-size: 1.4em;
-        }
-
-        p {
-            margin-bottom: 1em;
-        }
-
-        ul {
-            margin-bottom: 1em;
-            padding-left: 1.5em;
-        }
-
-        li {
-            margin-bottom: 0.5em;
-        }
-
-        /* Specific text highlights */
-        .highlight {
-            font-weight: bold;
+            font-size: 1.8rem;
             color: var(--accent-green);
         }
 
-        /* Info box for important notes */
-        .info-box {
-            background-color: rgba(var(--semantic-info), 0.05); /* Lighter shade of info blue */
-            border-left: 5px solid var(--semantic-info);
-            padding: 1em;
-            margin: 1.5em 0;
-            border-radius: 4px;
+        h3 {
+            font-size: 1.4rem;
             color: var(--text-primary);
+            margin-bottom: 0.8rem;
         }
 
-        /* Card style for scientists' contributions */
-        .scientist-card {
-            background-color: #FDFDFD; /* Slightly off-white */
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            background-color: rgba(var(--secondary-accent-amber), 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--secondary-accent-amber);
+        }
+
+        .section-card {
+            background-color: #f9f9f9;
             border: 1px solid var(--border-divider);
             border-radius: 8px;
-            padding: 1em 1.5em;
-            margin-bottom: 1.5em;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-        }
-        .scientist-card h4 {
-            color: var(--text-primary);
-            margin-top: 0;
-            margin-bottom: 0.5em;
-            font-size: 1.2em;
-        }
-        .scientist-card .year {
-            font-size: 0.9em;
-            color: var(--text-tertiary);
-            font-style: italic;
-            margin-left: 0.5em;
-        }
-        .scientist-card .text-tertiary {
-            font-size: 0.9em;
-            color: var(--text-tertiary);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
 
-        /* Table Styles */
+        .section-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .details-summary {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .details-summary:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        details {
+            margin-bottom: 15px;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        details[open] .details-summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .details-content {
+            padding: 15px;
+            background-color: #fcfcfc;
+            border-top: 1px dashed var(--border-divider);
+        }
+
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--text-primary);
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            color: var(--text-primary);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.5em 0;
-            background-color: var(--background-canvas);
+            margin-bottom: 1rem;
+            font-size: 0.95em;
         }
 
-        table th, table td {
+        th, td {
             border: 1px solid var(--border-divider);
-            padding: 10px 12px;
+            padding: 10px;
             text-align: left;
             vertical-align: top;
         }
 
-        table th {
-            background-color: #F0F0F0; /* Slightly darker than canvas for header */
-            color: var(--text-tertiary);
+        th {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
             font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9em;
         }
 
-        table tr:nth-child(even) {
-            background-color: #F9F9F9; /* Alternate row color */
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
         }
 
-        /* Code Block for Electron Configurations */
-        .code-block {
-            background-color: #F4F4F4;
-            border: 1px solid var(--border-divider);
-            padding: 1em;
-            margin: 1.5em 0;
+        .example-block {
+            background-color: #e3f2fd; /* Light blue background */
+            border-left: 5px solid var(--semantic-info);
+            padding: 15px;
+            margin-bottom: 20px;
             border-radius: 5px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9em;
-            overflow-x: auto; /* Ensures horizontal scrolling for long lines on small screens */
-            color: var(--text-secondary); /* Default text color within code block */
         }
-        .code-block strong {
-            color: var(--text-primary);
-        }
-        .code-block .element-symbol {
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-        .code-block .config {
-            color: var(--accent-green);
-        }
-        .code-block .noble-gas {
+
+        .example-block h4 {
             color: var(--semantic-info);
-        }
-        .code-block .result {
-            color: var(--text-primary);
-            font-weight: bold;
-        }
-        .code-block-inline { /* For inline code blocks like He (1s2) in table */
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #F4F4F4;
-            padding: 2px 4px;
-            border-radius: 3px;
+            margin-top: 0;
         }
 
-
-        /* Responsive Adjustments */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .container {
-                margin: 1rem auto;
-                padding: 1rem;
+                margin: 20px;
+                padding: 15px;
             }
             h1 {
-                font-size: 2em;
+                font-size: 1.8rem;
             }
             h2 {
-                font-size: 1.5em;
+                font-size: 1.5rem;
             }
             h3 {
-                font-size: 1.2em;
+                font-size: 1.2rem;
             }
-            table th, table td {
+            th, td {
                 padding: 8px;
-                font-size: 0.9em;
-            }
-            /* Make tables scrollable horizontally on small screens */
-            .responsive-table-wrapper {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
-            }
-            .responsive-table-wrapper table {
-                min-width: 600px; /* Ensure table content doesn't completely collapse */
             }
         }
 
         @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
             h1 {
-                font-size: 1.8em;
+                font-size: 1.5rem;
             }
             h2 {
-                font-size: 1.3em;
+                font-size: 1.3rem;
             }
-            p, li, td {
-                font-size: 0.95em;
+            h3 {
+                font-size: 1.1rem;
             }
-            .scientist-card {
-                padding: 0.8em 1em;
-            }
-            .info-box {
-                padding: 0.8em;
+            table {
+                font-size: 0.85em;
             }
         }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sistem Periodik Unsur</h1>
+        <h1>C. Sistem Periodik Unsur</h1>
 
-        <p>Unsur-unsur kimia yang telah ditemukan memiliki sifat dan karakteristik yang beragam. Untuk memudahkan studi dan pemahaman mengenai sifat-sifat ini, para ilmuwan telah mengembangkan berbagai metode untuk menyusun dan mengelompokkan unsur-unsur tersebut ke dalam sebuah sistem. Sistem ini dikenal sebagai Sistem Periodik Unsur, yang mencerminkan pola keteraturan sifat unsur.</p>
-
-        <section>
+        <section class="section-card">
             <h2>1. Perkembangan Sistem Periodik Unsur</h2>
-            <p>Sejarah sistem periodik unsur adalah perjalanan panjang penemuan dan pengelompokan yang terus disempurnakan seiring bertambahnya pengetahuan tentang atom dan sifat-sifatnya.</p>
+            <p>Seiring bertambahnya penemuan unsur-unsur baru, kebutuhan untuk mengorganisasikan dan mengelompokkan mereka menjadi sangat penting. Pengelompokan ini membantu para ilmuwan memahami hubungan antar-unsur dan memprediksi sifat-sifatnya.</p>
 
-            <div class="scientist-card">
-                <h4>Johann Döbereiner <span class="year">(1829)</span></h4>
-                <p>Döbereiner adalah salah satu ilmuwan pertama yang mencoba mengelompokkan unsur berdasarkan sifat-sifat kimia. Ia menyusun unsur-unsur ke dalam kelompok yang terdiri dari tiga unsur dengan sifat yang mirip, yang disebut <span class="highlight">Triade Döbereiner</span>. Ciri khas triade ini adalah massa atom unsur di tengah merupakan rata-rata dari massa atom dua unsur di tepi. Contoh: Litium (Li), Natrium (Na), dan Kalium (K) membentuk triade, di mana massa atom Na ≈ (Massa Li + Massa K) / 2.</p>
-                <p class="text-tertiary"><em>Kelemahan:</em> Teori ini hanya dapat menjelaskan hubungan sifat dalam satu triade, namun tidak bisa menjelaskan hubungan antara triade yang berbeda secara menyeluruh.</p>
-            </div>
+            <details>
+                <summary class="details-summary">Johann Döbereiner (1829) - Triade Döbereiner</summary>
+                <div class="details-content">
+                    <h3>Konsep: Triade Döbereiner</h3>
+                    <ul>
+                        <li><span class="highlight">Tahun:</span> 1829</li>
+                        <li><span class="highlight">Dasar Pengelompokan:</span> Berdasarkan massa atom.</li>
+                        <li><span class="highlight">Aturan:</span> Mengelompokkan unsur menjadi tiga (triade) yang memiliki kemiripan sifat. Massa atom unsur di tengah merupakan hasil rata-rata penjumlahan massa atom kedua unsur di sisi kiri dan kanannya.</li>
+                        <li><span class="highlight">Contoh (implied):</span> Li, Na, K; Ca, Sr, Ba; Cl, Br, I.</li>
+                    </ul>
+                    <p><strong>Kelemahan:</strong> Teori Döbereiner tidak dapat menjelaskan hubungan sifat antara satu triade dengan triade lainnya, dan hanya berlaku untuk sedikit unsur.</p>
+                </div>
+            </details>
 
-            <div class="scientist-card">
-                <h4>John Newlands <span class="year">(1865)</span></h4>
-                <p>Newlands mengamati bahwa jika unsur-unsur disusun berdasarkan kenaikan massa atom, sifat unsur akan berulang setiap delapan unsur. Pola ini disebut <span class="highlight">Teori Oktaf Newlands</span>, yang mirip dengan oktaf dalam tangga nada musik. Artinya, unsur ke-1 memiliki kemiripan sifat dengan unsur ke-8, unsur ke-2 dengan unsur ke-9, dan seterusnya. Contoh: Litium (Li) memiliki kemiripan sifat dengan Natrium (Na).</p>
-                <p class="text-tertiary"><em>Kelemahan:</em> Teori ini hanya berlaku untuk unsur-unsur ringan (hingga Kalsium) dan tidak dapat diterapkan pada unsur-unsur yang ditemukan kemudian dengan massa atom lebih besar.</p>
-            </div>
+            <details>
+                <summary class="details-summary">John Newlands (1865) - Teori Oktaf</summary>
+                <div class="details-content">
+                    <h3>Konsep: Teori Oktaf Newlands</h3>
+                    <ul>
+                        <li><span class="highlight">Tahun:</span> 1865</li>
+                        <li><span class="highlight">Dasar Pengelompokan:</span> Berdasarkan kenaikan massa atom.</li>
+                        <li><span class="highlight">Aturan:</span> Menemukan pola bahwa unsur yang disusun berdasarkan kenaikan massa atomnya akan memiliki kemiripan sifat setelah atom kedelapan (mirip dengan oktaf dalam musik). Unsur pertama sifatnya mirip dengan unsur kedelapan, unsur kedua mirip dengan unsur kesembilan, dan seterusnya.</li>
+                    </ul>
+                    <p><strong>Kelemahan:</strong> Teori ini hanya menitikberatkan pada sifat fisika unsur dan tidak berlaku untuk unsur-unsur dengan massa atom yang sangat besar.</p>
+                </div>
+            </details>
 
-            <div class="scientist-card">
-                <h4>Dimitri Mendeleev <span class="year">(1869)</span></h4>
-                <p>Mendeleev menyusun unsur-unsur berdasarkan kenaikan <span class="highlight">massa atom</span>, serta secara cermat mempertimbangkan kemiripan sifat <span class="highlight">fisika dan kimianya</span>. Susunannya dikenal sebagai <span class="highlight">Sistem Periodik Bentuk Pendek</span>. Kejeniusan Mendeleev terletak pada keberaniannya meninggalkan tempat kosong dalam tabelnya untuk unsur-unsur yang belum ditemukan, dan bahkan memprediksi sifat-sifatnya dengan akurat. Prediksinya terbukti benar dengan ditemukannya unsur-unsur seperti Galium (disebutnya eka-aluminium) dan Germanium (disebutnya eka-silikon).</p>
-                <p class="text-tertiary"><em>Kelemahan:</em> Meskipun revolusioner, terdapat beberapa anomali di mana unsur dengan massa atom lebih besar harus ditempatkan sebelum unsur dengan massa atom lebih kecil agar sifatnya sesuai dengan kelompoknya (misalnya, Argon (Ar) dengan massa atom 39,9 ditempatkan sebelum Kalium (K) yang memiliki massa atom 39,1).</p>
-            </div>
+            <details>
+                <summary class="details-summary">Dimitri Mendeleev (1869) - Sistem Periodik Bentuk Pendek</summary>
+                <div class="details-content">
+                    <h3>Konsep: Sistem Periodik Unsur Bentuk Pendek</h3>
+                    <ul>
+                        <li><span class="highlight">Tahun:</span> 1869</li>
+                        <li><span class="highlight">Dasar Pengelompokan:</span> Berdasarkan kemiripan sifat fisika dan kimia, disusun berdasarkan kenaikan massa atom.</li>
+                        <li><span class="highlight">Keunggulan:</span> Mendeleev meninggalkan beberapa tempat kosong untuk unsur-unsur yang belum ditemukan dan bahkan berhasil memprediksi sifat-sifatnya.</li>
+                    </ul>
+                    <p><strong>Kelemahan:</strong> Meskipun maju, terdapat beberapa unsur yang disusun tidak sesuai dengan urutan massa atomnya untuk mempertahankan kemiripan sifat. Contohnya, unsur Argon (Ar) dengan massa atom 39,9 ditempatkan sebelum Kalium (K) yang memiliki massa atom 39,1.</p>
+                </div>
+            </details>
 
-            <div class="scientist-card">
-                <h4>Henry Moseley <span class="year">(Awal Abad 20)</span></h4>
-                <p>Moseley melakukan penelitian tentang spektrum sinar-X dari berbagai unsur dan menemukan bahwa sifat dasar unsur lebih berhubungan dengan <span class="highlight">nomor atomnya</span> (jumlah proton), bukan massa atomnya. Penemuan fundamental ini memperbaiki kelemahan sistem Mendeleev dan melahirkan <span class="highlight">Sistem Periodik Modern</span>, yang juga dikenal sebagai <span class="highlight">Sistem Periodik Bentuk Panjang</span>. Sistem ini mengatur unsur-unsur berdasarkan kenaikan nomor atom, dengan lajur mendatar disebut <span class="highlight">periode</span> dan lajur tegak disebut <span class="highlight">golongan</span>. Inilah sistem yang kita gunakan hingga saat ini.</p>
-            </div>
+            <details>
+                <summary class="details-summary">Henry Moseley - Sistem Periodik Modern (Bentuk Panjang)</summary>
+                <div class="details-content">
+                    <h3>Konsep: Sistem Periodik Unsur Modern (Bentuk Panjang)</h3>
+                    <ul>
+                        <li><span class="highlight">Dasar Pengelompokan:</span> Kesalahan pada sistem Mendeleev diperbaiki oleh Moseley. Unsur-unsur tidak lagi disusun berdasarkan kenaikan nomor massa, melainkan berdasarkan <span class="highlight">kenaikan nomor atom</span>.</li>
+                        <li><span class="highlight">Struktur:</span>
+                            <ul>
+                                <li><strong>Periode:</strong> Lajur mendatar (horizontal) yang menunjukkan kulit elektron terakhir.</li>
+                                <li><strong>Golongan:</strong> Lajur tegak (vertikal) yang menunjukkan kemiripan sifat kimia karena jumlah elektron valensi yang sama.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Susunan inilah yang dipakai hingga sekarang dan menjadi dasar dari tabel periodik yang kita kenal.</p>
+                </div>
+            </details>
         </section>
 
-        <section>
+        <section class="section-card">
             <h2>2. Hubungan Konfigurasi Elektron dengan Sistem Periodik Unsur</h2>
-            <p>Posisi suatu unsur dalam Sistem Periodik Modern (baik Golongan maupun Periode) dapat ditentukan secara langsung dari konfigurasi elektron atomnya. Penulisan konfigurasi elektron mengikuti aturan Aufbau, di mana elektron mengisi orbital dari tingkat energi terendah hingga tertinggi. Untuk efisiensi, konfigurasi elektron sering ditulis dalam bentuk singkat menggunakan notasi gas mulia terdekat yang jumlah elektronnya lebih kecil dari unsur yang dianalisis.</p>
+            <p>Konfigurasi elektron suatu atom adalah kunci untuk menentukan posisinya (golongan dan periode) dalam sistem periodik modern. Penulisan konfigurasi elektron mengikuti aturan Aufbau.</p>
 
-            <div class="info-box">
-                <strong>Prinsip Penentuan Posisi:</strong>
-                <ul>
-                    <li><span class="highlight">Periode:</span> Ditentukan oleh <span class="highlight">bilangan kuantum utama (n) terbesar</span> dari kulit terluar yang terisi elektron. Ini menunjukkan nomor kulit elektron terluar.</li>
-                    <li><span class="highlight">Golongan:</span> Ditentukan oleh <span class="highlight">jumlah elektron valensi</span> (elektron di kulit terluar) dan jenis subkulit terakhir yang terisi (s, p, atau d). Ini mengindikasikan sifat kimia unsur.</li>
-                </ul>
-            </div>
+            <h3>Menulis Konfigurasi Elektron</h3>
+            <p>Konfigurasi elektron dapat ditulis dalam bentuk panjang atau bentuk pendek (menggunakan notasi gas mulia).</p>
+            <ul>
+                <li><strong>Bentuk Panjang:</strong> Menuliskan semua orbital dari awal.
+                    <pre><code>26Fe : 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁶</code></pre>
+                </li>
+                <li><strong>Bentuk Pendek (Gas Mulia):</strong> Dimulai dengan notasi gas mulia yang nilai konfigurasi elektronnya lebih kecil dari jumlah elektron unsur tersebut, lalu diikuti dengan sisa elektron.
+                    <pre><code>26Fe : [Ar] 4s² 3d⁶
+                    <span style="color: var(--text-tertiary);">// [Ar] adalah konfigurasi elektron atom Argon (1s² 2s² 2p⁶ 3s² 3p⁶)</span></code></pre>
+                </li>
+            </ul>
 
-            <h3>Penentuan Golongan dan Periode Berdasarkan Konfigurasi Elektron Akhir:</h3>
-            <div class="responsive-table-wrapper">
+            <h3>Menentukan Posisi Unsur (Golongan dan Periode)</h3>
+            <p>Posisi unsur ditentukan oleh konfigurasi elektron terluar:</p>
+            <ul>
+                <li><span class="highlight"><strong>Periode:</strong></span> Ditentukan oleh <span class="highlight">bilangan kuantum utama (n) terbesar</span> dari kulit elektron terluar.</li>
+                <li><span class="highlight"><strong>Golongan:</strong></span> Ditentukan oleh subkulit (s, p, d, f) dan jumlah elektron pada kulit terluar atau subkulit terluar yang terisi.</li>
+            </ul>
+
+            <div class="details-content">
+                <h3>Tabel 1.2: Hubungan Konfigurasi Elektron dengan Posisi Unsur</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th>Konfigurasi Elektron Akhir</th>
-                            <th>Tipe Unsur / Blok</th>
-                            <th>Penentuan Golongan</th>
+                            <th>Konfigurasi Elektron Terakhir</th>
+                            <th>Golongan</th>
                             <th>Periode</th>
+                            <th>Blok</th>
+                            <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><code>ns<sup>x</sup></code></td>
-                            <td>Golongan Utama (Blok s)</td>
-                            <td>Golongan <span class="highlight">x</span>A</td>
+                            <td><code>ns¹</code></td>
+                            <td>IA</td>
                             <td>n</td>
+                            <td>s</td>
+                            <td>Alkali Logam</td>
                         </tr>
                         <tr>
-                            <td><code>ns<sup>2</sup>np<sup>x</sup></code></td>
-                            <td>Golongan Utama (Blok p)</td>
-                            <td>Golongan <span class="highlight">(2+x)</span>A (jumlah elektron s dan p)</td>
+                            <td><code>ns²</code></td>
+                            <td>IIA</td>
                             <td>n</td>
+                            <td>s</td>
+                            <td>Alkali Tanah</td>
                         </tr>
                         <tr>
-                            <td><code>ns<sup>x</sup>(n-1)d<sup>y</sup></code></td>
-                            <td>Golongan Transisi (Blok d)</td>
-                            <td>Golongan <span class="highlight">(x+y)</span>B (jumlah elektron s dan d)
-                                <ul>
-                                    <li>Jika x+y = 8, 9, 10 &rarr; VIIIB</li>
-                                    <li>Jika x+y = 11 &rarr; IB</li>
-                                    <li>Jika x+y = 12 &rarr; IIB</li>
-                                </ul>
-                            </td>
+                            <td><code>ns² np¹</code></td>
+                            <td>IIIA</td>
                             <td>n</td>
+                            <td>p</td>
+                            <td>Boron Group</td>
                         </tr>
                         <tr>
-                            <td><code>(n-2)f<sup>x</sup></code></td>
-                            <td>Lantanida / Aktinida (Blok f)</td>
-                            <td colspan="2">Terletak di Periode 6 dan 7, di luar blok utama d.</td>
+                            <td><code>ns² np²</code></td>
+                            <td>IVA</td>
+                            <td>n</td>
+                            <td>p</td>
+                            <td>Carbon Group</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² np³</code></td>
+                            <td>VA</td>
+                            <td>n</td>
+                            <td>p</td>
+                            <td>Nitrogen Group</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² np⁴</code></td>
+                            <td>VIA</td>
+                            <td>n</td>
+                            <td>p</td>
+                            <td>Chalcogen Group</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² np⁵</code></td>
+                            <td>VIIA</td>
+                            <td>n</td>
+                            <td>p</td>
+                            <td>Halogen Group</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² np⁶</code></td>
+                            <td>VIIIA</td>
+                            <td>n</td>
+                            <td>p</td>
+                            <td>Noble Gas Group</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d¹</code></td>
+                            <td>IIIB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 3)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d²</code></td>
+                            <td>IVB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 4)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d³</code></td>
+                            <td>VB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 5)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d⁴</code></td>
+                            <td>VIB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 6)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d⁵</code></td>
+                            <td>VIIB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 7)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d⁶</code></td>
+                            <td>VIIIB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 8)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d⁷</code></td>
+                            <td>VIIIB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 9)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d⁸</code></td>
+                            <td>VIIIB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 10)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns¹ (n-1)d¹⁰</code></td>
+                            <td>IB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 11)</td>
+                        </tr>
+                        <tr>
+                            <td><code>ns² (n-1)d¹⁰</code></td>
+                            <td>IIB</td>
+                            <td>n</td>
+                            <td>d</td>
+                            <td>Transisi (Elektron d + s = 12)</td>
                         </tr>
                     </tbody>
                 </table>
+                <p><strong>Catatan:</strong> Untuk golongan A, jumlah elektron valensi (elektron di <code>ns</code> atau <code>ns + np</code>) menentukan nomor golongan. Untuk golongan B (unsur transisi), jumlah elektron di <code>ns</code> dan <code>(n-1)d</code> menentukan nomor golongan, dengan beberapa pengecualian seperti yang tertera di tabel.</p>
             </div>
 
-            <p>Mari kita lihat beberapa contoh bagaimana konfigurasi elektron menentukan posisi unsur dalam sistem periodik, mengikuti aturan di atas:</p>
+            <h3>Contoh Penentuan Posisi Unsur</h3>
 
-            <div class="code-block">
-                <strong>Contoh 1: Natrium (<span class="element-symbol"><sub>11</sub>Na</span>)</strong><br>
-                Konfigurasi Elektron Lengkap: <span class="config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup></span><br>
-                Konfigurasi Elektron Singkat: <span class="noble-gas">[Ne]</span> <span class="config">3s<sup>1</sup></span><br><br>
-                <span class="result"><strong>Penentuan:</strong></span><br>
+            <div class="example-block">
+                <h4>Contoh 1: Natrium (₁₁Na)</h4>
+                <p><strong>Konfigurasi Elektron:</strong> <code>1s² 2s² 2p⁶ 3s¹</code> atau <code>[Ne] 3s¹</code></p>
                 <ul>
-                    <li><span class="highlight">Periode:</span> Bilangan kuantum utama (n) terbesar yang terisi elektron adalah <span class="config">3</span> (dari 3s<sup>1</sup>). Jadi, Na berada di <span class="result"><strong>Periode 3</strong></span>.</li>
-                    <li><span class="highlight">Golongan:</span> Konfigurasi elektron berakhir pada subkulit <span class="config">s</span> (<span class="config">3s<sup>1</sup></span>), menunjukkan ini adalah unsur blok s. Jumlah elektron valensi di kulit terluar adalah <span class="config">1</span>. Berarti <span class="result"><strong>Golongan IA</strong></span>.</li>
+                    <li>Kulit elektron terbesar (n) adalah <span class="highlight">3</span>. <br> &rarr; <strong>Periode 3</strong></li>
+                    <li>Elektron terakhir berada di orbital <code>3s¹</code>, yaitu bentuk <code>ns¹</code>.<br> &rarr; <strong>Golongan IA</strong> (karena 1 elektron di subkulit s)</li>
                 </ul>
-                <span class="result"><strong>Kesimpulan: Posisi Na adalah Golongan IA, Periode 3.</strong></span>
+                <p>Jadi, unsur ₁₁Na terletak pada <span class="highlight">Golongan IA, Periode 3</span>.</p>
             </div>
 
-            <div class="code-block">
-                <strong>Contoh 2: Karbon (<span class="element-symbol"><sub>6</sub>C</span>)</strong><br>
-                Konfigurasi Elektron Lengkap: <span class="config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>2</sup></span><br>
-                Konfigurasi Elektron Singkat: <span class="noble-gas">[He]</span> <span class="config">2s<sup>2</sup> 2p<sup>2</sup></span><br><br>
-                <span class="result"><strong>Penentuan:</strong></span><br>
+            <div class="example-block">
+                <h4>Contoh 2: Karbon (₆C)</h4>
+                <p><strong>Konfigurasi Elektron:</strong> <code>1s² 2s² 2p²</code> atau <code>[He] 2s² 2p²</code></p>
                 <ul>
-                    <li><span class="highlight">Periode:</span> Bilangan kuantum utama (n) terbesar yang terisi elektron adalah <span class="config">2</span> (dari 2s<sup>2</sup> 2p<sup>2</sup>). Jadi, C berada di <span class="result"><strong>Periode 2</strong></span>.</li>
-                    <li><span class="highlight">Golongan:</span> Konfigurasi elektron berakhir pada subkulit <span class="config">p</span> (<span class="config">2p<sup>2</sup></span>), menunjukkan ini adalah unsur blok p. Jumlah elektron valensi adalah total elektron di subkulit s dan p pada kulit terluar: <span class="config">2 (dari 2s) + 2 (dari 2p) = 4</span>. Berarti <span class="result"><strong>Golongan IVA</strong></span>.</li>
+                    <li>Kulit elektron terbesar (n) adalah <span class="highlight">2</span>. <br> &rarr; <strong>Periode 2</strong></li>
+                    <li>Elektron terakhir berada di orbital <code>2s² 2p²</code>, yaitu bentuk <code>ns² np²</code>.
+                        Total elektron di kulit terluar adalah 2 (dari s) + 2 (dari p) = <span class="highlight">4</span> elektron. <br> &rarr; <strong>Golongan IVA</strong></li>
                 </ul>
-                <span class="result"><strong>Kesimpulan: Posisi C adalah Golongan IVA, Periode 2.</strong></span>
+                <p>Jadi, unsur ₆C terletak pada <span class="highlight">Golongan IVA, Periode 2</span>.</p>
             </div>
 
-            <div class="code-block">
-                <strong>Contoh 3: Xenon (<span class="element-symbol"><sub>54</sub>Xe</span>)</strong><br>
-                Konfigurasi Elektron Lengkap: <span class="config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup></span><br>
-                Konfigurasi Elektron Singkat: <span class="noble-gas">[Kr]</span> <span class="config">5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup></span><br><br>
-                <span class="result"><strong>Penentuan:</strong></span><br>
+            <div class="example-block">
+                <h4>Contoh 3: Xenon (₅₄Xe)</h4>
+                <p><strong>Konfigurasi Elektron:</strong> <code>1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶</code></p>
                 <ul>
-                    <li><span class="highlight">Periode:</span> Bilangan kuantum utama (n) terbesar yang terisi elektron adalah <span class="config">5</span> (dari 5s<sup>2</sup> dan 5p<sup>6</sup>). Jadi, Xe berada di <span class="result"><strong>Periode 5</strong></span>.</li>
-                    <li><span class="highlight">Golongan:</span> Konfigurasi elektron berakhir pada subkulit <span class="config">p</span> (<span class="config">5p<sup>6</sup></span>), menunjukkan ini adalah unsur blok p. Jumlah elektron valensi adalah total elektron di subkulit s dan p pada kulit terluar: <span class="config">2 (dari 5s) + 6 (dari 5p) = 8</span>. Berarti <span class="result"><strong>Golongan VIIIA</strong></span> (Gas Mulia).</li>
+                    <li>Kulit elektron terbesar (n) adalah <span class="highlight">5</span>. <br> &rarr; <strong>Periode 5</strong></li>
+                    <li>Elektron terakhir berada di orbital <code>5s² 5p⁶</code>, yaitu bentuk <code>ns² np⁶</code>.
+                        Total elektron di kulit terluar adalah 2 (dari s) + 6 (dari p) = <span class="highlight">8</span> elektron. <br> &rarr; <strong>Golongan VIIIA</strong></li>
                 </ul>
-                <span class="result"><strong>Kesimpulan: Posisi Xe adalah Golongan VIIIA, Periode 5.</strong></span>
+                <p>Jadi, unsur ₅₄Xe terletak pada <span class="highlight">Golongan VIIIA, Periode 5</span>.</p>
             </div>
 
-            <div class="code-block">
-                <strong>Contoh 4: Seng (<span class="element-symbol"><sub>30</sub>Zn</span>)</strong><br>
-                Konfigurasi Elektron Lengkap: <span class="config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup></span><br>
-                Konfigurasi Elektron Singkat: <span class="noble-gas">[Ar]</span> <span class="config">4s<sup>2</sup> 3d<sup>10</sup></span><br><br>
-                <span class="result"><strong>Penentuan:</strong></span><br>
+            <div class="example-block">
+                <h4>Contoh 4: Seng (₃₀Zn)</h4>
+                <p><strong>Konfigurasi Elektron:</strong> <code>1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰</code> atau <code>[Ar] 4s² 3d¹⁰</code></p>
                 <ul>
-                    <li><span class="highlight">Periode:</span> Bilangan kuantum utama (n) terbesar adalah <span class="config">4</span> (dari 4s<sup>2</sup>). Jadi, Zn berada di <span class="result"><strong>Periode 4</strong></span>.</li>
-                    <li><span class="highlight">Golongan:</span> Konfigurasi elektron berakhir pada subkulit <span class="config">d</span> (<span class="config">3d<sup>10</sup></span>), dengan subkulit s pada kulit terluar (<span class="config">4s<sup>2</sup></span>). Ini adalah unsur blok d (transisi). Jumlah elektron valensi adalah total elektron di subkulit s kulit terluar dan d subkulit (n-1): <span class="config">2 (dari 4s) + 10 (dari 3d) = 12</span>. Karena jumlahnya 12, ini termasuk dalam Golongan IIB.</li>
+                    <li>Kulit elektron terbesar (n) adalah <span class="highlight">4</span>. <br> &rarr; <strong>Periode 4</strong></li>
+                    <li>Elektron terakhir berada di orbital <code>4s² 3d¹⁰</code>, yaitu bentuk <code>ns² (n-1)d¹⁰</code>.
+                        Total elektron di <code>ns</code> dan <code>(n-1)d</code> adalah 2 (dari 4s) + 10 (dari 3d) = <span class="highlight">12</span> elektron. <br> Berdasarkan tabel, 12 elektron berarti <br> &rarr; <strong>Golongan IIB</strong></li>
                 </ul>
-                <span class="result"><strong>Kesimpulan: Posisi Zn adalah Golongan IIB, Periode 4.</strong></span>
+                <p>Jadi, unsur ₃₀Zn terletak pada <span class="highlight">Golongan IIB, Periode 4</span>.</p>
             </div>
-
-            <div class="code-block">
-                <strong>Contoh 5: Besi (<span class="element-symbol"><sub>26</sub>Fe</span>)</strong><br>
-                Konfigurasi Elektron Lengkap: <span class="config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>6</sup></span><br>
-                Konfigurasi Elektron Singkat: <span class="noble-gas">[Ar]</span> <span class="config">4s<sup>2</sup> 3d<sup>6</sup></span><br><br>
-                <span class="result"><strong>Penentuan:</strong></span><br>
-                <ul>
-                    <li><span class="highlight">Periode:</span> Bilangan kuantum utama (n) terbesar adalah <span class="config">4</span> (dari 4s<sup>2</sup>). Jadi, Fe berada di <span class="result"><strong>Periode 4</strong></span>.</li>
-                    <li><span class="highlight">Golongan:</span> Konfigurasi elektron berakhir pada subkulit <span class="config">d</span> (<span class="config">3d<sup>6</sup></span>), dengan subkulit s pada kulit terluar (<span class="config">4s<sup>2</sup></span>). Ini adalah unsur blok d (transisi). Jumlah elektron valensi adalah total elektron di subkulit s kulit terluar dan d subkulit (n-1): <span class="config">2 (dari 4s) + 6 (dari 3d) = 8</span>. Untuk jumlah 8, 9, atau 10 elektron s+d, golongan adalah <span class="result"><strong>VIIIB</strong></span>.</li>
-                </ul>
-                <span class="result"><strong>Kesimpulan: Posisi Fe adalah Golongan VIIIB, Periode 4.</strong></span>
-            </div>
-
-            <p>Dengan memahami aturan penentuan posisi berdasarkan konfigurasi elektron ini, kita dapat dengan mudah memprediksi letak suatu unsur dalam sistem periodik, yang pada gilirannya memberikan petunjuk penting mengenai sifat kimia dan fisika unsur tersebut tanpa harus menghafal seluruh tabel periodik.</p>
         </section>
     </div>
 </body>
 </html>
-```

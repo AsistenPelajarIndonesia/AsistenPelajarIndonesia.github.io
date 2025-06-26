@@ -1,12 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kimia Kelas XI: Konsep Mol</title>
+    <title>Konsep Mol - Kimia SMA Kelas XI</title>
     <style>
-        /* Global Styles */
+        /* Light Mode Theme Colors */
         :root {
             --background-canvas: #FFFFFF;
             --text-primary: #212121;
@@ -22,431 +21,443 @@
             --semantic-info: #2196F3;
         }
 
+        /* General Body Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: var(--background-canvas);
             color: var(--text-primary);
-            margin: 0;
-            padding: 20px;
             line-height: 1.6;
         }
 
+        /* Header Styles */
+        header {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Main Content Container */
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: var(--background-canvas);
-            padding: 20px;
+            max-width: 960px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: #FFFFFF;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--border-divider);
         }
 
-        h1, h2, h3 {
+        section h2 {
             color: var(--primary-blue);
-            text-align: center;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-
-        h1 {
-            font-size: 2.8em;
-            padding-bottom: 10px;
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
             border-bottom: 2px solid var(--border-divider);
-            color: var(--primary-blue);
+            padding-bottom: 0.8rem;
         }
 
-        h2 {
-            font-size: 2.2em;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-divider);
-            padding-bottom: 10px;
-            margin-top: 40px;
-            text-align: left;
-        }
-
-        h3 {
-            font-size: 1.8em;
-            color: var(--text-secondary);
-            margin-top: 30px;
-            text-align: left;
+        section h3 {
+            color: var(--accent-green);
+            font-size: 1.5em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
         }
 
         p {
-            margin-bottom: 15px;
-            color: var(--text-primary);
-            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
         }
 
-        strong {
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
             color: var(--text-secondary);
         }
 
-        .highlight {
-            background-color: rgba(var(--primary-blue), 0.1);
-            padding: 5px 10px;
+        ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--semantic-success);
+            font-weight: bold;
+        }
+
+        /* Highlight Boxes (for formulas/key info) */
+        .highlight-box {
+            background-color: rgba(var(--primary-blue-rgb), 0.05); /* Using RGB for transparency */
+            border-left: 6px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
             border-radius: 4px;
-            color: var(--primary-blue);
-            font-weight: bold;
         }
 
-        .section-box {
-            background-color: var(--background-canvas);
-            border: 1px solid var(--border-divider);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-        }
-
-        .concept-definition {
-            background-color: var(--semantic-info);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .avogadro-box {
-            background-color: var(--semantic-success);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 1.2em;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .example-box {
-            background-color: rgba(var(--secondary-accent-amber), 0.1);
-            border-left: 5px solid var(--secondary-accent-amber);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
-        }
-
-        .example-box h4 {
-            color: var(--secondary-accent-amber);
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.4em;
-            font-weight: 600;
-        }
-
-        .code-block {
-            background-color: #f5f5f5;
-            border: 1px solid var(--border-divider);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 6px;
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 0.95em;
-            color: var(--text-secondary);
+        .highlight-box code {
+            display: block;
+            background-color: rgba(var(--primary-blue-rgb), 0.1);
+            color: var(--text-primary);
+            padding: 0.8rem;
+            border-radius: 4px;
             overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1.1em;
+            white-space: pre-wrap; /* Allows text to wrap within the code block */
         }
 
-        /* Mol Map Diagram */
-        .mol-map-container {
+        /* Avogadro's Number Styling */
+        .avogadro {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--accent-green);
+            display: block;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        /* Mol Map Diagram Styling (simplified with flexbox) */
+        .mol-map-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .mol-map-item {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 1.5rem 2.5rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.3em;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            min-width: 150px;
+            position: relative;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .mol-map-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .mol-map-center {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            font-size: 1.8em;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .mol-map-arrow {
+            position: absolute;
+            color: var(--text-tertiary);
+            font-size: 2.5em;
+            font-weight: bold;
+            z-index: 1; /* Ensure arrows are behind the items */
+        }
+        
+        /* Arrows for mol map (simplified, conceptual representation) */
+        .mol-map-connection {
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            margin: 40px 0;
-            padding: 20px;
-            border: 1px dashed var(--border-divider);
-            border-radius: 10px;
-            background-color: #f9f9f9;
+            gap: 0.5rem;
+            font-size: 0.9em;
+            color: var(--text-tertiary);
+            margin: 0 1rem; /* Space between connections */
+            flex-grow: 1; /* Allow connections to take space */
+            text-align: center;
         }
 
-        .mol-node {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 20px 30px;
-            border-radius: 10px;
+        .mol-map-connection span {
+            color: var(--primary-blue);
             font-weight: bold;
-            text-align: center;
-            font-size: 1.3em;
-            min-width: 120px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            position: relative;
-            z-index: 1; /* Ensure nodes are above lines */
-        }
-
-        .mol-sub-node {
-            background-color: var(--accent-green);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-align: center;
-            font-size: 1.1em;
-            min-width: 100px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 15px;
-            position: relative;
-            z-index: 1;
+            white-space: nowrap; /* Keep text on one line */
         }
 
         .mol-map-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: auto auto auto;
-            gap: 20px;
-            width: 100%;
-            justify-items: center;
+            gap: 1.5rem;
             align-items: center;
-            position: relative;
+            justify-items: center;
+            margin-top: 2.5rem;
+            position: relative; /* For positioning arrows/labels */
         }
 
-        /* Positioning for larger screens */
-        @media (min-width: 768px) {
-            .mol-map-grid {
-                grid-template-areas:
-                    "massa . partikel"
-                    ". mol ."
-                    "volume . ."; /* Changed to better reflect diagram layout */
-            }
-
-            .node-massa { grid-area: massa; }
-            .node-mol { grid-area: mol; }
-            .node-partikel { grid-area: partikel; }
-            .node-volume { grid-area: volume; }
-
-            .node-mol {
-                grid-column: 2 / 3; /* Center horizontally */
-                grid-row: 2 / 3; /* Center vertically */
-            }
-        }
-        
-        .mol-connection {
-            position: absolute;
-            background-color: var(--text-tertiary);
-            z-index: 0; /* Below nodes */
+        .grid-item {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 1.2rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            min-width: 120px;
         }
 
-        .mol-label {
-            position: absolute;
-            background-color: var(--background-canvas);
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: 1px solid var(--border-divider);
+        .grid-item-center {
+            background-color: var(--secondary-accent-amber);
+            color: var(--text-primary);
+            padding: 1.5rem 2.5rem;
+            border-radius: 10px;
+            font-size: 1.6em;
+            grid-column: 2;
+            grid-row: 2;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        }
+
+        .label {
             font-size: 0.9em;
-            color: var(--text-secondary);
-            z-index: 2; /* Above lines, below nodes */
+            color: var(--text-tertiary);
+            text-align: center;
             white-space: nowrap;
         }
 
-        /* Responsive lines for Mol Map (simplified for demonstration) */
-        /* For a true interactive diagram, an SVG or canvas library would be better.
-           Here, we'll indicate general connections with text. */
-        .mol-map-connections {
-            margin-top: 30px;
-            width: 100%;
-        }
+        /* Position labels around the grid */
+        .label-top-left { grid-column: 1; grid-row: 1; }
+        .label-top-right { grid-column: 3; grid-row: 1; }
+        .label-bottom-center { grid-column: 2; grid-row: 3; }
 
-        .mol-map-connections h3 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .mol-map-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .mol-map-item {
-            background-color: #e3f2fd; /* Light blue */
-            border: 1px solid var(--primary-blue);
-            border-radius: 8px;
-            padding: 15px;
-            font-size: 1.0em;
+        /* General code styling for formulas */
+        pre code {
+            background-color: #f4f4f4;
+            border: 1px solid var(--border-divider);
+            display: block;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.95em;
             color: var(--text-primary);
         }
 
-        .mol-map-item strong {
-            color: var(--primary-blue);
-        }
-
-        .mol-map-item .formula {
-            font-family: 'Consolas', monospace;
-            background-color: #c5e1fd; /* Lighter blue */
-            padding: 3px 8px;
-            border-radius: 4px;
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-
-        @media (max-width: 767px) {
-            h1 {
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
                 font-size: 2.2em;
             }
-            h2 {
-                font-size: 1.8em;
-            }
-            h3 {
-                font-size: 1.5em;
-            }
-            p {
+            header p {
                 font-size: 1em;
             }
-            .mol-node, .mol-sub-node {
-                padding: 15px 20px;
-                font-size: 1.1em;
-                min-width: unset;
-                width: 80%; /* Adjust width for better fit on small screens */
+            .container {
+                margin: 1.5rem auto;
+                padding: 0 1rem;
+            }
+            section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            section h2 {
+                font-size: 1.8em;
+                margin-bottom: 1rem;
+            }
+            section h3 {
+                font-size: 1.3em;
             }
             .mol-map-grid {
-                grid-template-columns: 1fr; /* Stack vertically */
+                grid-template-columns: 1fr;
                 grid-template-rows: auto;
             }
-            .mol-map-list {
-                grid-template-columns: 1fr;
+            .grid-item, .grid-item-center {
+                grid-column: auto;
+                grid-row: auto;
+                width: 80%; /* Make items fill more width */
             }
+            .label {
+                position: static; /* Remove absolute positioning on small screens */
+                margin-top: 0.5rem;
+            }
+            .grid-item-center {
+                order: 0; /* Make MOL appear first on small screens */
+            }
+            .grid-item:nth-child(1) { order: 1; } /* Massa */
+            .grid-item:nth-child(2) { order: 2; } /* Jumlah Partikel */
+            .grid-item:nth-child(3) { order: 3; } /* Volume (STP) */
+
+            .label-top-left, .label-top-right, .label-bottom-center {
+                display: none; /* Hide explicit labels if layout changes drastically */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1.5rem 1rem;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            section {
+                padding: 1rem;
+            }
+            .grid-item, .grid-item-center {
+                padding: 1rem;
+                font-size: 1em;
+            }
+            .avogadro {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Variables for RGB values for transparency in background-color */
+        body {
+            --primary-blue-rgb: 25, 118, 210; /* RGB for #1976D2 */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bab III: Stoikiometri</h1>
-        <h2>B. Konsep Mol</h2>
+    <header>
+        <h1>Konsep Mol</h1>
+        <p>Memahami Satuan Dasar dalam Kimia</p>
+    </header>
 
-        <div class="section-box">
-            <p>Setelah mahir dalam menyetarakan reaksi kimia, pemahaman terhadap konsep <strong class="highlight">mol</strong> adalah fondasi krusial dalam kimia. Konsep mol telah diperkenalkan sebelumnya di kelas X, dan kini saatnya kita memperdalam serta mengingat kembali esensinya.</p>
+    <main class="container">
+        <section>
+            <h2>Apa itu Mol?</h2>
+            <p>
+                Dalam dunia kimia, kita berurusan dengan partikel yang sangat kecil seperti atom, molekul, dan ion. Jumlah partikel ini sangatlah besar, bahkan dalam sampel zat yang sangat sedikit. Untuk mempermudah perhitungan dan penanganan jumlah zat yang begitu besar ini, para ilmuwan menggunakan sebuah satuan standar yang disebut <strong>Mol</strong>.
+            </p>
+            <p>
+                Mol adalah satuan jumlah zat yang digunakan untuk menyatakan banyaknya partikel (atom, molekul, ion, atau partikel lainnya) dalam suatu zat. Konsep ini mirip dengan bagaimana kita menggunakan satuan dalam kehidupan sehari-hari:
+            </p>
+            <ul>
+                <li><strong>Pasang</strong>: Untuk menghitung sepatu (misal, 1 pasang = 2 buah).</li>
+                <li><strong>Lusin</strong>: Untuk menghitung piring atau pensil (misal, 1 lusin = 12 buah).</li>
+                <li><strong>Rim</strong>: Untuk menghitung kertas (misal, 1 rim = 500 lembar).</li>
+            </ul>
+            <p>
+                Sama seperti itu, mol adalah "hitungan" khusus untuk partikel-partikel kimia yang sangat banyak.
+            </p>
+        </section>
 
-            <div class="concept-definition">
-                <p><strong>Mol adalah satuan yang digunakan untuk menunjukkan jumlah zat.</strong></p>
-            </div>
+        <section>
+            <h2>Bilangan Avogadro</h2>
+            <p>
+                Satu mol dari suatu zat mengandung sejumlah partikel tertentu yang dikenal sebagai <strong>Bilangan Avogadro</strong>. Nilai ini telah ditetapkan secara internasional berdasarkan jumlah atom dalam 12 gram atom Karbon-12 (C-12).
+            </p>
+            <p class="avogadro">
+                1 Mol = 6,022 x 10<sup>23</sup> Partikel
+            </p>
+            <p>
+                Artinya, 1 mol air mengandung 6,022 x 10<sup>23</sup> molekul air. 1 mol atom besi mengandung 6,022 x 10<sup>23</sup> atom besi. Dan seterusnya. Bilangan ini sangat besar karena partikel-partikel tersebut memang sangat kecil!
+            </p>
+        </section>
 
-            <p>Bayangkan ketika kita membeli barang. Sepatu seringkali dihitung per "pasang", piring per "lusin" (12 buah), dan kertas per "rim" (500 lembar). Satuan-satuan ini memudahkan kita dalam mengelola kuantitas barang yang sangat banyak.</p>
-            <p>Dalam kimia, kita berhadapan dengan partikel-partikel yang sangat kecil seperti atom, ion, atau molekul, yang jumlahnya dalam suatu zat bisa sangat besar. Untuk menyederhanakan perhitungan jumlah partikel ini, para ilmuwan telah menyepakati penggunaan satuan <strong class="highlight">mol</strong>.</p>
-        </div>
+        <section>
+            <h2>Hubungan Mol dengan Massa, Jumlah Partikel, dan Volume (STP)</h2>
+            <p>
+                Mol adalah jembatan penghubung antara berbagai besaran dalam kimia. Memahami hubungan ini sangat krusial untuk perhitungan stoikiometri. Mari kita lihat diagram "Peta Konsep Mol" yang menjelaskan hubungan ini:
+            </p>
 
-        <div class="section-box">
-            <h3>Berapa Banyak Partikel dalam Satu Mol?</h3>
-            <p>Satu mol didefinisikan sebagai jumlah partikel yang sama dengan jumlah atom dalam 12 gram atom Karbon-12 (C-12). Melalui berbagai eksperimen, jumlah partikel ini telah ditentukan secara akurat.</p>
-            <div class="avogadro-box">
-                <p><strong>Jumlah partikel dalam satu mol adalah 6,022 × 10<sup>23</sup> partikel.</strong></p>
-                <p>Angka ini dikenal sebagai <strong>Bilangan Avogadro (N<sub>A</sub>)</strong>.</p>
-            </div>
-            <p>Jadi, satu mol zat apa pun akan mengandung Bilangan Avogadro partikel. Entah itu 1 mol atom hidrogen, 1 mol molekul air, atau 1 mol ion natrium, semuanya mengandung 6,022 × 10<sup>23</sup> partikel spesifik tersebut.</p>
-        </div>
-
-        <div class="section-box">
-            <h2>Memahami Hubungan Konsep Mol (Mol "Map")</h2>
-            <p>Konsep mol sangat sentral karena menjadi jembatan penghubung antara berbagai kuantitas dalam kimia: massa, jumlah partikel, dan volume gas. Mari kita visualisasikan dan pahami hubungan-hubungan ini.</p>
-
-            <div class="mol-map-container">
-                <div class="mol-map-grid">
-                    <div class="mol-sub-node node-massa">MASSA (gram)</div>
-                    <div class="mol-node node-mol">MOL</div>
-                    <div class="mol-sub-node node-partikel">JUMLAH PARTIKEL</div>
-                    <div class="mol-sub-node node-volume">VOLUME GAS (STP)</div>
+            <div class="mol-map-grid">
+                <!-- Top-Left: Massa -->
+                <div class="grid-item label-top-left">
+                    <p class="label">Massa (gram)</p>
+                    <p>Massa = mol &times; Mr/Ar</p>
+                    <p>Mol = Massa / Mr/Ar</p>
                 </div>
-                <!-- Since direct CSS arrows for complex layout are hard to make responsive and readable,
-                     we'll explain the connections explicitly below. -->
-            </div>
-
-            <div class="mol-map-connections">
-                <h3>Hubungan-hubungan Kunci Mol:</h3>
-                <ul class="mol-map-list">
-                    <li class="mol-map-item">
-                        <strong>1. Mol ↔ Massa (gram)</strong>
-                        <p>Hubungan ini dijembatani oleh <strong>Massa Molar (Mr/Ar)</strong>. Massa molar adalah massa 1 mol suatu zat dalam gram/mol.</p>
-                        <ul>
-                            <li><p><strong>Dari Mol ke Massa:</strong> <span class="formula">Massa (gram) = Mol × Massa Molar (Mr/Ar)</span></p></li>
-                            <li><p><strong>Dari Massa ke Mol:</strong> <span class="formula">Mol = Massa (gram) / Massa Molar (Mr/Ar)</span></p></li>
-                        </ul>
-                    </li>
-                    <li class="mol-map-item">
-                        <strong>2. Mol ↔ Jumlah Partikel</strong>
-                        <p>Hubungan ini dijembatani oleh <strong>Bilangan Avogadro (N<sub>A</sub>)</strong>, yaitu 6,022 × 10<sup>23</sup> partikel/mol.</p>
-                        <ul>
-                            <li><p><strong>Dari Mol ke Jumlah Partikel:</strong> <span class="formula">Jumlah Partikel = Mol × N<sub>A</sub></span></p></li>
-                            <li><p><strong>Dari Jumlah Partikel ke Mol:</strong> <span class="formula">Mol = Jumlah Partikel / N<sub>A</sub></span></p></li>
-                        </ul>
-                    </li>
-                    <li class="mol-map-item">
-                        <strong>3. Mol ↔ Volume Gas (pada STP)</strong>
-                        <p>Untuk gas pada kondisi Standard Temperature and Pressure (STP), yaitu suhu 0°C (273 K) dan tekanan 1 atm, 1 mol gas ideal akan memiliki volume <strong>22,4 Liter</strong>.</p>
-                        <ul>
-                            <li><p><strong>Dari Mol ke Volume Gas (STP):</strong> <span class="formula">Volume (Liter) = Mol × 22,4 L/mol</span></p></li>
-                            <li><p><strong>Dari Volume Gas (STP) ke Mol:</strong> <span class="formula">Mol = Volume (Liter) / 22,4 L/mol</span></p></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section-box">
-            <h2>Contoh Perhitungan Konsep Mol</h2>
-
-            <div class="example-box">
-                <h4>Contoh 1: Menghitung Massa dari Mol</h4>
-                <p>Hitunglah massa dari 0,1 mol gas karbon dioksida (CO<sub>2</sub>)!</p>
-                <p><strong>Diketahui:</strong></p>
-                <ul>
-                    <li>Jumlah mol CO<sub>2</sub> = 0,1 mol</li>
-                    <li>Massa molar CO<sub>2</sub> (Mr CO<sub>2</sub>) = Ar C + (2 × Ar O) = 12 + (2 × 16) = 44 g/mol</li>
-                </ul>
-                <p><strong>Ditanya:</strong> Massa gas karbon dioksida?</p>
-                <p><strong>Jawab:</strong></p>
-                <div class="code-block">
-                    Massa CO₂ = mol × massa molar CO₂<br>
-                    Massa CO₂ = 0,1 mol × 44 g/mol<br>
-                    Massa CO₂ = 4,4 g
+                
+                <!-- Top-Right: Jumlah Partikel -->
+                <div class="grid-item label-top-right">
+                    <p class="label">Jumlah Partikel</p>
+                    <p>Jum. Partikel = mol &times; N<sub>A</sub></p>
+                    <p>Mol = Jum. Partikel / N<sub>A</sub></p>
                 </div>
-                <p>Jadi, massa dari 0,1 mol gas karbon dioksida adalah <strong>4,4 gram</strong>.</p>
-            </div>
 
-            <div class="example-box">
-                <h4>Contoh 2: Menghitung Jumlah Mol dari Massa</h4>
-                <p>Hitunglah jumlah mol dari 18 gram air (H<sub>2</sub>O)!</p>
-                <p><strong>Diketahui:</strong></p>
-                <ul>
-                    <li>Massa air = 18 gram</li>
-                    <li>Massa molar H<sub>2</sub>O (Mr H<sub>2</sub>O) = (2 × Ar H) + Ar O = (2 × 1) + 16 = 18 g/mol</li>
-                </ul>
-                <p><strong>Ditanya:</strong> Jumlah mol air?</p>
-                <p><strong>Jawab:</strong></p>
-                <div class="code-block">
-                    Mol air = Massa / Massa Molar<br>
-                    Mol air = 18 g / 18 g/mol<br>
-                    Mol air = 1 mol
+                <!-- Center: MOL -->
+                <div class="grid-item-center">MOL</div>
+
+                <!-- Bottom-Center: Volume (STP) -->
+                <div class="grid-item label-bottom-center">
+                    <p class="label">Volume (Liter) pada STP</p>
+                    <p>Volume = mol &times; 22,4 L/mol</p>
+                    <p>Mol = Volume / 22,4 L/mol</p>
                 </div>
-                <p>Jadi, jumlah mol dari 18 gram air adalah <strong>1 mol</strong>.</p>
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem; color: var(--text-tertiary);">
+                *N<sub>A</sub> = Bilangan Avogadro (6,022 &times; 10<sup>23</sup> partikel/mol)
+                <br>*Mr/Ar = Massa Molar (gram/mol)
+                <br>*STP = Standard Temperature and Pressure (0&deg;C/273K, 1 atm)
+            </p>
+
+            <h3>1. Hubungan Mol dengan Massa</h3>
+            <p>
+                Untuk mengubah mol menjadi massa (dalam gram) atau sebaliknya, kita menggunakan konsep <strong>Massa Molar</strong>. Massa molar adalah massa 1 mol suatu zat, dengan satuan gram/mol. Untuk unsur, massa molar sama dengan massa atom relatif (Ar)nya. Untuk senyawa, massa molar sama dengan massa molekul relatif (Mr)nya.
+            </p>
+            <div class="highlight-box">
+                <p><strong>Dari Mol ke Massa:</strong></p>
+                <code>Massa (gram) = Jumlah Mol &times; Massa Molar (Ar/Mr)</code>
+                <p><strong>Dari Massa ke Mol:</strong></p>
+                <code>Jumlah Mol = Massa (gram) / Massa Molar (Ar/Mr)</code>
+            </div>
+            <p>
+                <strong>Contoh:</strong> Jika Ar C = 12, Ar O = 16. Maka Mr CO<sub>2</sub> = 12 + (2 &times; 16) = 44 g/mol.
+                <br>Untuk mencari massa 0,1 mol CO<sub>2</sub>:
+                <br>Massa CO<sub>2</sub> = 0,1 mol &times; 44 g/mol = 4,4 gram.
+            </p>
+            <p>
+                Untuk mencari mol dari 18 gram air (Mr H<sub>2</sub>O = 18 g/mol):
+                <br>Mol H<sub>2</sub>O = 18 gram / 18 g/mol = 1 mol.
+            </p>
+
+            <h3>2. Hubungan Mol dengan Jumlah Partikel</h3>
+            <p>
+                Seperti yang telah dibahas, 1 mol dari zat apa pun selalu mengandung 6,022 &times; 10<sup>23</sup> partikel (atom, molekul, atau ion). Oleh karena itu, kita menggunakan Bilangan Avogadro (N<sub>A</sub>) sebagai faktor konversi.
+            </p>
+            <div class="highlight-box">
+                <p><strong>Dari Mol ke Jumlah Partikel:</strong></p>
+                <code>Jumlah Partikel = Jumlah Mol &times; Bilangan Avogadro (N<sub>A</sub>)</code>
+                <p><strong>Dari Jumlah Partikel ke Mol:</strong></p>
+                <code>Jumlah Mol = Jumlah Partikel / Bilangan Avogadro (N<sub>A</sub>)</code>
             </div>
 
-            <div class="example-box">
-                <h4>Contoh 3: Menghitung Jumlah Mol dari Volume Gas pada STP</h4>
-                <p>Berapakah jumlah mol dari 11,2 liter gas hidrogen (H<sub>2</sub>) pada kondisi Standard Temperature and Pressure (STP)?</p>
-                <p><strong>Diketahui:</strong></p>
-                <ul>
-                    <li>Volume gas hidrogen pada STP = 11,2 liter</li>
-                    <li>Volume molar gas pada STP = 22,4 L/mol</li>
-                </ul>
-                <p><strong>Ditanya:</strong> Jumlah mol hidrogen?</p>
-                <p><strong>Jawab:</strong></p>
-                <div class="code-block">
-                    Mol hidrogen = Volume (STP) / Volume Molar (STP)<br>
-                    Mol hidrogen = 11,2 L / 22,4 L/mol<br>
-                    Mol hidrogen = 0,5 mol
-                </div>
-                <p>Jadi, jumlah mol dari 11,2 liter gas hidrogen pada STP adalah <strong>0,5 mol</strong>.</p>
+            <h3>3. Hubungan Mol dengan Volume Gas (pada STP)</h3>
+            <p>
+                Untuk gas, pada kondisi Standar Suhu dan Tekanan (STP: Standard Temperature and Pressure), 1 mol gas apa pun memiliki volume yang sama, yaitu <strong>22,4 Liter</strong>. Kondisi STP didefinisikan sebagai suhu 0 &deg;C (273 K) dan tekanan 1 atm.
+            </p>
+            <div class="highlight-box">
+                <p><strong>Dari Mol ke Volume Gas (STP):</strong></p>
+                <code>Volume Gas (L) = Jumlah Mol &times; 22,4 L/mol</code>
+                <p><strong>Dari Volume Gas (STP) ke Mol:</strong></p>
+                <code>Jumlah Mol = Volume Gas (L) / 22,4 L/mol</code>
             </div>
-        </div>
-
-        <p class="text-tertiary" style="text-align: center; margin-top: 40px;">
-            Dengan memahami konsep mol dan hubungannya dengan massa, jumlah partikel, serta volume gas, kalian akan lebih siap untuk memecahkan berbagai masalah stoikiometri yang lebih kompleks.
-        </p>
-
-    </div>
+            <p>
+                <strong>Contoh:</strong> Untuk mencari mol dari 11,2 liter gas hidrogen pada STP:
+                <br>Mol H<sub>2</sub> = 11,2 L / 22,4 L/mol = 0,5 mol.
+            </p>
+        </section>
+    </main>
 </body>
 </html>
-```

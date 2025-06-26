@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -23,58 +22,59 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--background-canvas);
-            color: var(--text-primary);
-            margin: 0;
-            padding: 20px;
+            font-family: 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            font-size: 1rem;
         }
 
         .container {
             max-width: 900px;
-            margin: 0 auto;
+            margin: 40px auto;
             padding: 20px;
             background-color: var(--background-canvas);
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        h1 {
-            color: var(--primary-blue);
+        header {
             text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-divider);
             margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
             font-size: 2.5em;
-            letter-spacing: 0.05em;
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-tertiary);
+            font-size: 1.1em;
+            margin: 0;
         }
 
         h2 {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--border-divider);
-            padding-bottom: 10px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 2em;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary-blue);
+            color: var(--text-primary);
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 8px;
+            display: inline-block;
         }
 
         h3 {
             color: var(--text-primary);
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-            border-left: 4px solid var(--primary-blue);
-            padding-left: 10px;
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
         }
 
         p {
@@ -82,10 +82,195 @@
             color: var(--text-secondary);
         }
 
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .formula-block {
+            background-color: #F8F8F8;
+            border: 1px solid var(--border-divider);
+            border-left: 5px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+            color: var(--text-primary);
+            overflow-x: auto;
+        }
+
+        .formula-block span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .formula-block span:last-child {
+            margin-bottom: 0;
+        }
+
+        .note {
+            background-color: #E3F2FD; /* Light blue, related to primary_blue */
+            border-left: 4px solid var(--semantic-info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: var(--text-primary);
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #F8F8F8;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+        }
+
+        .diagram-label {
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .enthalpy-axis {
+            width: 2px;
+            height: 150px;
+            background-color: var(--text-tertiary);
+            position: relative;
+        }
+
+        .enthalpy-axis::before {
+            content: 'H';
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .enthalpy-level {
+            width: 150px;
+            height: 2px;
+            background-color: var(--primary-blue);
+            position: absolute;
+            left: calc(50% - 75px);
+            text-align: center;
+        }
+
+        .enthalpy-level.reaktan {
+            top: 20px;
+            border-bottom: 2px dashed var(--text-tertiary);
+        }
+
+        .enthalpy-level.produk {
+            bottom: 20px;
+            border-top: 2px dashed var(--text-tertiary);
+        }
+
+        .enthalpy-level-text {
+            position: absolute;
+            white-space: nowrap;
+            color: var(--text-primary);
+            font-weight: bold;
+            font-size: 0.9em;
+            top: 5px; /* Adjust relative to level line */
+        }
+
+        .enthalpy-level.reaktan .enthalpy-level-text {
+            right: 160px; /* Position text to the right of the line */
+        }
+        .enthalpy-level.produk .enthalpy-level-text {
+            left: 160px; /* Position text to the left of the line */
+        }
+
+        .delta-h-arrow {
+            position: absolute;
+            width: 1px;
+            background-color: var(--primary-blue);
+            left: calc(50% - 0.5px);
+            z-index: 1;
+        }
+
+        /* Exothermic specific styles */
+        .exothermic .enthalpy-level.reaktan { top: 20px; }
+        .exothermic .enthalpy-level.produk { bottom: 20px; }
+        .exothermic .delta-h-arrow {
+            height: calc(100% - 40px); /* Height between levels */
+            top: 20px;
+            border-right: 2px solid var(--primary-blue);
+        }
+        .exothermic .delta-h-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: -4px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid var(--primary-blue);
+        }
+        .exothermic .delta-h-text {
+            position: absolute;
+            left: calc(50% + 10px);
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        .exothermic .kalor-text {
+            position: absolute;
+            left: calc(50% + 10px);
+            top: 60%;
+            transform: translateY(-50%);
+            font-weight: normal;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        /* Endothermic specific styles */
+        .endothermic .enthalpy-level.reaktan { bottom: 20px; }
+        .endothermic .enthalpy-level.produk { top: 20px; }
+        .endothermic .delta-h-arrow {
+            height: calc(100% - 40px);
+            bottom: 20px;
+            border-left: 2px solid var(--primary-blue);
+        }
+        .endothermic .delta-h-arrow::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -4px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid var(--primary-blue);
+        }
+        .endothermic .delta-h-text {
+            position: absolute;
+            left: calc(50% + 10px);
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+         .endothermic .kalor-text {
+            position: absolute;
+            left: calc(50% + 10px);
+            top: 40%;
+            transform: translateY(-50%);
+            font-weight: normal;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
         ul {
-            list-style-type: disc;
-            margin-left: 25px;
-            margin-bottom: 15px;
+            list-style: disc;
+            margin-left: 20px;
             color: var(--text-secondary);
         }
 
@@ -93,313 +278,237 @@
             margin-bottom: 8px;
         }
 
-        .formula-block {
-            background-color: rgba(var(--primary-blue), 0.05);
-            border-left: 5px solid var(--primary-blue);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-            font-family: 'Consolas', 'Monaco', monospace;
-            color: var(--text-primary);
-            overflow-x: auto; /* For responsiveness of long formulas */
-            white-space: pre-wrap;
-            word-break: break-all;
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9em;
         }
 
-        .formula-block code {
-            display: block;
-        }
-
-        .example-section {
-            background-color: rgba(var(--accent-green), 0.05);
-            border-left: 5px solid var(--accent-green);
-            padding: 20px;
-            margin-top: 30px;
-            border-radius: 4px;
-        }
-
-        .example-section h3 {
-            color: var(--accent-green);
-            margin-top: 0;
-            margin-bottom: 15px;
-            border-left-color: var(--accent-green);
-        }
-
-        .example-step {
-            margin-bottom: 20px;
-            padding-left: 15px;
-            border-left: 3px solid var(--border-divider);
-        }
-
-        .example-step strong {
-            color: var(--text-primary);
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.1em;
-        }
-
-        .note {
-            background-color: rgba(var(--secondary-accent-amber), 0.08);
-            border-left: 4px solid var(--secondary-accent-amber);
-            padding: 10px 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-            color: var(--text-secondary);
-            font-size: 0.95em;
-        }
-
-        .highlight-positive {
-            color: var(--semantic-success);
-            font-weight: bold;
-        }
-
-        .highlight-negative {
-            color: var(--semantic-error);
-            font-weight: bold;
-        }
-
-        /* Responsive Design */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
             .container {
+                margin: 20px;
                 padding: 15px;
             }
-            h1 {
+            header h1 {
                 font-size: 2em;
             }
             h2 {
-                font-size: 1.7em;
+                font-size: 1.5em;
             }
             h3 {
-                font-size: 1.3em;
+                font-size: 1.2em;
             }
-            .formula-block, .example-section {
-                padding: 15px;
-            }
-            .example-step {
-                padding-left: 10px;
+            .formula-block {
+                font-size: 1em;
+                padding: 10px 15px;
             }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
             .container {
+                margin: 10px;
                 padding: 10px;
             }
-            h1 {
+            header h1 {
                 font-size: 1.8em;
-                margin-bottom: 20px;
             }
             h2 {
-                font-size: 1.5em;
-                margin-top: 30px;
+                font-size: 1.3em;
             }
             h3 {
-                font-size: 1.2em;
-                margin-top: 25px;
+                font-size: 1.1em;
             }
-            ul {
-                margin-left: 15px;
-            }
-            .formula-block, .example-section {
+            .diagram-container {
                 padding: 10px;
+            }
+            .enthalpy-level-text {
+                font-size: 0.8em;
+            }
+            .enthalpy-level.reaktan .enthalpy-level-text,
+            .enthalpy-level.produk .enthalpy-level-text {
+                right: unset;
+                left: unset;
+                width: 100px;
+                text-align: center;
+                top: -30px; /* Adjust for smaller screens */
+            }
+            .exothermic .delta-h-text, .endothermic .delta-h-text {
+                left: calc(50% + 15px); /* Adjust position for smaller screens */
+            }
+             .exothermic .kalor-text, .endothermic .kalor-text {
+                left: calc(50% + 15px); /* Adjust position for smaller screens */
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Bab V: Termokimia</h1>
-        <h2>E. Entalpi dan Perubahan Entalpi</h2>
+        <header>
+            <h1>Termokimia: Entalpi dan Perubahan Entalpi</h1>
+            <p>Memahami Kalor dalam Reaksi Kimia pada Tekanan Konstan</p>
+        </header>
 
-        <h3>Pendahuluan: Mengapa Entalpi Penting?</h3>
-        <p>Dalam studi termokimia, kita sering kali berhadapan dengan reaksi kimia yang terjadi dalam kondisi tertentu. Meskipun energi internal (E) adalah konsep fundamental dalam termodinamika, sebagian besar reaksi kimia, terutama di laboratorium atau industri, dilakukan dalam wadah terbuka atau pada kondisi tekanan atmosfer yang konstan. Dalam kondisi tekanan tetap, pertukaran kalor tidak hanya menghasilkan perubahan energi internal, tetapi juga dapat melibatkan kerja yang dilakukan oleh atau pada sistem (misalnya, perubahan volume gas).</p>
-        <p>Untuk memudahkan pengukuran dan analisis proses-proses ini, para ilmuwan memperkenalkan fungsi termodinamika baru yang disebut <strong>entalpi (H)</strong>. Entalpi dirancang khusus untuk menyederhanakan perhitungan kalor yang terlibat dalam reaksi pada tekanan konstan, memberikan pandangan yang lebih praktis tentang transfer energi dalam sistem kimia.</p>
-
-        <h3>Definisi dan Derivasi Entalpi</h3>
-        <p>Mari kita mulai dengan hukum pertama termodinamika, yang menyatakan hubungan antara perubahan energi internal (ΔE), kalor (q), dan kerja (w):</p>
-        <div class="formula-block">
-            <code>ΔE = q + w</code>
-        </div>
-        <p>Di sini, <code>ΔE</code> adalah perubahan energi internal sistem, <code>q</code> adalah kalor yang dipertukarkan antara sistem dan lingkungan, dan <code>w</code> adalah kerja yang dilakukan oleh atau pada sistem.</p>
-        <p>Untuk reaksi kimia yang melibatkan gas, kerja yang dilakukan oleh sistem (atau pada sistem) akibat perubahan volume pada tekanan konstan (P) dinyatakan sebagai:</p>
-        <div class="formula-block">
-            <code>w = -PΔV</code>
-        </div>
-        <p>Di mana:</p>
-        <ul>
-            <li><code>P</code> adalah tekanan eksternal konstan.</li>
-            <li><code>ΔV</code> adalah perubahan volume sistem (V<sub>akhir</sub> - V<sub>awal</sub>).</li>
-            <li>Tanda negatif menunjukkan bahwa jika sistem melakukan kerja pada lingkungan (yaitu, volumenya mengembang, ΔV positif), energi internalnya berkurang. Sebaliknya, jika lingkungan melakukan kerja pada sistem (volumenya menyusut, ΔV negatif), energi internalnya bertambah.</li>
-        </ul>
-        <p>Substitusikan ekspresi kerja ini ke dalam hukum pertama termodinamika. Kita menggunakan notasi <code>qp</code> untuk kalor yang ditukar pada tekanan konstan:</p>
-        <div class="formula-block">
-            <code>ΔE = qp - PΔV</code>
-        </div>
-        <p>Kemudian, kita bisa mengatur ulang persamaan ini untuk menyelesaikan <code>qp</code>:</p>
-        <div class="formula-block">
-            <code>qp = ΔE + PΔV</code>
-        </div>
-        <p>Persamaan di atas menunjukkan bahwa kalor yang dipertukarkan pada tekanan konstan (<code>qp</code>) adalah penjumlahan dari perubahan energi internal dan kerja tekanan-volume. Untuk menyederhanakan ini, para ilmuwan mendefinisikan sebuah fungsi termodinamika baru, <strong>entalpi (H)</strong>, sebagai:</p>
-        <div class="formula-block">
-            <code>H = E + PV</code>
-        </div>
-        <p>Di mana <code>E</code> adalah energi internal, <code>P</code> adalah tekanan, dan <code>V</code> adalah volume. Entalpi adalah properti keadaan, yang berarti nilainya hanya bergantung pada keadaan awal dan akhir sistem, bukan pada jalur yang diambil.</p>
-        <p>Dengan definisi ini, perubahan entalpi (ΔH) pada tekanan konstan menjadi:</p>
-        <div class="formula-block">
-            <code>ΔH = Δ(E + PV)</code><br>
-            <code>ΔH = ΔE + Δ(PV)</code>
-        </div>
-        <p>Karena kita beroperasi pada tekanan konstan (P), maka <code>Δ(PV) = PΔV</code>. Jadi:</p>
-        <div class="formula-block">
-            <code>ΔH = ΔE + PΔV</code>
-        </div>
-        <p>Membandingkan ini dengan persamaan <code>qp = ΔE + PΔV</code>, kita mendapatkan hubungan kunci yang sangat penting dalam termokimia:</p>
-        <div class="formula-block">
-            <code>qp = ΔH</code>
-        </div>
-        <p>Ini berarti, pada tekanan konstan (yang merupakan kondisi umum untuk sebagian besar reaksi kimia di laboratorium), <strong>kalor yang diserap atau dilepaskan oleh sistem sama dengan perubahan entalpi sistem tersebut.</strong> Inilah alasan mengapa entalpi sangat berguna dan sering digunakan dalam kimia untuk menggambarkan transfer energi.</p>
-
-        <h3>Memahami Perubahan Entalpi (ΔH)</h3>
-        <p>Perubahan entalpi (ΔH) didefinisikan sebagai perbedaan antara entalpi akhir (entalpi produk) dan entalpi awal (entalpi reaktan):</p>
-        <div class="formula-block">
-            <code>ΔH = H<sub>akhir</sub> - H<sub>awal</sub></code><br>
-            <code>ΔH = H<sub>produk</sub> - H<sub>reaktan</sub></code>
-        </div>
-        <p>Nilai ΔH dapat bernilai positif atau negatif, memberikan informasi penting tentang arah aliran kalor dalam reaksi.</p>
-
-        <h3>Reaksi Eksotermik: Melepas Kalor</h3>
-        <p>Pada reaksi eksotermik, sistem melepaskan kalor ke lingkungan. Energi kimia yang tersimpan dalam ikatan reaktan lebih tinggi daripada energi yang tersimpan dalam ikatan produk. Pelepasan energi ini seringkali dirasakan sebagai peningkatan suhu lingkungan.</p>
-        <ul>
-            <li><strong>Kondisi Energi:</strong> Entalpi produk (<code class="highlight-negative">H<sub>produk</sub></code>) lebih kecil dari entalpi reaktan (<code class="highlight-negative">H<sub>reaktan</sub></code>).</li>
-            <li><strong>Tanda ΔH:</strong> Perubahan entalpi (<code class="highlight-negative">ΔH</code>) memiliki nilai <strong class="highlight-negative">negatif (&lt; 0)</strong>.</li>
-            <li><strong>Dampak Lingkungan:</strong> Lingkungan (termasuk kalorimeter dan udara di sekitarnya) akan mengalami kenaikan suhu karena menyerap kalor yang dilepaskan sistem.</li>
-        </ul>
-        <p>Secara visual, dalam diagram entalpi, reaktan berada pada tingkat energi yang lebih tinggi, dan produk pada tingkat energi yang lebih rendah, dengan panah ΔH menunjuk ke bawah, menunjukkan pelepasan energi.</p>
-        <p>Contoh umum reaksi eksotermik adalah reaksi pembakaran, seperti pembakaran gas propana:</p>
-        <div class="formula-block">
-            <code>C<sub>3</sub>H<sub>8</sub>(g) + 5O<sub>2</sub>(g) → 3CO<sub>2</sub>(g) + 4H<sub>2</sub>O(l)</code>
-        </div>
-
-        <h3>Reaksi Endotermik: Menyerap Kalor</h3>
-        <p>Pada reaksi endotermik, sistem menyerap kalor dari lingkungan. Ini berarti energi kimia yang tersimpan dalam ikatan reaktan lebih rendah daripada energi yang tersimpan dalam ikatan produk. Penyerapan energi ini seringkali dirasakan sebagai penurunan suhu lingkungan.</p>
-        <ul>
-            <li><strong>Kondisi Energi:</strong> Entalpi produk (<code class="highlight-positive">H<sub>produk</sub></code>) lebih besar dari entalpi reaktan (<code class="highlight-positive">H<sub>reaktan</sub></code>).</li>
-            <li><strong>Tanda ΔH:</strong> Perubahan entalpi (<code class="highlight-positive">ΔH</code>) memiliki nilai <strong class="highlight-positive">positif (&gt; 0)</strong>.</li>
-            <li><strong>Dampak Lingkungan:</strong> Lingkungan (termasuk kalorimeter dan udara di sekitarnya) akan mengalami penurunan suhu karena sistem menyerap kalor darinya.</li>
-        </ul>
-        <p>Secara visual, dalam diagram entalpi, reaktan berada pada tingkat energi yang lebih rendah, dan produk pada tingkat energi yang lebih tinggi, dengan panah ΔH menunjuk ke atas, menunjukkan penyerapan energi.</p>
-        <p>Contoh umum reaksi endotermik adalah proses fotosintesis, yang menyerap energi cahaya matahari:</p>
-        <div class="formula-block">
-            <code>6CO<sub>2</sub>(g) + 6H<sub>2</sub>O(l) --(cahaya matahari)--> C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(S) + 6O<sub>2</sub>(g)</code>
-        </div>
-
-        <h3>Mengukur Perubahan Entalpi dengan Kalorimetri</h3>
-        <p>Perubahan entalpi suatu reaksi dapat diukur secara eksperimen menggunakan alat yang disebut kalorimeter. Prinsip dasar kalorimetri adalah hukum kekekalan energi: kalor yang dilepaskan oleh reaksi (sistem) harus diserap oleh lingkungan (kalorimeter dan isinya, biasanya larutan), dan sebaliknya.</p>
-        <p>Secara umum, dalam sebuah kalorimeter, kalor yang dipertukarkan dapat dinyatakan sebagai:</p>
-        <div class="formula-block">
-            <code>q<sub>reaksi</sub> = -(q<sub>sistem</sub> + q<sub>kalorimeter</sub>)</code>
-        </div>
-        <p>Di mana:</p>
-        <ul>
-            <li><code>q<sub>reaksi</sub></code> adalah kalor yang dihasilkan atau diserap oleh reaksi kimia yang sedang diamati.</li>
-            <li><code>q<sub>sistem</sub></code> (sering disebut juga <code>q<sub>larutan</sub></code>) adalah kalor yang diserap atau dilepaskan oleh larutan (atau air) di dalam kalorimeter. Ini dihitung dengan rumus <code>q = m.c.ΔT</code>, di mana m adalah massa larutan, c adalah kalor jenis larutan, dan ΔT adalah perubahan suhu larutan.</li>
-            <li><code>q<sub>kalorimeter</sub></code> adalah kalor yang diserap atau dilepaskan oleh komponen-komponen kalorimeter itu sendiri (seperti bejana, pengaduk, termometer). Ini dihitung dengan rumus <code>q = C<sub>kal</sub>.ΔT</code>, di mana C<sub>kal</sub> adalah kapasitas kalor kalorimeter.</li>
-        </ul>
-        <p>Pada kalorimeter sederhana (misalnya, yang terbuat dari gelas styrofoam), kapasitas kalor kalorimeter (<code>q<sub>kalorimeter</sub></code>) sering dianggap sangat kecil atau dapat diabaikan karena jumlah kalor yang diserap oleh wadah relatif insignifikan dibandingkan dengan kalor yang diserap larutan. Dalam kasus ini, persamaan dapat disederhanakan menjadi:</p>
-        <div class="formula-block">
-            <code>q<sub>reaksi</sub> ≈ -q<sub>sistem</sub></code>
-        </div>
-        <p>Karena sebagian besar pengukuran kalorimetri dilakukan pada tekanan atmosfer yang konstan, kita dapat secara langsung menghubungkan kalor reaksi yang diukur dengan perubahan entalpi reaksi:</p>
-        <div class="formula-block">
-            <code>q<sub>reaksi</sub> = ΔH</code>
-        </div>
-        <p>Dengan demikian, mengukur perubahan suhu larutan di dalam kalorimeter memungkinkan kita untuk menghitung kalor yang diserap oleh larutan, yang kemudian dapat dikaitkan dengan perubahan entalpi reaksi yang terjadi.</p>
-
-        <div class="example-section">
-            <h3>Contoh Perhitungan: Perubahan Entalpi Reaksi Penetralan</h3>
-            <p>Untuk lebih memahami aplikasi konsep ini, mari kita telaah contoh perhitungan perubahan entalpi dari reaksi penetralan asam-basa:</p>
-            <p>Sejumlah 100 ml larutan NaOH 0,02 M direaksikan dengan 100 ml larutan HCl 0,02 M dalam kalorimeter sederhana. Suhu awal dari kedua larutan adalah 22,5°C. Setelah reaksi, suhu campuran menjadi 24,6°C. Hitunglah perubahan entalpi (ΔH) untuk reaksi penetralan tersebut!</p>
-
-            <div class="note">
-                <strong>Catatan Penting Asumsi:</strong><br>
-                Dalam perhitungan ini, kita membuat beberapa asumsi umum yang sering digunakan untuk kalorimetri sederhana:
+        <main>
+            <section id="pengantar-entalpi">
+                <h2>Pengantar Entalpi (H)</h2>
+                <p>Dalam studi termodinamika, kita sering berhadapan dengan energi yang terlibat dalam reaksi kimia. Pada Bab sebelumnya, kita telah membahas energi internal (E) dan hubungannya dengan kalor (q) dan kerja (w). Namun, sebagian besar <span class="highlight">reaksi kimia di laboratorium atau industri dilakukan pada kondisi tekanan tetap (atmosfer)</span>, bukan volume tetap.</p>
+                <p>Untuk memudahkan penanganan kalor pada tekanan konstan, diperkenalkanlah fungsi termodinamika baru yang disebut <span class="highlight">entalpi (H)</span>. Entalpi didefinisikan sebagai:</p>
+                <div class="formula-block">
+                    <span>H = E + PV</span>
+                </div>
+                <p>Di mana:</p>
                 <ul>
-                    <li>Massa jenis larutan dianggap sama dengan massa jenis air: <code>1 g.ml<sup>-1</sup></code>.</li>
-                    <li>Kalor jenis larutan dianggap sama dengan kalor jenis air: <code>4,2 J.g<sup>-1</sup>.°C<sup>-1</sup></code>.</li>
-                    <li>Kalor yang dilepaskan atau diserap oleh kalorimeter (kapasitas kalor kalorimeter) diabaikan.</li>
+                    <li><span class="highlight">H</span> adalah Entalpi (Joule, J)</li>
+                    <li><span class="highlight">E</span> adalah Energi Internal Sistem (Joule, J)</li>
+                    <li><span class="highlight">P</span> adalah Tekanan (Pascal, Pa)</li>
+                    <li><span class="highlight">V</span> adalah Volume (Meter Kubik, m³)</li>
                 </ul>
-            </div>
+            </section>
 
-            <div class="example-step">
-                <strong>Langkah 1: Hitung Massa Total Larutan Campuran</strong>
-                <p>Massa larutan campuran adalah jumlah massa NaOH dan HCl. Karena massa jenis larutan dianggap 1 g/ml, volume dalam ml sama dengan massa dalam gram.</p>
+            <section id="hubungan-qp-delta-h">
+                <h2>Hubungan Kalor pada Tekanan Konstan (`qₚ`) dan Perubahan Entalpi (`ΔH`)</h2>
+                <p>Berdasarkan Hukum Pertama Termodinamika, perubahan energi internal (<span class="highlight">ΔE</span>) suatu sistem adalah jumlah kalor (<span class="highlight">q</span>) yang diserap atau dilepaskan oleh sistem dan kerja (<span class="highlight">w</span>) yang dilakukan oleh atau pada sistem:</p>
                 <div class="formula-block">
-                    <code>Massa campuran = Massa NaOH + Massa HCl</code><br>
-                    <code>Massa campuran = (100 ml × 1 g.ml<sup>-1</sup>) + (100 ml × 1 g.ml<sup>-1</sup>)</code><br>
-                    <code>Massa campuran = 100 g + 100 g = 200 gram</code>
+                    <span>ΔE = q + w</span>
                 </div>
-            </div>
-
-            <div class="example-step">
-                <strong>Langkah 2: Hitung Perubahan Suhu (ΔT)</strong>
-                <p>Perubahan suhu adalah selisih antara suhu akhir dan suhu awal. Peningkatan suhu menunjukkan bahwa reaksi melepaskan kalor ke larutan.</p>
+                <p>Pada kondisi tekanan tetap, kerja yang dilakukan oleh sistem akibat perubahan volume adalah <span class="highlight">w = -PΔV</span>. Dengan demikian, persamaan Hukum Pertama Termodinamika menjadi:</p>
                 <div class="formula-block">
-                    <code>ΔT = T<sub>akhir</sub> - T<sub>awal</sub></code><br>
-                    <code>ΔT = 24,6°C - 22,5°C = 2,1°C</code>
+                    <span>ΔE = qₚ - PΔV</span>
                 </div>
-            </div>
-
-            <div class="example-step">
-                <strong>Langkah 3: Hitung Kalor yang Diserap oleh Larutan (q<sub>larutan</sub>)</strong>
-                <p>Kalor yang diserap oleh larutan dapat dihitung menggunakan rumus <code>q = m.c.ΔT</code>.</p>
+                <p>Kita bisa mengatur ulang persamaan ini untuk menemukan <span class="highlight">qₚ</span> (kalor pada tekanan konstan):</p>
                 <div class="formula-block">
-                    <code>q<sub>larutan</sub> = m<sub>campuran</sub> × c<sub>larutan</sub> × ΔT</code><br>
-                    <code>q<sub>larutan</sub> = 200 g × 4,2 J.g<sup>-1</sup>.°C<sup>-1</sup> × 2,1°C</code><br>
-                    <code>q<sub>larutan</sub> = 1.764 J</code><br>
-                    <code>q<sub>larutan</sub> = 1,764 kJ</code>
+                    <span>qₚ = ΔE + PΔV</span>
                 </div>
-            </div>
-
-            <div class="example-step">
-                <strong>Langkah 4: Hitung Kalor Reaksi (q<sub>reaksi</sub>)</strong>
-                <p>Kalor yang diserap oleh larutan berasal dari kalor yang dilepaskan oleh reaksi. Berdasarkan hukum kekekalan energi, <code>q<sub>reaksi</sub> = -q<sub>larutan</sub></code>. Tanda negatif menunjukkan bahwa reaksi melepaskan kalor (eksotermik).</p>
+                <p>Mengingat definisi entalpi (<span class="highlight">H = E + PV</span>), perubahan entalpi (<span class="highlight">ΔH</span>) dapat ditulis sebagai:</p>
                 <div class="formula-block">
-                    <code>q<sub>reaksi</sub> = -q<sub>larutan</sub></code><br>
-                    <code>q<sub>reaksi</sub> = -1,764 kJ</code>
+                    <span>ΔH = Δ(E + PV)</span>
+                    <span>ΔH = ΔE + Δ(PV)</span>
                 </div>
-            </div>
-
-            <div class="example-step">
-                <strong>Langkah 5: Hitung Mol Reaktan</strong>
-                <p>Mol reaktan dihitung dari volume dan konsentrasi larutan. Ini penting untuk menentukan perubahan entalpi per mol reaksi.</p>
+                <p>Jika tekanan (<span class="highlight">P</span>) dijaga tetap selama proses, maka <span class="highlight">Δ(PV) = PΔV</span>. Oleh karena itu, perubahan entalpi (<span class="highlight">ΔH</span>) pada tekanan konstan adalah:</p>
                 <div class="formula-block">
-                    <code>Mol NaOH = Volume (L) × Konsentrasi (mol/L)</code><br>
-                    <code>Mol NaOH = 0,1 L × 0,02 mol/L = 0,002 mol</code><br>
-                    <code>Mol HCl = Volume (L) × Konsentrasi (mol/L)</code><br>
-                    <code>Mol HCl = 0,1 L × 0,02 mol/L = 0,002 mol</code>
+                    <span>ΔH = ΔE + PΔV</span>
                 </div>
-                <p>Reaksi penetralan adalah: <code>NaOH(aq) + HCl(aq) → NaCl(aq) + H<sub>2</sub>O(l)</code>. Stoikiometri reaksi adalah 1:1, dan jumlah mol reaktan sama, sehingga 0,002 mol reaksi (dan 0,002 mol H<sub>2</sub>O terbentuk) terjadi.</p>
-            </div>
+                <p>Dengan membandingkan dua persamaan terakhir, kita dapat menyimpulkan bahwa:</p>
+                <div class="formula-block" style="background-color: #E8F5E9; border-left-color: var(--accent-green);">
+                    <span><span class="highlight">qₚ = ΔH</span></span>
+                </div>
+                <p>Ini adalah kesimpulan penting: <span class="highlight">kalor yang dipertukarkan pada tekanan konstan (qₚ) sama dengan perubahan entalpi (ΔH)</span> dari sistem.</p>
+            </section>
 
-            <div class="example-step">
-                <strong>Langkah 6: Hitung Perubahan Entalpi per Mol (ΔH)</strong>
-                <p>Perubahan entalpi (ΔH) adalah kalor reaksi yang diukur, dibagi dengan jumlah mol reaktan yang bereaksi (atau produk yang terbentuk, dalam kasus ini H<sub>2</sub>O).</p>
+            <section id="perhitungan-perubahan-entalpi">
+                <h2>Perhitungan Perubahan Entalpi (`ΔH`)</h2>
+                <p>Perubahan entalpi (<span class="highlight">ΔH</span>) untuk suatu reaksi kimia didefinisikan sebagai perbedaan antara entalpi produk akhir dan entalpi reaktan awal:</p>
                 <div class="formula-block">
-                    <code>ΔH = q<sub>reaksi</sub> / Mol reaktan yang bereaksi</code><br>
-                    <code>ΔH = -1,764 kJ / 0,002 mol</code><br>
-                    <code>ΔH = <span class="highlight-negative">-882 kJ.mol<sup>-1</sup></span></code>
+                    <span>ΔH = H<sub>akhir</sub> - H<sub>awal</sub></span>
+                    <span>atau</span>
+                    <span>ΔH = H<sub>produk</sub> - H<sub>reaktan</sub></span>
                 </div>
-            </div>
+                <p>Nilai <span class="highlight">ΔH</span> dapat bernilai positif atau negatif, yang mengindikasikan apakah reaksi menyerap atau melepaskan kalor.</p>
+            </section>
 
-            <p><strong>Kesimpulan:</strong> Perubahan entalpi (ΔH) untuk reaksi penetralan asam-basa ini adalah <strong class="highlight-negative">-882 kJ/mol</strong>. Tanda negatif menunjukkan secara jelas bahwa reaksi ini adalah <strong class="highlight-negative">eksotermik</strong>, yaitu melepaskan kalor sebesar 882 kJ untuk setiap mol air yang terbentuk.</p>
-        </div>
+            <section id="reaksi-eksotermik">
+                <h2>Reaksi Eksotermik</h2>
+                <p>Reaksi <span class="highlight">eksotermik</span> adalah reaksi yang <span class="highlight">melepaskan kalor</span> ke lingkungan. Dalam reaksi ini, entalpi produk (<span class="highlight">H<sub>produk</sub></span>) lebih rendah daripada entalpi reaktan (<span class="highlight">H<sub>reaktan</sub></span>).</p>
+                <p>Karena <span class="highlight">H<sub>produk</sub> < H<sub>reaktan</sub></span>, maka nilai <span class="highlight">ΔH</span> akan <span class="highlight">negatif (<ΔH < 0)</span>.</p>
+                <p>Contoh reaksi eksotermik adalah pembakaran (misalnya, pembakaran propana):</p>
+                <div class="formula-block">
+                    <span>C₃H₈(g) + 5O₂(g) → 3CO₂(g) + 4H₂O(l)</span>
+                </div>
+                <p>Diagram entalpi untuk reaksi eksotermik menunjukkan bahwa reaktan berada pada tingkat energi yang lebih tinggi dibandingkan produk.</p>
+                <div class="diagram-container exothermic">
+                    <div class="enthalpy-axis">
+                        <div class="enthalpy-level reaktan">
+                            <span class="enthalpy-level-text">H₁ (Reaktan)</span>
+                        </div>
+                        <div class="enthalpy-level produk">
+                            <span class="enthalpy-level-text">H₂ (Produk)</span>
+                        </div>
+                        <div class="delta-h-arrow"></div>
+                        <span class="delta-h-text">ΔH < 0</span>
+                        <span class="kalor-text">Kalor Dilepaskan</span>
+                    </div>
+                    <div class="diagram-label">Grafik Perubahan Entalpi Reaksi Eksotermik</div>
+                </div>
+            </section>
 
+            <section id="reaksi-endotermik">
+                <h2>Reaksi Endotermik</h2>
+                <p>Reaksi <span class="highlight">endotermik</span> adalah reaksi yang <span class="highlight">menyerap kalor</span> dari lingkungan. Dalam reaksi ini, entalpi produk (<span class="highlight">H<sub>produk</sub></span>) lebih tinggi daripada entalpi reaktan (<span class="highlight">H<sub>reaktan</sub></span>).</p>
+                <p>Karena <span class="highlight">H<sub>produk</sub> > H<sub>reaktan</sub></span>, maka nilai <span class="highlight">ΔH</span> akan <span class="highlight">positif (>ΔH > 0)</span>.</p>
+                <p>Contoh reaksi endotermik adalah fotosintesis:</p>
+                <div class="formula-block">
+                    <span>6CO₂(g) + 6H₂O(l) + Cahaya → C₆H₁₂O₆(s) + 6O₂(g)</span>
+                </div>
+                <p>Diagram entalpi untuk reaksi endotermik menunjukkan bahwa reaktan berada pada tingkat energi yang lebih rendah dibandingkan produk.</p>
+                <div class="diagram-container endothermic">
+                    <div class="enthalpy-axis">
+                        <div class="enthalpy-level reaktan">
+                            <span class="enthalpy-level-text">H₁ (Reaktan)</span>
+                        </div>
+                        <div class="enthalpy-level produk">
+                            <span class="enthalpy-level-text">H₂ (Produk)</span>
+                        </div>
+                        <div class="delta-h-arrow"></div>
+                        <span class="delta-h-text">ΔH > 0</span>
+                        <span class="kalor-text">Kalor Diserap</span>
+                    </div>
+                    <div class="diagram-label">Grafik Perubahan Entalpi Reaksi Endotermik</div>
+                </div>
+            </section>
+
+            <section id="kalorimetri">
+                <h2>Pengukuran Perubahan Entalpi: Kalorimetri</h2>
+                <p>Perubahan entalpi (<span class="highlight">ΔH</span>) suatu reaksi dapat diukur secara eksperimen menggunakan alat yang disebut <span class="highlight">kalorimeter</span>. Kalorimetri adalah ilmu yang mempelajari pengukuran kalor.</p>
+                <p>Ada dua jenis kalorimeter utama yang sering digunakan:</p>
+                <h3>1. Kalorimeter Bom</h3>
+                <p>Kalorimeter bom adalah sistem terisolasi yang dirancang untuk mengukur kalor reaksi pada volume konstan (sehingga kerja PΔV = 0). Dalam kalorimeter bom, kalor reaksi (<span class="highlight">q<sub>reaksi</sub></span>) adalah kebalikan dari total kalor yang diserap oleh sistem (reaktan) dan kalorimeter itu sendiri:</p>
+                <div class="formula-block">
+                    <span>q<sub>reaksi</sub> = -(q<sub>sistem</sub> + q<sub>kalorimeter</sub>)</span>
+                </div>
+                <p>Di mana:</p>
+                <ul>
+                    <li><span class="highlight">q<sub>sistem</sub></span> adalah kalor yang diserap/dilepas oleh reaktan atau produk.</li>
+                    <li><span class="highlight">q<sub>kalorimeter</sub></span> adalah kalor yang diserap/dilepas oleh komponen kalorimeter (misalnya, air di dalamnya).</li>
+                </ul>
+                <p>Kalor yang diserap oleh kalorimeter dihitung menggunakan kapasitas kalor kalorimeter (C<sub>kal</sub>) dan perubahan suhu (ΔT):</p>
+                <div class="formula-block">
+                    <span>q<sub>kalorimeter</sub> = C<sub>kal</sub> . ΔT</span>
+                </div>
+                <p>Jika massa reaktan sangat kecil dan efeknya terhadap kalor sistem diabaikan, maka kalor yang diserap oleh kalorimeter dapat langsung digunakan untuk menentukan kalor reaksi.</p>
+
+                <h3>2. Kalorimeter Sederhana (Tekanan Konstan)</h3>
+                <p>Kalorimeter sederhana, seringkali berupa cangkir styrofoam, digunakan untuk mengukur kalor reaksi pada <span class="highlight">tekanan konstan</span> (tekanan atmosfer). Dalam kasus ini, kita dapat menganggap bahwa kalor yang dilepaskan atau diserap oleh reaksi secara keseluruhan akan diserap atau dilepaskan oleh larutan di dalam kalorimeter.</p>
+                <p>Jika kalor yang diserap oleh bejana kalorimeter itu sendiri diabaikan (karena relatif kecil), maka kalor reaksi (<span class="highlight">q<sub>reaksi</sub></span>) sama dengan negatif dari kalor yang diserap atau dilepaskan oleh larutan (<span class="highlight">q<sub>larutan</sub></span>):</p>
+                <div class="formula-block" style="background-color: #E0F2F7; border-left-color: var(--semantic-info);">
+                    <span>q<sub>reaksi</sub> = -q<sub>larutan</sub></span>
+                </div>
+                <p>Kalor yang diserap atau dilepaskan oleh larutan dihitung menggunakan rumus:</p>
+                <div class="formula-block">
+                    <span>q<sub>larutan</sub> = m . c . ΔT</span>
+                </div>
+                <p>Di mana:</p>
+                <ul>
+                    <li><span class="highlight">m</span> adalah massa larutan (gram)</li>
+                    <li><span class="highlight">c</span> adalah kalor jenis larutan (Joule per gram per derajat Celcius, J.g⁻¹.°C⁻¹)</li>
+                    <li><span class="highlight">ΔT</span> adalah perubahan suhu (suhu akhir - suhu awal, °C)</li>
+                </ul>
+                <div class="note">
+                    <p><strong>Penting:</strong> Untuk reaksi yang dilakukan pada tekanan tetap, seperti pada kalorimeter sederhana, <span class="highlight">kalor reaksi (q<sub>reaksi</sub>) secara langsung adalah perubahan entalpi (ΔH)</span> dari reaksi tersebut.</p>
+                    <div class="formula-block" style="background-color: #E8F5E9; border-left-color: var(--accent-green);">
+                        <span>q<sub>reaksi</sub> = ΔH</span>
+                    </div>
+                    <p>Oleh karena itu, dengan mengukur perubahan suhu larutan, kita dapat menghitung kalor reaksi dan selanjutnya menentukan perubahan entalpi reaksi.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Bab V: Termokimia - Kimia untuk SMA/MA Kelas XI. Semua hak dilindungi.</p>
+        </footer>
     </div>
 </body>
 </html>
-```

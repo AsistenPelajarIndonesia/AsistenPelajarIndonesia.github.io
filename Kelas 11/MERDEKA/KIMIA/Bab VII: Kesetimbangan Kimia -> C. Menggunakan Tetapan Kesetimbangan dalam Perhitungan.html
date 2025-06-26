@@ -1,15 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kesetimbangan Kimia: Perhitungan Tetapan</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Memahami Perhitungan Kesetimbangan Kimia</title>
     <style>
-        /* Theme Colors */
+        /* Light Mode Theme */
         :root {
             --background-canvas: #FFFFFF;
             --text-primary: #212121;
@@ -26,695 +22,519 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background-canvas);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
         }
 
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--background-canvas);
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
 
         h1, h2, h3, h4 {
-            color: var(--primary-blue);
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-weight: 500;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
         }
 
-        h1 { font-size: 2.2em; }
-        h2 { font-size: 1.8em; color: var(--accent-green); }
-        h3 { font-size: 1.5em; color: var(--text-primary); }
-        h4 { font-size: 1.2em; color: var(--text-secondary); }
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-blue);
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-blue);
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: var(--accent-green);
+            margin-top: 1.8rem;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
 
         p {
-            color: var(--text-primary);
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
         }
 
-        .intro-text {
-            font-size: 1.1em;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-        }
-
-        code {
-            background-color: var(--border-divider);
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-family: 'Roboto Mono', monospace;
-            color: var(--text-primary);
-            font-size: 0.9em;
-            white-space: pre-wrap; /* Allows long code lines to wrap */
-        }
-
-        pre {
-            background-color: var(--border-divider);
-            padding: 15px;
+        .formula-box {
+            background-color: #f0f8ff; /* A lighter blue tint */
+            border: 1px solid var(--semantic-info);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
             border-radius: 8px;
-            overflow-x: auto;
-            margin-bottom: 20px;
-            font-family: 'Roboto Mono', monospace;
-            color: var(--text-primary);
-        }
-
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-        }
-
-        ol {
-            list-style-type: decimal;
-            margin-left: 20px;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-        }
-
-        ol li, ul li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: var(--primary-blue);
-        }
-
-        .highlight {
-            background-color: var(--secondary-accent-amber);
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: var(--text-primary);
-        }
-
-        .equation-box {
-            background-color: var(--semantic-info);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin: 20px 0;
             text-align: center;
-            font-size: 1.2em;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            overflow-x: auto; /* For responsiveness of long formulas */
+        }
+
+        .formula-box code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: transparent;
+            color: var(--primary-blue);
             font-weight: bold;
         }
 
-        details {
-            background-color: var(--border-divider);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-divider);
-            overflow: hidden; /* Ensures border-radius applies correctly */
+        .section-intro {
+            background-color: #e3f2fd; /* Very light blue */
+            border-left: 8px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            border-radius: 0 8px 8px 0;
+            color: var(--text-primary);
         }
 
-        summary {
-            padding: 15px 20px;
-            cursor: pointer;
-            background-color: var(--primary-blue);
-            color: white;
-            font-weight: bold;
-            border-radius: 8px; /* Top corners */
-            position: relative;
-            outline: none; /* Remove outline on focus */
-            transition: background-color 0.3s ease;
-        }
-
-        summary:hover {
-            background-color: #1565C0; /* Darker blue on hover */
-        }
-
-        details[open] summary {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            margin-bottom: 10px; /* Space between summary and content */
-        }
-
-        details > div {
-            padding: 15px 20px;
+        .step-card {
             background-color: var(--background-canvas);
-            border-top: 1px solid var(--border-divider);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .example-section {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: rgba(25, 118, 210, 0.05); /* Light blue background */
-            border-left: 5px solid var(--primary-blue);
+        .step-card h4 {
+            color: var(--accent-green);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-divider);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .example-box {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            padding: 1.5rem;
+            margin: 2rem 0;
             border-radius: 8px;
+        }
+
+        .example-box h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 0.8rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.95em;
+            margin-bottom: 1rem;
         }
 
-        table th, table td {
+        th, td {
             border: 1px solid var(--border-divider);
-            padding: 10px;
-            text-align: center;
-            color: var(--text-primary);
+            padding: 0.8rem;
+            text-align: left;
+            font-size: 0.95rem;
         }
 
-        table th {
-            background-color: var(--primary-blue);
-            color: white;
+        th {
+            background-color: #eef5fb; /* Light background for headers */
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        td {
+            background-color: var(--background-canvas);
+            color: var(--text-secondary);
+        }
+
+        .highlight-text {
+            color: var(--primary-blue);
             font-weight: bold;
         }
 
-        table tr:nth-child(even) {
-            background-color: #F5F5F5; /* Light grey for even rows */
-        }
-
-        .note {
-            background-color: var(--semantic-info);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            font-size: 0.9em;
-        }
-
-        .warning {
-            background-color: var(--semantic-warning);
+        .note-box {
+            background-color: #fffde7; /* Light yellow for notes */
+            border: 1px solid var(--semantic-warning);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
             color: var(--text-primary);
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            font-size: 0.9em;
+            font-size: 0.95rem;
         }
 
+        .note-box strong {
+            color: var(--semantic-warning);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-divider);
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            h3 {
+                font-size: 1.4rem;
             }
             .container {
-                padding: 15px;
+                margin: 1rem auto;
+                padding: 0 1rem;
             }
-            h1 { font-size: 1.8em; }
-            h2 { font-size: 1.5em; }
-            h3 { font-size: 1.3em; }
-            h4 { font-size: 1.1em; }
-            summary { padding: 12px 15px; }
-            details > div { padding: 12px 15px; }
-            table, table thead, table tbody, table th, table td, table tr {
-                display: block;
+            .step-card, .example-box, .section-intro, .formula-box, .note-box {
+                padding: 1rem;
             }
-            table thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
+            table {
+                font-size: 0.85rem;
             }
-            table tr { border: 1px solid var(--border-divider); margin-bottom: 10px; border-radius: 5px; }
-            table td {
-                border: none;
-                border-bottom: 1px solid var(--border-divider);
-                position: relative;
-                padding-left: 50%;
-                text-align: right;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 1rem;
             }
-            table td:before {
-                position: absolute;
-                top: 6px;
-                left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                color: var(--primary-blue);
+            h1 {
+                font-size: 1.8rem;
             }
-            /* Label the data */
-            table td:nth-of-type(1):before { content: "Fase"; }
-            table td:nth-of-type(2):before { content: "Awal"; }
-            table td:nth-of-type(3):before { content: "Reaksi"; }
-            table td:nth-of-type(4):before { content: "Setimbang"; }
-            /* Specific for the RICE table */
-            table td:nth-of-type(1):before { content: "Spesies"; }
-            table td:nth-of-type(2):before { content: "Mula-mula"; }
-            table td:nth-of-type(3):before { content: "Bereaksi"; }
-            table td:nth-of-type(4):before { content: "Setimbang"; }
+            h2 {
+                font-size: 1.6rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+            .container {
+                padding: 0 0.8rem;
+            }
+            th, td {
+                padding: 0.6rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>C. Menggunakan Tetapan Kesetimbangan dalam Perhitungan</h1>
-        <p class="intro-text">
-            Setelah memahami konsep tetapan kesetimbangan, langkah selanjutnya adalah mengaplikasikannya dalam perhitungan reaksi kesetimbangan. Kemampuan ini sangat krusial untuk menganalisis kondisi suatu sistem kimia pada kesetimbangan dan juga memprediksi arah pergeseran kesetimbangan. Bagian ini akan membimbing Anda melalui berbagai contoh penggunaan konstanta kesetimbangan dalam perhitungan kimia, meningkatkan keterampilan numerik Anda dalam kimia.
-        </p>
+        <h1>Menggunakan Tetapan Kesetimbangan dalam Perhitungan Kimia</h1>
+
+        <div class="section-intro">
+            <p>Memahami konsep tetapan kesetimbangan adalah langkah awal yang penting dalam kimia. Namun, kemampuan untuk <span class="highlight-text">menggunakan tetapan kesetimbangan ini dalam perhitungan</span> adalah kunci untuk memecahkan berbagai masalah reaksi kimia. Bagian ini akan membimbing Anda melalui proses bagaimana menerapkan konstanta kesetimbangan untuk menghitung konsentrasi zat pada kesetimbangan, tekanan parsial, atau bahkan mengonversi antara jenis konstanta kesetimbangan yang berbeda (K<sub>c</sub> dan K<sub>p</sub>).</p>
+            <p>Peningkatan keterampilan numerasi Anda dalam konteks ini sangat berharga untuk mendalami pemahaman tentang sistem kesetimbangan.</p>
+        </div>
 
         <h2>Hubungan Antara K<sub>p</sub> dan K<sub>c</sub></h2>
-        <p>
-            Sebelum kita masuk ke contoh perhitungan, mari kita pahami terlebih dahulu hubungan fundamental antara tetapan kesetimbangan konsentrasi (K<sub>c</sub>) dan tetapan kesetimbangan tekanan parsial (K<sub>p</sub>). Hubungan ini sangat penting untuk diketahui karena tidak semua data yang diberikan dalam soal akan memungkinkan perhitungan K<sub>c</sub> atau K<sub>p</sub> secara langsung.
-        </p>
-        <div class="equation-box">
-            K<sub>p</sub> = K<sub>c</sub>(RT)<sup>Δn</sup>
+        <p>Sebelum kita masuk ke perhitungan spesifik, mari kita pahami hubungan fundamental antara tetapan kesetimbangan berdasarkan tekanan parsial (K<sub>p</sub>) dan tetapan kesetimbangan berdasarkan konsentrasi molar (K<sub>c</sub>). Hubungan ini dijelaskan oleh persamaan:</p>
+
+        <div class="formula-box">
+            <code>K<sub>p</sub> = K<sub>c</sub>(RT)<sup>Δn</sup></code>
         </div>
-        <p>
-            Di mana:
+        <p>Di mana:</p>
+        <ul>
+            <li><code>K<sub>p</sub></code>: Tetapan kesetimbangan berdasarkan tekanan parsial.</li>
+            <li><code>K<sub>c</sub></code>: Tetapan kesetimbangan berdasarkan konsentrasi molar.</li>
+            <li><code>R</code>: Konstanta gas ideal (0,082 L·atm·mol<sup>-1</sup>·K<sup>-1</sup>).</li>
+            <li><code>T</code>: Suhu dalam Kelvin.</li>
+            <li><code>Δn</code>: Perubahan jumlah mol gas antara produk dan reaktan. Dihitung sebagai (jumlah mol gas produk) - (jumlah mol gas reaktan).</li>
+        </ul>
+
+        <h3>Bagaimana hubungan ini diturunkan?</h3>
+        <p>Hubungan ini berasal dari persamaan gas ideal, <code>PV = nRT</code>, yang dapat diatur ulang menjadi <code>P = (n/V)RT</code>. Kita tahu bahwa konsentrasi molar <code>C = n/V</code>. Jadi, <code>P = CRT</code>. Jika kita terapkan ini pada ekspresi K<sub>p</sub> dan K<sub>c</sub>, kita dapat melihat hubungannya:</p>
+        <p>Misalkan reaksi umum adalah: <code>aA(g) + bB(g) &harr; cC(g) + dD(g)</code></p>
+        <p>Ekspresi K<sub>p</sub> adalah: <code>K<sub>p</sub> = (P<sub>C</sub><sup>c</sup> * P<sub>D</sub><sup>d</sup>) / (P<sub>A</sub><sup>a</sup> * P<sub>B</sub><sup>b</sup>)</code></p>
+        <p>Gantikan setiap P dengan CRT-nya:</p>
+        <p><code>K<sub>p</sub> = ((C<sub>C</sub>RT)<sup>c</sup> * (C<sub>D</sub>RT)<sup>d</sup>) / ((C<sub>A</sub>RT)<sup>a</sup> * (C<sub>B</sub>RT)<sup>b</sup>)</code></p>
+        <p><code>K<sub>p</sub> = (C<sub>C</sub><sup>c</sup> * C<sub>D</sub><sup>d</sup> * (RT)<sup>c+d</sup>) / (C<sub>A</sub><sup>a</sup> * C<sub>B</sub><sup>b</sup> * (RT)<sup>a+b</sup>)</code></p>
+        <p>Perhatikan bahwa <code>(C<sub>C</sub><sup>c</sup> * C<sub>D</sub><sup>d</sup>) / (C<sub>A</sub><sup>a</sup> * C<sub>B</sub><sup>b</sup>)</code> adalah ekspresi untuk <code>K<sub>c</sub></code>. Dan <code>(c+d) - (a+b)</code> adalah <code>Δn</code>.</p>
+        <p>Sehingga, kita mendapatkan kembali: <code>K<sub>p</sub> = K<sub>c</sub>(RT)<sup>Δn</sup></code>.</p>
+
+        <h2>Langkah-langkah Umum dalam Perhitungan Kesetimbangan</h2>
+        <p>Untuk menyelesaikan masalah yang melibatkan tetapan kesetimbangan, ikuti langkah-langkah sistematis berikut:</p>
+
+        <div class="step-card">
+            <h4>Langkah 1: Identifikasi Data yang Diketahui dan yang Ditanyakan</h4>
+            <p>Bacalah soal dengan cermat. Catat semua informasi yang diberikan (misalnya, volume, mol awal, mol kesetimbangan, tekanan total, suhu) dan apa yang perlu dihitung (K<sub>c</sub>, K<sub>p</sub>, konsentrasi kesetimbangan, dll.).</p>
+        </div>
+
+        <div class="step-card">
+            <h4>Langkah 2: Buat Diagram ICE (Initial, Change, Equilibrium)</h4>
+            <p>Diagram ICE adalah alat yang sangat berguna untuk melacak perubahan mol atau konsentrasi/tekanan reaktan dan produk selama reaksi mencapai kesetimbangan.</p>
             <ul>
-                <li><code>K<sub>p</sub></code> = Konstanta kesetimbangan berdasarkan tekanan parsial.</li>
-                <li><code>K<sub>c</sub></code> = Konstanta kesetimbangan berdasarkan konsentrasi molar.</li>
-                <li><code>R</code> = Konstanta gas ideal (biasanya <code>0.082 L·atm·mol<sup>-1</sup>·K<sup>-1</sup></code>).</li>
-                <li><code>T</code> = Suhu dalam Kelvin.</li>
-                <li><code>Δn</code> = Perubahan jumlah mol gas (jumlah mol produk gas - jumlah mol reaktan gas).</li>
+                <li><strong>Initial (Awal)</strong>: Tuliskan jumlah mol, konsentrasi, atau tekanan parsial awal dari setiap zat.</li>
+                <li><strong>Change (Perubahan)</strong>: Tentukan perubahan dalam mol, konsentrasi, atau tekanan parsial. Gunakan variabel (misalnya, 'x') dan koefisien stoikiometri dari persamaan reaksi untuk menunjukkan perubahan ini. Reaktan akan berkurang, produk akan bertambah.</li>
+                <li><strong>Equilibrium (Kesetimbangan)</strong>: Hitung jumlah mol, konsentrasi, atau tekanan parsial pada kesetimbangan dengan menjumlahkan baris 'Initial' dan 'Change'.</li>
             </ul>
-        </p>
-
-        <h3>Pembuktian Hubungan K<sub>p</sub> dan K<sub>c</sub></h3>
-        <p>
-            Hubungan ini dapat dibuktikan dengan merujuk pada <strong>persamaan gas ideal</strong>, yaitu <code>PV = nRT</code>.
-        </p>
-        <ol>
-            <li>
-                Dari persamaan gas ideal, kita bisa mengekspresikan tekanan <code>P</code> sebagai:
-                <pre>P = (n/V)RT</pre>
-            </li>
-            <li>
-                Kita tahu bahwa konsentrasi molar <code>[C]</code> didefinisikan sebagai <code>n/V</code> (mol per volume). Jadi, kita bisa mengganti <code>n/V</code> dengan <code>[C]</code>:
-                <pre>P = [C]RT</pre>
-                Ini berarti tekanan parsial suatu gas sebanding dengan konsentrasi molarnya pada suhu konstan.
-            </li>
-            <li>
-                Sekarang, pertimbangkan reaksi kesetimbangan umum:
-                <pre>aA(g) + bB(g) <=> cC(g) + dD(g)</pre>
-            </li>
-            <li>
-                Ekspresi <code>K<sub>c</sub></code> untuk reaksi ini adalah:
-                <pre>K<sub>c</sub> = ([C]<sup>c</sup>[D]<sup>d</sup>) / ([A]<sup>a</sup>[B]<sup>b</sup>)</pre>
-            </li>
-            <li>
-                Ekspresi <code>K<sub>p</sub></code> untuk reaksi ini adalah:
-                <pre>K<sub>p</sub> = (P<sub>C</sub><sup>c</sup> P<sub>D</sub><sup>d</sup>) / (P<sub>A</sub><sup>a</sup> P<sub>B</sub><sup>b</sup>)</pre>
-            </li>
-            <li>
-                Gantikan setiap tekanan parsial <code>P</code> dengan <code>[C]RT</code>:
-                <pre>
-                K<sub>p</sub> = (([C]<sub>C</sub>RT)<sup>c</sup> ([C]<sub>D</sub>RT)<sup>d</sup>) / (([C]<sub>A</sub>RT)<sup>a</sup> ([C]<sub>B</sub>RT)<sup>b</sup>)
-                K<sub>p</sub> = ([C]<sub>C</sub><sup>c</sup> (RT)<sup>c</sup> [C]<sub>D</sub><sup>d</sup> (RT)<sup>d</sup>) / ([C]<sub>A</sub><sup>a</sup> (RT)<sup>a</sup> [C]<sub>B</sub><sup>b</sup> (RT)<sup>b</sup>)
-                K<sub>p</sub> = ([C]<sub>C</sub><sup>c</sup> [C]<sub>D</sub><sup>d</sup> (RT)<sup>(c+d)</sup>) / ([C]<sub>A</sub><sup>a</sup> [C]<sub>B</sub><sup>b</sup> (RT)<sup>(a+b)</sup>)
-                </pre>
-            </li>
-            <li>
-                Kita dapat memisahkan suku <code>[C]</code> dan <code>(RT)</code>:
-                <pre>
-                K<sub>p</sub> = ([C]<sub>C</sub><sup>c</sup> [C]<sub>D</sub><sup>d</sup>) / ([C]<sub>A</sub><sup>a</sup> [C]<sub>B</sub><sup>b</sup>)  ×  (RT)<sup>(c+d) - (a+b)</sup>
-                </pre>
-            </li>
-            <li>
-                Perhatikan bahwa <code>(c+d)</code> adalah jumlah mol produk gas dan <code>(a+b)</code> adalah jumlah mol reaktan gas. Perbedaan ini adalah <code>Δn</code>.
-                Dan suku pertama adalah ekspresi untuk <code>K<sub>c</sub></code>.
-                <pre>K<sub>p</sub> = K<sub>c</sub>(RT)<sup>Δn</sup></pre>
-                Dengan demikian, hubungan antara K<sub>p</sub> dan K<sub>c</sub> terbukti.
-            </li>
-        </ol>
-
-        <h2>Contoh Perhitungan Kesetimbangan</h2>
-
-        <div class="example-section">
-            <h3>Contoh 1: Menghitung K<sub>c</sub> dari Data Molar pada Kesetimbangan (Kesetimbangan Heterogen)</h3>
-            <p>
-                <strong>Reaksi:</strong> <code>Fe<sub>2</sub>O<sub>3</sub>(s) + 3CO(g) &lt;=&gt; 2Fe(s) + 3CO<sub>2</sub>(g)</code>
-            </p>
-            <p>
-                <strong>Konteks Soal:</strong> Dalam ketel reaksi ukuran 5 liter, direaksikan 5 mol besi oksida (<code>Fe<sub>2</sub>O<sub>3</sub></code>) dan 15 mol karbon monoksida (<code>CO</code>). Ketika sistem dalam keadaan kesetimbangan, diketahui terdapat 5 mol gas karbon dioksida (<code>CO<sub>2</sub></code>). Hitunglah nilai tetapan kesetimbangannya (K<sub>c</sub>)!
-            </p>
-
-            <details>
-                <summary>Langkah 1: Memahami Data yang Diketahui dari Soal</summary>
-                <div>
-                    <p>Membaca soal dengan cermat adalah kunci. Kita perlu mengidentifikasi semua informasi penting yang diberikan:</p>
-                    <ul>
-                        <li>Volume wadah (V) = <strong>5 liter</strong></li>
-                        <li>Mol <code>Fe<sub>2</sub>O<sub>3</sub></code> awal = <strong>5 mol</strong></li>
-                        <li>Mol <code>CO</code> awal = <strong>15 mol</strong></li>
-                        <li>Mol <code>CO<sub>2</sub></code> saat setimbang = <strong>5 mol</strong></li>
-                    </ul>
-                    <p class="note">
-                        <strong>Catatan Penting:</strong> Untuk reaksi kesetimbangan heterogen (melibatkan fase yang berbeda), zat padat (s) dan cair (l) murni tidak dimasukkan dalam ekspresi K<sub>c</sub> atau K<sub>p</sub> karena konsentrasi atau tekanan parsialnya dianggap konstan. Dalam soal ini, <code>Fe<sub>2</sub>O<sub>3</sub>(s)</code> dan <code>Fe(s)</code> tidak akan dimasukkan dalam perhitungan K<sub>c</sub>.
-                    </p>
-                </div>
-            </details>
-
-            <details>
-                <summary>Langkah 2: Membuat Diagram Mula-mula, Reaksi, Setimbang (MRS)</summary>
-                <div>
-                    <p>Diagram MRS membantu kita melacak perubahan jumlah mol setiap zat selama reaksi berlangsung hingga mencapai kesetimbangan.</p>
-                    <p>Reaksi: <code>Fe<sub>2</sub>O<sub>3</sub>(s) + 3CO(g) &lt;=&gt; 2Fe(s) + 3CO<sub>2</sub>(g)</code></p>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Spesies</th>
-                                <th>Mula-mula (mol)</th>
-                                <th>Bereaksi (mol)</th>
-                                <th>Setimbang (mol)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>Fe<sub>2</sub>O<sub>3</sub>(s)</code></td>
-                                <td>5</td>
-                                <td>?</td>
-                                <td>?</td>
-                            </tr>
-                            <tr>
-                                <td><code>CO(g)</code></td>
-                                <td>15</td>
-                                <td>?</td>
-                                <td>?</td>
-                            </tr>
-                            <tr>
-                                <td><code>Fe(s)</code></td>
-                                <td>0</td>
-                                <td>?</td>
-                                <td>?</td>
-                            </tr>
-                            <tr>
-                                <td><code>CO<sub>2</sub>(g)</code></td>
-                                <td>0</td>
-                                <td>?</td>
-                                <td>5</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p>
-                        Kita tahu pada kesetimbangan terdapat 5 mol <code>CO<sub>2</sub></code>. Karena pada awalnya tidak ada <code>CO<sub>2</sub></code>, maka 5 mol <code>CO<sub>2</sub></code> ini pasti terbentuk dari reaksi.
-                        Berdasarkan stoikiometri reaksi (koefisien), kita dapat menentukan mol zat lain yang bereaksi atau terbentuk:
-                    </p>
-                    <ul>
-                        <li>Untuk <code>CO<sub>2</sub></code>: terbentuk +5 mol (karena koefisien 3, dan mol setimbang 5, berarti bereaksi 5 mol)</li>
-                        <li>Untuk <code>CO</code>: koefisien 3, sama dengan <code>CO<sub>2</sub></code>. Jadi, <code>CO</code> yang bereaksi = <code>(3/3) × 5 mol = 5 mol</code>. Ini adalah mol yang berkurang, sehingga menjadi <code>-5 mol</code>.
-                            Mol <code>CO</code> setimbang = Mol awal - Mol bereaksi = <code>15 mol - 5 mol = 10 mol</code>.</li>
-                        <li>Untuk <code>Fe<sub>2</sub>O<sub>3</sub>(s)</code>: koefisien 1. Mol <code>Fe<sub>2</sub>O<sub>3</sub></code> yang bereaksi = <code>(1/3) × 5 mol = 1.67 mol</code>. Ini adalah mol yang berkurang, sehingga menjadi <code>-1.67 mol</code>.
-                            Mol <code>Fe<sub>2</sub>O<sub>3</sub></code> setimbang = Mol awal - Mol bereaksi = <code>5 mol - 1.67 mol = 3.33 mol</code>.</li>
-                        <li>Untuk <code>Fe(s)</code>: koefisien 2. Mol <code>Fe</code> yang terbentuk = <code>(2/3) × 5 mol = 3.33 mol</code>. Ini adalah mol yang bertambah, sehingga menjadi <code>+3.33 mol</code>.
-                            Mol <code>Fe</code> setimbang = Mol awal + Mol terbentuk = <code>0 mol + 3.33 mol = 3.33 mol</code>.</li>
-                    </ul>
-
-                    <p>Diagram MRS yang lengkap:</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Spesies</th>
-                                <th>Mula-mula (mol)</th>
-                                <th>Bereaksi (mol)</th>
-                                <th>Setimbang (mol)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>Fe<sub>2</sub>O<sub>3</sub>(s)</code></td>
-                                <td>5</td>
-                                <td>-1.67</td>
-                                <td>3.33</td>
-                            </tr>
-                            <tr>
-                                <td><code>CO(g)</code></td>
-                                <td>15</td>
-                                <td>-5</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td><code>Fe(s)</code></td>
-                                <td>0</td>
-                                <td>+3.33</td>
-                                <td>3.33</td>
-                            </tr>
-                            <tr>
-                                <td><code>CO<sub>2</sub>(g)</code></td>
-                                <td>0</td>
-                                <td>+5</td>
-                                <td>5</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </details>
-
-            <details>
-                <summary>Langkah 3: Menghitung Nilai K<sub>c</sub></summary>
-                <div>
-                    <p>Seperti yang sudah dijelaskan, nilai K<sub>c</sub> hanya mempertimbangkan konsentrasi zat yang berfase gas (g) atau larutan (aq). Dalam reaksi ini, <code>Fe<sub>2</sub>O<sub>3</sub>(s)</code> dan <code>Fe(s)</code> adalah padatan, sehingga tidak dimasukkan dalam ekspresi K<sub>c</sub>.</p>
-                    <p>Ekspresi K<sub>c</sub> untuk reaksi ini adalah:</p>
-                    <pre>K<sub>c</sub> = [CO<sub>2</sub>]<sup>3</sup> / [CO]<sup>3</sup></pre>
-
-                    <p>Selanjutnya, kita perlu menghitung konsentrasi (molaritas) masing-masing gas pada kondisi setimbang menggunakan rumus <code>[C] = mol / Volume</code>:</p>
-                    <ul>
-                        <li>Konsentrasi <code>CO</code> setimbang:
-                            <pre>[CO] = 10 mol / 5 L = 2 mol/L = 2 M</pre>
-                        </li>
-                        <li>Konsentrasi <code>CO<sub>2</sub></code> setimbang:
-                            <pre>[CO<sub>2</sub>] = 5 mol / 5 L = 1 mol/L = 1 M</pre>
-                        </li>
-                    </ul>
-
-                    <p>Terakhir, substitusikan nilai konsentrasi ke dalam ekspresi K<sub>c</sub>:</p>
-                    <pre>
-                    K<sub>c</sub> = (1 M)<sup>3</sup> / (2 M)<sup>3</sup>
-                    K<sub>c</sub> = 1 / 8
-                    K<sub>c</sub> = 0.125
-                    </pre>
-                    <p>Jadi, nilai tetapan kesetimbangan konsentrasi (K<sub>c</sub>) untuk reaksi tersebut adalah <strong>0.125</strong>.</p>
-                </div>
-            </details>
+            <p class="note-box"><strong>Penting:</strong> Hanya zat dalam fase gas (g) dan larutan (aq) yang dimasukkan dalam perhitungan K<sub>c</sub> dan K<sub>p</sub>. Padatan (s) dan cairan murni (l) memiliki konsentrasi konstan sehingga tidak dimasukkan dalam ekspresi konstanta kesetimbangan.</p>
         </div>
 
-        <div class="example-section">
-            <h3>Contoh 2: Menghitung K<sub>p</sub> dari Data Tekanan Parsial (Kesetimbangan Gas Homogen)</h3>
-            <p>
-                <strong>Reaksi:</strong> <code>PCl<sub>5</sub>(g) &lt;=&gt; PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)</code>
-            </p>
-            <p>
-                <strong>Konteks Soal:</strong> Ke dalam ketel reaksi 5 liter, dimasukkan 5 mol <code>PCl<sub>5</sub></code>. Pada saat kesetimbangan terdapat 2 mol <code>PCl<sub>5</sub></code> dengan tekanan total pada saat kesetimbangan adalah 3 atm. Hitunglah nilai K<sub>p</sub> dari reaksi tersebut!
-            </p>
-
-            <details>
-                <summary>Langkah 1: Memahami Data yang Diketahui dari Soal</summary>
-                <div>
-                    <p>Identifikasi informasi yang diberikan:</p>
-                    <ul>
-                        <li>Volume wadah (V) = <strong>5 liter</strong> (meskipun tidak langsung digunakan untuk K<sub>p</sub>, ini bisa relevan jika kita ingin menghitung K<sub>c</sub> terlebih dahulu)</li>
-                        <li>Mol <code>PCl<sub>5</sub></code> awal = <strong>5 mol</strong></li>
-                        <li>Mol <code>PCl<sub>5</sub></code> saat setimbang = <strong>2 mol</strong></li>
-                        <li>Tekanan total (P<sub>total</sub>) saat setimbang = <strong>3 atm</strong></li>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary>Langkah 2: Membuat Diagram Mula-mula, Reaksi, Setimbang (MRS)</summary>
-                <div>
-                    <p>Reaksi: <code>PCl<sub>5</sub>(g) &lt;=&gt; PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)</code></p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Spesies</th>
-                                <th>Mula-mula (mol)</th>
-                                <th>Bereaksi (mol)</th>
-                                <th>Setimbang (mol)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>PCl<sub>5</sub>(g)</code></td>
-                                <td>5</td>
-                                <td>?</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td><code>PCl<sub>3</sub>(g)</code></td>
-                                <td>0</td>
-                                <td>?</td>
-                                <td>?</td>
-                            </tr>
-                            <tr>
-                                <td><code>Cl<sub>2</sub>(g)</code></td>
-                                <td>0</td>
-                                <td>?</td>
-                                <td>?</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p>Kita tahu mol <code>PCl<sub>5</sub></code> awal adalah 5 mol dan mol <code>PCl<sub>5</sub></code> setimbang adalah 2 mol. Ini berarti <code>PCl<sub>5</sub></code> yang bereaksi adalah:</p>
-                    <pre>Mol PCl<sub>5</sub> bereaksi = Mol awal - Mol setimbang = 5 mol - 2 mol = 3 mol</pre>
-                    <p>Jadi, <code>PCl<sub>5</sub></code> berkurang <code>-3 mol</code>.</p>
-
-                    <p>Berdasarkan stoikiometri (semua koefisien 1):</p>
-                    <ul>
-                        <li><code>PCl<sub>3</sub></code> yang terbentuk = <code>(1/1) × 3 mol = 3 mol</code>. Mol setimbang = <code>0 + 3 = 3 mol</code>.</li>
-                        <li><code>Cl<sub>2</sub></code> yang terbentuk = <code>(1/1) × 3 mol = 3 mol</code>. Mol setimbang = <code>0 + 3 = 3 mol</code>.</li>
-                    </ul>
-
-                    <p>Diagram MRS yang lengkap:</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Spesies</th>
-                                <th>Mula-mula (mol)</th>
-                                <th>Bereaksi (mol)</th>
-                                <th>Setimbang (mol)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>PCl<sub>5</sub>(g)</code></td>
-                                <td>5</td>
-                                <td>-3</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td><code>PCl<sub>3</sub>(g)</code></td>
-                                <td>0</td>
-                                <td>+3</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td><code>Cl<sub>2</sub>(g)</code></td>
-                                <td>0</td>
-                                <td>+3</td>
-                                <td>3</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p>Jumlah mol total gas pada kesetimbangan:</p>
-                    <pre>Mol total = mol PCl<sub>5</sub> + mol PCl<sub>3</sub> + mol Cl<sub>2</sub> = 2 mol + 3 mol + 3 mol = 8 mol</pre>
-                </div>
-            </details>
-
-            <details>
-                <summary>Langkah 3: Menghitung Tekanan Parsial Masing-masing Zat pada Kesetimbangan</summary>
-                <div>
-                    <p>Tekanan parsial suatu gas dalam campuran gas dapat dihitung menggunakan rumus:</p>
-                    <pre>Tekanan parsial (P<sub>i</sub>) = (mol zat i / mol total) × Tekanan total</pre>
-
-                    <ul>
-                        <li>Tekanan parsial <code>PCl<sub>5</sub></code> (P<sub>PCl5</sub>):
-                            <pre>P<sub>PCl5</sub> = (2 mol / 8 mol) × 3 atm = 0.25 × 3 atm = 0.75 atm</pre>
-                        </li>
-                        <li>Tekanan parsial <code>PCl<sub>3</sub></code> (P<sub>PCl3</sub>):
-                            <pre>P<sub>PCl3</sub> = (3 mol / 8 mol) × 3 atm = 0.375 × 3 atm = 1.125 atm</pre>
-                        </li>
-                        <li>Tekanan parsial <code>Cl<sub>2</sub></code> (P<sub>Cl2</sub>):
-                            <pre>P<sub>Cl2</sub> = (3 mol / 8 mol) × 3 atm = 0.375 × 3 atm = 1.125 atm</pre>
-                        </li>
-                    </ul>
-                    <p class="note">Verifikasi: Jumlah tekanan parsial harus sama dengan tekanan total: <code>0.75 + 1.125 + 1.125 = 3.00 atm</code>. Ini cocok dengan P<sub>total</sub> yang diberikan.</p>
-                </div>
-            </details>
-
-            <details>
-                <summary>Langkah 4: Menghitung Tetapan Kesetimbangan Tekanan Parsial (K<sub>p</sub>)</summary>
-                <div>
-                    <p>Ekspresi K<sub>p</sub> untuk reaksi ini adalah:</p>
-                    <pre>K<sub>p</sub> = (P<sub>PCl3</sub> × P<sub>Cl2</sub>) / P<sub>PCl5</sub></pre>
-
-                    <p>Substitusikan nilai tekanan parsial yang telah dihitung:</p>
-                    <pre>
-                    K<sub>p</sub> = (1.125 atm × 1.125 atm) / 0.75 atm
-                    K<sub>p</sub> = 1.265625 atm<sup>2</sup> / 0.75 atm
-                    K<sub>p</sub> = 1.6875 atm
-                    </pre>
-                    <p>Jadi, nilai tetapan kesetimbangan tekanan parsial (K<sub>p</sub>) untuk reaksi tersebut adalah <strong>1.6875 atm</strong>.</p>
-                </div>
-            </details>
+        <div class="step-card">
+            <h4>Langkah 3: Hitung Konsentrasi atau Tekanan Parsial pada Kesetimbangan</h4>
+            <ul>
+                <li>Jika Anda menghitung K<sub>c</sub>, ubah mol kesetimbangan menjadi konsentrasi molar (M) menggunakan volume wadah: <code>[X] = mol X / Volume (L)</code>.</li>
+                <li>Jika Anda menghitung K<sub>p</sub>, ubah mol kesetimbangan menjadi tekanan parsial menggunakan rumus: <code>P<sub>X</sub> = (mol X pada kesetimbangan / total mol gas pada kesetimbangan) &times; Tekanan Total</code>.</li>
+            </ul>
         </div>
 
-        <div class="example-section">
-            <h3>Contoh 3: Mengkonversi K<sub>p</sub> ke K<sub>c</sub> (atau sebaliknya)</h3>
-            <p>
-                <strong>Reaksi:</strong> <code>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) &lt;=&gt; 2NH<sub>3</sub>(g)</code>
-            </p>
-            <p>
-                <strong>Konteks Soal:</strong> Pada suhu 298 K, nilai K<sub>p</sub> dari reaksi kesetimbangan di atas adalah 150. Hitunglah nilai K<sub>c</sub> untuk kesetimbangan tersebut!
-            </p>
+        <div class="step-card">
+            <h4>Langkah 4: Tulis Ekspresi Konstanta Kesetimbangan dan Lakukan Perhitungan</h4>
+            <p>Tulis ekspresi K<sub>c</sub> atau K<sub>p</sub> yang sesuai untuk reaksi tersebut. Masukkan nilai konsentrasi atau tekanan parsial yang telah Anda hitung pada Langkah 3 ke dalam ekspresi tersebut dan hitung nilainya.</p>
+        </div>
 
-            <details>
-                <summary>Langkah 1: Memahami Data yang Diketahui dari Soal</summary>
-                <div>
-                    <p>Identifikasi informasi yang diberikan:</p>
+        <h2>Contoh Penerapan dalam Perhitungan</h2>
+
+        <div class="example-box">
+            <h3>Contoh 1: Perhitungan K<sub>c</sub> dari Data Mol Kesetimbangan</h3>
+            <p><strong>Reaksi:</strong> <code>Fe<sub>2</sub>O<sub>3</sub>(s) + 3CO(g) &harr; 2Fe(s) + 3CO<sub>2</sub>(g)</code></p>
+            <p>Dalam ketel reaksi 5 liter, direaksikan 5 mol besi oksida (Fe<sub>2</sub>O<sub>3</sub>) dan 15 mol karbon monoksida (CO). Ketika sistem dalam keadaan kesetimbangan, diketahui terdapat 5 mol gas karbon dioksida (CO<sub>2</sub>). Hitunglah nilai tetapan kesetimbangannya!</p>
+
+            <h4>Penyelesaian:</h4>
+            <ol>
+                <li>
+                    <h4>Langkah 1: Identifikasi Data</h4>
+                    <p>Diketahui:</p>
                     <ul>
-                        <li><code>K<sub>p</sub></code> = <strong>150</strong></li>
-                        <li>Suhu (T) = <strong>298 K</strong></li>
-                        <li>Konstanta gas ideal (R) = <strong>0.082 L·atm·mol<sup>-1</sup>·K<sup>-1</sup></strong> (Nilai R ini umum digunakan saat tekanan dalam atm dan volume dalam liter).</li>
-                        <li>Yang ditanya adalah <code>K<sub>c</sub></code>.</li>
+                        <li>Volume (V) = 5 L</li>
+                        <li>Mol awal Fe<sub>2</sub>O<sub>3</sub> = 5 mol</li>
+                        <li>Mol awal CO = 15 mol</li>
+                        <li>Mol CO<sub>2</sub> pada kesetimbangan = 5 mol</li>
                     </ul>
-                    <p class="note">Ingat, suhu harus selalu dalam Kelvin (K) untuk perhitungan yang melibatkan R.</p>
-                </div>
-            </details>
-
-            <details>
-                <summary>Langkah 2: Menghitung Perubahan Jumlah Mol Gas (Δn)</summary>
-                <div>
-                    <p><code>Δn</code> adalah perbedaan antara jumlah koefisien stoikiometri produk gas dan reaktan gas.</p>
-                    <pre>Δn = (Jumlah mol produk gas) - (Jumlah mol reaktan gas)</pre>
-                    <p>Dari reaksi: <code>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) &lt;=&gt; 2NH<sub>3</sub>(g)</code></p>
+                    <p>Ditanyakan: Nilai K<sub>c</sub>.</p>
+                </li>
+                <li>
+                    <h4>Langkah 2: Buat Diagram ICE</h4>
+                    <p>Ingat, Fe<sub>2</sub>O<sub>3</sub>(s) dan Fe(s) tidak akan masuk dalam ekspresi K<sub>c</sub>. Namun, molnya tetap perlu dihitung untuk melengkapi reaksi.</p>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Zat</th>
+                                    <th>Fe<sub>2</sub>O<sub>3</sub>(s)</th>
+                                    <th>+ 3CO(g)</th>
+                                    <th>&harr; 2Fe(s)</th>
+                                    <th>+ 3CO<sub>2</sub>(g)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Awal (mol)</strong></td>
+                                    <td>5</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Perubahan (mol)</strong></td>
+                                    <td>-1.67 (dari 1/3 x 5)</td>
+                                    <td>-5 (dari 3/3 x 5)</td>
+                                    <td>+3.33 (dari 2/3 x 5)</td>
+                                    <td>+5 (diketahui)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Kesetimbangan (mol)</strong></td>
+                                    <td>3.33</td>
+                                    <td>10</td>
+                                    <td>3.33</td>
+                                    <td>5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Penjelasan baris 'Perubahan':</strong></p>
+                    <p>Karena pada kesetimbangan terdapat 5 mol CO<sub>2</sub>, ini berarti 5 mol CO<sub>2</sub> terbentuk. Berdasarkan stoikiometri reaksi:</p>
                     <ul>
-                        <li>Koefisien produk gas (<code>NH<sub>3</sub></code>) = <strong>2</strong></li>
-                        <li>Koefisien reaktan gas (<code>N<sub>2</sub></code> + <code>H<sub>2</sub></code>) = <strong>1 + 3 = 4</strong></li>
+                        <li>Untuk CO (koefisien 3, sama dengan CO<sub>2</sub>): mol CO yang bereaksi = (3/3) &times; 5 mol CO<sub>2</sub> = 5 mol. Jadi, mol CO sisa = 15 - 5 = 10 mol.</li>
+                        <li>Untuk Fe<sub>2</sub>O<sub>3</sub> (koefisien 1): mol Fe<sub>2</sub>O<sub>3</sub> yang bereaksi = (1/3) &times; 5 mol CO<sub>2</sub> = 1.67 mol. Jadi, mol Fe<sub>2</sub>O<sub>3</sub> sisa = 5 - 1.67 = 3.33 mol.</li>
+                        <li>Untuk Fe (koefisien 2): mol Fe yang terbentuk = (2/3) &times; 5 mol CO<sub>2</sub> = 3.33 mol.</li>
                     </ul>
-                    <p>Maka, <code>Δn</code> adalah:</p>
-                    <pre>Δn = 2 - 4 = -2</pre>
-                </div>
-            </details>
+                </li>
+                <li>
+                    <h4>Langkah 3: Hitung Konsentrasi pada Kesetimbangan (hanya untuk zat gas)</h4>
+                    <p>Volume = 5 L</p>
+                    <ul>
+                        <li><code>[CO] = mol CO / V = 10 mol / 5 L = 2 mol·L<sup>-1</sup></code></li>
+                        <li><code>[CO<sub>2</sub>] = mol CO<sub>2</sub> / V = 5 mol / 5 L = 1 mol·L<sup>-1</sup></code></li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Langkah 4: Tulis Ekspresi K<sub>c</sub> dan Hitung Nilainya</h4>
+                    <p>Karena Fe<sub>2</sub>O<sub>3</sub>(s) dan Fe(s) adalah padatan, mereka tidak dimasukkan dalam ekspresi K<sub>c</sub>.</p>
+                    <div class="formula-box">
+                        <code>K<sub>c</sub> = [CO<sub>2</sub>]<sup>3</sup> / [CO]<sup>3</sup></code>
+                    </div>
+                    <p>Substitusikan nilai konsentrasi:</p>
+                    <div class="formula-box">
+                        <code>K<sub>c</sub> = (1 mol·L<sup>-1</sup>)<sup>3</sup> / (2 mol·L<sup>-1</sup>)<sup>3</sup></code><br>
+                        <code>K<sub>c</sub> = 1 / 8</code><br>
+                        <code>K<sub>c</sub> = 0.125</code>
+                    </div>
+                </li>
+            </ol>
+        </div>
 
-            <details>
-                <summary>Langkah 3: Menerapkan Persamaan Hubungan K<sub>p</sub> dan K<sub>c</sub></summary>
-                <div>
-                    <p>Kita akan menggunakan persamaan:</p>
-                    <pre>K<sub>p</sub> = K<sub>c</sub>(RT)<sup>Δn</sup></pre>
-                    <p>Karena kita ingin mencari K<sub>c</sub>, kita dapat mengatur ulang persamaan menjadi:</p>
-                    <pre>K<sub>c</sub> = K<sub>p</sub> / (RT)<sup>Δn</sup></pre>
-                    <p>Substitusikan nilai yang diketahui:</p>
+        <div class="example-box">
+            <h3>Contoh 2: Perhitungan K<sub>p</sub> dari Data Tekanan Total</h3>
+            <p><strong>Reaksi:</strong> <code>PCl<sub>5</sub>(g) &harr; PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)</code></p>
+            <p>Ke dalam ketel reaksi 5 liter, dimasukkan 5 mol PCl<sub>5</sub>. Pada saat kesetimbangan, terdapat 2 mol PCl<sub>5</sub> dengan tekanan total pada kesetimbangan adalah 3 atm. Hitunglah nilai K<sub>p</sub> dari reaksi tersebut!</p>
+
+            <h4>Penyelesaian:</h4>
+            <ol>
+                <li>
+                    <h4>Langkah 1: Identifikasi Data</h4>
+                    <p>Diketahui:</p>
+                    <ul>
+                        <li>Volume (V) = 5 L</li>
+                        <li>Mol awal PCl<sub>5</sub> = 5 mol</li>
+                        <li>Mol PCl<sub>5</sub> pada kesetimbangan = 2 mol</li>
+                        <li>Tekanan total (P<sub>total</sub>) = 3 atm</li>
+                    </ul>
+                    <p>Ditanyakan: Nilai K<sub>p</sub>.</p>
+                </li>
+                <li>
+                    <h4>Langkah 2: Buat Diagram ICE</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Zat</th>
+                                    <th>PCl<sub>5</sub>(g)</th>
+                                    <th>&harr; PCl<sub>3</sub>(g)</th>
+                                    <th>+ Cl<sub>2</sub>(g)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Awal (mol)</strong></td>
+                                    <td>5</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Perubahan (mol)</strong></td>
+                                    <td>-3 (dari 5 - 2)</td>
+                                    <td>+3</td>
+                                    <td>+3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Kesetimbangan (mol)</strong></td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Penjelasan baris 'Perubahan':</strong></p>
+                    <p>Mol PCl<sub>5</sub> pada kesetimbangan adalah 2 mol, sedangkan awalnya ada 5 mol. Jadi, PCl<sub>5</sub> yang bereaksi = 5 - 2 = 3 mol.</p>
+                    <p>Berdasarkan stoikiometri (koefisien 1:1:1):</p>
+                    <ul>
+                        <li>PCl<sub>3</sub> yang terbentuk = 3 mol.</li>
+                        <li>Cl<sub>2</sub> yang terbentuk = 3 mol.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Langkah 3: Hitung Tekanan Parsial pada Kesetimbangan</h4>
+                    <p>Hitung total mol gas pada kesetimbangan:</p>
+                    <p><code>Mol total = mol PCl<sub>5</sub> + mol PCl<sub>3</sub> + mol Cl<sub>2</sub> = 2 + 3 + 3 = 8 mol</code></p>
+                    <p>Rumus tekanan parsial: <code>P<sub>X</sub> = (mol X / mol total) &times; P<sub>total</sub></code></p>
+                    <ul>
+                        <li><code>P<sub>PCl5</sub> = (2 mol / 8 mol) &times; 3 atm = 0.75 atm</code></li>
+                        <li><code>P<sub>PCl3</sub> = (3 mol / 8 mol) &times; 3 atm = 1.125 atm</code></li>
+                        <li><code>P<sub>Cl2</sub> = (3 mol / 8 mol) &times; 3 atm = 1.125 atm</code></li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Langkah 4: Tulis Ekspresi K<sub>p</sub> dan Hitung Nilainya</h4>
+                    <div class="formula-box">
+                        <code>K<sub>p</sub> = (P<sub>PCl3</sub> &times; P<sub>Cl2</sub>) / P<sub>PCl5</sub></code>
+                    </div>
+                    <p>Substitusikan nilai tekanan parsial:</p>
+                    <div class="formula-box">
+                        <code>K<sub>p</sub> = (1.125 atm &times; 1.125 atm) / 0.75 atm</code><br>
+                        <code>K<sub>p</sub> = 1.265625 atm<sup>2</sup> / 0.75 atm</code><br>
+                        <code>K<sub>p</sub> = 1.6875 atm</code> (Perhatikan satuan Kp akan menyesuaikan dengan Δn)
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="example-box">
+            <h3>Contoh 3: Konversi K<sub>p</sub> ke K<sub>c</sub></h3>
+            <p><strong>Reaksi:</strong> <code>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) &harr; 2NH<sub>3</sub>(g)</code></p>
+            <p>Pada suhu 298 K, nilai K<sub>p</sub> dari reaksi kesetimbangan di atas adalah 150. Hitunglah nilai K<sub>c</sub> untuk kesetimbangan tersebut!</p>
+
+            <h4>Penyelesaian:</h4>
+            <ol>
+                <li>
+                    <h4>Langkah 1: Identifikasi Data</h4>
+                    <p>Diketahui:</p>
                     <ul>
                         <li>K<sub>p</sub> = 150</li>
-                        <li>R = 0.082 L·atm·mol<sup>-1</sup>·K<sup>-1</sup></li>
-                        <li>T = 298 K</li>
-                        <li>Δn = -2</li>
+                        <li>Suhu (T) = 298 K</li>
+                        <li>Konstanta gas ideal (R) = 0.082 L·atm·mol<sup>-1</sup>·K<sup>-1</sup></li>
                     </ul>
-                    <pre>
-                    K<sub>c</sub> = 150 / (0.082 L·atm·mol<sup>-1</sup>·K<sup>-1</sup> × 298 K)<sup>-2</sup>
-                    </pre>
-                    <p>Hitung nilai <code>RT</code> terlebih dahulu:</p>
-                    <pre>
-                    RT = 0.082 × 298
-                    RT = 24.436 L·atm·mol<sup>-1</sup>
-                    </pre>
-                    <p>Sekarang, hitung <code>(RT)<sup>-2</sup></code>:</p>
-                    <pre>
-                    (RT)<sup>-2</sup> = (24.436)<sup>-2</sup>
-                             = 1 / (24.436)<sup>2</sup>
-                             = 1 / 597.112996
-                             ≈ 0.0016746
-                    </pre>
-                    <p>Kemudian, substitusikan kembali ke persamaan K<sub>c</sub>:</p>
-                    <pre>
-                    K<sub>c</sub> = 150 / 0.0016746
-                    K<sub>c</sub> = 150 × (24.436)<sup>2</sup>  <span class="note">(karena pangkat negatif, bisa dibalik menjadi perkalian)</span>
-                    K<sub>c</sub> = 150 × 597.112996
-                    K<sub>c</sub> ≈ 89566.95
-                    </pre>
-                    <p>Jadi, nilai tetapan kesetimbangan konsentrasi (K<sub>c</sub>) untuk reaksi tersebut adalah sekitar <strong>89567</strong>.</p>
-                </div>
-            </details>
+                    <p>Ditanyakan: Nilai K<sub>c</sub>.</p>
+                </li>
+                <li>
+                    <h4>Langkah 2: Hitung Δn</h4>
+                    <p>Δn = (jumlah mol gas produk) - (jumlah mol gas reaktan)</p>
+                    <p>Dari reaksi <code>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) &harr; 2NH<sub>3</sub>(g)</code>:</p>
+                    <ul>
+                        <li>Mol gas produk (NH<sub>3</sub>) = 2 mol</li>
+                        <li>Mol gas reaktan (N<sub>2</sub> + H<sub>2</sub>) = 1 + 3 = 4 mol</li>
+                    </ul>
+                    <p><code>Δn = 2 - 4 = -2</code></p>
+                </li>
+                <li>
+                    <h4>Langkah 3: Gunakan Rumus K<sub>p</sub> = K<sub>c</sub>(RT)<sup>Δn</sup> untuk Menghitung K<sub>c</sub></h4>
+                    <p>Atur ulang rumus untuk mencari K<sub>c</sub>:</p>
+                    <div class="formula-box">
+                        <code>K<sub>c</sub> = K<sub>p</sub> / (RT)<sup>Δn</sup></code><br>
+                        <code>K<sub>c</sub> = K<sub>p</sub> &times; (RT)<sup>-Δn</sup></code> (jika Δn negatif, maka (RT)^-Δn akan menjadi positif)
+                    </div>
+                    <p>Substitusikan nilai yang diketahui:</p>
+                    <div class="formula-box">
+                        <code>K<sub>c</sub> = 150 / (0.082 L·atm·mol<sup>-1</sup>·K<sup>-1</sup> &times; 298 K)<sup>-2</sup></code><br>
+                        <code>K<sub>c</sub> = 150 / (24.436 L·atm·mol<sup>-1</sup>)<sup>-2</sup></code><br>
+                        <code>K<sub>c</sub> = 150 &times; (24.436 L·atm·mol<sup>-1</sup>)<sup>2</sup></code><br>
+                        <code>K<sub>c</sub> = 150 &times; 597.111856 L<sup>2</sup>·atm<sup>2</sup>·mol<sup>-2</sup></code><br>
+                        <code>K<sub>c</sub> &approx; 89566.78 L<sup>2</sup>·atm<sup>2</sup>·mol<sup>-2</sup></code>
+                    </div>
+                    <p class="note-box">
+                        <strong>Catatan:</strong> Nilai K<sub>c</sub> yang dihitung sedikit berbeda dari contoh buku (89304) mungkin karena pembulatan nilai R atau nilai suhu yang lebih presisi. Namun, konsep dan langkah perhitungannya sama. Satuan untuk K<sub>c</sub> akan bergantung pada nilai Δn; di sini, karena Δn = -2, satuan menjadi (mol/L)<sup>-Δn</sup> = (mol/L)<sup>2</sup> atau L<sup>2</sup>·mol<sup>-2</sup>. Dalam konteks Kp ke Kc, satuan juga bisa menjadi L<sup>2</sup>·atm<sup>2</sup>·mol<sup>-2</sup> karena R mengandung L·atm.
+                    </p>
+                </li>
+            </ol>
         </div>
 
-        <p>
-            Memahami dan mempraktikkan perhitungan-perhitungan ini akan sangat membantu Anda dalam menguasai konsep kesetimbangan kimia. Kuncinya adalah melangkah secara sistematis, mulai dari mengidentifikasi data, membuat diagram MRS, menghitung kuantitas pada kesetimbangan, hingga menerapkan ekspresi konstanta kesetimbangan dengan benar.
-        </p>
+        <h2>Kesimpulan</h2>
+        <p>Dengan menguasai langkah-langkah sistematis ini—mulai dari identifikasi data, penggunaan diagram ICE, perhitungan konsentrasi atau tekanan parsial, hingga penerapan ekspresi konstanta kesetimbangan—Anda akan mampu menyelesaikan berbagai masalah terkait kesetimbangan kimia. Jangan ragu untuk berlatih dengan berbagai jenis soal untuk memperkuat pemahaman dan keterampilan Anda!</p>
+
     </div>
+    <footer>
+        <p>&copy; Materi Kimia Kelas XI - Hak Cipta Dilindungi Undang-undang</p>
+    </footer>
 </body>
 </html>
-```

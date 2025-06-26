@@ -1,220 +1,268 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rumus Molekul dan Rumus Empiris - Kimia Kelas 11</title>
+    <title>Rumus Molekul dan Rumus Empiris - Kimia Kelas XI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles & Reset */
+        /* Color Theme Variables */
+        :root {
+            --bg-canvas: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #424242;
+            --text-tertiary: #757575;
+            --border-divider: #E0E0E0;
+            --primary-blue: #1976D2;
+            --accent-green: #388E3C;
+            --secondary-accent-amber: #FFB300;
+            --semantic-success: #4CAF50;
+            --semantic-warning: #FFC107;
+            --semantic-error: #D32F2F;
+            --semantic-info: #2196F3;
+        }
+
+        /* Base Styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #FFFFFF; /* background_canvas */
-            color: #212121; /* text_primary */
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
             line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
         .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
         }
 
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            font-weight: 500;
             margin-top: 1.5em;
             margin-bottom: 0.8em;
-            line-height: 1.3;
         }
 
-        h1 {
-            font-size: 2.5em;
-            color: #212121; /* text_primary */
-            text-align: center;
-            border-bottom: 3px solid #E0E0E0; /* border_divider */
-            padding-bottom: 15px;
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 2em;
-            color: #1976D2; /* primary_blue */
-            border-bottom: 2px solid #E0E0E0; /* border_divider */
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-
-        h3 {
-            font-size: 1.5em;
-            color: #424242; /* text_secondary */
-            margin-top: 25px;
-        }
+        h1 { font-size: 2.2em; border-bottom: 2px solid var(--border-divider); padding-bottom: 10px; }
+        h2 { font-size: 1.8em; color: var(--text-primary); }
+        h3 { font-size: 1.5em; color: var(--text-primary); }
+        h4 { font-size: 1.2em; color: var(--text-secondary); }
 
         p {
             margin-bottom: 1em;
-            color: #212121; /* text_primary */
+            color: var(--text-secondary);
         }
 
-        /* List Styles */
         ul, ol {
-            margin: 1em 0 1em 25px;
-            padding: 0;
-            color: #212121; /* text_primary */
+            margin-bottom: 1em;
+            color: var(--text-secondary);
+            padding-left: 25px;
         }
 
         li {
             margin-bottom: 0.5em;
         }
 
-        /* Code and Formulas */
-        code {
-            background-color: #EEEEEE;
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            color: #424242; /* text_secondary */
-            white-space: nowrap; /* Prevent line breaks within code */
+        /* Card Component */
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .formula-box {
-            background-color: #F5F5F5; /* Light neutral background */
-            border: 1px solid #E0E0E0; /* border_divider */
-            padding: 20px;
-            margin: 25px 0;
-            text-align: center;
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
             font-size: 1.3em;
-            font-weight: bold;
-            color: #1976D2; /* primary_blue */
+        }
+
+        /* Definition Box */
+        .definition-box {
+            background-color: var(--semantic-info);
+            color: white;
+            padding: 15px 20px;
             border-radius: 8px;
-            overflow-x: auto; /* For very long formulas */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
         }
-        .formula-box hr {
-            border: 0;
-            border-top: 1px solid #1976D2; /* primary_blue */
-            width: 60%;
-            margin: 10px auto;
+        .definition-box strong {
+            font-weight: 700;
+            margin-right: 10px;
+            color: white; /* Ensure strong text within info box remains white */
         }
-        .formula-box span.numerator, .formula-box span.denominator {
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners are applied */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-divider);
+            color: var(--text-secondary);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f6f6f6;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Formula Display */
+        .formula {
+            background-color: #e3f2fd; /* Light blue background */
+            border: 1px dashed var(--semantic-info);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: var(--primary-blue);
+        }
+
+        .formula span {
             display: block;
             margin: 5px 0;
         }
 
-
-        /* Info and Example Boxes */
-        .info-box {
-            background-color: rgba(33, 150, 243, 0.08); /* semantic_info with transparency */
-            border-left: 6px solid #2196F3; /* semantic_info */
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-            color: #212121; /* text_primary */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-        }
-        .info-box h3 {
-            color: #1976D2; /* primary_blue */
-            margin-top: 0;
-            font-size: 1.6em;
-            border-bottom: 1px dashed rgba(33, 150, 243, 0.3);
-            padding-bottom: 10px;
-        }
-
-        .example-section {
-            background-color: rgba(56, 142, 60, 0.07); /* accent_green with transparency */
-            border: 1px solid #388E3C; /* accent_green */
-            padding: 25px;
-            margin: 40px 0;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .example-section h3 {
-            color: #388E3C; /* accent_green */
-            margin-top: 0;
-            font-size: 1.8em;
+        .formula .fraction {
+            display: inline-block;
+            vertical-align: middle;
             text-align: center;
-            margin-bottom: 25px;
-        }
-        .example-section h4 {
-            color: #424242; /* text_secondary */
-            font-size: 1.2em;
-            margin-top: 20px;
-            border-bottom: 1px dotted #757575; /* text_tertiary */
-            padding-bottom: 5px;
         }
 
-        /* Table Styles */
-        table {
+        .formula .fraction .numerator,
+        .formula .fraction .denominator {
+            display: block;
+            padding: 2px 0;
+        }
+
+        .formula .fraction .divider {
+            border-bottom: 1px solid var(--primary-blue);
             width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            background-color: #FFFFFF;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: block;
+        }
+
+        /* Example Section */
+        .example {
+            background-color: #e8f5e9; /* Light green for examples */
+            border: 1px solid var(--accent-green);
             border-radius: 8px;
-            overflow: hidden; /* Ensures rounded corners apply to content */
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        th, td {
-            border: 1px solid #E0E0E0; /* border_divider */
-            padding: 12px 15px;
-            text-align: left;
-            color: #212121; /* text_primary */
+
+        .example-header {
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 15px;
+            font-size: 1.3em;
         }
-        th {
-            background-color: #F0F0F0;
-            font-weight: bold;
-            color: #424242; /* text_secondary */
-            text-transform: uppercase;
-            font-size: 0.9em;
+
+        .step {
+            margin-bottom: 15px;
         }
-        tr:nth-child(even) {
-            background-color: #FAFAFA; /* Slightly different background for even rows */
+        .step strong {
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .step-calculation {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Roboto Mono', monospace;
+            color: var(--text-primary);
+            white-space: pre-wrap; /* Preserve whitespace and wrap */
+        }
+        .result {
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-top: 10px;
+        }
+        
+        /* Notes and Tips */
+        .note {
+            background-color: #fffde7; /* Very light yellow */
+            border-left: 5px solid var(--secondary-accent-amber);
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+        .note strong {
+            color: var(--secondary-accent-amber);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
-            }
-            h1 { font-size: 2em; padding-bottom: 10px; margin-bottom: 30px; }
-            h2 { font-size: 1.6em; margin-top: 25px; }
-            h3 { font-size: 1.3em; margin-top: 20px; }
-            .formula-box { font-size: 1.1em; padding: 15px; }
-            .info-box { padding: 15px; margin: 25px 0; }
-            .info-box h3 { font-size: 1.4em; }
-            .example-section { padding: 20px; margin: 30px 0; }
-            .example-section h3 { font-size: 1.6em; margin-bottom: 20px; }
-            table, th, td { font-size: 0.9em; padding: 10px; }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
+                margin: 10px auto;
+                padding: 0 15px;
             }
             h1 { font-size: 1.8em; }
-            h2 { font-size: 1.4em; }
-            h3 { font-size: 1.2em; }
-            p, li { font-size: 0.9em; }
-            .formula-box { font-size: 1em; padding: 10px; }
-            .info-box h3 { font-size: 1.2em; }
-            .example-section h3 { font-size: 1.4em; }
-            table, th, td { display: block; width: 100%; box-sizing: border-box; }
-            th { text-align: center; }
-            td { text-align: right; border-bottom: 1px solid #E0E0E0; position: relative; padding-left: 50%; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            .card, .example {
+                padding: 15px;
+            }
+            table, th, td {
+                display: block; /* Stack table elements on small screens */
+            }
+            th {
+                text-align: center;
+                background-color: var(--primary-blue); /* Ensure header stays blue */
+            }
+            td {
+                text-align: right;
+                border-bottom: 1px solid var(--border-divider);
+                position: relative;
+                padding-left: 50%; /* Make space for data labels */
+            }
             td::before {
                 content: attr(data-label);
                 position: absolute;
-                left: 10px;
-                width: calc(50% - 20px);
+                left: 6px;
+                width: 45%;
                 padding-right: 10px;
                 white-space: nowrap;
                 text-align: left;
                 font-weight: bold;
-                color: #757575; /* text_tertiary */
+                color: var(--text-primary);
             }
-            thead { display: none; }
-            tr { margin-bottom: 15px; border: 1px solid #E0E0E0; border-radius: 8px; overflow: hidden; display: block; }
         }
     </style>
 </head>
@@ -222,153 +270,235 @@
     <div class="container">
         <h1>C. Rumus Molekul dan Rumus Empiris</h1>
 
-        <p>Dalam kimia, setiap senyawa memiliki identitas unik yang ditunjukkan oleh rumus kimianya. Rumus kimia ini tidak hanya memberi tahu kita jenis atom apa saja yang menyusun senyawa tersebut, tetapi juga perbandingan atau jumlah relatif atom-atom tersebut. Ada dua bentuk utama untuk menyatakan rumus kimia suatu senyawa: <strong>rumus molekul</strong> dan <strong>rumus empiris</strong>.</p>
+        <div class="definition-box">
+            <p>Setiap senyawa kimia dinyatakan dengan rumus kimia yang menunjukkan jenis dan jumlah relatif atom-atom yang menyusun senyawa tersebut. Rumus kimia ini dapat dinyatakan dalam bentuk <strong>rumus molekul</strong> dan <strong>rumus empiris</strong>.</p>
+        </div>
 
-        <div class="info-box">
-            <h3>Memahami Perbedaan: Contoh Senyawa</h3>
-            <p>Untuk lebih jelasnya, mari kita lihat beberapa contoh senyawa dan bagaimana rumus molekul serta rumus empirisnya berbeda:</p>
+        <div class="card">
+            <div class="card-header">Rumus Molekul</div>
+            <p><strong>Rumus molekul</strong> menunjukkan jumlah sebenarnya dari atom yang menyusun molekul senyawa.</p>
             <ul>
-                <li><strong>Etana:</strong> Rumus molekulnya adalah <code>C₂H₄</code>, sedangkan rumus empirisnya adalah <code>CH₂</code>.</li>
-                <li><strong>Gula Inversi:</strong> Memiliki rumus molekul <code>C₁₂H₂₄O₁₂</code>, dan rumus empirisnya adalah <code>CH₂O</code>.</li>
-                <li><strong>Vitamin C:</strong> Rumus molekulnya adalah <code>C₆H₈O₆</code>, sementara rumus empirisnya adalah <code>C₃H₄O₃</code>.</li>
+                <li><strong>Contoh:</strong> Air (H₂O) tersusun oleh 2 atom hidrogen dan 1 atom oksigen.</li>
+                <li><strong>Contoh:</strong> Gas metana (CH₄) tersusun oleh 1 atom karbon dan 4 atom hidrogen.</li>
             </ul>
         </div>
 
-        <h2>Rumus Molekul</h2>
-        <p><strong>Rumus molekul</strong> adalah representasi yang menunjukkan jumlah atom sebenarnya dari setiap unsur yang ada dalam satu molekul suatu senyawa. Ini memberikan gambaran yang akurat tentang komposisi atom dalam molekul tersebut.</p>
-        <ul>
-            <li>Sebagai contoh, molekul air dinyatakan dengan rumus molekul <code>H₂O</code>. Ini berarti setiap molekul air secara pasti terdiri dari 2 atom hidrogen dan 1 atom oksigen.</li>
-            <li>Contoh lain adalah gas metana dengan rumus molekul <code>CH₄</code>. Rumus ini memberitahu kita bahwa setiap molekul metana tersusun dari 1 atom karbon dan 4 atom hidrogen.</li>
-        </ul>
+        <div class="card">
+            <div class="card-header">Rumus Empiris</div>
+            <p><strong>Rumus empiris</strong> menunjukkan perbandingan paling sederhana dari jumlah atom-atom yang menyusun molekul suatu senyawa.</p>
+            <ul>
+                <li><strong>Contoh:</strong> Benzena (C₆H₆) memiliki perbandingan atom C dan H yaitu 1:1, sehingga rumus empirisnya adalah CH.</li>
+            </ul>
+        </div>
 
-        <h2>Rumus Empiris</h2>
-        <p>Berbeda dengan rumus molekul, <strong>rumus empiris</strong> menunjukkan perbandingan paling sederhana dari jumlah atom-atom penyusun molekul suatu senyawa. Perbandingan ini harus dinyatakan dalam bentuk bilangan bulat terkecil.</p>
-        <ul>
-            <li>Ambil contoh benzena, yang memiliki rumus molekul <code>C₆H₆</code>. Jumlah atom karbon dan hidrogen sebenarnya adalah 6:6. Ketika perbandingan ini disederhanakan ke bilangan bulat terkecil, menjadi 1:1. Oleh karena itu, rumus empiris benzena adalah <code>CH</code>.</li>
-            <li>Dari contoh yang disebutkan sebelumnya, gula inversi <code>C₁₂H₂₄O₁₂</code> memiliki perbandingan atom C:H:O = 12:24:12. Jika dibagi dengan faktor persekutuan terbesar (12), perbandingannya menjadi 1:2:1. Sehingga rumus empirisnya adalah <code>CH₂O</code>.</li>
-        </ul>
+        <div class="card">
+            <div class="card-header">Hubungan Rumus Molekul dan Rumus Empiris</div>
+            <p>Untuk membantu memahami hubungan antara rumus molekul dan rumus empiris, perhatikan contoh-contoh berikut:</p>
+            <ul>
+                <li><strong>Etana:</strong>
+                    <ul>
+                        <li>Rumus Molekul: C₂H₄</li>
+                        <li>Rumus Empiris: CH₂ (perbandingan 2:4 disederhanakan menjadi 1:2)</li>
+                    </ul>
+                </li>
+                <li><strong>Gula Inversi:</strong>
+                    <ul>
+                        <li>Rumus Molekul: C₁₂H₂₄O₁₂</li>
+                        <li>Rumus Empiris: CH₂O (perbandingan 12:24:12 disederhanakan menjadi 1:2:1)</li>
+                    </ul>
+                </li>
+                <li><strong>Vitamin C:</strong>
+                    <ul>
+                        <li>Rumus Molekul: C₆H₈O₆</li>
+                        <li>Rumus Empiris: C₃H₄O₃ (perbandingan 6:8:6 disederhanakan menjadi 3:4:3)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h2>Aktivitas 3.2: Mengenali Rumus Molekul dan Empiris</h2>
+        <p>Tabel berikut menunjukkan hubungan antara massa molar, rumus molekul, dan rumus empiris untuk beberapa senyawa. Perhatikan bagaimana rumus empiris merupakan bentuk paling sederhana dari rumus molekul.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Senyawa</th>
+                    <th>Massa Molar (g.mol⁻¹)</th>
+                    <th>Rumus Molekul</th>
+                    <th>Rumus Empiris</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Senyawa">Hidrogen peroksida</td>
+                    <td data-label="Massa Molar">34</td>
+                    <td data-label="Rumus Molekul">H₂O₂</td>
+                    <td data-label="Rumus Empiris">HO</td>
+                </tr>
+                <tr>
+                    <td data-label="Senyawa">Butana</td>
+                    <td data-label="Massa Molar">58</td>
+                    <td data-label="Rumus Molekul">C₄H₁₀</td>
+                    <td data-label="Rumus Empiris">C₂H₅</td>
+                </tr>
+                <tr>
+                    <td data-label="Senyawa">Naftalen</td>
+                    <td data-label="Massa Molar">128</td>
+                    <td data-label="Rumus Molekul">C₁₀H₈</td>
+                    <td data-label="Rumus Empiris">C₅H₄</td>
+                </tr>
+                <tr>
+                    <td data-label="Senyawa">Asam asetat</td>
+                    <td data-label="Massa Molar">60</td>
+                    <td data-label="Rumus Molekul">C₂H₄O₂</td>
+                    <td data-label="Rumus Empiris">CH₂O</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note"><strong>Catatan:</strong> Massa molar dapat ditemukan di tabel periodik unsur.</p>
 
         <h2>Cara Menentukan Rumus Empiris</h2>
-        <p>Rumus empiris suatu senyawa biasanya diturunkan dari data hasil percobaan laboratorium. Proses penentuannya melibatkan beberapa langkah sistematis:</p>
+        <p>Rumus empiris biasanya ditentukan dari data percobaan. Berikut adalah langkah-langkah umum untuk menentukannya:</p>
         <ol>
-            <li><strong>Menghitung Massa Setiap Atom:</strong> Jika komposisi senyawa diberikan dalam persentase massa, asumsikan total massa senyawa adalah 100 gram. Kemudian, hitung massa masing-masing unsur penyusun dalam gram.</li>
-            <li><strong>Mengubah Massa Menjadi Mol:</strong> Konversikan massa setiap unsur ke dalam jumlah mol dengan membaginya dengan massa atom relatif (Ar) unsur tersebut. (Mol = Massa / Ar).</li>
-            <li><strong>Menentukan Rasio Mol Sederhana:</strong> Bagi semua nilai mol yang diperoleh pada langkah sebelumnya dengan nilai mol terkecil di antara semuanya. Ini akan menghasilkan rasio mol dalam bentuk bilangan bulat atau mendekati bilangan bulat.</li>
-            <li><strong>Menuliskan Rumus Empiris:</strong> Gunakan rasio mol yang telah disederhanakan sebagai indeks atom dalam rumus empiris. Jika rasio bukan bilangan bulat sempurna (misalnya 1.5, 2.5), kalikan semua rasio dengan bilangan bulat terkecil yang dapat mengubah semuanya menjadi bilangan bulat (misalnya, kalikan dengan 2 untuk 1.5).</li>
+            <li><strong>Menghitung massa</strong> dari atom-atom penyusun molekul. (Jika diberikan persentase, asumsikan massa total 100 gram).</li>
+            <li><strong>Menghitung mol</strong> dari masing-masing atom yang menyusun molekul. (Mol = massa / massa atom relatif (Ar)).</li>
+            <li><strong>Menghitung rasio mol</strong> dari atom-atom penyusun molekul. (Bagi semua mol dengan nilai mol terkecil untuk mendapatkan rasio bilangan bulat sederhana).</li>
+            <li><strong>Menentukan rumus empiris</strong> berdasarkan rasio atom-atom penyusunnya.</li>
         </ol>
 
-        <div class="example-section">
-            <h3>Contoh Perhitungan Penentuan Rumus Empiris</h3>
-            <p><strong>Situasi:</strong> Kita ingin menentukan rumus empiris dari senyawa yang diketahui tersusun oleh 75% karbon (C) dan 25% hidrogen (H).</p>
-
-            <h4>Langkah 1: Menentukan Massa Karbon dan Hidrogen.</h4>
-            <p>Asumsikan kita memiliki 100 gram senyawa ini untuk mempermudah perhitungan:</p>
-            <ul>
-                <li>Massa karbon (C) = 75% dari 100 g = 75 g</li>
-                <li>Massa hidrogen (H) = 25% dari 100 g = 25 g</li>
-            </ul>
-
-            <h4>Langkah 2: Menentukan Mol Karbon dan Hidrogen.</h4>
-            <p>Gunakan massa atom relatif (Ar): Ar C = 12 g/mol, Ar H = 1 g/mol.</p>
-            <ul>
-                <li>Mol karbon = <span class="formula-box">75 g / 12 g.mol⁻¹ ≈ 6.25 mol</span></li>
-                <li>Mol hidrogen = <span class="formula-box">25 g / 1 g.mol⁻¹ = 25 mol</span></li>
-            </ul>
-
-            <h4>Langkah 3: Menentukan Rasio Mol Karbon dan Hidrogen.</h4>
-            <p>Untuk mendapatkan rasio paling sederhana, bagi kedua nilai mol dengan nilai mol terkecil (6.25 mol):</p>
-            <ul>
-                <li>Rasio mol karbon = 6.25 mol / 6.25 mol = 1</li>
-                <li>Rasio mol hidrogen = 25 mol / 6.25 mol = 4</li>
-            </ul>
-            <p>Jadi, rasio mol karbon : mol hidrogen adalah 1 : 4.</p>
-
-            <h4>Langkah 4: Menentukan Rumus Empiris.</h4>
-            <p>Berdasarkan rasio atom C:H = 1:4, rumus empiris senyawa tersebut adalah <code>CH₄</code>.</p>
-        </div>
-
         <h2>Cara Menentukan Rumus Molekul</h2>
-        <p>Rumus molekul suatu senyawa dapat ditentukan jika kita sudah mengetahui dua informasi penting: <strong>rumus empirisnya</strong> dan <strong>massa molekul relatif (Mr) senyawa tersebut</strong>. Hubungan antara rumus molekul dan rumus empiris dapat dinyatakan dengan persamaan berikut:</p>
-        <div class="formula-box">
-            Rumus molekul = (Rumus empiris) <sub>N</sub>
+        <p>Rumus molekul bisa ditentukan jika kita mengetahui dua hal, yaitu rumus empiris dan massa molekul relatif (Mr) senyawa tersebut.</p>
+        <p>Secara matematis, rumus molekul dapat dinyatakan dalam bentuk persamaan:</p>
+
+        <div class="formula">
+            <span>Rumus molekul = rumus empiris &times; N</span>
+            <span>dengan N =
+                <span class="fraction">
+                    <span class="numerator">massa molekul relatif</span>
+                    <span class="divider"></span>
+                    <span class="denominator">massa molekul relatif dari rumus empiris</span>
+                </span>
+            </span>
         </div>
-        <p>Di mana <code>N</code> adalah bilangan bulat sederhana (1, 2, 3, ...) yang mewakili faktor pengali. Nilai <code>N</code> ini didapat dari perbandingan massa molekul relatif senyawa yang sebenarnya dengan massa molekul relatif dari rumus empirisnya:</p>
-        <div class="formula-box">
-            <span class="numerator">N = Massa molekul relatif (Mr) senyawa</span>
-            <hr>
-            <span class="denominator">Massa molekul relatif (Mr) dari rumus empiris</span>
-        </div>
-        <p>Setelah nilai <code>N</code> ditemukan, setiap indeks atom dalam rumus empiris dikalikan dengan <code>N</code> untuk mendapatkan rumus molekul yang sesungguhnya.</p>
+        <p>Dengan kata lain, <strong>N</strong> adalah bilangan bulat sederhana yang menunjukkan perbandingan massa molekul relatif dari rumus molekul dan massa molekul relatif berdasarkan rumus empiris.</p>
 
-        <div class="example-section">
-            <h3>Contoh Perhitungan Penentuan Rumus Molekul</h3>
-            <p><strong>Situasi:</strong> Suatu senyawa memiliki massa molar (Mr) 120 g.mol⁻¹. Senyawa ini diketahui mengandung 40% atom C, 6.67% atom H, dan 53.33% atom O. Tentukan rumus molekul dari senyawa tersebut!</p>
+        <h2>Contoh Perhitungan</h2>
 
-            <h4>Langkah 1: Menentukan Rumus Empiris Senyawa.</h4>
-            <p>Asumsikan 100 gram senyawa. Kita akan menggunakan massa atom relatif (Ar): Ar C = 12, Ar H = 1, Ar O = 16.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Atom</th>
-                        <th>Ar (g.mol⁻¹)</th>
-                        <th>Persen Massa (%)</th>
-                        <th>Massa dalam 100 g</th>
-                        <th>Mol</th>
-                        <th>Perbandingan Mol (Dibulatkan)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Atom">Karbon</td>
-                        <td data-label="Ar (g.mol⁻¹)">12</td>
-                        <td data-label="Persen Massa (%)">40%</td>
-                        <td data-label="Massa dalam 100 g">40 g</td>
-                        <td data-label="Mol">40 / 12 ≈ 3.33 mol</td>
-                        <td data-label="Perbandingan Mol (Dibulatkan)">3.33 / 3.33 = 1</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Atom">Hidrogen</td>
-                        <td data-label="Ar (g.mol⁻¹)">1</td>
-                        <td data-label="Persen Massa (%)">6.67%</td>
-                        <td data-label="Massa dalam 100 g">6.67 g</td>
-                        <td data-label="Mol">6.67 / 1 = 6.67 mol</td>
-                        <td data-label="Perbandingan Mol (Dibulatkan)">6.67 / 3.33 ≈ 2</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Atom">Oksigen</td>
-                        <td data-label="Ar (g.mol⁻¹)">16</td>
-                        <td data-label="Persen Massa (%)">53.33%</td>
-                        <td data-label="Massa dalam 100 g">53.33 g</td>
-                        <td data-label="Mol">53.33 / 16 ≈ 3.33 mol</td>
-                        <td data-label="Perbandingan Mol (Dibulatkan)">3.33 / 3.33 = 1</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>Dari perbandingan mol yang diperoleh (C:H:O = 1:2:1), rumus empiris senyawa ini adalah <code>CH₂O</code>.</p>
+        <div class="example">
+            <div class="example-header">Contoh 1: Menentukan Rumus Empiris</div>
+            <p><strong>Soal:</strong> Tentukan rumus empiris dari senyawa yang disusun oleh 75% karbon dan 25% hidrogen!</p>
+            <p class="example-header">Jawab:</p>
 
-            <h4>Langkah 2: Menentukan Rumus Molekul dari Rumus Empiris dan Massa Molar.</h4>
-            <p>Massa molar senyawa yang diketahui adalah 120 g.mol⁻¹.</p>
-            <p>Terlebih dahulu, hitung Mr dari rumus empiris <code>CH₂O</code>:</p>
-            <ul>
-                <li>Mr (CH₂O) = (1 × Ar C) + (2 × Ar H) + (1 × Ar O)</li>
-                <li>Mr (CH₂O) = (1 × 12) + (2 × 1) + (1 × 16) = 12 + 2 + 16 = 30 g.mol⁻¹</li>
-            </ul>
-            <p>Selanjutnya, hitung nilai faktor pengali <code>N</code>:</p>
-            <div class="formula-box">
-                <span class="numerator">N = Massa molar senyawa / Mr rumus empiris</span>
-                <hr>
-                <span class="denominator">N = 120 g.mol⁻¹ / 30 g.mol⁻¹ = 4</span>
+            <div class="step">
+                <strong>Langkah 1: Menentukan massa karbon dan hidrogen.</strong>
+                <p>Kita asumsikan massa senyawa 100 gram, maka massa karbon dan hidrogen adalah:</p>
+                <div class="step-calculation">
+                    Massa karbon = 75% &times; 100 g = 75 g
+                    Massa hidrogen = 25% &times; 100 g = 25 g
+                </div>
             </div>
-            <p>Terakhir, kalikan setiap indeks atom dalam rumus empiris (<code>CH₂O</code>) dengan nilai <code>N = 4</code>:</p>
-            <ul>
-                <li>Jumlah atom C dalam rumus molekul = 1 × 4 = 4</li>
-                <li>Jumlah atom H dalam rumus molekul = 2 × 4 = 8</li>
-                <li>Jumlah atom O dalam rumus molekul = 1 × 4 = 4</li>
-            </ul>
-            <p>Dengan demikian, rumus molekul senyawa tersebut adalah <code>C₄H₈O₄</code>.</p>
+
+            <div class="step">
+                <strong>Langkah 2: Menentukan mol karbon dan hidrogen.</strong>
+                <div class="step-calculation">
+                    Mol karbon = massa karbon / Ar karbon
+                              = 75 g / 12 g.mol⁻¹
+                              = 6,25 mol
+
+                    Mol hidrogen = massa hidrogen / Ar hidrogen
+                               = 25 g / 1 g.mol⁻¹
+                               = 25 mol
+                </div>
+            </div>
+
+            <div class="step">
+                <strong>Langkah 3: Menentukan rasio mol karbon dan hidrogen.</strong>
+                <div class="step-calculation">
+                    Mol karbon : mol hidrogen = 6,25 mol : 25 mol
+                                             = (6,25/6,25) : (25/6,25)
+                                             = 1 : 4
+                </div>
+            </div>
+
+            <div class="step">
+                <strong>Langkah 4: Menentukan rumus empiris.</strong>
+                <p class="result">Dari rasio tersebut maka rumus empirisnya adalah <strong>CH₄</strong>.</p>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-header">Contoh 2: Menentukan Rumus Molekul</div>
+            <p><strong>Soal:</strong> Suatu senyawa memiliki massa molar 120 g.mol⁻¹. Senyawa tersebut diketahui mengandung 40% atom C, 6,67% atom H, dan 53,33% atom O. Tentukan rumus molekul dari senyawa tersebut!</p>
+            <p class="example-header">Jawab:</p>
+
+            <div class="step">
+                <strong>Langkah 1: Menentukan rumus empiris dari senyawa.</strong>
+                <p>Kita dapat menentukan rumus empiris dengan menggunakan tabel berikut:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Atom</th>
+                            <th>Ar (g.mol⁻¹)</th>
+                            <th>Persen Massa (%)</th>
+                            <th>Massa dalam 100 g</th>
+                            <th>Mol</th>
+                            <th>Perbandingan Mol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Atom">Karbon (C)</td>
+                            <td data-label="Ar">12</td>
+                            <td data-label="Persen Massa">40</td>
+                            <td data-label="Massa dalam 100g">40 g</td>
+                            <td data-label="Mol">40/12 ≈ 3,33 mol</td>
+                            <td data-label="Perbandingan Mol">3,33/3,33 = 1</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Atom">Hidrogen (H)</td>
+                            <td data-label="Ar">1</td>
+                            <td data-label="Persen Massa">6,67</td>
+                            <td data-label="Massa dalam 100g">6,67 g</td>
+                            <td data-label="Mol">6,67/1 = 6,67 mol</td>
+                            <td data-label="Perbandingan Mol">6,67/3,33 ≈ 2</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Atom">Oksigen (O)</td>
+                            <td data-label="Ar">16</td>
+                            <td data-label="Persen Massa">53,33</td>
+                            <td data-label="Massa dalam 100g">53,33 g</td>
+                            <td data-label="Mol">53,33/16 ≈ 3,33 mol</td>
+                            <td data-label="Perbandingan Mol">3,33/3,33 = 1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="result">Jadi, rumus empiris dari senyawa di atas adalah <strong>CH₂O</strong>.</p>
+            </div>
+
+            <div class="step">
+                <strong>Langkah 2: Menentukan rumus molekul dari rumus empiris dan massa molar.</strong>
+                <p>Massa molekul relatif (Mr) dari rumus empiris CH₂O adalah:</p>
+                <div class="step-calculation">
+                    Mr (CH₂O) = Ar(C) + 2 &times; Ar(H) + Ar(O)
+                               = 12 + (2 &times; 1) + 16
+                               = 12 + 2 + 16
+                               = 30 g.mol⁻¹
+                </div>
+                <p>Hitung nilai N:</p>
+                <div class="step-calculation">
+                    N = massa molar dari molekul yang akan dicari / massa molar molekul dari rumus empiris
+                      = 120 g.mol⁻¹ / 30 g.mol⁻¹
+                      = 4
+                </div>
+                <p>Kalikan setiap atom dalam rumus empiris dengan nilai N (4) untuk mendapatkan rumus molekul:</p>
+                <div class="step-calculation">
+                    Rumus Molekul = (CH₂O) &times; 4
+                                  = C₄H₈O₄
+                </div>
+                <p class="result">Setiap atom yang menyusun rumus empiris, kita kalikan 4 sehingga rumus molekul senyawa tersebut adalah <strong>C₄H₈O₄</strong>.</p>
+            </div>
         </div>
 
     </div>
 </body>
 </html>
-```

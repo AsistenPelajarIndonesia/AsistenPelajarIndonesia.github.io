@@ -1,335 +1,548 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kesetimbangan Kimia - Tetapan Kesetimbangan</title>
+    <title>Bab VII: Tetapan Kesetimbangan Kimia - Kelas XI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&family=Consolas&display=swap" rel="stylesheet">
     <style>
+        /* CSS Variables for Light Mode Theme */
         :root {
             --background-canvas: #FFFFFF;
             --text-primary: #212121;
             --text-secondary: #424242;
             --text-tertiary: #757575;
             --border-divider: #E0E0E0;
-            --primary-blue: #1976D2;
-            --accent-green: #388E3C;
+            --primary-blue: #1976D2; /* Original: #1976D2 */
+            --accent-green: #388E3C; /* Original: #388E3C */
             --secondary-accent-amber: #FFB300;
             --semantic-success: #4CAF50;
             --semantic-warning: #FFC107;
             --semantic-error: #D32F2F;
             --semantic-info: #2196F3;
+
+            /* Define RGB values for rgba() usage */
+            --primary-blue-rgb: 25, 118, 210; /* RGB for #1976D2 */
+            --accent-green-rgb: 56, 142, 60; /* RGB for #388E3C */
         }
 
+        /* General Body Styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: var(--background-canvas);
-            color: var(--text-secondary);
-            font-size: 16px;
+            color: var(--text-primary);
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
+        /* Container for content */
         .container {
-            max-width: 900px;
-            margin: 40px auto;
+            max-width: 960px;
+            margin: 0 auto;
             padding: 20px;
-            background-color: var(--background-canvas);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-divider);
         }
 
+        /* Header Styling */
         header {
+            background-color: var(--primary-blue);
+            color: var(--background-canvas);
+            padding: 30px 20px;
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--primary-blue);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-bottom: 5px solid var(--accent-green); /* A little accent */
         }
 
         header h1 {
-            color: var(--primary-blue);
-            font-size: 2.5em;
             margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 0.05em;
         }
 
         header p {
-            color: var(--text-primary);
-            font-size: 1.2em;
-            margin-top: 5px;
+            margin: 5px 0 0;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
         }
 
+        /* Section Styling */
         section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-divider);
+            background-color: var(--background-canvas);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-divider);
         }
 
-        section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        h2 {
-            color: var(--text-primary);
+        section h2 {
+            color: var(--primary-blue);
             font-size: 1.8em;
-            margin-bottom: 15px;
-            border-left: 5px solid var(--primary-blue);
-            padding-left: 10px;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-divider);
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
-        h3 {
-            color: var(--text-primary);
+        section h3 {
+            color: var(--text-secondary);
             font-size: 1.4em;
             margin-top: 25px;
-            margin-bottom: 10px;
-            border-bottom: 2px dotted var(--border-divider);
-            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
         p {
             margin-bottom: 15px;
-            text-align: justify;
+            color: var(--text-secondary);
         }
 
-        .highlight {
-            color: var(--primary-blue);
-            font-weight: bold;
+        strong {
+            color: var(--text-primary);
         }
 
+        /* Card/Box Styling for specific content like "Catatan" or definitions */
         .info-box {
-            background-color: rgba(25, 118, 210, 0.08); /* primary_blue with transparency */
-            border-left: 4px solid var(--primary-blue);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            color: var(--text-primary);
+            background-color: rgba(var(--primary-blue-rgb), 0.07); /* Lighter blue background */
+            border-left: 6px solid var(--primary-blue);
+            padding: 18px 25px;
+            margin: 25px 0;
+            border-radius: 6px;
         }
 
-        .info-box strong {
-            color: var(--primary-blue);
+        .info-box p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.95em;
         }
 
-        .note-box {
-            background-color: rgba(56, 142, 60, 0.08); /* accent_green with transparency */
-            border-left: 4px solid var(--accent-green);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            color: var(--text-primary);
+        .accent-box {
+            background-color: rgba(var(--accent-green-rgb), 0.07);
+            border-left: 6px solid var(--accent-green);
+            padding: 18px 25px;
+            margin: 25px 0;
+            border-radius: 6px;
         }
 
-        .note-box strong {
-            color: var(--accent-green);
+        .accent-box p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.95em;
         }
 
-        .formula-box {
-            background-color: rgba(117, 117, 117, 0.05); /* text_tertiary with transparency */
+        /* Formula Styling */
+        .formula-display {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #fcfcfc;
             border: 1px dashed var(--border-divider);
             padding: 20px;
-            margin: 20px auto;
+            margin: 25px auto;
             text-align: center;
-            border-radius: 5px;
-            font-size: 1.2em;
+            font-size: 1.3em;
             overflow-x: auto; /* For responsiveness of long formulas */
-        }
-
-        .formula-box code {
-            font-family: 'Consolas', 'Monaco', monospace;
             color: var(--text-primary);
-            white-space: nowrap; /* Prevent breaking lines in formula */
+            border-radius: 4px;
         }
 
-        .formula-box code sub, .formula-box code sup {
-            font-size: 0.7em;
-            vertical-align: super;
+        .formula-display p {
+            margin: 5px 0;
+            color: var(--text-primary); /* Ensure formula text is primary color */
+            display: inline-block; /* For proper inline display with fraction line */
+        }
+
+        .formula-display .fraction-line {
+            display: inline-block;
+            border-bottom: 2px solid var(--text-primary);
+            padding-bottom: 2px;
+            margin: 0 5px; /* Adjust spacing around the fraction line */
+        }
+
+        .formula-explanation {
+            font-size: 0.95em;
+            margin-top: 10px;
+            color: var(--text-tertiary);
+            background-color: #fcfcfc;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid var(--border-divider);
+        }
+
+        .formula-explanation ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-top: 10px;
+        }
+
+        .formula-explanation li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        /* Interactive Details/Summary (Accordion) */
+        details {
+            background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden; /* To contain border-radius on children */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        summary {
+            padding: 15px 20px;
+            cursor: pointer;
+            outline: none;
+            background-color: #F8F8F8; /* Lighter background for summary */
+            font-weight: 600;
+            color: var(--primary-blue);
+            display: block;
             position: relative;
-            line-height: 0;
+            transition: background-color 0.2s ease;
         }
-        .formula-box code sub {
-            vertical-align: sub;
+
+        summary:hover {
+            background-color: #EEEEEE;
         }
-        .formula-box code .bracket {
-            font-size: 1.3em; /* Larger brackets */
+
+        summary::marker {
+            display: none; /* Hide default marker */
+        }
+
+        summary::before {
+            content: '+ '; /* Custom marker */
+            position: absolute;
+            left: 15px;
+            color: var(--primary-blue);
+            font-size: 1.1em;
+            line-height: 1; /* Align with text */
+        }
+
+        details[open] summary::before {
+            content: '- '; /* Custom marker when open */
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-divider);
+        }
+
+        .details-content {
+            padding: 15px 20px;
+            color: var(--text-secondary);
+            background-color: var(--background-canvas);
+        }
+
+        .details-content p {
+            margin-bottom: 10px;
+        }
+
+        .details-content .formula-display {
+            margin: 15px 0;
+            font-size: 1.2em; /* Slightly smaller for examples */
+        }
+        
+        .error-formula {
+            color: var(--semantic-error);
             font-weight: bold;
         }
 
-        ul {
-            list-style: disc;
-            padding-left: 25px;
-            margin-bottom: 15px;
-        }
 
-        li {
-            margin-bottom: 8px;
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                margin: 20px auto;
                 padding: 15px;
             }
+
+            header {
+                padding: 25px 15px;
+            }
+
             header h1 {
                 font-size: 2em;
             }
-            h2 {
+
+            header p {
+                font-size: 1em;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            section h2 {
                 font-size: 1.6em;
             }
-            h3 {
-                font-size: 1.2em;
+
+            section h3 {
+                font-size: 1.3em;
             }
-            body {
-                font-size: 15px;
+
+            .info-box, .accent-box {
+                padding: 15px 20px;
+            }
+
+            .formula-display {
+                font-size: 1.1em;
+                padding: 15px;
+            }
+
+            summary {
+                padding: 12px 18px;
+                font-size: 0.95em;
+            }
+
+            .details-content {
+                padding: 12px 18px;
+                font-size: 0.9em;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                margin: 10px auto;
                 padding: 10px;
             }
-            header h1 {
-                font-size: 1.8em;
+
+            header {
+                padding: 20px 10px;
             }
-            h2 {
+
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            header p {
+                font-size: 0.9em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            section h2 {
                 font-size: 1.4em;
             }
-            h3 {
+
+            section h3 {
                 font-size: 1.1em;
             }
-            body {
-                font-size: 14px;
+
+            p {
+                font-size: 0.9em;
+            }
+
+            .info-box, .accent-box {
+                padding: 12px 15px;
+                font-size: 0.85em;
+            }
+
+            .formula-display {
+                font-size: 0.95em;
+                padding: 12px;
+            }
+
+            summary {
+                padding: 10px 15px;
+                font-size: 0.85em;
+            }
+
+            .details-content {
+                padding: 10px 15px;
+                font-size: 0.85em;
+            }
+
+            .formula-explanation {
+                padding: 10px;
+                font-size: 0.85em;
+            }
+
+            .formula-explanation ul {
+                padding-left: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Bab VII: Kesetimbangan Kimia</h1>
-            <p>B. Tetapan Kesetimbangan</p>
-        </header>
+    <header>
+        <h1>B. Tetapan Kesetimbangan</h1>
+        <p>Bab VII: Kesetimbangan Kimia | Kimia untuk SMA/MA Kelas XI</p>
+    </header>
 
-        <section id="introduction">
+    <main class="container">
+        <section>
             <h2>Pengantar Tetapan Kesetimbangan</h2>
             <p>
-                Dalam studi kimia, banyak reaksi tidak berlangsung hingga semua reaktan habis. Sebaliknya, mereka mencapai suatu kondisi di mana laju reaksi maju (reaktan menjadi produk) sama dengan laju reaksi balik (produk kembali menjadi reaktan). Kondisi ini disebut <span class="highlight">kesetimbangan kimia</span>.
+                Pada awalnya, para ahli kimia mempelajari berbagai reaksi kesetimbangan selama bertahun-tahun dan telah mengusulkan banyak penjelasan. Namun, belum ada yang mampu menjelaskan secara komprehensif hubungan konsentrasi antara zat-zat kimia dalam sistem kesetimbangan.
             </p>
             <p>
-                Para ahli kimia di masa lalu telah lama mempelajari fenomena ini. Pada tahun 1864, dua ilmuwan Norwegia, <span class="highlight">Cato Guldberg dan Peter Waage</span>, merangkum hasil eksperimen mereka dan mengemukakan <span class="highlight">Hukum Aksi Massa</span>. Hukum ini menyatakan bahwa kecepatan reaksi kimia sangat bergantung pada konsentrasi reaktan yang terlibat.
-            </p>
-            <p>
-                Lebih jauh, Guldberg dan Waage menyimpulkan bahwa pada sistem kesetimbangan kimia, terdapat suatu hubungan yang konstan antara konsentrasi zat-zat kimia yang terlibat. Hubungan konstan ini kemudian dikenal sebagai <span class="highlight">konstanta kesetimbangan</span> atau <span class="highlight">tetapan kesetimbangan</span>.
+                Terobosan penting datang pada tahun 1864, ketika dua ilmuwan Norwegia, **Cato Guldberg** dan **Peter Waage**, merangkum hasil eksperimen mereka dan merumuskannya dalam apa yang dikenal sebagai **Hukum Aksi Massa**.
             </p>
             <div class="info-box">
-                <strong>Prinsip Guldberg dan Waage (1864):</strong><br>
-                Pada sistem kesetimbangan, hasil kali konsentrasi zat-zat hasil reaksi (produk) dibagi dengan hasil kali konsentrasi pereaksi (reaktan), di mana masing-masing konsentrasi dipangkatkan dengan koefisien stoikiometrinya, adalah suatu nilai yang tetap (konstan).
+                <p>
+                    <strong>Guldberg dan Waage</strong> menyatakan bahwa kecepatan reaksi kimia bergantung pada konsentrasi reaktan. Mereka lebih lanjut menemukan bahwa pada sistem kesetimbangan kimia, konsentrasi bahan kimia yang terlibat memiliki hubungan konstan satu sama lain. Hubungan konstan ini kemudian dikenal sebagai **konstanta kesetimbangan** atau **tetapan kesetimbangan**.
+                </p>
             </div>
+            <p>
+                Mereka menyimpulkan bahwa hasil kali konsentrasi zat-zat hasil reaksi (produk) dibagi dengan hasil kali konsentrasi pereaksi (reaktan) pada sistem kesetimbangan, di mana masing-masing konsentrasi itu dipangkatkan dengan koefisien reaksinya, adalah nilai yang tetap.
+            </p>
         </section>
 
-        <section id="kc">
+        <section>
             <h2>1. Tetapan Kesetimbangan Konsentrasi (K<sub>c</sub>)</h2>
             <p>
-                Tetapan kesetimbangan konsentrasi, dilambangkan dengan <span class="highlight">K<sub>c</sub></span>, adalah ekspresi kuantitatif dari Hukum Aksi Massa yang melibatkan konsentrasi molar (mol/L) dari spesies-spesies dalam kesetimbangan. Untuk reaksi umum:
+                Berdasarkan hukum aksi massa Guldberg dan Waage, untuk reaksi kesetimbangan umum:
             </p>
-            <div class="formula-box">
-                <code>pA + qB <span style="font-size: 1.5em; vertical-align: middle;">⇌</span> rC + sD</code>
+            <div class="formula-display">
+                <p>pA + qB &#x21CC; rC + sD</p>
+                <p>K<sub>c</sub> = <span class="fraction-line">[C]<sup>r</sup> [D]<sup>s</sup></span> / [A]<sup>p</sup> [B]<sup>q</sup></p>
             </div>
-            <p>
-                Maka, persamaan tetapan kesetimbangan konsentrasinya adalah:
-            </p>
-            <div class="formula-box">
-                <code>K<sub>c</sub> = <span class="bracket">[</span>C<span class="bracket">]</span><sup>r</sup> <span class="bracket">[</span>D<span class="bracket">]</span><sup>s</sup> / <span class="bracket">[</span>A<span class="bracket">]</span><sup>p</sup> <span class="bracket">[</span>B<span class="bracket">]</span><sup>q</sup></code>
+            <div class="formula-explanation">
+                <p><strong>Keterangan:</strong></p>
+                <ul>
+                    <li>K<sub>c</sub> = konstanta/tetapan kesetimbangan konsentrasi (nilainya tetap pada suhu tetap).</li>
+                    <li>p, q, r, s = koefisien stoikiometri reaksi (angka di depan rumus kimia).</li>
+                    <li>[A], [B], [C], [D] = konsentrasi molar (M) dari zat A, B, C, dan D pada kondisi kesetimbangan. Konsentrasi ini haruslah konsentrasi saat kesetimbangan tercapai.</li>
+                </ul>
             </div>
-            <p>
-                <strong>Keterangan:</strong>
-            </p>
-            <ul>
-                <li><strong>K<sub>c</sub></strong> = konstanta/tetapan kesetimbangan konsentrasi (nilainya tetap pada suhu tetap).</li>
-                <li><strong>p, q, r, s</strong> = koefisien stoikiometri reaksi (bilangan bulat).</li>
-                <li><strong>[A], [B], [C], [D]</strong> = konsentrasi molar (M atau mol/L) dari zat A, B, C, dan D pada keadaan setimbang.</li>
-            </ul>
 
             <h3>Contoh Penerapan K<sub>c</sub>:</h3>
-            <p>Untuk reaksi kesetimbangan gas: <code style="color: var(--text-primary);">PCl<sub>5</sub>(g) <span style="font-size: 1.2em; vertical-align: middle;">⇌</span> PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)</code></p>
-            <p>Pada suhu tetap, tetapan kesetimbangannya adalah:</p>
-            <div class="formula-box">
-                <code>K<sub>c</sub> = <span class="bracket">[</span>PCl<sub>3</sub><span class="bracket">]</span><sup>1</sup> <span class="bracket">[</span>Cl<sub>2</sub><span class="bracket">]</span><sup>1</sup> / <span class="bracket">[</span>PCl<sub>5</sub><span class="bracket">]</span><sup>1</sup></code>
-                <br>
-                <span style="font-size: 0.9em; color: var(--text-tertiary);">Karena koefisiennya 1, pangkatnya tidak perlu dituliskan:</span>
-                <br>
-                <code>K<sub>c</sub> = <span class="bracket">[</span>PCl<sub>3</sub><span class="bracket">]</span> <span class="bracket">[</span>Cl<sub>2</sub><span class="bracket">]</span> / <span class="bracket">[</span>PCl<sub>5</sub><span class="bracket">]</span></code>
-            </div>
 
-            <div class="note-box">
-                <strong>Penting! Fase Zat dalam Perhitungan K<sub>c</sub>:</strong><br>
-                Dalam sistem kesetimbangan, zat-zat penyusun dapat berada dalam berbagai fase: padat (s), gas (g), cair (l), atau larutan (aq). Namun, hanya zat dalam fase <span class="highlight">gas (g)</span> dan <span class="highlight">larutan (aq)</span> yang diikutsertakan dalam perhitungan tetapan kesetimbangan konsentrasi.
-                <br><br>
-                Fase <span class="highlight">padat (s)</span> dan <span class="highlight">cair murni (l)</span> <span style="font-weight: bold; color: var(--semantic-error);">TIDAK</span> diikutsertakan karena konsentrasi zat padat dan cair murni relatif konstan dan tidak signifikan berubah selama reaksi, sehingga nilai mereka sudah "termasuk" dalam nilai K<sub>c</sub> itu sendiri.
-            </div>
+            <details>
+                <summary>Contoh 1: Disosiasi Fosfor Pentaklorida</summary>
+                <div class="details-content">
+                    <p>
+                        Untuk reaksi kesetimbangan:
+                        <br>PCl<sub>5</sub>(g) &#x21CC; PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)
+                    </p>
+                    <p>
+                        Pada suhu tetap, tetapan kesetimbangannya adalah:
+                    </p>
+                    <div class="formula-display">
+                        <p>K<sub>c</sub> = <span class="fraction-line">[PCl<sub>3</sub>]<sup>1</sup> [Cl<sub>2</sub>]<sup>1</sup></span> / [PCl<sub>5</sub>]<sup>1</sup></p>
+                        <p>Karena koefisiennya adalah 1, pangkat 1 tidak perlu dituliskan:</p>
+                        <p>K<sub>c</sub> = <span class="fraction-line">[PCl<sub>3</sub>] [Cl<sub>2</sub>]</span> / [PCl<sub>5</sub>]</p>
+                    </div>
+                </div>
+            </details>
 
-            <h3>Contoh Pengecualian Fase dalam K<sub>c</sub>:</h3>
-            <p>Untuk reaksi: <code style="color: var(--text-primary);">Fe<sub>2</sub>O<sub>3</sub>(s) + 3CO(g) <span style="font-size: 1.2em; vertical-align: middle;">⇌</span> 2Fe(s) + 3CO<sub>2</sub>(g)</code></p>
-            <p>Meskipun reaksi tersebut melibatkan semua zat, tetapan kesetimbangan konsentrasinya <span style="font-weight: bold; color: var(--semantic-error);">BUKANLAH</span>:</p>
-            <div class="formula-box" style="background-color: rgba(211, 47, 47, 0.05); border-color: var(--semantic-error);">
-                <code>K<sub>c</sub> <span style="color: var(--semantic-error);">≠</span> <span class="bracket">[</span>Fe<span class="bracket">]</span><sup>2</sup> <span class="bracket">[</span>CO<sub>2</sub><span class="bracket">]</span><sup>3</sup> / <span class="bracket">[</span>Fe<sub>2</sub>O<sub>3</sub><span class="bracket">]</span> <span class="bracket">[</span>CO<span class="bracket">]</span><sup>3</sup></code>
-            </div>
-            <p>Melainkan, karena Fe<sub>2</sub>O<sub>3</sub>(s) dan Fe(s) adalah fase padat, mereka tidak diikutsertakan. Jadi K<sub>c</sub> yang benar adalah:</p>
-            <div class="formula-box" style="background-color: rgba(76, 175, 80, 0.05); border-color: var(--semantic-success);">
-                <code>K<sub>c</sub> = <span class="bracket">[</span>CO<sub>2</sub><span class="bracket">]</span><sup>3</sup> / <span class="bracket">[</span>CO<span class="bracket">]</span><sup>3</sup></code>
+            <details>
+                <summary>Contoh 2: Reaksi Heterogen Oksida Besi dengan Karbon Monoksida</summary>
+                <div class="details-content">
+                    <p>
+                        Untuk reaksi kesetimbangan:
+                        <br>Fe<sub>2</sub>O<sub>3</sub>(s) + 3CO(g) &#x21CC; 2Fe(s) + 3CO<sub>2</sub>(g)
+                    </p>
+                    <p>
+                        Pada reaksi ini, terdapat zat dalam fase padat (s) dan gas (g).
+                        Tetapan kesetimbangan konsentrasinya <strong>bukanlah</strong>:
+                    </p>
+                    <div class="formula-display error-formula">
+                        <p>K<sub>c</sub> = <span class="fraction-line">[Fe]<sup>2</sup> [CO<sub>2</sub>]<sup>3</sup></span> / [Fe<sub>2</sub>O<sub>3</sub>] [CO]<sup>3</sup></p>
+                    </div>
+                    <p>
+                        Melainkan, tetapan kesetimbangan yang benar adalah:
+                    </p>
+                    <div class="formula-display">
+                        <p>K<sub>c</sub> = <span class="fraction-line">[CO<sub>2</sub>]<sup>3</sup></span> / [CO]<sup>3</sup></p>
+                    </div>
+                </div>
+            </details>
+
+            <div class="accent-box">
+                <p><strong>Penting: Fase Zat dalam Perhitungan K<sub>c</sub></strong></p>
+                <p>
+                    Dalam sistem kesetimbangan, zat-zat penyusun kesetimbangan dapat berada dalam fase padat (s), gas (g), cair (l), atau larutan (aq).
+                    Namun, fase yang diikutkan dalam perhitungan tetapan kesetimbangan konsentrasi hanyalah **gas (g)** dan **larutan (aq)**.
+                    <br>
+                    Fase **padat (s)** dan **cair (l)** tidak diikutsertakan karena nilai konsentrasinya dianggap relatif konstan dan tidak berubah secara signifikan pada saat kesetimbangan telah tercapai. Oleh karena itu, mereka tidak memengaruhi posisi kesetimbangan secara matematis dalam ekspresi K<sub>c</sub>.
+                </p>
             </div>
         </section>
 
-        <section id="kp">
+        <section>
             <h2>2. Tetapan Kesetimbangan Tekanan Parsial (K<sub>p</sub>)</h2>
             <p>
-                Selain dinyatakan dalam bentuk konsentrasi, tetapan kesetimbangan juga dapat dinyatakan dalam bentuk tekanan parsial, khusus untuk sistem kesetimbangan yang melibatkan <span class="highlight">gas</span>. Ini dilambangkan dengan <span class="highlight">K<sub>p</sub></span>.
+                Selain dinyatakan dalam bentuk tetapan kesetimbangan konsentrasi (K<sub>c</sub>), tetapan kesetimbangan juga dapat dinyatakan dalam bentuk tetapan kesetimbangan tekanan parsial gas, yang dinyatakan dengan notasi **K<sub>p</sub>**.
             </p>
             <p>
-                Tetapan kesetimbangan tekanan parsial didefinisikan sebagai hasil kali tekanan parsial gas-gas pada sisi produk yang dipangkatkan dengan koefisien stoikiometrinya, dibagi dengan hasil kali tekanan parsial gas-gas pada sisi reaktan yang dipangkatkan dengan koefisien stoikiometrinya. Untuk reaksi gas umum:
+                Tetapan kesetimbangan tekanan parsial ini adalah hasil kali tekanan parsial gas-gas pada sisi produk dipangkatkan dengan koefisiennya, dibagi dengan hasil kali tekanan parsial gas-gas pada sisi reaktan yang dipangkatkan dengan koefisiennya. K<sub>p</sub> hanya berlaku untuk reaksi kesetimbangan yang melibatkan zat dalam fase gas.
             </p>
-            <div class="formula-box">
-                <code>aW(g) + bX(g) <span style="font-size: 1.5em; vertical-align: middle;">⇌</span> cY(g) + dZ(g)</code>
+            <p>
+                Untuk persamaan kesetimbangan umum yang hanya melibatkan gas:
+            </p>
+            <div class="formula-display">
+                <p>aW(g) + bX(g) &#x21CC; cY(g) + dZ(g)</p>
+                <p>K<sub>p</sub> = <span class="fraction-line">P<sub>Y</sub><sup>c</sup> &bull; P<sub>Z</sub><sup>d</sup></span> / P<sub>W</sub><sup>a</sup> &bull; P<sub>X</sub><sup>b</sup></p>
             </div>
-            <p>
-                Maka, persamaan tetapan kesetimbangan tekanan parsialnya adalah:
-            </p>
-            <div class="formula-box">
-                <code>K<sub>p</sub> = P<sub>Y</sub><sup>c</sup> P<sub>Z</sub><sup>d</sup> / P<sub>W</sub><sup>a</sup> P<sub>X</sub><sup>b</sup></code>
+            <div class="formula-explanation">
+                <p><strong>Keterangan:</strong></p>
+                <ul>
+                    <li>K<sub>p</sub> = konstanta/tetapan kesetimbangan tekanan parsial.</li>
+                    <li>a, b, c, d = koefisien stoikiometri reaksi.</li>
+                    <li>P<sub>W</sub>, P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub> = tekanan parsial gas W, X, Y, Z pada kondisi kesetimbangan. Satuan tekanan parsial umumnya adalah atm atau Pa.</li>
+                </ul>
             </div>
-            <p>
-                <strong>Keterangan:</strong>
-            </p>
-            <ul>
-                <li><strong>K<sub>p</sub></strong> = konstanta/tetapan kesetimbangan tekanan parsial (nilainya tetap pada suhu tetap).</li>
-                <li><strong>a, b, c, d</strong> = koefisien stoikiometri reaksi.</li>
-                <li><strong>P<sub>W</sub>, P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub></strong> = tekanan parsial gas W, X, Y, dan Z pada keadaan setimbang. Tekanan parsial biasanya dinyatakan dalam atm atau bar.</li>
-            </ul>
 
             <h3>Contoh Penerapan K<sub>p</sub>:</h3>
-            <p>Untuk reaksi kesetimbangan gas: <code style="color: var(--text-primary);">PCl<sub>5</sub>(g) <span style="font-size: 1.2em; vertical-align: middle;">⇌</span> PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)</code></p>
-            <p>Karena semua zat berada dalam fase gas dan koefisiennya adalah 1, tetapan kesetimbangan tekanan parsialnya adalah:</p>
-            <div class="formula-box">
-                <code>K<sub>p</sub> = P<sub>PCl<sub>3</sub></sub> P<sub>Cl<sub>2</sub></sub> / P<sub>PCl<sub>5</sub></sub></code>
-            </div>
-        </section>
 
-        <section id="kc-kp-relation">
-            <h2>3. Hubungan antara K<sub>c</sub> dan K<sub>p</sub></h2>
-            <p>
-                Meskipun <span class="highlight">K<sub>c</sub></span> dan <span class="highlight">K<sub>p</sub></span> adalah dua bentuk tetapan kesetimbangan yang berbeda (satu menggunakan konsentrasi, satu menggunakan tekanan parsial), keduanya sebenarnya saling terkait dan dapat dihubungkan melalui suatu persamaan. Pemahaman hubungan ini penting dalam memecahkan berbagai permasalahan kimia yang melibatkan kesetimbangan gas.
-            </p>
-            <p>
-                Memahami dan membuktikan hubungan antara K<sub>c</sub> dan K<sub>p</sub> memerlukan penerapan keterampilan numerasi dan literasi matematika, di mana hukum gas ideal seringkali menjadi dasar untuk penurunan rumus ini. Ini menunjukkan pentingnya mengintegrasikan berbagai disiplin ilmu dalam memahami fenomena kimia secara komprehensif.
-            </p>
+            <details>
+                <summary>Contoh 1: Disosiasi PCl<sub>5</sub> (Reaksi Gas Penuh)</summary>
+                <div class="details-content">
+                    <p>
+                        Untuk reaksi kesetimbangan:
+                        <br>PCl<sub>5</sub>(g) &#x21CC; PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)
+                    </p>
+                    <p>
+                        Semua zat yang terlibat berada dalam fase gas dan semua koefisien reaksinya adalah 1.
+                        Maka tetapan kesetimbangan tekanan parsialnya adalah:
+                    </p>
+                    <div class="formula-display">
+                        <p>K<sub>p</sub> = <span class="fraction-line">P<sub>PCl3</sub> &bull; P<sub>Cl2</sub></span> / P<sub>PCl5</sub></p>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>Contoh 2: Pembentukan Nitrogen Dioksida</summary>
+                <div class="details-content">
+                    <p>
+                        Untuk reaksi kesetimbangan:
+                        <br>2NO(g) + O<sub>2</sub>(g) &#x21CC; 2NO<sub>2</sub>(g)
+                    </p>
+                    <p>
+                        Semua zat berada dalam fase gas.
+                        Maka tetapan kesetimbangan tekanan parsialnya adalah:
+                    </p>
+                    <div class="formula-display">
+                        <p>K<sub>p</sub> = <span class="fraction-line">P<sub>NO2</sub><sup>2</sup></span> / P<sub>NO</sub><sup>2</sup> &bull; P<sub>O2</sub></p>
+                    </div>
+                </div>
+            </details>
+
+            <h3>Hubungan antara K<sub>c</sub> dan K<sub>p</sub></h3>
             <div class="info-box">
-                <strong>Konsep Utama:</strong><br>
-                Hubungan antara K<sub>c</sub> dan K<sub>p</sub> dapat diturunkan dari Hukum Gas Ideal (<code style="color: var(--primary-blue);">PV = nRT</code>), yang menghubungkan tekanan dan konsentrasi (jumlah mol per volume).
+                <p>
+                    Terdapat hubungan matematis yang penting antara K<sub>c</sub> dan K<sub>p</sub>. Hubungan ini umumnya dijelaskan melalui persamaan gas ideal (PV = nRT) dan melibatkan perubahan jumlah mol gas dalam reaksi (Δn). Persamaannya adalah:
+                </p>
+                <div class="formula-display">
+                    <p>K<sub>p</sub> = K<sub>c</sub> (RT)<sup>&Delta;n</sup></p>
+                </div>
+                <p>
+                    Di mana:
+                </p>
+                <ul>
+                    <li>R = konstanta gas ideal (0.0821 L atm/mol K atau 8.314 J/mol K)</li>
+                    <li>T = suhu absolut (dalam Kelvin)</li>
+                    <li>Δn = (jumlah mol produk gas) - (jumlah mol reaktan gas)</li>
+                </ul>
+                <p>
+                    Memahami dan mampu menurunkan hubungan ini merupakan bagian penting dari kecakapan literasi numerasi dalam kimia, membantu kita menghubungkan konsep konsentrasi dengan tekanan parsial dalam sistem kesetimbangan, terutama saat berhadapan dengan reaksi yang melibatkan gas.
+                </p>
             </div>
         </section>
-    </div>
+    </main>
 </body>
 </html>
-```

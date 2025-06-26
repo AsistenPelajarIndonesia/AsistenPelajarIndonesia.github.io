@@ -1,11 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faktor-Faktor yang Memengaruhi Laju Reaksi Kimia</title>
+    <title>Faktor-Faktor yang Memengaruhi Laju Reaksi - Kinetika Kimia</title>
     <style>
+        /* Global Styles & Reset */
         :root {
             --background-canvas: #FFFFFF;
             --text-primary: #212121;
@@ -21,487 +21,513 @@
             --semantic-info: #2196F3;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--background-canvas);
             color: var(--text-primary);
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
         }
 
         .container {
             max-width: 960px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 0 auto;
             background-color: var(--background-canvas);
+            border: 1px solid var(--border-divider);
             border-radius: 8px;
+            padding: 30px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        h1, h2, h3, h4 {
-            color: var(--text-primary);
-            margin-top: 2em;
-            margin-bottom: 0.8em;
-        }
-
         h1 {
-            font-size: 2.2em;
-            text-align: center;
             color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid var(--border-divider);
             padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary-blue);
         }
 
         h2 {
-            font-size: 1.8em;
             color: var(--primary-blue);
-            border-bottom: 1px solid var(--border-divider);
-            padding-bottom: 10px;
-            margin-top: 3em;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 15px;
         }
 
         h3 {
-            font-size: 1.5em;
             color: var(--text-secondary);
-            margin-top: 2em;
-            margin-bottom: 0.5em;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--border-divider);
+            padding-bottom: 5px;
         }
 
         p {
-            margin-bottom: 1em;
-            color: var(--text-primary);
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
         }
 
         strong {
-            color: var(--text-secondary);
-        }
-
-        .section-intro {
-            font-size: 1.1em;
-            margin-bottom: 2em;
-            text-align: justify;
-        }
-
-        .info-box {
-            background-color: #F8F8F8; /* A very light gray for general info boxes */
-            border-left: 5px solid var(--border-divider);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-        }
-
-        .aktivitas-box {
-            background-color: #E8F5E9; /* Light green for activities */
-            border-left: 5px solid var(--accent-green);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .aktivitas-box h3 {
-            color: var(--accent-green);
-            margin-top: 0;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed var(--accent-green);
-        }
-        .aktivitas-box ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-        .aktivitas-box li {
-            margin-bottom: 5px;
-            color: var(--text-secondary);
-        }
-
-        .contoh-box {
-            background-color: #FFFDE7; /* Light amber for examples */
-            border-left: 5px solid var(--secondary-accent-amber);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .contoh-box h3 {
-            color: var(--secondary-accent-amber);
-            margin-top: 0;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed var(--secondary-accent-amber);
-        }
-        .contoh-box pre {
-            background-color: #FEF9D7; /* Slightly darker amber for code/equations */
-            padding: 10px;
-            border-radius: 4px;
-            overflow-x: auto;
             color: var(--text-primary);
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 0.9em;
-            white-space: pre-wrap; /* Ensure pre content wraps */
-            word-wrap: break-word; /* Break long words */
-        }
-        .contoh-box p, .contoh-box ul {
-            color: var(--text-secondary);
         }
 
-        .pengayaan-box {
-            background-color: #FFF8E1; /* Lighter amber for enrichment */
-            border-left: 5px solid var(--secondary-accent-amber);
-            padding: 15px 20px;
-            margin: 20px 0;
+        .highlight-box {
+            background-color: #e3f2fd; /* Light blue from primary-blue palette */
+            border-left: 6px solid var(--primary-blue);
+            padding: 20px;
+            margin: 25px 0;
             border-radius: 4px;
         }
-        .pengayaan-box h3 {
-            color: var(--secondary-accent-amber);
-            margin-top: 0;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed var(--secondary-accent-amber);
+
+        .example-box {
+            background-color: #f3e5f5; /* Light purple for examples */
+            border-left: 6px solid #9c27b0; /* Deeper purple */
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
         }
-        .pengayaan-box p {
+
+        .activity-summary {
+            background-color: #e8f5e9; /* Light green for activities */
+            border-left: 6px solid var(--accent-green);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+            background-color: var(--background-canvas);
+        }
+
+        th, td {
+            border: 1px solid var(--border-divider);
+            padding: 10px 12px;
+            text-align: left;
             color: var(--text-secondary);
         }
 
-        .inti-sari-box {
-            background-color: #E3F2FD; /* Light blue for summary */
-            border-left: 5px solid var(--semantic-info);
-            padding: 15px 20px;
+        th {
+            background-color: #f5f5f5;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        code, pre {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: var(--text-primary);
+            white-space: pre-wrap; /* Ensures code wraps */
+        }
+
+        pre {
+            display: block;
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px solid var(--border-divider);
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+
+        .cube-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
             margin: 30px 0;
-            border-radius: 4px;
-        }
-        .inti-sari-box h3 {
-            color: var(--semantic-info);
-            margin-top: 0;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed var(--semantic-info);
-        }
-        .inti-sari-box p {
-            color: var(--text-secondary);
-        }
-        .inti-sari-box ul {
-            color: var(--text-secondary);
-            padding-left: 20px;
+            align-items: flex-end;
         }
 
-        .equation {
-            background-color: #F0F4F7;
-            padding: 10px 15px;
-            border-radius: 4px;
-            margin: 15px 0;
-            text-align: center;
-            overflow-x: auto;
+        .cube {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--secondary-accent-amber);
+            background-color: #ffe0b2; /* Light amber */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
             color: var(--text-primary);
-            font-family: 'Times New Roman', serif;
-            font-size: 1.1em;
+            flex-shrink: 0;
         }
 
-        .sub-section {
-            margin-left: 20px;
-            margin-bottom: 1.5em;
+        .small-cube {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--secondary-accent-amber);
+            background-color: #ffe0b2;
+            flex-shrink: 0;
         }
 
-        .list-unstyled {
-            list-style: none;
+        .cube-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            width: 85px; /* Adjust to fit 2x2x2 visual */
+            height: 85px;
+            align-content: flex-start;
+        }
+
+        .arrow {
+            font-size: 3em;
+            color: var(--primary-blue);
+            margin: 0 20px;
+            align-self: center;
+        }
+
+        .summary-box {
+            background-color: #f0f4c3; /* Light yellow-green */
+            border: 2px solid var(--accent-green);
+            padding: 25px;
+            margin-top: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .summary-box h3 {
+            color: var(--accent-green);
+            border-bottom: none;
+            margin-top: 0;
+            font-size: 1.6em;
+        }
+
+        .summary-box ul {
+            text-align: left;
+            list-style-type: none;
             padding-left: 0;
         }
 
-        /* Responsive adjustments */
+        .summary-box ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .summary-box ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--semantic-success);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
             .container {
-                margin: 10px;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 1.5em;
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+            h3 {
+                font-size: 1.2em;
+                margin-top: 25px;
+                margin-bottom: 10px;
+            }
+            table {
+                font-size: 0.9em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            .cube-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .arrow {
+                transform: rotate(90deg);
+                margin: 20px 0;
+            }
+            .cube, .cube-group {
+                width: 100px;
+                height: 100px;
+            }
+            .small-cube {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
                 padding: 15px;
             }
             h1 {
                 font-size: 1.8em;
             }
             h2 {
-                font-size: 1.5em;
+                font-size: 1.3em;
             }
             h3 {
-                font-size: 1.3em;
+                font-size: 1.1em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>D. Faktor-Faktor yang Memengaruhi Laju Reaksi</h1>
+        <h1>Faktor-Faktor yang Memengaruhi Laju Reaksi</h1>
 
-        <p class="section-intro">
-            Pernahkah kalian mengamati bahwa melarutkan garam ke dalam air panas jauh lebih cepat daripada ke dalam air dingin? Fenomena ini menunjukkan bahwa ada beberapa faktor yang dapat memengaruhi seberapa cepat suatu reaksi kimia berlangsung. Dalam kinetika kimia, "laju reaksi" merujuk pada kecepatan pembentukan produk atau kecepatan pengurangan reaktan. Mari kita pelajari faktor-faktor tersebut.
-        </p>
+        <p>Pernahkah kalian melarutkan garam ke dalam air dingin dan air panas? Mana yang lebih cepat larut? Tentu, garam yang dilarutkan ke dalam air panas lebih cepat larut. Ini menunjukkan bahwa ada faktor-faktor yang memengaruhi laju reaksi. Mari kita pelajari faktor-faktor tersebut secara mendalam.</p>
 
         <h2>1. Konsentrasi</h2>
-        <p>
-            Konsentrasi adalah ukuran banyaknya zat terlarut dalam suatu volume pelarut. Pengaruh konsentrasi terhadap laju reaksi dapat dijelaskan melalui <strong>Teori Tumbukan</strong>.
-        </p>
-        <p>
-            Menurut Teori Tumbukan, reaksi kimia terjadi ketika partikel-partikel pereaksi bertumbukan. Namun, tidak semua tumbukan menghasilkan reaksi. Tumbukan yang menghasilkan reaksi disebut <strong>tumbukan efektif</strong>. Tumbukan efektif ini terjadi jika partikel memiliki orientasi yang tepat dan energi yang cukup (melebihi energi aktivasi).
-        </p>
-        <p>
-            Apabila konsentrasi pereaksi ditingkatkan, artinya jumlah partikel pereaksi dalam volume tertentu menjadi lebih banyak. Peningkatan jumlah partikel ini akan menyebabkan frekuensi tumbukan antar partikel juga meningkat. Dengan lebih banyaknya tumbukan yang terjadi per satuan waktu, kemungkinan terjadinya tumbukan efektif juga akan bertambah, sehingga laju reaksi menjadi lebih cepat.
-        </p>
+        <p>Konsentrasi mengacu pada jumlah partikel zat terlarut per unit volume. Dalam reaksi kimia, konsentrasi pereaksi memiliki pengaruh signifikan terhadap laju reaksi.</p>
+        
+        <h3>Kaitan dengan Teori Tumbukan</h3>
+        <p>Menurut <strong>Teori Tumbukan</strong>, reaksi kimia terjadi ketika partikel-partikel pereaksi bertumbukan. Agar tumbukan menghasilkan reaksi (tumbukan efektif), partikel harus memiliki energi yang cukup (energi aktivasi) dan orientasi yang tepat. Ketika konsentrasi pereaksi ditingkatkan, <strong>jumlah partikel pereaksi per unit volume meningkat</strong>. Hal ini menyebabkan <strong>frekuensi tumbukan antarpartikel menjadi lebih tinggi</strong>. Dengan lebih banyaknya tumbukan, peluang terjadinya tumbukan efektif juga meningkat, sehingga <strong>laju reaksi menjadi lebih cepat</strong>.</p>
 
-        <div class="aktivitas-box">
-            <h3>Aktivitas 6.1: Pengaruh Konsentrasi terhadap Laju Reaksi</h3>
-            <p><strong>Deskripsi Singkat:</strong> Percobaan ini bertujuan mengamati pengaruh konsentrasi larutan natrium tiosulfat (Na₂S₂O₃) terhadap waktu reaksi saat direaksikan dengan larutan asam klorida (HCl).</p>
-            <p><strong>Prosedur Umum:</strong></p>
-            <ul>
-                <li>Beberapa gelas piala disiapkan dengan volume HCl yang sama.</li>
-                <li>Masing-masing gelas piala kemudian ditambahkan volume Na₂S₂O₃ yang sama, namun dengan konsentrasi yang berbeda-beda (misalnya 0,2 M, 0,4 M, 0,6 M).</li>
-                <li>Waktu diukur hingga tanda silang di bawah gelas piala tidak terlihat lagi (indikasi terbentuknya endapan belerang).</li>
-            </ul>
-            <p><strong>Harapan Hasil:</strong> Semakin tinggi konsentrasi Na₂S₂O₃, waktu yang dibutuhkan untuk reaksi selesai (tanda silang tidak terlihat) akan semakin singkat, menunjukkan laju reaksi yang lebih cepat.</p>
+        <div class="activity-summary">
+            <h3>Ringkasan Aktivitas 6.1: Pengaruh Konsentrasi</h3>
+            <p>Dalam percobaan ini, kita mereaksikan larutan HCl dengan larutan Na₂S₂O₃ dan mengamati waktu yang dibutuhkan hingga terbentuk endapan yang menyebabkan tanda silang tidak terlihat. Konsentrasi Na₂S₂O₃ divariasikan (0,2 M, 0,4 M, 0,6 M) sementara konsentrasi HCl dan volume dijaga konstan. Diamati bahwa semakin tinggi konsentrasi Na₂S₂O₃, semakin cepat waktu yang dibutuhkan untuk reaksi selesai (endapan terbentuk), menunjukkan laju reaksi yang lebih cepat.</p>
         </div>
 
-        <p>
-            Hubungan kuantitatif antara konsentrasi pereaksi dan laju reaksi dinyatakan dalam <strong>persamaan laju reaksi</strong> (atau hukum laju). Untuk reaksi umum aA + bB → produk, persamaan laju reaksinya adalah:
-        </p>
-        <div class="equation">
-            r = k [A]<sup>x</sup> [B]<sup>y</sup>
-        </div>
-        <p>
-            Di mana:
-            <ul>
-                <li><strong>r</strong> adalah laju reaksi.</li>
-                <li><strong>k</strong> adalah tetapan laju reaksi.</li>
-                <li><strong>[A]</strong> dan <strong>[B]</strong> adalah konsentrasi molar pereaksi A dan B.</li>
-                <li><strong>x</strong> adalah orde reaksi terhadap A, dan <strong>y</strong> adalah orde reaksi terhadap B.</li>
-                <li><strong>x + y</strong> adalah orde reaksi total.</li>
-            </ul>
-            Orde reaksi (x dan y) tidak selalu sama dengan koefisien stoikiometri (a dan b) dan harus ditentukan secara eksperimen.
-        </p>
+        <h3>Menentukan Persamaan Laju Reaksi</h3>
+        <p>Hubungan antara konsentrasi pereaksi dan laju reaksi dinyatakan dalam <strong>persamaan laju reaksi</strong>, yang umumnya berbentuk:</p>
+        <pre><code>r = k [A]<sup>x</sup> [B]<sup>y</sup></code></pre>
+        <p>Di mana:</p>
+        <ul>
+            <li><code>r</code> adalah laju reaksi</li>
+            <li><code>k</code> adalah tetapan laju reaksi</li>
+            <li><code>[A]</code> dan <code>[B]</code> adalah konsentrasi pereaksi A dan B</li>
+            <li><code>x</code> adalah orde reaksi terhadap A</li>
+            <li><code>y</code> adalah orde reaksi terhadap B</li>
+            <li><code>x + y</code> adalah orde reaksi total</li>
+        </ul>
 
-        <div class="contoh-box">
-            <h3>Contoh: Menentukan Orde Reaksi dan Harga Tetapan Laju Reaksi</h3>
-            <p>Diberikan reaksi: NO(g) + &frac12;Cl₂(g) → NOCl(g)</p>
-            <p>Data eksperimen:</p>
-            <table style="width:100%; border-collapse: collapse; margin-top:10px;">
+        <div class="example-box">
+            <h3>Contoh Perhitungan Orde Reaksi dan Laju Reaksi</h3>
+            <p>Untuk reaksi gas NO dan Cl₂:</p>
+            <pre><code>NO(g) + ½ Cl₂(g) → NOCl(g)</code></pre>
+            <p>Data percobaan:</p>
+            <table>
                 <thead>
-                    <tr style="background-color: var(--secondary-accent-amber); color: var(--text-primary);">
-                        <th style="padding: 8px; border: 1px solid var(--border-divider); text-align: left;">No.</th>
-                        <th style="padding: 8px; border: 1px solid var(--border-divider); text-align: left;">[NO] (M)</th>
-                        <th style="padding: 8px; border: 1px solid var(--border-divider); text-align: left;">[Cl₂] (M)</th>
-                        <th style="padding: 8px; border: 1px solid var(--border-divider); text-align: left;">Laju reaksi (M.detik⁻¹)</th>
+                    <tr>
+                        <th>No.</th>
+                        <th>[NO] (M)</th>
+                        <th>[Cl₂] (M)</th>
+                        <th>Laju reaksi (M.detik⁻¹)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="background-color: #FFFCE5;">
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">1.</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">0,20</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">0,05</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">0,6</td>
+                    <tr>
+                        <td>1.</td>
+                        <td>0,20</td>
+                        <td>0,05</td>
+                        <td>0,6</td>
                     </tr>
-                    <tr style="background-color: #FFFCE5;">
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">2.</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">0,20</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">0,10</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">1,2</td>
+                    <tr>
+                        <td>2.</td>
+                        <td>0,20</td>
+                        <td>0,10</td>
+                        <td>1,2</td>
                     </tr>
-                    <tr style="background-color: #FFFCE5;">
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">3.</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">0,40</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">0,05</td>
-                        <td style="padding: 8px; border: 1px solid var(--border-divider);">2,4</td>
+                    <tr>
+                        <td>3.</td>
+                        <td>0,40</td>
+                        <td>0,05</td>
+                        <td>2,4</td>
                     </tr>
                 </tbody>
             </table>
 
             <h4>a. Menentukan orde reaksi untuk gas NO (nilai x)</h4>
-            <p>Gunakan data di mana konsentrasi [Cl₂] dibuat tetap (Data 1 dan 3).</p>
-            <pre>
-r₃ / r₁ = k [NO]₃<sup>x</sup> [Cl₂]₃<sup>y</sup> / (k [NO]₁<sup>x</sup> [Cl₂]₁<sup>y</sup>)
-2,4 / 0,6 = (0,4)<sup>x</sup> (0,05)<sup>y</sup> / ((0,2)<sup>x</sup> (0,05)<sup>y</sup>)
-4 = (0,4 / 0,2)<sup>x</sup>
-4 = 2<sup>x</sup>
-x = 2
-            </pre>
+            <p>Untuk menentukan x, pilih data di mana konsentrasi Cl₂ konstan (variabel kontrol), yaitu data 1 dan 3.</p>
+            <pre><code>(r₃ / r₁) = ([NO]₃ / [NO]₁)ˣ ([Cl₂]₃ / [Cl₂]₁)ʸ
+(2,4 / 0,6) = (0,4 / 0,2)ˣ (0,05 / 0,05)ʸ
+4 = (2)ˣ (1)ʸ
+4 = 2ˣ
+x = 2</code></pre>
+            <p>Jadi, orde reaksi terhadap NO adalah <strong>2</strong>.</p>
 
             <h4>b. Menentukan orde reaksi untuk gas Cl₂ (nilai y)</h4>
-            <p>Gunakan data di mana konsentrasi [NO] dibuat tetap (Data 1 dan 2).</p>
-            <pre>
-r₂ / r₁ = k [NO]₂<sup>x</sup> [Cl₂]₂<sup>y</sup> / (k [NO]₁<sup>x</sup> [Cl₂]₁<sup>y</sup>)
-1,2 / 0,6 = (0,2)<sup>x</sup> (0,10)<sup>y</sup> / ((0,2)<sup>x</sup> (0,05)<sup>y</sup>)
-2 = (0,10 / 0,05)<sup>y</sup>
-2 = 2<sup>y</sup>
-y = 1
-            </pre>
+            <p>Untuk menentukan y, pilih data di mana konsentrasi NO konstan (variabel kontrol), yaitu data 1 dan 2.</p>
+            <pre><code>(r₂ / r₁) = ([NO]₂ / [NO]₁)ˣ ([Cl₂]₂ / [Cl₂]₁)ʸ
+(1,2 / 0,6) = (0,2 / 0,2)ˣ (0,10 / 0,05)ʸ
+2 = (1)ˣ (2)ʸ
+2 = 2ʸ
+y = 1</code></pre>
+            <p>Jadi, orde reaksi terhadap Cl₂ adalah <strong>1</strong>.</p>
 
             <h4>c. Orde reaksi total</h4>
-            <pre>Orde total = x + y = 2 + 1 = 3</pre>
+            <pre><code>Orde total = x + y = 2 + 1 = 3</code></pre>
 
             <h4>d. Persamaan laju reaksinya</h4>
-            <pre>r = k [NO]² [Cl₂]¹ = k [NO]² [Cl₂]</pre>
+            <pre><code>r = k [NO]² [Cl₂]¹</code></pre>
+            <p>atau cukup</p>
+            <pre><code>r = k [NO]² [Cl₂]</code></pre>
 
             <h4>e. Harga tetapan laju reaksi (k)</h4>
-            <p>Menggunakan data percobaan 1:</p>
-            <pre>
-r = k [NO]² [Cl₂]
+            <p>Kita bisa menggunakan salah satu data percobaan, misalnya data 1:</p>
+            <pre><code>r = k [NO]² [Cl₂]
 0,6 M.detik⁻¹ = k (0,2 M)² (0,05 M)
-0,6 M.detik⁻¹ = k . 0,04 M² . 0,05 M
-0,6 M.detik⁻¹ = k . 0,002 M³
-k = 0,6 M.detik⁻¹ / 0,002 M³
-k = 300 M⁻²detik⁻¹
-            </pre>
+0,6 M.detik⁻¹ = k (0,04 M²) (0,05 M)
+0,6 M.detik⁻¹ = k (0,002 M³)
+k = (0,6 M.detik⁻¹) / (0,002 M³)
+k = 300 M⁻² detik⁻¹</code></pre>
+            <p>Jadi, harga tetapan laju reaksi (k) adalah <strong>300 M⁻² detik⁻¹</strong>.</p>
         </div>
 
         <h2>2. Luas Permukaan Sentuh Zat</h2>
-        <p>
-            Luas permukaan sentuh zat mengacu pada total area permukaan partikel pereaksi yang terpapar dan dapat berinteraksi dalam suatu reaksi. Faktor ini sangat penting terutama untuk reaksi yang melibatkan padatan.
-        </p>
-        <p>
-            Kembali ke Teori Tumbukan, reaksi terjadi di permukaan partikel-partikel. Semakin besar luas permukaan sentuh suatu zat, semakin banyak pula area yang tersedia untuk terjadinya tumbukan antar partikel. Peningkatan area tumbukan ini akan meningkatkan frekuensi tumbukan, termasuk tumbukan efektif, sehingga laju reaksi menjadi lebih cepat.
-        </p>
-        <p>
-            Contoh nyata adalah memotong kayu bakar menjadi potongan-potongan kecil untuk api unggun. Kayu yang dipotong kecil-kecil akan lebih cepat terbakar (bereaksi dengan oksigen) dibandingkan kayu gelondongan utuh karena memiliki luas permukaan sentuh yang jauh lebih besar.
-        </p>
+        <p>Luas permukaan sentuh zat terutama berpengaruh pada reaksi heterogen (reaksi antara zat-zat yang berbeda fase, misalnya padat dengan cair atau gas).</p>
+        
+        <h3>Contoh Penerapan</h3>
+        <p>Pernahkah kalian membuat api unggun? Kayu bakar seringkali dipotong-potong menjadi bagian yang lebih kecil sebelum dibakar. Mengapa demikian? Karena kayu yang dipotong-potong akan lebih cepat terbakar. Ini adalah contoh pengaruh luas permukaan sentuh.</p>
 
-        <div class="aktivitas-box">
-            <h3>Aktivitas 6.2: Pengaruh Luas Permukaan Sentuh Zat terhadap Laju Reaksi</h3>
-            <p><strong>Deskripsi Singkat:</strong> Percobaan ini membandingkan laju reaksi antara butiran CaCO₃ (kalsium karbonat) dengan serbuk CaCO₃ saat direaksikan dengan HCl.</p>
-            <p><strong>Prosedur Umum:</strong></p>
-            <ul>
-                <li>Dua balon karet diisi dengan massa CaCO₃ yang sama, satu berisi butiran dan satu berisi serbuk.</li>
-                <li>Dua labu erlenmeyer diisi dengan volume dan konsentrasi HCl yang sama.</li>
-                <li>Balon dipasang pada mulut labu, kemudian CaCO₃ dijatuhkan ke dalam HCl.</li>
-                <li>Waktu diukur hingga balon berdiri tegak (indikasi volume gas CO₂ yang terbentuk telah mencukupi).</li>
-            </ul>
-            <p><strong>Harapan Hasil:</strong> Serbuk CaCO₃ akan bereaksi lebih cepat (balon lebih cepat mengembang) dibandingkan butiran CaCO₃ dengan massa yang sama, karena serbuk memiliki luas permukaan sentuh yang lebih besar.</p>
+        <h3>Kaitan dengan Teori Tumbukan</h3>
+        <p>Pada reaksi yang melibatkan zat padat, reaksi hanya dapat terjadi pada permukaan zat padat yang bersentuhan dengan reaktan lain (cair atau gas). Ketika luas permukaan sentuh zat padat diperbesar (misalnya dengan menghaluskan atau memecahkannya), <strong>jumlah area yang tersedia untuk tumbukan menjadi lebih besar</strong>. Hal ini menyebabkan <strong>lebih banyak partikel pereaksi dapat bertumbukan secara efektif</strong> dalam waktu yang sama, sehingga <strong>laju reaksi meningkat</strong>.</p>
+
+        <div class="activity-summary">
+            <h3>Ringkasan Aktivitas 6.2: Pengaruh Luas Permukaan Sentuh</h3>
+            <p>Dalam percobaan ini, kita mereaksikan HCl dengan CaCO₃ dalam dua bentuk berbeda: butiran dan serbuk. Gas yang terbentuk (CO₂) akan mengisi balon karet. Diamati bahwa CaCO₃ dalam bentuk serbuk menghasilkan gas lebih cepat (balon lebih cepat mengembang) dibandingkan dengan CaCO₃ dalam bentuk butiran. Ini menunjukkan bahwa serbuk memiliki luas permukaan sentuh yang lebih besar, sehingga laju reaksinya lebih cepat.</p>
         </div>
 
-        <div class="info-box">
-            <h3>Konsep Luas Permukaan</h3>
-            <p>Mari kita ilustrasikan dengan sebuah kubus (diibaratkan bongkahan CaCO₃).</p>
-            <p>Jika sebuah bongkahan CaCO₃ berbentuk kubus dengan panjang rusuk 2 cm:</p>
-            <ul>
-                <li>Luas permukaan = 6 × (sisi × sisi) = 6 × (2 cm × 2 cm) = 24 cm².</li>
-            </ul>
-            <p>Apabila bongkahan kubus tersebut diperkecil menjadi 8 bagian sama besar (masing-masing menjadi kubus dengan rusuk 1 cm):</p>
-            <ul>
-                <li>Setiap kubus kecil memiliki luas permukaan = 6 × (1 cm × 1 cm) = 6 cm².</li>
-                <li>Total luas permukaan dari 8 kubus kecil = 8 × 6 cm² = 48 cm².</li>
-            </ul>
-            <p><strong>Kesimpulan:</strong> Untuk massa zat yang sama, apabila ukurannya semakin kecil (misalnya dari bongkahan menjadi serbuk), maka luas permukaannya akan semakin besar. Luas permukaan yang lebih besar menyediakan lebih banyak situs untuk tumbukan efektif, sehingga mempercepat laju reaksi.</p>
+        <h3>Ilustrasi Luas Permukaan</h3>
+        <p>Perhatikan ilustrasi di bawah ini yang menggambarkan bagaimana memperkecil ukuran partikel dapat meningkatkan total luas permukaan:</p>
+        <div class="cube-container">
+            <div>
+                <div class="cube">2 cm</div>
+                <p style="text-align: center; color: var(--text-tertiary);">Luas permukaan: 2x2x6 = 24 cm²</p>
+            </div>
+            <div class="arrow">→</div>
+            <div>
+                <div class="cube-group">
+                    <div class="small-cube"></div>
+                    <div class="small-cube"></div>
+                    <div class="small-cube"></div>
+                    <div class="small-cube"></div>
+                    <div class="small-cube"></div>
+                    <div class="small-cube"></div>
+                    <div class="small-cube"></div>
+                    <div class="small-cube"></div>
+                </div>
+                <p style="text-align: center; color: var(--text-tertiary);">Luas permukaan total (8 kubus kecil): 1x1x6 x 8 = 48 cm²</p>
+            </div>
         </div>
+        <p>Kesimpulannya adalah zat yang memiliki massa sama apabila ukurannya semakin kecil (misalnya dari bongkahan menjadi serbuk) maka luas permukaannya semakin besar.</p>
 
         <h2>3. Suhu</h2>
-        <p>
-            Suhu adalah ukuran energi kinetik rata-rata partikel dalam suatu sistem. Peningkatan suhu akan meningkatkan laju reaksi. Hal ini juga dapat dijelaskan dengan <strong>Teori Tumbukan</strong>.
-        </p>
-        <p>
-            Ketika suhu sistem reaksi dinaikkan, partikel-partikel pereaksi akan memiliki energi kinetik rata-rata yang lebih tinggi. Ini berarti partikel-partikel bergerak lebih cepat dan bertumbukan dengan lebih sering. Yang lebih penting, persentase partikel yang memiliki energi kinetik di atas energi aktivasi juga akan meningkat secara signifikan. Akibatnya, frekuensi tumbukan efektif akan meningkat drastis, menyebabkan laju reaksi menjadi lebih cepat.
-        </p>
-        <p>
-            Secara umum, untuk banyak reaksi kimia, laju reaksi akan naik dua kali lipat untuk setiap kenaikan suhu sebesar 10°C.
-        </p>
+        <p>Suhu adalah ukuran energi kinetik rata-rata partikel. Peningkatan suhu umumnya mempercepat laju reaksi.</p>
+        
+        <h3>Kaitan dengan Teori Tumbukan</h3>
+        <p>Ketika suhu sistem ditingkatkan, <strong>energi kinetik rata-rata partikel-partikel pereaksi juga meningkat</strong>. Hal ini memiliki dua dampak utama pada tumbukan:</p>
+        <ol>
+            <li><strong>Frekuensi Tumbukan Meningkat:</strong> Partikel bergerak lebih cepat, sehingga mereka lebih sering bertumbukan satu sama lain.</li>
+            <li><strong>Energi Tumbukan Meningkat:</strong> Lebih banyak partikel akan memiliki energi yang cukup atau melebihi <strong>energi aktivasi (Ea)</strong>, yaitu energi minimum yang dibutuhkan untuk terjadinya tumbukan efektif. Dengan demikian, <strong>proporsi tumbukan efektif meningkat</strong>.</li>
+        </ol>
+        <p>Kedua faktor ini berkontribusi pada peningkatan laju reaksi secara signifikan.</p>
 
-        <div class="aktivitas-box">
-            <h3>Aktivitas 6.3: Pengaruh Suhu terhadap Laju Reaksi</h3>
-            <p><strong>Deskripsi Singkat:</strong> Percobaan ini mengamati pengaruh suhu larutan Na₂S₂O₃ terhadap waktu reaksi saat direaksikan dengan HCl.</p>
-            <p><strong>Prosedur Umum:</strong></p>
-            <ul>
-                <li>Disiapkan beberapa gelas piala dengan volume dan konsentrasi Na₂S₂O₃ yang sama.</li>
-                <li>Masing-masing gelas piala dipanaskan hingga mencapai suhu yang berbeda-beda (misalnya suhu ruangan, 40°C, 60°C).</li>
-                <li>Volume dan konsentrasi HCl yang sama ditambahkan ke masing-masing gelas piala.</li>
-                <li>Waktu diukur hingga tanda silang di bawah gelas piala tidak terlihat lagi.</li>
-            </ul>
-            <p><strong>Harapan Hasil:</strong> Semakin tinggi suhu larutan Na₂S₂O₃, waktu yang dibutuhkan untuk reaksi selesai akan semakin singkat, menunjukkan laju reaksi yang lebih cepat.</p>
+        <div class="activity-summary">
+            <h3>Ringkasan Aktivitas 6.3: Pengaruh Suhu</h3>
+            <p>Dalam percobaan ini, kita mereaksikan larutan Na₂S₂O₃ dengan HCl pada suhu yang berbeda (suhu ruangan, 40°C, dan 60°C). Diamati bahwa semakin tinggi suhu larutan Na₂S₂O₃, semakin cepat waktu yang dibutuhkan hingga terbentuk endapan yang menutupi tanda silang. Ini menunjukkan bahwa peningkatan suhu mempercepat laju reaksi.</p>
         </div>
 
-        <div class="contoh-box">
-            <h3>Contoh: Perhitungan Laju Reaksi Berdasarkan Perubahan Suhu</h3>
-            <p>Suatu reaksi kimia berlangsung pada suhu 25°C dengan laju 0,12 M.detik⁻¹. Jika setiap kenaikan suhu 10°C laju reaksi menjadi dua kali lebih cepat, berapa besar laju reaksi pada suhu 55°C?</p>
-            <p><strong>Pembahasan:</strong></p>
-            <ul>
-                <li>Suhu awal (T₁) = 25°C</li>
-                <li>Suhu akhir (T₂) = 55°C</li>
-                <li>Laju reaksi awal (r<sub>awal</sub>) = 0,12 M.detik⁻¹</li>
-                <li>Faktor kenaikan laju (setiap 10°C) = 2 kali lipat</li>
-            </ul>
-            <p>Perubahan suhu = T₂ - T₁ = 55°C - 25°C = 30°C.</p>
-            <p>Jumlah interval kenaikan 10°C = 30°C / 10°C = 3 interval.</p>
-            <p>Laju reaksi pada suhu 55°C (r<sub>akhir</sub>) dapat dihitung dengan rumus:</p>
-            <div class="equation">
-                r<sub>akhir</sub> = r<sub>awal</sub> × (faktor kenaikan)<sup>(ΔT / interval)</sup>
-            </div>
-            <pre>
-r<sub>akhir</sub> = 0,12 M.detik⁻¹ × 2<sup>(30/10)</sup>
-r<sub>akhir</sub> = 0,12 M.detik⁻¹ × 2³
-r<sub>akhir</sub> = 0,12 M.detik⁻¹ × 8
-r<sub>akhir</sub> = 0,96 M.detik⁻¹
-            </pre>
-            <p>Jadi, laju reaksi pada saat suhu 55°C adalah 0,96 M.detik⁻¹.</p>
+        <h3>Hubungan Kuantitatif Suhu dengan Laju Reaksi</h3>
+        <p>Secara umum, laju reaksi akan naik dua kali lipat setiap kenaikan suhu sebesar 10°C.</p>
+
+        <div class="example-box">
+            <h3>Contoh Perhitungan Laju Reaksi dengan Perubahan Suhu</h3>
+            <p>Suatu reaksi kimia berlangsung pada suhu 25°C dengan laju 0,12 M.detik⁻¹. Jika setiap kenaikan suhu 10°C, laju reaksi menjadi dua kali lebih cepat, berapakah besar laju reaksi pada saat suhu 55°C?</p>
+            <p><strong>Diketahui:</strong><br>
+            T₁ = 25°C (suhu awal)<br>
+            T₂ = 55°C (suhu akhir)<br>
+            r_awal = 0,12 M.detik⁻¹<br>
+            Faktor kenaikan laju (n) = 2 (dua kali lebih cepat setiap 10°C)<br>
+            Interval kenaikan suhu (ΔT) = 10°C</p>
+
+            <p><strong>Rumus:</strong></p>
+            <pre><code>r_akhir = r_awal × (faktor_kenaikan)<sup>((T₂ - T₁) / ΔT)</sup></code></pre>
+            <p><strong>Perhitungan:</strong></p>
+            <pre><code>r_akhir = 0,12 M.detik⁻¹ × (2)<sup>((55 - 25) / 10)</sup>
+r_akhir = 0,12 M.detik⁻¹ × (2)<sup>(30 / 10)</sup>
+r_akhir = 0,12 M.detik⁻¹ × (2)³
+r_akhir = 0,12 M.detik⁻¹ × 8
+r_akhir = 0,96 M.detik⁻¹</code></pre>
+            <p>Jadi, laju reaksi pada saat suhu 55°C adalah <strong>0,96 M.detik⁻¹</strong>.</p>
         </div>
 
         <h2>4. Katalis</h2>
-        <p>
-            Katalis adalah zat yang mampu mempercepat laju reaksi tanpa ikut habis bereaksi. Pada akhir reaksi, katalis akan terbentuk kembali dalam bentuk semula.
-        </p>
-        <p>
-            Mekanisme kerja katalis adalah dengan menyediakan jalur reaksi alternatif yang memiliki energi aktivasi (Ea) lebih rendah. <strong>Energi aktivasi</strong> adalah energi minimum yang harus dimiliki partikel pereaksi agar tumbukan yang terjadi dapat menghasilkan reaksi.
-        </p>
-        <p>
-            Dengan menurunkan energi aktivasi, katalis memungkinkan lebih banyak partikel memiliki energi yang cukup untuk melewati penghalang energi dan membentuk produk. Ini berarti lebih banyak tumbukan yang menjadi efektif, sehingga laju reaksi berlangsung lebih cepat. Katalis tidak mengubah entalpi reaksi (ΔH) atau posisi kesetimbangan reaksi; ia hanya mempercepat pencapaian kesetimbangan.
-        </p>
+        <p>Katalis adalah zat yang mampu mempercepat laju reaksi tanpa ikut habis bereaksi. Di akhir reaksi, katalis terbentuk kembali seperti semula.</p>
+        
+        <h3>Mekanisme Kerja Katalis</h3>
+        <p>Katalis mempercepat laju reaksi dengan menyediakan <strong>mekanisme reaksi alternatif</strong>. Mekanisme baru ini memiliki <strong>energi aktivasi (Ea) yang lebih rendah</strong> dibandingkan mekanisme reaksi tanpa katalis.</p>
 
-        <div class="info-box">
-            <h3>Grafik Energi Aktivasi dengan dan tanpa Katalis</h3>
-            <p>Kurva energi potensial menggambarkan perubahan energi selama reaksi berlangsung.</p>
-            <p>Pada grafik energi potensial, kurva tanpa katalis menunjukkan puncak energi aktivasi yang lebih tinggi. Ketika katalis ditambahkan, kurva akan menunjukkan jalur reaksi baru dengan puncak energi aktivasi yang lebih rendah (Ea'). Ini berarti energi yang dibutuhkan untuk memulai reaksi menjadi lebih kecil, sehingga reaksi berlangsung lebih cepat.</p>
-            <p><strong>Contoh reaksi:</strong> H₂(g) + Cl₂(g) → 2HCl(g)</p>
-            <p style="text-align: center;">
-                <em>(Bayangkan grafik di mana ada dua kurva reaksi. Kurva hitam tanpa katalis memiliki bukit energi yang lebih tinggi. Kurva biru dengan katalis memiliki bukit energi yang lebih rendah, meskipun titik awal (reaktan) dan titik akhir (produk) berada pada ketinggian energi yang sama.)</em>
+        <h3>Kaitan dengan Teori Tumbukan</h3>
+        <p>Dengan menurunnya energi aktivasi, <strong>lebih banyak partikel pereaksi yang memiliki energi yang cukup untuk melewati penghalang energi</strong> dan membentuk produk. Ini berarti <strong>proporsi tumbukan efektif menjadi lebih tinggi</strong>, sehingga reaksi berlangsung lebih cepat.</p>
+
+        <div class="highlight-box">
+            <p>Pada grafik energi potensial, jalur reaksi dengan katalis (kurva biru) akan menunjukkan puncak energi aktivasi yang lebih rendah dibandingkan jalur reaksi tanpa katalis (kurva hitam).</p>
+            <p style="text-align: center; color: var(--text-tertiary);">
+                (Diagram Energi Potensial: Reaktan → Energi Aktivasi Tanpa Katalis → Produk)<br>
+                (Diagram Energi Potensial: Reaktan → Energi Aktivasi Dengan Katalis (lebih rendah) → Produk)
             </p>
         </div>
 
-        <div class="aktivitas-box">
-            <h3>Aktivitas 6.4: Pengaruh Katalis terhadap Laju Reaksi</h3>
-            <p><strong>Deskripsi Singkat:</strong> Percobaan ini mengamati efek penambahan kalium iodida (KI) sebagai katalis pada penguraian hidrogen peroksida (H₂O₂) dalam larutan sabun.</p>
-            <p><strong>Prosedur Umum:</strong></p>
-            <ul>
-                <li>Disiapkan labu erlenmeyer berisi larutan H₂O₂ dan sabun pencuci piring.</li>
-                <li>Diamati jumlah gelembung yang terbentuk (indikasi laju penguraian H₂O₂ menjadi O₂ gas).</li>
-                <li>Setelah beberapa waktu, ditambahkan serbuk KI ke dalam campuran.</li>
-                <li>Diamati kembali banyak gas yang terbentuk setelah penambahan KI.</li>
-            </ul>
-            <p><strong>Harapan Hasil:</strong> Setelah penambahan KI, gelembung gas yang terbentuk akan jauh lebih banyak dan lebih cepat, menunjukkan bahwa KI bertindak sebagai katalis yang mempercepat penguraian H₂O₂.</p>
+        <div class="activity-summary">
+            <h3>Ringkasan Aktivitas 6.4: Pengaruh Katalis</h3>
+            <p>Dalam percobaan ini, kita mengamati dekomposisi H₂O₂. Pada percobaan pertama, H₂O₂ hanya dicampur dengan sabun pencuci piring (untuk mengamati gelembung oksigen). Pada percobaan kedua, ditambahkan serbuk KI. Diamati bahwa penambahan KI menyebabkan produksi gelembung yang jauh lebih banyak dan lebih cepat. Ini menunjukkan bahwa KI bertindak sebagai katalis, mempercepat reaksi dekomposisi H₂O₂.</p>
+            <p>Dalam reaksi ini, KI berfungsi sebagai katalis. Ion iodida (I⁻) dari KI berpartisipasi dalam mekanisme reaksi, tetapi diregenerasi kembali di akhir, memungkinkan dekomposisi H₂O₂ berlangsung lebih cepat.</p>
         </div>
 
-        <div class="pengayaan-box">
-            <h3>Pengayaan: Enzim Papain sebagai Katalis Biologis</h3>
-            <p>Papain adalah contoh enzim (katalis biologis) yang ditemukan dalam pepaya. Enzim ini adalah protein proteolitik, artinya ia dapat memecah protein. Oleh karena itu, papain sering digunakan untuk melunakkan daging dan menggumpalkan susu dalam pembuatan keju.</p>
-            <p>Aktivitas enzim sangat dipengaruhi oleh kondisi lingkungan, seperti suhu dan pH. Enzim memiliki suhu dan pH optimum di mana aktivitasnya paling tinggi. Misalnya, papain bekerja paling baik pada suhu sekitar 50–60°C dan pH netral (6-8).</p>
-            <p>Mekanisme pelunakan daging oleh papain melibatkan pemutusan ikatan peptida dalam protein serat otot, sehingga membuat daging menjadi lebih empuk. Ini adalah contoh bagaimana katalis berperan penting dalam proses biologis dan aplikasi industri.</p>
-        </div>
-
-        <div class="inti-sari-box">
-            <h3>Inti Sari Materi</h3>
+        <div class="summary-box">
+            <h3>Inti Sari Kinetika Kimia</h3>
             <ul>
-                <li>Reaksi kimia terjadi akibat <strong>tumbukan efektif</strong> antarpartikel pereaksi. Tumbukan efektif adalah tumbukan yang memiliki orientasi tepat dan energi kinetik minimum yang cukup, disebut <strong>energi aktivasi</strong> (Ea).</li>
-                <li><strong>Laju reaksi</strong> adalah perubahan konsentrasi zat pereaksi atau produk tiap satuan waktu.</li>
-                <li>Beberapa faktor utama yang memengaruhi laju reaksi adalah:
+                <li>Reaksi kimia terjadi karena adanya <strong>tumbukan efektif</strong> antarpartikel reaktan.</li>
+                <li><strong>Energi aktivasi</strong> adalah energi minimum yang dibutuhkan agar tumbukan efektif dapat terjadi.</li>
+                <li>Laju reaksi kimia dipengaruhi oleh beberapa faktor utama:
                     <ul>
-                        <li><strong>Konsentrasi Pereaksi:</strong> Peningkatan konsentrasi menambah frekuensi tumbukan, sehingga mempercepat laju reaksi.</li>
-                        <li><strong>Luas Permukaan Sentuh Zat:</strong> Peningkatan luas permukaan (misalnya dari bongkahan menjadi serbuk) menyediakan lebih banyak area untuk tumbukan, mempercepat laju reaksi.</li>
-                        <li><strong>Suhu:</strong> Kenaikan suhu meningkatkan energi kinetik partikel, memperbanyak tumbukan efektif, sehingga mempercepat laju reaksi (umumnya laju naik dua kali lipat setiap kenaikan 10°C).</li>
-                        <li><strong>Katalis:</strong> Katalis mempercepat laju reaksi dengan menyediakan jalur reaksi alternatif yang memiliki energi aktivasi lebih rendah, tanpa ikut habis bereaksi.</li>
+                        <li><strong>Konsentrasi reaktan:</strong> Semakin tinggi konsentrasi, semakin cepat laju reaksi karena frekuensi tumbukan meningkat.</li>
+                        <li><strong>Luas permukaan sentuh zat:</strong> Semakin besar luas permukaan, semakin cepat laju reaksi (terutama untuk reaksi heterogen) karena lebih banyak titik kontak untuk tumbukan.</li>
+                        <li><strong>Suhu:</strong> Semakin tinggi suhu, semakin cepat laju reaksi karena energi kinetik partikel meningkat, menyebabkan frekuensi dan energi tumbukan efektif lebih tinggi.</li>
+                        <li><strong>Katalis:</strong> Katalis mempercepat laju reaksi dengan menyediakan jalur reaksi alternatif dengan energi aktivasi yang lebih rendah, tanpa ikut habis bereaksi.</li>
                     </ul>
                 </li>
-                <li>Persamaan laju reaksi (hukum laju) untuk reaksi aA + bB → produk umumnya dinyatakan sebagai: <strong>r = k [A]<sup>x</sup> [B]<sup>y</sup></strong>, di mana x dan y adalah orde reaksi yang ditentukan secara eksperimen.</li>
+                <li>Persamaan laju reaksi umumnya dinyatakan sebagai: <code>r = k [A]<sup>x</sup> [B]<sup>y</sup></code>.</li>
             </ul>
         </div>
 
-        <div class="info-box">
-            <h3>Ayo Refleksi</h3>
-            <p>Setelah mempelajari materi Kinetika Kimia, mari kita merefleksi diri:</p>
-            <ul>
-                <li>Apakah kalian mampu menjelaskan teori tumbukan dalam konteks reaksi kimia?</li>
-                <li>Apakah kalian mampu menjelaskan bagaimana pengaruh suhu, konsentrasi, luas permukaan sentuh zat, dan katalis terhadap laju reaksi dihubungkan dengan teori tumbukan?</li>
-                <li>Apakah kalian dapat menentukan harga orde reaksi berdasarkan data hasil percobaan berupa perubahan konsentrasi reaktan?</li>
-                <li>Apakah kalian mampu menganalisis penerapan konsep laju reaksi dalam kehidupan sehari-hari?</li>
-            </ul>
-        </div>
     </div>
 </body>
 </html>
-```

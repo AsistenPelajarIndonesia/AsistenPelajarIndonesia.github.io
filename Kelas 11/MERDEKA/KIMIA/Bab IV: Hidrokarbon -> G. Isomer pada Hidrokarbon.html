@@ -1,397 +1,336 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isomer pada Hidrokarbon - Kimia Kelas XI</title>
+    <title>G. Isomer pada Hidrokarbon - Kimia Kelas XI</title>
     <style>
-        /* Light Mode Theme Variables */
+        /* CSS Variables based on the provided theme */
         :root {
-            --background-canvas: #FFFFFF;
-            --text-primary: #212121;
-            --text-secondary: #424242;
-            --text-tertiary: #757575;
-            --border-divider: #E0E0E0;
-            --primary-blue: #1976D2;
-            --accent-green: #388E3C;
-            --secondary-accent-amber: #FFB300;
-            --semantic-success: #4CAF50;
-            --semantic-warning: #FFC107;
-            --semantic-error: #D32F2F;
-            --semantic-info: #2196F3;
+            --background_canvas: #FFFFFF;
+            --text_primary: #212121;
+            --text_secondary: #424242;
+            --text_tertiary: #757575;
+            --border_divider: #E0E0E0;
+            --primary_blue: #1976D2;
+            --accent_green: #388E3C;
+            --secondary_accent_amber: #FFB300;
+            --semantic_success: #4CAF50;
+            --semantic_warning: #FFC107;
+            --semantic_error: #D32F2F;
+            --semantic_info: #2196F3;
         }
 
+        /* Basic Body Styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background-canvas);
-            color: var(--text-primary);
+            background-color: var(--background_canvas);
+            color: var(--text_primary);
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
+            padding: 0;
+            display: flex;
+            justify-content: center;
         }
 
+        /* Main Content Container */
         .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-divider);
+            max-width: 960px; /* Max width for readability */
+            width: 100%; /* Full width on smaller screens */
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in width */
         }
 
-        h1, h2, h3, h4 {
-            color: var(--primary-blue);
+        /* Heading Styles */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary_blue);
             margin-top: 1.5em;
             margin-bottom: 0.8em;
         }
 
-        h1 {
-            font-size: 2.2rem;
-            text-align: center;
-            border-bottom: 2px solid var(--border-divider);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            color: var(--primary-blue);
-        }
+        h1 { font-size: 2.2em; border-bottom: 2px solid var(--primary_blue); padding-bottom: 10px; }
+        h2 { font-size: 1.8em; border-bottom: 1px solid var(--border_divider); padding-bottom: 5px; color: var(--accent_green); }
+        h3 { font-size: 1.4em; color: var(--secondary_accent_amber); }
+        h4 { font-size: 1.2em; color: var(--text_primary); }
 
-        h2 {
-            font-size: 1.8rem;
-            color: var(--primary-blue);
-            padding-bottom: 5px;
-            border-bottom: 1px solid var(--border-divider);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            color: var(--accent-green);
-            margin-bottom: 1em;
-        }
-
-        h4 {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-top: 1em;
-            margin-bottom: 0.5em;
-        }
-
+        /* Paragraph and List Styles */
         p {
             margin-bottom: 1em;
-            color: var(--text-secondary);
+            color: var(--text_secondary);
         }
 
-        ul {
+        ul, ol {
             list-style-type: disc;
-            margin-left: 25px;
+            margin-left: 20px;
             margin-bottom: 1em;
+            color: var(--text_secondary);
         }
 
         li {
             margin-bottom: 0.5em;
-            color: var(--text-secondary);
         }
 
-        strong {
-            color: var(--text-primary);
+        /* Code and Preformatted Text for Chemical Structures */
+        code {
+            background-color: #f0f0f0; /* Lighter background for inline code */
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--text_primary);
+            font-size: 0.9em;
+            white-space: nowrap; /* Prevent breaking of inline code */
         }
 
-        em {
-            color: var(--text-tertiary);
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto; /* Enable horizontal scrolling for wide structures */
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--text_primary);
+            font-size: 0.95em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            border: 1px dashed var(--border_divider);
+            line-height: 1.2; /* Tighter line height for chemical structures */
         }
 
-        .highlight {
-            background-color: rgba(56, 142, 60, 0.1); /* Light tint of accent_green */
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: var(--accent-green);
-        }
-
-        .note-box {
-            background-color: rgba(25, 118, 210, 0.08); /* Light tint of primary_blue */
-            border-left: 5px solid var(--primary-blue);
+        /* Highlight Box for Important Notes/Examples */
+        .highlight-box {
+            background-color: #E3F2FD; /* Light blue background */
+            border-left: 5px solid var(--primary_blue);
             padding: 15px 20px;
             margin: 20px 0;
             border-radius: 4px;
         }
-        .note-box p {
-            color: var(--text-primary);
-            margin: 0;
-        }
 
-        details {
-            border: 1px solid var(--border-divider);
-            border-radius: 5px;
-            margin: 15px 0;
-            padding: 10px 15px;
-            background-color: #fcfcfc;
-        }
-
-        summary {
-            font-weight: bold;
-            cursor: pointer;
-            color: var(--primary-blue);
-            padding: 5px 0;
-            outline: none; /* Remove default outline */
-        }
-
-        summary:hover {
-            color: var(--accent-green);
-        }
-
-        details[open] summary {
+        .highlight-box h3 {
+            color: var(--primary_blue);
+            margin-top: 0;
             margin-bottom: 10px;
         }
 
-        .code-block {
-            background-color: #f8f8f8;
-            border: 1px solid var(--border-divider);
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 0.9em;
-            color: var(--text-primary);
+        .note {
+            font-style: italic;
+            color: var(--text_tertiary);
+            margin-top: 1em;
+            border-left: 3px solid var(--semantic_info);
+            padding-left: 10px;
         }
 
-        .structure-diagram {
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre;
-            line-height: 1.2;
-            margin: 15px 0;
-            padding: 10px;
+        /* Specific styling for structure blocks */
+        .structure-block {
+            display: block; /* Ensures block behavior */
+            margin-bottom: 1.5em;
             background-color: #fafafa;
-            border: 1px dashed var(--border-divider);
-            border-radius: 4px;
-            font-size: 0.95em;
-            color: var(--text-primary);
-            text-align: center; /* Center the text diagrams */
+            border: 1px solid var(--border_divider);
+            padding: 10px;
+            border-radius: 5px;
         }
 
-        /* Responsive adjustments */
+        .structure-block p {
+            margin-bottom: 0.5em;
+            color: var(--text_primary);
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            body {
+            .container {
                 padding: 15px;
             }
-            .container {
-                padding: 20px;
-                margin: 10px auto;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            h2 {
-                font-size: 1.5rem;
-            }
-            h3 {
-                font-size: 1.3rem;
-            }
-            h4 {
-                font-size: 1.1rem;
-            }
-            ul {
-                margin-left: 20px;
-            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            h4 { font-size: 1.1em; }
+            pre { font-size: 0.9em; }
         }
 
         @media (max-width: 480px) {
-            body {
+            .container {
                 padding: 10px;
             }
-            .container {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
-            h2 {
-                font-size: 1.3rem;
-            }
-            h3 {
-                font-size: 1.1rem;
-            }
-            h4 {
-                font-size: 1rem;
-            }
-            ul {
-                margin-left: 15px;
-            }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.3em; }
+            h3 { font-size: 1.1em; }
+            pre { padding: 10px; font-size: 0.85em; }
         }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>G. Isomer pada Hidrokarbon</h1>
 
-        <p>Dalam studi kimia organik, khususnya hidrokarbon, kita sering kali menjumpai fenomena unik di mana beberapa senyawa berbagi komposisi atom yang identik (memiliki rumus molekul yang sama), namun menunjukkan karakteristik dan sifat-sifat yang berbeda secara signifikan. Perbedaan ini muncul dari cara atom-atom tersebut saling terikat atau tersusun dalam ruang tiga dimensi. Konsep ini dikenal sebagai <span class="highlight">isomerisme</span>, dan senyawa-senyawa yang menunjukkan fenomena ini disebut <span class="highlight">isomer</span>.</p>
+        <p>Dalam studi kimia organik, seringkali kita menemukan fenomena menarik di mana senyawa-senyawa yang berbeda memiliki komposisi atom yang sama persis, namun menunjukkan sifat-sifat yang berbeda. Senyawa-senyawa ini dikenal sebagai <strong>isomer</strong>.</p>
 
-        <div class="note-box">
-            <p><strong>Definisi Isomer:</strong> Isomer adalah senyawa-senyawa yang memiliki rumus molekul yang sama, tetapi berbeda dalam susunan atomnya, baik dalam urutan ikatan (struktur) maupun penataan ruang tiga dimensi.</p>
+        <p>Secara fundamental, <strong>isomer</strong> adalah dua senyawa atau lebih yang memiliki rumus molekul yang identik, tetapi berbeda dalam penataan (arrangement) atom-atomnya. Perbedaan dalam penataan atom ini dapat berupa konektivitas atom yang berbeda atau susunan spasial (ruang) yang berbeda, yang pada gilirannya menyebabkan perbedaan pada sifat fisik dan kimia senyawa tersebut.</p>
+
+        <p>Mari kita ilustrasikan dengan contoh sederhana dari hidrokarbon butana. Baik n-butana maupun 2-metilpropana memiliki rumus molekul yang sama, yaitu <code>C₄H₁₀</code>.</p>
+
+        <div class="structure-block">
+            <p>1. n-butana (rantai lurus):</p>
+            <pre>CH₃ - CH₂ - CH₂ - CH₃</pre>
         </div>
 
-        <p>Untuk memahami lebih lanjut, mari kita perhatikan contoh klasik dua senyawa alkana di bawah ini:</p>
-        <div class="structure-diagram">
-            CH₃–CH₂–CH₂–CH₃<br>
-            <span style="color: var(--text-tertiary);">(n-butana)</span><br><br>
-            &nbsp; &nbsp; &nbsp; &nbsp; CH₃<br>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
-            CH₃–CH–CH₃<br>
-            <span style="color: var(--text-tertiary);">(2-metilpropana)</span>
+        <div class="structure-block">
+            <p>2. 2-metilpropana (rantai bercabang):</p>
+            <pre>      CH₃
+      |
+CH₃ - CH - CH₃</pre>
         </div>
-        <p>Meskipun n-butana dan 2-metilpropana memiliki nama dan struktur yang jelas berbeda, analisis menunjukkan bahwa keduanya tersusun dari 4 atom karbon dan 10 atom hidrogen, sehingga memiliki rumus molekul yang sama yaitu <span class="highlight">C₄H₁₀</span>. Ini adalah esensi dari konsep isomer.</p>
 
-        <p>Isomer dalam hidrokarbon secara umum diklasifikasikan menjadi dua kategori utama, yang masing-masing memiliki sub-kategori lebih lanjut:</p>
-        <ul>
-            <li><strong>Isomer Struktur (Isomer Konstitusional)</strong></li>
-            <li><strong>Isomer Ruang (Stereoisomer)</strong></li>
-        </ul>
+        <p>Meskipun kedua senyawa di atas tersusun dari 4 atom karbon dan 10 atom hidrogen, cara atom-atom tersebut saling terhubung sangatlah berbeda. n-butana memiliki rantai karbon tunggal lurus, sementara 2-metilpropana memiliki rantai utama tiga karbon dengan satu cabang metil pada karbon kedua. Perbedaan struktural ini menjadikan mereka pasangan isomer.</p>
 
-        <h2>1. Isomer Struktur</h2>
-        <p>Isomer struktur (juga dikenal sebagai isomer konstitusional) adalah jenis isomer di mana senyawa-senyawa memiliki rumus molekul yang sama, tetapi <span class="highlight">urutan ikatan atom-atomnya berbeda</span>. Ini berarti atom-atom tersebut dihubungkan satu sama lain dalam pola atau rangkaian yang berbeda. Isomer struktur dapat dibedakan menjadi tiga jenis utama:</p>
+        <p>Secara umum, isomer pada hidrokarbon dapat diklasifikasikan menjadi dua kategori utama:</p>
+        <ol>
+            <li><strong>Isomer Struktur (Structural Isomers)</strong></li>
+            <li><strong>Isomer Ruang (Stereoisomers atau Spatial Isomers)</strong></li>
+        </ol>
+
+        <h2>1. Isomer Struktur (Isomer Konstitusional)</h2>
+        <p><strong>Isomer struktur</strong>, atau isomer konstitusional, adalah senyawa-senyawa yang memiliki rumus molekul yang sama tetapi atom-atomnya terhubung (berikatan) dengan urutan yang berbeda. Ini berarti ada perbedaan dalam konektivitas atom atau kerangka dasarnya. Isomer struktur dibagi lagi menjadi beberapa sub-jenis:</p>
 
         <h3>a. Isomer Rantai/Rangka (Chain/Skeletal Isomers)</h3>
-        <p>Isomer rantai terjadi ketika senyawa-senyawa dengan rumus molekul yang sama memiliki <span class="highlight">susunan kerangka karbon yang berbeda</span>. Perbedaan ini bisa berupa panjang rantai utama atau pola dan lokasi percabangan pada rantai karbon.</p>
-        <details>
-            <summary>Klik untuk Contoh: Pentana, 2-Metilbutana, dan 2,2-Dimetilpropana (Rumus Molekul: C₅H₁₂)</summary>
-            <p>Ketiga senyawa ini adalah alkana dengan lima atom karbon yang memiliki rumus molekul C₅H₁₂, namun struktur rantai karbonnya sangat berbeda:</p>
-            <h4>i. Pentana (n-pentana)</h4>
-            <div class="structure-diagram">
-                CH₃–CH₂–CH₂–CH₂–CH₃<br>
-                <span style="color: var(--text-tertiary);">(Rantai karbon lurus dan tidak bercabang)</span>
-            </div>
-            <h4>ii. 2-Metilbutana (Isopentana)</h4>
-            <div class="structure-diagram">
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CH₃<br>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
-                CH₃–CH₂–CH–CH₃<br>
-                <span style="color: var(--text-tertiary);">(Rantai utama empat karbon dengan satu cabang metil pada C nomor 2)</span>
-            </div>
-            <h4>iii. 2,2-Dimetilpropana (Neopentana)</h4>
-            <div class="structure-diagram">
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CH₃<br>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
-                CH₃–C–CH₃<br>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CH₃<br>
-                <span style="color: var(--text-tertiary);">(Rantai utama tiga karbon dengan dua cabang metil pada C nomor 2)</span>
-            </div>
-        </details>
+        <p>Isomer rantai terjadi ketika senyawa-senyawa memiliki rumus molekul yang sama tetapi berbeda dalam susunan rantai karbon utamanya atau tingkat percabangannya. Rantai karbon dapat berupa rantai lurus, bercabang, atau bahkan membentuk struktur siklik.</p>
+        <p><strong>Contoh:</strong> Tiga isomer rantai dari pentana (<code>C₅H₁₂</code>).</p>
+        <div class="structure-block">
+            <p>1. Pentana (n-pentana - rantai lurus):</p>
+            <pre>CH₃ - CH₂ - CH₂ - CH₂ - CH₃</pre>
+        </div>
+        <div class="structure-block">
+            <p>2. 2-metilbutana (isopentana - satu cabang):</p>
+            <pre>      CH₃
+      |
+CH₃ - CH₂ - CH - CH₃</pre>
+        </div>
+        <div class="structure-block">
+            <p>3. 2,2-dimetilpropana (neopentana - dua cabang):</p>
+            <pre>      CH₃
+      |
+CH₃ - C - CH₃
+      |
+      CH₃</pre>
+        </div>
+        <p>Ketiga senyawa ini, meskipun memiliki jumlah atom yang sama, memiliki kerangka karbon yang berbeda secara fundamental. Pentana memiliki rantai lurus, 2-metilbutana memiliki satu gugus metil sebagai cabang, dan 2,2-dimetilpropana memiliki dua gugus metil sebagai cabang.</p>
 
         <h3>b. Isomer Posisi (Positional Isomers)</h3>
-        <p>Isomer posisi terjadi ketika senyawa-senyawa memiliki rumus molekul, kerangka karbon, dan jenis gugus fungsi yang sama, tetapi <span class="highlight">posisi gugus fungsi atau ikatan rangkap/rangkap tiga</span> pada rantai karbonnya berbeda.</p>
-        <details>
-            <summary>Klik untuk Contoh: 1-Butena dan 2-Butena (Rumus Molekul: C₄H₈)</summary>
-            <p>Kedua senyawa ini adalah alkena, memiliki empat atom karbon, dan rumus molekul C₄H₈. Perbedaannya terletak pada lokasi ikatan rangkap:</p>
-            <h4>i. 1-Butena</h4>
-            <div class="structure-diagram">
-                CH₂=CH–CH₂–CH₃<br>
-                <span style="color: var(--text-tertiary);">(Ikatan rangkap antara C nomor 1 dan C nomor 2)</span>
-            </div>
-            <h4>ii. 2-Butena</h4>
-            <div class="structure-diagram">
-                CH₃–CH=CH–CH₃<br>
-                <span style="color: var(--text-tertiary);">(Ikatan rangkap antara C nomor 2 dan C nomor 3)</span>
-            </div>
-        </details>
+        <p>Isomer posisi terjadi ketika gugus fungsi atau ikatan rangkap (ganda atau tiga) berada pada posisi yang berbeda dalam rantai karbon yang sama atau serupa. Rantai karbon utama tetap sama, tetapi letak gugus pentingnya bergeser.</p>
+        <p><strong>Contoh:</strong> 1-butena dan 2-butena, keduanya memiliki rumus molekul <code>C₄H₈</code>.</p>
+        <div class="structure-block">
+            <p>1. 1-butena (ikatan rangkap pada karbon pertama):</p>
+            <pre>CH₂ = CH - CH₂ - CH₃</pre>
+        </div>
+        <div class="structure-block">
+            <p>2. 2-butena (ikatan rangkap pada karbon kedua):</p>
+            <pre>CH₃ - CH = CH - CH₃</pre>
+        </div>
+        <p>Dalam contoh ini, rantai karbon dasar (butana) tetap empat karbon, namun posisi ikatan rangkap dua berbeda, yang mengubah sifat-sifat fisik dan kimia masing-masing.</p>
 
         <h3>c. Isomer Gugus Fungsi (Functional Group Isomers)</h3>
-        <p>Isomer jenis ini merupakan fenomena di mana dua atau lebih senyawa memiliki rumus molekul yang sama persis, tetapi <span class="highlight">jenis gugus fungsinya berbeda</span>. Hal ini berarti mereka termasuk dalam kelas senyawa organik yang berbeda dengan sifat kimia dan fisika yang sangat bervariasi.</p>
-        <details>
-            <summary>Klik untuk Contoh Pasangan Isomer Gugus Fungsi pada Hidrokarbon</summary>
-            <ul>
-                <li><strong>Alkena dan Sikloalkana:</strong> Kedua kelas senyawa ini memiliki rumus umum C<sub>n</sub>H<sub>2n</sub>.
-                    <p class="structure-diagram">
-                        CH₂=CH–CH₂–CH₂–CH₂–CH₃ &nbsp; &nbsp; &nbsp; <span style="color: var(--text-tertiary);">(1-Heksena, sebuah alkena)</span><br><br>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CH₂–CH₂<br>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / &nbsp; &nbsp; \<br>
-                        &nbsp; &nbsp; &nbsp; CH₂ &nbsp; &nbsp; &nbsp; CH₂ &nbsp; &nbsp; <span style="color: var(--text-tertiary);">(Sikloheksana, sebuah sikloalkana)</span><br>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \ &nbsp; &nbsp; /<br>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CH₂–CH₂
-                    </p>
-                    <p>Kedua senyawa tersebut, 1-heksena dan sikloheksana, memiliki rumus molekul yang sama: C₆H₁₂.</p>
-                </li>
-                <li><strong>Alkuna dan Sikloalkena:</strong> Kedua kelas senyawa ini memiliki rumus umum C<sub>n</sub>H<sub>2n-2</sub>.</li>
-                <li><strong>Alkuna dan Alkadiena:</strong> Kedua kelas senyawa ini juga memiliki rumus umum C<sub>n</sub>H<sub>2n-2</sub>.</li>
-            </ul>
-        </details>
-
-        <h2>2. Isomer Ruang (Stereoisomer)</h2>
-        <p>Isomer ruang, atau stereoisomer, adalah senyawa-senyawa yang memiliki rumus molekul dan urutan ikatan atom (konektivitas) yang sama, tetapi <span class="highlight">pengaturan tiga dimensi atom-atomnya dalam ruang berbeda</span>. Perbedaan ini tidak dapat dihilangkan hanya dengan rotasi ikatan tunggal. Terdapat dua jenis utama isomer ruang:</p>
+        <p>Isomer gugus fungsi adalah senyawa-senyawa yang memiliki rumus molekul yang sama tetapi mengandung gugus fungsi yang berbeda. Ini berarti mereka termasuk dalam kelas senyawa organik yang berbeda sama sekali, dan oleh karena itu, memiliki sifat kimia yang sangat berbeda.</p>
+        <p><strong>Contoh Pasangan Isomer Gugus Fungsi pada Hidrokarbon:</strong></p>
         <ul>
-            <li><strong>Isomer Geometri (Cis-Trans Isomerism)</strong></li>
-            <li><strong>Isomer Optik</strong> (Enantiomer dan Diastereomer)</li>
+            <li><strong>Alkena dengan Sikloalkana:</strong> Keduanya memiliki rumus umum <code>CnH2n</code>.</li>
+            <p>Misalnya: 1-heksena dan sikloheksana, keduanya memiliki rumus molekul <code>C₆H₁₂</code>.</p>
+            <div class="structure-block">
+                <p>1. 1-heksena (Alkena):</p>
+                <pre>CH₂ = CH - CH₂ - CH₂ - CH₂ - CH₃</pre>
+            </div>
+            <div class="structure-block">
+                <p>2. Sikloheksana (Sikloalkana):</p>
+                <pre>   CH₂
+  /   \
+CH₂   CH₂
+|     |
+CH₂   CH₂
+  \   /
+   CH₂</pre>
+                <p class="note"><em>(Sikloheksana adalah cincin enam atom karbon dengan ikatan tunggal, membentuk struktur tertutup.)</em></p>
+            </div>
+            <li><strong>Alkuna dengan Sikloalkena:</strong> Keduanya memiliki rumus umum <code>CnH2n-2</code>.</li>
+            <li><strong>Alkuna dengan Alkadiena:</strong> Keduanya juga memiliki rumus umum <code>CnH2n-2</code>.</li>
+        </ul>
+        <p>Perbedaan gugus fungsi secara drastis mengubah sifat reaktivitas dan fisik senyawa, menunjukkan betapa pentingnya gugus fungsi dalam menentukan identitas kimiawi suatu molekul.</p>
+
+        <div class="highlight-box">
+            <h3>Penting untuk Dipahami!</h3>
+            <p>Untuk menguatkan pemahaman Anda tentang isomer struktur, sangat penting untuk dapat menggambarkan struktur dari senyawa-senyawa yang merupakan pasangan isomer. Contoh-contoh yang dibahas meliputi:</p>
+            <ol>
+                <li><strong>Isomer Rantai:</strong> Pentana, 2-metilbutana, dan 2,2-dimetilpropana.</li>
+                <li><strong>Isomer Posisi:</strong> 1-butena dan 2-butena.</li>
+                <li><strong>Isomer Gugus Fungsi:</strong> 1-heksena dan sikloheksana.</li>
+            </ol>
+            <p>Kemampuan visualisasi dan penggambaran struktur ini adalah kunci dalam kimia organik.</p>
+        </div>
+
+        <h2>2. Isomer Ruang (Stereoisomers)</h2>
+        <p><strong>Isomer ruang</strong>, atau stereoisomer, adalah senyawa-senyawa yang memiliki rumus molekul yang sama dan urutan ikatan antar atom yang sama (konektivitas identik), tetapi berbeda dalam penataan atom-atomnya di ruang tiga dimensi. Perbedaan ini tidak dapat dihilangkan hanya dengan rotasi ikatan tunggal.</p>
+        <p>Isomer ruang terbagi menjadi dua jenis utama:</p>
+        <ul>
+            <li><strong>Isomer Geometri (Geometrical Isomers)</strong></li>
+            <li><strong>Isomer Optik (Optical Isomers)</strong> - <em>(Isomer optik melibatkan konsep kiralitas dan aktivitas optik, yang merupakan topik yang lebih mendalam dan tidak dibahas secara rinci di bagian ini.)</em></li>
         </ul>
 
         <h3>a. Isomer Geometri (Cis-Trans Isomerism)</h3>
-        <p>Isomer geometri timbul akibat adanya <span class="highlight">hambatan rotasi ikatan</span> tertentu dalam molekul. Dalam konteks hidrokarbon, ini paling sering diamati pada:</p>
+        <p>Isomer geometri terjadi karena adanya <strong>rotasi ikatan yang terbatas atau sulit diputar (restricted rotation)</strong> dalam molekul. Kondisi ini paling sering ditemukan pada:</p>
         <ul>
-            <li><span class="highlight">Ikatan rangkap dua (C=C) pada alkena:</span> Adanya ikatan pi yang kuat dalam ikatan rangkap dua secara efektif mencegah rotasi bebas di sekitar sumbu ikatan C=C.</li>
-            <li><span class="highlight">Ikatan dalam struktur siklik (C-C siklik):</span> Atom-atom yang membentuk cincin terfiksasi dalam suatu struktur tertutup, sehingga rotasi di sekitar ikatan C-C dalam cincin sangat terbatas.</li>
+            <li><strong>Ikatan rangkap ganda karbon-karbon (C=C) pada alkena:</strong> Ikatan rangkap ganda terdiri dari satu ikatan sigma (σ) dan satu ikatan pi (π). Sementara ikatan sigma memungkinkan rotasi bebas, ikatan pi menghambat rotasi. Untuk merotasi ikatan C=C, ikatan pi harus diputus, yang membutuhkan sejumlah besar energi. Kekakuan ini membatasi pergerakan atom atau gugus di sekitar ikatan rangkap.</li>
+            <li><strong>Struktur cincin (siklik) pada sikloalkana:</strong> Dalam molekul siklik, atom-atom karbon terhubung dalam struktur tertutup, yang juga membatasi rotasi bebas ikatan C-C, menyebabkan molekul memiliki struktur yang kaku (rigid).</li>
         </ul>
-        <p>Keterbatasan rotasi ini sering disebut sebagai <span class="highlight">ketegangan (rigidity)</span> molekul.</p>
+        <p>Kekakuan posisi ini (disebut juga <em>rigidity</em>) adalah prasyarat untuk terjadinya isomer geometri.</p>
 
-        <h4>1) Isomer cis dan trans</h4>
-        <p>Isomer cis-trans adalah bentuk spesifik dari isomer geometri yang didasarkan pada posisi relatif gugus-gugus yang terikat pada atom-atom karbon yang terlibat dalam ikatan rangkap dua atau cincin. Syarat fundamental agar sebuah alkena dapat memiliki isomer cis-trans adalah <span class="highlight">setiap atom karbon pada ikatan rangkap dua harus mengikat dua gugus yang berbeda</span>.</p>
+        <h4>1) Isomer Cis dan Trans</h4>
+        <p>Isomer <em>cis-trans</em> adalah bentuk paling umum dari isomer geometri, terutama pada alkena. Agar sebuah molekul dapat menunjukkan isomerisme <em>cis-trans</em>, dua syarat utama harus terpenuhi:</p>
+        <ol>
+            <li>Harus ada ikatan rangkap <code>C=C</code> atau struktur cincin yang kaku.</li>
+            <li>Setiap atom karbon yang terlibat dalam ikatan rangkap (atau atom-atom pada cincin) harus mengikat dua gugus atau atom yang <strong>berbeda satu sama lain</strong>. Jika salah satu karbon ikatan rangkap mengikat dua gugus yang identik, isomer <em>cis-trans</em> tidak akan terbentuk.</li>
+        </ol>
 
-        <p>Berikut penjelasannya:</p>
+        <p><strong>Definisi Isomer Cis dan Trans:</strong></p>
         <ul>
-            <li><strong>Bentuk <span class="highlight">cis</span>:</strong> Terjadi ketika gugus atau atom yang sejenis (atau gugus prioritas yang sama) terletak pada <span class="highlight">sisi yang sama</span> dari ikatan rangkap dua.</li>
-            <li><strong>Bentuk <span class="highlight">trans</span>:</strong> Terjadi ketika gugus atau atom yang sejenis (atau gugus prioritas yang sama) terletak pada <span class="highlight">sisi yang berlawanan</span> dari ikatan rangkap dua.</li>
+            <li><strong>Bentuk <em>cis</em>:</strong> Terjadi ketika gugus atau atom sejenis (atau dengan prioritas tinggi berdasarkan aturan tertentu) terletak pada <strong>sisi yang sama</strong> dari ikatan rangkap.</li>
+            <li><strong>Bentuk <em>trans</em>:</strong> Terjadi ketika gugus atau atom sejenis (atau dengan prioritas tinggi) terletak pada <strong>sisi yang berlawanan</strong> dari ikatan rangkap.</li>
         </ul>
 
-        <details>
-            <summary>Klik untuk Analisis: 1-Propena (CH₂=CH–CH₃) dan Isomer Cis-Trans</summary>
-            <p>Struktur 1-propena secara 2D dapat digambarkan sebagai berikut:</p>
-            <div class="structure-diagram">
-                &nbsp; H &nbsp; &nbsp; CH₃<br>
-                &nbsp; &nbsp;\ &nbsp; /<br>
-                &nbsp; &nbsp; C = C<br>
-                &nbsp; &nbsp; / &nbsp; \<br>
-                &nbsp; H &nbsp; &nbsp; H
-            </div>
-            <p>Mari kita periksa atom karbon yang membentuk ikatan rangkap:</p>
-            <ul>
-                <li><strong>Atom C sebelah kiri (C nomor 1):</strong> Atom karbon ini mengikat dua atom yang identik, yaitu dua atom Hidrogen (H).</li>
-                <li><strong>Atom C sebelah kanan (C nomor 2):</strong> Atom karbon ini mengikat dua gugus yang berbeda, yaitu satu gugus metil (–CH₃) dan satu atom Hidrogen (H).</li>
-            </ul>
-            <p>Karena salah satu atom karbon yang terlibat dalam ikatan rangkap (C nomor 1) mengikat dua gugus yang sama, yaitu dua atom H, maka <span class="highlight">1-propena tidak memenuhi syarat untuk memiliki isomer cis-trans</span>. Gugus yang sama pada satu atom C rangkap tidak memungkinkan penentuan sisi relatif (cis atau trans).</p>
-        </details>
+        <p>Mari kita tinjau contoh-contoh berikut untuk memahami aplikasi aturan ini:</p>
 
-        <details>
-            <summary>Klik untuk Analisis: 2-Butena (CH₃–CH=CH–CH₃) dan Isomer Cis-Trans</summary>
-            <p>2-Butena adalah contoh senyawa yang dapat memiliki isomer geometri cis dan trans, karena kedua atom karbon pada ikatan rangkapnya masing-masing mengikat dua gugus yang berbeda (yaitu satu atom H dan satu gugus CH₃).</p>
-            <h4>i. Cis-2-Butena</h4>
-            <p>Pada bentuk cis, gugus-gugus sejenis (dalam hal ini, dua gugus metil atau dua atom hidrogen) berada pada <span class="highlight">sisi yang sama</span> dari ikatan rangkap:</p>
-            <div class="structure-diagram">
-                &nbsp; CH₃ &nbsp; CH₃<br>
-                &nbsp; &nbsp; \ &nbsp; /<br>
-                &nbsp; &nbsp; &nbsp; C = C<br>
-                &nbsp; &nbsp; / &nbsp; \<br>
-                &nbsp; H &nbsp; &nbsp; H
-            </div>
-            <p><span style="color: var(--text-tertiary);">Kedua gugus metil (CH₃) berada di atas (atau di bawah) bidang ikatan rangkap.</span></p>
-            <h4>ii. Trans-2-Butena</h4>
-            <p>Pada bentuk trans, gugus-gugus sejenis (dua gugus metil atau dua atom hidrogen) berada pada <span class="highlight">sisi yang berlawanan</span> dari ikatan rangkap:</p>
-            <div class="structure-diagram">
-                &nbsp; CH₃ &nbsp; &nbsp; H<br>
-                &nbsp; &nbsp; \ &nbsp; /<br>
-                &nbsp; &nbsp; &nbsp; C = C<br>
-                &nbsp; &nbsp; / &nbsp; \<br>
-                &nbsp; H &nbsp; &nbsp; CH₃
-            </div>
-            <p><span style="color: var(--text-tertiary);">Satu gugus metil di atas, dan gugus metil lainnya di bawah bidang ikatan rangkap.</span></p>
-            <p>Cis-2-butena dan Trans-2-butena adalah senyawa yang berbeda secara fundamental. Mereka memiliki rumus molekul yang sama, tetapi perbedaan penataan ruang ini menyebabkan perbedaan dalam sifat fisik (seperti titik didih, titik leleh, dan momen dipol) serta sifat kimia.</p>
-        </details>
+        <div class="structure-block">
+            <p>a) Senyawa 1-propena (<code>CH₂=CH-CH₃</code>):</p>
+            <pre>      H      CH₃
+       \    /
+        C = C
+       /    \
+      H      H</pre>
+            <p class="note"><strong>Analisis:</strong> Pada 1-propena, atom karbon pertama (<code>CH₂</code>) yang membentuk ikatan rangkap mengikat dua atom hidrogen (<code>H</code>) yang <strong>identik</strong>. Oleh karena itu, 1-propena <strong>tidak menunjukkan isomerisme <em>cis-trans</em></strong>. Syarat kedua (setiap karbon ikatan rangkap harus mengikat dua gugus berbeda) tidak terpenuhi pada karbon pertama.</p>
+        </div>
 
-        <p>Selain sistem penamaan cis-trans, terdapat juga sistem prioritas E-Z untuk menggambarkan isomer geometri pada kasus yang lebih kompleks, namun prinsip dasar rigiditas ikatan tetap menjadi kuncinya.</p>
+        <div class="structure-block">
+            <p>b) Senyawa 2-butena (<code>CH₃-CH=CH-CH₃</code>):</p>
+            <p>2-butena dapat menunjukkan isomerisme <em>cis-trans</em> karena kedua atom karbon yang terlibat dalam ikatan rangkap (C2 dan C3) masing-masing mengikat dua gugus yang berbeda (satu gugus metil <code>CH₃</code> dan satu atom hidrogen <code>H</code>).</p>
 
-        <h3>b. Isomer Optik</h3>
-        <p>Isomer optik adalah jenis stereoisomer yang berbeda dalam kemampuannya memutar bidang cahaya terpolarisasi. Isomer ini muncul pada molekul yang memiliki pusat kiral (biasanya atom karbon yang mengikat empat gugus yang berbeda) dan tidak dapat ditumpuk secara sempurna dengan bayangan cerminnya (disebut molekul kiral). Pasangan isomer optik yang merupakan bayangan cermin satu sama lain dan tidak dapat ditumpuk disebut enantiomer. Meskipun sangat penting dalam biokimia dan farmasi, pembahasan mendalam mengenai isomer optik tidak termasuk dalam cakupan materi ini.</p>
+            <h4>i. Cis-2-butena:</h4>
+            <p>Gugus metil (<code>CH₃</code>) pada kedua karbon ikatan rangkap berada pada sisi yang sama. Demikian pula, kedua atom hidrogen (<code>H</code>) berada pada sisi yang sama.</p>
+            <pre>      CH₃   CH₃
+       \   /
+        C = C
+       /   \
+      H     H</pre>
 
-        <p>Memahami berbagai jenis isomer ini sangat fundamental dalam kimia organik, karena membantu kita menjelaskan keragaman struktur dan sifat-sifat unik yang ditunjukkan oleh senyawa hidrokarbon meskipun mereka memiliki komposisi atom yang sama.</p>
+            <h4>ii. Trans-2-butena:</h4>
+            <p>Gugus metil (<code>CH₃</code>) pada kedua karbon ikatan rangkap berada pada sisi yang berlawanan. Demikian pula, kedua atom hidrogen (<code>H</code>) berada pada sisi yang berlawanan.</p>
+            <pre>      CH₃    H
+       \   /
+        C = C
+       /   \
+      H     CH₃</pre>
+        </div>
+
+        <p>Perbedaan penataan ruang ini menyebabkan isomer <em>cis</em> dan <em>trans</em> dari senyawa yang sama memiliki sifat fisik yang berbeda. Misalnya, <em>cis</em>-2-butena umumnya memiliki titik didih yang sedikit lebih tinggi daripada <em>trans</em>-2-butena karena bentuk <em>cis</em> cenderung lebih polar akibat distribusi muatan yang asimetris, yang menghasilkan momen dipol bersih.</p>
+
+        <p>Memahami konsep isomer, baik isomer struktur maupun isomer ruang, sangat esensial dalam kimia organik. Ini membantu menjelaskan keragaman molekul, memprediksi sifat-sifatnya, dan memahami reaktivitasnya dalam berbagai reaksi kimia.</p>
+
     </div>
 </body>
 </html>
-```
